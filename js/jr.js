@@ -6,7 +6,7 @@ var jr = {
 	markdownContent: null,
 	plugins: {}, // Defined below
 	styles : [
-		'themes/default.css',
+		'css/style.css',
 		'//fonts.googleapis.com/css?family=Average',
 		'//fonts.googleapis.com/css?family=Roboto:400,700'
 	],
