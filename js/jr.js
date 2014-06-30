@@ -215,9 +215,6 @@ function ajax(url, callback, data)
 	// Save the markdown for after we load the parser
 	jr.markdownContent = jr.body.innerHTML;
 
-	// Empty the content in case it takes a while to parse the markdown (leaves a blank screen)
-	jr.body.innerHTML = '<div class="spinner"></div>';
-
 	// Load styles first
 	for (var i = jr.styles.length - 1; i >= 0; i--) {
 		jr.loadStyle(jr.styles[i]);
