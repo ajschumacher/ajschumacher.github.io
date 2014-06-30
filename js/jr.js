@@ -11,7 +11,7 @@ var jr = {
 		'//fonts.googleapis.com/css?family=Roboto:400,700'
 	],
 	scripts : [
-		'js/showdown.js'
+		'/js/showdown.js'
 		// if you want jQuery or some other library for a plugin
 		// '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
 	],
