@@ -1,15 +1,31 @@
-/*
-  Color scheme taken from Emacs 'zenburn':
-  https://github.com/bbatsov/zenburn-emacs
-*/
-
-/*
-  font-family taken from http://cssfontstack.com/
-*/
-
 body {
     background-color: #DCDCCC;
     color: #3F3F3F;
     font-family: "Book Antiqua", Palatino, "Palatino Linotype",
                  "Palatino LT STD", Georgia, serif;
+    line-height: 140%;
+    max-width: 40em;
+    margin: auto;
+    padding: 0 1em;
+}
+
+header {
+    text-align: center;
+}
+
+a {
+    color: #9C6363;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #8C5353;
+}
+
+a:hover {
+    color: #AC7373;
+}
+
+a:active {
+    text-decoration: underline;
 }
