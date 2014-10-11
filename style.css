@@ -1,0 +1,9 @@
+/*
+  Color scheme taken from Emacs 'zenburn':
+  https://github.com/bbatsov/zenburn-emacs
+*/
+
+body {
+    background-color: #3F3F3F;
+    color: #DCDCCC;
+}
