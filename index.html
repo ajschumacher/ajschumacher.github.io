@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/zenburn.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
     <title>plan space from outer nine</title>
   </head>
@@ -33,6 +34,22 @@
         skateboard kale chips ex keytar chia. Ut organic selfies raw
         denim cardigan sint.
       </p>
+      <pre><code class="language-python">def retries_on_exceptions(fail_delay=72, max_errors=12):
+    def decorator(func):
+        @functools.wraps(func)
+        def newfunc(*args, **kwargs):
+            error_count = 0
+            while True:
+                try:
+                    return func(*args, **kwargs)
+                except:
+                    error_count += 1
+                    if error_count == max_errors:
+                        raise
+                    else:
+                        time.sleep(fail_delay)
+        return newfunc
+    return decorator</code></pre>
     </article>
     <footer>
       <hr />
@@ -40,6 +57,7 @@
         <a id="edit" href="https://github.com/ajschumacher/ajschumacher.github.io">edit</a>
       </p>
     </footer>
+    <script src="/highlight.pack.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>
