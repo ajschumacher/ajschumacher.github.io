@@ -8,8 +8,22 @@ in an <article>, prepend the header (with title inserted) and tack on
 the footer.
 """
 
+import os
 import codecs
 import markdown
+
+
+def file_or_bust(dir, filename):
+    path = os.path.join(dir, filename)
+    if os.path.isfile(path):
+        with codecs.open(path, encoding='utf-8') as f:
+            result = f.read()
+        return result
+    elif os.path.ismount(dir):
+        raise IOError('failed to find ' + filename)
+    else:
+        parent_dir = os.path.join(dir, os.pardir)
+        return file_or_bust(parent_dir, filename)
 
 
 def add_code_blocks(lines):
@@ -38,6 +52,7 @@ def title_to_text(line):
 
 
 def make_page(filename):
+    calling_dir = os.getcwd()
     with codecs.open(filename, encoding='utf-8') as f:
         lines = [line for line in f]
     title_line = lines.pop(0)
@@ -45,11 +60,9 @@ def make_page(filename):
     title = title_to_text(title_line)
     lines = add_code_blocks(lines)
     body = '<article>' + markdown.markdown("".join(lines)) + '</article>'
-    with codecs.open('header.html', encoding='utf-8') as f:
-        start = f.read()
+    start = file_or_bust(calling_dir, 'header.html')
     start = start.replace('HEAD_TITLE', title)
-    with codecs.open('footer.html', encoding='utf-8') as f:
-        end = f.read()
+    end = file_or_bust(calling_dir, 'footer.html')
     return start + header + body + end
 
 
