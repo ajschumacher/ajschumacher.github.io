@@ -30,14 +30,24 @@ def add_code_blocks(lines):
     return lines
 
 
+def title_to_text(line):
+    title = line[1:].strip()
+    if 'plan' in title and 'space' in title:
+        title = 'plan space from outer nine'
+    return title
+
+
 def make_page(filename):
     with codecs.open(filename, encoding='utf-8') as f:
         lines = [line for line in f]
-    header = '<header>' + markdown.markdown(lines.pop(0)) + '</header>'
+    title_line = lines.pop(0)
+    header = '<header>' + markdown.markdown(title_line) + '</header>'
+    title = title_to_text(title_line)
     lines = add_code_blocks(lines)
     body = '<article>' + markdown.markdown("".join(lines)) + '</article>'
     with codecs.open('header.html', encoding='utf-8') as f:
         start = f.read()
+    start = start.replace('HEAD_TITLE', title)
     with codecs.open('footer.html', encoding='utf-8') as f:
         end = f.read()
     return start + header + body + end
