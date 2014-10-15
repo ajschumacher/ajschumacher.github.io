@@ -41,3 +41,11 @@ pre {
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
 }
+
+.up {
+    display: inline-block;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(27deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
