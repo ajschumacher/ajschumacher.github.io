@@ -1,0 +1,2 @@
+Don't edit any `index.html`. These are generated using `index.md`,
+`header.html`, and `footer.html`. Probably just edit `index.md`.
