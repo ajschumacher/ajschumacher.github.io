@@ -57,10 +57,10 @@ def make_page(filename):
     with codecs.open(filename, encoding='utf-8') as f:
         lines = [line for line in f]
     title_line = lines.pop(0)
-    header = '<header>' + markdown.markdown(title_line) + '</header>'
+    header = markdown.markdown(title_line)
     title = title_to_text(title_line)
     lines = add_code_blocks(lines)
-    body = '<article>' + markdown.markdown("".join(lines)) + '</article>'
+    body = markdown.markdown("".join(lines))
     start = file_or_bust(calling_dir, 'header.html')
     start = start.replace('HEAD_TITLE', title)
     end = file_or_bust(calling_dir, 'footer.html')
