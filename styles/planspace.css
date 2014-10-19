@@ -50,3 +50,10 @@ pre {
     -ms-transform: rotate(270deg);
     -o-transform: rotate(270deg);
 }
+
+@media  only screen and (min-device-pixel-ratio: 2),
+        only screen and (min-resolution: 192dpi) {
+    body {
+        font-size: 1.75em;
+    }
+}
