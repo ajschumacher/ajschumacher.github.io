@@ -41,6 +41,7 @@ def add_code_blocks(lines):
             else:
                 lines[i-1] = lines[i-1].strip()
                 lines[i] = '</code></pre>\n'
+                in_block = False
     return lines
 
 
