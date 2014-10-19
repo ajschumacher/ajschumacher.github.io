@@ -35,7 +35,7 @@ pre {
     line-height: normal;
 }
 
-.spun {
+.rotate180 {
     display: inline-block;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -43,7 +43,7 @@ pre {
     -o-transform: rotate(180deg);
 }
 
-.up {
+.rotate270 {
     display: inline-block;
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
