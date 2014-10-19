@@ -6,3 +6,10 @@ if (pathName === "/") {
     back_link = document.getElementById('back_link')
     back_link.parentNode.removeChild(back_link)
 }
+var article = document.getElementsByTagName('article')[0];
+var content_height = article.scrollHeight;
+var view_height = window.innerHeight;
+if (content_height <= view_height) {
+    up_link = document.getElementById('up_link')
+    up_link.parentNode.removeChild(up_link)
+}
