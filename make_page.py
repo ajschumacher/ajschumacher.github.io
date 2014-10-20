@@ -108,9 +108,7 @@ def main():
     with codecs.open('index.html', 'w', encoding='utf-8') as f:
         f.write(plain_html)
     if slides_html:
-        if not os.path.exists('big/'):
-            os.makedirs('big/')
-        with codecs.open('big/index.html', 'w', encoding='utf-8') as f:
+        with codecs.open('big.html', 'w', encoding='utf-8') as f:
             f.write(slides_html)
 
 if __name__ == '__main__':
