@@ -50,6 +50,9 @@ def slides_from(lines):
 def add_code_blocks(lines):
     in_block = False
     for i, line in enumerate(lines):
+        if in_block:
+            line = line.replace('<', '&lt;')
+            lines[i] = line
         if line.startswith("```"):
             if not in_block:
                 lang = line.replace("`", "").strip()

@@ -11,14 +11,47 @@
     <article>
 <h1>JSON-stat and rjstat</h1>
 <p class="date">Thursday October 23, 2014</p>
-<p>This is a lightning talk.</p>
+<p>A lightning talk at <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>'s <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">event</a>.</p>
 <hr />
-<h2>Slide contents!</h2>
+<pre><code>&lt;!doctype html>
+&lt;html>
+  &lt;head>
+    &lt;title>data?&lt;/title>
+...</code></pre>
+
 <hr />
-<p>More text</p>
+<p>Motivation for wanting to do this... Mention <code>selfcontain</code> (https://github.com/ajschumacher/selfcontain and/or https://pypi.python.org/pypi/selfcontain/) either here or later...</p>
 <hr />
-<p>Another slide...</p>
-<hr />    </article>
+<pre><code>[{"person": "Aaron",
+  "year": 2014,
+  "height": 68,
+  "weight": 70},
+...</code></pre>
+
+<hr />
+<p>Something about JSON...</p>
+<hr />
+<pre><code>person,year,height,weight
+Aaron,2014,68,70
+...</code></pre>
+
+<hr />
+<p>Something about CSV. Good if don't need every line to stand on its own.</p>
+<hr />
+<pre><code>person,height2014,weight2014
+Aaron,68,70
+...</code></pre>
+
+<hr />
+<p>Example is more compact, but at some cost in goodness... (Not tidy.)</p>
+<hr />
+<pre><code>person,year,thing,value
+Aaron,2014,height,68
+Aaron,2014,weight,70
+...</code></pre>
+
+<hr />
+<p>Now this is fully reduced: what you need/get with <code>rjstat</code>. But: so much duplication!</p>    </article>
     <footer>
       <hr />
       <p>
