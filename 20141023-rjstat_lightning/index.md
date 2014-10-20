@@ -33,19 +33,6 @@ Something about JSON...
 -----
 
 ```
-person,height2014,weight2014
-Aaron,68,70
-...
-```
-
------
-
-Something about CSV. Example is more compact, but at some cost in goodness...
-(Maybe switch the order between this and next?)
-
------
-
-```
 person,year,height,weight
 Aaron,2014,68,70
 ...
@@ -53,7 +40,19 @@ Aaron,2014,68,70
 
 -----
 
-Now we've achieved tidy data...
+Something about CSV. Good if don't need every line to stand on its own.
+
+-----
+
+```
+person,height2014,weight2014
+Aaron,68,70
+...
+```
+
+-----
+
+Example is more compact, but at some cost in goodness... (Not tidy.)
 
 -----
 
