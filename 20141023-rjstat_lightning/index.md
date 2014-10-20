@@ -1,4 +1,4 @@
-# JSON-stat and `rjstat`
+# JSON-stat and rjstat
 
 This is a lightning talk.
 
