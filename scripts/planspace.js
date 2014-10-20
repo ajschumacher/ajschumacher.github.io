@@ -8,7 +8,7 @@ if (pathName === "/") {
 }
 if (pathName === "/aaron/") {
     aaron_link = document.getElementById('aaron_link');
-    aaron_link.outerHTML('Aaron');
+    aaron_link.outerHTML = 'Aaron';
 }
 var article = document.getElementsByTagName('article')[0];
 var content_height = article.scrollHeight;
