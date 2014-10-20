@@ -10,8 +10,19 @@ body {
     padding: 0 1em;
 }
 
-h1, footer {
+h1, footer, p.date {
     text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+p.date {
+    font-size: 0.75em;
+    line-height: 100%;
+    margin: 0;
+    color: #6F6F6F;
 }
 
 a {

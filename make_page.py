@@ -9,8 +9,10 @@ the footer.
 """
 
 import os
+import re
 import codecs
 import markdown
+from datetime import datetime
 
 
 def file_or_bust(dir, filename):
@@ -77,6 +79,13 @@ def make_page(filename):
         lines = [line for line in f]
     title_line = lines.pop(0)
     header = markdown.markdown(title_line)
+    regex = re.compile(r'([0-9]{4})(?:.?)([0-9]{2})(?:.?)([0-9]{2})')
+    match = regex.search(calling_dir)
+    if match:
+        date_string = ''.join(match.groups())
+        date = datetime.strptime(date_string, '%Y%m%d')
+        date_string = datetime.strftime(date, '%A %B %e, %Y')
+        header += '\n<p class="date">' + date_string + '</p>\n'
     title = title_to_text(title_line)
     lines = add_code_blocks(lines)
     slides = slides_from(lines)
