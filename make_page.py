@@ -79,6 +79,16 @@ def make_page(filename):
         lines = [line for line in f]
     title_line = lines.pop(0)
     header = markdown.markdown(title_line)
+    title = title_to_text(title_line)
+    lines = add_code_blocks(lines)
+    slides = slides_from(lines)
+    if slides:
+        slides = '<div>\n' + header + '\n</div>\n' + slides
+        slides_start = file_or_bust(calling_dir, 'slides_header.html')
+        slides_end = file_or_bust(calling_dir, 'slides_footer.html')
+        slides_html = slides_start + slides + slides_end
+    else:
+        slides_html = None
     regex = re.compile(r'([0-9]{4})(?:.?)([0-9]{2})(?:.?)([0-9]{2})')
     match = regex.search(calling_dir)
     if match:
@@ -86,15 +96,6 @@ def make_page(filename):
         date = datetime.strptime(date_string, '%Y%m%d')
         date_string = datetime.strftime(date, '%A %B %e, %Y')
         header += '\n<p class="date">' + date_string + '</p>\n'
-    title = title_to_text(title_line)
-    lines = add_code_blocks(lines)
-    slides = slides_from(lines)
-    if slides:
-        slides_start = file_or_bust(calling_dir, 'slides_header.html')
-        slides_end = file_or_bust(calling_dir, 'slides_footer.html')
-        slides_html = slides_start + slides + slides_end
-    else:
-        slides_html = None
     body = markdown.markdown("".join(lines))
     start = file_or_bust(calling_dir, 'header.html')
     start = start.replace('HEAD_TITLE', title)
