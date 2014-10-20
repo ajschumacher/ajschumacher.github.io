@@ -14,7 +14,7 @@ A lightning talk at [Statistical Programming DC](http://www.meetup.com/stats-pro
 
 -----
 
-Motivation for wanting to do this...
+Motivation for wanting to do this... Mention `selfcontain` (https://github.com/ajschumacher/selfcontain and/or https://pypi.python.org/pypi/selfcontain/) either here or later...
 
 -----
 
