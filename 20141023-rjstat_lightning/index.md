@@ -95,8 +95,13 @@ For data cubes!
 
 Xavier Badosa
 
+http://json-stat.org/
+
 Swedish Inflation Calculator
 http://bl.ocks.org/badosa/20735ba5bbecbc079d78
+
+Lars Pedersen (statistics Greenland)
+http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/
 
 -----
 
@@ -107,6 +112,9 @@ bus
 maybe this bus?
 http://3.bp.blogspot.com/-_V8_WYHo078/UjEgx5zHpGI/AAAAAAAAAS0/b_jOKfwKgEQ/s1600/DC2NY3.jpg
 
+https://github.com/ajschumacher/rjstat
+
+Håkon Malmedal
 https://twitter.com/hmalmedal
 
 -----
