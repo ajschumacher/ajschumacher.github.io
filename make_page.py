@@ -86,7 +86,7 @@ def make_page(filename):
     lines = add_code_blocks(lines)
     slides = slides_from(lines)
     if slides:
-        slides = '<div>\n' + header + '\n</div>\n' + slides
+        slides = '<div>\n' + title + '\n</div>\n' + slides
         slides_start = file_or_bust(calling_dir, 'slides_header.html')
         slides_end = file_or_bust(calling_dir, 'slides_footer.html')
         slides_html = slides_start + slides + slides_end
