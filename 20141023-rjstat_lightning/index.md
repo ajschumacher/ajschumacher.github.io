@@ -67,6 +67,8 @@ Aaron,2014,weight,70
 
 Now this is fully reduced: what you need/get with `rjstat`. But: so much duplication! And numbers with different meanings in the same column!
 
+use `spread` function from `tidyr` if more than one variable in value column
+
 -----
 
 ```
@@ -90,3 +92,29 @@ data cube
 -----
 
 For data cubes!
+
+Xavier Badosa
+
+Swedish Inflation Calculator
+http://bl.ocks.org/badosa/20735ba5bbecbc079d78
+
+-----
+
+bus
+
+-----
+
+maybe this bus?
+http://3.bp.blogspot.com/-_V8_WYHo078/UjEgx5zHpGI/AAAAAAAAAS0/b_jOKfwKgEQ/s1600/DC2NY3.jpg
+
+https://twitter.com/hmalmedal
+
+-----
+
+CRAN
+
+-----
+
+http://cran.r-project.org/submit.html
+
+approved by Uwe Ligges
