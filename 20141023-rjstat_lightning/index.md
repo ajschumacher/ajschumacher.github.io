@@ -65,4 +65,28 @@ Aaron,2014,weight,70
 
 -----
 
-Now this is fully reduced: what you need/get with `rjstat`. But: so much duplication!
+Now this is fully reduced: what you need/get with `rjstat`. But: so much duplication! And numbers with different meanings in the same column!
+
+-----
+
+```
+person,year,height
+Aaron,2014,68
+...
+
+person,year,weight
+Aaron,2014,70
+...
+```
+
+-----
+
+Could also split into multiple tables. "Goal" is to get single value column. Why?
+
+-----
+
+data cube
+
+-----
+
+For data cubes!
