@@ -119,16 +119,17 @@ http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/
 
 -----
 
-![](bus.png)
+![bus](bus.png)
 
 -----
 
-http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png
+I was using R a lot at the time, and I found that there wasn't anything to read and write JSON-stat. So when I visited New York one weekend, I spent some of my bus time hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got something that worked, put it [up on GitHub](https://github.com/ajschumacher/rjstat), and told Xavier about it.
 
+It turned out I didn't need JSON-stat, and I immediately forgot about it. But once it was up on GitHub, anybody could come and mess with it. And somebody did.
 
-https://github.com/ajschumacher/rjstat
+(Image from [some site](http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png).)
 
-Once it was up on GitHub, anybody could come and mess with it. And somebody did.
+(It isn't quite true that I immediately forgot about it. I also did a lightning talk at [Hack and Tell](http://dc.hackandtell.org/2013/11/21/round-3.html).)
 
 -----
 
