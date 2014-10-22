@@ -11,3 +11,11 @@ Weirdnesses:
    to support GitHub-style fenced code blocks.
 
 [big]: https://github.com/tmcw/big
+
+Syntax highlighting is by [highlight.js](https://highlightjs.org/download/). It's a custom pack; right now these are the languages:
+
+ * Bash
+ * Python
+ * R
+ * JSON
+ * HTML/XML
