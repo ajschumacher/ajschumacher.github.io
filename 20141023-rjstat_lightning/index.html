@@ -11,68 +11,71 @@
     <article>
 <h1>JSON-stat and rjstat</h1>
 <p class="date">Thursday October 23, 2014</p>
-<p><center><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></center></p>
-<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a> data packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
-<p>Even if you never need other, I hope that the ideas and process I describe will be interesting.</p>
+<p><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></p>
+<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a> <a href="http://en.wikipedia.org/wiki/Data_cube">data cube</a> packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
 <hr />
-<pre><code>&lt;!doctype html>
+<pre><code class="language-html">&lt;!doctype html>
 &lt;html>
   &lt;head>
     &lt;title>data?&lt;/title>
 ...</code></pre>
 
 <hr />
-<p>About a year ago I was thinking about how to put a lot of data into a completely self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. Presuming something text-based, what's the most compact way to store the data?</p>
+<p>About a year ago I was thinking about how to put a lot of data into a self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. Presuming something text-based, what's the most compact way to store the data?</p>
 <p>(If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.)</p>
 <hr />
-<pre><code>[{"person": "Aaron",
+<pre><code class="language-json">[{"name": "Aaron",
   "year": 2014,
   "height": 68,
   "weight": 70},
 ...</code></pre>
 
 <hr />
-<p>It's pretty common online to see data as a list of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for instance. And it's good if you need to have every observation stand on its own, or variable schema. But for every record you're repeating all the keys, so it isn't very compact.</p>
+<p>It's pretty common online to see data as an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. And it's good if you need to have every observation stand on its own, or if there's no consistent schema. But for every record you're repeating all the keys, so it isn't very compact.</p>
 <hr />
-<pre><code>person,year,height,weight
+<pre><code class="language-nohighlight">name,year,height,weight
 Aaron,2014,68,70
 ...</code></pre>
 
 <hr />
-<p>Something about CSV. Good if don't need every line to stand on its own.</p>
+<p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much more compact, and the simple table layout is very familiar. There's even less data type information than with JSON, but that generally isn't such a big deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But can we do better?</p>
 <hr />
-<pre><code>person,height2014,weight2014
+<pre><code class="language-nohighlight">name,height2014,weight2014
 Aaron,68,70
 ...</code></pre>
 
 <hr />
-<p>Example is more compact, but at some cost in goodness... (Not tidy.)</p>
+<p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with.</p>
 <hr />
-<pre><code>person,year,thing,value
+<pre><code class="language-nohighlight">name,year,thing,value
 Aaron,2014,height,68
 Aaron,2014,weight,70
 ...</code></pre>
 
 <hr />
-<p>Now this is fully reduced: what you need/get with <code>rjstat</code>. But: so much duplication! And numbers with different meanings in the same column!</p>
-<p>use <code>spread</code> function from <code>tidyr</code> if more than one variable in value column</p>
-<hr />
-<pre><code>person,year,height
-Aaron,2014,68
-...
-
-person,year,weight
-Aaron,2014,70
-...</code></pre>
-
-<hr />
-<p>Could also split into multiple tables. "Goal" is to get single value column. Why?</p>
+<p>We could move in the other direction, toward a longer format. Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!</p>
+<p>(For most wide-to-long and long-to-wide conversions in R, use the <a href="http://rpackages.ianhowson.com/cran/tidyr/man/gather.html">gather</a> and <a href="http://rpackages.ianhowson.com/cran/tidyr/man/spread.html">spread</a> functions from the <a href="https://github.com/hadley/tidyr">tidyr</a> package.)</p>
 <hr />
 <p><img alt="cube" src="cube.png" /></p>
 <hr />
+<p>One solution to this problem is the data cube approach. We track single copies of the dimensions and all the values fill the volume of the cube. This is compact, and if you're careful you might get benefits through <a href="http://en.wikipedia.org/wiki/Stride_of_an_array">striding</a>.</p>
 <p>(<a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>)from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>).)</p>
-<p>For data cubes!</p>
+<hr />
+<pre><code class="language-json">{"people stats": {
+  "value": [68, 70, ...],
+  "dimension": {
+    "id": ["name", "year", "thing"],
+...</code></pre>
+
+<hr />
+<p>So this is what JSON-stat looks like. There's more to it, so the smallest CSV is certainly smaller than the smallest JSON-stat, but with large data sets it will be smaller. But that's not all.</p>
+<hr />
+<p>meta</p>
+<hr />
+<p>It stores metadata!</p>
+<hr />
 <p>Xavier Badosa</p>
+<hr />
 <p>Swedish Inflation Calculator
 http://bl.ocks.org/badosa/20735ba5bbecbc079d78</p>
 <p>Lars Pedersen (statistics Greenland)
@@ -82,8 +85,12 @@ http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/</p>
 <hr />
 <p>http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png</p>
 <p>https://github.com/ajschumacher/rjstat</p>
-<p>Håkon Malmedal
-https://twitter.com/hmalmedal</p>
+<p>Once it was up on GitHub, anybody could come and mess with it. And somebody did.</p>
+<hr />
+<p>Håkon Malmedal</p>
+<hr />
+<p>I don't know how recent this picture is.</p>
+<p>https://twitter.com/hmalmedal</p>
 <hr />
 <p>CRAN</p>
 <hr />

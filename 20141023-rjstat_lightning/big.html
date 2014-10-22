@@ -12,49 +12,56 @@
 JSON-stat and rjstat
 </div>
 <div>
-<pre><code>&lt;!doctype html>
+<pre><code class="language-html">&lt;!doctype html>
 &lt;html>
   &lt;head>
     &lt;title>data?&lt;/title>
 ...</code></pre>
 </div>
 <div>
-<pre><code>[{"person": "Aaron",
+<pre><code class="language-json">[{"name": "Aaron",
   "year": 2014,
   "height": 68,
   "weight": 70},
 ...</code></pre>
 </div>
 <div>
-<pre><code>person,year,height,weight
+<pre><code class="language-nohighlight">name,year,height,weight
 Aaron,2014,68,70
 ...</code></pre>
 </div>
 <div>
-<pre><code>person,height2014,weight2014
+<pre><code class="language-nohighlight">name,height2014,weight2014
 Aaron,68,70
 ...</code></pre>
 </div>
 <div>
-<pre><code>person,year,thing,value
+<pre><code class="language-nohighlight">name,year,thing,value
 Aaron,2014,height,68
 Aaron,2014,weight,70
-...</code></pre>
-</div>
-<div>
-<pre><code>person,year,height
-Aaron,2014,68
-...
-
-person,year,weight
-Aaron,2014,70
 ...</code></pre>
 </div>
 <div>
 <p><img alt="cube" src="cube.png" /></p>
 </div>
 <div>
+<pre><code class="language-json">{"people stats": {
+  "value": [68, 70, ...],
+  "dimension": {
+    "id": ["name", "year", "thing"],
+...</code></pre>
+</div>
+<div>
+<p>meta</p>
+</div>
+<div>
+<p>Xavier Badosa</p>
+</div>
+<div>
 <p><img alt="" src="bus.png" /></p>
+</div>
+<div>
+<p>Håkon Malmedal</p>
 </div>
 <div>
 <p>CRAN</p>
