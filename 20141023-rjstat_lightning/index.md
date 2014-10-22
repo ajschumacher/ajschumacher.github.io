@@ -87,7 +87,7 @@ Could also split into multiple tables. "Goal" is to get single value column. Why
 
 -----
 
-data cube
+![cube](cube.png)
 
 -----
 
