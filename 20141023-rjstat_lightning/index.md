@@ -91,6 +91,8 @@ Could also split into multiple tables. "Goal" is to get single value column. Why
 
 -----
 
+([Image](http://commons.wikimedia.org/wiki/File:Necker_cube.svg) ([1000-pixel PNG](http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png))from [Wikimedia Commons](http://commons.wikimedia.org/)).)
+
 For data cubes!
 
 Xavier Badosa
