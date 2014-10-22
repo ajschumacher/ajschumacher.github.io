@@ -2,7 +2,7 @@
 
 *A [lightning talk](http://www.meetup.com/stats-prog-dc/events/177772502/) for [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/).*
 
-[JSON-stat](http://json-stat.org/) is a [JSON](http://json.org/) data packaging format. [rjstat](https://github.com/ajschumacher/rjstat) is an [R](http://www.r-project.org/) package for reading and writing JSON-stat.
+[JSON-stat](http://json-stat.org/) is a [JSON](http://json.org/) [data cube](http://en.wikipedia.org/wiki/Data_cube) packaging format. [rjstat](https://github.com/ajschumacher/rjstat) is an [R](http://www.r-project.org/) package for reading and writing JSON-stat.
 
 -----
 
@@ -22,7 +22,7 @@ About a year ago I was thinking about how to put a lot of data into a self-conta
 
 -----
 
-```
+```json
 [{"name": "Aaron",
   "year": 2014,
   "height": 68,
@@ -36,7 +36,7 @@ It's pretty common online to see data as an array of objects in JSON. [D3](http:
 
 -----
 
-```
+```nohighlight
 name,year,height,weight
 Aaron,2014,68,70
 ...
@@ -48,7 +48,7 @@ Aaron,2014,68,70
 
 -----
 
-```
+```nohighlight
 name,height2014,weight2014
 Aaron,68,70
 ...
@@ -60,7 +60,7 @@ We could change the structure of the CSV data. Moving to a wider format might sa
 
 -----
 
-```
+```nohighlight
 name,year,thing,value
 Aaron,2014,height,68
 Aaron,2014,weight,70
@@ -106,7 +106,12 @@ http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png
 
 https://github.com/ajschumacher/rjstat
 
+-----
+
 Håkon Malmedal
+
+-----
+
 https://twitter.com/hmalmedal
 
 -----
