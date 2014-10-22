@@ -85,6 +85,20 @@ One solution to this problem is the data cube.
 
 -----
 
+```json
+{"people stats": {
+  "value": [68, 70, ...],
+  "dimension": {
+    "id": ["name", "year", "thing"],
+    ...
+```
+
+-----
+
+This is JSON-stat.
+
+-----
+
 Xavier Badosa
 
 -----
@@ -106,11 +120,15 @@ http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png
 
 https://github.com/ajschumacher/rjstat
 
+Once it was up on GitHub, anybody could come and mess with it. And somebody did.
+
 -----
 
 Håkon Malmedal
 
 -----
+
+I don't know how recent this picture is.
 
 https://twitter.com/hmalmedal
 
