@@ -50,6 +50,9 @@ def slides_from(lines):
 def add_code_blocks(lines):
     in_block = False
     for i, line in enumerate(lines):
+        if in_block:
+            line = line.replace('<', '&lt;')
+            lines[i] = line
         if line.startswith("```"):
             if not in_block:
                 lang = line.replace("`", "").strip()
@@ -83,7 +86,7 @@ def make_page(filename):
     lines = add_code_blocks(lines)
     slides = slides_from(lines)
     if slides:
-        slides = '<div>\n' + header + '\n</div>\n' + slides
+        slides = '<div>\n' + title + '\n</div>\n' + slides
         slides_start = file_or_bust(calling_dir, 'slides_header.html')
         slides_end = file_or_bust(calling_dir, 'slides_footer.html')
         slides_html = slides_start + slides + slides_end
@@ -109,9 +112,7 @@ def main():
     with codecs.open('index.html', 'w', encoding='utf-8') as f:
         f.write(plain_html)
     if slides_html:
-        if not os.path.exists('big/'):
-            os.makedirs('big/')
-        with codecs.open('big/index.html', 'w', encoding='utf-8') as f:
+        with codecs.open('big.html', 'w', encoding='utf-8') as f:
             f.write(slides_html)
 
 if __name__ == '__main__':

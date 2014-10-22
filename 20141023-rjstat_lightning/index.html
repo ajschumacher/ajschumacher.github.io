@@ -11,14 +11,85 @@
     <article>
 <h1>JSON-stat and rjstat</h1>
 <p class="date">Thursday October 23, 2014</p>
-<p>This is a lightning talk.</p>
+<p><center><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></center></p>
+<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a> data packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
+<p>Even if you never need other, I hope that the ideas and process I describe will be interesting.</p>
 <hr />
-<h2>Slide contents!</h2>
+<pre><code>&lt;!doctype html>
+&lt;html>
+  &lt;head>
+    &lt;title>data?&lt;/title>
+...</code></pre>
+
 <hr />
-<p>More text</p>
+<p>About a year ago I was thinking about how to put a lot of data into a completely self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. Presuming something text-based, what's the most compact way to store the data?</p>
+<p>(If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.)</p>
 <hr />
-<p>Another slide...</p>
-<hr />    </article>
+<pre><code>[{"person": "Aaron",
+  "year": 2014,
+  "height": 68,
+  "weight": 70},
+...</code></pre>
+
+<hr />
+<p>It's pretty common online to see data as a list of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for instance. And it's good if you need to have every observation stand on its own, or variable schema. But for every record you're repeating all the keys, so it isn't very compact.</p>
+<hr />
+<pre><code>person,year,height,weight
+Aaron,2014,68,70
+...</code></pre>
+
+<hr />
+<p>Something about CSV. Good if don't need every line to stand on its own.</p>
+<hr />
+<pre><code>person,height2014,weight2014
+Aaron,68,70
+...</code></pre>
+
+<hr />
+<p>Example is more compact, but at some cost in goodness... (Not tidy.)</p>
+<hr />
+<pre><code>person,year,thing,value
+Aaron,2014,height,68
+Aaron,2014,weight,70
+...</code></pre>
+
+<hr />
+<p>Now this is fully reduced: what you need/get with <code>rjstat</code>. But: so much duplication! And numbers with different meanings in the same column!</p>
+<p>use <code>spread</code> function from <code>tidyr</code> if more than one variable in value column</p>
+<hr />
+<pre><code>person,year,height
+Aaron,2014,68
+...
+
+person,year,weight
+Aaron,2014,70
+...</code></pre>
+
+<hr />
+<p>Could also split into multiple tables. "Goal" is to get single value column. Why?</p>
+<hr />
+<p><img alt="cube" src="cube.png" /></p>
+<hr />
+<p>(<a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>)from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>).)</p>
+<p>For data cubes!</p>
+<p>Xavier Badosa</p>
+<p>Swedish Inflation Calculator
+http://bl.ocks.org/badosa/20735ba5bbecbc079d78</p>
+<p>Lars Pedersen (statistics Greenland)
+http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/</p>
+<hr />
+<p><img alt="" src="bus.png" /></p>
+<hr />
+<p>http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png</p>
+<p>https://github.com/ajschumacher/rjstat</p>
+<p>Håkon Malmedal
+https://twitter.com/hmalmedal</p>
+<hr />
+<p>CRAN</p>
+<hr />
+<p>http://cran.r-project.org/submit.html</p>
+<p>approved by Uwe Ligges</p>
+<p>now available via the <a href="http://cran.r-project.org/">Comprehensive R Archive Network</a> (CRAN).</p>    </article>
     <footer>
       <hr />
       <p>
