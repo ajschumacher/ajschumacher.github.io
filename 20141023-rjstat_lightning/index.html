@@ -11,7 +11,9 @@
     <article>
 <h1>JSON-stat and rjstat</h1>
 <p class="date">Thursday October 23, 2014</p>
-<p>A lightning talk at <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>'s <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">event</a>.</p>
+<p><center><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></center></p>
+<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a> data packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
+<p>Even if you never need other, I hope that the ideas and process I describe will be interesting.</p>
 <hr />
 <pre><code>&lt;!doctype html>
 &lt;html>
@@ -20,7 +22,8 @@
 ...</code></pre>
 
 <hr />
-<p>Motivation for wanting to do this... Mention <code>selfcontain</code> (https://github.com/ajschumacher/selfcontain and/or https://pypi.python.org/pypi/selfcontain/) either here or later...</p>
+<p>About a year ago I was thinking about how to put a lot of data into a completely self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. Presuming something text-based, what's the most compact way to store the data?</p>
+<p>(If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.)</p>
 <hr />
 <pre><code>[{"person": "Aaron",
   "year": 2014,
@@ -29,7 +32,7 @@
 ...</code></pre>
 
 <hr />
-<p>Something about JSON...</p>
+<p>It's pretty common online to see data as a list of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for instance. And it's good if you need to have every observation stand on its own, or variable schema. But for every record you're repeating all the keys, so it isn't very compact.</p>
 <hr />
 <pre><code>person,year,height,weight
 Aaron,2014,68,70
@@ -70,16 +73,14 @@ Aaron,2014,70
 <p>(<a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>)from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>).)</p>
 <p>For data cubes!</p>
 <p>Xavier Badosa</p>
-<p>http://json-stat.org/</p>
 <p>Swedish Inflation Calculator
 http://bl.ocks.org/badosa/20735ba5bbecbc079d78</p>
 <p>Lars Pedersen (statistics Greenland)
 http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/</p>
 <hr />
-<p>bus</p>
+<p><img alt="" src="bus.png" /></p>
 <hr />
-<p>maybe this bus?
-http://3.bp.blogspot.com/-_V8_WYHo078/UjEgx5zHpGI/AAAAAAAAAS0/b_jOKfwKgEQ/s1600/DC2NY3.jpg</p>
+<p>http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png</p>
 <p>https://github.com/ajschumacher/rjstat</p>
 <p>Håkon Malmedal
 https://twitter.com/hmalmedal</p>
@@ -87,7 +88,8 @@ https://twitter.com/hmalmedal</p>
 <p>CRAN</p>
 <hr />
 <p>http://cran.r-project.org/submit.html</p>
-<p>approved by Uwe Ligges</p>    </article>
+<p>approved by Uwe Ligges</p>
+<p>now available via the <a href="http://cran.r-project.org/">Comprehensive R Archive Network</a> (CRAN).</p>    </article>
     <footer>
       <hr />
       <p>

@@ -1,6 +1,10 @@
 # JSON-stat and rjstat
 
-A lightning talk at [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/)'s [event](http://www.meetup.com/stats-prog-dc/events/177772502/).
+<center>*A [lightning talk](http://www.meetup.com/stats-prog-dc/events/177772502/) for [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/).*</center>
+
+[JSON-stat](http://json-stat.org/) is a [JSON](http://json.org/) data packaging format. [rjstat](https://github.com/ajschumacher/rjstat) is an [R](http://www.r-project.org/) package for reading and writing JSON-stat.
+
+Even if you never need other, I hope that the ideas and process I describe will be interesting.
 
 -----
 
@@ -14,7 +18,9 @@ A lightning talk at [Statistical Programming DC](http://www.meetup.com/stats-pro
 
 -----
 
-Motivation for wanting to do this... Mention `selfcontain` (https://github.com/ajschumacher/selfcontain and/or https://pypi.python.org/pypi/selfcontain/) either here or later...
+About a year ago I was thinking about how to put a lot of data into a completely self-contained [HTML](http://en.wikipedia.org/wiki/HTML) document. Presuming something text-based, what's the most compact way to store the data?
+
+(If you're interested in self-contained HTML, I have a related [Python](https://www.python.org/) [package](https://pypi.python.org/pypi/selfcontain/) on [PyPI](https://pypi.python.org/) called [selfcontain](https://github.com/ajschumacher/selfcontain).)
 
 -----
 
@@ -28,7 +34,7 @@ Motivation for wanting to do this... Mention `selfcontain` (https://github.com/a
 
 -----
 
-Something about JSON...
+It's pretty common online to see data as a list of objects in JSON. [D3](http://d3js.org/) is happy to use this, for instance. And it's good if you need to have every observation stand on its own, or variable schema. But for every record you're repeating all the keys, so it isn't very compact.
 
 -----
 
@@ -97,8 +103,6 @@ For data cubes!
 
 Xavier Badosa
 
-http://json-stat.org/
-
 Swedish Inflation Calculator
 http://bl.ocks.org/badosa/20735ba5bbecbc079d78
 
@@ -107,12 +111,12 @@ http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/
 
 -----
 
-bus
+![](bus.png)
 
 -----
 
-maybe this bus?
-http://3.bp.blogspot.com/-_V8_WYHo078/UjEgx5zHpGI/AAAAAAAAAS0/b_jOKfwKgEQ/s1600/DC2NY3.jpg
+http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png
+
 
 https://github.com/ajschumacher/rjstat
 
@@ -128,3 +132,5 @@ CRAN
 http://cran.r-project.org/submit.html
 
 approved by Uwe Ligges
+
+now available via the [Comprehensive R Archive Network](http://cran.r-project.org/) (CRAN).
