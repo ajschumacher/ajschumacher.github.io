@@ -95,7 +95,7 @@ One solution to this problem is the data cube approach. We track single copies o
 
 -----
 
-So this is what JSON-stat looks like. There's more to it, so the smallest CSV is certainly smaller than the smallest JSON-stat, but with large data sets it will be smaller. But that's not all.
+So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying dimensions in an unambiguous way, but with large data sets you can get significant savings in size. But that's not all.
 
 -----
 
