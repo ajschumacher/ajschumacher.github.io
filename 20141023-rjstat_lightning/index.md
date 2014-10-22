@@ -71,7 +71,7 @@ Aaron,2014,weight,70
 
 We could move in the other direction, toward a longer format. Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!
 
-(For most wide-to-long and long-to-wide conversions, use the [gather](http://rpackages.ianhowson.com/cran/tidyr/man/gather.html) and [spread](http://rpackages.ianhowson.com/cran/tidyr/man/spread.html) functions from the [tidyr](https://github.com/hadley/tidyr) package.)
+(For most wide-to-long and long-to-wide conversions in R, use the [gather](http://rpackages.ianhowson.com/cran/tidyr/man/gather.html) and [spread](http://rpackages.ianhowson.com/cran/tidyr/man/spread.html) functions from the [tidyr](https://github.com/hadley/tidyr) package.)
 
 -----
 
@@ -79,7 +79,7 @@ We could move in the other direction, toward a longer format. Now there's only o
 
 -----
 
-One solution to this problem is the data cube.
+One solution to this problem is the data cube approach. We track single copies of the dimensions and all the values fill the volume of the cube. This is compact, and if you're careful you might get benefits through [striding](http://en.wikipedia.org/wiki/Stride_of_an_array).
 
 ([Image](http://commons.wikimedia.org/wiki/File:Necker_cube.svg) ([1000-pixel PNG](http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png))from [Wikimedia Commons](http://commons.wikimedia.org/)).)
 
@@ -95,7 +95,15 @@ One solution to this problem is the data cube.
 
 -----
 
-This is JSON-stat.
+So this is what JSON-stat looks like. There's more to it, so the smallest CSV is certainly smaller than the smallest JSON-stat, but with large data sets it will be smaller. But that's not all.
+
+-----
+
+meta
+
+-----
+
+It stores metadata!
 
 -----
 
