@@ -1,6 +1,6 @@
 # Aaron Schumacher
 
-Talks:
+Here are some things I've talked about:
 
  * [Emacs for Python](https://github.com/ajschumacher/emacs_python/blob/master/README.md) ([video](https://www.youtube.com/watch?v=eH-epEqLVAs)) at [DC Python meetup](http://www.meetup.com/DCPython/) on [2014 October 7 Tuesday](http://www.meetup.com/DCPython/events/208969552/)
  * [Data and Truth](https://github.com/ajschumacher/data_and_truth/blob/master/README.md) at [csv,conf](http://csvconf.com/) 2014 (Berlin) on 2014 July 15 Tuesday
