@@ -12,7 +12,7 @@
 <h1>JSON-stat and rjstat</h1>
 <p class="date">Thursday October 23, 2014</p>
 <p><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></p>
-<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a> <a href="http://en.wikipedia.org/wiki/Data_cube">data cube</a> packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
+<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a>-based <a href="http://en.wikipedia.org/wiki/Data_cube">data cube</a> packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
 <hr />
 <pre><code class="language-html">&lt;!doctype html>
 &lt;html>
@@ -21,8 +21,8 @@
 ...</code></pre>
 
 <hr />
-<p>About a year ago I was thinking about how to put a lot of data into a self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. Presuming something text-based, what's the most compact way to store the data?</p>
-<p>(If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.)</p>
+<p>About a year ago I was thinking about how to put a lot of data into a self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. [1] Presuming something text-based, what's the most compact way to store data?</p>
+<p>[1] <em>If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.</em></p>
 <hr />
 <pre><code class="language-json">[{"name": "Aaron",
   "year": 2014,
@@ -31,21 +31,21 @@
 ...</code></pre>
 
 <hr />
-<p>It's pretty common online to see data as an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. And it's good if you need to have every observation stand on its own, or if there's no consistent schema. But for every record you're repeating all the keys, so it isn't very compact.</p>
+<p>It's pretty common online to have an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But you're listing keys for every record, so it isn't very compact.</p>
 <hr />
 <pre><code class="language-nohighlight">name,year,height,weight
 Aaron,2014,68,70
 ...</code></pre>
 
 <hr />
-<p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much more compact, and the simple table layout is very familiar. There's even less data type information than with JSON, but that generally isn't such a big deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But can we do better?</p>
+<p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much smaller, and the table layout is very familiar. There's less type information than even JSON, but we can deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?</p>
 <hr />
 <pre><code class="language-nohighlight">name,height2014,weight2014
 Aaron,68,70
 ...</code></pre>
 
 <hr />
-<p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with.</p>
+<p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with. This is not the direction we want to go.</p>
 <hr />
 <pre><code class="language-nohighlight">name,year,thing,value
 Aaron,2014,height,68
@@ -53,13 +53,14 @@ Aaron,2014,weight,70
 ...</code></pre>
 
 <hr />
-<p>We could move in the other direction, toward a longer format. Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!</p>
-<p>(For most wide-to-long and long-to-wide conversions in R, use the <a href="http://rpackages.ianhowson.com/cran/tidyr/man/gather.html">gather</a> and <a href="http://rpackages.ianhowson.com/cran/tidyr/man/spread.html">spread</a> functions from the <a href="https://github.com/hadley/tidyr">tidyr</a> package.)</p>
+<p>We could move in the other direction, toward a longer format. [2] Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!</p>
+<p>[2] <em>For most wide-to-long and long-to-wide conversions in R, use the <a href="http://rpackages.ianhowson.com/cran/tidyr/man/gather.html">gather</a> and <a href="http://rpackages.ianhowson.com/cran/tidyr/man/spread.html">spread</a> functions from the <a href="https://github.com/hadley/tidyr">tidyr</a> package.</em></p>
 <hr />
 <p><img alt="cube" src="cube.png" /></p>
 <hr />
-<p>One solution to this problem is the data cube approach. We track single copies of the dimensions and all the values fill the volume of the cube. This is compact, and if you're careful you might get benefits through <a href="http://en.wikipedia.org/wiki/Stride_of_an_array">striding</a>.</p>
-<p>(<a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>)from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>).)</p>
+<p>One solution to this problem is the data cube approach. The value "column" fills the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits from <a href="http://en.wikipedia.org/wiki/Stride_of_an_array">striding</a>. [3]</p>
+<p>[3] <em>Striding benefits aren't generally accessible in JavaScript or R, but they may be in other languages.</em></p>
+<p><em><a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>) from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>.</em></p>
 <hr />
 <pre><code class="language-json">{"people stats": {
   "value": [68, 70, ...],
@@ -68,35 +69,56 @@ Aaron,2014,weight,70
 ...</code></pre>
 
 <hr />
-<p>So this is what JSON-stat looks like. There's more to it, so the smallest CSV is certainly smaller than the smallest JSON-stat, but with large data sets it will be smaller. But that's not all.</p>
+<p>So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying everything in an unambiguous way, but with large data sets you can get significant savings in size. For the dimensions, it's even more effective than using R's <a href="http://www.stat.berkeley.edu/~s133/factors.html">factor</a> approach. And that's not all.</p>
 <hr />
-<p>meta</p>
+<p>METADATA</p>
 <hr />
-<p>It stores metadata!</p>
+<p>JSON-stat includes places for metadata like long-form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make JSON-stat attractive to people who are serious about their statistics.</p>
 <hr />
-<p>Xavier Badosa</p>
+<p><img alt="Xavier Badosa" src="badosa.png" /></p>
 <hr />
-<p>Swedish Inflation Calculator
-http://bl.ocks.org/badosa/20735ba5bbecbc079d78</p>
-<p>Lars Pedersen (statistics Greenland)
-http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/</p>
+<p>JSON-stat was created by <a href="https://twitter.com/badosa">Xavier Badosa</a> as a result of his experiences doing API work for the <a href="http://www.idescat.cat/en/">Statistical Institute of Catalonia</a>. He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably <a href="http://data.ssb.no/api/?lang=en">Norway's</a> and <a href="http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/">Sweden's</a>. They rolled it out first, but offices of statistics in around <a href="http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/">30 nations</a> use Sweden's <a href="http://www.scb.se/sv_/PC-Axis/Start/">PC-Axis</a> software which will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new <a href="https://www.ons.gov.uk/ons/apiservice/web/apiservice/home">OpenAPI</a> which provides JSON-stat. [4]</p>
+<p>[4] <em>The UK's system is still in beta; <a href="https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917">work continues</a>.</em></p>
 <hr />
-<p><img alt="" src="bus.png" /></p>
+<p><img alt="Swedish Inflation Calculator" src="inflation.png" /></p>
 <hr />
-<p>http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png</p>
-<p>https://github.com/ajschumacher/rjstat</p>
-<p>Once it was up on GitHub, anybody could come and mess with it. And somebody did.</p>
+<p>In addition to the format itself there's an associated <a href="http://json-stat.org/schema/">HTML microdata schema</a> and a <a href="http://json-stat.com/">JavaScript Toolkit</a> for working with JSON-stat. You can make things like this <a href="http://bl.ocks.org/badosa/20735ba5bbecbc079d78">Swedish Inflation Calculator</a>. There are also libraries for <a href="https://github.com/hamnis/json-stat.java">Java</a> and <a href="https://pypi.python.org/pypi/pyjstat/">Python</a>.</p>
 <hr />
-<p>Håkon Malmedal</p>
+<p>...R?</p>
 <hr />
-<p>I don't know how recent this picture is.</p>
-<p>https://twitter.com/hmalmedal</p>
+<p>But about a year ago, there was nothing for R.</p>
+<hr />
+<p><img alt="bus" src="bus.png" /></p>
+<hr />
+<p>I was using R a lot, so when I visited New York one weekend, I spent some of the bus ride hacking an R package together, following the advice in <a href="http://adv-r.had.co.nz/">Advanced R</a>. I got conversion between R data frames and JSON-stat working, I put it <a href="https://github.com/ajschumacher/rjstat">up on GitHub</a>, and I told Xavier about it.</p>
+<p>It then turned out that I didn't need JSON-stat, and I immediately forgot about it. [5] But once the package was up on GitHub, anybody could come and mess with it. And somebody did.</p>
+<p>[5] <em>It isn't quite true that I immediately forgot about it. I also did a lightning talk at <a href="http://dc.hackandtell.org/2013/11/21/round-3.html">Hack and Tell</a>.</em></p>
+<p><em>Image from <a href="http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png">some site</a>.</em></p>
+<hr />
+<p><img alt="Håkon Malmedal" src="hmalmedal.png" /></p>
+<hr />
+<p>I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about <a href="https://twitter.com/hmalmedal">Håkon</a> of <a href="http://en.wikipedia.org/wiki/Molde">Molde, Norway</a> is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a reasonably priced beverage of his choice.</p>
+<hr />
+<p><img alt="Greenland" src="greenland.png" /></p>
+<hr />
+<p>That was good enough until Lars Pedersen of <a href="http://www.stat.gl/default.asp?lang=en">Statistics Greenland</a> emailed me with some questions about the package, among them when it would be on <a href="http://cran.r-project.org/submit.html">CRAN</a>.</p>
 <hr />
 <p>CRAN</p>
 <hr />
-<p>http://cran.r-project.org/submit.html</p>
-<p>approved by Uwe Ligges</p>
-<p>now available via the <a href="http://cran.r-project.org/">Comprehensive R Archive Network</a> (CRAN).</p>    </article>
+<p><code>rjstat</code> was installing just fine from GitHub, and I was a little intimidated by the reputation of <a href="http://www.r-project.org/contributors.html">R-core</a>, so all I did was start a GitHub issue to discuss getting on CRAN. Before I knew it, Håkon had submitted on my behalf, it was approved by <a href="http://www.statistik.tu-dortmund.de/ligges.html">Uwe Ligges</a>, and it was in the system in time for Lars's conference.</p>
+<p>I know what you're thinking: "But do you have continuous integration testing?"</p>
+<hr />
+<p><img alt="Travis" src="travis.png" /></p>
+<hr />
+<p>Largely because I felt like I should do <em>some</em> work before giving this talk, I decided to set up <a href="https://travis-ci.org/">Travis CI</a> for <code>rjstat</code>. Travis doesn't actually support R at all, but <a href="https://github.com/craigcitro">Craig Citro</a> has put together a nice <a href="https://github.com/craigcitro/r-travis">way</a> of hijacking Travis's C build process to test R projects. It was so easy, I still hardly did any work.</p>
+<hr />
+<p><img alt="tweet from Hadley" src="hadley_tweet.png" /></p>
+<hr />
+<p>And because no R talk is complete without <em>explicit</em> mention of <a href="https://twitter.com/hadleywickham">Hadley</a>: he naturally <a href="https://twitter.com/hadleywickham/status/521303521036349440">let me know</a> that his <a href="https://github.com/hadley/devtools">devtools</a> package will also set up Travis automatically. Because of course it does.</p>
+<hr />
+<p><img alt="build passing" src="build_passing.png" /></p>
+<hr />
+<p>In summary: JSON-stat is a neat format, everyone involved with R is really very friendly and helpful, and you should follow your dreams of doing and making all kinds of things. Thank you.</p>    </article>
     <footer>
       <hr />
       <p>

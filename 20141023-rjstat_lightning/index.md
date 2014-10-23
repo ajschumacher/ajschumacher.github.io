@@ -109,7 +109,7 @@ So this is what JSON-stat looks like. There's more to it, and certainly a little
 
 -----
 
-META DATA
+METADATA
 
 -----
 
@@ -118,7 +118,7 @@ JSON-stat includes places for metadata like long-form names, data source, releas
 
 -----
 
-Xavier Badosa
+![Xavier Badosa](badosa.png)
 
 -----
 
@@ -129,11 +129,20 @@ JSON-stat was created by [Xavier Badosa](https://twitter.com/badosa) as a result
 
 -----
 
-Swedish Inflation Calculator
+![Swedish Inflation Calculator](inflation.png)
 
 -----
 
-In addition to the format itself there's an associated [HTML microdata schema](http://json-stat.org/schema/) and a [JavaScript Toolkit](http://json-stat.com/) for working with JSON-stat. You can make things like this [Swedish Inflation Calculator](http://bl.ocks.org/badosa/20735ba5bbecbc079d78). There are also libraries for [Java](https://github.com/hamnis/json-stat.java) and [Python](https://pypi.python.org/pypi/pyjstat/). But about a year ago, there was nothing for R.
+In addition to the format itself there's an associated [HTML microdata schema](http://json-stat.org/schema/) and a [JavaScript Toolkit](http://json-stat.com/) for working with JSON-stat. You can make things like this [Swedish Inflation Calculator](http://bl.ocks.org/badosa/20735ba5bbecbc079d78). There are also libraries for [Java](https://github.com/hamnis/json-stat.java) and [Python](https://pypi.python.org/pypi/pyjstat/).
+
+
+-----
+
+...R?
+
+-----
+
+But about a year ago, there was nothing for R.
 
 
 -----
@@ -153,7 +162,7 @@ It then turned out that I didn't need JSON-stat, and I immediately forgot about 
 
 -----
 
-Håkon Malmedal
+![Håkon Malmedal](hmalmedal.png)
 
 -----
 
@@ -162,7 +171,7 @@ I don't know how recent this picture is. I'd really like to pronounce his name a
 
 -----
 
-Greenland
+![Greenland](greenland.png)
 
 -----
 
@@ -182,7 +191,7 @@ I know what you're thinking: "But do you have continuous integration testing?"
 
 -----
 
-Travis
+![Travis](travis.png)
 
 -----
 
@@ -191,7 +200,7 @@ Largely because I felt like I should do *some* work before giving this talk, I d
 
 -----
 
-tweet from Hadley
+![tweet from Hadley](hadley_tweet.png)
 
 -----
 
@@ -200,7 +209,7 @@ And because no R talk is complete without *explicit* mention of [Hadley](https:/
 
 -----
 
-picture of passing status
+![build passing](build_passing.png)
 
 -----
 
