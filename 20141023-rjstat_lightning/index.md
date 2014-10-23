@@ -16,9 +16,9 @@
 
 -----
 
-About a year ago I was thinking about how to put a lot of data into a self-contained [HTML](http://en.wikipedia.org/wiki/HTML) document. Presuming something text-based, what's the most compact way to store the data?
+About a year ago I was thinking about how to put a lot of data into a self-contained [HTML](http://en.wikipedia.org/wiki/HTML) document. [1] Presuming something text-based, what's the most compact way to store the data?
 
-*If you're interested in self-contained HTML, I have a related [Python](https://www.python.org/) [package](https://pypi.python.org/pypi/selfcontain/) on [PyPI](https://pypi.python.org/) called [selfcontain](https://github.com/ajschumacher/selfcontain).*
+[1] *If you're interested in self-contained HTML, I have a related [Python](https://www.python.org/) [package](https://pypi.python.org/pypi/selfcontain/) on [PyPI](https://pypi.python.org/) called [selfcontain](https://github.com/ajschumacher/selfcontain).*
 
 -----
 
@@ -69,9 +69,9 @@ Aaron,2014,weight,70
 
 -----
 
-We could move in the other direction, toward a longer format. Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!
+We could move in the other direction, toward a longer format. [2] Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!
 
-(For most wide-to-long and long-to-wide conversions in R, use the [gather](http://rpackages.ianhowson.com/cran/tidyr/man/gather.html) and [spread](http://rpackages.ianhowson.com/cran/tidyr/man/spread.html) functions from the [tidyr](https://github.com/hadley/tidyr) package.)
+[2] *For most wide-to-long and long-to-wide conversions in R, use the [gather](http://rpackages.ianhowson.com/cran/tidyr/man/gather.html) and [spread](http://rpackages.ianhowson.com/cran/tidyr/man/spread.html) functions from the [tidyr](https://github.com/hadley/tidyr) package.*
 
 -----
 
@@ -127,9 +127,9 @@ So that's what JSON-stat is.
 
 I was using R a lot at the time, and I found that there wasn't anything to read and write JSON-stat. So when I visited New York one weekend, I spent some of my bus time hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got something that worked, put it [up on GitHub](https://github.com/ajschumacher/rjstat), and told Xavier about it.
 
-It turned out I didn't need JSON-stat, and I immediately forgot about it. But once it was up on GitHub, anybody could come and mess with it. And somebody did.
+It turned out I didn't need JSON-stat, and I immediately forgot about it. [3] But once it was up on GitHub, anybody could come and mess with it. And somebody did.
 
-*It isn't quite true that I immediately forgot about it. I also did a lightning talk at [Hack and Tell](http://dc.hackandtell.org/2013/11/21/round-3.html).*
+[3] *It isn't quite true that I immediately forgot about it. I also did a lightning talk at [Hack and Tell](http://dc.hackandtell.org/2013/11/21/round-3.html).*
 
 *Image from [some site](http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png).*
 
