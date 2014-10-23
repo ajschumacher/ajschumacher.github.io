@@ -85,7 +85,9 @@ We could move in the other direction, toward a longer format. [2] Now there's on
 
 -----
 
-One solution to this problem is the data cube approach. The values fill the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits of [striding](http://en.wikipedia.org/wiki/Stride_of_an_array).
+One solution to this problem is the data cube approach. The values fill the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits of [striding](http://en.wikipedia.org/wiki/Stride_of_an_array). [3]
+
+[3] *Striding benefits aren't generally accessible in JavaScript or R, but they may in others.
 
 *[Image](http://commons.wikimedia.org/wiki/File:Necker_cube.svg) ([1000-pixel PNG](http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png))from [Wikimedia Commons](http://commons.wikimedia.org/).*
 
@@ -107,11 +109,22 @@ So this is what JSON-stat looks like. There's more to it, and certainly a little
 
 -----
 
-meta
+meta data
 
 -----
 
-It stores metadata!
+JSON-stat includes places for metadata like long form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make it attractive to national offices of statistics.
+
+
+-----
+
+Xavier Badosa
+
+-----
+
+JSON-stat was created by Xavier Badosa as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use the same [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software that will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
+
+[4] The UK's system is still in beta; [work continues](https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917).
 
 
 -----
@@ -120,12 +133,7 @@ Swedish Inflation Calculator
 
 -----
 
-http://bl.ocks.org/badosa/20735ba5bbecbc079d78
-
-Xavier Badosa
-Catalonia etc.
-
-So that's what JSON-stat is.
+In addition to the format itself there's an associated [HTML microdata schema](http://json-stat.org/schema/) and a [JavaScript Toolkit](http://json-stat.com/) for working with JSON-stat. You can make things like this [Swedish Inflation Calculator](http://bl.ocks.org/badosa/20735ba5bbecbc079d78). There are also libraries for [Java](https://github.com/hamnis/json-stat.java) and [Python](https://pypi.python.org/pypi/pyjstat/). But about a year ago, there was nothing for R.
 
 
 -----
@@ -134,11 +142,11 @@ So that's what JSON-stat is.
 
 -----
 
-I was using R a lot at the time, and I found that there wasn't anything to read and write JSON-stat. So when I visited New York one weekend, I spent some of my bus time hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got something that worked, put it [up on GitHub](https://github.com/ajschumacher/rjstat), and told Xavier about it.
+I was using R a lot at the time, so when I visited New York one weekend, I spent some of my bus time hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got something that worked, put it [up on GitHub](https://github.com/ajschumacher/rjstat), and told Xavier about it.
 
-It turned out I didn't need JSON-stat, and I immediately forgot about it. [3] But once it was up on GitHub, anybody could come and mess with it. And somebody did.
+It turned out I didn't need JSON-stat, and I immediately forgot about it. [5] But once it was up on GitHub, anybody could come and mess with it. And somebody did.
 
-[3] *It isn't quite true that I immediately forgot about it. I also did a lightning talk at [Hack and Tell](http://dc.hackandtell.org/2013/11/21/round-3.html).*
+[5] *It isn't quite true that I immediately forgot about it. I also did a lightning talk at [Hack and Tell](http://dc.hackandtell.org/2013/11/21/round-3.html).*
 
 *Image from [some site](http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png).*
 
@@ -159,11 +167,7 @@ Greenland
 -----
 
 Lars Pedersen (statistics Greenland)
-http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/
 
-UK Office for National Statistics OpenAPI
-https://www.ons.gov.uk/ons/apiservice/web/apiservice/home
-https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917
 
 -----
 
