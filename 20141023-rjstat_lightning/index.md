@@ -87,7 +87,7 @@ We could move in the other direction, toward a longer format. [2] Now there's on
 
 One solution to this problem is the data cube approach. The values fill the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits of [striding](http://en.wikipedia.org/wiki/Stride_of_an_array). [3]
 
-[3] *Striding benefits aren't generally accessible in JavaScript or R, but they may in others.
+[3] *Striding benefits aren't generally accessible in JavaScript or R, but they may be in others.*
 
 *[Image](http://commons.wikimedia.org/wiki/File:Necker_cube.svg) ([1000-pixel PNG](http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png))from [Wikimedia Commons](http://commons.wikimedia.org/).*
 
@@ -122,7 +122,7 @@ Xavier Badosa
 
 -----
 
-JSON-stat was created by Xavier Badosa as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use the same [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software that will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
+JSON-stat was created by [Xavier Badosa](https://twitter.com/badosa) as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use the same [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software that will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
 
 [4] *The UK's system is still in beta; [work continues](https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917).*
 
@@ -157,7 +157,7 @@ Håkon Malmedal
 
 -----
 
-I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about [Håkon](https://twitter.com/hmalmedal) is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things way faster, that added tests, that fixed the way the documentation was set up. I made him a committer and haven't looked back. I'd like to buy him a beer.
+I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about [Håkon](https://twitter.com/hmalmedal) of [Molde, Norway](http://en.wikipedia.org/wiki/Molde) is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a beer.
 
 
 -----
@@ -166,7 +166,7 @@ Greenland
 
 -----
 
-Lars Pedersen (statistics Greenland)
+That was good enough until Lars Pedersen of [Statistics Greenland](http://www.stat.gl/default.asp?lang=en) emailed me with some questions about the package, among them when it would be on [CRAN](http://cran.r-project.org/submit.html).
 
 
 -----
@@ -175,11 +175,9 @@ CRAN
 
 -----
 
-http://cran.r-project.org/submit.html
+`rjstat` was installing just fine from GitHub, and I was a little intimidated by the reputation of [R-core](http://www.r-project.org/contributors.html), so all I did was start a GitHub issue to discuss getting on CRAN. Before I knew it, Håkon had submitted on my behalf and it was approved by [Uwe Ligges](http://www.statistik.tu-dortmund.de/ligges.html) and in the system in time for Lars's conference.
 
-approved by Uwe Ligges
-
-now available via the [Comprehensive R Archive Network](http://cran.r-project.org/) (CRAN).
+I know what you're thinking: "But do you have continuous integration testing?"
 
 
 -----
@@ -188,7 +186,7 @@ Travis
 
 -----
 
-It's so easy and fun!
+Largely because I felt like I should do *some* work before giving this talk, I decided to set up [Travis CI](https://travis-ci.org/) for `rjstat`. Travis doesn't actually support R at all, but [Craig Citro](https://github.com/craigcitro) has put together a nice [way](https://github.com/craigcitro/r-travis) of hijacking Travis's C build process to test R projects. It was so easy, I still did hardly any work.
 
 
 -----
@@ -197,4 +195,13 @@ tweet from Hadley
 
 -----
 
-So cool!
+And because no R talk is complete without *explicit* mention of [Hadley](https://twitter.com/hadleywickham) - he naturally [let me know](https://twitter.com/hadleywickham/status/521303521036349440) that his [devtools](https://github.com/hadley/devtools) package will also set up Travis automatically. Of course it does.
+
+
+-----
+
+picture of passing status
+
+-----
+
+In summary: JSON-stat is a neat format, everyone involved with R is really very friendly and helpful, and you should follow your dreams of doing and making all kinds of things. Thank you.
