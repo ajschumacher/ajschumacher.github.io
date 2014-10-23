@@ -104,12 +104,12 @@ One solution to this problem is the data cube approach. The values fill the volu
 
 -----
 
-So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying everything in an unambiguous way, but with large data sets you can get significant savings in size. And that's not all.
+So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying everything in an unambiguous way, but with large data sets you can get significant savings in size. For the dimensions, it's even more effective than using R's [factor](http://www.stat.berkeley.edu/~s133/factors.html) approach. And that's not all.
 
 
 -----
 
-meta data
+META DATA
 
 -----
 
@@ -124,7 +124,7 @@ Xavier Badosa
 
 JSON-stat was created by Xavier Badosa as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use the same [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software that will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
 
-[4] The UK's system is still in beta; [work continues](https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917).
+[4] *The UK's system is still in beta; [work continues](https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917).*
 
 
 -----
