@@ -2,7 +2,7 @@
 
 *A [lightning talk](http://www.meetup.com/stats-prog-dc/events/177772502/) for [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/).*
 
-[JSON-stat](http://json-stat.org/) is a [JSON](http://json.org/) [data cube](http://en.wikipedia.org/wiki/Data_cube) packaging format. [rjstat](https://github.com/ajschumacher/rjstat) is an [R](http://www.r-project.org/) package for reading and writing JSON-stat.
+[JSON-stat](http://json-stat.org/) is a [JSON](http://json.org/)-based [data cube](http://en.wikipedia.org/wiki/Data_cube) packaging format. [rjstat](https://github.com/ajschumacher/rjstat) is an [R](http://www.r-project.org/) package for reading and writing JSON-stat.
 
 
 -----
@@ -17,7 +17,7 @@
 
 -----
 
-About a year ago I was thinking about how to put a lot of data into a self-contained [HTML](http://en.wikipedia.org/wiki/HTML) document. [1] Presuming something text-based, what's the most compact way to store the data?
+About a year ago I was thinking about how to put a lot of data into a self-contained [HTML](http://en.wikipedia.org/wiki/HTML) document. [1] Presuming something text-based, what's the most compact way to store data?
 
 [1] *If you're interested in self-contained HTML, I have a related [Python](https://www.python.org/) [package](https://pypi.python.org/pypi/selfcontain/) on [PyPI](https://pypi.python.org/) called [selfcontain](https://github.com/ajschumacher/selfcontain).*
 
@@ -34,7 +34,7 @@ About a year ago I was thinking about how to put a lot of data into a self-conta
 
 -----
 
-It's pretty common online to see data as an array of objects in JSON. [D3](http://d3js.org/) is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But for every record you're repeating all the keys, so it isn't very compact.
+It's pretty common online to have an array of objects in JSON. [D3](http://d3js.org/) is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But you're listing keys for every record, so it isn't very compact.
 
 
 -----
@@ -47,7 +47,7 @@ Aaron,2014,68,70
 
 -----
 
-[CSV](http://en.wikipedia.org/wiki/Comma-separated_values) is generally much more compact, and the simple table layout is very familiar. There's less data type information than even JSON, but that generally isn't such a big deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?
+[CSV](http://en.wikipedia.org/wiki/Comma-separated_values) is generally much smaller, and the table layout is very familiar. There's less type information than even JSON, but we can deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?
 
 
 -----
@@ -113,7 +113,7 @@ META DATA
 
 -----
 
-JSON-stat includes places for metadata like long-form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make JSON-stat attractive to national offices of statistics.
+JSON-stat includes places for metadata like long-form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make JSON-stat attractive to people who are serious about their statistics.
 
 
 -----
@@ -122,7 +122,7 @@ Xavier Badosa
 
 -----
 
-JSON-stat was created by [Xavier Badosa](https://twitter.com/badosa) as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use Sweden's [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software that will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
+JSON-stat was created by [Xavier Badosa](https://twitter.com/badosa) as a result of his experiences doing API work for the [Statistical Institute of Catalonia](http://www.idescat.cat/en/). He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably [Norway's](http://data.ssb.no/api/?lang=en) and [Sweden's](http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/). They rolled it out first, but offices of statistics in around [30 nations](http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/) use Sweden's [PC-Axis](http://www.scb.se/sv_/PC-Axis/Start/) software which will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new [OpenAPI](https://www.ons.gov.uk/ons/apiservice/web/apiservice/home) which provides JSON-stat. [4]
 
 [4] *The UK's system is still in beta; [work continues](https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917).*
 
@@ -142,7 +142,7 @@ In addition to the format itself there's an associated [HTML microdata schema](h
 
 -----
 
-I was using R a lot, so when I visited New York one weekend, I spent some of my bus time hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got conversion working back and forth between R data frames and JSON-stat, I put it [up on GitHub](https://github.com/ajschumacher/rjstat), and I told Xavier about it.
+I was using R a lot, so when I visited New York one weekend, I spent some of the bus ride hacking an R package together, following the advice in [Advanced R](http://adv-r.had.co.nz/). I got conversion between R data frames and JSON-stat working, I put it [up on GitHub](https://github.com/ajschumacher/rjstat), and I told Xavier about it.
 
 It then turned out that I didn't need JSON-stat, and I immediately forgot about it. [5] But once the package was up on GitHub, anybody could come and mess with it. And somebody did.
 
@@ -157,7 +157,7 @@ Håkon Malmedal
 
 -----
 
-I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about [Håkon](https://twitter.com/hmalmedal) of [Molde, Norway](http://en.wikipedia.org/wiki/Molde) is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a beer.
+I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about [Håkon](https://twitter.com/hmalmedal) of [Molde, Norway](http://en.wikipedia.org/wiki/Molde) is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a reasonably priced beverage of his choice.
 
 
 -----
@@ -195,7 +195,7 @@ tweet from Hadley
 
 -----
 
-And because no R talk is complete without *explicit* mention of [Hadley](https://twitter.com/hadleywickham): he naturally [let me know](https://twitter.com/hadleywickham/status/521303521036349440) that his [devtools](https://github.com/hadley/devtools) package will also set up Travis automatically. Of course it does.
+And because no R talk is complete without *explicit* mention of [Hadley](https://twitter.com/hadleywickham): he naturally [let me know](https://twitter.com/hadleywickham/status/521303521036349440) that his [devtools](https://github.com/hadley/devtools) package will also set up Travis automatically. Because of course it does.
 
 
 -----
