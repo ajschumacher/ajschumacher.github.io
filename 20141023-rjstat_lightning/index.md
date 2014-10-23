@@ -161,6 +161,9 @@ Greenland
 Lars Pedersen (statistics Greenland)
 http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/
 
+UK Office for National Statistics OpenAPI
+https://www.ons.gov.uk/ons/apiservice/web/apiservice/home
+https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917
 
 -----
 
