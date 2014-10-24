@@ -39,7 +39,7 @@ It's pretty common online to have an array of objects in JSON. [D3](http://d3js.
 
 -----
 
-```nohighlight
+```html
 name,year,height,weight
 Aaron,2014,68,70
 ...
@@ -52,7 +52,7 @@ Aaron,2014,68,70
 
 -----
 
-```nohighlight
+```html
 name,height2014,weight2014
 Aaron,68,70
 ...
@@ -65,7 +65,7 @@ We could change the structure of the CSV data. Moving to a wider format might sa
 
 -----
 
-```nohighlight
+```html
 name,year,thing,value
 Aaron,2014,height,68
 Aaron,2014,weight,70

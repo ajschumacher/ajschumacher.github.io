@@ -33,21 +33,21 @@
 <hr />
 <p>It's pretty common online to have an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But you're listing keys for every record, so it isn't very compact.</p>
 <hr />
-<pre><code class="language-nohighlight">name,year,height,weight
+<pre><code class="language-html">name,year,height,weight
 Aaron,2014,68,70
 ...</code></pre>
 
 <hr />
 <p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much smaller, and the table layout is very familiar. There's less type information than even JSON, but we can deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?</p>
 <hr />
-<pre><code class="language-nohighlight">name,height2014,weight2014
+<pre><code class="language-html">name,height2014,weight2014
 Aaron,68,70
 ...</code></pre>
 
 <hr />
 <p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with. This is not the direction we want to go.</p>
 <hr />
-<pre><code class="language-nohighlight">name,year,thing,value
+<pre><code class="language-html">name,year,thing,value
 Aaron,2014,height,68
 Aaron,2014,weight,70
 ...</code></pre>
