@@ -25,6 +25,10 @@ p.date {
     color: #6F6F6F;
 }
 
+pre {
+    line-height: normal;
+}
+
 a {
     color: #9C6363;
     text-decoration: none;
@@ -40,10 +44,6 @@ a:hover {
 
 a:active {
     color: #FFFFFF;
-}
-
-pre {
-    line-height: normal;
 }
 
 .rotate180 {
