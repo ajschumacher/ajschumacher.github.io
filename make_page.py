@@ -63,7 +63,7 @@ def add_code_blocks(lines):
                 lines[i] = '<pre><code' + lang_string + '>'
                 in_block = True
             else:
-                lines[i-1] = lines[i-1].strip()
+                lines[i-1] = lines[i-1].rstrip()
                 lines[i] = '</code></pre>\n'
                 in_block = False
     return lines

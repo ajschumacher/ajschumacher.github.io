@@ -29,7 +29,7 @@ to have.</p>
 <p>Just for fun, take it as a Fermi problem - how many do you think there
 were? Can you estimate the answer?</p>
 <pre><code class="language-html">Way of Knowing:
-Silence</code></pre>
+ Silence</code></pre>
 
 <p>But before we officially start trying to answer the question with
 data, I want to start introducing some "ways of knowing" that I'm
@@ -43,7 +43,7 @@ offer, and it may be the most important point in the talk, that it is a
 fundamental problem that we as humanity are missing the involvement of
 so many people.</p>
 <pre><code class="language-html">Way of Knowing:
-Subjective Knowledge</code></pre>
+ Subjective Knowledge</code></pre>
 
 <p>Next up is "subjective knowledge", which is important but relevant to
 data work mostly in as much as they might seem to devalue one another.
@@ -97,7 +97,7 @@ Out[2]: 110956</code></pre>
 question we started with? How close is this answer to the truth? Do
 you know enough to answer these questions?</p>
 <pre><code class="language-html">Way of Knowing:
-Received Knowledge</code></pre>
+ Received Knowledge</code></pre>
 
 <p>Say I'm a data journalist and I got a number for my story, or I'm an
 education policy student, or I'm anyone at all, and now this number is
@@ -107,14 +107,14 @@ credentials. It isn't just dangerous that the credentials aren't out
 there - it's dangerous that people aren't asking. These are problems
 of "received knowledge".</p>
 <pre><code class="language-html">Way of Knowing:
-Procedural Knowledge</code></pre>
+ Procedural Knowledge</code></pre>
 
 <p>Or you might be concerned with aspects of the procedure that rather
 miss the point. Do I have structured provenance data for the number?
 Are those students schema.org "Thing &gt; Person"s? These are the
 failings of "procedural knowledge".</p>
 <pre><code class="language-html">Way of Knowing:
-Constructed Knowledge</code></pre>
+ Constructed Knowledge</code></pre>
 
 <p>Even with just this one data source and this one question, things are
 more complicated than that. We'll call a complete and nuanced view of
@@ -132,7 +132,7 @@ of two.</p>
 <pre><code class="language-html"> + Internal checks for consistency
  - Consistency is not truth
  - Redundancy
-o Views</code></pre>
+ o Views</code></pre>
 
 <p>Are the subtotal rows good or bad? On the one hand, it gives us
 something to check - if the provided totals are wrong, then certainly
@@ -172,7 +172,7 @@ want to suggest that this guessing is something important.</p>
  + Transmitter
     + Signal
        + Receiver
-+ Destination</code></pre>
+          + Destination</code></pre>
 
 <p>Here is Shannon's general model of communication, going from
 information source via transmitter to some signal, and then from
@@ -183,7 +183,7 @@ quality. Try doing it for brain to vocal cord. And so on.</p>
  + Data Creation
     + Data
        + Analysis
-+ System of Beliefs</code></pre>
+          + System of Beliefs</code></pre>
 
 <p>Here I've re-written Shannon's model to be the data process we often
 need to think about. Whatever we're interested in is the phenomenon of
@@ -305,7 +305,7 @@ points.</p>
 <pre><code class="language-python">1 + 1</code></pre>
 
 <pre><code class="language-python">assert(1 + 1 ==
-2)</code></pre>
+       2)</code></pre>
 
 <p>What if we used assertions as the interface? Now, this may seem to
 have all the sexiness of a paper tape adding machine. But note that
@@ -314,7 +314,7 @@ I'm creating a confirmable record of what I've done.</p>
 <pre><code class="language-python">x = 16
 
 assert(x / 2 ==
-8)</code></pre>
+       8)</code></pre>
 
 <pre><code class="language-python">x = 24
 
@@ -326,7 +326,7 @@ assertions lying around.</p>
 <pre><code class="language-python">sha('ell.csv')</code></pre>
 
 <pre><code class="language-python">assert(sha('ell.csv') ==
-'846bb60a6e5df37281ffe79eec2087044d900860')</code></pre>
+       '846bb60a6e5df37281ffe79eec2087044d900860')</code></pre>
 
 <p>And it's very easy to do my data assertions.</p>
 <pre><code class="language-python">assert(sorted(d['Category'].unique()) ==
@@ -335,7 +335,7 @@ assertions lying around.</p>
 d['Category'][d['Category'] == 'ELLs'] = 'ELL'
 
 assert(sorted(d['Category'].unique()) ==
-['ELL', 'EP'])</code></pre>
+       ['ELL', 'EP'])</code></pre>
 
 <p>This sort of thing would make it very natural to write code that reads
 like a narrative, or better yet an argument, showing what was the
@@ -377,7 +377,7 @@ data in rows of CSV. This affects the next candidate as well.</p>
     * (as-of db t)
  * triples
  * datalog
-* proprietary</code></pre>
+ * proprietary</code></pre>
 
 <p>Datomic is a database that has the time feature that I think should be
 a requirement for every data system: you can always get the state of
