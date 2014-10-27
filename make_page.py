@@ -107,7 +107,7 @@ def make_page(filename):
     return plain_html, slides_html
 
 
-def main():
+def build_in_cwd():
     plain_html, slides_html = make_page('index.md')
     with codecs.open('index.html', 'w', encoding='utf-8') as f:
         f.write(plain_html)
@@ -116,4 +116,4 @@ def main():
             f.write(slides_html)
 
 if __name__ == '__main__':
-    main()
+    build_in_cwd()
