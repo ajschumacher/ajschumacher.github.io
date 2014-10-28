@@ -1,0 +1,13 @@
+# Starbucks Double Tall Latte Pricing in Four Markets
+
+<div>
+<p>I collected this data while traveling around the end of May and beginning of June, 2011. I was curious about how Starbucks prices vary across different regions. I always drink a double tall latte, so that's what I focused on.<br><br>As shown in the table, Starbucks is most expensive in Korea and New York, although a savvy Korean customer can do fairly well by taking advantage of available discounts. LA is the cheapest location. I'm really not sure why. And Madison comes in between LA and NYC. In America, Starbucks seems to get more expensive as you go from West to East.<br><br></p>
+<table> <tbody>
+<tr>  <td></td>  <td><span>Seoul, Korea</span></td>  <td><span>Los Angeles, CA</span></td>  <td><span>Madison, WI</span></td>  <td><span>New York, NY</span></td> </tr> <tr>  <td><span>Tall Latte</span></td>  <td>&#8361;4100 / $3.78*</td>  <td>$2.65</td>  <td>$2.75</td>  <td>$3.15</td> </tr> <tr>  <td><span>Add shot</span></td>  <td>500** / 0.46</td>  <td>0.75</td>  <td>0.75</td>  <td>0.75</td> </tr> <tr>  <td><span>Cup discount</span></td>  <td>300 / 0.28</td>  <td>0.10</td>  <td>0.10</td>  <td>0.10</td> </tr> <tr>  <td><span>Sales tax</span></td>  <td>na</td>  <td>na***</td>  <td>5.5%</td>  <td>8.875%</td> </tr> <tr>  <td><span>Full price</span></td>  <td>4600 / <span>$4.24</span>
+</td>  <td><span>$3.40</span></td>  <td><span>$3.69</span></td>  <td><span>$4.25</span></td> </tr> <tr>  <td><span>With cup</span></td>  <td>4300 / 3.96</td>  <td>$3.30</td>  <td>$3.59</td>  <td>$4.14</td> </tr> <tr>  <td><span>Free shot</span></td>  <td>4100 / 3.79</td>  <td>(2.65)</td>  <td>(2.90)</td>  <td>(3.43)</td> </tr> <tr>  <td><span>Both discounts</span></td>  <td>&#8361;3800 / $3.50</td>  <td>(2.55)</td>  <td>(2.80)</td>  <td>(3.32)</td> </tr>
+</tbody>
+</table>
+<br>Assuming discounts are taken before tax.<br>* Calculated based on an exchange rate of $1 to 1085 won, accurate as of 2011 June 13 according to Google. Converted and rounded as a final step.<br>** Free when paying with Korean Starbucks card.<br>*** I understand Los Angeles has a sales tax of 9.75%, but it doesn't seem to apply to drinks at Starbucks.<br>() In Korea you can always get a free shot if you pay with your Korean Starbucks card. The American Starbucks card won't get you a free shot ever (there are some free drinks occasionally, but it's annoying and more complicated). However, sometimes friendly American baristas will just give you the extra shot for free. This has been the case several times in the US, but I don't think I was ever given a free shot this way in Korea.</div>
+
+
+*This post was originally hosted [elsewhere](http://planspace.blogspot.com/2011/06/starbucks-double-tall-latte-pricing-in.html).*

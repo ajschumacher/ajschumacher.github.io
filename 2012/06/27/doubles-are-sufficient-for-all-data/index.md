@@ -1,0 +1,6 @@
+# Doubles are sufficient for all data relations
+
+<p>I was interested a while ago in <a href="http://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, which stores information in triples, like "the sky" -&gt; "has the color" -&gt; "blue". I think there's too much structure in the triples structure. This can all be reduced to doubles, or just a simple directed graph, through judicious use of blank nodes. So the example becomes "the sky" -&gt; blank node that could be interpreted as having-a-property, that blank node -&gt; "has the color", that blank node -&gt; "blue". (If you want you could add "has the color" -&gt; "relation" and "blue" -&gt; "property" or similar.)<br><br>This is of course not necessarily the most efficient way to store information, or the easiest to work with, but it reduces the structure so that all the primitives are of the same type, and I don't think that the structure can be simplified any further, so in that sense it represents a kind of absolute in data structuring.<br><br>I don't know what this kind of data structure is called by others or if there is any existing work around it. I would like to know!</p>
+
+
+*This post was originally hosted [elsewhere](http://planspace.blogspot.com/2012/06/doubles-are-sufficient-for-all-data.html).*
