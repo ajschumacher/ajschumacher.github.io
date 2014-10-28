@@ -8,6 +8,7 @@ in an <article>, prepend the header (with title inserted) and tack on
 the footer.
 """
 
+import argparse
 import os
 import re
 import codecs
@@ -115,5 +116,24 @@ def build_in_cwd():
         with codecs.open('big.html', 'w', encoding='utf-8') as f:
             f.write(slides_html)
 
+
+def recurse():
+    things = os.listdir('.')
+    directories = filter(lambda x: os.path.isdir(x), things)
+    for directory in directories:
+        print directory
+        os.chdir(directory)
+        recurse()
+        if os.path.exists('index.md'):
+            build_in_cwd()
+        os.chdir(os.pardir)
+
 if __name__ == '__main__':
-    build_in_cwd()
+    parser = argparse.ArgumentParser(description='make page(s)')
+    parser.add_argument('-r', '--recurse', action='store_true',
+                        help='make pages recursively')
+    args = parser.parse_args()
+    if os.path.exists('index.md'):
+        build_in_cwd()
+    if args.recurse:
+        recurse()
