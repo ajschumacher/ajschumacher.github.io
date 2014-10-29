@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>A micro-intro to ggmap</title>
+  </head>
+  <body>
+    <article>
+<h1>A micro-intro to ggmap</h1>
+<p class="date">Sunday February 23, 2014</p>
+<div>
+<p>This describes what we did in the break-out session I facilitated for the illustrious&#160;<a href="http://richmanmax.com/">Max Richman</a>'s Open Mapping workshop at&#160;<a href="http://dc.opendataday.org/">Open Data Day DC</a>. For more detail, I recommend the original&#160;<a href="http://stat405.had.co.nz/ggmap.pdf">paper on&#160;<code>ggmap</code></a>.<br>
+<br>
+<code>ggmap</code>&#160;is an&#160;<code>R</code>&#160;package that does two main things to make our lives easier:<br>
+</p>
+<ul>
+<br>
+    <li>It wraps a number of APIs (chiefly the&#160;<a href="https://developers.google.com/maps/">Google Maps API</a>)&#160;to conveniently facilitate geocoding and raster map access in&#160;<code>R</code>.</li>
+<br>
+    <li>It operates together with&#160;<code>ggplot2</code>, another&#160;<code>R</code>&#160;package, which means all the power and convenience of the&#160;<a href="http://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">Grammar of Graphics</a>&#160;is available for maps.</li>
+<br>
+</ul>
+<br>
+To install&#160;<code>ggmap</code>&#160;in&#160;<code>R</code>:<br>
+<br>
+<pre><code>install.packages("ggmap")</code></pre>
+<br>
+Then you can load the package.<br>
+<br>
+<pre><code>
+## Loading required package: ggplot2</code></pre>
+<br>
+<br>
+One thing that&#160;<code>ggmap</code>&#160;offers is easy geocoding with the&#160;<code>geocode</code>&#160;function. Here we get the latitude and longitude of The World Bank:<br>
+<br>
+<pre><code>(addressll &lt;- geocode(address))
+
+##      lon  lat
+## 1 -77.04 38.9</code></pre>
+<br>
+<br>
+The&#160;<code>ggmap</code>&#160;package makes it easy to get quick maps with the&#160;<code>qmap</code>&#160;function. There are a number of options available from various sources:<br>
+<br>
+<pre><code>qmap("Washington, DC", zoom = 13)</code></pre>
+<br>
+<br>
+<a href="1.png"><img class="aligncenter size-full wp-image-808" alt="1" src="1.png"></a><br>
+<br>
+<pre><code># An artistic map from Stamen
+qmap("Washington, DC", zoom = 13, source = "stamen",
+     maptype = "watercolor")</code></pre>
+<br>
+<br>
+<a href="2.png"><img class="aligncenter size-full wp-image-809" alt="2" src="2.png"></a><br>
+<br>
+Since we were at The World Bank, here's a quick map showing where we were. This shows for the first time how&#160;<code>ggplot2</code>&#160;functions (<code>geom_point</code>&#160;here) work with&#160;<code>ggmap</code>.<br>
+<br>
+<pre><code>bankmap &lt;- qmap(address, zoom = 16, source = "stamen",
+                maptype = "toner")
+bankmap + geom_point(data = addressll,
+                     aes(x = lon, y = lat),
+                     color = "red",
+                     size = 10)</code></pre>
+<br>
+<br>
+<a href="3.png"><img class="aligncenter size-full wp-image-810" alt="3" src="3.png"></a><br>
+<br>
+To connect with Max's demo, we can load in his data about cities in Ghana.<br>
+<br>
+<pre><code>ghana_cities &lt;- read.csv("ghana_city_pop.csv")</code></pre>
+<br>
+<br>
+We'll pull in a Google map of Ghana and then put dots for the cities, sized based on estimated 2013 population.<br>
+<br>
+<pre><code>ghanamap &lt;- qmap("Ghana", zoom = 7)
+ghanamap + geom_point(data = ghana_cities,
+  aes(x = longitude, y = latitude,
+      size = Estimates2013), color = "red") +
+  theme(legend.position = "none")</code></pre>
+<br>
+<br>
+<a href="4.png"><img class="aligncenter size-full wp-image-811" alt="4" src="4.png"></a><br>
+<br>
+Another useful feature to note is the&#160;<code>gglocator</code>&#160;function, which let's you click on a map and get the latitude and longitude of where you clicked.<br>
+<br>
+<pre><code>gglocator()</code></pre>
+<br>
+<br>
+This is all the tip of the iceberg. You'll probably want to know more about&#160;<a href="http://docs.ggplot2.org/"><code>ggplot2</code></a>&#160;if you're going to make extensive use of&#160;<code>ggmap</code>.&#160;<a href="http://rmaps.github.io/"><code>RMaps</code></a>&#160;is another (and totally different) great way to do maps in&#160;<code>R</code>.<br>
+<br>
+This document is also <a href="http://rpubs.com/ajschumacher/13583">available on RPubs</a>.<br>
+</div>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

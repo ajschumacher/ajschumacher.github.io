@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>NYC standardized test results: Schools fight the Law of Large Numbers</title>
+  </head>
+  <body>
+    <article>
+<h1>NYC standardized test results: Schools fight the Law of Large Numbers</h1>
+<p class="date">Monday November 18, 2013</p>
+<div>
+<p>After all the hemming and hawing over choices that make no visible difference in the plots of this post, I've decided I like the bottom right option from the <a href="http://planspace.org/2013/11/17/nyc-standardized-test-results-normalizing-the-distributions-of-average-scores/">last post</a> the most - subtracting out the estimated student-level median and then dividing by median absolute deviation. So be it!<br>
+<br>
+The question of this post, however, is how the variability of school grade average scores changes with the number of tested students. Smaller samples generally produce more extreme results. There's less chance for regression to the mean, as it were. The <a href="http://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a> hasn't had a chance to take effect. If we're drawing randomly, then the variance of the sample mean gets small when the sample size is big. Does that happen for school grade averages?<br>
+<br>
+[caption id="attachment_603" align="aligncenter" width="525"]<a href="10a.png"><img class="size-large wp-image-603" alt="Figure 10a. Normalized average Math scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="10a.png"></a> Figure 10a. Normalized average Math scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]<br>
+<br>
+It does, to some extent. The graphs are vaguely cone-shaped. (ELA is a little more cone-shaped; see below.) Of course, students are not randomly assigned to schools, which is what makes these graphs particularly interesting. The elementary grades (including 3 to 5) are generally smaller, yet it looks like the elementary grade averages approach the student average even while the middle school grades (6 to 8) vary widely. This seems consistent with the idea of smaller local elementary schools that educate mostly whoever is nearby, with more of a filtering effect starting with middle school - a parent might be more likely to support a longer commute to a better school, which also means the better school draws good students from a wider area.<br>
+<br>
+It is good news that the school scores do mostly seem to converge toward average when there are more students. If there were perfect segregation of better and worse-performing students we could see all these averages avoiding the center red lines entirely.<br>
+<br>
+If you squint a little, it looks like there somehow aren't any middle schools&#160;with around 200 students in a grade that perform much above average in ELA. You can almost see something like that for math too. Weird. (<a href="https://github.com/ajschumacher/NYCtests/blob/master/code/figure10.r">Code</a>.)<br>
+<br>
+[caption id="attachment_606" align="aligncenter" width="525"]<a href="10b2.png"><img class="size-large wp-image-606" alt="Figure 10b. Normalized average ELA scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="10b2.png"></a> Figure 10b. Normalized average ELA scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]<br>
+</p>
+<p>[<a href="http://planspace.org/2014/01/10/nyc-test-data/">table of contents for this series</a>]</p>
+<br>
+</div>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

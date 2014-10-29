@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Number-line comparisons are good for code</title>
+  </head>
+  <body>
+    <article>
+<h1>Number-line comparisons are good for code</h1>
+<p class="date">Thursday December 26, 2013</p>
+<div>
+<p>You have a lot of flexibility in how you write comparisons with most programming languages. Typically, for example, you can use either of <code>x &lt; 5</code> and <code>5 &gt; x</code>.<br>
+<br>
+I recommend the convention of writing comparisons as if they come from a <a href="http://en.wikipedia.org/wiki/Number_line">number line</a>. That is, always use "<code>&lt;</code>" and "<code>&lt;=</code>", and never use "<code>&gt;</code>" and "<code>&gt;=</code>".<br>
+<br>
+This convention reduces cognitive load - it makes code easier to read and write. This is particularly true when testing ranges, and I find it &#160;to make an exceptionally large difference in the common case of testing date ranges. Compare the following two lines of pseudo-code:<br>
+</p>
+<pre>date &gt; 2010-04-23 &amp; date &lt; 2010-08-11 # bad
+2010-04-23 &lt; date &amp; date &lt; 2010-08-11 # good</pre>
+<br>
+The second line is much more readable than the first. Indeed, even less clear versions are possible. It becomes easy to introduce errors, and even not unlikely that you'll be testing for impossible ranges.<br>
+<br>
+In some languages (notably Python) you can write chained comparisons like <code>3 &lt; x &lt; 5</code> and it will work as expected. In some languages you can write chained comparisons like that and it will evaluate but probably not as you intended. In JavaScript, <code>3 &lt; 4 &lt; 2</code> is <code>true</code>. (<a href="http://www.youtube.com/watch?v=CFReYwSwFbc">wat</a>) In Ruby and R, chained comparisons like these will give you an error. So I prefer the style already shown, with the variable being tested close to the "and" operator joining the two comparisons.<br>
+<br>
+Many languages use "<code>=</code>" for assignment and "<code>==</code>" for testing equality, so it has been <a href="http://c2.com/cgi/wiki?CompareConstantsFromTheLeft">noted</a> that <code>5 == x</code> is safer than <code>x == 5</code> in the sense that if you mistakenly write <code>x = 5</code> then you've broken something, but <code>5 = x</code> is just an error that will get caught. I'm not terribly concerned about this. In both Python and R, the equivalent of "if x = 5" is an error.<br>
+<br>
+Since R uses "<code>&lt;-</code>" for assignment, there is a similar possible problem:<br>
+<pre>x &lt; -2 # compares x to -2
+x &lt;-2  # assigns -2 to x</pre>
+<br>
+This is indeed annoying. (Thanks <a href="https://twitter.com/Gimperion">Tommy</a> for pointing it out.) I think the advantages of writing nice number-line comparisons outweigh this risk in R, but it is the most compelling argument I've seen for not using "<code>&lt;-</code>" for assignment.<br>
+</div>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

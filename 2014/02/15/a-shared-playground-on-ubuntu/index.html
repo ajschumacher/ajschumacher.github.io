@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>A shared playground on Ubuntu</title>
+  </head>
+  <body>
+    <article>
+<h1>A shared playground on Ubuntu</h1>
+<p class="date">Saturday February 15, 2014</p>
+<div>
+<p>After <a href="http://planspace.org/2014/01/25/easy-aws-ec2-ubuntu-quick-start/">setting up a machine</a>, I'd like to set up a bunch of users who can log in and give them a common space in which to do some work. The goal is convenience for demonstration and education.<br>
+<br>
+Assume usernames are in a file called&#160;<code>names.txt</code>, one per line. This will create users with those names, put them in the <code>users</code> group, and make their passwords "<code>none</code>". As root:<br>
+</p>
+<pre>cat names.txt | while read line
+ do
+  adduser --gecos "" --disabled-password $line
+  adduser $line users
+  echo $line:none | chpasswd
+ done</pre>
+<br>
+Now those users should really log in and change their passwords with <code>passwd</code>. Up next, we make a <code>shared</code> directory that everybody has access to.<br>
+<pre>mkdir /home/shared
+chgrp users /home/shared
+chmod g+w /home/shared
+chmod g+s /home/shared</pre>
+<br>
+That makes the directory, sets the group to <code>users</code>, gives group members write access, and sets the "sticky" bit so that files created in the directory will have the <code>users</code> group.<br>
+</div>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

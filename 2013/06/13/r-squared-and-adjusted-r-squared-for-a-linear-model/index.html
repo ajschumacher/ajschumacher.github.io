@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>R-Squared and Adjusted R-Squared for a Linear Model</title>
+  </head>
+  <body>
+    <article>
+<h1>R-Squared and Adjusted R-Squared for a Linear Model</h1>
+<p class="date">Thursday June 13, 2013</p>
+<p>We would like to make a linear model such that the residuals - how far off the predictions of the model are, for the training data - are small. If the residuals are small, the model is doing a good job of predicting. We're always minimizing the residuals, with <a href="http://en.wikipedia.org/wiki/Ordinary_least_squares">OLS</a>, but how can we tell if, in the end, the residuals are small?<br>
+<br>
+We can measure the "bigness" of the residuals by their <a href="http://en.wikipedia.org/wiki/Variance">variance</a>. Note that residuals will never be big numbers and yet have small variance, because if that happened we would change the linear model to further minimize the residuals. For example, if the residuals are all one, just add one to the constant term of the model and you reduce all the residuals to zero.<br>
+<br>
+We want our measure of residual smallness to be the same regardless of whether we're working in light-years or millimeters, so we need to scale by something. We scale by the variance of the values we're predicting (the labels).<br>
+<br>
+So now we have a measure of residual smallness that is equal to zero if all the residuals are zero and the model is "perfect", and equal to one if the model is constant (this is easy to see if, for example, the model always predicts that the label is zero). This measure of residual smallness is then in some sense the percentage of variance (in the labels) that the model does not explain (it's still in the residuals).<br>
+<br>
+We would usually prefer to talk about a measure that gets bigger when we do a better job, so we take one and subtract the measure of residual smallness to get $latex R^2$, the percentage of variance explained. (Consider how you might try to define this differently.)<br>
+<br>
+$latex R^2 = 1 - \frac{var(residuals)}{var(labels)}$<br>
+<br>
+It turns out that if you add a bunch of random predictors to a model you can get $latex R^2$ to go up and up without having it mean anything. Adjusted R-Squared tries to account for this by penalizing the measure when there are more predictors $latex p$ (not counting the constant term), relative to the number of training examples $latex n$.<br>
+<br>
+adjusted&#160;$latex R^2 = 1 - \frac{var(residuals)}{var(labels)} \cdot \frac{n-1}{n-p-1}$<br>
+<br>
+When $latex p$ gets bigger, that denominator gets smaller, so a larger thing is subtracted, so adjusted $latex R^2$ goes down. Adjusted $latex R^2$ should help discourage you from adding predictors all willy-nilly. (Could you have a negative adjusted $latex R^2$? Could you have an adjusted $latex R^2$ greater than one? Play around with these ideas. Try it in R.)<br>
+<br>
+Note one: <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">this</a> $latex R^2$ is quite related to <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">this</a> $latex r$ squared.<br>
+<br>
+Note two: this $latex R^2$ is a measure of training error. Often you'll be more concerned with how the model performs on data it wasn't created with.<br></p>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

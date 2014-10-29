@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Scraping GNU Mailman Pipermail Email List Archives</title>
+  </head>
+  <body>
+    <article>
+<h1>Scraping GNU Mailman Pipermail Email List Archives</h1>
+<p class="date">Sunday September 21, 2014</p>
+<p>I worked with&#160;<a href="http://www.codeforprogress.org/">Code for Progress</a> fellow Casidy at a recent&#160;<a href="http://codefordc.org/">Code for DC</a> civic hacknight on migrating old email list archives for the <a href="https://commotionwireless.net/">Commotion</a> mesh network project to a new system. The source system was&#160;<a href="http://www.gnu.org/software/mailman/">GNU Mailman</a> with its Pipermail web archives for several email lists such as <a href="https://lists.chambana.net/pipermail/commotion-discuss/">commotion-discuss</a>.<br>
+<br>
+We used <a href="https://www.python.org/">Python</a>'s <a href="http://lxml.de/">lxml</a> for the first pass scraping of all the archive file URLs. The process was then made more interesting by the <a href="http://www.gzip.org/">gzip</a>'ing of most monthly archives. Instead of saving the gzip'ed files to disk and then gunzip'ing them, we used Python's <a href="https://docs.python.org/2/library/gzip.html">gzip</a>&#160;and <a href="https://docs.python.org/2/library/stringio.html">StringIO</a>&#160;modules. The result is the full text history of a specified email list, ready for further processing. Here's the code we came up with:<br>
+<br>
+<pre><code>#!/usr/bin/env python
+
+import requests
+from lxml import html
+import gzip
+from StringIO import StringIO
+
+listname = 'commotion-discuss'
+url = 'https://lists.chambana.net/pipermail/' + listname + '/'
+
+response = requests.get(url)
+tree = html.fromstring(response.text)
+
+filenames = tree.xpath('//table/tr/td[3]/a/@href')
+
+def emails_from_filename(filename):
+    print filename
+    response = requests.get(url + filename)
+    if filename[-3:] == '.gz':
+        contents = gzip.GzipFile(fileobj=StringIO(response.content)).read()
+    else:
+        contents = response.content
+    return contents
+
+contents = [emails_from_filename(filename) for filename in filenames]
+contents.reverse()
+
+contents = "\n\n\n\n".join(contents)
+
+with open(listname + '.txt', 'w') as filehandle:
+    filehandle.write(contents)
+</code></pre>
+<br></p>
+
+<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

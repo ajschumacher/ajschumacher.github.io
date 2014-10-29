@@ -1,0 +1,125 @@
+# NYU Large Scale Machine Learning (Big Data) Lecture One: Online Linear Classification
+
+<div>
+<p>I'm very fortunate to be auditing <a href="http://yann.lecun.com/">Yann Lecun</a> and <a href="http://hunch.net/~jl/">John Langford</a>'s new <a href="http://cilvr.cs.nyu.edu/doku.php?id=courses:bigdata:start">big data course</a> at NYU. Their personal web sites might not win any design awards, but they certainly have no shortage of expertise in machine learning - and people know. It was standing-room only in lecture hall 101 at <a href="http://www.cims.nyu.edu/">Courant</a>. I think a number of students accepted the offer from professor LeCun to sit on the ground in the front. LeCun's introduction to the course included a variation on Drew Conway's "<a href="http://www.drewconway.com/zia/?p=2378">Data Science Venn Diagram</a>" - Drew Conway was in the back of the room. The professors are planning to bring in some other guest lecturers, and the class is also going to get to use a hundred-node <a href="http://hadoop.apache.org/">Hadoop</a> cluster donated to NYU by Yahoo!.<br>
+<br>
+It was an exciting atmosphere! What follows are my possibly opinionated, possibly incorrect, definitely selective notes from the class.<br>
+<br>
+We're using <em>N</em> for the dimension of vectors and <em>T</em> for number of training samples, which is not the notation I generally think of. I'm used to using <em>N</em> (or <em>n</em>) for number of observations. Maybe this other convention is a standard among machine learning people? Anyway, imagine a matrix with <em>N</em> dimension (feature) labels across the top and <em>T</em> training example (observation) labels down the left side. LeCun didn't draw this out, but he did specify these cells contents in his presentation:<br>
+</p>
+<table>
+<br>
+<tbody>
+<br>
+<tr>
+<br>
+<td></td>
+<br>
+<td>small N</td>
+<br>
+<td>large N</td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>small T</td>
+<br>
+<td></td>
+<br>
+<td>hell!</td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>large T</td>
+<br>
+<td>great!</td>
+<br>
+<td></td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>infinite T</td>
+<br>
+<td>on-line/streaming</td>
+<br>
+<td></td>
+<br>
+</tr>
+<br>
+</tbody>
+<br>
+</table>
+<br>
+I might fill in those empty cells as follows:<br>
+<table>
+<br>
+<tbody>
+<br>
+<tr>
+<br>
+<td></td>
+<br>
+<td>small N</td>
+<br>
+<td>large N</td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>small T</td>
+<br>
+<td><a href="http://en.wikipedia.org/wiki/Statistics">statistics</a></td>
+<br>
+<td>hell!</td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>large T</td>
+<br>
+<td>great!</td>
+<br>
+<td>also hell?</td>
+<br>
+</tr>
+<br>
+<tr>
+<br>
+<td>infinite T</td>
+<br>
+<td>on-line/streaming</td>
+<br>
+<td>also hell?</td>
+<br>
+</tr>
+<br>
+</tbody>
+<br>
+</table>
+<br>
+And I guess we never go on systematically adding more features forever in the same way that we systematically go on adding more data forever.<br>
+<br>
+After the introduction by LeCun, Langford took over for the main lecture, about on-line learning for <a href="http://en.wikipedia.org/wiki/Statistical_classification">classification</a>. (I was going to specify <a href="http://en.wikipedia.org/wiki/Supervised_learning">supervised</a>, but apparently this is redundant.) As they were switching computers, we could see that Langford was running Outlook in a Windows VM on his laptop - maybe that's the price you pay when you work at Microsoft Research? The real demonstration tool of choice is <a href="http://hunch.net/~vw/">Vowpal Wabbit</a>, which is the creation of Langford himself. Maybe I should call it the reference implementation. As you can see on the published <a href="http://cilvr.cs.nyu.edu/diglib/lsml/lecture01-online-linear.pdf">slides</a> for the lecture, the first directions were to clone and make <a href="https://github.com/JohnLangford/vowpal_wabbit">vw</a> from github. Of course <a href="http://en.wikipedia.org/wiki/Make_(software)">make</a> just failed on my Mac and I didn't have time to figure out why. It wasn't really necessary to have vw to follow along, but I should really get that to work... I did feel, throughout the lecture, that I was much better off for previously having seen Langford give a <a href="http://www.meetup.com/NYC-Machine-Learning/events/31554622/">talk</a> about vw at the <a href="http://www.meetup.com/NYC-Machine-Learning/">NYC Machine Learning meetup</a> back in September of 2011. Of course it also helped that he was being much more didactic in his presentation.<br>
+<br>
+It wasn't long before the mathematics was enough to keep me busy and I was typing a good deal less. There were also lighter moments, as for example when Langford enjoyed getting in a little rip against <a href="http://mahout.apache.org/">Mahout</a>, which it seems is often much slower than his vw. If it's really true that the biggest data set they even try to crunch is processed in about a second on his laptop in vw, I guess that's fair!<br>
+<br>
+Langford spent most of his time talking about choosing a loss function and online learning generally. I hope we get to hear more in the future about how vw uses hashing to achieve its speed. I kind of think this must not be that complex a topic, but I'd like to understand it better.<br>
+<br>
+The discussion of what loss function is appropriate was the best didactic component of the lecture, in my opinion, as Langford gave the whole room time to think about and suggest what should be used for a range of scenarios. You can see this in his <a href="http://cilvr.cs.nyu.edu/diglib/lsml/lecture01-online-linear.pdf">slides</a> titled "Know your loss function semantics", but I think it was much better experienced in the room, at least for me, since I don't instantly know the answers to that type of question. And as Langford says, "one of the most common ways to mess up in machine learning is to&#160;optimize the wrong thing." I thought the example of house sales was especially interesting, because the solution involved a consideration of the weirdness in the data coming from non-market home sales between family members and such. I hadn't considered that.<br>
+<br>
+There was also some discussion of how to best deal with the often varying importance of different types of failures. (It is much worse, for example, to mark non-spam as spam than to mark spam as non-spam.) I asked a question here that I think, in retrospect, must have been already understood by many people in the room. Langford's response was clear and helpful. He's clearly both intelligent and kind, and sometimes even funny. His response to another question:&#160;"Recall and precision... Those always confuse me. Yes, certainly you&#160;want something that is good." He did go on to resolve the issue, which I think may have been that recall and precision weren't particularly relevant to the discussion at hand at that time. He also artfully addressed a student question that suggested a method that would break information causality, so to speak. Really good stuff.<br>
+<br>
+There was some discussion of how best to adjust learning rate, a recommendation for per-feature learning rate decay, and Langford also advocated gently for progressive validation rather than (or maybe just in addition to) train-test validation for on-line learning. I had never seen z-scoring referred to as "Gaussian Sphering" before. Both sound pretty cool. I mean the names. Both names are good. But of course the way Vowpal Wabbit does variable normalization is way smarter.<br>
+<br>
+Very good stuff! I'm definitely looking forward to next week.<br>
+</div>
+
+
+*This post was originally hosted elsewhere.*
