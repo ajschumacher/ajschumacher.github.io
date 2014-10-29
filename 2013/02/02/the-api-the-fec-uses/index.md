@@ -9,7 +9,6 @@ I work at&#160;<a href="http://www.nyu.edu/" target="_blank">NYU</a>. My job tit
 So we get an email from a PhD student in&#160;<a href="http://politics.as.nyu.edu/" target="_blank">politics</a>:
 
 <blockquote>I would like to download data on campaign spending from the website of the Federal Election Commission,&#160;<a href="http://www.fec.gov/finance/disclosure/candcmte_info.shtml" target="_blank">http://www.fec.gov/finance/disclosure/candcmte_info.shtml</a>. I would like to download information on about 500 candidates for the House of Representatives, i.e. ca. 500 files. The files are under the category "Report Summaries" and should cover the "two-year period" labeled by "2010". The files that I am looking for do not seem to be accessible through a single download. At the moment, the only way that I can download the information is therefore to enter the name of the candidate, e.g. "Akin" and download the information individually which takes a long time. Would you be able to help me to speed up this process, perhaps by writing a script which would download the files based on a list of candidates?</blockquote>
-
 My first thought, of course, is that he must be wrong. But I go and look, and sure enough there doesn't seem to be a combined file for quite what he wants. What the heck, FEC?
 
 Generally, our librarians can help people find existing data sets, and our specialists can help people use software for their analyses. Web scraping is not really part of anybody's job description, but... maybe we do it now? I like the internet, so I decide to give it a try.
@@ -17,9 +16,7 @@ Generally, our librarians can help people find existing data sets, and our speci
 Ideally, I can do better than browser-equivalent scraping, if I can figure out what's really going on; the site gives you a CSV file after you click around for a while. Viewing source is useless, naturally. Using the Inspector in Chrome I can dig through a miserable hierarchy and eventually see that I need to know what the JavaScript function "exportCandCmteDetailCurrentSummary()" is doing. I look through a couple JavaScript files that I can see are getting pulled in. I look and I look but I can't find a definition for this function.
 
 I don't even&#160;<i>like</i>&#160;JavaScript, but I&#160;<i>know</i>&#160;there's an HTTP request in there somewhere that I can emulate without the horrible web site, so I decide to download&#160;<a href="http://www.wireshark.org/" target="_blank">Wireshark</a>&#160;and just sniff it out. I should have started with this, because it's super easy to find, and before long I can get the files we want, by candidate ID, using&#160;<a href="http://curl.haxx.se/" target="_blank">cURL</a>.
-
 <pre>curl -X POST -F "electionYr=2010" -F "candidateCommitteeId=H0MO02148"&#160;-F "format=csv" -F "electionYr0pt=2010"&#160;http://www.fec.gov/fecviewer/ExportCandidateCommitteeCurrentReport.do</pre>
-
 Stick that in a little shell loop, and you can download all the files you want.
 
 Time to meet with the patron. Of course he uses Windows, and after we wait for&#160;<a href="http://www.cygwin.com/" target="_blank">Cygwin</a>&#160;to install, cURL is mysteriously unable to find a shared object file. Fine. We can use a lab machine, which does work. We get all the files downloading.

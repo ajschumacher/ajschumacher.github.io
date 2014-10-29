@@ -1,7 +1,6 @@
 # Just-in-Time Teaching (JiTT) very cool but hamstrung by lousy name and lack of implementation
 
 
-
 Gelman <a href="http://andrewgelman.com/2013/09/27/setting-up-jitts-online/">posted</a> a 15-step process for using <a href="http://docs.google.com/forms/">Google Forms</a>* (now part of <a href="http://drive.google.com/">Google Drive</a>, of course) to set up web-based pre-class questions for students to complete - a key element of Just-in-Time Teaching (JiTT). (Gelman uses "jitt" also to refer to a question or group of questions that constitute an assignment.)
 
 The "just-in-time" of JiTT refers to engaging students just before a class and accessing that interaction to customize instruction and encourage active thought and discussion. It's similar to the entrance and (more commonly) "exit tickets" that I've heard about and sometimes used. (JiTT, as an acronym or expanded, is a horrible name for this.)

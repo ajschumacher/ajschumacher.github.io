@@ -17,15 +17,10 @@ Bayes' rule says that the probability of it being a duck, if it looks like that,
 This makes sense:
 
 <ul>
-
 	<li>If ducks are mythical beasts, then $latex Pr(duck)$ (our "prior" on ducks) is very low, and the thing would have to be <em>very</em> duck-like before we'd believe it's a duck. On the other hand, if we're at some sort of duck farm, then $latex Pr(duck)$ is high and anything that looks even a little like a duck is probably a duck.</li>
-
 	<li>If it's very likely that a duck would look like that ($latex Pr(looks|duck)$ is high) then we're more likely to think it's a duck. This is the "likelihood" of a duck looking like that thing. In practice it's based on how the ducks we've seen before have looked.</li>
-
 	<li>The denominator $latex Pr(looks)$ normalizes things. After all, we're in some sense portioning out the probabilities of this thing being whatever it could be. If 1% of things look like this, and 1% of things look like this <em>and</em> are ducks, then 100% of things that look like this are ducks. So $latex Pr(looks)$ is what we're working with; it's the denominator.</li>
-
 </ul>
-
 Here's an example of a strange world to test this in:
 
 <a href="screen-shot-2014-02-23-at-5-44-22-pm.png"><img class="aligncenter  wp-image-839" alt="ducks" src="screen-shot-2014-02-23-at-5-44-22-pm.png"></a>

@@ -13,19 +13,12 @@ Your system of beliefs is involved from the very start. Among the components of 
 A simple example: you look at a data set of library visit timestamps and see that there are no visits on Wednesdays:
 
 <ul>
-
 	<li>Phenomenon of interest: Is the library closed on Wednesdays? Is it open but nobody goes to the library on Wednesdays because of the great deals at Sal's Diner?</li>
-
 	<li>Data creation: Is there a bug in the logging software that makes it fail on Wednesdays? Is Andy supposed to manually record the data but he goes to Sal's on Wednesdays? Are the timestamps systematically off by a couple days, so that Wednesday means Sunday?</li>
-
 	<li>Data: The data is taken to exist, but any deterioration to it over time or problems in reading it can be attributed to the creating or analysis components.</li>
-
 	<li>Analysis: Did an earlier stage of analysis drop all Wednesday data for some reason? Did the analysis read in the dates incorrectly, so that Wednesday really means Sunday?</li>
-
 	<li>System of beliefs: Which of the above is most likely? How could you check? Is this Wednesday issue interesting? Is it worth pursuing further? But also:&#160;How many visitors are represented by each timestamp? Are there timestamps for both arrivals and exits? And: Is it good or bad if there are a lot of visitors? And of course: How should the analysis be changed? What should we believe?</li>
-
 </ul>
-
 If you think everything that you see in your data is an accurate signal about the phenomenon you're interested in, you are likely to be wrong often and in ways you would much rather avoid.
 
 I was thinking about this just before I had the pleasure of reading Victor's <a href="http://worrydream.com/MagicInk/">Magic Ink</a>, where I <a href="http://worrydream.com/MagicInk/#p252">found</a> this similar model, itself "* Adapted from Claude Shannon,&#160;<a href="http://cm.bell-labs.com/cm/ms/what/shannonday/shannon1948.pdf">A Mathematical Theory of Communication</a>&#160;(1948), p2.":

@@ -1,7 +1,6 @@
 # Degree Qualification Profiles: Cool idea, bad map
 
 
-
 The National Institute for Learning Outcomes Assessment (<a href="http://learningoutcomeassessment.org/">NILOA</a>) and The <a href="http://www.luminafoundation.org/">Lumina</a> Foundation for Education have a neat idea called the Degree Qualification Profile which is, as I understand it, about figuring out whether people learn anything in college. Neat!
 
 I have an issue with this map from the <a href="http://learningoutcomeassessment.org/DQPCorner.html">DQP page</a>:

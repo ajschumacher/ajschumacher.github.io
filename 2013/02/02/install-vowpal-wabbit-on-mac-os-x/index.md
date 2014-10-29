@@ -7,37 +7,21 @@ I failed to get <a href="http://hunch.net/~vw/">vw</a> installed during the <a h
 Pre-requisites:
 
 <ol>
-
 	<li><span>Install <a href="https://developer.apple.com/xcode/">Xcode</a>&#160;command line tools. This will give you Apple's collection of compilers and so on. You could probably get other ones if you prefer.</span></li>
-
 	<li>Install <a href="http://mxcl.github.com/homebrew/">Homebrew</a>. This seems to be the best Mac package manager at the moment. Once you have Homebrew everything else is easy to install.</li>
-
 </ol>
-
 Install steps (skip lines if you know you have things already):
-
 <pre>brew install libtool
-
 brew install automake
-
 brew install boost
-
 brew install git
-
 git clone https://github.com/JohnLangford/vowpal_wabbit.git
-
 cd vowpal_wabbit</pre>
-
 At this point you have everything you need. You could link&#160;<code>glibtoolize</code>&#160;so you can refer to it as <code>libtoolize</code>, or you can edit the <code>autogen.sh</code> and put a '<code>g'</code> in front of <code>libtoolize</code>. Do one or the other. You're ready to go through the normal <code>make</code> process.
-
 <pre>./autogen.sh
-
 ./configure
-
 make
-
 make install</pre>
-
 And you have <code>vw</code> at <code>/usr/local/bin/vw</code>. Easy!
 
 

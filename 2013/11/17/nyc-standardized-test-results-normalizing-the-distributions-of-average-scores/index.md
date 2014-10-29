@@ -39,7 +39,6 @@ Can we get rid of differences in the variances? What if some years the test real
 What about the centering? The issue with using a school-level average is that it doesn't seem to mean much. Is it demonstrably bad? Let's see... Yes. It's bad. If you have a school of all exactly average students, your school score should be a zero. Using the mean of school averages, your school of average students would see its school score change depending on the how students happen to be arranged among other schools. Your school's score shouldn't depend on whether there are two other schools or three, so using the mean of school averages is bad. Put another way, though using the student (weighted) mean gives less perfect alignment of the distributions, I think that non-alignment is meaningful information.
 
 Okay! I'm not going to update everything up above. The graphs would look almost identical anyway. But I will use the normalization that centers on&#160;<em>student average</em> and divides by&#160;<em>median absolute deviation</em> to address variance. Decision made! Either way, the units of these scores are going to be screwy. But next time the <a href="https://github.com/ajschumacher/NYCtests/blob/master/code/figure9.r">code</a> will be shorter!<em>
-
 </em>
 
 [<a href="http://planspace.org/2014/01/10/nyc-test-data/">table of contents for this series</a>]

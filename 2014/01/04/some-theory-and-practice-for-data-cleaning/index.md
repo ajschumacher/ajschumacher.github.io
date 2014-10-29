@@ -27,39 +27,23 @@ Data dirtiness could be addressed at creation, and we should keep this in mind w
 All of analysis is coming up with beliefs. These beliefs are based on implicit models. Probably the most common cause of initial results from data is error. This is especially true for interesting results, but it applies everywhere. For example:
 
 <pre>$ wc -l data.csv 
-
        5 data.csv</pre>
-
 A common reading of this would be that the file <code>data.csv</code> contains five lines, or rows. However, this is not necessarily the case:
-
 <pre>&gt; read.table("data.csv")
-
                                V1
-
 1 I think...\nthat...\nit's good!
-
 2                           dunno
-
 3                       It's bad!</pre>
-
 There are three rows here. What happened? There was a problem with our assumptions, or with the implicit model we used. The program <code>wc</code> does not tell us how many lines there are in a file. It tells us how many newline characters ("\n") there are - how many times there is a byte that goes <code>00001010</code>. The implicit assumption was that each line of data had exactly one newline character. It was a linear model: "number of lines in the file = 1 * number of newline characters in the file + 0". Notice that the model is fine, and the result is also fine - if the assumption holds. But often, we aren't even aware of the assumption, we aren't aware of the implicit model, and we don't check what we're relying on.
 
 The example with <code>wc</code> is about being aware of levels of abstraction and how they interact with your tools so as to not draw incorrect conclusions. The sorts of assumptions more closely related to what we usually think of as clean data issues are things like:
-
 <ul>
-
 	<li>this is everything we should include</li>
-
 	<li>there's exactly one record per entity</li>
-
 	<li>the line items add up to the subtotals</li>
-
 	<li>these are all in the same units</li>
-
 	<li>these dates are all in order</li>
-
 </ul>
-
 A good place to start with a new data set is by checking for problems that could not possibly occur. Very often, you will find that they occur anyway. A common example is checking unique IDs. They are frequently not.
 
 When it comes to checking things, I recommend never checking anything once. When you become aware of something that should be true about your data, write a check that embeds itself forever in your code. Very occasionally there are performance concerns, but almost always correctness is more important. The "theory" here is that the strength of the computer - automating things - should be leveraged to reduce human cognitive load while increasing confidence in results.&#160;<a href="http://planspace.org/2013/10/23/include-explicit-assumption-tests-in-analysis-code/">Include explicit assumption tests in analysis code</a>.
@@ -67,11 +51,8 @@ When it comes to checking things, I recommend never checking anything once. When
 Checks can also be included for things that need not be true - for intermediate results, totals, and so on. Analysis code may have many steps, and it may not be obvious how a change at an early step affects things downstream. Including something as simple as, for example, <code>stopifnot(sum(data$total)==9713)</code> at the bottom of a script will alert you if you introduce something that changes this - especially useful to know when you think you're making changes that don't.
 
 Another way to make this point about coded checks is that comments in code should be avoided for describing data.
-
 <pre># There are 49 missing values.     # NO
-
 stopifnot(sum(is.na(my.data))==49) # YES</pre>
-
 The comment is instantly out of date if something changes, and likely forgotten. The code will automatically let you know if something changes. This is vastly superior.
 
 Quite a lot of checks can be written very simply - for example, the often-neglected checks around merges (joins). Many more complex checks are included in the <code>assertive</code> <a href="http://cran.r-project.org/web/packages/assertive/">package</a> available for R, which has things like <code>assert_all_are_credit_card_numbers</code> and&#160;<code>assert_all_are_isbn_codes</code>, for example.
@@ -89,11 +70,8 @@ When possible, fix data. For example, adult heights entered sometimes in feet an
 It's not uncommon to hear it said that 80% of a data project is data wrangling work. But this doesn't mean that you can do data cleaning Monday through Thursday and analysis on Friday. It is a good idea to think about data cleaning up front, but there are often practical concerns about the scope of the data cleaning work.
 
 <a href="clean_all_the_data_yes.png"><img class="aligncenter size-medium wp-image-717" alt="clean all the data!" src="clean_all_the_data_yes.png"></a>
-
 <pre>&gt; ncol(my.data)
-
 [1] 1274</pre>
-
 <a href="clean_all_the_data_maybe.png"><img class="aligncenter size-medium wp-image-718" alt="clean all the data?" src="clean_all_the_data_maybe.png"></a>
 
 In addition, it's often the case that you discover data problems in the course of analysis. (Sometimes, this is the <em>only</em> way that data problems are discovered.) You likely can't predict at the outset exactly which fields you'll need or how problems will arise. A simple example is that two columns may each look fine, but if analysis calls for their ratio, absurd data problems can become evident.
@@ -101,7 +79,6 @@ In addition, it's often the case that you discover data problems in the course o
 Another concern is that data issues are often stubbornly non-general. We would like to aim to generalize, but may find that ad hoc solutions are sometimes unavoidable. We are left aiming to generalize, preparing to specialize.
 
 Probably data cleaning will remain art and science, entangled with analysis, and resistant to fully generalizable principles. As usual:
-
 <blockquote>The difference between theory and practice is larger in practice than it is in theory.</blockquote>
 
 

@@ -1,7 +1,6 @@
 # R-Squared and Adjusted R-Squared for a Linear Model
 
 
-
 We would like to make a linear model such that the residuals - how far off the predictions of the model are, for the training data - are small. If the residuals are small, the model is doing a good job of predicting. We're always minimizing the residuals, with <a href="http://en.wikipedia.org/wiki/Ordinary_least_squares">OLS</a>, but how can we tell if, in the end, the residuals are small?
 
 We can measure the "bigness" of the residuals by their <a href="http://en.wikipedia.org/wiki/Variance">variance</a>. Note that residuals will never be big numbers and yet have small variance, because if that happened we would change the linear model to further minimize the residuals. For example, if the residuals are all one, just add one to the constant term of the model and you reduce all the residuals to zero.

@@ -1,7 +1,6 @@
 # A sensible characterization of mode, median, and mean
 
 
-
 Often "types of data" are introduced all together, and then "measures of central tendency" are introduced all together. For "types of data" I mean nominal, ordinal, and numeric (leaving aside interval vs. ratio). For "measures of central tendency" I mean mode, median, and mean.
 
 A common response to this exposition, even if median is justified with reference to skew, is that mode is a stupid thing and its inclusion in the list is almost insulting.

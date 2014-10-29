@@ -17,7 +17,6 @@ This is interesting and easily calculable for predicting categorical things like
 You can also predict one letter at a time, and you'll get a much better perplexity score, even just since there are many fewer different letters than different words. This has been done, even, as described in this interesting <a href="http://nautil.us/issue/4/the-unlikely/the-man-who-invented-modern-probability">article</a> about Andrei Kolmogorov:
 
 <blockquote>To measure the artistic merit of texts, Kolmogorov also employed a letter-guessing method to evaluate the entropy of natural language. ... His group conducted a series of experiments, showing volunteers a fragment of Russian prose or poetry and asking them to guess the next letter, then the next, and so on.</blockquote>
-
 I know you're itching to participate in such an experiment - and you can! On <a href="http://ajschumacher.github.io/perplexity/">the linked page</a> you'll be able to try your hand. It's interesting to consider whether you're evaluating the artistic merit of the text, or your own knowledge of English, or some combination, or what.
 
 Computers can predict letters <a href="http://acl.ldc.upenn.edu/J/J92/J92-1002.pdf">pretty well</a>&#160;- a perplexity of about 3.4. And that's predicting from the range of all printable characters (well, ASCII characters). This <a href="http://ajschumacher.github.io/perplexity/">human test</a> only asks you to predict from a range of about 30 characters, which is a bit easier. So I hope you can beat 3.4!

@@ -1,7 +1,6 @@
 # Some quotes from If on a winter's night a traveler by Italo Calvino
 
 
-
 You know that the best you can expect is to avoid the worst.
 
 The dimension of time has been shattered; we cannot love or think except in fragments of time each of which goes off along its own trajectory and immediately disappears.

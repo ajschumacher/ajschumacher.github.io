@@ -1,7 +1,6 @@
 # Data done wrong: The only-most-recent data model
 
 
-
 It's not very uncommon to encounter a database that only stores the most recent state of things. For example, say the database has one row per&#160;<a href="http://en.wikipedia.org/wiki/Monarch_butterfly"><em>Danaus plexippus</em></a> individual. The database could have a column called <em>stage</em>&#160;which would tell you if an individual is currently a caterpillar or a butterfly, for instance.
 
 This kind of design might seem fine for some application, but you have no way of seeing what happened in the past. When did that individual <em>become</em> a butterfly? (Conflate, for the moment, the time of the change in the real world and the time the change is made in the database - and say that the change is instantaneous.) Disturbingly often, you find after running a timeless database for some time that you actually <em>do</em> need to know about how the database&#160;changed over time - but you haven't got that information.

@@ -3,7 +3,6 @@
 
 
 <blockquote>A coin is flipped and comes up heads five times in a row. Is it a fair coin?</blockquote>
-
 Whether you trust a coin to come up heads 50% of the time depends a good deal on who's flipping the coin. If you're flipping your own quarter at home, five heads in a row will almost certainly not lead you to suspect wrongdoing. At a magic show or gambling with a shady character on a street corner, you might quickly doubt the balance of the coin or the flipping mechanism.
 
 What is often meant by non-Bayesian "classical statistics" or "frequentist statistics" is "hypothesis testing": you state a belief about the world, determine how likely you are to see what you saw if that belief is true, and if what you saw was a very rare thing to see then you say that you don't believe the original belief. That original belief about the world is often called the "null hypothesis".

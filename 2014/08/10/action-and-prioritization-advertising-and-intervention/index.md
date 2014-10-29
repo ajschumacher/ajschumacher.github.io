@@ -1,7 +1,6 @@
 # Action and Prioritization, Advertising and Intervention
 
 
-
 Amazon can easily show you a product of their choice while you're on their site. This is their <em>action</em>. Since it's so easy to show you things, it makes sense to work a lot on choosing carefully what to show. This is their <em>prioritization</em>. Refer to this class of ranking problem as the&#160;<em>advertising</em> type.
 
 It is fairly difficult to send food aid to a village (<em>action</em>)&#160;or to support and improve a challenged school (<em>action</em>). A deficiency of both knowledge and resources motivates a need to choose where to give attention (<em>prioritization</em>). Refer to this type of ranking problem as the <em>intervention</em>&#160;type.

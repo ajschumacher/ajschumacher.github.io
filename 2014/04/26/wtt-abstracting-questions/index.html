@@ -24,48 +24,32 @@
 <p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> is pretty much the best thing ever. (Note to self: get off wordpress...) Can we come up with a markdown solution to the question problem? Something super light-weight, that blends easily into text files that humans would actually write...</p>
 <p>The kramdown (etc.) markdown extension for <a href="http://kramdown.gettalong.org/syntax.html#definition-lists">definition lists</a> seems like a candidate. Here's how it works:</p>
 <pre>This is the "term".
-
 : This is the "definition".</pre>
 
 <p>Get's rendered something like this, using the standard HTML definition list tags:</p>
 <dl>
-
 <dt>This is the "term".</dt>
-
 <dd>This is the "definition".</dd>
-
 </dl>
 
-<p>So let's say the term is the question, and the (possibly many) definitions are answer choices. Of course we could have a blank definition represent a text box (or text area):</p>
+<p>So let's say the term is the question, and the (possibly many) definitions are answer choices. Of course we could have a blank definition represent a text box (or text area):
 <pre>What do you think?
-
 :</pre>
-
-<p>A multiple-choice survey could be as easy as this then:</p>
+A multiple-choice survey could be as easy as this then:
 <pre>What's your favorite color?
-
 : red
-
 : blue
-
 : green</pre>
-
-<p>To add correctness functionality, a little more syntax could be added:</p>
+To add correctness functionality, a little more syntax could be added:
 <pre>Sugar is sweet.
-
 : true*
-
 : false</pre>
-
-<p>The idea here is that these text files would be rendered into interactive HTML/Javascript such that you wouldn't see which was the correct answer - you would select an answer, possibly have a submit button of some kind, and get feedback on whether your answer agreed with the one in the text. I do think that teacherly paranoia about "test security" is one thing that prevents good functionality from spreading much on the web. Nobody wants to share their oh-so-secret correct answers, lest the horrible children cheat. I think this perspective is a disease on society.</p>
-<p>Maybe this could be a short answer question:</p>
+The idea here is that these text files would be rendered into interactive HTML/Javascript such that you wouldn't see which was the correct answer - you would select an answer, possibly have a submit button of some kind, and get feedback on whether your answer agreed with the one in the text. I do think that teacherly paranoia about "test security" is one thing that prevents good functionality from spreading much on the web. Nobody wants to share their oh-so-secret correct answers, lest the horrible children cheat. I think this perspective is a disease on society.</p>
+<p>Maybe this could be a short answer question:
 <pre>What is the capital city of Wisconsin?
-
 :
-
 Madison</pre>
-
-<p>Of course you have the problems of evaluating text answers (Is "<code>Madison, WI</code>" also correct? etc.). Generally, there is of course an awful lot of functionality that you want from questions, and it may be hard to reduce it all down. Some things should be obvious: true and false is a special case of multiple choice. But other things like scoring, when/whether to show the correct answer, etc. seem difficult to abstract very far.</p>
+Of course you have the problems of evaluating text answers (Is "<code>Madison, WI</code>" also correct? etc.). Generally, there is of course an awful lot of functionality that you want from questions, and it may be hard to reduce it all down. Some things should be obvious: true and false is a special case of multiple choice. But other things like scoring, when/whether to show the correct answer, etc. seem difficult to abstract very far.</p>
 <p>The text questions could be rendered as stand-alone HTML/Javascript, or to connect with (or even be hosted on) some sort of web system. More details would have to be worked out.</p>
 <p>The illustrious <a href="https://github.com/ramnathv">Ramnath</a>, who always seems to be doing cool things several years before I know about them, has <a href="https://github.com/ramnathv/mgcr271/issues/6">thought</a> <a href="https://github.com/ramnathv/mgcr271/issues/36">about</a> this markdown question idea to some degree. I want to find out more about what he's done.</p>
 <p><em>This post was originally hosted elsewhere.</em></p>    </article>

@@ -1,7 +1,6 @@
 # And Another Thing... from the Hitchhiker's Guide
 
 
-
 Somehow I hadn't known about Eoin Colfer's addendum to Douglas Adams' Hitchhiker's Guide to the Galaxy series until just recently. Maybe I hadn't heard about it because it wasn't terribly good. I don't know a lot about fan fiction, but I imagine on the fan fiction spectrum it was pretty good.
 
 <a href="http://www.amazon.com/Another-Thing-Hitchhikers-Guide-Galaxy/dp/B0043RT9I0"><img class="aligncenter size-medium wp-image-869" alt="511vU3LKJUL" src="511vu3lkjul.jpg"></a>

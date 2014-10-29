@@ -5,19 +5,12 @@
 This problem comes up all the time, but the instance that got me thinking about it most recently was this: The NYC <a href="http://mta.info/">MTA</a> provides subway station geo-coordinates like <a href="http://www.mta.info/developers/data/nyct/subway/google_transit.zip">this</a>:
 
 <pre>127,,Times Sq - 42 St,,40.75529,-73.987495,,,1,
-
 624,,103 St,,40.7906,-73.947478,,,1,
-
 119,,103 St,,40.799446,-73.968379,,,1,</pre>
-
 But their subway turnstile data is linked with a table like&#160;<a href="http://www.mta.info/developers/resources/nyct/turnstile/Remote-Booth-Station.xls">this</a>:
-
 <pre>R032	R145	42 ST-TIMES SQ	1237ACENQRS	IRT
-
 R180	R252	103 ST		6		IRT
-
 R191	R170	103 ST		1		IRT</pre>
-
 Notice a couple things. There's only one subway stop called 'Times Square', but the name is different in the two files. That's one thing, but then there are actually three different stations called '103 Street'. (Only two are shown here.) To tell the difference between them you have to look at subway lines (1, 6, etc.) in one file, and at longitudes in the other. It's a huge pain even identifying the contenders to choose between, and certainly no generic matching algorithm will do it correctly for you. It's such a specialized case that it probably isn't worth developing an algorithm just for this data - or perhaps it's that an 'algorithm' which would solve this problem would be essentially identical to just doing the matching by hand anyway.
 
 This kind of merge difficulty comes up all the time while getting data munged into a usable state. In this example, I just want to attach the turnstile data to the geo data, and most of the matches aren't terribly hard, but it's hard enough that it won't happen automatically, and it would be a super big hassle to do by hand, grepping or control-f'ing around the files to build a merge table. More than once I've wished there was a tool that would help me do this kind of thing quickly.
@@ -37,37 +30,21 @@ There are more general tools which compare strings for similarity. They all seem
 I want to be super OCD with these merges though - I don't want to just hope that the computer is doing a good job matching. So what I really want is not just the computer to find a likely match, but to let me confirm or correct the matches as it goes. I want not just an algorithm but an interface. In the case of the 103rd St subway stop, it should show me that there are three good possible matches and let me work it out - and it should make the whole operation as frictionless as possible.
 
 I'm imagining this as a JavaScript/web app, probably running entirely client-side. You give it two lists of values that you'd like to be able to merge on. For example,
-
 <pre>mergevals1
-
 cow
-
 Ducks</pre>
-
 and
-
 <pre>mergevals2
-
 duckies
-
 Cow</pre>
-
 For each value in the first list, the interface shows you a list of options from the second list, ordered by apparent likeliness of being a match, based on string comparisons of some kind. So you would quickly click on "Cow" to match with "cow" and perhaps agree more slowly that "duckies" is a match for "Ducks" and perhaps specify new common names for both matches (it could just use the first list's version by default as well). The interface would then produce these:
-
 <pre>mergevals1	common
-
 cow		cow
-
 Ducks		duck</pre>
-
 and
-
 <pre>mergevals2	common
-
 duckies		duck
-
 Cow		cow</pre>
-
 Then you can merge <code>common</code> onto your first data set, and also onto your second data set, and then you can merge both your data sets by <code>common</code>.
 
 (In the subway case, you would pass in a combined column with station name and lines on the one side, and station name and geo-coordinates on the other.)

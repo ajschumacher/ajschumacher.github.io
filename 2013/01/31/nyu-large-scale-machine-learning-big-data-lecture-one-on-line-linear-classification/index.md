@@ -9,103 +9,54 @@ It was an exciting atmosphere! What follows are my possibly opinionated, possibl
 We're using <em>N</em> for the dimension of vectors and <em>T</em> for number of training samples, which is not the notation I generally think of. I'm used to using <em>N</em> (or <em>n</em>) for number of observations. Maybe this other convention is a standard among machine learning people? Anyway, imagine a matrix with <em>N</em> dimension (feature) labels across the top and <em>T</em> training example (observation) labels down the left side. LeCun didn't draw this out, but he did specify these cells contents in his presentation:
 
 <table>
-
 <tbody>
-
 <tr>
-
 <td></td>
-
 <td>small N</td>
-
 <td>large N</td>
-
 </tr>
-
 <tr>
-
 <td>small T</td>
-
 <td></td>
-
 <td>hell!</td>
-
 </tr>
-
 <tr>
-
 <td>large T</td>
-
 <td>great!</td>
-
 <td></td>
-
 </tr>
-
 <tr>
-
 <td>infinite T</td>
-
 <td>on-line/streaming</td>
-
 <td></td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 I might fill in those empty cells as follows:
-
 <table>
-
 <tbody>
-
 <tr>
-
 <td></td>
-
 <td>small N</td>
-
 <td>large N</td>
-
 </tr>
-
 <tr>
-
 <td>small T</td>
-
 <td><a href="http://en.wikipedia.org/wiki/Statistics">statistics</a></td>
-
 <td>hell!</td>
-
 </tr>
-
 <tr>
-
 <td>large T</td>
-
 <td>great!</td>
-
 <td>also hell?</td>
-
 </tr>
-
 <tr>
-
 <td>infinite T</td>
-
 <td>on-line/streaming</td>
-
 <td>also hell?</td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 And I guess we never go on systematically adding more features forever in the same way that we systematically go on adding more data forever.
 
 After the introduction by LeCun, Langford took over for the main lecture, about on-line learning for <a href="http://en.wikipedia.org/wiki/Statistical_classification">classification</a>. (I was going to specify <a href="http://en.wikipedia.org/wiki/Supervised_learning">supervised</a>, but apparently this is redundant.) As they were switching computers, we could see that Langford was running Outlook in a Windows VM on his laptop - maybe that's the price you pay when you work at Microsoft Research? The real demonstration tool of choice is <a href="http://hunch.net/~vw/">Vowpal Wabbit</a>, which is the creation of Langford himself. Maybe I should call it the reference implementation. As you can see on the published <a href="http://cilvr.cs.nyu.edu/diglib/lsml/lecture01-online-linear.pdf">slides</a> for the lecture, the first directions were to clone and make <a href="https://github.com/JohnLangford/vowpal_wabbit">vw</a> from github. Of course <a href="http://en.wikipedia.org/wiki/Make_(software)">make</a> just failed on my Mac and I didn't have time to figure out why. It wasn't really necessary to have vw to follow along, but I should really get that to work... I did feel, throughout the lecture, that I was much better off for previously having seen Langford give a <a href="http://www.meetup.com/NYC-Machine-Learning/events/31554622/">talk</a> about vw at the <a href="http://www.meetup.com/NYC-Machine-Learning/">NYC Machine Learning meetup</a> back in September of 2011. Of course it also helped that he was being much more didactic in his presentation.

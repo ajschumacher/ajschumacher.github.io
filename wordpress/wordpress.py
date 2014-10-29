@@ -93,7 +93,7 @@ for post in posts:
     content = content.replace('</p>', '\n')
     content = content.replace('<div>', '\n')
     content = content.replace('</div>', '\n')
-    content = re.sub('\n+', '\n\n', content)
+    content = re.sub('\n\n+', '\n\n', content)
     with codecs.open(path + 'index.md', 'w', encoding='utf-8') as f:
         f.write('# ' + title + '\n\n')
         f.write(content + '\n\n')

@@ -5,11 +5,8 @@
 Consider this data:
 
 <pre>
-
 total    part   percent
-
   765      47        6%
-
 </pre>
 
 Clearly, there is some redundancy. Both <code>part</code> and <code>percent</code> express the same thing.

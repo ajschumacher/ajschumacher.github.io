@@ -9,31 +9,18 @@ Let's talk about Excel.
 Say we have a nice UTF-8 CSV file:
 
 <pre>$ wc test.csv
-
        8       8      56 test.csv
-
 $ cat test.csv
-
 id,value
-
 001,1
-
 010,2
-
 01a,3
-
 100,4
-
 101,&#54616;&#54616;
-
 110,5
-
 111,6
-
 $ file test.csv
-
 test.csv: UTF-8 Unicode text</pre>
-
 It has eight lines: a header and seven rows of data. It has two columns: an ID column and a value column. The IDs are all three characters long. The values have some unicode: Korean characters for "ha ha". So of course Excel will have no problem opening this.
 
 <a href="screen-shot-2013-12-31-at-12-17-50-pm.png"><img class="aligncenter size-large wp-image-649" alt="excel window" src="screen-shot-2013-12-31-at-12-17-50-pm.png"></a>
@@ -69,15 +56,10 @@ Oh good - the Korean we typed in still appears in the sheet, but in the formula 
 <a href="http://img.pandawhale.com/42365-Wat-pigeon-jvWm.jpeg">wat</a>
 
 Things will look fine in the file though, certainly.
-
 <pre>$ wc tested.csv 
-
        0       8      51 tested.csv
-
 $ cat tested.csv 
-
 111,6$ e</pre>
-
 Now our CSV has zero lines, and confuses the heck out of bash. Good. What if we re-open the file in Excel?
 
 <a href="screen-shot-2013-12-31-at-12-48-59-pm.png"><img class="aligncenter size-large wp-image-655" alt="excel window" src="screen-shot-2013-12-31-at-12-48-59-pm.png"></a>

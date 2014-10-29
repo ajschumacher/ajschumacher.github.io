@@ -13,17 +13,11 @@ It's an exciting time! As Professor Baker says, "The data's all there, you just 
 There are two major societies in this field:
 
 <ul>
-
 	<li>
-
 <a href="http://www.educationaldatamining.org/">International Educational Data Mining Society</a>: Professor Baker leads this group. He describes it, in comparison to SoLAR, as more interested in
-
 automated analysis and things like making better automated interventions. (<a href="http://www.educationaldatamining.org/IEDMS/mailinglists">public email lists</a>)</li>
-
 	<li><span><a href="http://www.solaresearch.org/">Society for Learning Analytics Research</a>&#160;(SoLAR): Compared to IEDMS, this group is more interested in&#160;visualization and empowering educators to make decisions with analytics. (<a href="http://www.solaresearch.org/stay-in-touch/">public email list</a>) (<a href="https://twitter.com/SoLAResearch">twitter</a>)</span></li>
-
 </ul>
-
 Other interesting things:
 
 <a href="http://nces.ed.gov/surveys/sdds/">School District Demographics System</a>: Probably just the tip of the things-I-didn't know-were-on-the-<a href="http://nces.ed.gov/">NCES</a>-web-site <a href="https://www.google.com/search?hl=en&amp;site=&amp;tbm=isch&amp;source=hp&amp;biw=1174&amp;bih=780&amp;q=iceberg&amp;oq=iceberg&amp;gs_l=img.3..0l10.590.1552.0.1640.7.5.0.2.2.0.86.211.5.5.0...0.0...1ac.1.3.img.u9hVjcQN-s4">iceberg</a>. Neat interactive mapping and downloadable data sets by school districts.
@@ -45,17 +39,11 @@ Largely, it seems like the best ed tech follows the "<a href="http://dashes.com/
 Speaking of Assistments, apparently Science Assistments has spun off and switched to a much less memorable name.
 
 And finally, I found interesting an off-the-cuff top three of the kinds of things that Educational Data Mining studies. Here it is as I understood it:
-
 <ol>
-
 	<li><span>Knowledge modeling: "What do students know?"</span></li>
-
 	<li><span>Knowledge structure modeling: "What's the deal with these things we know?"</span></li>
-
 	<li><span>Emotion/engagement modeling: "How are students feeling?"</span></li>
-
 </ol>
-
 I'm pretty interested in number two, but they're all good. Looking forward to more talks at CUNY!
 
 

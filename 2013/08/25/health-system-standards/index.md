@@ -1,7 +1,6 @@
 # Health System Standards
 
 
-
 So I got to talking to a guy at a <a href="http://www.meetup.com/DC-Tech-Meetup/">DC Tech Meetup</a>, and I came to learn considerably more than I had previously known about standards for health technology data systems.
 
 Health Level Seven (<a href="http://www.hl7.org/">org</a>; <a href="http://en.wikipedia.org/wiki/Health_Level_7">wiki</a>;&#160;name from&#160;<a href="http://en.wikipedia.org/wiki/OSI_model">OSI</a>&#160;layer 7, the application layer)&#160;is the old guard in the field, it seems. They have standards for all sorts of medical information passing between systems, including something called a Clinical Document Architecture. Apparently version 2 is the most popular thing in the world, and the newer version 3 has not really taken off, perhaps as a result of bureaucracy and over-planning/feature creep. Which leads to:

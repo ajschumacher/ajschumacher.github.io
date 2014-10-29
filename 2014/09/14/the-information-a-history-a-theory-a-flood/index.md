@@ -1,7 +1,6 @@
 # The Information: a History, a Theory, a Flood
 
 
-
 This is a really good book.
 
 <a href="http://www.amazon.com/The-Information-History-Theory-Flood/dp/1400096235"><img class="aligncenter size-medium wp-image-969" src="the_information.jpg" alt="the_information"></a>

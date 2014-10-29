@@ -1,7 +1,6 @@
 # Include explicit assumption tests in analysis code
 
 
-
 Especially if you're doing analysis of any importance and especially if the analysis, once created, will be run again and again on new or otherwise updated data, you should write tests in the analysis code.
 
 In software engineering (see Martin's <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, among many possible references) there is the now-prevalent idea of testing: unit tests, Test-Driven Development (<a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD</a>), and so on. Some statistical languages (by which I mean R, and I'd be interested to hear of others) have unit test frameworks. R has <a href="http://cran.r-project.org/web/packages/RUnit/index.html">RUnit</a> and <a href="http://cran.r-project.org/web/packages/testthat/index.html">testthat</a> (see <a href="http://www.johnmyleswhite.com/notebook/2010/08/17/unit-testing-in-r-the-bare-minimum/">White's post</a> and this <a href="http://www.bioconductor.org/developers/unitTesting-guidelines/">bioconductor one</a>). Tests help you by making components of functionality more explicit and by&#160;giving you more confidence that your software is functional even when you make changes later with consequences that you might not notice otherwise.
@@ -21,45 +20,31 @@ Here are a couple examples of things you might test and how you could test them 
 1. Test that a data frame's column names are exactly what you think they are. This is especially important if you ever use column numbers to refer to data rather than the column names - and in general, you want to know about it if the data you're analyzing changes format at all; even if it's just the ordering of columns, it could accompany other changes that merit manual investigation.
 
 ```
-
 # check that the data has these three column names
-
 stopifnot(names(aDataFrame) == c("expectedColumn", "expectedColumn2", "expectedColumn3"))
-
 ```
 
 2. Test that a column (or columns) you think provide a unique identifier are actually all unique. This is&#160;<span>often&#160;</span><span>important when merging, and there are more checks you might use around merges to ensure what you get out matches what you're expecting.</span>
 
 ```
-
 # check that a vector has all unique values
-
 stopifnot(all(!duplicated(aVector)))
-
 # check that some columns have all unique rows
-
 stopifnot(all(!duplicated(aDataFrame[,c("aColumnName", "anotherColumnName")])))
-
 ```
 
 3. Often you'll assume that only certain values occur, which can lead to problems if you're wrong, or if you become wrong at some point in the future. Make your assumption explicit!
 
 ```
-
 # check that all values in a vector are one of three we're expecting
-
 stopifnot(all(aVector %in% c("possibleVal1", "possibleVal2", "possibleVal3")))
-
 ```
 
 4. There are occasions when you'll want to be sure that exactly one of several columns is set. (This check uses the fact that in R <code>TRUE</code> evaluates to <code>1</code> when adding.)
 
 ```
-
 # check that exactly one of three values is true everywhere
-
 stopifnot(all(vectorOne + vectorTwo + vectorThree == 1))
-
 ```
 
 Writing tests like these makes you articulate your assumptions more completely than you might otherwise, and the exercise of doing it can lead you to discover things you might otherwise have overlooked as well. If you think it couldn't possibly be worth checking something because it is so certain to be true, a substantial fraction of the time you'll find the most interesting surprises in your data when you do the check anyway. And when you re-run your analysis a month later and find that the new data doesn't behave like the old data, you'll be glad to find out right away and be able to update your analysis, rather than possibly relying on or even sharing results you don't yet know are faulty.

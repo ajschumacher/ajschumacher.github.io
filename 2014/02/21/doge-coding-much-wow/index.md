@@ -1,7 +1,6 @@
 # doge coding: much wow
 
 
-
 I have recently come across two more or less <a href="http://knowyourmeme.com/memes/doge">doge</a>-titled educational resources for coding. This definitely constitutes a trend.
 
 <a href="screen-shot-2014-02-21-at-8-36-59-pm.png"><img class="aligncenter size-full wp-image-803" alt="happy sun" src="screen-shot-2014-02-21-at-8-36-59-pm.png"></a>

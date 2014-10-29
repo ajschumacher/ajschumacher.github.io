@@ -1,7 +1,6 @@
 # Double pie chart re-design implemented!
 
 
-
 Back in October I <a href="http://planspace.org/2013/10/06/redesigning-a-double-pie-chart/">mocked up a re-design</a> for a pair of pie charts in connection with a <a href="http://www.dcactionforchildren.org/">DC Action for Children</a> project. I haven't been contributing to the project much since, but I was very excited to see that <a href="http://margoleesmith.com/">Margo Smith</a> got involved through <a href="http://www.datakind.org/">DataKind</a> and implemented (and improved!) my mock-up using <a href="http://d3js.org/">d3</a>. Currently the project is still in progress but <a href="http://margoleesmith.com/dc_action/">Margo's work</a> has already been <a href="http://nickmcclellan.github.io/dcaction/">incorporated</a>.
 
 The original double pie chart:

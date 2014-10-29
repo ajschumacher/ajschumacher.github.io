@@ -22,42 +22,28 @@
 <ol>
 <li>Test that a data frame's column names are exactly what you think they are. This is especially important if you ever use column numbers to refer to data rather than the column names - and in general, you want to know about it if the data you're analyzing changes format at all; even if it's just the ordering of columns, it could accompany other changes that merit manual investigation.</li>
 </ol>
-<pre><code>
-# check that the data has these three column names
-
-stopifnot(names(aDataFrame) == c("expectedColumn", "expectedColumn2", "expectedColumn3"))
-</code></pre>
+<pre><code># check that the data has these three column names
+stopifnot(names(aDataFrame) == c("expectedColumn", "expectedColumn2", "expectedColumn3"))</code></pre>
 
 <ol>
 <li>Test that a column (or columns) you think provide a unique identifier are actually all unique. This is&#160;<span>often&#160;</span><span>important when merging, and there are more checks you might use around merges to ensure what you get out matches what you're expecting.</span></li>
 </ol>
-<pre><code>
-# check that a vector has all unique values
-
+<pre><code># check that a vector has all unique values
 stopifnot(all(!duplicated(aVector)))
-
 # check that some columns have all unique rows
-
-stopifnot(all(!duplicated(aDataFrame[,c("aColumnName", "anotherColumnName")])))
-</code></pre>
+stopifnot(all(!duplicated(aDataFrame[,c("aColumnName", "anotherColumnName")])))</code></pre>
 
 <ol>
 <li>Often you'll assume that only certain values occur, which can lead to problems if you're wrong, or if you become wrong at some point in the future. Make your assumption explicit!</li>
 </ol>
-<pre><code>
-# check that all values in a vector are one of three we're expecting
-
-stopifnot(all(aVector %in% c("possibleVal1", "possibleVal2", "possibleVal3")))
-</code></pre>
+<pre><code># check that all values in a vector are one of three we're expecting
+stopifnot(all(aVector %in% c("possibleVal1", "possibleVal2", "possibleVal3")))</code></pre>
 
 <ol>
 <li>There are occasions when you'll want to be sure that exactly one of several columns is set. (This check uses the fact that in R <code>TRUE</code> evaluates to <code>1</code> when adding.)</li>
 </ol>
-<pre><code>
-# check that exactly one of three values is true everywhere
-
-stopifnot(all(vectorOne + vectorTwo + vectorThree == 1))
-</code></pre>
+<pre><code># check that exactly one of three values is true everywhere
+stopifnot(all(vectorOne + vectorTwo + vectorThree == 1))</code></pre>
 
 <p>Writing tests like these makes you articulate your assumptions more completely than you might otherwise, and the exercise of doing it can lead you to discover things you might otherwise have overlooked as well. If you think it couldn't possibly be worth checking something because it is so certain to be true, a substantial fraction of the time you'll find the most interesting surprises in your data when you do the check anyway. And when you re-run your analysis a month later and find that the new data doesn't behave like the old data, you'll be glad to find out right away and be able to update your analysis, rather than possibly relying on or even sharing results you don't yet know are faulty.</p>
 <p>A final note: People often say that they assume such-and-such is normally distributed, for regression and so on, and you might wonder how to check this. There are tests, such as the <a href="http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test">Shapiro-Wilk test</a> (<code>shapiro.test()</code> in R) but in practice I have never seen real data that Shapiro-Wilk would let you call normal. You're far better off disabusing yourself of the notion that anything is really normally distributed and either doing parametric work with this understanding or staying more descriptive and/or nonparametric. See also&#160;<a href="http://www.johndcook.com/blog/2010/08/11/what-distribution-does-my-data-have/">Cook's excellent exposition on distributions</a>.</p>

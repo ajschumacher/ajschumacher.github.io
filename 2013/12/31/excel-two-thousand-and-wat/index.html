@@ -15,29 +15,17 @@
 <p>Let's talk about Excel.</p>
 <p>Say we have a nice UTF-8 CSV file:</p>
 <pre>$ wc test.csv
-
        8       8      56 test.csv
-
 $ cat test.csv
-
 id,value
-
 001,1
-
 010,2
-
 01a,3
-
 100,4
-
 101,&#54616;&#54616;
-
 110,5
-
 111,6
-
 $ file test.csv
-
 test.csv: UTF-8 Unicode text</pre>
 
 <p>It has eight lines: a header and seven rows of data. It has two columns: an ID column and a value column. The IDs are all three characters long. The values have some unicode: Korean characters for "ha ha". So of course Excel will have no problem opening this.</p>
@@ -57,16 +45,12 @@ test.csv: UTF-8 Unicode text</pre>
 <p><a href="screen-shot-2013-12-31-at-12-40-13-pm.png"><img class="aligncenter size-large wp-image-654" alt="excel window" src="screen-shot-2013-12-31-at-12-40-13-pm.png"></a></p>
 <p>Oh good - the Korean we typed in still appears in the sheet, but in the formula bar now it's two empty boxes.</p>
 <p><a href="http://img.pandawhale.com/42365-Wat-pigeon-jvWm.jpeg">wat</a></p>
-<p>Things will look fine in the file though, certainly.</p>
-<pre>$ wc tested.csv
-
+<p>Things will look fine in the file though, certainly.
+<pre>$ wc tested.csv 
        0       8      51 tested.csv
-
 $ cat tested.csv 
-
 111,6$ e</pre>
-
-<p>Now our CSV has zero lines, and confuses the heck out of bash. Good. What if we re-open the file in Excel?</p>
+Now our CSV has zero lines, and confuses the heck out of bash. Good. What if we re-open the file in Excel?</p>
 <p><a href="screen-shot-2013-12-31-at-12-48-59-pm.png"><img class="aligncenter size-large wp-image-655" alt="excel window" src="screen-shot-2013-12-31-at-12-48-59-pm.png"></a></p>
 <p>The leading zeros we took pains to put back in are cleaned out again, and the Korean has been helpfully simplified to two underscores.</p>
 <p>But enough about failures to get the basics right. Let's talk about Excel.</p>

@@ -1,7 +1,6 @@
 # Rambling toward a definition of Big Data
 
 
-
 I was at <a href="http://www.bigdatacamp.org/ny/2013-10-27/">Big Data Camp</a> today and it made me think again about what Big Data is. Often this is phrased as "How big is big data?" and there are many answers. Sometimes the size issue is sidestepped to frame Big Data as related to structured vs. unstructured data rather than or in addition to raw size. There has been not quite a proliferation of contradictory definitions but at least a failure of one accepted definition to dominate.
 
 I offer that Big Data is Big in the literal sense, but as is so often the case it's a question of "big compared to what?". There are appropriate points of comparison, but they are not the same for every problem domain, which leads to apparently differing answers as to the size of Big Data. The appropriate point of comparison is the size of data that some existing tool can handle.

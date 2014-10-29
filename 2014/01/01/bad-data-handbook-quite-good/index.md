@@ -13,17 +13,11 @@ I like this book quite a lot. It's a collection of chapters by different authors
 The book closes with a "framework" for data quality, with these "four Cs":
 
 <ul>
-
 	<li>Complete</li>
-
 	<li>Coherent</li>
-
 	<li>Correct</li>
-
 	<li>aCcountable</li>
-
 </ul>
-
 It's not bad, this book. I'd recommend it to anyone who needs to work with data in the real world. I think there's room for even more theory and practice of data cleaning; I'd like to see an even better book yet!
 
 

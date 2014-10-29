@@ -5,19 +5,13 @@
 Evan Miller's well-known <a href="http://www.evanmiller.org/how-not-to-sort-by-average-rating.html">How Not To Sort By Average Rating</a>&#160;points out problems with ranking by "wrong solution #1" (by&#160;differences, upvotes minus downvotes) and&#160;"wrong solution #2" (by average ratings, upvotes divided by total votes). Miller's "correct solution" is to use the lower bound of a <a href="http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">Wilson score</a> confidence interval for a Bernoulli parameter. I think it would probably be better to use <a href="http://en.wikipedia.org/wiki/Additive_smoothing">Laplace smoothing</a>, because:
 
 <ul>
-
 	<li>Laplace smoothing is much easier</li>
-
 	<li>Laplace smoothing is not always&#160;negatively biased</li>
-
 </ul>
-
 This is the Wilson scoring formula given&#160;in Miller's post, which we'll use to get 95% confidence interval lower bounds:
 
 <a href="rating-equation.png"><img class="aligncenter size-full wp-image-918" src="rating-equation.png" alt="rating equation"></a>
-
 <blockquote>(Use minus where it says plus/minus to calculate the lower bound.) Here <em>p&#770;</em> is the <em>observed</em> fraction of positive ratings, <em>z</em><sub>&#945;/2</sub> is the (1-&#945;/2) quantile of the standard normal distribution, and <em>n</em> is the total number of ratings.</blockquote>
-
 Now here's the formula for doing <a href="http://mathbabe.org/2012/09/20/columbia-data-science-course-week-3-naive-bayes-laplace-smoothing-and-scraping-data-off-the-web/">Laplace smoothing</a> instead:
 
 (upvotes + $latex \alpha$) / (total votes + $latex \beta$)
@@ -29,133 +23,70 @@ The Laplace smoothing method is much simpler to calculate - there's no need for 
 Does it successfully solve the problems of "wrong solution #1" and "wrong solution #2"? First, the problem with "wrong solution #1", which we might summarize as "the problem with large sample sizes":
 
 <table>
-
 <tbody>
-
 <tr>
-
 <td></td>
-
 <td>upvotes</td>
-
 <td>downvotes</td>
-
 <td>wrong #1</td>
-
 <td>wrong #2</td>
-
 <td>Wilson</td>
-
 <td>Laplace</td>
-
 </tr>
-
 <tr>
-
 <td>first item</td>
-
 <td>209</td>
-
 <td>50</td>
-
 <td>159</td>
-
 <td>0.81</td>
-
 <td>0.7545</td>
-
 <td>0.80</td>
-
 </tr>
-
 <tr>
-
 <td>second item</td>
-
 <td>118</td>
-
 <td>25</td>
-
 <td>93</td>
-
 <td>0.83</td>
-
 <td>0.7546</td>
-
 <td>0.82</td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 All the methods&#160;agree except for "wrong solution #1" that the second item should rank higher.
 
 Then there's the problem with "wrong solution #2", which we might summarize as "the problem with small sample sizes":
-
 <table>
-
 <tbody>
-
 <tr>
-
 <td></td>
-
 <td>upvotes</td>
-
 <td>downvotes</td>
-
 <td>wrong #1</td>
-
 <td>wrong #2</td>
-
 <td>Wilson</td>
-
 <td>Laplace</td>
-
 </tr>
-
 <tr>
-
 <td>first item</td>
-
 <td>1</td>
-
 <td>0</td>
-
 <td>1</td>
-
 <td>1.0</td>
-
 <td>0.21</td>
-
 <td>0.67</td>
-
 </tr>
-
 <tr>
-
 <td>second item</td>
-
 <td>534</td>
-
 <td>46</td>
-
 <td>488</td>
-
 <td>0.92</td>
-
 <td>0.90</td>
-
 <td>0.92</td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 All the methods agree except for "wrong solution #2" that the second item should rank higher.
 
 How similar are the results for the Wilson method and&#160;the Laplace method overall? Take a look: here color encodes the score, with blue at 0.0, white at 0.5, and red at 1.0:

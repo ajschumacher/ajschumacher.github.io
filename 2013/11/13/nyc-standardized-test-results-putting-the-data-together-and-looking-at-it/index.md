@@ -11,15 +11,10 @@ The NYCDOE splits these results into a number of files. One division is charter 
 Getting all the data together requires downloading <a href="https://github.com/ajschumacher/NYCtests/tree/master/data">six Excel files</a> and <a href="https://github.com/ajschumacher/NYCtests/blob/master/code/combine.r">putting together</a> eight tables. I've done this, and <a href="https://github.com/ajschumacher/NYCtests/blob/master/data/all.csv">the result</a> is now available on github. I'm only looking at the average scores reported for whole grades, leaving for the moment the possibly interesting breakdowns by demographics like sex and race. I'm also ignoring the suppressed values that occur when a grade has five or fewer tested students. For whole grades, this shouldn't be too big a problem. (One exercise: recover suppressed average scores where possible by using class average and large component averages.) The data looks like this:
 
 <pre>"dbn"		"grade"	"year"	"subject"	"n"	"score"
-
 "01M015"	"3"	2006	"ELA"		37	651
-
 "01M015"	"3"	2007	"ELA"		33	635
-
 "01M015"	"3"	2008	"ELA"		39	646
-
 "01M015"	"3"	2009	"ELA"		33	644</pre>
-
 "DBN" (District Burough Number) is a unique identifier for each school. The original files contain school names as well.
 
 At this point we can check out the distribution of average scores in the two tests we have results for: ELA (English Language Arts) and Mathematics. Mathematics is up above because people like pictures. Click on either image to see the full-size version:

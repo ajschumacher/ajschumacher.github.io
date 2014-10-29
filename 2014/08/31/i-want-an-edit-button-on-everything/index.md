@@ -1,7 +1,6 @@
 # I want an edit button on everything
 
 
-
 My blog does not have an edit button for people who are not me. This means it takes a bunch of work to fix a typo, for example: you'd have to tell me about it, describing where the typo is, somehow, and then I would have to go find the spot, and make the change. In practice, this pretty much doesn't happen.
 
 Wikipedia has edit buttons on everything, and so does <a href="https://github.com/">github</a>. I'm not entirely sure what is best between allow-all-edits-immediately and require-review-for-all-edits. Some mix is also possible, I guess. Wikipedia has ways to lock down articles, and must have corresponding permission systems for who can do/undo that. Github lets you give other people full edit permissions, so you can spread the editor pool at least. Git by itself can support even more fine-grained control, I believe.

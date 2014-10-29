@@ -1,7 +1,6 @@
 # Peeps Be Askin' Me
 
 
-
 Peeps be all the time askin' me, what&#160;are the excellent tech/data things to do in DC? Where are the cool people to be found? What's good?
 
 Well look:

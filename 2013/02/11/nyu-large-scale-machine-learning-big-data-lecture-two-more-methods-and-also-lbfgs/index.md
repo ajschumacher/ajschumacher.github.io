@@ -1,7 +1,6 @@
 # NYU Large Scale Machine Learning (Big Data) Lecture Two: More Methods and also LBFGS
 
 
-
 [<a href="http://cilvr.cs.nyu.edu/doku.php?id=courses:bigdata:slides:start">Slides and video from the lectures are online!</a>]
 
 After being packed into room 101 for week one, the class has been relocated to the expansive 109, which is big enough that we have become "<a href="http://en.wikipedia.org/wiki/Sparse_matrix">sparse</a>" - and much more comfortable!

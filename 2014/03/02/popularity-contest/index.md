@@ -1,7 +1,6 @@
 # Popularity Contest
 
 
-
 As seems to happen when I have a lot to do, I got the itch this weekend to do something else. So I threw together a quick node app on heroku, using the twit module from npm and bootstrap with the superhero theme from bootswatch. It's at&#160;<a href="http://popular.herokuapp.com/">popular.herokuapp.com</a>, which I'm frankly amazed wasn't taken.
 
 It started as a sort of joke about social media analytics and the silliness of judging things by the noise on twitter, but it's actually pretty fun. Compare whatever you want to the current Bieber rate of 198,542 tweets per day! and so on.

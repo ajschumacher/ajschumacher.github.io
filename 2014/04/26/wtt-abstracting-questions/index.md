@@ -27,51 +27,30 @@ Just one more: There are also <a href="https://github.com/salex/Assessable">fram
 The kramdown (etc.) markdown extension for <a href="http://kramdown.gettalong.org/syntax.html#definition-lists">definition lists</a> seems like a candidate. Here's how it works:
 
 <pre>This is the "term".
-
 : This is the "definition".</pre>
-
 Get's rendered something like this, using the standard HTML definition list tags:
 
 <dl>
-
 <dt>This is the "term".</dt>
-
 <dd>This is the "definition".</dd>
-
 </dl>So let's say the term is the question, and the (possibly many) definitions are answer choices. Of course we could have a blank definition represent a text box (or text area):
-
 <pre>What do you think?
-
 :</pre>
-
 A multiple-choice survey could be as easy as this then:
-
 <pre>What's your favorite color?
-
 : red
-
 : blue
-
 : green</pre>
-
 To add correctness functionality, a little more syntax could be added:
-
 <pre>Sugar is sweet.
-
 : true*
-
 : false</pre>
-
 The idea here is that these text files would be rendered into interactive HTML/Javascript such that you wouldn't see which was the correct answer - you would select an answer, possibly have a submit button of some kind, and get feedback on whether your answer agreed with the one in the text. I do think that teacherly paranoia about "test security" is one thing that prevents good functionality from spreading much on the web. Nobody wants to share their oh-so-secret correct answers, lest the horrible children cheat. I think this perspective is a disease on society.
 
 Maybe this could be a short answer question:
-
 <pre>What is the capital city of Wisconsin?
-
 :
-
 Madison</pre>
-
 Of course you have the problems of evaluating text answers (Is "<code>Madison, WI</code>" also correct? etc.). Generally, there is of course an awful lot of functionality that you want from questions, and it may be hard to reduce it all down. Some things should be obvious: true and false is a special case of multiple choice. But other things like scoring, when/whether to show the correct answer, etc. seem difficult to abstract very far.
 
 The text questions could be rendered as stand-alone HTML/Javascript, or to connect with (or even be hosted on) some sort of web system. More details would have to be worked out.

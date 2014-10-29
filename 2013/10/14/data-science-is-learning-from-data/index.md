@@ -5,17 +5,11 @@
 There are a lot of unhelpful definitions of data science. To be a useful term, it needs a sensible meaning. This is what I mean by data science:
 
 <blockquote>Data science is learning from data.</blockquote>
-
 The check for whether you've just done data science is a two-part test:
-
 <ul>
-
 	<li>Did you use data?</li>
-
 	<li>Did you learn something?</li>
-
 </ul>
-
 In some ways then, data science is generalized science - science without a specific field. On the other hand, sometimes a data scientist may not develop the "experiments" that generate the data, and in this case data science corresponds more closely to a subset or specialization of scientific skills.
 
 An irate student of mine once argued that if data science is at all sensibly named, there should be hypotheses being tested. This often doesn't seem to be the case. I agree that the scientific method is a beautiful thing, but I also think that a lot of good science has been and continues to be observational. The reason for an expedition to Galapagos was never to test a hypothesis on the existence of the Blue-footed Booby, for example. Often there's much to be learned just in describing data.

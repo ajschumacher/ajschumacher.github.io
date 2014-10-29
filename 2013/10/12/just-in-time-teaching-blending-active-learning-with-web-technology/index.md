@@ -9,11 +9,8 @@ After <a href="http://andrewgelman.com/">Gelman</a>'s <a href="http://andrewgelm
 <span>The authors are at pains to make clear that despite the use of technology, the approach aims to "humanize instruction" and make learning more <a href="http://en.wikipedia.org/wiki/Constructivism_(philosophy_of_education)">constructivist</a>, more of a team endeavor, more interactive and personal. Before the first chapter runs this quote from Ruben Cubero:</span>
 
 <blockquote>As you enter a classroom ask yourself this question: If there were no students in the room, could I do what I am planning to do? If your answer to the question is yes, don't do it.</blockquote>
-
 There's emphasis on the learning of the instructor - learning what the students know and don't know, what their needs are, and so on. This is the "Just-in-Time" of the approach: changing how you teach on the basis of what you learn about your students in the hours leading up to a class session. The approach is one of the best answers I've seen to the question of differentiation, which often jumps prematurely to "How do you accommodate your students' needs?" before handling "How do you know what your students' needs are?" This quote appears in a footnote:
-
 <blockquote>"Thinking in terms of how much the student is learning as opposed to how much material has been presented is a fundamental and necessary shift in perspective" [Sutherland and Bonwell, 1996, p. 32].</blockquote>
-
 Differentiation also comes through the flexibility and extensibility of a wide range of good questions and activities, including open-ended essay questions.
 
 I came to reflect on the incredible importance of great questions. It's made me reconceptualize what a teacher is: a collector and sharer of truly great questions. (The level of thought required to come up with great questions is considerable - see&#160;<a href="http://en.wikipedia.org/wiki/Lesson_study">Lesson Study</a>, as in&#160;<a href="http://www.amazon.com/The-Teaching-Gap-Improving-Education/dp/1439143137">Stigler &amp; Hiebert</a>.) Novak et al. emphasize also <a href="http://en.wikipedia.org/wiki/Fermi_problem">Fermi problems</a>&#160;- fun estimation problems that make you think flexibly. "How many ping-pong balls fit in a 747?" and so on. They link to <a href="http://www.physics.umd.edu/perg/fermi/fermi.htm">this list</a>.
@@ -21,23 +18,17 @@ I came to reflect on the incredible importance of great questions. It's made me 
 The approach also accesses students' prior knowledge, builds interest, and of course also hopes to encourage more students to actually do assigned readings. It aims to create shorter feedback loops and encourage students to ask questions in class and in office hours who might otherwise not. Each short assignment includes a comment box that invites students to add thoughts or questions that they might otherwise think were not welcome. There's also a focus on fostering problem-solving skills, and some of the questions that the authors suggest teachers might ask are reminiscent of <a href="http://planspace.org/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/">Polya</a>.
 
 The authors recommend a good deal of essay and short answer questions, but they do have some interesting thoughts on formative rather than summative multiple-choice questions as well:
-
 <blockquote>In many instances, multiple-choice questions are the most concise way to induce a fruitful discussion. Unlike the essay or estimate formats, a multiple-choice question can point out the richness of a physical situation and drive students to consider many possibilities. Furthermore, because it is possible to include choices that "sound good" but play to students' misconceptions, these questions can be used to lay traps that students would resent on a test but will remember in the classroom.
 
 These questions are excellent discussion starters. The richness of the situation can be explored by considering what is wrong with each of the incorrect choices. Further discussions arise from considering the conditions under which each choice could be correct. Choices that are based on common misconceptions are particularly valuable.</blockquote>
-
 And even for more flexible question types, the authors note that:
-
 <blockquote>Although such questions are rich in possibilities, they require only a minimal user interface.</blockquote>
-
 <span>Some of the authors recommend pre-class web assignments with three questions: an essay question to be answered in three to four sentences, an estimation question with a short answer, and a multiple-choice question. Other authors offer an approach with just three to five questions that test concepts from the reading assignment. Both have some connection to a reading assignment, but the latter is more evaluative and might be graded on correctness, while the authors in the main seem to recommend grading on completion/effort rather than correctness for these pre-class activities.</span>
 
 The authors make very clear that they mean their pre-assignments to drive the whole class; they do not stand alone. They emphasize sharing and discussing anonymized, perhaps even edited student responses during the class session, pointing out that if feedback is positive this can help drive engagement and a feeling of involvement for all students. Several times the authors also recommend individual instructor feedback outside of class time, for example contacting individual students who have not submitted work or helping students who have particular questions that don't fit into the class session. As they point out, the use of technology in the JiTT process is not for the purpose of reducing the amount of time that instructors need to devote to their classes.
 
 This passage is interesting - the authors are writing in 1999, but the concept is still only now being implemented by the likes of <a href="https://www.khanacademy.org/exercisedashboard">Khan Academy</a> and <a href="http://www.knewton.com/">Knewton</a>. Remember, this was written back when XMLHttpRequest was a new ActiveX object in IE 5:
-
 <blockquote>A Web page link leads a student to a CGI that creates a login page if the student has not been previously authenticated. The student fills in identifying information (perhaps authenticating with a password), and the Submit button then takes the student to a CGI, which creates an assignment tailored to that student. That CGI may look up questions selected from a database, modify the selection based on the student's history, and personalize some elements of the question. The student receives the page and responds to the questions, and on submitting the form, a CGI records the answers and creates a page of appropriate feedback.</blockquote>
-
 I think this is still an exciting idea. I'd like to see more of the JiTT philosophy flourishing across all levels and fields of education. For all the good, I do have some gripes with the book and how things have developed since its publication, which I'll leave down below. Feel free to not read them!
 
 <strong>A&#8594;A</strong>
@@ -47,21 +38,13 @@ I think this is still an exciting idea. I'd like to see more of the JiTT philoso
 Gripes:
 
 <ul>
-
 	<li>So old: Refers in the forward to "SME&amp;T disciplines". (Gosh, how did that great initialism lose out to <a href="http://en.wikipedia.org/wiki/STEM_fields">STEM</a>?) Other strange phrases:&#160;Integrated Development&#160;<em>Editors</em>? (Were they not Environments back then?)&#160;"Internet shopping market"??? And just using "World Wide Web" all the time.</li>
-
 	<li>So old but I love it: <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> is introduced as being like <a href="http://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>. <a href="http://en.wikipedia.org/wiki/Perl">Perl</a> and <a href="http://en.wikipedia.org/wiki/Hypercard">HyperCard</a> are the languages of choice for writing <a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface">CGI</a> programs. Takes me back.</li>
-
 	<li>So old: They bet pretty heavily on <a href="http://en.wikipedia.org/wiki/Java_applet">Java Applets</a> being the wave of the future. Oops.</li>
-
 	<li>DIY = no implementation: The authors basically say you should run your own web server on your personal computer and write your own CGI scripts to implement what they're suggesting. They do point out that you could theoretically do it all through email alone (!) but the likelihood of anyone doing that is similarly low. The idea of making a tool that everyone could take advantage of doesn't seem to have occurred to anyone, with the exception of the following, which isn't really a JiTT system.</li>
-
 	<li>Gone corporate: The authors mention WWWAssign, which was apparently freely available online back then. More interestingly, they write on page 162: "We are currently writing a new version, WebAssign, which will be available in both free and commercial versions." Today I see no traces of WWWAssign, but <a href="http://webassign.net/">WebAssign</a> has become a fairly substantial company. There doesn't seem to be a version that is free in any meaningful sense. The facebook <a href="https://www.facebook.com/pages/I-Hate-Webassign/137303309566">page</a> for hating WebAssign also may suggest that WebAssign didn't end up with the pedagogical perspective that JiTT aspires to.</li>
-
 	<li>Abandoned by publisher: Currently <a href="http://www.pearsonhighered.com/pearsonhigheredus/educator/product/products_detail.page?isbn=0130850349">unavailable</a>&#160;for $52.40 from <a href="http://home.pearsonhighered.com/">Pearson Higher Ed</a>. (You can't even reach the <a href="http://www.prenhall.com">Prentice Hall site</a> on the cover.) It's $44.26 from <a href="http://www.amazon.com/Just-In-Time-Teaching-Blending-Learning-Technology/dp/0130850349/">Amazon</a>. The printing/binding suggest it should cost perhaps $7. A note in the preface seems to suggest the book might have come to exist only at the urgings of Prentice Hall, but there doesn't seem to have been any continuing support. True, it's been a while since 1999, but today if you visit the book's URL as listed in the book you get an ancient Prentice Hall site for a <em>different</em> book called "<a href="http://prenhall.com/allbooks/esm_0130850349.html">Developing Professional Applications for Windows 98 and NT Using MFC</a>". How does that happen? Closed-minded academic publishing focused on profit and obsessed with copyright may have contributed to the failure of good ideas to thrive: None of the example questions can be re-distributed, and an entire chapter of questions cannot be used <em>at all</em>, even in individual classrooms, without the written consent of the publisher. I've never seen a place where a good <a href="http://creativecommons.org/">Creative Commons</a> license was so badly needed. The <a href="http://prenhall.com/giancoli">page</a> for textbooks with JiTT that so needed copyright protection now has two (out of three) working textbook links, none of which seem to have the materials promised.</li>
-
 	<li>The image below appeared in my browser <em>today (</em>2013-10-12). <em>What happened</em>? This is a <a href="http://www.youtube.com/watch?v=Gb4eZ7Z5yk8">Planet of the Apes</a> moment for me:</li>
-
 </ul>
 
 <a href="http://webphysics.davidson.edu/"><img class="aligncenter  wp-image-412" alt="relic of the past" src="screen-shot-2013-10-12-at-3-44-29-pm.png"></a>
