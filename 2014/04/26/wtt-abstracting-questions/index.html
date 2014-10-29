@@ -11,68 +11,63 @@
     <article>
 <h1>Writing to think: Questions on the web</h1>
 <p class="date">Saturday April 26, 2014</p>
-<div>
-<p>I have made <a href="http://www.naldaramjui.com/TOPIK">some</a> <a href="http://mcasta.net/">things</a> online that involve "asking and answering questions" in the traditional multiple-choice-test way. I built the software to do that (with <a href="https://www.python.org/">Python</a> on&#160;<a href="https://developers.google.com/appengine/">Google App Engine</a>, again differently with <a href="http://nodejs.org/">node.js</a> on <a href="https://www.heroku.com/">Heroku</a>) both times.<br>
-<br>
-Is there any "built in" web element for questions and answers of the types I'm thinking of? There are <a href="http://www.w3schools.com/html/html_forms.asp">HTML forms</a>. HTML forms provide pretty much flexibility, and even start to have some functionality for different question structures - radio buttons for a single choice vs. checkboxes for multiple selections. But HTML forms, being just HTML, have pretty clear limits. Javascript can add some more functionality, and then eventually you need a web server backend of some kind to support more.<br>
-<br>
-There are web services like <a href="http://www.google.com/google-d-s/createforms.html">Google Forms</a> and <a href="https://www.surveymonkey.com/">SurveyMonkey</a>, and the very task-specific <a href="http://doodle.com/">Doodle</a>, which take all of HTML/Javascript/backend and run it all for you. This means that the available functionality is whatever they provide, everything is hosted by them, and as far as I know there is little or no mechanism for creating things outside of their web GUIs.<br>
-<br>
-The popular services just mentioned mostly collect information without any feedback; when you want to have a "correct" answer there isn't much functionality. Where is a good existing solution? There's internet detritus like <a href="http://makeaquiz.net/">MakeaQuiz.net</a>. There's <a href="http://quizlet.com/">Quizlet</a>, which seems pretty neat but also isolated perhaps by its attempt to chase education spending. (It also supports, like most education sites, an unhealthy distinction between student and teacher.)<br>
-<br>
-The desire for profit seems to poison projects that could otherwise have a broader positive effect. Projects affiliated with the <a href="http://planspace.org/2013/10/08/just-in-time-teaching-jitt-very-cool-but-hamstrung-by-lousy-name-and-lack-of-implementation/">very</a> <a href="http://planspace.org/2013/10/12/just-in-time-teaching-blending-active-learning-with-web-technology/">cool</a> JiTT methodology disappeared into&#160;<a href="http://webassign.net/">companies</a>. I'm not even sure what sort of&#160;thinking led to the closing of the Khan Academy source.<br>
-<br>
-But it isn't just the profit motive that keeps question-and-answer technology balkanized; there's no real standard, and I don't think it's very easy to come up with one. The systems I built aren't easily transferred anywhere for use by others, for example. This is my fault, but I also don't think it's a very easy thing to design.<br>
-<br>
-There are some attempts at standards for questions, at least. <a href="http://www.blackboard.com/">BlackBoard</a> <a href="http://help.blackboard.com/en-us/Learn/9.1_SP_10_and_SP_11/Instructor/070_Tests_Surveys_Pools/106_Uploading_Questions">has a way</a> to load questions from some tab-delimited formats. <a href="http://moodle.com/">Moodle</a> has something called <a href="http://en.wikipedia.org/wiki/GIFT_(file_format)">GIFT</a>. There's the <a href="http://en.wikipedia.org/wiki/QTI">Question and Test Interoperability</a> spec, which is such a huge mess you need to employ a <a href="http://officesupplygeek.com/wp-content/uploads/2010/06/MiltonStapler.jpg">stapler guy</a> to support it. And there's something called <a href="http://en.wikipedia.org/wiki/Question_Object_File_Format">QUOX</a>. Oh my.<br>
-<br>
-And&#160;these are all purely for <em>assessment</em>, where earlier there were some purely for <em>survey</em>/data collection. It seems to me that they shouldn't be so different. Fundamentally isn't it all just questions?<br>
-<br>
-Another take on this, I suppose, is sites like <a href="http://stackoverflow.com/">Stack Overflow</a>, which represent a different sort of questioning. And there is&#160;<a href="http://www.osqa.net/">OSQA</a>, "the Open Source Q&amp;A system", which is cool. You could run that on your server, or for that matter run Moodle, or some survey platform, most likely. So that's also another delivery model: the run-your-own-server-with-pre-built-software model. A lot of setup/maintenance overhead, and still not a lot of interoperability as far as I can tell. (OSQA is also available <a href="http://ianswer.me/">hosted</a>.)<br>
-<br>
-Just one more: There are also <a href="https://github.com/salex/Assessable">frameworks</a> for building assessments, which try to generalize while still providing some structure. I was happy to find out about the one linked, for <a href="http://rubyonrails.org/">Rails</a>; I don't know if there are others or if any are widely used.<br>
-<br>
-<a href="https://daringfireball.net/projects/markdown/">Markdown</a> is pretty much the best thing ever. (Note to self: get off wordpress...) Can we come up with a markdown solution to the question problem? Something super light-weight, that blends easily into text files that humans would actually write...<br>
-<br>
-The kramdown (etc.) markdown extension for <a href="http://kramdown.gettalong.org/syntax.html#definition-lists">definition lists</a> seems like a candidate. Here's how it works:<br>
-</p>
+<p>I have made <a href="http://www.naldaramjui.com/TOPIK">some</a> <a href="http://mcasta.net/">things</a> online that involve "asking and answering questions" in the traditional multiple-choice-test way. I built the software to do that (with <a href="https://www.python.org/">Python</a> on&#160;<a href="https://developers.google.com/appengine/">Google App Engine</a>, again differently with <a href="http://nodejs.org/">node.js</a> on <a href="https://www.heroku.com/">Heroku</a>) both times.</p>
+<p>Is there any "built in" web element for questions and answers of the types I'm thinking of? There are <a href="http://www.w3schools.com/html/html_forms.asp">HTML forms</a>. HTML forms provide pretty much flexibility, and even start to have some functionality for different question structures - radio buttons for a single choice vs. checkboxes for multiple selections. But HTML forms, being just HTML, have pretty clear limits. Javascript can add some more functionality, and then eventually you need a web server backend of some kind to support more.</p>
+<p>There are web services like <a href="http://www.google.com/google-d-s/createforms.html">Google Forms</a> and <a href="https://www.surveymonkey.com/">SurveyMonkey</a>, and the very task-specific <a href="http://doodle.com/">Doodle</a>, which take all of HTML/Javascript/backend and run it all for you. This means that the available functionality is whatever they provide, everything is hosted by them, and as far as I know there is little or no mechanism for creating things outside of their web GUIs.</p>
+<p>The popular services just mentioned mostly collect information without any feedback; when you want to have a "correct" answer there isn't much functionality. Where is a good existing solution? There's internet detritus like <a href="http://makeaquiz.net/">MakeaQuiz.net</a>. There's <a href="http://quizlet.com/">Quizlet</a>, which seems pretty neat but also isolated perhaps by its attempt to chase education spending. (It also supports, like most education sites, an unhealthy distinction between student and teacher.)</p>
+<p>The desire for profit seems to poison projects that could otherwise have a broader positive effect. Projects affiliated with the <a href="http://planspace.org/2013/10/08/just-in-time-teaching-jitt-very-cool-but-hamstrung-by-lousy-name-and-lack-of-implementation/">very</a> <a href="http://planspace.org/2013/10/12/just-in-time-teaching-blending-active-learning-with-web-technology/">cool</a> JiTT methodology disappeared into&#160;<a href="http://webassign.net/">companies</a>. I'm not even sure what sort of&#160;thinking led to the closing of the Khan Academy source.</p>
+<p>But it isn't just the profit motive that keeps question-and-answer technology balkanized; there's no real standard, and I don't think it's very easy to come up with one. The systems I built aren't easily transferred anywhere for use by others, for example. This is my fault, but I also don't think it's a very easy thing to design.</p>
+<p>There are some attempts at standards for questions, at least. <a href="http://www.blackboard.com/">BlackBoard</a> <a href="http://help.blackboard.com/en-us/Learn/9.1_SP_10_and_SP_11/Instructor/070_Tests_Surveys_Pools/106_Uploading_Questions">has a way</a> to load questions from some tab-delimited formats. <a href="http://moodle.com/">Moodle</a> has something called <a href="http://en.wikipedia.org/wiki/GIFT_(file_format)">GIFT</a>. There's the <a href="http://en.wikipedia.org/wiki/QTI">Question and Test Interoperability</a> spec, which is such a huge mess you need to employ a <a href="http://officesupplygeek.com/wp-content/uploads/2010/06/MiltonStapler.jpg">stapler guy</a> to support it. And there's something called <a href="http://en.wikipedia.org/wiki/Question_Object_File_Format">QUOX</a>. Oh my.</p>
+<p>And&#160;these are all purely for <em>assessment</em>, where earlier there were some purely for <em>survey</em>/data collection. It seems to me that they shouldn't be so different. Fundamentally isn't it all just questions?</p>
+<p>Another take on this, I suppose, is sites like <a href="http://stackoverflow.com/">Stack Overflow</a>, which represent a different sort of questioning. And there is&#160;<a href="http://www.osqa.net/">OSQA</a>, "the Open Source Q&amp;A system", which is cool. You could run that on your server, or for that matter run Moodle, or some survey platform, most likely. So that's also another delivery model: the run-your-own-server-with-pre-built-software model. A lot of setup/maintenance overhead, and still not a lot of interoperability as far as I can tell. (OSQA is also available <a href="http://ianswer.me/">hosted</a>.)</p>
+<p>Just one more: There are also <a href="https://github.com/salex/Assessable">frameworks</a> for building assessments, which try to generalize while still providing some structure. I was happy to find out about the one linked, for <a href="http://rubyonrails.org/">Rails</a>; I don't know if there are others or if any are widely used.</p>
+<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> is pretty much the best thing ever. (Note to self: get off wordpress...) Can we come up with a markdown solution to the question problem? Something super light-weight, that blends easily into text files that humans would actually write...</p>
+<p>The kramdown (etc.) markdown extension for <a href="http://kramdown.gettalong.org/syntax.html#definition-lists">definition lists</a> seems like a candidate. Here's how it works:</p>
 <pre>This is the "term".
-: This is the "definition".</pre>
-<br>
-Get's rendered something like this, using the standard HTML definition list tags:<br>
-<br>
-<dl>
-<dt>This is the "term".</dt>
-<dd>This is the "definition".</dd>
-</dl>So let's say the term is the question, and the (possibly many) definitions are answer choices. Of course we could have a blank definition represent a text box (or text area):<br>
-<pre>What do you think?
-:</pre>
-<br>
-A multiple-choice survey could be as easy as this then:<br>
-<pre>What's your favorite color?
-: red
-: blue
-: green</pre>
-<br>
-To add correctness functionality, a little more syntax could be added:<br>
-<pre>Sugar is sweet.
-: true*
-: false</pre>
-<br>
-The idea here is that these text files would be rendered into interactive HTML/Javascript such that you wouldn't see which was the correct answer - you would select an answer, possibly have a submit button of some kind, and get feedback on whether your answer agreed with the one in the text. I do think that teacherly paranoia about "test security" is one thing that prevents good functionality from spreading much on the web. Nobody wants to share their oh-so-secret correct answers, lest the horrible children cheat. I think this perspective is a disease on society.<br>
-<br>
-Maybe this could be a short answer question:<br>
-<pre>What is the capital city of Wisconsin?
-:
-Madison</pre>
-<br>
-Of course you have the problems of evaluating text answers (Is "<code>Madison, WI</code>" also correct? etc.). Generally, there is of course an awful lot of functionality that you want from questions, and it may be hard to reduce it all down. Some things should be obvious: true and false is a special case of multiple choice. But other things like scoring, when/whether to show the correct answer, etc. seem difficult to abstract very far.<br>
-<br>
-The text questions could be rendered as stand-alone HTML/Javascript, or to connect with (or even be hosted on) some sort of web system. More details would have to be worked out.<br>
-<br>
-The illustrious <a href="https://github.com/ramnathv">Ramnath</a>, who always seems to be doing cool things several years before I know about them, has <a href="https://github.com/ramnathv/mgcr271/issues/6">thought</a> <a href="https://github.com/ramnathv/mgcr271/issues/36">about</a> this markdown question idea to some degree. I want to find out more about what he's done.<br>
-</div>
 
+: This is the "definition".</pre>
+
+<p>Get's rendered something like this, using the standard HTML definition list tags:</p>
+<dl>
+
+<dt>This is the "term".</dt>
+
+<dd>This is the "definition".</dd>
+
+</dl>
+
+<p>So let's say the term is the question, and the (possibly many) definitions are answer choices. Of course we could have a blank definition represent a text box (or text area):</p>
+<pre>What do you think?
+
+:</pre>
+
+<p>A multiple-choice survey could be as easy as this then:</p>
+<pre>What's your favorite color?
+
+: red
+
+: blue
+
+: green</pre>
+
+<p>To add correctness functionality, a little more syntax could be added:</p>
+<pre>Sugar is sweet.
+
+: true*
+
+: false</pre>
+
+<p>The idea here is that these text files would be rendered into interactive HTML/Javascript such that you wouldn't see which was the correct answer - you would select an answer, possibly have a submit button of some kind, and get feedback on whether your answer agreed with the one in the text. I do think that teacherly paranoia about "test security" is one thing that prevents good functionality from spreading much on the web. Nobody wants to share their oh-so-secret correct answers, lest the horrible children cheat. I think this perspective is a disease on society.</p>
+<p>Maybe this could be a short answer question:</p>
+<pre>What is the capital city of Wisconsin?
+
+:
+
+Madison</pre>
+
+<p>Of course you have the problems of evaluating text answers (Is "<code>Madison, WI</code>" also correct? etc.). Generally, there is of course an awful lot of functionality that you want from questions, and it may be hard to reduce it all down. Some things should be obvious: true and false is a special case of multiple choice. But other things like scoring, when/whether to show the correct answer, etc. seem difficult to abstract very far.</p>
+<p>The text questions could be rendered as stand-alone HTML/Javascript, or to connect with (or even be hosted on) some sort of web system. More details would have to be worked out.</p>
+<p>The illustrious <a href="https://github.com/ramnathv">Ramnath</a>, who always seems to be doing cool things several years before I know about them, has <a href="https://github.com/ramnathv/mgcr271/issues/6">thought</a> <a href="https://github.com/ramnathv/mgcr271/issues/36">about</a> this markdown question idea to some degree. I want to find out more about what he's done.</p>
 <p><em>This post was originally hosted elsewhere.</em></p>    </article>
     <footer>
       <hr />

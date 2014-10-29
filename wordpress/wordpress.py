@@ -5,27 +5,21 @@ from lxml import etree
 from lxml import html
 import urllib
 import os
+import re
 
 
 def process_wordpress(content):
     lines = content.split('\n')
     new_lines = list()
-    in_code = False
     for line in lines:
         if '[code' in line:
             new_lines.append('```')
-            in_code = True
             continue
         if '[/code' in line:
             new_lines.append('```')
-            in_code = False
             continue
-        if '<pre>' in line:
-            in_code = True
-        if '</pre>' in line:
-            in_code = False
-        if not in_code:
-            line = line.rstrip() + '<br />'
+        line = line.replace('<p>', '\n')
+        line = line.replace('</p>', '\n')
         new_lines.append(line)
     return '\n'.join(new_lines)
 
@@ -95,6 +89,11 @@ for post in posts:
                 urllib.urlretrieve(displayed_src, displayed_filename)
             img.attrib['src'] = displayed_filename
     content = html.tostring(tree, pretty_print=True)
+    content = content.replace('<p>', '\n')
+    content = content.replace('</p>', '\n')
+    content = content.replace('<div>', '\n')
+    content = content.replace('</div>', '\n')
+    content = re.sub('\n+', '\n\n', content)
     with codecs.open(path + 'index.md', 'w', encoding='utf-8') as f:
         f.write('# ' + title + '\n\n')
         f.write(content + '\n\n')
