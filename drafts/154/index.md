@@ -1,6 +1,6 @@
 # Sum of Squares: from Definitional to Computational Formula
 
-
+drafted 2014-08-17 (?)
 
 In introductory statistics the Sum of Squares $latex SS$, implicitly the sum of the squared deviations from the mean, is taught early on along with variance and standard deviation. Often a "definitional" and "computational" formula are introduced in rapid succession. Especially for folks who aren't terribly comfortable with math notation, this can be confusing. I will explain what's going on.
 
@@ -27,7 +27,3 @@ http://www.une.edu.au/WebStat/unit_materials/c4_descriptive_statistics/sums_of_s
 http://www.une.edu.au/WebStat/unit_materials/c4_descriptive_statistics/sums_of_squares.htm
 
 http://www.psych.utoronto.ca/courses/c1/chap11/chap11.html
-
-
-
-*This post was originally hosted elsewhere.*

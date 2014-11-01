@@ -1,5 +1,6 @@
 # NYU Large Scale Machine Learning (Big Data) Lecture Three: Online Non-Linear/Non-Convex Models, and Boosted Decision Trees
 
+drafted 2013-02-17
 
 Yann:
 
@@ -228,7 +229,3 @@ not really getting at "deeper structure" perhaps???
 linear appropriate for only particularly well-selected (constructed?)
 features, or perhaps computational linguistics where bag of words is
 pretty good apparently - dealing with non-linearity is hard
-
-
-
-*This post was originally hosted elsewhere.*
