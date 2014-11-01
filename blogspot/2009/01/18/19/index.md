@@ -1,5 +1,7 @@
 # Explaining Past Tense in Korean to Mee Hee
 
+drafted 2009-01-18
+
 <div>
 <h5 class="other"><a href="http://www.facebook.com/profile.php?id=652988588">Mee</a></h5>
 <p class="p_other pic_padding">&#50504;&#45397;</p>
@@ -80,6 +82,3 @@
 <h5 class="self"> <span class="time_stamp ts_self">11:54pm</span>Aaron</h5>
 <p class="p_self pic_padding">&#47566;&#51060; &#51080;&#50612;&#50836;</p>
 </div>
-
-
-*This post was originally hosted [elsewhere](http://planspace.blogspot.com/2009/01/19.html).*
