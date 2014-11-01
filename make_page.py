@@ -104,6 +104,9 @@ def make_page(filename):
     start = file_or_bust(calling_dir, 'header.html')
     start = start.replace('HEAD_TITLE', title)
     end = file_or_bust(calling_dir, 'footer.html')
+    if slides:
+        slides_loader = file_or_bust(calling_dir, 'slides_loader.html')
+        body = body + slides_loader
     plain_html = start + header + body + end
     return plain_html, slides_html
 
