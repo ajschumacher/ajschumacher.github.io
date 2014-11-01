@@ -3,7 +3,6 @@
 I'm setting up a new blog here. Currently in the process of checking I don't need anything at the current [planspace.org](http://planspace.org/) host any more.
 
  * 2014-10-23: [JSON-stat and rjstat](/20141023-rjstat_lightning/)
- * [Projects](/projects/)
  * 2014-10-04: [Excellent tech/data things to do in DC](/2014/10/04/peeps-be-askin-me/)
  * 2014-09-21: [Scraping GNU Mailman Pipermail Email List Archives](/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/)
  * 2014-09-14: [The Information: a History, a Theory, a Flood](/2014/09/14/the-information-a-history-a-theory-a-flood/)
