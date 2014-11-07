@@ -1,6 +1,6 @@
 # plan <span class="shake shake-slow">➔</span> space
 
-I'm setting up a new blog here. Currently in the process of checking I don't need anything at the current [planspace.org](http://planspace.org/) host any more.
+Hello, I'm [Aaron](/aaron/) and these are some things that I've written.
 
  * 2014-11-01: [Functional Javascript is](/20141101-functional_javascript)
  * 2014-10-23: [JSON-stat and rjstat](/20141023-rjstat_lightning/)
