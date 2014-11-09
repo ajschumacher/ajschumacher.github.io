@@ -21,4 +21,4 @@ And there will be even more good stuff coming soon... to the future!
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/06/19/wrap-up-from-dc-hack-and-tell-3/).*

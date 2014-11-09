@@ -49,4 +49,4 @@ This is not a difficult proof at all, but for many people the result feels very 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/23/bayes-rule-for-ducks/).*

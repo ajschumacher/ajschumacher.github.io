@@ -17,4 +17,4 @@ Thank you, <a href="http://www.bigdatacamp.org/ny/2013-10-27/">Big Data Camp</a>
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/27/rambling-toward-a-definition-of-big-data/).*

@@ -24,4 +24,4 @@ I can't think of a way for the above to be a good result for anybody, aside from
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/19/nyc-standardized-test-results-changes-in-average-scores-for-school-grades-and-cohorts/).*

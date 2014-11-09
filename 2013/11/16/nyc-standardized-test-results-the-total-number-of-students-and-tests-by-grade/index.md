@@ -18,4 +18,4 @@ One more comment on these lower panel graphs: it might not be really appropriate
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/16/nyc-standardized-test-results-the-total-number-of-students-and-tests-by-grade/).*

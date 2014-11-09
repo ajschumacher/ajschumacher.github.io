@@ -45,4 +45,4 @@ Okay! I'm not going to update everything up above. The graphs would look almost 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/17/nyc-standardized-test-results-normalizing-the-distributions-of-average-scores/).*

@@ -12,4 +12,4 @@ Another interesting tendency is that a lot of people consume a lot of caffeine, 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/19/daily-rituals-is-sort-of-inspiring/).*

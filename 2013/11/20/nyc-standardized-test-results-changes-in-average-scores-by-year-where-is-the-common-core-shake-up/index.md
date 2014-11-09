@@ -16,4 +16,4 @@ Still nope. If anything, the 2013 results resembled the 2012 results more than o
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/20/nyc-standardized-test-results-changes-in-average-scores-by-year-where-is-the-common-core-shake-up/).*

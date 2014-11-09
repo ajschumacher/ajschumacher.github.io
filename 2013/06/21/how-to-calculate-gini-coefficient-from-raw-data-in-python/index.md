@@ -22,4 +22,4 @@ To me this is fairly readable and maps nicely to the mental picture of adding up
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/06/21/how-to-calculate-gini-coefficient-from-raw-data-in-python/).*

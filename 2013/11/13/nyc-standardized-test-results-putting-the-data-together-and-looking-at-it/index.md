@@ -31,4 +31,4 @@ Since the vertical axes are the same within each figure, you can try to judge to
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/13/nyc-standardized-test-results-putting-the-data-together-and-looking-at-it/).*

@@ -28,4 +28,4 @@ Let us go forth and learn about the world.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/14/data-science-is-learning-from-data/).*

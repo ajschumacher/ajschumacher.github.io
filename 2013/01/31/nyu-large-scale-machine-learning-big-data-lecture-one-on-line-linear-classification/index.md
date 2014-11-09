@@ -75,4 +75,4 @@ Very good stuff! I'm definitely looking forward to next week.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/01/31/nyu-large-scale-machine-learning-big-data-lecture-one-on-line-linear-classification/).*

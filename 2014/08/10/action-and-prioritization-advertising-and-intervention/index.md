@@ -23,4 +23,4 @@ I think we need to work more on actions. We need to develop solutions that do no
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/08/10/action-and-prioritization-advertising-and-intervention/).*

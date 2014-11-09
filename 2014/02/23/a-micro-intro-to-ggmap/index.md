@@ -91,4 +91,4 @@ This document is also <a href="http://rpubs.com/ajschumacher/13583">available on
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/23/a-micro-intro-to-ggmap/).*

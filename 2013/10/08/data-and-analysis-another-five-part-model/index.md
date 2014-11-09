@@ -31,4 +31,4 @@ In all cases, the optimal success of learning on the right hand side hinges on a
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/08/data-and-analysis-another-five-part-model/).*

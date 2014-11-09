@@ -11,4 +11,4 @@ This study used a fairly simple VAM, similar to what they do in Tennessee, so th
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/03/21/error-rates-in-measuring-teacher-and-school-performance-based-on-student-test-score-gains/).*

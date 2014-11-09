@@ -25,4 +25,4 @@ Note two: this $latex R^2$ is a measure of training error. Often you'll be more 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/06/13/r-squared-and-adjusted-r-squared-for-a-linear-model/).*

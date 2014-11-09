@@ -101,4 +101,4 @@ I'll post this on <a href="http://planspace.org/">my blog</a>, where it's easy t
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/08/02/genocide-data/).*

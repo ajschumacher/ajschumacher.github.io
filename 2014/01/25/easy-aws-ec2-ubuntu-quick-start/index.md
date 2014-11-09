@@ -47,4 +47,4 @@ Within ten minutes the MOTD should be less annoying. The machine is ready for ac
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/25/easy-aws-ec2-ubuntu-quick-start/).*

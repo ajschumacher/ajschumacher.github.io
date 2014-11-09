@@ -13,4 +13,4 @@ This is all to say, I was aware that Eoin Colfer was not Douglas Adams, but I en
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/03/11/and-another-thing-from-the-hitchhikers-guide/).*

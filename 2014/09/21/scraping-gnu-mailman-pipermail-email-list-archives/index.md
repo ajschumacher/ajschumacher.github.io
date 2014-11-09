@@ -42,4 +42,4 @@ with open(listname + '.txt', 'w') as filehandle:
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/).*

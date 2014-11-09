@@ -27,4 +27,4 @@ Thanks to David for originally leading me to think about perplexity!
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/09/23/perplexity-what-it-is-and-what-yours-is/).*

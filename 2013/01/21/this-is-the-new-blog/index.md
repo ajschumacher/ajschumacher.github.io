@@ -5,4 +5,4 @@ After about 400 posts on <a href="http://planspace.blogspot.com/">my original bl
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/01/21/this-is-the-new-blog/).*

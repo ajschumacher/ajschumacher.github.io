@@ -22,4 +22,4 @@ So now we have both real math (calculus) and computational-experiment demonstrat
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/07/21/e-is-the-best-base/).*

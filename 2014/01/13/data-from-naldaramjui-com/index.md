@@ -7,4 +7,4 @@ I think it could be super fun to spend some time analyzing this data properly. D
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/13/data-from-naldaramjui-com/).*

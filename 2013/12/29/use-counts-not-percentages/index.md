@@ -19,4 +19,4 @@ The moral of the story is that for data, you should always use counts, not perce
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/12/29/use-counts-not-percentages/).*

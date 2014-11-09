@@ -20,4 +20,4 @@ While the pejorative sense of "infographic" is dominant now, let's remain commit
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/10/infographics-are-dead-long-live-information-graphics/).*

@@ -113,4 +113,4 @@ In conclusion: Just adding a little bit to your&#160;numerators and denominators
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/08/17/how-to-sort-by-average-rating/).*

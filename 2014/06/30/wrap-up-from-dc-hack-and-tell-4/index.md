@@ -24,4 +24,4 @@ Happy solstice, everybody! See you on&#160;<a href="http://www.meetup.com/DC-Hac
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/06/30/wrap-up-from-dc-hack-and-tell-4/).*

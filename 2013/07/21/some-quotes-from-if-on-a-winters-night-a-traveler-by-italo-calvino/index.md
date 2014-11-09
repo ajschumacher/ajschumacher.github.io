@@ -49,4 +49,4 @@ The book is an accessory aid, or even a pretext.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/07/21/some-quotes-from-if-on-a-winters-night-a-traveler-by-italo-calvino/).*

@@ -33,4 +33,4 @@ Alternate titles:
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/04/25/programming-is-not-mathematics/).*

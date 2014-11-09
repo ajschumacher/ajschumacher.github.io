@@ -16,4 +16,4 @@ I think Stephen Few is fundamentally right about dashboard design. The only thin
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/09/01/information-dashboard-design-by-stephen-few-second-edition/).*

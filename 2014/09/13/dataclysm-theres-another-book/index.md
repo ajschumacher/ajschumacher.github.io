@@ -14,4 +14,4 @@ In conclusion: the <a href="http://blog.okcupid.com/">OkTrends blog</a> is fun; 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/09/13/dataclysm-theres-another-book/).*

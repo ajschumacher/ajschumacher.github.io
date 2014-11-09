@@ -17,4 +17,4 @@ I would like to see this problem corrected. There should be a good tool for this
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/08/just-in-time-teaching-jitt-very-cool-but-hamstrung-by-lousy-name-and-lack-of-implementation/).*

@@ -59,4 +59,4 @@ The illustrious <a href="https://github.com/ramnathv">Ramnath</a>, who always se
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/04/26/wtt-abstracting-questions/).*

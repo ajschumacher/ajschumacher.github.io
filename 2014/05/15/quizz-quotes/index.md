@@ -19,4 +19,4 @@ The authors' application of information gain and a Markov Decision Process are a
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/05/15/quizz-quotes/).*

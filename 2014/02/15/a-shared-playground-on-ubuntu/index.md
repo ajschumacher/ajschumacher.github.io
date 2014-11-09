@@ -21,4 +21,4 @@ That makes the directory, sets the group to <code>users</code>, gives group memb
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/15/a-shared-playground-on-ubuntu/).*

@@ -23,4 +23,4 @@ This is indeed annoying. (Thanks <a href="https://twitter.com/Gimperion">Tommy</
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/12/26/number-line-comparisons-are-good-for-code/).*

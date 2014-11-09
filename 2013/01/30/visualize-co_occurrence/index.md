@@ -40,4 +40,4 @@ For much more, you can always check out the <a href="http://igraph.sourceforge.n
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/01/30/visualize-co_occurrence/).*

@@ -13,4 +13,4 @@ And of course there's <a href="http://dc.hackandtell.org/">Hack and Tell</a>, bu
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/10/04/peeps-be-askin-me/).*

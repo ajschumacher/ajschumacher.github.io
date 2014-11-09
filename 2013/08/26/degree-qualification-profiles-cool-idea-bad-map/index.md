@@ -11,4 +11,4 @@ This is not <em>such</em> a bad map, and you might guess the correct interpretat
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/08/26/degree-qualification-profiles-cool-idea-bad-map/).*

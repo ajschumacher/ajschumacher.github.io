@@ -16,4 +16,4 @@ It might be interesting to compare these figures to reported enrollment numbers.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/15/nyc-standardized-test-results-the-total-number-of-students-and-tests/).*

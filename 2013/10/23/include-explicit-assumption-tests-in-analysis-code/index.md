@@ -53,4 +53,4 @@ A final note: People often say that they assume such-and-such is normally distri
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/23/include-explicit-assumption-tests-in-analysis-code/).*

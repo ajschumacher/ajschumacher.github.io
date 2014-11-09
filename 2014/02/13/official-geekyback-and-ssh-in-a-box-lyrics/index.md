@@ -92,4 +92,4 @@ Special thanks to the anonymous poet. Inspired by <a href="http://thoppe.github.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/13/official-geekyback-and-ssh-in-a-box-lyrics/).*

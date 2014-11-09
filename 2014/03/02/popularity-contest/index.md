@@ -11,4 +11,4 @@ Anyway, it was fun to throw this together this morning. It's liable to break, be
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/03/02/popularity-contest/).*

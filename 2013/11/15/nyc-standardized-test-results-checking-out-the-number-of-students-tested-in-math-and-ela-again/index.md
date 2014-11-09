@@ -16,4 +16,4 @@ This shows much more clearly than <a href="http://planspace.org/2013/11/14/nyc-s
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/15/nyc-standardized-test-results-checking-out-the-number-of-students-tested-in-math-and-ela-again/).*

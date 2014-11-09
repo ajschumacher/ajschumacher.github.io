@@ -22,4 +22,4 @@ Viewed this way it's apparent that the 2009-2014 cohort is markedly larger than 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/16/nyc-standardized-test-results-the-total-number-of-tests-by-grade-viewed-by-cohort/).*

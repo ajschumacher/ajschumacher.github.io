@@ -29,4 +29,4 @@ Massachusetts Department of Elementary and Secondary Education copyright notice:
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/01/21/1236-multiple-choice-mcas-math-items/).*

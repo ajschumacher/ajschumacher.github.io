@@ -29,4 +29,4 @@ At this point, it looks like he's going to be able to finish cleaning up his dat
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/02/the-api-the-fec-uses/).*

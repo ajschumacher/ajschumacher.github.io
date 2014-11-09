@@ -21,4 +21,4 @@ As I have now been lucky enough to see the complete series, here is a brief summ
 <em>This post was made possible through the generous support of the B. R. Schumacher Foundation.</em></span>
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/06/08/unnatural-causes/).*

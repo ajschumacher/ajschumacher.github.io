@@ -44,4 +44,4 @@ Is this necessarily the One True Clustering? No, but it isn't terribly bad eithe
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/07/24/clustered-r-squared-heat-maps-in-r/).*

@@ -15,4 +15,4 @@ Copy the output from that last command and then paste it as a new key in the <a 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/16/set-up-github-on-ubuntu/).*

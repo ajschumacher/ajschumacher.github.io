@@ -112,4 +112,4 @@ There's much more you can do, with many more options and alternative techniques.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/03/pca-3d-visualization-and-clustering-in-r/).*

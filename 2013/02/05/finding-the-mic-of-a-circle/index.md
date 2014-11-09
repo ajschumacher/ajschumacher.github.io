@@ -76,4 +76,4 @@ The result is that the MIC for this case is 0.6545, and the relation is highly n
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/05/finding-the-mic-of-a-circle/).*

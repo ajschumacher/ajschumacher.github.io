@@ -11,4 +11,4 @@ Thanks Alec!
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/12/12/building-predictive-models-for-nyc-high-schools/).*

@@ -129,4 +129,4 @@ Ross, P. E. (2006, August). The expert mind. <i>Scientific American</i>. Retriev
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/11/aims-of-education/).*

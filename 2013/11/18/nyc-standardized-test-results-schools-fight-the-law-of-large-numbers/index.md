@@ -20,4 +20,4 @@ If you squint a little, it looks like there somehow aren't any middle schools&#1
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/18/nyc-standardized-test-results-schools-fight-the-law-of-large-numbers/).*

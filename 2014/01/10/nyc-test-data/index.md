@@ -17,4 +17,4 @@ A series of posts analyzing publicly available New York City Math and English La
 11. <a href="/2013/11/19/nyc-standardized-test-results-changes-in-average-scores-for-school-grades-and-cohorts/">Changes in average scores for school grades and cohorts</a>
 12. <a href="/2013/11/20/nyc-standardized-test-results-changes-in-average-scores-by-year-where-is-the-common-core-shake-up/">Changes in scores by year &#8211; where is the Common Core shake-up?</a>
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/10/nyc-test-data/).*

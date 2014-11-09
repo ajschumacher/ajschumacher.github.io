@@ -41,4 +41,4 @@ Addressing convergence, Professor Langford took a pretty pragmatic view, saying 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/11/nyu-large-scale-machine-learning-big-data-lecture-two-more-methods-and-also-lbfgs/).*

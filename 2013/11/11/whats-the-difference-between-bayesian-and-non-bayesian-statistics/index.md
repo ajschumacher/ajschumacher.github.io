@@ -37,4 +37,4 @@ I'm thinking about Bayesian statistics as I'm reading the newly released third e
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/11/whats-the-difference-between-bayesian-and-non-bayesian-statistics/).*

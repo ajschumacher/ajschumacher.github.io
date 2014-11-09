@@ -48,4 +48,4 @@ I'm pretty interested in number two, but they're all good. Looking forward to mo
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/15/notes-from-educational-data-mining-predict-the-future-change-the-future/).*

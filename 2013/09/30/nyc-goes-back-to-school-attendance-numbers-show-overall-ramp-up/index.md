@@ -19,4 +19,4 @@ It would be great if more people took a look at these <a href="https://github.co
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/09/30/nyc-goes-back-to-school-attendance-numbers-show-overall-ramp-up/).*

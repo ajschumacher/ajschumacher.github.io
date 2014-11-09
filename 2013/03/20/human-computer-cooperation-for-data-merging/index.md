@@ -55,4 +55,4 @@ Maybe I'll make this.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/03/20/human-computer-cooperation-for-data-merging/).*

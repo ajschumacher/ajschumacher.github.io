@@ -13,4 +13,4 @@ I, for one, would love to see these somehow form the basis for an entire line of
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/02/21/doge-coding-much-wow/).*

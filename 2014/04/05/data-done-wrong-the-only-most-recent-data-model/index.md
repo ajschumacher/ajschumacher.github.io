@@ -15,4 +15,4 @@ This is where simple transactional designs on&#160;traditional databases fail. I
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/04/05/data-done-wrong-the-only-most-recent-data-model/).*

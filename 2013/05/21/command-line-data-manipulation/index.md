@@ -177,4 +177,4 @@ There is certainly much more that can be done at the command line. Especially if
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/05/21/command-line-data-manipulation/).*

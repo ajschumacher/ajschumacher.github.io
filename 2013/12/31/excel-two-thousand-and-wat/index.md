@@ -84,4 +84,4 @@ That's enough! (Of course there are also my gripes with how Excel's <a href="htt
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/12/31/excel-two-thousand-and-wat/).*

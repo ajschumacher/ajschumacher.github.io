@@ -18,4 +18,4 @@ The image is based on data from the 2013-10-13 NYC <a href="http://schools.nyc.g
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/13/tall-infographic-nyc-public-school-grade-configurations/).*

@@ -13,4 +13,4 @@ So: that solves that.
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/08/31/i-want-an-edit-button-on-everything/).*

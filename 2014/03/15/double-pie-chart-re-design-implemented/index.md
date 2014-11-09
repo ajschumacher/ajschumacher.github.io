@@ -21,4 +21,4 @@ If you'd like to contribute to this project, check the <a href="https://github.c
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/03/15/double-pie-chart-re-design-implemented/).*

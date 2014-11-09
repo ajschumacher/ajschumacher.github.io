@@ -17,4 +17,4 @@ There are two things to notice about D75 school results in this data, and both o
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/16/nyc-standardized-test-results-considering-district-75-schools/).*

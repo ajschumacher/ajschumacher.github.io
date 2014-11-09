@@ -17,7 +17,7 @@
 <p>With a record of transactional data or a database that stores all transactions, you can query back in time: what was the state of the database at such-and-such time in the past? This is much better than our original setup. We don't forget what happened in the past, and&#160;we can reproduce our work later even if the data is added to or changed. Of course this requires that the historical records not be themselves modified - the transaction logs must be <em>immutable</em>.</p>
 <p>This is where simple transactional designs on&#160;traditional databases fail. If someone erroneously enters on April 4th that an individual became a butterfly on April 3rd, when really the transformation&#160;occurred on April 2nd, and this mistake is only realized on April 5th, there has to be a way of adding <em>another</em> transaction to indicate the update - not altering the record entered on April 4th. This can quickly become confusing - it can be a little mind-bending to think about data about dates which changes over time. The update problem is a real headache.&#160;I would like to find a good solution to this.</p>
 <p><a href="monarch_in_may.jpg"><img class="aligncenter size-large wp-image-878" src="monarch_in_may.jpg" alt="Monarch_In_May"></a></p>
-<p><em>This post was originally hosted elsewhere.</em></p>    </article>
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">elsewhere</a>.</em></p>    </article>
     <footer>
       <hr />
       <p>

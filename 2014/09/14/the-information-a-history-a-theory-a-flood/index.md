@@ -15,4 +15,4 @@ I'm not sure if <em>The Information</em>&#160;pointed me to it, but I'll also me
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/09/14/the-information-a-history-a-theory-a-flood/).*

@@ -29,4 +29,4 @@ I don't know if that has happened, or if it is happening. Shirky pointed out tha
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/06/08/here-comes-everybody/).*

@@ -20,4 +20,4 @@ The biggest improvement might be just from putting the categories in order from 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/10/06/redesigning-a-double-pie-chart/).*

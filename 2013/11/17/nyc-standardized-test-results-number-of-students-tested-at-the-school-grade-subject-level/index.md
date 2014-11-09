@@ -20,4 +20,4 @@ This figure showing the same things but for ELA testing looks very similar but i
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/11/17/nyc-standardized-test-results-number-of-students-tested-at-the-school-grade-subject-level/).*

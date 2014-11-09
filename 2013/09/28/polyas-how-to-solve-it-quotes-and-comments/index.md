@@ -29,4 +29,4 @@ That last is one place where I may disagree with Polya. The split is easy and na
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/).*

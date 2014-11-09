@@ -17,4 +17,4 @@ The slides are mostly goofy pictures in front of which to talk about the above. 
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/07/clean-data-with-r/).*

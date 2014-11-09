@@ -15,4 +15,4 @@ Update: There's also this <a href="http://openmhealth.org/">Open mHealth</a> pro
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/08/25/health-system-standards/).*

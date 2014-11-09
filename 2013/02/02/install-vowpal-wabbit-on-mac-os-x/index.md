@@ -26,4 +26,4 @@ And you have <code>vw</code> at <code>/usr/local/bin/vw</code>. Easy!
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/02/install-vowpal-wabbit-on-mac-os-x/).*

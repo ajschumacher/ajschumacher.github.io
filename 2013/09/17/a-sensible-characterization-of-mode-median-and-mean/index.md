@@ -19,4 +19,4 @@ Intro statistics textbook authors, you may update your texts! (Do any already po
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/09/17/a-sensible-characterization-of-mode-median-and-mean/).*
