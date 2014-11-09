@@ -22,4 +22,4 @@ It's not bad, this book. I'd recommend it to anyone who needs to work with data 
 
 
 
-*This post was originally hosted [elsewhere](http://planspacedotorg.wordpress.com/2014/01/01/bad-data-handbook-quite-good/).*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/01/bad-data-handbook-quite-good/).*
