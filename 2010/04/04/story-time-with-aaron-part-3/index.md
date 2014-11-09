@@ -1,7 +1,7 @@
 # Story-time with Aaron: Part 3
 
 <span class="Apple-style-span"><div>I wasn't sure about this one last night, but now it seems okay...  A little more rambly.  Sort of a fiction diary, in places.  So here it goes.</div>
-<div>(<a href="http://planspace.blogspot.com/2010/04/story-time-with-aaron-part-2.html">Part 2</a>) (<a href="http://planspace.blogspot.com/2010/04/story-time-with-aaron-part-4.html">Part 4</a>)</div>
+<div>(<a href="/2010/04/01/story-time-with-aaron-part-2/">Part 2</a>) (<a href="/2010/04/15/story-time-with-aaron-part-4/">Part 4</a>)</div>
 <div><br></div>
 <div><br></div>
 <div>---</div>

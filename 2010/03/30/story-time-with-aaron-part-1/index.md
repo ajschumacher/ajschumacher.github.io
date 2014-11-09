@@ -2,7 +2,7 @@
 
 <div>
 <p>So I bought an iPod touch, at the more expensive Korean price because I'm impatient, thinking that I would be able to write things on the train.  I like the touch screen keyboard, and the size is ideal for train typing.  I hope to do my Korean homework on the train when the new semester starts, but I also thought I might be able to write other things for fun.  Tap Tap Revenge is pretty darn fun, but one way or another I have actually started writing some stuff.  I'm as surprised as anybody.  So here's the beginning of a strange little story, written in the second-person present imperative, with a major character with my name.  Not really edited at all, just whatever I was rambling at the time.  And I think I ought to add, I'm feeling a little sick.</p>
-<div>(<a href="http://planspace.blogspot.com/2010/04/story-time-with-aaron-part-2.html">Part 2</a>)</div>
+<div>(<a href="/2010/04/01/story-time-with-aaron-part-2/">Part 2</a>)</div>
 <div><br></div>
 <div>---</div>
 <div><br></div>
