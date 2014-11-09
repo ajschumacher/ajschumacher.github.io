@@ -83,4 +83,4 @@ Probably data cleaning will remain art and science, entangled with analysis, and
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/04/some-theory-and-practice-for-data-cleaning/).*

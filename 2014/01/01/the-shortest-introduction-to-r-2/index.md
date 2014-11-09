@@ -60,4 +60,4 @@ This introduction is designed to maximize utility over length, and does so by le
 
 
 
-*This post was originally hosted elsewhere.*
+*This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/01/the-shortest-introduction-to-r-2/).*
