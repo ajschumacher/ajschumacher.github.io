@@ -1,10 +1,8 @@
 # Thoughts on The Grand Design
 
-<div>
-<p>The Grand Design<br></p>
-<div>Stephen Hawking and Leonard Mlodinow</div>
-<div><br></div>
-<div><br></div>
+The Grand Design<br>
+Stephen Hawking and Leonard Mlodinow
+
 <div>I bought a copy with a Christmas Barnes and Noble gift gard from my grandparents, but I just started working on my philosophy again and I got to a certain point and realized I wanted to read this book.</div>
 <div><br></div>
 <div>So I went home and grabbed my copy and started reading, and that was yesterday. &#160;This thing reads really fast. &#160;It's clearly written to be read easily, by anyone. &#160;There are even jokes. &#160;I don't know whether Hawking or Mlodinow is chiefly responsible. &#160;But it's an easy read. &#160;It might help that I learned about a lot of this stuff in college or thereabouts. &#160;I actually did a version of the double slit experiment in a college physics class. &#160;Although I guess that was just with a laser, and who do you need to convince that light "is" a wave? &#160;Anyway... &#160;I think pretty much anybody could read it.</div>
@@ -51,7 +49,6 @@
 <div><br></div>
 <div><br></div>
 <div>I really liked the book, in that it was interesting and fun and it seemed sort of like Hawking and that other guy were trying to do the same thing I'm trying to do: resolve philosophy so everybody can get back to watching the super bowl or whatever. &#160;But I don't think they've done it. &#160;And maybe M-theory is a great theory, but I haven't seen any evidence of that yet, really. &#160;Of course it's probably hard to put into a mass-market book, but still. &#160;Maybe I'll check the wiki.<br><br><br>Post-write:<br>Read this <a href="http://www.ft.com/cms/s/2/bdf3ae28-b6e9-11df-b3dd-00144feabdc0.html#axzz1C4DotGqr">review</a> by Penrose, which served to remind me that not all scientists agree with Hawking, and also showed me that I'm not the only guy skeptical of M-theory, and model-dependent realism. &#160;(Penrose seems to be a pretty firm realist.)<br><br>Crazy <a href="http://www.boent.eu/hawking_eng.html">review</a> by this German guy. &#160;Wow, I haven't read anything with so much sarcasm (or is it irony?) in a long time! &#160;People still write this way? &#160;Is it just a German thing? &#160;Anyway, he is not impressed at all by The Grand Design, which is making me feel more comfortable with my doubts as well.<br><br>Oh and there's no wiki for "model-dependent realism" - I guess it's just Hawking's term. &#160;And nobody seems to take M-theory very seriously, so I don't feel like looking into it much. &#160;A sort of string theory.<br><br>And I saw something on reddit for the first time. &#160;I don't think that's the real Stephen Hawking there, on reddit.<br><br>And... <a href="http://online.wsj.com/article/SB10001424052748703946504575469653720549936.html">one more</a>: some guy who seems to be in agreement with Hawking. &#160;But I'm still not satisfied with dark matter or dark energy, because they seem to be big hacks. &#160;And how did you measure the total energy of the universe, guy? &#160;How? &#160;Anyway, if the total energy of the universe is zero, I don't see how that makes it self-starting, necessarily. &#160;It doesn't explain why there should be rules that allow for self-starting.</div>
-</div>
 
 
 *This post was originally hosted [elsewhere](http://planspace.blogspot.com/2011/01/thoughts-on-grand-design.html).*
