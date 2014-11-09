@@ -1,8 +1,6 @@
 # "Ethics" by Linda Pastan
 
-<div>
 <p>I like this poem, which was included in the curriculum of one of the upper-level English (language) classes I teach.  So I'll keep it here.</p>
-<div><br></div>
 <div><br></div>
 <div><b>Ethics</b></div>
 <div>Linda Pastan</div>
@@ -32,7 +30,6 @@
 <div>through the canvas.  I know now that woman</div>
 <div>and painting and season are almost one</div>
 <div>and all beyond saving by children.</div>
-</div>
 
 
 *This post was originally hosted [elsewhere](http://planspace.blogspot.com/2009/08/ethics-by-linda-pastan.html).*
