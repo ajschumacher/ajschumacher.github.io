@@ -1,9 +1,7 @@
 # 시: 사랑한다는 것
 
-<div>
-<p>I like this poem that we read in my Korean class at &#49436;&#44053;:</p>
-<div><br></div>
-<div><br></div>
+I like this poem that we read in my Korean class at &#49436;&#44053;:
+
 <div>&#49324;&#46993;&#54620;&#45796;&#45716; &#44163;</div>
 <div>&#50504;&#46020;&#54788;</div>
 <div><br></div>
@@ -19,7 +17,6 @@
 <div>&#45208;&#45716; &#44536;&#45824;&#51032; &#49464;&#49345;&#51012;</div>
 <div>&#54632;&#44760; &#51658;&#50612;&#51648;&#44256;</div>
 <div>&#49352;&#48317;&#51012; &#54693;&#54644; &#44152;&#50612;&#44032;&#44192;&#45796;&#45716; &#44163;&#51077;&#45768;&#45796;.</div>
-</div>
 
 
 *This post was originally hosted [elsewhere](http://planspace.blogspot.com/2011/05/blog-post.html).*
