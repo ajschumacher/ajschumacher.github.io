@@ -2,7 +2,6 @@
 
 <div>
 <p>I recently administered a speaking test to Korean students at the English language "academy" [1] where I work.  Each student, individually, is given just one question to which they must respond.  The first four questions were of this type:</p>
-<div><br></div>
 <div>"Which do you like better, a bicycle or a bus?  Why do you like it better?"</div>
 <div><br></div>
 <div>A bus or a subway, a ship or an airplane, reading a book or watching a movie.  Choose one and give two reasons or examples to support your choice.  Then, inexplicably, the questions changed to include this:</div>
