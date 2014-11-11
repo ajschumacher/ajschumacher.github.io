@@ -1,7 +1,7 @@
 # Opinionated notes from the NYC Ed Tech Meetup
 
-<div>
-<p>Context: A friend asked for highlights from the NYC Ed Tech meetup that happend earlier today, so I decided to make it into a blog post.<br><br>Tonight's <a href="http://www.meetup.com/NYEdTech/events/94977082/">meetup</a> at <a href="http://www.knewton.com/">Knewton</a> was great! Here are highlights, in decreasing order of how much I like them:<br><br><br></p>
+Context: A friend asked for highlights from the NYC Ed Tech meetup that happend earlier today, so I decided to make it into a blog post.<br><br>Tonight's <a href="http://www.meetup.com/NYEdTech/events/94977082/">meetup</a> at <a href="http://www.knewton.com/">Knewton</a> was great! Here are highlights, in decreasing order of how much I like them:
+
 <ul>
 <li>
 <a href="http://www.c8sciences.com/blog/">Dr. Bruce Wexler</a> of <a href="http://c8sciences.com/">C8 Sciences</a>&#160;is a genius. His startup product, C8Kids, is a cognitive training web app along the lines of <a href="http://www.lumosity.com/">Lumosity</a>, but way more sophisticated, more complete, and with better teacher interfaces for working with classes of students. It helps people make better decisions to help all kids, but especially kids with special needs, which is really cool. Not only is the project incredible, but Dr. Wexler was CONSISTENTLY the most articulate speaker, saying the right things at the right times and passing the mic when that was more appropriate. Lumosity should really just give their stacks of venture capital to C8 Sciences.</li>
@@ -42,7 +42,6 @@
 </ul>
 </ul>
 <div>Okay! So that was it! Pretty good! Thanks for the space and drinks, Knewton, but next time please provide plates to carry snacks on - I can't stand right by the snack table all the time! Important issue!</div>
-</div>
 
 
 *This post was originally hosted [elsewhere](http://planspace.blogspot.com/2013/01/opinionated-notes-from-nyc-ed-tech.html).*
