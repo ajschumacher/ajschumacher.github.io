@@ -18,7 +18,7 @@ git clone https://github.com/JohnLangford/vowpal_wabbit.git
 cd vowpal_wabbit
 ```
 
-At this point you have everything you need. You could link <code>glibtoolize</code> so you can refer to it as <code>libtoolize</code>, or you can edit the <code>autogen.sh</code> and put a '<code>g</code>' in front of <code>libtoolize</code>. Do one or the other. You're ready to go through the normal <code>make</code> process.
+At this point you have everything you need. You could link `glibtoolize` so you can refer to it as `libtoolize`, or you can edit the `autogen.sh` and put a '`g`' in front of `libtoolize`. Do one or the other. You're ready to go through the normal `make` process.
 
 ```bash
 ./autogen.sh
@@ -27,7 +27,7 @@ make
 make install
 ```
 
-And you have <code>vw</code> at <code>/usr/local/bin/vw</code>. Easy!
+And you have `vw` at `/usr/local/bin/vw`. Easy!
 
 
 *This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/02/02/install-vowpal-wabbit-on-mac-os-x/).*
