@@ -20,7 +20,7 @@ When $latex p$ gets bigger, that denominator gets smaller, so a larger thing is 
 
 Note one: <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">this</a> $latex R^2$ is quite related to <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">this</a> $latex r$ squared.
 
-Note two: this $latex (R^2\)$ is a measure of training error. Often you'll be more concerned with how the model performs on data it wasn't created with.
+Note two: this $latex R^2$ is a measure of training error. Often you'll be more concerned with how the model performs on data it wasn't created with.
 
 
 *This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/06/13/r-squared-and-adjusted-r-squared-for-a-linear-model/).*
