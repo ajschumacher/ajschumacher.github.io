@@ -1,9 +1,9 @@
 # Emacs and Python
 
-A short [talk][] at the [DC Python meetup group][], introducing
+*A short [talk][] at the [DC Python meetup group][], introducing
 [Emacs][] through demonstration of fun and useful features. Original
 source and notes are [up on github][]. Thanks to [Eddie Welker][] for
-hosting the event and putting up [video][]!
+hosting the event and putting up [video][]!*
 
 [talk]: http://www.meetup.com/DCPython/events/208969552/
 [DC Python meetup group]: http://www.meetup.com/DCPython/
