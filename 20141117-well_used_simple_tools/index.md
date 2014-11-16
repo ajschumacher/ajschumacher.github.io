@@ -7,7 +7,7 @@ I work with data, and the tools that are unique to what I do may or may not be i
 
 -----
 
-image of big post-it
+![](notepad.jpg)
 
 -----
 
