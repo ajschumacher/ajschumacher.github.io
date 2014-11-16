@@ -103,3 +103,6 @@ After a pass through email, the inbox should be empty, and it's time to start do
 Tool number four is [Good Todo](https://goodtodo.com/), which is a calendared to-do list app that integrates with email. It supplements my memory by keeping track of when I need to do things, and lets me focus on just the tasks that I'll be able to accomplish in a given day. It is way better than every other to-do application I've ever seen.
 
 I include brief tasks that just need to be remembered and crossed off, as well as more substantial tasks. By looking at the list for the day I can decide what to work on first and what to reschedule or reconsider. Right now, I'll work on this "Friday sales report" task.
+
+
+For more about Emacs, see my recent talk at DC Python.
