@@ -42,6 +42,13 @@ My thoughts on text and separation of concerns, among other things, were certain
 
 [ReWork](http://37signals.com/rework/), which is largely the same as the freely available [Getting Real](http://gettingreal.37signals.com/), brings ideas for working effectively to working at work.
 
+
+-----
+
+4 simple tools for everyone
+
+-----
+
 I'm going to start talking about specific simple tools now. I will be very specific, and the tools will be very simple.
 
 
@@ -103,6 +110,19 @@ After a pass through email, the inbox should be empty, and it's time to start do
 Tool number four is [Good Todo](https://goodtodo.com/), which is a calendared to-do list app that integrates with email. It supplements my memory by keeping track of when I need to do things, and lets me focus on just the tasks that I'll be able to accomplish in a given day. It is way better than every other to-do application I've ever seen.
 
 I include brief tasks that just need to be remembered and crossed off, as well as more substantial tasks. By looking at the list for the day I can decide what to work on first and what to reschedule or reconsider. Right now, I'll work on this "Friday sales report" task.
+
+
+-----
+
+Unix philosophy
+
+-----
+
+To paraphrase Doug McIlroy:
+
+> Use tools that do one thing well. Use tools that work together. Use tools that work with text, because text is universal.
+
+I think my four simple tools follow this fairly well. I'm going to show an example of how these principles can apply to working with data at the command line, which is much more exemplary of the Unix philosophy.
 
 
 For more about Emacs, see my recent talk at DC Python called [Emacs and Python](/20141007-emacs_python/).
