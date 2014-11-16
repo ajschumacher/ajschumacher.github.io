@@ -2,13 +2,13 @@
 
 A short [talk][] at the [DC Python meetup group][], introducing
 [Emacs][] through demonstration of fun and useful features. Original
-source and notes are [on github][]. Thanks to [Eddie Welker][] for
+source and notes are [up on github][]. Thanks to [Eddie Welker][] for
 hosting the event and putting up [video][]!
 
 [talk]: http://www.meetup.com/DCPython/events/208969552/
 [DC Python meetup group]: http://www.meetup.com/DCPython/
 [Emacs]: http://www.gnu.org/software/emacs/
-[on github]: https://github.com/ajschumacher/emacs_python
+[up on github]: https://github.com/ajschumacher/emacs_python
 [Eddie Welker]: https://twitter.com/edwelker
 [video]: https://www.youtube.com/watch?v=eH-epEqLVAs
 
