@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Emacs and Python</title>
+  </head>
+  <body>
+    <article>
+<h1>Emacs and Python</h1>
+<p class="date">Tuesday October  7, 2014</p>
+<p>A short <a href="http://www.meetup.com/DCPython/events/208969552/">talk</a> at the <a href="http://www.meetup.com/DCPython/">DC Python meetup group</a>, introducing
+<a href="http://www.gnu.org/software/emacs/">Emacs</a> through demonstration of fun and useful features. Original
+source and notes are <a href="https://github.com/jorgenschaefer/elpy/">on github</a>. Thanks to <a href="https://twitter.com/edwelker">Eddie Welker</a> for
+hosting the event and putting up <a href="https://www.youtube.com/watch?v=eH-epEqLVAs">video</a>!</p>
+<p><img alt="" src="screenshots/emacs_startup_screen.png" /></p>
+<p>This is a screen you see when you start up Emacs. There's a tutorial
+and a manual and it's all very user-friendly.</p>
+<pre><code>M-x tetris
+</code></pre>
+<p><img alt="" src="screenshots/emacs_tetris.png" /></p>
+<p>Tetris is included in base Emacs. But Emacs is also a text editor.
+Editing text is important.</p>
+<p>So why Emacs?</p>
+<pre><code>C-x C-c
+</code></pre>
+<p><img alt="" src="screenshots/blank_terminal.png" /></p>
+<p>In addition to editing text, you probably need or want to send
+computers commands via text. It may be convenient or necessary to be
+productive in a pure text environment. So it is a desirable
+characteristic of a text editor that it be as capable in text mode as
+graphical mode. There are two serious contenders: <a href="http://www.vim.org/">Vim</a> and Emacs.</p>
+<p>There are further reasons to prefer a keyboard-based interface, but at
+a minimum we need an editor that can be used over <a href="http://en.wikipedia.org/wiki/Secure_Shell">ssh</a>.</p>
+<pre><code>got bash
+alias got
+grep -o '\w*grep' ~/.bashrc | sort | uniq -c
+</code></pre>
+<p><img alt="" src="screenshots/bash_intro.png" /></p>
+<p>I use <a href="http://www.gnu.org/software/bash/">bash</a>, and I have it customized a little bit, which makes it
+nicer.</p>
+<p>If you're competent in a shell like <code>bash</code>, you know some keyboard
+shortcuts. Defaults like <kbd>Ctrl</kbd> + <kbd>a</kbd> (<code>C-a</code>) to go
+to the beginning of a line are very useful. These are Emacs
+keybindings. They're the <a href="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html">readline</a> defaults. They're ubiquitous.</p>
+<p>Keyboard shortcuts that work in <code>bash</code>, Emacs, and many other places:</p>
+<ul>
+<li><code>C-a</code>: go to beginning of line</li>
+<li><code>C-e</code>: go to end of line</li>
+<li><code>C-b</code>: go back one character</li>
+<li><code>M-b</code>: go back one word</li>
+<li><code>C-f</code>: go forward one character</li>
+<li><code>M-f</code>: go forward one word</li>
+<li><code>C-p</code>: previous</li>
+<li><code>C-n</code>: next</li>
+<li><code>C-r</code>: reverse search</li>
+<li><code>C-l</code>: clear screen</li>
+<li><code>C-k</code>: kill to end of line (cut)</li>
+<li><code>C-y</code>: yank (paste)</li>
+<li><code>C-t</code>: transpose character</li>
+</ul>
+<p>Emacs does require effort to learn, but you already know a lot of its
+keybindings, or should, and they can be used in many places.</p>
+<pre><code>fg
+</code></pre>
+<p><img alt="" src="screenshots/emacs_email.png" /></p>
+<p>If you want, the many places you use Emacs can be all inside Emacs.
+Here I'm just finishing an email.</p>
+<pre><code>C-c C-c
+C-x C-c
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_daemon.png" /></p>
+<p>Emacs can run client-server. I use this way of running Emacs to get a
+lot of the benefits that you get with <a href="http://www.gnu.org/software/screen/">screen</a> or <a href="http://tmux.sourceforge.net/">tmux</a>. I don't
+lose anything if a network connection dies, for example. It's also
+faster to start up the Emacs client.</p>
+<pre><code>e
+M-x shell
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_shell.png" /></p>
+<p>You can also run a shell inside Emacs, and it works much the same as
+outside. A contrast with <code>tmux</code> is that you don't have to switch modes
+to access the scrollback. For example, in an Emacs shell, <code>M-r</code> will
+search the command history, and <code>C-r</code> will search back through the
+buffer (as it does throughout Emacs).</p>
+<pre><code>eg &amp;
+C-x b shell
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_shell_gui.png" /></p>
+<p>I can start a graphical Emacs from here in the shell inside console
+Emacs, and you can see that now both clients are connected to the same
+Emacs daemon.</p>
+<p>Notice how similar the interface is whether at a console or in a GUI
+window.</p>
+<pre><code>C-x C-f hello.el
+C-M-f
+C-x C-e
+</code></pre>
+<p><img alt="" src="screenshots/emacs_lisp.png" /></p>
+<p>Emacs achieves its extensibility by essentially being a <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Lisp</a>
+interpreter. (It's Emacs Lisp.) I'm just showing a tiny cosmetic
+interface tweak here, but all the packages and fun features I use work
+because Emacs is a programmable environment.</p>
+<p>A related point is that base Emacs includes a lot, and you can manage
+in base Emacs, but you probably won't want to. You can think of Emacs
+as a kit for making an editor. The advantage is that you can make any
+sort of editor you want. The disadvantage is that there's some
+assembly required.</p>
+<p>Emacs gets so much better with customized settings that there are
+several whole projects which are just collections of Emacs
+configuration. <a href="https://github.com/bbatsov/prelude">Prelude</a> is probably the biggest; <a href="https://github.com/rdallasgray/graphene">Graphene</a> is
+another one. I tried Prelude and eventually got tired of turning
+things off more than I was turning them on, but things like Prelude
+are great for finding out about functionality, and could be a great
+way to get into Emacs. There are also <a href="http://planet.emacsen.org/">blogs</a> that post about Emacs,
+and of course everybody has their configuration files on github too.</p>
+<p>Let's take a look at editing with Emacs, using <a href="https://github.com/DCPython/dcpython-django/blob/77af0754866780b2eb013f7fb08c13918bd5266c/README.rst">a DC Python project</a>
+as an example. We notice that there are some problems at the end of
+the README, so maybe we can fix it up a little.</p>
+<pre><code>git clone git@github.com:ajschumacher/dcpython-django.git django
+</code></pre>
+<p><img alt="" src="screenshots/clone_django.png" /></p>
+<p>To work on the project, we'll clone my fork of the repo and open up
+the <code>README.rst</code>. It opens up in <code>reStructuredText</code> mode.</p>
+<p><img alt="" src="screenshots/whitespace_problems.png" /></p>
+<p>Before we get to the numbered lists, we notice some whitespace
+problems: tabs and trailing whitespace.</p>
+<p><img alt="" src="screenshots/make_branch.png" /></p>
+<p>So we make a branch to do some work on. (The git-in-Emacs interface is
+<a href="http://magit.github.io/">magit</a>.) Then we can <code>mark-whole-buffer</code> and <code>untabify</code>. Tabs are
+changed to spaces. Then <code>delete-trailing-whitespace</code>. Good.</p>
+<p><img alt="" src="screenshots/whitespace_fixed.png" /></p>
+<p>We can make a quick commit with this change very quickly.</p>
+<p><img alt="" src="screenshots/markdown_in_rst.png" /></p>
+<p>Down at the bottom, it looks like <a href="http://daringfireball.net/projects/markdown/">markdown</a> in
+<a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. We need to fix the back-ticks and the numbered
+lists.</p>
+<p>In reStructuredText, you need double back-ticks. Select the region,
+query-replace with <code>M-%</code>, enter "`" and "``", and if feeling
+confident, use "!" to replace all.</p>
+<p><img alt="" src="screenshots/backticks_fixed.png" /></p>
+<p>Oops, one command isn't back-ticked that should be. Nice chance to
+show <code>expand-region</code> and <code>wrap-region</code>. All good - commit.</p>
+<p>The numbered lists aren't hard to fix in this case, but let's show
+some more features. We'll make a macro, starting it with <code>C-x (</code>. Then
+<code>C-s</code> for <code>1</code> to go to the start of a numbering region. <code>C-a</code> for the
+start of the line. Set mark with <code>C-&lt;space&gt;</code>. Do a regular expression
+search for a blank line ("^$") with <code>C-M-s</code>. Previous line with <code>C-p</code>.
+Number the lines with a rectangle command, <code>C-x r N</code>. Next line to
+clear the numbering, and finish the macro with <code>C-x )</code>. Then we can
+run it again with <code>C-x e</code>, and again with just <code>e</code>.</p>
+<p>This isn't really done, so let's go back to the first "1." and select
+it, then invoke a <code>multiple-cursors</code> command to select them all and
+clean up. Presto!</p>
+<p><img alt="" src="screenshots/nice_rst.png" /></p>
+<p>Commit, push, pull request!</p>
+<p>Now to Python. I use <a href="http://elpy.readthedocs.org/">elpy</a> (<a href="https://github.com/jorgenschaefer/elpy/">on github</a>) with <a href="https://github.com/flycheck/flycheck">flycheck</a> and
+<a href="https://github.com/davidhalter/jedi">jedi</a>. Also <a href="http://ipython.org/">IPython</a>. And <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a>. Etc. I'll demo some
+things.</p>
+<pre><code>C-x C-f tset/tset.py
+</code></pre>
+<p><img alt="" src="screenshots/flychecking.png" /></p>
+<p>Using a toy Python <a href="https://github.com/ajschumacher/tset">project</a> of mine, we can see how <code>flycheck</code> will
+tell you when you're violating <a href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> ("E302 expected 2 blank
+lines, found 1", etc.). If I add in <code>import os</code> without using it,
+that'll get shown too. And it catches syntax errors like <code>x=</code> as well.</p>
+<pre><code>(point after "at")
+C-c C-e
+</code></pre>
+<p><img alt="" src="screenshots/edit_multiple.png" /></p>
+<p>One fun feature of <code>elpy</code> is that it can use <code>jedi</code> to find symbols
+that are semantically the same and edit them at the same time. Neat!</p>
+<pre><code>C-c C-t
+</code></pre>
+<p><img alt="" src="screenshots/elpy_tests.png" /></p>
+<p>It's very convenient to run tests.</p>
+<pre><code>C-c C-z
+np &lt;shift&gt;-&lt;tab&gt;
+np.random. &lt;tab&gt;
+</code></pre>
+<p><img alt="" src="screenshots/elpy_interactive.png" /></p>
+<p>It's easy to run interactive python. I'll show snippets here too. And
+you get auto-completion. Nice.</p>
+<pre><code>C-x o
+M-&lt;
+C-o C-o C-o
+print 'hello'
+C-&lt;space&gt; C-a
+C-c C-c
+</code></pre>
+<p><img alt="" src="screenshots/send_to_interactive.png" /></p>
+<p>It's easy to send code from the editor to the REPL. It was a little
+weird to me at first that it didn't echo in the REPL, but it's
+generally fine this way. If you want you can copy and paste
+explicitly, or make a macro to do the same.</p>
+<pre><code>import os
+os
+C-c C-d
+.
+</code></pre>
+<p><img alt="" src="screenshots/dropdown.png" /></p>
+<p>In the editor, you can get docstring help with <code>C-c C-d</code>, and there's
+also the popular drop-down method of showing available things.</p>
+<pre><code>fork
+C-c C-d
+</code></pre>
+<p><img alt="" src="screenshots/docs.png" /></p>
+<p>And of course help on functions themselves.</p>
+<pre><code>C-x 1
+C-x C-j
+(navigate to scikit-learn/sklearn/tests/test_naive_bayes.py)
+M-1
+M-g M-g 332 (point on 'MultinomialNB')
+M-. (until 'object')
+M-* (back)
+</code></pre>
+<p><img alt="" src="screenshots/sklearn.png" /></p>
+<p>To demonstrate navigating some more serious hierarchies, I've got a
+clone of the <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> source. I'll go to the Naive Bayes tests
+using <code>dired</code>, a standard mode. There are a lot of lines here. I have
+a custom binding to show and hide line numbers. Let's go to line 332,
+where <code>MultinomialNB</code> is getting tested. If I put point on that
+symbol, <code>elpy</code> let's me use <code>M-.</code> to jump to the definition. I can go
+several definitions up, and then use <code>M-*</code> to jump back to where I
+started. This is pretty neat.</p>
+<pre><code>nyan-mode
+nyan-start-animation
+</code></pre>
+<p><img alt="" src="screenshots/nyan_mode.png" /></p>
+<p>I started with Tetris, and I want to finish with something fun too. If
+you want to, you can install and use <code>nyan-mode</code>. Totally up to you.</p>
+<pre><code>C-x b *twittering-edit*
+</code></pre>
+<p><img alt="" src="screenshots/emacs_tweet.png" /></p>
+<p>And here's that <a href="https://twitter.com/planarrowspace/status/519632550902247424">tweet</a> I promised earlier.</p>
+<p>Thank you!</p>
+<hr />
+<p>All my configuration is in my <a href="https://github.com/ajschumacher/.emacs.d">.emacs.d</a>. It's subject to change.
+This demo is as of <code>7716de4</code>, with some keystrokes shown above as they
+usually are rather than how I have them bound.</p>
+<hr />
+<p>For even more completeness, here are other ways of doing Python in Emacs:</p>
+<ul>
+<li><a href="http://www.emacswiki.org/PythonProgrammingInEmacs">Python Programming in Emacs</a> on <a href="http://www.emacswiki.org/">EmacsWiki</a></li>
+<li><a href="https://github.com/gabrielelanaro/emacs-for-python">emacs-for-python</a></li>
+<li><a href="http://rope.sourceforge.net/">rope</a> (an alternative to <code>jedi</code>), used in in <code>elpy</code> or <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> / <a href="https://github.com/pinard/Pymacs">Pymacs</a></li>
+<li><a href="http://www.xiaohanyu.me/oh-my-emacs/modules/ome-python.html">Oh My Emacs Python</a></li>
+</ul>
+<hr />
+<p>Thanks to local Emacs users <a href="https://twitter.com/jayaresee87">Jenna Colazzi</a> and <a href="https://twitter.com/necaris">Rami Chowdhurry</a>, and to the broader Emacs community who are super friendly and produce excellent resources:</p>
+<ul>
+<li><a href="http://harryrschwartz.com/">Harry Schwartz</a> and Eric and all the speakers at the <a href="http://emacsnyc.org/">New York Emacs Meetup</a></li>
+<li><a href="https://twitter.com/sachac">Sacha Chua</a> (<a href="http://sachachua.com/">blog</a>, <a href="http://sachachua.com/blog/category/podcast/emacs-chat-podcast/">Emacs Chat</a>)</li>
+<li><a href="https://twitter.com/magnars">Magnar Sveen</a> (<a href="http://emacsrocks.com/">emacs rocks</a>, <a href="http://whattheemacsd.com/">what the .emacs.d!?</a>)</li>
+<li><a href="https://twitter.com/mickeynp">Mickey Petersen</a> (<a href="http://www.masteringemacs.org/">Mastering Emacs</a></li>
+<li><a href="https://twitter.com/bbatsov">Bozhidar Batsov</a> (<a href="https://github.com/bbatsov/prelude">Prelude</a>, <a href="http://emacsredux.com/">Emacs Redux</a>)</li>
+<li>Steve Yegge's old <a href="https://sites.google.com/site/steveyegge2/effective-emacs">Effective Emacs</a> is still worth a read.</li>
+</ul>    </article>
+    <footer>
+      <hr />
+      <p>
+        <a href="/"><span id="back_link" class="rotate180">➔</span></a>
+        <a id="aaron_link" href="/aaron/">Aaron</a> is on
+        <a href="https://twitter.com/planarrowspace">Twitter</a>,
+        <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>,
+        <a href="https://plus.google.com/112658546306232777448/">Google+</a>,
+        <a href="https://github.com/ajschumacher">GitHub</a>,
+        and
+        <a href="mailto:ajschumacher@gmail.com">email</a>.
+        <a href="javascript:window.scrollTo(0,0);"><span id="up_link" class="rotate270">➔</span></a>
+      </p>
+      <p>
+        <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit this</a>.
+      </p>
+    </footer>
+    <script src="/scripts/highlight.pack.js"></script>
+    <script src="/scripts/planspace.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}
+  });
+</script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
