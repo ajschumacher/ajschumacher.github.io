@@ -105,4 +105,4 @@ Tool number four is [Good Todo](https://goodtodo.com/), which is a calendared to
 I include brief tasks that just need to be remembered and crossed off, as well as more substantial tasks. By looking at the list for the day I can decide what to work on first and what to reschedule or reconsider. Right now, I'll work on this "Friday sales report" task.
 
 
-For more about Emacs, see my recent talk at DC Python.
+For more about Emacs, see my recent talk at DC Python called [Emacs and Python](/20141007-emacs_python/).
