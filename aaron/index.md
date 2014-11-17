@@ -3,6 +3,7 @@
 
 Here are some things I've talked about:
 
+ * [Well-Used Simple Tools](/20141117-well_used_simple_tools/) at [Design Thinking DC](http://www.meetup.com/Design-Thinking-DC/) on [Monday November 17, 2014](http://www.meetup.com/Design-Thinking-DC/events/216029412/)
  * [JSON-stat and rjstat](/20141023-rjstat_lightning/) at [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/) on [Thursday October 23, 2014](http://www.meetup.com/stats-prog-dc/events/177772502/)
  * [Emacs for Python](https://github.com/ajschumacher/emacs_python/blob/master/README.md) ([video](https://www.youtube.com/watch?v=eH-epEqLVAs)) at [DC Python meetup](http://www.meetup.com/DCPython/) on [Tuesday October 7, 2014](http://www.meetup.com/DCPython/events/208969552/)
  * [Data and Truth](/20140715-data_and_truth/) at [csv,conf](http://csvconf.com/) 2014 (Berlin) on Tuesday July 15, 2014
