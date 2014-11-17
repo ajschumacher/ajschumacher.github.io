@@ -179,6 +179,6 @@ This is an image from the drafting process for this talk. I've been strongly inf
 
 -----
 
-thank you!
+use version control!
 
 -----
