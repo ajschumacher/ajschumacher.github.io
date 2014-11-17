@@ -3,7 +3,7 @@
 *A [short talk](http://www.meetup.com/Design-Thinking-DC/events/216029412/) for [Design Thinking DC](http://www.meetup.com/Design-Thinking-DC/).*
 
 
-I work with data, and the tools that are unique to what I do may or may not be interesting to you. So I'm going to show four tools that are useful for everyone.
+I work with data, and the tools that are unique to what I do may or may not be interesting to you. So I'm going to start with four tools that are useful for everyone.
 
 
 -----
@@ -16,7 +16,7 @@ Tool number one is a keyboard. You use a keyboard a lot, and you should probably
 
 Steve Yegge has a 2008 [blog post](http://steve-yegge.blogspot.com/2008/09/programmings-dirtiest-little-secret.html) about programmers who can't touch type. You wouldn't think such people existed. But just this year, in 2014, I met such a person.
 
-A keyboard is probably the tool you use more than any other. Improve your typing. Then, use keyboard shortcuts so that more things become just typing.
+A keyboard is probably the tool you use more than any other. Improve your typing. Then, use keyboard shortcuts so that more things become typing.
 
 
 -----
@@ -54,7 +54,7 @@ Sometimes an email represents a task, but you can't work on it until some point 
 
 Tasks that will take longer than two minutes get moved to task management, even if they're for today.
 
-After a pass through email, the inbox should be empty, and it's time to start doing some work.
+After a pass through email, the inbox should be empty.
 
 
 -----
@@ -80,7 +80,7 @@ The Unix philosophy describes a way of building an effective system of tools. To
 > * Use tools that work together.
 > * Use tools that work with text, because text is universal.
 
-I think my four simple tools follow this fairly well, but they aren't ideal examples. I'll use an example task to demonstrate further. [1]
+I think my four simple tools follow this fairly well, but they aren't ideal examples. I'll use a simple task to demonstrate further. [1]
 
 [1] *For more on this family of tools, see [Data Science at the Command Line](http://datascienceatthecommandline.com/) by Jeroen Janssens.*
 
@@ -182,3 +182,9 @@ This is an image from the drafting process for this talk. I've been strongly inf
 use version control!
 
 -----
+
+The major tool I've omitted is version control. Use [git](http://git-scm.com/).
+
+And don't use [SAS](http://www.sas.com/).
+
+Thank you very much!
