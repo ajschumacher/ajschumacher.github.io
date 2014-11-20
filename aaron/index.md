@@ -22,5 +22,12 @@ Here are some things I've made:
  * [naldaramjui.com](http://www.naldaramjui.com/): interface for questions from the Test Of Proficiency In Korean
  * [@NYCattends](https://twitter.com/NYCattends): automated system to [archive](http://bit.ly/NYCattdarch) and tweet NYC public school attendance
  * [theograph](http://bit.ly/theograph): prototype of an interactive patient health timeline for the UK's NHS at the [GovLab](http://thegovlab.org/)&#160;Experiment
- * [subway usage](http://bit.ly/NYCsubway): data munging and visualization component of winning [datathon](http://ipk.nyu.edu/initiatives/datathons) team entry
+ * [subway usage](http://bit.ly/NYCsubway): D3 calendar visualization of NYC subway usage
  * [school data explorer](http://bit.ly/NYCd3schools): my first d3 project, loaded with data animation messiness
+
+
+Here is some nice recognition:
+
+ * Press coverage: [Show-And-Tell For The Hacker Crowd](http://wamu.org/programs/metro_connection/14/11/14/show_and_tell_for_the_hacker_crowd) on [WAMU](http://wamu.org/) on November 14, 2014
+ * Member, winning team: [Arlington Public Schools](http://www.arlington.k12.va.us/) [Big Data Roundtable](http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html), September 10, 2014
+ * Member, winning team: [Institute for Public Knowledge](https://ipk.nyu.edu/) [Datathon](https://ipk.nyu.edu/initiatives/datathons) on Climate Change and Cities, March 9-10, 2013
