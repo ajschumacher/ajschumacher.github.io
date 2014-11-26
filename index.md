@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here.
 
+ * 2014-11-25: [Alan Kay on Big Data](/20141125-alan_kay_on_big_data/)
  * 2014-11-17: [Well-Used Simple Tools](/20141117-well_used_simple_tools/)
  * 2014-11-07: [A True and Delightful Incident](/20141107-a_true_and_delightful_incident/)
  * 2014-11-01: [Functional Javascript is](/20141101-functional_javascript/)
