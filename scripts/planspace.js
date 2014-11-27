@@ -10,10 +10,3 @@ if (pathName === "/aaron/") {
     aaron_link = document.getElementById('aaron_link');
     aaron_link.outerHTML = 'Aaron';
 }
-var article = document.getElementsByTagName('article')[0];
-var content_height = article.scrollHeight;
-var view_height = window.innerHeight;
-if (content_height <= view_height) {
-    up_link = document.getElementById('up_link');
-    up_link.parentNode.removeChild(up_link);
-}
