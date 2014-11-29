@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Ruby Symbols are not Lisp Symbols</title>
+  </head>
+  <body>
+    <article>
+<h1>Ruby Symbols are not Lisp Symbols</h1>
+<p class="date">Saturday November 29, 2014</p>
+<p>I heard about <a href="http://www.johndcook.com/blog/2012/03/28/how-emacs-influenced-ruby/">How Emacs influenced Ruby</a> and the main thing I took from it was the possible connection between (Emacs) Lisp symbols and Ruby symbols, <a href="http://ergoemacs.org/emacs/Matz_Ruby_how_emacs_changed_my_life.html">as suggested by Xah</a>. But Ruby symbols and Lisp symbols are really quite different.</p>
+<p>In Ruby you write a symbol starting with a colon. This looks similar to writing an apostrophe before a symbol in Lisp to quote it.</p>
+<pre><code class="language-ruby"># Ruby
+:aaron         # This is a symbol.
+               # It is written and displayed with a leading colon.
+# => :aaron</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+'aaron         ; This is shorthand for the next line.
+(quote aaron)  ; These both evaluate to the symbol itself, as shown.
+; => aaron</code></pre>
+
+<p>The big difference is that in Lisp, symbols evaluate as variables and functions. That's why you have to quote a symbol in Lisp to work with the symbol itself. In Ruby, on the other hand, symbols never evaluate to anything else. Variable and method names in Ruby are not symbols; they're off in their own world. Note the differing error messages here:</p>
+<pre><code class="language-ruby"># Ruby
+aaron        # This is not a symbol but evaluates as a variable or method.
+# => NameError: undefined local variable or method `aaron' for main:Object</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+aaron        ; This is a symbol which will (try to) evaluate as a variable.
+; => *** Eval error ***  Symbol's value as variable is void: aaron</code></pre>
+
+<p>You can't set (or bind) a Ruby symbol to a value at all—it's a syntax error. But that's exactly what you do in Lisp.</p>
+<pre><code class="language-ruby"># Ruby
+:aaron = 12       # This attempts to set a symbol to 12, which Ruby hates.
+# => SyntaxError: (irb):10: syntax error, unexpected '=', expecting end-of-input</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+(set 'aaron 12)   ; This sets a symbol's value as a variable to 12.
+; => 12</code></pre>
+
+<p>Conversely, what works naturally in Ruby is nonsense in Lisp.</p>
+<pre><code class="language-ruby"># Ruby
+aaron = 27        # This sets a variable to 27.
+# => 12</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+(set aaron 27)    ; This attempts to set 12 to 27.
+; => *** Eval error ***  Wrong type argument: symbolp, 12</code></pre>
+
+<p>Deeper differences between Lisp and Ruby are evident, for example, in the behavior of <code>eval</code>. In Ruby, <code>eval</code> takes a string, while in Lisp, it takes a Lisp object. So while it's true that in Ruby <code>eval(:aaron.to_s)</code> will give the variable <code>aaron</code>'s value, it's fairly unrelated to the symbol <code>:aaron</code>, and quite different from <code>(eval aaron)</code> in Lisp.</p>
+<p>Some uses of Ruby and Lisp symbols are similar, but by and large trying to think of them as related was doing me more harm than good.</p>
+<p>I found that <a href="https://twitter.com/chneukirchen">Christian Neukirchen</a> has <a href="http://chneukirchen.org/blog/archive/2005/12/ruby-symbols-are-not-lisp-symbols.html">a 2005 post with the same name as this one</a>, which points out even more differences between Lisp symbols and Ruby symbols. His link to the Common Lisp HyperSpec "K" glossary page (for "keyword") is broken; here's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_k.htm">a working one</a>. I'm playing with <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a> here, not <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. There may be more to be said.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
