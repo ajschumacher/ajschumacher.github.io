@@ -14,8 +14,18 @@ Weirdnesses:
 
 Syntax highlighting is by [highlight.js](https://highlightjs.org/download/). It's a custom pack; right now these are the languages:
 
- * Bash
- * Python
- * R
- * JSON
- * HTML/XML
+ * from "Common"
+     * CSS
+     * JavaScript
+     * Ruby
+     * Bash
+     * SQL
+     * JSON
+     * Markdown
+     * HTML/XML
+     * Python
+ * from "Other"
+     * Clojure
+     * Clojure REPL
+     * Lisp
+     * R
