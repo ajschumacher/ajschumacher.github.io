@@ -27,7 +27,7 @@
 <a href="http://www.facebook.com/video/video.php?v=10150167066090603">http://www.facebook.com/video/video.php?v=10150167066090603</a> Hiski's footage</div>
 <div><br></div>
 <div>2010.3.7 KSBC Season 1 Volume 8</div>
-<div>Round of 16; solo vs. &#47532;&#50620; [Real] vs. &#47588;&#46300;&#47592; [Madman]; 2 rounds</div>
+<div>Round of 16; solo vs. 리얼 [Real] vs. 매드맨 [Madman]; 2 rounds</div>
 <div><a href="http://www.facebook.com/video/video.php?v=926627374237">http://www.facebook.com/video/video.php?v=926627374237</a></div>
 <div><br></div>
 <div>2010.3.6 R-16 2010 Korea Qualifier</div>
@@ -80,9 +80,9 @@
 <div><br></div>
 <div><br></div>
 <div>2009.12.26 KSBC Season 1 Volume 5</div>
-<div>Round of 8; solo vs. &#53584;&#48260;&#46300; (10 Bird); 2 rounds</div>
+<div>Round of 8; solo vs. 텐버드 (10 Bird); 2 rounds</div>
 <div><a href="http://www.facebook.com/video/video.php?v=893710255407">http://www.facebook.com/video/video.php?v=893710255407</a></div>
-<div>Round of 16; solo vs. &#53552;&#52824; (Touch); 2 rounds</div>
+<div>Round of 16; solo vs. 터치 (Touch); 2 rounds</div>
 <div>
 <a href="http://www.facebook.com/video/video.php?v=893534053517">http://www.facebook.com/video/video.php?v=893534053517</a> (round 1)</div>
 <div>
@@ -111,7 +111,7 @@
 <a href="http://www.youtube.com/watch?v=ijvvm_35lRs">http://www.youtube.com/watch?v=ijvvm_35lRs</a> (same)</div>
 <div><br></div>
 <div>2009.11.14 KSBC Season 1 Volume 3</div>
-<div>Round of 16 (?); solo vs. &#48281;&#54532; (Beongpeu); 1 round</div>
+<div>Round of 16 (?); solo vs. 벙프 (Beongpeu); 1 round</div>
 <div><a href="http://www.facebook.com/video/video.php?v=876106268937">http://www.facebook.com/video/video.php?v=876106268937</a></div>
 <div><br></div>
 <div>2009.10.31 Bboy Challenge 8</div>

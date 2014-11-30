@@ -17,7 +17,7 @@
 the cat
 the fat fat cat</code></pre>
 
-<p>One step of pre-processing is required: make a table with one column for every element that appears in any collection in the corpus and one row for every collection in the corpus. (It might be done&#160;programmatically&#160;in some cases, but this will remain outside the current scope.) The values of the table are counts of how many times each element appears in each collection. In some cases this can be a reasonable format even for human-entered data. Load the data into a data frame in R. You probably want to store your data in a separate file, but for convenience we can continue the example:</p>
+<p>One step of pre-processing is required: make a table with one column for every element that appears in any collection in the corpus and one row for every collection in the corpus. (It might be done programmatically in some cases, but this will remain outside the current scope.) The values of the table are counts of how many times each element appears in each collection. In some cases this can be a reasonable format even for human-entered data. Load the data into a data frame in R. You probably want to store your data in a separate file, but for convenience we can continue the example:</p>
 <pre><code class="language-r">data &lt;- read.table(header=T, row.names=1, text=
 "    the fat cat
  one   1   1   0

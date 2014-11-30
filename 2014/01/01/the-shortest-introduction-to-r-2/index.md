@@ -54,9 +54,9 @@ x$col.two[c(4, 5)]
 
 You can get help with <code>help()</code> or the shortcut, <code>?</code>. For example, <code>?read.csv</code> or <code>help(plot)</code>. There's also search functionality, but I recommend using the internet instead.
 
-&#160;
+ 
 
-This introduction is designed to maximize utility over length, and does so by leaving some things out. I recommend John Cook's online&#160;<a href="http://www.johndcook.com/R_language_for_programmers.html">R programming for those coming from other languages</a>&#160;for a slightly expanded view, and Norman Matloff's book&#160;<a href="http://www.amazon.com/The-Art-Programming-Statistical-Software/dp/1593273843">The Art of R Programming</a> for a proper introduction with examples and applications.
+This introduction is designed to maximize utility over length, and does so by leaving some things out. I recommend John Cook's online <a href="http://www.johndcook.com/R_language_for_programmers.html">R programming for those coming from other languages</a> for a slightly expanded view, and Norman Matloff's book <a href="http://www.amazon.com/The-Art-Programming-Statistical-Software/dp/1593273843">The Art of R Programming</a> for a proper introduction with examples and applications.
 
 
 

@@ -16,7 +16,7 @@
 <div><br></div>
 <div>And the next thing in the "text" is a line drawing of an apple. Even Harry Potter has some stuff like this; little sketches inserted here and there - and I don't mean the decorative illustrations; the little pictures form a part of the "text".</div>
 <div><br></div>
-<div>My gut feeling is to be opposed to this. I am not quite sure exactly why, or where to draw the line.&#160;Graphic novels are their own thing, but in things that are otherwise just text, novels and the like, I think a line needs to be drawn.</div>
+<div>My gut feeling is to be opposed to this. I am not quite sure exactly why, or where to draw the line. Graphic novels are their own thing, but in things that are otherwise just text, novels and the like, I think a line needs to be drawn.</div>
 <div><br></div>
 <div>In the case of pictures, it seems to violate the idea of the text recording speech, just telling a story. You don't think of telling a story around the camp fire, and then stopping to hold up a picture. I guess you could stop and draw a picture in the dirt or something, but it's really different from just TELLING the story.*</div>
 <div><br></div>

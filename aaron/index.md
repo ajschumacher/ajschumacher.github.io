@@ -22,7 +22,7 @@ Here are some things I've made:
  * [mcasta.net](http://mcasta.net/): interface for Massachusetts Comprehensive Assessment System (MCAS) mathematics questions
  * [naldaramjui.com](http://www.naldaramjui.com/): interface for questions from the Test Of Proficiency In Korean
  * [@NYCattends](https://twitter.com/NYCattends): automated system to [archive](http://bit.ly/NYCattdarch) and tweet NYC public school attendance
- * [theograph](http://bit.ly/theograph): prototype of an interactive patient health timeline for the UK's NHS at the [GovLab](http://thegovlab.org/)&#160;Experiment
+ * [theograph](http://bit.ly/theograph): prototype of an interactive patient health timeline for the UK's NHS at the [GovLab](http://thegovlab.org/) Experiment
  * [subway usage](http://bit.ly/NYCsubway): D3 calendar visualization of NYC subway usage
  * [school data explorer](http://bit.ly/NYCd3schools): my first d3 project, loaded with data animation messiness
 

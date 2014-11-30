@@ -27,7 +27,7 @@
 <div>
 <br>
 </div>
-<div>The content of the book: this gorilla is telling a guy about how, in a nutshell, the human race went wrong at agriculture, as in the Diamond piece (link above). Some pains are taken to point out that the problem is not exactly agriculture <i>per s&#233; </i>- there were some farming Native Americans, etc. - but the world-view that we need to expand production and control the earth, rather than living in harmony with it, letting natural conditions govern things like human population.</div>
+<div>The content of the book: this gorilla is telling a guy about how, in a nutshell, the human race went wrong at agriculture, as in the Diamond piece (link above). Some pains are taken to point out that the problem is not exactly agriculture <i>per sé </i>- there were some farming Native Americans, etc. - but the world-view that we need to expand production and control the earth, rather than living in harmony with it, letting natural conditions govern things like human population.</div>
 <div>
 <br>
 </div>

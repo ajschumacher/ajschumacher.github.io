@@ -2,7 +2,7 @@
 
 
 
-A series of posts analyzing publicly available New York City Math and English Language Arts (ELA) standardized test results. There are a lot of graphs.&#160;<a href="https://github.com/ajschumacher/NYCtests">Code</a>&#160;is on github.
+A series of posts analyzing publicly available New York City Math and English Language Arts (ELA) standardized test results. There are a lot of graphs. <a href="https://github.com/ajschumacher/NYCtests">Code</a> is on github.
 
  1. <a href="/2013/11/13/nyc-standardized-test-results-putting-the-data-together-and-looking-at-it/">Putting the data together and looking at it</a>
  2. <a href="/2013/11/14/nyc-standardized-test-results-checking-out-the-number-of-students-tested-in-math-and-ela/">Checking out the number of students tested in Math and ELA</a>
@@ -15,6 +15,6 @@ A series of posts analyzing publicly available New York City Math and English La
  9. <a href="/2013/11/17/nyc-standardized-test-results-normalizing-the-distributions-of-average-scores/">Normalizing the distributions of average scores</a>
 10. <a href="/2013/11/18/nyc-standardized-test-results-schools-fight-the-law-of-large-numbers/">Schools fight the Law of Large Numbers</a>
 11. <a href="/2013/11/19/nyc-standardized-test-results-changes-in-average-scores-for-school-grades-and-cohorts/">Changes in average scores for school grades and cohorts</a>
-12. <a href="/2013/11/20/nyc-standardized-test-results-changes-in-average-scores-by-year-where-is-the-common-core-shake-up/">Changes in scores by year &#8211; where is the Common Core shake-up?</a>
+12. <a href="/2013/11/20/nyc-standardized-test-results-changes-in-average-scores-by-year-where-is-the-common-core-shake-up/">Changes in scores by year – where is the Common Core shake-up?</a>
 
 *This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/01/10/nyc-test-data/).*

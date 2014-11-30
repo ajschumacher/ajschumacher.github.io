@@ -27,7 +27,7 @@ One reads alone, even in another's presence.
 
 What makes lovemaking and reading resemble each other most is that within both of them times and spaces open, different from measurable time and space.
 
-I would like to be able to write a book that is only <em>incipit</em>, that maintains for its whole duration the potentiality of the beginning,&#160;the expectation still not focused on an object.
+I would like to be able to write a book that is only <em>incipit</em>, that maintains for its whole duration the potentiality of the beginning, the expectation still not focused on an object.
 
 I expect readers to read in my books something I didn't know, but I can expect it only from those who expect to read something they didn't know.
 
@@ -43,7 +43,7 @@ Perhaps instead of a book I could write lists of words, in alphabetical order, a
 
 The book is an accessory aid, or even a pretext.
 
-"Don't be amazed if you see my eyes wandering. In fact, this is my way of reading, and it is only in this way that reading proves fruitful for me. If a book truly interests me, I cannot follow it for more than a few lines before my mind, having seized on a thought that the text suggests to it, or a feeling, or a question, or an image, goes off on a tangent and springs from thought to thought, from image to image, in an itinerary of reasonings and fantasies that I feel the need to pursue to the end, moving away from the book until I have lost sight of it. The stimulus of reading is&#160;indispensable&#160;to me, and of meaty reading, even if, of every book, I manage to read no more than a few pages. But those few pages already enclose for me whole universes, which I can never exhaust."
+"Don't be amazed if you see my eyes wandering. In fact, this is my way of reading, and it is only in this way that reading proves fruitful for me. If a book truly interests me, I cannot follow it for more than a few lines before my mind, having seized on a thought that the text suggests to it, or a feeling, or a question, or an image, goes off on a tangent and springs from thought to thought, from image to image, in an itinerary of reasonings and fantasies that I feel the need to pursue to the end, moving away from the book until I have lost sight of it. The stimulus of reading is indispensable to me, and of meaty reading, even if, of every book, I manage to read no more than a few pages. But those few pages already enclose for me whole universes, which I can never exhaust."
 
 "Reading is a discontinuous and fragmentary operation. Or, rather, the object of reading is a punctiform and <a href="http://www.marthabarnette.com/learn_p.html#pulviscular">pulviscular</a> material. ..."
 

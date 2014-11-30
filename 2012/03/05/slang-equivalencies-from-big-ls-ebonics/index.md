@@ -1,6 +1,6 @@
 # Slang Equivalencies from Big L's "Ebonics"
 
-This is just a cut down version of the lyric. Check out the song: <a href="http://open.spotify.com/track/5i3amp9WyYeJbCmVfKsV5D">Big L &#8211; Ebonics</a>
+This is just a cut down version of the lyric. Check out the song: <a href="http://open.spotify.com/track/5i3amp9WyYeJbCmVfKsV5D">Big L – Ebonics</a>
 
 ```html
 weed smoke:lye

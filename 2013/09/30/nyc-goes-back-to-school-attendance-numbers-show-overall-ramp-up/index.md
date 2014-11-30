@@ -1,7 +1,7 @@
 # NYC goes back to school: Attendance numbers show overall ramp-up
 
 
-I've been <a href="https://github.com/ajschumacher/NYCattends">archiving</a>&#160;(and <a href="https://twitter.com/NYCattends">tweeting</a>) NYCDOE <a href="http://schools.nyc.gov/AboutUs/data/Attendance.htm">attendance</a> numbers since last spring, so this has been the first Fall that I've archived. I was interested to see what the start of the school year looks like. As I sort of guessed, there is a clear "ramp up" in the system overall, in addition to the usual weekly pattern:
+I've been <a href="https://github.com/ajschumacher/NYCattends">archiving</a> (and <a href="https://twitter.com/NYCattends">tweeting</a>) NYCDOE <a href="http://schools.nyc.gov/AboutUs/data/Attendance.htm">attendance</a> numbers since last spring, so this has been the first Fall that I've archived. I was interested to see what the start of the school year looks like. As I sort of guessed, there is a clear "ramp up" in the system overall, in addition to the usual weekly pattern:
 
 <a href="overall1.png"><img class="aligncenter size-full wp-image-344" alt="overall" src="overall1.png"></a>
 

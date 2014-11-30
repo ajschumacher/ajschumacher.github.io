@@ -6,7 +6,7 @@ The second edition of Stephen Few's book on making dashboards came out about two
 
 <a href="information-dashboard-design-front-cover-small.jpg"><img class="aligncenter size-full wp-image-300" alt="book cover" src="information-dashboard-design-front-cover-small.jpg"></a>
 
-The cover of the <a href="http://www.amazon.com/gp/product/1938377001/">second edition</a>&#160;(above) is way better than the cover of the <a href="http://www.amazon.com/Information-Dashboard-Design-Effective-Communication/dp/0596100167/">first edition</a>&#160;(below) because it features a complete example of the style of dashboard that Few advocates. If you understand everything on the cover above, you understand the entire book. It's a really neat sort of meta-visualization. This old cover is rather awful:
+The cover of the <a href="http://www.amazon.com/gp/product/1938377001/">second edition</a> (above) is way better than the cover of the <a href="http://www.amazon.com/Information-Dashboard-Design-Effective-Communication/dp/0596100167/">first edition</a> (below) because it features a complete example of the style of dashboard that Few advocates. If you understand everything on the cover above, you understand the entire book. It's a really neat sort of meta-visualization. This old cover is rather awful:
 
 <a href="300px-information-dashboard-design.jpg"><img class="aligncenter size-full wp-image-301" alt="book cover (first edition)" src="300px-information-dashboard-design.jpg"></a>
 

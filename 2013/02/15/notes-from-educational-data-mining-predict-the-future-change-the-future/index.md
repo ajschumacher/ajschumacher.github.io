@@ -16,7 +16,7 @@ There are two major societies in this field:
 	<li>
 <a href="http://www.educationaldatamining.org/">International Educational Data Mining Society</a>: Professor Baker leads this group. He describes it, in comparison to SoLAR, as more interested in
 automated analysis and things like making better automated interventions. (<a href="http://www.educationaldatamining.org/IEDMS/mailinglists">public email lists</a>)</li>
-	<li><span><a href="http://www.solaresearch.org/">Society for Learning Analytics Research</a>&#160;(SoLAR): Compared to IEDMS, this group is more interested in&#160;visualization and empowering educators to make decisions with analytics. (<a href="http://www.solaresearch.org/stay-in-touch/">public email list</a>) (<a href="https://twitter.com/SoLAResearch">twitter</a>)</span></li>
+	<li><span><a href="http://www.solaresearch.org/">Society for Learning Analytics Research</a> (SoLAR): Compared to IEDMS, this group is more interested in visualization and empowering educators to make decisions with analytics. (<a href="http://www.solaresearch.org/stay-in-touch/">public email list</a>) (<a href="https://twitter.com/SoLAResearch">twitter</a>)</span></li>
 </ul>
 Other interesting things:
 

@@ -17,7 +17,7 @@ There are lots of interesting tidbits in here. It's largely anecdote-based, and 
 ... trying something is often cheaper than making a formal decision about whether to try it.
 
 ... the question "Do the people who like it take care of each other?" turns out to be a better predictor of success than "What's the business model?"</blockquote>
-<a href="http://en.wikipedia.org/wiki/Clay_Shirky">Shirky</a> also brings up the <a href="http://en.wikipedia.org/wiki/Bill_Joy">Bill Joy</a> quote, "No matter who you are, most of the smart people work for someone else." This made me wonder whether&#160;Google agrees, these days.
+<a href="http://en.wikipedia.org/wiki/Clay_Shirky">Shirky</a> also brings up the <a href="http://en.wikipedia.org/wiki/Bill_Joy">Bill Joy</a> quote, "No matter who you are, most of the smart people work for someone else." This made me wonder whether Google agrees, these days.
 
 I like reciprocal altruism a lot: "With reciprocal altruism, favors are exchanged <em>without formal bookkeeping</em> ..." (emphasis mine). This is my preferred way of doing things. The problem seems to be the number of people and anonymity online, and so there are systems with formal bookkeeping like eBay's buyer/seller rating system, or points on StackOverflow. Is this the direction that everything is moving in? If we end up with zero privacy/anonymity online, will that solve the problem of freeloaders and other bad behavior?
 

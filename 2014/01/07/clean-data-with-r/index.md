@@ -2,7 +2,7 @@
 
 
 
-This is the content of the talk I did for the&#160;<a href="http://www.meetup.com/Data-Wranglers-DC/events/154160282/">2014-01-08 meetup</a> of&#160;<a href="http://www.meetup.com/Data-Wranglers-DC/">Data Wranglers DC</a>. I agree with <a href="http://users.ha.uth.gr/tgd/pt0501/09/Tufte.pdf">Tufte on PowerPoint</a>, so I wrote out most of what I wanted to say as a couple blog posts.
+This is the content of the talk I did for the <a href="http://www.meetup.com/Data-Wranglers-DC/events/154160282/">2014-01-08 meetup</a> of <a href="http://www.meetup.com/Data-Wranglers-DC/">Data Wranglers DC</a>. I agree with <a href="http://users.ha.uth.gr/tgd/pt0501/09/Tufte.pdf">Tufte on PowerPoint</a>, so I wrote out most of what I wanted to say as a couple blog posts.
 
 <ul>
 	<li><a href="http://planspace.org/2013/12/31/excel-two-thousand-and-wat/">Tools: Excel? (wat)</a></li>

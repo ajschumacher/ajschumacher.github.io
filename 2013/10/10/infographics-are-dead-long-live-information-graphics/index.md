@@ -4,15 +4,15 @@
 
 The word "infographic" has come to connote bad design in combination with comically low or even negative data density.*
 
-A recent&#160;<a href="http://insights.qunb.com/why-we-hate-infographics-and-why-you-should">blog post</a>&#160;contrasts "infographics" with "data visualizations".** A <a href="http://xkcd.com/1273/">recent xkcd</a> expresses a similar critical sentiment, directed particularly at "tall infographics" which require scrolling through their colorful information deserts. The <a href="http://wtfviz.net/">WTF Visualizations</a> tumblr collects examples of bad information design, most from what would be called infographics.
+A recent <a href="http://insights.qunb.com/why-we-hate-infographics-and-why-you-should">blog post</a> contrasts "infographics" with "data visualizations".** A <a href="http://xkcd.com/1273/">recent xkcd</a> expresses a similar critical sentiment, directed particularly at "tall infographics" which require scrolling through their colorful information deserts. The <a href="http://wtfviz.net/">WTF Visualizations</a> tumblr collects examples of bad information design, most from what would be called infographics.
 
 The "information graphic" of Bret Victor's 2006 <a href="http://worrydream.com/MagicInk/">Magic Ink</a> paper is the elegant product of Tufte's "information design" and the best way to conceptualize effective "information software". An information graphic is made "to display a complex set of data in a way that [the viewer] can understand it and reason about it." "<em>Show the data.</em>" "It is for <em>learning</em>."
 
 While the pejorative sense of "infographic" is dominant now, let's remain committed to the ideal of good communication through information graphics.
 
-<strong>A&#8594;A</strong>
+<strong>A→A</strong>
 
-&#160;
+ 
 
 * Negative data density is achieved when incorrect or confusing communication leads to a net loss in human understanding.
 

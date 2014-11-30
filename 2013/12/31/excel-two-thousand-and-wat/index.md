@@ -2,7 +2,7 @@
 
 
 
-There's no perfect tool. Things get done well when you know your tools inside and out. Because I enjoy complaining about Excel, and because I enjoy&#160;<a href="https://www.destroyallsoftware.com/talks/wat">Gary Bernhardt's "wat" talk</a> about typically unexpected behaviors in JavaScript and Ruby, I offer here "Excel Two Thousand and Wat", combining some personal pet peeves and a few other <a href="http://spreadsheetpage.com/index.php/oddities">Excel oddities</a>. (I'm using Excel 2011 for Mac; your mileage may vary.)
+There's no perfect tool. Things get done well when you know your tools inside and out. Because I enjoy complaining about Excel, and because I enjoy <a href="https://www.destroyallsoftware.com/talks/wat">Gary Bernhardt's "wat" talk</a> about typically unexpected behaviors in JavaScript and Ruby, I offer here "Excel Two Thousand and Wat", combining some personal pet peeves and a few other <a href="http://spreadsheetpage.com/index.php/oddities">Excel oddities</a>. (I'm using Excel 2011 for Mac; your mileage may vary.)
 
 Let's talk about Excel.
 
@@ -16,7 +16,7 @@ id,value
 010,2
 01a,3
 100,4
-101,&#54616;&#54616;
+101,하하
 110,5
 111,6
 $ file test.csv

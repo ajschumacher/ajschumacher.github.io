@@ -5,7 +5,7 @@ Often "types of data" are introduced all together, and then "measures of central
 
 A common response to this exposition, even if median is justified with reference to skew, is that mode is a stupid thing and its inclusion in the list is almost insulting.
 
-A much nicer exposition would introduce each type of data together with the "measure of central tendency" that is in some sense&#160;<em>the best you can do</em> for that type of data.
+A much nicer exposition would introduce each type of data together with the "measure of central tendency" that is in some sense <em>the best you can do</em> for that type of data.
 
 With nominal data the best you can do is frequency counts. Mode reports the most common thing. The mode of an election is (often) the winner. This is useful.
 

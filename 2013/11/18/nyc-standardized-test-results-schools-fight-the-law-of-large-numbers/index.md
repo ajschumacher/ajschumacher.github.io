@@ -12,7 +12,7 @@ It does, to some extent. The graphs are vaguely cone-shaped. (ELA is a little mo
 
 It is good news that the school scores do mostly seem to converge toward average when there are more students. If there were perfect segregation of better and worse-performing students we could see all these averages avoiding the center red lines entirely.
 
-If you squint a little, it looks like there somehow aren't any middle schools&#160;with around 200 students in a grade that perform much above average in ELA. You can almost see something like that for math too. Weird. (<a href="https://github.com/ajschumacher/NYCtests/blob/master/code/figure10.r">Code</a>.)
+If you squint a little, it looks like there somehow aren't any middle schools with around 200 students in a grade that perform much above average in ELA. You can almost see something like that for math too. Weird. (<a href="https://github.com/ajschumacher/NYCtests/blob/master/code/figure10.r">Code</a>.)
 
 [caption id="attachment_606" align="aligncenter" width="525"]<a href="10b2.png"><img class="size-large wp-image-606" alt="Figure 10b. Normalized average ELA scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="10b2.png"></a> Figure 10b. Normalized average ELA scores vs. number of tested students for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
 

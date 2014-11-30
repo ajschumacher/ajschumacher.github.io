@@ -8,7 +8,7 @@
 
 There are a lot of idiosyncrasies described, but the most common thread seems to be one that is rather at odds with the bite-sized micro-sectioning of the book: many many productive people are productive by focusing on work for stretches of three or more hours at a time, as close to undisturbed and undistracted as possible. Nobody seems to write novels while reading buzzfeed lists and watching videos on youtube.
 
-Another interesting tendency is that a lot of people consume a lot of caffeine, and a fairly large number even use amphetamines (it isn't just&#160;Erd&#337;s). I'm not sure I'll start going in for the harder stuff, but it makes me feel better about drinking Red Bull every now and then.
+Another interesting tendency is that a lot of people consume a lot of caffeine, and a fairly large number even use amphetamines (it isn't just Erdős). I'm not sure I'll start going in for the harder stuff, but it makes me feel better about drinking Red Bull every now and then.
 
 
 

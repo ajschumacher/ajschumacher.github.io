@@ -23,9 +23,9 @@
 </div>
 <div><div>Experimental procedure:</div></div>
 <div><br></div>
-<div>For the microwave test, about two cups of tap water were heated in a standard microwave for about six minutes.  The water was observed boiling inside the microwave before heating was stopped.  The water was removed from the microwave and a measure of it was poured into a tumbler on a standard dining room table protected by a thin fabric runner.  The room was determined by consensus to be at room temperature.  Temperature readings were taken at one minute intervals for the first eleven minutes, then intermittently up to 48 minutes, for a total of 22 readings.  The initial reading was 85&#186;C.</div>
+<div>For the microwave test, about two cups of tap water were heated in a standard microwave for about six minutes.  The water was observed boiling inside the microwave before heating was stopped.  The water was removed from the microwave and a measure of it was poured into a tumbler on a standard dining room table protected by a thin fabric runner.  The room was determined by consensus to be at room temperature.  Temperature readings were taken at one minute intervals for the first eleven minutes, then intermittently up to 48 minutes, for a total of 22 readings.  The initial reading was 85ºC.</div>
 <div><br></div>
-<div>For the stovetop test, a tea kettle was half filled and left to boil on a gas burner at high heat.  Heating was stopped after the kettle was heard to whistle and let off steam.  The water was presumed boiling.  A measure of water was poured out just as for the microwave test, and temperature readings were taken at one-minute intervals for the first fifteen minutes, then intermittently until a final reading at 50 minutes, for a total of 21 readings.  The initial reading was 186&#186;F (85.56&#186;C).</div>
+<div>For the stovetop test, a tea kettle was half filled and left to boil on a gas burner at high heat.  Heating was stopped after the kettle was heard to whistle and let off steam.  The water was presumed boiling.  A measure of water was poured out just as for the microwave test, and temperature readings were taken at one-minute intervals for the first fifteen minutes, then intermittently until a final reading at 50 minutes, for a total of 21 readings.  The initial reading was 186ºF (85.56ºC).</div>
 <div><br></div>
 <div>Experimental issues: The thermometer used was intended for cooking, not science.  It was only marked to five-degree increments.  I read degrees Fahrenheit in the second (stovetop) test in hopes of benefiting from the relative "smallness" of degrees Fahrenheit and then converted to Centigrade.</div>
 <div><br></div>
@@ -34,14 +34,14 @@
 <div><br></div>
 <div><img src="science.png" alt="" id="BLOGGER_PHOTO_ID_5257514158013883570" border="0"></div>
 <div><br></div>
-<div>As you can see, microwave temperatures seem just a bit above those for the stovetop throughout.  This distinction is certainly smaller than the error of the instrument, and should be regarded as insignificant.  The graph shown adjusts time by one minute so that the samples were at 85&#186;C simultaneously.  If this is not done, the stovetop graph rides just perceptibly above the microwave graph, and just as negligibly.</div>
+<div>As you can see, microwave temperatures seem just a bit above those for the stovetop throughout.  This distinction is certainly smaller than the error of the instrument, and should be regarded as insignificant.  The graph shown adjusts time by one minute so that the samples were at 85ºC simultaneously.  If this is not done, the stovetop graph rides just perceptibly above the microwave graph, and just as negligibly.</div>
 <div><br></div>
 <div><br></div>
 <div>Observations:</div>
 <div><ul>
 <li>The temperature initially measured for the fire-heated water was about one half degree Celsius hotter than that for the microwaved water.  This may be because I measured it with less delay, or perhaps a tea kettle really can get water one half degree hotter.  Even if so, it does not seem a significant victory for the tea kettle.<br>
 </li>
-<li>No temperature was measured even as high as 86&#186;C.  The water did boil in both cases, and the temperature at which water boils is (by definition) 100&#186;C.  This seems odd at first.  Perhaps it is due to some combination of lower air pressure (the elevation of Milwaukee, Wisconsin, is around 634 feet above sea level), impurity of the water, and delay between last boiling and first measurement.</li>
+<li>No temperature was measured even as high as 86ºC.  The water did boil in both cases, and the temperature at which water boils is (by definition) 100ºC.  This seems odd at first.  Perhaps it is due to some combination of lower air pressure (the elevation of Milwaukee, Wisconsin, is around 634 feet above sea level), impurity of the water, and delay between last boiling and first measurement.</li>
 </ul></div>
 <div><br></div>
 <div>Conclusion: Water cools at the same rate regardless of whether it was boiled by microwave or convection from burning natural gas.</div>

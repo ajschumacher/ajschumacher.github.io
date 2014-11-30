@@ -24,7 +24,7 @@ Business abuses the term data science in two main ways. The first is understanda
 
 Let us go forth and learn about the world.
 
-<strong>A&#8594;A</strong>
+<strong>A→A</strong>
 
 
 

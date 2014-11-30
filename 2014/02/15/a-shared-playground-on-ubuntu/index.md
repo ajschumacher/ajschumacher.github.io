@@ -4,7 +4,7 @@
 
 After <a href="http://planspace.org/2014/01/25/easy-aws-ec2-ubuntu-quick-start/">setting up a machine</a>, I'd like to set up a bunch of users who can log in and give them a common space in which to do some work. The goal is convenience for demonstration and education.
 
-Assume usernames are in a file called&#160;<code>names.txt</code>, one per line. This will create users with those names, put them in the <code>users</code> group, and make their passwords "<code>none</code>". As root:
+Assume usernames are in a file called <code>names.txt</code>, one per line. This will create users with those names, put them in the <code>users</code> group, and make their passwords "<code>none</code>". As root:
 
 <pre>cat names.txt | while read line
  do

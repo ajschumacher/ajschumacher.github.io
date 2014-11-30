@@ -13,7 +13,7 @@ A common misconception is that doing word counts is a good replacement tool for 
 
 Upon reflection as I write this, I think that the difference in the sense of bigness is significant enough that unstructured data shouldn't be considered big in the same way that terabytes are. I think it's probably more appropriate to think of it as two separate axes, one of raw size and one of analysis complexity/difficulty. There's probably a good two-by-two matrix figure in this.
 
-Thank you, <a href="http://www.bigdatacamp.org/ny/2013-10-27/">Big Data Camp</a>&#160;NYC and <a href="http://strataconf.com/">Strata</a>, for stimulating this line of thought.
+Thank you, <a href="http://www.bigdatacamp.org/ny/2013-10-27/">Big Data Camp</a> NYC and <a href="http://strataconf.com/">Strata</a>, for stimulating this line of thought.
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-I was exploring <a href="http://research.google.com/pubs/papers.html">Google Papers</a> the other day and came across <a href="http://research.google.com/pubs/pub42022.html">Quizz: Targeted Crowdsourcing with a Billion (Potential) Users</a>&#160;by <a href="http://www.behind-the-enemy-lines.com/">Ipeirotis</a> and <a href="http://www.cs.technion.ac.il/~gabr/">Gabrilovich</a>. Downside: occasionally reads like a Google ad. Upside: really interesting results from an experimental Q&amp;A system which is still <a href="https://www.quizz.us/">live</a>. It's very cool. Here are some quotes with my commentary:
+I was exploring <a href="http://research.google.com/pubs/papers.html">Google Papers</a> the other day and came across <a href="http://research.google.com/pubs/pub42022.html">Quizz: Targeted Crowdsourcing with a Billion (Potential) Users</a> by <a href="http://www.behind-the-enemy-lines.com/">Ipeirotis</a> and <a href="http://www.cs.technion.ac.il/~gabr/">Gabrilovich</a>. Downside: occasionally reads like a Google ad. Upside: really interesting results from an experimental Q&amp;A system which is still <a href="https://www.quizz.us/">live</a>. It's very cool. Here are some quotes with my commentary:
 
 <blockquote>... the strong self-selection of high-quality users to continue contributing, while low-quality users self-select to drop out.
 

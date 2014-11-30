@@ -4,7 +4,7 @@
 
 [<a href="http://ajschumacher.github.io/perplexity/">Test <em>your</em> perplexity!</a>]
 
-Perplexity is an interesting measure of how well you're predicting something. It has a nice <a href="http://en.wikipedia.org/wiki/Perplexity">mathy definition</a>;&#160;I'll try to describe it quite simply here.
+Perplexity is an interesting measure of how well you're predicting something. It has a nice <a href="http://en.wikipedia.org/wiki/Perplexity">mathy definition</a>; I'll try to describe it quite simply here.
 
 Say the real thing you want to predict is the sequence of numbers from one to six. If you predict each number in turn with a six-sided die, you will be right about one sixth of the time. The die's perplexity with this data (and really with any data it could possibly predict - dice are <a href="http://en.wikipedia.org/wiki/Cleromancy">dumb</a>) is six.
 
@@ -19,9 +19,9 @@ You can also predict one letter at a time, and you'll get a much better perplexi
 <blockquote>To measure the artistic merit of texts, Kolmogorov also employed a letter-guessing method to evaluate the entropy of natural language. ... His group conducted a series of experiments, showing volunteers a fragment of Russian prose or poetry and asking them to guess the next letter, then the next, and so on.</blockquote>
 I know you're itching to participate in such an experiment - and you can! On <a href="http://ajschumacher.github.io/perplexity/">the linked page</a> you'll be able to try your hand. It's interesting to consider whether you're evaluating the artistic merit of the text, or your own knowledge of English, or some combination, or what.
 
-Computers can predict letters <a href="http://acl.ldc.upenn.edu/J/J92/J92-1002.pdf">pretty well</a>&#160;- a perplexity of about 3.4. And that's predicting from the range of all printable characters (well, ASCII characters). This <a href="http://ajschumacher.github.io/perplexity/">human test</a> only asks you to predict from a range of about 30 characters, which is a bit easier. So I hope you can beat 3.4!
+Computers can predict letters <a href="http://acl.ldc.upenn.edu/J/J92/J92-1002.pdf">pretty well</a> - a perplexity of about 3.4. And that's predicting from the range of all printable characters (well, ASCII characters). This <a href="http://ajschumacher.github.io/perplexity/">human test</a> only asks you to predict from a range of about 30 characters, which is a bit easier. So I hope you can beat 3.4!
 
-[<a href="http://ajschumacher.github.io/perplexity/">Test&#160;<em>your</em>&#160;perplexity!</a>]
+[<a href="http://ajschumacher.github.io/perplexity/">Test <em>your</em> perplexity!</a>]
 
 Thanks to David for originally leading me to think about perplexity!
 

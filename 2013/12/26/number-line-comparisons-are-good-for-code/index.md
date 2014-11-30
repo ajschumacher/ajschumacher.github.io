@@ -6,7 +6,7 @@ You have a lot of flexibility in how you write comparisons with most programming
 
 I recommend the convention of writing comparisons as if they come from a <a href="http://en.wikipedia.org/wiki/Number_line">number line</a>. That is, always use "<code>&lt;</code>" and "<code>&lt;=</code>", and never use "<code>&gt;</code>" and "<code>&gt;=</code>".
 
-This convention reduces cognitive load - it makes code easier to read and write. This is particularly true when testing ranges, and I find it &#160;to make an exceptionally large difference in the common case of testing date ranges. Compare the following two lines of pseudo-code:
+This convention reduces cognitive load - it makes code easier to read and write. This is particularly true when testing ranges, and I find it  to make an exceptionally large difference in the common case of testing date ranges. Compare the following two lines of pseudo-code:
 
 <pre>date &gt; 2010-04-23 &amp; date &lt; 2010-08-11 # bad
 2010-04-23 &lt; date &amp; date &lt; 2010-08-11 # good</pre>
