@@ -1,4 +1,4 @@
-# Make Emacs Easy to Install
+# Make it Easy to Install Emacs
 
 “GNU Emacs is an extensible, customizable text editor—and more.”
 
