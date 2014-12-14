@@ -15,6 +15,7 @@ Here are some things I've talked about:
 
 Here are some things I've made:
 
+ * [emacs.link](http://emacs.link/): an attractive convenience site for downloading and installing Emacs
  * [rjstat](https://github.com/ajschumacher/rjstat): an R package to read and write JSON-stat
  * [Popularity Contest](http://popular.herokuapp.com/): A little [hack](/2014/03/02/popularity-contest/) on the twitter API. Likely to break.
  * [NYC Test Data](/2014/01/10/nyc-test-data/): some analysis/visualization of available NYC public school test data
