@@ -114,20 +114,14 @@ So in 2009, some folks at Google come out with [The Unreasonable Effectiveness o
 
 A good illustration of their point is a [2001 Microsoft paper](http://dl.acm.org/citation.cfm?id=1073017). The graph shows that for their natural language problem it seems to matter more how much data you have than which algorithm you use. Their data is text. There are three things to say here.
 
-First, is this big data? Their complete data set was a billion words. Around five gigabytes. Not big by our definition, but it was bigger than other people had been using then.
+First, is this big data? Their complete data set was a billion words. Around five gigabytes. Not big by our definition. Perhaps medium. But it was bigger than other people had been using then.
 
-Second, how are we measuring success? The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, and it is a powerful one. It's the scientific method: the model is correct to the extent it makes correct predictions. It doesn't make much sense to try to interpret these models in any other way.
+Second, how are we measuring effectiveness? The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. It doesn't make much sense to try to interpret these models in any other way.
 
 Here's an analogy to consider: computational linguistics is to traditional linguistics as machine learning is to traditional statistics.
 
-Finally, should we be surprised? Or do we understand and deserve this effectiveness of data? The problem these models are attacking is a natural language problem. All these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus), and certainly have less [language instinct](http://en.wikipedia.org/wiki/The_Language_Instinct) than you or I. So it makes sense that they should do better when they get to study more text.
+Finally, should we be surprised? Or do we understand and deserve this effectiveness of data? The problem these models are attacking is a natural language problem. All these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus), and they have a lot less [language instinct](http://en.wikipedia.org/wiki/The_Language_Instinct) than you or I. So it makes sense that they should do better when they get to study more text.
 
+So here is a case where more data is better. Are all cases like this? No! What is it about this case that makes more data better? Fundamentally, it's the complexity of the model [2].
 
------
-
-![](unreasonable_deep.png)
-
------
-
-text
-http://www.cs.tau.ac.il/~wolf/deeplearningmeeting/pdfs/lecun-20141105-tau-intel-master-class.pdf
+[2]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
