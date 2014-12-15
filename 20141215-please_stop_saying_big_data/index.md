@@ -51,7 +51,7 @@ What should you learn, if all you know is Excel or something similarly unfortuna
 
 -----
 
-There is a useful meaning for the phrase “big data”, [courtesy](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf) of [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29).
+This is a [slide](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf) from [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29), who has worked on large scale machine learning problems at Yahoo! and Microsoft. This is what technical people tend to mean by “big data.”
 
 It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it differently, let's say that some small data you could theoretically work with in Excel.
 
@@ -115,3 +115,29 @@ text
 
 text
 
+
+-----
+
+TSDL
+
+-----
+
+Teacher Student Data Linkage
+
+
+-----
+
+Arlington Big Data Roundtable
+
+-----
+
+http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html
+
+
+-----
+
+سقسقة
+
+-----
+
+Google Translate tells me that this is Arabic for “tweet.”
