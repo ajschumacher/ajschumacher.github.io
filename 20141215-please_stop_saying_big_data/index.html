@@ -72,8 +72,20 @@
 <p>Second, how are we measuring effectiveness? The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. It doesn't make much sense to try to interpret these models in any other way.</p>
 <p>Here's an analogy to consider: computational linguistics is to traditional linguistics as machine learning is to traditional statistics.</p>
 <p>Finally, should we be surprised? Or do we understand and deserve this effectiveness of data? The problem these models are attacking is a natural language problem. All these models are trying to overcome <a href="http://en.wikipedia.org/wiki/Poverty_of_the_stimulus">the poverty of the stimulus</a>, and they have a lot less <a href="http://en.wikipedia.org/wiki/The_Language_Instinct">language instinct</a> than you or I. So it makes sense that they should do better when they get to study more text.</p>
-<p>So here is a case where more data is better. Are all cases like this? No! What is it about this case that makes more data better? Fundamentally, it's the complexity of the model [2].</p>
-<p>[2]: <em><a href="http://xavier.amatriain.net/">Xavier Amatriain</a> (formerly of Netflix) has a good <a href="http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html">explanation</a> of this which inspired this section.</em></p>    <script src="/scripts/konami.js"></script>
+<p>So here is a case where more data is better.</p>
+<p>Are all cases like this?</p>
+<p>No!</p>
+<p>What is it about this case that makes more data better?</p>
+<p>These models are <em>high variance</em>, meaning roughly that they have a ton of coefficients [2]. Around one per word of English, at least, in this case. Which is not so different from having relatively <em>small</em> data for the rarer words. And this is a common pattern, in which you have small data for a big number of things.</p>
+<p>[2]: <em><a href="http://xavier.amatriain.net/">Xavier Amatriain</a> (formerly of Netflix) has a good <a href="http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html">explanation</a> of this which inspired this section.</em></p>
+<hr />
+<p><img alt="" src="big_complex.png" /></p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="" src="big_complex_possible.png" /></p>
+<hr />
+<p>text</p>    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>

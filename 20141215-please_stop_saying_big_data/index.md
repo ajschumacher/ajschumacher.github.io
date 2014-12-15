@@ -5,7 +5,7 @@
 
 A friend from the Midwest got in touch with me recently to get my address for a Christmas card. We got to talking, and I told her that I was going to be talking about big data. She asked me, "What's big about it?"
 
-I think that's a fair question. I think it's fair to expect that simple words should combine in simple ways.
+I think that's a fair question. I think it's fair to expect simple words to combine in simple ways.
 
 
 -----
@@ -16,12 +16,12 @@ I think that's a fair question. I think it's fair to expect that simple words sh
 
 Let's talk about “Big Cars” for a minute. Everyone knows what big cars are. Let's see if “[the four V's of big data](http://www.ibmbigdatahub.com/infographic/four-vs-big-data)” make sense for cars.
 
- * *Volume*: Do big cars have big volume? Yes. This one makes sense.
+ * *Volume*: Do big cars have big volume? Yes. This is what big means.
  * *Velocity*: Are big cars moving, possibly quickly? Well, maybe they are, maybe they aren't. Big cars can be standing still, and fast cars can be small.
  * *Variety*: Are big cars of many different types? This is clearly important to a mechanic, but again, size and variety are not necessarily related.
  * *Veracity*: What does this even mean? “Is it a real Hummer?” But more importantly: Do we care more about veracity for big cars than small cars?
 
-The good news here is that the leaders of the field agree with your average Midwesterner about what “big” ought to mean, and I'll get to that.
+The good news here is that the leaders of the field agree with your average Midwesterner about what “big” ought to mean for data, and I'll get to that.
 
 
 -----
@@ -31,11 +31,11 @@ The good news here is that the leaders of the field agree with your average Midw
 -----
 
 
-Gartner's [hype cycle](http://en.wikipedia.org/wiki/Hype_cycle) is a cartoonish way of trying to understand the world. Like many cartoonish ways of trying to understand the world, it can be very helpful.
+Gartner's [hype cycle](http://en.wikipedia.org/wiki/Hype_cycle) is a horrible, cartoonish way of trying to understand the world, and like many horrible, cartoonish ways of trying to understand the world, it can be very helpful.
 
-I'm going to take you through the “trough of disillusionment,” up the “slope of enlightenment,” and talk about what work generally looks like on the “plateau of productivity.”
+I'm starting today in the “trough of disillusionment.” Then we'll go up the “slope of enlightenment” a little ways and talk about what work generally looks like on the “plateau of productivity.”
 
-My objective is to cut “Big Data” down to size for you. I want to keep things concrete with examples. My thesis is that more than any particular technology or technique, we need better-engineered and open systems. And I'll tell you to learn Python.
+My objective is to cut “Big Data” down to size, with two examples I didn't work on, two that I did, and none of them great successes. My thesis is that more than any particular technology or technique, what we need is better-engineered and open systems. And I'll tell you to learn Python.
 
 
 -----
@@ -66,17 +66,19 @@ Deloitte was objecting mainly to the lack of clarity in using “Big Data” to 
 
 -----
 
-For convenience of communication, let's have big data be big. [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29) has done some of the most interesting work on truly large data at Yahoo! and Microsoft, and his practical definition of big data is the best I've seen. ([source](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf)).
+For convenience of communication, let's have big data be big. [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29) has done some very interesting work on truly large data at Yahoo! and Microsoft, and his practical definition of big data is the best I've seen. ([source](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf)).
 
-It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it in different words, let's say that small data is data that you could theoretically work with in Excel [1].
+It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it differently, let's say that small data is data that you could theoretically work with in Excel.
+
+I say “theoretically” because I don't want to encourage anyone to use Excel for anything serious, ever. The main reason is that Excel makes it difficult to do good work. If you care about getting the right answer, you shouldn't use Excel [1]. But more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't use Excel.” There are lots of reasons that you can't use Excel these days, and they include volume, velocity, variety, and veracity. I think that when some people say “Big Data,” what they mean is “data beyond Excel.”
+
+Further, if you care about convincing anyone else that you got the right answer, you shouldn't use Excel or Minitab or SPSS or Stata or SAS or MATLAB or any proprietary software. Results should be accompanied by data and source code, and that includes the source code of your tools.
 
 Medium data might fit on one computer, but to work with it you'll probably need someone who knows what “O(n<sup>2</sup>)” means. And you might still want to spread that data across multiple machines to get better performance.
 
 Very few people have big data by the definition here.
 
-[1]: *It has never been a good time to use Excel. If you care about getting the right answer, you shouldn't use Excel. But more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't use Excel.” There are lots of reasons that you can't use Excel these days, and they include volume, velocity, variety, and veracity. I think that when some people say “Big Data,” what they mean is “data beyond Excel.”*
-
-*If you care about convincing anyone else that you got the right answer, you shouldn't use Excel or Minitab or SPSS or Stata or SAS or MATLAB or any proprietary software. Results should be accompanied by data and source code, and that includes the underlying source code of your tools.*
+[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
 
 
 -----
@@ -122,6 +124,37 @@ Here's an analogy to consider: computational linguistics is to traditional lingu
 
 Finally, should we be surprised? Or do we understand and deserve this effectiveness of data? The problem these models are attacking is a natural language problem. All these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus), and they have a lot less [language instinct](http://en.wikipedia.org/wiki/The_Language_Instinct) than you or I. So it makes sense that they should do better when they get to study more text.
 
-So here is a case where more data is better. Are all cases like this? No! What is it about this case that makes more data better? Fundamentally, it's the complexity of the model [2].
+So here is a case where more data is better.
+
+Are all cases like this?
+
+No!
+
+What is it about this case that makes more data better?
+
+These models are *high variance*, meaning roughly that they have a ton of coefficients [2]. Around one per word of English, at least, in this case. Which is not so different from having relatively *small* data for the rarer words. And this is a common pattern, in which you have small data for a big number of things.
 
 [2]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
+
+
+-----
+
+![](big_complex.png)
+
+-----
+
+text
+
+
+-----
+
+![](big_complex_possible.png)
+
+-----
+
+text
+
+
+...
+
+Learn Python.
