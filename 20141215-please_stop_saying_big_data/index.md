@@ -93,7 +93,7 @@ No!
 
 What is it about this problem that makes more data better?
 
-These models are high variance, meaning roughly that they have a ton of coefficients [2]. This is not so different from having relatively small data for the rarer words, as it were. And adding data was easy, since they just grabbed more free text from the internet. And perhaps most importantly, they had already taken what sounds like a complicated problem (natural language processing) and simplified it down to a very narrow problem with well-defined models and a success metric.
+These models are high variance, meaning roughly that they have a ton of coefficients [2]. This is not so different from having relatively small data for the rarer words, as it were. And adding data was easy, since they just grabbed more free text from the internet. And perhaps most importantly, they had already taken a complicated problem (natural language) and simplified it down to a very narrow problem (confusion set disambiguation) with well-defined models and a success metric.
 
 [2]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
 
@@ -104,7 +104,7 @@ These models are high variance, meaning roughly that they have a ton of coeffici
 
 -----
 
-text
+I'm trying to separate bigness from other kinds of data complexity. Where in this space can we operate?
 
 
 -----
@@ -113,7 +113,11 @@ text
 
 -----
 
-text
+I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and relatively easy to scale, now, with the big name technologies that people like to sell.
+
+A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that anything that can now be scaled is simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
+
+The amazing thing that you encounter in practice though is how much work there is still to be done right in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.
 
 
 -----
