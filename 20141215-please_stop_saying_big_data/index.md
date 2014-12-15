@@ -10,15 +10,15 @@
 
 -----
 
-This is [Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay). He worked at Xerox PARC, he said “The best way to predict the future is to invent it,” and he also said, at a [talk](https://www.youtube.com/watch?v=gTAghAJcO1o) earlier this year:
+This is [Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay). He worked at Xerox PARC, he said “The best way to predict the future is to invent it,” and he also said this, at a [talk](https://www.youtube.com/watch?v=gTAghAJcO1o) earlier this year:
 
 > Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase “big data.” Not everybody knows what it means. And so it's the perfect context for doing things that people can say, “Well this is an application of big data and this is an application of big data.” But in fact, the interesting future's not about data at all - it's about meaning.
 
-The objection here, and it's an objection of many, is an objection to torturing the phrase “Big Data” until it means everything and nothing.
+The objection here which is an objection of many is an objection to torturing the phrase “Big Data” until it means everything and nothing.
 
-If you prefer consultants to luminaries, you can read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called [Should We Stop Using the Term ‘Big Data’?](http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/).
+You can also read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called [Should We Stop Using the Term ‘Big Data’?](http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/).
 
-The answer is yes, please stop saying “big data” when you just mean “data.”
+The answer is yes, let's all stop saying “big data” when we just mean “data.”
 
 
 -----
@@ -27,15 +27,22 @@ The answer is yes, please stop saying “big data” when you just mean “data.
 
 -----
 
-Some people think big data is data that they won't be able to work with effectively in Excel. The problem with that statement is that it implies that there might be some data out there that they *could* work with effectively in Excel. There are many reasons Excel is bad which can be summarized: If you care about getting the right answer, you shouldn't use Excel [1]. But it is also true that more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't possibly use Excel.”
+Some people think big data is data they can't put in Excel. The problem with this thinking is that you shouldn't be putting *any* data in Excel. There are many reasons Excel is bad. If you care about getting the right answer, you shouldn't use Excel [1]. But it is also true that more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't possibly use Excel.”
 
-There are lots of reasons that you can't use Excel these days, and they can include volume, velocity, variety, and veracity, those words that buzz along with “big data.” So these things are trying to get people to realize that their ideas about how to work with data are inadequate. They were inadequate before as well, but now they're really clearly inadequate. But people prefer to think that the problem is only with these things that seem new.
+The reasons you can't use Excel these days can include volume, velocity, variety, and veracity, those [V words](http://www.ibmbigdatahub.com/infographic/four-vs-big-data) that buzz along with “big data.” These Vs are trying to get people to realize that their ideas about how to work with data are inadequate. The ideas were inadequate before as well, but now they're really clearly inadequate. It is more comfortable to think that the problem is only with these new-seeming Vs.
+
+[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
+
+
+-----
+
+![](data_flow.jpg)
+
+-----
 
 Working with data is always about building systems. This includes systems where the output is an analysis result. You need to build systems that are testable, reusable, extensible, and composable. Ideally, systems that are elegant. You can't do that with Excel, or with most of the commercial statistical offerings. To steal some other peoples' language, [software is eating the world](http://www.wsj.com/articles/SB10001424053111903480904576512250915629460) and you need to [program or be programmed](http://www.rushkoff.com/program-or-be-programmed/).
 
 What should you learn, if all you know is Excel or something similarly unfortunate like Stata or SAS? If you think you should learn [R](http://www.r-project.org/) or [Clojure](http://clojure.org/) or [Scala](http://www.scala-lang.org/), you might be right. Otherwise, learn [Python](https://www.python.org/).
-
-[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
 
 
 -----
@@ -44,7 +51,7 @@ What should you learn, if all you know is Excel or something similarly unfortuna
 
 -----
 
-The phrase “big data” is now free to have a useful meaning. [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29)'s practical definition is the best I've seen. ([source](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf)).
+There is a useful meaning for the phrase “big data”, [courtesy](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf) of [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29).
 
 It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it differently, let's say that some small data you could theoretically work with in Excel.
 
@@ -61,9 +68,9 @@ Second recommendation: if you do have really big data, learn [Spark](https://spa
 
 -----
 
-Is more data better? This question is distinct from the question of whether our data is big. Do we want more data at all? What good is it?
+Is more data better? This question is distinct from the question of whether our data is big. Do we want more data at all?
 
-In 2009, some folks at Google come out with [The Unreasonable Effectiveness of Data](http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf). What did our friends at Google mean?
+In 2009, some folks at Google come out with [The Unreasonable Effectiveness of Data](http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf). They seem to be saying that there is at least one case in which the answer is yes, we want more data.
 
 
 -----
