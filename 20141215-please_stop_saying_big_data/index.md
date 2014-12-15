@@ -1,41 +1,7 @@
-# Size and Complexity in Real Data Systems
+# Please stop saying “Big Data”
 
 
 *A short talk for [AIR](http://www.air.org/).*
-
-A friend from the Midwest got in touch with me recently to get my address for a Christmas card. We got to talking, and I told her that I was going to be talking about big data. She asked me, "What's big about it?"
-
-I think that's a fair question. I think it's fair to expect simple words to combine in simple ways.
-
-
------
-
-“Big Cars”
-
------
-
-Let's talk about “Big Cars” for a minute. Everyone knows what big cars are. Let's see if “[the four V's of big data](http://www.ibmbigdatahub.com/infographic/four-vs-big-data)” make sense for cars.
-
- * *Volume*: Do big cars have big volume? Yes. This is what big means.
- * *Velocity*: Are big cars moving, possibly quickly? Well, maybe they are, maybe they aren't. Big cars can be standing still, and fast cars can be small.
- * *Variety*: Are big cars of many different types? This is clearly important to a mechanic, but again, size and variety are not necessarily related.
- * *Veracity*: What does this even mean? “Is it a real Hummer?” But more importantly: Do we care more about veracity for big cars than small cars?
-
-The good news here is that the leaders of the field agree with your average Midwesterner about what “big” ought to mean for data, and I'll get to that.
-
-
------
-
-![](hype_cycle.png)
-
------
-
-
-Gartner's [hype cycle](http://en.wikipedia.org/wiki/Hype_cycle) is a horrible, cartoonish way of trying to understand the world, and like many horrible, cartoonish ways of trying to understand the world, it can be very helpful.
-
-I'm starting today in the “trough of disillusionment.” Then we'll go up the “slope of enlightenment” a little ways and talk about what work generally looks like on the “plateau of productivity.”
-
-My objective is to cut “Big Data” down to size, with two examples I didn't work on, two that I did, and none of them great successes. My thesis is that more than any particular technology or technique, what we need is better-engineered and open systems. And I'll tell you to learn Python.
 
 
 -----
@@ -44,20 +10,32 @@ My objective is to cut “Big Data” down to size, with two examples I didn't w
 
 -----
 
-[Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay) is an influential computer scientist. He's the one who said, “The best way to predict the future is to invent it.” He also said, at a [talk](https://www.youtube.com/watch?v=gTAghAJcO1o) earlier this year:
+This is [Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay). He worked at Xerox PARC and he said “The best way to predict the future is to invent it.” He also said, at a [talk](https://www.youtube.com/watch?v=gTAghAJcO1o) earlier this year:
 
 > Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase “big data.” Not everybody knows what it means. And so it's the perfect context for doing things that people can say, “Well this is an application of big data and this is an application of big data.” But in fact, the interesting future's not about data at all - it's about meaning.
 
+The objection here, and it's an objection of many, is an objection to torturing the phrase “Big Data” until it means everything and nothing.
+
+If you prefer consultants to luminaries, you can read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called [Should We Stop Using the Term ‘Big Data’?](http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/).
+
+The answer is yes, we should stop saying “big data” when we just mean “data.”
+
 
 -----
 
-![](deloitte.png)
+![](excel.png)
 
 -----
 
-It isn't just luminaries who are disillusioned with the abuse of the phrase “Big Data.” Even companies like Deloitte are scaling back the hype. Just last Wednesday Deloitte published a piece on the Wall Street Journal's web site called [Should We Stop Using the Term ‘Big Data’?](http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/). The answer is yes.
+Some people think big data is data that they won't be able to work with effectively in Excel. The problem with that statement is that it implies that there might be some data out there that they *could* work with effectively in Excel. There are many reasons Excel is bad, but to summarize: If you care about getting the right answer, you shouldn't use Excel [1]. But it is also true that more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't possibly use Excel.”
 
-Deloitte was objecting mainly to the lack of clarity in using “Big Data” to mean so many different things. Let's lock that down first.
+There are lots of reasons that you can't use Excel these days, and they can include volume, velocity, variety, and veracity, those words that buzz along with “big data.” So these things are trying to get people to realize that their ideas about how to work with data are inadequate. They were inadequate before as well, but now they're really clearly inadequate. But people prefer to think that the problem is only with these things that seem new.
+
+Working with data is always about building systems. This includes systems where the output is an analysis result. You need to build systems that are testable, reusable, extensible, and composable. Ideally, systems that are elegant. You can't do that with Excel, or with most of the commercial statistical offerings. To steal some other peoples' language, [software is eating the world](http://www.wsj.com/articles/SB10001424053111903480904576512250915629460) in more ways than one, and you need to [program or be programmed](http://www.rushkoff.com/program-or-be-programmed/).
+
+What should you learn, if all you know is Excel or something similarly unfortunate like SAS or Stata? If you think you should learn R or Clojure or Scala, you might be right. Otherwise, learn Python.
+
+[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
 
 
 -----
@@ -66,37 +44,13 @@ Deloitte was objecting mainly to the lack of clarity in using “Big Data” to 
 
 -----
 
-For convenience of communication, let's have big data be big. [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29) has done some very interesting work on truly large data at Yahoo! and Microsoft, and his practical definition of big data is the best I've seen. ([source](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf)).
+The phrase “big data” is now free to have a useful meaning. [John Langford](http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29)'s practical definition is the best I've seen. ([source](http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf)).
 
-It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it differently, let's say that small data is data that you could theoretically work with in Excel.
+It's not quite the same thing as being “O(n<sup>2</sup>) algorithm feasible,” but to put it differently, let's say that some small data you could theoretically work with in Excel.
 
-I say “theoretically” because I don't want to encourage anyone to use Excel for anything serious, ever. The main reason is that Excel makes it difficult to do good work. If you care about getting the right answer, you shouldn't use Excel [1]. But more and more, we've moved from the era of “shouldn't use Excel” to the era of “can't use Excel.” There are lots of reasons that you can't use Excel these days, and they include volume, velocity, variety, and veracity. I think that when some people say “Big Data,” what they mean is “data beyond Excel.”
+Medium data might fit on one computer, but to work with it you'll probably need someone who knows what “O(n<sup>2</sup>)” means. That person started programming years before you, and you probably want that person working on your small data too.
 
-Further, if you care about convincing anyone else that you got the right answer, you shouldn't use Excel or Minitab or SPSS or Stata or SAS or MATLAB or any proprietary software. Results should be accompanied by data and source code, and that includes the source code of your tools.
-
-Medium data might fit on one computer, but to work with it you'll probably need someone who knows what “O(n<sup>2</sup>)” means. And you might still want to spread that data across multiple machines to get better performance.
-
-Very few people have big data by the definition here.
-
-[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
-
-
------
-
-Is more data better?
-
------
-
-Distinct from the question of whether our data is big is the question of whether we want more data at all. What good is it?
-
-
------
-
-![](unreasonable_mathematics.png)
-
------
-
-In 1960, Wigner said that “The miracle of the appropriateness of the language of mathematics for the formulation of the laws of physics is a wonderful gift which we neither understand nor deserve.” This paper, [The Unreasonable Effectiveness of Mathematics in the Natural Sciences](http://www.maths.ed.ac.uk/~aar/papers/wigner.pdf), gets at something profound, and was sufficiently interesting to become something of an academic meme.
+Very few people have big data by the definition here, and that's okay.
 
 
 -----
@@ -105,7 +59,9 @@ In 1960, Wigner said that “The miracle of the appropriateness of the language 
 
 -----
 
-So in 2009, some folks at Google come out with [The Unreasonable Effectiveness of Data](http://www.maths.ed.ac.uk/~aar/papers/wigner.pdf). What did they mean?
+Is more data better? This question is distinct from the question of whether our data is big. Do we want more data at all? What good is it?
+
+In 2009, some folks at Google come out with [The Unreasonable Effectiveness of Data](http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf). What did our friends at Google mean?
 
 
 -----
@@ -133,6 +89,8 @@ No!
 What is it about this case that makes more data better?
 
 These models are *high variance*, meaning roughly that they have a ton of coefficients [2]. Around one per word of English, at least, in this case. Which is not so different from having relatively *small* data for the rarer words. And this is a common pattern, in which you have small data for a big number of things.
+
+This particular case is also a little special in that it was very easy to add more data. They're just grabbing text from the internet.
 
 [2]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
 
