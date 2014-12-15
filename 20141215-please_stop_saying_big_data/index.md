@@ -117,7 +117,7 @@ I don't know if this is a perfect sketch, but there's some truth to it. Simple p
 
 A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that anything that can now be scaled is simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
 
-The amazing thing that you encounter in practice though is how much work there is still to be done right in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.
+The amazing thing that you encounter in practice though is how much work there is still to be done here in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.
 
 
 -----
@@ -126,7 +126,21 @@ TSDL
 
 -----
 
-Teacher Student Data Linkage
+Here's an example that I didn't work on, I only witnessed it from a distance. TSDL stands for Teacher Student Data Linkage. So say you're a company like AIR and you have to decide, for a state, who's a good teacher based on how their students did. (That's hard, by the way.)
+
+You need, of course, some Teacher Student Data Linkage data. Certainly the school districts in the state have this, right?
+
+Well, no. In the case of at least one large urban school district, they did not have usable information of this type. What they did have was two systems that each had some overlapping information. This was arguably already too many systems.
+
+So how do they satisfy the need that the state and the company have for the linkage data? They build a third system. This third system gets data from the two existing systems, and then presents an interface for everyone in the district to go in by hand and identify their students.
+
+This is a lot of work to get something that they probably should have had to begin with. But at least now that they have it, all their systems can benefit, right?
+
+The data that was collected, to the best of my knowledge, was never fed back into the rest of the systems.
+
+This is an example of the importance of smart engineering. For whatever reason, among them funding, vision, technical knowledge, systems are not good. They are not delivering the data that should really be expected of them, and when there's finally a clear and present need for that data, a lot of work goes into getting it, yielding dividends for nobody else.
+
+It's not easy to set up and instrument systems, especially to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.
 
 
 -----
@@ -135,7 +149,19 @@ Arlington Big Data Roundtable
 
 -----
 
-http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html
+Here's an example that I did work on. The Arlington Big Data Roundtable was put on by Arlington Public Schools, and the team I was on won, and it got some [press](http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html), which was nice.
+
+What did we do? They gave us a bunch of data, and we predicted which students would drop out in the following year. Based on the historical data we had, and the success metric that we chose, we were pretty good at it. You can predict dropouts. This should be surprising to no one. So what's to say about this?
+
+Let's start with the size of the data. The data in the last example wasn't big, and that was a large urban school district. Arlington has around 20,000 students. So the only “big” here has to be some other kind of complexity.
+
+You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's really funny that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!
+
+How is this example like the last example? We were handed data in a probably non-repeatable way and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.
+
+A side issue is that many of the problems come from defining what you are talking about, and bureaucracies tend to ruin this process, often by failing to provide a complete definition, sometimes deliberately. “What does it mean to drop out?”
+
+So we can predict who's going to drop out. Is that going to help any students this year? If it does, it will be because of systems-building work in larger measure than data analysis work.
 
 
 -----
@@ -145,3 +171,23 @@ http://www.washingtonpost.com/local/education/arlington-schools-announce-key-fin
 -----
 
 Google Translate tells me that this is Arabic for “tweet.”
+
+This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two things: hackathons, and what I'll call “data science mad-libs.”
+
+Hackathons first. They're great for getting people excited and talking about something. They're hard to get results out of. So if you're clear about your goal, hackathons may be for you.
+
+The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, work has already gone into scoping a problem and making it attainable in the time available.
+
+The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration - a “data science mad-lib.”
+
+Take a big problem and some big source of data, and you get a data science mad-lib.
+
+“We're going to stop human trafficking with Facebook!”
+
+“We're going to end world hunger with Twitter!”
+
+“We're going to monitor the flu with Google!”
+
+That last one has actually been done, though there are questions about its real effectiveness. Somebody may we working on the others. And wouldn't it be neat if it worked? But these aspirations require methods. A starting point and an ending point do not imply a good path between them.
+
+In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great!
