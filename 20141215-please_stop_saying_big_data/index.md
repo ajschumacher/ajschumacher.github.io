@@ -178,16 +178,34 @@ Hackathons first. They're great for getting people excited and talking about som
 
 The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, work has already gone into scoping a problem and making it attainable in the time available.
 
-The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration - a “data science mad-lib.”
+The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration, or a “data science mad-lib.”
 
 Take a big problem and some big source of data, and you get a data science mad-lib.
 
-“We're going to stop human trafficking with Facebook!”
+ * “We're going to stop human trafficking with Facebook!”
+ * “We're going to end world hunger with Twitter!”
+ * “We're going to monitor the flu with Google!”
 
-“We're going to end world hunger with Twitter!”
+That last one has been done, though there are questions about its effectiveness. Somebody may we working on the others. And wouldn't it be neat if these worked? In fact there might be a way to make it work - but these aspirations require methods. A starting point and an ending point do not imply a good path between them.
 
-“We're going to monitor the flu with Google!”
+In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great! This gives us the illusion of making progress toward a goal. But what is our goal? How will we know if we've achieved it? We weren't sure, and while the exercise was interesting, we didn't have any usable results after our one day of work.
 
-That last one has actually been done, though there are questions about its real effectiveness. Somebody may we working on the others. And wouldn't it be neat if it worked? But these aspirations require methods. A starting point and an ending point do not imply a good path between them.
+Now the [UN Global Pulse](http://www.unglobalpulse.org/) is working on doing things like this Twitter exercise, and they may have some success. I don't want to nay-say all crazy-sounding ideas. Crazy ideas are some of my favorites. But crazy ideas that work are like magic tricks: they're only mysterious if you don't know how it works.
 
-In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great!
+
+-----
+
+data
+
+-----
+
+I am hopeful about data. I think we need more people working on data with more effective tools and practices. Dream big but write code. You can start writing Python tonight. A book I recommend is called [The Pragmatic Programmer](https://pragprog.com/the-pragmatic-programmer).
+
+And of course, you're under no obligation to agree with me.
+
+
+-----
+
+Thank you!
+
+-----
