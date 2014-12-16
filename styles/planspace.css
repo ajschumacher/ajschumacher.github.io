@@ -1,57 +1,57 @@
 body {
-    background-color: #DCDCCC;
-    color: #3F3F3F;
-    font-size: 1.25em;
-    font-family: "Book Antiqua", Palatino, "Palatino Linotype",
-                 "Palatino LT STD", Georgia, serif;
-    line-height: 160%;
-    max-width: 40em;
-    margin: auto;
-    padding: 0 1em;
+  background-color: #DCDCCC;
+  color: #3F3F3F;
+  font-size: 1.25em;
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype",
+  "Palatino LT STD", Georgia, serif;
+  line-height: 160%;
+  max-width: 40em;
+  margin: auto;
+  padding: 0 1em;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 h1, p.date {
-    text-align: center;
+  text-align: center;
 }
 
 p.date {
-    font-size: 0.75em;
-    line-height: 100%;
-    margin-top: -1.25em;
-    color: #6F6F6F;
+  font-size: 0.75em;
+  line-height: 100%;
+  margin-top: -1.25em;
+  color: #6F6F6F;
 }
 
 pre {
-    line-height: normal;
+  line-height: normal;
 }
 
 a {
-    color: #9C6363;
-    text-decoration: none;
+  color: #9C6363;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #8C5353;
+  color: #8C5353;
 }
 
 a:hover {
-    color: #AC7373;
+  color: #AC7373;
 }
 
 a:active {
-    color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .rotate180 {
-    display: inline-block;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
 }
 
 @media
@@ -61,7 +61,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-    body {
-        font-size: 2.25em;
-    }
+  body {
+    font-size: 2.25em;
+  }
 }
