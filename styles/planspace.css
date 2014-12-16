@@ -65,3 +65,9 @@ only screen and (                min-resolution: 2dppx) {
     font-size: 2.25em;
   }
 }
+
+@media print {
+  img {
+    max-height: 3in;
+  }
+}
