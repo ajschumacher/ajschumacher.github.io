@@ -3,6 +3,8 @@
 
 *A short talk for [AIR](http://www.air.org/).*
 
+I thought about calling this “Size and Complexity in Real Data Systems,” but that would have been so boring.
+
 
 -----
 
@@ -85,7 +87,7 @@ First, is this big data? Their complete data set was a billion words. Around fiv
 
 Second, how are we measuring effectiveness? This is an important thing to take from this example. The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. But it doesn't make much sense to try to interpret these models in any way that would please a traditional linguist.
 
-Finally, should we be surprised? The problem these models are attacking is a natural language problem. Language is complicated, and all these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus). So it makes sense that they should do better when they get to study more text.
+Finally, should we be surprised that having more data helps? The problem these models are attacking is a natural language problem. Language is complicated, and all these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus). So it makes sense that they should do better when they get to study more text.
 
 So here is a problem where more data is better. Are all problems like this?
 
@@ -93,7 +95,7 @@ No!
 
 What is it about this problem that makes more data better?
 
-These models are high variance, meaning roughly that they have a ton of coefficients [2]. This is not so different from having relatively small data for the rarer words, as it were. And adding data was easy, since they just grabbed more free text from the internet. And perhaps most importantly, they had already taken a complicated problem (natural language) and simplified it down to a very narrow problem (confusion set disambiguation) with well-defined models and a success metric.
+These models are high variance, meaning roughly that they have a ton of coefficients [2]. This is not so different from having relatively small data for each one. Also, adding data was easy, since they just grabbed more free text from the internet. And perhaps most importantly, they had already taken a complicated problem (natural language) and simplified it down to a very narrow problem (confusion set disambiguation) with well-defined models and a success metric.
 
 [2]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
 
@@ -113,9 +115,9 @@ I'm trying to separate bigness from other kinds of data complexity. Where in thi
 
 -----
 
-I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and relatively easy to scale, now, with the big name technologies that people like to sell.
+I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and now relatively easy to scale with the big name technologies that people like to sell.
 
-A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that anything that can now be scaled is simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
+A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that most anything that can be scaled is simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
 
 The amazing thing that you encounter in practice though is how much work there is still to be done here in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.
 
@@ -138,7 +140,7 @@ This is a lot of work to get something that they probably should have had to beg
 
 The data that was collected, to the best of my knowledge, was never fed back into the rest of the systems.
 
-This is an example of the importance of smart engineering. For whatever reason, among them funding, vision, technical knowledge, systems are not good. They are not delivering the data that should really be expected of them, and when there's finally a clear and present need for that data, a lot of work goes into getting it, yielding dividends for nobody else.
+This is an example of the importance of smart engineering. For whatever reason, be it funding, vision, technical knowledge... systems are not good. They are not delivering the data that should really be expected of them, so when there's finally a clear and present need for that data, a lot of work goes into getting it, yielding dividends for nobody else.
 
 It's not easy to set up and instrument systems, especially to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.
 
@@ -153,15 +155,15 @@ Here's an example that I did work on. The Arlington Big Data Roundtable was put 
 
 What did we do? They gave us a bunch of data, and we predicted which students would drop out in the following year. Based on the historical data we had, and the success metric that we chose, we were pretty good at it. You can predict dropouts. This should be surprising to no one. So what's to say about this?
 
-Let's start with the size of the data. The data in the last example wasn't big, and that was a large urban school district. Arlington has around 20,000 students. So the only “big” here has to be some other kind of complexity.
+Let's start with the size of the data. The data in the last example wasn't big, by the way, and that was a large urban school district. Arlington has something like 20,000 students. So the only “big” here has to be some other kind of complexity.
 
 You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's really funny that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!
 
-How is this example like the last example? We were handed data in a probably non-repeatable way and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.
+How is this example like the last example? We were handed data and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.
 
-A side issue is that many of the problems come from defining what you are talking about, and bureaucracies tend to ruin this process, often by failing to provide a complete definition, sometimes deliberately. “What does it mean to drop out?”
+A side issue is that many of the problems come from defining what you are talking about, and bureaucracies tend to ruin this process, often by failing to provide a complete definition, sometimes deliberately. “What does it mean to drop out?” turns out to be tricky.
 
-So we can predict who's going to drop out. Is that going to help any students this year? If it does, it will be because of systems-building work in larger measure than data analysis work.
+So we can predict who's going to drop out. Is that going to help any students this year? If it does, it will be because of systems-building work in larger measure than modeling work.
 
 
 -----
@@ -172,7 +174,7 @@ So we can predict who's going to drop out. Is that going to help any students th
 
 Google Translate tells me that this is Arabic for “tweet.”
 
-This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two things: hackathons, and what I'll call “data science mad-libs.”
+This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two more things: hackathons, and what I'll call “data science mad-libs.”
 
 Hackathons first. They're great for getting people excited and talking about something. They're hard to get results out of. So if you're clear about your goal, hackathons may be for you.
 
@@ -186,7 +188,7 @@ Take a big problem and some big source of data, and you get a data science mad-l
  * “We're going to end world hunger with Twitter!”
  * “We're going to monitor the flu with Google!”
 
-That last one has been done, though there are questions about its effectiveness. Somebody may we working on the others. And wouldn't it be neat if these worked? In fact there might be a way to make it work - but these aspirations require methods. A starting point and an ending point do not imply a good path between them.
+That last one has been done, though there are questions about its effectiveness. Somebody may we working on these others. And wouldn't it be neat if these worked? In fact there might be a way to make it work - but these aspirations require methods. A starting point and an ending point do not imply a good path between them.
 
 In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great! This gives us the illusion of making progress toward a goal. But what is our goal? How will we know if we've achieved it? We weren't sure, and while the exercise was interesting, we didn't have any usable results after our one day of work.
 
