@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here.
 
+ * 2014-12-15: [Please stop saying “Big Data”](/20141215-please_stop_saying_big_data/)
  * 2014-12-07: [Make it Easy to Install Emacs](/20141207-make_it_easy_to_install_emacs/)
  * 2014-22-29: [Ruby Symbols are not Lisp Symbols](/20141129-ruby_symbols_are_not_lisp_symbols/)
  * 2014-11-25: [Alan Kay on Big Data](/20141125-alan_kay_on_big_data/)
