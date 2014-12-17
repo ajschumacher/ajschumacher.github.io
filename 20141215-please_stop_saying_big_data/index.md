@@ -33,7 +33,7 @@ Some people think big data is data they can't put in Excel. The problem with thi
 
 The reasons you can't use Excel these days can include volume, velocity, variety, and veracity, those [V words](http://www.ibmbigdatahub.com/infographic/four-vs-big-data) that buzz along with “big data.” These Vs are trying to get people to realize that their ideas about how to work with data are inadequate. The ideas were inadequate before as well, but now they're really clearly inadequate. It is more comfortable to think that the problem is only with these new-seeming Vs.
 
-[1]: *See, for example [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
+[1]: *See, for example, [Growth in a Time of Debt](http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history).*
 
 
 -----
