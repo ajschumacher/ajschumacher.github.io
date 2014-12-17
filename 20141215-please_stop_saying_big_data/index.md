@@ -16,7 +16,7 @@ This is [Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay). He worked at Xerox PA
 
 > Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase “big data.” Not everybody knows what it means. And so it's the perfect context for doing things that people can say, “Well this is an application of big data and this is an application of big data.” But in fact, the interesting future's not about data at all—it's about meaning.
 
-The objection here which is an objection of many is an objection to torturing the phrase “Big Data” until it means everything and nothing.
+The objection here, which is an objection of many, is an objection to torturing the phrase “Big Data” until it means everything and nothing.
 
 You can also read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called [Should We Stop Using the Term ‘Big Data’?](http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/).
 
