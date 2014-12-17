@@ -63,7 +63,7 @@ Very few people have big data by the definition here, and that's okay [2].
 
 Second recommendation: if you do have really big data, learn [Spark](https://spark.apache.org/).
 
-[2]: *Everybody can get access to somebody else's big data, often public, but very few are producing their own.*
+[2]: *Everybody can get access to somebody else's big data, often public, but very few are producing their own big data.*
 
 
 -----
