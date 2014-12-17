@@ -70,4 +70,7 @@ only screen and (                min-resolution: 2dppx) {
   img {
     max-height: 3in;
   }
+  body {
+    font-size: 0.8em;
+  }
 }
