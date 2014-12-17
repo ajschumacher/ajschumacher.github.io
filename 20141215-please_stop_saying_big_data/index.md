@@ -14,7 +14,7 @@ I thought about calling this “Size and Complexity in Real Data Systems,” but
 
 This is [Alan Kay](http://en.wikipedia.org/wiki/Alan_Kay). He worked at Xerox PARC, he said “The best way to predict the future is to invent it,” and he said this, at a [talk](https://www.youtube.com/watch?v=gTAghAJcO1o) earlier this year:
 
-> Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase “big data.” Not everybody knows what it means. And so it's the perfect context for doing things that people can say, “Well this is an application of big data and this is an application of big data.” But in fact, the interesting future's not about data at all - it's about meaning.
+> Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase “big data.” Not everybody knows what it means. And so it's the perfect context for doing things that people can say, “Well this is an application of big data and this is an application of big data.” But in fact, the interesting future's not about data at all—it's about meaning.
 
 The objection here which is an objection of many is an objection to torturing the phrase “Big Data” until it means everything and nothing.
 
@@ -89,15 +89,13 @@ First, is this big data? Their complete data set was a billion words. Around fiv
 
 Second, how are we measuring effectiveness? This is an important thing to take from this example. The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. But it doesn't make much sense to try to interpret these models in any way that would please a traditional linguist.
 
-Finally, should we be surprised that having more data helps? The problem these models are attacking is a natural language problem. Language is complicated, and all these models are trying to overcome [the poverty of the stimulus](http://en.wikipedia.org/wiki/Poverty_of_the_stimulus). They're learning a complex thing while being high variance, meaning roughly that they have a ton of coefficients [3]. This is not so different from having relatively small data for each one. Also, adding data was easy, since they just grabbed more free text from the internet. And perhaps most importantly, they had already taken a complicated problem (natural language) and simplified it down to a very narrow problem (confusion set disambiguation) with well-defined models and a success metric.
+Finally, should we be surprised that having more data helps for this problem?
 
-So it makes sense that they should do better when they get to study more text.
-So here is a problem where more data is better. Are all problems like this?
+The problem is a natural language problem. Language is complicated. The problem has been simplified quite a lot, to just confusion set disambiguation, but there are a lot of words, and all these models are high variance, meaning roughly that they have a ton of coefficients [3]. So even if you have a lot of data, you may still have relatively little (or even none) for some cases.
 
-No!
+So it makes sense that these models should do better when they get to study more text. And text is easy to get from the internet, so there's no reason not to throw more data at the problem.
 
-What is it about this problem that makes more data better?
-
+Not all problems are like this.
 
 [3]: *[Xavier Amatriain](http://xavier.amatriain.net/) (formerly of Netflix) has a good [explanation](http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html) of this which inspired this section.*
 
@@ -108,7 +106,7 @@ What is it about this problem that makes more data better?
 
 -----
 
-I'm trying to separate bigness from other kinds of data complexity. Where in this space can we operate?
+I've tried to separate bigness from other kinds of data complexity. Where in this space can we operate?
 
 
 -----
@@ -119,7 +117,7 @@ I'm trying to separate bigness from other kinds of data complexity. Where in thi
 
 I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and now relatively easy to scale with the big name technologies that people like to sell.
 
-A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that most anything that can be scaled is simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
+A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that things that can be scaled are simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.
 
 The amazing thing that you encounter in practice though is how much work there is still to be done here in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.
 
@@ -130,7 +128,7 @@ TSDL
 
 -----
 
-Here's an example that I didn't work on, I only witnessed it from a distance. TSDL stands for Teacher Student Data Linkage. So say you're a company like AIR and you have to decide, for a state, who's a good teacher based on how their students did. (That's hard, by the way.)
+Here's an example that I didn't work on; I only witnessed it from a distance. TSDL stands for Teacher Student Data Linkage. So say you're a company like AIR and you have to decide, for a state, who's a good teacher based on how their students did. (That's hard, by the way.)
 
 You need, of course, some Teacher Student Data Linkage data. Certainly the school districts in the state have this, right?
 
@@ -142,9 +140,9 @@ This is a lot of work to get something that they probably should have had to beg
 
 The data that was collected, to the best of my knowledge, was never fed back into the rest of the systems.
 
-This is an example of the importance of smart engineering. For whatever reason, be it funding, vision, technical knowledge... systems are not good. They are not delivering the data that should really be expected of them, so when there's finally a clear and present need for that data, a lot of work goes into getting it, yielding dividends for nobody else.
+This is an example of the importance of smart engineering. For whatever reason, be it funding, vision, technical knowledge... systems are not good. They are not delivering the data that should really be expected of them, so when there's finally a clear and present need for that data, a lot of work goes into getting it,too often yielding dividends for nobody else.
 
-It's not easy to set up and instrument systems, especially to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.
+It's not easy to set up and instrument systems, and especially hard to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.
 
 
 -----
@@ -159,7 +157,7 @@ What did we do? They gave us a bunch of data, and we predicted which students wo
 
 Let's start with the size of the data. The data in the last example wasn't big, by the way, and that was a large urban school district. Arlington has something like 20,000 students. So the only “big” here has to be some other kind of complexity.
 
-You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's really funny that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!
+You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's interesting that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!
 
 How is this example like the last example? We were handed data and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.
 
@@ -176,25 +174,25 @@ So we can predict who's going to drop out. Is that going to help any students th
 
 Google Translate tells me that this is Arabic for “tweet.”
 
-This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two more things: hackathons, and what I'll call “data science mad-libs.”
+This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two more things: hackathons themselves, and what I'll call “data science mad-libs.”
 
 Hackathons first. They're great for getting people excited and talking about something. They're hard to get results out of. So if you're clear about your goal, hackathons may be for you.
 
-The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, work has already gone into scoping a problem and making it attainable in the time available.
+The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, a lot of work has already gone into scoping a problem and making it attainable in the time available.
 
-The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration, or a “data science mad-lib.”
+The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration, sometimes a “data science mad-lib.”
 
-Take a big problem and some big source of data, and you get a data science mad-lib.
+Take a big problem and some big source of data, and you get a data science mad-lib:
 
  * “We're going to stop human trafficking with Facebook!”
  * “We're going to end world hunger with Twitter!”
- * “We're going to monitor the flu with Google!”
+ * “We're going to monitor flu around the world with Google!”
 
-That last one has been done, though there are questions about its effectiveness. Somebody may we working on these others. And wouldn't it be neat if these worked? In fact there might be a way to make it work - but these aspirations require methods. A starting point and an ending point do not imply a good path between them.
+That last one has been [done](http://www.google.org/flutrends/), though there are [questions](http://bits.blogs.nytimes.com/2014/03/28/google-flu-trends-the-limits-of-big-data/) about its effectiveness. Somebody may we working on these others. And wouldn't it be neat if these worked? And there may *be* a way to make them work—but these aspirations require methods. A starting point and an ending point do not imply a good path between them.
 
 In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great! This gives us the illusion of making progress toward a goal. But what is our goal? How will we know if we've achieved it? We weren't sure, and while the exercise was interesting, we didn't have any usable results after our one day of work.
 
-Now the [UN Global Pulse](http://www.unglobalpulse.org/) is working on doing things like this Twitter exercise, and they may have some success. I don't want to nay-say all crazy-sounding ideas. Crazy ideas are some of my favorites. But crazy ideas that work are like magic tricks: they're only mysterious if you don't know how it works.
+Now the [UN Global Pulse](http://www.unglobalpulse.org/) is working on doing things like this Twitter exercise, and they may have some success. I don't want to nay-say all crazy-sounding ideas. Crazy ideas are some of my favorites. But crazy ideas that work are like magic tricks: they're only mysterious if you don't know what's really going on.
 
 
 -----
@@ -203,7 +201,7 @@ data
 
 -----
 
-I am hopeful about data. I think we need more people working on data with more effective tools and practices. Dream big but write code. You can start writing Python tonight. A book I recommend is called [The Pragmatic Programmer](https://pragprog.com/the-pragmatic-programmer).
+I am hopeful about data. I think we need more people working on data with more effective tools and practices. Dream big but write code. You can start writing Python tonight. Another book I recommend is called [The Pragmatic Programmer](https://pragprog.com/the-pragmatic-programmer).
 
 
 -----
