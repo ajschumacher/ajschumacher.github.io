@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here.
 
+ * 2015-01-01: [Learn to Code with Emacs](/20150101-learn_to_code_with_emacs/)
  * 2014-12-31: [Two Problems with Learn-to-Code Sites](/20141231-two_problems_with_learn-to-code_sites/)
  * 2014-12-30: [Use Info in Emacs](/20141230-use_info_in_emacs/)
  * 2014-12-29: [Calendar Plots should be Easy](/20141229-calendar_plots_should_be_easy/)
