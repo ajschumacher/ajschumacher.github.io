@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here.
 
+ * 2014-12-31: [Two Problems with Learn-to-Code Sites](/20141231-two_problems_with_learn-to-code_sites/)
  * 2014-12-30: [Use Info in Emacs](/20141230-use_info_in_emacs/)
  * 2014-12-29: [Calendar Plots should be Easy](/20141229-calendar_plots_should_be_easy/)
  * 2014-12-25: [How does R calculate histogram break points?](/20141225-how_does_r_calculate_histogram_break_points/)
