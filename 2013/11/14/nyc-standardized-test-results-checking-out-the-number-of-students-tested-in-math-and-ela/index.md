@@ -1,8 +1,8 @@
 # NYC standardized test results: Checking out the number of students tested in Math and ELA
 
+<a href="23.png"><img class="size-large wp-image-516" alt="Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)" src="23.png"></a>
 
-
-[caption id="attachment_516" align="aligncenter" width="525"]<a href="23.png"><img class="size-large wp-image-516" alt="Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)" src="23.png"></a> Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)[/caption]
+Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)
 
 As noted <a href="http://planspace.org/2013/11/13/nyc-standardized-test-results-putting-the-data-together-and-looking-at-it/">earlier</a>, the number of students who have test results reported could itself be interesting. A bit of <a href="https://github.com/ajschumacher/NYCtests/blob/master/code/figure2.r">examination</a> is in order.
 
@@ -28,7 +28,9 @@ It's a little interesting that three of these are from two District 75 schools, 
 
 At the school year level, the number of students tested in ELA and Math is exactly the same for only 14% of records. To get a feel for how the number tested in Math relates to the number tested in ELA, we can plot these numbers against each other, as also shown at top:
 
-[caption id="attachment_516" align="aligncenter" width="525"]<a href="23.png"><img class="size-large wp-image-516" alt="Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)" src="23.png"></a> Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)[/caption]
+<a href="23.png"><img class="size-large wp-image-516" alt="Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)" src="23.png"></a>
+
+Figure 2. Number of students tested in Math vs. ELA for all NYC public schools (charter and non-charter) in 2006-2013. (The red lines show where the numbers are equal.)
 
 Where there are differences it's usually more students taking the Math test than the ELA test. One possible reason for this could be English Language Learners who are somehow "excused from" the ELA test but still take the Math test. Perhaps this was allowed particularly in 2006, which seems to have been a free-for-all when it came to not testing students in ELA.  One wonders if schools ever make any sort of effort to keep certain students from testing. At least the numbers are close, especially for the last several years. The persistent outlier even in 2011-2013, clearly apparent toward the bottom of those graphs, is 30Q235:
 <pre>   dbn year Math ELA

@@ -1,32 +1,46 @@
 # NYC standardized test results: Normalizing the distributions of average scores
 
-
-
 Ever since <a href="http://planspace.org/2013/11/13/nyc-standardized-test-results-putting-the-data-together-and-looking-at-it/">starting to look at this data</a>, we've dreamed a great dream: a dream of comparing data across years and grades. Deciding to <a href="http://planspace.org/2013/11/16/nyc-standardized-test-results-considering-district-75-schools/">remove District 75 school results</a> eliminated some nasty tails from the distributions, but there's more work to be done. As a clarification up front: It's called normalization, but this work will not make the distributions <a href="http://en.wikipedia.org/wiki/Normal_distribution">normal, in the Gaussian sense</a>. Don't get it twisted!
 
 First, we'll start looking at density plots rather than histograms. This normalizes over the number of observations, giving every such plot equal area under the curve, and makes it easier to get a quick sense of the shapes of the distributions. Here's how we're doing:
 
-[caption id="attachment_563" align="aligncenter" width="525"]<a href="9-1a.png"><img class="size-large wp-image-563" alt="Figure 9-1a. Average reported Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-1a.png"></a> Figure 9-1a. Average reported Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+<a href="9-1a.png"><img class="size-large wp-image-563" alt="Figure 9-1a. Average reported Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-1a.png"></a>
 
-[caption id="attachment_564" align="aligncenter" width="525"]<a href="9-1b.png"><img class="size-large wp-image-564" alt="Figure 9-1b. Average reported ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-1b.png"></a> Figure 9-1b. Average reported ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+Figure 9-1a. Average reported Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
+
+<a href="9-1b.png"><img class="size-large wp-image-564" alt="Figure 9-1b. Average reported ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-1b.png"></a>
+
+Figure 9-1b. Average reported ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
 
 Clearly, problem one is that the distributions are not agreeing about where they are in the left-to-right sense. I'll center them by subtracting out the medians of each distribution.
 
-[caption id="attachment_567" align="aligncenter" width="525"]<a href="9-2a1.png"><img class="size-large wp-image-567" alt="Figure 9-2a. Centered average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-2a1.png"></a> Figure 9-2a. Centered average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+<a href="9-2a1.png"><img class="size-large wp-image-567" alt="Figure 9-2a. Centered average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-2a1.png"></a>
 
-[caption id="attachment_568" align="aligncenter" width="525"]<a href="9-2b.png"><img class="size-large wp-image-568" alt="Figure 9-2b. Centered average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-2b.png"></a> Figure 9-2b. Centered average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+Figure 9-2a. Centered average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
+
+<a href="9-2b.png"><img class="size-large wp-image-568" alt="Figure 9-2b. Centered average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-2b.png"></a>
+
+Figure 9-2b. Centered average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
 
 That's much better - though especially for ELA, some distributions are much more peaked than others. With the less peaked ones, we can have fun deciding which looks the most like <a href="http://cs.swan.ac.uk/~cswill/The_little_prince.pdf">a boa constrictor digesting an elephant</a>. But to address the non-uniform variability of the distributions, I'll divide by the <a href="http://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a>s, giving these results:
 
-[caption id="attachment_569" align="aligncenter" width="525"]<a href="9-3a.png"><img class="size-large wp-image-569" alt="Figure 9-3a. Normalized average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-3a.png"></a> Figure 9-3a. Normalized average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+<a href="9-3a.png"><img class="size-large wp-image-569" alt="Figure 9-3a. Normalized average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-3a.png"></a>
 
-[caption id="attachment_570" align="aligncenter" width="525"]<a href="9-3b.png"><img class="size-large wp-image-570" alt="Figure 9-3b. Normalized average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-3b.png"></a> Figure 9-3b. Normalized average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+Figure 9-3a. Normalized average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
+
+<a href="9-3b.png"><img class="size-large wp-image-570" alt="Figure 9-3b. Normalized average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="9-3b.png"></a>
+
+Figure 9-3b. Normalized average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013
 
 Now <em>those</em> distributions look... at least a little similar. And those are the normalized scores I'll use going forward. Why did I choose median and median absolute deviation, rather than the more common mean and standard deviation, which gives what is commonly called "z-scores"? Because it doesn't work as well. In particular, it gives substantially worse results for some of those spiky ELA distributions. I tried several possibilities:
 
-[caption id="attachment_579" align="aligncenter" width="525"]<a href="9-4a1.png"><img class="size-large wp-image-579" alt="Figure 9-4a. Average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted" src="9-4a1.png"></a> Figure 9-4a. Average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted[/caption]
+<a href="9-4a1.png"><img alt="Figure 9-4a. Average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted" src="9-4a1.png"></a>
 
-[caption id="attachment_578" align="aligncenter" width="525"]<a href="9-4b1.png"><img class="size-large wp-image-578" alt="Figure 9-4b. Average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted" src="9-4b1.png"></a> Figure 9-4b. Average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted[/caption]
+Figure 9-4a. Average Math scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted
+
+<a href="9-4b1.png"><img alt="Figure 9-4b. Average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted" src="9-4b1.png"></a>
+
+Figure 9-4b. Average ELA scores for non-D75 NYC public schools (charter and non-charter) grades 3-8, 2006-2013, normalized several ways, overplotted
 
 <a href="http://en.wikipedia.org/wiki/Standard_score">Z-scoring</a> (top left sub-plots) works pretty well for the math score distributions, but using standard deviation (top row sub-plots) is a disaster for the ELA distributions. I had initially favored using a student-level statistic for centering, since it makes the school averages somehow more sensible (above or below the student average, vs. above or below an average of school averages) but the un-weighted median gives better results, I think. Take a look at the full-resolution images and I think you'll agree with my choice. Probably. In fact now I'm having second thoughts.
 

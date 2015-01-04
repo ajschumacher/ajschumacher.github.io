@@ -2,7 +2,9 @@
 
 
 
-[caption id="attachment_504" align="aligncenter" width="525"]<a href="1a.png"><img class="size-large wp-image-504" alt="Figure 1a. All reported average math scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="1a.png"></a> Figure 1a. All reported average math scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+<a href="1a.png"><img class="size-large wp-image-504" alt="Figure 1a. All reported average math scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="1a.png"></a>
+
+Figure 1a. All reported average math scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013
 
 The New York City Department of Education makes available on their <a href="http://schools.nyc.gov/">web site</a> average standardized test results down to the school grade level, and even broken out further by a variety of demographics, if you know <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">where</a> to <a href="http://schools.nyc.gov/Accountability/data/TestResults/ELAandMathTestResults">look</a>. What can we learn about education by looking at this data?
 
@@ -19,7 +21,9 @@ Getting all the data together requires downloading <a href="https://github.com/a
 
 At this point we can check out the distribution of average scores in the two tests we have results for: ELA (English Language Arts) and Mathematics. Mathematics is up above because people like pictures. Click on either image to see the full-size version:
 
-[caption id="attachment_505" align="aligncenter" width="525"]<a href="1b.png"><img class="size-large wp-image-505" alt="Figure 1b. All reported average ELA scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="1b.png"></a> Figure 1b. All reported average ELA scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013[/caption]
+<a href="1b.png"><img class="size-large wp-image-505" alt="Figure 1b. All reported average ELA scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013" src="1b.png"></a>
+
+Figure 1b. All reported average ELA scores for NYC public schools (charter and non-charter) grades 3-8, 2006-2013
 
 A number of things can be seen here. Most obvious is the smack that scores took in 2013 - after creeping toward 700 from 2006 to 2012, the "new tests" in 2013 have pulled school grade averages down near 300. Another thing that's evident on slightly closer inspection is that there is a trail of extremely low scoring school grades off to the left sides for many of these distributions from 2006 to 2012, but in 2013 these low average score outliers are nowhere to be found. The variance of the average scores is certainly not the same everywhere, with some distributions spiking quite high and others more spread out. Normalizing these distributions will be the next step of analysis.
 
