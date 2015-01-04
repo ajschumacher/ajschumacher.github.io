@@ -1,6 +1,6 @@
 # plan <span class="shake shake-slow">➔</span> space
 
-Hello, I'm [Aaron](/aaron/) and these are some things that I've put here.
+Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
  * 2015-01-01: [Learn to Code with Emacs](/20150101-learn_to_code_with_emacs/)
  * 2014-12-31: [Two Problems with Learn-to-Code Sites](/20141231-two_problems_with_learn-to-code_sites/)
