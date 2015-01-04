@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>plan ➔ space</title>
+    <link>http://planspace.org/</link>
+    <description>plan space from outer nine</description>
+    <language>en-us</language>
+    <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
+<item>
+<title>Learn to Code with Emacs</title>
+<description><![CDATA[
+
+<p>To <a href="/20141231-two_problems_with_learn-to-code_sites/">learn to code</a> effectively, use:</p>
+<ul>
+<li>tools that are actually used for coding</li>
+<li>materials that are reusable as references</li>
+</ul>
+<p>Here's one way to do it:</p>
+<ol>
+<li><a href="http://emacs.link/">Install Emacs</a>.</li>
+<li>Do the built-in Emacs Tutorial, accessible from the start screen.</li>
+<li>Learn about the Info system (C-h i, select Info).</li>
+<li>Work through the Introduction to Programming Emacs Lisp.</li>
+</ol>
+<p>These steps will all make sense if you do them in order.</p>
+<p>Here's what you get, if you follow the steps above:</p>
+<ul>
+<li>a powerful editor that you can use with any programming language</li>
+<li>programming skills together with computer science concepts</li>
+<li>the ability to use that programming language to enhance that editor</li>
+</ul>
+<p>This is a powerful combination, and one that blends seamlessly into further learning and productive work.</p>    
+    ]]></description>
+<link>http://planspace.org/20150101-learn_to_code_with_emacs/</link>
+<guid>http://planspace.org/20150101-learn_to_code_with_emacs/</guid>
+<pubDate>Thu, 01 Jan 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Two Problems with Learn-to-Code Sites</title>
+<description><![CDATA[
+
+<p>Lots of people want to learn to code, and this is good. But lots of the web sites that want to teach people to code are bad.</p>
+<p>The popular learn-to-code sites generally teach a popular language, which is not necessarily a bad thing.</p>
+<p>But there are two fundamental problems with the approach of many popular sites:</p>
+<ol>
+<li>They teach all inside a browser. This removes setup difficulty by providing a custom toy environment but leaves the student with no independent working setup of their own.</li>
+<li>They take a one pass adventure game guided tour approach. This enforces a progression and generally makes it difficult or impossible to scan through and refer back to the material.</li>
+</ol>
+<p>There is definitely value in making it easy for people to try something they otherwise wouldn't try. After trying, a different approach may be better for facilitating learning.</p>
+<p>To learn to code effectively, use:</p>
+<ol>
+<li>tools that are actually used for coding</li>
+<li>materials that are reusable as references</li>
+</ol>
+<p>This means that you should:</p>
+<ol>
+<li>use an editor and language implementation installed on your own machine</li>
+<li>have, read, and work from one or more good documents, guides, or books</li>
+</ol>
+<p>Books are a really good idea. This should be obvious, but it seems, especially when it comes to technology, that people want to imagine you can "learn by doing" everything, starting from nothing and then just checking Stack Overflow occasionally. No. Read a book. It's a mistake in an in-person class to think that you can get by without reading a book. You should read a book. It's also a mistake to think you can get by with just online activities. Get a book.</p>
+<p>The "toy environment" and "guided tour" design problems of most online learn-to-code systems are fundamental problems. It additionally seems to be, too frequently, that the materials presented in these systems are less well organized and produced than one would expect from a book. Further, the interactive exercises that are ostensibly a major advantage of online systems can totally break the experience if they have the tiniest blocking error in design or implementation. And finally projects, which are an excellent way to learn, too often feel inane and constricting rather than interesting and eye-opening when forced into the frameworks of automated systems.</p>    
+    ]]></description>
+<link>http://planspace.org/20141231-two_problems_with_learn-to-code_sites/</link>
+<guid>http://planspace.org/20141231-two_problems_with_learn-to-code_sites/</guid>
+<pubDate>Wed, 31 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Use Info in Emacs</title>
+<description><![CDATA[
+
+<p>There is a documentation system accessible from <a href="http://www.gnu.org/software/emacs/">Emacs</a> called <a href="https://www.gnu.org/software/texinfo/">Info</a>. Here's advice from a parenthetical in the <a href="http://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Note-for-Novices">Note for Novices</a> of <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">An Introduction to Programming in Emacs Lisp</a>:</p>
+<blockquote>
+<p>"To learn about Info, type C-h i and then select Info."</p>
+</blockquote>
+<p>Despite using Emacs, off and on, for many years, and also more recently hearing <a href="http://sachachua.com/">Sacha Chua</a> recommend Info in her <a href="http://sachachua.com/blog/category/podcast/emacs-chat-podcast/">Emacs chats</a>, I had never really used the Info system. But something on <a href="http://www.johndcook.com/blog/">John Cook</a>'s blog pointed me to the <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">intro to Emacs Lisp</a> and I started reading it in a web browser until I got to that part:</p>
+<blockquote>
+<p>"To learn about Info, type C-h i and then select Info."</p>
+</blockquote>
+<p>At that point I did. I went into Emacs and learned about Info, and then I continued working through the <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">intro to Emacs Lisp</a> inside Emacs, which was a much better way to read it than inside a browser.</p>
+<p>I wish I'd come to all this sooner.</p>
+<p>If you'd like to try Emacs, you should find it <a href="http://planspace.org/20141207-make_it_easy_to_install_emacs/">easy to install</a> using <a href="http://emacs.link/">emacs.link</a>. Once you have Emacs open on your computer, do the built-in tutorial. Then:</p>
+<blockquote>
+<p>"To learn about Info, type C-h i and then select Info."</p>
+</blockquote>
+<p>And then check out the Introduction to Emacs Lisp, also in the Info system.</p>
+<p>Have fun!</p>    
+    ]]></description>
+<link>http://planspace.org/20141230-use_info_in_emacs/</link>
+<guid>http://planspace.org/20141230-use_info_in_emacs/</guid>
+<pubDate>Tue, 30 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Calendar Plots should be Easy</title>
+<description><![CDATA[
+
+<p>Popularized by Mike Bostock's <a href="http://bl.ocks.org/mbostock/4063318">example</a> and the GitHub <a href="https://github.com/blog/1360-introducing-contributions">contribution calendar</a>, calendar plots have some recognition now.</p>
+<p><a href="http://bit.ly/NYCsubway"><img alt="" src="calendar.png"></a></p>
+<p>Calendar plots can be very good for showing daily data over time when weekly, monthly, and yearly structure are relevant. While color is not ideal for conveying numeric data, patterns can be made quickly discernible and interaction can add table lookup functionality.</p>
+<p>I've made plots like <a href="http://bit.ly/NYCsubway">this</a> myself, but it has required fiddling with HTML, CSS, and JavaScript in typical <a href="http://d3js.org/">D3</a> fashion. There are some tools for making it easier to build these plots, like the <a href="http://kamisama.github.io/cal-heatmap/v2/">Cal-Heatmap</a> JavaScript plugin and the Google Charts <a href="https://developers.google.com/chart/interactive/docs/gallery/calendar">Calendar Chart</a>, but even with these it's still an HTML/JavaScript affair.</p>
+<p>I want to be able to do something like this in <a href="http://www.r-project.org/">R</a> and get an interactive calendar plot:</p>
+<pre><code class="language-r"># this package does not (yet) exist
+library(plotcal)
+plot.cal(values, dates)</code></pre>
+
+<p>I want to be able to do something like this in <a href="https://www.python.org/">Python</a> and get an interactive calendar plot:</p>
+<pre><code class="language-python"># this package does not (yet) exist
+from plot_cal import plot_cal
+plot_cal(values, dates)</code></pre>
+
+<p>Such functionality could also interact more closely with <code>data.frame</code>s/<code>DataFrame</code>s, tuples, maps/dicts, etc. That would be fine.</p>
+<p>Somebody should make such functions, or extend some existing packages to include them. Or if such things already exist, somebody should just tell me about it. Either way, I will say thank you.</p>    
+    ]]></description>
+<link>http://planspace.org/20141229-calendar_plots_should_be_easy/</link>
+<guid>http://planspace.org/20141229-calendar_plots_should_be_easy/</guid>
+<pubDate>Mon, 29 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>How does R calculate histogram break points?</title>
+<description><![CDATA[
+
+<p>Break points make (or break) your histogram. <a href="http://www.r-project.org/">R</a>'s default algorithm for calculating histogram break points is a little interesting. Tracing it includes an unexpected dip into R's <a href="http://en.wikipedia.org/wiki/C_%28programming_language%29">C</a> implementation.</p>
+<pre><code class="language-r"># set seed so "random" numbers are reproducible
+set.seed(1)
+# generate 100 random normal (mean 0, variance 1) numbers
+x &lt;- rnorm(100)
+# calculate histogram data and plot it as a side effect
+h &lt;- hist(x, col="cornflowerblue")</code></pre>
+
+<p><img alt="" src="histogram.png"></p>
+<p>The <code>hist</code> function calculates and returns a histogram representation from data. That calculation includes, by default, choosing the break points for the histogram. In the example shown, there are ten bars (or bins, or cells) with eleven break points (every 0.5 from -2.5 to 2.5). With break points in hand, <code>hist</code> counts the values in each bin. The histogram representation is then shown on screen by <code>plot.histogram</code>.</p>
+<p>(By default, bin counts include values less than or equal to the bin's right break point and strictly greater than the bin's left break point, except for the leftmost bin, which includes its left break point.)</p>
+<p>The choice of break points can make a big difference in how the histogram looks. Badly chosen break points can obscure or misrepresent the character of the data. R's default behavior is not particularly good with the simple data set of the integers 1 to 5 (as pointed out by <a href="https://twitter.com/hadleywickham">Wickham</a>).</p>
+<pre><code class="language-r">hist(1:5, col="cornflowerblue")</code></pre>
+
+<p><img alt="" src="bad5.png"></p>
+<p>A manual choice like the following would better show the evenly distributed numbers.</p>
+<pre><code class="language-r">hist(1:5, breaks=0.5:5.5, col="cornflowerblue")</code></pre>
+
+<p><img alt="" src="good5.png"></p>
+<p>It might be even better, arguably, to use more bins to show that not all values are covered.</p>
+<pre><code class="language-r">hist(1:5, breaks=seq(0.55, 5.55, 0.1), col="cornflowerblue")</code></pre>
+
+<p><img alt="" src="better5.png"></p>
+<p>In any event, break points matter. When exploring data it's probably best to experiment with multiple choices of break points. But in practice, the defaults provided by R get seen a lot.</p>
+<p>So how does R choose break points?</p>
+<p>By default, inside of <code>hist</code> a two-stage process will decide the break points used to calculate a histogram:</p>
+<ol>
+<li>
+<p>The function <code>nclass.Sturges</code> receives the data and returns a recommended number of bars for the histogram. The documentation says that <a href="http://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width">Sturges' formula</a> is "implicitly basing bin sizes on the range of the data" but it's just based on the number of values, as <code>ceiling(log2(length(x)) + 1)</code>. This is really fairly dull.</p>
+</li>
+<li>
+<p>Then the data and the recommended number of bars gets passed to <code>pretty</code> (usually <code>pretty.default</code>), which tries to "Compute a sequence of about n+1 equally spaced &#8216;round&#8217; values which cover the range of the values in x. The values are chosen so that they are 1, 2 or 5 times a power of 10." This ends up calling into some parts of R implemented in C, which I'll describe a little below.</p>
+</li>
+</ol>
+<p>Note: In what follows I'll link to a <a href="https://github.com/wch/r-source/tree/34c4d5dd3493863f6665f907dbad9bf1d800c0d4">mirror</a> of the R <a href="https://svn.r-project.org/R/">sources</a> because <a href="https://github.com/">GitHub</a> has a nice, familiar interface. I'll point to the most recent version of files without specifying line numbers. You'll want to search within the files to what I'm talking about. To see exactly what I saw go to commit <a href="https://github.com/wch/r-source/tree/34c4d5dd3493863f6665f907dbad9bf1d800c0d4">34c4d5dd</a>.</p>
+<p>The <a href="https://github.com/wch/r-source/blob/trunk/src/library/grDevices/R/calc.R">source</a> for <code>nclass.Sturges</code> is trivial R, but the <code>pretty</code> <a href="https://github.com/wch/r-source/blob/trunk/src/library/base/R/pretty.R">source</a> turns out to get into C. I hadn't looked into any of R's C implementation before; here's how it seems to fit together:</p>
+<p>The source for <code>pretty.default</code> is straight R until:</p>
+<pre><code class="language-r">z &lt;- .Internal(pretty( # ... cut</code></pre>
+
+<p>This <code>.Internal</code> thing is a call to something written in C. The file <a href="https://github.com/wch/r-source/blob/trunk/src/main/names.c">names.c</a> can be useful for figuring out where things go next. We find this line:</p>
+<pre><code class="language-c">{"pretty",    do_pretty,  0,  11, 7,  {PP_FUNCALL, PREC_FN,   0}},</code></pre>
+
+<p>So it goes to a C function called <code>do_pretty</code>. That can be found in <a href="https://github.com/wch/r-source/blob/trunk/src/main/util.c">util.c</a>. This is a lot of very Lisp-looking C, and mostly for handling the arguments that get passed in. For example:</p>
+<pre><code class="language-c">    int n = asInteger(CAR(args)); args = CDR(args);</code></pre>
+
+<p>That's kind of neat, but the actual work is done somewhere else again. The body of <code>do_pretty</code> calls a function <code>R_pretty</code> like this:</p>
+<pre><code class="language-c">    R_pretty(&amp;l, &amp;u, &amp;n, min_n, shrink, REAL(hi), eps, 1);</code></pre>
+
+<p>The call is interesting because it doesn't even use a return value; <code>R_pretty</code> modifies its first three arguments in place. Gross.</p>
+<p>The function <code>R_pretty</code> is in its own file, <a href="https://github.com/wch/r-source/blob/trunk/src/appl/pretty.c">pretty.c</a>, and finally the break points are made to be "nice even numbers" and there's a result.</p>
+<p>I was surprised by where the code complexity of this process is.</p>    
+    ]]></description>
+<link>http://planspace.org/20141225-how_does_r_calculate_histogram_break_points/</link>
+<guid>http://planspace.org/20141225-how_does_r_calculate_histogram_break_points/</guid>
+<pubDate>Thu, 25 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>DC Voter Registration Data</title>
+<description><![CDATA[
+
+<p><em>This is an expanded account; see <a href="https://github.com/ajschumacher/dc_voter_reg">dc_voter_reg</a> on GitHub for the data and concise documentation.</em></p>
+<p><img alt="" src="cd.jpg"></p>
+<p>DC voter registration data is public, but not very easy to get.</p>
+<p>On Thursday, December 18, 2014, I took a printed copy of a <a href="http://www.dcboee.org/pdf_files/Data_Request_Form.pdf">PDF form</a> that I found on the <a href="http://www.dcboee.org/">DC Board of Elections web site</a> to 441 4th Street NW, suite 250 north, Washington, DC, 20001. I had to show ID, have my bag x-rayed, and go through a metal detector to get into the building.</p>
+<p>I brought my checkbook so I could pay $2 for a CD-ROM of voter registration data. The clerk informed me that the data is updated daily. She burned my CD while I waited. She told me there are no rules on how the data can be used. I take it to be public domain.</p>
+<p>On the CD were two files:</p>
+<ul>
+<li>The data was in a Microsoft Access database file called <code>DC VH EXPORT.MDB</code> (154 MB). I bought a PC laptop running Windows 8, purchased and installed Microsoft Access, opened the file and exported the data as text. It comes out as 130 megabytes of uncompressed text. I was able to get the column headers out and stick them on top of the file so that it can be read as nice CSV. Zipped (using the Windows built-in) the result is the 20 MB <a href="https://github.com/ajschumacher/dc_voter_reg/blob/master/20141218-dc_voters.csv.zip">20141218-dc_voters.csv.zip</a>.</li>
+<li>The provided documentation file was a plain text <code>Read Me.txt</code>. I renamed this to <a href="https://github.com/ajschumacher/dc_voter_reg/blob/master/20141218-dc_voters.txt">20141218-dc_voters.txt</a>. It seems slightly out of date with respect to the data in that the later columns corresponding to elections are not the same in the documentation and in the data. These column names are interpretable as MMYYYY-T, I believe, where MM is numeric month, YYYY is four-digit year, and T is a letter corresponding to election type. I think G is General and P is primary.</li>
+</ul>
+<p>You can also get voter registration data on a per-ward basis in Microsoft Access or Excel formats. They will email it to you, but you have to fax in the form to make this request. I wonder if they would accommodate daily requests for every ward's data. It seems like it would be much less annoying to just put the data online automatically; it isn't even very heavy. If we dream big, maybe the data could live in <a href="http://dat-data.com/">dat</a>? Any option that doesn't require making a physical visit to their office during their fairly narrow business hours would be an improvement. Any format that doesn't require purchasing proprietary software would be an improvement.</p>
+<p>Another thing you can get is images (PDFs?) of signatures for nominating petitions and ballot measures. You pay just $2 per CD-ROM, but these are only available during ten-day "challenge periods." So keep your eyes peeled! I haven't seen what these things look like.</p>
+<p>At least you can get nice maps like this (or for individual wards) for just $10 each:</p>
+<p><img alt="" src="map.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20141220-dc_voter_registration_data/</link>
+<guid>http://planspace.org/20141220-dc_voter_registration_data/</guid>
+<pubDate>Sat, 20 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Please stop saying “Big Data”</title>
+<description><![CDATA[
+
+<p><em>A short talk for <a href="http://www.air.org/">AIR</a>.</em></p>
+<p>I thought about calling this &#8220;Size and Complexity in Real Data Systems,&#8221; but that would have been so boring.</p>
+<hr>
+<p><img alt="" src="alan_kay.jpg"></p>
+<hr>
+<p>This is <a href="http://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>. He worked at Xerox PARC, he said &#8220;The best way to predict the future is to invent it,&#8221; and he said this, at a <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">talk</a> earlier this year:</p>
+<blockquote>
+<p>Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase &#8220;big data.&#8221; Not everybody knows what it means. And so it's the perfect context for doing things that people can say, &#8220;Well this is an application of big data and this is an application of big data.&#8221; But in fact, the interesting future's not about data at all&#8212;it's about meaning.</p>
+</blockquote>
+<p>The objection here, which is an objection of many, is an objection to torturing the phrase &#8220;Big Data&#8221; until it means everything and nothing.</p>
+<p>You can also read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called <a href="http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/">Should We Stop Using the Term &#8216;Big Data&#8217;?</a>.</p>
+<p>The answer is yes. Let's all stop saying &#8220;big data&#8221; when we just mean &#8220;data.&#8221;</p>
+<hr>
+<p><img alt="" src="excel.png"></p>
+<hr>
+<p>Some people think big data is data they can't put in Excel. The problem with this is that you shouldn't be putting <em>any</em> data in Excel. There are many reasons Excel is bad. If you care about getting the right answer, you shouldn't use Excel [1]. But it is also true that more and more, we've moved from the era of &#8220;shouldn't use Excel&#8221; to the era of &#8220;can't possibly use Excel.&#8221;</p>
+<p>The reasons you can't use Excel these days can include volume, velocity, variety, and veracity, those <a href="http://www.ibmbigdatahub.com/infographic/four-vs-big-data">V words</a> that buzz along with &#8220;big data.&#8221; These Vs are trying to get people to realize that their ideas about how to work with data are inadequate. The ideas were inadequate before as well, but now they're really clearly inadequate. It is more comfortable to think that the problem is only with these new-seeming Vs.</p>
+<p>[1]: <em>See, for example, <a href="http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history">Growth in a Time of Debt</a>.</em></p>
+<hr>
+<p><img alt="" src="data_flow.jpg"></p>
+<hr>
+<p>Working with data is always about building systems. This includes systems where the output is an analysis result. You need to build systems that are testable, reusable, extensible, and composable. Ideally, systems that are elegant. You can't do that with Excel, or with most commercial statistical offerings. To steal some other peoples' language, <a href="http://www.wsj.com/articles/SB10001424053111903480904576512250915629460">software is eating the world</a> and you need to <a href="http://www.rushkoff.com/program-or-be-programmed/">program or be programmed</a>.</p>
+<p>What should you learn, if all you know is Excel or something similarly unfortunate like Stata or SAS? If you think you should learn <a href="http://www.r-project.org/">R</a> or <a href="http://clojure.org/">Clojure</a> or <a href="http://www.scala-lang.org/">Scala</a>, you might be right. Otherwise, learn <a href="https://www.python.org/">Python</a>.</p>
+<hr>
+<p><img alt="" src="big_data.png"></p>
+<hr>
+<p>This is a <a href="http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf">slide</a> from <a href="http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29">John Langford</a>, who has worked on large scale machine learning problems at Yahoo! and Microsoft. This is what technical people tend to mean by &#8220;big data.&#8221;</p>
+<p>It's not quite the same thing as being &#8220;O(n<sup>2</sup>) algorithm feasible,&#8221; but to put it differently, let's say that some small data you could theoretically work with in Excel.</p>
+<p>Medium data might fit on one computer, but to work with it you'll probably need someone who knows what &#8220;O(n<sup>2</sup>)&#8221; means. She started programming years before you, and you probably want her working on your small data too.</p>
+<p>Very few people have big data by the definition here, and that's okay [2].</p>
+<p>Second recommendation: if you do have really big data, learn <a href="https://spark.apache.org/">Spark</a>.</p>
+<p>[2]: <em>Everybody can get access to somebody else's big data, often public, but very few people are producing their own big data.</em></p>
+<hr>
+<p><img alt="" src="unreasonable_data.png"></p>
+<hr>
+<p>Is more data better? This question is distinct from the question of whether our data is big. Do we want more data at all?</p>
+<p>In 2009, some folks at Google come out with <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf">The Unreasonable Effectiveness of Data</a>. They seem to be saying that there is at least one case in which the answer is yes, we want more data.</p>
+<hr>
+<p><img alt="" src="scaling_corpora.png"></p>
+<hr>
+<p>A good illustration of their point is a <a href="http://dl.acm.org/citation.cfm?id=1073017">2001 Microsoft paper</a>. The problem here is called &#8220;confusion set disambiguation,&#8221; which sounds fancy but just means that the model has to decide whether to fill in a blank in a sentence with T-O to, T-O-O too, or T-W-O two. So the data is text, and the point is that the amount of data seems to be more important than the choice of algorithm. There are three things to say here.</p>
+<p>First, is this big data? Their complete data set was a billion words. Around five gigabytes. This is not an example of big data; that fits on a memory stick.</p>
+<p>Second, how are we measuring effectiveness? This is an important thing to take from this example. The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. But it doesn't make much sense to try to interpret these models in any way that would please a traditional linguist.</p>
+<p>Finally, should we be surprised that having more data helps for this problem?</p>
+<p>The problem is a natural language problem. Language is complicated. The problem has been simplified quite a lot, to just confusion set disambiguation, but there are a lot of words, and all these models are high variance, meaning roughly that they have a ton of coefficients [3]. So even if you have a lot of data, you may still have relatively little (or even none) for some cases.</p>
+<p>So it makes sense that these models should do better when they get to study more text. And text is easy to get from the internet, so there's no reason not to throw more data at the problem.</p>
+<p>Not all problems are like this.</p>
+<p>[3]: <em><a href="http://xavier.amatriain.net/">Xavier Amatriain</a> (formerly of Netflix) has a good <a href="http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html">explanation</a> of this which inspired this section.</em></p>
+<hr>
+<p><img alt="" src="big_complex.png"></p>
+<hr>
+<p>I've tried to separate bigness from other kinds of data complexity. Where in this space can we operate?</p>
+<hr>
+<p><img alt="" src="big_complex_possible.png"></p>
+<hr>
+<p>I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and now relatively easy to scale with the big name technologies that people like to sell.</p>
+<p>A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that things that can be scaled are simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.</p>
+<p>The amazing thing that you encounter in practice though is how much work there is still to be done here in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.</p>
+<hr>
+<p>TSDL</p>
+<hr>
+<p>Here's an example that I didn't work on; I only witnessed it from a distance. TSDL stands for Teacher Student Data Linkage. So say you're a company like AIR and you have to decide, for a state, who's a good teacher based on how their students did. (That's hard, by the way.)</p>
+<p>You need, of course, some Teacher Student Data Linkage data. Certainly the school districts in the state have this, right?</p>
+<p>Well, no. In the case of at least one large urban school district, they did not have usable information of this type. What they did have was two systems that each had some overlapping information. This was arguably already too many systems.</p>
+<p>So how do they satisfy the need that the state and the company have for the linkage data? They build a third system. This third system gets data from the two existing systems, and then presents an interface for everyone in the district to go in by hand and identify their students.</p>
+<p>This is a lot of work to get something that they probably should have had to begin with. But at least now that they have it, all their systems can benefit, right?</p>
+<p>The data that was collected, to the best of my knowledge, was never fed back into the rest of the systems.</p>
+<p>This is an example of the importance of smart engineering. For whatever reason, be it funding, vision, technical knowledge... systems are not good. They are not delivering the data that should really be expected of them, so when there's finally a clear and present need for that data, a lot of work goes into getting it,too often yielding dividends for nobody else.</p>
+<p>It's not easy to set up and instrument systems, and especially hard to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.</p>
+<hr>
+<p>Arlington Big Data Roundtable</p>
+<hr>
+<p>Here's an example that I did work on. The Arlington Big Data Roundtable was put on by Arlington Public Schools, and the team I was on won, and it got some <a href="http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html">press</a>, which was nice.</p>
+<p>What did we do? They gave us a bunch of data, and we predicted which students would drop out in the following year. Based on the historical data we had, and the success metric that we chose, we were pretty good at it. You can predict dropouts. This should be surprising to no one. So what's to say about this?</p>
+<p>Let's start with the size of the data. The data in the last example wasn't big, by the way, and that was a large urban school district. Arlington has something like 20,000 students. So the only &#8220;big&#8221; here has to be some other kind of complexity.</p>
+<p>You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's interesting that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!</p>
+<p>How is this example like the last example? We were handed data and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.</p>
+<p>A side issue is that many of the problems come from defining what you are talking about, and bureaucracies tend to ruin this process, often by failing to provide a complete definition, sometimes deliberately. &#8220;What does it mean to drop out?&#8221; turns out to be tricky.</p>
+<p>So we can predict who's going to drop out. Is that going to help any students this year? If it does, it will be because of systems-building work in larger measure than modeling work.</p>
+<hr>
+<p>&#1587;&#1602;&#1587;&#1602;&#1577;</p>
+<hr>
+<p>Google Translate tells me that this is Arabic for &#8220;tweet.&#8221;</p>
+<p>This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two more things: hackathons themselves, and what I'll call &#8220;data science mad-libs.&#8221;</p>
+<p>Hackathons first. They're great for getting people excited and talking about something. They're hard to get results out of. So if you're clear about your goal, hackathons may be for you.</p>
+<p>The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, a lot of work has already gone into scoping a problem and making it attainable in the time available.</p>
+<p>The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration, sometimes a &#8220;data science mad-lib.&#8221;</p>
+<p>Take a big problem and some big source of data, and you get a data science mad-lib:</p>
+<ul>
+<li>&#8220;We're going to stop human trafficking with Facebook!&#8221;</li>
+<li>&#8220;We're going to end world hunger with Twitter!&#8221;</li>
+<li>&#8220;We're going to monitor flu around the world with Google!&#8221;</li>
+</ul>
+<p>That last one has been <a href="http://www.google.org/flutrends/">done</a>, though there are <a href="http://bits.blogs.nytimes.com/2014/03/28/google-flu-trends-the-limits-of-big-data/">questions</a> about its effectiveness. Somebody may we working on these others. And wouldn't it be neat if these worked? And there may <em>be</em> a way to make them work&#8212;but these aspirations require methods. A starting point and an ending point do not imply a good path between them.</p>
+<p>In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great! This gives us the illusion of making progress toward a goal. But what is our goal? How will we know if we've achieved it? We weren't sure, and while the exercise was interesting, we didn't have any usable results after our one day of work.</p>
+<p>Now the <a href="http://www.unglobalpulse.org/">UN Global Pulse</a> is working on doing things like this Twitter exercise, and they may have some success. I don't want to nay-say all crazy-sounding ideas. Crazy ideas are some of my favorites. But crazy ideas that work are like magic tricks: they're only mysterious if you don't know what's really going on.</p>
+<hr>
+<p>data</p>
+<hr>
+<p>I am hopeful about data. I think we need more people working on data with more effective tools and practices. Dream big but write code. You can start writing Python tonight. Another book I recommend is called <a href="https://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>.</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p>And of course, you're under no obligation to agree with me.</p>    
+    ]]></description>
+<link>http://planspace.org/20141215-please_stop_saying_big_data/</link>
+<guid>http://planspace.org/20141215-please_stop_saying_big_data/</guid>
+<pubDate>Mon, 15 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Make it Easy to Install Emacs</title>
+<description><![CDATA[
+
+<p>&#8220;GNU Emacs is an extensible, customizable text editor&#8212;and more.&#8221;</p>
+<p>I wanted to invite novice hackers to check out <a href="http://www.gnu.org/software/emacs/">Emacs</a>. But installing Emacs for the first time isn't easy! Or rather: the installation can be easy, but finding the right package for your system may not be.</p>
+<p>So I made <a href="http://emacs.link/">emacs.link</a>, a static site hosted with GitHub pages (<a href="https://github.com/ajschumacher/emacs.link">repo</a>). It does a rough system detection and then presents simple, direct installation directions.</p>
+<p>The directions are opinionated in that they only show one method per system:</p>
+<ul>
+<li>On Linux you might want to build Emacs from source, but I don't mention that alternative.</li>
+<li>On a Mac, you might prefer to install Emacs using <a href="http://brew.sh/">brew</a>, but if you don't have brew installed already it's easier to skip that step.</li>
+<li>There's no Emacs installer for <a href="http://ftpmirror.gnu.org/emacs/windows/README">Windows</a>. The current directions may be too difficult for some Windows users.</li>
+<li>There are ways to try to get Emacs running on <a href="http://gamma-level.com/iphoneos/ports/emacs">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.zielm.emacs">Android</a>, but I'm not sure that's even a good idea, so on mobile I recommend watching some fun <a href="https://www.youtube.com/watch?v=TMoPuv-xXMM&amp;index=6&amp;list=UUkRmQ_G_NbdbCQMpALg6UPg">Emacs videos</a>.</li>
+</ul>
+<p>I tried to make <a href="http://emacs.link/">emacs.link</a> attractive, after the fashion of hip startup sites. The nice background image is courtesy of <a href="https://www.flickr.com/photos/anschieber/">Andrea Schieber</a>, who released <a href="https://www.flickr.com/photos/anschieber/6303932505">the original</a> on Flickr with a Creative Commons license (<a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>). Thanks very much to her! I cropped and edited the original a little bit with <a href="http://www.gimp.org/">GIMP</a>. As required, the edited version has the same license.</p>    
+    ]]></description>
+<link>http://planspace.org/20141207-make_it_easy_to_install_emacs/</link>
+<guid>http://planspace.org/20141207-make_it_easy_to_install_emacs/</guid>
+<pubDate>Sun, 07 Dec 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Ruby Symbols are not Lisp Symbols</title>
+<description><![CDATA[
+
+<p>I heard about <a href="http://www.johndcook.com/blog/2012/03/28/how-emacs-influenced-ruby/">How Emacs influenced Ruby</a> and the main thing I took from it was the possible connection between (Emacs) Lisp symbols and Ruby symbols, <a href="http://ergoemacs.org/emacs/Matz_Ruby_how_emacs_changed_my_life.html">as suggested by Xah</a>. But Ruby symbols and Lisp symbols are really quite different.</p>
+<p>In Ruby you write a symbol starting with a colon. This looks similar to writing an apostrophe before a symbol in Lisp to quote it.</p>
+<pre><code class="language-ruby"># Ruby
+:aaron         # This is a symbol.
+               # It is written and displayed with a leading colon.
+# =&gt; :aaron</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+'aaron         ; This is shorthand for the next line.
+(quote aaron)  ; These both evaluate to the symbol itself, as shown.
+; =&gt; aaron</code></pre>
+
+<p>The big difference is that in Lisp, symbols evaluate as variables and functions. That's why you have to quote a symbol in Lisp to work with the symbol itself. In Ruby, on the other hand, symbols never evaluate to anything else. Variable and method names in Ruby are not symbols; they're off in their own world. Note the differing error messages here:</p>
+<pre><code class="language-ruby"># Ruby
+aaron        # This is not a symbol but evaluates as a variable or method.
+# =&gt; NameError: undefined local variable or method `aaron' for main:Object</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+aaron        ; This is a symbol which will (try to) evaluate as a variable.
+; =&gt; *** Eval error ***  Symbol's value as variable is void: aaron</code></pre>
+
+<p>You can't set (or bind) a Ruby symbol to a value at all&#8212;it's a syntax error. But that's exactly what you do in Lisp.</p>
+<pre><code class="language-ruby"># Ruby
+:aaron = 12       # This attempts to set a symbol to 12, which Ruby hates.
+# =&gt; SyntaxError: (irb):10: syntax error, unexpected '=', expecting end-of-input</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+(set 'aaron 12)   ; This sets a symbol's value as a variable to 12.
+; =&gt; 12</code></pre>
+
+<p>Conversely, what works naturally in Ruby is nonsense in Lisp.</p>
+<pre><code class="language-ruby"># Ruby
+aaron = 27        # This sets a variable to 27.
+# =&gt; 12</code></pre>
+
+<pre><code class="language-lisp">; Lisp
+(set aaron 27)    ; This attempts to set 12 to 27.
+; =&gt; *** Eval error ***  Wrong type argument: symbolp, 12</code></pre>
+
+<p>Deeper differences between Lisp and Ruby are evident, for example, in the behavior of <code>eval</code>. In Ruby, <code>eval</code> takes a string, while in Lisp, it takes a Lisp object. So while it's true that in Ruby <code>eval(:aaron.to_s)</code> will give the variable <code>aaron</code>'s value, it's fairly unrelated to the symbol <code>:aaron</code>, and quite different from <code>(eval aaron)</code> in Lisp.</p>
+<p>Some uses of Ruby and Lisp symbols are similar, but by and large trying to think of them as related was doing me more harm than good.</p>
+<p>I found that <a href="https://twitter.com/chneukirchen">Christian Neukirchen</a> has <a href="http://chneukirchen.org/blog/archive/2005/12/ruby-symbols-are-not-lisp-symbols.html">a 2005 post with the same name as this one</a>, which points out even more differences between Lisp symbols and Ruby symbols. His link to the Common Lisp HyperSpec "K" glossary page (for "keyword") is broken; here's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_k.htm">a working one</a>. I'm playing with <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a> here, not <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. There may be more to be said.</p>    
+    ]]></description>
+<link>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</link>
+<guid>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</guid>
+<pubDate>Sat, 29 Nov 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Alan Kay on Big Data</title>
+<description><![CDATA[
+
+<p>During his recent <a href="https://github.com/papers-we-love/papers-we-love">Papers We Love</a> DC <a href="http://www.meetup.com/Papers-We-Love-DC/events/212419432/">presentation</a>, <a href="https://twitter.com/swannodette">David Nolen</a> recommended this <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">talk</a> by <a href="http://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>, which opens with his thoughts on "big data":</p>
+<blockquote>
+<p>Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase &#8220;big data.&#8221; Not everybody knows what it means. And so it's the perfect context for doing things that people can say, &#8220;Well this is an application of big data and this is an application of big data.&#8221; But in fact, the interesting future's not about data at all&#8212;it's about meaning.</p>
+</blockquote>
+<p>You can watch the whole talk on YouTube: <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">The Future Doesn't Have to Be Incremental</a></p>    
+    ]]></description>
+<link>http://planspace.org/20141125-alan_kay_on_big_data/</link>
+<guid>http://planspace.org/20141125-alan_kay_on_big_data/</guid>
+<pubDate>Tue, 25 Nov 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Well-Used Simple Tools</title>
+<description><![CDATA[
+
+<p><em>A <a href="http://www.meetup.com/Design-Thinking-DC/events/216029412/">short talk</a> for <a href="http://www.meetup.com/Design-Thinking-DC/">Design Thinking DC</a>.</em></p>
+<p>I work with data, and the tools that are unique to what I do may or may not be interesting to you. So I'm going to start with four tools that are useful for everyone.</p>
+<hr>
+<p><a href="http://www.usporedi.hr/novosti/je-li-ovo-najbolja-tipkovnica-svih-vremena"><img alt="" src="keyboard.png"></a></p>
+<hr>
+<p>Tool number one is a keyboard. You use a keyboard a lot, and you should probably use it more.</p>
+<p>Steve Yegge has a 2008 <a href="http://steve-yegge.blogspot.com/2008/09/programmings-dirtiest-little-secret.html">blog post</a> about programmers who can't touch type. You wouldn't think such people existed. But just this year, in 2014, I met such a person.</p>
+<p>A keyboard is probably the tool you use more than any other. Improve your typing. Then, use keyboard shortcuts so that more things become typing.</p>
+<hr>
+<p><a href="http://www.google.com/chrome/"><img alt="" src="chrome.png"></a></p>
+<hr>
+<p>Tool number two is a browser. I usually use <a href="http://www.google.com/chrome/">Chrome</a>. I want to use <a href="http://firefox.com/">Firefox</a> more, but the keyboard bindings are broken for switching tabs when you have a YouTube video up.</p>
+<p>Often, you don't have to reach for the mouse to use your browser. I'll call out key combinations that work on my Mac; on other systems they're often similar.</p>
+<p><code>command</code>+<code>tab</code> switches applications. <code>command</code>+<code>l</code> gives us the address bar. I'll type in my blog's domain, <code>planspace.org</code>. <code>command</code>+<code>f</code> finds in page. I want the post on <code>pca</code>. <code>esc</code> to leave the search. <code>return</code> to follow the link. <code>space</code> to page down a little.</p>
+<p>Let's do it again, another way. <code>command</code>+<code>t</code> for a new tab. We want to search for <code>pca 3d</code>. <code>return</code> to search. <code>tab</code> to start exploring links. <code>down</code> to get the result we want. <code>return</code> to follow the link.</p>
+<p><code>alt</code>+<code>command</code>+<code>left</code> to change tabs. <code>command</code>+<code>w</code> to close the tab. <code>command</code>+<code>l</code> to get the address bar. <code>control</code>+<code>a</code> to go to the beginning of the line. <code>control</code>+<code>k</code> to kill the line. <code>control</code>+<code>y</code> to yank it back. <code>control</code>+<code>f</code> to move forward, <code>control</code>+<code>b</code> to move back.</p>
+<p>These commands are stock - I'm not using any special accessibility tools. They work not just in the browser but across many different settings. Learn them once, and you can speed up many common operations.</p>
+<hr>
+<p><a href="https://gmail.com/"><img alt="" src="gmail.png"></a></p>
+<hr>
+<p>Tool number three is email. <a href="https://gmail.com/">Gmail</a> has been getting progressively worse, but it's still the best option. You can turn off some of the bad features, and turn on keyboard shortcuts.</p>
+<p>A pass through email should not take a long time. It should be distinct from work, but will integrate with task management.</p>
+<p>Move through emails with <code>j</code> and <code>k</code>, open an email with <code>o</code>. <code>r</code> to reply, and do it immediately if it's a brief request. <code>[</code> to archive an email and move to the next one. Some emails don't require a response.</p>
+<p>Sometimes an email represents a task, but you can't work on it until some point in the future. This is where task management is useful. I can forward (<code>f</code>) to a future date like <code>thursday@goodtodo.com</code> and the task will be tracked in the system, so I won't see it until Thursday.</p>
+<p>Tasks that will take longer than two minutes get moved to task management, even if they're for today.</p>
+<p>After a pass through email, the inbox should be empty.</p>
+<hr>
+<p><a href="https://goodtodo.com/"><img alt="" src="goodtodo.png"></a></p>
+<hr>
+<p>Tool number four is <a href="https://goodtodo.com/">Good Todo</a>, which is a calendared to-do list app that integrates with email. It supplements my memory by keeping track of when I need to do things, and lets me focus on just the tasks that I'll be able to accomplish in a given day. It is way better than any other to-do application I've ever seen.</p>
+<p>I include brief tasks that just need to be remembered and crossed off, as well as more substantial tasks. By looking at the list for the day I can decide what to work on first and what to reschedule or reconsider.</p>
+<hr>
+<p>Unix philosophy</p>
+<hr>
+<p>The Unix philosophy describes a way of building an effective system of tools. To paraphrase Doug McIlroy:</p>
+<blockquote>
+<ul>
+<li>Use tools that do one thing well.</li>
+<li>Use tools that work together.</li>
+<li>Use tools that work with text, because text is universal.</li>
+</ul>
+</blockquote>
+<p>I think my four simple tools follow this fairly well, but they aren't ideal examples. I'll use a simple task to demonstrate further. [1]</p>
+<p>[1] <em>For more on this family of tools, see <a href="http://datascienceatthecommandline.com/">Data Science at the Command Line</a> by Jeroen Janssens.</em></p>
+<hr>
+<p><img alt="" src="emacs.png"></p>
+<hr>
+<p>Right now, I'll work on this "Friday sales report" task. I'll download the Excel file. Then I'll go to the command line.</p>
+<p>Step one is getting the data out of Excel format and into text. Luckily there's a package called <a href="https://csvkit.readthedocs.org/">csvkit</a>, which includes <code>in2csv</code>, which will make short work of this simple file.</p>
+<pre><code class="language-html">in2csv sales.xlsx &gt; sales.csv</code></pre>
+
+<p>Now that we have text, a whole world of tools are available. I'll take off the header row with <code>tail</code>, <code>sort</code> the rows, reduce to the unique terms and count occurrences with <code>uniq</code>, then do another sort to see things in a nice order.</p>
+<pre><code class="language-html">tail +2 sales.csv | sort | uniq -c | sort -rn</code></pre>
+
+<p>Notice the input and output are both text. I could work with this text further.</p>
+<p>I'll use <code>R</code> to make a quick bar graph.</p>
+<pre><code class="language-bash">cat sales.csv | Rio -ge "g+geom_bar(aes(item))" &gt; plot.png</code></pre>
+
+<hr>
+<p><img alt="" src="plot.png"></p>
+<hr>
+<p>In three lines, I've done fairly much, and I've done it repeatably.</p>
+<p>I'm using my command line from inside <a href="http://www.gnu.org/software/emacs/">Emacs</a>, which is a text editor. [2] I'll take my three lines and make them a script. Now I can repeat what I've done whenever there's new data.</p>
+<p>[2] <em>For more about Emacs, see my <a href="/20141007-emacs_python/">Emacs and Python</a> talk.</em></p>
+<hr>
+<p>what are good tools?</p>
+<hr>
+<p>Good tools have low or negative cognitive load. They are simple in what they do, and how they do it. They avoid hidden state.</p>
+<p>Good tools are pure, in that they are distinct from what they operate on. They don't lock you into a closed format. They are tools, not kits.</p>
+<p>Good tools are textual, programmable, repeatable, inspectable, automatable: anything you do once can be examined and repeated later non-interactively.</p>
+<p>These are some of my thoughts on tooling, and I'd invite you to consider them. You could also read some of the books that have influenced me.</p>
+<hr>
+<p><a href="http://bitliteracy.com/"><img alt="" src="bit_literacy.jpg"></a></p>
+<hr>
+<p>My thoughts on email and to-do management come directly from <a href="http://bitliteracy.com/">Bit Literacy</a>, which you can get for free at <a href="http://bitliteracy.com/">bitliteracy.com</a>.</p>
+<hr>
+<p><a href="https://pragprog.com/the-pragmatic-programmer"><img alt="" src="pragmatic_programmer.jpg"></a></p>
+<hr>
+<p>My thoughts on text and separation of concerns, among other things, were certainly influenced by <a href="https://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>.</p>
+<hr>
+<p><a href="http://37signals.com/rework/"><img alt="" src="rework.png"></a></p>
+<hr>
+<p><a href="http://37signals.com/rework/">ReWork</a>, which is largely the same as the freely available <a href="http://gettingreal.37signals.com/">Getting Real</a>, has a lot of good ideas for working effectively. "Do everything you can to remove layers of abstraction" is one quote I like.</p>
+<hr>
+<p><img alt="" src="notepad.jpg"></p>
+<hr>
+<p>This is an image from the drafting process for this talk. I've been strongly influenced by the <a href="http://www.bard.edu/iwt/">Bard Institute for Writing and Thinking</a>, and paper is my favorite invention. I mention this to emphasize that while I've shown certain kinds of tools, thinking in many different ways is important to everyone and multiple types of process can be useful in supporting various stages of work.</p>
+<hr>
+<p>use version control!</p>
+<hr>
+<p>The major tool I've omitted is version control. Use <a href="http://git-scm.com/">git</a>.</p>
+<p>And don't use <a href="http://www.sas.com/">SAS</a>.</p>
+<p>Thank you very much!</p>    
+    ]]></description>
+<link>http://planspace.org/20141117-well_used_simple_tools/</link>
+<guid>http://planspace.org/20141117-well_used_simple_tools/</guid>
+<pubDate>Mon, 17 Nov 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>A True and Delightful Incident</title>
+<description><![CDATA[
+
+<p>The mathematician Raymond Smullyan writes in the preface to his book <a href="http://en.wikipedia.org/wiki/To_Mock_a_Mockingbird">To Mock a Mockingbird</a>:</p>
+<blockquote>
+<p>Shortly after the publication of my first puzzle book&#8212;called <em>What Is the Name of This Book?</em>&#8212;I received a letter from an unknown female suggesting an alternative solution to one of the puzzles, which I found more elegant than the one I had given. She closed the letter with &#8220;Love&#8221; and signed her name. I had absolutely no idea who she was, or whether she was married or single. I wrote back expressing my appreciation of her solution and asked whether I might use it in a subsequent edition. I also suggested that if she had not already graduated from college she might consider majoring in mathematics, since she showed a definite mathematical talent. Shortly after, she replied: &#8220;Thank you for your gracious letter. You have my permission to use my solution. I am nine and a half years old and am in fifth grade.&#8221;</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20141107-a_true_and_delightful_incident/</link>
+<guid>http://planspace.org/20141107-a_true_and_delightful_incident/</guid>
+<pubDate>Fri, 07 Nov 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Functional Javascript is</title>
+<description><![CDATA[
+
+<p><a href="http://funjs.herokuapp.com/">Functional Javascript</a> is impressively good. Though Javascript throughout, it helped me to start using <a href="http://legacy.python.org/dev/peps/pep-0318/">decorators</a> in Python more effectively. There are a lot of good ideas in there.</p>
+<p>The author, <a href="https://twitter.com/fogus">Michael Fogus</a>, is also an author of <a href="http://www.joyofclojure.com/">The Joy of Clojure</a>, which greatly simplified my search for a <a href="http://clojure.org/">Clojure</a> book to read. I also saw that he lives in the DC area, which made me hope to see him speaking at local events.</p>
+<p><img alt="book cover" src="book_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20141101-functional_javascript/</link>
+<guid>http://planspace.org/20141101-functional_javascript/</guid>
+<pubDate>Sat, 01 Nov 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>JSON-stat and rjstat</title>
+<description><![CDATA[
+
+<p><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></p>
+<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a>-based <a href="http://en.wikipedia.org/wiki/Data_cube">data cube</a> packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
+<hr>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;data?&lt;/title&gt;
+...</code></pre>
+
+<hr>
+<p>About a year ago I was thinking about how to put a lot of data into a self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. [1] Presuming something text-based, what's the most compact way to store data?</p>
+<p>[1] <em>If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.</em></p>
+<hr>
+<pre><code class="language-json">[{"name": "Aaron",
+  "year": 2014,
+  "height": 68,
+  "weight": 70},
+...</code></pre>
+
+<hr>
+<p>It's pretty common online to have an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But you're listing keys for every record, so it isn't very compact.</p>
+<hr>
+<pre><code class="language-html">name,year,height,weight
+Aaron,2014,68,70
+...</code></pre>
+
+<hr>
+<p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much smaller, and the table layout is very familiar. There's less type information than even JSON, but we can deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?</p>
+<hr>
+<pre><code class="language-html">name,height2014,weight2014
+Aaron,68,70
+...</code></pre>
+
+<hr>
+<p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with. This is not the direction we want to go.</p>
+<hr>
+<pre><code class="language-html">name,year,thing,value
+Aaron,2014,height,68
+Aaron,2014,weight,70
+...</code></pre>
+
+<hr>
+<p>We could move in the other direction, toward a longer format. [2] Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!</p>
+<p>[2] <em>For most wide-to-long and long-to-wide conversions in R, use the <a href="http://rpackages.ianhowson.com/cran/tidyr/man/gather.html">gather</a> and <a href="http://rpackages.ianhowson.com/cran/tidyr/man/spread.html">spread</a> functions from the <a href="https://github.com/hadley/tidyr">tidyr</a> package.</em></p>
+<hr>
+<p><img alt="cube" src="cube.png"></p>
+<hr>
+<p>One solution to this problem is the data cube approach. The value "column" fills the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits from <a href="http://en.wikipedia.org/wiki/Stride_of_an_array">striding</a>. [3]</p>
+<p>[3] <em>Striding benefits aren't generally accessible in JavaScript or R, but they may be in other languages.</em></p>
+<p><em><a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>) from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>.</em></p>
+<hr>
+<pre><code class="language-json">{"people stats": {
+  "value": [68, 70, ...],
+  "dimension": {
+    "id": ["name", "year", "thing"],
+    ...</code></pre>
+
+<hr>
+<p>So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying everything in an unambiguous way, but with large data sets you can get significant savings in size. For the dimensions, it's even more effective than using R's <a href="http://www.stat.berkeley.edu/~s133/factors.html">factor</a> approach. And that's not all.</p>
+<hr>
+<p>METADATA</p>
+<hr>
+<p>JSON-stat includes places for metadata like long-form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make JSON-stat attractive to people who are serious about their statistics.</p>
+<hr>
+<p><img alt="Xavier Badosa" src="badosa.png"></p>
+<hr>
+<p>JSON-stat was created by <a href="https://twitter.com/badosa">Xavier Badosa</a> as a result of his experiences doing API work for the <a href="http://www.idescat.cat/en/">Statistical Institute of Catalonia</a>. He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably <a href="http://data.ssb.no/api/?lang=en">Norway's</a> and <a href="http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/">Sweden's</a>. They rolled it out first, but offices of statistics in around <a href="http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/">30 nations</a> use Sweden's <a href="http://www.scb.se/sv_/PC-Axis/Start/">PC-Axis</a> software which will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new <a href="https://www.ons.gov.uk/ons/apiservice/web/apiservice/home">OpenAPI</a> which provides JSON-stat. [4]</p>
+<p>[4] <em>The UK's system is still in beta; <a href="https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917">work continues</a>.</em></p>
+<hr>
+<p><img alt="Swedish Inflation Calculator" src="inflation.png"></p>
+<hr>
+<p>In addition to the format itself there's an associated <a href="http://json-stat.org/schema/">HTML microdata schema</a> and a <a href="http://json-stat.com/">JavaScript Toolkit</a> for working with JSON-stat. You can make things like this <a href="http://bl.ocks.org/badosa/20735ba5bbecbc079d78">Swedish Inflation Calculator</a>. There are also libraries for <a href="https://github.com/hamnis/json-stat.java">Java</a> and <a href="https://pypi.python.org/pypi/pyjstat/">Python</a>.</p>
+<hr>
+<p>...R?</p>
+<hr>
+<p>But about a year ago, there was nothing for R.</p>
+<hr>
+<p><img alt="bus" src="bus.png"></p>
+<hr>
+<p>I was using R a lot, so when I visited New York one weekend, I spent some of the bus ride hacking an R package together, following the advice in <a href="http://adv-r.had.co.nz/">Advanced R</a>. I got conversion between R data frames and JSON-stat working, I put it <a href="https://github.com/ajschumacher/rjstat">up on GitHub</a>, and I told Xavier about it.</p>
+<p>It then turned out that I didn't need JSON-stat, and I immediately forgot about it. [5] But once the package was up on GitHub, anybody could come and mess with it. And somebody did.</p>
+<p>[5] <em>It isn't quite true that I immediately forgot about it. I also did a lightning talk at <a href="http://dc.hackandtell.org/2013/11/21/round-3.html">Hack and Tell</a>.</em></p>
+<p><em>Image from <a href="http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png">some site</a>.</em></p>
+<hr>
+<p><img alt="H&#229;kon Malmedal" src="hmalmedal.png"></p>
+<hr>
+<p>I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about <a href="https://twitter.com/hmalmedal">H&#229;kon</a> of <a href="http://en.wikipedia.org/wiki/Molde">Molde, Norway</a> is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a reasonably priced beverage of his choice.</p>
+<hr>
+<p><img alt="Greenland" src="greenland.png"></p>
+<hr>
+<p>That was good enough until Lars Pedersen of <a href="http://www.stat.gl/default.asp?lang=en">Statistics Greenland</a> emailed me with some questions about the package, among them when it would be on <a href="http://cran.r-project.org/submit.html">CRAN</a>.</p>
+<hr>
+<p>CRAN</p>
+<hr>
+<p><code>rjstat</code> was installing just fine from GitHub, and I was a little intimidated by the reputation of <a href="http://www.r-project.org/contributors.html">R-core</a>, so all I did was start a GitHub issue to discuss getting on CRAN. Before I knew it, H&#229;kon had submitted on my behalf, it was approved by <a href="http://www.statistik.tu-dortmund.de/ligges.html">Uwe Ligges</a>, and it was in the system in time for Lars's conference.</p>
+<p>I know what you're thinking: "But do you have continuous integration testing?"</p>
+<hr>
+<p><img alt="Travis" src="travis.png"></p>
+<hr>
+<p>Largely because I felt like I should do <em>some</em> work before giving this talk, I decided to set up <a href="https://travis-ci.org/">Travis CI</a> for <code>rjstat</code>. Travis doesn't actually support R at all, but <a href="https://github.com/craigcitro">Craig Citro</a> has put together a nice <a href="https://github.com/craigcitro/r-travis">way</a> of hijacking Travis's C build process to test R projects. It was so easy, I still hardly did any work.</p>
+<hr>
+<p><img alt="tweet from Hadley" src="hadley_tweet.png"></p>
+<hr>
+<p>And because no R talk is complete without <em>explicit</em> mention of <a href="https://twitter.com/hadleywickham">Hadley</a>: he naturally <a href="https://twitter.com/hadleywickham/status/521303521036349440">let me know</a> that his <a href="https://github.com/hadley/devtools">devtools</a> package will also set up Travis automatically. Because of course it does.</p>
+<hr>
+<p><img alt="build passing" src="build_passing.png"></p>
+<hr>
+<p>In summary: JSON-stat is a neat format, everyone involved with R is really very friendly and helpful, and you should follow your dreams of doing and making all kinds of things. Thank you.</p>    
+    ]]></description>
+<link>http://planspace.org/20141023-rjstat_lightning/</link>
+<guid>http://planspace.org/20141023-rjstat_lightning/</guid>
+<pubDate>Thu, 23 Oct 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Emacs and Python</title>
+<description><![CDATA[
+
+<p><em>A short <a href="http://www.meetup.com/DCPython/events/208969552/">talk</a> at the <a href="http://www.meetup.com/DCPython/">DC Python meetup group</a>, introducing
+<a href="http://www.gnu.org/software/emacs/">Emacs</a> through demonstration of fun and useful features. Original
+source and notes are <a href="https://github.com/ajschumacher/emacs_python">up on github</a>. Thanks to <a href="https://twitter.com/edwelker">Eddie Welker</a> for
+hosting the event and putting up <a href="https://www.youtube.com/watch?v=eH-epEqLVAs">video</a>!</em></p>
+<p><img alt="" src="screenshots/emacs_startup_screen.png"></p>
+<p>This is a screen you see when you start up Emacs. There's a tutorial
+and a manual and it's all very user-friendly.</p>
+<pre><code>M-x tetris
+</code></pre>
+<p><img alt="" src="screenshots/emacs_tetris.png"></p>
+<p>Tetris is included in base Emacs. But Emacs is also a text editor.
+Editing text is important.</p>
+<p>So why Emacs?</p>
+<pre><code>C-x C-c
+</code></pre>
+<p><img alt="" src="screenshots/blank_terminal.png"></p>
+<p>In addition to editing text, you probably need or want to send
+computers commands via text. It may be convenient or necessary to be
+productive in a pure text environment. So it is a desirable
+characteristic of a text editor that it be as capable in text mode as
+graphical mode. There are two serious contenders: <a href="http://www.vim.org/">Vim</a> and Emacs.</p>
+<p>There are further reasons to prefer a keyboard-based interface, but at
+a minimum we need an editor that can be used over <a href="http://en.wikipedia.org/wiki/Secure_Shell">ssh</a>.</p>
+<pre><code>got bash
+alias got
+grep -o '\w*grep' ~/.bashrc | sort | uniq -c
+</code></pre>
+<p><img alt="" src="screenshots/bash_intro.png"></p>
+<p>I use <a href="http://www.gnu.org/software/bash/">bash</a>, and I have it customized a little bit, which makes it
+nicer.</p>
+<p>If you're competent in a shell like <code>bash</code>, you know some keyboard
+shortcuts. Defaults like <kbd>Ctrl</kbd> + <kbd>a</kbd> (<code>C-a</code>) to go
+to the beginning of a line are very useful. These are Emacs
+keybindings. They're the <a href="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html">readline</a> defaults. They're ubiquitous.</p>
+<p>Keyboard shortcuts that work in <code>bash</code>, Emacs, and many other places:</p>
+<ul>
+<li><code>C-a</code>: go to beginning of line</li>
+<li><code>C-e</code>: go to end of line</li>
+<li><code>C-b</code>: go back one character</li>
+<li><code>M-b</code>: go back one word</li>
+<li><code>C-f</code>: go forward one character</li>
+<li><code>M-f</code>: go forward one word</li>
+<li><code>C-p</code>: previous</li>
+<li><code>C-n</code>: next</li>
+<li><code>C-r</code>: reverse search</li>
+<li><code>C-l</code>: clear screen</li>
+<li><code>C-k</code>: kill to end of line (cut)</li>
+<li><code>C-y</code>: yank (paste)</li>
+<li><code>C-t</code>: transpose character</li>
+</ul>
+<p>Emacs does require effort to learn, but you already know a lot of its
+keybindings, or should, and they can be used in many places.</p>
+<pre><code>fg
+</code></pre>
+<p><img alt="" src="screenshots/emacs_email.png"></p>
+<p>If you want, the many places you use Emacs can be all inside Emacs.
+Here I'm just finishing an email.</p>
+<pre><code>C-c C-c
+C-x C-c
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_daemon.png"></p>
+<p>Emacs can run client-server. I use this way of running Emacs to get a
+lot of the benefits that you get with <a href="http://www.gnu.org/software/screen/">screen</a> or <a href="http://tmux.sourceforge.net/">tmux</a>. I don't
+lose anything if a network connection dies, for example. It's also
+faster to start up the Emacs client.</p>
+<pre><code>e
+M-x shell
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_shell.png"></p>
+<p>You can also run a shell inside Emacs, and it works much the same as
+outside. A contrast with <code>tmux</code> is that you don't have to switch modes
+to access the scrollback. For example, in an Emacs shell, <code>M-r</code> will
+search the command history, and <code>C-r</code> will search back through the
+buffer (as it does throughout Emacs).</p>
+<pre><code>eg &amp;
+C-x b shell
+got emacs
+</code></pre>
+<p><img alt="" src="screenshots/emacs_shell_gui.png"></p>
+<p>I can start a graphical Emacs from here in the shell inside console
+Emacs, and you can see that now both clients are connected to the same
+Emacs daemon.</p>
+<p>Notice how similar the interface is whether at a console or in a GUI
+window.</p>
+<pre><code>C-x C-f hello.el
+C-M-f
+C-x C-e
+</code></pre>
+<p><img alt="" src="screenshots/emacs_lisp.png"></p>
+<p>Emacs achieves its extensibility by essentially being a <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Lisp</a>
+interpreter. (It's Emacs Lisp.) I'm just showing a tiny cosmetic
+interface tweak here, but all the packages and fun features I use work
+because Emacs is a programmable environment.</p>
+<p>A related point is that base Emacs includes a lot, and you can manage
+in base Emacs, but you probably won't want to. You can think of Emacs
+as a kit for making an editor. The advantage is that you can make any
+sort of editor you want. The disadvantage is that there's some
+assembly required.</p>
+<p>Emacs gets so much better with customized settings that there are
+several whole projects which are just collections of Emacs
+configuration. <a href="https://github.com/bbatsov/prelude">Prelude</a> is probably the biggest; <a href="https://github.com/rdallasgray/graphene">Graphene</a> is
+another one. I tried Prelude and eventually got tired of turning
+things off more than I was turning them on, but things like Prelude
+are great for finding out about functionality, and could be a great
+way to get into Emacs. There are also <a href="http://planet.emacsen.org/">blogs</a> that post about Emacs,
+and of course everybody has their configuration files on github too.</p>
+<p>Let's take a look at editing with Emacs, using <a href="https://github.com/DCPython/dcpython-django/blob/77af0754866780b2eb013f7fb08c13918bd5266c/README.rst">a DC Python project</a>
+as an example. We notice that there are some problems at the end of
+the README, so maybe we can fix it up a little.</p>
+<pre><code>git clone git@github.com:ajschumacher/dcpython-django.git django
+</code></pre>
+<p><img alt="" src="screenshots/clone_django.png"></p>
+<p>To work on the project, we'll clone my fork of the repo and open up
+the <code>README.rst</code>. It opens up in <code>reStructuredText</code> mode.</p>
+<p><img alt="" src="screenshots/whitespace_problems.png"></p>
+<p>Before we get to the numbered lists, we notice some whitespace
+problems: tabs and trailing whitespace.</p>
+<p><img alt="" src="screenshots/make_branch.png"></p>
+<p>So we make a branch to do some work on. (The git-in-Emacs interface is
+<a href="http://magit.github.io/">magit</a>.) Then we can <code>mark-whole-buffer</code> and <code>untabify</code>. Tabs are
+changed to spaces. Then <code>delete-trailing-whitespace</code>. Good.</p>
+<p><img alt="" src="screenshots/whitespace_fixed.png"></p>
+<p>We can make a quick commit with this change very quickly.</p>
+<p><img alt="" src="screenshots/markdown_in_rst.png"></p>
+<p>Down at the bottom, it looks like <a href="http://daringfireball.net/projects/markdown/">markdown</a> in
+<a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. We need to fix the back-ticks and the numbered
+lists.</p>
+<p>In reStructuredText, you need double back-ticks. Select the region,
+query-replace with <code>M-%</code>, enter "`" and "``", and if feeling
+confident, use "!" to replace all.</p>
+<p><img alt="" src="screenshots/backticks_fixed.png"></p>
+<p>Oops, one command isn't back-ticked that should be. Nice chance to
+show <code>expand-region</code> and <code>wrap-region</code>. All good - commit.</p>
+<p>The numbered lists aren't hard to fix in this case, but let's show
+some more features. We'll make a macro, starting it with <code>C-x (</code>. Then
+<code>C-s</code> for <code>1</code> to go to the start of a numbering region. <code>C-a</code> for the
+start of the line. Set mark with <code>C-&lt;space&gt;</code>. Do a regular expression
+search for a blank line ("^$") with <code>C-M-s</code>. Previous line with <code>C-p</code>.
+Number the lines with a rectangle command, <code>C-x r N</code>. Next line to
+clear the numbering, and finish the macro with <code>C-x )</code>. Then we can
+run it again with <code>C-x e</code>, and again with just <code>e</code>.</p>
+<p>This isn't really done, so let's go back to the first "1." and select
+it, then invoke a <code>multiple-cursors</code> command to select them all and
+clean up. Presto!</p>
+<p><img alt="" src="screenshots/nice_rst.png"></p>
+<p>Commit, push, pull request!</p>
+<p>Now to Python. I use <a href="http://elpy.readthedocs.org/">elpy</a> (<a href="https://github.com/jorgenschaefer/elpy/">on github</a>) with <a href="https://github.com/flycheck/flycheck">flycheck</a> and
+<a href="https://github.com/davidhalter/jedi">jedi</a>. Also <a href="http://ipython.org/">IPython</a>. And <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a>. Etc. I'll demo some
+things.</p>
+<pre><code>C-x C-f tset/tset.py
+</code></pre>
+<p><img alt="" src="screenshots/flychecking.png"></p>
+<p>Using a toy Python <a href="https://github.com/ajschumacher/tset">project</a> of mine, we can see how <code>flycheck</code> will
+tell you when you're violating <a href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> ("E302 expected 2 blank
+lines, found 1", etc.). If I add in <code>import os</code> without using it,
+that'll get shown too. And it catches syntax errors like <code>x=</code> as well.</p>
+<pre><code>(point after "at")
+C-c C-e
+</code></pre>
+<p><img alt="" src="screenshots/edit_multiple.png"></p>
+<p>One fun feature of <code>elpy</code> is that it can use <code>jedi</code> to find symbols
+that are semantically the same and edit them at the same time. Neat!</p>
+<pre><code>C-c C-t
+</code></pre>
+<p><img alt="" src="screenshots/elpy_tests.png"></p>
+<p>It's very convenient to run tests.</p>
+<pre><code>C-c C-z
+np &lt;shift&gt;-&lt;tab&gt;
+np.random. &lt;tab&gt;
+</code></pre>
+<p><img alt="" src="screenshots/elpy_interactive.png"></p>
+<p>It's easy to run interactive python. I'll show snippets here too. And
+you get auto-completion. Nice.</p>
+<pre><code>C-x o
+M-&lt;
+C-o C-o C-o
+print 'hello'
+C-&lt;space&gt; C-a
+C-c C-c
+</code></pre>
+<p><img alt="" src="screenshots/send_to_interactive.png"></p>
+<p>It's easy to send code from the editor to the REPL. It was a little
+weird to me at first that it didn't echo in the REPL, but it's
+generally fine this way. If you want you can copy and paste
+explicitly, or make a macro to do the same.</p>
+<pre><code>import os
+os
+C-c C-d
+.
+</code></pre>
+<p><img alt="" src="screenshots/dropdown.png"></p>
+<p>In the editor, you can get docstring help with <code>C-c C-d</code>, and there's
+also the popular drop-down method of showing available things.</p>
+<pre><code>fork
+C-c C-d
+</code></pre>
+<p><img alt="" src="screenshots/docs.png"></p>
+<p>And of course help on functions themselves.</p>
+<pre><code>C-x 1
+C-x C-j
+(navigate to scikit-learn/sklearn/tests/test_naive_bayes.py)
+M-1
+M-g M-g 332 (point on 'MultinomialNB')
+M-. (until 'object')
+M-* (back)
+</code></pre>
+<p><img alt="" src="screenshots/sklearn.png"></p>
+<p>To demonstrate navigating some more serious hierarchies, I've got a
+clone of the <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> source. I'll go to the Naive Bayes tests
+using <code>dired</code>, a standard mode. There are a lot of lines here. I have
+a custom binding to show and hide line numbers. Let's go to line 332,
+where <code>MultinomialNB</code> is getting tested. If I put point on that
+symbol, <code>elpy</code> let's me use <code>M-.</code> to jump to the definition. I can go
+several definitions up, and then use <code>M-*</code> to jump back to where I
+started. This is pretty neat.</p>
+<pre><code>nyan-mode
+nyan-start-animation
+</code></pre>
+<p><img alt="" src="screenshots/nyan_mode.png"></p>
+<p>I started with Tetris, and I want to finish with something fun too. If
+you want to, you can install and use <code>nyan-mode</code>. Totally up to you.</p>
+<pre><code>C-x b *twittering-edit*
+</code></pre>
+<p><img alt="" src="screenshots/emacs_tweet.png"></p>
+<p>And here's that <a href="https://twitter.com/planarrowspace/status/519632550902247424">tweet</a> I promised earlier.</p>
+<p>Thank you!</p>
+<hr>
+<p>All my configuration is in my <a href="https://github.com/ajschumacher/.emacs.d">.emacs.d</a>. It's subject to change.
+This demo is as of <code>7716de4</code>, with some keystrokes shown above as they
+usually are rather than how I have them bound.</p>
+<hr>
+<p>For even more completeness, here are other ways of doing Python in Emacs:</p>
+<ul>
+<li><a href="http://www.emacswiki.org/PythonProgrammingInEmacs">Python Programming in Emacs</a> on <a href="http://www.emacswiki.org/">EmacsWiki</a></li>
+<li><a href="https://github.com/gabrielelanaro/emacs-for-python">emacs-for-python</a></li>
+<li><a href="http://rope.sourceforge.net/">rope</a> (an alternative to <code>jedi</code>), used in in <code>elpy</code> or <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> / <a href="https://github.com/pinard/Pymacs">Pymacs</a></li>
+<li><a href="http://www.xiaohanyu.me/oh-my-emacs/modules/ome-python.html">Oh My Emacs Python</a></li>
+</ul>
+<hr>
+<p>Thanks to local Emacs users <a href="https://twitter.com/jayaresee87">Jenna Colazzi</a> and <a href="https://twitter.com/necaris">Rami Chowdhurry</a>, and to the broader Emacs community who are super friendly and produce excellent resources:</p>
+<ul>
+<li><a href="http://harryrschwartz.com/">Harry Schwartz</a> and Eric and all the speakers at the <a href="http://emacsnyc.org/">New York Emacs Meetup</a></li>
+<li><a href="https://twitter.com/sachac">Sacha Chua</a> (<a href="http://sachachua.com/">blog</a>, <a href="http://sachachua.com/blog/category/podcast/emacs-chat-podcast/">Emacs Chat</a>)</li>
+<li><a href="https://twitter.com/magnars">Magnar Sveen</a> (<a href="http://emacsrocks.com/">emacs rocks</a>, <a href="http://whattheemacsd.com/">what the .emacs.d!?</a>)</li>
+<li><a href="https://twitter.com/mickeynp">Mickey Petersen</a> (<a href="http://www.masteringemacs.org/">Mastering Emacs</a></li>
+<li><a href="https://twitter.com/bbatsov">Bozhidar Batsov</a> (<a href="https://github.com/bbatsov/prelude">Prelude</a>, <a href="http://emacsredux.com/">Emacs Redux</a>)</li>
+<li>Steve Yegge's old <a href="https://sites.google.com/site/steveyegge2/effective-emacs">Effective Emacs</a> is still worth a read.</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20141007-emacs_python/</link>
+<guid>http://planspace.org/20141007-emacs_python/</guid>
+<pubDate>Tue, 07 Oct 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Excellent tech/data things to do in DC</title>
+<description><![CDATA[
+
+<p>Peeps be all the time askin' me, what&#160;are the excellent tech/data things to do in DC? Where are the cool people to be found? What's good?</p>
+<p>Well look:</p>
+<p>For data talks and socializing, get with the meetups listed on <a href="http://datacommunitydc.org/blog/speaking-events/">Data Community DC's "Speaking Events" page</a>.</p>
+<p>For hanging out and hacking on projects that help the world be more awesome, you know you have to be down with <a href="http://www.meetup.com/Code-for-DC/">Code for DC</a>.</p>
+<p>And of course there's <a href="http://dc.hackandtell.org/">Hack and Tell</a>, but you already know.</p>
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/10/04/peeps-be-askin-me/">elsewhere</a>.</em></p>    
+    ]]></description>
+<link>http://planspace.org/2014/10/04/peeps-be-askin-me/</link>
+<guid>http://planspace.org/2014/10/04/peeps-be-askin-me/</guid>
+<pubDate>Sat, 04 Oct 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Scraping GNU Mailman Pipermail Email List Archives</title>
+<description><![CDATA[
+
+<p>I worked with&#160;<a href="http://www.codeforprogress.org/">Code for Progress</a> fellow Casidy at a recent&#160;<a href="http://codefordc.org/">Code for DC</a> civic hacknight on migrating old email list archives for the <a href="https://commotionwireless.net/">Commotion</a> mesh network project to a new system. The source system was&#160;<a href="http://www.gnu.org/software/mailman/">GNU Mailman</a> with its Pipermail web archives for several email lists such as <a href="https://lists.chambana.net/pipermail/commotion-discuss/">commotion-discuss</a>.</p>
+<p>We used <a href="https://www.python.org/">Python</a>'s <a href="http://lxml.de/">lxml</a> for the first pass scraping of all the archive file URLs. The process was then made more interesting by the <a href="http://www.gzip.org/">gzip</a>'ing of most monthly archives. Instead of saving the gzip'ed files to disk and then gunzip'ing them, we used Python's <a href="https://docs.python.org/2/library/gzip.html">gzip</a>&#160;and <a href="https://docs.python.org/2/library/stringio.html">StringIO</a>&#160;modules. The result is the full text history of a specified email list, ready for further processing. Here's the code we came up with:</p>
+<pre><code>#!/usr/bin/env python
+
+import requests
+from lxml import html
+import gzip
+from StringIO import StringIO
+
+listname = 'commotion-discuss'
+url = 'https://lists.chambana.net/pipermail/' + listname + '/'
+
+response = requests.get(url)
+tree = html.fromstring(response.text)
+
+filenames = tree.xpath('//table/tr/td[3]/a/@href')
+
+def emails_from_filename(filename):
+    print filename
+    response = requests.get(url + filename)
+    if filename[-3:] == '.gz':
+        contents = gzip.GzipFile(fileobj=StringIO(response.content)).read()
+    else:
+        contents = response.content
+    return contents
+
+contents = [emails_from_filename(filename) for filename in filenames]
+contents.reverse()
+
+contents = "\n\n\n\n".join(contents)
+
+with open(listname + '.txt', 'w') as filehandle:
+    filehandle.write(contents)
+</code></pre>
+
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/">elsewhere</a>.</em></p>    
+    ]]></description>
+<link>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</link>
+<guid>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</guid>
+<pubDate>Sun, 21 Sep 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>The Information: a History, a Theory, a Flood</title>
+<description><![CDATA[
+
+<p>This is a really good book.</p>
+<p><a href="http://www.amazon.com/The-Information-History-Theory-Flood/dp/1400096235"><img class="aligncenter size-medium wp-image-969" src="the_information.jpg" alt="the_information"></a></p>
+<p>James Gleick is excellent. The history is beautifully researched and explained; there is so much <em>content</em>, and it is all fitted together very nicely.</p>
+<p>The core topic is <a href="http://en.wikipedia.org/wiki/Information_theory">information theory</a>, with the formalism of entropy, but perhaps it's better summarized as the story of human awakening to the idea of what information is and what it means to communicate. It is a new kind of awareness. Maybe the universe is nothing but information! I'm reminded of <a href="http://planspace.blogspot.com/2012/05/quotes-from-frederick-w-kantor.html">the time I met Frederick Kantor</a>.</p>
+<p>I'm not sure if <em>The Information</em>&#160;pointed me to it, but I'll also mention&#160;<em>Information Theory, Inference, and Learning Algorithms</em> by&#160;David J.C. MacKay. This book can be <a href="http://www.inference.phy.cam.ac.uk/itprnn/book.pdf">read in PDF for free</a>. I haven't gone all through it, but it seems to be a good more advanced reference.</p>
+<p><em>The Information</em>: Highly recommended for all!</p>
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/09/14/the-information-a-history-a-theory-a-flood/">elsewhere</a>.</em></p>    
+    ]]></description>
+<link>http://planspace.org/2014/09/14/the-information-a-history-a-theory-a-flood/</link>
+<guid>http://planspace.org/2014/09/14/the-information-a-history-a-theory-a-flood/</guid>
+<pubDate>Sun, 14 Sep 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Dataclysm: There's another book</title>
+<description><![CDATA[
+
+<p><a href="http://www.amazon.com/Dataclysm-When-Think-Ones-Looking/dp/0385347375"><img class="aligncenter size-medium wp-image-962" src="dataclysm.jpg" alt="dataclysm"></a></p>
+<p>Dataclysm is a nicely made book. In the Coda (p. 239) we learn something of why:
+</p><blockquote>Designing the charts and tables in this book, I relied on the work of the statistician and artist Edward R. <a href="http://www.edwardtufte.com/tufte/">Tufte</a>. More than relied on, I tried to copy it.</blockquote>
+The book is not unpleasant to read, and it goes quickly. It may be successful as a popularization. I rather wish it had more new interesting results. Perhaps the author agrees with me; often the cheerleading for the potential of data reads like disappointment with the actuality of the results so far.
+<p>The author's voice was occasionally quite insufferable. He describes himself "photobombing before photobombing was a thing" in a picture with Donald Trump and Mikhail Gorbachev, for example. This anecdote is around an eighth of the text in the second chapter; perhaps more. The chapter is about the value of being polarizing, so if he alienated me there it may count as a success.</p>
+<p>In conclusion: the <a href="http://blog.okcupid.com/">OkTrends blog</a> is fun; there's also a book version now.</p>
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/09/13/dataclysm-theres-another-book/">elsewhere</a>.</em></p>    
+    ]]></description>
+<link>http://planspace.org/2014/09/13/dataclysm-theres-another-book/</link>
+<guid>http://planspace.org/2014/09/13/dataclysm-theres-another-book/</guid>
+<pubDate>Sat, 13 Sep 2014 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>I want an edit button on everything</title>
+<description><![CDATA[
+
+<p>My blog does not have an edit button for people who are not me. This means it takes a bunch of work to fix a typo, for example: you'd have to tell me about it, describing where the typo is, somehow, and then I would have to go find the spot, and make the change. In practice, this pretty much doesn't happen.</p>
+<p>Wikipedia has edit buttons on everything, and so does <a href="https://github.com/">github</a>. I'm not entirely sure what is best between allow-all-edits-immediately and require-review-for-all-edits. Some mix is also possible, I guess. Wikipedia has ways to lock down articles, and must have corresponding permission systems for who can do/undo that. Github lets you give other people full edit permissions, so you can spread the editor pool at least. Git by itself can support even more fine-grained control, I believe.</p>
+<p>I'd like to move my blog to something git-backed, like github pages. It's a little work, but you can put an edit button on the rendered HTML views shown by github pages too. <a href="http://adv-r.had.co.nz/">Advanced R</a> has a beautiful "Edit this page" button on every page. Three.js has one in their <a href="http://threejs.org/docs/#Manual/Introduction/Creating_a_scene">documentation</a>. Eric <a href="https://konklone.com/post/writing-in-public-syncing-with-github">points out</a>&#160;Ben's <a href="http://ben.balter.com/">blog</a> as well, and also the trouble with comments.</p>
+<p>Ideally I'd prefer not to be github-bound, I guess, or bound to some comment service. But I also kind of prefer to have everything text-based, so what do you do for comments then? And also I'd like to be able to do R markdown (etc.) and have that all render automagically. But also something serverless. I'm drawn to <a href="https://github.com/Xeoncross/jr">this javascript-only static static generator</a>, but that also seems to be A Bad Idea.</p>
+<p>So: that solves that.</p>
+<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/08/31/i-want-an-edit-button-on-everything/">elsewhere</a>.</em></p>    
+    ]]></description>
+<link>http://planspace.org/2014/08/31/i-want-an-edit-button-on-everything/</link>
+<guid>http://planspace.org/2014/08/31/i-want-an-edit-button-on-everything/</guid>
+<pubDate>Sun, 31 Aug 2014 12:00:00 -0500</pubDate>
+</item>
+  </channel>
+</rss>
