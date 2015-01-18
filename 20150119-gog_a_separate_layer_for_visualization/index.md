@@ -67,3 +67,11 @@ And if you plot a linear model object, you get four diagnostic plots.
 All of these plots were created with `plot(data)`. There are a lot of defaults chosen, and you might also want to see another view, but the pure convenience of being able to `plot(data)` so easily is really wonderful.
 
 The only way to reduce the friction of graphing even further would be to have plots automatically generated in the background based on whatever data you have on your system. I [think](https://twitter.com/planarrowspace/status/555893329460994048) that would be a fun project, in fact.
+
+
+-----
+
+![cover of The Grammar of Graphics](gg_cover.jpg)
+
+-----
+
