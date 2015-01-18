@@ -1,4 +1,4 @@
-# gog: data on your eyes
+# gog: a separate layer for visualization
 
 *A short presentation at the DC [Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) on [Monday January 19, 2015](http://www.meetup.com/TrackMaven-Monthly-Challenge/events/219314544/).*
 
