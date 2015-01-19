@@ -13,9 +13,7 @@
 
 First I'll talk about _quickly_, then I'll talk about _from whatever_, and then I'll show some `gog` prototype work.
 
-Part of the idea is that it should be easy to make existing systems work with `gog`—you could start using it by the end of this!
-
-There are two kinds of _quickly_ that I care about. Getting images produced quickly, and then working with them quickly.
+There are two kinds of _quickly_ that I care about. One is getting images produced quickly, and another is working with or exploring them quickly.
 
 
 -----
@@ -79,7 +77,7 @@ Once you have an image, you want to be able to work with it quickly and easily. 
 
 A lot of statistical graphics behave essentially like paper. I like paper a lot, but computers can do more. We should expect, at a minimum, to be able to point to a data element and find out more about it. There are tons of other direct manipulation ways to interact with graphics (like brushing) that we should be able to have easily at our disposal.
 
-Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too. Of course generally systems that generate interactivity are not at all quick to produce.
+Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too. It does often seem that the time to produce a visualization has a dramatic inverse relationship with the amount of interactivity supported, however.
 
 In summary:
 
@@ -126,7 +124,7 @@ So this is the idea. You make the control surface inside various languages quite
 
 As an aside:
 
-The grammar of graphics is certainly a good idea, and the [book](http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448) is also quite good. A lot of what's good about Tableau is good because of the grammar of graphics.
+The grammar of graphics seems to be a good idea, and the [book](http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448) is also quite good. A lot of what's good about Tableau is good because of the grammar of graphics.
 
 However, the design that should be influenced by the grammar of graphics is not the part that `gog` is directly concerned with.
 
@@ -163,9 +161,9 @@ So what is all this nonsense, and how could it work?
 
 -----
 
-The connecting component is a `gog` HTTP server which runs on port 4808 and just accepts POST requests at `/data` and rebroadcasts it to anything listening to a websocket also at `/data`. The assumption is that we're passing a JSON of objects.
+The connecting component is a `gog` HTTP server which runs on port 4808 and just accepts POST requests at `/data` and rebroadcasts it to anything listening to a websocket also at `/data`. The assumption is that we're passing a JSON array of objects.
 
-I have [such a server](https://github.com/ajschumacher/gogd) written in Clojure, but it can be implemented and hosted however you want, as long as everything connects.
+I have [a gog server](https://github.com/ajschumacher/gogd) written in Clojure, but a server can be implemented and hosted however you want, as long as everything connects.
 
 
 -----
@@ -174,12 +172,13 @@ I have [such a server](https://github.com/ajschumacher/gogd) written in Clojure,
 
 -----
 
-People have already made some visualizations that are suitable for use with `gog`. As an example, I took the code from [charted.co](http://www.charted.co/), which was designed to load data from CSV files, and adapted it to also allow input from `gog`.
+People have already made some visualizations that are suitable for adapting to use with `gog`. As an example, I took the code from [charted.co](http://www.charted.co/), which was designed to load data from CSV files, and adapted it to also allow input from `gog`.
 
 
 -----
 
 ```python
+# pip install gogpy
 from gogpy import gog
 import numpy as np
 import pandas as pd
@@ -210,7 +209,7 @@ for i in range(91):
 ```
 -----
 
-Live updates are the only thing happening - it just depends on when you send the data.
+Live updates are the only thing happening—it just depends on when you send the data.
 
 
 -----
@@ -249,7 +248,9 @@ It turns out that the [RStudio](http://www.rstudio.com/) viewer pane is really j
 
 -----
 
-I made another little visualization, a simple scatterplot with D3. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved; using "title" elements for tooltips only has the advantage of expediency. But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See [demo.R](demo.R) for complete source.)
+I made this little visualization, a simple scatterplot with [D3](http://d3js.org/). It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved with such luxuries as axes, and replace the renaming of columns to ’x’ and ’y’ with defaulting and interaction. And using “title” elements for tooltips has only the advantage of expediency.
+
+But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See [demo.R](demo.R) for the complete `R` demo source.)
 
 
 -----
@@ -261,7 +262,7 @@ gog(data)
 ```
 -----
 
-Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See [demo.py](demo.py) for complete source.)
+Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See [demo.py](demo.py) for complete Python demo source.)
 
 
 -----
@@ -270,17 +271,15 @@ Of course nobody cares about irises - let's pull some data about humans we know,
 
 -----
 
-Even though we collected data with Python, we can visualize it wherever we want, including inside `R`.
+Even though we collected data with Python, we can visualize it wherever we want, including back inside the RStudio interface.
 
 I haven't tried it, but it strikes me that it would be pretty straightforward to cobble together an RStudio-style Python IDE, at least with a REPL and `gog` visualization container, using existing components.
 
 
 -----
 
-# Thank you!
+Thank you!
 
 -----
 
-This is all very preliminary and there are no doubt a lot of complications and other things to consider. For the moment prototype work and issue-tracking is centralized around [ajschumacher/gog](https://github.com/ajschumacher/gog) on GitHub.
-
-Thank you!
+This is all very preliminary and there are no doubt a lot of complications and other things to consider. The question of how to manage possibly many `gog` visualization frontends or have any sort of dispatch system is not at all addressed, for instance. And there are a number of more or less related projects, which I've started to collect at [ajschumacher/gog](https://github.com/ajschumacher/gog). Any and all feedback, suggestions, or anything else appreciated!

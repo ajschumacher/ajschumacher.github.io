@@ -17,8 +17,7 @@
 <hr />
 <p><code>gog</code> is a name for a simple idea I've been exploring about making it easy to quickly see data from whatever computing environment you happen to be in.</p>
 <p>First I'll talk about <em>quickly</em>, then I'll talk about <em>from whatever</em>, and then I'll show some <code>gog</code> prototype work.</p>
-<p>Part of the idea is that it should be easy to make existing systems work with <code>gog</code>—you could start using it by the end of this!</p>
-<p>There are two kinds of <em>quickly</em> that I care about. Getting images produced quickly, and then working with them quickly.</p>
+<p>There are two kinds of <em>quickly</em> that I care about. One is getting images produced quickly, and another is working with or exploring them quickly.</p>
 <hr />
 <pre><code class="language-r">plot(data)</code></pre>
 
@@ -47,7 +46,7 @@
 <p><img alt="paper plot" src="paper_plot.png" /></p>
 <hr />
 <p>A lot of statistical graphics behave essentially like paper. I like paper a lot, but computers can do more. We should expect, at a minimum, to be able to point to a data element and find out more about it. There are tons of other direct manipulation ways to interact with graphics (like brushing) that we should be able to have easily at our disposal.</p>
-<p>Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too. Of course generally systems that generate interactivity are not at all quick to produce.</p>
+<p>Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too. It does often seem that the time to produce a visualization has a dramatic inverse relationship with the amount of interactivity supported, however.</p>
 <p>In summary:</p>
 <ul>
 <li>Interactivity lets us quickly work with plots.</li>
@@ -71,7 +70,7 @@
 <p><img alt="cover of The Grammar of Graphics" src="gg_cover.jpg" /></p>
 <hr />
 <p>As an aside:</p>
-<p>The grammar of graphics is certainly a good idea, and the <a href="http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448">book</a> is also quite good. A lot of what's good about Tableau is good because of the grammar of graphics.</p>
+<p>The grammar of graphics seems to be a good idea, and the <a href="http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448">book</a> is also quite good. A lot of what's good about Tableau is good because of the grammar of graphics.</p>
 <p>However, the design that should be influenced by the grammar of graphics is not the part that <code>gog</code> is directly concerned with.</p>
 <hr />
 <pre><code class="language-r">ggplot(data) +
@@ -91,14 +90,15 @@
 <hr />
 <p><img alt="gogd console" src="gogd.png" /></p>
 <hr />
-<p>The connecting component is a <code>gog</code> HTTP server which runs on port 4808 and just accepts POST requests at <code>/data</code> and rebroadcasts it to anything listening to a websocket also at <code>/data</code>. The assumption is that we're passing a JSON of objects.</p>
-<p>I have <a href="https://github.com/ajschumacher/gogd">such a server</a> written in Clojure, but it can be implemented and hosted however you want, as long as everything connects.</p>
+<p>The connecting component is a <code>gog</code> HTTP server which runs on port 4808 and just accepts POST requests at <code>/data</code> and rebroadcasts it to anything listening to a websocket also at <code>/data</code>. The assumption is that we're passing a JSON array of objects.</p>
+<p>I have <a href="https://github.com/ajschumacher/gogd">a gog server</a> written in Clojure, but a server can be implemented and hosted however you want, as long as everything connects.</p>
 <hr />
 <p><img alt="charted.co welcome screen" src="charted.png" /></p>
 <hr />
-<p>People have already made some visualizations that are suitable for use with <code>gog</code>. As an example, I took the code from <a href="http://www.charted.co/">charted.co</a>, which was designed to load data from CSV files, and adapted it to also allow input from <code>gog</code>.</p>
+<p>People have already made some visualizations that are suitable for adapting to use with <code>gog</code>. As an example, I took the code from <a href="http://www.charted.co/">charted.co</a>, which was designed to load data from CSV files, and adapted it to also allow input from <code>gog</code>.</p>
 <hr />
-<pre><code class="language-python">from gogpy import gog
+<pre><code class="language-python"># pip install gogpy
+from gogpy import gog
 import numpy as np
 import pandas as pd
 gog(pd.DataFrame(np.random.sample(10)))</code></pre>
@@ -117,7 +117,7 @@ for i in range(91):
     time.sleep(2)</code></pre>
 
 <hr />
-<p>Live updates are the only thing happening - it just depends on when you send the data.</p>
+<p>Live updates are the only thing happening—it just depends on when you send the data.</p>
 <hr />
 <pre><code class="language-r"># install_github("ajschumacher/gogr")
 library("gogr")
@@ -141,24 +141,24 @@ gog(data)</code></pre>
 <hr />
 <p><img alt="visualizing iris sepal length vs. sepal width" src="gogi_iris.png" /></p>
 <hr />
-<p>I made another little visualization, a simple scatterplot with D3. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved; using "title" elements for tooltips only has the advantage of expediency. But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See <a href="demo.R">demo.R</a> for complete source.)</p>
+<p>I made this little visualization, a simple scatterplot with <a href="http://d3js.org/">D3</a>. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved with such luxuries as axes, and replace the renaming of columns to ’x’ and ’y’ with defaulting and interaction. And using “title” elements for tooltips has only the advantage of expediency.</p>
+<p>But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See <a href="demo.R">demo.R</a> for the complete <code>R</code> demo source.)</p>
 <hr />
 <pre><code class="language-python"># access meetup API and extract data, then:
 data = pd.DataFrame({'x': rsvped, 'y': ids, 'name': names})
 gog(data)</code></pre>
 
 <hr />
-<p>Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See <a href="demo.py">demo.py</a> for complete source.)</p>
+<p>Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See <a href="demo.py">demo.py</a> for complete Python demo source.)</p>
 <hr />
 <p><img alt="visualizing RSVP time vs. member ID" src="gogi_meetup.png" /></p>
 <hr />
-<p>Even though we collected data with Python, we can visualize it wherever we want, including inside <code>R</code>.</p>
+<p>Even though we collected data with Python, we can visualize it wherever we want, including back inside the RStudio interface.</p>
 <p>I haven't tried it, but it strikes me that it would be pretty straightforward to cobble together an RStudio-style Python IDE, at least with a REPL and <code>gog</code> visualization container, using existing components.</p>
 <hr />
-<h1>Thank you!</h1>
+<p>Thank you!</p>
 <hr />
-<p>This is all very preliminary and there are no doubt a lot of complications and other things to consider. For the moment prototype work and issue-tracking is centralized around <a href="https://github.com/ajschumacher/gog">ajschumacher/gog</a> on GitHub.</p>
-<p>Thank you!</p>    <script src="/scripts/konami.js"></script>
+<p>This is all very preliminary and there are no doubt a lot of complications and other things to consider. The question of how to manage possibly many <code>gog</code> visualization frontends or have any sort of dispatch system is not at all addressed, for instance. And there are a number of more or less related projects, which I've started to collect at <a href="https://github.com/ajschumacher/gog">ajschumacher/gog</a>. Any and all feedback, suggestions, or anything else appreciated!</p>    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>
