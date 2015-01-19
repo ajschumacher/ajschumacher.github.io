@@ -242,5 +242,45 @@ gog(data)
 
 It turns out that the [RStudio](http://www.rstudio.com/) viewer pane is really just [WebKit](https://www.webkit.org/) and it's easy to plug in `gog` visualizations.
 
-I made another little visualization, a simple scatterplot with D3. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. (This could obviously be much improved.)
 
+-----
+
+![visualizing iris sepal length vs. sepal width](gogi_iris.png)
+
+-----
+
+I made another little visualization, a simple scatterplot with D3. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved; using "title" elements for tooltips only has the advantage of expediency. But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See [demo.R](demo.R) for complete source.)
+
+
+-----
+
+```python
+# access meetup API and extract data, then:
+data = pd.DataFrame({'x': rsvped, 'y': ids, 'name': names})
+gog(data)
+```
+-----
+
+Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See [demo.py](demo.py) for complete source.)
+
+
+-----
+
+![visualizing RSVP time vs. member ID](gogi_meetup.png)
+
+-----
+
+Even though we collected data with Python, we can visualize it wherever we want, including inside `R`.
+
+I haven't tried it, but it strikes me that it would be pretty straightforward to cobble together an RStudio-style Python IDE, at least with a REPL and `gog` visualization container, using existing components.
+
+
+-----
+
+# Thank you!
+
+-----
+
+This is all very preliminary and there are no doubt a lot of complications and other things to consider. For the moment prototype work and issue-tracking is centralized around [ajschumacher/gog](https://github.com/ajschumacher/gog) on GitHub.
+
+Thank you!

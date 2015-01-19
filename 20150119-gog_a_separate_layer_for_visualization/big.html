@@ -58,7 +58,53 @@ gog: a separate layer for visualization
 <p><img alt="gogd console" src="gogd.png" /></p>
 </div>
 <div>
-<p><img alt="charted.co screen" src="charted.png" /></p>
+<p><img alt="charted.co welcome screen" src="charted.png" /></p>
+</div>
+<div>
+<pre><code class="language-python">from gogpy import gog
+import numpy as np
+import pandas as pd
+gog(pd.DataFrame(np.random.sample(10)))</code></pre>
+</div>
+<div>
+<p><img alt="charted.co graph" src="charted_demo.png" /></p>
+</div>
+<div>
+<pre><code class="language-python">import time
+data = pd.DataFrame(np.random.sample(100))
+for i in range(91):
+    gog(data[i:i+10])
+    time.sleep(2)</code></pre>
+</div>
+<div>
+<pre><code class="language-r"># install_github("ajschumacher/gogr")
+library("gogr")
+data &lt;- data.frame(0-runif(100))
+for (i in 1:91) {
+    gog(data[i:(i+9), ,drop=F])
+    Sys.sleep(2)
+}</code></pre>
+</div>
+<div>
+<pre><code class="language-r">rstudio::viewer("http://localhost:8000")
+library("gogr")
+data &lt;- iris
+names(data)[1:2] &lt;- c("x", "y")
+gog(data)</code></pre>
+</div>
+<div>
+<p><img alt="visualizing iris sepal length vs. sepal width" src="gogi_iris.png" /></p>
+</div>
+<div>
+<pre><code class="language-python"># access meetup API and extract data, then:
+data = pd.DataFrame({'x': rsvped, 'y': ids, 'name': names})
+gog(data)</code></pre>
+</div>
+<div>
+<p><img alt="visualizing RSVP time vs. member ID" src="gogi_meetup.png" /></p>
+</div>
+<div>
+<h1>Thank you!</h1>
 </div>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

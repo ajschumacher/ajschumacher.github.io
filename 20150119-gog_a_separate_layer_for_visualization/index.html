@@ -47,8 +47,12 @@
 <p><img alt="paper plot" src="paper_plot.png" /></p>
 <hr />
 <p>A lot of statistical graphics behave essentially like paper. I like paper a lot, but computers can do more. We should expect, at a minimum, to be able to point to a data element and find out more about it. There are tons of other direct manipulation ways to interact with graphics (like brushing) that we should be able to have easily at our disposal.</p>
-<p>Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too.</p>
-<p>So: Interactivity lets us quickly work with plots. A simple user API lets us quickly make plots.</p>
+<p>Most of the world agrees that the way to get interactivity is to use web frontend things, and I'm inclined to think so too. Of course generally systems that generate interactivity are not at all quick to produce.</p>
+<p>In summary:</p>
+<ul>
+<li>Interactivity lets us quickly work with plots.</li>
+<li>A simple user API lets us quickly make plots.</li>
+</ul>
 <p>What about <em>from whatever</em>?</p>
 <hr />
 <p><img alt="diagram of R graphics ecosystem" src="graphics_r.png" /></p>
@@ -87,11 +91,74 @@
 <hr />
 <p><img alt="gogd console" src="gogd.png" /></p>
 <hr />
-<p>The connecting component is a <code>gog</code> HTTP server which runs on port 4808 and just accepts POST requests at <code>/data</code> and rebroadcasts it to anything listening to a websocket also at <code>/data</code>.</p>
-<p>I have <a href="https://github.com/ajschumacher/gogd">one</a> written in Clojure, but it obviously doesn't matter at all. This could be implemented and hosted however you want, as long as everything connects.</p>
+<p>The connecting component is a <code>gog</code> HTTP server which runs on port 4808 and just accepts POST requests at <code>/data</code> and rebroadcasts it to anything listening to a websocket also at <code>/data</code>. The assumption is that we're passing a JSON of objects.</p>
+<p>I have <a href="https://github.com/ajschumacher/gogd">such a server</a> written in Clojure, but it can be implemented and hosted however you want, as long as everything connects.</p>
 <hr />
-<p><img alt="charted.co screen" src="charted.png" /></p>
-<hr />    <script src="/scripts/konami.js"></script>
+<p><img alt="charted.co welcome screen" src="charted.png" /></p>
+<hr />
+<p>People have already made some visualizations that are suitable for use with <code>gog</code>. As an example, I took the code from <a href="http://www.charted.co/">charted.co</a>, which was designed to load data from CSV files, and adapted it to also allow input from <code>gog</code>.</p>
+<hr />
+<pre><code class="language-python">from gogpy import gog
+import numpy as np
+import pandas as pd
+gog(pd.DataFrame(np.random.sample(10)))</code></pre>
+
+<hr />
+<p>The <code>gogpy</code> package is ridiculously small, but can still be <code>pip</code> installed from <a href="https://pypi.python.org/pypi">PyPI</a> for your convenience. Currently the <code>gog</code> function will only take a <code>pandas</code> <code>DataFrame</code>.</p>
+<hr />
+<p><img alt="charted.co graph" src="charted_demo.png" /></p>
+<hr />
+<p>Thanks to the work that went into making <code>charted.co</code>, we have a graph already.</p>
+<hr />
+<pre><code class="language-python">import time
+data = pd.DataFrame(np.random.sample(100))
+for i in range(91):
+    gog(data[i:i+10])
+    time.sleep(2)</code></pre>
+
+<hr />
+<p>Live updates are the only thing happening - it just depends on when you send the data.</p>
+<hr />
+<pre><code class="language-r"># install_github("ajschumacher/gogr")
+library("gogr")
+data &lt;- data.frame(0-runif(100))
+for (i in 1:91) {
+    gog(data[i:(i+9), ,drop=F])
+    Sys.sleep(2)
+}</code></pre>
+
+<hr />
+<p>The <code>R</code> package <a href="https://github.com/ajschumacher/gogr">gogr</a> isn't on <a href="http://cran.r-project.org/">CRAN</a> but can be installed with <a href="https://github.com/hadley/devtools">devtools</a>. It's trivially easy to use any visualization that supports <code>gog</code> from any environment that supports <code>gog</code>.</p>
+<hr />
+<pre><code class="language-r">rstudio::viewer("http://localhost:8000")
+library("gogr")
+data &lt;- iris
+names(data)[1:2] &lt;- c("x", "y")
+gog(data)</code></pre>
+
+<hr />
+<p>It turns out that the <a href="http://www.rstudio.com/">RStudio</a> viewer pane is really just <a href="https://www.webkit.org/">WebKit</a> and it's easy to plug in <code>gog</code> visualizations.</p>
+<hr />
+<p><img alt="visualizing iris sepal length vs. sepal width" src="gogi_iris.png" /></p>
+<hr />
+<p>I made another little visualization, a simple scatterplot with D3. It's very crude at the moment, but it's enough to show sepal length versus sepal width, and to show information about data points as we explore around. This could obviously be much improved; using "title" elements for tooltips only has the advantage of expediency. But even in its current state this visualization allows for fun data manipulation experiments with animated updates which would be much more work to achieve with other techniques. (See <a href="demo.R">demo.R</a> for complete source.)</p>
+<hr />
+<pre><code class="language-python"># access meetup API and extract data, then:
+data = pd.DataFrame({'x': rsvped, 'y': ids, 'name': names})
+gog(data)</code></pre>
+
+<hr />
+<p>Of course nobody cares about irises - let's pull some data about humans we know, using the Meetup API. (See <a href="demo.py">demo.py</a> for complete source.)</p>
+<hr />
+<p><img alt="visualizing RSVP time vs. member ID" src="gogi_meetup.png" /></p>
+<hr />
+<p>Even though we collected data with Python, we can visualize it wherever we want, including inside <code>R</code>.</p>
+<p>I haven't tried it, but it strikes me that it would be pretty straightforward to cobble together an RStudio-style Python IDE, at least with a REPL and <code>gog</code> visualization container, using existing components.</p>
+<hr />
+<h1>Thank you!</h1>
+<hr />
+<p>This is all very preliminary and there are no doubt a lot of complications and other things to consider. For the moment prototype work and issue-tracking is centralized around <a href="https://github.com/ajschumacher/gog">ajschumacher/gog</a> on GitHub.</p>
+<p>Thank you!</p>    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>

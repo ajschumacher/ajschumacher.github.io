@@ -11,3 +11,6 @@ library("gogr")
 data <- iris
 names(data)[1:2] <- c("x", "y")
 gog(data)
+
+data$x <- 1/data$x
+gog(data)
