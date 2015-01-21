@@ -7,6 +7,30 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Use pew, not virtualenvwrapper, for Python virtualenvs</title>
+<description><![CDATA[
+
+<p>Have you noticed how good <a href="http://docs.python-guide.org/">The Hitchhiker&#8217;s Guide to Python</a> is? The documentation there on <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtualenv</a> is exemplary.</p>
+<p>Of course nobody wants to use virtualenvs directly, which is why virtualenvwrapper exists. But as <a href="http://datagrok.org/">Lamb</a> pointed out, <a href="https://gist.github.com/datagrok/2199506">Virtualenv's <code>bin/activate</code> is Doing It Wrong</a>, and virtualenvwrapper doesn't do it right either. Also, it's annoying to run env'ed Python via <a href="http://en.wikipedia.org/wiki/Cron">cron</a>.</p>
+<p>The solution is to use <a href="https://github.com/berdario/pew">pew</a> instead. The Python Environment Wrapper (pew) handles your environment elegantly. This includes not mangling your <code>PS1</code>, though you can still display <code>VIRTUAL_ENV</code> information in your prompt if you want, and however you want. Also, suddenly all your virtualenv tasks are pew sub-commands, which means all you have to remember is <code>pew</code>. Typing <code>pew</code> alone shows all the pew commands, with helpful descriptions.</p>
+<p>I no longer set the <code>WORKON_HOME</code> environment variable. This means pew will use the default <code>~/.local/share/virtualenvs</code>, which is a good choice. It's consistent with <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>, and it means you don't rely on <code>WORKON_HOME</code> to find your virtualenvs, which is nice for cron.</p>
+<p>The location of <code>pew</code> is <code>/usr/local/bin</code>. For convenience, I suggest adding a <code>PATH</code> line to your crontab. The default <code>PATH</code> is <code>/usr/bin:/bin</code>, so the following adds one entry:</p>
+<pre><code>PATH=/usr/local/bin:/usr/bin:/bin</code></pre>
+
+<p>With that done, you can easily run any Python script you want in any virtualenv you want, via cron, with concise syntax:</p>
+<pre><code>* * * * * pew in my_env my_script.py</code></pre>
+
+<p>The example assumes <code>my_script.py</code> is in your home directory, executable, and with the standard <code>#!/usr/bin/env python</code> shebang.</p>
+<p>I find this to be a very nice setup: <code>pew workon my_env</code> and develop <code>my_script.py</code> however I want, and <code>pew in my_env my_script.py</code> to run in that virtualenv from cron or anywhere else.</p>
+<hr>
+<p>Related tools: <a href="https://virtualenv.pypa.io/">virtualenv</a>, <a href="https://virtualenvwrapper.readthedocs.org/">virtualenvwrapper</a>, <a href="https://github.com/sashahart/vex">vex</a>, <a href="https://github.com/zimbatm/direnv">direnv</a>, probably more...</p>
+<p>Thanks to <a href="https://twitter.com/jessicagarson">Jessica</a>, <a href="https://twitter.com/necaris">Rami</a>, and <a href="https://twitter.com/reconbot">Francis</a> for thoughts on this.</p>    
+    ]]></description>
+<link>http://planspace.org/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/</link>
+<guid>http://planspace.org/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/</guid>
+<pubDate>Tue, 20 Jan 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>gog: a separate layer for visualization</title>
 <description><![CDATA[
 
@@ -1199,22 +1223,6 @@ with open(listname + '.txt', 'w') as filehandle:
 <link>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</link>
 <guid>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</guid>
 <pubDate>Sun, 21 Sep 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Information: a History, a Theory, a Flood</title>
-<description><![CDATA[
-
-<p>This is a really good book.</p>
-<p><a href="http://www.amazon.com/The-Information-History-Theory-Flood/dp/1400096235"><img class="aligncenter size-medium wp-image-969" src="the_information.jpg" alt="the_information"></a></p>
-<p>James Gleick is excellent. The history is beautifully researched and explained; there is so much <em>content</em>, and it is all fitted together very nicely.</p>
-<p>The core topic is <a href="http://en.wikipedia.org/wiki/Information_theory">information theory</a>, with the formalism of entropy, but perhaps it's better summarized as the story of human awakening to the idea of what information is and what it means to communicate. It is a new kind of awareness. Maybe the universe is nothing but information! I'm reminded of <a href="http://planspace.blogspot.com/2012/05/quotes-from-frederick-w-kantor.html">the time I met Frederick Kantor</a>.</p>
-<p>I'm not sure if <em>The Information</em>&#160;pointed me to it, but I'll also mention&#160;<em>Information Theory, Inference, and Learning Algorithms</em> by&#160;David J.C. MacKay. This book can be <a href="http://www.inference.phy.cam.ac.uk/itprnn/book.pdf">read in PDF for free</a>. I haven't gone all through it, but it seems to be a good more advanced reference.</p>
-<p><em>The Information</em>: Highly recommended for all!</p>
-<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/09/14/the-information-a-history-a-theory-a-flood/">elsewhere</a>.</em></p>    
-    ]]></description>
-<link>http://planspace.org/2014/09/14/the-information-a-history-a-theory-a-flood/</link>
-<guid>http://planspace.org/2014/09/14/the-information-a-history-a-theory-a-flood/</guid>
-<pubDate>Sun, 14 Sep 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

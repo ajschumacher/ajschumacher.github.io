@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-01-20: [Use pew, not virtualenvwrapper, for Python virtualenvs](/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/)
  * 2015-01-19: [gog: a separate layer for visualization](/20150119-gog_a_separate_layer_for_visualization/)
  * 2015-01-11: [A Great Python Book explains Hash Tables](/20150111-a_great_python_book_explains_hash_tables/)
  * 2015-01-01: [Learn to Code with Emacs](/20150101-learn_to_code_with_emacs/)
