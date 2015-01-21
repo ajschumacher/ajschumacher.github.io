@@ -5,15 +5,27 @@
     <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
     <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
-    <title>Use `pew`, not `virtualenvwrapper`, for Python `virtualenv`s</title>
+    <title>Use pew, not virtualenvwrapper, for Python virtualenvs</title>
   </head>
   <body>
     <article>
-<h1>Use <code>pew</code>, not <code>virtualenvwrapper</code>, for Python <code>virtualenv</code>s</h1>
-<p class="date">Saturday January 17, 2015</p>
-<p>Have you noticed how good <a href="http://docs.python-guide.org/">The Hitchhiker’s Guide to Python</a> is? The documentation there on <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/"><code>virtualenv</code></a> is exemplary.</p>
-<p>Of course nobody wants to use <code>virtualenv</code> directly, which is why <code>virtualenvwrapper</code> exists. But as <a href="http://datagrok.org/">Lamb</a> pointed out, even <a href="https://gist.github.com/datagrok/2199506">Virtualenv's <code>bin/activate</code> is Doing It Wrong</a>.</p>
-<p>The solution is to use <a href="https://github.com/berdario/pew"><code>pew</code></a> instead. Not only does it handle environments more nicely, suddenly all your <code>virtualenv</code> tasks are <code>pew</code> sub-commands, which means all you have to remember is <code>pew</code>. Typing <code>pew</code> alone shows all the <code>pew</code> commands, with helpful descriptions. Oh and <code>pew</code> is not only a cute name: it stands for Python Environment Wrapper.</p>    </article>
+<h1>Use pew, not virtualenvwrapper, for Python virtualenvs</h1>
+<p class="date">Tuesday January 20, 2015</p>
+<p>Have you noticed how good <a href="http://docs.python-guide.org/">The Hitchhiker’s Guide to Python</a> is? The documentation there on <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtualenv</a> is exemplary.</p>
+<p>Of course nobody wants to use virtualenvs directly, which is why virtualenvwrapper exists. But as <a href="http://datagrok.org/">Lamb</a> pointed out, <a href="https://gist.github.com/datagrok/2199506">Virtualenv's <code>bin/activate</code> is Doing It Wrong</a>, and virtualenvwrapper doesn't do it right either. Also, it's annoying to run env'ed Python via <a href="http://en.wikipedia.org/wiki/Cron">cron</a>.</p>
+<p>The solution is to use <a href="https://github.com/berdario/pew">pew</a> instead. The Python Environment Wrapper (pew) handles your environment elegantly. This includes not mangling your <code>PS1</code>, though you can still display <code>VIRTUAL_ENV</code> information in your prompt if you want, and however you want. Also, suddenly all your virtualenv tasks are pew sub-commands, which means all you have to remember is <code>pew</code>. Typing <code>pew</code> alone shows all the pew commands, with helpful descriptions.</p>
+<p>I no longer set the <code>WORKON_HOME</code> environment variable. This means pew will use the default <code>~/.local/share/virtualenvs</code>, which is a good choice. It's consistent with <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>, and it means you don't rely on <code>WORKON_HOME</code> to find your virtualenvs, which is nice for cron.</p>
+<p>The location of <code>pew</code> is <code>/usr/local/bin</code>. For convenience, I suggest adding a <code>PATH</code> line to your crontab. The default <code>PATH</code> is <code>/usr/bin:/bin</code>, so the following adds one entry:</p>
+<pre><code>PATH=/usr/local/bin:/usr/bin:/bin</code></pre>
+
+<p>With that done, you can easily run any Python script you want in any virtualenv you want, via cron, with concise syntax:</p>
+<pre><code>* * * * * pew in my_env my_script.py</code></pre>
+
+<p>The example assumes <code>my_script.py</code> is in your home directory, executable, and with the standard <code>#!/usr/bin/env python</code> shebang.</p>
+<p>I find this to be a very nice setup: <code>pew workon my_env</code> and develop <code>my_script.py</code> however I want, and <code>pew in my_env my_script.py</code> to run in that virtualenv from cron or anywhere else.</p>
+<hr />
+<p>Related tools: <a href="https://virtualenv.pypa.io/">virtualenv</a>, <a href="https://virtualenvwrapper.readthedocs.org/">virtualenvwrapper</a>, <a href="https://github.com/sashahart/vex">vex</a>, <a href="https://github.com/zimbatm/direnv">direnv</a>, probably more...</p>
+<p>Thanks to <a href="https://twitter.com/jessicagarson">Jessica</a>, <a href="https://twitter.com/necaris">Rami</a>, and <a href="https://twitter.com/reconbot">Francis</a> for thoughts on this.</p>    </article>
     <footer>
       <hr />
       <ul>
