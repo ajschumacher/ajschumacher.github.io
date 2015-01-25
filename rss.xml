@@ -7,6 +7,40 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Monads by Diagram</title>
+<description><![CDATA[
+
+<p>Let's get some notation out of the way:</p>
+<p><img alt="intput -&gt; function -&gt; output" src="function_notation.jpg"></p>
+<p>A &#8220;function&#8221; is represented by a rectangle. Its arguments (&#8220;input&#8221;) appear above it, and its result (&#8220;output&#8221;) appears to its right.</p>
+<p><img alt="value and monadic value" src="values.jpg"></p>
+<p>We have some idea of &#8220;values&#8221; which can be worked with. We introduce the idea of a &#8220;monadic value&#8221; which can be thought of as &#8220;wrapping&#8221; our more familiar values.</p>
+<p><img alt="unit" src="unit.jpg"></p>
+<p>There's a function called &#8220;unit&#8221; which takes a value and returns a monadic value. Now we can make monadic values from our usual values.</p>
+<p><img alt="bind" src="bind.jpg"></p>
+<p>There's a function called &#8220;bind&#8221; which takes a function and a monadic value. The argument function takes a value and returns a monadic value. The argument monadic value gets unwrapped by &#8220;bind&#8221; and its value becomes the argument to the passed function. Now we can do things to our monadic values.</p>
+<p>That's it. Monads are defined. They should obey some reasonable rules, but that&#8217;s it.</p>
+<p><em>And yet you want more?</em></p>
+<p><img alt="map" src="map.jpg"></p>
+<p>Nobody wants to write functions that take a normal value and return a monadic value. The &#8220;map&#8221; function takes a normal function that knows nothing about monads and returns a function that takes and returns monadic values. Just use the resulting function on your monadic values! So convenient!</p>
+<p><img alt="join" src="join.jpg"></p>
+<p>The &#8220;join&#8221; function unwraps a doubly-monadic value. You want this.</p>
+<p><img alt="bind via map and join" src="bind_via_map_and_join.jpg"></p>
+<p>We can combine the &#8220;map&#8221; and &#8220;join&#8221; functions to get the &#8220;bind&#8221; function. Pretty neat!</p>
+<p><em>And yet you want a real explanation?</em></p>
+<p>For a lucid formal exposition, read <a href="http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf">Monads for Functional Programming</a>. The above is my attempt to express the key definitions there, without the mathematical Haskell notation.</p>
+<p>For a plain-talking explanation with practical examples in friendly Ruby, <a href="http://codon.com/refactoring-ruby-with-monads">read</a> or (preferably) <a href="https://www.youtube.com/watch?v=uTR__8RvgvM">watch</a> Refactoring Ruby with Monads. <a href="https://twitter.com/tomstuart">Tom Stuart</a> uses <code>from_value</code> for &#8220;unit&#8221;, <code>and_then</code> for &#8220;bind&#8221;, and <code>within</code> for calling &#8220;map&#8221; and applying the result.</p>
+<p>For a great overview of even more kinds of things and much better illustration than I can manage, read <a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">Functors, Applicatives, And Monads In Pictures</a>. This follows the Haskell in using <code>fmap</code> for &#8220;map&#8221;.</p>
+<p>And <a href="http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html">don't forget</a>:</p>
+<blockquote>
+<p>&#8220;a monad is a monoid in the category of endofunctors, what's the problem?&#8221;</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20150125-monads_by_diagram/</link>
+<guid>http://planspace.org/20150125-monads_by_diagram/</guid>
+<pubDate>Sun, 25 Jan 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Use pew, not virtualenvwrapper, for Python virtualenvs</title>
 <description><![CDATA[
 
@@ -1178,51 +1212,6 @@ usually are rather than how I have them bound.</p>
 <link>http://planspace.org/2014/10/04/peeps-be-askin-me/</link>
 <guid>http://planspace.org/2014/10/04/peeps-be-askin-me/</guid>
 <pubDate>Sat, 04 Oct 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Scraping GNU Mailman Pipermail Email List Archives</title>
-<description><![CDATA[
-
-<p>I worked with&#160;<a href="http://www.codeforprogress.org/">Code for Progress</a> fellow Casidy at a recent&#160;<a href="http://codefordc.org/">Code for DC</a> civic hacknight on migrating old email list archives for the <a href="https://commotionwireless.net/">Commotion</a> mesh network project to a new system. The source system was&#160;<a href="http://www.gnu.org/software/mailman/">GNU Mailman</a> with its Pipermail web archives for several email lists such as <a href="https://lists.chambana.net/pipermail/commotion-discuss/">commotion-discuss</a>.</p>
-<p>We used <a href="https://www.python.org/">Python</a>'s <a href="http://lxml.de/">lxml</a> for the first pass scraping of all the archive file URLs. The process was then made more interesting by the <a href="http://www.gzip.org/">gzip</a>'ing of most monthly archives. Instead of saving the gzip'ed files to disk and then gunzip'ing them, we used Python's <a href="https://docs.python.org/2/library/gzip.html">gzip</a>&#160;and <a href="https://docs.python.org/2/library/stringio.html">StringIO</a>&#160;modules. The result is the full text history of a specified email list, ready for further processing. Here's the code we came up with:</p>
-<pre><code>#!/usr/bin/env python
-
-import requests
-from lxml import html
-import gzip
-from StringIO import StringIO
-
-listname = 'commotion-discuss'
-url = 'https://lists.chambana.net/pipermail/' + listname + '/'
-
-response = requests.get(url)
-tree = html.fromstring(response.text)
-
-filenames = tree.xpath('//table/tr/td[3]/a/@href')
-
-def emails_from_filename(filename):
-    print filename
-    response = requests.get(url + filename)
-    if filename[-3:] == '.gz':
-        contents = gzip.GzipFile(fileobj=StringIO(response.content)).read()
-    else:
-        contents = response.content
-    return contents
-
-contents = [emails_from_filename(filename) for filename in filenames]
-contents.reverse()
-
-contents = "\n\n\n\n".join(contents)
-
-with open(listname + '.txt', 'w') as filehandle:
-    filehandle.write(contents)
-</code></pre>
-
-<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/">elsewhere</a>.</em></p>    
-    ]]></description>
-<link>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</link>
-<guid>http://planspace.org/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/</guid>
-<pubDate>Sun, 21 Sep 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
