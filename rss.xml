@@ -7,6 +7,45 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>To Migrate from GitHub to BitBucket</title>
+<description><![CDATA[
+
+<p><a href="https://github.com/">GitHub</a> has great design and unlimited collaborators but no free private repos. <a href="https://bitbucket.org/">BitBucket</a> has unlimited free private repos but a limit of five collaborators on them. Assuming you want your repos private so that very few people have access to them, BitBucket is perfect.</p>
+<p>BitBucket makes migrating from GitHub ridiculously easy. They have a <a href="https://blog.bitbucket.org/2013/04/02/finnovation-brings-you-a-heap-of-new-features/">one-click integration</a> and everything. But it's harder to migrate issues.</p>
+<p>Joe Workman <a href="http://joeworkman.tumblr.com/post/40133335482/migrating-from-github-to-bitbucket">made</a> <a href="http://www.bytebucket.org/joeworkman/git2bit">git2bit</a>, which magically puts issues from a GitHub repository into a BitBucket repository. The systems aren't exactly the same, but it makes mostly intelligent choices for how to convert.</p>
+<p>You already have Ruby installed, so it should be this easy to install <code>git2bit</code>:</p>
+<pre><code class="language-bash">gem install git2bit</code></pre>
+
+<p>Alas, <code>git2bit</code> depends on both <a href="https://rubygems.org/gems/bitbucket_rest_api">bitbucket_rest_api</a> and <a href="https://rubygems.org/gems/github_api">github_api</a>, taking their most recent versions by default, and these two gems now require conflicting versions of <a href="https://rubygems.org/gems/hashie">hashie</a>.</p>
+<p>This is what I did:</p>
+<pre><code class="language-bash">gem install hashie -v 2.0.5
+gem install github_api -v 0.11.3
+gem install bitbucket_rest_api -v 0.1.5
+gem install git2bit -v 1.0.2</code></pre>
+
+<p>At last! Use <code>git2bit --help</code> to see the fairly clear options.</p>
+<p>It seems the default is to migrate only open issues, but if you use the <code>--closed</code> flag it will migrate both open and closed issues, which is what I wanted. Be aware that there's no checking for duplication, so if you run <code>git2bit</code> twice you will get double the issues on the BitBucket side. It's easy to make an empty repo to test that things are working as intended.</p>
+<p>Other minutiae:</p>
+<p>If you want to have a different identity for some repos (the ones on BitBucket, say) this is easy to set on a per-repo basis. These commands will alter a repo's <code>.git/config</code>:</p>
+<pre><code class="language-bash">git config user.name "Your Name Here"
+git config user.email your@email.com</code></pre>
+
+<p>On BitBucket you'll want to <a href="https://confluence.atlassian.com/display/BITBUCKET/Add+an+SSH+key+to+an+account">Add an SSH key to an account</a> and <a href="https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket">Use the SSH protocol with Bitbucket</a>.</p>
+<p>To point a current local repo up to BitBucket:</p>
+<pre><code class="language-bash">git remote remove origin
+git remote add origin git@bitbucket.org:accountname/reponame.git</code></pre>
+
+<p>And if you didn't use the one-click migration but are instead doing your initial push to BitBucket from your local repo:</p>
+<pre><code class="language-bash">git push -u origin --all
+git push -u origin --tags</code></pre>
+
+<p>That's just copied from BitBucket's directions when you create a new repo, which I like for being more complete than GitHub's.</p>    
+    ]]></description>
+<link>http://planspace.org/20150126-to_migrate_from_github_to_bitbucket/</link>
+<guid>http://planspace.org/20150126-to_migrate_from_github_to_bitbucket/</guid>
+<pubDate>Mon, 26 Jan 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Monads by Diagram</title>
 <description><![CDATA[
 
@@ -1197,21 +1236,6 @@ usually are rather than how I have them bound.</p>
 <link>http://planspace.org/20141007-emacs_python/</link>
 <guid>http://planspace.org/20141007-emacs_python/</guid>
 <pubDate>Tue, 07 Oct 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Excellent tech/data things to do in DC</title>
-<description><![CDATA[
-
-<p>Peeps be all the time askin' me, what&#160;are the excellent tech/data things to do in DC? Where are the cool people to be found? What's good?</p>
-<p>Well look:</p>
-<p>For data talks and socializing, get with the meetups listed on <a href="http://datacommunitydc.org/blog/speaking-events/">Data Community DC's "Speaking Events" page</a>.</p>
-<p>For hanging out and hacking on projects that help the world be more awesome, you know you have to be down with <a href="http://www.meetup.com/Code-for-DC/">Code for DC</a>.</p>
-<p>And of course there's <a href="http://dc.hackandtell.org/">Hack and Tell</a>, but you already know.</p>
-<p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/10/04/peeps-be-askin-me/">elsewhere</a>.</em></p>    
-    ]]></description>
-<link>http://planspace.org/2014/10/04/peeps-be-askin-me/</link>
-<guid>http://planspace.org/2014/10/04/peeps-be-askin-me/</guid>
-<pubDate>Sat, 04 Oct 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

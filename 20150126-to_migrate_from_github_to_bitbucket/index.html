@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>To Migrate from GitHub to BitBucket</title>
+  </head>
+  <body>
+    <article>
+<h1>To Migrate from GitHub to BitBucket</h1>
+<p class="date">Monday January 26, 2015</p>
+<p><a href="https://github.com/">GitHub</a> has great design and unlimited collaborators but no free private repos. <a href="https://bitbucket.org/">BitBucket</a> has unlimited free private repos but a limit of five collaborators on them. Assuming you want your repos private so that very few people have access to them, BitBucket is perfect.</p>
+<p>BitBucket makes migrating from GitHub ridiculously easy. They have a <a href="https://blog.bitbucket.org/2013/04/02/finnovation-brings-you-a-heap-of-new-features/">one-click integration</a> and everything. But it's harder to migrate issues.</p>
+<p>Joe Workman <a href="http://joeworkman.tumblr.com/post/40133335482/migrating-from-github-to-bitbucket">made</a> <a href="http://www.bytebucket.org/joeworkman/git2bit">git2bit</a>, which magically puts issues from a GitHub repository into a BitBucket repository. The systems aren't exactly the same, but it makes mostly intelligent choices for how to convert.</p>
+<p>You already have Ruby installed, so it should be this easy to install <code>git2bit</code>:</p>
+<pre><code class="language-bash">gem install git2bit</code></pre>
+
+<p>Alas, <code>git2bit</code> depends on both <a href="https://rubygems.org/gems/bitbucket_rest_api">bitbucket_rest_api</a> and <a href="https://rubygems.org/gems/github_api">github_api</a>, taking their most recent versions by default, and these two gems now require conflicting versions of <a href="https://rubygems.org/gems/hashie">hashie</a>.</p>
+<p>This is what I did:</p>
+<pre><code class="language-bash">gem install hashie -v 2.0.5
+gem install github_api -v 0.11.3
+gem install bitbucket_rest_api -v 0.1.5
+gem install git2bit -v 1.0.2</code></pre>
+
+<p>At last! Use <code>git2bit --help</code> to see the fairly clear options.</p>
+<p>It seems the default is to migrate only open issues, but if you use the <code>--closed</code> flag it will migrate both open and closed issues, which is what I wanted. Be aware that there's no checking for duplication, so if you run <code>git2bit</code> twice you will get double the issues on the BitBucket side. It's easy to make an empty repo to test that things are working as intended.</p>
+<p>Other minutiae:</p>
+<p>If you want to have a different identity for some repos (the ones on BitBucket, say) this is easy to set on a per-repo basis. These commands will alter a repo's <code>.git/config</code>:</p>
+<pre><code class="language-bash">git config user.name "Your Name Here"
+git config user.email your@email.com</code></pre>
+
+<p>On BitBucket you'll want to <a href="https://confluence.atlassian.com/display/BITBUCKET/Add+an+SSH+key+to+an+account">Add an SSH key to an account</a> and <a href="https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket">Use the SSH protocol with Bitbucket</a>.</p>
+<p>To point a current local repo up to BitBucket:</p>
+<pre><code class="language-bash">git remote remove origin
+git remote add origin git@bitbucket.org:accountname/reponame.git</code></pre>
+
+<p>And if you didn't use the one-click migration but are instead doing your initial push to BitBucket from your local repo:</p>
+<pre><code class="language-bash">git push -u origin --all
+git push -u origin --tags</code></pre>
+
+<p>That's just copied from BitBucket's directions when you create a new repo, which I like for being more complete than GitHub's.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
