@@ -12,36 +12,38 @@
 <h1>A micro-intro to ggmap</h1>
 <p class="date">Sunday February 23, 2014</p>
 <p>This describes what we did in the break-out session I facilitated for the illustrious <a href="http://richmanmax.com/">Max Richman</a>'s Open Mapping workshop at <a href="http://dc.opendataday.org/">Open Data Day DC</a>. For more detail, I recommend the original <a href="http://stat405.had.co.nz/ggmap.pdf">paper on <code>ggmap</code></a>.</p>
-<p><code>ggmap</code> is an <code>R</code> package that does two main things to make our lives easier:</p>
+<p><code>ggmap</code> is an <code>R</code> package that does two main things to make our lives easier:</p>
 <ul>
-    <li>It wraps a number of APIs (chiefly the <a href="https://developers.google.com/maps/">Google Maps API</a>) to conveniently facilitate geocoding and raster map access in <code>R</code>.</li>
-    <li>It operates together with <code>ggplot2</code>, another <code>R</code> package, which means all the power and convenience of the <a href="http://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">Grammar of Graphics</a> is available for maps.</li>
+<li>It wraps a number of APIs (chiefly the <a href="https://developers.google.com/maps/">Google Maps API</a>) to conveniently facilitate geocoding and raster map access in <code>R</code>.</li>
+<li>It operates together with <code>ggplot2</code>, another <code>R</code> package, which means all the power and convenience of the <a href="http://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">Grammar of Graphics</a> is available for maps.</li>
 </ul>
-
-<p>To install <code>ggmap</code> in <code>R</code>:</p>
-<pre><code>install.packages("ggmap")</code></pre>
+<p>To install <code>ggmap</code> in <code>R</code>:</p>
+<pre><code class="language-r">install.packages("ggmap")</code></pre>
 
 <p>Then you can load the package.</p>
-<pre><code>
+<pre><code class="language-r">library("ggmap")
+
 ## Loading required package: ggplot2</code></pre>
 
 <p>One thing that <code>ggmap</code> offers is easy geocoding with the <code>geocode</code> function. Here we get the latitude and longitude of The World Bank:</p>
-<pre><code>(addressll &lt;- geocode(address))
+<pre><code class="language-r">address &lt;- "1818 H St NW, Washington, DC 20433"
+(addressll &lt;- geocode(address))
 
 ##      lon  lat
 ## 1 -77.04 38.9</code></pre>
 
 <p>The <code>ggmap</code> package makes it easy to get quick maps with the <code>qmap</code> function. There are a number of options available from various sources:</p>
-<pre><code>qmap("Washington, DC", zoom = 13)</code></pre>
+<pre><code class="language-r"># A raster map from Google
+qmap("Washington, DC", zoom = 13)</code></pre>
 
 <p><a href="1.png"><img class="aligncenter size-full wp-image-808" alt="1" src="1.png"></a></p>
-<pre><code># An artistic map from Stamen
+<pre><code class="language-r"># An artistic map from Stamen
 qmap("Washington, DC", zoom = 13, source = "stamen",
      maptype = "watercolor")</code></pre>
 
 <p><a href="2.png"><img class="aligncenter size-full wp-image-809" alt="2" src="2.png"></a></p>
 <p>Since we were at The World Bank, here's a quick map showing where we were. This shows for the first time how <code>ggplot2</code> functions (<code>geom_point</code> here) work with <code>ggmap</code>.</p>
-<pre><code>bankmap &lt;- qmap(address, zoom = 16, source = "stamen",
+<pre><code class="language-r">bankmap &lt;- qmap(address, zoom = 16, source = "stamen",
                 maptype = "toner")
 bankmap + geom_point(data = addressll,
                      aes(x = lon, y = lat),
@@ -50,10 +52,10 @@ bankmap + geom_point(data = addressll,
 
 <p><a href="3.png"><img class="aligncenter size-full wp-image-810" alt="3" src="3.png"></a></p>
 <p>To connect with Max's demo, we can load in his data about cities in Ghana.</p>
-<pre><code>ghana_cities &lt;- read.csv("ghana_city_pop.csv")</code></pre>
+<pre><code class="language-r">ghana_cities &lt;- read.csv("ghana_city_pop.csv")</code></pre>
 
 <p>We'll pull in a Google map of Ghana and then put dots for the cities, sized based on estimated 2013 population.</p>
-<pre><code>ghanamap &lt;- qmap("Ghana", zoom = 7)
+<pre><code class="language-r">ghanamap &lt;- qmap("Ghana", zoom = 7)
 ghanamap + geom_point(data = ghana_cities,
   aes(x = longitude, y = latitude,
       size = Estimates2013), color = "red") +
@@ -61,9 +63,9 @@ ghanamap + geom_point(data = ghana_cities,
 
 <p><a href="4.png"><img class="aligncenter size-full wp-image-811" alt="4" src="4.png"></a></p>
 <p>Another useful feature to note is the <code>gglocator</code> function, which let's you click on a map and get the latitude and longitude of where you clicked.</p>
-<pre><code>gglocator()</code></pre>
+<pre><code class="language-r">gglocator()</code></pre>
 
-<p>This is all the tip of the iceberg. You'll probably want to know more about <a href="http://docs.ggplot2.org/"><code>ggplot2</code></a> if you're going to make extensive use of <code>ggmap</code>. <a href="http://rmaps.github.io/"><code>RMaps</code></a> is another (and totally different) great way to do maps in <code>R</code>.</p>
+<p>This is all just the tip of the iceberg. You'll probably want to know more about <a href="http://docs.ggplot2.org/"><code>ggplot2</code></a> if you're going to make extensive use of <code>ggmap</code>. <a href="http://rmaps.github.io/"><code>RMaps</code></a> is another (and totally different) great way to do maps in <code>R</code>.</p>
 <p>This document is also <a href="http://rpubs.com/ajschumacher/13583">available on RPubs</a>.</p>
 <p><em>This post was originally hosted <a href="https://planspacedotorg.wordpress.com/2014/02/23/a-micro-intro-to-ggmap/">elsewhere</a>.</em></p>    </article>
     <footer>
