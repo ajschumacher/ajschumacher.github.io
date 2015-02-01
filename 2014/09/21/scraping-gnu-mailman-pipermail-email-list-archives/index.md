@@ -40,6 +40,7 @@ with open(listname + '.txt', 'w') as filehandle:
 
 ```
 
+[Christian](https://blog.berendt.io/) [asked](https://planspacedotorg.wordpress.com/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/#comment-3071) about a license for the above, which I hadn't considered. So let's consider it [CC0 (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/).
 
 
 *This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2014/09/21/scraping-gnu-mailman-pipermail-email-list-archives/).*
