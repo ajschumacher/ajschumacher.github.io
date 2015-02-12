@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>These 17 Amazing Split Test Facts Will Shock You!</title>
+  </head>
+  <body>
+    <article>
+<h1>These 17 Amazing Split Test Facts Will Shock You!</h1>
+<p class="date">Thursday February 12, 2015</p>
+<hr />
+<ul>
+<li>split tests?</li>
+<li>traditional design</li>
+<li>dynamic methods</li>
+</ul>
+<hr />
+<p>Here's the plan.</p>
+<ul>
+<li>What are split tests?</li>
+<li>Designing traditional split test experiments.</li>
+<li>More interesting and dynamic Bayesian methods.</li>
+</ul>
+<hr />
+<p><img alt="split test" src="clarks.png" /></p>
+<hr />
+<p>This split test was <a href="https://whichtestwon.com/test/if-the-shoe-fits/">featured</a> on <a href="https://whichtestwon.com/">Which Test Won</a>. The main element in the design at left was a dynamic carousel of images. The main image at right was static.</p>
+<p>Which version performed better in terms of onward clicks from the page?</p>
+<p>Which Test Won reports that this test ran on the German Clarks site for seven weeks, and conversions were 17.5% higher for the static version at right.</p>
+<p>Note that it isn't just visuals that can be split-tested. It can be the only (or at least best) way to get good feedback on algorithm performance in the wild, for recommenders and the like.</p>
+<p>Let's do our own split test:</p>
+<hr />
+<p>Aaron Schumacher</p>
+<p>@planarrowspace</p>
+<hr />
+<hr />
+<p>Aaron Schumacher!</p>
+<p>@planarrowspace</p>
+<hr />
+<p>Problems with this split test?</p>
+<ul>
+<li>not a real "split"</li>
+<li>small sample size</li>
+<li>very small conversion rate</li>
+<li>no real measurement</li>
+</ul>
+<p>There are implementation challenges, and frameworks/services that attempt to solve them, for split tests.</p>
+<p>Fun paper on practical issues: <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.294.8275">Trustworthy online controlled experiments: Five puzzling outcomes explained (2012)</a>.</p>
+<p>There's also experimental design!</p>
+<hr />
+<p>RCT</p>
+<hr />
+<p>Oh the joy of Randomized Controlled Trials!</p>
+<hr />
+<ul>
+<li>significance α</li>
+<li>power 1-β</li>
+<li>effect size</li>
+<li>sample size</li>
+</ul>
+<hr />
+<p>These four quantities are related and we need to understand each. (Type one error, type two error, etc.)</p>
+<p>For effect size: often difference of means over standard deviation.</p>
+<p>How are these quantities related to one another?</p>
+<p>Note that <em>Statistical power analysis for the behavioral sciences</em> by Jacob Cohen is the standard for power calculations, with over 71k citations according to Google.</p>
+<hr />
+<ul>
+<li>A/B testing</li>
+<li>split testing</li>
+<li>multivariate testing</li>
+</ul>
+<hr />
+<p>Power techniques are going to vary based on the kind of experiment. Most of the time it's proportions that we're interested in, so we'll assume a normal two-proportion test.</p>
+<p>Some situations will call for different techniques.</p>
+<hr />
+<pre><code class="language-python">from statsmodels.stats.proportion import proportion_effectsize
+proportion_effectsize(0.6, 0.5)</code></pre>
+
+<hr />
+<p>Getting an effect size that will work in our z-test framework...</p>
+<hr />
+<pre><code class="language-python">from statsmodels.stats.power import zt_ind_solve_power
+zt_ind_solve_power(effect_size=0.2, alpha=0.05, power=0.8)</code></pre>
+
+<hr />
+<p>Calculate away!</p>
+<hr />
+<p><img alt="sample size calculator" src="calculator.png" /></p>
+<hr />
+<p>You can also find pre-built sample size calculators such as the <a href="http://www.evanmiller.org/ab-testing/sample-size.html">one</a> from <a href="http://www.evanmiller.org/">Evan Miller</a>.</p>
+<hr />
+<p>drawbacks</p>
+<hr />
+<ul>
+<li>plan sample size etc. up front</li>
+<li>wait until it's completely done before making a decision</li>
+</ul>
+<hr />
+<p>exploration / exploitation</p>
+<hr />
+<p>This is what we want to do!</p>
+<p>How do we make good choices?</p>
+<p>One very good way: Thompson sampling.</p>
+<hr />
+<p>What's the deal with Naive Bayes?</p>
+<hr />
+<p>(An aside to get grounding in what we've seen before.)</p>
+<p>What's naive about it?</p>
+<p>How Bayesian is it?</p>
+<p>What we really want are probability <em>distributions</em> to represent our knowledge.</p>
+<hr />
+<p>the joy of <code>Beta(α, β)</code></p>
+<hr />
+<p>Note: totally different α and β than before!</p>
+<hr />
+<p><img alt="beta distributions" src="betas.png" /></p>
+<hr />
+<p>Defined on zero-one.</p>
+<p>Interpret α as successes, β as failures (neglecting -1 adjustment).</p>
+<p>Expected value is what you'd think, etc.</p>
+<hr />
+<p>update by addition</p>
+<hr />
+<p>Bayesian joy! Self-conjugate!</p>
+<p>Example: solve the problem of reasonable <a href="http://www.evanmiller.org/how-not-to-sort-by-average-rating.html">sorts by ratings</a></p>
+<p>Example: sample from betas to decide what to show, update betas on every action (Thompson sampling)</p>
+<hr />
+<p><img alt="posteriors" src="posteriors.png" /></p>
+<hr />
+<p>This (and the last graphic) are from a <a href="http://chrishalpert.com/NYDW%20Bandit%20Presentation.ppsx">presentation</a> by <a href="http://www.meetup.com/">Meetup</a>'s Chris Halpert. They've run multi-armed bandits with (at least) as many as 398 variants.</p>
+<hr />
+<p>Thank you!</p>
+<hr />    <script src="/scripts/konami.js"></script>
+    <script type="text/javascript">
+      var easter_egg = new Konami('big.html');
+    </script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
