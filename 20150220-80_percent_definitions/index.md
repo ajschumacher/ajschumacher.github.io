@@ -129,10 +129,3 @@ I find that with the text inserted here it's much easier for me to notice that t
 big data science in the cloud
 
 -----
-
-
------
-
-counting things on more than one hard drive with computers you can't see
-
------
