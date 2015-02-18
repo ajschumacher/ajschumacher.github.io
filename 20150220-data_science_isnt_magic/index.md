@@ -1,5 +1,7 @@
 # Data Science isn't Magic
 
+This is the flow for a [DC Open Data Day](http://dc.opendataday.org/) 2015 workshop. It may not make sense out of context.
+
  * Intro / Disclaimer
  * [80% Definitions](/20150220-80_percent_definitions/) ([slides](/20150220-80_percent_definitions/big.html))
  * [Data Science is OSEMN](/20150220-osemn/) ([slides](/20150220-osemn/big.html))
