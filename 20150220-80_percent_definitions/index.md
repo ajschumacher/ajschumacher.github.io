@@ -11,7 +11,7 @@ I'm going to give “80% definitions” for these terms. They are deliberately r
 
 -----
 
-![big data](success_big_data_ibp.jpg)
+<img width="1000%" title="big data" src="success_big_data_ibp.jpg" />
 
 -----
 
@@ -20,7 +20,7 @@ I'll leave “Integrated Business Planning” alone—what is big data?
 
 -----
 
-![more than one hard drive](success_big_data_ibp_translated.jpg)
+<img width="1000%" title="more than one hard drive" src="success_big_data_ibp_translated.jpg" />
 
 -----
 
@@ -37,7 +37,7 @@ But if that isn't your problem, don't waste your time.
 
 -----
 
-![the cloud](cloud_power.jpg)
+<img height="1000%" title="the cloud" src="cloud_power.jpg" />
 
 -----
 
@@ -46,7 +46,7 @@ What is this “cloud computing”?
 
 -----
 
-![computers you can't see](cloud_power_translated.jpg)
+<img height="1000%" title="computers you can't see" src="cloud_power_translated.jpg" />
 
 -----
 
@@ -68,7 +68,7 @@ Finally: data science.
 
 -----
 
-![unicorn](unicorn.png)
+<img height="1000%" title="unicorn" src="unicorn.png" />
 
 -----
 
