@@ -4,6 +4,6 @@ Problem statement based on a [tweet](https://twitter.com/NYCParentsUnion/status/
 
 -----
 
-![tweet](tweet.png)
+<img height="1000%" title="tweet" src="tweet.png" />
 
 -----
