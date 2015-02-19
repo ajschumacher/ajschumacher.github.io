@@ -35,3 +35,13 @@ planspace.org
  * [OSEMN Attendance in R](osemn_attendance_in_R/) ([slides](osemn_attendance_in_R/big.html))
  * Even more OSEMN attendance + weather
  * DC voter file
+
+
+### Additional Resources
+
+ * For learning `R`:
+     * [Try R](http://tryr.codeschool.com/) is an interactive web site that guides you through `R` functionality in your web browser.
+     * The [walking introduction to R](https://raw.githubusercontent.com/ajschumacher/gadsdc/master/02-R/walking_intro.Rmd) is an `R` script that you can open and work through in RStudio.
+ * For more fun data:
+     * [Accessing the World Bank Data APIs in Python, R, Ruby & Stata](http://blogs.worldbank.org/opendata/accessing-world-bank-data-apis-python-r-ruby-stata)
+     * The [DC voter registration file](https://github.com/ajschumacher/dc_voter_reg)
