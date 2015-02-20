@@ -26,7 +26,7 @@ planspace.org
      * [Daily Attendance Rates](http://schools.nyc.gov/AboutUs/schools/data/Attendance.htm)
      * [XML](http://schools.nyc.gov/aboutus/data/attendancexml/)
      * [http://schools.nyc.gov/AboutUs/schools/data/attendancexml/](http://schools.nyc.gov/AboutUs/schools/data/attendancexml/)
- * Data Science Tools
+ * Data Science [Tools](tools/) ([slides](tools/big.html))
  * Connect to RStudio in the cloud
      * Backup plan:
          * Install the appropriate `R` distribution for your system from this [mirror](http://watson.nci.nih.gov/cran_mirror/).
