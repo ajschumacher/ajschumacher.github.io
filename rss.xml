@@ -7,6 +7,104 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>RStudio in a Web Browser</title>
+<description><![CDATA[
+
+<p>The most annoying part of <code>R</code> workshops is installing software and downloading necessary files. With RStudio Server, workshop participants can skip all that entirely.</p>
+<p>Here's what RStudio looks like running locally. To attain the setup shown, you need to install <a href="http://www.r-project.org/">R</a>, install <a href="http://www.rstudio.com/">RStudio</a>, install necessary R <a href="http://cran.r-project.org/">packages</a>, separately download necessary code and data, and navigate to the correct working directory.</p>
+<p><img alt="RStudio running locally" src="local.png"></p>
+<p>Here's what RStudio looks like in a browser. To attain the setup shown, you go to a URL and log in.</p>
+<p><img alt="RStudio in a browser" src="web.png"></p>
+<p>In a workshop, it's very nice to be able to start doing things with <code>R</code> without messing with setup. Somebody does have to set up the environment in advance though.</p>
+<p>Setting up RStudio Server is very easy, especially if you're already familiar with Amazon Web Services (<a href="http://aws.amazon.com/">AWS</a>):</p>
+<ul>
+<li>Spin up an AWS Elastic Compute Cloud (<a href="http://aws.amazon.com/ec2/">EC2</a>) machine using <a href="http://www.louisaslett.com/RStudio_AMI/">Louis Aslett's RStudio Amazon Machine Image (AMI)</a>.<ul>
+<li><a href="http://www.louisaslett.com/RStudio_AMI/">Louis's page</a> has good concise directions on how to do this&#8212;follow his directions!</li>
+</ul>
+</li>
+<li>Secure Shell (SSH) into your EC2 machine and set up the environment as you want it to be.<ul>
+<li>Install globally required packages while running R as root (<code>sudo R</code>).</li>
+<li>Put necessary files (code, data, etc.) as desired in <code>/home/rstudio</code> (the prototypical user).</li>
+<li>Run <a href="https://gist.github.com/ajschumacher/12f7484d06cacd4b4cd3">build_logins.sh</a>, a script developed by <a href="https://twitter.com/joshdata">Josh Tauberer</a>, to create the desired number of user accounts. (See documentation in the script itself.)</li>
+</ul>
+</li>
+<li>You can optionally give your EC2 machine an AWS <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">elastic IP address</a>, which will let you start and stop the machine (avoiding the cost of keeping it running when you aren't using it) but still know in advance what address the machine will be accessible at.<ul>
+<li>Be sure your EC2 machine and elastic IP are both &#8220;EC2 classic&#8221; or both Virtual Private Cloud (VPC). (Some instance types are only available in VPC!)</li>
+</ul>
+</li>
+</ul>
+<p>For an in-person workshop, it can be effective to distribute login information on slips of paper like this:</p>
+<p><img alt="workshop login information" src="paper.png"></p>
+<p>I've led an <a href="/20150220-data_science_isnt_magic/">introductory workshop</a> with ten active participants on one EC2 m3.2xlarge, which runs at 56 cents per hour. For a larger group, I ran two m3.2xlarge machines and three c4.8xlarge machines ($1.856/hour). That used all my five elastic IP addresses and provided 124 vCPUs and 240 gigs of RAM. We had 94 active users and could probably have supported quite a few more without problems.</p>
+<p>RStudio in the cloud is a great fit for workshops because it eliminates install and setup pain for participants. It lets you decouple the install process from other workshop activities. The experience of using RStudio in a browser is nice enough that it makes me wonder whether anyone offers cloud RStudio as a service&#8212;is that a business that should exist? Workshops certainly aren't the only place where RStudio Server could make sense.</p>
+<p>There are also other options for setting up your server. You don't need to use Louis's AMIs; you don't need to use AWS at all. The <a href="http://www.bioconductor.org/">Bioconductor Project</a> maintains a <a href="http://www.bioconductor.org/help/bioconductor-cloud-ami/">Cloud AMI</a> that comes with a lot of other pre-installed R packages, for example. (When I last checked it was based on an older version of Ubuntu.) For total control, you can install <a href="http://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> from scratch on whatever type of system you like.</p>    
+    ]]></description>
+<link>http://planspace.org/20150221-rstudio_in_a_web_browser/</link>
+<guid>http://planspace.org/20150221-rstudio_in_a_web_browser/</guid>
+<pubDate>Sat, 21 Feb 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Data Science isn't Magic</title>
+<description><![CDATA[
+
+<p>This is the flow for a <a href="http://dc.opendataday.org/">DC Open Data Day</a> 2015 workshop. It may not make sense out of context.</p>
+<p>View this page as <a href="big.html">slides</a> to make this site's base URL appear quite large so that people can find this easily.</p>
+<hr>
+<p>planspace.org</p>
+<hr>
+<h3>Workshop Outline</h3>
+<ul>
+<li>Intro / Disclaimer</li>
+<li><a href="80_percent_definitions/">80% Definitions</a> (<a href="80_percent_definitions/big.html">slides</a>)</li>
+<li><a href="osemn/">Data Science is OSEMN</a> (<a href="osemn/big.html">slides</a>)</li>
+<li><a href="problem/">What's the Problem?</a> (<a href="problem/big.html">slides</a>)</li>
+<li>Find NYC attendance data<ul>
+<li><a href="http://schools.nyc.gov/">schools.nyc.gov</a></li>
+<li><a href="http://schools.nyc.gov/AboutUs/">About Us</a></li>
+<li><a href="http://schools.nyc.gov/AboutUs/schools/">Our Schools</a></li>
+<li><a href="http://schools.nyc.gov/AboutUs/schools/data/">Data About Schools</a></li>
+<li><a href="http://schools.nyc.gov/AboutUs/schools/data/Attendance.htm">Daily Attendance Rates</a></li>
+<li><a href="http://schools.nyc.gov/aboutus/data/attendancexml/">XML</a></li>
+<li><a href="http://schools.nyc.gov/AboutUs/schools/data/attendancexml/">http://schools.nyc.gov/AboutUs/schools/data/attendancexml/</a></li>
+</ul>
+</li>
+<li>Data Science <a href="tools/">Tools</a> (<a href="tools/big.html">slides</a>)</li>
+<li>Connect to RStudio in the cloud<ul>
+<li>Backup plan:<ul>
+<li>Install the appropriate <code>R</code> distribution for your system from this <a href="http://watson.nci.nih.gov/cran_mirror/">mirror</a>.</li>
+<li>Install the <a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a> for <code>R</code>. The RStudio site should suggest an appropriate package for your system.</li>
+<li>Download and unzip the <a href="https://github.com/ajschumacher/odddsim/archive/master.zip">files</a> we're using. (They're <a href="https://github.com/ajschumacher/odddsim">on GitHub</a>, so you can clone if you prefer.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Working with <code>R</code><ul>
+<li>Working with one day of data (<code>01-day_attendance.R</code>)</li>
+<li>Selecting usable data points (<code>02-select_totals.R</code>)</li>
+<li>The relationship between temperature and attendance (<code>03-merge_and_plot.R</code>)</li>
+</ul>
+</li>
+<li>Bonus: Introducing the DC voter file</li>
+</ul>
+<h3>Additional Resources</h3>
+<ul>
+<li>For learning <code>R</code>:<ul>
+<li><a href="http://tryr.codeschool.com/">Try R</a> is an interactive web site that guides you through <code>R</code> functionality in your web browser.</li>
+<li>The <a href="https://raw.githubusercontent.com/ajschumacher/gadsdc/master/02-R/walking_intro.Rmd">walking introduction to R</a> is an <code>R</code> script that you can open and work through in RStudio.</li>
+</ul>
+</li>
+<li>For more fun data:<ul>
+<li><a href="http://blogs.worldbank.org/opendata/accessing-world-bank-data-apis-python-r-ruby-stata">Accessing the World Bank Data APIs in Python, R, Ruby &amp; Stata</a></li>
+<li>The <a href="https://github.com/ajschumacher/dc_voter_reg">DC voter registration file</a></li>
+</ul>
+</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20150220-data_science_isnt_magic/</link>
+<guid>http://planspace.org/20150220-data_science_isnt_magic/</guid>
+<pubDate>Fri, 20 Feb 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>To Migrate from GitHub to BitBucket</title>
 <description><![CDATA[
 
@@ -860,382 +958,6 @@ aaron = 27        # This sets a variable to 27.
 <link>http://planspace.org/20141101-functional_javascript/</link>
 <guid>http://planspace.org/20141101-functional_javascript/</guid>
 <pubDate>Sat, 01 Nov 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>JSON-stat and rjstat</title>
-<description><![CDATA[
-
-<p><em>A <a href="http://www.meetup.com/stats-prog-dc/events/177772502/">lightning talk</a> for <a href="http://www.meetup.com/stats-prog-dc/">Statistical Programming DC</a>.</em></p>
-<p><a href="http://json-stat.org/">JSON-stat</a> is a <a href="http://json.org/">JSON</a>-based <a href="http://en.wikipedia.org/wiki/Data_cube">data cube</a> packaging format. <a href="https://github.com/ajschumacher/rjstat">rjstat</a> is an <a href="http://www.r-project.org/">R</a> package for reading and writing JSON-stat.</p>
-<hr>
-<pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;data?&lt;/title&gt;
-...</code></pre>
-
-<hr>
-<p>About a year ago I was thinking about how to put a lot of data into a self-contained <a href="http://en.wikipedia.org/wiki/HTML">HTML</a> document. [1] Presuming something text-based, what's the most compact way to store data?</p>
-<p>[1] <em>If you're interested in self-contained HTML, I have a related <a href="https://www.python.org/">Python</a> <a href="https://pypi.python.org/pypi/selfcontain/">package</a> on <a href="https://pypi.python.org/">PyPI</a> called <a href="https://github.com/ajschumacher/selfcontain">selfcontain</a>.</em></p>
-<hr>
-<pre><code class="language-json">[{"name": "Aaron",
-  "year": 2014,
-  "height": 68,
-  "weight": 70},
-...</code></pre>
-
-<hr>
-<p>It's pretty common online to have an array of objects in JSON. <a href="http://d3js.org/">D3</a> is happy to use this, for example. It's good if you need to have every observation stand on its own, or if there's no consistent schema. But you're listing keys for every record, so it isn't very compact.</p>
-<hr>
-<pre><code class="language-html">name,year,height,weight
-Aaron,2014,68,70
-...</code></pre>
-
-<hr>
-<p><a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> is generally much smaller, and the table layout is very familiar. There's less type information than even JSON, but we can deal. D3 is still happy to read CSV. So CSV is a good way to save bytes over JSON arrays of objects. But we're still going to repeat names and years a lot. Can we do better?</p>
-<hr>
-<pre><code class="language-html">name,height2014,weight2014
-Aaron,68,70
-...</code></pre>
-
-<hr>
-<p>We could change the structure of the CSV data. Moving to a wider format might save bytes, as we don't repeat the year for every record. Of course this violates the rules of <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> and can be difficult to work with. This is not the direction we want to go.</p>
-<hr>
-<pre><code class="language-html">name,year,thing,value
-Aaron,2014,height,68
-Aaron,2014,weight,70
-...</code></pre>
-
-<hr>
-<p>We could move in the other direction, toward a longer format. [2] Now there's only one column with values in it. We might object that the values now have presumably varying units, but we haven't been very concerned with units so far. For compactness though, we're clearly losing by duplicating names and years and things. If only there were a way to arrange the data so that nothing is repeated!</p>
-<p>[2] <em>For most wide-to-long and long-to-wide conversions in R, use the <a href="http://rpackages.ianhowson.com/cran/tidyr/man/gather.html">gather</a> and <a href="http://rpackages.ianhowson.com/cran/tidyr/man/spread.html">spread</a> functions from the <a href="https://github.com/hadley/tidyr">tidyr</a> package.</em></p>
-<hr>
-<p><img alt="cube" src="cube.png"></p>
-<hr>
-<p>One solution to this problem is the data cube approach. The value "column" fills the volume of the cube. All the other columns define dimensions, and we track single copies of the dimensions. This is compact, and if you're careful you might get benefits from <a href="http://en.wikipedia.org/wiki/Stride_of_an_array">striding</a>. [3]</p>
-<p>[3] <em>Striding benefits aren't generally accessible in JavaScript or R, but they may be in other languages.</em></p>
-<p><em><a href="http://commons.wikimedia.org/wiki/File:Necker_cube.svg">Image</a> (<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/1000px-Necker_cube.svg.png">1000-pixel PNG</a>) from <a href="http://commons.wikimedia.org/">Wikimedia Commons</a>.</em></p>
-<hr>
-<pre><code class="language-json">{"people stats": {
-  "value": [68, 70, ...],
-  "dimension": {
-    "id": ["name", "year", "thing"],
-    ...</code></pre>
-
-<hr>
-<p>So this is what JSON-stat looks like. There's more to it, and certainly a little bit of overhead in specifying everything in an unambiguous way, but with large data sets you can get significant savings in size. For the dimensions, it's even more effective than using R's <a href="http://www.stat.berkeley.edu/~s133/factors.html">factor</a> approach. And that's not all.</p>
-<hr>
-<p>METADATA</p>
-<hr>
-<p>JSON-stat includes places for metadata like long-form names, data source, release date, element-by-element status information, and units. It also lets you naturally package multiple data sets in the same bundle. These features help make JSON-stat attractive to people who are serious about their statistics.</p>
-<hr>
-<p><img alt="Xavier Badosa" src="badosa.png"></p>
-<hr>
-<p>JSON-stat was created by <a href="https://twitter.com/badosa">Xavier Badosa</a> as a result of his experiences doing API work for the <a href="http://www.idescat.cat/en/">Statistical Institute of Catalonia</a>. He continues to maintain and promote the format, which has been growing in popularity. The biggest current systems using JSON-stat are probably <a href="http://data.ssb.no/api/?lang=en">Norway's</a> and <a href="http://www.scb.se/en_/About-us/Open-data-API/API-for-the-Statistical-Database-/">Sweden's</a>. They rolled it out first, but offices of statistics in around <a href="http://www.scb.se/sv_/PC-Axis/Programs/PX-Web/PX-Web-examples/">30 nations</a> use Sweden's <a href="http://www.scb.se/sv_/PC-Axis/Start/">PC-Axis</a> software which will soon provide JSON-stat by default. The UK's Office for National Statistics also has a new <a href="https://www.ons.gov.uk/ons/apiservice/web/apiservice/home">OpenAPI</a> which provides JSON-stat. [4]</p>
-<p>[4] <em>The UK's system is still in beta; <a href="https://github.com/ONSdigital/rjstat/issues/1#issuecomment-60169917">work continues</a>.</em></p>
-<hr>
-<p><img alt="Swedish Inflation Calculator" src="inflation.png"></p>
-<hr>
-<p>In addition to the format itself there's an associated <a href="http://json-stat.org/schema/">HTML microdata schema</a> and a <a href="http://json-stat.com/">JavaScript Toolkit</a> for working with JSON-stat. You can make things like this <a href="http://bl.ocks.org/badosa/20735ba5bbecbc079d78">Swedish Inflation Calculator</a>. There are also libraries for <a href="https://github.com/hamnis/json-stat.java">Java</a> and <a href="https://pypi.python.org/pypi/pyjstat/">Python</a>.</p>
-<hr>
-<p>...R?</p>
-<hr>
-<p>But about a year ago, there was nothing for R.</p>
-<hr>
-<p><img alt="bus" src="bus.png"></p>
-<hr>
-<p>I was using R a lot, so when I visited New York one weekend, I spent some of the bus ride hacking an R package together, following the advice in <a href="http://adv-r.had.co.nz/">Advanced R</a>. I got conversion between R data frames and JSON-stat working, I put it <a href="https://github.com/ajschumacher/rjstat">up on GitHub</a>, and I told Xavier about it.</p>
-<p>It then turned out that I didn't need JSON-stat, and I immediately forgot about it. [5] But once the package was up on GitHub, anybody could come and mess with it. And somebody did.</p>
-<p>[5] <em>It isn't quite true that I immediately forgot about it. I also did a lightning talk at <a href="http://dc.hackandtell.org/2013/11/21/round-3.html">Hack and Tell</a>.</em></p>
-<p><em>Image from <a href="http://agendadirectaonline.com/wp-content/uploads/2012/06/Bus-up-to-55-pax..png">some site</a>.</em></p>
-<hr>
-<p><img alt="H&#229;kon Malmedal" src="hmalmedal.png"></p>
-<hr>
-<p>I don't know how recent this picture is. I'd really like to pronounce his name as "hack on", but by the Korean I'll go with "hoe cone". The only thing I really know about <a href="https://twitter.com/hmalmedal">H&#229;kon</a> of <a href="http://en.wikipedia.org/wiki/Molde">Molde, Norway</a> is that a couple months ago he started sending me pull requests on GitHub. Really, really good pull requests. Pull requests that made things faster, more elegant, and better tested. I'd like to buy him a reasonably priced beverage of his choice.</p>
-<hr>
-<p><img alt="Greenland" src="greenland.png"></p>
-<hr>
-<p>That was good enough until Lars Pedersen of <a href="http://www.stat.gl/default.asp?lang=en">Statistics Greenland</a> emailed me with some questions about the package, among them when it would be on <a href="http://cran.r-project.org/submit.html">CRAN</a>.</p>
-<hr>
-<p>CRAN</p>
-<hr>
-<p><code>rjstat</code> was installing just fine from GitHub, and I was a little intimidated by the reputation of <a href="http://www.r-project.org/contributors.html">R-core</a>, so all I did was start a GitHub issue to discuss getting on CRAN. Before I knew it, H&#229;kon had submitted on my behalf, it was approved by <a href="http://www.statistik.tu-dortmund.de/ligges.html">Uwe Ligges</a>, and it was in the system in time for Lars's conference.</p>
-<p>I know what you're thinking: "But do you have continuous integration testing?"</p>
-<hr>
-<p><img alt="Travis" src="travis.png"></p>
-<hr>
-<p>Largely because I felt like I should do <em>some</em> work before giving this talk, I decided to set up <a href="https://travis-ci.org/">Travis CI</a> for <code>rjstat</code>. Travis doesn't actually support R at all, but <a href="https://github.com/craigcitro">Craig Citro</a> has put together a nice <a href="https://github.com/craigcitro/r-travis">way</a> of hijacking Travis's C build process to test R projects. It was so easy, I still hardly did any work.</p>
-<hr>
-<p><img alt="tweet from Hadley" src="hadley_tweet.png"></p>
-<hr>
-<p>And because no R talk is complete without <em>explicit</em> mention of <a href="https://twitter.com/hadleywickham">Hadley</a>: he naturally <a href="https://twitter.com/hadleywickham/status/521303521036349440">let me know</a> that his <a href="https://github.com/hadley/devtools">devtools</a> package will also set up Travis automatically. Because of course it does.</p>
-<hr>
-<p><img alt="build passing" src="build_passing.png"></p>
-<hr>
-<p>In summary: JSON-stat is a neat format, everyone involved with R is really very friendly and helpful, and you should follow your dreams of doing and making all kinds of things. Thank you.</p>    
-    ]]></description>
-<link>http://planspace.org/20141023-rjstat_lightning/</link>
-<guid>http://planspace.org/20141023-rjstat_lightning/</guid>
-<pubDate>Thu, 23 Oct 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Emacs and Python</title>
-<description><![CDATA[
-
-<p><em>A short <a href="http://www.meetup.com/DCPython/events/208969552/">talk</a> at the <a href="http://www.meetup.com/DCPython/">DC Python meetup group</a>, introducing
-<a href="http://www.gnu.org/software/emacs/">Emacs</a> through demonstration of fun and useful features. Original
-source and notes are <a href="https://github.com/ajschumacher/emacs_python">up on github</a>. Thanks to <a href="https://twitter.com/edwelker">Eddie Welker</a> for
-hosting the event and putting up <a href="https://www.youtube.com/watch?v=eH-epEqLVAs">video</a>!</em></p>
-<p><img alt="" src="screenshots/emacs_startup_screen.png"></p>
-<p>This is a screen you see when you start up Emacs. There's a tutorial
-and a manual and it's all very user-friendly.</p>
-<pre><code>M-x tetris
-</code></pre>
-<p><img alt="" src="screenshots/emacs_tetris.png"></p>
-<p>Tetris is included in base Emacs. But Emacs is also a text editor.
-Editing text is important.</p>
-<p>So why Emacs?</p>
-<pre><code>C-x C-c
-</code></pre>
-<p><img alt="" src="screenshots/blank_terminal.png"></p>
-<p>In addition to editing text, you probably need or want to send
-computers commands via text. It may be convenient or necessary to be
-productive in a pure text environment. So it is a desirable
-characteristic of a text editor that it be as capable in text mode as
-graphical mode. There are two serious contenders: <a href="http://www.vim.org/">Vim</a> and Emacs.</p>
-<p>There are further reasons to prefer a keyboard-based interface, but at
-a minimum we need an editor that can be used over <a href="http://en.wikipedia.org/wiki/Secure_Shell">ssh</a>.</p>
-<pre><code>got bash
-alias got
-grep -o '\w*grep' ~/.bashrc | sort | uniq -c
-</code></pre>
-<p><img alt="" src="screenshots/bash_intro.png"></p>
-<p>I use <a href="http://www.gnu.org/software/bash/">bash</a>, and I have it customized a little bit, which makes it
-nicer.</p>
-<p>If you're competent in a shell like <code>bash</code>, you know some keyboard
-shortcuts. Defaults like <kbd>Ctrl</kbd> + <kbd>a</kbd> (<code>C-a</code>) to go
-to the beginning of a line are very useful. These are Emacs
-keybindings. They're the <a href="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html">readline</a> defaults. They're ubiquitous.</p>
-<p>Keyboard shortcuts that work in <code>bash</code>, Emacs, and many other places:</p>
-<ul>
-<li><code>C-a</code>: go to beginning of line</li>
-<li><code>C-e</code>: go to end of line</li>
-<li><code>C-b</code>: go back one character</li>
-<li><code>M-b</code>: go back one word</li>
-<li><code>C-f</code>: go forward one character</li>
-<li><code>M-f</code>: go forward one word</li>
-<li><code>C-p</code>: previous</li>
-<li><code>C-n</code>: next</li>
-<li><code>C-r</code>: reverse search</li>
-<li><code>C-l</code>: clear screen</li>
-<li><code>C-k</code>: kill to end of line (cut)</li>
-<li><code>C-y</code>: yank (paste)</li>
-<li><code>C-t</code>: transpose character</li>
-</ul>
-<p>Emacs does require effort to learn, but you already know a lot of its
-keybindings, or should, and they can be used in many places.</p>
-<pre><code>fg
-</code></pre>
-<p><img alt="" src="screenshots/emacs_email.png"></p>
-<p>If you want, the many places you use Emacs can be all inside Emacs.
-Here I'm just finishing an email.</p>
-<pre><code>C-c C-c
-C-x C-c
-got emacs
-</code></pre>
-<p><img alt="" src="screenshots/emacs_daemon.png"></p>
-<p>Emacs can run client-server. I use this way of running Emacs to get a
-lot of the benefits that you get with <a href="http://www.gnu.org/software/screen/">screen</a> or <a href="http://tmux.sourceforge.net/">tmux</a>. I don't
-lose anything if a network connection dies, for example. It's also
-faster to start up the Emacs client.</p>
-<pre><code>e
-M-x shell
-got emacs
-</code></pre>
-<p><img alt="" src="screenshots/emacs_shell.png"></p>
-<p>You can also run a shell inside Emacs, and it works much the same as
-outside. A contrast with <code>tmux</code> is that you don't have to switch modes
-to access the scrollback. For example, in an Emacs shell, <code>M-r</code> will
-search the command history, and <code>C-r</code> will search back through the
-buffer (as it does throughout Emacs).</p>
-<pre><code>eg &amp;
-C-x b shell
-got emacs
-</code></pre>
-<p><img alt="" src="screenshots/emacs_shell_gui.png"></p>
-<p>I can start a graphical Emacs from here in the shell inside console
-Emacs, and you can see that now both clients are connected to the same
-Emacs daemon.</p>
-<p>Notice how similar the interface is whether at a console or in a GUI
-window.</p>
-<pre><code>C-x C-f hello.el
-C-M-f
-C-x C-e
-</code></pre>
-<p><img alt="" src="screenshots/emacs_lisp.png"></p>
-<p>Emacs achieves its extensibility by essentially being a <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Lisp</a>
-interpreter. (It's Emacs Lisp.) I'm just showing a tiny cosmetic
-interface tweak here, but all the packages and fun features I use work
-because Emacs is a programmable environment.</p>
-<p>A related point is that base Emacs includes a lot, and you can manage
-in base Emacs, but you probably won't want to. You can think of Emacs
-as a kit for making an editor. The advantage is that you can make any
-sort of editor you want. The disadvantage is that there's some
-assembly required.</p>
-<p>Emacs gets so much better with customized settings that there are
-several whole projects which are just collections of Emacs
-configuration. <a href="https://github.com/bbatsov/prelude">Prelude</a> is probably the biggest; <a href="https://github.com/rdallasgray/graphene">Graphene</a> is
-another one. I tried Prelude and eventually got tired of turning
-things off more than I was turning them on, but things like Prelude
-are great for finding out about functionality, and could be a great
-way to get into Emacs. There are also <a href="http://planet.emacsen.org/">blogs</a> that post about Emacs,
-and of course everybody has their configuration files on github too.</p>
-<p>Let's take a look at editing with Emacs, using <a href="https://github.com/DCPython/dcpython-django/blob/77af0754866780b2eb013f7fb08c13918bd5266c/README.rst">a DC Python project</a>
-as an example. We notice that there are some problems at the end of
-the README, so maybe we can fix it up a little.</p>
-<pre><code>git clone git@github.com:ajschumacher/dcpython-django.git django
-</code></pre>
-<p><img alt="" src="screenshots/clone_django.png"></p>
-<p>To work on the project, we'll clone my fork of the repo and open up
-the <code>README.rst</code>. It opens up in <code>reStructuredText</code> mode.</p>
-<p><img alt="" src="screenshots/whitespace_problems.png"></p>
-<p>Before we get to the numbered lists, we notice some whitespace
-problems: tabs and trailing whitespace.</p>
-<p><img alt="" src="screenshots/make_branch.png"></p>
-<p>So we make a branch to do some work on. (The git-in-Emacs interface is
-<a href="http://magit.github.io/">magit</a>.) Then we can <code>mark-whole-buffer</code> and <code>untabify</code>. Tabs are
-changed to spaces. Then <code>delete-trailing-whitespace</code>. Good.</p>
-<p><img alt="" src="screenshots/whitespace_fixed.png"></p>
-<p>We can make a quick commit with this change very quickly.</p>
-<p><img alt="" src="screenshots/markdown_in_rst.png"></p>
-<p>Down at the bottom, it looks like <a href="http://daringfireball.net/projects/markdown/">markdown</a> in
-<a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>. We need to fix the back-ticks and the numbered
-lists.</p>
-<p>In reStructuredText, you need double back-ticks. Select the region,
-query-replace with <code>M-%</code>, enter "`" and "``", and if feeling
-confident, use "!" to replace all.</p>
-<p><img alt="" src="screenshots/backticks_fixed.png"></p>
-<p>Oops, one command isn't back-ticked that should be. Nice chance to
-show <code>expand-region</code> and <code>wrap-region</code>. All good - commit.</p>
-<p>The numbered lists aren't hard to fix in this case, but let's show
-some more features. We'll make a macro, starting it with <code>C-x (</code>. Then
-<code>C-s</code> for <code>1</code> to go to the start of a numbering region. <code>C-a</code> for the
-start of the line. Set mark with <code>C-&lt;space&gt;</code>. Do a regular expression
-search for a blank line ("^$") with <code>C-M-s</code>. Previous line with <code>C-p</code>.
-Number the lines with a rectangle command, <code>C-x r N</code>. Next line to
-clear the numbering, and finish the macro with <code>C-x )</code>. Then we can
-run it again with <code>C-x e</code>, and again with just <code>e</code>.</p>
-<p>This isn't really done, so let's go back to the first "1." and select
-it, then invoke a <code>multiple-cursors</code> command to select them all and
-clean up. Presto!</p>
-<p><img alt="" src="screenshots/nice_rst.png"></p>
-<p>Commit, push, pull request!</p>
-<p>Now to Python. I use <a href="http://elpy.readthedocs.org/">elpy</a> (<a href="https://github.com/jorgenschaefer/elpy/">on github</a>) with <a href="https://github.com/flycheck/flycheck">flycheck</a> and
-<a href="https://github.com/davidhalter/jedi">jedi</a>. Also <a href="http://ipython.org/">IPython</a>. And <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a>. Etc. I'll demo some
-things.</p>
-<pre><code>C-x C-f tset/tset.py
-</code></pre>
-<p><img alt="" src="screenshots/flychecking.png"></p>
-<p>Using a toy Python <a href="https://github.com/ajschumacher/tset">project</a> of mine, we can see how <code>flycheck</code> will
-tell you when you're violating <a href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> ("E302 expected 2 blank
-lines, found 1", etc.). If I add in <code>import os</code> without using it,
-that'll get shown too. And it catches syntax errors like <code>x=</code> as well.</p>
-<pre><code>(point after "at")
-C-c C-e
-</code></pre>
-<p><img alt="" src="screenshots/edit_multiple.png"></p>
-<p>One fun feature of <code>elpy</code> is that it can use <code>jedi</code> to find symbols
-that are semantically the same and edit them at the same time. Neat!</p>
-<pre><code>C-c C-t
-</code></pre>
-<p><img alt="" src="screenshots/elpy_tests.png"></p>
-<p>It's very convenient to run tests.</p>
-<pre><code>C-c C-z
-np &lt;shift&gt;-&lt;tab&gt;
-np.random. &lt;tab&gt;
-</code></pre>
-<p><img alt="" src="screenshots/elpy_interactive.png"></p>
-<p>It's easy to run interactive python. I'll show snippets here too. And
-you get auto-completion. Nice.</p>
-<pre><code>C-x o
-M-&lt;
-C-o C-o C-o
-print 'hello'
-C-&lt;space&gt; C-a
-C-c C-c
-</code></pre>
-<p><img alt="" src="screenshots/send_to_interactive.png"></p>
-<p>It's easy to send code from the editor to the REPL. It was a little
-weird to me at first that it didn't echo in the REPL, but it's
-generally fine this way. If you want you can copy and paste
-explicitly, or make a macro to do the same.</p>
-<pre><code>import os
-os
-C-c C-d
-.
-</code></pre>
-<p><img alt="" src="screenshots/dropdown.png"></p>
-<p>In the editor, you can get docstring help with <code>C-c C-d</code>, and there's
-also the popular drop-down method of showing available things.</p>
-<pre><code>fork
-C-c C-d
-</code></pre>
-<p><img alt="" src="screenshots/docs.png"></p>
-<p>And of course help on functions themselves.</p>
-<pre><code>C-x 1
-C-x C-j
-(navigate to scikit-learn/sklearn/tests/test_naive_bayes.py)
-M-1
-M-g M-g 332 (point on 'MultinomialNB')
-M-. (until 'object')
-M-* (back)
-</code></pre>
-<p><img alt="" src="screenshots/sklearn.png"></p>
-<p>To demonstrate navigating some more serious hierarchies, I've got a
-clone of the <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a> source. I'll go to the Naive Bayes tests
-using <code>dired</code>, a standard mode. There are a lot of lines here. I have
-a custom binding to show and hide line numbers. Let's go to line 332,
-where <code>MultinomialNB</code> is getting tested. If I put point on that
-symbol, <code>elpy</code> let's me use <code>M-.</code> to jump to the definition. I can go
-several definitions up, and then use <code>M-*</code> to jump back to where I
-started. This is pretty neat.</p>
-<pre><code>nyan-mode
-nyan-start-animation
-</code></pre>
-<p><img alt="" src="screenshots/nyan_mode.png"></p>
-<p>I started with Tetris, and I want to finish with something fun too. If
-you want to, you can install and use <code>nyan-mode</code>. Totally up to you.</p>
-<pre><code>C-x b *twittering-edit*
-</code></pre>
-<p><img alt="" src="screenshots/emacs_tweet.png"></p>
-<p>And here's that <a href="https://twitter.com/planarrowspace/status/519632550902247424">tweet</a> I promised earlier.</p>
-<p>Thank you!</p>
-<hr>
-<p>All my configuration is in my <a href="https://github.com/ajschumacher/.emacs.d">.emacs.d</a>. It's subject to change.
-This demo is as of <code>7716de4</code>, with some keystrokes shown above as they
-usually are rather than how I have them bound.</p>
-<hr>
-<p>For even more completeness, here are other ways of doing Python in Emacs:</p>
-<ul>
-<li><a href="http://www.emacswiki.org/PythonProgrammingInEmacs">Python Programming in Emacs</a> on <a href="http://www.emacswiki.org/">EmacsWiki</a></li>
-<li><a href="https://github.com/gabrielelanaro/emacs-for-python">emacs-for-python</a></li>
-<li><a href="http://rope.sourceforge.net/">rope</a> (an alternative to <code>jedi</code>), used in in <code>elpy</code> or <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> / <a href="https://github.com/pinard/Pymacs">Pymacs</a></li>
-<li><a href="http://www.xiaohanyu.me/oh-my-emacs/modules/ome-python.html">Oh My Emacs Python</a></li>
-</ul>
-<hr>
-<p>Thanks to local Emacs users <a href="https://twitter.com/jayaresee87">Jenna Colazzi</a> and <a href="https://twitter.com/necaris">Rami Chowdhurry</a>, and to the broader Emacs community who are super friendly and produce excellent resources:</p>
-<ul>
-<li><a href="http://harryrschwartz.com/">Harry Schwartz</a> and Eric and all the speakers at the <a href="http://emacsnyc.org/">New York Emacs Meetup</a></li>
-<li><a href="https://twitter.com/sachac">Sacha Chua</a> (<a href="http://sachachua.com/">blog</a>, <a href="http://sachachua.com/blog/category/podcast/emacs-chat-podcast/">Emacs Chat</a>)</li>
-<li><a href="https://twitter.com/magnars">Magnar Sveen</a> (<a href="http://emacsrocks.com/">emacs rocks</a>, <a href="http://whattheemacsd.com/">what the .emacs.d!?</a>)</li>
-<li><a href="https://twitter.com/mickeynp">Mickey Petersen</a> (<a href="http://www.masteringemacs.org/">Mastering Emacs</a></li>
-<li><a href="https://twitter.com/bbatsov">Bozhidar Batsov</a> (<a href="https://github.com/bbatsov/prelude">Prelude</a>, <a href="http://emacsredux.com/">Emacs Redux</a>)</li>
-<li>Steve Yegge's old <a href="https://sites.google.com/site/steveyegge2/effective-emacs">Effective Emacs</a> is still worth a read.</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20141007-emacs_python/</link>
-<guid>http://planspace.org/20141007-emacs_python/</guid>
-<pubDate>Tue, 07 Oct 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
