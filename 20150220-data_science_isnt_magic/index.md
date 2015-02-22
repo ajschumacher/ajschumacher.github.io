@@ -1,6 +1,6 @@
 # Data Science isn't Magic
 
-This is the flow for a [DC Open Data Day](http://dc.opendataday.org/) 2015 workshop. It may not make sense out of context.
+This is the flow for a [DC Open Data Day](http://dc.opendataday.org/) 2015 workshop. It may not make sense out of context. For a fun summary in tweets (with photos!) you might check out [a storification of it](https://storify.com/planarrowspace/data-science-isn-t-magic-workshop-at-dc-open-data).
 
 View this page as [slides](big.html) to make this site's base URL appear quite large so that people can find this easily.
 
