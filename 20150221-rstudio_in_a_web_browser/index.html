@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>RStudio in a Web Browser</title>
+  </head>
+  <body>
+    <article>
+<h1>RStudio in a Web Browser</h1>
+<p class="date">Saturday February 21, 2015</p>
+<p>The most annoying part of <code>R</code> workshops is installing software and downloading necessary files. With RStudio Server, workshop participants can skip all that entirely.</p>
+<p>Here's what RStudio looks like running locally. To attain the setup shown, you need to install <a href="http://www.r-project.org/">R</a>, install <a href="http://www.rstudio.com/">RStudio</a>, install necessary R <a href="http://cran.r-project.org/">packages</a>, separately download necessary code and data, and navigate to the correct working directory.</p>
+<p><img alt="RStudio running locally" src="local.png" /></p>
+<p>Here's what RStudio looks like in a browser. To attain the setup shown, you go to a URL and log in.</p>
+<p><img alt="RStudio in a browser" src="web.png" /></p>
+<p>In a workshop, it's very nice to be able to start doing things with <code>R</code> without messing with setup. Somebody does have to set up the environment in advance though.</p>
+<p>Setting up RStudio Server is very easy, especially if you're already familiar with Amazon Web Services (<a href="http://aws.amazon.com/">AWS</a>):</p>
+<ul>
+<li>Spin up an AWS Elastic Compute Cloud (<a href="http://aws.amazon.com/ec2/">EC2</a>) machine using <a href="http://www.louisaslett.com/RStudio_AMI/">Louis Aslett's RStudio Amazon Machine Image (AMI)</a>.<ul>
+<li><a href="http://www.louisaslett.com/RStudio_AMI/">Louis's page</a> has good concise directions on how to do this—follow his directions!</li>
+</ul>
+</li>
+<li>Secure Shell (SSH) into your EC2 machine and set up the environment as you want it to be.<ul>
+<li>Install globally required packages while running R as root (<code>sudo R</code>).</li>
+<li>Put necessary files (code, data, etc.) as desired in <code>/home/rstudio</code> (the prototypical user).</li>
+<li>Run <a href="https://gist.github.com/ajschumacher/12f7484d06cacd4b4cd3">build_logins.sh</a>, a script developed by <a href="https://twitter.com/joshdata">Josh Tauberer</a>, to create the desired number of user accounts. (See documentation in the script itself.)</li>
+</ul>
+</li>
+<li>You can optionally give your EC2 machine an AWS <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">elastic IP address</a>, which will let you start and stop the machine (avoiding the cost of keeping it running when you aren't using it) but still know in advance what address the machine will be accessible at.<ul>
+<li>Be sure your EC2 machine and elastic IP are both “EC2 classic” or both Virtual Private Cloud (VPC). (Some instance types are only available in VPC!)</li>
+</ul>
+</li>
+</ul>
+<p>For an in-person workshop, it can be effective to distribute login information on slips of paper like this:</p>
+<p><img alt="workshop login information" src="paper.png" /></p>
+<p>I've led an <a href="/20150220-data_science_isnt_magic/">introductory workshop</a> with ten active participants on one EC2 m3.2xlarge, which runs at 56 cents per hour. For a larger group, I ran two m3.2xlarge machines and three c4.8xlarge machines ($1.856/hour). That used all my five elastic IP addresses and provided 124 vCPUs and 240 gigs of RAM. We had 94 active users and could probably have supported quite a few more without problems.</p>
+<p>RStudio in the cloud is a great fit for workshops because it eliminates install and setup pain for participants. It lets you decouple the install process from other workshop activities. The experience of using RStudio in a browser is nice enough that it makes me wonder whether anyone offers cloud RStudio as a service—is that a business that should exist? Workshops certainly aren't the only place where RStudio Server could make sense.</p>
+<p>There are also other options for setting up your server. You don't need to use Louis's AMIs; you don't need to use AWS at all. The <a href="http://www.bioconductor.org/">Bioconductor Project</a> maintains a <a href="http://www.bioconductor.org/help/bioconductor-cloud-ami/">Cloud AMI</a> that comes with a lot of other pre-installed R packages, for example. (When I last checked it was based on an older version of Ubuntu.) For total control, you can install <a href="http://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> from scratch on whatever type of system you like.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
