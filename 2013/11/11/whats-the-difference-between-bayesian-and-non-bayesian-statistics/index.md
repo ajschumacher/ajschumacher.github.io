@@ -1,8 +1,7 @@
 # What's the difference between Bayesian and non-Bayesian statistics?
 
+ > A coin is flipped and comes up heads five times in a row. Is it a fair coin?
 
-
-<blockquote>A coin is flipped and comes up heads five times in a row. Is it a fair coin?</blockquote>
 Whether you trust a coin to come up heads 50% of the time depends a good deal on who's flipping the coin. If you're flipping your own quarter at home, five heads in a row will almost certainly not lead you to suspect wrongdoing. At a magic show or gambling with a shady character on a street corner, you might quickly doubt the balance of the coin or the flipping mechanism.
 
 What is often meant by non-Bayesian "classical statistics" or "frequentist statistics" is "hypothesis testing": you state a belief about the world, determine how likely you are to see what you saw if that belief is true, and if what you saw was a very rare thing to see then you say that you don't believe the original belief. That original belief about the world is often called the "null hypothesis".
@@ -11,7 +10,7 @@ Our null hypothesis for the coin is that it is fair - heads and tails both come 
 
 Say a trustworthy friend chooses randomly from a bag containing one normal coin and two double-headed coins, and then proceeds to flip the chosen coin five times and tell you the results. When would you be confident that you know which coin your friend chose? If a tails is flipped, then you know for sure it isn't a coin with two heads, of course. But what if it comes up heads several times in a row? When would you say that you're confident it's a coin with two heads?
 
-If you stick to hypothesis testing, this is the same question and and the answer is the same: reject the null hypothesis after five heads.
+If you stick to hypothesis testing, this is the same question and the answer is the same: reject the null hypothesis after five heads.
 
 Notice that when you're flipping a coin you think is probably fair, five flips seems too soon to question the coin. But when you know already that it's twice as likely that you're flipping a coin that comes up heads every time, five flips seems like a long time to wait before making a judgement. The non-Bayesian approach somehow ignores what we know about the situation and just gives you a yes or no answer about trusting the null hypothesis, based on a fairly arbitrary cutoff.
 
