@@ -12,7 +12,7 @@
 <h1>R Squared Can Be Negative</h1>
 <p class="date">Friday April 17, 2015</p>
 <p>Let's do a little linear regression in Python with <a href="http://scikit-learn.org/">scikit-learn</a>:</p>
-<pre><code class="language-Python">import numpy as np
+<pre><code class="language-python">import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.cross_validation import train_test_split
 
@@ -22,8 +22,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 model = LinearRegression()
 model.fit(X_train, y_train)</code></pre>
 
-<p>It is a property of <a href="http://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares regression</a> that for the data we fit (the training data) the <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a> (R<sup>2</sup>) and squared <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">correlation coefficient</a> (r<sup>2</sup>) of the model's predictions with the actual data are equal.</p>
-<pre><code class="language-Python"># coefficient of determination R^2
+<p>It is a property of <a href="http://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares regression</a> that for the training data we fit on, the <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination R<sup>2</sup></a> and the square of the <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">correlation coefficient r<sup>2</sup></a> of the model's predictions with the actual data are equal.</p>
+<pre><code class="language-python"># coefficient of determination R^2
 print model.score(X_train, y_train)
 ## 0.203942898079
 
@@ -32,7 +32,7 @@ print np.corrcoef(model.predict(X_train), y_train)[0, 1]**2
 ## 0.203942898079</code></pre>
 
 <p>This does not hold for new data, and if our model is sufficiently bad the coefficient of determination can be negative. The squared correlation coefficient is never negative but can be quite low.</p>
-<pre><code class="language-Python"># coefficient of determination R^2
+<pre><code class="language-python"># coefficient of determination R^2
 print model.score(X_test,  y_test)
 ## -0.277742673311
 
@@ -40,7 +40,7 @@ print model.score(X_test,  y_test)
 print np.corrcoef(model.predict(X_test), y_test)[0, 1]**2
 ## 0.0266856746214</code></pre>
 
-<p>This is <a href="http://en.wikipedia.org/wiki/Overfitting">overfitting</a>.</p>    </article>
+<p>This worsening will always happen to some extent, and worsen with <a href="http://en.wikipedia.org/wiki/Overfitting">overfitting</a>.</p>    </article>
     <footer>
       <hr />
       <ul>

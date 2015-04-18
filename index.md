@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-04-17: [R Squared Can Be Negative](/20150417-negative_r_squared/)
  * 2015-02-21: [RStudio in a Web Browser](/20150221-rstudio_in_a_web_browser/)
  * 2015-02-20: [Data Science isn't Magic](/20150220-data_science_isnt_magic/)
  * 2015-01-26: [To Migrate from GitHub to BitBucket](/20150126-to_migrate_from_github_to_bitbucket/)
