@@ -14,7 +14,7 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 ```
 
-It is a property of [ordinary least squares regression](http://en.wikipedia.org/wiki/Ordinary_least_squares) that for the training data we fit on, the [coefficient of determination R<sup>2</sup>](http://en.wikipedia.org/wiki/Coefficient_of_determination) and the square of the [correlation coefficient r<sup>2</sup>](http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient) of the model's predictions with the actual data are equal.
+It is a property of [ordinary least squares regression](http://en.wikipedia.org/wiki/Ordinary_least_squares) that for the training data we fit on, the [coefficient of determination R<sup>2</sup>](http://en.wikipedia.org/wiki/Coefficient_of_determination) and the square of the [correlation coefficient](http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient) r<sup>2</sup> of the model's predictions with the actual data are equal.
 
 ```python
 # coefficient of determination R^2
@@ -38,4 +38,4 @@ print np.corrcoef(model.predict(X_test), y_test)[0, 1]**2
 ## 0.0266856746214
 ```
 
-This worsening will always happen to some extent, and worsen with [overfitting](http://en.wikipedia.org/wiki/Overfitting).
+These declines in performance worsen with [overfitting](http://en.wikipedia.org/wiki/Overfitting).
