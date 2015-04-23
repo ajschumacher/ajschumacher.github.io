@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Forward Selection with statsmodels</title>
+<description><![CDATA[
+
+<p>Python's <a href="http://statsmodels.sourceforge.net/stable/">statsmodels</a> doesn't have a built-in method for choosing a linear model by <a href="http://en.wikipedia.org/wiki/Stepwise_regression">forward selection</a>. Luckily, it isn't impossible to write yourself. So <a href="https://github.com/trevor-smith">Trevor</a> and I sat down and hacked out the following. It tries to optimize <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2">adjusted R-squared</a> by adding features that help the most one at a time until the score goes down or you run out of features.</p>
+<pre><code class="language-python">import statsmodels.formula.api as smf
+
+def forward_selected(data, response):
+    """Linear model designed by forward selection.
+
+    Parameters:
+    -----------
+    data : pandas DataFrame with all possible predictors and response
+
+    response: string, name of response column in data
+
+    Returns:
+    --------
+    model: an "optimal" fitted statsmodels linear model
+           with an intercept
+           selected by forward selection
+           evaluated by adjusted R-squared
+    """
+    remaining = set(data.columns)
+    remaining.remove(response)
+    selected = []
+    current_score, best_new_score = 0.0, 0.0
+    while remaining and current_score == best_new_score:
+        scores_with_candidates = []
+        for candidate in remaining:
+            formula = "{} ~ {} + 1".format(response,
+                                           ' + '.join(selected + [candidate]))
+            score = smf.ols(formula, data).fit().rsquared_adj
+            scores_with_candidates.append((score, candidate))
+        scores_with_candidates.sort()
+        best_new_score, best_candidate = scores_with_candidates.pop()
+        if current_score &lt; best_new_score:
+            remaining.remove(best_candidate)
+            selected.append(best_candidate)
+            current_score = best_new_score
+    formula = "{} ~ {} + 1".format(response,
+                                   ' + '.join(selected))
+    model = smf.ols(formula, data).fit()
+    return model</code></pre>
+
+<p>There isn't just one way to design this kind of thing. You could select on some other evaluation metric. You could use internal cross-validation. You might not want to do use forward selection at all. But hey!</p>
+<p>Here's how ours can be applied to a classic data set on <a href="http://data.princeton.edu/wws509/datasets/#salary">Discrimination in Salaries</a>:</p>
+<pre><code class="language-python">import pandas as pd
+
+url = "http://data.princeton.edu/wws509/datasets/salary.dat"
+data = pd.read_csv(url, sep='\\s+')
+
+model = forward_selected(data, 'sl')
+
+print model.model.formula
+# sl ~ rk + yr + 1
+
+print model.rsquared_adj
+# 0.835190760538</code></pre>    
+    ]]></description>
+<link>http://planspace.org/20150423-forward_selection_with_statsmodels/</link>
+<guid>http://planspace.org/20150423-forward_selection_with_statsmodels/</guid>
+<pubDate>Thu, 23 Apr 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>R Squared Can Be Negative</title>
 <description><![CDATA[
 
@@ -972,19 +1036,6 @@ aaron = 27        # This sets a variable to 27.
 <link>http://planspace.org/20141117-well_used_simple_tools/</link>
 <guid>http://planspace.org/20141117-well_used_simple_tools/</guid>
 <pubDate>Mon, 17 Nov 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A True and Delightful Incident</title>
-<description><![CDATA[
-
-<p>The mathematician Raymond Smullyan writes in the preface to his book <a href="http://en.wikipedia.org/wiki/To_Mock_a_Mockingbird">To Mock a Mockingbird</a>:</p>
-<blockquote>
-<p>Shortly after the publication of my first puzzle book&#8212;called <em>What Is the Name of This Book?</em>&#8212;I received a letter from an unknown female suggesting an alternative solution to one of the puzzles, which I found more elegant than the one I had given. She closed the letter with &#8220;Love&#8221; and signed her name. I had absolutely no idea who she was, or whether she was married or single. I wrote back expressing my appreciation of her solution and asked whether I might use it in a subsequent edition. I also suggested that if she had not already graduated from college she might consider majoring in mathematics, since she showed a definite mathematical talent. Shortly after, she replied: &#8220;Thank you for your gracious letter. You have my permission to use my solution. I am nine and a half years old and am in fifth grade.&#8221;</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20141107-a_true_and_delightful_incident/</link>
-<guid>http://planspace.org/20141107-a_true_and_delightful_incident/</guid>
-<pubDate>Fri, 07 Nov 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
