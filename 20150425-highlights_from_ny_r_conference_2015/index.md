@@ -1,6 +1,6 @@
-# Highlights from NY R Conference 2015
+# Two Highlights from NY R Conference 2015
 
-Here's what I thought was most interesting at [NY R](http://www.rstats.nyc/) on Saturday April 25, 2015:
+Here are the two things I thought were most interesting at [NY R](http://www.rstats.nyc/) on Saturday April 25, 2015:
 
 ---
 
@@ -24,4 +24,4 @@ I've thought about this kind of decoupling for data visualization (see [gog](htt
 
 ---
 
-Max Kuhn and Zachary Deane-Mayer, developers behind [caret](http://cran.r-project.org/web/packages/caret/index.html), gave a nice talk on doing R package development well. I agree this is a good idea; it makes me want to go set up some more [Travis](https://travis-ci.org/) and [Coveralls](https://coveralls.io/) stuff myself!
+There were certainly other interesting and good things as well!
