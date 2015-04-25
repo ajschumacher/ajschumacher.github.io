@@ -1,6 +1,6 @@
 # Working with Captured Variables in Python Closures
 
-You can make [closure](http://en.wikipedia.org/wiki/Closure_%28computer_programming%29)s in Python like this:
+You can make [closures](http://en.wikipedia.org/wiki/Closure_%28computer_programming%29) in Python like this:
 
 ```python
 def add_some(x=0):

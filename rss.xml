@@ -10,7 +10,7 @@
 <title>Working with Captured Variables in Python Closures</title>
 <description><![CDATA[
 
-<p>You can make <a href="http://en.wikipedia.org/wiki/Closure_%28computer_programming%29">closure</a>s in Python like this:</p>
+<p>You can make <a href="http://en.wikipedia.org/wiki/Closure_%28computer_programming%29">closures</a> in Python like this:</p>
 <pre><code class="language-python">def add_some(x=0):
     def adder(y):
         return x+y
