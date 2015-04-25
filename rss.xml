@@ -7,6 +7,110 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Working with Captured Variables in Python Closures</title>
+<description><![CDATA[
+
+<p>You can make <a href="http://en.wikipedia.org/wiki/Closure_%28computer_programming%29">closure</a>s in Python like this:</p>
+<pre><code class="language-python">def add_some(x=0):
+    def adder(y):
+        return x+y
+    return adder
+
+add3 = add_some(3)
+
+print(add3(7))
+## 10</code></pre>
+
+<p>The <code>adder</code> function "remembers" <code>x</code>.</p>
+<p>But this will fail:</p>
+<pre><code class="language-python">def a_counter(count=0):
+    def counter():
+        count += 1
+        return count
+    return counter
+
+the_counter = a_counter()
+
+print(the_counter())
+## UnboundLocalError: local variable 'count' referenced before assignment</code></pre>
+
+<p>You can't assign to <code>count</code> in there!</p>
+<p>In Python 3, you can resolve this with <code>nonlocal</code>:</p>
+<pre><code class="language-python">def a_counter(count=0):
+    def counter():
+        nonlocal count
+        count += 1
+        return count
+    return counter
+
+the_counter = a_counter()
+
+print(the_counter())
+## 1
+
+print(the_counter())
+## 2
+
+print(the_counter())
+## 3</code></pre>
+
+<p>Great! I'd rather not have to specify <code>nonlocal</code>, but I'm happy to know of another feature unique to Python 3.</p>
+<p>In Python 2, you can't get assignment of captured variables inside your closure, but you can mutate a captured variable. <code>&#175;\_(&#12484;)_/&#175;</code></p>
+<pre><code class="language-python">def a_counter(count={'val': 0}):
+    def counter():
+        count['val'] += 1
+        return count['val']
+    return counter
+
+the_counter = a_counter()
+
+print(the_counter())
+## 1
+
+print(the_counter())
+## 2
+
+print(the_counter())
+## 3</code></pre>
+
+<p>Hooray for closures!</p>    
+    ]]></description>
+<link>http://planspace.org/20150425-working_with_captured_variables_in_python_closures/</link>
+<guid>http://planspace.org/20150425-working_with_captured_variables_in_python_closures/</guid>
+<pubDate>Sat, 25 Apr 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>Two Highlights from NY R Conference 2015</title>
+<description><![CDATA[
+
+<p>Here are the two things I thought were most interesting at <a href="http://www.rstats.nyc/">NY R</a> on Saturday April 25, 2015:</p>
+<hr>
+<p><img alt="MRAN" src="mran.png"></p>
+<p><a href="https://twitter.com/revojoe">Joe Rickert</a> showed <a href="http://www.revolutionanalytics.com/">Revolution Analytics</a>' <a href="http://mran.revolutionanalytics.com/">Managed R Archive Network</a> (MRAN). It snapshots all of <a href="http://cran.r-project.org/">CRAN</a> every day so that you can finally do a real lock-in of the versions for all your R dependencies, using the <a href="http://cran.r-project.org/web/packages/checkpoint/index.html">checkpoint</a> package. This was <a href="http://blog.revolutionanalytics.com/2014/10/introducing-rrt.html">announced</a> a while ago, but it was new to me. I love any sort of data store that gives you <code>as-of</code>, even if it's just by snapshotting.</p>
+<hr>
+<p><a href="https://twitter.com/wesmckinn">Wes McKinney</a> spoke about data frame design and how such tooling should develop further. Here's a transcription of a key <a href="https://twitter.com/planarrowspace/status/591990689635905536">slide</a>:</p>
+<ul>
+<li><strong>The Great Data Tool Decoupling&#8482;</strong><ul>
+<li>Thesis: over time, user interfaces, data storage, and execution engines will decouple and specialize</li>
+<li>In fact, you should really want this to happen<ul>
+<li>Share systems among languages</li>
+<li>Reduce fragmentation and "lock-in"</li>
+<li>Shift developer focus to usability</li>
+</ul>
+</li>
+<li>Prediction: we'll be there by 2025; sooner if we all get our act together</li>
+</ul>
+</li>
+</ul>
+<p>I've thought about this kind of decoupling for data visualization (see <a href="http://planspace.org/20150119-gog_a_separate_layer_for_visualization/">gog</a>) and I think it's a cool direction in general.</p>
+<hr>
+<p>There were certainly other interesting and good things as well!</p>    
+    ]]></description>
+<link>http://planspace.org/20150425-two_highlights_from_ny_r_conference_2015/</link>
+<guid>http://planspace.org/20150425-two_highlights_from_ny_r_conference_2015/</guid>
+<pubDate>Sat, 25 Apr 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Forward Selection with statsmodels</title>
 <description><![CDATA[
 
@@ -920,122 +1024,6 @@ aaron = 27        # This sets a variable to 27.
 <link>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</link>
 <guid>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</guid>
 <pubDate>Sat, 29 Nov 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Alan Kay on Big Data</title>
-<description><![CDATA[
-
-<p>During his recent <a href="https://github.com/papers-we-love/papers-we-love">Papers We Love</a> DC <a href="http://www.meetup.com/Papers-We-Love-DC/events/212419432/">presentation</a>, <a href="https://twitter.com/swannodette">David Nolen</a> recommended this <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">talk</a> by <a href="http://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>, which opens with his thoughts on "big data":</p>
-<blockquote>
-<p>Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase &#8220;big data.&#8221; Not everybody knows what it means. And so it's the perfect context for doing things that people can say, &#8220;Well this is an application of big data and this is an application of big data.&#8221; But in fact, the interesting future's not about data at all&#8212;it's about meaning.</p>
-</blockquote>
-<p>You can watch the whole talk on YouTube: <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">The Future Doesn't Have to Be Incremental</a></p>    
-    ]]></description>
-<link>http://planspace.org/20141125-alan_kay_on_big_data/</link>
-<guid>http://planspace.org/20141125-alan_kay_on_big_data/</guid>
-<pubDate>Tue, 25 Nov 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Well-Used Simple Tools</title>
-<description><![CDATA[
-
-<p><em>A <a href="http://www.meetup.com/Design-Thinking-DC/events/216029412/">short talk</a> for <a href="http://www.meetup.com/Design-Thinking-DC/">Design Thinking DC</a>.</em></p>
-<p>I work with data, and the tools that are unique to what I do may or may not be interesting to you. So I'm going to start with four tools that are useful for everyone.</p>
-<hr>
-<p><a href="http://www.usporedi.hr/novosti/je-li-ovo-najbolja-tipkovnica-svih-vremena"><img alt="" src="keyboard.png"></a></p>
-<hr>
-<p>Tool number one is a keyboard. You use a keyboard a lot, and you should probably use it more.</p>
-<p>Steve Yegge has a 2008 <a href="http://steve-yegge.blogspot.com/2008/09/programmings-dirtiest-little-secret.html">blog post</a> about programmers who can't touch type. You wouldn't think such people existed. But just this year, in 2014, I met such a person.</p>
-<p>A keyboard is probably the tool you use more than any other. Improve your typing. Then, use keyboard shortcuts so that more things become typing.</p>
-<hr>
-<p><a href="http://www.google.com/chrome/"><img alt="" src="chrome.png"></a></p>
-<hr>
-<p>Tool number two is a browser. I usually use <a href="http://www.google.com/chrome/">Chrome</a>. I want to use <a href="http://firefox.com/">Firefox</a> more, but the keyboard bindings are broken for switching tabs when you have a YouTube video up.</p>
-<p>Often, you don't have to reach for the mouse to use your browser. I'll call out key combinations that work on my Mac; on other systems they're often similar.</p>
-<p><code>command</code>+<code>tab</code> switches applications. <code>command</code>+<code>l</code> gives us the address bar. I'll type in my blog's domain, <code>planspace.org</code>. <code>command</code>+<code>f</code> finds in page. I want the post on <code>pca</code>. <code>esc</code> to leave the search. <code>return</code> to follow the link. <code>space</code> to page down a little.</p>
-<p>Let's do it again, another way. <code>command</code>+<code>t</code> for a new tab. We want to search for <code>pca 3d</code>. <code>return</code> to search. <code>tab</code> to start exploring links. <code>down</code> to get the result we want. <code>return</code> to follow the link.</p>
-<p><code>alt</code>+<code>command</code>+<code>left</code> to change tabs. <code>command</code>+<code>w</code> to close the tab. <code>command</code>+<code>l</code> to get the address bar. <code>control</code>+<code>a</code> to go to the beginning of the line. <code>control</code>+<code>k</code> to kill the line. <code>control</code>+<code>y</code> to yank it back. <code>control</code>+<code>f</code> to move forward, <code>control</code>+<code>b</code> to move back.</p>
-<p>These commands are stock - I'm not using any special accessibility tools. They work not just in the browser but across many different settings. Learn them once, and you can speed up many common operations.</p>
-<hr>
-<p><a href="https://gmail.com/"><img alt="" src="gmail.png"></a></p>
-<hr>
-<p>Tool number three is email. <a href="https://gmail.com/">Gmail</a> has been getting progressively worse, but it's still the best option. You can turn off some of the bad features, and turn on keyboard shortcuts.</p>
-<p>A pass through email should not take a long time. It should be distinct from work, but will integrate with task management.</p>
-<p>Move through emails with <code>j</code> and <code>k</code>, open an email with <code>o</code>. <code>r</code> to reply, and do it immediately if it's a brief request. <code>[</code> to archive an email and move to the next one. Some emails don't require a response.</p>
-<p>Sometimes an email represents a task, but you can't work on it until some point in the future. This is where task management is useful. I can forward (<code>f</code>) to a future date like <code>thursday@goodtodo.com</code> and the task will be tracked in the system, so I won't see it until Thursday.</p>
-<p>Tasks that will take longer than two minutes get moved to task management, even if they're for today.</p>
-<p>After a pass through email, the inbox should be empty.</p>
-<hr>
-<p><a href="https://goodtodo.com/"><img alt="" src="goodtodo.png"></a></p>
-<hr>
-<p>Tool number four is <a href="https://goodtodo.com/">Good Todo</a>, which is a calendared to-do list app that integrates with email. It supplements my memory by keeping track of when I need to do things, and lets me focus on just the tasks that I'll be able to accomplish in a given day. It is way better than any other to-do application I've ever seen.</p>
-<p>I include brief tasks that just need to be remembered and crossed off, as well as more substantial tasks. By looking at the list for the day I can decide what to work on first and what to reschedule or reconsider.</p>
-<hr>
-<p>Unix philosophy</p>
-<hr>
-<p>The Unix philosophy describes a way of building an effective system of tools. To paraphrase Doug McIlroy:</p>
-<blockquote>
-<ul>
-<li>Use tools that do one thing well.</li>
-<li>Use tools that work together.</li>
-<li>Use tools that work with text, because text is universal.</li>
-</ul>
-</blockquote>
-<p>I think my four simple tools follow this fairly well, but they aren't ideal examples. I'll use a simple task to demonstrate further. [1]</p>
-<p>[1] <em>For more on this family of tools, see <a href="http://datascienceatthecommandline.com/">Data Science at the Command Line</a> by Jeroen Janssens.</em></p>
-<hr>
-<p><img alt="" src="emacs.png"></p>
-<hr>
-<p>Right now, I'll work on this "Friday sales report" task. I'll download the Excel file. Then I'll go to the command line.</p>
-<p>Step one is getting the data out of Excel format and into text. Luckily there's a package called <a href="https://csvkit.readthedocs.org/">csvkit</a>, which includes <code>in2csv</code>, which will make short work of this simple file.</p>
-<pre><code class="language-html">in2csv sales.xlsx &gt; sales.csv</code></pre>
-
-<p>Now that we have text, a whole world of tools are available. I'll take off the header row with <code>tail</code>, <code>sort</code> the rows, reduce to the unique terms and count occurrences with <code>uniq</code>, then do another sort to see things in a nice order.</p>
-<pre><code class="language-html">tail +2 sales.csv | sort | uniq -c | sort -rn</code></pre>
-
-<p>Notice the input and output are both text. I could work with this text further.</p>
-<p>I'll use <code>R</code> to make a quick bar graph.</p>
-<pre><code class="language-bash">cat sales.csv | Rio -ge "g+geom_bar(aes(item))" &gt; plot.png</code></pre>
-
-<hr>
-<p><img alt="" src="plot.png"></p>
-<hr>
-<p>In three lines, I've done fairly much, and I've done it repeatably.</p>
-<p>I'm using my command line from inside <a href="http://www.gnu.org/software/emacs/">Emacs</a>, which is a text editor. [2] I'll take my three lines and make them a script. Now I can repeat what I've done whenever there's new data.</p>
-<p>[2] <em>For more about Emacs, see my <a href="/20141007-emacs_python/">Emacs and Python</a> talk.</em></p>
-<hr>
-<p>what are good tools?</p>
-<hr>
-<p>Good tools have low or negative cognitive load. They are simple in what they do, and how they do it. They avoid hidden state.</p>
-<p>Good tools are pure, in that they are distinct from what they operate on. They don't lock you into a closed format. They are tools, not kits.</p>
-<p>Good tools are textual, programmable, repeatable, inspectable, automatable: anything you do once can be examined and repeated later non-interactively.</p>
-<p>These are some of my thoughts on tooling, and I'd invite you to consider them. You could also read some of the books that have influenced me.</p>
-<hr>
-<p><a href="http://bitliteracy.com/"><img alt="" src="bit_literacy.jpg"></a></p>
-<hr>
-<p>My thoughts on email and to-do management come directly from <a href="http://bitliteracy.com/">Bit Literacy</a>, which you can get for free at <a href="http://bitliteracy.com/">bitliteracy.com</a>.</p>
-<hr>
-<p><a href="https://pragprog.com/the-pragmatic-programmer"><img alt="" src="pragmatic_programmer.jpg"></a></p>
-<hr>
-<p>My thoughts on text and separation of concerns, among other things, were certainly influenced by <a href="https://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>.</p>
-<hr>
-<p><a href="http://37signals.com/rework/"><img alt="" src="rework.png"></a></p>
-<hr>
-<p><a href="http://37signals.com/rework/">ReWork</a>, which is largely the same as the freely available <a href="http://gettingreal.37signals.com/">Getting Real</a>, has a lot of good ideas for working effectively. "Do everything you can to remove layers of abstraction" is one quote I like.</p>
-<hr>
-<p><img alt="" src="notepad.jpg"></p>
-<hr>
-<p>This is an image from the drafting process for this talk. I've been strongly influenced by the <a href="http://www.bard.edu/iwt/">Bard Institute for Writing and Thinking</a>, and paper is my favorite invention. I mention this to emphasize that while I've shown certain kinds of tools, thinking in many different ways is important to everyone and multiple types of process can be useful in supporting various stages of work.</p>
-<hr>
-<p>use version control!</p>
-<hr>
-<p>The major tool I've omitted is version control. Use <a href="http://git-scm.com/">git</a>.</p>
-<p>And don't use <a href="http://www.sas.com/">SAS</a>.</p>
-<p>Thank you very much!</p>    
-    ]]></description>
-<link>http://planspace.org/20141117-well_used_simple_tools/</link>
-<guid>http://planspace.org/20141117-well_used_simple_tools/</guid>
-<pubDate>Mon, 17 Nov 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

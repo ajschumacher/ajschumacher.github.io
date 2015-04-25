@@ -2,6 +2,8 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-04-25: [Working with Captured Variables in Python Closures](/20150425-working_with_captured_variables_in_python_closures/)
+ * 2015-04-25: [Two Highlights from NY R Conference 2015](/20150425-two_highlights_from_ny_r_conference_2015/)
  * 2015-04-23: [Forward Selection with statsmodels](/20150423-forward_selection_with_statsmodels/)
  * 2015-04-17: [R Squared Can Be Negative](/20150417-negative_r_squared/)
  * 2015-02-21: [RStudio in a Web Browser](/20150221-rstudio_in_a_web_browser/)
