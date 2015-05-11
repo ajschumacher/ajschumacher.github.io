@@ -65,6 +65,42 @@ http://linqs.cs.umd.edu/projects/ddupe/
 ---
 
 
+Thoughts from working earlier:
+
+-  Levenshtein distance is nice, but it turned out I could quickly get a
+   "distance" with near-perfect behavior just on zero/nonzero grouping
+   by writing a custom one.
+
+   -  This amounted to writing a function to extract a "key" which in
+      the case of the tennis players was their first initial and a
+      regex-determined "last name". Knowing this would work depended on
+      looking at the data.
+   -  With a more usual distance metric, it would be nice to see a
+      distribution of pairwise distances, which might suggest whether
+      there are natural breakpoints.
+
+-  It was easy to find one type of error by looking at groups that
+   became too big.
+
+   -  It was nice to look at these as their groups rather than in some
+      columnar format - the final output of a merge table is useful but
+      not very readable.
+   -  To fix the issue I had to go back to the original site of the data
+      and then find extra information from another source. Is there a
+      way to make at least the first part easier?
+   -  It would probably be good to see a distribution of group sizes -
+      "100 pairs, 20 singletons, 1 group of fifteen" etc.
+
+-  It's hard to know if I missed errors in the smaller groups and
+   singletons who didn't get matched.
+
+-  Can I use tSNE (or similar) to get a visualization based just on a
+   distance matrix?
+
+
+---
+
+
 For posterity: look how short this is!
 
 ```python
