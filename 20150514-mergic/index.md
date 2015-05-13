@@ -89,6 +89,15 @@ words
 
 -----
 
+sets > pairs
+
+-----
+
+words
+
+
+-----
+
 <img width="1000%" title="Open Refine" src="open_refine.png" />
 
 -----
