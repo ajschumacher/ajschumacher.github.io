@@ -27,6 +27,9 @@ Bio:
 
 ---
 
+OpenRefine clustering!
+https://github.com/OpenRefine/OpenRefine/wiki/Clustering
+https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth
 
 Tennis Major Tournament Match Statistics Data Set
 https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics
@@ -60,6 +63,9 @@ http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data
 
 D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration
 http://linqs.cs.umd.edu/projects/ddupe/
+
+Assertive R
+http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html
 
 
 ---
