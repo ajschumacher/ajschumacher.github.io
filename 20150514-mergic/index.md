@@ -4,7 +4,7 @@
 
 -----
 
-![ermahgerd mergic](ermahgerd.png)
+<img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" />
 
 -----
 
@@ -13,8 +13,29 @@ ermahgerd
 
 -----
 
-![big data](big_data.png)
+<center>
+[planspace.org](http://planspace.org/)
+
+[@planarrowspace](https://twitter.com/planarrowspace)
+</center>
+
+-----
+
+text
+
+-----
+
+<img width="1000%" title="big data" src="big_data.png" />
 
 -----
 
 big data
+
+
+-----
+
+<img width="1000%" title="Open Refine" src="open_refine.png" />
+
+-----
+
+Open Refine
