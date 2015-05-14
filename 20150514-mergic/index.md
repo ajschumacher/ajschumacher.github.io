@@ -26,6 +26,15 @@ ermahgerd
 
 -----
 
+workflow support for reproducible deduplication and merging
+
+-----
+
+words
+
+
+-----
+
 ```
 Lukas Lacko             F Pennetta
 Leonardo Mayer          S Williams
@@ -193,12 +202,60 @@ num groups, max group, num pairs, cutoff
 ```
 
 ```
+         2,       499,    124251, 0.416666666667
+         1,       500,    124750, 0.418181818182
+```
+
+```
        451,         2,        49, 0.111111111111
        450,         2,        50, 0.115384615385
        449,         3,        52, 0.125
 ```
 
+```bash
+mergic make RLdata500.csv 0.12
+```
 
+```json
+{
+    "MATTHIAS,,HAAS,,1955,7,8": [
+        "MATTHIAS,,HAAS,,1955,7,8",
+        "MATTHIAS,,HAAS,,1955,8,8"
+    ],
+    "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+        "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+    ],
+```
+
+```json
+{
+    "MATTHIAS,,HAAS,,1955,7,8": [
+        "MATTHIAS,,HAAS,,1955,8,8"
+    ],
+    "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+        "MATTHIAS,,HAAS,,1955,7,8",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+    ],
+```
+
+```bash
+mergic diff base.json edited.json > diff.json
+mergic apply base.json diff.json
+```
+
+```bash
+mergic table edited.json
+```
+
+```
+"HANS,,SCHAEFER,,2003,6,22","HANS,,SCHAEFER,,2003,6,22"
+"HARTMHUT,,HOFFMSNN,,1929,12,29","HARTMHUT,,HOFFMSNN,,1929,12,29"
+"HARTMUT,,HOFFMANN,,1929,12,29","HARTMHUT,,HOFFMSNN,,1929,12,29"
+```
+
+words
 
 
 -----
