@@ -12,7 +12,7 @@ planspace.org
 
 -----
 
-text
+Hi! I'm Aaron. This is my blog and my twitter handle. You can get from one to the other. [This presentation](big.html) and a corresponding write-up (you're reading it) are on my blog.
 
 
 -----
@@ -21,7 +21,7 @@ text
 
 -----
 
-ermahgerd
+Down to business!
 
 
 -----
@@ -30,7 +30,7 @@ workflow support for reproducible deduplication and merging
 
 -----
 
-words
+Mergic is a simple tool designed to make it less painful when you need to merge things that don't yet merge.
 
 
 -----
@@ -48,7 +48,9 @@ Fabio Fognini           T.Robredo
 ```
 -----
 
-words
+The problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.
+
+Do you see the match here? (It's Santiago!)
 
 
 -----
@@ -57,7 +59,9 @@ words
 
 -----
 
-big data
+A quick disclaimer!
+
+This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently mergic is strictly for this kind of artisanal data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).
 
 
 -----
@@ -75,7 +79,9 @@ Santiago Giraldo,Y-H.Lu
 ```
 -----
 
-words
+So we make all possible pairs of identifiers! This is annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.
+
+Do you see the match here? (It's Santiago again!)
 
 
 -----
@@ -93,7 +99,7 @@ O.o?
 ```
 -----
 
-words about dedupe
+Python [dedupe](https://github.com/datamade/dedupe) is a very cool project.
 
 
 -----
