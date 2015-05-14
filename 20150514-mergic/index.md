@@ -99,7 +99,7 @@ O.o?
 ```
 -----
 
-Python [dedupe](https://github.com/datamade/dedupe) is a very cool project.
+The Python [dedupe](https://github.com/datamade/dedupe) project is very cool, and could be exactly what you want for larger amounts of more complex data. There's even work on getting learnable edit distances implemented now, which would be great to see. But for very simple data sets, `dedupe` can be overkill. But you don't get much sense of the big picture of your data set, and it's still very pair-oriented.
 
 
 -----
@@ -109,7 +109,9 @@ Karolina Pliskova,K Pliskova
 ```
 -----
 
-words
+Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.
+
+Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)
 
 
 -----
@@ -119,7 +121,7 @@ Kristyna Pliskova,K Pliskova
 ```
 -----
 
-words
+Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.
 
 
 -----
@@ -128,7 +130,7 @@ sets > pairs
 
 -----
 
-words
+Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.
 
 
 -----
@@ -137,7 +139,7 @@ words
 
 -----
 
-Open Refine
+[Open Refine](http://openrefine.org/) is pretty good. Their interface shows you some useful information, and you can see sets of things. There's even some idea of repeatable transformations. But there's so much functionality wrapped up in a mostly graphical interface that it's hard to make it part of an easily repeatable workflow. And while there are a bunch of built-in distance functions, I'm not sure whether it's possible to use a custom distance function in Open Refine.
 
 
 -----
@@ -148,7 +150,11 @@ Open Refine
 
 -----
 
-goals
+So the goals of `mergic` are to be:
+
+ * simple, meaning largely text-based and obvious
+ * customizable, meaning you can easily use a custom distance function
+ * reproducible, meaning every part can be done again automatically
 
 
 -----
@@ -157,17 +163,25 @@ demo
 
 -----
 
+Here's a quick run-through of the `mergic` workflow. It's similar to the one in the [README](https://github.com/ajschumacher/mergic).
+
 ```bash
 pew new pydata
 ```
+
+I'll start by making a new [virtual environment](https://virtualenv.pypa.io/) using [pew](https://github.com/berdario/pew).
 
 ```bash
 pip install mergic
 ```
 
+`mergic` is very new (version 0.0.4) and it currently installs with no extra dependencies.
+
 ```bash
 mergic -h
 ```
+
+`mergic` runs includes a command-line script based on [argparse](https://docs.python.org/2/library/argparse.html) that uses a default string distance function.
 
 ```
 usage: mergic [-h] {calc,make,check,diff,apply,table} ...
@@ -185,9 +199,13 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 
+The command line script has a number of sub-commands that expose its functionality.
+
 ```bash
 head -4 RLdata500.csv
 ```
+
+We'll try `mergic` out with an example data set from [R](http://www.r-project.org/)'s [RecordLinkage](http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf) package.
 
 ```
 CARSTEN,,MEIER,,1949,7,22
@@ -196,9 +214,13 @@ ROBERT,,HARTMANN,,1930,4,30
 STEFAN,,WOLFF,,1957,9,2
 ```
 
+The data is fabricated name and birthdate from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
+
 ```bash
 mergic calc RLdata500.csv
 ```
+
+The `calc` subcommand calculates all the pairwise distances and provides diagnostics about possible groupings that could be produced.
 
 ```
 num groups, max group, num pairs, cutoff
@@ -207,10 +229,14 @@ num groups, max group, num pairs, cutoff
        497,         2,         3, 0.0175438596491
 ```
 
+With a cutoff lower than any actual encountered string distance, every item stays separate, the maximum group size is one, and there are no pairs within those groups to evaluate.
+
 ```
          2,       499,    124251, 0.416666666667
          1,       500,    124750, 0.418181818182
 ```
+
+On the other extreme, we could group every item together in a giant mega-group.
 
 ```
        451,         2,        49, 0.111111111111
@@ -218,10 +244,14 @@ num groups, max group, num pairs, cutoff
        449,         3,        52, 0.125
 ```
 
+`mergic` gives you a choice about how big the groups it will produce will be. In this case, there's a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.
+
 ```bash
 mergic make RLdata500.csv 0.12
 ```
 
+We can make a grouping with that cutoff, and the result is a JSON-formatted partition.
+
 ```json
 {
     "MATTHIAS,,HAAS,,1955,7,8": [
@@ -234,6 +264,8 @@ mergic make RLdata500.csv 0.12
     ],
 ```
 
+In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. (This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.)
+
 ```json
 {
     "MATTHIAS,,HAAS,,1955,7,8": [
@@ -245,15 +277,21 @@ mergic make RLdata500.csv 0.12
         "HELGA,ELFRIEDE,BERGER,,1989,1,28"
     ],
 ```
+
+The above would be a strange change to make, but you could make such a change and save your changed version as a new file.
 
 ```bash
 mergic diff base.json edited.json > diff.json
 mergic apply base.json diff.json
 ```
 
+`mergic` includes functionality for creating and applying diffs that compare two partitions. You can preserve just the changes that you make by hand, which provides a record of the changes that had a human in the loop versus the changes that were computer-generated.
+
 ```bash
 mergic table edited.json
 ```
+
+To actually accomplish the desired merge or deduplication after creating a good grouping in JSON, `mergic` will generate a two-column merge table in CSV that can be used with most any data system.
 
 ```
 "HANS,,SCHAEFER,,2003,6,22","HANS,,SCHAEFER,,2003,6,22"
@@ -261,7 +299,7 @@ mergic table edited.json
 "HARTMUT,,HOFFMANN,,1929,12,29","HARTMHUT,,HOFFMSNN,,1929,12,29"
 ```
 
-words
+These merge tables are awful to work with by hand, which is why `mergic` leaves their generation as a final step after humans work with the more understandable JSON groupings.
 
 
 -----
@@ -270,16 +308,18 @@ words
 
 -----
 
-custom distance
+It's easy to write a script with a custom distance function and immediately use it with all the workflow support of the `mergic` script.
+
+Often, a custom distance function makes or breaks your effort. It's worth thinking about and experimenting with, and `mergic` makes it easy!
 
 
 -----
 
-[<img width="1000%" title="New York Open Statistical Programming Meetup; Practical Mergic: How to Join Anything" src="open_stats_prog_meetup.png" />](http://www.meetup.com/nyhackr/events/222328498/)
+<img width="1000%" title="New York Open Statistical Programming Meetup; Practical Mergic: How to Join Anything" src="open_stats_prog_meetup.png" />
 
 -----
 
-words
+If you're interested in this kind of thing, I'll be doing [a longer talk](http://www.meetup.com/nyhackr/events/222328498/) at the [New York City Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) next week Wednesday.
 
 
 -----
