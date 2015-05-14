@@ -4,24 +4,24 @@
 
 -----
 
-<img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" />
-
------
-
-ermahgerd
-
-
------
-
 <center>
-[planspace.org](http://planspace.org/)
+planspace.org
 
-[@planarrowspace](https://twitter.com/planarrowspace)
+@planarrowspace
 </center>
 
 -----
 
 text
+
+
+-----
+
+<img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" />
+
+-----
+
+ermahgerd
 
 
 -----
@@ -35,6 +35,7 @@ Juan Monaco             N.Djokovic
 Dmitry Tursunov         S.Giraldo
 Dudi Sela               Y-H.Lu
 Fabio Fognini           T.Robredo
+...                     ...
 ```
 -----
 
@@ -61,10 +62,29 @@ Santiago Giraldo,C Wozniacki
 Santiago Giraldo,S.Giraldo
 Santiago Giraldo,Marcos Baghdatis
 Santiago Giraldo,Y-H.Lu
+...
 ```
 -----
 
 words
+
+
+-----
+
+```
+INFO:dedupe.training:1.0
+name : stanislas wawrinka
+
+name : stanislas wawrinka
+
+Do these records refer to the same thing?
+(y)es / (n)o / (u)nsure / (f)inished
+
+O.o?
+```
+-----
+
+words about dedupe
 
 
 -----
@@ -103,3 +123,50 @@ words
 -----
 
 Open Refine
+
+
+-----
+
+ * simple
+ * customizable
+ * reproducible
+
+-----
+
+goals
+
+
+-----
+
+demo
+
+-----
+
+longer write-up of demo
+
+
+-----
+
+[<img width="1000%" title="New York Open Statistical Programming Meetup; Practical Mergic: How to Join Anything" src="open_stats_prog_meetup.png" />](http://www.meetup.com/nyhackr/events/222328498/)
+
+-----
+
+words
+
+
+-----
+
+[<img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" />](http://opendatascicon.com/)
+
+-----
+
+words
+
+
+-----
+
+Thanks!
+
+-----
+
+words
