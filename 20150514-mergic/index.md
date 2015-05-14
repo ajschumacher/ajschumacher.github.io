@@ -12,7 +12,7 @@ planspace.org
 
 -----
 
-Hi! I'm Aaron. This is my blog and my twitter handle. You can get from one to the other. [This presentation](big.html) and a corresponding write-up (you're reading it) are on my blog.
+Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/planarrowspace). You can get from one to the other. [This presentation](big.html) and a corresponding write-up (you're reading it) are on my blog (which you're on).
 
 
 -----
@@ -22,15 +22,6 @@ Hi! I'm Aaron. This is my blog and my twitter handle. You can get from one to th
 -----
 
 Down to business!
-
-
------
-
-workflow support for reproducible deduplication and merging
-
------
-
-Mergic is a simple tool designed to make it less painful when you need to merge things that don't yet merge.
 
 
 -----
@@ -55,13 +46,22 @@ Do you see the match here? (It's Santiago!)
 
 -----
 
+workflow support for reproducible deduplication and merging
+
+-----
+
+This is what `mergic` is for. `mergic` is a simple tool designed to make it less painful when you need to merge things that don't yet merge.
+
+
+-----
+
 <img width="1000%" title="big data" src="big_data.png" />
 
 -----
 
 A quick disclaimer!
 
-This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently mergic is strictly for this kind of artisanal data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).
+This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently `mergic` is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).
 
 
 -----
@@ -99,7 +99,7 @@ O.o?
 ```
 -----
 
-The Python [dedupe](https://github.com/datamade/dedupe) project is very cool, and could be exactly what you want for larger amounts of more complex data. There's even work on getting learnable edit distances implemented now, which would be great to see. But for very simple data sets, `dedupe` can be overkill. But you don't get much sense of the big picture of your data set, and it's still very pair-oriented.
+The is a "screen shot" of the [csvdedupe](https://github.com/datamade/csvdedupe) interface, which is based on the Python [dedupe](https://github.com/datamade/dedupe) project, which is very cool. It could be exactly what you want for larger amounts of more complex data. There's even work on getting learnable edit distances implemented now, which would be great to see. But for very simple data sets, `dedupe` can be overkill. Also, you don't get much sense of the big picture of your data set, and it's still very pair-oriented.
 
 
 -----
@@ -139,7 +139,7 @@ Both perceptually and logically, it's better to think in sets than in a bunch of
 
 -----
 
-[Open Refine](http://openrefine.org/) is pretty good. Their interface shows you some useful information, and you can see sets of things. There's even some idea of repeatable transformations. But there's so much functionality wrapped up in a mostly graphical interface that it's hard to make it part of an easily repeatable workflow. And while there are a bunch of built-in distance functions, I'm not sure whether it's possible to use a custom distance function in Open Refine.
+[Open Refine](http://openrefine.org/) is quite good. Their interface shows you some useful diagnostics, and you can see sets of things. There's even some idea of repeatable transformations. But there's so much functionality wrapped up in a mostly graphical interface that it's hard to make it part of an easily repeatable workflow. And while there are a bunch of built-in distance functions, I'm not sure whether it's possible to use a custom distance function in Open Refine.
 
 
 -----
@@ -154,7 +154,7 @@ So the goals of `mergic` are to be:
 
  * simple, meaning largely text-based and obvious
  * customizable, meaning you can easily use a custom distance function
- * reproducible, meaning every part can be done again automatically
+ * reproducible, meaning everything you do can be done again automatically
 
 
 -----
@@ -214,7 +214,7 @@ ROBERT,,HARTMANN,,1930,4,30
 STEFAN,,WOLFF,,1957,9,2
 ```
 
-The data is fabricated name and birthdate from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
+The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
 
 ```bash
 mergic calc RLdata500.csv
@@ -324,11 +324,11 @@ If you're interested in this kind of thing, I'll be doing [a longer talk](http:/
 
 -----
 
-[<img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" />](http://opendatascicon.com/)
+<img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" />
 
 -----
 
-words
+I also hope to see you at [Open Data Science Con](http://opendatascicon.com/) in Boston!
 
 
 -----
@@ -337,4 +337,17 @@ Thanks!
 
 -----
 
-words
+Thank you!
+
+
+-----
+
+<center>
+planspace.org
+
+@planarrowspace
+</center>
+
+-----
+
+This is just me again.
