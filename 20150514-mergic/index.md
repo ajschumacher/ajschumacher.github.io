@@ -142,7 +142,72 @@ demo
 
 -----
 
-longer write-up of demo
+```bash
+pew new pydata
+```
+
+```bash
+pip install mergic
+```
+
+```bash
+mergic -h
+```
+
+```
+usage: mergic [-h] {calc,make,check,diff,apply,table} ...
+
+positional arguments:
+  {calc,make,check,diff,apply,table}
+    calc                calculate all partitions of data
+    make                make a JSON partition from data
+    check               check validity of JSON partition
+    diff                diff two JSON partitions
+    apply               apply a patch to a JSON partition
+    table               make merge table from JSON partition
+
+optional arguments:
+  -h, --help            show this help message and exit
+```
+
+```bash
+head -4 RLdata500.csv
+```
+
+```
+CARSTEN,,MEIER,,1949,7,22
+GERD,,BAUER,,1968,7,27
+ROBERT,,HARTMANN,,1930,4,30
+STEFAN,,WOLFF,,1957,9,2
+```
+
+```bash
+mergic calc RLdata500.csv
+```
+
+```
+num groups, max group, num pairs, cutoff
+----------------------------------------
+       500,         1,         0, -0.982456140351
+       497,         2,         3, 0.0175438596491
+```
+
+```
+       451,         2,        49, 0.111111111111
+       450,         2,        50, 0.115384615385
+       449,         3,        52, 0.125
+```
+
+
+
+
+-----
+
+<img width="1000%" title="custom distance function documentation on GitHub" src="custom_distance.png" />
+
+-----
+
+custom distance
 
 
 -----
