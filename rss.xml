@@ -7,6 +7,225 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>mergic</title>
+<description><![CDATA[
+
+<p><em>A lightning talk at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>, introducing <a href="https://github.com/ajschumacher/mergic">mergic</a>.</em></p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img height="1000%" title="ermahgerd mergic" src="ermahgerd.png"></p>
+<hr>
+<p>Down to business!</p>
+<hr>
+<pre><code>Lukas Lacko             F Pennetta
+Leonardo Mayer          S Williams
+Marcos Baghdatis        C Wozniacki
+Santiago Giraldo        E Bouchard
+Juan Monaco             N.Djokovic
+Dmitry Tursunov         S.Giraldo
+Dudi Sela               Y-H.Lu
+Fabio Fognini           T.Robredo
+...                     ...</code></pre>
+
+<hr>
+<p>The problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
+<p>Do you see the match here? (It's Santiago!)</p>
+<hr>
+<p>workflow support for reproducible deduplication and merging</p>
+<hr>
+<p>This is what <code>mergic</code> is for. <code>mergic</code> is a simple tool designed to make it less painful when you need to merge things that don't yet merge.</p>
+<hr>
+<p><img width="1000%" title="big data" src="big_data.png"></p>
+<hr>
+<p>A quick disclaimer!</p>
+<p>This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).</p>
+<hr>
+<pre><code>Santiago Giraldo,Leonardo Mayer
+Santiago Giraldo,Dudi Sela
+Santiago Giraldo,Juan Monaco
+Santiago Giraldo,S Williams
+Santiago Giraldo,C Wozniacki
+Santiago Giraldo,S.Giraldo
+Santiago Giraldo,Marcos Baghdatis
+Santiago Giraldo,Y-H.Lu
+...</code></pre>
+
+<hr>
+<p>So we make all possible pairs of identifiers! This is annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.</p>
+<p>Do you see the match here? (It's Santiago again!)</p>
+<hr>
+<pre><code>INFO:dedupe.training:1.0
+name : stanislas wawrinka
+
+name : stanislas wawrinka
+
+Do these records refer to the same thing?
+(y)es / (n)o / (u)nsure / (f)inished
+
+O.o?</code></pre>
+
+<hr>
+<p>The is a "screen shot" of the <a href="https://github.com/datamade/csvdedupe">csvdedupe</a> interface, which is based on the Python <a href="https://github.com/datamade/dedupe">dedupe</a> project, which is very cool. It could be exactly what you want for larger amounts of more complex data. There's even work on getting learnable edit distances implemented now, which would be great to see. But for very simple data sets, <code>dedupe</code> can be overkill. Also, you don't get much sense of the big picture of your data set, and it's still very pair-oriented.</p>
+<hr>
+<pre><code>Karolina Pliskova,K Pliskova</code></pre>
+
+<hr>
+<p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
+<p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
+<hr>
+<pre><code>Kristyna Pliskova,K Pliskova</code></pre>
+
+<hr>
+<p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
+<hr>
+<p>sets &gt; pairs</p>
+<hr>
+<p>Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.</p>
+<hr>
+<p><img width="1000%" title="Open Refine" src="open_refine.png"></p>
+<hr>
+<p><a href="http://openrefine.org/">Open Refine</a> is quite good. Their interface shows you some useful diagnostics, and you can see sets of things. There's even some idea of repeatable transformations. But there's so much functionality wrapped up in a mostly graphical interface that it's hard to make it part of an easily repeatable workflow. And while there are a bunch of built-in distance functions, I'm not sure whether it's possible to use a custom distance function in Open Refine.</p>
+<hr>
+<ul>
+<li>simple</li>
+<li>customizable</li>
+<li>reproducible</li>
+</ul>
+<hr>
+<p>So the goals of <code>mergic</code> are to be:</p>
+<ul>
+<li>simple, meaning largely text-based and obvious</li>
+<li>customizable, meaning you can easily use a custom distance function</li>
+<li>reproducible, meaning everything you do can be done again automatically</li>
+</ul>
+<hr>
+<p>demo</p>
+<hr>
+<p>Here's a quick run-through of the <code>mergic</code> workflow. It's similar to the one in the <a href="https://github.com/ajschumacher/mergic">README</a>.</p>
+<pre><code class="language-bash">pew new pydata</code></pre>
+
+<p>I'll start by making a new <a href="https://virtualenv.pypa.io/">virtual environment</a> using <a href="https://github.com/berdario/pew">pew</a>.</p>
+<pre><code class="language-bash">pip install mergic</code></pre>
+
+<p><code>mergic</code> is very new (version 0.0.4) and it currently installs with no extra dependencies.</p>
+<pre><code class="language-bash">mergic -h</code></pre>
+
+<p><code>mergic</code> runs includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
+<pre><code>usage: mergic [-h] {calc,make,check,diff,apply,table} ...
+
+positional arguments:
+  {calc,make,check,diff,apply,table}
+    calc                calculate all partitions of data
+    make                make a JSON partition from data
+    check               check validity of JSON partition
+    diff                diff two JSON partitions
+    apply               apply a patch to a JSON partition
+    table               make merge table from JSON partition
+
+optional arguments:
+  -h, --help            show this help message and exit</code></pre>
+
+<p>The command line script has a number of sub-commands that expose its functionality.</p>
+<pre><code class="language-bash">head -4 RLdata500.csv</code></pre>
+
+<p>We'll try <code>mergic</code> out with an example data set from <a href="http://www.r-project.org/">R</a>'s <a href="http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf">RecordLinkage</a> package.</p>
+<pre><code>CARSTEN,,MEIER,,1949,7,22
+GERD,,BAUER,,1968,7,27
+ROBERT,,HARTMANN,,1930,4,30
+STEFAN,,WOLFF,,1957,9,2</code></pre>
+
+<p>The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for <code>mergic</code> we'll just treat the rows of CSV as single strings.</p>
+<pre><code class="language-bash">mergic calc RLdata500.csv</code></pre>
+
+<p>The <code>calc</code> subcommand calculates all the pairwise distances and provides diagnostics about possible groupings that could be produced.</p>
+<pre><code>num groups, max group, num pairs, cutoff
+----------------------------------------
+       500,         1,         0, -0.982456140351
+       497,         2,         3, 0.0175438596491</code></pre>
+
+<p>With a cutoff lower than any actual encountered string distance, every item stays separate, the maximum group size is one, and there are no pairs within those groups to evaluate.</p>
+<pre><code>         2,       499,    124251, 0.416666666667
+         1,       500,    124750, 0.418181818182</code></pre>
+
+<p>On the other extreme, we could group every item together in a giant mega-group.</p>
+<pre><code>       451,         2,        49, 0.111111111111
+       450,         2,        50, 0.115384615385
+       449,         3,        52, 0.125</code></pre>
+
+<p><code>mergic</code> gives you a choice about how big the groups it will produce will be. In this case, there's a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.</p>
+<pre><code class="language-bash">mergic make RLdata500.csv 0.12</code></pre>
+
+<p>We can make a grouping with that cutoff, and the result is a JSON-formatted partition.</p>
+<pre><code class="language-json">{
+    "MATTHIAS,,HAAS,,1955,7,8": [
+        "MATTHIAS,,HAAS,,1955,7,8",
+        "MATTHIAS,,HAAS,,1955,8,8"
+    ],
+    "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+        "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+    ],</code></pre>
+
+<p>In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. (This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.)</p>
+<pre><code class="language-json">{
+    "MATTHIAS,,HAAS,,1955,7,8": [
+        "MATTHIAS,,HAAS,,1955,8,8"
+    ],
+    "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+        "MATTHIAS,,HAAS,,1955,7,8",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+    ],</code></pre>
+
+<p>The above would be a strange change to make, but you could make such a change and save your changed version as a new file.</p>
+<pre><code class="language-bash">mergic diff base.json edited.json &gt; diff.json
+mergic apply base.json diff.json</code></pre>
+
+<p><code>mergic</code> includes functionality for creating and applying diffs that compare two partitions. You can preserve just the changes that you make by hand, which provides a record of the changes that had a human in the loop versus the changes that were computer-generated.</p>
+<pre><code class="language-bash">mergic table edited.json</code></pre>
+
+<p>To actually accomplish the desired merge or deduplication after creating a good grouping in JSON, <code>mergic</code> will generate a two-column merge table in CSV that can be used with most any data system.</p>
+<pre><code>"HANS,,SCHAEFER,,2003,6,22","HANS,,SCHAEFER,,2003,6,22"
+"HARTMHUT,,HOFFMSNN,,1929,12,29","HARTMHUT,,HOFFMSNN,,1929,12,29"
+"HARTMUT,,HOFFMANN,,1929,12,29","HARTMHUT,,HOFFMSNN,,1929,12,29"</code></pre>
+
+<p>These merge tables are awful to work with by hand, which is why <code>mergic</code> leaves their generation as a final step after humans work with the more understandable JSON groupings.</p>
+<hr>
+<p><img width="1000%" title="custom distance function documentation on GitHub" src="custom_distance.png"></p>
+<hr>
+<p>It's easy to write a script with a custom distance function and immediately use it with all the workflow support of the <code>mergic</code> script.</p>
+<p>Often, a custom distance function makes or breaks your effort. It's worth thinking about and experimenting with, and <code>mergic</code> makes it easy!</p>
+<hr>
+<p><img width="1000%" title="New York Open Statistical Programming Meetup; Practical Mergic: How to Join Anything" src="open_stats_prog_meetup.png"></p>
+<hr>
+<p>If you're interested in this kind of thing, I'll be doing <a href="http://www.meetup.com/nyhackr/events/222328498/">a longer talk</a> at the <a href="http://www.meetup.com/nyhackr/">New York City Open Statistical Programming Meetup</a> next week Wednesday.</p>
+<hr>
+<p><img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png"></p>
+<hr>
+<p>I also hope to see you at <a href="http://opendatascicon.com/">Open Data Science Con</a> in Boston!</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p>    
+    ]]></description>
+<link>http://planspace.org/20150514-mergic/</link>
+<guid>http://planspace.org/20150514-mergic/</guid>
+<pubDate>Thu, 14 May 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Working with Captured Variables in Python Closures</title>
 <description><![CDATA[
 
@@ -973,57 +1192,6 @@ h &lt;- hist(x, col="cornflowerblue")</code></pre>
 <link>http://planspace.org/20141207-make_it_easy_to_install_emacs/</link>
 <guid>http://planspace.org/20141207-make_it_easy_to_install_emacs/</guid>
 <pubDate>Sun, 07 Dec 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Ruby Symbols are not Lisp Symbols</title>
-<description><![CDATA[
-
-<p>I heard about <a href="http://www.johndcook.com/blog/2012/03/28/how-emacs-influenced-ruby/">How Emacs influenced Ruby</a> and the main thing I took from it was the possible connection between (Emacs) Lisp symbols and Ruby symbols, <a href="http://ergoemacs.org/emacs/Matz_Ruby_how_emacs_changed_my_life.html">as suggested by Xah</a>. But Ruby symbols and Lisp symbols are really quite different.</p>
-<p>In Ruby you write a symbol starting with a colon. This looks similar to writing an apostrophe before a symbol in Lisp to quote it.</p>
-<pre><code class="language-ruby"># Ruby
-:aaron         # This is a symbol.
-               # It is written and displayed with a leading colon.
-# =&gt; :aaron</code></pre>
-
-<pre><code class="language-lisp">; Lisp
-'aaron         ; This is shorthand for the next line.
-(quote aaron)  ; These both evaluate to the symbol itself, as shown.
-; =&gt; aaron</code></pre>
-
-<p>The big difference is that in Lisp, symbols evaluate as variables and functions. That's why you have to quote a symbol in Lisp to work with the symbol itself. In Ruby, on the other hand, symbols never evaluate to anything else. Variable and method names in Ruby are not symbols; they're off in their own world. Note the differing error messages here:</p>
-<pre><code class="language-ruby"># Ruby
-aaron        # This is not a symbol but evaluates as a variable or method.
-# =&gt; NameError: undefined local variable or method `aaron' for main:Object</code></pre>
-
-<pre><code class="language-lisp">; Lisp
-aaron        ; This is a symbol which will (try to) evaluate as a variable.
-; =&gt; *** Eval error ***  Symbol's value as variable is void: aaron</code></pre>
-
-<p>You can't set (or bind) a Ruby symbol to a value at all&#8212;it's a syntax error. But that's exactly what you do in Lisp.</p>
-<pre><code class="language-ruby"># Ruby
-:aaron = 12       # This attempts to set a symbol to 12, which Ruby hates.
-# =&gt; SyntaxError: (irb):10: syntax error, unexpected '=', expecting end-of-input</code></pre>
-
-<pre><code class="language-lisp">; Lisp
-(set 'aaron 12)   ; This sets a symbol's value as a variable to 12.
-; =&gt; 12</code></pre>
-
-<p>Conversely, what works naturally in Ruby is nonsense in Lisp.</p>
-<pre><code class="language-ruby"># Ruby
-aaron = 27        # This sets a variable to 27.
-# =&gt; 12</code></pre>
-
-<pre><code class="language-lisp">; Lisp
-(set aaron 27)    ; This attempts to set 12 to 27.
-; =&gt; *** Eval error ***  Wrong type argument: symbolp, 12</code></pre>
-
-<p>Deeper differences between Lisp and Ruby are evident, for example, in the behavior of <code>eval</code>. In Ruby, <code>eval</code> takes a string, while in Lisp, it takes a Lisp object. So while it's true that in Ruby <code>eval(:aaron.to_s)</code> will give the variable <code>aaron</code>'s value, it's fairly unrelated to the symbol <code>:aaron</code>, and quite different from <code>(eval aaron)</code> in Lisp.</p>
-<p>Some uses of Ruby and Lisp symbols are similar, but by and large trying to think of them as related was doing me more harm than good.</p>
-<p>I found that <a href="https://twitter.com/chneukirchen">Christian Neukirchen</a> has <a href="http://chneukirchen.org/blog/archive/2005/12/ruby-symbols-are-not-lisp-symbols.html">a 2005 post with the same name as this one</a>, which points out even more differences between Lisp symbols and Ruby symbols. His link to the Common Lisp HyperSpec "K" glossary page (for "keyword") is broken; here's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_k.htm">a working one</a>. I'm playing with <a href="http://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a> here, not <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. There may be more to be said.</p>    
-    ]]></description>
-<link>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</link>
-<guid>http://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/</guid>
-<pubDate>Sat, 29 Nov 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

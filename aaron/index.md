@@ -4,6 +4,7 @@ You can connect with me via [Twitter](https://twitter.com/planarrowspace), [Link
 
 Here are some things I've talked about:
 
+ * [mergic](/20150514-mergic/) (lightning talk) at [PyData NYC](http://www.meetup.com/PyDataNYC/) on [Thursday May 14, 2015](http://www.meetup.com/PyDataNYC/events/222329250/)
  * [Data Science isn't Magic](/20150220-data_science_isnt_magic/) at [DC Open Data Day](http://dc.opendataday.org/) on Friday February 20, 2015
  * [Please stop saying “Big Data”](/20141215-please_stop_saying_big_data/) at [AIR](http://www.air.org/) on Monday December 15, 2014
  * [Well-Used Simple Tools](/20141117-well_used_simple_tools/) at [Design Thinking DC](http://www.meetup.com/Design-Thinking-DC/) on [Monday November 17, 2014](http://www.meetup.com/Design-Thinking-DC/events/216029412/)
