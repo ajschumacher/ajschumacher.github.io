@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Practical Mergic</title>
+  </head>
+  <body>
+    <article>
+<h1>Practical Mergic</h1>
+<p class="date">Wednesday May 20, 2015</p>
+<p>A talk</p>
+<hr />
+<p>“There are only two hard things in computer science: cache invalidation and naming things.”</p>
+<hr />
+<p><a href="http://www.meerkat.com/karlton/">Phil Karlton</a> said <a href="http://martinfowler.com/bliki/TwoHardThings.html">this</a>.</p>
+<p>When working with data (let's call it “data science” then) you have problems not only with your own names, but also with everybody else's names.</p>
+<p>Let's focus on just two classes of problems:</p>
+<hr />
+<p>when names are the same</p>
+<hr />
+<p>Lots of things can go wrong when names are re-used when they shouldn't be.</p>
+<hr />
+<p>when names are <em>not</em> the same</p>
+<hr />
+<p>It can be even worse when names for the same thing are <em>not</em> the same.</p>
+<p>Both these problems are closely related to merging, and we'll think a lot about that context.</p>
+<p>But first, an example illustrating the importance of checking that your names are unique (not the same).</p>
+<hr />
+<p>demo</p>
+<hr />
+<p>Original idea:</p>
+<p>"Making merge tables - some entity resolution, python's <code>dedupe</code>, etc."</p>
+<p>Expanded idea:</p>
+<p>"Hmm... My main idea is to talk about techniques around duplicate detection and joins; I don't know if it's technical enough or R-specific enough. A rough synopsis might be something like: Merging data can be a disaster if you don't do it right. There are assumptions to verify before and after a merge. If the assumptions don't hold, there are steps you can take to ameliorate the problem. Constructing a merge table reduces to the problem of de-duplication. And there's Bilenko's work on learnable string distances etc.! http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf" Obviously that is not a description that is ready to ship, but that's what I'm thinking about. What do you think? Could that become a talk?"</p>
+<p>Jared's feedback:</p>
+<p>"I actually really like that talk.  It's about data, not stats or programming."</p>
+<p>Submitted:</p>
+<p>Title:
+Practical Mergic: How to Join Anything</p>
+<p>Abstract:
+Combining data sets can be a huge pain, with possible problems both obvious and insidious. Aaron will present practical approaches for detecting and avoiding potential pitfalls, as well as rigorous and repeatable processes for generating merge tables through reduction to de-duplication. The focus will be on techniques for quickly achieving high accuracy for data sets of moderate size, with brief excursions into the entity resolution literature, machine learning for distance metrics, and applying clustering and visualization techniques including multidimensional scaling.</p>
+<p>Bio:
+<a href="http://planspace.org/aaron/">Aaron</a> is an instructor at the <a href="http://www.thisismetis.com/">Metis</a> data science boot camp. He is the original author of the <a href="http://cran.r-project.org/web/packages/rjstat/">rjstat</a> package for R, which is mostly unrelated to this talk. He made <a href="http://emacs.link/">emacs.link</a>, which is also not related to this talk. Aaron blogs at <a href="http://planspace.org/">plan ➔ space</a> and tweets as <a href="https://twitter.com/planarrowspace">@planarrowspace</a>.</p>
+<hr />
+<p>OpenRefine clustering!
+https://github.com/OpenRefine/OpenRefine/wiki/Clustering
+https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth</p>
+<p>Tennis Major Tournament Match Statistics Data Set
+https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics</p>
+<p>Adaptive Duplicate Detection Using Learnable String Similarity Measures
+http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf</p>
+<p>Pair hidden Markov models (Bioinformatics)
+http://what-when-how.com/bioinformatics/pair-hidden-markov-models-bioinformatics/</p>
+<p>Stanford Entity Resolution Framework
+http://infolab.stanford.edu/serf/</p>
+<p>Swoosh: a generic approach to entity resolution
+http://infolab.stanford.edu/serf/swoosh_vldbj.pdf</p>
+<p>Entity Resolution: Tutorial
+http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf</p>
+<p>Learning-based Entity Resolution with MapReduce
+http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf</p>
+<p>Multidimensional scaling
+http://en.wikipedia.org/wiki/Multidimensional_scaling</p>
+<p>MDS in sklearn
+http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html</p>
+<p>Entity Resolution for Big Data (summary)
+http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data</p>
+<p>D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration
+http://linqs.cs.umd.edu/projects/ddupe/</p>
+<p>Assertive R
+http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html</p>
+<hr />
+<p>Thoughts from working earlier:</p>
+<ul>
+<li>
+<p>Levenshtein distance is nice, but it turned out I could quickly get a
+   "distance" with near-perfect behavior just on zero/nonzero grouping
+   by writing a custom one.</p>
+</li>
+<li>
+<p>This amounted to writing a function to extract a "key" which in
+      the case of the tennis players was their first initial and a
+      regex-determined "last name". Knowing this would work depended on
+      looking at the data.</p>
+</li>
+<li>
+<p>With a more usual distance metric, it would be nice to see a
+      distribution of pairwise distances, which might suggest whether
+      there are natural breakpoints.</p>
+</li>
+<li>
+<p>It was easy to find one type of error by looking at groups that
+   became too big.</p>
+</li>
+<li>
+<p>It was nice to look at these as their groups rather than in some
+      columnar format - the final output of a merge table is useful but
+      not very readable.</p>
+</li>
+<li>To fix the issue I had to go back to the original site of the data
+      and then find extra information from another source. Is there a
+      way to make at least the first part easier?</li>
+<li>
+<p>It would probably be good to see a distribution of group sizes -
+      "100 pairs, 20 singletons, 1 group of fifteen" etc.</p>
+</li>
+<li>
+<p>It's hard to know if I missed errors in the smaller groups and
+   singletons who didn't get matched.</p>
+</li>
+<li>
+<p>Can I use tSNE (or similar) to get a visualization based just on a
+   distance matrix?</p>
+</li>
+</ul>
+<hr />
+<p>For posterity: look how short this is!</p>
+<pre><code class="language-python">#!/usr/bin/env python
+
+import sys
+import re
+
+
+def initialize(name):
+    initial = re.match("^[A-Z]", name).group()
+    last = re.search("(?&lt;=[ .])[A-Z].+$", name).group()
+    return "{}. {}".format(initial, last)
+
+
+def main():
+    items = {item.strip() for item in sys.stdin}
+    groups = dict()
+    for item in items:
+        groups.setdefault(initialize(item), []).append(item)
+    print "original,uno"
+    for group in sorted(groups.values(), key=len, reverse=True):
+        key = sorted(group, key=len)[-1]
+        for item in group:
+            print "{},{}".format(item, key)
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>Previous version of docs, focused on the tennis example:</p>
+<p>The distance calculation, cutoff evaluation, and partition creation are
+currently all in <code>mergic make</code>:</p>
+<p>.. code:: bash</p>
+<pre><code># see all the possible partitions by their statistics
+mergic make names_all.txt
+
+# make a partition using a cutoff of 0.303
+mergic make 0.303 &gt; partition.json
+</code></pre>
+<p>Edit the partition until it's good. Save it as
+<code>partition_edited.json</code>.</p>
+<p>You can check that your partition is valid and see a cute summary:</p>
+<p>.. code:: bash</p>
+<pre><code>mergic check partition_edited.json
+# 669 items in 354 groups
+</code></pre>
+<p>You could proceed directly, but there are also diffing tools! Generate a
+diff:</p>
+<p>.. code:: bash</p>
+<pre><code>mergic diff partition.json partition_edited.json &gt; partition_diff.json
+</code></pre>
+<p>You can apply a diff to reconstruct an edited version:</p>
+<p>.. code:: bash</p>
+<pre><code>mergic apply partition.json partition_diff.json &gt; partition_rebuilt.json
+</code></pre>
+<p>Now if you <code>mergic diff</code> the files <code>partition_edited.json</code> and
+<code>partition_rebuilt.json</code> the result should just be <code>{}</code> (no
+difference).</p>
+<p>To generate a CSV merge table that you'll be able to use with any other
+tool:</p>
+<p>.. code:: bash</p>
+<pre><code>mergic table partition_edited.json &gt; partition.csv
+</code></pre>
+<p>Now the file <code>partition.csv</code> has two columns, <code>original</code> and
+<code>mergic</code>, where <code>original</code> contains all the values that appeared in
+the original data and <code>mergic</code> contains the deduplicated keys. You can
+join this on to your original data and go to town.</p>    <script src="/scripts/konami.js"></script>
+    <script type="text/javascript">
+      var easter_egg = new Konami('big.html');
+    </script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

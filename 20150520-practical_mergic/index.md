@@ -1,3 +1,50 @@
+# Practical Mergic
+
+A talk
+
+
+-----
+
+“There are only two hard things in computer science: cache invalidation and naming things.”
+
+-----
+
+[Phil Karlton](http://www.meerkat.com/karlton/) said [this](http://martinfowler.com/bliki/TwoHardThings.html).
+
+When working with data (let's call it “data science” then) you have problems not only with your own names, but also with everybody else's names.
+
+Let's focus on just two classes of problems:
+
+
+-----
+
+when names are the same
+
+-----
+
+Lots of things can go wrong when names are re-used when they shouldn't be.
+
+
+-----
+
+when names are *not* the same
+
+-----
+
+It can be even worse when names for the same thing are *not* the same.
+
+Both these problems are closely related to merging, and we'll think a lot about that context.
+
+But first, an example illustrating the importance of checking that your names are unique (not the same).
+
+
+-----
+
+demo
+
+-----
+
+
 Original idea:
 
 "Making merge tables - some entity resolution, python's `dedupe`, etc."
