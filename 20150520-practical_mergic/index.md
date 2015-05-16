@@ -18,7 +18,7 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 -----
 
-“There are only two hard things in computer science: cache invalidation and naming things.”
+> “There are only two hard things in computer science: cache invalidation and naming things.”
 
 -----
 
@@ -56,6 +56,24 @@ But first, an example illustrating the importance of checking that your names ar
 demo
 
 -----
+
+The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm).
+
+using `gender.csv`
+
+(originally from https://github.com/ajschumacher/clean_data_with_R)
+
+this happens http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/
+
+
+
+big four:
+
+R RecordLinkage
+Python dedupe
+OpenRefine
+SQL?
+Max mentioned GIS merges~
 
 
 Original idea:
@@ -126,6 +144,9 @@ http://linqs.cs.umd.edu/projects/ddupe/
 
 Assertive R
 http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html
+
+Notes on notes:
+http://datamade.github.io/dedupe-examples/docs/csv_example.html
 
 
 ---
