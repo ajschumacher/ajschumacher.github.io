@@ -2,7 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
- * 2015-05-14: [mergic at PyData NYC](/20150514-mergic/)
+ * 2015-05-14: [mergic lightning talk at PyData NYC](/20150514-mergic/)
  * 2015-04-25: [Working with Captured Variables in Python Closures](/20150425-working_with_captured_variables_in_python_closures/)
  * 2015-04-25: [Two Highlights from NY R Conference 2015](/20150425-two_highlights_from_ny_r_conference_2015/)
  * 2015-04-23: [Forward Selection with statsmodels](/20150423-forward_selection_with_statsmodels/)
