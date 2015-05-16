@@ -1,6 +1,19 @@
 # Practical Mergic
 
-A talk
+A talk for the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/).
+
+
+-----
+
+<center>
+planspace.org
+
+@planarrowspace
+</center>
+
+-----
+
+Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/planarrowspace). You can get from one to the other. [This presentation](big.html) and a corresponding write-up (you're reading it) are on my blog (which you're on).
 
 
 -----
