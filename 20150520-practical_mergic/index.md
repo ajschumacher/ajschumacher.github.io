@@ -72,9 +72,137 @@ demo
 
 -----
 
-The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`.
+The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`. The R script itself is in [check_unique.R](check_unique.R).
 
+There's a little setup to make reading the data easier.
 
+```r
+library("dplyr")
+
+read.doe <- function(filename) {
+  data <- read.csv(filename, as.is=TRUE,
+                   skip=6, check.names=FALSE,
+                   na.strings="s")
+  stopifnot(names(data) == c("DBN", "Grade", "Year", "Category",
+                             "Number Tested","Mean Scale Score",
+                             "#","%","#","%","#","%","#","%","#","%"))
+  names(data) <- c("dbn", "grade", "year", "category",
+                   "num_tested", "mean_score",
+                   "num1", "per1", "num2", "per2", "num3", "per3", "num4", "per4",
+                   "num34", "per34")
+ return(tbl_df(data))
+}
+```
+
+Now we can start looking at the data, using [dplyr](https://github.com/hadley/dplyr):
+
+```r
+gender <- read.doe("gender.csv")
+
+gender
+## Source: local data frame [68,028 x 16]
+##
+##       dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1  01M015     3 2006   Female         23        675    0  0.0    7 30.4
+## 2  01M015     3 2006     Male         16        657    2 12.5    4 25.0
+## 3  01M015     3 2007   Female         11        679    2 18.2    0  0.0
+## 4  01M015     3 2007     Male         20        668    0  0.0    3 15.0
+## 5  01M015     3 2008   Female         17        661    0  0.0    5 29.4
+## 6  01M015     3 2008     Male         20        674    0  0.0    1  5.0
+## 7  01M015     3 2009   Female         13        667    0  0.0    1  7.7
+## 8  01M015     3 2009     Male         20        668    0  0.0    3 15.0
+## 9  01M015     3 2010   Female         13        681    2 15.4    7 53.8
+## 10 01M015     3 2010     Male         13        673    4 30.8    5 38.5
+## ..    ...   ...  ...      ...        ...        ...  ...  ...  ...  ...
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)
+```
+
+What's our unique key for this data set? It looks like it should be `dbn` (a unique identifier for a school), `grade`, `year`, and `category`. Let's check. The following should be zero if there are no duplicates.
+
+```r
+gender %>%
+  select(dbn, grade, year, category) %>%
+  duplicated %>%
+  sum
+## [1] 1421
+```
+
+Shocking! Seeing that there are duplicates doesn't yet tell us how the duplicates are distributed; is it 1,422 copies of the same combination, or something else?
+
+```r
+gender %>%
+  group_by(dbn, grade, year, category) %>%
+  summarize(n=n()) %>%
+  group_by(n) %>%
+  summarize(count=n())
+## Source: local data frame [2 x 2]
+##
+##   n count
+## 1 1 65186
+## 2 2  1421
+```
+
+Much like using `table`, now we can see that most key combinations appear just once, but 1,421 appear twice. Interesting! Let's look at them.
+
+```r
+gender %>%
+  group_by(dbn, grade, year, category) %>%
+  filter(1 < n())
+## Source: local data frame [2,842 x 16]
+## Groups: dbn, grade, year, category
+##
+##       dbn      grade year category num_tested mean_score num1 per1 num2
+## 1  01M019          3 2010     Male         20        677    3   15    7
+## 2  01M019          3 2010     Male          2         NA   NA   NA   NA
+## 3  01M019          4 2010     Male         20        674    1    5    9
+## 4  01M019          4 2010     Male          1         NA   NA   NA   NA
+## 5  01M019          5 2010     Male          1         NA   NA   NA   NA
+## 6  01M019          5 2010     Male         17        688    0    0    3
+## 7  01M019 All Grades 2010     Male          4         NA   NA   NA   NA
+## 8  01M019 All Grades 2010     Male         57         NA    4    7   19
+## 9  01M020          3 2010     Male         50        686    8   16   15
+## 10 01M020          3 2010     Male          1         NA   NA   NA   NA
+## ..    ...        ...  ...      ...        ...        ...  ...  ...  ...
+## Variables not shown: per2 (dbl), num3 (int), per3 (dbl), num4 (int), per4
+##   (dbl), num34 (int), per34 (dbl)
+```
+
+Looks like there are two different kinds of males! How strange! Can we see what's going on by looking at the rest of the file?
+
+```r
+gender %>%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [3 x 16]
+##
+##      dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010   Female         16        687    0    0    9 56.3
+## 2 01M019     3 2010     Male         20        677    3   15    7 35.0
+## 3 01M019     3 2010     Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)
+```
+
+Unfortunately not; we'll have to look at additional data to try to determine what's going on. (This is typical.)
+
+```r
+all_students <- read.doe("all.csv")
+data <- bind_rows(all_students, gender)
+
+data %>%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [4 x 16]
+##
+##      dbn grade year     category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010 All Students         36        682    3  8.3   16 44.4
+## 2 01M019     3 2010       Female         16        687    0  0.0    9 56.3
+## 3 01M019     3 2010         Male         20        677    3 15.0    7 35.0
+## 4 01M019     3 2010         Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)
+```
+
+It looks like these extra males aren't being counted in the total for “All Students”, so maybe we can drop them. Or maybe the “All Students” total is wrong.
 
 -----
 
