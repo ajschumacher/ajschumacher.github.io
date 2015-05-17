@@ -24,9 +24,16 @@ planspace.org</p>
 <p>“There are only two hard things in computer science: cache invalidation and naming things.”</p>
 </blockquote>
 <hr />
-<p><a href="http://www.meerkat.com/karlton/">Phil Karlton</a> said <a href="http://martinfowler.com/bliki/TwoHardThings.html">this</a>.</p>
-<p>When working with data (let's call it “data science” then) you have problems not only with your own names, but also with everybody else's names.</p>
-<p>Let's focus on just two classes of problems:</p>
+<p><a href="http://www.meerkat.com/karlton/">Phil Karlton</a> <a href="http://martinfowler.com/bliki/TwoHardThings.html">said</a> that “There are only two hard things in computer science: cache invalidation and naming things.”</p>
+<p>When working with data (let's call it “data science” then, instead of “computer science”) you have problems not only with your own names, but also with everybody else's names.</p>
+<p>It's just semantics, I suppose.</p>
+<hr />
+<p>What are we talking about?</p>
+<hr />
+<p>이름에 동의하는 것은 의사 소통에 큰 문제입니다.</p>
+<p>That is: agreeing on names is important, and the issue is a big one.</p>
+<h1>Something more here?</h1>
+<p>Maintaining a practical focus, let's focus on just two classes of problems:</p>
 <hr />
 <p>when names are the same</p>
 <hr />
@@ -40,6 +47,125 @@ planspace.org</p>
 <hr />
 <p>demo</p>
 <hr />
+<p>The <a href="SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="check_unique.R">check_unique.R</a>.</p>
+<p>There's a little setup to make reading the data easier.</p>
+<pre><code class="language-r">library("dplyr")
+
+read.doe &lt;- function(filename) {
+  data &lt;- read.csv(filename, as.is=TRUE,
+                   skip=6, check.names=FALSE,
+                   na.strings="s")
+  stopifnot(names(data) == c("DBN", "Grade", "Year", "Category",
+                             "Number Tested","Mean Scale Score",
+                             "#","%","#","%","#","%","#","%","#","%"))
+  names(data) &lt;- c("dbn", "grade", "year", "category",
+                   "num_tested", "mean_score",
+                   "num1", "per1", "num2", "per2", "num3", "per3", "num4", "per4",
+                   "num34", "per34")
+ return(tbl_df(data))
+}</code></pre>
+
+<p>Now we can start looking at the data, using <a href="https://github.com/hadley/dplyr">dplyr</a>:</p>
+<pre><code class="language-r">gender &lt;- read.doe("gender.csv")
+
+gender
+## Source: local data frame [68,028 x 16]
+##
+##       dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1  01M015     3 2006   Female         23        675    0  0.0    7 30.4
+## 2  01M015     3 2006     Male         16        657    2 12.5    4 25.0
+## 3  01M015     3 2007   Female         11        679    2 18.2    0  0.0
+## 4  01M015     3 2007     Male         20        668    0  0.0    3 15.0
+## 5  01M015     3 2008   Female         17        661    0  0.0    5 29.4
+## 6  01M015     3 2008     Male         20        674    0  0.0    1  5.0
+## 7  01M015     3 2009   Female         13        667    0  0.0    1  7.7
+## 8  01M015     3 2009     Male         20        668    0  0.0    3 15.0
+## 9  01M015     3 2010   Female         13        681    2 15.4    7 53.8
+## 10 01M015     3 2010     Male         13        673    4 30.8    5 38.5
+## ..    ...   ...  ...      ...        ...        ...  ...  ...  ...  ...
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>What's our unique key for this data set? It looks like it should be <code>dbn</code> (a unique identifier for a school), <code>grade</code>, <code>year</code>, and <code>category</code>. Let's check. The following should be zero if there are no duplicates.</p>
+<pre><code class="language-r">gender %>%
+  select(dbn, grade, year, category) %>%
+  duplicated %>%
+  sum
+## [1] 1421</code></pre>
+
+<p>Shocking! Seeing that there are duplicates doesn't yet tell us how the duplicates are distributed; is it 1,422 copies of the same combination, or something else?</p>
+<pre><code class="language-r">gender %>%
+  group_by(dbn, grade, year, category) %>%
+  summarize(n=n()) %>%
+  group_by(n) %>%
+  summarize(count=n())
+## Source: local data frame [2 x 2]
+##
+##   n count
+## 1 1 65186
+## 2 2  1421</code></pre>
+
+<p>Much like using <code>table</code>, now we can see that most key combinations appear just once, but 1,421 appear twice. Interesting! Let's look at them.</p>
+<pre><code class="language-r">gender %>%
+  group_by(dbn, grade, year, category) %>%
+  filter(1 &lt; n())
+## Source: local data frame [2,842 x 16]
+## Groups: dbn, grade, year, category
+##
+##       dbn      grade year category num_tested mean_score num1 per1 num2
+## 1  01M019          3 2010     Male         20        677    3   15    7
+## 2  01M019          3 2010     Male          2         NA   NA   NA   NA
+## 3  01M019          4 2010     Male         20        674    1    5    9
+## 4  01M019          4 2010     Male          1         NA   NA   NA   NA
+## 5  01M019          5 2010     Male          1         NA   NA   NA   NA
+## 6  01M019          5 2010     Male         17        688    0    0    3
+## 7  01M019 All Grades 2010     Male          4         NA   NA   NA   NA
+## 8  01M019 All Grades 2010     Male         57         NA    4    7   19
+## 9  01M020          3 2010     Male         50        686    8   16   15
+## 10 01M020          3 2010     Male          1         NA   NA   NA   NA
+## ..    ...        ...  ...      ...        ...        ...  ...  ...  ...
+## Variables not shown: per2 (dbl), num3 (int), per3 (dbl), num4 (int), per4
+##   (dbl), num34 (int), per34 (dbl)</code></pre>
+
+<p>Looks like there are two different kinds of males! How strange! Can we see what's going on by looking at the rest of the file?</p>
+<pre><code class="language-r">gender %>%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [3 x 16]
+##
+##      dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010   Female         16        687    0    0    9 56.3
+## 2 01M019     3 2010     Male         20        677    3   15    7 35.0
+## 3 01M019     3 2010     Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>Unfortunately not; we'll have to look at additional data to try to determine what's going on. (This is typical.)</p>
+<pre><code class="language-r">all_students &lt;- read.doe("all.csv")
+data &lt;- bind_rows(all_students, gender)
+
+data %>%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [4 x 16]
+##
+##      dbn grade year     category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010 All Students         36        682    3  8.3   16 44.4
+## 2 01M019     3 2010       Female         16        687    0  0.0    9 56.3
+## 3 01M019     3 2010         Male         20        677    3 15.0    7 35.0
+## 4 01M019     3 2010         Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>It looks like these extra males aren't being counted in the total for “All Students”, so maybe we can drop them. Or maybe the “All Students” total is wrong.</p>
+<hr />
+<p><img width="1000%" title="This happens." src="this_happens.png" /></p>
+<hr />
+<p>(Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.)</p>
+<p>big four:</p>
+<p>R RecordLinkage
+Python dedupe
+OpenRefine
+SQL?
+Max mentioned GIS merges~</p>
 <p>Original idea:</p>
 <p>"Making merge tables - some entity resolution, python's <code>dedupe</code>, etc."</p>
 <p>Expanded idea:</p>
@@ -81,6 +207,8 @@ http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data</p>
 http://linqs.cs.umd.edu/projects/ddupe/</p>
 <p>Assertive R
 http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html</p>
+<p>Notes on notes:
+http://datamade.github.io/dedupe-examples/docs/csv_example.html</p>
 <hr />
 <p>Thoughts from working earlier:</p>
 <ul>
