@@ -22,11 +22,26 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 -----
 
-[Phil Karlton](http://www.meerkat.com/karlton/) said [this](http://martinfowler.com/bliki/TwoHardThings.html).
+[Phil Karlton](http://www.meerkat.com/karlton/) [said](http://martinfowler.com/bliki/TwoHardThings.html) that “There are only two hard things in computer science: cache invalidation and naming things.”
 
-When working with data (let's call it “data science” then) you have problems not only with your own names, but also with everybody else's names.
+When working with data (let's call it “data science” then, instead of “computer science”) you have problems not only with your own names, but also with everybody else's names.
 
-Let's focus on just two classes of problems:
+It's just semantics, I suppose.
+
+
+-----
+
+What are we talking about?
+
+-----
+
+이름에 동의하는 것은 의사 소통에 큰 문제입니다.
+
+That is: agreeing on names is important, and the issue is a big one.
+
+# Something more here?
+
+Maintaining a practical focus, let's focus on just two classes of problems:
 
 
 -----
@@ -57,11 +72,8 @@ demo
 
 -----
 
-The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm).
+The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`.
 
-using `gender.csv`
-
-(originally from https://github.com/ajschumacher/clean_data_with_R)
 
 this happens http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/
 
