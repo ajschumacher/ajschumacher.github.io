@@ -230,6 +230,17 @@ one of [RStudio](http://www.rstudio.com/)'s [cheatsheets](http://www.rstudio.com
 
 [Jeff Atwood](https://twitter.com/codinghorror)'s [visual explanation of SQL joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
 
+
+-----
+
+<img width="1000%" title="right join" src="right_join.png" />
+
+-----
+
+```bash
+convert -rotate 180 left_join.png right_join.png
+```
+
 -----
 
 <img width="1000%" title="inner join" src="inner_join.png" />
