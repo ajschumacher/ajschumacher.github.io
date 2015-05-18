@@ -213,6 +213,48 @@ It looks like these extra males aren't being counted in the total for “All Stu
 (Original image from [Magnolia](http://en.wikipedia.org/wiki/Magnolia_%28film%29) via [Indie Outlook](http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/).)
 
 
+-----
+
+<img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" />
+
+-----
+
+
+-----
+
+<img width="1000%" title="left join" src="left_join.png" />
+
+-----
+
+
+-----
+
+<img width="1000%" title="right join" src="right_join.png" />
+
+-----
+
+
+-----
+
+<img width="1000%" title="inner join" src="inner_join.png" />
+
+-----
+
+
+-----
+
+<img width="1000%" title="outer join" src="outer_join.png" />
+
+-----
+
+
+-----
+
+<img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" />
+
+-----
+
+
 
 big four:
 
