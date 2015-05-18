@@ -262,6 +262,10 @@ convert -rotate 180 left_join.png right_join.png
 -----
 
 
+# slides from `mergic` lightning talk
+
+# [tennis](https://github.com/ajschumacher/mergic/tree/master/tennis) example
+
 
 big four:
 
