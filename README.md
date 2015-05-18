@@ -1,6 +1,6 @@
-This might be a blog. Try here:
+This is my blog!
 
-[http://ajschumacher.github.io/](http://ajschumacher.github.io/)
+[http://ajschumacher.github.io/](http://ajschumacher.github.io/) or [http://planspace.org/](http://planspace.org/)
 
 Weirdnesses:
 
