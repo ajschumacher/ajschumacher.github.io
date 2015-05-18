@@ -219,6 +219,8 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
+one of [RStudio](http://www.rstudio.com/)'s [cheatsheets](http://www.rstudio.com/resources/cheatsheets/)
+
 
 -----
 
@@ -226,6 +228,7 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
+[Jeff Atwood](https://twitter.com/codinghorror)'s [visual explanation of SQL joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
 
 -----
 
