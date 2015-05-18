@@ -229,13 +229,6 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
-<img width="1000%" title="right join" src="right_join.png" />
-
------
-
-
------
-
 <img width="1000%" title="inner join" src="inner_join.png" />
 
 -----
