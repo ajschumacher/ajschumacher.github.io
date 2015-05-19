@@ -22,7 +22,7 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 -----
 
-*[Image from Wikimedia Commons.](http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg)*
+*[Image from Wikimedia Commons](http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg).*
 
 The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.
 
