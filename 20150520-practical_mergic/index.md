@@ -80,7 +80,7 @@ Lots of things can go wrong when names are re-used when they shouldn't be.
 
 -----
 
-when names are not the same
+when names aren't the same
 
 -----
 
@@ -373,6 +373,37 @@ Think about it.
 -----
 
 There is no peace while you don't have unique IDs.
+
+There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.
+
+
+-----
+
+when names are the same
+
+-----
+
+This has been a discussion of problems arising from names being the same.
+
+
+-----
+
+when names aren't the same
+
+-----
+
+Probably also want to check that the intersection you get is what you expect.
+
+You don't want to silently drop a ton of rows when you merge!
+
+This is the beginning of our problems with names that aren't the same.
+
+
+-----
+
+demo: let's play tennis
+
+-----
 
 
 # slides from `mergic` lightning talk

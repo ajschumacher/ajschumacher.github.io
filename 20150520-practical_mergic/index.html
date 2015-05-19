@@ -51,7 +51,7 @@ planspace.org</p>
 <hr />
 <p>Lots of things can go wrong when names are re-used when they shouldn't be.</p>
 <hr />
-<p>when names are not the same</p>
+<p>when names aren't the same</p>
 <hr />
 <p>It can be even worse when names for the same thing are <em>not</em> the same.</p>
 <p>Both these problems are closely related to merging, and we'll think a lot about that context.</p>
@@ -243,6 +243,20 @@ data %>%
 
 <hr />
 <p>There is no peace while you don't have unique IDs.</p>
+<p>There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.</p>
+<hr />
+<p>when names are the same</p>
+<hr />
+<p>This has been a discussion of problems arising from names being the same.</p>
+<hr />
+<p>when names aren't the same</p>
+<hr />
+<p>Probably also want to check that the intersection you get is what you expect.</p>
+<p>You don't want to silently drop a ton of rows when you merge!</p>
+<p>This is the beginning of our problems with names that aren't the same.</p>
+<hr />
+<p>demo: let's play tennis</p>
+<hr />
 <h1>slides from <code>mergic</code> lightning talk</h1>
 <h1><a href="https://github.com/ajschumacher/mergic/tree/master/tennis">tennis</a> example</h1>
 <p>big four:</p>
