@@ -1,6 +1,6 @@
 # Practical Mergic
 
-A talk for the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/).
+*A talk for the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/). Including some material originally given in a [lightning talk](/20150514-mergic/) at the [May meeting](http://www.meetup.com/PyDataNYC/events/222329250/) ([registration](http://www.bloomberg.com/event-registration/?id=39288)) of the [PyData NYC meetup group](http://www.meetup.com/PyDataNYC/).*
 
 
 -----
@@ -14,6 +14,31 @@ planspace.org
 -----
 
 Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/planarrowspace). You can get from one to the other. [This presentation](big.html) and a corresponding write-up (you're reading it) are on my blog (which you're on).
+
+
+-----
+
+picture of a school or something
+
+-----
+
+The first time I wrote software to address this problem, I was working for the New York City Department of Education.
+
+The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals, at least not in every data system at that time. This made sense, because there are only about sixteen hundred New York City public schools.
+
+Those of you who have experience with humans will recall that names are not unique IDs. People change their names, or add titles like “PhD”, or have their names differently at different times for no good reason. In the case of principals, sometimes they even switch schools and change their names *at the same time*.
+
+In a situation like this, an approximate solution is not acceptable. The DOE makes some decisions based on data, God bless them.
+
+I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I still had to verify proposed pairs, and it was awful, and it was a long time ago, and I wished there was a better way to do it.
+
+My primary concerns were, and are, to speed up the de-duplication process while allowing editing by hand and still being reproducible and easily auditable by humans.
+
+I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.
+
+I've also learned about some of the ecosystem of techniques and tools available, and I'll talk about these as well.
+
+I'll finish by suggesting that we probably need to do something entirely different.
 
 
 -----
