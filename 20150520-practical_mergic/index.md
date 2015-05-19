@@ -18,11 +18,13 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 -----
 
-picture of a school or something
+<img width="1000%" title="Tweed Courthouse" src="tweed.jpg" />
 
 -----
 
-The first time I wrote software to address this problem, I was working for the New York City Department of Education.
+*[Image from Wikimedia Commons.](http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg)*
+
+The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.
 
 The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals, at least not in every data system at that time. This made sense, because there are only about sixteen hundred New York City public schools.
 
