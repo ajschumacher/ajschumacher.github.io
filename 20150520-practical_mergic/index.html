@@ -330,6 +330,37 @@ Fabio Fognini           T.Robredo
 <hr />
 <p><a href="http://openrefine.org/">Open Refine</a> is quite good.</p>
 <p>An interesting side story is that Open Refine was formerly Google Refine, and before that <a href="http://en.wikipedia.org/wiki/Metaweb">Metaweb</a>'s “Freebase Gridworks”. Google is shutting down <a href="http://www.freebase.com/">Freebase</a>, and we have to hope that <a href="https://www.wikidata.org/">Wikidata</a> will then be the open match for Google's <a href="http://en.wikipedia.org/wiki/Knowledge_Graph">Knowledge Graph</a>.</p>
+<p>Thanks to <a href="https://twitter.com/jqnatividad">Joel Natividad</a> for pointing out an <a href="https://github.com/OpenRefine/OpenRefine/issues/983">interesting algorithmic development</a> connected with ongoing work on Open Refine.</p>
+<p>Steps of simple Open Refine demo:</p>
+<ul>
+<li>Start the Open Refine app</li>
+<li>Browse to <a href="http://localhost:3333/">http://localhost:3333/</a></li>
+<li>Click “Create Project”</li>
+<li>Click “Choose Files”</li>
+<li>Select <code>names.txt</code></li>
+<li>Click “Next »“</li>
+<li>Click “Create Project »”</li>
+<li>Click the down arrow next to “Column 1”, then follow “Edit cells” to “Cluster and edit…”</li>
+</ul>
+<p><img width="1000%" title="Open Refine" src="open_refine.png" /></p>
+<p>Open Refine has <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering">introductory</a> and <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">in-depth</a> documentation about their “clustering” mechanisms.</p>
+<p>In this interface, we can use “key collision” or “nearest neighbor” methods.</p>
+<p>The “key collision” method maps every value to one “key”, and items are identical if they have the same key. This allows us to avoid calculating anything for all pairs. (This should remind you of hashing.)</p>
+<p>There are four “keying functions” in Open Refine:</p>
+<ul>
+<li>“fingerprint” standardizes a string by case and punctuation.</li>
+<li>“ngram-fingerprint” standardizes a bit further, using character ngrams.</li>
+<li>“metaphone3” standardizes by the phonetic <a href="http://www.amorphics.com/">Metaphone 3</a> algorithm so that things that sound the same in English should be keyed together. (There are strange licensing issues around Metaphone 3.)</li>
+<li>“cologne-phonetic” standardizes by the <a href="http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik">Kölner Phonetik</a> algorithm so that things that sound the same in German should be keyed together. (There is a <a href="https://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/ColognePhonetic.html">real open source version</a>.)</li>
+</ul>
+<p>The “nearest neighbor” method calculates pairwise distances, which is slow. Open Refine uses blocking to break things up into blocks that it won’t compare across, which reduces the number of comparisons to improve speed of calculation.</p>
+<p>There are two “distance functions” in Open Refine:</p>
+<ul>
+<li>“levenshtein” is the well-known <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein edit distance</a></li>
+<li>“PPM” estimates how different strings are by how well they compress separately versus together, using <a href="http://en.wikipedia.org/wiki/Prediction_by_partial_matching">Prediction by Partial Matching</a>.</li>
+</ul>
+<p>The “radius” is the distance below which two items will be clustered together. With a higher value for “radius”, groups will tend to be larger.</p>
+<p><a href="http://openrefine.org/">Open Refine</a> is quite good, but there are several things I would like to do differently.</p>
 <h1>slides from <code>mergic</code> lightning talk</h1>
 <h1><a href="https://github.com/ajschumacher/mergic/tree/master/tennis">tennis</a> example</h1>
 <p>big four:</p>
@@ -368,9 +399,6 @@ Combining data sets can be a huge pain, with possible problems both obvious and 
 <p>Bio:
 <a href="http://planspace.org/aaron/">Aaron</a> is an instructor at the <a href="http://www.thisismetis.com/">Metis</a> data science boot camp. He is the original author of the <a href="http://cran.r-project.org/web/packages/rjstat/">rjstat</a> package for R, which is mostly unrelated to this talk. He made <a href="http://emacs.link/">emacs.link</a>, which is also not related to this talk. Aaron blogs at <a href="http://planspace.org/">plan ➔ space</a> and tweets as <a href="https://twitter.com/planarrowspace">@planarrowspace</a>.</p>
 <hr />
-<p>OpenRefine clustering!
-https://github.com/OpenRefine/OpenRefine/wiki/Clustering
-https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth</p>
 <p>Tennis Major Tournament Match Statistics Data Set
 https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics</p>
 <p>Adaptive Duplicate Detection Using Learnable String Similarity Measures

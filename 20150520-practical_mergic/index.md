@@ -543,6 +543,25 @@ Open Refine has [introductory](https://github.com/OpenRefine/OpenRefine/wiki/Clu
 
 In this interface, we can use “key collision” or “nearest neighbor” methods.
 
+The “key collision” method maps every value to one “key”, and items are identical if they have the same key. This allows us to avoid calculating anything for all pairs. (This should remind you of hashing.)
+
+There are four “keying functions” in Open Refine:
+
+ * “fingerprint” standardizes a string by case and punctuation.
+ * “ngram-fingerprint” standardizes a bit further, using character ngrams.
+ * “metaphone3” standardizes by the phonetic [Metaphone 3](http://www.amorphics.com/) algorithm so that things that sound the same in English should be keyed together. (There are strange licensing issues around Metaphone 3.)
+ * “cologne-phonetic” standardizes by the [Kölner Phonetik](http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik) algorithm so that things that sound the same in German should be keyed together. (There is a [real open source version](https://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/ColognePhonetic.html).)
+
+The “nearest neighbor” method calculates pairwise distances, which is slow. Open Refine uses blocking to break things up into blocks that it won’t compare across, which reduces the number of comparisons to improve speed of calculation.
+
+There are two “distance functions” in Open Refine:
+
+ * “levenshtein” is the well-known [Levenshtein edit distance](http://en.wikipedia.org/wiki/Levenshtein_distance)
+ * “PPM” estimates how different strings are by how well they compress separately versus together, using [Prediction by Partial Matching](http://en.wikipedia.org/wiki/Prediction_by_partial_matching).
+
+The “radius” is the distance below which two items will be clustered together. With a higher value for “radius”, groups will tend to be larger.
+
+[Open Refine](http://openrefine.org/) is quite good, but there are several things I would like to do differently.
 
 
 # slides from `mergic` lightning talk
