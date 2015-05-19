@@ -524,6 +524,7 @@ demo: Open Refine
 
 An interesting side story is that Open Refine was formerly Google Refine, and before that [Metaweb](http://en.wikipedia.org/wiki/Metaweb)'s “Freebase Gridworks”. Google is shutting down [Freebase](http://www.freebase.com/), and we have to hope that [Wikidata](https://www.wikidata.org/) will then be the open match for Google's [Knowledge Graph](http://en.wikipedia.org/wiki/Knowledge_Graph).
 
+Thanks to [Joel Natividad](https://twitter.com/jqnatividad) for pointing out an [interesting algorithmic development](https://github.com/OpenRefine/OpenRefine/issues/983) connected with ongoing work on Open Refine.
 
 # slides from `mergic` lightning talk
 
