@@ -422,6 +422,41 @@ SQL?
 Max mentioned GIS merges~
 
 
+
+-----
+
+<img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" />
+
+-----
+
+I also hope to see you at [Open Data Science Con](http://opendatascicon.com/) in Boston!
+
+
+-----
+
+Thanks!
+
+-----
+
+Thank you!
+
+
+-----
+
+<center>
+planspace.org
+
+@planarrowspace
+</center>
+
+-----
+
+This is just me again.
+
+끝!
+
+
+
 Original idea:
 
 "Making merge tables - some entity resolution, python's `dedupe`, etc."
