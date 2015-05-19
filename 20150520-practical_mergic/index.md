@@ -407,6 +407,85 @@ demo: let's play tennis
 
 -----
 
+*Here begins material also present in [ajschumacher/mergic:tennis](https://github.com/ajschumacher/mergic/tree/master/tennis).*
+
+Download the [Tennis Major Tournament Match Statistics Data Set](https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics) from the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/) into an empty directory:
+
+```bash
+$ wget https://archive.ics.uci.edu/ml/machine-learning-databases/00300/Tennis-Major-Tournaments-Match-Statistics.zip
+```
+
+This file should be stable, but it's also included [here](Tennis-Major-Tournaments-Match-Statistics.zip) and/or you can verify that its `md5` is `e9238389e4de42ecf2daf425532ce230`.
+
+
+Unpack eight CSV files from the `Tennis-Major-Tournaments-Match-Statistics.zip`:
+
+```bash
+$ unzip Tennis-Major-Tournaments-Match-Statistics.zip
+```
+
+
+You should see that the first two columns of each file contain player names, though the column names are not consistent. For example:
+
+```bash
+$ head -2 AusOpen-women-2013.csv | cut -c 1-40
+## Player1,Player2,Round,Result,FNL1,FNL2,F
+## Serena Williams,Ashleigh Barty,1,1,2,0,5
+
+$ head -2 USOpen-women-2013.csv | cut -c 1-40
+## Player 1,Player 2,ROUND,Result,FNL.1,FNL
+## S Williams,V Azarenka,7,1,2,1,57,44,43,2
+```
+
+
+Make a `names.txt` with all the names that appear:
+
+```bash
+$ for filename in *2013.csv
+do
+    for field in 1 2
+    do
+        tail +2 $filename | cut -d, -f$field >> names.txt
+    done
+done
+```
+
+
+Now you have a file with 1,886 lines, each one of 669 unique strings, as you can verify:
+
+```bash
+$ wc -l names.txt
+## 1886
+
+$ sort names.txt | uniq | wc -l
+## 669
+```
+
+There are too many unique strings—sometimes more than one string for the same player. As a result, a count of the most common names will not accurately tell us who played the most in these 2013 tennis competitions.
+
+
+```bash
+$ sort names.txt | uniq -c | sort -nr | head
+##  21 Rafael Nadal
+##  17 Stanislas Wawrinka
+##  17 Novak Djokovic
+##  17 David Ferrer
+##  15 Roger Federer
+##  14 Tommy Robredo
+##  13 Richard Gasquet
+##  11 Victoria Azarenka
+##  11 Tomas Berdych
+##  11 Serena Williams
+```
+
+The list above is not the answer we’re looking for. We want to be correct.
+
+
+-----
+
+next stuff
+
+-----
 
 # slides from `mergic` lightning talk
 

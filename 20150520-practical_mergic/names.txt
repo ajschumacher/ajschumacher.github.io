@@ -1,0 +1,1886 @@
+Lukas Lacko
+Leonardo Mayer
+Marcos Baghdatis
+Dmitry Tursunov
+Juan Monaco
+Santiago Giraldo
+Dudi Sela
+Fabio Fognini
+David Guez
+Nikolay Davydenko
+Pablo Carreno Busta
+Tommy Robredo
+Samuel Groth
+Nicolas Mahut
+Alejandro Falla
+Stanislas Wawrinka
+Alejandro Gonzalez
+Steve Johnson
+Ricardas Berankis
+Jeremy Chardy
+Jordan Thompson
+Albert Ramos
+Florian Mayer
+Mikhail Youzhny
+Guillermo Garcia-Lopez
+Carlos Berlocq
+Dominic Thiem
+Kevin Anderson
+Ivo Karlovic
+Jan Hajek
+Di Wu
+Tomas Berdych
+James Duckworth
+Radek Stepanek
+Teymuraz Gabashvili
+Fernando Verdasco
+Daniel Brands
+Marin Cilic
+Thomaz Bellucci
+Jo-Wilfried Tsonga
+Martin Klizan
+Blaz Rola
+Michal Przysiezny
+Stephane Robert
+Somdev Devvarman
+Michael Berrer
+Vincent Millot
+Andy Murray
+Rhyne Williams
+Roberto Bautista Agut
+Nick Kyrgios
+Benoit Paire
+Bradley Klahn
+Jimmy Wang
+Peter Gojowczyk
+Milos Raonic
+Marinko Matosevic
+Dusan Lajovic
+Robin Haase
+Andreas Seppi
+Ryan Harrison
+Tobias Kamke
+Thanasi Kokkinakis
+Rafael Nadal
+Leonardo Mayer
+Dmitry Tursunov
+Sam Querrey
+Fabio Fognini
+Nikolay Davydenko
+Tommy Robredo
+Matthew Ebden
+Stanislas Wawrinka
+Adrian Mannarino
+Jeremy Chardy
+Pablo Andujar
+Mikhail Youzhny
+Edouard Roger-Vasselin
+Kevin Anderson
+Damir Dzumhur
+Tomas Berdych
+Blaz Kavcic
+Fernando Verdasco
+Marin Cilic
+Jo-Wilfried Tsonga
+Blaz Rola
+Stephane Robert
+Michael Berrer
+Andy Murray
+Roberto Bautista Agut
+Benoit Paire
+Yen-Hsun Lu
+Milos Raonic
+Dusan Lajovic
+Andreas Seppi
+Jack Sock
+Rafael Nadal
+Denis Istomin
+Fabio Fognini
+Tommy Robredo
+Jeremy Chardy
+Florian Mayer
+Kevin Anderson
+Tomas Berdych
+Teymuraz Gabashvili
+Jo-Wilfried Tsonga
+Stephane Robert
+Andy Murray
+Benoit Paire
+Milos Raonic
+Donald Young
+Rafael Nadal
+Fabio Fognini
+Stanislas Wawrinka
+Florian Mayer
+Tomas Berdych
+Jo-Wilfried Tsonga
+Andy Murray
+Grigor Dimitrov
+Rafael Nadal
+Stanislas Wawrinka
+Tomas Berdych
+Andy Murray
+Rafael Nadal
+Tomas Berdych
+Rafael Nadal
+Rafael Nadal
+Novak Djokovic
+Albert Montanes
+Denis Istomin
+Michael Russell
+Ernests Gulbis
+Sam Querrey
+Jarkko Nieminen
+Alex Bogomolov Jr.
+Richard Gasquet
+Lukasz Kubot
+Julien Benneteau
+Lukas Rosol
+Vasek Pospisil
+Matthew Ebden
+Mikhail Kukushkin
+Andrey Golubev
+David Ferrer
+Adrian Mannarino
+Alexandr Dolgopolov
+Jesse Huta Galung
+Jerzy Janowicz
+Pablo Andujar
+Denis Kudla
+Jan-Lennard Struff
+Tommy Haas
+Edouard Roger-Vasselin
+Joao Sousa
+Jiri Vesely
+Ivan Dodig
+Damir Dzumhur
+Kenny De Schepper
+Aleksandr Nedovyesov
+Roger Federer
+Blaz Kavcic
+Sergiy Stakhovsky
+Ze Zhang
+Gilles Simon
+Marcel Granollers
+Julian Reister
+Filippo Volandri
+John Isner
+Federico Delbonis
+Horacio Zeballos
+Aljaz Bedene
+Feliciano Lopez
+Michael Llodra
+Wayne Odesnik
+Go Soeda
+Juan Martin Del Potro
+Tim Smyczek
+Benjamin Becker
+Frank Dancevic
+Grigor Dimitrov
+Yen-Hsun Lu
+Victor Hanescu
+Daniel Gimeno-Traver
+Kei Nishikori
+Lucas Pouille
+Donald Young
+Lleyton Hewitt
+Gael Monfils
+Jack Sock
+Igor Sijsling
+Bernard Tomic
+Novak Djokovic
+Denis Istomin
+Ernests Gulbis
+Jarkko Nieminen
+Richard Gasquet
+Julien Benneteau
+Vasek Pospisil
+Alejandro Falla
+David Ferrer
+Alexandr Dolgopolov
+Jerzy Janowicz
+Florian Mayer
+Guillermo Garcia-Lopez
+Dominic Thiem
+Ivan Dodig
+Kenny De Schepper
+Roger Federer
+Teymuraz Gabashvili
+Gilles Simon
+Thomaz Bellucci
+Martin Klizan
+Michal Przysiezny
+Feliciano Lopez
+Vincent Millot
+Juan Martin Del Potro
+Nick Kyrgios
+Grigor Dimitrov
+Victor Hanescu
+Kei Nishikori
+Donald Young
+Gael Monfils
+Thanasi Kokkinakis
+Novak Djokovic
+Sam Querrey
+Richard Gasquet
+David Ferrer
+Jerzy Janowicz
+Edouard Roger-Vasselin
+Damir Dzumhur
+Roger Federer
+Gilles Simon
+Martin Klizan
+Feliciano Lopez
+Roberto Bautista Agut
+Grigor Dimitrov
+Kei Nishikori
+Gael Monfils
+Novak Djokovic
+Tommy Robredo
+David Ferrer
+Kevin Anderson
+Roger Federer
+Stephane Robert
+Roberto Bautista Agut
+Kei Nishikori
+Novak Djokovic
+David Ferrer
+Roger Federer
+Grigor Dimitrov
+Stanislas Wawrinka
+Roger Federer
+Stanislas Wawrinka
+Serena Williams
+Vesna Dolonc
+Pauline Parmentier
+Heather Watson
+Samantha Stosur
+Tsvetana Pironkova
+Annika Beck
+Kiki Bertens
+Roberta Vinci
+Patricia Mayr-Achleitner
+Casey Dellacqua
+Laura Robson
+Eugenie Bouchard
+Alison Van Uytvanck
+Sachia Vickery
+Julia Goerges
+Na Li
+Belinda Bencic
+Donna Vekic
+Julia Glushko
+Ekaterina Makarova
+Anabel Medina Garrigues
+Shahar Peer
+Mirjana Lucic-Baroni
+Angelique Kerber
+Caroline Garcia
+Dinah Pfizenmaier
+Alison Riske
+Flavia Pennetta
+Monica Puig
+Shuai Zhang
+Luksika Kumkhum
+Jelena Jankovic
+Nadiya Kichenok
+Kurumi Nara
+Andrea Petkovic
+Sorana Cirstea
+Zarina Diyas
+Lesia Tsurenko
+Katarzyna Piter
+Carla Suarez Navarro
+Galina Voskoboeva
+Kristina Mladenovic
+Francesca Schiavone
+Alize Cornet
+Camila Giorgi
+Paula Ormaechea
+Bethanie Mattek-Sands
+Agnieszka Radwanska
+Olga Govortsova
+Carina Witthoeft
+Teliana Pereira
+Kaia Kanepi
+Timea Babos
+Christina McHale
+Lourdes Dominguez Lino
+Sloane Stephens
+Tadeja Majeric
+Olivia Rogowska
+Elina Svitolina
+Bojana Jovanovski
+Chanelle Scheepers
+Su-Wei Hsieh
+Johanna Larsson
+Serena Williams
+Karolina Pliskova
+Samantha Stosur
+Annika Beck
+Jie Zheng
+Casey Dellacqua
+Eugenie Bouchard
+Lauren Davis
+Na Li
+Lucie Hradecka
+Ekaterina Makarova
+Monica Niculescu
+Angelique Kerber
+Yanina Wickmayer
+Flavia Pennetta
+Mona Barthel
+Jelena Jankovic
+Kurumi Nara
+Marina Erakovic
+Varvara Lepchenko
+Carla Suarez Navarro
+Stefanie Voegele
+Alize Cornet
+Karin Knapp
+Agnieszka Radwanska
+Mandy Minella
+Garbine Muguruza
+Christina McHale
+Sloane Stephens
+Olivia Rogowska
+Bojana Jovanovski
+Barbora Zahlavova Strycova
+Serena Williams
+Samantha Stosur
+Jie Zheng
+Eugenie Bouchard
+Na Li
+Ekaterina Makarova
+Angelique Kerber
+Flavia Pennetta
+Jelena Jankovic
+Zarina Diyas
+Carla Suarez Navarro
+Alize Cornet
+Agnieszka Radwanska
+Garbine Muguruza
+Sloane Stephens
+Yvonne Meusburger
+Serena Williams
+Casey Dellacqua
+Na Li
+Angelique Kerber
+Jelena Jankovic
+Dominika Cibulkova
+Agnieszka Radwanska
+Sloane Stephens
+Ana Ivanovic
+Na Li
+Simona Halep
+Agnieszka Radwanska
+Eugenie Bouchard
+Dominika Cibulkova
+Na Li
+Ashleigh Barty
+Lara Arruabarrena
+Karolina Pliskova
+Daniela Hantuchova
+Klara Zakopalova
+Silvia Soler-Espinosa
+Petra Martic
+Ana Ivanovic
+Jie Zheng
+Madison Keys
+Vera Zvonareva
+Kirsten Flipkens
+Hao Chen Tang
+Virginie Razzano
+Lauren Davis
+Sara Errani
+Ana Konjuh
+Kimiko Date-Krumm
+Lucie Hradecka
+Lucie Safarova
+Venus Williams
+Irina Falconi
+Monica Niculescu
+Sabine Lisicki
+Jarmila Gajdosova
+Alla Kudryavtseva
+Yanina Wickmayer
+Elena Vesnina
+Alexandra Cadantu
+Anna Tatishvili
+Mona Barthel
+Petra Kvitova
+Misaki Doi
+Ayumi Morita
+Shuai Peng
+Magdalena Rybarikova
+Marina Erakovic
+Katerina Siniakova
+Varvara Lepchenko
+Simona Halep
+Vania King
+Irina-Camelia Begu
+Stefanie Voegele
+Dominika Cibulkova
+Polona Hercog
+Storm Sanders
+Karin Knapp
+Maria Sharapova
+Yulia Putintseva
+Ying-Ying Duan
+Mandy Minella
+Anastasia Pavlyuchenkova
+Garbine Muguruza
+Anna Schmiedlova
+Yung-Jan Chan
+Caroline Wozniacki
+Yaroslava Shvedova
+Ajla Tomljanovic
+Mariana Duque-Marino
+Svetlana Kuznetsova
+Jana Cepelova
+Yvonne Meusburger
+Barbora Zahlavova Strycova
+Victoria Azarenka
+Vesna Dolonc
+Daniela Hantuchova
+Tsvetana Pironkova
+Ana Ivanovic
+Madison Keys
+Kirsten Flipkens
+Virginie Razzano
+Julia Goerges
+Belinda Bencic
+Lucie Safarova
+Irina Falconi
+Sabine Lisicki
+Alla Kudryavtseva
+Alison Riske
+Monica Puig
+Luksika Kumkhum
+Ayumi Morita
+Magdalena Rybarikova
+Zarina Diyas
+Simona Halep
+Galina Voskoboeva
+Dominika Cibulkova
+Camila Giorgi
+Maria Sharapova
+Olga Govortsova
+Anastasia Pavlyuchenkova
+Anna Schmiedlova
+Caroline Wozniacki
+Ajla Tomljanovic
+Elina Svitolina
+Yvonne Meusburger
+Victoria Azarenka
+Daniela Hantuchova
+Ana Ivanovic
+Casey Dellacqua
+Lauren Davis
+Lucie Safarova
+Monica Niculescu
+Alison Riske
+Mona Barthel
+Kurumi Nara
+Simona Halep
+Dominika Cibulkova
+Maria Sharapova
+Anastasia Pavlyuchenkova
+Caroline Wozniacki
+Elina Svitolina
+Victoria Azarenka
+Ana Ivanovic
+Eugenie Bouchard
+Ekaterina Makarova
+Flavia Pennetta
+Simona Halep
+Maria Sharapova
+Garbine Muguruza
+Victoria Azarenka
+Eugenie Bouchard
+Flavia Pennetta
+Dominika Cibulkova
+Victoria Azarenka
+Na Li
+Agnieszka Radwanska
+Dominika Cibulkova
+Pablo Carreno-Busta
+Somdev Devvarman
+Tobias Kamke
+Julien Benneteau
+Lukas Lacko
+Jan Hajek
+Adrian Mannarino
+Gilles Simon
+Philipp Petzschner
+Radek Stepanek
+Viktor Troicki
+Juan Monaco
+Benjamin Becker
+Roberto Bautista Agut
+Jarkko Nieminen
+Jo-Wilfried Tsonga
+Marinko Matosevic
+Steve Johnson
+Joao Sousa
+Marcel Granollers
+Illya Marchenko
+Jan-Lennard Struff
+Steve Darcis
+Milos Raonic
+Andreas Haider-Maurer
+Martin Alund
+Blaz Kavcic
+Andreas Seppi
+Jurgen Zopp
+Igor Sijsling
+Ernests Gulbis
+Tomas Berdych
+Sergiy Stakhovsky
+Michal Przysiezny
+Florent Serra
+Florian Mayer
+Albert Ramos
+Kenny De Schepper
+Vasek Pospisil
+Stanislas Wawrinka
+Jesse Levine
+Grega Zemlja
+Lukasz Kubot
+Benoit Paire
+Andreas Beck
+Pere Riba
+Martin Klizan
+Rafael Nadal
+Fernando Verdasco
+Federico Delbonis
+Mikhail Youzhny
+Carlos Berlocq
+Andrey Kuznetsov
+Jack Sock
+Tommy Haas
+Jiri Vesely
+Simone Bolelli
+Bernard Tomic
+Alexandr Dolgopolov
+Alejandro Falla
+Alex Kuznetsov
+Ivan Dodig
+Novak Djokovic
+Somdev Devvarman
+Julien Benneteau
+Jan Hajek
+Gilles Simon
+Nick Kyrgios
+Daniel Gimeno-Traver
+Roberto Bautista Agut
+Jo-Wilfried Tsonga
+Albert Montanes
+Feliciano Lopez
+Evgeny Donskoy
+Milos Raonic
+Edouard Roger-Vasselin
+Andreas Seppi
+Igor Sijsling
+Gael Monfils
+Michal Przysiezny
+Denis Istomin
+Robin Haase
+Stanislas Wawrinka
+Grega Zemlja
+Benoit Paire
+Lukas Rosol
+Rafael Nadal
+Fernando Verdasco
+Mikhail Youzhny
+Ryan Harrison
+Tommy Haas
+Dmitry Tursunov
+Lucas Pouille
+Novak Djokovic
+Julien Benneteau
+Gilles Simon
+Viktor Troicki
+Jo-Wilfried Tsonga
+Feliciano Lopez
+Milos Raonic
+Andreas Seppi
+Gael Monfils
+Nikolay Davydenko
+Stanislas Wawrinka
+Benoit Paire
+Rafael Nadal
+Mikhail Youzhny
+Tommy Haas
+Victor Hanescu
+Novak Djokovic
+Gilles Simon
+Jo-Wilfried Tsonga
+Kevin Anderson
+Tommy Robredo
+Stanislas Wawrinka
+Rafael Nadal
+Tommy Haas
+Novak Djokovic
+Jo-Wilfried Tsonga
+Tommy Robredo
+Rafael Nadal
+Novak Djokovic
+David Ferrer
+Novak Djokovic
+Rafael Nadal
+Roger Federer
+Daniel Munoz-De La Nava
+Paolo Lorenzi
+Ricardas Berankis
+Sam Querrey
+Denis Kudla
+Pablo Cuevas
+Lleyton Hewitt
+Marin Cilic
+Nick Kyrgios
+James Blake
+Daniel Gimeno-Traver
+Jeremy Chardy
+Gilles Muller
+Paul-Henri Mathieu
+Aljaz Bedene
+David Ferrer
+Albert Montanes
+Go Soeda
+Feliciano Lopez
+Kevin Anderson
+Evgeny Donskoy
+Michael Llodra
+Xavier Malisse
+Nicolas Almagro
+Edouard Roger-Vasselin
+James Duckworth
+Leonardo Mayer
+Tommy Robredo
+Jurgen Melzer
+Rogerio Dutra Silva
+Gael Monfils
+Richard Gasquet
+Rhyne Williams
+Nikolay Davydenko
+Denis Istomin
+Jerzy Janowicz
+Robin Haase
+Horacio Zeballos
+Thiemo De Bakker
+Kei Nishikori
+Santiago Giraldo
+Maxime Teixeira
+Marcos Baghdatis
+Fabio Fognini
+Lukas Rosol
+Michael Russell
+Daniel Brands
+Marc Gicquel
+Julian Reister
+Pablo Andujar
+John Isner
+Ryan Harrison
+Guillermo Garcia-Lopez
+Guillaume Rufin
+Philipp Kohlschreiber
+Yen-Hsun Lu
+Victor Hanescu
+Dmitry Tursunov
+Grigor Dimitrov
+Lucas Pouille
+Guido Pella
+David Goffin
+Roger Federer
+Tobias Kamke
+Sam Querrey
+Pablo Cuevas
+Marin Cilic
+Viktor Troicki
+Jeremy Chardy
+Jarkko Nieminen
+David Ferrer
+Joao Sousa
+Kevin Anderson
+Michael Llodra
+Nicolas Almagro
+Blaz Kavcic
+Tommy Robredo
+Ernests Gulbis
+Richard Gasquet
+Nikolay Davydenko
+Jerzy Janowicz
+Horacio Zeballos
+Kei Nishikori
+Lukasz Kubot
+Fabio Fognini
+Martin Klizan
+Janko Tipsarevic
+Federico Delbonis
+John Isner
+Jack Sock
+Victor Hanescu
+Grigor Dimitrov
+Guido Pella
+Roger Federer
+Sam Querrey
+Marin Cilic
+Jeremy Chardy
+David Ferrer
+Kevin Anderson
+Nicolas Almagro
+Tommy Robredo
+Richard Gasquet
+Jerzy Janowicz
+Kei Nishikori
+Fabio Fognini
+Janko Tipsarevic
+John Isner
+Philipp Kohlschreiber
+Grigor Dimitrov
+Roger Federer
+Viktor Troicki
+David Ferrer
+Nicolas Almagro
+Richard Gasquet
+Kei Nishikori
+Mikhail Youzhny
+Philipp Kohlschreiber
+Roger Federer
+David Ferrer
+Stanislas Wawrinka
+Tommy Haas
+Jo-Wilfried Tsonga
+Rafael Nadal
+David Ferrer
+Su-Wei Hsieh
+Eugenie Bouchard
+Jie Zheng
+Tamira Paszek
+Karin Knapp
+Vania King
+Marina Erakovic
+Dominika Cibulkova
+Kimiko Date-Krumm
+Kristina Mladenovic
+Karolina Pliskova
+Jelena Jankovic
+Jamie Hampton
+Anna Karolina Schmiedlova
+Shuai Peng
+Petra Kvitova
+Elena Vesnina
+Sandra Zahlavova
+Irina-Camelia Begu
+Alize Cornet
+Flavia Pennetta
+Melinda Czink
+Kristyna Pliskova
+Marion Bartoli
+Nina Bratchikova
+Ashleigh Barty
+Stefanie Voegele
+Klara Zakopalova
+Coco Vandeweghe
+Tatjana Maria
+Bethanie Mattek-Sands
+Na Li
+Arantxa Rus
+Ayumi Morita
+Maria-Teresa Torro-Flor
+Sabine Lisicki
+Simona Halep
+Irena Pavlovic
+Madison Keys
+Nadia Petrova
+Petra Martic
+Chanelle Scheepers
+Virginie Razzano
+Julia Goerges
+Urszula Radwanska
+Dinah Pfizenmaier
+Mallory Burdette
+Agnieszka Radwanska
+Mona Barthel
+Jana Cepelova
+Romina Oprandi
+Varvara Lepchenko
+Svetlana Kuznetsova
+Pauline Parmentier
+Barbora Zahlavova Strycova
+Caroline Wozniacki
+Stephanie Foretz Gacon
+Galina Voskoboeva
+Petra Cetkovska
+Anastasia Pavlyuchenkova
+Kiki Bertens
+Monica Niculescu
+Yuliya Beygelzimer
+Serena Williams
+Eugenie Bouchard
+Melanie Oudin
+Vania King
+Dominika Cibulkova
+Kristina Mladenovic
+Jelena Jankovic
+Anna Karolina Schmiedlova
+Petra Kvitova
+Annika Beck
+Alize Cornet
+Francesca Schiavone
+Marion Bartoli
+Ashleigh Barty
+Kaia Kanepi
+Paula Ormaechea
+Na Li
+Yulia Putintseva
+Sabine Lisicki
+Shelby Rogers
+Monica Puig
+Mathilde Johansson
+Zuzana Kucova
+Dinah Pfizenmaier
+Agnieszka Radwanska
+Jana Cepelova
+Varvara Lepchenko
+Magdalena Rybarikova
+Caroline Wozniacki
+Galina Voskoboeva
+Anastasia Pavlyuchenkova
+Johanna Larsson
+Serena Williams
+Jie Zheng
+Marina Erakovic
+Jelena Jankovic
+Petra Kvitova
+Alize Cornet
+Marion Bartoli
+Stefanie Voegele
+Bethanie Mattek-Sands
+Sabine Lisicki
+Monica Puig
+Virginie Razzano
+Agnieszka Radwanska
+Varvara Lepchenko
+Bojana Jovanovski
+Petra Cetkovska
+Serena Williams
+Sloane Stephens
+Jamie Hampton
+Francesca Schiavone
+Bethanie Mattek-Sands
+Carla Suarez Navarro
+Agnieszka Radwanska
+Svetlana Kuznetsova
+Serena Williams
+Jelena Jankovic
+Maria Kirilenko
+Agnieszka Radwanska
+Serena Williams
+Victoria Azarenka
+Serena Williams
+Serena Williams
+Maria Sharapova
+Tsvetana Pironkova
+Vesna Dolonc
+Melanie Oudin
+Sloane Stephens
+Alexandra Cadantu
+Elena Baltacha
+Lesia Tsurenko
+Samantha Stosur
+Lauren Davis
+Garbine Muguruza
+Daniela Hantuchova
+Lucie Safarova
+Yanina Wickmayer
+Camila Giorgi
+Aravane Rezai
+Victoria Azarenka
+Annika Beck
+Silvia Soler-Espinosa
+Maria Joao Koehler
+Kirsten Flipkens
+Francesca Schiavone
+Mariana Duque-Marino
+Olga Govortsova
+Maria Kirilenko
+Lucie Hradecka
+Heather Watson
+Kaia Kanepi
+Yaroslava Shvedova
+Paula Ormaechea
+Lourdes Dominguez Lino
+A. Medina Garrigues
+Sara Errani
+Yulia Putintseva
+Julia Glushko
+Sofia Arvidsson
+Carla Suarez Navarro
+Shelby Rogers
+Misaki Doi
+Monica Puig
+Ana Ivanovic
+Mathilde Johansson
+Claire Feuerstein
+Zuzana Kucova
+Venus Williams
+Mandy Minella
+Donna Vekic
+Shahar Peer
+Angelique Kerber
+Christina McHale
+Elina Svitolina
+Mirjana Lucic-Baroni
+Ekaterina Makarova
+Magdalena Rybarikova
+Bojana Jovanovski
+Laura Robson
+Roberta Vinci
+Grace Min
+Olga Puchkova
+Andrea Hlavackova
+Sorana Cirstea
+Johanna Larsson
+Caroline Garcia
+Anna Tatishvili
+Maria Sharapova
+Jie Zheng
+Sloane Stephens
+Marina Erakovic
+Samantha Stosur
+Garbine Muguruza
+Jamie Hampton
+Shuai Peng
+Victoria Azarenka
+Silvia Soler-Espinosa
+Kirsten Flipkens
+Mariana Duque-Marino
+Maria Kirilenko
+Stefanie Voegele
+Yaroslava Shvedova
+Bethanie Mattek-Sands
+Sara Errani
+Maria-Teresa Torro-Flor
+Carla Suarez Navarro
+Madison Keys
+Ana Ivanovic
+Virginie Razzano
+Urszula Radwanska
+Mallory Burdette
+Angelique Kerber
+Elina Svitolina
+Svetlana Kuznetsova
+Bojana Jovanovski
+Roberta Vinci
+Petra Cetkovska
+Sorana Cirstea
+Caroline Garcia
+Maria Sharapova
+Sloane Stephens
+Samantha Stosur
+Jamie Hampton
+Victoria Azarenka
+Francesca Schiavone
+Maria Kirilenko
+Paula Ormaechea
+Sara Errani
+Carla Suarez Navarro
+Ana Ivanovic
+Dinah Pfizenmaier
+Angelique Kerber
+Svetlana Kuznetsova
+Roberta Vinci
+Sorana Cirstea
+Maria Sharapova
+Jelena Jankovic
+Victoria Azarenka
+Maria Kirilenko
+Sara Errani
+Ana Ivanovic
+Angelique Kerber
+Roberta Vinci
+Maria Sharapova
+Victoria Azarenka
+Sara Errani
+Svetlana Kuznetsova
+Maria Sharapova
+Sara Errani
+Maria Sharapova
+Richard Gasquet
+Stephane Robert
+Jan-Lennard Struff
+Aljaz Bedene
+Feliciano Lopez
+Kenny De Schepper
+Andrey Kuznetsov
+Pablo Cuevas
+Ernests Gulbis
+Mikhail Kukushkin
+Roberto Bautista Agut
+Nick Kyrgios
+Tommy Robredo
+Robin Haase
+Albert Ramos
+Daniel Evans
+Fernando Verdasco
+Rhyne Williams
+Ryan Harrison
+Novak Djokovic
+Benjamin Becker
+Lukasz Kubot
+Joao Sousa
+Tommy Haas
+Yen-Hsun Lu
+Donald Young
+Florian Mayer
+Tobias Kamke
+Denis Istomin
+Julien Benneteau
+Sergiy Stakhovsky
+Jiri Vesely
+Paolo Lorenzi
+Pablo Andujar
+Thomas Fabbiano
+Jerzy Janowicz
+Jack Sock
+Roger Federer
+Santiago Giraldo
+Horacio Zeballos
+Guido Pella
+John Isner
+Adrian Ungur
+Albert Montanes
+Collin Altamirano
+Rogerio Dutra Silva
+Benoit Paire
+Tim Smyczek
+Jurgen Zopp
+Rajeev Ram
+David Goffin
+Nicolas Mahut
+Jurgen Melzer
+Igor Sijsling
+Lleyton Hewitt
+Guillermo Garcia-Lopez
+Andy Murray
+Victor Hanescu
+Andreas Seppi
+Lukas Lacko
+Stanislas Wawrinka
+James Blake
+Marcos Baghdatis
+Daniel Brands
+Richard Gasquet
+Guillaume Rufin
+Feliciano Lopez
+Pablo Andujar
+Maximo Gonzalez
+Dudi Sela
+Andreas Haider-Maurer
+Roberto Bautista Agut
+Roger Federer
+Adrian Mannarino
+Tommy Robredo
+Bernard Tomic
+John Isner
+Edouard Roger-Vasselin
+Ivan Dodig
+Rogerio Dutra Silva
+Novak Djokovic
+Jarkko Nieminen
+Alex Bogomolov Jr.
+Marcel Granollers
+Tommy Haas
+Alexandr Dolgopolov
+Evgeny Donskoy
+Lleyton Hewitt
+Andy Murray
+Donald Young
+Andreas Seppi
+Tobias Kamke
+Stanislas Wawrinka
+Marcos Baghdatis
+Julien Benneteau
+Denis Kudla
+Richard Gasquet
+Feliciano Lopez
+Jack Sock
+Mikhail Kukushkin
+Roger Federer
+Tommy Robredo
+John Isner
+Ivan Dodig
+Novak Djokovic
+Tim Smyczek
+Tommy Haas
+Evgeny Donskoy
+Andy Murray
+Andreas Seppi
+Stanislas Wawrinka
+Julien Benneteau
+Richard Gasquet
+Janko Tipsarevic
+Roger Federer
+Philipp Kohlschreiber
+Mikhail Youzhny
+Andy Murray
+Stanislas Wawrinka
+Richard Gasquet
+Tommy Robredo
+Novak Djokovic
+Andy Murray
+Novak Djokovic
+Richard Gasquet
+Novak Djokovic
+Michael Russell
+Albano Olivetti
+Guillaume Rufin
+Dmitry Tursunov
+Florent Serra
+Bradley Klahn
+Dudi Sela
+Janko Tipsarevic
+Andreas Haider-Maurer
+Andrej Martin
+Thomaz Bellucci
+David Ferrer
+Marinko Matosevic
+Frank Dancevic
+Bernard Tomic
+Kei Nishikori
+Ivan Dodig
+Nikolay Davydenko
+Rafael Nadal
+Ricardas Berankis
+Lukas Rosol
+Jarkko Nieminen
+Grigor Dimitrov
+Paul-Henri Mathieu
+Daniel Gimeno-Traver
+Martin Klizan
+Juan Monaco
+Steve Johnson
+Nicolas Almagro
+Michal Przysiezny
+Jeremy Chardy
+Denis Kudla
+Tomas Berdych
+Thiemo de Bakker
+Milos Raonic
+Maximo Gonzalez
+Philipp Petzschner
+Grega Zemlja
+Carlos Berlocq
+Adrian Mannarino
+Sam Querrey
+Filippo Volandri
+Gael Monfils
+Edouard Roger-Vasselin
+Philipp Kohlschreiber
+Vasek Pospisil
+Alex Bogomolov Jr.
+James Duckworth
+Marcel Granollers
+Fabio Fognini
+Alexandr Dolgopolov
+Mikhail Youzhny
+Evgeny Donskoy
+Peter Gojowczyk
+Brian Baker
+Juan Martin Del Potro
+Michael Llodra
+Leonardo Mayer
+Xavier Malisse
+Somdev Devvarman
+Radek Stepanek
+Ivo Karlovic
+Go Soeda
+Kevin Anderson
+Stephane Robert
+Dmitry Tursunov
+Bradley Klahn
+Milos Raonic
+Jack Sock
+Janko Tipsarevic
+Mikhail Kukushkin
+David Ferrer
+Carlos Berlocq
+Sam Querrey
+Frank Dancevic
+Daniel Evans
+Gael Monfils
+Philipp Kohlschreiber
+Nikolay Davydenko
+Rafael Nadal
+Benjamin Becker
+Joao Sousa
+Tim Smyczek
+Rajeev Ram
+Yen-Hsun Lu
+Mikhail Youzhny
+Peter Gojowczyk
+Juan Martin Del Potro
+Leonardo Mayer
+Florian Mayer
+Somdev Devvarman
+Denis Istomin
+Ivo Karlovic
+Kevin Anderson
+Jeremy Chardy
+Tomas Berdych
+Dmitry Tursunov
+Milos Raonic
+Janko Tipsarevic
+David Ferrer
+Adrian Mannarino
+Daniel Evans
+Philipp Kohlschreiber
+Rafael Nadal
+Joao Sousa
+Marcel Granollers
+Mikhail Youzhny
+Lleyton Hewitt
+Florian Mayer
+Denis Istomin
+Marcos Baghdatis
+Tomas Berdych
+Milos Raonic
+David Ferrer
+Tommy Robredo
+Rafael Nadal
+Lleyton Hewitt
+Denis Istomin
+Tomas Berdych
+David Ferrer
+Rafael Nadal
+Mikhail Youzhny
+Stanislas Wawrinka
+Stanislas Wawrinka
+Rafael Nadal
+Rafael Nadal
+S Williams
+F Pennetta
+S Williams
+R Vinci
+D Hantuchova
+E Makarova
+A Ivanovic
+A Riske
+S Halep
+C Giorgi
+S Williams
+J Jankovic
+C Suarez Navarro
+A Ivanovic
+C Wozniack
+M Kirilenko
+A Cornet
+K Knapp
+P Kvitova
+S Kuznetsova
+J Glushko
+L Robson
+J Hampton
+S Williams
+A.Radwanska
+E Makarova
+J Zheng
+J Jankovic
+K Kanepi
+F Pennetta
+S Williams
+C Wozniacki
+E Bouchard
+A Wozniak
+C McHale
+A Ivanovic
+P Ormaechea
+A Cornet
+D Hantuchova
+K Nara
+A Riske
+S Kuznetsova
+S Arvidsson
+U Radwanska
+V Williams
+J Hampton
+C Vandeweghe
+L Robson
+A Barty
+P Kvitova
+C Wozniacki
+D Pfizenmaier
+O Rogowska
+V Duval
+A Ivanovic
+J Goerges
+V Lepchenko
+S Kuznetsova
+B Jovanovski
+S Peng
+A Cornet
+H Watson
+K Flipkens
+A.Radwanska
+S Williams
+O Govortsova
+M Minella
+J Jankovic
+L Robson
+J Hampton
+V Dushevina
+P Ormaechea
+K Pliskova
+L Hradecka
+L Davis
+K Mladenovic
+V Azarenka
+V Azarenka
+N Li
+F Pennetta
+V Azarenka
+N Li
+V Azarenka
+D Hantuchova
+F Pennetta
+R Vinci
+S Stephens
+N Li
+A Kerber
+C McHale
+C Giorgi
+S Halep
+V Azarenka
+R Vinci
+A Riske
+F Pennetta
+D Hantuchova
+N Li
+S Stephens
+Y Shvedova
+A Pavlyuchenkova
+S Lisicki
+C Suarez Navarro
+K Nara
+A Kerber
+S Errani
+G Voskoboeva
+C Scheepers
+A Kerber
+V Azarenka
+E Svitolina
+A Dulgheru
+S Lisicki
+A Tomljanovic
+V Duval
+S Cirstea
+M Barthel
+S Peng
+N Li
+S Stephens
+J Zheng
+K Mladenovic
+C Suarez Navarro
+C Garcia
+A Pavlyuchenkova
+M Doi
+Y Duan
+V Azarenka
+S Errani
+S Stosur
+A Tatishvili
+C McHale
+A Dulgheru
+M Burdette
+A Petkovic
+Y Meusburger
+M Koehler
+S Halep
+V Williams
+S.Soler-Espinosa
+F Schiavone
+N Li
+S Stephens
+M Keys
+L Dominguez Lino
+L Arruabarrena
+S Lisicki
+K Date-Krumm
+E Bouchard
+A Kerber
+C Suarez Navarro
+A Medina Garrigues
+B.Becker
+J.Ward
+N.Mahut
+T.Robredo
+R.Haase
+M.Gicquel
+A.Kuznetsov
+J.Tipsarevic
+M.Baghdatis
+K.De Schepper
+L.Lacko
+J.Monaco
+T.Kamke
+F.Verdasco
+E.Roger-Vasselin
+J-W.Tsonga
+V.Hanescu
+R.Dutra Silva
+J.Reister
+F.Fognini
+K.Edmund
+R.Stepanek
+M.Matosevic
+N.Almagro
+L.Hewitt
+D.Brown
+P.Andujar
+J.Isner
+A.Ungur
+S.Robert
+L.Kubot
+R.Nadal
+A.Ramos
+G.Pella
+G.Zemlja
+G.Dimitrov
+D.Istomin
+M.Llodra
+L.Mayer
+K.Nishikori
+I.Dodig
+J.Duckworth
+A.Kuznetsov
+M.Raonic
+G.Elias
+H.Zeballos
+R.Bautista Agut
+D.Ferrer
+M.Klizan
+D.Brands
+P.Petzschner
+K.Anderson
+B.Tomic
+J.Blake
+A.Haider-Maurer
+R.Gasquet
+D.Tursunov
+W.Odesnik
+R.Berankis
+G.Simon
+R.Harrison
+B.Kavcic
+B.Reynolds
+N.Djokovic
+Y-H.Lu
+T.Robredo
+V.Pospisil
+V.Troicki
+J.Monaco
+F.Verdasco
+J-W.Tsonga
+S.Stakhovsky
+J.Melzer
+N.Almagro
+D.Brown
+S.Robert
+J.Levine
+G.Dimitrov
+K.Nishikori
+D.Kudla
+M.Raonic
+D.Brands
+K.Anderson
+J.Blake
+R.Gasquet
+J.Struff
+N.Djokovic
+T.Robredo
+J.Melzer
+N.Almagro
+A.Mannarino
+G.Zemlja
+K.Nishikori
+I.Sijsling
+D.Ferrer
+K.Anderson
+R.Gasquet
+F.Lopez
+N.Djokovic
+M.Youzhny
+F.Verdasco
+J.Janowicz
+L.Kubot
+A.Seppi
+D.Ferrer
+B.Tomic
+N.Djokovic
+F.Verdasco
+L.Kubot
+D.Ferrer
+N.Djokovic
+J.Janowicz
+N.Djokovic
+N.Djokovic
+A.Murray
+Y-H.Lu
+J.Hajek
+A.Bogomolov Jr.
+M.Youzhny
+V.Pospisil
+A.Montanes
+V.Troicki
+M.Cilic
+P.Lorenzi
+R.Ram
+B.Knittel
+J.Benneteau
+X.Malisse
+E.Gulbis
+D.Goffin
+R.Federer
+S.Stakhovsky
+L.Rosol
+J.Melzer
+J.Janowicz
+M.Reid
+G.Rufin
+J.Zopp
+S.Wawrinka
+G.Garcia-Lopez
+A.Mannarino
+E.Donskoy
+B.Paire
+A.Falla
+I.Andreev
+S.Darcis
+J.Del Potro
+J.Levine
+M.Russell
+S.Bolelli
+A.Seppi
+J.Nieminen
+A.Bedene
+M.Ebden
+P.Kohlschreiber
+D.Kudla
+I.Sijsling
+C.Berlocq
+A.Dolgopolov
+S.Giraldo
+T.Gabashvili
+M.Alund
+T.Berdych
+D.Gimeno-Traver
+M.Przysiezny
+O.Rochus
+S.Querrey
+T.De Bakker
+G.Soeda
+M.Granollers
+T.Haas
+Y-T.Wang
+P-H.Mathieu
+F.Lopez
+J.Chardy
+J.Struff
+S.Johnson
+F.Mayer
+A.Murray
+N.Mahut
+M.Youzhny
+A.Kuznetsov
+R.Ram
+J.Benneteau
+E.Gulbis
+R.Federer
+J.Reister
+G.Rufin
+L.Hewitt
+B.Paire
+J.Del Potro
+G.Zemlja
+L.Mayer
+I.Dodig
+I.Sijsling
+T.Berdych
+M.Przysiezny
+B.Tomic
+G.Soeda
+J.Chardy
+B.Reynolds
+A.Murray
+S.Stakhovsky
+J.Janowicz
+D.Brown
+J.Del Potro
+A.Seppi
+I.Dodig
+A.Dolgopolov
+T.Berdych
+B.Tomic
+T.Haas
+J.Chardy
+A.Murray
+K.De Schepper
+J.Melzer
+A.Mannarino
+J.Del Potro
+I.Dodig
+T.Berdych
+T.Haas
+A.Murray
+J.Janowicz
+J.Del Potro
+T.Berdych
+A.Murray
+J.Del Potro
+A.Murray
+M.Koehler
+E.Baltacha
+S-W.Hsieh
+A.Cornet
+Y.Putintseva
+A.Tomljanovic
+Y.Wickmayer
+J.Jankovic
+V.Razzano
+E.Bouchard
+S.Arvidsson
+C.Suarez Navarro
+J.Larsson
+G.Muguruza
+K.Bertens
+P.Kvitova
+K.Mladenovic
+M.Larcher De Brito
+L.Hradecka
+L.Safarova
+S.Voegele
+C.Giorgi
+C.McHale
+M.Bartoli
+E.Cabeza Candela
+P.Cetkovska
+P.Parmentier
+S.Stephens
+E.Birnerova
+L.Arruabarrena
+S.Soler-Espinosa
+S.Errani
+M.Krajicek
+O.Govortsova
+N.Bratchikova
+K.Zakopalova
+M.Camerin
+M.Torro-Flor
+Kr.Pliskova
+R.Vinci
+Ka.Pliskova
+A.Tatishvili
+B.Zahlavova Strycova
+A.Pavlyuchenkova
+M.Niculescu
+H.Watson
+T.Babos
+A.Radwanska
+B.Mattek-Sands
+K.Kanepi
+M.Burdette
+R.Oprandi
+A.Medina Garrigues
+A.Morita
+M.Duque-Marino
+M.Kirilenko
+A.Schmiedlova
+O.Puchkova
+E.Vesnina
+S.Lisicki
+A.Cadantu
+K.Date-Krumm
+C.Garcia
+S.Williams
+A.Cornet
+B.Jovanovski
+J.Jankovic
+E.Bouchard
+C.Suarez Navarro
+G.Muguruza
+M.Larcher De Brito
+L.Safarova
+C.Giorgi
+M.Bartoli
+P.Cetkovska
+S.Stephens
+L.Tsurenko
+M.Puig
+S.Halep
+K.Zakopalova
+M.Torro-Flor
+R.Vinci
+P.Martic
+T.Pironkova
+M.Keys
+A.Radwanska
+M.Erakovic
+O.Puchkova
+S.Lisicki
+K.Date-Krumm
+S.Williams
+A.Cornet
+V.Dolonc
+C.Suarez Navarro
+P.Kvitova
+K.Knapp
+M.Bartoli
+S.Stephens
+M.Puig
+K.Zakopalova
+R.Vinci
+T.Pironkova
+A.Radwanska
+A.Riske
+L.Robson
+S.Lisicki
+S.Williams
+K.Flipkens
+P.Kvitova
+M.Bartoli
+M.Puig
+R.Vinci
+A.Radwanska
+L.Robson
+S.Williams
+P.Kvitova
+S.Stephens
+A.Radwanska
+S.Lisicki
+M.Bartoli
+S.Lisicki
+S.Lisicki
+V.Azarenka
+F.Pennetta
+T.Maria
+V.King
+K.Flipkens
+B.Jovanovski
+V.Dolonc
+J.Konta
+A.Ivanovic
+G.Voskoboeva
+M.Lucic-Baroni
+L.Dominguez Lino
+E.Makarova
+A.Keothavong
+Y.Shvedova
+C.Vandeweghe
+M.Sharapova
+M.Oudin
+K.Knapp
+L.Davis
+S.Cirstea
+S.Murray
+A.Glatch
+E.Svitolina
+C.Wozniacki
+D.Vekic
+A.Petkovic
+J.Hampton
+V.Lepchenko
+L.Tsurenko
+M.Doi
+M.Puig
+N.Li
+S.Halep
+A.Beck
+D.Hantuchova
+D.Cibulkova
+I.Begu
+J.Cepelova
+C.Scheepers
+N.Petrova
+P.Martic
+M.Rybarikova
+T.Pironkova
+M.Barthel
+M.Keys
+M.Johansson
+Y.Meusburger
+A.Kerber
+T.Moore
+U.Radwanska
+A.Riske
+S.Peng
+M.Erakovic
+J.Goerges
+L.Robson
+S.Stosur
+A.Rus
+A.Hlavackova
+F.Schiavone
+T.Paszek
+C.Witthoeft
+J.Zheng
+M.Minella
+S-W.Hsieh
+K.Flipkens
+V.Dolonc
+A.Ivanovic
+M.Lucic-Baroni
+E.Makarova
+M.Sharapova
+K.Knapp
+S.Cirstea
+C.McHale
+C.Wozniacki
+A.Petkovic
+E.Birnerova
+S.Soler-Espinosa
+N.Li
+A.Beck
+D.Cibulkova
+J.Cepelova
+Ka.Pliskova
+B.Zahlavova Strycova
+M.Barthel
+M.Johansson
+S.Peng
+S.Stosur
+E.Vesnina
+A.Cadantu
+C.Garcia
+F.Pennetta
+K.Flipkens
+E.Bouchard
+E.Makarova
+M.Larcher De Brito
+C.Giorgi
+P.Cetkovska
+E.Birnerova
+N.Li
+D.Cibulkova
+P.Martic
+M.Keys
+K.Kanepi
+M.Erakovic
+S.Stosur
+K.Date-Krumm
+F.Pennetta
+C.Suarez Navarro
+K.Knapp
+S.Stephens
+N.Li
+T.Pironkova
+K.Kanepi
+S.Lisicki
+K.Flipkens
+M.Bartoli
+N.Li
+K.Kanepi
+K.Flipkens
+A.Radwanska
+M.Bartoli
