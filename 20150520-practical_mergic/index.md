@@ -526,6 +526,25 @@ An interesting side story is that Open Refine was formerly Google Refine, and be
 
 Thanks to [Joel Natividad](https://twitter.com/jqnatividad) for pointing out an [interesting algorithmic development](https://github.com/OpenRefine/OpenRefine/issues/983) connected with ongoing work on Open Refine.
 
+Steps of simple Open Refine demo:
+
+ * Start the Open Refine app
+ * Browse to [http://localhost:3333/](http://localhost:3333/)
+ * Click “Create Project”
+ * Click “Choose Files”
+ * Select `names.txt`
+ * Click “Next »“
+ * Click “Create Project »”
+ * Click the down arrow next to “Column 1”, then follow “Edit cells” to “Cluster and edit…”
+
+<img width="1000%" title="Open Refine" src="open_refine.png" />
+
+Open Refine has [introductory](https://github.com/OpenRefine/OpenRefine/wiki/Clustering) and [in-depth](https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth) documentation about their “clustering” mechanisms.
+
+In this interface, we can use “key collision” or “nearest neighbor” methods.
+
+
+
 # slides from `mergic` lightning talk
 
 # [tennis](https://github.com/ajschumacher/mergic/tree/master/tennis) example
@@ -604,9 +623,6 @@ Bio:
 
 ---
 
-OpenRefine clustering!
-https://github.com/OpenRefine/OpenRefine/wiki/Clustering
-https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth
 
 Tennis Major Tournament Match Statistics Data Set
 https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics
