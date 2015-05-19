@@ -483,9 +483,47 @@ The list above is not the answer we’re looking for. We want to be correct.
 
 -----
 
-next stuff
+single field de-duplication
 
 -----
+
+We're going to think about this problem, which is pretty common, of de-duplicating (or making a merge table for) a single text field.
+
+
+-----
+
+```
+Lukas Lacko             F Pennetta
+Leonardo Mayer          S Williams
+Marcos Baghdatis        C Wozniacki
+Santiago Giraldo        E Bouchard
+Juan Monaco             N.Djokovic
+Dmitry Tursunov         S.Giraldo
+Dudi Sela               Y-H.Lu
+Fabio Fognini           T.Robredo
+...                     ...
+```
+-----
+
+*Here begins material also presented in a [lightning talk](/20150514-mergic/) at the [May meeting](http://www.meetup.com/PyDataNYC/events/222329250/) ([registration](http://www.bloomberg.com/event-registration/?id=39288)) of the [PyData NYC meetup group](http://www.meetup.com/PyDataNYC/).*
+
+To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.
+
+Do you see the match here? (It's Santiago!)
+
+So we need to find the strings that refer to the same person.
+
+
+-----
+
+demo: Open Refine
+
+-----
+
+[Open Refine](http://openrefine.org/) is quite good.
+
+An interesting side story is that Open Refine was formerly Google Refine, and before that [Metaweb](http://en.wikipedia.org/wiki/Metaweb)'s “Freebase Gridworks”. Google is shutting down [Freebase](http://www.freebase.com/), and we have to hope that [Wikidata](https://www.wikidata.org/) will then be the open match for Google's [Knowledge Graph](http://en.wikipedia.org/wiki/Knowledge_Graph).
+
 
 # slides from `mergic` lightning talk
 
