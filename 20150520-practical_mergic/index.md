@@ -40,6 +40,8 @@ I've also learned about some of the ecosystem of techniques and tools available,
 
 I'll finish by suggesting that we probably need to do something entirely different.
 
+I've thought about this issue a little bit, but more than issuing a report I'd like to encourage a discussion that might lead to more and better work with data.
+
 
 -----
 
