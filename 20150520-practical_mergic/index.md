@@ -561,7 +561,14 @@ There are two “distance functions” in Open Refine:
 
 The “radius” is the distance below which two items will be clustered together. With a higher value for “radius”, groups will tend to be larger.
 
-[Open Refine](http://openrefine.org/) is quite good, but there are several things I would like to do differently.
+[Open Refine](http://openrefine.org/) is quite good, but there are several things I would like:
+
+ * See all the items rather than just the ones being grouped.
+ * Customize / break up groupings that are incorrect, while preserving others.
+ * Easily use a custom distance function.
+ * Easily use a custom function for choosing the “New Cell Value”.
+ * See what would happen with different “radii” without trying them all.
+ * Have a record of the whole transformation that’s easy to review, edit, and reapply.
 
 
 # slides from `mergic` lightning talk
