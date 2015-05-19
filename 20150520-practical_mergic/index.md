@@ -62,11 +62,9 @@ What are we talking about?
 
 -----
 
-이름에 동의하는 것은 의사 소통에 큰 문제입니다.
+이름이란 것은 정말 중요합니다. 예를 들면, 미국에서 한국말로...
 
-That is: agreeing on names is important, and the issue is a big one.
-
-# Something more here?
+My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.
 
 Maintaining a practical focus, let's focus on just two classes of problems:
 
@@ -82,7 +80,7 @@ Lots of things can go wrong when names are re-used when they shouldn't be.
 
 -----
 
-when names are *not* the same
+when names are not the same
 
 -----
 
@@ -95,7 +93,7 @@ But first, an example illustrating the importance of checking that your names ar
 
 -----
 
-demo
+demo: kinds of boys
 
 -----
 
@@ -237,7 +235,20 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
-(Original image from [Magnolia](http://en.wikipedia.org/wiki/Magnolia_%28film%29) via [Indie Outlook](http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/).)
+*Original image from [Magnolia](http://en.wikipedia.org/wiki/Magnolia_%28film%29) via [Indie Outlook](http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/).*
+
+> “This happens. This is a thing that happens.”
+
+This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.
+
+
+-----
+
+merge
+
+-----
+
+One big reason to want nice unique IDs is that you would like to merge two data sets, and you need something to match records by. Let's do a quick refresher on merging, or joining.
 
 
 -----
@@ -246,7 +257,11 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
-one of [RStudio](http://www.rstudio.com/)'s [cheatsheets](http://www.rstudio.com/resources/cheatsheets/)
+This is a section from [RStudio](http://www.rstudio.com/)'s [cheatsheet](http://www.rstudio.com/resources/cheatsheets/) for [dplyr](https://github.com/hadley/dplyr). These cheatsheets are fantastic.
+
+We'll do a merge between two data sets. For simplicity say that they have one column which is an identifier for each row, and some data in other columns. There are a couple ways we can join the data.
+
+Some people like to think about these in terms of Venn diagrams.
 
 
 -----
@@ -255,7 +270,11 @@ one of [RStudio](http://www.rstudio.com/)'s [cheatsheets](http://www.rstudio.com
 
 -----
 
-[Jeff Atwood](https://twitter.com/codinghorror)'s [visual explanation of SQL joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
+This picture comes from [Jeff Atwood](https://twitter.com/codinghorror)'s post called [visual explanation of SQL joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/).
+
+A former co-worker told me that seeing these pictures changed his life. I hope you like them.
+
+This is a left join: you get all the keys from the left data set, regardless of whether they're in the right data set.
 
 
 -----
@@ -264,15 +283,22 @@ one of [RStudio](http://www.rstudio.com/)'s [cheatsheets](http://www.rstudio.com
 
 -----
 
+Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little [ImageMagick](http://www.imagemagick.org/).
+
 ```bash
 convert -rotate 180 left_join.png right_join.png
 ```
+
+You're welcome.
+
 
 -----
 
 <img width="1000%" title="inner join" src="inner_join.png" />
 
 -----
+
+An inner join, or natural join, only gives you results for keys that appear in both the left and right data sets.
 
 
 -----
@@ -281,12 +307,32 @@ convert -rotate 180 left_join.png right_join.png
 
 -----
 
+And an outer join gives you everything. Great!
+
+There are a few other terms we could add, but let's not.
+
 
 -----
 
 <img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" />
 
 -----
+
+Here's the `dplyr` summary again. You can see how you can introduce missing values when doing left, right, and outer joins.
+
+Ready? Here's a test.
+
+
+-----
+
+How many rows do you get when you outer join two tables?
+
+-----
+
+Think about this question, discuss it with somebody near you, come up with everything you can say about the number of rows you might expect when you join two tables. Introduce any quantities you think you'd like to know.
+
+Take about three minutes and then come back.
+
 
 
 # slides from `mergic` lightning talk
