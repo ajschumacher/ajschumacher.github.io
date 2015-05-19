@@ -333,6 +333,46 @@ Think about this question, discuss it with somebody near you, come up with every
 
 Take about three minutes and then come back.
 
+*three minutes pass*
+
+Say there are *N* rows in the first table and *M* rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of *N* and *M*. But we might get as many as *N \* M* rows, if all the keys are the same!
+
+If you said the maximum was *N + M*, you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.
+
+
+-----
+
+```r
+> nrow(first)
+## [1] 3
+> nrow(second)
+## [1] 3
+> result <- merge(first, second)
+> nrow(result)
+## [1] 3
+```
+-----
+
+*This code is runnable in [count_trouble.R](count_trouble.R).*
+
+Is it enough to check the numbers of rows when we do joins?
+
+This does an inner join, which is the default for `merge` in R.
+
+Think about it.
+
+
+-----
+
+```text
+ x    y1        x   y2        x    y1   y2
+ 1 looks        1 good        1 looks good
+ 2    oh        2  boy        2    oh  boy
+ 3  well        2   no        2    oh   no
+```
+-----
+
+There is no peace while you don't have unique IDs.
 
 
 # slides from `mergic` lightning talk

@@ -11,7 +11,7 @@
     <article>
 <h1>Practical Mergic</h1>
 <p class="date">Wednesday May 20, 2015</p>
-<p>A talk for the <a href="http://www.meetup.com/nyhackr/">New York Open Statistical Programming Meetup</a> on <a href="http://www.meetup.com/nyhackr/events/222328498/">Wednesday May 20, 2015</a>.</p>
+<p><em>A talk for the <a href="http://www.meetup.com/nyhackr/">New York Open Statistical Programming Meetup</a> on <a href="http://www.meetup.com/nyhackr/events/222328498/">Wednesday May 20, 2015</a>. Including some material originally given in a <a href="/20150514-mergic/">lightning talk</a> at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>.</em></p>
 <hr />
 <p><center>
 planspace.org</p>
@@ -19,6 +19,19 @@ planspace.org</p>
 </center></p>
 <hr />
 <p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr />
+<p>picture of a school or something</p>
+<hr />
+<p>The first time I wrote software to address this problem, I was working for the New York City Department of Education.</p>
+<p>The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals, at least not in every data system at that time. This made sense, because there are only about sixteen hundred New York City public schools.</p>
+<p>Those of you who have experience with humans will recall that names are not unique IDs. People change their names, or add titles like “PhD”, or have their names differently at different times for no good reason. In the case of principals, sometimes they even switch schools and change their names <em>at the same time</em>.</p>
+<p>In a situation like this, an approximate solution is not acceptable. The DOE makes some decisions based on data, God bless them.</p>
+<p>I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I still had to verify proposed pairs, and it was awful, and it was a long time ago, and I wished there was a better way to do it.</p>
+<p>My primary concerns were, and are, to speed up the de-duplication process while allowing editing by hand and still being reproducible and easily auditable by humans.</p>
+<p>I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.</p>
+<p>I've also learned about some of the ecosystem of techniques and tools available, and I'll talk about these as well.</p>
+<p>I'll finish by suggesting that we probably need to do something entirely different.</p>
+<p>I've thought about this issue a little bit, but more than issuing a report I'd like to encourage a discussion that might lead to more and better work with data.</p>
 <hr />
 <blockquote>
 <p>“There are only two hard things in computer science: cache invalidation and naming things.”</p>
@@ -30,22 +43,21 @@ planspace.org</p>
 <hr />
 <p>What are we talking about?</p>
 <hr />
-<p>이름에 동의하는 것은 의사 소통에 큰 문제입니다.</p>
-<p>That is: agreeing on names is important, and the issue is a big one.</p>
-<h1>Something more here?</h1>
+<p>이름이란 것은 정말 중요합니다. 예를 들면, 미국에서 한국말로...</p>
+<p>My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.</p>
 <p>Maintaining a practical focus, let's focus on just two classes of problems:</p>
 <hr />
 <p>when names are the same</p>
 <hr />
 <p>Lots of things can go wrong when names are re-used when they shouldn't be.</p>
 <hr />
-<p>when names are <em>not</em> the same</p>
+<p>when names are not the same</p>
 <hr />
 <p>It can be even worse when names for the same thing are <em>not</em> the same.</p>
 <p>Both these problems are closely related to merging, and we'll think a lot about that context.</p>
 <p>But first, an example illustrating the importance of checking that your names are unique (not the same).</p>
 <hr />
-<p>demo</p>
+<p>demo: kinds of boys</p>
 <hr />
 <p>The <a href="SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="check_unique.R">check_unique.R</a>.</p>
 <p>There's a little setup to make reading the data easier.</p>
@@ -159,29 +171,80 @@ data %>%
 <hr />
 <p><img width="1000%" title="This happens." src="this_happens.png" /></p>
 <hr />
-<p>(Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.)</p>
+<p><em>Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.</em></p>
+<blockquote>
+<p>“This happens. This is a thing that happens.”</p>
+</blockquote>
+<p>This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.</p>
+<hr />
+<p>merge</p>
+<hr />
+<p>One big reason to want nice unique IDs is that you would like to merge two data sets, and you need something to match records by. Let's do a quick refresher on merging, or joining.</p>
 <hr />
 <p><img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" /></p>
 <hr />
-<p>one of <a href="http://www.rstudio.com/">RStudio</a>'s <a href="http://www.rstudio.com/resources/cheatsheets/">cheatsheets</a></p>
+<p>This is a section from <a href="http://www.rstudio.com/">RStudio</a>'s <a href="http://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> for <a href="https://github.com/hadley/dplyr">dplyr</a>. These cheatsheets are fantastic.</p>
+<p>We'll do a merge between two data sets. For simplicity say that they have one column which is an identifier for each row, and some data in other columns. There are a couple ways we can join the data.</p>
+<p>Some people like to think about these in terms of Venn diagrams.</p>
 <hr />
 <p><img width="1000%" title="left join" src="left_join.png" /></p>
 <hr />
-<p><a href="https://twitter.com/codinghorror">Jeff Atwood</a>'s <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">visual explanation of SQL joins</a></p>
+<p>This picture comes from <a href="https://twitter.com/codinghorror">Jeff Atwood</a>'s post called <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">visual explanation of SQL joins</a>.</p>
+<p>A former co-worker told me that seeing these pictures changed his life. I hope you like them.</p>
+<p>This is a left join: you get all the keys from the left data set, regardless of whether they're in the right data set.</p>
 <hr />
 <p><img width="1000%" title="right join" src="right_join.png" /></p>
 <hr />
+<p>Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little <a href="http://www.imagemagick.org/">ImageMagick</a>.</p>
 <pre><code class="language-bash">convert -rotate 180 left_join.png right_join.png</code></pre>
 
+<p>You're welcome.</p>
 <hr />
 <p><img width="1000%" title="inner join" src="inner_join.png" /></p>
 <hr />
+<p>An inner join, or natural join, only gives you results for keys that appear in both the left and right data sets.</p>
 <hr />
 <p><img width="1000%" title="outer join" src="outer_join.png" /></p>
 <hr />
+<p>And an outer join gives you everything. Great!</p>
+<p>There are a few other terms we could add, but let's not.</p>
 <hr />
 <p><img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" /></p>
 <hr />
+<p>Here's the <code>dplyr</code> summary again. You can see how you can introduce missing values when doing left, right, and outer joins.</p>
+<p>Ready? Here's a test.</p>
+<hr />
+<p>How many rows do you get when you outer join two tables?</p>
+<hr />
+<p>Think about this question, discuss it with somebody near you, come up with everything you can say about the number of rows you might expect when you join two tables. Introduce any quantities you think you'd like to know.</p>
+<p>Take about three minutes and then come back.</p>
+<p><em>three minutes pass</em></p>
+<p>Say there are <em>N</em> rows in the first table and <em>M</em> rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of <em>N</em> and <em>M</em>. But we might get as many as <em>N * M</em> rows, if all the keys are the same!</p>
+<p>If you said the maximum was <em>N + M</em>, you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.</p>
+<hr />
+<pre><code class="language-r">> nrow(first)
+## [1] 3
+> nrow(second)
+## [1] 3
+> result &lt;- merge(first, second)
+> nrow(result)
+## [1] 3</code></pre>
+
+<hr />
+<p><em>This code is runnable in <a href="count_trouble.R">count_trouble.R</a>.</em></p>
+<p>Is it enough to check the numbers of rows when we do joins?</p>
+<p>This does an inner join, which is the default for <code>merge</code> in R.</p>
+<p>Think about it.</p>
+<hr />
+<pre><code class="language-text"> x    y1        x   y2        x    y1   y2
+ 1 looks        1 good        1 looks good
+ 2    oh        2  boy        2    oh  boy
+ 3  well        2   no        2    oh   no</code></pre>
+
+<hr />
+<p>There is no peace while you don't have unique IDs.</p>
+<h1>slides from <code>mergic</code> lightning talk</h1>
+<h1><a href="https://github.com/ajschumacher/mergic/tree/master/tennis">tennis</a> example</h1>
 <p>big four:</p>
 <p>R RecordLinkage
 Python dedupe
