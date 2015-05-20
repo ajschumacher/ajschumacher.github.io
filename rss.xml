@@ -7,6 +7,794 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Practical Mergic</title>
+<description><![CDATA[
+
+<p><em>A talk for the <a href="http://www.meetup.com/nyhackr/">New York Open Statistical Programming Meetup</a> on <a href="http://www.meetup.com/nyhackr/events/222328498/">Wednesday May 20, 2015</a>. Including some material originally given in a <a href="/20150514-mergic/">lightning talk</a> at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>.</em></p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img width="1000%" title="Tweed Courthouse" src="img/tweed.jpg"></p>
+<hr>
+<p><em><a href="http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg">Image from Wikimedia Commons</a>.</em></p>
+<p>The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.</p>
+<p>The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals. This was the case at least for some of the data system at that time. And this made sense, because there are only about sixteen hundred New York City public schools.</p>
+<p>Those of you who have experience with humans will know that names are not unique IDs. People change their names, or add titles like &#8220;PhD&#8221;, or have their names entered differently at different times for no good reason. In the case of principals, sometimes they switch schools and change their names <em>at the same time</em>.</p>
+<p>The DOE makes some decisions based on data, God bless them. The data associated with a principal might determine whether they get a bonus or an unpleasant phone call. In a situation like this, an approximate matching solution is not acceptable.</p>
+<p>I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I had to verify the match by pairs, and it was awful, and I wished there was a better way to do it.</p>
+<p>My primary concerns were, and are, to speed up the de-duplication process while allowing corrections by hand&#8212;still being reproducible and easily auditable by humans.</p>
+<p>I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.</p>
+<p>I've also learned about some of the broader ecosystem of techniques and tools available, and I'll talk about these as well.</p>
+<p>I'll finish by suggesting that we probably need to do something entirely different.</p>
+<p>I'd like to encourage a discussion that could lead to more and better work with data.</p>
+<hr>
+<blockquote>
+<p>&#8220;There are only two hard things in computer science: cache invalidation and naming things.&#8221;</p>
+</blockquote>
+<hr>
+<p><a href="http://www.meerkat.com/karlton/">Phil Karlton</a> <a href="http://martinfowler.com/bliki/TwoHardThings.html">said</a> that &#8220;There are only two hard things in computer science: cache invalidation and naming things.&#8221;</p>
+<p>When working with data (let's call it &#8220;data science&#8221; then, instead of &#8220;computer science&#8221;) you have problems not only with your own names, but also with everybody else's names.</p>
+<p>It's just semantics, I suppose.</p>
+<hr>
+<p>What are we talking about?</p>
+<hr>
+<p>&#51060;&#47492;&#51060;&#46976; &#44163;&#51008; &#51221;&#47568; &#51473;&#50836;&#54633;&#45768;&#45796;. &#50696;&#47484; &#46308;&#47732;, &#48120;&#44397;&#50640;&#49436; &#54620;&#44397;&#47568;&#47196;...</p>
+<p>My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.</p>
+<p>Maintaining a practical focus, let's focus on just two classes of problems:</p>
+<hr>
+<p>when names are the same</p>
+<hr>
+<p>Lots of things can go wrong when names are re-used when they shouldn't be.</p>
+<hr>
+<p>when names aren't the same</p>
+<hr>
+<p>It can be even worse when names for the same thing are <em>not</em> the same.</p>
+<p>Both these problems are closely related to merging, and we'll think a lot about that context.</p>
+<p>But first, an example illustrating the importance of checking that your names are unique (not the same).</p>
+<hr>
+<p>demo: DOE data</p>
+<hr>
+<p>The <a href="doe/SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="doe/check_unique.R">check_unique.R</a>.</p>
+<p>There's a little setup to make reading the data easier.</p>
+<pre><code class="language-r">library("dplyr")
+
+read.doe &lt;- function(filename) {
+  data &lt;- read.csv(filename, as.is=TRUE,
+                   skip=6, check.names=FALSE,
+                   na.strings="s")
+  stopifnot(names(data) == c("DBN", "Grade", "Year", "Category",
+                             "Number Tested","Mean Scale Score",
+                             "#","%","#","%","#","%","#","%","#","%"))
+  names(data) &lt;- c("dbn", "grade", "year", "category",
+                   "num_tested", "mean_score",
+                   "num1", "per1", "num2", "per2", "num3", "per3",
+                   "num4", "per4", "num34", "per34")
+ return(tbl_df(data))
+}</code></pre>
+
+<p>Now we can start looking at the data, using <a href="https://github.com/hadley/dplyr">dplyr</a>:</p>
+<pre><code class="language-r">gender &lt;- read.doe("gender.csv")
+
+gender
+## Source: local data frame [68,028 x 16]
+##
+##       dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1  01M015     3 2006   Female         23        675    0  0.0    7 30.4
+## 2  01M015     3 2006     Male         16        657    2 12.5    4 25.0
+## 3  01M015     3 2007   Female         11        679    2 18.2    0  0.0
+## 4  01M015     3 2007     Male         20        668    0  0.0    3 15.0
+## 5  01M015     3 2008   Female         17        661    0  0.0    5 29.4
+## 6  01M015     3 2008     Male         20        674    0  0.0    1  5.0
+## 7  01M015     3 2009   Female         13        667    0  0.0    1  7.7
+## 8  01M015     3 2009     Male         20        668    0  0.0    3 15.0
+## 9  01M015     3 2010   Female         13        681    2 15.4    7 53.8
+## 10 01M015     3 2010     Male         13        673    4 30.8    5 38.5
+## ..    ...   ...  ...      ...        ...        ...  ...  ...  ...  ...
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>What's our unique key for this data set? It looks like it should be <code>dbn</code> (a unique identifier for a school), <code>grade</code>, <code>year</code>, and <code>category</code>. Let's check. The following should be zero if there are no duplicates.</p>
+<pre><code class="language-r">gender %&gt;%
+  select(dbn, grade, year, category) %&gt;%
+  duplicated %&gt;%
+  sum
+## [1] 1421</code></pre>
+
+<p>Shocking! Seeing that there are duplicates doesn't yet tell us how the duplicates are distributed; is it 1,422 copies of the same combination, or something else?</p>
+<pre><code class="language-r">gender %&gt;%
+  group_by(dbn, grade, year, category) %&gt;%
+  summarize(n=n()) %&gt;%
+  group_by(n) %&gt;%
+  summarize(count=n())
+## Source: local data frame [2 x 2]
+##
+##   n count
+## 1 1 65186
+## 2 2  1421</code></pre>
+
+<p>Much like using <code>table</code>, now we can see that most key combinations appear just once, but 1,421 appear twice. Interesting! Let's look at them.</p>
+<pre><code class="language-r">gender %&gt;%
+  group_by(dbn, grade, year, category) %&gt;%
+  filter(1 &lt; n())
+## Source: local data frame [2,842 x 16]
+## Groups: dbn, grade, year, category
+##
+##       dbn      grade year category num_tested mean_score num1 per1 num2
+## 1  01M019          3 2010     Male         20        677    3   15    7
+## 2  01M019          3 2010     Male          2         NA   NA   NA   NA
+## 3  01M019          4 2010     Male         20        674    1    5    9
+## 4  01M019          4 2010     Male          1         NA   NA   NA   NA
+## 5  01M019          5 2010     Male          1         NA   NA   NA   NA
+## 6  01M019          5 2010     Male         17        688    0    0    3
+## 7  01M019 All Grades 2010     Male          4         NA   NA   NA   NA
+## 8  01M019 All Grades 2010     Male         57         NA    4    7   19
+## 9  01M020          3 2010     Male         50        686    8   16   15
+## 10 01M020          3 2010     Male          1         NA   NA   NA   NA
+## ..    ...        ...  ...      ...        ...        ...  ...  ...  ...
+## Variables not shown: per2 (dbl), num3 (int), per3 (dbl), num4 (int), per4
+##   (dbl), num34 (int), per34 (dbl)</code></pre>
+
+<p>Looks like there are two different kinds of males! How strange! Can we see what's going on by looking at the rest of the file?</p>
+<pre><code class="language-r">gender %&gt;%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [3 x 16]
+##
+##      dbn grade year category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010   Female         16        687    0    0    9 56.3
+## 2 01M019     3 2010     Male         20        677    3   15    7 35.0
+## 3 01M019     3 2010     Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>Unfortunately not; we'll have to look at additional data to try to determine what's going on. (This is typical.)</p>
+<pre><code class="language-r">all_students &lt;- read.doe("all.csv")
+data &lt;- bind_rows(all_students, gender)
+
+data %&gt;%
+  filter(dbn=='01M019', year==2010, grade==3)
+## Source: local data frame [4 x 16]
+##
+##      dbn grade year     category num_tested mean_score num1 per1 num2 per2
+## 1 01M019     3 2010 All Students         36        682    3  8.3   16 44.4
+## 2 01M019     3 2010       Female         16        687    0  0.0    9 56.3
+## 3 01M019     3 2010         Male         20        677    3 15.0    7 35.0
+## 4 01M019     3 2010         Male          2         NA   NA   NA   NA   NA
+## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
+##   (int), per34 (dbl)</code></pre>
+
+<p>It looks like these extra males aren't being counted in the total for &#8220;All Students&#8221;, so maybe we can drop them. Or maybe the &#8220;All Students&#8221; total is wrong.</p>
+<hr>
+<p><img width="1000%" title="This happens." src="img/this_happens.png"></p>
+<hr>
+<p><em>Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.</em></p>
+<blockquote>
+<p>&#8220;This happens. This is a thing that happens.&#8221;</p>
+</blockquote>
+<p>This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything&#8212;including things that you shouldn&#8217;t have to check.</p>
+<p>(One good way to check is to use <a href="https://twitter.com/tonyfischetti">Tony</a>'s <a href="http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html">Assertive R</a> package!)</p>
+<hr>
+<p>merge</p>
+<hr>
+<p>One big reason to want nice unique IDs is that you would like to merge two data sets, and you need something to match records by. Let's do a quick refresher on merging, or joining.</p>
+<hr>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png"></p>
+<hr>
+<p>This is a section from <a href="http://www.rstudio.com/">RStudio</a>'s <a href="http://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> for <a href="https://github.com/hadley/dplyr">dplyr</a>. These cheatsheets are fantastic.</p>
+<p>We'll do a merge between two data sets. For simplicity say that they have one column which is an identifier for each row, and some data in other columns. There are a couple ways we can join the data.</p>
+<p>Some people like to think about these in terms of Venn diagrams.</p>
+<hr>
+<p><img width="1000%" title="left join" src="img/left_join.png"></p>
+<hr>
+<p>This picture comes from <a href="https://twitter.com/codinghorror">Jeff Atwood</a>'s post called <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">visual explanation of SQL joins</a>.</p>
+<p>A former co-worker told me that seeing these pictures changed his life. I hope you like them.</p>
+<p>This is a left join: you get all the keys from the left data set, regardless of whether they're in the right data set.</p>
+<hr>
+<p><img width="1000%" title="right join" src="img/right_join.png"></p>
+<hr>
+<p>Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little <a href="http://www.imagemagick.org/">ImageMagick</a>.</p>
+<pre><code class="language-bash">$ convert -rotate 180 left_join.png right_join.png</code></pre>
+
+<p>You're welcome.</p>
+<hr>
+<p><img width="1000%" title="inner join" src="img/inner_join.png"></p>
+<hr>
+<p>An inner join, or natural join, only gives you results for keys that appear in both the left and right data sets.</p>
+<hr>
+<p><img width="1000%" title="outer join" src="img/outer_join.png"></p>
+<hr>
+<p>And an outer join gives you everything. Great!</p>
+<p>There are a few other terms we could add, but let's not.</p>
+<hr>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png"></p>
+<hr>
+<p>Here's the <code>dplyr</code> summary again. You can see how you can introduce missing values when doing left, right, and outer joins.</p>
+<p>Ready? Here's a test.</p>
+<hr>
+<p>How many rows do you get when you outer join two tables?</p>
+<hr>
+<p>Think about this question, discuss it with somebody near you, come up with everything you can say about the number of rows you might expect when you join two tables. Introduce any quantities you think you'd like to know.</p>
+<p>Take about three minutes and then come back.</p>
+<p><em>three minutes pass</em></p>
+<p>Say there are <em>N</em> rows in the first table and <em>M</em> rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of <em>N</em> and <em>M</em>. But we might get as many as <em>N * M</em> rows, if all the keys are the same!</p>
+<p>If you said the maximum was <em>N + M</em>, you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.</p>
+<hr>
+<pre><code class="language-r">&gt; nrow(first)
+## [1] 3
+&gt; nrow(second)
+## [1] 3
+&gt; result &lt;- merge(first, second)
+&gt; nrow(result)
+## [1] 3</code></pre>
+
+<hr>
+<p><em>This code is runnable in <a href="count_trouble.R">count_trouble.R</a>.</em></p>
+<p>Is it enough to check the numbers of rows when we do joins?</p>
+<p>This does an inner join, which is the default for <code>merge</code> in R.</p>
+<p>Think about it.</p>
+<hr>
+<pre><code class="language-text"> x    y1        x   y2        x    y1   y2
+ 1 looks        1 good        1 looks good
+ 2    oh        2  boy        2    oh  boy
+ 3  well        2   no        2    oh   no</code></pre>
+
+<hr>
+<p>There is no peace while you don't have unique IDs.</p>
+<p>There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.</p>
+<hr>
+<p>when names are the same</p>
+<hr>
+<p>This has been a discussion of problems arising from names being the same.</p>
+<hr>
+<p>when names aren't the same</p>
+<hr>
+<p>Probably also want to check that the intersection you get is what you expect.</p>
+<p>You don't want to silently drop a ton of rows when you merge!</p>
+<p>This is the beginning of our problems with names that aren't the same.</p>
+<hr>
+<p>demo: let's play tennis</p>
+<hr>
+<p><em>Here begins material also present in <a href="https://github.com/ajschumacher/mergic/tree/master/tennis">ajschumacher/mergic:tennis</a>.</em></p>
+<p>Download the <a href="https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics">Tennis Major Tournament Match Statistics Data Set</a> from the <a href="https://archive.ics.uci.edu/ml/">UC Irvine Machine Learning Repository</a> into an empty directory:</p>
+<pre><code class="language-bash">$ wget https://archive.ics.uci.edu/ml/machine-learning-databases/00300/Tennis-Major-Tournaments-Match-Statistics.zip</code></pre>
+
+<p>This file should be stable, but it's also included <a href="tennis/Tennis-Major-Tournaments-Match-Statistics.zip">here</a> and/or you can verify that its <code>md5</code> is <code>e9238389e4de42ecf2daf425532ce230</code>.</p>
+<p>Unpack eight CSV files from the <code>Tennis-Major-Tournaments-Match-Statistics.zip</code>:</p>
+<pre><code class="language-bash">$ unzip Tennis-Major-Tournaments-Match-Statistics.zip</code></pre>
+
+<p>You should see that the first two columns of each file contain player names, though the column names are not consistent. For example:</p>
+<pre><code class="language-bash">$ head -2 AusOpen-women-2013.csv | cut -c 1-40
+## Player1,Player2,Round,Result,FNL1,FNL2,F
+## Serena Williams,Ashleigh Barty,1,1,2,0,5
+
+$ head -2 USOpen-women-2013.csv | cut -c 1-40
+## Player 1,Player 2,ROUND,Result,FNL.1,FNL
+## S Williams,V Azarenka,7,1,2,1,57,44,43,2</code></pre>
+
+<p>Make a <code>names.txt</code> with all the names that appear:</p>
+<pre><code class="language-bash">$ for filename in *2013.csv
+do
+    for field in 1 2
+    do
+        tail +2 $filename | cut -d, -f$field &gt;&gt; names.txt
+    done
+done</code></pre>
+
+<p>Now you have a file with 1,886 lines, each one of 669 unique strings, as you can verify:</p>
+<pre><code class="language-bash">$ wc -l names.txt
+## 1886
+
+$ sort names.txt | uniq | wc -l
+## 669</code></pre>
+
+<p>There are too many unique strings&#8212;sometimes more than one string for the same player. As a result, a count of the most common names will not accurately tell us who played the most in these 2013 tennis competitions.</p>
+<pre><code class="language-bash">$ sort names.txt | uniq -c | sort -nr | head
+##  21 Rafael Nadal
+##  17 Stanislas Wawrinka
+##  17 Novak Djokovic
+##  17 David Ferrer
+##  15 Roger Federer
+##  14 Tommy Robredo
+##  13 Richard Gasquet
+##  11 Victoria Azarenka
+##  11 Tomas Berdych
+##  11 Serena Williams</code></pre>
+
+<p>The list above is not the answer we&#8217;re looking for. We want to be correct.</p>
+<hr>
+<p>single field deduplication</p>
+<hr>
+<p>We're going to think about this problem, which is pretty common, of de-duplicating (or making a merge table for) a single text field.</p>
+<hr>
+<pre><code>Lukas Lacko             F Pennetta
+Leonardo Mayer          S Williams
+Marcos Baghdatis        C Wozniacki
+Santiago Giraldo        E Bouchard
+Juan Monaco             N.Djokovic
+Dmitry Tursunov         S.Giraldo
+Dudi Sela               Y-H.Lu
+Fabio Fognini           T.Robredo
+...                     ...</code></pre>
+
+<hr>
+<p><em>Here begins material also presented in a <a href="/20150514-mergic/">lightning talk</a> at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>.</em></p>
+<p>To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
+<p>Do you see the match here? (It's Santiago!)</p>
+<p>So we need to find the strings that refer to the same person.</p>
+<hr>
+<p>demo: Open Refine</p>
+<hr>
+<p><a href="http://openrefine.org/">Open Refine</a> is quite good.</p>
+<p>An interesting side story is that Open Refine was formerly Google Refine, and before that <a href="http://en.wikipedia.org/wiki/Metaweb">Metaweb</a>'s &#8220;Freebase Gridworks&#8221;. Google is shutting down <a href="http://www.freebase.com/">Freebase</a>, and we have to hope that <a href="https://www.wikidata.org/">Wikidata</a> will then be the open match for Google's <a href="http://en.wikipedia.org/wiki/Knowledge_Graph">Knowledge Graph</a>.</p>
+<p>Thanks to <a href="https://twitter.com/jqnatividad">Joel Natividad</a> for pointing out an <a href="https://github.com/OpenRefine/OpenRefine/issues/983">interesting algorithmic development</a> connected with ongoing work on Open Refine. He also pointed out that there is a Python module called <a href="https://github.com/PaulMakepeace/refine-client-py">refine-client</a> for using Open Refine from Python.</p>
+<p>Steps of simple Open Refine demo:</p>
+<ul>
+<li>Start the Open Refine app</li>
+<li>Browse to <a href="http://localhost:3333/">http://localhost:3333/</a></li>
+<li>Click &#8220;Create Project&#8221;</li>
+<li>Click &#8220;Choose Files&#8221;</li>
+<li>Select <code>names.txt</code></li>
+<li>Click &#8220;Next &#187;&#8220;</li>
+<li>Click &#8220;Create Project &#187;&#8221;</li>
+<li>Click the down arrow next to &#8220;Column 1&#8221;, then follow &#8220;Edit cells&#8221; to &#8220;Cluster and edit&#8230;&#8221;</li>
+</ul>
+<p><img width="1000%" title="Open Refine" src="img/open_refine.png"></p>
+<p>Open Refine has <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering">introductory</a> and <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">in-depth</a> documentation about their &#8220;clustering&#8221; mechanisms.</p>
+<p>In this interface, we can use &#8220;key collision&#8221; or &#8220;nearest neighbor&#8221; methods.</p>
+<p>The &#8220;key collision&#8221; method maps every value to one &#8220;key&#8221;, and items are identical if they have the same key. This allows us to avoid calculating anything for all pairs. (This should remind you of hashing.)</p>
+<p>There are four &#8220;keying functions&#8221; in Open Refine:</p>
+<ul>
+<li>&#8220;fingerprint&#8221; standardizes a string by case and punctuation.</li>
+<li>&#8220;ngram-fingerprint&#8221; standardizes a bit further, using character ngrams.</li>
+<li>&#8220;metaphone3&#8221; standardizes by the phonetic <a href="http://www.amorphics.com/">Metaphone 3</a> algorithm so that things that sound the same in English should be keyed together. (There are strange licensing issues around Metaphone 3.)</li>
+<li>&#8220;cologne-phonetic&#8221; standardizes by the <a href="http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik">K&#246;lner Phonetik</a> algorithm so that things that sound the same in German should be keyed together. (There is a <a href="https://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/ColognePhonetic.html">real open source version</a>.)</li>
+</ul>
+<p>The &#8220;nearest neighbor&#8221; method calculates pairwise distances, which is slow. Open Refine uses blocking to break things up into blocks that it won&#8217;t compare across, which reduces the number of comparisons to improve speed of calculation.</p>
+<p>There are two &#8220;distance functions&#8221; in Open Refine:</p>
+<ul>
+<li>&#8220;levenshtein&#8221; is the well-known <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein edit distance</a></li>
+<li>&#8220;PPM&#8221; estimates how different strings are by how well they compress separately versus together, using <a href="http://en.wikipedia.org/wiki/Prediction_by_partial_matching">Prediction by Partial Matching</a>.</li>
+</ul>
+<p>The &#8220;radius&#8221; is the distance below which two items will be clustered together. With a higher value for &#8220;radius&#8221;, groups will tend to be larger.</p>
+<p><a href="http://openrefine.org/">Open Refine</a> is quite good, but there are several things I would like:</p>
+<ul>
+<li>See all the items rather than just the ones being grouped.</li>
+<li>Customize / break up groupings that are incorrect, while preserving others.</li>
+<li>Easily use a custom distance function.</li>
+<li>Easily use a custom function for choosing the &#8220;New Cell Value&#8221;.</li>
+<li>See what would happen with different &#8220;radii&#8221; without trying them all.</li>
+<li><strong>Have a record of the whole transformation that&#8217;s easy to review, edit, and reapply.</strong></li>
+</ul>
+<hr>
+<p><img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png"></p>
+<hr>
+<p>So I made <code>mergic</code>.</p>
+<hr>
+<ul>
+<li>simple</li>
+<li>customizable</li>
+<li>reproducible</li>
+</ul>
+<hr>
+<p>The goals of <code>mergic</code> are to be:</p>
+<ul>
+<li>simple, meaning largely text-based and obvious; the tool disappears</li>
+<li>customizable, meaning you can easily use a custom distance function</li>
+<li>reproducible, meaning everything you do can be done again automatically</li>
+</ul>
+<hr>
+<p>the tool disappears</p>
+<hr>
+<p>Good tools disappear.</p>
+<p>Whatever text editor you use, the your work product is a text file. You can use any text editor, or use different ones for different purposes, and so on.</p>
+<p>Your merge process shouldn't rely on any particular piece of software for its replicability.</p>
+<hr>
+<p>any distance function</p>
+<hr>
+<p>Your distance function can make all the difference. You need to be able to plug in any distance function that works well for your data.</p>
+<hr>
+<p>really reproducible</p>
+<hr>
+<p>People can see what's happening, and computers can keep doing the process without clicking or re-running particular executables.</p>
+<hr>
+<p><img width="1000%" title="big data" src="img/big_data.png"></p>
+<hr>
+<p>A quick disclaimer!</p>
+<p>This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).</p>
+<hr>
+<pre><code>Santiago Giraldo,Leonardo Mayer
+Santiago Giraldo,Dudi Sela
+Santiago Giraldo,Juan Monaco
+Santiago Giraldo,S Williams
+Santiago Giraldo,C Wozniacki
+Santiago Giraldo,S.Giraldo
+Santiago Giraldo,Marcos Baghdatis
+Santiago Giraldo,Y-H.Lu
+...</code></pre>
+
+<hr>
+<p>So we make all possible pairs of identifiers!</p>
+<p>One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.</p>
+<p>All these pairs are annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.</p>
+<p>Do you see the match here? (It's Santiago again!)</p>
+<hr>
+<pre><code>Karolina Pliskova,K Pliskova</code></pre>
+
+<hr>
+<p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
+<p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
+<hr>
+<pre><code>Kristyna Pliskova,K Pliskova</code></pre>
+
+<hr>
+<p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
+<hr>
+<p>sets &gt; pairs</p>
+<hr>
+<p>Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.</p>
+<hr>
+<p>workflow support for reproducible deduplication and merging</p>
+<hr>
+<p>This is what <code>mergic</code> is for. <code>mergic</code> is a simple tool designed to make it less painful when you need to merge things that don't yet merge.</p>
+<hr>
+<p>demo: mergic tennis</p>
+<hr>
+<p>With all that background, let's see how <code>mergic</code> attempts to support a good workflow.</p>
+<pre><code class="language-bash">$ pew new pydata</code></pre>
+
+<p>I'll start by making a new <a href="https://virtualenv.pypa.io/">virtual environment</a> using <a href="https://github.com/berdario/pew">pew</a>.</p>
+<pre><code class="language-bash">$ pip install mergic</code></pre>
+
+<p><code>mergic</code> is very new (version 0.0.4.1) and it currently installs with no extra dependencies.</p>
+<pre><code class="language-bash">$ mergic -h</code></pre>
+
+<p><code>mergic</code> includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
+<pre><code>usage: mergic [-h] {calc,make,check,diff,apply,table} ...
+
+positional arguments:
+  {calc,make,check,diff,apply,table}
+    calc                calculate all partitions of data
+    make                make a JSON partition from data
+    check               check validity of JSON partition
+    diff                diff two JSON partitions
+    apply               apply a patch to a JSON partition
+    table               make merge table from JSON partition
+
+optional arguments:
+  -h, --help            show this help message and exit</code></pre>
+
+<p>In the tennis data, names appear sometimes with full first names and sometimes with only first initials. To get good comparisons, we should:</p>
+<ul>
+<li>Transform all the data to the same format, as nearly as possible.</li>
+<li>Use a good distance on the transformed data.</li>
+</ul>
+<p>We can do both of these things with a simple custom script, <a href="tennis/tennis_mergic.py">tennis_mergic.py</a>. It only <a href="requirements.txt">requires</a> the <code>mergic</code> and <code>python-Levenshtein</code> packages.</p>
+<pre><code class="language-python">#!/usr/bin/env python
+
+import re
+import Levenshtein
+import mergic
+
+
+def first_initial_last(name):
+    initial = re.match("^[A-Z]", name).group()
+    last = re.search("(?&lt;=[ .])[A-Z].+$", name).group()
+    return "{}. {}".format(initial, last)
+
+
+def distance(x, y):
+    x = first_initial_last(x)
+    y = first_initial_last(y)
+    return Levenshtein.distance(x, y)
+
+
+mergic.Blender(distance).script()</code></pre>
+
+<p>Note that there's a transformation step in there, normalizing the form of the names to have just a first initial and last name. This kind of normalization can be very important.</p>
+<p>As a more extreme example, a friend of mine has used the following transform: Google it. Then you can use a distance on the result set to deduplicate.</p>
+<p>Now <a href="tennis/tennis_mergic.py">tennis_mergic.py</a> can be used just like the standard <code>mergic</code> script.</p>
+<pre><code class="language-bash">$ ./tennis_mergic.py calc names.txt
+## num groups, max group, num pairs, cutoff
+## ----------------------------------------
+##        669,         1,         0, -1
+##        358,         5,       384, 0
+##        348,         6,       414, 1
+##        332,         6,       470, 2
+##        262,        85,      5117, 3
+##        165,       324,     52611, 4
+##         86,       496,    122899, 5
+##         46,       584,    170287, 6
+##         24,       624,    194407, 7
+##         16,       641,    205138, 8
+##         10,       650,    210940, 9
+##          4,       663,    219459, 10
+##          2,       668,    222778, 11
+##          1,       669,    223446, 12</code></pre>
+
+<p>There is a clear best cutoff here, as the size of the max group jumps from 6 items to 85 and the number of within-group comparisons jumps from 470 to 5,117. So we create a partition where the Levenshtein distance between names in our standard first initial and last name format is no more than two, and put the result in a file called <code>groups.json</code>:</p>
+<pre><code class="language-bash">$ ./tennis_mergic.py make names.txt 2 &gt; groups.json</code></pre>
+
+<p><strong>This kind of JSON grouping file could be produced and edited by anything, not just <code>mergic</code>.</strong></p>
+<p>As expected, the proposed grouping has combined things over-zealously in some places:</p>
+<pre><code class="language-bash">$ head -5 groups.json
+## {
+##     "Yen-Hsun Lu": [
+##         "Di Wu",
+##         "Yen-Hsun Lu",
+##         "Y-H.Lu",</code></pre>
+
+<p>Manual editing can produce a corrected version of the original grouping, which could be saved as <code>edited.json</code>:</p>
+<pre><code class="language-bash">$ head -8 edited.json
+## {
+##     "Yen-Hsun Lu": [
+##         "Yen-Hsun Lu",
+##         "Y-H.Lu"
+##     ],
+##     "Di Wu": [
+##         "Di Wu"
+##     ],</code></pre>
+
+<p>Parts of the review process would be difficult or impossible for a computer to do accurately.</p>
+<ul>
+<li>There are the Pl&#237;&#353;kov&#225; twins, Karol&#237;na and Krist&#253;na. When we see that <code>K Pliskova</code> appears, we have to go back and see that this occurred in the <code>USOpen-women-2013.csv</code> file, and only Karol&#237;na played in the <a href="http://en.wikipedia.org/wiki/2013_US_Open_%E2%80%93_Women%27s_Singles">2013 US Open</a>.</li>
+<li>In a similar but less interesting way, <code>B.Becker</code> turns out to refer to Benjamin, not Brian.</li>
+<li>An <code>A Wozniak</code> appears with <code>C Wozniack</code> and <code>C Wozniacki</code>. The first initial does turn out to differentiate the Canadian from the Dane.</li>
+<li>The name <code>A.Kuznetsov</code> refers to <em>both</em> Andrey <em>and</em> Alex in <code>Wimbledon-men-2013.csv</code>. This can't be resolved by <code>mergic</code>. One way to resolve the issues is to edit <code>Wimbledon-men-2013.csv</code> so that <code>A.Kuznetsov,I.Sijsling</code> becomes <code>Alex Kuznetsov,I.Sijsling</code>, based on checking <a href="http://en.wikipedia.org/wiki/2013_Wimbledon_Championships_%E2%80%93_Men%27s_Singles">records from that competition</a>.</li>
+<li><code>Juan Martin Del Potro</code> is unfortunately too different from <code>J.Del Potro</code> in the current formulation to be grouped automatically, but a human reviewer can correct this. Similarly for <code>Anna Schmiedlova</code> and <code>Anna Karolina Schmiedlova</code>.</li>
+</ul>
+<p>After editing, you can check that the new grouping is still valid. At this stage we aren't using anything custom any more, so the default <code>mergic</code> is fine:</p>
+<pre><code class="language-bash">$ mergic check edited.json
+## 669 items in 354 groups</code></pre>
+
+<p>The <code>mergic</code> diffing tools make it easy to make comparisons that would otherwise be difficult, letting us focus on and save only changes that are human reviewers make rather than whole files.</p>
+<pre><code class="language-bash">$ mergic diff groups.json edited.json &gt; diff.json</code></pre>
+
+<p>Now <code>diff.json</code> only has the entries that represent changes from the original <code>groups.json</code>.</p>
+<p>The edited version can be reconstructed from the original and the diff with <code>mergic apply</code>:</p>
+<pre><code class="language-bash">$ mergic apply groups.json diff.json &gt; rebuilt.json</code></pre>
+
+<p>The order of <code>rebuilt.json</code> may not be identical to the original <code>edited.json</code>, but the diff will be empty, meaning the file is equivalent:</p>
+<pre><code class="language-bash">$ mergic diff edited.json rebuilt.json
+## {}</code></pre>
+
+<p>Finally, to generate a CSV merge table that you'll be able to use with any other tool:</p>
+<pre><code class="language-bash">$ mergic table edited.json &gt; merge.csv</code></pre>
+
+<p>Now the file <code>merge.csv</code> has two columns, <code>original</code> and <code>mergic</code>, where <code>original</code> contains all the values that appeared in the original data and <code>mergic</code> contains the deduplicated keys. You can join this on to your original data and go to town.</p>
+<p>Here's how we might do that to quickly get a list of who played the most in these 2013 tennis events:</p>
+<pre><code class="language-bash">$ join -t, &lt;(sort names.txt) &lt;(sort merge.csv) | cut -d, -f2 | sort | uniq -c | sort -nr | head
+##  24 Novak Djokovic
+##  22 Rafael Nadal
+##  21 Serena Williams
+##  21 David Ferrer
+##  20 Na Li
+##  19 Victoria Azarenka
+##  19 Agnieszka Radwanska
+##  18 Stanislas Wawrinka
+##  17 Tommy Robredo
+##  17 Sloane Stephens</code></pre>
+
+<p>Note that this is not the same as the result we got before resolving these name issues:</p>
+<pre><code class="language-bash">$ sort names.txt | uniq -c | sort -nr | head
+##  21 Rafael Nadal
+##  17 Stanislas Wawrinka
+##  17 Novak Djokovic
+##  17 David Ferrer
+##  15 Roger Federer
+##  14 Tommy Robredo
+##  13 Richard Gasquet
+##  11 Victoria Azarenka
+##  11 Tomas Berdych
+##  11 Serena Williams</code></pre>
+
+<p>As it happens, using a cutoff of 0 and doing no hand editing will still give the correct top ten. In general the desired result and desired level of certainty in its correctness will inform the level of effort that is justified.</p>
+<hr>
+<p>distance matters</p>
+<hr>
+<p>Having a good distance function might be the most important thing. It's hard to imagine a machine learning as good a distance function as you could just right based on your human intelligence.</p>
+<p>There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: <a href="https://github.com/dirko/pyhacrf">pyhacrf</a>. Python dedupe is <a href="https://github.com/datamade/dedupe/issues/14">eager</a> to incorporate this.</p>
+<p>See also: <a href="http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf">Adaptive Duplicate Detection Using Learnable String Similarity Measures</a></p>
+<hr>
+<p>extension to multiple fields</p>
+<hr>
+<p>We've been talking about single field deduplication.</p>
+<hr>
+<pre><code class="language-text">name
+----
+Bob
+Rob
+Robert</code></pre>
+
+<hr>
+<p>This means that we have one field, say name.</p>
+<hr>
+<pre><code class="language-text">name, name
+----------
+Bob, Bobby
+Bob, Robert
+Bobby, Robert</code></pre>
+
+<hr>
+<p>And we look at all the possible pairs and calculate those pairwise distances.</p>
+<hr>
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png"></p>
+<hr>
+<p>While we described it even in Open Refine as &#8220;clustering&#8221;, we've really been doing a classification task: either a pair is in the same group or they aren't. We've had one dimension, and we hope that we can just divide true connections from different items with a simple cutoff.</p>
+<hr>
+<pre><code class="language-text">name,    hometown
+-----------------
+Bob,     New York
+Rob,     NYC
+Robert,  "NY, NY"</code></pre>
+
+<hr>
+<p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
+<p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
+<hr>
+<p><img height="1000%" title="two dimensional" src="img/two_dimensional.png"></p>
+<hr>
+<p>The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.</p>
+<p>Maybe you can find two clusters, one for true duplicates and one for different items.</p>
+<p>Or maybe you could get some training data and use whatever classification algorithm you like.</p>
+<p>Let's look at a couple packages that do these things.</p>
+<hr>
+<p>R: RecordLinkage</p>
+<hr>
+<p>The R <a href="http://cran.r-project.org/web/packages/RecordLinkage/index.html">RecordLinkage</a> package, which has a good <a href="http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf">R Journal article</a> and a number of fine vignettes, does quite a lot of interesting things along the lines of what we've been discussing.</p>
+<p>You'll also notice that it imports <code>e1071</code> and <code>rpart</code> and others to plug in machine learning for determining duplicates.</p>
+<hr>
+<p>demo: mergic on RecordLinkage data</p>
+<hr>
+<p>Let's look at some of the example data that comes with <code>RecordLinkage</code>.</p>
+<p>We write the data out to CSV very simply with <a href="RLdata/RLdata500.R">RLdata500.R</a>:</p>
+<pre><code class="language-r"># install.packages('RecordLinkage')
+library('RecordLinkage')
+data(RLdata500)
+write.table(RLdata500, "RLdata500.txt",
+            row.names=FALSE, col.names=FALSE,
+            quote=FALSE, sep=",", na="")</code></pre>
+
+<p>Then we can take a look at the data:</p>
+<pre><code class="language-bash">$ head -4 RLdata500.txt
+## CARSTEN,,MEIER,,1949,7,22
+## GERD,,BAUER,,1968,7,27
+## ROBERT,,HARTMANN,,1930,4,30
+## STEFAN,,WOLFF,,1957,9,2</code></pre>
+
+<p>The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for <code>mergic</code> we'll just treat the rows of CSV as single strings.</p>
+<pre><code class="language-bash">$ mergic calc RLdata500.csv
+## ...
+##        451,         2,        49, 0.111111111111
+##        450,         2,        50, 0.115384615385
+##        449,         3,        52, 0.125
+## ...</code></pre>
+
+<p>Looking through the possible groupings, we see a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.</p>
+<p>This is slightly artificial, but only slightly so; we could well be doing this for two columns to merge on, in which case so we would hope to find groups of two elements.</p>
+<pre><code class="language-bash">$ mergic make RLdata500.csv 0.12
+## {
+##     "MATTHIAS,,HAAS,,1955,7,8": [
+##         "MATTHIAS,,HAAS,,1955,7,8",
+##         "MATTHIAS,,HAAS,,1955,8,8"
+##     ],
+##     "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+##         "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+##         "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+##     ],
+## ...</code></pre>
+
+<p>In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.</p>
+<hr>
+<p><code>dedupe</code></p>
+<hr>
+<p>The Python <a href="https://github.com/datamade/dedupe">dedupe</a> project from <a href="http://datamade.us/">DataMade</a> in Chicago is very cool, and I'd better not neglect it.</p>
+<p>It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is the <code>csvdedupe</code>.</p>
+<hr>
+<p>demo: csvdedupe</p>
+<hr>
+<p>We'll use the RecordLinkage data with a header.</p>
+<pre><code class="language-r">write.table(RLdata500, "RLdata500.csv",
+            row.names=FALSE,
+            quote=FALSE, sep=",", na="")</code></pre>
+
+<p>Then we start the process, specifying which columns of the data to consider for matching.</p>
+<pre><code class="language-bash">$ csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')</code></pre>
+
+<p>We go into an interactive supervision stage in which <code>dedupe</code> asks us to clarify things. The hope is that it will learn what matters.</p>
+<p>You can build this kind of behavior into your own systems; there is an <a href="http://datamade.github.io/dedupe-examples/docs/csv_example.html">example</a>.</p>
+<p>At the end you get output that you can use much like the <code>table</code> output from <code>mergic</code>. It needs some transforming to be easily reviewed by humans though.</p>
+<hr>
+<p>real clustering?</p>
+<hr>
+<p>The &#8220;clustering&#8221; that we've been doing hasn't been much like usual clustering.</p>
+<hr>
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png"></p>
+<hr>
+<p>In part, this is because we we've only had distances between strings without having a real &#8220;string space&#8221;.</p>
+<p>I'm going to just sketch out this direction; I think it's interesting but I haven't seen any real results in it yet.</p>
+<hr>
+<p>dog, doge, kitten, kitteh</p>
+<hr>
+<p>Say these are the items we're working with. We can use Levenshtein edit distance to make a distance matrix.</p>
+<hr>
+<pre><code class="language-text">       dog doge kitten kitteh
+   dog   0    1      6      6
+  doge   1    0      5      5
+kitten   6    5      0      1
+kitteh   6    5      1      0</code></pre>
+
+<hr>
+<p>So here's a distance matrix, and it looks the way we'd expect. But we still don't have <em>coordinates</em> for our words.</p>
+<p>Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a>! There's a nice <a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html">implementation in sklearn</a>.</p>
+<hr>
+<pre><code class="language-python">from sklearn.manifold import MDS
+mds = MDS(dissimilarity='precomputed')
+coords = mds.fit_transform(distances)</code></pre>
+
+<hr>
+<p>Here's all the code it takes.</p>
+<hr>
+<p><img width="1000%" title="MDS coordinates from distance matrix" src="img/mds_words.png"></p>
+<hr>
+<p>And here's the result! This is at least a fun visualization, and I wonder if doing clustering in a space like this might sometimes lead to better results.</p>
+<p>The key thing here is that we're clustering on the elements themselves, rather than indirectly via the pairwise distances.</p>
+<p>There are other ways of getting coordinates for words. This includes the very interesting <a href="https://code.google.com/p/word2vec/">word2vec</a> and related techniques.</p>
+<p>Also, you might have items are already naturally coordinates, for example if you have medical data like a person's height or weight.</p>
+<hr>
+<p>deep thoughts</p>
+<hr>
+<p>By way of conclusion, I'd like to suggest that this problem of deduplication is no good and we should take steps to:</p>
+<ul>
+<li>prevent it from being necessary, by having our systems recommend or enforce standard naming</li>
+<li>make it possible to do deduplication once and reintegrate the results back into the data system</li>
+</ul>
+<p>It should be possible to make changes and share them back to data providers. It should be possible to edit data while preserving the data's history. These kind of collaborative data editing are not super easy to implement, and I hope systems emerge that handle it better than current systems.</p>
+<hr>
+<p>questions for discussion</p>
+<hr>
+<p>I'd like to ask you to consider and discuss with your peers:</p>
+<ul>
+<li>What workflows and tools do you use for these kinds of tasks?</li>
+<li>Does the JSON partition format used by <code>mergic</code> make sense for your use?</li>
+<li>Does the merge table format used by <code>mergic</code> make sense for your use?</li>
+<li>What else would make this kind of process better for you?</li>
+</ul>
+<hr>
+<p><img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png"></p>
+<hr>
+<p>I also hope to see you at <a href="http://opendatascicon.com/">Open Data Science Con</a> in Boston!</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p>
+<p>I'd love to hear from you!</p>
+<hr>
+<h3>Other interesting things:</h3>
+<ul>
+<li><a href="http://infolab.stanford.edu/serf/">Stanford Entity Resolution Framework</a></li>
+<li><a href="http://infolab.stanford.edu/serf/swoosh_vldbj.pdf">Swoosh: a generic approach to entity resolution</a></li>
+<li><a href="http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf">Entity Resolution: Tutorial</a></li>
+<li><a href="http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data">Entity Resolution for Big Data (summary)</a></li>
+<li><a href="http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf">Learning-based Entity Resolution with MapReduce</a></li>
+<li><a href="http://linqs.cs.umd.edu/projects/ddupe/">D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration</a></li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20150520-practical_mergic/</link>
+<guid>http://planspace.org/20150520-practical_mergic/</guid>
+<pubDate>Wed, 20 May 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>mergic</title>
 <description><![CDATA[
 
@@ -116,7 +904,7 @@ O.o?</code></pre>
 <p><code>mergic</code> is very new (version 0.0.4) and it currently installs with no extra dependencies.</p>
 <pre><code class="language-bash">mergic -h</code></pre>
 
-<p><code>mergic</code> runs includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
+<p><code>mergic</code> includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
 <pre><code>usage: mergic [-h] {calc,make,check,diff,apply,table} ...
 
 positional arguments:
@@ -1172,26 +1960,6 @@ h &lt;- hist(x, col="cornflowerblue")</code></pre>
 <link>http://planspace.org/20141215-please_stop_saying_big_data/</link>
 <guid>http://planspace.org/20141215-please_stop_saying_big_data/</guid>
 <pubDate>Mon, 15 Dec 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Make it Easy to Install Emacs</title>
-<description><![CDATA[
-
-<p>&#8220;GNU Emacs is an extensible, customizable text editor&#8212;and more.&#8221;</p>
-<p>I wanted to invite novice hackers to check out <a href="http://www.gnu.org/software/emacs/">Emacs</a>. But installing Emacs for the first time isn't easy! Or rather: the installation can be easy, but finding the right package for your system may not be.</p>
-<p>So I made <a href="http://emacs.link/">emacs.link</a>, a static site hosted with GitHub pages (<a href="https://github.com/ajschumacher/emacs.link">repo</a>). It does a rough system detection and then presents simple, direct installation directions.</p>
-<p>The directions are opinionated in that they only show one method per system:</p>
-<ul>
-<li>On Linux you might want to build Emacs from source, but I don't mention that alternative.</li>
-<li>On a Mac, you might prefer to install Emacs using <a href="http://brew.sh/">brew</a>, but if you don't have brew installed already it's easier to skip that step.</li>
-<li>There's no Emacs installer for <a href="http://ftpmirror.gnu.org/emacs/windows/README">Windows</a>. The current directions may be too difficult for some Windows users.</li>
-<li>There are ways to try to get Emacs running on <a href="http://gamma-level.com/iphoneos/ports/emacs">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.zielm.emacs">Android</a>, but I'm not sure that's even a good idea, so on mobile I recommend watching some fun <a href="https://www.youtube.com/watch?v=TMoPuv-xXMM&amp;index=6&amp;list=UUkRmQ_G_NbdbCQMpALg6UPg">Emacs videos</a>.</li>
-</ul>
-<p>I tried to make <a href="http://emacs.link/">emacs.link</a> attractive, after the fashion of hip startup sites. The nice background image is courtesy of <a href="https://www.flickr.com/photos/anschieber/">Andrea Schieber</a>, who released <a href="https://www.flickr.com/photos/anschieber/6303932505">the original</a> on Flickr with a Creative Commons license (<a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>). Thanks very much to her! I cropped and edited the original a little bit with <a href="http://www.gimp.org/">GIMP</a>. As required, the edited version has the same license.</p>    
-    ]]></description>
-<link>http://planspace.org/20141207-make_it_easy_to_install_emacs/</link>
-<guid>http://planspace.org/20141207-make_it_easy_to_install_emacs/</guid>
-<pubDate>Sun, 07 Dec 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
