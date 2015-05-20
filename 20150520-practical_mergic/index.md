@@ -568,7 +568,7 @@ The “radius” is the distance below which two items will be clustered togethe
  * Easily use a custom distance function.
  * Easily use a custom function for choosing the “New Cell Value”.
  * See what would happen with different “radii” without trying them all.
- * Have a record of the whole transformation that’s easy to review, edit, and reapply.
+ * **Have a record of the whole transformation that’s easy to review, edit, and reapply.**
 
 
 -----
