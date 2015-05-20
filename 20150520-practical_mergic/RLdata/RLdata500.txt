@@ -1,4 +1,3 @@
-fname_c1,fname_c2,lname_c1,lname_c2,by,bm,bd
 CARSTEN,,MEIER,,1949,7,22
 GERD,,BAUER,,1968,7,27
 ROBERT,,HARTMANN,,1930,4,30

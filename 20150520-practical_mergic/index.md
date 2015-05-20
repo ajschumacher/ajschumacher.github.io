@@ -1069,25 +1069,104 @@ mergic make RLdata500.csv 0.12
 In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.
 
 
+-----
 
-big four:
+`dedupe`
 
-R RecordLinkage
-Python dedupe
-OpenRefine
-SQL?
-Max mentioned GIS merges~
+-----
 
-Notes on notes:
-http://datamade.github.io/dedupe-examples/docs/csv_example.html
+The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago is very cool, and I'd better not neglect it.
+
+It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is the `csvdedupe`.
 
 
-Multidimensional scaling
-http://en.wikipedia.org/wiki/Multidimensional_scaling
+-----
 
-MDS in sklearn
-http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html
+demo: csvdedupe
 
+----
+
+```bash
+csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')
+```
+
+We go into an interactive supervision stage in which `dedupe` asks us to clarify things. The hope is that it will learn what matters.
+
+You can build this kind of behavior into your own systems; there is an [example](http://datamade.github.io/dedupe-examples/docs/csv_example.html).
+
+At the end you get output that you can use much like the `table` output from `mergic`. It needs some transforming to be easily reviewed by humans though.
+
+
+-----
+
+real clustering?
+
+-----
+
+The “clustering” that we've been doing hasn't been much like usual clustering.
+
+In part, this is because we we've only had distances between strings without having a real “string space”.
+
+I'm going to just sketch out this direction; I think it's interesting but I haven't seen any real results in it yet.
+
+
+-----
+
+dog, doge, kitten, kitteh
+
+-----
+
+Say these are the items we're working with. We can use Levenshtein edit distance to make a distance matrix.
+
+
+-----
+
+```text
+       dog doge kitten kitteh
+   dog   0    1      6      6
+  doge   1    0      5      5
+kitten   6    5      0      1
+kitteh   6    5      1      0
+```
+-----
+
+So here's a distance matrix, and it looks the way we'd expect. But we still don't have *coordinates* for our words.
+
+Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling)! There's a nice [implementation in sklearn](http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html).
+
+
+-----
+
+```python
+from sklearn.manifold import MDS
+mds = MDS(dissimilarity='precomputed')
+coords = mds.fit_transform(distances)
+```
+-----
+
+Here's all the code it takes.
+
+
+-----
+
+<img width="1000%" title="MDS coordinates from distance matrix" src="img/mds_words.png" />
+
+-----
+
+And here's the result! This is at least a fun visualization, and I wonder if doing clustering in a space like this might sometimes lead to better results.
+
+The key thing here is that we're clustering on the elements themselves, rather than indirectly via the pairwise distances.
+
+There are other ways of getting coordinates for words. This includes the very interesting [word2vec](https://code.google.com/p/word2vec/) and related techniques.
+
+Also, you might have items are already naturally coordinates, for example if you have medical data like a person's height or weight.
+
+
+-----
+
+wrap up!
+
+-----
 
 
 -----
