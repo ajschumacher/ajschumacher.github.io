@@ -99,7 +99,7 @@ demo: kinds of boys
 
 -----
 
-The [Excel file here](SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`. The R script itself is in [check_unique.R](check_unique.R).
+The [Excel file here](doe/SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`. The R script itself is in [check_unique.R](doe/check_unique.R).
 
 There's a little setup to make reading the data easier.
 
