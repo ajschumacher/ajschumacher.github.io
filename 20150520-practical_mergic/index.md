@@ -920,7 +920,7 @@ distance matters
 
 Having a good distance function might be the most important thing. It's hard to imagine a machine learning as good a distance function as you could just right based on your human intelligence.
 
-There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: [pyhacrf](https://github.com/dirko/pyhacrf).
+There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: [pyhacrf](https://github.com/dirko/pyhacrf). Python dedupe is [eager](https://github.com/datamade/dedupe/issues/14) to incorporate this.
 
 
 -----
