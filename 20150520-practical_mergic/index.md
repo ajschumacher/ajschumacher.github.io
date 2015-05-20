@@ -95,7 +95,7 @@ But first, an example illustrating the importance of checking that your names ar
 
 -----
 
-demo: kinds of boys
+demo: DOE data
 
 -----
 
