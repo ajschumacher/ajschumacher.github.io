@@ -1016,6 +1016,73 @@ You'll also notice that it imports `e1071` and `rpart` and others to plug in mac
 
 Let's look at some of the example data that comes with `RecordLinkage`.
 
+REF THE SCRIPT
+
+```bash
+head -4 RLdata500.csv
+```
+
+We'll try `mergic` out with an example data set from [R](http://www.r-project.org/)'s [RecordLinkage](http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf) package.
+
+```
+CARSTEN,,MEIER,,1949,7,22
+GERD,,BAUER,,1968,7,27
+ROBERT,,HARTMANN,,1930,4,30
+STEFAN,,WOLFF,,1957,9,2
+```
+
+The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
+
+```bash
+mergic calc RLdata500.csv
+```
+
+The `calc` subcommand calculates all the pairwise distances and provides diagnostics about possible groupings that could be produced.
+
+```
+num groups, max group, num pairs, cutoff
+----------------------------------------
+       500,         1,         0, -0.982456140351
+       497,         2,         3, 0.0175438596491
+```
+
+With a cutoff lower than any actual encountered string distance, every item stays separate, the maximum group size is one, and there are no pairs within those groups to evaluate.
+
+```
+         2,       499,    124251, 0.416666666667
+         1,       500,    124750, 0.418181818182
+```
+
+On the other extreme, we could group every item together in a giant mega-group.
+
+```
+       451,         2,        49, 0.111111111111
+       450,         2,        50, 0.115384615385
+       449,         3,        52, 0.125
+```
+
+`mergic` gives you a choice about how big the groups it will produce will be. In this case, there's a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.
+
+```bash
+mergic make RLdata500.csv 0.12
+```
+
+We can make a grouping with that cutoff, and the result is a JSON-formatted partition.
+
+```json
+{
+    "MATTHIAS,,HAAS,,1955,7,8": [
+        "MATTHIAS,,HAAS,,1955,7,8",
+        "MATTHIAS,,HAAS,,1955,8,8"
+    ],
+    "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
+        "HELGA,ELFRIEDE,BERGER,,1989,1,18",
+        "HELGA,ELFRIEDE,BERGER,,1989,1,28"
+    ],
+```
+
+In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. (This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.)
+
 
 
 big four:
