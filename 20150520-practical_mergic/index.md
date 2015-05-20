@@ -751,7 +751,7 @@ In the tennis data, names appear sometimes with full first names and sometimes w
  * Transform all the data to the same format, as nearly as possible.
  * Use a good distance on the transformed data.
 
-We can do both of these things in our custom script, [tennis_mergic.py](tennis_mergic.py). It only [requires](requirements.txt) the `mergic` and `python-Levenshtein` packages.
+We can do both of these things with a simple custom script, [tennis_mergic.py](tennis_mergic.py). It only [requires](requirements.txt) the `mergic` and `python-Levenshtein` packages.
 
 ```python
 #!/usr/bin/env python
@@ -912,7 +912,11 @@ $ sort names.txt | uniq -c | sort -nr | head
 As it happens, using a cutoff of 0 and doing no hand editing will still give the correct top ten. In general the desired result and desired level of certainty in its correctness will inform the level of effort that is justified.
 
 
+-----
 
+next thing
+
+-----
 
 
 big four:

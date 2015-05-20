@@ -1,0 +1,2 @@
+mergic==0.0.4.1
+python-Levenshtein==0.12.0
