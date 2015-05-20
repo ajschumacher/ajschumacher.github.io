@@ -524,7 +524,7 @@ demo: Open Refine
 
 An interesting side story is that Open Refine was formerly Google Refine, and before that [Metaweb](http://en.wikipedia.org/wiki/Metaweb)'s “Freebase Gridworks”. Google is shutting down [Freebase](http://www.freebase.com/), and we have to hope that [Wikidata](https://www.wikidata.org/) will then be the open match for Google's [Knowledge Graph](http://en.wikipedia.org/wiki/Knowledge_Graph).
 
-Thanks to [Joel Natividad](https://twitter.com/jqnatividad) for pointing out an [interesting algorithmic development](https://github.com/OpenRefine/OpenRefine/issues/983) connected with ongoing work on Open Refine.
+Thanks to [Joel Natividad](https://twitter.com/jqnatividad) for pointing out an [interesting algorithmic development](https://github.com/OpenRefine/OpenRefine/issues/983) connected with ongoing work on Open Refine. He also pointed out that there is a Python module called [refine-client](https://github.com/PaulMakepeace/refine-client-py) for using Open Refine from Python.
 
 Steps of simple Open Refine demo:
 
