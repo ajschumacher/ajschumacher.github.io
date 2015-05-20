@@ -483,7 +483,7 @@ The list above is not the answer we’re looking for. We want to be correct.
 
 -----
 
-single field de-duplication
+single field deduplication
 
 -----
 
