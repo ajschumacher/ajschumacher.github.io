@@ -233,7 +233,7 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 -----
 
-<img width="1000%" title="This happens." src="this_happens.png" />
+<img width="1000%" title="This happens." src="img/this_happens.png" />
 
 -----
 
@@ -257,7 +257,7 @@ One big reason to want nice unique IDs is that you would like to merge two data 
 
 -----
 
-<img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" />
+<img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" />
 
 -----
 
@@ -270,7 +270,7 @@ Some people like to think about these in terms of Venn diagrams.
 
 -----
 
-<img width="1000%" title="left join" src="left_join.png" />
+<img width="1000%" title="left join" src="img/left_join.png" />
 
 -----
 
@@ -283,7 +283,7 @@ This is a left join: you get all the keys from the left data set, regardless of 
 
 -----
 
-<img width="1000%" title="right join" src="right_join.png" />
+<img width="1000%" title="right join" src="img/right_join.png" />
 
 -----
 
@@ -298,7 +298,7 @@ You're welcome.
 
 -----
 
-<img width="1000%" title="inner join" src="inner_join.png" />
+<img width="1000%" title="inner join" src="img/inner_join.png" />
 
 -----
 
@@ -307,7 +307,7 @@ An inner join, or natural join, only gives you results for keys that appear in b
 
 -----
 
-<img width="1000%" title="outer join" src="outer_join.png" />
+<img width="1000%" title="outer join" src="img/outer_join.png" />
 
 -----
 
@@ -318,7 +318,7 @@ There are a few other terms we could add, but let's not.
 
 -----
 
-<img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" />
+<img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" />
 
 -----
 
@@ -539,7 +539,7 @@ Steps of simple Open Refine demo:
  * Click “Create Project »”
  * Click the down arrow next to “Column 1”, then follow “Edit cells” to “Cluster and edit…”
 
-<img width="1000%" title="Open Refine" src="open_refine.png" />
+<img width="1000%" title="Open Refine" src="img/open_refine.png" />
 
 Open Refine has [introductory](https://github.com/OpenRefine/OpenRefine/wiki/Clustering) and [in-depth](https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth) documentation about their “clustering” mechanisms.
 
@@ -575,7 +575,7 @@ The “radius” is the distance below which two items will be clustered togethe
 
 -----
 
-<img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" />
+<img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png" />
 
 -----
 
@@ -630,7 +630,7 @@ People can see what's happening, and computers can keep doing the process withou
 
 -----
 
-<img width="1000%" title="big data" src="big_data.png" />
+<img width="1000%" title="big data" src="img/big_data.png" />
 
 -----
 
@@ -966,7 +966,7 @@ And we look at all the possible pairs and calculate those pairwise distances.
 
 -----
 
-<img width="1000%" title="one dimensional" src="one_dimensional.png" />
+<img width="1000%" title="one dimensional" src="img/one_dimensional.png" />
 
 -----
 
@@ -991,7 +991,7 @@ So let's calculate distances between each field entry for each pair of rows, in 
 
 -----
 
-<img height="1000%" title="two dimensional" src="two_dimensional.png" />
+<img height="1000%" title="two dimensional" src="img/two_dimensional.png" />
 
 -----
 
@@ -1040,7 +1040,7 @@ http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html
 
 -----
 
-<img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" />
+<img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png" />
 
 -----
 
