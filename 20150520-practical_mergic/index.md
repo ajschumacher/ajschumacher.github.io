@@ -925,16 +925,67 @@ There is work on learnable edit distances; notably there's a current Python proj
 
 -----
 
-picture of one dimension with one cutoff
+extension to multiple fields
 
 -----
 
-words
+We've been talking about single field deduplication.
 
 
 -----
 
-picture of two dimensions
+```text
+name
+----
+Bob
+Rob
+Robert
+```
+-----
+
+This means that we have one field, say name.
+
+
+-----
+
+```text
+name, name
+----------
+Bob, Bobby
+Bob, Robert
+Bobby, Robert
+```
+-----
+
+And we look at all the possible pairs and calculate those pairwise distances.
+
+
+-----
+
+<img width="1000%" title="one dimensional" src="one_dimensional.png" />
+
+-----
+
+While we described it even in Open Refine as “clustering”, we've really been doing a classification task: either a pair is in the same group or they aren't. We've had one dimension, and we hope that we can just divide true connections from different items with a simple cutoff.
+
+
+-----
+
+```text
+name,    hometown
+-----------------
+Bob,     New York
+Rob,     NYC
+Robert,  "NY, NY"
+```
+-----
+
+Often, there's more than one field involved, and it might be good to treat all the fields separately.
+
+
+-----
+
+<img height="1000%" title="two dimensional" src="two_dimensional.png" />
 
 -----
 

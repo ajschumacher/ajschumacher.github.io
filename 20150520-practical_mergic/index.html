@@ -591,8 +591,53 @@ mergic.Blender(distance).script()</code></pre>
 
 <p>As it happens, using a cutoff of 0 and doing no hand editing will still give the correct top ten. In general the desired result and desired level of certainty in its correctness will inform the level of effort that is justified.</p>
 <hr />
-<p>next thing</p>
+<p>distance matters</p>
 <hr />
+<p>Having a good distance function might be the most important thing. It's hard to imagine a machine learning as good a distance function as you could just right based on your human intelligence.</p>
+<p>There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: <a href="https://github.com/dirko/pyhacrf">pyhacrf</a>. Python dedupe is <a href="https://github.com/datamade/dedupe/issues/14">eager</a> to incorporate this.</p>
+<hr />
+<p>extension to multiple fields</p>
+<hr />
+<p>We've been talking about single field deduplication.</p>
+<hr />
+<pre><code class="language-text">name
+----
+Bob
+Rob
+Robert</code></pre>
+
+<hr />
+<p>This means that we have one field, say name.</p>
+<hr />
+<pre><code class="language-text">name, name
+----------
+Bob, Bobby
+Bob, Robert
+Bobby, Robert</code></pre>
+
+<hr />
+<p>And we look at all the possible pairs and calculate those pairwise distances.</p>
+<hr />
+<p><img width="1000%" title="one dimensional" src="one_dimensional.png" /></p>
+<hr />
+<p>While we described it even in Open Refine as “clustering”, we've really been doing a classification task: either a pair is in the same group or they aren't. We've had one dimension, and we hope that we can just divide true connections from different items with a simple cutoff.</p>
+<hr />
+<pre><code class="language-text">name,    hometown
+-----------------
+Bob,     New York
+Rob,     NYC
+Robert,  "NY, NY"</code></pre>
+
+<hr />
+<p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
+<hr />
+<p><img height="1000%" title="two dimensional" src="two_dimensional.png" /></p>
+<hr />
+<p>words</p>
+<hr />
+<p>RecordLinkage</p>
+<hr />
+<p>words</p>
 <p>big four:</p>
 <p>R RecordLinkage
 Python dedupe
@@ -629,8 +674,6 @@ Combining data sets can be a huge pain, with possible problems both obvious and 
 <p>Bio:
 <a href="http://planspace.org/aaron/">Aaron</a> is an instructor at the <a href="http://www.thisismetis.com/">Metis</a> data science boot camp. He is the original author of the <a href="http://cran.r-project.org/web/packages/rjstat/">rjstat</a> package for R, which is mostly unrelated to this talk. He made <a href="http://emacs.link/">emacs.link</a>, which is also not related to this talk. Aaron blogs at <a href="http://planspace.org/">plan ➔ space</a> and tweets as <a href="https://twitter.com/planarrowspace">@planarrowspace</a>.</p>
 <hr />
-<p>Tennis Major Tournament Match Statistics Data Set
-https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics</p>
 <p>Adaptive Duplicate Detection Using Learnable String Similarity Measures
 http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf</p>
 <p>Pair hidden Markov models (Bioinformatics)
