@@ -18,7 +18,7 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 -----
 
-<img width="1000%" title="Tweed Courthouse" src="tweed.jpg" />
+<img width="1000%" title="Tweed Courthouse" src="img/tweed.jpg" />
 
 -----
 

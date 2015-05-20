@@ -20,7 +20,7 @@ planspace.org</p>
 <hr />
 <p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
 <hr />
-<p><img width="1000%" title="Tweed Courthouse" src="tweed.jpg" /></p>
+<p><img width="1000%" title="Tweed Courthouse" src="img/tweed.jpg" /></p>
 <hr />
 <p><em><a href="http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg">Image from Wikimedia Commons</a>.</em></p>
 <p>The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.</p>
@@ -60,7 +60,7 @@ planspace.org</p>
 <hr />
 <p>demo: kinds of boys</p>
 <hr />
-<p>The <a href="SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="check_unique.R">check_unique.R</a>.</p>
+<p>The <a href="doe/SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="doe/check_unique.R">check_unique.R</a>.</p>
 <p>There's a little setup to make reading the data easier.</p>
 <pre><code class="language-r">library("dplyr")
 
@@ -170,7 +170,7 @@ data %>%
 
 <p>It looks like these extra males aren't being counted in the total for “All Students”, so maybe we can drop them. Or maybe the “All Students” total is wrong.</p>
 <hr />
-<p><img width="1000%" title="This happens." src="this_happens.png" /></p>
+<p><img width="1000%" title="This happens." src="img/this_happens.png" /></p>
 <hr />
 <p><em>Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.</em></p>
 <blockquote>
@@ -183,35 +183,35 @@ data %>%
 <hr />
 <p>One big reason to want nice unique IDs is that you would like to merge two data sets, and you need something to match records by. Let's do a quick refresher on merging, or joining.</p>
 <hr />
-<p><img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" /></p>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" /></p>
 <hr />
 <p>This is a section from <a href="http://www.rstudio.com/">RStudio</a>'s <a href="http://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> for <a href="https://github.com/hadley/dplyr">dplyr</a>. These cheatsheets are fantastic.</p>
 <p>We'll do a merge between two data sets. For simplicity say that they have one column which is an identifier for each row, and some data in other columns. There are a couple ways we can join the data.</p>
 <p>Some people like to think about these in terms of Venn diagrams.</p>
 <hr />
-<p><img width="1000%" title="left join" src="left_join.png" /></p>
+<p><img width="1000%" title="left join" src="img/left_join.png" /></p>
 <hr />
 <p>This picture comes from <a href="https://twitter.com/codinghorror">Jeff Atwood</a>'s post called <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">visual explanation of SQL joins</a>.</p>
 <p>A former co-worker told me that seeing these pictures changed his life. I hope you like them.</p>
 <p>This is a left join: you get all the keys from the left data set, regardless of whether they're in the right data set.</p>
 <hr />
-<p><img width="1000%" title="right join" src="right_join.png" /></p>
+<p><img width="1000%" title="right join" src="img/right_join.png" /></p>
 <hr />
 <p>Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little <a href="http://www.imagemagick.org/">ImageMagick</a>.</p>
 <pre><code class="language-bash">convert -rotate 180 left_join.png right_join.png</code></pre>
 
 <p>You're welcome.</p>
 <hr />
-<p><img width="1000%" title="inner join" src="inner_join.png" /></p>
+<p><img width="1000%" title="inner join" src="img/inner_join.png" /></p>
 <hr />
 <p>An inner join, or natural join, only gives you results for keys that appear in both the left and right data sets.</p>
 <hr />
-<p><img width="1000%" title="outer join" src="outer_join.png" /></p>
+<p><img width="1000%" title="outer join" src="img/outer_join.png" /></p>
 <hr />
 <p>And an outer join gives you everything. Great!</p>
 <p>There are a few other terms we could add, but let's not.</p>
 <hr />
-<p><img height="1000%" title="dplyr cheat sheet joins" src="dplyr_joins.png" /></p>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" /></p>
 <hr />
 <p>Here's the <code>dplyr</code> summary again. You can see how you can introduce missing values when doing left, right, and outer joins.</p>
 <p>Ready? Here's a test.</p>
@@ -263,7 +263,7 @@ data %>%
 <p>Download the <a href="https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics">Tennis Major Tournament Match Statistics Data Set</a> from the <a href="https://archive.ics.uci.edu/ml/">UC Irvine Machine Learning Repository</a> into an empty directory:</p>
 <pre><code class="language-bash">$ wget https://archive.ics.uci.edu/ml/machine-learning-databases/00300/Tennis-Major-Tournaments-Match-Statistics.zip</code></pre>
 
-<p>This file should be stable, but it's also included <a href="Tennis-Major-Tournaments-Match-Statistics.zip">here</a> and/or you can verify that its <code>md5</code> is <code>e9238389e4de42ecf2daf425532ce230</code>.</p>
+<p>This file should be stable, but it's also included <a href="tennis/Tennis-Major-Tournaments-Match-Statistics.zip">here</a> and/or you can verify that its <code>md5</code> is <code>e9238389e4de42ecf2daf425532ce230</code>.</p>
 <p>Unpack eight CSV files from the <code>Tennis-Major-Tournaments-Match-Statistics.zip</code>:</p>
 <pre><code class="language-bash">$ unzip Tennis-Major-Tournaments-Match-Statistics.zip</code></pre>
 
@@ -343,7 +343,7 @@ Fabio Fognini           T.Robredo
 <li>Click “Create Project »”</li>
 <li>Click the down arrow next to “Column 1”, then follow “Edit cells” to “Cluster and edit…”</li>
 </ul>
-<p><img width="1000%" title="Open Refine" src="open_refine.png" /></p>
+<p><img width="1000%" title="Open Refine" src="img/open_refine.png" /></p>
 <p>Open Refine has <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering">introductory</a> and <a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">in-depth</a> documentation about their “clustering” mechanisms.</p>
 <p>In this interface, we can use “key collision” or “nearest neighbor” methods.</p>
 <p>The “key collision” method maps every value to one “key”, and items are identical if they have the same key. This allows us to avoid calculating anything for all pairs. (This should remind you of hashing.)</p>
@@ -371,7 +371,7 @@ Fabio Fognini           T.Robredo
 <li><strong>Have a record of the whole transformation that’s easy to review, edit, and reapply.</strong></li>
 </ul>
 <hr />
-<p><img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" /></p>
+<p><img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png" /></p>
 <hr />
 <p>So I made <code>mergic</code>.</p>
 <hr />
@@ -402,7 +402,7 @@ Fabio Fognini           T.Robredo
 <hr />
 <p>People can see what's happening, and computers can keep doing the process without clicking or re-running particular executables.</p>
 <hr />
-<p><img width="1000%" title="big data" src="big_data.png" /></p>
+<p><img width="1000%" title="big data" src="img/big_data.png" /></p>
 <hr />
 <p>A quick disclaimer!</p>
 <p>This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).</p>
@@ -474,7 +474,7 @@ optional arguments:
 <li>Transform all the data to the same format, as nearly as possible.</li>
 <li>Use a good distance on the transformed data.</li>
 </ul>
-<p>We can do both of these things with a simple custom script, <a href="tennis_mergic.py">tennis_mergic.py</a>. It only <a href="requirements.txt">requires</a> the <code>mergic</code> and <code>python-Levenshtein</code> packages.</p>
+<p>We can do both of these things with a simple custom script, <a href="tennis/tennis_mergic.py">tennis_mergic.py</a>. It only <a href="requirements.txt">requires</a> the <code>mergic</code> and <code>python-Levenshtein</code> packages.</p>
 <pre><code class="language-python">#!/usr/bin/env python
 
 import re
@@ -496,7 +496,7 @@ def distance(x, y):
 
 mergic.Blender(distance).script()</code></pre>
 
-<p>Now <a href="tennis_mergic.py">tennis_mergic.py</a> can be used just like the standard <code>mergic</code> script.</p>
+<p>Now <a href="tennis/tennis_mergic.py">tennis_mergic.py</a> can be used just like the standard <code>mergic</code> script.</p>
 <pre><code class="language-bash">$ ./tennis_mergic.py calc names.txt
 ## num groups, max group, num pairs, cutoff
 ## ----------------------------------------
@@ -620,7 +620,7 @@ Bobby, Robert</code></pre>
 <hr />
 <p>And we look at all the possible pairs and calculate those pairwise distances.</p>
 <hr />
-<p><img width="1000%" title="one dimensional" src="one_dimensional.png" /></p>
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png" /></p>
 <hr />
 <p>While we described it even in Open Refine as “clustering”, we've really been doing a classification task: either a pair is in the same group or they aren't. We've had one dimension, and we hope that we can just divide true connections from different items with a simple cutoff.</p>
 <hr />
@@ -634,7 +634,7 @@ Robert,  "NY, NY"</code></pre>
 <p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
 <p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
 <hr />
-<p><img height="1000%" title="two dimensional" src="two_dimensional.png" /></p>
+<p><img height="1000%" title="two dimensional" src="img/two_dimensional.png" /></p>
 <hr />
 <p>The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.</p>
 <p>Maybe you can find two clusters, one for true duplicates and one for different items.</p>
@@ -659,7 +659,7 @@ http://en.wikipedia.org/wiki/Multidimensional_scaling</p>
 <p>MDS in sklearn
 http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html</p>
 <hr />
-<p><img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" /></p>
+<p><img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png" /></p>
 <hr />
 <p>I also hope to see you at <a href="http://opendatascicon.com/">Open Data Science Con</a> in Boston!</p>
 <hr />
