@@ -26,23 +26,23 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.
 
-The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals, at least not in every data system at that time. This made sense, because there are only about sixteen hundred New York City public schools.
+The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals. This was the case at least for some of the data system at that time. And this made sense, because there are only about sixteen hundred New York City public schools.
 
-Those of you who have experience with humans will recall that names are not unique IDs. People change their names, or add titles like “PhD”, or have their names differently at different times for no good reason. In the case of principals, sometimes they even switch schools and change their names *at the same time*.
+Those of you who have experience with humans will know that names are not unique IDs. People change their names, or add titles like “PhD”, or have their names entered differently at different times for no good reason. In the case of principals, sometimes they switch schools and change their names *at the same time*.
 
-In a situation like this, an approximate solution is not acceptable. The DOE makes some decisions based on data, God bless them.
+The DOE makes some decisions based on data, God bless them. The data associated with a principal might determine whether they get a bonus or an unpleasant phone call. In a situation like this, an approximate matching solution is not acceptable.
 
-I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I still had to verify proposed pairs, and it was awful, and it was a long time ago, and I wished there was a better way to do it.
+I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I had to verify the match by pairs, and it was awful, and I wished there was a better way to do it.
 
-My primary concerns were, and are, to speed up the de-duplication process while allowing editing by hand and still being reproducible and easily auditable by humans.
+My primary concerns were, and are, to speed up the de-duplication process while allowing corrections by hand—still being reproducible and easily auditable by humans.
 
 I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.
 
-I've also learned about some of the ecosystem of techniques and tools available, and I'll talk about these as well.
+I've also learned about some of the broader ecosystem of techniques and tools available, and I'll talk about these as well.
 
 I'll finish by suggesting that we probably need to do something entirely different.
 
-I've thought about this issue a little bit, but more than issuing a report I'd like to encourage a discussion that might lead to more and better work with data.
+I'd like to encourage a discussion that could lead to more and better work with data.
 
 
 -----
