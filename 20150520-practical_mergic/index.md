@@ -914,9 +914,40 @@ As it happens, using a cutoff of 0 and doing no hand editing will still give the
 
 -----
 
-next thing
+distance matters
 
 -----
+
+Having a good distance function might be the most important thing. It's hard to imagine a machine learning as good a distance function as you could just right based on your human intelligence.
+
+There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: [pyhacrf](https://github.com/dirko/pyhacrf).
+
+
+-----
+
+picture of one dimension with one cutoff
+
+-----
+
+words
+
+
+-----
+
+picture of two dimensions
+
+-----
+
+words
+
+
+-----
+
+RecordLinkage
+
+-----
+
+words
 
 
 big four:
@@ -992,9 +1023,6 @@ Bio:
 
 ---
 
-
-Tennis Major Tournament Match Statistics Data Set
-https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics
 
 Adaptive Duplicate Detection Using Learnable String Similarity Measures
 http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf
