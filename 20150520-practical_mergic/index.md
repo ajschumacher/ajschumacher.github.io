@@ -1014,6 +1014,13 @@ The R [RecordLinkage](http://cran.r-project.org/web/packages/RecordLinkage/index
 
 You'll also notice that it imports `e1071` and `rpart` and others to plug in machine learning for determining duplicates.
 
+
+-----
+
+demo: mergic on RecordLinkage data
+
+-----
+
 Let's look at some of the example data that comes with `RecordLinkage`.
 
 We write the data out to CSV very simply with [RLdata500.R](RLdata/RLdata500.R):
@@ -1022,7 +1029,7 @@ We write the data out to CSV very simply with [RLdata500.R](RLdata/RLdata500.R):
 # install.packages('RecordLinkage')
 library('RecordLinkage')
 data(RLdata500)
-write.table(RLdata500, "RLdata500.csv",
+write.table(RLdata500, "RLdata500.txt",
             row.names=FALSE, col.names=FALSE,
             quote=FALSE, sep=",", na="")
 ```
@@ -1030,7 +1037,7 @@ write.table(RLdata500, "RLdata500.csv",
 Then we can take a look at the data:
 
 ```bash
-head -4 RLdata500.csv
+head -4 RLdata500.txt
 ## CARSTEN,,MEIER,,1949,7,22
 ## GERD,,BAUER,,1968,7,27
 ## ROBERT,,HARTMANN,,1930,4,30
@@ -1084,7 +1091,17 @@ It's a Python library that implements sophisticated multi-field deduplication an
 
 demo: csvdedupe
 
-----
+-----
+
+We'll use the RecordLinkage data with a header.
+
+```r
+write.table(RLdata500, "RLdata500.csv",
+            row.names=FALSE,
+            quote=FALSE, sep=",", na="")
+```
+
+Then we start the process, specifying which columns of the data to consider for matching.
 
 ```bash
 csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')

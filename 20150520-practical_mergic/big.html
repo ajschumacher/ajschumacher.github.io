@@ -190,46 +190,49 @@ Robert,  "NY, NY"</code></pre>
 <p>R: RecordLinkage</p>
 </div>
 <div>
+<p>demo: mergic on RecordLinkage data</p>
+</div>
+<div>
 <p><code>dedupe</code></p>
 </div>
 <div>
 <p>demo: csvdedupe</p>
-<hr />
-<pre><code class="language-bash">csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')</code></pre>
-
-<p>We go into an interactive supervision stage in which <code>dedupe</code> asks us to clarify things. The hope is that it will learn what matters.</p>
-<p>You can build this kind of behavior into your own systems; there is an <a href="http://datamade.github.io/dedupe-examples/docs/csv_example.html">example</a>.</p>
-<p>At the end you get output that you can use much like the <code>table</code> output from <code>mergic</code>. It needs some transforming to be easily reviewed by humans though.</p>
 </div>
 <div>
-<p>The “clustering” that we've been doing hasn't been much like usual clustering.</p>
-<p>In part, this is because we we've only had distances between strings without having a real “string space”.</p>
-<p>I'm going to just sketch out this direction; I think it's interesting but I haven't seen any real results in it yet.</p>
+<p>real clustering?</p>
 </div>
 <div>
-<p>Say these are the items we're working with. We can use Levenshtein edit distance to make a distance matrix.</p>
+<p>dog, doge, kitten, kitteh</p>
 </div>
 <div>
-<p>So here's a distance matrix, and it looks the way we'd expect. But we still don't have <em>coordinates</em> for our words.</p>
-<p>Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a>! There's a nice <a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html">implementation in sklearn</a>.</p>
+<pre><code class="language-text">       dog doge kitten kitteh
+   dog   0    1      6      6
+  doge   1    0      5      5
+kitten   6    5      0      1
+kitteh   6    5      1      0</code></pre>
 </div>
 <div>
-<p>Here's all the code it takes.</p>
+<pre><code class="language-python">from sklearn.manifold import MDS
+mds = MDS(dissimilarity='precomputed')
+coords = mds.fit_transform(distances)</code></pre>
 </div>
 <div>
-<p>And here's the result! This is at least a fun visualization, and I wonder if doing clustering in a space like this might sometimes lead to better results.</p>
-<p>The key thing here is that we're clustering on the elements themselves, rather than indirectly via the pairwise distances.</p>
-<p>There are other ways of getting coordinates for words. This includes the very interesting <a href="https://code.google.com/p/word2vec/">word2vec</a> and related techniques.</p>
-<p>Also, you might have items are already naturally coordinates, for example if you have medical data like a person's height or weight.</p>
+<p><img width="1000%" title="MDS coordinates from distance matrix" src="img/mds_words.png" /></p>
 </div>
 <div>
-
+<p>wrap up!</p>
 </div>
 <div>
-<p>I also hope to see you at <a href="http://opendatascicon.com/">Open Data Science Con</a> in Boston!</p>
+<p><img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png" /></p>
 </div>
 <div>
-<p>Thank you!</p>
+<p>Thanks!</p>
+</div>
+<div>
+<p><center>
+planspace.org</p>
+<p>@planarrowspace
+</center></p>
 </div>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
