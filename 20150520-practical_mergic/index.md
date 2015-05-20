@@ -745,9 +745,6 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 
-The list above is not the answer we’re looking for. We want to be correct.
-
-
 In the tennis data, names appear sometimes with full first names and sometimes with only first initials. To get good comparisons, we should:
 
  * Transform all the data to the same format, as nearly as possible.
