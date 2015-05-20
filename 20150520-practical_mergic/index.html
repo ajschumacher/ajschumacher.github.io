@@ -177,6 +177,7 @@ data %>%
 <p>“This happens. This is a thing that happens.”</p>
 </blockquote>
 <p>This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.</p>
+<p>(One good way to check is to use <a href="https://twitter.com/tonyfischetti">Tony</a>'s <a href="http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html">Assertive R</a> package!)</p>
 <hr />
 <p>merge</p>
 <hr />
@@ -631,20 +632,32 @@ Robert,  "NY, NY"</code></pre>
 
 <hr />
 <p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
+<p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
 <hr />
 <p><img height="1000%" title="two dimensional" src="two_dimensional.png" /></p>
 <hr />
-<p>words</p>
+<p>The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.</p>
+<p>Maybe you can find two clusters, one for true duplicates and one for different items.</p>
+<p>Or maybe you could get some training data and use whatever classification algorithm you like.</p>
+<p>Let's look at a couple packages that do these things.</p>
 <hr />
-<p>RecordLinkage</p>
+<p>R: RecordLinkage</p>
 <hr />
-<p>words</p>
+<p>The R <a href="http://cran.r-project.org/web/packages/RecordLinkage/index.html">RecordLinkage</a> package, which has a good <a href="http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf">R Journal article</a> and a number of fine vignettes, does quite a lot of interesting things along the lines of what we've been discussing.</p>
+<p>You'll also notice that it imports <code>e1071</code> and <code>rpart</code> and others to plug in machine learning for determining duplicates.</p>
+<p>Let's look at some of the example data that comes with <code>RecordLinkage</code>.</p>
 <p>big four:</p>
 <p>R RecordLinkage
 Python dedupe
 OpenRefine
 SQL?
 Max mentioned GIS merges~</p>
+<p>Notes on notes:
+http://datamade.github.io/dedupe-examples/docs/csv_example.html</p>
+<p>Multidimensional scaling
+http://en.wikipedia.org/wiki/Multidimensional_scaling</p>
+<p>MDS in sklearn
+http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html</p>
 <hr />
 <p><img width="1000%" title="Open Data Science Conference" src="open_data_sci_con.png" /></p>
 <hr />
@@ -661,28 +674,15 @@ planspace.org</p>
 <hr />
 <p>This is just me again.</p>
 <hr />
-<p>Pair hidden Markov models (Bioinformatics)
-http://what-when-how.com/bioinformatics/pair-hidden-markov-models-bioinformatics/</p>
-<p>Stanford Entity Resolution Framework
-http://infolab.stanford.edu/serf/</p>
-<p>Swoosh: a generic approach to entity resolution
-http://infolab.stanford.edu/serf/swoosh_vldbj.pdf</p>
-<p>Entity Resolution: Tutorial
-http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf</p>
-<p>Learning-based Entity Resolution with MapReduce
-http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf</p>
-<p>Multidimensional scaling
-http://en.wikipedia.org/wiki/Multidimensional_scaling</p>
-<p>MDS in sklearn
-http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html</p>
-<p>Entity Resolution for Big Data (summary)
-http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data</p>
-<p>D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration
-http://linqs.cs.umd.edu/projects/ddupe/</p>
-<p>Assertive R
-http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html</p>
-<p>Notes on notes:
-http://datamade.github.io/dedupe-examples/docs/csv_example.html</p>    <script src="/scripts/konami.js"></script>
+<h3>Other interesting things:</h3>
+<ul>
+<li><a href="http://infolab.stanford.edu/serf/">Stanford Entity Resolution Framework</a></li>
+<li><a href="http://infolab.stanford.edu/serf/swoosh_vldbj.pdf">Swoosh: a generic approach to entity resolution</a></li>
+<li><a href="http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf">Entity Resolution: Tutorial</a></li>
+<li><a href="http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data">Entity Resolution for Big Data (summary)</a></li>
+<li><a href="http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf">Learning-based Entity Resolution with MapReduce</a></li>
+<li><a href="http://linqs.cs.umd.edu/projects/ddupe/">D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration</a></li>
+</ul>    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>

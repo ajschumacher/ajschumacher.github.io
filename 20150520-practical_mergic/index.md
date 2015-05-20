@@ -243,6 +243,8 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.
 
+(One good way to check is to use [Tony](https://twitter.com/tonyfischetti)'s [Assertive R](http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html) package!)
+
 
 -----
 
@@ -984,6 +986,8 @@ Robert,  "NY, NY"
 
 Often, there's more than one field involved, and it might be good to treat all the fields separately.
 
+So let's calculate distances between each field entry for each pair of rows, in this case.
+
 
 -----
 
@@ -991,16 +995,27 @@ Often, there's more than one field involved, and it might be good to treat all t
 
 -----
 
-words
+The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.
+
+Maybe you can find two clusters, one for true duplicates and one for different items.
+
+Or maybe you could get some training data and use whatever classification algorithm you like.
+
+Let's look at a couple packages that do these things.
 
 
 -----
 
-RecordLinkage
+R: RecordLinkage
 
 -----
 
-words
+The R [RecordLinkage](http://cran.r-project.org/web/packages/RecordLinkage/index.html) package, which has a good [R Journal article](http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf) and a number of fine vignettes, does quite a lot of interesting things along the lines of what we've been discussing.
+
+You'll also notice that it imports `e1071` and `rpart` and others to plug in machine learning for determining duplicates.
+
+Let's look at some of the example data that comes with `RecordLinkage`.
+
 
 
 big four:
@@ -1010,6 +1025,16 @@ Python dedupe
 OpenRefine
 SQL?
 Max mentioned GIS merges~
+
+Notes on notes:
+http://datamade.github.io/dedupe-examples/docs/csv_example.html
+
+
+Multidimensional scaling
+http://en.wikipedia.org/wiki/Multidimensional_scaling
+
+MDS in sklearn
+http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html
 
 
 
@@ -1046,36 +1071,11 @@ This is just me again.
 ---
 
 
+### Other interesting things:
 
-Pair hidden Markov models (Bioinformatics)
-http://what-when-how.com/bioinformatics/pair-hidden-markov-models-bioinformatics/
-
-Stanford Entity Resolution Framework
-http://infolab.stanford.edu/serf/
-
-Swoosh: a generic approach to entity resolution
-http://infolab.stanford.edu/serf/swoosh_vldbj.pdf
-
-Entity Resolution: Tutorial
-http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf
-
-Learning-based Entity Resolution with MapReduce
-http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf
-
-Multidimensional scaling
-http://en.wikipedia.org/wiki/Multidimensional_scaling
-
-MDS in sklearn
-http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html
-
-Entity Resolution for Big Data (summary)
-http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data
-
-D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration
-http://linqs.cs.umd.edu/projects/ddupe/
-
-Assertive R
-http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html
-
-Notes on notes:
-http://datamade.github.io/dedupe-examples/docs/csv_example.html
+ * [Stanford Entity Resolution Framework](http://infolab.stanford.edu/serf/)
+ * [Swoosh: a generic approach to entity resolution](http://infolab.stanford.edu/serf/swoosh_vldbj.pdf)
+ * [Entity Resolution: Tutorial](http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf)
+ * [Entity Resolution for Big Data (summary)](http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data)
+ * [Learning-based Entity Resolution with MapReduce](http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf)
+ * [D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration](http://linqs.cs.umd.edu/projects/ddupe/)
