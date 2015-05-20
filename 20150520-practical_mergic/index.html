@@ -496,6 +496,8 @@ def distance(x, y):
 
 mergic.Blender(distance).script()</code></pre>
 
+<p>Note that there's a transformation step in there, normalizing the form of the names to have just a first initial and last name. This kind of normalization can be very important.</p>
+<p>As a more extreme example, a friend of mine has used the following transform: Google it. Then you can use a distance on the result set to deduplicate.</p>
 <p>Now <a href="tennis/tennis_mergic.py">tennis_mergic.py</a> can be used just like the standard <code>mergic</code> script.</p>
 <pre><code class="language-bash">$ ./tennis_mergic.py calc names.txt
 ## num groups, max group, num pairs, cutoff
@@ -741,8 +743,24 @@ coords = mds.fit_transform(distances)</code></pre>
 <p>There are other ways of getting coordinates for words. This includes the very interesting <a href="https://code.google.com/p/word2vec/">word2vec</a> and related techniques.</p>
 <p>Also, you might have items are already naturally coordinates, for example if you have medical data like a person's height or weight.</p>
 <hr />
-<p>wrap up!</p>
+<p>deep thoughts</p>
 <hr />
+<p>By way of conclusion, I'd like to suggest that this problem of deduplication is no good and we should take steps to:</p>
+<ul>
+<li>prevent it from being necessary, by having our systems recommend or enforce standard naming</li>
+<li>make it possible to do once and reintegrate the results</li>
+</ul>
+<p>It should be possible to make changes and share them back to data providers. It should be possible to edit data while preserving the data's history. These kind of collaborative data editing are not super easy to implement, and I hope systems emerge that handle it better than current systems.</p>
+<hr />
+<p>questions for discussion</p>
+<hr />
+<p>I'd like to ask you to consider and discuss with your peers:</p>
+<ul>
+<li>What workflows and tools do you use for these kinds of tasks?</li>
+<li>Does the JSON partition format used by <code>mergic</code> make sense for your use?</li>
+<li>Does the merge table format used by <code>mergic</code> make sense for your use?</li>
+<li>What else would make this kind of process better for you?</li>
+</ul>
 <hr />
 <p><img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png" /></p>
 <hr />
@@ -758,6 +776,7 @@ planspace.org</p>
 </center></p>
 <hr />
 <p>This is just me again.</p>
+<p>I'd love to hear from you!</p>
 <hr />
 <h3>Other interesting things:</h3>
 <ul>

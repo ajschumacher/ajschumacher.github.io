@@ -778,6 +778,9 @@ def distance(x, y):
 mergic.Blender(distance).script()
 ```
 
+Note that there's a transformation step in there, normalizing the form of the names to have just a first initial and last name. This kind of normalization can be very important.
+
+As a more extreme example, a friend of mine has used the following transform: Google it. Then you can use a distance on the result set to deduplicate.
 
 Now [tennis_mergic.py](tennis/tennis_mergic.py) can be used just like the standard `mergic` script.
 
@@ -1181,9 +1184,30 @@ Also, you might have items are already naturally coordinates, for example if you
 
 -----
 
-wrap up!
+deep thoughts
 
 -----
+
+By way of conclusion, I'd like to suggest that this problem of deduplication is no good and we should take steps to:
+
+ * prevent it from being necessary, by having our systems recommend or enforce standard naming
+ * make it possible to do once and reintegrate the results
+
+It should be possible to make changes and share them back to data providers. It should be possible to edit data while preserving the data's history. These kind of collaborative data editing are not super easy to implement, and I hope systems emerge that handle it better than current systems.
+
+
+-----
+
+questions for discussion
+
+-----
+
+I'd like to ask you to consider and discuss with your peers:
+
+ * What workflows and tools do you use for these kinds of tasks?
+ * Does the JSON partition format used by `mergic` make sense for your use?
+ * Does the merge table format used by `mergic` make sense for your use?
+ * What else would make this kind of process better for you?
 
 
 -----
@@ -1216,8 +1240,10 @@ planspace.org
 
 This is just me again.
 
----
+I'd love to hear from you!
 
+
+---
 
 ### Other interesting things:
 
