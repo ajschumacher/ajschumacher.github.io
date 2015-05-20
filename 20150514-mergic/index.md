@@ -182,7 +182,7 @@ pip install mergic
 mergic -h
 ```
 
-`mergic` runs includes a command-line script based on [argparse](https://docs.python.org/2/library/argparse.html) that uses a default string distance function.
+`mergic` includes a command-line script based on [argparse](https://docs.python.org/2/library/argparse.html) that uses a default string distance function.
 
 ```
 usage: mergic [-h] {calc,make,check,diff,apply,table} ...
