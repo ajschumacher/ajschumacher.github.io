@@ -807,6 +807,8 @@ There is a clear best cutoff here, as the size of the max group jumps from 6 ite
 $ ./tennis_mergic.py make names.txt 2 > groups.json
 ```
 
+**This kind of JSON grouping file could be produced and edited by anything, not just `mergic`.**
+
 As expected, the proposed grouping has combined things over-zealously in some places:
 
 ```bash
@@ -845,7 +847,7 @@ Parts of the review process would be difficult or impossible for a computer to d
 After editing, you can check that the new grouping is still valid. At this stage we aren't using anything custom any more, so the default `mergic` is fine:
 
 ```bash
-$ mergic check partition_edited.json
+$ mergic check edited.json
 ## 669 items in 354 groups
 ```
 
@@ -1121,6 +1123,14 @@ real clustering?
 -----
 
 The “clustering” that we've been doing hasn't been much like usual clustering.
+
+
+-----
+
+<img width="1000%" title="one dimensional" src="img/one_dimensional.png" />
+
+-----
+
 
 In part, this is because we we've only had distances between strings without having a real “string space”.
 

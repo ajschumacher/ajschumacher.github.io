@@ -519,6 +519,7 @@ mergic.Blender(distance).script()</code></pre>
 <p>There is a clear best cutoff here, as the size of the max group jumps from 6 items to 85 and the number of within-group comparisons jumps from 470 to 5,117. So we create a partition where the Levenshtein distance between names in our standard first initial and last name format is no more than two, and put the result in a file called <code>groups.json</code>:</p>
 <pre><code class="language-bash">$ ./tennis_mergic.py make names.txt 2 > groups.json</code></pre>
 
+<p><strong>This kind of JSON grouping file could be produced and edited by anything, not just <code>mergic</code>.</strong></p>
 <p>As expected, the proposed grouping has combined things over-zealously in some places:</p>
 <pre><code class="language-bash">$ head -5 groups.json
 ## {
@@ -547,7 +548,7 @@ mergic.Blender(distance).script()</code></pre>
 <li><code>Juan Martin Del Potro</code> is unfortunately too different from <code>J.Del Potro</code> in the current formulation to be grouped automatically, but a human reviewer can correct this. Similarly for <code>Anna Schmiedlova</code> and <code>Anna Karolina Schmiedlova</code>.</li>
 </ul>
 <p>After editing, you can check that the new grouping is still valid. At this stage we aren't using anything custom any more, so the default <code>mergic</code> is fine:</p>
-<pre><code class="language-bash">$ mergic check partition_edited.json
+<pre><code class="language-bash">$ mergic check edited.json
 ## 669 items in 354 groups</code></pre>
 
 <p>The <code>mergic</code> diffing tools make it easy to make comparisons that would otherwise be difficult, letting us focus on and save only changes that are human reviewers make rather than whole files.</p>
@@ -711,6 +712,9 @@ write.table(RLdata500, "RLdata500.txt",
 <p>real clustering?</p>
 <hr />
 <p>The “clustering” that we've been doing hasn't been much like usual clustering.</p>
+<hr />
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png" /></p>
+<hr />
 <p>In part, this is because we we've only had distances between strings without having a real “string space”.</p>
 <p>I'm going to just sketch out this direction; I think it's interesting but I haven't seen any real results in it yet.</p>
 <hr />
