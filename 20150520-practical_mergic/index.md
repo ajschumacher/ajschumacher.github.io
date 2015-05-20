@@ -290,7 +290,7 @@ This is a left join: you get all the keys from the left data set, regardless of 
 Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little [ImageMagick](http://www.imagemagick.org/).
 
 ```bash
-convert -rotate 180 left_join.png right_join.png
+$ convert -rotate 180 left_join.png right_join.png
 ```
 
 You're welcome.
@@ -712,19 +712,19 @@ demo: mergic tennis
 With all that background, let's see how `mergic` attempts to support a good workflow.
 
 ```bash
-pew new pydata
+$ pew new pydata
 ```
 
 I'll start by making a new [virtual environment](https://virtualenv.pypa.io/) using [pew](https://github.com/berdario/pew).
 
 ```bash
-pip install mergic
+$ pip install mergic
 ```
 
 `mergic` is very new (version 0.0.4.1) and it currently installs with no extra dependencies.
 
 ```bash
-mergic -h
+$ mergic -h
 ```
 
 `mergic` includes a command-line script based on [argparse](https://docs.python.org/2/library/argparse.html) that uses a default string distance function.
@@ -1040,7 +1040,7 @@ write.table(RLdata500, "RLdata500.txt",
 Then we can take a look at the data:
 
 ```bash
-head -4 RLdata500.txt
+$ head -4 RLdata500.txt
 ## CARSTEN,,MEIER,,1949,7,22
 ## GERD,,BAUER,,1968,7,27
 ## ROBERT,,HARTMANN,,1930,4,30
@@ -1050,7 +1050,7 @@ head -4 RLdata500.txt
 The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
 
 ```bash
-mergic calc RLdata500.csv
+$ mergic calc RLdata500.csv
 ## ...
 ##        451,         2,        49, 0.111111111111
 ##        450,         2,        50, 0.115384615385
@@ -1063,7 +1063,7 @@ Looking through the possible groupings, we see a cutoff of about 0.12 that will 
 This is slightly artificial, but only slightly so; we could well be doing this for two columns to merge on, in which case so we would hope to find groups of two elements.
 
 ```bash
-mergic make RLdata500.csv 0.12
+$ mergic make RLdata500.csv 0.12
 ## {
 ##     "MATTHIAS,,HAAS,,1955,7,8": [
 ##         "MATTHIAS,,HAAS,,1955,7,8",
@@ -1107,7 +1107,7 @@ write.table(RLdata500, "RLdata500.csv",
 Then we start the process, specifying which columns of the data to consider for matching.
 
 ```bash
-csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')
+$ csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')
 ```
 
 We go into an interactive supervision stage in which `dedupe` asks us to clarify things. The hope is that it will learn what matters.
@@ -1191,7 +1191,7 @@ deep thoughts
 By way of conclusion, I'd like to suggest that this problem of deduplication is no good and we should take steps to:
 
  * prevent it from being necessary, by having our systems recommend or enforce standard naming
- * make it possible to do once and reintegrate the results
+ * make it possible to do deduplication once and reintegrate the results back into the data system
 
 It should be possible to make changes and share them back to data providers. It should be possible to edit data while preserving the data's history. These kind of collaborative data editing are not super easy to implement, and I hope systems emerge that handle it better than current systems.
 
