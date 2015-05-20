@@ -417,7 +417,7 @@ Download the [Tennis Major Tournament Match Statistics Data Set](https://archive
 $ wget https://archive.ics.uci.edu/ml/machine-learning-databases/00300/Tennis-Major-Tournaments-Match-Statistics.zip
 ```
 
-This file should be stable, but it's also included [here](Tennis-Major-Tournaments-Match-Statistics.zip) and/or you can verify that its `md5` is `e9238389e4de42ecf2daf425532ce230`.
+This file should be stable, but it's also included [here](tennis/Tennis-Major-Tournaments-Match-Statistics.zip) and/or you can verify that its `md5` is `e9238389e4de42ecf2daf425532ce230`.
 
 
 Unpack eight CSV files from the `Tennis-Major-Tournaments-Match-Statistics.zip`:
@@ -753,7 +753,7 @@ In the tennis data, names appear sometimes with full first names and sometimes w
  * Transform all the data to the same format, as nearly as possible.
  * Use a good distance on the transformed data.
 
-We can do both of these things with a simple custom script, [tennis_mergic.py](tennis_mergic.py). It only [requires](requirements.txt) the `mergic` and `python-Levenshtein` packages.
+We can do both of these things with a simple custom script, [tennis_mergic.py](tennis/tennis_mergic.py). It only [requires](requirements.txt) the `mergic` and `python-Levenshtein` packages.
 
 ```python
 #!/usr/bin/env python
@@ -779,7 +779,7 @@ mergic.Blender(distance).script()
 ```
 
 
-Now [tennis_mergic.py](tennis_mergic.py) can be used just like the standard `mergic` script.
+Now [tennis_mergic.py](tennis/tennis_mergic.py) can be used just like the standard `mergic` script.
 
 ```bash
 $ ./tennis_mergic.py calc names.txt
