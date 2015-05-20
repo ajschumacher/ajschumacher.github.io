@@ -306,7 +306,7 @@ $ sort names.txt | uniq | wc -l
 
 <p>The list above is not the answer we’re looking for. We want to be correct.</p>
 <hr />
-<p>single field de-duplication</p>
+<p>single field deduplication</p>
 <hr />
 <p>We're going to think about this problem, which is pretty common, of de-duplicating (or making a merge table for) a single text field.</p>
 <hr />
@@ -330,7 +330,7 @@ Fabio Fognini           T.Robredo
 <hr />
 <p><a href="http://openrefine.org/">Open Refine</a> is quite good.</p>
 <p>An interesting side story is that Open Refine was formerly Google Refine, and before that <a href="http://en.wikipedia.org/wiki/Metaweb">Metaweb</a>'s “Freebase Gridworks”. Google is shutting down <a href="http://www.freebase.com/">Freebase</a>, and we have to hope that <a href="https://www.wikidata.org/">Wikidata</a> will then be the open match for Google's <a href="http://en.wikipedia.org/wiki/Knowledge_Graph">Knowledge Graph</a>.</p>
-<p>Thanks to <a href="https://twitter.com/jqnatividad">Joel Natividad</a> for pointing out an <a href="https://github.com/OpenRefine/OpenRefine/issues/983">interesting algorithmic development</a> connected with ongoing work on Open Refine.</p>
+<p>Thanks to <a href="https://twitter.com/jqnatividad">Joel Natividad</a> for pointing out an <a href="https://github.com/OpenRefine/OpenRefine/issues/983">interesting algorithmic development</a> connected with ongoing work on Open Refine. He also pointed out that there is a Python module called <a href="https://github.com/PaulMakepeace/refine-client-py">refine-client</a> for using Open Refine from Python.</p>
 <p>Steps of simple Open Refine demo:</p>
 <ul>
 <li>Start the Open Refine app</li>
@@ -367,7 +367,7 @@ Fabio Fognini           T.Robredo
 <li>Easily use a custom distance function.</li>
 <li>Easily use a custom function for choosing the “New Cell Value”.</li>
 <li>See what would happen with different “radii” without trying them all.</li>
-<li>Have a record of the whole transformation that’s easy to review, edit, and reapply.</li>
+<li><strong>Have a record of the whole transformation that’s easy to review, edit, and reapply.</strong></li>
 </ul>
 <hr />
 <p><img height="1000%" title="ermahgerd mergic" src="ermahgerd.png" /></p>
@@ -401,8 +401,49 @@ Fabio Fognini           T.Robredo
 <hr />
 <p>People can see what's happening, and computers can keep doing the process without clicking or re-running particular executables.</p>
 <hr />
+<p><img width="1000%" title="big data" src="big_data.png" /></p>
+<hr />
+<p>A quick disclaimer!</p>
+<p>This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).</p>
+<hr />
+<pre><code>Santiago Giraldo,Leonardo Mayer
+Santiago Giraldo,Dudi Sela
+Santiago Giraldo,Juan Monaco
+Santiago Giraldo,S Williams
+Santiago Giraldo,C Wozniacki
+Santiago Giraldo,S.Giraldo
+Santiago Giraldo,Marcos Baghdatis
+Santiago Giraldo,Y-H.Lu
+...</code></pre>
+
+<hr />
+<p>So we make all possible pairs of identifiers!</p>
+<p>One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.</p>
+<p>All these pairs are annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.</p>
+<p>Do you see the match here? (It's Santiago again!)</p>
+<hr />
+<pre><code>Karolina Pliskova,K Pliskova</code></pre>
+
+<hr />
+<p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
+<p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
+<hr />
+<pre><code>Kristyna Pliskova,K Pliskova</code></pre>
+
+<hr />
+<p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
+<hr />
+<p>sets &gt; pairs</p>
+<hr />
+<p>Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.</p>
+<hr />
+<p>workflow support for reproducible deduplication and merging</p>
+<hr />
+<p>This is what <code>mergic</code> is for. <code>mergic</code> is a simple tool designed to make it less painful when you need to merge things that don't yet merge.</p>
+<hr />
 <p>demo: mergic tennis</p>
 <hr />
+<p>With all that background, let's see how <code>mergic</code> attempts to support a good workflow.</p>
 <pre><code class="language-bash">pew new pydata</code></pre>
 
 <p>I'll start by making a new <a href="https://virtualenv.pypa.io/">virtual environment</a> using <a href="https://github.com/berdario/pew">pew</a>.</p>

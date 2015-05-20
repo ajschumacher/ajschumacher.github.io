@@ -628,9 +628,86 @@ People can see what's happening, and computers can keep doing the process withou
 
 -----
 
+<img width="1000%" title="big data" src="big_data.png" />
+
+-----
+
+A quick disclaimer!
+
+This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently `mergic` is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).
+
+
+-----
+
+```
+Santiago Giraldo,Leonardo Mayer
+Santiago Giraldo,Dudi Sela
+Santiago Giraldo,Juan Monaco
+Santiago Giraldo,S Williams
+Santiago Giraldo,C Wozniacki
+Santiago Giraldo,S.Giraldo
+Santiago Giraldo,Marcos Baghdatis
+Santiago Giraldo,Y-H.Lu
+...
+```
+-----
+
+So we make all possible pairs of identifiers!
+
+One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.
+
+All these pairs are annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.
+
+Do you see the match here? (It's Santiago again!)
+
+
+-----
+
+```
+Karolina Pliskova,K Pliskova
+```
+-----
+
+Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.
+
+Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)
+
+
+-----
+
+```
+Kristyna Pliskova,K Pliskova
+```
+-----
+
+Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.
+
+
+-----
+
+sets > pairs
+
+-----
+
+Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.
+
+
+-----
+
+workflow support for reproducible deduplication and merging
+
+-----
+
+This is what `mergic` is for. `mergic` is a simple tool designed to make it less painful when you need to merge things that don't yet merge.
+
+
+-----
+
 demo: mergic tennis
 
 -----
+
+With all that background, let's see how `mergic` attempts to support a good workflow.
 
 ```bash
 pew new pydata
