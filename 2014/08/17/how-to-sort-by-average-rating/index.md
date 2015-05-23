@@ -4,19 +4,20 @@
 
 Evan Miller's well-known <a href="http://www.evanmiller.org/how-not-to-sort-by-average-rating.html">How Not To Sort By Average Rating</a> points out problems with ranking by "wrong solution #1" (by differences, upvotes minus downvotes) and "wrong solution #2" (by average ratings, upvotes divided by total votes). Miller's "correct solution" is to use the lower bound of a <a href="http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">Wilson score</a> confidence interval for a Bernoulli parameter. I think it would probably be better to use <a href="http://en.wikipedia.org/wiki/Additive_smoothing">Laplace smoothing</a>, because:
 
-<ul>
-	<li>Laplace smoothing is much easier</li>
-	<li>Laplace smoothing is not always negatively biased</li>
-</ul>
+ * Laplace smoothing is much easier
+ * Laplace smoothing is not always negatively biased
+
 This is the Wilson scoring formula given in Miller's post, which we'll use to get 95% confidence interval lower bounds:
 
 <a href="rating-equation.png"><img class="aligncenter size-full wp-image-918" src="rating-equation.png" alt="rating equation"></a>
-<blockquote>(Use minus where it says plus/minus to calculate the lower bound.) Here <em>p̂</em> is the <em>observed</em> fraction of positive ratings, <em>z</em><sub>α/2</sub> is the (1-α/2) quantile of the standard normal distribution, and <em>n</em> is the total number of ratings.</blockquote>
+
+> (Use minus where it says plus/minus to calculate the lower bound.) Here \\( \hat{p} \\) is the <em>observed</em> fraction of positive ratings, <em>z</em><sub>α/2</sub> is the (1-α/2) quantile of the standard normal distribution, and <em>n</em> is the total number of ratings.
+
 Now here's the formula for doing <a href="http://mathbabe.org/2012/09/20/columbia-data-science-course-week-3-naive-bayes-laplace-smoothing-and-scraping-data-off-the-web/">Laplace smoothing</a> instead:
 
-(upvotes + $latex \alpha$) / (total votes + $latex \beta$)
+\\[ \frac{\text{upvotes} + \alpha}{\text{total votes} + \beta} \\]
 
-Here $latex \alpha$ and $latex \beta$ are parameters that represent our estimation of what rating is probably appropriate if we know nothing else (cf. Bayesian prior). For example, $latex \alpha = 1$ and $latex \beta = 2$ means that a post with no votes gets treated as a 0.5.
+Here \\( \alpha \\) and \\( \beta \\) are parameters that represent our estimation of what rating is probably appropriate if we know nothing else (cf. Bayesian prior). For example, \\( \alpha = 1 \\) and \\( \beta = 2 \\) means that a post with no votes gets treated as a 0.5.
 
 The Laplace smoothing method is much simpler to calculate - there's no need for statistical libraries, or even square roots!
 
@@ -53,9 +54,11 @@ Does it successfully solve the problems of "wrong solution #1" and "wrong soluti
 </tr>
 </tbody>
 </table>
+
 All the methods agree except for "wrong solution #1" that the second item should rank higher.
 
 Then there's the problem with "wrong solution #2", which we might summarize as "the problem with small sample sizes":
+
 <table>
 <tbody>
 <tr>
@@ -99,7 +102,7 @@ They're so similar, you might say, that you would need a very good reason to jus
 
 With the Wilson method, you could have three upvotes, no downvotes and still rank lower than an item that is disliked by 50% of people over the long run. That seems strange.
 
-The Laplace method does have its own biases. By choosing $latex \alpha=1$ and $latex \beta=2$, the bias is toward 0.5, which I think is reasonable for a ranking problem like this. But you could change it: $latex \alpha=0$ with $latex \beta=1$ biases toward zero, $latex \alpha=1$ with $latex \beta=0$ biases toward one. And $latex \alpha=100$ with $latex \beta=200$ biases toward 0.5 very strongly. With the Wilson method you can tune the size of the interval, adjusting the confidence level, but this only adjusts how strongly you're biased toward zero.
+The Laplace method does have its own biases. By choosing \\( \alpha=1 \\) and \\( \beta=2 \\), the bias is toward 0.5, which I think is reasonable for a ranking problem like this. But you could change it: \\( \alpha=0 \\) with \\( \beta=1 \\) biases toward zero, \\( \alpha=1 \\) with \\( \beta=0 \\) biases toward one. And \\( \alpha=100 \\) with \\( \beta=200 \\) biases toward 0.5 very strongly. With the Wilson method you can tune the size of the interval, adjusting the confidence level, but this only adjusts how strongly you're biased toward zero.
 
 Here's another way of looking at the comparison. How do the two methods compare for varying numbers of upvotes with a constant number (10) of downvotes?
 

@@ -13,7 +13,7 @@ A check of whether the number of students tested in each grade adds up to the nu
 22K245          4 2007     ELA  1    NA
 22K245          5 2007     ELA 24   655
 22K245 All Grades 2007     ELA  1    NA</pre>
-(The issue is that 21 + 1 + 24 is not 1.) Something weird is going on here; the number for fourth grade could be wrong too. Who knows? The moral of the story is: don't use the provided $latex n$ for "All Grades" - add it up yourself.
+(The issue is that 21 + 1 + 24 is not 1.) Something weird is going on here; the number for fourth grade could be wrong too. Who knows? The moral of the story is: don't use the provided *n* for "All Grades" - add it up yourself.
 
 One interesting thing is that very occasionally a school will test some students in one subject but test no students in the other.
 <pre>   dbn year Math ELA
