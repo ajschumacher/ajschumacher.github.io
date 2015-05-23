@@ -7,6 +7,24 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Chains</title>
+<description><![CDATA[
+
+<blockquote>
+<p>&#8220;We were arguing energetically about whether the world is actually evolving, headed in a particular direction, or whether the entire universe is just a returning rhythm's game, a renewal of eternity.&#8221;</p>
+</blockquote>
+<p>There&#8217;s this little <a href="https://djjr-courses.wdfiles.com/local--files/soc180%3Akarinthy-chain-links/Karinthy-Chain-Links_1929.pdf">story</a>, published in 1929, by <a href="http://en.wikipedia.org/wiki/Frigyes_Karinthy">Frigyes Karinthy</a>. <a href="http://www.qwantz.com/">Dinosaur Comics</a> put me on to this:</p>
+<p><a href="http://www.qwantz.com/index.php?comic=2646"><img alt="dinosaur comics #2646" src="http://www.qwantz.com/comics/comic2-2656.png"></a></p>
+<blockquote>
+<p>&#8220;Everything returns and renews itself. The difference now is that the rate of these returns has increased, in both space and time, in an unheard-of fashion. Now my thoughts can circle the globe in minutes. Entire passages of world history are played out in a couple of years.&#8221;</p>
+</blockquote>
+<p>Published in 1929.</p>    
+    ]]></description>
+<link>http://planspace.org/20150522-chains/</link>
+<guid>http://planspace.org/20150522-chains/</guid>
+<pubDate>Fri, 22 May 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Practical Mergic</title>
 <description><![CDATA[
 
@@ -1847,119 +1865,6 @@ h &lt;- hist(x, col="cornflowerblue")</code></pre>
 <link>http://planspace.org/20141220-dc_voter_registration_data/</link>
 <guid>http://planspace.org/20141220-dc_voter_registration_data/</guid>
 <pubDate>Sat, 20 Dec 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Please stop saying “Big Data”</title>
-<description><![CDATA[
-
-<p><em>A short talk for <a href="http://www.air.org/">AIR</a>.</em></p>
-<p>I thought about calling this &#8220;Size and Complexity in Real Data Systems,&#8221; but that would have been so boring.</p>
-<hr>
-<p><img alt="" src="alan_kay.jpg"></p>
-<hr>
-<p>This is <a href="http://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>. He worked at Xerox PARC, he said &#8220;The best way to predict the future is to invent it,&#8221; and he said this, at a <a href="https://www.youtube.com/watch?v=gTAghAJcO1o">talk</a> earlier this year:</p>
-<blockquote>
-<p>Big data is a way that a lot of people are trying to make money today. And it's a favorite of marketing people, because it's in the wind. Everybody has heard the phrase &#8220;big data.&#8221; Not everybody knows what it means. And so it's the perfect context for doing things that people can say, &#8220;Well this is an application of big data and this is an application of big data.&#8221; But in fact, the interesting future's not about data at all&#8212;it's about meaning.</p>
-</blockquote>
-<p>The objection here, which is an objection of many, is an objection to torturing the phrase &#8220;Big Data&#8221; until it means everything and nothing.</p>
-<p>You can also read an article that Deloitte published last Wednesday on the Wall Street Journal's web site called <a href="http://deloitte.wsj.com/cio/2014/12/10/should-we-stop-using-the-term-big-data/">Should We Stop Using the Term &#8216;Big Data&#8217;?</a>.</p>
-<p>The answer is yes. Let's all stop saying &#8220;big data&#8221; when we just mean &#8220;data.&#8221;</p>
-<hr>
-<p><img alt="" src="excel.png"></p>
-<hr>
-<p>Some people think big data is data they can't put in Excel. The problem with this is that you shouldn't be putting <em>any</em> data in Excel. There are many reasons Excel is bad. If you care about getting the right answer, you shouldn't use Excel [1]. But it is also true that more and more, we've moved from the era of &#8220;shouldn't use Excel&#8221; to the era of &#8220;can't possibly use Excel.&#8221;</p>
-<p>The reasons you can't use Excel these days can include volume, velocity, variety, and veracity, those <a href="http://www.ibmbigdatahub.com/infographic/four-vs-big-data">V words</a> that buzz along with &#8220;big data.&#8221; These Vs are trying to get people to realize that their ideas about how to work with data are inadequate. The ideas were inadequate before as well, but now they're really clearly inadequate. It is more comfortable to think that the problem is only with these new-seeming Vs.</p>
-<p>[1]: <em>See, for example, <a href="http://www.businessweek.com/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history">Growth in a Time of Debt</a>.</em></p>
-<hr>
-<p><img alt="" src="data_flow.jpg"></p>
-<hr>
-<p>Working with data is always about building systems. This includes systems where the output is an analysis result. You need to build systems that are testable, reusable, extensible, and composable. Ideally, systems that are elegant. You can't do that with Excel, or with most commercial statistical offerings. To steal some other peoples' language, <a href="http://www.wsj.com/articles/SB10001424053111903480904576512250915629460">software is eating the world</a> and you need to <a href="http://www.rushkoff.com/program-or-be-programmed/">program or be programmed</a>.</p>
-<p>What should you learn, if all you know is Excel or something similarly unfortunate like Stata or SAS? If you think you should learn <a href="http://www.r-project.org/">R</a> or <a href="http://clojure.org/">Clojure</a> or <a href="http://www.scala-lang.org/">Scala</a>, you might be right. Otherwise, learn <a href="https://www.python.org/">Python</a>.</p>
-<hr>
-<p><img alt="" src="big_data.png"></p>
-<hr>
-<p>This is a <a href="http://people.cs.umass.edu/~mcgregor/stocworkshop/langford.pdf">slide</a> from <a href="http://en.wikipedia.org/wiki/John_Langford_%28computer_scientist%29">John Langford</a>, who has worked on large scale machine learning problems at Yahoo! and Microsoft. This is what technical people tend to mean by &#8220;big data.&#8221;</p>
-<p>It's not quite the same thing as being &#8220;O(n<sup>2</sup>) algorithm feasible,&#8221; but to put it differently, let's say that some small data you could theoretically work with in Excel.</p>
-<p>Medium data might fit on one computer, but to work with it you'll probably need someone who knows what &#8220;O(n<sup>2</sup>)&#8221; means. She started programming years before you, and you probably want her working on your small data too.</p>
-<p>Very few people have big data by the definition here, and that's okay [2].</p>
-<p>Second recommendation: if you do have really big data, learn <a href="https://spark.apache.org/">Spark</a>.</p>
-<p>[2]: <em>Everybody can get access to somebody else's big data, often public, but very few people are producing their own big data.</em></p>
-<hr>
-<p><img alt="" src="unreasonable_data.png"></p>
-<hr>
-<p>Is more data better? This question is distinct from the question of whether our data is big. Do we want more data at all?</p>
-<p>In 2009, some folks at Google come out with <a href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf">The Unreasonable Effectiveness of Data</a>. They seem to be saying that there is at least one case in which the answer is yes, we want more data.</p>
-<hr>
-<p><img alt="" src="scaling_corpora.png"></p>
-<hr>
-<p>A good illustration of their point is a <a href="http://dl.acm.org/citation.cfm?id=1073017">2001 Microsoft paper</a>. The problem here is called &#8220;confusion set disambiguation,&#8221; which sounds fancy but just means that the model has to decide whether to fill in a blank in a sentence with T-O to, T-O-O too, or T-W-O two. So the data is text, and the point is that the amount of data seems to be more important than the choice of algorithm. There are three things to say here.</p>
-<p>First, is this big data? Their complete data set was a billion words. Around five gigabytes. This is not an example of big data; that fits on a memory stick.</p>
-<p>Second, how are we measuring effectiveness? This is an important thing to take from this example. The Y axis is prediction accuracy on a test set. The model sees some training data, and then we ask it to predict for separate test data, and we see how often it's right. This is a predictive framing of the problem, which is powerful. It's the scientific method: the model is correct to the extent it makes correct predictions. But it doesn't make much sense to try to interpret these models in any way that would please a traditional linguist.</p>
-<p>Finally, should we be surprised that having more data helps for this problem?</p>
-<p>The problem is a natural language problem. Language is complicated. The problem has been simplified quite a lot, to just confusion set disambiguation, but there are a lot of words, and all these models are high variance, meaning roughly that they have a ton of coefficients [3]. So even if you have a lot of data, you may still have relatively little (or even none) for some cases.</p>
-<p>So it makes sense that these models should do better when they get to study more text. And text is easy to get from the internet, so there's no reason not to throw more data at the problem.</p>
-<p>Not all problems are like this.</p>
-<p>[3]: <em><a href="http://xavier.amatriain.net/">Xavier Amatriain</a> (formerly of Netflix) has a good <a href="http://technocalifornia.blogspot.com/2012/07/more-data-or-better-models.html">explanation</a> of this which inspired this section.</em></p>
-<hr>
-<p><img alt="" src="big_complex.png"></p>
-<hr>
-<p>I've tried to separate bigness from other kinds of data complexity. Where in this space can we operate?</p>
-<hr>
-<p><img alt="" src="big_complex_possible.png"></p>
-<hr>
-<p>I don't know if this is a perfect sketch, but there's some truth to it. Simple problems are common and now relatively easy to scale with the big name technologies that people like to sell.</p>
-<p>A criticism of this graph is that it's a little circular, in that I'm kind of implicitly saying that things that can be scaled are simple. Maybe so. But there are problems that don't scale even in theory, and there are also problems that have no current good solution at any scale, and the number one way to make a complex problem scale is to transform it into a simple problem.</p>
-<p>The amazing thing that you encounter in practice though is how much work there is still to be done here in the lower left-hand corner of this graph, and the tendency of organizations to take their easy problems and make them more complicated.</p>
-<hr>
-<p>TSDL</p>
-<hr>
-<p>Here's an example that I didn't work on; I only witnessed it from a distance. TSDL stands for Teacher Student Data Linkage. So say you're a company like AIR and you have to decide, for a state, who's a good teacher based on how their students did. (That's hard, by the way.)</p>
-<p>You need, of course, some Teacher Student Data Linkage data. Certainly the school districts in the state have this, right?</p>
-<p>Well, no. In the case of at least one large urban school district, they did not have usable information of this type. What they did have was two systems that each had some overlapping information. This was arguably already too many systems.</p>
-<p>So how do they satisfy the need that the state and the company have for the linkage data? They build a third system. This third system gets data from the two existing systems, and then presents an interface for everyone in the district to go in by hand and identify their students.</p>
-<p>This is a lot of work to get something that they probably should have had to begin with. But at least now that they have it, all their systems can benefit, right?</p>
-<p>The data that was collected, to the best of my knowledge, was never fed back into the rest of the systems.</p>
-<p>This is an example of the importance of smart engineering. For whatever reason, be it funding, vision, technical knowledge... systems are not good. They are not delivering the data that should really be expected of them, so when there's finally a clear and present need for that data, a lot of work goes into getting it,too often yielding dividends for nobody else.</p>
-<p>It's not easy to set up and instrument systems, and especially hard to anticipate future needs. And the fragmentation of the American education system does not help with data integration. But if we want to benefit from better uses of data, we need to invest in better systems, not band-aid systems.</p>
-<hr>
-<p>Arlington Big Data Roundtable</p>
-<hr>
-<p>Here's an example that I did work on. The Arlington Big Data Roundtable was put on by Arlington Public Schools, and the team I was on won, and it got some <a href="http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html">press</a>, which was nice.</p>
-<p>What did we do? They gave us a bunch of data, and we predicted which students would drop out in the following year. Based on the historical data we had, and the success metric that we chose, we were pretty good at it. You can predict dropouts. This should be surprising to no one. So what's to say about this?</p>
-<p>Let's start with the size of the data. The data in the last example wasn't big, by the way, and that was a large urban school district. Arlington has something like 20,000 students. So the only &#8220;big&#8221; here has to be some other kind of complexity.</p>
-<p>You may have heard that 80% of a data scientist's time is spent munging data, leaving only 20% for analysis. It's interesting that in a data-obsessed profession this entirely made-up statistic gets quoted so much. But it feels true!</p>
-<p>How is this example like the last example? We were handed data and worked entirely separately from the real host data systems. So all the work we did to make the data usable, who benefits from that? Nobody. They can't just take that and plug it in to whatever system it came from.</p>
-<p>A side issue is that many of the problems come from defining what you are talking about, and bureaucracies tend to ruin this process, often by failing to provide a complete definition, sometimes deliberately. &#8220;What does it mean to drop out?&#8221; turns out to be tricky.</p>
-<p>So we can predict who's going to drop out. Is that going to help any students this year? If it does, it will be because of systems-building work in larger measure than modeling work.</p>
-<hr>
-<p>&#1587;&#1602;&#1587;&#1602;&#1577;</p>
-<hr>
-<p>Google Translate tells me that this is Arabic for &#8220;tweet.&#8221;</p>
-<p>This is an example from a hackathon I participated in. It gives me the opportunity to gently critique two more things: hackathons themselves, and what I'll call &#8220;data science mad-libs.&#8221;</p>
-<p>Hackathons first. They're great for getting people excited and talking about something. They're hard to get results out of. So if you're clear about your goal, hackathons may be for you.</p>
-<p>The hackathons that are successful tend to have goals that are either totally wide open, or very very well focused. In the first case, any interesting thing could be success. In the second, a lot of work has already gone into scoping a problem and making it attainable in the time available.</p>
-<p>The deadly middle ground, which may be familiar if you've worked with clients, is a dream-like aspiration, sometimes a &#8220;data science mad-lib.&#8221;</p>
-<p>Take a big problem and some big source of data, and you get a data science mad-lib:</p>
-<ul>
-<li>&#8220;We're going to stop human trafficking with Facebook!&#8221;</li>
-<li>&#8220;We're going to end world hunger with Twitter!&#8221;</li>
-<li>&#8220;We're going to monitor flu around the world with Google!&#8221;</li>
-</ul>
-<p>That last one has been <a href="http://www.google.org/flutrends/">done</a>, though there are <a href="http://bits.blogs.nytimes.com/2014/03/28/google-flu-trends-the-limits-of-big-data/">questions</a> about its effectiveness. Somebody may we working on these others. And wouldn't it be neat if these worked? And there may <em>be</em> a way to make them work&#8212;but these aspirations require methods. A starting point and an ending point do not imply a good path between them.</p>
-<p>In the case of this particular hackathon we had quite a few Arabic tweets and the idea was to monitor socioeconomic conditions in towns in Egypt. So we put the tweets in Hadoop. Great! This gives us the illusion of making progress toward a goal. But what is our goal? How will we know if we've achieved it? We weren't sure, and while the exercise was interesting, we didn't have any usable results after our one day of work.</p>
-<p>Now the <a href="http://www.unglobalpulse.org/">UN Global Pulse</a> is working on doing things like this Twitter exercise, and they may have some success. I don't want to nay-say all crazy-sounding ideas. Crazy ideas are some of my favorites. But crazy ideas that work are like magic tricks: they're only mysterious if you don't know what's really going on.</p>
-<hr>
-<p>data</p>
-<hr>
-<p>I am hopeful about data. I think we need more people working on data with more effective tools and practices. Dream big but write code. You can start writing Python tonight. Another book I recommend is called <a href="https://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>.</p>
-<hr>
-<p>Thank you!</p>
-<hr>
-<p>And of course, you're under no obligation to agree with me.</p>    
-    ]]></description>
-<link>http://planspace.org/20141215-please_stop_saying_big_data/</link>
-<guid>http://planspace.org/20141215-please_stop_saying_big_data/</guid>
-<pubDate>Mon, 15 Dec 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
