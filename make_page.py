@@ -70,6 +70,14 @@ def add_code_blocks(lines):
     return lines
 
 
+def maybe_mathjax(lines):
+    mathjax = False
+    for line in lines:
+        if r"\\(" in line or r"\\[" in line:
+            mathjax = True
+    return mathjax
+
+
 def title_to_text(line):
     title = line[1:].strip()
     if 'plan' in title and 'space' in title:
@@ -85,9 +93,14 @@ def make_page(filename):
     header = markdown.markdown(title_line)
     title = title_to_text(title_line)
     lines = add_code_blocks(lines)
+    if maybe_mathjax(lines):
+        mathjax = file_or_bust(calling_dir, 'mathjax.html')
+    else:
+        mathjax = ""
     slides = slides_from(lines)
     if slides:
         slides = '<div>\n' + title + '\n</div>\n' + slides
+        slides += mathjax
         slides_start = file_or_bust(calling_dir, 'slides_header.html')
         slides_end = file_or_bust(calling_dir, 'slides_footer.html')
         slides_html = slides_start + slides + slides_end
@@ -104,9 +117,10 @@ def make_page(filename):
     start = file_or_bust(calling_dir, 'header.html')
     start = start.replace('HEAD_TITLE', title)
     end = file_or_bust(calling_dir, 'footer.html')
+    body += mathjax
     if slides:
         slides_loader = file_or_bust(calling_dir, 'slides_loader.html')
-        body = body + slides_loader
+        body += slides_loader
     plain_html = start + header + body + end
     return plain_html, slides_html
 

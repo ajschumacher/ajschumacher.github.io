@@ -8,19 +8,19 @@ We want our measure of residual smallness to be the same regardless of whether w
 
 So now we have a measure of residual smallness that is equal to zero if all the residuals are zero and the model is "perfect", and equal to one if the model is constant (this is easy to see if, for example, the model always predicts that the label is zero). This measure of residual smallness is then in some sense the percentage of variance (in the labels) that the model does not explain (it's still in the residuals).
 
-We would usually prefer to talk about a measure that gets bigger when we do a better job, so we take one and subtract the measure of residual smallness to get $latex R^2$, the percentage of variance explained. (Consider how you might try to define this differently.)
+We would usually prefer to talk about a measure that gets bigger when we do a better job, so we take one and subtract the measure of residual smallness to get \\( R^2 \\), the percentage of variance explained. (Consider how you might try to define this differently.)
 
-$latex R^2 = 1 - \frac{var(residuals)}{var(labels)}$
+\\[ R^2 = 1 - \frac{var(residuals)}{var(labels)}\\]
 
-It turns out that if you add a bunch of random predictors to a model you can get $latex R^2$ to go up and up without having it mean anything. Adjusted R-Squared tries to account for this by penalizing the measure when there are more predictors $latex p$ (not counting the constant term), relative to the number of training examples $latex n$.
+It turns out that if you add a bunch of random predictors to a model you can get \\( R^2 \\) to go up and up without having it mean anything. Adjusted R-Squared tries to account for this by penalizing the measure when there are more predictors \\( p \\) (not counting the constant term), relative to the number of training examples \\( n \\).
 
-adjusted $latex R^2 = 1 - \frac{var(residuals)}{var(labels)} \cdot \frac{n-1}{n-p-1}$
+\\[ \text{adjusted } R^2 = 1 - \frac{var(residuals)}{var(labels)} \cdot \frac{n-1}{n-p-1} \\]
 
-When $latex p$ gets bigger, that denominator gets smaller, so a larger thing is subtracted, so adjusted $latex R^2$ goes down. Adjusted $latex R^2$ should help discourage you from adding predictors all willy-nilly. (Could you have a negative adjusted $latex R^2$? Could you have an adjusted $latex R^2$ greater than one? Play around with these ideas. Try it in R.)
+When \\( p \\) gets bigger, that denominator gets smaller, so a larger thing is subtracted, so adjusted \\( R^2 \\) goes down. Adjusted \\( R^2 \\) should help discourage you from adding predictors all willy-nilly. (Could you have a negative adjusted \\( R^2 \\)? Could you have an adjusted \\( R^2 \\) greater than one? Play around with these ideas. Try it in R.)
 
-Note one: <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">this</a> $latex R^2$ is quite related to <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">this</a> $latex r$ squared.
+Note one: [this](http://en.wikipedia.org/wiki/Coefficient_of_determination) \\( R^2 \\) is quite related to [this](http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient) \\( r \\) squared.
 
-Note two: this $latex R^2$ is a measure of training error. Often you'll be more concerned with how the model performs on data it wasn't created with.
+Note two: this \\( R^2 \\) is a measure of training error. Often you'll be more concerned with how the model performs on data it wasn't created with.
 
 
 *This post was originally hosted [elsewhere](https://planspacedotorg.wordpress.com/2013/06/13/r-squared-and-adjusted-r-squared-for-a-linear-model/).*
