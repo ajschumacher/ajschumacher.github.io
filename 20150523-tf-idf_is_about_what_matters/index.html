@@ -51,7 +51,7 @@
 <p>\[ \frac{\text{term frequency}}{\text{document frequency}} \]</p>
 <p>Dividing by a thing is the same as multiplying by its inverse, \( \frac{1}{\text{a thing}} \), so we can call this transformation <em>term frequency inverse document frequency</em>.</p>
 <p>This is not a very difficult idea. You may have invented it yourself at some point. But it gets so buried in terminology and secondary implementation details that people sometimes talk about it as if it were a deep and mysterious modeling technique. (It's not.)</p>
-<p>Here's an example of how the exposition can lose people. It's from a nice <a href="http://www.cs.utexas.edu/~ml/papers/marlin-dissertation-06.pdf">dissertation</a>. It starts nicely:</p>
+<p>Here's an <a href="http://www.cs.utexas.edu/~ml/papers/marlin-dissertation-06.pdf">example</a> of how the exposition can lose people. It starts nicely:</p>
 <blockquote>
 <p>“Tokens that occur frequently in a given string should have higher contribution to similarity than those that occur few times, as should those tokens that are rare among the set of strings under consideration.”</p>
 </blockquote>
@@ -59,7 +59,7 @@
 <blockquote>
 <p>“The Term Frequency-Inverse Document Frequency (TF-IDF) weighting scheme achieves this by associating a weight \( w_{v_i,s} = \frac{N(v_i,s)}{\text{max}_{v_j \in s} N(v_j,s)} \cdot \text{log} \frac{N}{N(v_i)} \) with every token \( v_i \) from string \( s \), where \( N(v_i, s) \) is the number of times \( v_i \) occurs in \( s \) (term frequency), \( N \) is the number of strings in the overall corpus under consideration, and \( N(v_i) \) is the number of strings in the corpus that include \( v_i \) (document frequency).”</p>
 </blockquote>
-<p>There's some notation there, and we've also thrown in two normalizations and a log. None of this is a particularly big deal, but it makes TF-IDF seem complicated. There are <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">a lot of ways</a> you could do the particulars of TF-IDF but they all do essentially what we did above by just counting and dividing.</p><!-- mathjax for formulas -->
+<p>There's some notation there, and we've also thrown in two normalizations and a log. None of this is a particularly big deal, but it makes TF-IDF seem complicated. There are <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">a lot of ways</a> you could do the particulars of TF-IDF but they all achieve essentially what we did above by just counting and dividing.</p><!-- mathjax for formulas -->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </article>
     <footer>
