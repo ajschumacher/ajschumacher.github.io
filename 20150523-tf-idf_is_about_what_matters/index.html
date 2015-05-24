@@ -11,14 +11,14 @@
     <article>
 <h1>TF-IDF is about what matters</h1>
 <p class="date">Saturday May 23, 2015</p>
-<p>Consider a collection (or “corpus”, or “set”) of four sentences (or “documents”, or “strings”) made up of words (or “terms”, or “tokens”):</p>
+<p>Consider a collection (or corpus, or set) of four sentences (or documents, or strings) made up of words (or terms, or tokens):</p>
 <ol>
-<li>“a cat and dog sat”</li>
-<li>“a dog and cat sat”</li>
-<li>“a cat sat and sat”</li>
-<li>“a cat killed a dog”</li>
+<li>a cat and dog sat</li>
+<li>a dog and cat sat</li>
+<li>a cat sat and sat</li>
+<li>a cat killed a dog</li>
 </ol>
-<p>One thing we can do is transform to a “bag of words” representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:</p>
+<p>One thing we can do is transform to a bag of words representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:</p>
 <pre><code class="language-text">      a    cat    and    dog    sat   killed
 1     1      1      1      1      1        0
 2     1      1      1      1      1        0
@@ -44,7 +44,7 @@
 3  0.25   0.25   0.33      0   0.67       0
 4  0.50   0.25      0   0.33      0    1.00</code></pre>
 
-<p>These scores match the intuition that “killed” is the most important word in sentence four, and that sentence three is more about “sat” than any other sentence, and so on. In addition to making some intuitive sense, scores like these tend to work well in classification tasks and so on.</p>
+<p>These scores match the intuition that “killed” is a very important word. In addition to making some intuitive sense, scores like these tend to work well in classification tasks and so on.</p>
 <p>All we did was this:</p>
 <p>\[ \frac{\text{number of times the word is in this document}}{\text{number of documents the word is in}} \]</p>
 <p>Or, for short:</p>

@@ -1,13 +1,13 @@
 # TF-IDF is about what matters
 
-Consider a collection (or “corpus”, or “set”) of four sentences (or “documents”, or “strings”) made up of words (or “terms”, or “tokens”):
+Consider a collection (or corpus, or set) of four sentences (or documents, or strings) made up of words (or terms, or tokens):
 
- 1. “a cat and dog sat”
- 2. “a dog and cat sat”
- 3. “a cat sat and sat”
- 4. “a cat killed a dog”
+ 1. a cat and dog sat
+ 2. a dog and cat sat
+ 3. a cat sat and sat
+ 4. a cat killed a dog
 
-One thing we can do is transform to a “bag of words” representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:
+One thing we can do is transform to a bag of words representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:
 
 ```text
       a    cat    and    dog    sat   killed
@@ -46,7 +46,7 @@ The document frequencies are high for words that are boring, so dividing by the 
 4  0.50   0.25      0   0.33      0    1.00
 ```
 
-These scores match the intuition that “killed” is the most important word in sentence four, and that sentence three is more about “sat” than any other sentence, and so on. In addition to making some intuitive sense, scores like these tend to work well in classification tasks and so on.
+These scores match the intuition that “killed” is a very important word. In addition to making some intuitive sense, scores like these tend to work well in classification tasks and so on.
 
 All we did was this:
 
