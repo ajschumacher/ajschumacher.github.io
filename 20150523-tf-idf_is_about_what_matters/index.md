@@ -1,6 +1,4 @@
-# What Matters and TF-IDF
-
-TF-IDF is about what matters.
+# TF-IDF is about what matters
 
 Consider a collection (or “corpus”, or “set”) of four sentences (or “documents”, or “strings”) made up of words (or “terms”, or “tokens”):
 
@@ -9,7 +7,7 @@ Consider a collection (or “corpus”, or “set”) of four sentences (or “d
  3. “a cat sat and sat”
  4. “a cat killed a dog”
 
-We’d like to do some sort of calculations. One thing we can do is transform the sentences to a “bag of words” representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:
+One thing we can do is transform to a “bag of words” representation, which just means we’re keeping track of what words there are but not what order they’re in. We could use binary values to represent whether a word appears or not:
 
 ```text
       a    cat    and    dog    sat   killed
@@ -31,14 +29,12 @@ In this representation we've lost word order, but we've also lost *term frequenc
 
 Now we can see how many times each term appears in each document.
 
-Is it good that “killed” is given the same score as “cat”? The word “killed” is much rarer, after all; it is more “special” to sentence four. Let’s count the number of sentences that have each word, and call this the *document frequency*.
+Is it good that “killed” is given the same score as “cat”? The word “killed” is much rarer, after all; it is more “special” to sentence four. Let’s count the number of sentences that have each word, and call this the *document frequency*:
 
 ```text
       a    cat    and    dog    sat  killed
       4      4      3      3      3       1
 ```
-
-We could just as well count the number of times the words appear across all documents, rather than the number of documents in which the words appear, but let’s stick with this method for now.
 
 The document frequencies are high for words that are boring, so dividing by the document frequencies will give us low scores for boring words and high scores for interesting words:
 
@@ -64,7 +60,7 @@ Dividing by a thing is the same as multiplying by its inverse, \\( \frac{1}{\tex
 
 This is not a very difficult idea. You may have invented it yourself at some point. But it gets so buried in terminology and secondary implementation details that people sometimes talk about it as if it were a deep and mysterious modeling technique. (It's not.)
 
-Here's an example of how the exposition can lose people. It's from a nice [dissertation](http://www.cs.utexas.edu/~ml/papers/marlin-dissertation-06.pdf). It starts pretty good:
+Here's an example of how the exposition can lose people. It's from a nice [dissertation](http://www.cs.utexas.edu/~ml/papers/marlin-dissertation-06.pdf). It starts nicely:
 
 > “Tokens that occur frequently in a given string should have higher contribution to similarity than those that occur few times, as should those tokens that are rare among the set of strings under consideration.”
 
@@ -72,4 +68,4 @@ Who could disagree? Then it jumps to this:
 
 > “The Term Frequency-Inverse Document Frequency (TF-IDF) weighting scheme achieves this by associating a weight \\( w_{v_i,s} = \frac{N(v_i,s)}{\text{max}_{v_j \in s} N(v_j,s)} \cdot \text{log} \frac{N}{N(v_i)} \\) with every token \\( v_i \\) from string \\( s \\), where \\( N(v_i, s) \\) is the number of times \\( v_i \\) occurs in \\( s \\) (term frequency), \\( N \\) is the number of strings in the overall corpus under consideration, and \\( N(v_i) \\) is the number of strings in the corpus that include \\( v_i \\) (document frequency).”
 
-There's some notation there, and we've also thrown in two normalizations and a log. None of this is a particularly big deal, but it makes TF-IDF seem complicated. There are a lot of ways you could do the particulars of TF-IDF (the [Wikipedia page for TF-IDF](http://en.wikipedia.org/wiki/Tf%E2%80%93idf) lists even more variants) but they all do essentially what we did above by just counting and dividing.
+There's some notation there, and we've also thrown in two normalizations and a log. None of this is a particularly big deal, but it makes TF-IDF seem complicated. There are [a lot of ways](http://en.wikipedia.org/wiki/Tf%E2%80%93idf) you could do the particulars of TF-IDF but they all do essentially what we did above by just counting and dividing.
