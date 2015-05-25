@@ -29,10 +29,9 @@ planspace.org</p>
 <p>The DOE makes some decisions based on data, God bless them. The data associated with a principal might determine whether they get a bonus or an unpleasant phone call. In a situation like this, an approximate matching solution is not acceptable.</p>
 <p>I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I had to verify the match by pairs, and it was awful, and I wished there was a better way to do it.</p>
 <p>My primary concerns were, and are, to speed up the de-duplication process while allowing corrections by hand—still being reproducible and easily auditable by humans.</p>
-<p>I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.</p>
+<p>Since then, I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.</p>
 <p>I've also learned about some of the broader ecosystem of techniques and tools available, and I'll talk about these as well.</p>
-<p>I'll finish by suggesting that we probably need to do something entirely different.</p>
-<p>I'd like to encourage a discussion that could lead to more and better work with data.</p>
+<p>I'll finish by suggesting that we probably need to do something entirely different. I'd like to encourage a discussion that could lead to more and better work with data.</p>
 <hr />
 <blockquote>
 <p>“There are only two hard things in computer science: cache invalidation and naming things.”</p>
@@ -46,7 +45,7 @@ planspace.org</p>
 <hr />
 <p>이름이란 것은 정말 중요합니다. 예를 들면, 미국에서 한국말로...</p>
 <p>My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.</p>
-<p>Maintaining a practical focus, let's focus on just two classes of problems:</p>
+<p>Maintaining a practical focus, let's look at just two classes of problems:</p>
 <hr />
 <p>when names are the same</p>
 <hr />
@@ -56,12 +55,12 @@ planspace.org</p>
 <hr />
 <p>It can be even worse when names for the same thing are <em>not</em> the same.</p>
 <p>Both these problems are closely related to merging, and we'll think a lot about that context.</p>
-<p>But first, an example illustrating the importance of checking that your names are unique (not the same).</p>
+<p>But first, an example illustrating the importance of checking that your names are unique (that is, not ever the same).</p>
 <hr />
 <p>demo: DOE data</p>
 <hr />
 <p>The <a href="doe/SchoolMathResults20062012Public.xlsx">Excel file here</a> was <a href="http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx">downloaded</a> from the <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">NYC DOE site</a>. It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my <a href="http://planspace.org/2014/01/07/clean-data-with-r/">Clean Data with R</a> talk), <code>gender.csv</code> and <code>all.csv</code>. The R script itself is in <a href="doe/check_unique.R">check_unique.R</a>.</p>
-<p>There's a little setup to make reading the data easier.</p>
+<p>There's a little setup to make reading in the data easier.</p>
 <pre><code class="language-r">library("dplyr")
 
 read.doe &lt;- function(filename) {
@@ -221,8 +220,8 @@ data %>%
 <p>Think about this question, discuss it with somebody near you, come up with everything you can say about the number of rows you might expect when you join two tables. Introduce any quantities you think you'd like to know.</p>
 <p>Take about three minutes and then come back.</p>
 <p><em>three minutes pass</em></p>
-<p>Say there are <em>N</em> rows in the first table and <em>M</em> rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of <em>N</em> and <em>M</em>. But we might get as many as <em>N * M</em> rows, if all the keys are the same!</p>
-<p>If you said the maximum was <em>N + M</em>, you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.</p>
+<p>Say there are \( N \) rows in the first table and \( M \) rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of \( N \) and \( M \). But we might get as many as \( N \cdot M \) rows, if all the keys are the same!</p>
+<p>If you said the maximum was \( N + M \), you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.</p>
 <hr />
 <pre><code class="language-r">> nrow(first)
 ## [1] 3
@@ -253,7 +252,7 @@ data %>%
 <hr />
 <p>when names aren't the same</p>
 <hr />
-<p>Probably also want to check that the intersection you get is what you expect.</p>
+<p>And now, you probably also want to check that the intersection you get is what you expect.</p>
 <p>You don't want to silently drop a ton of rows when you merge!</p>
 <p>This is the beginning of our problems with names that aren't the same.</p>
 <hr />
@@ -667,7 +666,7 @@ write.table(RLdata500, "RLdata500.txt",
 ## STEFAN,,WOLFF,,1957,9,2</code></pre>
 
 <p>The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for <code>mergic</code> we'll just treat the rows of CSV as single strings.</p>
-<pre><code class="language-bash">$ mergic calc RLdata500.csv
+<pre><code class="language-bash">$ mergic calc RLdata500.txt
 ## ...
 ##        451,         2,        49, 0.111111111111
 ##        450,         2,        50, 0.115384615385
@@ -676,7 +675,7 @@ write.table(RLdata500, "RLdata500.txt",
 
 <p>Looking through the possible groupings, we see a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.</p>
 <p>This is slightly artificial, but only slightly so; we could well be doing this for two columns to merge on, in which case so we would hope to find groups of two elements.</p>
-<pre><code class="language-bash">$ mergic make RLdata500.csv 0.12
+<pre><code class="language-bash">$ mergic make RLdata500.txt 0.12
 ## {
 ##     "MATTHIAS,,HAAS,,1955,7,8": [
 ##         "MATTHIAS,,HAAS,,1955,7,8",
@@ -789,7 +788,9 @@ planspace.org</p>
 <li><a href="http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data">Entity Resolution for Big Data (summary)</a></li>
 <li><a href="http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf">Learning-based Entity Resolution with MapReduce</a></li>
 <li><a href="http://linqs.cs.umd.edu/projects/ddupe/">D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration</a></li>
-</ul>    <script src="/scripts/konami.js"></script>
+</ul><!-- mathjax for formulas -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>

@@ -36,13 +36,11 @@ I had to get a perfect matching of all these principals' names, so I wrote some 
 
 My primary concerns were, and are, to speed up the de-duplication process while allowing corrections by hand—still being reproducible and easily auditable by humans.
 
-I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.
+Since then, I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.
 
 I've also learned about some of the broader ecosystem of techniques and tools available, and I'll talk about these as well.
 
-I'll finish by suggesting that we probably need to do something entirely different.
-
-I'd like to encourage a discussion that could lead to more and better work with data.
+I'll finish by suggesting that we probably need to do something entirely different. I'd like to encourage a discussion that could lead to more and better work with data.
 
 
 -----
@@ -68,7 +66,7 @@ What are we talking about?
 
 My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.
 
-Maintaining a practical focus, let's focus on just two classes of problems:
+Maintaining a practical focus, let's look at just two classes of problems:
 
 
 -----
@@ -90,7 +88,7 @@ It can be even worse when names for the same thing are *not* the same.
 
 Both these problems are closely related to merging, and we'll think a lot about that context.
 
-But first, an example illustrating the importance of checking that your names are unique (not the same).
+But first, an example illustrating the importance of checking that your names are unique (that is, not ever the same).
 
 
 -----
@@ -101,7 +99,7 @@ demo: DOE data
 
 The [Excel file here](doe/SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`. The R script itself is in [check_unique.R](doe/check_unique.R).
 
-There's a little setup to make reading the data easier.
+There's a little setup to make reading in the data easier.
 
 ```r
 library("dplyr")
@@ -339,9 +337,9 @@ Take about three minutes and then come back.
 
 *three minutes pass*
 
-Say there are *N* rows in the first table and *M* rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of *N* and *M*. But we might get as many as *N \* M* rows, if all the keys are the same!
+Say there are \\( N \\) rows in the first table and \\( M \\) rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of \\( N \\) and \\( M \\). But we might get as many as \\( N \cdot M \\) rows, if all the keys are the same!
 
-If you said the maximum was *N + M*, you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.
+If you said the maximum was \\( N + M \\), you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.
 
 
 -----
@@ -396,7 +394,7 @@ when names aren't the same
 
 -----
 
-Probably also want to check that the intersection you get is what you expect.
+And now, you probably also want to check that the intersection you get is what you expect.
 
 You don't want to silently drop a ton of rows when you merge!
 
@@ -1049,7 +1047,7 @@ $ head -4 RLdata500.txt
 The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
 
 ```bash
-$ mergic calc RLdata500.csv
+$ mergic calc RLdata500.txt
 ## ...
 ##        451,         2,        49, 0.111111111111
 ##        450,         2,        50, 0.115384615385
@@ -1062,7 +1060,7 @@ Looking through the possible groupings, we see a cutoff of about 0.12 that will 
 This is slightly artificial, but only slightly so; we could well be doing this for two columns to merge on, in which case so we would hope to find groups of two elements.
 
 ```bash
-$ mergic make RLdata500.csv 0.12
+$ mergic make RLdata500.txt 0.12
 ## {
 ##     "MATTHIAS,,HAAS,,1955,7,8": [
 ##         "MATTHIAS,,HAAS,,1955,7,8",
