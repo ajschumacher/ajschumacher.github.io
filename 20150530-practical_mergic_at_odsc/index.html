@@ -33,7 +33,7 @@ planspace.org</p>
 <hr />
 <p>problem</p>
 <hr />
-<p>In general it's just one problem. Broadly.</p>
+<p>In general it's just one problem, and if you work with data you have this problem.</p>
 <hr />
 <p>your data sucks</p>
 <hr />
@@ -52,17 +52,15 @@ planspace.org</p>
 <hr />
 <p>Here's an example of open data <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">released</a> by the New York City Department of Education.</p>
 <p>The <code>dbn</code> is a school identifier, and <code>grade</code> and <code>year</code> make sense. This file has the number of students tested in three categories: “Female”, “Male”, and “Male”.</p>
-<p>What does that mean? There are fourteen hundred extra “Male” rows like this!</p>
+<p>What does that mean?</p>
+<p>There are fourteen hundred extra “Male” rows like this!</p>
 <p>You can look more deeply into this and conclude with some confidence that you can probably drop these extra “Male” rows. It's clearly a mistake of some kind.</p>
 <hr />
 <p><img width="1000%" title="This happens." src="img/this_happens.png" /></p>
 <hr />
 <p><em>Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.</em></p>
-<blockquote>
-<p>“This happens. This is a thing that happens.”</p>
-</blockquote>
-<p>This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.</p>
-<p>I would like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to the DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.</p>
+<p>This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things indeed. You need to check everything—including things that you shouldn’t have to check.</p>
+<p>I would also like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to that DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.</p>
 <p>I don't know of any system currently in existence that does this well. We need something in between Wikipedia and GitHub. The <a href="http://dat-data.com/">dat project</a> isn't doing it, at least not yet. I like the architecture of <a href="http://www.datomic.com/">Datomic</a>, but it's not quite right either. <a href="https://www.wikidata.org/">Wikidata</a> might be moving in the right direction, but I'm not sure yet.</p>
 <hr />
 <p>problems when names are the same</p>
@@ -149,7 +147,7 @@ planspace.org</p>
 <hr />
 <p>let's play tennis</p>
 <hr />
-<p>I downloaded the <a href="https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics">Tennis Major Tournament Match Statistics Data Set</a> from the <a href="https://archive.ics.uci.edu/ml/">UC Irvine Machine Learning Repository</a>.</p>
+<p>I downloaded the <a href="https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics">Tennis Major Tournament Match Statistics Data Set</a> from the <a href="https://archive.ics.uci.edu/ml/">University of California, Irvine Machine Learning Repository</a>.</p>
 <p>Do you know the process for getting a data set up up on the UCI ML repository?</p>
 <p>The process is this: You fill in a form on their web site, and then maybe they put up your data set.</p>
 <hr />
@@ -218,7 +216,7 @@ Fabio Fognini           T.Robredo
 ...</code></pre>
 
 <hr />
-<p>words about dedupe</p>
+<p>One way to keep output from a deduplication process is a merge table like this. The <code>csvdedupe</code> interface on the Python <a href="https://github.com/datamade/dedupe">dedupe</a> project from <a href="http://datamade.us/">DataMade</a> in Chicago will give you this kind of output. It's much better than no accessible record of the transformation, but it's also not a format I want to look at, as a human.</p>
 <hr />
 <pre><code class="language-json">{
     "Ann's group": [
@@ -231,19 +229,19 @@ Fabio Fognini           T.Robredo
 }</code></pre>
 
 <hr />
-<p>word about format</p>
+<p>Here's a format that I propose could be usable for describing deduplication. It's as readable by humans as any <a href="http://json.org/">JSON</a>, and it can be easily produced and consumed by anything that speaks JSON, which is everything.</p>
 <hr />
-<pre><code class="language-text">original,new
-Ann,"Ann's group"
-Bob,"Bob's group"
-Robert,"Bob's group"</code></pre>
+<pre><code class="language-text">new,original
+Ann's group,Ann
+Bob's group,Bob
+Bob's group,Robert</code></pre>
 
 <hr />
-<p>words about merge table</p>
+<p>You can still produce a merge table from the JSON representation, and it will have whatever new keys you specify, possibly human-readable ones.</p>
 <hr />
 <p><img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png" /></p>
 <hr />
-<p>So I made <code>mergic</code>.</p>
+<p><code>mergic</code> is a tool that supports doing deduplication with these conventions.</p>
 <hr />
 <ul>
 <li>simple</li>
@@ -275,7 +273,7 @@ Robert,"Bob's group"</code></pre>
 <p><img width="1000%" title="big data" src="img/big_data.png" /></p>
 <hr />
 <p>A quick disclaimer!</p>
-<p>This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).</p>
+<p>This is John Langford's slide, about what big data is. He says that small data is data for which \( O(n^2) \) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very \( O(n^2) \).</p>
 <hr />
 <pre><code>Santiago Giraldo,Leonardo Mayer
 Santiago Giraldo,Dudi Sela
@@ -315,12 +313,12 @@ Santiago Giraldo,Y-H.Lu
 <p>demo: mergic tennis</p>
 <hr />
 <p>With all that background, let's see how <code>mergic</code> attempts to support a good workflow.</p>
-<pre><code class="language-bash">$ pew new pydata</code></pre>
+<pre><code class="language-bash">$ pew new odsc</code></pre>
 
 <p>I'll start by making a new <a href="https://virtualenv.pypa.io/">virtual environment</a> using <a href="https://github.com/berdario/pew">pew</a>.</p>
 <pre><code class="language-bash">$ pip install mergic</code></pre>
 
-<p><code>mergic</code> is very new (version 0.0.4.1) and it currently installs with no extra dependencies.</p>
+<p><code>mergic</code> is very new (version 0.0.6) and it currently installs with no extra dependencies.</p>
 <pre><code class="language-bash">$ mergic -h</code></pre>
 
 <p><code>mergic</code> includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
@@ -504,14 +502,9 @@ Robert,  "NY, NY"</code></pre>
 <p>The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.</p>
 <p>Maybe you can find two clusters, one for true duplicates and one for different items.</p>
 <p>Or maybe you could get some training data and use whatever classification algorithm you like.</p>
-<p>Let's look at a couple packages that do these things.</p>
-<p>R: RecordLinkage</p>
-<p><code>dedupe</code></p>
-<p>The Python <a href="https://github.com/datamade/dedupe">dedupe</a> project from <a href="http://datamade.us/">DataMade</a> in Chicago is very cool, and I'd better not neglect it.</p>
-<p>It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is the <code>csvdedupe</code>.</p>
-<p>We go into an interactive supervision stage in which <code>dedupe</code> asks us to clarify things. The hope is that it will learn what matters.</p>
-<p>You can build this kind of behavior into your own systems; there is an <a href="http://datamade.github.io/dedupe-examples/docs/csv_example.html">example</a>.</p>
-<p>At the end you get output that you can use much like the <code>table</code> output from <code>mergic</code>. It needs some transforming to be easily reviewed by humans though.</p>
+<p>The Python <a href="https://github.com/datamade/dedupe">dedupe</a> project and the R <a href="">RecordLinkage</a> package do this.</p>
+<p>The <code>csvdedupe</code> interface using <code>dedupe</code> even asks us to clarify things, doing a live training phase. The hope is that it will learn what matters.</p>
+<p>You can also build this kind of behavior into your own systems; there is an <a href="http://datamade.github.io/dedupe-examples/docs/csv_example.html">example</a>.</p>
 <hr />
 <p>real clustering?</p>
 <hr />
@@ -558,7 +551,7 @@ coords = mds.fit_transform(distances)</code></pre>
 <hr />
 <p>Thanks!</p>
 <hr />
-<p>Thanks for listening to me—let's talk!</p>
+<p>Thanks for listening—let's talk!</p>
 <hr />
 <p><center>
 planspace.org</p>

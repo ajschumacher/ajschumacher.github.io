@@ -46,7 +46,7 @@ problem
 
 -----
 
-In general it's just one problem. Broadly.
+In general it's just one problem, and if you work with data you have this problem.
 
 
 -----
@@ -83,7 +83,9 @@ Here's an example of open data [released](http://schools.nyc.gov/NR/exeres/05289
 
 The `dbn` is a school identifier, and `grade` and `year` make sense. This file has the number of students tested in three categories: “Female”, “Male”, and “Male”.
 
-What does that mean? There are fourteen hundred extra “Male” rows like this!
+What does that mean?
+
+There are fourteen hundred extra “Male” rows like this!
 
 You can look more deeply into this and conclude with some confidence that you can probably drop these extra “Male” rows. It's clearly a mistake of some kind.
 
@@ -96,11 +98,9 @@ You can look more deeply into this and conclude with some confidence that you ca
 
 *Original image from [Magnolia](http://en.wikipedia.org/wiki/Magnolia_%28film%29) via [Indie Outlook](http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/).*
 
-> “This happens. This is a thing that happens.”
+This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things indeed. You need to check everything—including things that you shouldn’t have to check.
 
-This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.
-
-I would like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to the DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.
+I would also like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to that DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.
 
 I don't know of any system currently in existence that does this well. We need something in between Wikipedia and GitHub. The [dat project](http://dat-data.com/) isn't doing it, at least not yet. I like the architecture of [Datomic](http://www.datomic.com/), but it's not quite right either. [Wikidata](https://www.wikidata.org/) might be moving in the right direction, but I'm not sure yet.
 
@@ -277,7 +277,7 @@ let's play tennis
 
 -----
 
-I downloaded the [Tennis Major Tournament Match Statistics Data Set](https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics) from the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/).
+I downloaded the [Tennis Major Tournament Match Statistics Data Set](https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics) from the [University of California, Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/).
 
 Do you know the process for getting a data set up up on the UCI ML repository?
 
@@ -390,7 +390,7 @@ Cluster ID,name
 ```
 -----
 
-The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago is very cool. It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is `csvdedupe`, which will produce a nice merge table like this.
+One way to keep output from a deduplication process is a merge table like this. The `csvdedupe` interface on the Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago will give you this kind of output. It's much better than no accessible record of the transformation, but it's also not a format I want to look at, as a human.
 
 
 -----
@@ -408,20 +408,20 @@ The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](
 ```
 -----
 
-word about format
+Here's a format that I propose could be usable for describing deduplication. It's as readable by humans as any [JSON](http://json.org/), and it can be easily produced and consumed by anything that speaks JSON, which is everything.
 
 
 -----
 
 ```text
-original,new
-Ann,"Ann's group"
-Bob,"Bob's group"
-Robert,"Bob's group"
+new,original
+Ann's group,Ann
+Bob's group,Bob
+Bob's group,Robert
 ```
 -----
 
-words about merge table
+You can still produce a merge table from the JSON representation, and it will have whatever new keys you specify, possibly human-readable ones.
 
 
 -----
@@ -430,7 +430,7 @@ words about merge table
 
 -----
 
-So I made `mergic`.
+`mergic` is a tool that supports doing deduplication with these conventions.
 
 
 -----
@@ -487,7 +487,7 @@ People can see what's happening, and computers can keep doing the process withou
 
 A quick disclaimer!
 
-This is John Langford's slide, about what big data is. He says that small data is data for which O(n<sup>2</sup>) algorithms are feasible. Currently `mergic` is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very O(n<sup>2</sup>).
+This is John Langford's slide, about what big data is. He says that small data is data for which \\( O(n^2) \\) algorithms are feasible. Currently `mergic` is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very \\( O(n^2) \\).
 
 
 -----
@@ -563,7 +563,7 @@ demo: mergic tennis
 With all that background, let's see how `mergic` attempts to support a good workflow.
 
 ```bash
-$ pew new pydata
+$ pew new odsc
 ```
 
 I'll start by making a new [virtual environment](https://virtualenv.pypa.io/) using [pew](https://github.com/berdario/pew).
@@ -572,7 +572,7 @@ I'll start by making a new [virtual environment](https://virtualenv.pypa.io/) us
 $ pip install mergic
 ```
 
-`mergic` is very new (version 0.0.4.1) and it currently installs with no extra dependencies.
+`mergic` is very new (version 0.0.6) and it currently installs with no extra dependencies.
 
 ```bash
 $ mergic -h
@@ -849,9 +849,9 @@ Or maybe you could get some training data and use whatever classification algori
 
 The Python [dedupe](https://github.com/datamade/dedupe) project and the R [RecordLinkage]() package do this.
 
-We go into an interactive supervision stage in which `dedupe` asks us to clarify things. The hope is that it will learn what matters.
+The `csvdedupe` interface using `dedupe` even asks us to clarify things, doing a live training phase. The hope is that it will learn what matters.
 
-You can build this kind of behavior into your own systems; there is an [example](http://datamade.github.io/dedupe-examples/docs/csv_example.html).
+You can also build this kind of behavior into your own systems; there is an [example](http://datamade.github.io/dedupe-examples/docs/csv_example.html).
 
 
 -----
