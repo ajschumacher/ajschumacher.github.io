@@ -390,7 +390,7 @@ Cluster ID,name
 ```
 -----
 
-words about dedupe
+The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago is very cool. It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is `csvdedupe`, which will produce a nice merge table like this.
 
 
 -----
@@ -847,21 +847,11 @@ Maybe you can find two clusters, one for true duplicates and one for different i
 
 Or maybe you could get some training data and use whatever classification algorithm you like.
 
-Let's look at a couple packages that do these things.
-
-R: RecordLinkage
-
-`dedupe`
-
-The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago is very cool, and I'd better not neglect it.
-
-It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is the `csvdedupe`.
+The Python [dedupe](https://github.com/datamade/dedupe) project and the R [RecordLinkage]() package do this.
 
 We go into an interactive supervision stage in which `dedupe` asks us to clarify things. The hope is that it will learn what matters.
 
 You can build this kind of behavior into your own systems; there is an [example](http://datamade.github.io/dedupe-examples/docs/csv_example.html).
-
-At the end you get output that you can use much like the `table` output from `mergic`. It needs some transforming to be easily reviewed by humans though.
 
 
 -----
@@ -955,7 +945,7 @@ Thanks!
 
 -----
 
-Thanks for listening to me—let's talk!
+Thanks for listening—let's talk!
 
 
 -----
