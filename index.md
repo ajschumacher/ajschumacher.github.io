@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-05-30: [Practical Mergic at Open Data Science Conference](/20150530-practical_mergic_at_odsc/)
  * 2015-05-24: [TF-IDF is about what matters](/20150524-tfidf_is_about_what_matters/)
  * 2015-05-22: [Chains](/20150522-chains/)
  * 2015-05-20: [Practical Mergic at NY Open Statistical Programming](/20150520-practical_mergic/)

@@ -4,6 +4,7 @@ You can connect with me via [Twitter](https://twitter.com/planarrowspace), [Link
 
 Here are some things I've talked about:
 
+ * [Practical Mergic](/20150530-practical_mergic_at_odsc/) at the [Open Data Science Conference](http://opendatascicon.com/) on [Saturday May 30, 2015](http://opendatascicon.com/schedule/practical-mergic-how-to-join-anything/).
  * [Practical Mergic](/20150520-practical_mergic/) at the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/)
  * [mergic](/20150514-mergic/) (lightning talk) at [PyData NYC](http://www.meetup.com/PyDataNYC/) on [Thursday May 14, 2015](http://www.meetup.com/PyDataNYC/events/222329250/)
  * [Data Science isn't Magic](/20150220-data_science_isnt_magic/) at [DC Open Data Day](http://dc.opendataday.org/) on Friday February 20, 2015
