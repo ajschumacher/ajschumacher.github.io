@@ -102,12 +102,12 @@ This is a scene from a movie called Magnolia where it's raining frogs. One of th
 
 I would like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to the DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.
 
-I don't know of any system currently in existence that does this well. We need something between Wikipedia and GitHub. The [dat project](http://dat-data.com/) isn't doing it, at least not yet. I like the architecture of [Datomic](http://www.datomic.com/), but it's not quite right either. [Wikidata](https://www.wikidata.org/) might be moving in the right direction, but I'm not sure yet.
+I don't know of any system currently in existence that does this well. We need something in between Wikipedia and GitHub. The [dat project](http://dat-data.com/) isn't doing it, at least not yet. I like the architecture of [Datomic](http://www.datomic.com/), but it's not quite right either. [Wikidata](https://www.wikidata.org/) might be moving in the right direction, but I'm not sure yet.
 
 
 -----
 
-when names are the same
+problems when names are the same
 
 -----
 
@@ -229,7 +229,7 @@ If you said the maximum was \\( N + M \\), you were probably assuming, implicitl
 
 Is it enough to check the numbers of rows when we do joins?
 
-This does an inner join, which is the default for `merge` in R.
+This does an inner join, which is the default for `merge` in R. (I'm using R here as a personal favor to [Jared Lander](https://twitter.com/jaredlander).)
 
 Think about it.
 
@@ -251,16 +251,7 @@ There are times when you don't want every ID to be unique in a table, but really
 
 -----
 
-when names aren't the same
-
------
-
-It can be even worse when names for the same thing are *not* the same.
-
-
------
-
-when names are the same
+problems when names are the same
 
 -----
 
@@ -269,7 +260,7 @@ This has been a discussion of problems arising from names being the same.
 
 -----
 
-when names aren't the same
+problems when names aren't the same
 
 -----
 
@@ -282,29 +273,18 @@ This is the beginning of our problems with names that aren't the same.
 
 -----
 
-demo: let's play tennis
+let's play tennis
 
 -----
 
-*Here begins material also present in [ajschumacher/mergic:tennis](https://github.com/ajschumacher/mergic/tree/master/tennis).*
+I downloaded the [Tennis Major Tournament Match Statistics Data Set](https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics) from the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/).
 
-Download the [Tennis Major Tournament Match Statistics Data Set](https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics) from the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/) into an empty directory:
+Do you know the process for getting a data set up up on the UCI ML repository?
 
-```bash
-$ wget https://archive.ics.uci.edu/ml/machine-learning-databases/00300/Tennis-Major-Tournaments-Match-Statistics.zip
-```
-
-This file should be stable, but it's also included [here](tennis/Tennis-Major-Tournaments-Match-Statistics.zip) and/or you can verify that its `md5` is `e9238389e4de42ecf2daf425532ce230`.
+The process is this: You fill in a form on their web site, and then maybe they put up your data set.
 
 
-Unpack eight CSV files from the `Tennis-Major-Tournaments-Match-Statistics.zip`:
-
-```bash
-$ unzip Tennis-Major-Tournaments-Match-Statistics.zip
-```
-
-
-You should see that the first two columns of each file contain player names, though the column names are not consistent. For example:
+-----
 
 ```bash
 $ head -2 AusOpen-women-2013.csv | cut -c 1-40
@@ -315,22 +295,14 @@ $ head -2 USOpen-women-2013.csv | cut -c 1-40
 ## Player 1,Player 2,ROUND,Result,FNL.1,FNL
 ## S Williams,V Azarenka,7,1,2,1,57,44,43,2
 ```
+-----
+
+There are eight files like this. You can see that the player names are not perfectly consistent.
+
+Some good people up-state New York contributed this data set, and I got in touch with them. I was curious about where the data came from; it was scraped from some web sites. Did they use it in any of their classes? Yes, it was used for some activities. Did they use it for teaching any particular data cleaning techniques? I haven't heard back since then.
 
 
-Make a `names.txt` with all the names that appear:
-
-```bash
-$ for filename in *2013.csv
-do
-    for field in 1 2
-    do
-        tail +2 $filename | cut -d, -f$field >> names.txt
-    done
-done
-```
-
-
-Now you have a file with 1,886 lines, each one of 669 unique strings, as you can verify:
+-----
 
 ```bash
 $ wc -l names.txt
@@ -339,23 +311,24 @@ $ wc -l names.txt
 $ sort names.txt | uniq | wc -l
 ## 669
 ```
+-----
+
+So we'll take the tennis player names as our example data set. We have a file with 1,886 names, 669 of which are unique.
 
 There are too many unique strings—sometimes more than one string for the same player. As a result, a count of the most common names will not accurately tell us who played the most in these 2013 tennis competitions.
 
 
+-----
+
 ```bash
-$ sort names.txt | uniq -c | sort -nr | head
+$ sort names.txt | uniq -c | sort -nr | head -5
 ##  21 Rafael Nadal
 ##  17 Stanislas Wawrinka
 ##  17 Novak Djokovic
 ##  17 David Ferrer
 ##  15 Roger Federer
-##  14 Tommy Robredo
-##  13 Richard Gasquet
-##  11 Victoria Azarenka
-##  11 Tomas Berdych
-##  11 Serena Williams
 ```
+-----
 
 The list above is not the answer we’re looking for. We want to be correct.
 
@@ -384,8 +357,6 @@ Fabio Fognini           T.Robredo
 ```
 -----
 
-*Here begins material also presented in a [lightning talk](/20150514-mergic/) at the [May meeting](http://www.meetup.com/PyDataNYC/events/222329250/) ([registration](http://www.bloomberg.com/event-registration/?id=39288)) of the [PyData NYC meetup group](http://www.meetup.com/PyDataNYC/).*
-
 To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.
 
 Do you see the match here? (It's Santiago!)
@@ -395,7 +366,7 @@ So we need to find the strings that refer to the same person.
 
 -----
 
-demo: Open Refine
+<img width="1000%" title="Open Refine" src="img/open_refine.png" />
 
 -----
 
@@ -403,51 +374,54 @@ demo: Open Refine
 
 An interesting side story is that Open Refine was formerly Google Refine, and before that [Metaweb](http://en.wikipedia.org/wiki/Metaweb)'s “Freebase Gridworks”. Google is shutting down [Freebase](http://www.freebase.com/), and we have to hope that [Wikidata](https://www.wikidata.org/) will then be the open match for Google's [Knowledge Graph](http://en.wikipedia.org/wiki/Knowledge_Graph).
 
-Thanks to [Joel Natividad](https://twitter.com/jqnatividad) for pointing out an [interesting algorithmic development](https://github.com/OpenRefine/OpenRefine/issues/983) connected with ongoing work on Open Refine. He also pointed out that there is a Python module called [refine-client](https://github.com/PaulMakepeace/refine-client-py) for using Open Refine from Python.
+Open Refine is quite good, but there are several things I wish it did differently.
 
-Steps of simple Open Refine demo:
+For one, although it has an internal record of changes, the interface Open Refine exposes changes your data in place. That's not okay.
 
- * Start the Open Refine app
- * Browse to [http://localhost:3333/](http://localhost:3333/)
- * Click “Create Project”
- * Click “Choose Files”
- * Select `names.txt`
- * Click “Next »“
- * Click “Create Project »”
- * Click the down arrow next to “Column 1”, then follow “Edit cells” to “Cluster and edit…”
 
-<img width="1000%" title="Open Refine" src="img/open_refine.png" />
+-----
 
-Open Refine has [introductory](https://github.com/OpenRefine/OpenRefine/wiki/Clustering) and [in-depth](https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth) documentation about their “clustering” mechanisms.
+```text
+Cluster ID,name
+1,Lukas Lacko
+2,Leonardo Mayer
+3,Marcos Baghdatis
+...
+```
+-----
 
-In this interface, we can use “key collision” or “nearest neighbor” methods.
+words about dedupe
 
-The “key collision” method maps every value to one “key”, and items are identical if they have the same key. This allows us to avoid calculating anything for all pairs. (This should remind you of hashing.)
 
-There are four “keying functions” in Open Refine:
+-----
 
- * “fingerprint” standardizes a string by case and punctuation.
- * “ngram-fingerprint” standardizes a bit further, using character ngrams.
- * “metaphone3” standardizes by the phonetic [Metaphone 3](http://www.amorphics.com/) algorithm so that things that sound the same in English should be keyed together. (There are strange licensing issues around Metaphone 3.)
- * “cologne-phonetic” standardizes by the [Kölner Phonetik](http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik) algorithm so that things that sound the same in German should be keyed together. (There is a [real open source version](https://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/ColognePhonetic.html).)
+```json
+{
+    "Ann's group": [
+        "Ann"
+    ],
+    "Bob's group": [
+        "Bob",
+        "Robert"
+    ]
+}
+```
+-----
 
-The “nearest neighbor” method calculates pairwise distances, which is slow. Open Refine uses blocking to break things up into blocks that it won’t compare across, which reduces the number of comparisons to improve speed of calculation.
+word about format
 
-There are two “distance functions” in Open Refine:
 
- * “levenshtein” is the well-known [Levenshtein edit distance](http://en.wikipedia.org/wiki/Levenshtein_distance)
- * “PPM” estimates how different strings are by how well they compress separately versus together, using [Prediction by Partial Matching](http://en.wikipedia.org/wiki/Prediction_by_partial_matching).
+-----
 
-The “radius” is the distance below which two items will be clustered together. With a higher value for “radius”, groups will tend to be larger.
+```text
+original,new
+Ann,"Ann's group"
+Bob,"Bob's group"
+Robert,"Bob's group"
+```
+-----
 
-[Open Refine](http://openrefine.org/) is quite good, but there are several things I would like:
-
- * See all the items rather than just the ones being grouped.
- * Customize / break up groupings that are incorrect, while preserving others.
- * Easily use a custom distance function.
- * Easily use a custom function for choosing the “New Cell Value”.
- * See what would happen with different “radii” without trying them all.
- * **Have a record of the whole transformation that’s easy to review, edit, and reapply.**
+words about merge table
 
 
 -----
@@ -684,7 +658,7 @@ There is a clear best cutoff here, as the size of the max group jumps from 6 ite
 $ ./tennis_mergic.py make names.txt 2 > groups.json
 ```
 
-**This kind of JSON grouping file could be produced and edited by anything, not just `mergic`.**
+This kind of JSON grouping file could be produced and edited by anything, not just `mergic`.
 
 As expected, the proposed grouping has combined things over-zealously in some places:
 
@@ -713,13 +687,6 @@ $ head -8 edited.json
 ```
 
 Parts of the review process would be difficult or impossible for a computer to do accurately.
-
- * There are the Plíšková twins, Karolína and Kristýna. When we see that `K Pliskova` appears, we have to go back and see that this occurred in the `USOpen-women-2013.csv` file, and only Karolína played in the [2013 US Open](http://en.wikipedia.org/wiki/2013_US_Open_%E2%80%93_Women%27s_Singles).
- * In a similar but less interesting way, `B.Becker` turns out to refer to Benjamin, not Brian.
- * An `A Wozniak` appears with `C Wozniack` and `C Wozniacki`. The first initial does turn out to differentiate the Canadian from the Dane.
- * The name `A.Kuznetsov` refers to *both* Andrey *and* Alex in `Wimbledon-men-2013.csv`. This can't be resolved by `mergic`. One way to resolve the issues is to edit `Wimbledon-men-2013.csv` so that `A.Kuznetsov,I.Sijsling` becomes `Alex Kuznetsov,I.Sijsling`, based on checking [records from that competition](http://en.wikipedia.org/wiki/2013_Wimbledon_Championships_%E2%80%93_Men%27s_Singles).
- * `Juan Martin Del Potro` is unfortunately too different from `J.Del Potro` in the current formulation to be grouped automatically, but a human reviewer can correct this. Similarly for `Anna Schmiedlova` and `Anna Karolina Schmiedlova`.
-
 
 After editing, you can check that the new grouping is still valid. At this stage we aren't using anything custom any more, so the default `mergic` is fine:
 
@@ -882,109 +849,13 @@ Or maybe you could get some training data and use whatever classification algori
 
 Let's look at a couple packages that do these things.
 
-
------
-
 R: RecordLinkage
 
------
-
-The R [RecordLinkage](http://cran.r-project.org/web/packages/RecordLinkage/index.html) package, which has a good [R Journal article](http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Sariyar+Borg.pdf) and a number of fine vignettes, does quite a lot of interesting things along the lines of what we've been discussing.
-
-You'll also notice that it imports `e1071` and `rpart` and others to plug in machine learning for determining duplicates.
-
-
------
-
-demo: mergic on RecordLinkage data
-
------
-
-Let's look at some of the example data that comes with `RecordLinkage`.
-
-We write the data out to CSV very simply with [RLdata500.R](RLdata/RLdata500.R):
-
-```r
-# install.packages('RecordLinkage')
-library('RecordLinkage')
-data(RLdata500)
-write.table(RLdata500, "RLdata500.txt",
-            row.names=FALSE, col.names=FALSE,
-            quote=FALSE, sep=",", na="")
-```
-
-Then we can take a look at the data:
-
-```bash
-$ head -4 RLdata500.txt
-## CARSTEN,,MEIER,,1949,7,22
-## GERD,,BAUER,,1968,7,27
-## ROBERT,,HARTMANN,,1930,4,30
-## STEFAN,,WOLFF,,1957,9,2
-```
-
-The data is fabricated name and birth date from a hypothetical German hospital. It has a number of columns, but for `mergic` we'll just treat the rows of CSV as single strings.
-
-```bash
-$ mergic calc RLdata500.txt
-## ...
-##        451,         2,        49, 0.111111111111
-##        450,         2,        50, 0.115384615385
-##        449,         3,        52, 0.125
-## ...
-```
-
-Looking through the possible groupings, we see a cutoff of about 0.12 that will produce 50 groups of two items, which looks promising.
-
-This is slightly artificial, but only slightly so; we could well be doing this for two columns to merge on, in which case so we would hope to find groups of two elements.
-
-```bash
-$ mergic make RLdata500.txt 0.12
-## {
-##     "MATTHIAS,,HAAS,,1955,7,8": [
-##         "MATTHIAS,,HAAS,,1955,7,8",
-##         "MATTHIAS,,HAAS,,1955,8,8"
-##     ],
-##     "HELGA,ELFRIEDE,BERGER,,1989,1,18": [
-##         "HELGA,ELFRIEDE,BERGER,,1989,1,18",
-##         "HELGA,ELFRIEDE,BERGER,,1989,1,28"
-##     ],
-## ...
-```
-
-In this example, the partition at a cutoff of 0.12 happens to be exactly right and we correctly group everything. This says something about how realistic this example data set is, something about your tool of choice if it can't easily get perfect performance on this example data set, and also something about information leakage.
-
-
------
-
 `dedupe`
-
------
 
 The Python [dedupe](https://github.com/datamade/dedupe) project from [DataMade](http://datamade.us/) in Chicago is very cool, and I'd better not neglect it.
 
 It's a Python library that implements sophisticated multi-field deduplication and has a lot of connected software. One of these is the `csvdedupe`.
-
-
------
-
-demo: csvdedupe
-
------
-
-We'll use the RecordLinkage data with a header.
-
-```r
-write.table(RLdata500, "RLdata500.csv",
-            row.names=FALSE,
-            quote=FALSE, sep=",", na="")
-```
-
-Then we start the process, specifying which columns of the data to consider for matching.
-
-```bash
-$ csvdedupe RLdata500.csv --field_names $(head -1 RLdata500.csv | tr ',' ' ')
-```
 
 We go into an interactive supervision stage in which `dedupe` asks us to clarify things. The hope is that it will learn what matters.
 
@@ -1007,7 +878,6 @@ The “clustering” that we've been doing hasn't been much like usual clusterin
 <img width="1000%" title="one dimensional" src="img/one_dimensional.png" />
 
 -----
-
 
 In part, this is because we we've only had distances between strings without having a real “string space”.
 
@@ -1068,39 +938,15 @@ Also, you might have items are already naturally coordinates, for example if you
 
 -----
 
-deep thoughts
+open
 
 -----
 
-By way of conclusion, I'd like to suggest that this problem of deduplication is no good and we should take steps to:
+This is the Open Data Science Conference, right?
 
- * prevent it from being necessary, by having our systems recommend or enforce standard naming
- * make it possible to do deduplication once and reintegrate the results back into the data system
+This mergic project is something I think could be a good direction for particular kinds of data problems. Of course it's [on GitHub](https://github.com/ajschumacher/mergic) and of course I'd love help in making it something that might actually help people.
 
-It should be possible to make changes and share them back to data providers. It should be possible to edit data while preserving the data's history. These kind of collaborative data editing are not super easy to implement, and I hope systems emerge that handle it better than current systems.
-
-
------
-
-questions for discussion
-
------
-
-I'd like to ask you to consider and discuss with your peers:
-
- * What workflows and tools do you use for these kinds of tasks?
- * Does the JSON partition format used by `mergic` make sense for your use?
- * Does the merge table format used by `mergic` make sense for your use?
- * What else would make this kind of process better for you?
-
-
------
-
-<img width="1000%" title="Open Data Science Conference" src="img/open_data_sci_con.png" />
-
------
-
-I also hope to see you at [Open Data Science Con](http://opendatascicon.com/) in Boston!
+Our community is bigger than any one problem or any one solution, and I want to hear about what problems are real for you and what solutions you're excited about.
 
 
 -----
@@ -1109,7 +955,7 @@ Thanks!
 
 -----
 
-Thank you!
+Thanks for listening to me—let's talk!
 
 
 -----
@@ -1123,17 +969,3 @@ planspace.org
 -----
 
 This is just me again.
-
-I'd love to hear from you!
-
-
----
-
-### Other interesting things:
-
- * [Stanford Entity Resolution Framework](http://infolab.stanford.edu/serf/)
- * [Swoosh: a generic approach to entity resolution](http://infolab.stanford.edu/serf/swoosh_vldbj.pdf)
- * [Entity Resolution: Tutorial](http://www.umiacs.umd.edu/~getoor/Tutorials/ER_VLDB2012.pdf)
- * [Entity Resolution for Big Data (summary)](http://www.datacommunitydc.org/blog/2013/08/entity-resolution-for-big-data)
- * [Learning-based Entity Resolution with MapReduce](http://dbs.uni-leipzig.de/file/learning_based_er_with_mr.pdf)
- * [D-Dupe: A Novel Tool for Interactive Data Deduplication and Integration](http://linqs.cs.umd.edu/projects/ddupe/)

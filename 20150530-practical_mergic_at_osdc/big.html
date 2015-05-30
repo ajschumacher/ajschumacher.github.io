@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type='text/css' href="/styles/big.css">
+    <script src="/scripts/big.js"></script>
+  </head>
+  <body>
+<div>
+Practical Mergic
+</div>
+<div>
+<p><center>
+planspace.org</p>
+<p>@planarrowspace
+</center></p>
+</div>
+<div>
+<p><img width="1000%" alt="Open Data Science Conference title slide for Practical Mergic with Aaron Schumacher" src="img/title_slide.png" /></p>
+</div>
+<div>
+<p><img height="1000%" alt="Metis" src="img/metis.png" /></p>
+</div>
+<div>
+<p>problem</p>
+</div>
+<div>
+<p>your data sucks</p>
+</div>
+<div>
+<p>our data sucks</p>
+</div>
+<div>
+<pre><code class="language-text">   dbn grade year category num_tested
+01M019     3 2010   Female         16
+01M019     3 2010     Male         20
+01M019     3 2010     Male          2</code></pre>
+</div>
+<div>
+<p><img width="1000%" title="This happens." src="img/this_happens.png" /></p>
+</div>
+<div>
+<p>problems when names are the same</p>
+</div>
+<div>
+<p>merge</p>
+</div>
+<div>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" /></p>
+</div>
+<div>
+<p><img width="1000%" title="left join" src="img/left_join.png" /></p>
+</div>
+<div>
+<p><img width="1000%" title="right join" src="img/right_join.png" /></p>
+</div>
+<div>
+<p><img width="1000%" title="inner join" src="img/inner_join.png" /></p>
+</div>
+<div>
+<p><img width="1000%" title="outer join" src="img/outer_join.png" /></p>
+</div>
+<div>
+<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png" /></p>
+</div>
+<div>
+<p>How many rows do you get when you outer join two tables?</p>
+</div>
+<div>
+<pre><code class="language-r">> nrow(first)
+## [1] 3
+> nrow(second)
+## [1] 3
+> result &lt;- merge(first, second)
+> nrow(result)
+## [1] 3</code></pre>
+</div>
+<div>
+<pre><code class="language-text"> x    y1        x   y2        x    y1   y2
+ 1 looks        1 good        1 looks good
+ 2    oh        2  boy        2    oh  boy
+ 3  well        2   no        2    oh   no</code></pre>
+</div>
+<div>
+<p>problems when names are the same</p>
+</div>
+<div>
+<p>problems when names aren't the same</p>
+</div>
+<div>
+<p>let's play tennis</p>
+</div>
+<div>
+<pre><code class="language-bash">$ head -2 AusOpen-women-2013.csv | cut -c 1-40
+## Player1,Player2,Round,Result,FNL1,FNL2,F
+## Serena Williams,Ashleigh Barty,1,1,2,0,5
+
+$ head -2 USOpen-women-2013.csv | cut -c 1-40
+## Player 1,Player 2,ROUND,Result,FNL.1,FNL
+## S Williams,V Azarenka,7,1,2,1,57,44,43,2</code></pre>
+</div>
+<div>
+<pre><code class="language-bash">$ wc -l names.txt
+## 1886
+
+$ sort names.txt | uniq | wc -l
+## 669</code></pre>
+</div>
+<div>
+<pre><code class="language-bash">$ sort names.txt | uniq -c | sort -nr | head -5
+##  21 Rafael Nadal
+##  17 Stanislas Wawrinka
+##  17 Novak Djokovic
+##  17 David Ferrer
+##  15 Roger Federer</code></pre>
+</div>
+<div>
+<p>single field deduplication</p>
+</div>
+<div>
+<pre><code>Lukas Lacko             F Pennetta
+Leonardo Mayer          S Williams
+Marcos Baghdatis        C Wozniacki
+Santiago Giraldo        E Bouchard
+Juan Monaco             N.Djokovic
+Dmitry Tursunov         S.Giraldo
+Dudi Sela               Y-H.Lu
+Fabio Fognini           T.Robredo
+...                     ...</code></pre>
+</div>
+<div>
+<p><img width="1000%" title="Open Refine" src="img/open_refine.png" /></p>
+</div>
+<div>
+<pre><code class="language-text">Cluster ID,name
+1,Lukas Lacko
+2,Leonardo Mayer
+3,Marcos Baghdatis
+...</code></pre>
+</div>
+<div>
+<pre><code class="language-json">{
+    "Ann's group": [
+        "Ann"
+    ],
+    "Bob's group": [
+        "Bob",
+        "Robert"
+    ]
+}</code></pre>
+</div>
+<div>
+<pre><code class="language-text">original,new
+Ann,"Ann's group"
+Bob,"Bob's group"
+Robert,"Bob's group"</code></pre>
+</div>
+<div>
+<p><img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png" /></p>
+</div>
+<div>
+<ul>
+<li>simple</li>
+<li>customizable</li>
+<li>reproducible</li>
+</ul>
+</div>
+<div>
+<p>the tool disappears</p>
+</div>
+<div>
+<p>any distance function</p>
+</div>
+<div>
+<p>really reproducible</p>
+</div>
+<div>
+<p><img width="1000%" title="big data" src="img/big_data.png" /></p>
+</div>
+<div>
+<pre><code>Santiago Giraldo,Leonardo Mayer
+Santiago Giraldo,Dudi Sela
+Santiago Giraldo,Juan Monaco
+Santiago Giraldo,S Williams
+Santiago Giraldo,C Wozniacki
+Santiago Giraldo,S.Giraldo
+Santiago Giraldo,Marcos Baghdatis
+Santiago Giraldo,Y-H.Lu
+...</code></pre>
+</div>
+<div>
+<pre><code>Karolina Pliskova,K Pliskova</code></pre>
+</div>
+<div>
+<pre><code>Kristyna Pliskova,K Pliskova</code></pre>
+</div>
+<div>
+<p>sets &gt; pairs</p>
+</div>
+<div>
+<p>workflow support for reproducible deduplication and merging</p>
+</div>
+<div>
+<p>demo: mergic tennis</p>
+</div>
+<div>
+<p>distance matters</p>
+</div>
+<div>
+<p>extension to multiple fields</p>
+</div>
+<div>
+<pre><code class="language-text">name
+----
+Bob
+Rob
+Robert</code></pre>
+</div>
+<div>
+<pre><code class="language-text">name, name
+----------
+Bob, Bobby
+Bob, Robert
+Bobby, Robert</code></pre>
+</div>
+<div>
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png" /></p>
+</div>
+<div>
+<pre><code class="language-text">name,    hometown
+-----------------
+Bob,     New York
+Rob,     NYC
+Robert,  "NY, NY"</code></pre>
+</div>
+<div>
+<p><img height="1000%" title="two dimensional" src="img/two_dimensional.png" /></p>
+</div>
+<div>
+<p>real clustering?</p>
+</div>
+<div>
+<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png" /></p>
+</div>
+<div>
+<p>dog, doge, kitten, kitteh</p>
+</div>
+<div>
+<pre><code class="language-text">       dog doge kitten kitteh
+   dog   0    1      6      6
+  doge   1    0      5      5
+kitten   6    5      0      1
+kitteh   6    5      1      0</code></pre>
+</div>
+<div>
+<pre><code class="language-python">from sklearn.manifold import MDS
+mds = MDS(dissimilarity='precomputed')
+coords = mds.fit_transform(distances)</code></pre>
+</div>
+<div>
+<p><img width="1000%" title="MDS coordinates from distance matrix" src="img/mds_words.png" /></p>
+</div>
+<div>
+<p>open</p>
+</div>
+<div>
+<p>Thanks!</p>
+</div>
+<div>
+<p><center>
+planspace.org</p>
+<p>@planarrowspace
+</center></p>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
