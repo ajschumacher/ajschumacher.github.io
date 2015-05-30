@@ -35,216 +35,58 @@ Here's an official cover slide.
 
 -----
 
-I teach at [Metis](http://www.thisismetis.com/), and I'm really happy that we're helping sponsor the Open Data Science Conference. Metis is a data science bootcamp, currently just in New York (sorry Boston). We get the best people, we have a lot of fun, and at the end out come data scientists that you might be able to hire.
+I teach at [Metis](http://www.thisismetis.com/), and I'm really happy that we're helping sponsor the Open Data Science Conference. Metis is a data science bootcamp, currently just in New York (sorry Boston). We get the best people, we have a lot of fun, and at the end out come data scientists that you could hire.
 
-
-
-*[Image from Wikimedia Commons](http://commons.wikimedia.org/wiki/File:Tweed_Courthouse_north_main_facade_118443pv.jpg).*
-
-The first time I wrote software to address this problem, I was working for the New York City Department of Education, in Tweed Courthouse.
-
-The NYC DOE had unique IDs for every student, and for every teacher, but did not have unique IDs for principals. This was the case at least for some of the data system at that time. And this made sense, because there are only about sixteen hundred New York City public schools.
-
-Those of you who have experience with humans will know that names are not unique IDs. People change their names, or add titles like “PhD”, or have their names entered differently at different times for no good reason. In the case of principals, sometimes they switch schools and change their names *at the same time*.
-
-The DOE makes some decisions based on data, God bless them. The data associated with a principal might determine whether they get a bonus or an unpleasant phone call. In a situation like this, an approximate matching solution is not acceptable.
-
-I had to get a perfect matching of all these principals' names, so I wrote some code to help speed the process. I had to verify the match by pairs, and it was awful, and I wished there was a better way to do it.
-
-My primary concerns were, and are, to speed up the de-duplication process while allowing corrections by hand—still being reproducible and easily auditable by humans.
-
-Since then, I've developed a process, or workflow, that I think is pretty good, and I've written a new tool to help with this process.
-
-I've also learned about some of the broader ecosystem of techniques and tools available, and I'll talk about these as well.
-
-I'll finish by suggesting that we probably need to do something entirely different. I'd like to encourage a discussion that could lead to more and better work with data.
+I could just talk about Metis, but instead I thought it'd be a good idea to talk about un-sexy everyday problems.
 
 
 -----
 
-> “There are only two hard things in computer science: cache invalidation and naming things.”
+problem
 
 -----
 
-[Phil Karlton](http://www.meerkat.com/karlton/) [said](http://martinfowler.com/bliki/TwoHardThings.html) that “There are only two hard things in computer science: cache invalidation and naming things.”
-
-When working with data (let's call it “data science” then, instead of “computer science”) you have problems not only with your own names, but also with everybody else's names.
-
-It's just semantics, I suppose.
+In general it's just one problem. Broadly.
 
 
 -----
 
-What are we talking about?
+your data sucks
 
 -----
 
-이름이란 것은 정말 중요합니다. 예를 들면, 미국에서 한국말로...
+Data is awful! You do not want to swim in a data lake. It's a mess out there!
 
-My Korean isn't that good. What I'm trying to say here is that agreeing on names is important, and the issue is a big one.
-
-Maintaining a practical focus, let's look at just two classes of problems:
-
-
------
-
-when names are the same
-
------
-
-Lots of things can go wrong when names are re-used when they shouldn't be.
+Of course these days we have open data, which is a huge improvement.
 
 
 -----
 
-when names aren't the same
+our data sucks
 
 -----
 
-It can be even worse when names for the same thing are *not* the same.
-
-Both these problems are closely related to merging, and we'll think a lot about that context.
-
-But first, an example illustrating the importance of checking that your names are unique (that is, not ever the same).
+So maybe we release some data sets, put them on a nice Socrata open data portal...
 
 
 -----
 
-demo: DOE data
-
------
-
-The [Excel file here](doe/SchoolMathResults20062012Public.xlsx) was [downloaded](http://schools.nyc.gov/NR/rdonlyres/A77DF9C5-BD62-4171-9995-4EB41E7E4067/0/SchoolMathResults20062012Public.xlsx) from the [NYC DOE site](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm). It contains standardized test results for New York City schools for individual grades and other sub-groups. We'll use two sheets that have been saved as CSV (originally for my [Clean Data with R](http://planspace.org/2014/01/07/clean-data-with-r/) talk), `gender.csv` and `all.csv`. The R script itself is in [check_unique.R](doe/check_unique.R).
-
-There's a little setup to make reading in the data easier.
-
-```r
-library("dplyr")
-
-read.doe <- function(filename) {
-  data <- read.csv(filename, as.is=TRUE,
-                   skip=6, check.names=FALSE,
-                   na.strings="s")
-  stopifnot(names(data) == c("DBN", "Grade", "Year", "Category",
-                             "Number Tested","Mean Scale Score",
-                             "#","%","#","%","#","%","#","%","#","%"))
-  names(data) <- c("dbn", "grade", "year", "category",
-                   "num_tested", "mean_score",
-                   "num1", "per1", "num2", "per2", "num3", "per3",
-                   "num4", "per4", "num34", "per34")
- return(tbl_df(data))
-}
+```text
+   dbn grade year category num_tested
+01M019     3 2010   Female         16
+01M019     3 2010     Male         20
+01M019     3 2010     Male          2
 ```
+-----
 
-Now we can start looking at the data, using [dplyr](https://github.com/hadley/dplyr):
+Here's an example of open data [released](http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm) by the New York City Department of Education.
 
-```r
-gender <- read.doe("gender.csv")
+The `dbn` is a school identifier, and `grade` and `year` make sense. This file has the number of students tested in three categories: “Female”, “Male”, and “Male”.
 
-gender
-## Source: local data frame [68,028 x 16]
-##
-##       dbn grade year category num_tested mean_score num1 per1 num2 per2
-## 1  01M015     3 2006   Female         23        675    0  0.0    7 30.4
-## 2  01M015     3 2006     Male         16        657    2 12.5    4 25.0
-## 3  01M015     3 2007   Female         11        679    2 18.2    0  0.0
-## 4  01M015     3 2007     Male         20        668    0  0.0    3 15.0
-## 5  01M015     3 2008   Female         17        661    0  0.0    5 29.4
-## 6  01M015     3 2008     Male         20        674    0  0.0    1  5.0
-## 7  01M015     3 2009   Female         13        667    0  0.0    1  7.7
-## 8  01M015     3 2009     Male         20        668    0  0.0    3 15.0
-## 9  01M015     3 2010   Female         13        681    2 15.4    7 53.8
-## 10 01M015     3 2010     Male         13        673    4 30.8    5 38.5
-## ..    ...   ...  ...      ...        ...        ...  ...  ...  ...  ...
-## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
-##   (int), per34 (dbl)
-```
+What does that mean? There are fourteen hundred extra “Male” rows like this!
 
-What's our unique key for this data set? It looks like it should be `dbn` (a unique identifier for a school), `grade`, `year`, and `category`. Let's check. The following should be zero if there are no duplicates.
+You can look more deeply into this and conclude with some confidence that you can probably drop these extra “Male” rows. It's clearly a mistake of some kind.
 
-```r
-gender %>%
-  select(dbn, grade, year, category) %>%
-  duplicated %>%
-  sum
-## [1] 1421
-```
-
-Shocking! Seeing that there are duplicates doesn't yet tell us how the duplicates are distributed; is it 1,422 copies of the same combination, or something else?
-
-```r
-gender %>%
-  group_by(dbn, grade, year, category) %>%
-  summarize(n=n()) %>%
-  group_by(n) %>%
-  summarize(count=n())
-## Source: local data frame [2 x 2]
-##
-##   n count
-## 1 1 65186
-## 2 2  1421
-```
-
-Much like using `table`, now we can see that most key combinations appear just once, but 1,421 appear twice. Interesting! Let's look at them.
-
-```r
-gender %>%
-  group_by(dbn, grade, year, category) %>%
-  filter(1 < n())
-## Source: local data frame [2,842 x 16]
-## Groups: dbn, grade, year, category
-##
-##       dbn      grade year category num_tested mean_score num1 per1 num2
-## 1  01M019          3 2010     Male         20        677    3   15    7
-## 2  01M019          3 2010     Male          2         NA   NA   NA   NA
-## 3  01M019          4 2010     Male         20        674    1    5    9
-## 4  01M019          4 2010     Male          1         NA   NA   NA   NA
-## 5  01M019          5 2010     Male          1         NA   NA   NA   NA
-## 6  01M019          5 2010     Male         17        688    0    0    3
-## 7  01M019 All Grades 2010     Male          4         NA   NA   NA   NA
-## 8  01M019 All Grades 2010     Male         57         NA    4    7   19
-## 9  01M020          3 2010     Male         50        686    8   16   15
-## 10 01M020          3 2010     Male          1         NA   NA   NA   NA
-## ..    ...        ...  ...      ...        ...        ...  ...  ...  ...
-## Variables not shown: per2 (dbl), num3 (int), per3 (dbl), num4 (int), per4
-##   (dbl), num34 (int), per34 (dbl)
-```
-
-Looks like there are two different kinds of males! How strange! Can we see what's going on by looking at the rest of the file?
-
-```r
-gender %>%
-  filter(dbn=='01M019', year==2010, grade==3)
-## Source: local data frame [3 x 16]
-##
-##      dbn grade year category num_tested mean_score num1 per1 num2 per2
-## 1 01M019     3 2010   Female         16        687    0    0    9 56.3
-## 2 01M019     3 2010     Male         20        677    3   15    7 35.0
-## 3 01M019     3 2010     Male          2         NA   NA   NA   NA   NA
-## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
-##   (int), per34 (dbl)
-```
-
-Unfortunately not; we'll have to look at additional data to try to determine what's going on. (This is typical.)
-
-```r
-all_students <- read.doe("all.csv")
-data <- bind_rows(all_students, gender)
-
-data %>%
-  filter(dbn=='01M019', year==2010, grade==3)
-## Source: local data frame [4 x 16]
-##
-##      dbn grade year     category num_tested mean_score num1 per1 num2 per2
-## 1 01M019     3 2010 All Students         36        682    3  8.3   16 44.4
-## 2 01M019     3 2010       Female         16        687    0  0.0    9 56.3
-## 3 01M019     3 2010         Male         20        677    3 15.0    7 35.0
-## 4 01M019     3 2010         Male          2         NA   NA   NA   NA   NA
-## Variables not shown: num3 (int), per3 (dbl), num4 (int), per4 (dbl), num34
-##   (int), per34 (dbl)
-```
-
-It looks like these extra males aren't being counted in the total for “All Students”, so maybe we can drop them. Or maybe the “All Students” total is wrong.
 
 -----
 
@@ -256,9 +98,20 @@ It looks like these extra males aren't being counted in the total for “All Stu
 
 > “This happens. This is a thing that happens.”
 
-This is a scene from a movie called Magnolia when it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.
+This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things. You need to check everything—including things that you shouldn’t have to check.
 
-(One good way to check is to use [Tony](https://twitter.com/tonyfischetti)'s [Assertive R](http://www.onthelambda.com/wp-content/uploads/2015/03/assertr.html) package!)
+I would like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to the DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.
+
+I don't know of any system currently in existence that does this well. We need something between Wikipedia and GitHub. The [dat project](http://dat-data.com/) isn't doing it, at least not yet. I like the architecture of [Datomic](http://www.datomic.com/), but it's not quite right either. [Wikidata](https://www.wikidata.org/) might be moving in the right direction, but I'm not sure yet.
+
+
+-----
+
+when names are the same
+
+-----
+
+How is this relevant to merging? Well, lots of things can go wrong when you have exact duplicates that you aren't expecting.
 
 
 -----
@@ -394,6 +247,15 @@ Think about it.
 There is no peace while you don't have unique IDs.
 
 There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.
+
+
+-----
+
+when names aren't the same
+
+-----
+
+It can be even worse when names for the same thing are *not* the same.
 
 
 -----
