@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TextBlob Sentiment: Calculating Polarity and Subjectivity</title>
+  </head>
+  <body>
+    <article>
+<h1>TextBlob Sentiment: Calculating Polarity and Subjectivity</h1>
+<p class="date">Sunday June  7, 2015</p>
+<p>The <a href="http://textblob.readthedocs.org/">TextBlob</a> package for Python is a convenient way to do a lot of Natural Language Processing (NLP) tasks. For example:</p>
+<pre><code class="language-python">from textblob import TextBlob
+
+TextBlob("not a very great calculation").sentiment
+## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
+
+<p>This tells us that the English phrase “not a very great calculation” has a <em>polarity</em> of about -0.3, meaning it is slightly negative, and a <em>subjectivity</em> of about 0.6, meaning it is fairly subjective.</p>
+<p>But where do these numbers come from?</p>
+<p>Let's find out by going to the source. (This will refer to <a href="https://github.com/sloria/TextBlob">sloria/TextBlob</a> on GitHub at commit <a href="https://github.com/sloria/TextBlob/tree/eb08c120d364e908646731d60b4e4c6c1712ff63">eb08c12</a>.)</p>
+<p>After digging a bit, you can find that the main default sentiment calculation is defined in <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/_text.py">_text.py</a>, which gives credit to <a href="http://www.clips.ua.ac.be/pages/pattern-web">the pattern library</a>. (I'm not sure how much is original and how much is from <code>pattern</code>.)</p>
+<p>There are helpful comments like this one, which gives us more information about the numbers we're interested in:</p>
+<pre><code class="language-python"># Each word in the lexicon has scores for:
+# 1)     polarity: negative vs. positive    (-1.0 => +1.0)
+# 2) subjectivity: objective vs. subjective (+0.0 => +1.0)
+# 3)    intensity: modifies next word?      (x0.5 => x2.0)</code></pre>
+
+<p>The lexicon it refers to is in <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/en/en-sentiment.xml">en-sentiment.xml</a>, an XML document that includes the following four entries for the word “great”.</p>
+<pre><code class="language-xml">&lt;word form="great" cornetto_synset_id="n_a-525317" wordnet_id="a-01123879" pos="JJ" sense="very good" polarity="1.0" subjectivity="1.0" intensity="1.0" confidence="0.9" />
+&lt;word form="great" wordnet_id="a-01278818" pos="JJ" sense="of major significance or importance" polarity="1.0" subjectivity="1.0" intensity="1.0" confidence="0.9" />
+&lt;word form="great" wordnet_id="a-01386883" pos="JJ" sense="relatively large in size or number or extent" polarity="0.4" subjectivity="0.2" intensity="1.0" confidence="0.9" />
+&lt;word form="great" wordnet_id="a-01677433" pos="JJ" sense="remarkable or out of the ordinary in degree or magnitude or effect" polarity="0.8" subjectivity="0.8" intensity="1.0" confidence="0.9" /></code></pre>
+
+<p>In addition to the polarity, subjectivity, and intensity mentioned in the comment above, there's also “confidence”, but I don't see this being used anywhere. In the case of “great” here it's all the same part of speech (<code>JJ</code>, adjective), and the senses are themselves natural language and not used. To simplify for readability:</p>
+<pre><code class="language-text">word   polarity  subjectivity  intensity
+great       1.0           1.0        1.0
+great       1.0           1.0        1.0
+great       0.4           0.2        1.0
+great       0.8           0.8        1.0</code></pre>
+
+<p>When calculating sentiment for a single word, TextBlob uses a sophisticated technique known to mathematicians as “averaging”.</p>
+<pre><code class="language-python">TextBlob("great").sentiment
+## Sentiment(polarity=0.8, subjectivity=0.75)</code></pre>
+
+<p>At this point we might feel as if we're touring a sausage factory. That feeling isn't going to go away, but remember how delicious sausage is! Even if there isn't a lot of magic here, the results can be useful—and you certainly can't beat it for convenience.</p>
+<p>TextBlob doesn't not handle negation, and that ain't nothing!</p>
+<pre><code class="language-python">TextBlob("not great").sentiment
+## Sentiment(polarity=-0.4, subjectivity=0.75)</code></pre>
+
+<p>Negation multiplies the polarity by -0.5, and doesn't affect subjectivity.</p>
+<p>TextBlob also handles modifier words! Here's the summarized record for “very” from the lexicon:</p>
+<pre><code class="language-text">word   polarity  subjectivity  intensity
+very        0.2           0.3        1.3</code></pre>
+
+<p>Recognizing “very” as a modifier word, TextBlob will ignore polarity and subjectivity and just use intensity to modify the following word:</p>
+<pre><code class="language-python">TextBlob("very great").sentiment
+## Sentiment(polarity=1.0, subjectivity=0.9750000000000001)</code></pre>
+
+<p>The polarity gets maxed out at 1.0, but you can see that subjectivity is also modified by “very” to become \( 0.75 \cdot 1.3 = 0.975 \).</p>
+<p>Negation combines with modifiers in an interesting way: in addition to multiplying by -0.5 for the polarity, the inverse intensity of the modifier enters for both polarity and subjectivity.</p>
+<pre><code class="language-python">TextBlob("not very great").sentiment
+## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
+
+<p>How's that?</p>
+<p>\[ \text{polarity} = -0.5 \cdot \frac{1}{1.3} \cdot 0.8 \approx -0.31 \]</p>
+<p>\[ \text{subjectivity} = \frac{1}{1.3} \cdot 0.75 \approx 0.58 \]</p>
+<p>TextBlob will ignore one-letter words in its sentiment phrases, which means things like this will work just the same way:</p>
+<pre><code class="language-python">TextBlob("not a very great").sentiment
+## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
+
+<p>And TextBlob will ignore words it doesn't know anything about:</p>
+<pre><code class="language-python">TextBlob("not a very great calculation").sentiment
+## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
+
+<p>TextBlob goes along finding words and phrases it can assign polarity and subjectivity to, and it averages them all together for longer text.</p>
+<p>And while I'm being a little critical, and such a system of coded rules is in some ways the antithesis of machine learning, it is still a pretty neat system and I think I'd be hard-pressed to code up a better such solution.</p>
+<p>Check out <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/_text.py">the source</a> yourself to see all the details!</p><!-- mathjax for formulas -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
