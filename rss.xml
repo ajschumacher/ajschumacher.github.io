@@ -7,6 +7,111 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A JavaScript Perceptron</title>
+<description><![CDATA[
+
+<p>Watching <a href="https://www.coursera.org/course/neuralnets">Neural Networks for Machine Learning</a> at lunch with my class at <a href="http://www.thisismetis.com/">Metis</a>, I thought it would be fun to implement a simple <a href="http://en.wikipedia.org/wiki/Perceptron">perceptron</a> for the <a href="https://github.com/tmcw/simple-statistics">simple-statistics</a> JavaScript module.</p>
+<p>And it <em>was</em> fun!</p>
+<p>Now there's an open <a href="https://github.com/tmcw/simple-statistics/pull/103">pull request</a> for adding the functionality to <code>simple-statistics</code>. Here I'm pulling out just the perceptron code, as of commit <a href="https://github.com/ajschumacher/simple-statistics/commit/a5a092a7c6b5d3276acc783c712814748cd53c3f">a5a092a</a>. It's here in <a href="perceptron.js">perceptron.js</a> and also visible at the bottom of this post. It's used like this:</p>
+<pre><code class="language-javascript">// Create a perceptron model:
+var p = perceptron()
+
+// Train with a feature vector [0] that has label 1,
+//        and a feature vector [1] that has label 0.
+p.train([0], 1)
+p.train([1], 0)
+p.train([0], 1)
+
+// The perceptron has learned enough to classify correctly:
+p.predict([0])
+// 1
+p.predict([1])
+// 0</code></pre>
+
+<p>There are just slightly fancier examples in the <a href="https://github.com/ajschumacher/simple-statistics/blob/a5a092a7c6b5d3276acc783c712814748cd53c3f/test/perceptron.test.js">tests</a>. You can use feature vectors of whatever length you like, so long as you're consistent.</p>
+<p>To really use the model you have to feed it labeled examples until it (hopefully) converges to a solution. You could keep training until <code>p.weights()</code> and <code>p.bias()</code> are no longer changing, for example.</p>
+<p>I recommend <a href="https://www.coursera.org/course/neuralnets">Neural Networks for Machine Learning</a>, and I recommend <a href="https://github.com/tmcw/simple-statistics">simple-statistics</a>!</p>
+<p>Here's the <a href="perceptron.js">perceptron.js</a> code:</p>
+<pre><code class="language-javascript">// # [Perceptron Classifier](http://en.wikipedia.org/wiki/Perceptron)
+//
+// This is a single-layer perceptron classifier that takes
+// arrays of numbers and predicts whether they should be classified
+// as either 0 or 1 (negative or positive examples).
+function perceptron() {
+    var perceptron_model = {},
+        // The weights, or coefficients of the model;
+        // weights are only populated when training with data.
+        weights = [],
+        // The bias term, or intercept; it is also a weight but
+        // it's stored separately for convenience as it is always
+        // multiplied by one.
+        bias = 0;
+
+    // ## Predict
+    // Use an array of features with the weight array and bias
+    // to predict whether an example is labeled 0 or 1.
+    perceptron_model.predict = function(features) {
+        // Only predict if previously trained
+        // on the same size feature array(s).
+        if (features.length !== weights.length) return null;
+        // Calculate the sum of features times weights,
+        // with the bias added (implicitly times one).
+        var score = 0;
+        for (var i = 0; i &lt; weights.length; i++) {
+            score += weights[i] * features[i];
+        }
+        score += bias;
+        // Classify as 1 if the score is over 0, otherwise 0.
+        return score &gt; 0 ? 1 : 0;
+    };
+
+    // ## Train
+    // Train the classifier with a new example, which is
+    // a numeric array of features and a 0 or 1 label.
+    perceptron_model.train = function(features, label) {
+        // Require that only labels of 0 or 1 are considered.
+        if (label !== 0 &amp;&amp; label !== 1) return null;
+        // The length of the feature array determines
+        // the length of the weight array.
+        // The perceptron will continue learning as long as
+        // it keeps seeing feature arrays of the same length.
+        // When it sees a new data shape, it initializes.
+        if (features.length !== weights.length) {
+            weights = features;
+            bias = 1;
+        }
+        // Make a prediction based on current weights.
+        var prediction = perceptron_model.predict(features);
+        // Update the weights if the prediction is wrong.
+        if (prediction !== label) {
+            var gradient = label - prediction;
+            for (var i = 0; i &lt; weights.length; i++) {
+                weights[i] += gradient * features[i];
+            }
+            bias += gradient;
+        }
+        return perceptron_model;
+    };
+
+    // Conveniently access the weights array.
+    perceptron_model.weights = function() {
+        return weights;
+    };
+
+    // Conveniently access the bias.
+    perceptron_model.bias = function() {
+        return bias;
+    };
+
+    // Return the completed model.
+    return perceptron_model;
+}</code></pre>    
+    ]]></description>
+<link>http://planspace.org/20150610-a_javascript_perceptron/</link>
+<guid>http://planspace.org/20150610-a_javascript_perceptron/</guid>
+<pubDate>Wed, 10 Jun 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TextBlob Sentiment: Calculating Polarity and Subjectivity</title>
 <description><![CDATA[
 
@@ -2444,31 +2549,6 @@ my_dict['another_key']  # 'another_value'
 <link>http://planspace.org/20141231-two_problems_with_learn-to-code_sites/</link>
 <guid>http://planspace.org/20141231-two_problems_with_learn-to-code_sites/</guid>
 <pubDate>Wed, 31 Dec 2014 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Use Info in Emacs</title>
-<description><![CDATA[
-
-<p>There is a documentation system accessible from <a href="http://www.gnu.org/software/emacs/">Emacs</a> called <a href="https://www.gnu.org/software/texinfo/">Info</a>. Here's advice from a parenthetical in the <a href="http://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Note-for-Novices">Note for Novices</a> of <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">An Introduction to Programming in Emacs Lisp</a>:</p>
-<blockquote>
-<p>"To learn about Info, type C-h i and then select Info."</p>
-</blockquote>
-<p>Despite using Emacs, off and on, for many years, and also more recently hearing <a href="http://sachachua.com/">Sacha Chua</a> recommend Info in her <a href="http://sachachua.com/blog/category/podcast/emacs-chat-podcast/">Emacs chats</a>, I had never really used the Info system. But something on <a href="http://www.johndcook.com/blog/">John Cook</a>'s blog pointed me to the <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">intro to Emacs Lisp</a> and I started reading it in a web browser until I got to that part:</p>
-<blockquote>
-<p>"To learn about Info, type C-h i and then select Info."</p>
-</blockquote>
-<p>At that point I did. I went into Emacs and learned about Info, and then I continued working through the <a href="www.gnu.org/software/emacs/manual/html_mono/eintr.html">intro to Emacs Lisp</a> inside Emacs, which was a much better way to read it than inside a browser.</p>
-<p>I wish I'd come to all this sooner.</p>
-<p>If you'd like to try Emacs, you should find it <a href="http://planspace.org/20141207-make_it_easy_to_install_emacs/">easy to install</a> using <a href="http://emacs.link/">emacs.link</a>. Once you have Emacs open on your computer, do the built-in tutorial. Then:</p>
-<blockquote>
-<p>"To learn about Info, type C-h i and then select Info."</p>
-</blockquote>
-<p>And then check out the Introduction to Emacs Lisp, also in the Info system.</p>
-<p>Have fun!</p>    
-    ]]></description>
-<link>http://planspace.org/20141230-use_info_in_emacs/</link>
-<guid>http://planspace.org/20141230-use_info_in_emacs/</guid>
-<pubDate>Tue, 30 Dec 2014 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
