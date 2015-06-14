@@ -48,3 +48,7 @@ Reboot and get full-screen majesty!
 In Ubuntu then I installed the [Jetson TK1 Development Pack](https://developer.nvidia.com/jetson-tk1-development-pack). This whole process takes at least enough time to eat some Thai food.
 
 After cleaning out the old record from `~/.ssh/known_hosts`, I was able to log in to a shiny new up-to-date Linux for Tegra install!
+
+```bash
+ssh ubuntu@192.168.1.5
+```
