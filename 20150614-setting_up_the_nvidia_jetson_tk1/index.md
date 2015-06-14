@@ -24,7 +24,7 @@ Without extra hardware, the easiest way to start working with the Jetson is to p
 ssh ubuntu@192.168.1.5
 ```
 
-The GPU on the Jetson is a Tegra. The Jetson I received came with the [original version](https://developer.nvidia.com/linux-tegra-rel-19) of the "[Linux for Tegra](https://developer.nvidia.com/linux-tegra)" Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently [21.3](https://developer.nvidia.com/linux-tegra-r213)).
+The GPU on the Jetson is a Tegra. The Jetson I received came with an [early version](https://developer.nvidia.com/linux-tegra-rel-19) of the "[Linux for Tegra](https://developer.nvidia.com/linux-tegra)" Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently [21.3](https://developer.nvidia.com/linux-tegra-r213)).
 
 I flashed with the [Jetson TK1 Development Pack](https://developer.nvidia.com/jetson-tk1-development-pack). Two things about the Development Pack:
 
