@@ -15,23 +15,23 @@
 <p>Go!</p>
 <p><img alt="Jetson TK1" src="jetson.png" /></p>
 <p><em><a href="https://www.flickr.com/photos/120586634@N05/14488628209/in/album-72157645736592714/">Image from Gareth Halfacree</a>.</em></p>
-<p>There's a little work involved in setting up the Jetson; I'm mostly following advice from an NVIDIA Developer Zone <a href="https://devtalk.nvidia.com/default/topic/718220/tegra-tools/jetson-tegra-k1-development-kit/">post</a> on flashing a Jetson from a Mac, and Pete Warden's <a href="http://petewarden.com/2014/10/25/how-to-run-the-caffe-deep-learning-vision-library-on-nvidias-jetson-mobile-gpu-board/">post</a> on setting up deep learning with <a href="http://caffe.berkeleyvision.org/">Caffe</a> on the Jetson.</p>
-<p>In outline:</p>
+<p>There's a little work involved in setting up the Jetson. In outline:</p>
 <ol>
-<li>Flash the Jetson to most recent OS.</li>
-<li>Install some neural net framework.</li>
+<li>Flash the Jetson to most recent OS (L4T 21.3).</li>
+<li>Install the <a href="http://caffe.berkeleyvision.org/">Caffe</a> deep learning framework.</li>
 <li>Train a deep net on some image data.</li>
 </ol>
-<p>Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. If you log in to your router and see what's connected to it you should see <code>tegra-ubuntu</code> there, with a corresponding IP address. For me, it was at 192.168.1.5. You can log in from any other computer on your network, using the default username and password (both <code>ubuntu</code>).</p>
-<pre><code class="language-bash">ssh ubuntu@192.168.1.5</code></pre>
+<p>Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. Then you can <code>ssh</code> in to <code>tegra-ubuntu</code> on the local network, using the default username and password (both <code>ubuntu</code>):</p>
+<pre><code class="language-bash">ssh ubuntu@tegra-ubuntu.local</code></pre>
 
-<p>The GPU on the Jetson is a Tegra. The Jetson I received came with an <a href="https://developer.nvidia.com/linux-tegra-rel-19">early version</a> of the "<a href="https://developer.nvidia.com/linux-tegra">Linux for Tegra</a>" Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently <a href="https://developer.nvidia.com/linux-tegra-r213">21.3</a>).</p>
+<h3>1. Flash the Jetson to the most recent OS (L4T 21.3)</h3>
+<p>The GPU on the Jetson is a Tegra TK1. The Jetson I received came with an <a href="https://developer.nvidia.com/linux-tegra-rel-19">early version</a> of the "<a href="https://developer.nvidia.com/linux-tegra">Linux for Tegra</a>" (L4T) Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently <a href="https://developer.nvidia.com/linux-tegra-r213">21.3</a>).</p>
 <p>I flashed with the <a href="https://developer.nvidia.com/jetson-tk1-development-pack">Jetson TK1 Development Pack</a>. Two things about the Development Pack:</p>
 <ul>
 <li>You can only run the Development Pack on 64-bit Ubuntu 12.04 and 14.04. I used 14.04.</li>
 <li>The Development Pack is about 12 gigabytes in size, so make sure you have enough space on your machine or any virtual machine you plan to use.</li>
 </ul>
-<p>I'm running a Mac over here, so I used <a href="https://www.virtualbox.org/">VirtualBox</a> (4.3.28, plus the extension pack) to install a virtual <a href="http://www.ubuntu.com/download/desktop">Ubuntu Desktop</a> 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. Takes me back to the days when you had to burn an ISO to a physical CD...</p>
+<p>I'm running a Mac over here, so I used <a href="https://www.virtualbox.org/">VirtualBox</a> (4.3.28, plus the extension pack) to install a virtual <a href="http://www.ubuntu.com/download/desktop">Ubuntu Desktop</a> 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. An NVIDIA Developer Zone <a href="https://devtalk.nvidia.com/default/topic/718220/tegra-tools/jetson-tegra-k1-development-kit/">post</a> was very helpful in figuring all this out. Takes me back to the days when you had to burn an ISO to a physical CD...</p>
 <p>It took me a couple tries to get everything right; to get it all done in one pass you would want to connect the Jetson via USB and start it in recovery mode now, then adjust the VirtualBox settings so that there's a "USB Device Filter" for the "NVIDIA Corp. APX [0101]" device accessible, before even installing the VM.</p>
 <p>There was one headache in getting the Ubuntu desktop to display at reasonable resolutions. The display resolution started at 640 by 480, with no apparent way to change it. Thanks to <a href="http://askubuntu.com/users/394518/johnathan-davis">Jonathan Davis</a> for <a href="http://askubuntu.com/questions/588943/experiencing-small-resolution-issue-in-ubuntu-14-04-2-with-virtualbox-getting-s">suggesting</a> a solution that worked for me:</p>
 <pre><code class="language-bash">sudo apt-get remove libcheese-gtk23
@@ -40,8 +40,45 @@ sudo apt-get install -f virtualbox-guest-x11</code></pre>
 
 <p>Reboot and get full-screen majesty!</p>
 <p>In Ubuntu then I installed the <a href="https://developer.nvidia.com/jetson-tk1-development-pack">Jetson TK1 Development Pack</a>. This whole process takes at least enough time to eat some Thai food.</p>
-<p>After cleaning out the old record from <code>~/.ssh/known_hosts</code>, I was able to log in to a shiny new up-to-date Linux for Tegra install!</p>
-<pre><code class="language-bash">ssh ubuntu@192.168.1.5</code></pre>    </article>
+<p>After flashing, I cleaned out the old record from <code>~/.ssh/known_hosts</code>, and was able to log in to a shiny new up-to-date Linux for Tegra install!</p>
+<pre><code class="language-bash">ssh ubuntu@tegra-ubuntu.local</code></pre>
+
+<p>At the end of the Development Pack process, you need to enter the IP address of your Jetson. You can use <code>ifconfig</code> (as directed) on the Jetson to get the right IP address.</p>
+<p>The Development Pack process continues then and includes installing more things on the Jetson, including <code>cuda-toolkit-6-5</code>. Nice!</p>
+<p>The Development Pack also includes <a href="http://opencv.org/">OpenCV</a>, but doesn't seem to install it on the Jetson automatically. So you have to move this file onto the Jetson yourself:</p>
+<pre><code class="language-bash">JetPackTK1-1.1/jetpack_download/libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb</code></pre>
+
+<p>On the Jetson then, install something like the following. The package itself contains three other packages which have to be installed, and which have a couple dependencies that will need to be resolved:</p>
+<pre><code class="language-bash">sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
+sudo apt-get install libavcodec54 libavformat54 libavutil52 libswscale2
+sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra_2.4.10.1_armhf.deb
+sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra-dev_2.4.10.1_armhf.deb
+sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra-python_2.4.10.1_armhf.deb</code></pre>
+
+<p>If you're a "CUDA Registered Developer" (they have to manually approve applications?) now might be a good time to install <a href="https://developer.nvidia.com/cuDNN">cuDNN</a> R1.</p>
+<h3>2. Install the Caffe deep learning framework.</h3>
+<p>Pete Warden's <a href="http://petewarden.com/2014/10/25/how-to-run-the-caffe-deep-learning-vision-library-on-nvidias-jetson-mobile-gpu-board/">post</a> on setting up Caffe on the Jetson isn't all perfectly applicable after you've flashed to L4T 21.3, but I very much appreciated his translation of the <a href="http://caffe.berkeleyvision.org/installation.html">install</a> dependencies into Ubuntu package names:</p>
+<pre><code class="language-bash">sudo apt-get install \
+    libprotobuf-dev protobuf-compiler gfortran \
+    libboost-dev cmake libleveldb-dev libsnappy-dev \
+    libboost-thread-dev libboost-system-dev \
+    libatlas-base-dev libhdf5-serial-dev libgflags-dev \
+    libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7</code></pre>
+
+<p>Warden also advised some manual tweaks to <code>$PATH</code> and <code>$LD_LIBRARY_PATH</code>, but these are taken care of already by the install process. You may still need to <code>source ~/.bashrc</code>, depending on when you last logged in.</p>
+<p>To get Python integration compiled you need <code>numpy</code>:</p>
+<pre><code class="language-bash">sudo apt-get install python-numpy</code></pre>
+
+<p>It looks like it's best to install Caffe from the <code>master</code> branch of the GitHub repository. (The <code>dev</code> branch hasn't been updated in three months.) No problem; the <a href="http://caffe.berkeleyvision.org/installation.html">install</a> directions will work fine once the files are in place:</p>
+<pre><code class="language-bash">sudo apt-get install git
+git clone https://github.com/BVLC/caffe.git
+cd caffe
+cp Makefile.config.example Makefile.config
+make all
+make test</code></pre>
+
+<h3>3. Train a deep net on some image data.</h3>
+<p>I think I'll try to reproduce the <a href="http://caffe.berkeleyvision.org/gathered/examples/mnist.html">MNIST tutorial</a> first.</p>    </article>
     <footer>
       <hr />
       <ul>
