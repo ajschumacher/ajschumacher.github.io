@@ -31,7 +31,7 @@ I flashed with the [Jetson TK1 Development Pack](https://developer.nvidia.com/je
  * You can only run the Development Pack on 64-bit Ubuntu 12.04 and 14.04. I used 14.04.
  * The Development Pack is about 12 gigabytes in size, so make sure you have enough space on your machine or any virtual machine you plan to use.
 
-I'm running a Mac over here, so I used [VirtualBox](https://www.virtualbox.org/) (4.3.28, plus the extension pack) to install a virtual [Ubuntu Desktop](http://www.ubuntu.com/download/desktop) 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. Takes me back to the days when you had to actually burn an ISO to a physical CD...
+I'm running a Mac over here, so I used [VirtualBox](https://www.virtualbox.org/) (4.3.28, plus the extension pack) to install a virtual [Ubuntu Desktop](http://www.ubuntu.com/download/desktop) 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. Takes me back to the days when you had to burn an ISO to a physical CD...
 
 It took me a couple tries to get everything right; to get it all done in one pass you would want to connect the Jetson via USB and start it in recovery mode now, then adjust the VirtualBox settings so that there's a "USB Device Filter" for the "NVIDIA Corp. APX [0101]" device accessible, before even installing the VM.
 
