@@ -18,10 +18,10 @@ In outline:
  2. Install some neural net framework.
  3. Train a deep net on some image data.
 
-Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. If you log in to your router and see what's connected to it you should see `tegra-ubuntu` there, with a corresponding IP address. For me, it was at 192.168.1.5. You can log in from any other computer on your network, using the default username and password (both `ubuntu`).
+Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. Then you can `ssh` in to `tegra-ubuntu` on the local network, using the default username and password (both `ubuntu`):
 
 ```bash
-ssh ubuntu@192.168.1.5
+ssh ubuntu@tegra-ubuntu.local
 ```
 
 The GPU on the Jetson is a Tegra. The Jetson I received came with an [early version](https://developer.nvidia.com/linux-tegra-rel-19) of the "[Linux for Tegra](https://developer.nvidia.com/linux-tegra)" Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently [21.3](https://developer.nvidia.com/linux-tegra-r213)).
