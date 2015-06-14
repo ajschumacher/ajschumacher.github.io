@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Setting up the NVIDIA Jetson TK1</title>
+  </head>
+  <body>
+    <article>
+<h1>Setting up the NVIDIA Jetson TK1</h1>
+<p class="date">Sunday June 14, 2015</p>
+<p>Let's do <a href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> on a <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>!</p>
+<p>Go!</p>
+<p><img alt="Jetson TK1" src="jetson.png" /></p>
+<p><em><a href="https://www.flickr.com/photos/120586634@N05/14488628209/in/album-72157645736592714/">Image from Gareth Halfacree</a>.</em></p>
+<p>There's a little work involved in setting up the Jetson; I'm mostly following advice from an NVIDIA Developer Zone <a href="https://devtalk.nvidia.com/default/topic/718220/tegra-tools/jetson-tegra-k1-development-kit/">post</a> on flashing a Jetson from a Mac, and Pete Warden's <a href="http://petewarden.com/2014/10/25/how-to-run-the-caffe-deep-learning-vision-library-on-nvidias-jetson-mobile-gpu-board/">post</a> on setting up deep learning with <a href="http://caffe.berkeleyvision.org/">Caffe</a> on the Jetson.</p>
+<p>In outline:</p>
+<ol>
+<li>Flash the Jetson to most recent OS.</li>
+<li>Install some neural net framework.</li>
+<li>Train a deep net on some image data.</li>
+</ol>
+<p>Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. If you log in to your router and see what's connected to it you should see <code>tegra-ubuntu</code> there, with a corresponding IP address. For me, it was at 192.168.1.5. You can log in from any other computer on your network, using the default username and password (both <code>ubuntu</code>).</p>
+<pre><code class="language-bash">ssh ubuntu@192.168.1.5</code></pre>
+
+<p>The GPU on the Jetson is a Tegra. The Jetson I received came with the <a href="https://developer.nvidia.com/linux-tegra-rel-19">original version</a> of the "<a href="https://developer.nvidia.com/linux-tegra">Linux for Tegra</a>" Ubuntu-based operating system. I'm not sure how much difference it makes, but I thought I'd better update to the most recent version (currently <a href="https://developer.nvidia.com/linux-tegra-r213">21.3</a>).</p>
+<p>I flashed with the <a href="https://developer.nvidia.com/jetson-tk1-development-pack">Jetson TK1 Development Pack</a>. Two things about the Development Pack:</p>
+<ul>
+<li>You can only run the Development Pack on 64-bit Ubuntu 12.04 and 14.04. I used 14.04.</li>
+<li>The Development Pack is about 12 gigabytes in size, so make sure you have enough space on your machine or any virtual machine you plan to use.</li>
+</ul>
+<p>I'm running a Mac over here, so I used <a href="https://www.virtualbox.org/">VirtualBox</a> (4.3.28, plus the extension pack). I installed <a href="http://www.ubuntu.com/download/desktop">Ubuntu Desktop</a> 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. Takes me back to the days when you had to actually burn an ISO to a physical CD...</p>
+<p>It took me a couple tries to get everything right; to get it all done in one pass you would want to connect the Jetson via USB and start it in recovery mode now, then adjust the VirtualBox settings so that there's a "USB Device Filter" for the "NVIDIA Corp. APX [0101]" device accessible, before even installing the VM.</p>
+<p>There was one headache in getting the Ubuntu desktop to display at reasonable resolutions. The display resolution started at 640 by 480, with no apparent way to change it. Thanks to <a href="http://askubuntu.com/users/394518/johnathan-davis">Jonathan Davis</a> for <a href="http://askubuntu.com/questions/588943/experiencing-small-resolution-issue-in-ubuntu-14-04-2-with-virtualbox-getting-s">suggesting</a> a solution that worked for me:</p>
+<pre><code class="language-bash">sudo apt-get remove libcheese-gtk23
+sudo apt-get install xserver-xorg-core
+sudo apt-get install -f virtualbox-guest-x11</code></pre>
+
+<p>Reboot and get full-screen majesty!</p>
+<p>In Ubuntu then I installed the <a href="https://developer.nvidia.com/jetson-tk1-development-pack">Jetson TK1 Development Pack</a>. This whole process takes at least enough time to eat some Thai food.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
