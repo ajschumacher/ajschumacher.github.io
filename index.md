@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-06-14: [The NVIDIA Jetson TK1 with Caffe on MNIST](/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/)
  * 2015-06-10: [A JavaScript Perceptron](/20150610-a_javascript_perceptron/)
  * 2015-06-07: [TextBlob Sentiment: Calculating Polarity and Subjectivity](/20150607-textblob_sentiment/)
  * 2015-05-30: [Practical Mergic at Open Data Science Conference](/20150530-practical_mergic_at_odsc/)
