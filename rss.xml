@@ -7,6 +7,33 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Code Reading Question</title>
+<description><![CDATA[
+
+<p>Here's an idea for a type of question to help assess a person's skill in programming. Give the person some code to read:</p>
+<pre><code class="language-python">def norf(bar, foo):
+    for baz in bar:
+        if baz in foo or norf(baz, foo+[baz]):
+            return True
+    return False</code></pre>
+
+<p>This is four lines of Python.</p>
+<p>Some of the questions you could ask:</p>
+<ul>
+<li>What does <code>norf</code> do?</li>
+<li>What are the types of the arguments <code>bar</code> and <code>foo</code>?</li>
+<li>What are better names for <code>norf</code>, <code>bar</code>, <code>foo</code>, and <code>baz</code>?</li>
+<li>What data structure are we working with?</li>
+<li>What are alternatives for the design of this data structure?</li>
+<li>What are limitations of this function?</li>
+</ul>
+<p>I suspect that this could be interesting. I haven't seen anyone use interview questions of this type. I wonder how well this one would work.</p>    
+    ]]></description>
+<link>http://planspace.org/20150616-code_reading_question/</link>
+<guid>http://planspace.org/20150616-code_reading_question/</guid>
+<pubDate>Tue, 16 Jun 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The NVIDIA Jetson TK1 with Caffe on MNIST</title>
 <description><![CDATA[
 
@@ -2579,35 +2606,6 @@ my_dict['another_key']  # 'another_value'
 <link>http://planspace.org/20150111-a_great_python_book_explains_hash_tables/</link>
 <guid>http://planspace.org/20150111-a_great_python_book_explains_hash_tables/</guid>
 <pubDate>Sun, 11 Jan 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Learn to Code with Emacs</title>
-<description><![CDATA[
-
-<p>To <a href="/20141231-two_problems_with_learn-to-code_sites/">learn to code</a> effectively, use:</p>
-<ul>
-<li>tools that are actually used for coding</li>
-<li>materials that are reusable as references</li>
-</ul>
-<p>Here's one way to do it:</p>
-<ol>
-<li><a href="http://emacs.link/">Install Emacs</a>.</li>
-<li>Do the built-in Emacs Tutorial, accessible from the start screen.</li>
-<li>Learn about the Info system (C-h i, select Info).</li>
-<li>Work through the Introduction to Programming Emacs Lisp.</li>
-</ol>
-<p>These steps will all make sense if you do them in order.</p>
-<p>Here's what you get, if you follow the steps above:</p>
-<ul>
-<li>a powerful editor that you can use with any programming language</li>
-<li>programming skills together with computer science concepts</li>
-<li>the ability to use that programming language to enhance that editor</li>
-</ul>
-<p>This is a powerful combination, and one that blends seamlessly into further learning and productive work.</p>    
-    ]]></description>
-<link>http://planspace.org/20150101-learn_to_code_with_emacs/</link>
-<guid>http://planspace.org/20150101-learn_to_code_with_emacs/</guid>
-<pubDate>Thu, 01 Jan 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
