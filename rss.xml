@@ -7,6 +7,32 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Don't Shoot the Dog!</title>
+<description><![CDATA[
+
+<p>On the <a href="https://www.youtube.com/watch?v=hY14Er6JX2s">recommendation</a> of <a href="http://blog.sashalaundy.com/">Sasha Laundy</a>, I read <a href="http://www.amazon.com/Dont-Shoot-Dog-Teaching-Training/dp/0553380397">Don't Shoot the Dog!</a> by Karen Pryor.</p>
+<ol>
+<li>The advice on memorizing by starting with the end of a passage, so that rehearsal always starts with the difficult and then progresses to familiar material, strikes me as good advice that I may have heard before but forgotten.</li>
+<li>I would like to play the Training Game, which is described in the selection below.</li>
+</ol>
+<p>It's a fun book, and it makes me want to train a cat or dog to do fun things.</p>
+<blockquote>
+<p>Don't Shoot the Dog! pages 52 to 54, The Training Game</p>
+<p>Even if you know and understand the principles of shaping, you can't apply them unless you practice them. Shaping is not a verbal process, it is a nonverbal skill&#8212;a flow of interactive behavior through time, like dancing, or making love, or surfing. As such, it can't really be learned by reading or thinking or talking about it. You have to do it.</p>
+<p>One easy and fascinating way to develop shaping skills is by playing the Training Game. I use the Training Game in teaching the techniques of training. Many trainers play it for sport; it makes an interesting party game.</p>
+<p>You need two people at least: the subject and the trainer. Six is ideal because then every person can experience being both subject and trainer at least once before the group gets tired; but larger groups&#8212;a classroom or lecture audience, for example&#8212;are feasible, because observing is almost as much fun as participating.</p>
+<p>You send the subject out of the room. The rest of the people select a trainer and choose  a behavior to be shaped: for example, to write one's name on the blackboard, jump up and down, or stand on a chair. The subject is invited back in and told to move about the room and be active; the trainer reinforces, by blowing on a whistle, movements in the general direction of the desired behavior. I like to make a rule at least for the first few reinforcements that the &#8220;animal&#8221; has to go back to the doorway after each reinforcer and start anew; it seems to help prevent a tendency of some subjects to just stand still wherever reinforcement was last received. And no talking. Laughter, groans, and other signs of emotion are permitted, but instructions and discussion are out until after the behavior is achieved.</p>
+<p>Ordinarily the Training Game goes quite fast. Here's an example: Six of us are playing the game in a friend's living room. Ruth volunteers to be the animal, and it's Anne's turn to be the trainer. Ruth goes our of the room. We all decide that the behavior should be to turn on the lamp on the end table beside the couch.</p>
+<p>Ruth is called back in and begins wandering around the room. When she heads in the direction of the lamp, Anne blows the whistle. Ruth goes back to &#8220;Start&#8221; (the doorway), then moves purposefully to the spot where she was reinforced and stops. No whistle. She waves her hands about. No whistle. She moves off the spot, tentatively, away from the lamp as it happens. Still hearing no whistle, Ruth begins walking around again. When once again she walks toward the lamp, Anne blows the whistle.</p>
+<p>Ruth returns to the door and then returns to the new spot where she just heard the whistle, but this time she keeps walking forward. Bingo: whistle. Without going back to the door, she walks forward some more and hears the whistle just as she is coming up against the end table. She stops. She bumps the end table. No whistle. She waves her hands around; no whistle. One hand brushes the lampshade, and Anne whistles. Ruth begins touching the lampshade all over&#8212;moving it, turning it, rocking it: no whistle. Ruth reaches up underneath the lampshade. Whistle. Ruth reaches underneath the shade again, and, the gesture being very familiar and having a purpose, she executes the purpose and turns on the lamp. Anne whistles and the rest of us applaud.</p>
+<p>Things don't always go that smoothly, even with simple, familiar behaviors. Anne, as it turned out, made a good training decision when she withheld reinforcement as Ruth moved from the spot where she'd first been reinforced, but in the wrong direction. If, however, Ruth had then moved back to the spot and just stood there, Anne might have been in trouble.</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20150705-dont_shoot_the_dog/</link>
+<guid>http://planspace.org/20150705-dont_shoot_the_dog/</guid>
+<pubDate>Sun, 05 Jul 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Code Reading Question</title>
 <description><![CDATA[
 
@@ -2521,91 +2547,6 @@ gog(data)</code></pre>
 <link>http://planspace.org/20150119-gog_a_separate_layer_for_visualization/</link>
 <guid>http://planspace.org/20150119-gog_a_separate_layer_for_visualization/</guid>
 <pubDate>Mon, 19 Jan 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A Great Python Book explains Hash Tables</title>
-<description><![CDATA[
-
-<p><a href="http://mitpress.mit.edu/books/introduction-computation-and-programming-using-python-0">Introduction to Computation and Programming Using Python</a> is the book you should get if you think you want to learn Python. It packs in tons of sophisticated content and makes it accessible, not dumbed down.</p>
-<p><a href="http://mitpress.mit.edu/books/introduction-computation-and-programming-using-python-0"><img alt="Introduction to Computation and Programming Using Python" src="cover.jpg"></a></p>
-<p>This book seems to be something of a hidden gem. It isn't what comes up first when you search for Python resources. It doesn't have a lot of flash or promotion behind it. Of course it does have the weight of its publisher, The MIT Press. And there's the blurb on the back cover from Hal Abelson, coauthor of <a href="https://mitpress.mit.edu/sicp/">Structure and Interpretation of Computer Programs</a>. So there are clear signs of the book's quality.</p>
-<p>One example of what's good about this book is the explanation of <em>hashing</em>. This is a very important topic, but it has a little bit of complexity to it and so it's often almost entirely omitted when teaching people to code. This is the depth sometimes given in introductory Python courses:</p>
-<pre><code class="language-python"># A Python dictionary is a set of key-value pairs
-my_dict = {'a_key': 'a_value', 'another_key': 'another_value'}
-# which allows access to the values via the keys (lookup)
-my_dict['another_key']  # 'another_value'
-# This data structure is also known as a `map` or `hash-map`</code></pre>
-
-<p>That's true, and you can start to use the language functionality with that, but it doesn't help you understand the underlying key idea. Below is part of the treatment from <em>Introduction to Computation and Programming Using Python</em>, in section 10.3 <em>Hash Tables</em>:</p>
-<section style="font-family: sans-serif">
-
-<p>... [Python] dictionaries use a technique called hashing to do the lookup in time that is nearly independent of the size of the dictionary. The basic idea behind a <strong>hash table</strong> is simple. We convert the key to an integer, and then use that integer to index into a list, which can be done in constant time. In principle, values of any immutable type can be easily converted to an integer. After all, we know that the internal representation of each object is a sequence of bits, and any sequence of bits can be viewed as representing an integer.  For example, the internal representation of <code>'abc'</code> is the string of bits 011000010110001001100011, which can be viewed as a representation of the decimal integer 6,382,179. Of course, if we want to use the internal represntation of strings as indices into a list, the list is going to have to be pretty darn long.</p>
-
-<p>What about situation swhere the keys are already integers? Imagine, for the moment, that we are implementing a dictionary all of whose keys are U.S. Social Security numbers. (A United States Social Security number is a nine-digit integer.) If we represented the dictionary by a list with 10<sup>9</sup> elements and used Social Security numbers to index into the list, we could do lookups in constant time. Of course, if the dictionary contained entires for only ten thousand (10<sup>4</sup>) people, this would waste quite a lot of space.</p>
-
-<p>Which gets us to the subject of hash functions. A <strong>hash function</strong> maps a large space of inputs (e.g., all natural numbers) to a smaller space of outputs (e.g., the natural numbers between 0 and 5000). Hash functions can be used to convert a large space of keys to a smaller space of integer indices.</p>
-
-<p>Since the space of possible outputs is smaller than she space of possible inputs, a shash function is a <strong>many-to-one mapping</strong>, i.e., multiple different inputs may be mapped to the same output. When two inputs are mapped to the same output, it is called a <strong>collision</strong>&#8212;a topic which we will return to shortly. A good hash function produces a <strong>uniform distribution</strong>, i.e., every output in the range is equally probable, which minimizes the probability of collisions.</p>
-
-<p>Designing good hash functions is surprisingly challenging. The problem is that one wants the outputs to be uniformly distributed given the expected distribution of inputs. Suppose, for example, that one hashed surnames by performing some calculation on the first three letters. In the Netherlands, where roughly 5% of surnames begin with &#8220;van&#8221; and another 5% with &#8220;de,&#8221; the distribution would be far from uniform.</p>
-
-<p>Figure 10.6 uses a simple hash function (recall that <code>i%j</code> returns the remainder when the integer <code>i</code> is divided by the integer <code>j</code>) to implement a dictionary with integers as keys.</p>
-
-<p>The basic idea is to represent an instance of class <code>intDict</code> by a list of <strong>hash buckets</strong>, where each bucket is a list of key/value pairs. By making each bucket a list, we handle collisions by storing all of the values that hash to the same bucket in the list.</p>
-
-<p>The hash table works as follows: The instance variable <code>buckets</code> is initialized to a list of <code>numBuckets</code> empty lists. To store or look up an entry with key <code>dictKey</code>, we use the hash function <code>%</code> to convert <code>dictKey</code> into an integer, and use that integer to index into <code>buckets</code> to find the hash bucket associated with <code>dictKey</code>. We then search that bucket (which is a list) linearly to see if there is an entry with the key <code>dictKey</code>. If we are doing a lookup and there is an entry with the key, we simply return the value stored with that key. If there is no entry with that key, we return <code>None</code>. If a value is to be stored, then we either replace the value in the existing entry, if one was found, or append a new entry to the bucket if none was found.</p>
-
-<p>There are many other ways to handle collisions, some considerably more efficient than using lists. But this is probably the simplest mechanism, and it works fine if the hash table is big enough and the hash function provides a good enough approximation to a uniform distribution.</p>
-
-<p>Notice that the <code>__str__</code> method produces a representation of a dictionary that is unrelated to the order in which elements were added to it, but is instead ordered by the values to which the keys happen to hash. This explains why we can't predict the order of the keys in an object of type <code>dict</code>.</p>
-
-<p><strong>Figure 10.6 Implementing dictionaries using hashing</strong></p>
-
-<pre><code class="language-python">class intDict(object):
-    """A dictionary with integer keys"""
-
-    def __init__(self, numBuckets):
-        """Create an empty dictionary"""
-        self.buckets = []
-        self.numBuckets = numBuckets
-        for i in range(numBuckets):
-            self.buckets.append([])
-
-    def addEntry(self, dictKey, dictVal):
-        """Assumes dictKey an int. Adds an entry."""
-        hashBucket = self.buckets[dictKey%self.numBuckets]
-        for i in range(len(hashBucket)):
-            if hashBucket[i][0] == dictKey:
-                hashBucket[i] = (dictKey, dictVal)
-                return
-        hashBucket.append((dictKey, dictVal))
-
-    def getValue(self, dictKey):
-        """Assumes dictKey an int. Returns entry associated
-           with the key dictKey"""
-        hashBucket = self.buckets[dictKey%self.numBuckets]
-        for e in hashBucket:
-            if e[0] == dictKey:
-                return e[1]
-        return None
-
-    def __str__(self):
-        result = '{'
-        for b in self.buckets:
-            for e in b:
-                result = result + str(e[0]) + ':' + str(e[1]) + ','
-        return result[:-1] + '}' #result[:-1] omits the last comma</code></pre>
-
-</section>
-
-<p>The text goes on to show a further example and explanation of how the <code>intDict</code> works.</p>
-<p>The selection above does depend on knowing something about what &#8220;constant time&#8221; means, and possibly &#8220;immutable.&#8221; But if you were reading the book, you would have learned these already.</p>
-<p>The organization and exposition is really extraordinary. Even in just the small hashing section above, there&#8217;s a sequence of three or four concrete examples to motivate the thinking, and then it leads into an understandable implementation. This is phenomenal educational writing.</p>
-<p>This is <a href="http://mitpress.mit.edu/books/introduction-computation-and-programming-using-python-0">the book</a> for people who want to learn.</p>    
-    ]]></description>
-<link>http://planspace.org/20150111-a_great_python_book_explains_hash_tables/</link>
-<guid>http://planspace.org/20150111-a_great_python_book_explains_hash_tables/</guid>
-<pubDate>Sun, 11 Jan 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

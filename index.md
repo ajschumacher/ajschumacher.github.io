@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-07-05: [Don't Shoot the Dog!](/20150705-dont_shoot_the_dog/)
  * 2015-06-16: [Code Reading Question](/20150616-code_reading_question/)
  * 2015-06-14: [The NVIDIA Jetson TK1 with Caffe on MNIST](/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/)
  * 2015-06-10: [A JavaScript Perceptron](/20150610-a_javascript_perceptron/)
