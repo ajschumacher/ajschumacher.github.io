@@ -35,3 +35,8 @@ canvas.on("click", function() {
     d3.event.preventDefault();
     addPoint("pos");
 });
+
+var perceptron = new ss.perceptron();
+// Initialize explicitly, since we know this is a 2d space.
+perceptron.weights = [0, 0];
+perceptron.bias = 0;
