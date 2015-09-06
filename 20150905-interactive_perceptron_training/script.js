@@ -11,19 +11,27 @@ var canvas = svg.append("rect")
         .attr("height", height)
         .attr("opacity", 0);
 
-function addPoint(cls) {
-    svg.append("circle")
-        .attr("cx", d3.event.offsetX)
-        .attr("cy", d3.event.offsetY)
-        .attr("r", r)
-        .attr("class", cls);
+function addPoint() {
+    var point = svg.append("circle")
+            .attr("cx", d3.event.offsetX)
+            .attr("cy", d3.event.offsetY)
+            .attr("r", r)
+            .attr("class", "pos");
+    point.on("click", function() {
+        d3.event.preventDefault();
+        if (point.classed("pos")) {
+            point.attr("class", "neg");
+        } else {
+            point.remove();
+        }
+    });
+    point.on("contextmenu", function() {
+        d3.event.preventDefault();
+        alert("wubba lubba dub dub!");
+    });
 }
 
 canvas.on("click", function() {
     d3.event.preventDefault();
     addPoint("pos");
-});
-canvas.on("contextmenu", function() {
-    d3.event.preventDefault();
-    addPoint("neg");
 });
