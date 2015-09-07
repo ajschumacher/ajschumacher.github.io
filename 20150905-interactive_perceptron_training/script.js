@@ -197,21 +197,21 @@ function addPoint() {
         var weights = perceptron.weights;
         var answer = weights[0] * coords[0] +
                 weights[1] * coords[1] + perceptron.bias;
-        var output = updateCount + ". This point ([" +
+        var output = updateCount + ". The point [" +
                 round(coords[0]) + ", " +
-                round(coords[1]) + "]) " +
+                round(coords[1]) + "] " +
                 "with weights [" + round(weights[0]) + ", " +
                 round(weights[1]) + "] and bias " +
-                round(perceptron.bias) + " evaluates to " +
+                round(perceptron.bias) + " gives " +
                 round(answer) + ". ";
         if (prediction === label) {
-            output += "This results in a correct classification, " +
-                "so no update is necessary.";
+            output += "This was a correct classification, " +
+                "so no update was necessary.";
         } else {
             perceptron.train(coords, label);
             updateColoring();
             weights = perceptron.weights;
-            output += "This resulted in an incorrect classification, " +
+            output += "This was an incorrect classification, " +
                 "so the weights and bias were updated to [" +
                 round(weights[0]) + ", " +
                 round(weights[1]) + "] and " +
