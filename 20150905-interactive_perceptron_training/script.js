@@ -6,12 +6,24 @@ perceptron.bias = 0;
 var width = 400;
 var height = 400;
 var r = 5;
+
 var toXpx = d3.scale.linear()
         .domain([-3, 3])
         .range([-width/2, width/2]);
+var xAxis = d3.svg.axis()
+        .scale(toXpx)
+        .orient("bottom")
+        .tickValues([-2, -1, 1, 2])
+        .tickFormat(d3.format("d"));
+
 var toYpx = d3.scale.linear()
         .domain([-3, 3])
         .range([height/2, -height/2]);
+var yAxis = d3.svg.axis()
+        .scale(toYpx)
+        .orient("right")
+        .tickValues([-2, -1, 1, 2])
+        .tickFormat(d3.format("d"));
 
 var svg = d3.select("body").append("svg")
         .attr("width", width)
@@ -19,7 +31,17 @@ var svg = d3.select("body").append("svg")
 
 var origin = svg.append("g")
         .attr("transform", "translate(" + width/2 + ", " + height/2 + ")");
+
+origin.append("g")
+    .attr("class", "axis")
+    .call(xAxis);
+
+origin.append("g")
+    .attr("class", "axis")
+    .call(yAxis);
+
 var boundg = origin.append("g");
+
 boundg.append("rect")
     .attr("x", -4 * width)
     .attr("width", 8 * width)
@@ -34,6 +56,7 @@ boundg.append("rect")
     .attr("height", 4 * height)
     .attr("fill", "red")
     .attr("opacity", 0.2);
+
 function updateColoring() {
     // There is probably a way of making this much shorter and nicer,
     // if somebody wants to think about geometry/trigonometry...
