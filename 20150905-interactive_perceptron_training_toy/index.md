@@ -1,4 +1,4 @@
-# Interactive Perceptron Training
+# Interactive Perceptron Training Toy
 
 A little while ago I [contributed](../20150610-a_javascript_perceptron/) a simple [perceptron](https://en.wikipedia.org/wiki/Perceptron) model for the [Simple Statistics](http://simplestatistics.org/) JavaScript library. This makes possible things like this interactive perceptron model training environment, in which you can get a “hands-on” feel for how the model works in two dimensions.
 
