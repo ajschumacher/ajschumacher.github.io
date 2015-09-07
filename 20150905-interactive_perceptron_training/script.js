@@ -21,17 +21,17 @@ var origin = svg.append("g")
         .attr("transform", "translate(" + width/2 + ", " + height/2 + ")");
 var boundg = origin.append("g");
 boundg.append("rect")
-    .attr("x", -2 * width)
-    .attr("width", 4 * width)
-    .attr("y", -2 * height)
-    .attr("height", 2 * height)
+    .attr("x", -4 * width)
+    .attr("width", 8 * width)
+    .attr("y", -4 * height)
+    .attr("height", 4 * height)
     .attr("fill", "blue")
     .attr("opacity", 0.2);
 boundg.append("rect")
-    .attr("x", -2 * width)
-    .attr("width", 4 * width)
+    .attr("x", -4 * width)
+    .attr("width", 8 * width)
     .attr("y", 0)
-    .attr("height", 2 * height)
+    .attr("height", 4 * height)
     .attr("fill", "red")
     .attr("opacity", 0.2);
 function updateColoring() {
