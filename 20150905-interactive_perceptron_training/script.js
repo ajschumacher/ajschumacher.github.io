@@ -25,9 +25,16 @@ var yAxis = d3.svg.axis()
         .tickValues([-2, -1, 1, 2])
         .tickFormat(d3.format("d"));
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#space").append("svg")
         .attr("width", width)
         .attr("height", height);
+
+var statusBox = d3.select("#status");
+
+function log(message) {
+    statusBox.insert("p", ":first-child")
+        .text(message);
+}
 
 var origin = svg.append("g")
         .attr("transform", "translate(" + width/2 + ", " + height/2 + ")");
@@ -113,7 +120,6 @@ function updateColoring() {
         // nice diagonal boundary
         var x = -c / a;
         var angle = -180 * Math.atan(a/Math.abs(b)) / Math.PI - 180;
-        console.log("rotate " + angle);
         boundg.attr("transform", "translate(" + toXpx(x) + "), rotate(" + angle + ")");
         break;
     case "negaplusplus":
@@ -122,7 +128,6 @@ function updateColoring() {
         // nice diagonal boundary
         var x = -c / a;
         var angle = -180 * Math.atan(Math.abs(a)/b) / Math.PI;
-        console.log("rotate " + angle);
         boundg.attr("transform", "translate(" + toXpx(x) + "), rotate(" + angle + ")");
         break;
     case "neganegaplus":
@@ -131,7 +136,6 @@ function updateColoring() {
         // nice diagonal boundary
         var x = -c / a;
         var angle = 180 + 180 * Math.atan(a/b) / Math.PI;
-        console.log("rotate " + angle);
         boundg.attr("transform", "translate(" + toXpx(x) + "), rotate(" + angle + ")");
         break;
     case "plusplusplus":
@@ -140,7 +144,6 @@ function updateColoring() {
         // nice diagonal boundary
         var x = -c / a;
         var angle = 180 * Math.atan(a/b) / Math.PI;
-        console.log("rotate " + angle);
         boundg.attr("transform", "translate(" + toXpx(x) + "), rotate(" + angle + ")");
         break;
     }
@@ -154,6 +157,12 @@ var canvas = origin.append("rect")
     .attr("y", -height/2)
     .attr("height", height)
     .attr("opacity", 0);
+
+function round(x) {
+    return(Math.round(100 * x) / 100);
+}
+
+var updateCount = 1;
 
 function addPoint() {
     var x = d3.event.offsetX - width/2;
@@ -183,12 +192,33 @@ function addPoint() {
         } else {
             label = 0;
         }
-        console.log(perceptron.weights);
-        console.log(perceptron.bias);
-        perceptron.train([toXpx.invert(x), toYpx.invert(y)], label);
-        console.log(perceptron.weights);
-        console.log(perceptron.bias);
-        updateColoring();
+        var coords = [toXpx.invert(x), toYpx.invert(y)];
+        var prediction = perceptron.predict(coords);
+        var weights = perceptron.weights;
+        var answer = weights[0] * coords[0] +
+                weights[1] * coords[1] + perceptron.bias;
+        var output = updateCount + ". This point ([" +
+                round(coords[0]) + ", " +
+                round(coords[1]) + "]) " +
+                "with weights [" + round(weights[0]) + ", " +
+                round(weights[1]) + "] and bias " +
+                round(perceptron.bias) + " evaluates to " +
+                round(answer) + ". ";
+        if (prediction === label) {
+            output += "This results in a correct classification, " +
+                "so no update is necessary.";
+        } else {
+            perceptron.train(coords, label);
+            updateColoring();
+            weights = perceptron.weights;
+            output += "This resulted in an incorrect classification, " +
+                "so the weights and bias were updated to [" +
+                round(weights[0]) + ", " +
+                round(weights[1]) + "] and " +
+                round(perceptron.bias) + ".";
+        }
+        log(output);
+        updateCount += 1;
     });
 }
 
