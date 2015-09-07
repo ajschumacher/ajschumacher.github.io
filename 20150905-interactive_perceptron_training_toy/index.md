@@ -18,7 +18,7 @@ You can follow the model fitting step by step! (To reset everything, just reload
 
 Since we're in two dimensions, each data point has an _x_ and _y_ coordinate, written _[x, y]_. The perceptron model has two weights that correspond to the _x_ and _y_ directions (let's just call them _a_ and _b_), and a bias term which we can call _c_.  The model predicts _positive_ (blue) if _a*x + b*y + c_ is greater than zero, and _negative_ (red) otherwise. (You can think of the bias term as a weight that is always multiplied by one.)
 
-One thing that became particularly clear as I put this together is how really essential centering and scaling data is. With points within three of the origin in either direction, the model can usually do well in a reasonable number of training steps, especially if the points are spread around the origin. But try putting two points of opposing color on a diagonal near the same corner of the box. It takes _forever_ to fit! The perceptron has a hard time moving away from intercepting the origin.
+One thing that became particularly clear as I put this together is how really essential centering and scaling data is. With points within three of the origin in either direction, the model can usually do well in a reasonable number of training steps, especially if the points are spread around the origin. But try putting two points of opposing color on a diagonal near the same corner of the box. It takes _forever_ to fit! The perceptron can have a hard time moving away from intercepting the origin.
 
 You can also see quite plainly that the (single layer) perceptron classifies by linear separation, so it can't handle the [XOR problem](http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html).
 
