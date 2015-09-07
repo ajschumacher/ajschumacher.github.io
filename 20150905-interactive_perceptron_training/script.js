@@ -50,17 +50,17 @@ origin.append("g")
 var boundg = origin.append("g");
 
 boundg.append("rect")
-    .attr("x", -4 * width)
-    .attr("width", 8 * width)
-    .attr("y", -4 * height)
-    .attr("height", 4 * height)
+    .attr("x", -40 * width)
+    .attr("width", 80 * width)
+    .attr("y", -40 * height)
+    .attr("height", 40 * height)
     .attr("fill", "blue")
     .attr("opacity", 0.2);
 boundg.append("rect")
-    .attr("x", -4 * width)
-    .attr("width", 8 * width)
+    .attr("x", -40 * width)
+    .attr("width", 80 * width)
     .attr("y", 0)
-    .attr("height", 4 * height)
+    .attr("height", 40 * height)
     .attr("fill", "red")
     .attr("opacity", 0.2);
 

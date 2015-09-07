@@ -1,15 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
     <title>Interactive Perceptron Training</title>
-    <script src="d3.v3.min.js"></script>
-    <script src="simple_statistics.min.js"></script>
-    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <center><div id="space"></div></center>
-    <div id="status"></div>
-    <script src="script.js"></script>
+    <article>
+<h1>Interactive Perceptron Training</h1>
+<p class="date">Saturday September  5, 2015</p>
+<p>A little while ago I <a href="../20150610-a_javascript_perceptron/">contributed</a> a simple <a href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a> model for the <a href="http://simplestatistics.org/">Simple Statistics</a> JavaScript library. This makes possible things like this interactive perceptron model training environment, in which you can get a “hands-on” feel for how the model works in two dimensions.</p>
+<p>The space below starts all red, which means the model starts predicting any given point is “negative.” As you update things, the color will update to show where the model would predict positive (blue) and negative (red).</p>
+<p>The space below is clickable! One normal (left) click will add a blue (positive; label “1”) point. Clicking on a blue point will turn it red (negative; label “0”). Clicking on a red point will remove it. So you can cycle between no point, blue point, red point, no point.</p>
+<p>To train the model, choose a point and use your other click (control click or right click). The perceptron model updates when it makes an incorrect prediction. You'll see details about this process below the box, as it happens!</p>
+<p><center><div id="space"></div></center></p>
+<h3>Diagnostics appear with model training:</h3>
+<div id="status"></div>
+
+<p>You can follow the model fitting step by step! (To reset everything, just reload the page.)</p>
+<p>Since we're in two dimensions, each data point has an <em>x</em> and <em>y</em> coordinate, written <em>[x, y]</em>. The perceptron model has two weights that correspond to the <em>x</em> and <em>y</em> directions (let's just call them <em>a</em> and <em>b</em>), and a bias term which we can call <em>c</em>.  The model predicts <em>positive</em> (blue) if <em>a<em>x + b</em>y + c</em> is greater than zero, and <em>negative</em> (red) otherwise. (You can think of the bias term as a weight that is always multiplied by one.)</p>
+<p>One thing that became particularly clear as I put this together is how really essential centering and scaling data is. With points within three of the origin in either direction, the model can usually do well in a reasonable number of training steps, especially if the points are spread around the origin. But try putting two points of opposing color on a diagonal near the same corner of the box. It takes <em>forever</em> to fit! The perceptron has a hard time moving away from intercepting the origin.</p>
+<p>You can also see quite plainly that the (single layer) perceptron classifies by linear separation, so it can't handle the <a href="http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html">XOR problem</a>.</p>
+<p>Fun!</p>
+<script src="d3.v3.min.js"></script>
+
+<script src="simple_statistics.min.js"></script>
+
+<p><link rel="stylesheet" href="style.css">
+<script src="script.js"></script></p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
   </body>
 </html>
