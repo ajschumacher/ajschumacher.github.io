@@ -2,9 +2,9 @@
 
 *A “Brown Bag Lunch” “Chalk Talk” for the [World Bank Group](http://www.worldbank.org/) IFC ([International Finance Corporation](http://www.ifc.org/)) RMES ([Results, Measurement and Evaluation Stream](http://red-sphere.com/clients/WBG/video/index.html)) on Thursday November 12, 2015. ([slides](big.html))*
 
-This is the flyer the World Bank folks made:
+This is the flier the World Bank folks made:
 
-![flyer](flyer.png)
+![flier](flier.png)
 
 Here are some questions the audience was asked to answer and discuss before things got rolling:
 
