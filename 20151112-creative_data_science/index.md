@@ -36,7 +36,7 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 I was invited to give a talk about “the data scientist's toolbox”.
 
-A lot of people, when they hear “the data scientist's toolbox”, may think of some programming language, or some particular suite of implementations like Hadoop or Spark.
+A lot of people, when they hear “the data scientist's toolbox”, think of some programming language, or some particular suite of implementations like Hadoop or Spark.
 
 
 -----
@@ -47,7 +47,7 @@ A lot of people, when they hear “the data scientist's toolbox”, may think of
 
 Here's a tool!
 
-It's the AlexNet deep convolutional neural network that was state of the art for identifying things in images a couple years ago. We could use an implementation from the Model Zoo on Caffe, which would probably still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.
+It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use an implementation from the Model Zoo on Caffe, which would probably still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.
 
 This might be interesting for some people, but for a lot of people I suspect it would not be.
 
@@ -73,15 +73,13 @@ From the other side, even if your work is very sophisticated, you still have to 
 
 -----
 
-Another angle is this:
-
 What's more important to the painting, the painter or the brush?
 
 Certainly you need both, and tools are more or less a requirement everywhere. But the mental tools, the skills and experience of the painter, these make the lion's share of the difference in the end results.
 
-I've taught “data science tools” for a number of years, and my overwhelming impression has been that mental tools matter more than the particular software people happen to use. So I'm going to try not to be overly specific to one particular domain or tool.
+I haven't taught painting, but I've taught “data science tools” for a number of years, and my overwhelming impression has been that mental tools matter more than the particular software people happen to use.
 
-It is nice to have good tools, and I will talk about R and Python—but there's also a risk of imbuing external tools with undue importance.
+The good news is that while you may not always be able to choose your tools, you can always choose (and improve) the self that you bring to them!
 
 
 -----
@@ -103,37 +101,38 @@ create
 
 -----
 
-Some bad news:
-
-Most of what I'll say are other people's ideas. And I may not always cite sources.
-
-Worse, I probably don't even have quite the right ideas for you.
-
-I'm going to talk about some things that I think help me to create
-
-My hope, and the reason for calling our time together today “Creative Data Science”, is that 
-
 A central point of “Debugging Teams” is the importance of humility, respect, and trust.
 
-In that spirit, I want to thank you for coming together in this safe collaborative space. The only people who can do it are you.
+In that spirit, let me describe a best-case scenario for our time together:
+
+I will mostly tell you about other people's ideas. (And I may not always cite sources.)
+
+Worse, I probably won't even have quite the right ideas for you.
+
+I'm going to talk about some things that I think help create good work with data.
+
+But I sure don't have your expertise, experience, and other knowledge about everything that you're working on.
+
+This kind of event doesn't make sense if it's just me talking and then everybody goes back to working exactly the same as they always do.
+
+You've come together in this safe collaborative space. The people who should get something out of it are you.
+
+Today could be the day you have that great idea that saves the world!
+
+I don't care at all if it's related to what I'm talking about!
+
+But I will ask at the end for you to identify an action to take that you wouldn't have taken if you weren't in this room today.
+
+Create!
+
 
 
 interdisciplinary thinking (vs. disciplinary thinking)
 
 “The idea is not to replace one tool with another but rather build a better ecosystem of complementary tools.” ([presentation](https://www.youtube.com/watch?v=GdoDLuPe-Wg) from [Jeffrey Heer](https://twitter.com/jeffrey_heer))
 
---
-
-what book reading?
-debugging teams
-learning organization
-not about me
-is today the day you have that great idea???
-
-
 
 What are you going to take from today?
-
 
 
 -----
@@ -156,5 +155,3 @@ planspace.org
 -----
 
 This is just me again.
-“the data scientist's toolbox”
-“the data scientist's toolbox”
