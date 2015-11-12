@@ -165,33 +165,122 @@ Discussion!
 
 That's "What Would You Do".
 
+Let's get twelve things!
 
 
 -----
 
-<img src="rick1.png" title="healthy Rick" />
+immutability
 
 -----
 
-mutate!
-
-
------
-
-<img src="rick2.png" title="Cronenberg Rick" />
-
------
-
-mutated!
+I saved over the original version of the file!
 
 
 -----
 
-<img src="swiss_army_knife.png" title="Swiss Army knife" />
+<img height="1000%" src="rick1.png" title="healthy Rick" />
 
 -----
 
-knife!
+Here is normal Rick.
+
+Until he does some weird chemical things.
+
+
+-----
+
+<img width="1000%" src="rick2.png" title="Cronenberg Rick" />
+
+-----
+
+Rick is mutated! Old Rick is gone! He's all Cronenberg'ed up!
+
+
+-----
+
+<img width="1000%" src="tree.png" title="commit graph" />
+
+-----
+
+Make new versions! It's a DAG now!
+
+
+-----
+
+reproducible research
+
+-----
+
+What is research that isn't reproducible? Wrong!
+
+
+-----
+
+[better demo]
+
+-----
+
+Using `important_stats_20151111.xlsx`.
+
+
+-----
+
+<img src="git.png" width="1000%" title="git" />
+
+-----
+
+[git](http://git-scm.com/) is the real answer.
+
+
+-----
+
+separation of concerns
+
+-----
+
+This is concept two.
+
+
+-----
+
+ * entry
+ * storage
+ * calculation
+ * presentation
+
+-----
+
+These are all things that we were doing in Excel.
+
+
+-----
+
+<img src="swiss_army_knife.png" title="Swiss Army knife" height="1000%"/>
+
+-----
+
+At least for tools, usually a jack of all trades is a master of none.
+
+It can be convenient to have a Swiss Army knife around, but it isn't the tool of choice when a professional goes to work.
+
+
+-----
+
+[better demo]
+
+-----
+
+Use Excel to change values, save as CSV.
+
+
+-----
+
+interoperability
+
+-----
+
+Choose tools that work together! Multiply possibilities!
 
 
 -----
@@ -200,11 +289,94 @@ knife!
 
 -----
 
-quote!
+This is a quote from a [presentation](https://www.youtube.com/watch?v=GdoDLuPe-Wg) given by [Jeffrey Heer](https://twitter.com/jeffrey_heer).
 
-([presentation](https://www.youtube.com/watch?v=GdoDLuPe-Wg) from [Jeffrey Heer](https://twitter.com/jeffrey_heer))
 
-What ideas have you had?
+-----
+
+<img src="person.png" title="person" height="1000%" />
+
+-----
+
+Interview person who only works with other club members.
+
+
+-----
+
+open standards
+
+-----
+
+Some standardization is necessary, but it should be open and Free!
+
+
+-----
+
+`text text text text text text`
+
+-----
+
+Text is great!
+
+
+-----
+
+<img src="git.png" width="1000%" title="git" />
+
+-----
+
+`git` example: lots of vendors, etc. Not locked in!
+
+
+-----
+
+languages: tools for making tools
+
+-----
+
+R and Python!
+
+
+-----
+
+[better demo]
+
+-----
+
+Write it in R! In RStudio! Yeah! (See `important_mean.R`.)
+
+`R` just for calculation!
+
+```bash
+Rscript important_mean.R | cowsay
+```
+
+`cowsay` just for presentation!
+
+
+-----
+
+message-passing
+
+-----
+
+How does anyone know what I'm working on? The changes I've made? etc.
+
+Publish widely! Making available is different than notifying!
+
+Give your paper to someone else!
+
+
+-----
+
+ * immutability
+ * separation of concerns
+ * interoperability
+ * message-passing
+
+-----
+
+Wrapping up!
 
 
 -----
