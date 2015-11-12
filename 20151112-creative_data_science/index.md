@@ -115,24 +115,96 @@ But I sure don't have your expertise, experience, and other knowledge about ever
 
 This kind of event doesn't make sense if it's just me talking and then everybody goes back to working exactly the same as they always do.
 
-You've come together in this safe collaborative space. The people who should get something out of it are you.
-
-Today could be the day you have that great idea that saves the world!
-
-I don't care at all if it's related to what I'm talking about!
-
-But I will ask at the end for you to identify an action to take that you wouldn't have taken if you weren't in this room today.
+You've come together in this safe collaborative space. The people who should get something out of it are you. What will you go on to do that you wouldn't have done if you weren't in this room today? This is a chance for you to think up something great! It could be the opposite of what I suggest, or totally unrelated. Today could be the day you have that great idea that saves the world!
 
 Create!
 
 
+-----
 
-interdisciplinary thinking (vs. disciplinary thinking)
+[demo]
 
-“The idea is not to replace one tool with another but rather build a better ecosystem of complementary tools.” ([presentation](https://www.youtube.com/watch?v=GdoDLuPe-Wg) from [Jeffrey Heer](https://twitter.com/jeffrey_heer))
+-----
+
+This next bit is a kind of game.
+
+I'm going to do a demonstration with Excel, which I understand some of you have seen before, and I want you to evaluate what I do.
+
+It's as simple as "Aaron did X, and it was good (or bad) because Y."
+
+After I finish, we'll discuss in pairs and try to get a list of twelve such evaluations.
 
 
-What are you going to take from today?
+-----
+
+<img src="important_stats1.png" title="screenshot" />
+
+-----
+
+Here's what `important_stats.xlsx` looks like originally.
+
+
+-----
+
+<img src="important_stats2.png" title="screenshot" />
+
+-----
+
+Here's what `important_stats.xlsx` looks like after we're done with it.
+
+
+-----
+
+Discussion!
+
+ * good things?
+ * bad things?
+ * WWYD?
+
+-----
+
+That's "What Would You Do".
+
+
+
+-----
+
+<img src="rick1.png" title="healthy Rick" />
+
+-----
+
+mutate!
+
+
+-----
+
+<img src="rick2.png" title="Cronenberg Rick" />
+
+-----
+
+mutated!
+
+
+-----
+
+<img src="swiss_army_knife.png" title="Swiss Army knife" />
+
+-----
+
+knife!
+
+
+-----
+
+“The idea is not to replace one tool with another but rather build a better ecosystem of complementary tools.”
+
+-----
+
+quote!
+
+([presentation](https://www.youtube.com/watch?v=GdoDLuPe-Wg) from [Jeffrey Heer](https://twitter.com/jeffrey_heer))
+
+What ideas have you had?
 
 
 -----
