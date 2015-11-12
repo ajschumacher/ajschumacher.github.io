@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-11-12: [Creative Data Science](/20151112-creative_data_science/)
  * 2015-09-07: [Interactive Perceptron Training Toy](/20150907-interactive_perceptron_training_toy/)
  * 2015-07-05: [Don't Shoot the Dog!](/20150705-dont_shoot_the_dog/)
  * 2015-06-16: [Code Reading Question](/20150616-code_reading_question/)

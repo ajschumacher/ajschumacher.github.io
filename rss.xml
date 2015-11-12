@@ -7,6 +7,245 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Creative Data Science</title>
+<description><![CDATA[
+
+<p><em>A &#8220;Brown Bag Lunch&#8221; &#8220;Chalk Talk&#8221; for the <a href="http://www.worldbank.org/">World Bank Group</a> IFC (<a href="http://www.ifc.org/">International Finance Corporation</a>) RMES (<a href="http://red-sphere.com/clients/WBG/video/index.html">Results, Measurement and Evaluation Stream</a>) on Thursday November 12, 2015. (<a href="big.html">slides</a>)</em></p>
+<p>This is the flyer the World Bank folks made:</p>
+<p><img alt="flyer" src="flyer.png"></p>
+<p>Here are some questions the audience was asked to answer and discuss before things got rolling:</p>
+<ul>
+<li>What are you reading?</li>
+<li>What is your favorite tool, process, or technique for your work?</li>
+<li>What is your <em>least</em> favorite tool, process, or technique for your work?</li>
+<li>What was the last new tool, process, or technique you learned (or are currently learning)?</li>
+<li>What would you like to learn next?</li>
+</ul>
+<p>The text below starts out fairly complete, and then toward the end it's more demo and telegraphic notes to myself.</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img height="1000%" src="tool_bench.jpg" title="tool bench"></p>
+<hr>
+<p>I was invited to give a talk about &#8220;the data scientist's toolbox&#8221;.</p>
+<p>A lot of people, when they hear &#8220;the data scientist's toolbox&#8221;, think of programming languages, or particular suites of implementations like Hadoop or Spark.</p>
+<hr>
+<p><img width="1000%" src="alexnet.png" title="AlexNet"></p>
+<hr>
+<p>So here's a tool!</p>
+<p>It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use a Caffe Model Zoo implementation, which would still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.</p>
+<p>This might be interesting for some people, but for a lot of people I suspect it would not be directly useful.</p>
+<hr>
+<p>&#8220;Be regular and orderly in your life so that you may be violent and original in your work.&#8221;</p>
+<hr>
+<p>I came across this <a href="https://en.wikipedia.org/wiki/Gustave_Flaubert">Flaubert</a> quote <a href="http://planspace.org/2014/01/19/daily-rituals-is-sort-of-inspiring/">somewhere</a>, and I like it quite a lot.</p>
+<p>The tools I want to focus on help me to be regular and orderly in my everyday work.</p>
+<p>Being regular and orderly in everyday work means that everyday work becomes easier, leaving capacity for more sophisticated work.</p>
+<p>From the other side, even if your work is very sophisticated, you still have to attend to the everyday, and life will be better if it is well attended.</p>
+<hr>
+<p><img src="canvas.jpg" title="blank canvas" width="1000%"></p>
+<hr>
+<p>Another way to think about tools is to weigh what's more important to the painting, the painter or the brush?</p>
+<p>Certainly you need both, and tools are more or less a requirement everywhere. But the mental tools, the skills and experience of the painter, these make the lion's share of the difference in the end results.</p>
+<p>I haven't taught painting, but I've taught &#8220;data science tools&#8221; for a number of years, and my overwhelming impression has been that mental tools matter more than the particular software people happen to use.</p>
+<p>The good news is that while you may not always be able to choose your tools, you can always choose (and improve) the self that you bring to them!</p>
+<hr>
+<p><img height="1000%" src="debugging_teams.jpg" title="Debugging Teams cover"></p>
+<hr>
+<p>The first question I asked earlier (&#8220;What are you reading?&#8221;) may have seemed not to be about tools, but it is. Reading builds you new tools.</p>
+<p>Here's what I'm currently reading: a book called &#8220;Debugging Teams&#8221;. Good book!</p>
+<p>You have a great team here at the World Bank, and I want to point out that you're doing a great thing today, taking your lunch to become even greater. That's exactly the kind of thing that strong teams do.</p>
+<hr>
+<p>create</p>
+<hr>
+<p>A central point of &#8220;Debugging Teams&#8221; is the importance of humility, respect, and trust.</p>
+<p>In that spirit, let me describe a best-case scenario for our time together:</p>
+<p>I will mostly tell you about other people's ideas. (And I may not always cite sources.)</p>
+<p>Worse, I probably won't even have quite the right ideas for you.</p>
+<p>I'm going to talk about some things that I think help create good work with data.</p>
+<p>But I sure don't have your expertise, experience, and other knowledge about everything that you're working on.</p>
+<p>This kind of event doesn't make sense if it's just me talking and then everybody goes back to working exactly the same as they always do.</p>
+<p>You've come together in this safe collaborative space. The people who should get something out of it are you. What will you go on to do that you wouldn't have done if you weren't in this room today? This is a chance for you to think up something great! It could be the opposite of what I suggest, or totally unrelated. Today could be the day you have that great idea that saves the world!</p>
+<p>Create!</p>
+<hr>
+<ul>
+<li>immutability</li>
+<li>separation of concerns</li>
+<li>interoperability</li>
+<li>message-passing</li>
+</ul>
+<hr>
+<p>These are the key ideas that I want to explore today. It's okay if they don't make sense now.</p>
+<hr>
+<p>[demo]</p>
+<hr>
+<p>This bit is a kind of game.</p>
+<p>I'm going to do a demonstration with Excel, which I understand some of you have seen before, and I want you to evaluate what I do.</p>
+<p>It's as simple as "Aaron did X, and it was good (or bad) because Y."</p>
+<p>After I finish, we'll discuss in pairs and try to get a list of twelve such evaluations.</p>
+<hr>
+<p><img src="important_stats1.png" title="screenshot"></p>
+<hr>
+<p>Here's what <code>important_stats.xlsx</code> looks like originally.</p>
+<hr>
+<p><img src="important_stats2.png" title="screenshot"></p>
+<hr>
+<p>Here's what <code>important_stats.xlsx</code> looks like after we're done with it.</p>
+<hr>
+<p>Discussion!</p>
+<ul>
+<li>good things?</li>
+<li>bad things?</li>
+<li>WWYD?</li>
+</ul>
+<hr>
+<p>That's "What Would You Do".</p>
+<p>Let's get twelve things!</p>
+<hr>
+<p>immutability</p>
+<hr>
+<p>What is this?</p>
+<hr>
+<p><img height="1000%" src="rick1.png" title="healthy Rick"></p>
+<hr>
+<p>Here is normal Rick.</p>
+<p>Until he does some weird chemical things.</p>
+<hr>
+<p><img width="1000%" src="rick2.png" title="Cronenberg Rick"></p>
+<hr>
+<p>Rick is mutated! Old Rick is gone! He's all Cronenberg'ed up!</p>
+<hr>
+<p>destroy &#8800; create</p>
+<hr>
+<p>Old Rick has been <em>destroyed</em>, which is the opposite of <em>creative</em>. We want to make things, not destroy them!</p>
+<p>When I saved over the original version of the file, I destroyed it! It is gone forever!</p>
+<hr>
+<p>reproducible research</p>
+<hr>
+<p>What is research that isn't reproducible? Wrong!</p>
+<hr>
+<p><img width="1000%" src="tree.png" title="commit graph"></p>
+<hr>
+<p>Make new versions! It's a DAG now!</p>
+<hr>
+<p>[demo]</p>
+<hr>
+<p>Using <code>important_stats_20151111.xlsx</code>.</p>
+<hr>
+<p><img src="git.png" width="1000%" title="git"></p>
+<hr>
+<p><a href="http://git-scm.com/">git</a> is the real answer.</p>
+<hr>
+<p>separation of concerns</p>
+<hr>
+<p>This is concept two.</p>
+<hr>
+<ul>
+<li>entry/editing</li>
+<li>storage</li>
+<li>calculation</li>
+<li>presentation</li>
+</ul>
+<hr>
+<p>These are all things that we were doing in Excel.</p>
+<hr>
+<p><img src="swiss_army_knife.png" title="Swiss Army knife" height="1000%"></p>
+<hr>
+<p>Some people use "Swiss Army knife" as a kind of compliment, but I don't think it should be. You've got a knife and a screwdriver, but you almost certainly have your very <em>worst</em> knife and your very <em>worst</em> screwdriver.</p>
+<p>At least for tools, usually a jack of all trades is a master of none.</p>
+<p>It can be convenient to have a Swiss Army knife around, but it isn't the tool of choice when a professional goes to work.</p>
+<hr>
+<p>[demo]</p>
+<hr>
+<p>Use Excel to change values, save as CSV; now we have data entry and storage separated.</p>
+<hr>
+<p>interoperability</p>
+<hr>
+<p>Choose tools that work together! Multiply possibilities!</p>
+<hr>
+<p>&#8220;The idea is not to replace one tool with another but rather build a better ecosystem of complementary tools.&#8221;</p>
+<hr>
+<p>This is a quote from a <a href="https://www.youtube.com/watch?v=GdoDLuPe-Wg">presentation</a> given by <a href="https://twitter.com/jeffrey_heer">Jeffrey Heer</a>.</p>
+<hr>
+<p><img src="person.png" title="person" height="1000%"></p>
+<hr>
+<p>Interview person who only works with other club members.</p>
+<hr>
+<p>open standards</p>
+<hr>
+<p>Some standardization is necessary, but it should be open and Free!</p>
+<hr>
+<p><code>text text text text text text</code></p>
+<hr>
+<p>Text is great!</p>
+<hr>
+<p><img src="git.png" width="1000%" title="git"></p>
+<hr>
+<p><code>git</code> example: lots of vendors, etc. Not locked in!</p>
+<hr>
+<p>languages: tools for making tools</p>
+<hr>
+<p>R and Python!</p>
+<hr>
+<p>[demo]</p>
+<hr>
+<p>Write it in R! In RStudio! Yeah! (See <code>important_mean.R</code>.)</p>
+<p>Using <code>R</code> just for calculation!</p>
+<p>Add <code>cowsay</code> for presentation!</p>
+<pre><code class="language-bash">Rscript important_mean.R | cowsay</code></pre>
+
+<p>Repeat with Python! In Emacs! Yeah! (See <code>important_mean.py</code>.)</p>
+<p>Using <code>python</code> just for calculation!</p>
+<p>Add <code>cowsay</code> for presentation!</p>
+<pre><code class="language-bash">python important_mean.py | cowsay</code></pre>
+
+<pre><code> __________________
+&lt; 0.00331428571429 &gt;
+ ------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||</code></pre>
+
+<hr>
+<p>message-passing</p>
+<hr>
+<p>Saw some with the connections between R, Python, and <code>cowsay</code>.</p>
+<p>How does anyone know what I'm working on? The changes I've made? etc.</p>
+<p>Publish widely! Making available is different than notifying!</p>
+<p>Give your paper to someone else!</p>
+<hr>
+<ul>
+<li>immutability</li>
+<li>separation of concerns</li>
+<li>interoperability</li>
+<li>message-passing</li>
+</ul>
+<hr>
+<p>Wrapping up!</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p>    
+    ]]></description>
+<link>http://planspace.org/20151112-creative_data_science/</link>
+<guid>http://planspace.org/20151112-creative_data_science/</guid>
+<pubDate>Thu, 12 Nov 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Interactive Perceptron Training Toy</title>
 <description><![CDATA[
 
@@ -28,7 +267,7 @@
     ]]></description>
 <link>http://planspace.org/20150907-interactive_perceptron_training_toy/</link>
 <guid>http://planspace.org/20150907-interactive_perceptron_training_toy/</guid>
-<pubDate>Sat, 05 Sep 2015 12:00:00 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2015 12:00:00 -0500</pubDate>
 </item>
 <item>
 <title>Don't Shoot the Dog!</title>
@@ -2191,7 +2430,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.cross_validation import train_test_split
 
 X, y = np.random.randn(100, 20), np.random.randn(100)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 model = LinearRegression()
 model.fit(X_train, y_train)</code></pre>
@@ -2390,30 +2629,6 @@ git push -u origin --tags</code></pre>
 <link>http://planspace.org/20150125-monads_by_diagram/</link>
 <guid>http://planspace.org/20150125-monads_by_diagram/</guid>
 <pubDate>Sun, 25 Jan 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Use pew, not virtualenvwrapper, for Python virtualenvs</title>
-<description><![CDATA[
-
-<p>Have you noticed how good <a href="http://docs.python-guide.org/">The Hitchhiker&#8217;s Guide to Python</a> is? The documentation there on <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtualenv</a> is exemplary.</p>
-<p>Of course nobody wants to use virtualenvs directly, which is why virtualenvwrapper exists. But as <a href="http://datagrok.org/">Lamb</a> pointed out, <a href="https://gist.github.com/datagrok/2199506">Virtualenv's <code>bin/activate</code> is Doing It Wrong</a>, and virtualenvwrapper doesn't do it right either. Also, it's annoying to run env'ed Python via <a href="http://en.wikipedia.org/wiki/Cron">cron</a>.</p>
-<p>The solution is to use <a href="https://github.com/berdario/pew">pew</a> instead. The Python Environment Wrapper (pew) handles your environment elegantly. This includes not mangling your <code>PS1</code>, though you can still display <code>VIRTUAL_ENV</code> information in your prompt if you want, and however you want. Also, suddenly all your virtualenv tasks are pew sub-commands, which means all you have to remember is <code>pew</code>. Typing <code>pew</code> alone shows all the pew commands, with helpful descriptions.</p>
-<p>I no longer set the <code>WORKON_HOME</code> environment variable. This means pew will use the default <code>~/.local/share/virtualenvs</code>, which is a good choice. It's consistent with <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>, and it means you don't rely on <code>WORKON_HOME</code> to find your virtualenvs, which is nice for cron.</p>
-<p>The location of <code>pew</code> is <code>/usr/local/bin</code>. For convenience, I suggest adding a <code>PATH</code> line to your crontab. The default <code>PATH</code> is <code>/usr/bin:/bin</code>, so the following adds one entry:</p>
-<pre><code>PATH=/usr/local/bin:/usr/bin:/bin</code></pre>
-
-<p>With that done, you can easily run any Python script you want in any virtualenv you want, via cron, with concise syntax:</p>
-<pre><code>* * * * * pew in my_env my_script.py</code></pre>
-
-<p>The example assumes <code>my_script.py</code> is in your home directory, executable, and with the standard <code>#!/usr/bin/env python</code> shebang.</p>
-<p>I find this to be a very nice setup: <code>pew workon my_env</code> and develop <code>my_script.py</code> however I want, and <code>pew in my_env my_script.py</code> to run in that virtualenv from cron or anywhere else.</p>
-<hr>
-<p>Related tools: <a href="https://virtualenv.pypa.io/">virtualenv</a>, <a href="https://virtualenvwrapper.readthedocs.org/">virtualenvwrapper</a>, <a href="https://github.com/sashahart/vex">vex</a>, <a href="https://github.com/zimbatm/direnv">direnv</a>, probably more...</p>
-<p>Thanks to <a href="https://twitter.com/jessicagarson">Jessica</a>, <a href="https://twitter.com/necaris">Rami</a>, and <a href="https://twitter.com/reconbot">Francis</a> for thoughts on this.</p>    
-    ]]></description>
-<link>http://planspace.org/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/</link>
-<guid>http://planspace.org/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/</guid>
-<pubDate>Tue, 20 Jan 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
