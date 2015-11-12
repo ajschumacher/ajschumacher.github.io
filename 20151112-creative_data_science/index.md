@@ -1,6 +1,6 @@
 # Creative Data Science
 
-*A “Chalk Talk” “Brown Bag Lunch” for the [World Bank Group](http://www.worldbank.org/) IFC ([International Finance Corporation](http://www.ifc.org/)) RMES ([Results, Measurement and Evaluation Stream](http://red-sphere.com/clients/WBG/video/index.html)) on Thursday November 12, 2015. ([slides](big.html))*
+*A “Brown Bag Lunch” “Chalk Talk” for the [World Bank Group](http://www.worldbank.org/) IFC ([International Finance Corporation](http://www.ifc.org/)) RMES ([Results, Measurement and Evaluation Stream](http://red-sphere.com/clients/WBG/video/index.html)) on Thursday November 12, 2015. ([slides](big.html))*
 
 This is the flyer the World Bank folks made:
 
@@ -13,6 +13,8 @@ Here are some questions the audience was asked to answer and discuss before thin
  * What is your _least_ favorite tool, process, or technique for your work?
  * What was the last new tool, process, or technique you learned (or are currently learning)?
  * What would you like to learn next?
+
+The text below starts out fairly complete, and then toward the end it's more demo and telegraphic notes to myself.
 
 
 -----
@@ -36,7 +38,7 @@ Hi! I'm Aaron. This is my blog and [my twitter handle](https://twitter.com/plana
 
 I was invited to give a talk about “the data scientist's toolbox”.
 
-A lot of people, when they hear “the data scientist's toolbox”, think of some programming language, or some particular suite of implementations like Hadoop or Spark.
+A lot of people, when they hear “the data scientist's toolbox”, think of programming languages, or particular suites of implementations like Hadoop or Spark.
 
 
 -----
@@ -45,11 +47,11 @@ A lot of people, when they hear “the data scientist's toolbox”, think of som
 
 -----
 
-Here's a tool!
+So here's a tool!
 
-It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use an implementation from the Model Zoo on Caffe, which would probably still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.
+It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use a Caffe Model Zoo implementation, which would still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.
 
-This might be interesting for some people, but for a lot of people I suspect it would not be.
+This might be interesting for some people, but for a lot of people I suspect it would not be directly useful.
 
 
 -----
@@ -60,7 +62,7 @@ This might be interesting for some people, but for a lot of people I suspect it 
 
 I came across this [Flaubert](https://en.wikipedia.org/wiki/Gustave_Flaubert) quote [somewhere](http://planspace.org/2014/01/19/daily-rituals-is-sort-of-inspiring/), and I like it quite a lot.
 
-The tools I'm focusing on help me to be regular and orderly in my everyday work.
+The tools I want to focus on help me to be regular and orderly in my everyday work.
 
 Being regular and orderly in everyday work means that everyday work becomes easier, leaving capacity for more sophisticated work.
 
@@ -73,7 +75,7 @@ From the other side, even if your work is very sophisticated, you still have to 
 
 -----
 
-What's more important to the painting, the painter or the brush?
+Another way to think about tools is to weigh what's more important to the painting, the painter or the brush?
 
 Certainly you need both, and tools are more or less a requirement everywhere. But the mental tools, the skills and experience of the painter, these make the lion's share of the difference in the end results.
 
@@ -122,11 +124,23 @@ Create!
 
 -----
 
+ * immutability
+ * separation of concerns
+ * interoperability
+ * message-passing
+
+-----
+
+These are the key ideas that I want to explore today. It's okay if they don't make sense now.
+
+
+-----
+
 [demo]
 
 -----
 
-This next bit is a kind of game.
+This bit is a kind of game.
 
 I'm going to do a demonstration with Excel, which I understand some of you have seen before, and I want you to evaluate what I do.
 
@@ -174,7 +188,7 @@ immutability
 
 -----
 
-I saved over the original version of the file!
+What is this?
 
 
 -----
@@ -199,11 +213,13 @@ Rick is mutated! Old Rick is gone! He's all Cronenberg'ed up!
 
 -----
 
-<img width="1000%" src="tree.png" title="commit graph" />
+destroy ≠ create
 
 -----
 
-Make new versions! It's a DAG now!
+Old Rick has been _destroyed_, which is the opposite of _creative_. We want to make things, not destroy them!
+
+When I saved over the original version of the file, I destroyed it! It is gone forever!
 
 
 -----
@@ -217,7 +233,16 @@ What is research that isn't reproducible? Wrong!
 
 -----
 
-[better demo]
+<img width="1000%" src="tree.png" title="commit graph" />
+
+-----
+
+Make new versions! It's a DAG now!
+
+
+-----
+
+[demo]
 
 -----
 
@@ -244,7 +269,7 @@ This is concept two.
 
 -----
 
- * entry
+ * entry/editing
  * storage
  * calculation
  * presentation
@@ -260,6 +285,8 @@ These are all things that we were doing in Excel.
 
 -----
 
+Some people use "Swiss Army knife" as a kind of compliment, but I don't think it should be. You've got a knife and a screwdriver, but you almost certainly have your very _worst_ knife and your very _worst_ screwdriver.
+
 At least for tools, usually a jack of all trades is a master of none.
 
 It can be convenient to have a Swiss Army knife around, but it isn't the tool of choice when a professional goes to work.
@@ -267,11 +294,11 @@ It can be convenient to have a Swiss Army knife around, but it isn't the tool of
 
 -----
 
-[better demo]
+[demo]
 
 -----
 
-Use Excel to change values, save as CSV.
+Use Excel to change values, save as CSV; now we have data entry and storage separated.
 
 
 -----
@@ -339,19 +366,40 @@ R and Python!
 
 -----
 
-[better demo]
+[demo]
 
 -----
 
 Write it in R! In RStudio! Yeah! (See `important_mean.R`.)
 
-`R` just for calculation!
+Using `R` just for calculation!
+
+Add `cowsay` for presentation!
 
 ```bash
 Rscript important_mean.R | cowsay
 ```
 
-`cowsay` just for presentation!
+Repeat with Python! In Emacs! Yeah! (See `important_mean.py`.)
+
+Using `python` just for calculation!
+
+Add `cowsay` for presentation!
+
+```bash
+python important_mean.py | cowsay
+```
+
+```
+ __________________
+< 0.00331428571429 >
+ ------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
 
 
 -----
@@ -359,6 +407,8 @@ Rscript important_mean.R | cowsay
 message-passing
 
 -----
+
+Saw some with the connections between R, Python, and `cowsay`.
 
 How does anyone know what I'm working on? The changes I've made? etc.
 

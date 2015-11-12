@@ -11,7 +11,7 @@
     <article>
 <h1>Creative Data Science</h1>
 <p class="date">Thursday November 12, 2015</p>
-<p><em>A “Chalk Talk” “Brown Bag Lunch” for the <a href="http://www.worldbank.org/">World Bank Group</a> IFC (<a href="http://www.ifc.org/">International Finance Corporation</a>) RMES (<a href="http://red-sphere.com/clients/WBG/video/index.html">Results, Measurement and Evaluation Stream</a>) on Thursday November 12, 2015. (<a href="big.html">slides</a>)</em></p>
+<p><em>A “Brown Bag Lunch” “Chalk Talk” for the <a href="http://www.worldbank.org/">World Bank Group</a> IFC (<a href="http://www.ifc.org/">International Finance Corporation</a>) RMES (<a href="http://red-sphere.com/clients/WBG/video/index.html">Results, Measurement and Evaluation Stream</a>) on Thursday November 12, 2015. (<a href="big.html">slides</a>)</em></p>
 <p>This is the flyer the World Bank folks made:</p>
 <p><img alt="flyer" src="flyer.png" /></p>
 <p>Here are some questions the audience was asked to answer and discuss before things got rolling:</p>
@@ -22,6 +22,7 @@
 <li>What was the last new tool, process, or technique you learned (or are currently learning)?</li>
 <li>What would you like to learn next?</li>
 </ul>
+<p>The text below starts out fairly complete, and then toward the end it's more demo and telegraphic notes to myself.</p>
 <hr />
 <p><center>
 planspace.org</p>
@@ -33,24 +34,24 @@ planspace.org</p>
 <p><img height="1000%" src="tool_bench.jpg" title="tool bench" /></p>
 <hr />
 <p>I was invited to give a talk about “the data scientist's toolbox”.</p>
-<p>A lot of people, when they hear “the data scientist's toolbox”, think of some programming language, or some particular suite of implementations like Hadoop or Spark.</p>
+<p>A lot of people, when they hear “the data scientist's toolbox”, think of programming languages, or particular suites of implementations like Hadoop or Spark.</p>
 <hr />
 <p><img width="1000%" src="alexnet.png" title="AlexNet" /></p>
 <hr />
-<p>Here's a tool!</p>
-<p>It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use an implementation from the Model Zoo on Caffe, which would probably still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.</p>
-<p>This might be interesting for some people, but for a lot of people I suspect it would not be.</p>
+<p>So here's a tool!</p>
+<p>It's the AlexNet deep convolutional neural network, which was state of the art for identifying things in images a couple years ago. We could use a Caffe Model Zoo implementation, which would still have the 11-by-11 convolutions on the first layer, but likely wouldn't split the computation across two GPUs that way, yadda yadda yadda, this kind of thing is relevant to some of the work my current company is doing, yadda yadda yadda.</p>
+<p>This might be interesting for some people, but for a lot of people I suspect it would not be directly useful.</p>
 <hr />
 <p>“Be regular and orderly in your life so that you may be violent and original in your work.”</p>
 <hr />
 <p>I came across this <a href="https://en.wikipedia.org/wiki/Gustave_Flaubert">Flaubert</a> quote <a href="http://planspace.org/2014/01/19/daily-rituals-is-sort-of-inspiring/">somewhere</a>, and I like it quite a lot.</p>
-<p>The tools I'm focusing on help me to be regular and orderly in my everyday work.</p>
+<p>The tools I want to focus on help me to be regular and orderly in my everyday work.</p>
 <p>Being regular and orderly in everyday work means that everyday work becomes easier, leaving capacity for more sophisticated work.</p>
 <p>From the other side, even if your work is very sophisticated, you still have to attend to the everyday, and life will be better if it is well attended.</p>
 <hr />
 <p><img src="canvas.jpg" title="blank canvas" width="1000%" /></p>
 <hr />
-<p>What's more important to the painting, the painter or the brush?</p>
+<p>Another way to think about tools is to weigh what's more important to the painting, the painter or the brush?</p>
 <p>Certainly you need both, and tools are more or less a requirement everywhere. But the mental tools, the skills and experience of the painter, these make the lion's share of the difference in the end results.</p>
 <p>I haven't taught painting, but I've taught “data science tools” for a number of years, and my overwhelming impression has been that mental tools matter more than the particular software people happen to use.</p>
 <p>The good news is that while you may not always be able to choose your tools, you can always choose (and improve) the self that you bring to them!</p>
@@ -73,9 +74,18 @@ planspace.org</p>
 <p>You've come together in this safe collaborative space. The people who should get something out of it are you. What will you go on to do that you wouldn't have done if you weren't in this room today? This is a chance for you to think up something great! It could be the opposite of what I suggest, or totally unrelated. Today could be the day you have that great idea that saves the world!</p>
 <p>Create!</p>
 <hr />
+<ul>
+<li>immutability</li>
+<li>separation of concerns</li>
+<li>interoperability</li>
+<li>message-passing</li>
+</ul>
+<hr />
+<p>These are the key ideas that I want to explore today. It's okay if they don't make sense now.</p>
+<hr />
 <p>[demo]</p>
 <hr />
-<p>This next bit is a kind of game.</p>
+<p>This bit is a kind of game.</p>
 <p>I'm going to do a demonstration with Excel, which I understand some of you have seen before, and I want you to evaluate what I do.</p>
 <p>It's as simple as "Aaron did X, and it was good (or bad) because Y."</p>
 <p>After I finish, we'll discuss in pairs and try to get a list of twelve such evaluations.</p>
@@ -100,7 +110,7 @@ planspace.org</p>
 <hr />
 <p>immutability</p>
 <hr />
-<p>I saved over the original version of the file!</p>
+<p>What is this?</p>
 <hr />
 <p><img height="1000%" src="rick1.png" title="healthy Rick" /></p>
 <hr />
@@ -111,15 +121,20 @@ planspace.org</p>
 <hr />
 <p>Rick is mutated! Old Rick is gone! He's all Cronenberg'ed up!</p>
 <hr />
-<p><img width="1000%" src="tree.png" title="commit graph" /></p>
+<p>destroy ≠ create</p>
 <hr />
-<p>Make new versions! It's a DAG now!</p>
+<p>Old Rick has been <em>destroyed</em>, which is the opposite of <em>creative</em>. We want to make things, not destroy them!</p>
+<p>When I saved over the original version of the file, I destroyed it! It is gone forever!</p>
 <hr />
 <p>reproducible research</p>
 <hr />
 <p>What is research that isn't reproducible? Wrong!</p>
 <hr />
-<p>[better demo]</p>
+<p><img width="1000%" src="tree.png" title="commit graph" /></p>
+<hr />
+<p>Make new versions! It's a DAG now!</p>
+<hr />
+<p>[demo]</p>
 <hr />
 <p>Using <code>important_stats_20151111.xlsx</code>.</p>
 <hr />
@@ -132,7 +147,7 @@ planspace.org</p>
 <p>This is concept two.</p>
 <hr />
 <ul>
-<li>entry</li>
+<li>entry/editing</li>
 <li>storage</li>
 <li>calculation</li>
 <li>presentation</li>
@@ -142,12 +157,13 @@ planspace.org</p>
 <hr />
 <p><img src="swiss_army_knife.png" title="Swiss Army knife" height="1000%"/></p>
 <hr />
+<p>Some people use "Swiss Army knife" as a kind of compliment, but I don't think it should be. You've got a knife and a screwdriver, but you almost certainly have your very <em>worst</em> knife and your very <em>worst</em> screwdriver.</p>
 <p>At least for tools, usually a jack of all trades is a master of none.</p>
 <p>It can be convenient to have a Swiss Army knife around, but it isn't the tool of choice when a professional goes to work.</p>
 <hr />
-<p>[better demo]</p>
+<p>[demo]</p>
 <hr />
-<p>Use Excel to change values, save as CSV.</p>
+<p>Use Excel to change values, save as CSV; now we have data entry and storage separated.</p>
 <hr />
 <p>interoperability</p>
 <hr />
@@ -177,16 +193,31 @@ planspace.org</p>
 <hr />
 <p>R and Python!</p>
 <hr />
-<p>[better demo]</p>
+<p>[demo]</p>
 <hr />
 <p>Write it in R! In RStudio! Yeah! (See <code>important_mean.R</code>.)</p>
-<p><code>R</code> just for calculation!</p>
+<p>Using <code>R</code> just for calculation!</p>
+<p>Add <code>cowsay</code> for presentation!</p>
 <pre><code class="language-bash">Rscript important_mean.R | cowsay</code></pre>
 
-<p><code>cowsay</code> just for presentation!</p>
+<p>Repeat with Python! In Emacs! Yeah! (See <code>important_mean.py</code>.)</p>
+<p>Using <code>python</code> just for calculation!</p>
+<p>Add <code>cowsay</code> for presentation!</p>
+<pre><code class="language-bash">python important_mean.py | cowsay</code></pre>
+
+<pre><code> __________________
+&lt; 0.00331428571429 >
+ ------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||</code></pre>
+
 <hr />
 <p>message-passing</p>
 <hr />
+<p>Saw some with the connections between R, Python, and <code>cowsay</code>.</p>
 <p>How does anyone know what I'm working on? The changes I've made? etc.</p>
 <p>Publish widely! Making available is different than notifying!</p>
 <p>Give your paper to someone else!</p>
