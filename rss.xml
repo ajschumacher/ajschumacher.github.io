@@ -7,12 +7,97 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Debugging Teams</title>
+<description><![CDATA[
+
+<p><a href="http://shop.oreilly.com/product/0636920042372.do"><img alt="cover of debugging teams" src="debugging_teams.jpg"></a></p>
+<p>I read this book after listening to <a href="http://radar.oreilly.com/2015/10/the-first-rule-of-management-resist-the-urge-to-manage.html">a podcast</a>. It's been described as &#8220;<a href="https://en.wikipedia.org/wiki/How_to_Win_Friends_and_Influence_People">How to Win Friends and Influence People</a> for programmers&#8221;.</p>
+<p>Debugging Teams is supposed to be a new, less software-developer-specific version of <a href="http://shop.oreilly.com/product/0636920018025.do">Team Geek</a>. I haven't read Team Geek, but Debugging Teams still had pretty much that was focused on software-related things. I thought this was a good thing. Sure it could generalize.</p>
+<p>The main thesis of the book is their &#8220;HRT&#8221;: humility, respect, and trust. These are all good things to have. As they say:</p>
+<ul>
+<li><em>Humility</em> You are not the center of the universe. You&#8217;re neither omniscient nor infallible. You&#8217;re open to self-improvement.</li>
+<li><em>Respect</em> You genuinely care about others you work with. You treat them as human beings, and appreciate their abilities and accomplishments.</li>
+<li><em>Trust</em> You believe others are competent and will do the right thing, and you&#8217;re OK with letting them drive when appropriate.</li>
+</ul>
+<p>Here are some more quotes I pulled out as I was reading; some of them are themselves quotes.</p>
+<blockquote>
+<p>&#8220;People are basically a giant pile of intermittent bugs.&#8221;</p>
+<p>Shouldn&#8217;t people be allowed to work however they want? Actually, no. In this case we assert that you&#8217;re doing it wrong, and it is a big deal. Here&#8217;s why. Hiding Is Considered Harmful</p>
+<p>Bus factor (noun): the number of people that need to get hit by a bus before your project is completely doomed.</p>
+<p>we work best in tight feedback loops.</p>
+<p>Software development is a team sport.</p>
+<p>you are not your code. Say that over and over.</p>
+<p>&#8220;Failure is an option.&#8221;</p>
+<p>Write up &#8220;postmortems,&#8221; as they&#8217;re often called in our business. Take extra care to make sure the postmortem document isn&#8217;t just a useless list of apologies or excuses &#8212; that&#8217;s not its purpose. A proper postmortem should always contain an explanation of what was learned and what is going to change as a result of the learning experience. Then make sure you put it in an easy-to-find place and really follow through on the proposed changes. Remember that properly documenting failures also makes it easier for other people (present and future) to know what happened and avoid repeating history. Don&#8217;t erase your tracks &#8212; light them up like a runway for those who follow you!</p>
+<p>The problem is that once you reach a local maximum on your team, you stop learning.</p>
+<p>The more you are open to influence, the more you are able to influence; the more vulnerable you are, the stronger you appear.</p>
+<p>A &#8220;strong culture&#8221; is one that is open to change that improves it, yet is resistant to radical change that harms it.</p>
+<p>A good general rule around communication is to include as few people as necessary in synchronous communication (like meetings and phone calls), and to go for a broader audience in asynchronous communication (like email, issue trackers, and document comments).</p>
+<p>We like our meetings like we like our sewage treatment plants: few, far between, and downwind.</p>
+<p>We&#8217;ve seen some cultures where meeting attendance is equated with status, so nobody wanted to be left out. Not to put too fine a point on it, but that is patently insane.</p>
+<p>If you&#8217;re trying to design something new, try to include no more than five people in your meeting</p>
+<p>flat out ignore invitations to a meeting that has no agenda.</p>
+<p>many engineers rush right into coding before designing the software they intend to write, and this usually ends very badly.</p>
+<p>When many people first hear about IRC these days, they scoff at its primitive text-based environment because even the most modern of IRC clients tend to be less whizzy than outdated versions of iChat or Google Talk. Don&#8217;t be fooled by the outdated look and feel of IRC &#8212; its killer features are that it was designed for multiperson chat and it&#8217;s asynchronous; most clients keep an unlimited scroll-back record so that you can read back to see conversations among others that you missed. Slack is basically the modern-day version of IRC, and despite its whizzy integration of graphics, avatars, and emoji, at its heart it&#8217;s still a text-based messaging system like IRC. It may be tempting to try out fancy videoconferencing packages, shared whiteboard systems, and more, but these systems often tend to be ineffective and can eliminate the asynchronous advantage of text-based group chat. If you&#8217;re going to use something other than Slack or IRC, find something that is actually designed for group chat and isn&#8217;t just an instant messaging system with group chat bolted on.</p>
+<p>Comments should be focused on why the code is doing what it&#8217;s doing, not what the code is doing.</p>
+<p>infer what various symbols are and what invariants are true about them.</p>
+<p>attempting to add and remove names from a source file is a never-ending exercise in insanity.</p>
+<p>the overwhelming majority of effort that goes into a culture turns out to be communication.</p>
+<p>saying no to all of the distractions is what keeps you focused.</p>
+<p>the best leaders work to serve their team using the principles of humility, respect, and trust.</p>
+<p>A boat without a captain is nothing more than a floating waiting room</p>
+<p>Managers wind up acting like parents, and consequently employees react like children.</p>
+<p>Traditional managers worry about how to get things done, while leaders worry about what things get done&#8230;(and trust their team to figure out how to do it).</p>
+<p>A TL is typically responsible for the technical direction for all (or part) of a product, while a TLM is responsible for the technical direction for all (or part) of a product in addition to the careers and happiness of the people on the team.</p>
+<p>&#8220;Above all, resist the urge to manage.&#8221;</p>
+<p>you should strive to hire people who are smarter than you and can replace you.</p>
+<p>&#8220;Hope is not a strategy.&#8221;</p>
+<p>&#8220;A people hire other A people; B people hire C people.&#8221;</p>
+<p>As an engineer, you likely developed an excellent sense of skepticism and cynicism, but this can be a liability when you&#8217;re trying to lead a team.</p>
+<p>As a leader, your job is to inspire, but inspiration is a 24/7 job.</p>
+<p>In many cases, knowing the right person is more valuable than knowing the right answer.</p>
+<p>We strongly advise against using the compliment sandwich,</p>
+<p>It&#8217;s the behaviors you want to filter out, not particular individuals.</p>
+<p>Document all history: not just code history, but also design decisions, important bug fixes, and prior mistakes.</p>
+<p>Streamline the barrier to entry for newcomers.</p>
+<p>Attention and focus are the scarcest resources you have.</p>
+<p>A strong culture based on HRT is irreplaceable, while technical contributions are definitely replaceable.</p>
+<p>genius is such a commodity these days that it&#8217;s not acceptable to be an eccentric anymore.</p>
+<p>it&#8217;s not worth compromising your culture for the short-term gains</p>
+<p>there are only a few crazy people out there; the Internet just makes it seems like they all live next door.&#8221;</p>
+<p>Most people work in dysfunctional corporate bureaucracies and need to employ certain manipulative techniques to get things done effectively.</p>
+<p>It boils down to this: is your manager serving you? Or are you serving your manager? It should always be the former.</p>
+<p>&#8220;It&#8217;s impossible to simply stop a bad habit; you need to replace it with a good habit.&#8221;</p>
+<p>categorize all work as either &#8220;offensive&#8221; or &#8220;defensive.&#8221;</p>
+<p>Every company has a gray-market favor economy that lives outside the org chart,</p>
+<p>Every company has a &#8220;shadow&#8221; org chart that is unwritten but through which power and influence flow.</p>
+<p>A good Three Bullets and a Call to Action email contains (at most) three bullet points detailing the issue at hand, and one &#8212; and only one &#8212; call to action.</p>
+<p>Most industries are a lot smaller than you think, and people talk more than you think,</p>
+<p>Friends come and go&#8230;enemies accumulate.</p>
+<p>product laziness.</p>
+<p>It&#8217;s really obvious (and infuriating) when a programmer could have made something friendly and easy for the end user but didn&#8217;t bother.</p>
+<p>Most programmers vastly underestimate the importance of application speed (or latency, which sounds more scientific).</p>
+<p>&#8220;Speed is a feature.&#8221;</p>
+<p>An elegant design makes easy things easy and hard things possible.</p>
+<p>the user&#8217;s data needs to be accessible</p>
+<p>learn great patience.</p>
+<p>there is no such thing as a temporary lapse of integrity.</p>
+<p>Trust is your most sacred resource.</p>
+<p>Humans are unpredictable and tricky to deal with no matter what the context.</p>
+</blockquote>
+<p>And finally, <a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html">&#8220;You and Your Research&#8221; by Richard Hamming</a> seems like good reading they recommended.</p>    
+    ]]></description>
+<link>http://planspace.org/20151118-debugging_teams/</link>
+<guid>http://planspace.org/20151118-debugging_teams/</guid>
+<pubDate>Wed, 18 Nov 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Creative Data Science</title>
 <description><![CDATA[
 
 <p><em>A &#8220;Brown Bag Lunch&#8221; &#8220;Chalk Talk&#8221; for the <a href="http://www.worldbank.org/">World Bank Group</a> IFC (<a href="http://www.ifc.org/">International Finance Corporation</a>) RMES (<a href="http://red-sphere.com/clients/WBG/video/index.html">Results, Measurement and Evaluation Stream</a>) on Thursday November 12, 2015. (<a href="big.html">slides</a>)</em></p>
-<p>This is the flyer the World Bank folks made:</p>
-<p><img alt="flyer" src="flyer.png"></p>
+<p>This is the flier the World Bank folks made:</p>
+<p><img alt="flier" src="flier.png"></p>
 <p>Here are some questions the audience was asked to answer and discuss before things got rolling:</p>
 <ul>
 <li>What are you reading?</li>
@@ -2595,40 +2680,6 @@ git push -u origin --tags</code></pre>
 <link>http://planspace.org/20150126-to_migrate_from_github_to_bitbucket/</link>
 <guid>http://planspace.org/20150126-to_migrate_from_github_to_bitbucket/</guid>
 <pubDate>Mon, 26 Jan 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Monads by Diagram</title>
-<description><![CDATA[
-
-<p>Let's get some notation out of the way:</p>
-<p><img alt="intput -&gt; function -&gt; output" src="function_notation.jpg"></p>
-<p>A &#8220;function&#8221; is represented by a rectangle. Its arguments (&#8220;input&#8221;) appear above it, and its result (&#8220;output&#8221;) appears to its right.</p>
-<p><img alt="value and monadic value" src="values.jpg"></p>
-<p>We have some idea of &#8220;values&#8221; which can be worked with. We introduce the idea of a &#8220;monadic value&#8221; which can be thought of as &#8220;wrapping&#8221; our more familiar values.</p>
-<p><img alt="unit" src="unit.jpg"></p>
-<p>There's a function called &#8220;unit&#8221; which takes a value and returns a monadic value. Now we can make monadic values from our usual values.</p>
-<p><img alt="bind" src="bind.jpg"></p>
-<p>There's a function called &#8220;bind&#8221; which takes a function and a monadic value. The argument function takes a value and returns a monadic value. The argument monadic value gets unwrapped by &#8220;bind&#8221; and its value becomes the argument to the passed function. Now we can do things to our monadic values.</p>
-<p>That's it. Monads are defined. They should obey some reasonable rules, but that&#8217;s it.</p>
-<p><em>And yet you want more?</em></p>
-<p><img alt="map" src="map.jpg"></p>
-<p>Nobody wants to write functions that take a normal value and return a monadic value. The &#8220;map&#8221; function takes a normal function that knows nothing about monads and returns a function that takes and returns monadic values. Just use the resulting function on your monadic values! So convenient!</p>
-<p><img alt="join" src="join.jpg"></p>
-<p>The &#8220;join&#8221; function unwraps a doubly-monadic value. You want this.</p>
-<p><img alt="bind via map and join" src="bind_via_map_and_join.jpg"></p>
-<p>We can combine the &#8220;map&#8221; and &#8220;join&#8221; functions to get the &#8220;bind&#8221; function. Pretty neat!</p>
-<p><em>And yet you want a real explanation?</em></p>
-<p>For a lucid formal exposition, read <a href="http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf">Monads for Functional Programming</a>. The above is my attempt to express the key definitions there, without the mathematical Haskell notation.</p>
-<p>For a plain-talking explanation with practical examples in friendly Ruby, <a href="http://codon.com/refactoring-ruby-with-monads">read</a> or (preferably) <a href="https://www.youtube.com/watch?v=uTR__8RvgvM">watch</a> Refactoring Ruby with Monads. <a href="https://twitter.com/tomstuart">Tom Stuart</a> uses <code>from_value</code> for &#8220;unit&#8221;, <code>and_then</code> for &#8220;bind&#8221;, and <code>within</code> for calling &#8220;map&#8221; and applying the result.</p>
-<p>For a great overview of even more kinds of things and much better illustration than I can manage, read <a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">Functors, Applicatives, And Monads In Pictures</a>. This follows the Haskell in using <code>fmap</code> for &#8220;map&#8221;.</p>
-<p>And <a href="http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html">don't forget</a>:</p>
-<blockquote>
-<p>&#8220;a monad is a monoid in the category of endofunctors, what's the problem?&#8221;</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20150125-monads_by_diagram/</link>
-<guid>http://planspace.org/20150125-monads_by_diagram/</guid>
-<pubDate>Sun, 25 Jan 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

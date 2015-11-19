@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Debugging Teams</title>
+  </head>
+  <body>
+    <article>
+<h1>Debugging Teams</h1>
+<p class="date">Wednesday November 18, 2015</p>
+<p><a href="http://shop.oreilly.com/product/0636920042372.do"><img alt="cover of debugging teams" src="debugging_teams.jpg" /></a></p>
+<p>I read this book after listening to <a href="http://radar.oreilly.com/2015/10/the-first-rule-of-management-resist-the-urge-to-manage.html">a podcast</a>. It's been described as “<a href="https://en.wikipedia.org/wiki/How_to_Win_Friends_and_Influence_People">How to Win Friends and Influence People</a> for programmers”.</p>
+<p>Debugging Teams is supposed to be a new, less software-developer-specific version of <a href="http://shop.oreilly.com/product/0636920018025.do">Team Geek</a>. I haven't read Team Geek, but Debugging Teams still had pretty much that was focused on software-related things. I thought this was a good thing. Sure it could generalize.</p>
+<p>The main thesis of the book is their “HRT”: humility, respect, and trust. These are all good things to have. As they say:</p>
+<ul>
+<li><em>Humility</em> You are not the center of the universe. You’re neither omniscient nor infallible. You’re open to self-improvement.</li>
+<li><em>Respect</em> You genuinely care about others you work with. You treat them as human beings, and appreciate their abilities and accomplishments.</li>
+<li><em>Trust</em> You believe others are competent and will do the right thing, and you’re OK with letting them drive when appropriate.</li>
+</ul>
+<p>Here are some more quotes I pulled out as I was reading; some of them are themselves quotes.</p>
+<blockquote>
+<p>“People are basically a giant pile of intermittent bugs.”</p>
+<p>Shouldn’t people be allowed to work however they want? Actually, no. In this case we assert that you’re doing it wrong, and it is a big deal. Here’s why. Hiding Is Considered Harmful</p>
+<p>Bus factor (noun): the number of people that need to get hit by a bus before your project is completely doomed.</p>
+<p>we work best in tight feedback loops.</p>
+<p>Software development is a team sport.</p>
+<p>you are not your code. Say that over and over.</p>
+<p>“Failure is an option.”</p>
+<p>Write up “postmortems,” as they’re often called in our business. Take extra care to make sure the postmortem document isn’t just a useless list of apologies or excuses — that’s not its purpose. A proper postmortem should always contain an explanation of what was learned and what is going to change as a result of the learning experience. Then make sure you put it in an easy-to-find place and really follow through on the proposed changes. Remember that properly documenting failures also makes it easier for other people (present and future) to know what happened and avoid repeating history. Don’t erase your tracks — light them up like a runway for those who follow you!</p>
+<p>The problem is that once you reach a local maximum on your team, you stop learning.</p>
+<p>The more you are open to influence, the more you are able to influence; the more vulnerable you are, the stronger you appear.</p>
+<p>A “strong culture” is one that is open to change that improves it, yet is resistant to radical change that harms it.</p>
+<p>A good general rule around communication is to include as few people as necessary in synchronous communication (like meetings and phone calls), and to go for a broader audience in asynchronous communication (like email, issue trackers, and document comments).</p>
+<p>We like our meetings like we like our sewage treatment plants: few, far between, and downwind.</p>
+<p>We’ve seen some cultures where meeting attendance is equated with status, so nobody wanted to be left out. Not to put too fine a point on it, but that is patently insane.</p>
+<p>If you’re trying to design something new, try to include no more than five people in your meeting</p>
+<p>flat out ignore invitations to a meeting that has no agenda.</p>
+<p>many engineers rush right into coding before designing the software they intend to write, and this usually ends very badly.</p>
+<p>When many people first hear about IRC these days, they scoff at its primitive text-based environment because even the most modern of IRC clients tend to be less whizzy than outdated versions of iChat or Google Talk. Don’t be fooled by the outdated look and feel of IRC — its killer features are that it was designed for multiperson chat and it’s asynchronous; most clients keep an unlimited scroll-back record so that you can read back to see conversations among others that you missed. Slack is basically the modern-day version of IRC, and despite its whizzy integration of graphics, avatars, and emoji, at its heart it’s still a text-based messaging system like IRC. It may be tempting to try out fancy videoconferencing packages, shared whiteboard systems, and more, but these systems often tend to be ineffective and can eliminate the asynchronous advantage of text-based group chat. If you’re going to use something other than Slack or IRC, find something that is actually designed for group chat and isn’t just an instant messaging system with group chat bolted on.</p>
+<p>Comments should be focused on why the code is doing what it’s doing, not what the code is doing.</p>
+<p>infer what various symbols are and what invariants are true about them.</p>
+<p>attempting to add and remove names from a source file is a never-ending exercise in insanity.</p>
+<p>the overwhelming majority of effort that goes into a culture turns out to be communication.</p>
+<p>saying no to all of the distractions is what keeps you focused.</p>
+<p>the best leaders work to serve their team using the principles of humility, respect, and trust.</p>
+<p>A boat without a captain is nothing more than a floating waiting room</p>
+<p>Managers wind up acting like parents, and consequently employees react like children.</p>
+<p>Traditional managers worry about how to get things done, while leaders worry about what things get done…(and trust their team to figure out how to do it).</p>
+<p>A TL is typically responsible for the technical direction for all (or part) of a product, while a TLM is responsible for the technical direction for all (or part) of a product in addition to the careers and happiness of the people on the team.</p>
+<p>“Above all, resist the urge to manage.”</p>
+<p>you should strive to hire people who are smarter than you and can replace you.</p>
+<p>“Hope is not a strategy.”</p>
+<p>“A people hire other A people; B people hire C people.”</p>
+<p>As an engineer, you likely developed an excellent sense of skepticism and cynicism, but this can be a liability when you’re trying to lead a team.</p>
+<p>As a leader, your job is to inspire, but inspiration is a 24/7 job.</p>
+<p>In many cases, knowing the right person is more valuable than knowing the right answer.</p>
+<p>We strongly advise against using the compliment sandwich,</p>
+<p>It’s the behaviors you want to filter out, not particular individuals.</p>
+<p>Document all history: not just code history, but also design decisions, important bug fixes, and prior mistakes.</p>
+<p>Streamline the barrier to entry for newcomers.</p>
+<p>Attention and focus are the scarcest resources you have.</p>
+<p>A strong culture based on HRT is irreplaceable, while technical contributions are definitely replaceable.</p>
+<p>genius is such a commodity these days that it’s not acceptable to be an eccentric anymore.</p>
+<p>it’s not worth compromising your culture for the short-term gains</p>
+<p>there are only a few crazy people out there; the Internet just makes it seems like they all live next door.”</p>
+<p>Most people work in dysfunctional corporate bureaucracies and need to employ certain manipulative techniques to get things done effectively.</p>
+<p>It boils down to this: is your manager serving you? Or are you serving your manager? It should always be the former.</p>
+<p>“It’s impossible to simply stop a bad habit; you need to replace it with a good habit.”</p>
+<p>categorize all work as either “offensive” or “defensive.”</p>
+<p>Every company has a gray-market favor economy that lives outside the org chart,</p>
+<p>Every company has a “shadow” org chart that is unwritten but through which power and influence flow.</p>
+<p>A good Three Bullets and a Call to Action email contains (at most) three bullet points detailing the issue at hand, and one — and only one — call to action.</p>
+<p>Most industries are a lot smaller than you think, and people talk more than you think,</p>
+<p>Friends come and go…enemies accumulate.</p>
+<p>product laziness.</p>
+<p>It’s really obvious (and infuriating) when a programmer could have made something friendly and easy for the end user but didn’t bother.</p>
+<p>Most programmers vastly underestimate the importance of application speed (or latency, which sounds more scientific).</p>
+<p>“Speed is a feature.”</p>
+<p>An elegant design makes easy things easy and hard things possible.</p>
+<p>the user’s data needs to be accessible</p>
+<p>learn great patience.</p>
+<p>there is no such thing as a temporary lapse of integrity.</p>
+<p>Trust is your most sacred resource.</p>
+<p>Humans are unpredictable and tricky to deal with no matter what the context.</p>
+</blockquote>
+<p>And finally, <a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html">“You and Your Research” by Richard Hamming</a> seems like good reading they recommended.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
