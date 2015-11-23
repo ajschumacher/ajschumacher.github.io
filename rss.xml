@@ -7,6 +7,29 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A New Culture of Learning</title>
+<description><![CDATA[
+
+<p>I read this <a href="http://www.newcultureoflearning.com/">book</a> and it introduced me to the word aporia, which I appreciate. Here is a definition that comes up on Google:</p>
+<blockquote>
+<p>aporia: an irresolvable internal contradiction or logical disjunction in a text, argument, or theory</p>
+</blockquote>
+<p>Here is a summary of this book, in one quote from its page 107:</p>
+<blockquote>
+<p>In our view, MMOs are almost perfect illustrations of a new learning environment.</p>
+</blockquote>
+<p>I have minor gripes and major gripes about this book. A minor gripe is they say "petri dish" a lot, and I think they shouldn't. A major gripe is that the whole book is essentially a false dichotomy between a straw man version of schooling and impoverished, unworkable gesticulations labeled "new learning." It isn't that there aren't any good ideas here, but they are old ideas misunderstood and presented as if new.</p>
+<p>Skip this book.</p>
+<hr>
+<p>A New Culture of Learning: Cultivating the Imagination for a World of Constant Change</p>
+<p>by Douglas Thomas and John Seely Brown</p>
+<p><a href="http://www.amazon.com/New-Culture-Learning-Cultivating-Imagination/dp/1456458884"><img alt="cover" src="cover.jpg"></a></p>    
+    ]]></description>
+<link>http://planspace.org/20151122-a_new_culture_of_learning/</link>
+<guid>http://planspace.org/20151122-a_new_culture_of_learning/</guid>
+<pubDate>Sun, 22 Nov 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Lauren Ipsum</title>
 <description><![CDATA[
 
@@ -2593,67 +2616,6 @@ print np.corrcoef(model.predict(X_test), y_test)[0, 1]**2
 <link>http://planspace.org/20150221-rstudio_in_a_web_browser/</link>
 <guid>http://planspace.org/20150221-rstudio_in_a_web_browser/</guid>
 <pubDate>Sat, 21 Feb 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Data Science isn't Magic</title>
-<description><![CDATA[
-
-<p>This is the flow for a <a href="http://dc.opendataday.org/">DC Open Data Day</a> 2015 workshop. It may not make sense out of context. For a fun summary in tweets (with photos!) you might check out <a href="https://storify.com/planarrowspace/data-science-isn-t-magic-workshop-at-dc-open-data">a storification of it</a>.</p>
-<p>View this page as <a href="big.html">slides</a> to make this site's base URL appear quite large so that people can find this easily.</p>
-<hr>
-<p>planspace.org</p>
-<hr>
-<h3>Workshop Outline</h3>
-<ul>
-<li>Intro / Disclaimer</li>
-<li><a href="80_percent_definitions/">80% Definitions</a> (<a href="80_percent_definitions/big.html">slides</a>)</li>
-<li><a href="osemn/">Data Science is OSEMN</a> (<a href="osemn/big.html">slides</a>)</li>
-<li><a href="problem/">What's the Problem?</a> (<a href="problem/big.html">slides</a>)</li>
-<li>Find NYC attendance data<ul>
-<li><a href="http://schools.nyc.gov/">schools.nyc.gov</a></li>
-<li><a href="http://schools.nyc.gov/AboutUs/">About Us</a></li>
-<li><a href="http://schools.nyc.gov/AboutUs/schools/">Our Schools</a></li>
-<li><a href="http://schools.nyc.gov/AboutUs/schools/data/">Data About Schools</a></li>
-<li><a href="http://schools.nyc.gov/AboutUs/schools/data/Attendance.htm">Daily Attendance Rates</a></li>
-<li><a href="http://schools.nyc.gov/aboutus/data/attendancexml/">XML</a></li>
-<li><a href="http://schools.nyc.gov/AboutUs/schools/data/attendancexml/">http://schools.nyc.gov/AboutUs/schools/data/attendancexml/</a></li>
-</ul>
-</li>
-<li>Data Science <a href="tools/">Tools</a> (<a href="tools/big.html">slides</a>)</li>
-<li>Connect to RStudio in the cloud<ul>
-<li>Backup plan:<ul>
-<li>Install the appropriate <code>R</code> distribution for your system from this <a href="http://watson.nci.nih.gov/cran_mirror/">mirror</a>.</li>
-<li>Install the <a href="http://www.rstudio.com/ide/download/desktop">RStudio IDE</a> for <code>R</code>. The RStudio site should suggest an appropriate package for your system.</li>
-<li>Download and unzip the <a href="https://github.com/ajschumacher/odddsim/archive/master.zip">files</a> we're using. (They're <a href="https://github.com/ajschumacher/odddsim">on GitHub</a>, so you can clone if you prefer.)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Working with <code>R</code><ul>
-<li>Working with one day of data (<code>01-day_attendance.R</code>)</li>
-<li>Selecting usable data points (<code>02-select_totals.R</code>)</li>
-<li>The relationship between temperature and attendance (<code>03-merge_and_plot.R</code>)</li>
-</ul>
-</li>
-<li>Bonus: Introducing the DC voter file</li>
-</ul>
-<h3>Additional Resources</h3>
-<ul>
-<li>For learning <code>R</code>:<ul>
-<li><a href="http://tryr.codeschool.com/">Try R</a> is an interactive web site that guides you through <code>R</code> functionality in your web browser.</li>
-<li>The <a href="https://raw.githubusercontent.com/ajschumacher/gadsdc/master/02-R/walking_intro.Rmd">walking introduction to R</a> is an <code>R</code> script that you can open and work through in RStudio.</li>
-</ul>
-</li>
-<li>For more fun data:<ul>
-<li><a href="http://blogs.worldbank.org/opendata/accessing-world-bank-data-apis-python-r-ruby-stata">Accessing the World Bank Data APIs in Python, R, Ruby &amp; Stata</a></li>
-<li>The <a href="https://github.com/ajschumacher/dc_voter_reg">DC voter registration file</a></li>
-</ul>
-</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20150220-data_science_isnt_magic/</link>
-<guid>http://planspace.org/20150220-data_science_isnt_magic/</guid>
-<pubDate>Fri, 20 Feb 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
