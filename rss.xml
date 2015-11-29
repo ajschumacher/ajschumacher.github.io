@@ -7,6 +7,88 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>See sklearn trees with D3</title>
+<description><![CDATA[
+
+<p>The <a href="http://scikit-learn.org/stable/modules/tree.html">decision trees</a> from <a href="http://scikit-learn.org/">scikit-learn</a> are very easy to train and predict with, but it's not easy to see the rules they learn. The code below makes it easier to see inside <code>sklearn</code> classification trees, enabling visualizations that look like this:</p>
+<p><a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f"><img alt="partial tree view" src="partial_tree_view.png"></a></p>
+<p>This shows, for example, that all the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">irises</a> with <code>petal length (cm)</code> less than 2.45 were <code>setosa</code>.</p>
+<p>The ability to interpret the rules of a decision tree is often considered a strength of the algorithm, and in <a href="https://www.r-project.org/">R</a> you can usually <code>summary()</code> and <code>plot()</code> a tree fit to see the rules. In <a href="https://www.python.org/">Python</a> with <code>sklearn</code>, there is <a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html"><code>export_graphviz</code></a>, but it isn't terribly convenient. It shouldn't be so hard to see what's going on inside a tree.</p>
+<p>The following <a href="http://www.json.org/">JSON</a> format is simple and works with common <a href="http://d3js.org/">D3</a> tree graphing code, so let's target this format:</p>
+<pre><code class="language-json">{name: "container thing",
+ children: [{name: "leaf thing one"},
+            {name: "leaf thing two"}]}</code></pre>
+
+<p>Each <code>name</code> will describe a true/false decision rule for an inner node or the distribution of training example labels for a leaf node. The first of a pair of <code>children</code> is where the rule is true, and the second is where the rule is false. (These are binary trees.)</p>
+<p>The way <code>sklearn</code> trees store their rules internally is described <a href="https://github.com/scikit-learn/scikit-learn/blob/0.16.1/sklearn/tree/_tree.pyx#L2956-L3008">in <code>_tree.pyc</code></a>. The <code>rules</code> function here examines a fit <code>sklearn</code> decision tree to generate a Python dictionary (with structure like the above) representing the decision tree's rules:</p>
+<pre><code class="language-python">def rules(clf, features, labels, node_index=0):
+    """Structure of rules in a fit decision tree classifier
+
+    Parameters
+    ----------
+    clf : DecisionTreeClassifier
+        A tree that has already been fit.
+
+    features, labels : lists of str
+        The names of the features and labels, respectively.
+
+    """
+    node = {}
+    if clf.tree_.children_left[node_index] == -1:  # indicates leaf
+        count_labels = zip(clf.tree_.value[node_index, 0], labels)
+        node['name'] = ', '.join(('{} of {}'.format(int(count), label)
+                                  for count, label in count_labels))
+    else:
+        feature = features[clf.tree_.feature[node_index]]
+        threshold = clf.tree_.threshold[node_index]
+        node['name'] = '{} &gt; {}'.format(feature, threshold)
+        left_index = clf.tree_.children_left[node_index]
+        right_index = clf.tree_.children_right[node_index]
+        node['children'] = [rules(clf, features, labels, right_index),
+                            rules(clf, features, labels, left_index)]
+    return node</code></pre>
+
+<p>How is this used? Let's get a quick example decision tree and take a look:</p>
+<pre><code class="language-python">from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+
+data = load_iris()
+
+clf = DecisionTreeClassifier(max_depth=3)
+clf.fit(data.data, data.target)
+
+rules(clf, data.feature_names, data.target_names)</code></pre>
+
+<p>The <code>rules</code> function returns the following Python dictionary, formatted for readability here:</p>
+<pre><code class="language-python">{'name': 'petal length (cm) &gt; 2.45000004768',
+ 'children': [
+     {'name': 'petal width (cm) &gt; 1.75',
+      'children': [
+         {'name': 'petal length (cm) &gt; 4.85000038147',
+          'children': [
+              {'name': '0 of setosa, 0 of versicolor, 43 of virginica'},
+              {'name': '0 of setosa, 1 of versicolor, 2 of virginica'}]},
+         {'name': 'petal length (cm) &gt; 4.94999980927',
+          'children': [
+              {'name': '0 of setosa, 2 of versicolor, 4 of virginica'},
+              {'name': '0 of setosa, 47 of versicolor, 1 of virginica'}]}]},
+     {'name': '50 of setosa, 0 of versicolor, 0 of virginica'}]}</code></pre>
+
+<p>This is pretty readable, but now we can also write the result out to a file and visualize it with D3:</p>
+<pre><code class="language-python">import json
+
+r = rules(clf, data.feature_names, data.target_names)
+with open(rules.json', 'w') as f:
+    f.write(json.dumps(r))</code></pre>
+
+<p>Check out the <a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f">interactive view</a>! Once again, a partially expanded view looks like this:</p>
+<p><a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f"><img alt="partial tree view" src="partial_tree_view.png"></a></p>    
+    ]]></description>
+<link>http://planspace.org/20151129-see_sklearn_trees_with_d3/</link>
+<guid>http://planspace.org/20151129-see_sklearn_trees_with_d3/</guid>
+<pubDate>Sun, 29 Nov 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>A New Culture of Learning</title>
 <description><![CDATA[
 
@@ -2579,43 +2661,6 @@ print np.corrcoef(model.predict(X_test), y_test)[0, 1]**2
 <link>http://planspace.org/20150417-negative_r_squared/</link>
 <guid>http://planspace.org/20150417-negative_r_squared/</guid>
 <pubDate>Fri, 17 Apr 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>RStudio in a Web Browser</title>
-<description><![CDATA[
-
-<p>The most annoying part of <code>R</code> workshops is installing software and downloading necessary files. With RStudio Server, workshop participants can skip all that entirely.</p>
-<p>Here's what RStudio looks like running locally. To attain the setup shown, you need to install <a href="http://www.r-project.org/">R</a>, install <a href="http://www.rstudio.com/">RStudio</a>, install necessary R <a href="http://cran.r-project.org/">packages</a>, separately download necessary code and data, and navigate to the correct working directory.</p>
-<p><img alt="RStudio running locally" src="local.png"></p>
-<p>Here's what RStudio looks like in a browser. To attain the setup shown, you go to a URL and log in.</p>
-<p><img alt="RStudio in a browser" src="web.png"></p>
-<p>In a workshop, it's very nice to be able to start doing things with <code>R</code> without messing with setup. Somebody does have to set up the environment in advance though.</p>
-<p>Setting up RStudio Server is very easy, especially if you're already familiar with Amazon Web Services (<a href="http://aws.amazon.com/">AWS</a>):</p>
-<ul>
-<li>Spin up an AWS Elastic Compute Cloud (<a href="http://aws.amazon.com/ec2/">EC2</a>) machine using <a href="http://www.louisaslett.com/RStudio_AMI/">Louis Aslett's RStudio Amazon Machine Image (AMI)</a>.<ul>
-<li><a href="http://www.louisaslett.com/RStudio_AMI/">Louis's page</a> has good concise directions on how to do this&#8212;follow his directions!</li>
-</ul>
-</li>
-<li>Secure Shell (SSH) into your EC2 machine and set up the environment as you want it to be.<ul>
-<li>Install globally required packages while running R as root (<code>sudo R</code>).</li>
-<li>Put necessary files (code, data, etc.) as desired in <code>/home/rstudio</code> (the prototypical user).</li>
-<li>Run <a href="https://gist.github.com/ajschumacher/12f7484d06cacd4b4cd3">build_logins.sh</a>, a script developed by <a href="https://twitter.com/joshdata">Josh Tauberer</a>, to create the desired number of user accounts. (See documentation in the script itself.)</li>
-</ul>
-</li>
-<li>You can optionally give your EC2 machine an AWS <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">elastic IP address</a>, which will let you start and stop the machine (avoiding the cost of keeping it running when you aren't using it) but still know in advance what address the machine will be accessible at.<ul>
-<li>Be sure your EC2 machine and elastic IP are both &#8220;EC2 classic&#8221; or both Virtual Private Cloud (VPC). (Some instance types are only available in VPC!)</li>
-</ul>
-</li>
-</ul>
-<p>For an in-person workshop, it can be effective to distribute login information on slips of paper like this:</p>
-<p><img alt="workshop login information" src="paper.png"></p>
-<p>I've led an <a href="/20150220-data_science_isnt_magic/">introductory workshop</a> with ten active participants on one EC2 m3.2xlarge, which runs at 56 cents per hour. For a larger group, I ran two m3.2xlarge machines and three c4.8xlarge machines ($1.856/hour). That used all my five elastic IP addresses and provided 124 vCPUs and 240 gigs of RAM. We had 94 active users and could probably have supported quite a few more without problems.</p>
-<p>RStudio in the cloud is a great fit for workshops because it eliminates install and setup pain for participants. It lets you decouple the install process from other workshop activities. The experience of using RStudio in a browser is nice enough that it makes me wonder whether anyone offers cloud RStudio as a service&#8212;is that a business that should exist? Workshops certainly aren't the only place where RStudio Server could make sense.</p>
-<p>There are also other options for setting up your server. You don't need to use Louis's AMIs; you don't need to use AWS at all. The <a href="http://www.bioconductor.org/">Bioconductor Project</a> maintains a <a href="http://www.bioconductor.org/help/bioconductor-cloud-ami/">Cloud AMI</a> that comes with a lot of other pre-installed R packages, for example. (When I last checked it was based on an older version of Ubuntu.) For total control, you can install <a href="http://www.rstudio.com/products/rstudio/download-server/">RStudio Server</a> from scratch on whatever type of system you like.</p>    
-    ]]></description>
-<link>http://planspace.org/20150221-rstudio_in_a_web_browser/</link>
-<guid>http://planspace.org/20150221-rstudio_in_a_web_browser/</guid>
-<pubDate>Sat, 21 Feb 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

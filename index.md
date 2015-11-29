@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2015-11-29: [See sklearn trees with D3](/20151129-see_sklearn_trees_with_d3/)
  * 2015-11-22: [A New Culture of Learning](/20151122-a_new_culture_of_learning/)
  * 2015-11-22: [Lauren Ipsum](/20151122-lauren_ipsum/)
  * 2015-11-18: [Debugging Teams](/20151118-debugging_teams/)
