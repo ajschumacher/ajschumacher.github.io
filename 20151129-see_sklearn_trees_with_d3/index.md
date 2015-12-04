@@ -87,7 +87,7 @@ This is pretty readable, but now we can also write the result out to a file and 
 import json
 
 r = rules(clf, data.feature_names, data.target_names)
-with open(rules.json', 'w') as f:
+with open('rules.json', 'w') as f:
     f.write(json.dumps(r))
 ```
 
