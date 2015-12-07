@@ -4,6 +4,7 @@ You can connect with me via [Twitter](https://twitter.com/planarrowspace), [Link
 
 Here are some things I've talked about:
 
+ * [How to Eat Computers](/20151206-how_to_eat_computers/) at two schools on December 4 and 8, 2015.
  * [Creative Data Science](/20151112-creative_data_science/) at the [World Bank](http://www.worldbank.org/) on Thursday November 12, 2015.
  * [Practical Mergic](/20150530-practical_mergic_at_odsc/) at the [Open Data Science Conference](http://opendatascicon.com/) on [Saturday May 30, 2015](http://opendatascicon.com/schedule/practical-mergic-how-to-join-anything/).
  * [Practical Mergic](/20150520-practical_mergic/) at the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/)
