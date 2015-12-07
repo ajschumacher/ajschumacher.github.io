@@ -1,6 +1,6 @@
 # How to Eat Computers
 
-*A ten-minute talk about “my experiences with computer science” for [Hour of Code](https://hourofcode.com/). Given for first, second, and third-graders at the [Léman Manhattan Preparatory School](http://www.lemanmanhattan.org/)'s “[Lower School](http://www.lemanmanhattan.org/academics/lower)” on Friday December 4, 2015, and for seventh and eighth-graders at [NYC MS 113 Ronald Edmonds Learning Center](http://schools.nyc.gov/SchoolPortals/13/K113/) on Tuesday December 8. ([slides](big.html))*
+*A ten-minute talk about “my experiences with computer science” for [Hour of Code](https://hourofcode.com/). Given for first, second, and third-graders at the [Léman Manhattan Preparatory School](http://www.lemanmanhattan.org/)'s [Lower School](http://www.lemanmanhattan.org/academics/lower) on Friday December 4, 2015, and for seventh and eighth-graders at [NYC MS 113 Ronald Edmonds Learning Center](http://schools.nyc.gov/SchoolPortals/13/K113/) on Tuesday December 8. ([slides](big.html))*
 
 
 I started with a cute demo of the `say` functionality at the Mac command line. It's much easier to get the computer to `say hello` than it used to be!
