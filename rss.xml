@@ -7,10 +7,207 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Hearing Data with Sonic Histograms</title>
+<description><![CDATA[
+
+<p>You can see an iris, and you can smell an iris, and you can measure the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">length and width of 150 iris sepals and petals</a>... but can you <em>hear</em> the iris data?</p>
+<p><audio controls preload="auto" autobuffer>
+    <source src="yes.mp3" type="audio/mpeg"></source>
+    <source src="yes.ogg" type="audio/ogg"></source>
+</audio></p>
+<p><a href="https://en.wikipedia.org/wiki/Iris_flower_data_set"><img alt="iris" src="iris.jpg"></a></p>
+<p><a href="https://en.wikipedia.org/wiki/Histogram">Histograms</a> are a great way to get a sense for the distribution of a set of values. The view you get depends on how wide your bars are.</p>
+<p><img alt="two histograms" src="two_histograms.png"></p>
+<p>Both those histograms look pretty good, but audio isn't so boxy. A cousin of the histogram, <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density estimation</a> (KDE) seems more like audio. Like a histogram, it can be more or less "smooth".</p>
+<p><img alt="two KDEs" src="two_kdes.png"></p>
+<p>Stealing the idea of KDE, we can adapt it for audio. We'll just add up audio pulses that are positioned in time to represent values.</p>
+<p>We can use "wide" audio points <audio controls preload="auto" autobuffer><source src="sonic_point_wide.mp3" type="audio/mpeg"></source><source src="sonic_point_wide.ogg" type="audio/ogg"></source></audio> or "narrow" audio points <audio controls preload="auto" autobuffer><source src="sonic_point_narrow.mp3" type="audio/mpeg"></source><source src="sonic_point_narrow.ogg" type="audio/ogg"></source></audio>.</p>
+<p>Combining a bunch of wide audio points, we get a "smoother" audio histogram. <audio controls preload="auto" autobuffer><source src="sonic_sepal_length_wide.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length_wide.ogg" type="audio/ogg"></source></audio> And if we combine narrow audio points, we get a more "discrete" sounding histogram. <audio controls preload="auto" autobuffer><source src="sonic_sepal_length_narrow.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length_narrow.ogg" type="audio/ogg"></source></audio></p>
+<p>Adding an audio axis label and some sonic tick marks, we get serviceable audio histograms that you can compare to their visible counterparts.</p>
+<p><audio controls preload="auto" autobuffer><source src="sonic_sepal_length.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length.ogg" type="audio/ogg"></source></audio> <img alt="sepal length histogram" src="sepal_length.png"></p>
+<p><audio controls preload="auto" autobuffer><source src="sonic_sepal_width.mp3" type="audio/mpeg"></source><source src="sonic_sepal_width.ogg" type="audio/ogg"></source></audio> <img alt="sepal width histogram" src="sepal_width.png"></p>
+<p><audio controls preload="auto" autobuffer><source src="sonic_petal_length.mp3" type="audio/mpeg"></source><source src="sonic_petal_length.ogg" type="audio/ogg"></source></audio> <img alt="petal length histogram" src="petal_length.png"></p>
+<p><audio controls preload="auto" autobuffer><source src="sonic_petal_width.mp3" type="audio/mpeg"></source><source src="sonic_petal_width.ogg" type="audio/ogg"></source></audio> <img alt="petal width histogram" src="petal_width.png"></p>
+<p>So yes, it kind of works! You can certainly hear bimodality, and even differentiate between the first two distributions if you listen carefully. I probably won't switch from visualizations to sonifications, but it's a fun things to explore!</p>
+<hr>
+<p>Thanks to <a href="https://www.spotify.com/">Spotify</a>'s <a href="http://monthlymusichackathon.org/">Monthly Music Hackathon NYC</a> (<a href="https://twitter.com/musichackathon">@musichackathon</a>) <a href="http://monthlymusichackathon.org/post/133438271112/viz-son">Sound Visualization &amp; Data Sonification Hackathon</a> for providing the push to do this. There's <a href="http://livestream.com/accounts/5176069/events/4582831">video on Livestream</a> (I'm on from about 5:30 to 10:30) but ironically the audio doesn't seem to be working. Thanks also to <a href="https://thomaslevine.com/">Thomas Levine</a> for showing me the <a href="https://cran.r-project.org/web/packages/tuneR/index.html">tuneR</a> library for <a href="https://www.r-project.org/">R</a> which let me jump in and start making sounds really quickly.</p>
+<hr>
+<p>This code was hacked together quickly and is not what you'd call "production grade". It uses the Mac <code>say</code> and also <code>ffmpeg</code> via <code>system</code>, but it's otherwise R that might work for you if you want to try it.</p>
+<pre><code class="language-r"># install.packages("tuneR")  # install if not installed
+library("tuneR")
+setWavPlayer('/usr/bin/afplay')  # on Mac
+
+point_at &lt;- function(value,  # data value
+                     lowest,  # data range min
+                     highest,  # data range max
+                     duration,  # seconds
+                     point_width,  # seconds for +/- 3 SD (points are normal)
+                     point_freq=440, sample_rate=44100) {
+  point_width_samples &lt;- point_width * sample_rate
+  point &lt;- sine(point_freq, point_width_samples, stereo=TRUE)
+  filter &lt;- dnorm(seq_along(point), mean = length(point)/2, sd = length(point)/6)
+  filter &lt;- filter / max(filter)
+  point &lt;- point * filter
+  duration &lt;- duration * sample_rate
+  data_range &lt;- highest - lowest
+  left_offset &lt;- value - lowest
+  peak_position &lt;- (left_offset / data_range) * duration
+  left_padding_duration &lt;- peak_position - length(point)/2
+  if (left_padding_duration &gt; 0) {
+    result &lt;- bind(silence(left_padding_duration, stereo=TRUE), point)
+  } else {
+    result &lt;- point[abs(left_padding_duration):length(point)]
+  }
+  if (length(result) &lt; duration) {
+    result &lt;- bind(result, silence(duration - length(result), stereo=TRUE))
+  } else {
+    result &lt;- result[1:duration]
+  }
+  result
+}
+
+points_at &lt;- function(values,  # data values
+                      lowest,  # data range min
+                      highest,  # data range max
+                      duration,  # seconds
+                      point_width,  # seconds for +/- 3 SD (points are normal)
+                      point_freq=440, sample_rate=44100) {
+  result &lt;- silence(duration * sample_rate, stereo = TRUE)
+  for (value in values) {
+    result &lt;- result + point_at(value, lowest, highest, duration, point_width,
+                                point_freq, sample_rate)
+  }
+  result
+}
+
+low_high &lt;- function(values) {
+  breakpoints &lt;- pretty(values)
+  lowest &lt;- breakpoints[1]
+  highest &lt;- breakpoints[length(breakpoints)]
+  c(lowest, highest)
+}
+
+normalized_sonic_hist_content &lt;- function(values,  # data values
+                                          duration=4,  # seconds
+                                          point_width=0.2,  # seconds for +/1 3 SD (points are normal)
+                                          point_freq=440, sample_rate=44100) {
+  breakpoints &lt;- low_high(values)
+  lowest &lt;- breakpoints[1]
+  highest &lt;- breakpoints[2]
+  content &lt;- points_at(values, lowest, highest, duration, point_width,
+                       point_freq, sample_rate)
+  normalize(content)
+}
+
+sonic_hist &lt;- function(values,  # data values
+                       main,  # "title" of variable
+                       duration=4,  # seconds
+                       point_width=0.2,  # seconds for +/1 3 SD (points are normal)
+                       point_freq=440,
+                       legend=TRUE,
+                       units="",
+                       edge=TRUE, edge_freq=880, edge_duration=1000,
+                       sample_rate=44100) {
+  if (missing(main)) {
+    main &lt;- deparse(substitute(values))
+  }
+  breakpoints &lt;- low_high(values)
+  lowest &lt;- breakpoints[1]
+  highest &lt;- breakpoints[2]
+  content &lt;- normalized_sonic_hist_content(values, duration, point_width, point_freq, sample_rate)
+  edge_sound &lt;- sine(edge_freq, duration=edge_duration, stereo=TRUE)
+  if (edge) {
+    content &lt;- bind(edge_sound, content, edge_sound)
+  }
+  if (legend) {
+    system(paste("say", main, "in", duration, "seconds from", lowest, "to", highest, units, "-o t"))
+    system("ffmpeg -i t.aiff -ar 44100 t.wav")
+    legend_mono &lt;- normalize(readWave("t.wav"), pcm=FALSE)
+    legend_stereo &lt;- stereo(legend_mono, legend_mono)
+    system("rm t.aiff t.wav")
+    content &lt;- bind(legend_stereo, content)
+  }
+  content
+}
+
+triple_save &lt;- function(some_wav) {
+  name_prefix &lt;- deparse(substitute(some_wav))
+  wav_name &lt;- paste(name_prefix, ".wav", sep='')
+  mp3_name &lt;- paste(name_prefix, ".mp3", sep='')
+  ogg_name &lt;- paste(name_prefix, ".ogg", sep='')
+  writeWave(some_wav, wav_name)
+  system(paste("ffmpeg -i", wav_name, mp3_name))
+  system(paste("ffmpeg -i", wav_name, ogg_name))
+  system(paste("rm", wav_name))
+}
+
+data("iris")
+
+iris$Sepal.Length
+
+
+png('two_histograms.png', width=800, height=380)
+par(mfrow=c(1, 2))
+hist(iris$Sepal.Length, main="sepal length histogram, default breaks")
+hist(iris$Sepal.Length, breaks=100, xlim=c(4, 8), main="sepal length histogram, 100 breaks")
+dev.off()
+
+png('two_kdes.png', width=800, height=380)
+par(mfrow=c(1, 2))
+plot(density(iris$Sepal.Length), main="sepal length kernel density, default binwidth")
+plot(density(iris$Sepal.Length, bw=0.01), main="sepal length kernel density, 0.01 binwidth")
+dev.off()
+
+sonic_point_wide &lt;- point_at(value=4, lowest=0, highest=8, duration=2, point_width=0.5)
+triple_save(sonic_point_wide)
+sonic_point_narrow &lt;- point_at(value=4, lowest=0, highest=8, duration=2, point_width=0.05)
+triple_save(sonic_point_narrow)
+
+sonic_sepal_length_wide &lt;- sonic_hist(iris$Sepal.Width, legend=F, edge=F, point_width=0.4)
+triple_save(sonic_sepal_length_wide)
+sonic_sepal_length_narrow &lt;- sonic_hist(iris$Sepal.Width, point_width=0.05, legend=F, edge=F)
+triple_save(sonic_sepal_length_narrow)
+
+sonic_tick_mark &lt;- sine(880, duration=1000, stereo=TRUE)
+triple_save(sonic_tick_mark)
+
+png("sepal_length.png", height=380, width=480)
+hist(iris$Sepal.Length, main="sepal length, centimeters")
+dev.off()
+sonic_sepal_length &lt;- sonic_hist(iris$Sepal.Length, main="sepal length", units="centimeters")
+triple_save(sonic_sepal_length)
+
+png("sepal_width.png", height=380, width=480)
+hist(iris$Sepal.Width, main="sepal width, centimeters")
+dev.off()
+sonic_sepal_width &lt;- sonic_hist(iris$Sepal.Width, main="sepal width", units="centimeters")
+triple_save(sonic_sepal_width)
+
+png("petal_length.png", height=380, width=480)
+hist(iris$Petal.Length, main="petal length, centimeters")
+dev.off()
+sonic_petal_length &lt;- sonic_hist(iris$Petal.Length, main="petal length", units="centimeters")
+triple_save(sonic_petal_length)
+
+png("petal_width.png", height=380, width=480)
+hist(iris$Petal.Width, main="petal width, centimeters")
+dev.off()
+sonic_petal_width &lt;- sonic_hist(iris$Petal.Width, main="petal width", units="centimeters")
+triple_save(sonic_petal_width)</code></pre>
+
+<hr>
+<p>If you're having any problems with your sonic histograms, you can adjust them with a sonic screwdriver.</p>
+<p><img alt="sonic screwdriver" src="sonic_screwdriver.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20151214-hearing_data_with_sonic_histograms/</link>
+<guid>http://planspace.org/20151214-hearing_data_with_sonic_histograms/</guid>
+<pubDate>Mon, 14 Dec 2015 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>How to Eat Computers</title>
 <description><![CDATA[
 
-<p><em>A ten-minute talk about &#8220;my experiences with computer science&#8221; for <a href="https://hourofcode.com/">Hour of Code</a>. Given for first, second, and third-graders at the <a href="http://www.lemanmanhattan.org/">L&#233;man Manhattan Preparatory School</a>'s &#8220;<a href="http://www.lemanmanhattan.org/academics/lower">Lower School</a>&#8221; on Friday December 4, 2015, and for seventh and eighth-graders at <a href="http://schools.nyc.gov/SchoolPortals/13/K113/">NYC MS 113 Ronald Edmonds Learning Center</a> on Tuesday December 8. (<a href="big.html">slides</a>)</em></p>
+<p><em>A ten-minute talk about &#8220;my experiences with computer science&#8221; for <a href="https://hourofcode.com/">Hour of Code</a>. Given for first, second, and third-graders at the <a href="http://www.lemanmanhattan.org/">L&#233;man Manhattan Preparatory School</a>'s <a href="http://www.lemanmanhattan.org/academics/lower">Lower School</a> on Friday December 4, 2015, and for seventh and eighth-graders at <a href="http://schools.nyc.gov/SchoolPortals/13/K113/">NYC MS 113 Ronald Edmonds Learning Center</a> on Tuesday December 8. (<a href="big.html">slides</a>)</em></p>
 <p>I started with a cute demo of the <code>say</code> functionality at the Mac command line. It's much easier to get the computer to <code>say hello</code> than it used to be!</p>
 <pre><code class="language-bash">say Hello!
 say I am a computer.
@@ -2782,70 +2979,6 @@ print(the_counter())
 <link>http://planspace.org/20150425-two_highlights_from_ny_r_conference_2015/</link>
 <guid>http://planspace.org/20150425-two_highlights_from_ny_r_conference_2015/</guid>
 <pubDate>Sat, 25 Apr 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Forward Selection with statsmodels</title>
-<description><![CDATA[
-
-<p>Python's <a href="http://statsmodels.sourceforge.net/stable/">statsmodels</a> doesn't have a built-in method for choosing a linear model by <a href="http://en.wikipedia.org/wiki/Stepwise_regression">forward selection</a>. Luckily, it isn't impossible to write yourself. So <a href="https://github.com/trevor-smith">Trevor</a> and I sat down and hacked out the following. It tries to optimize <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2">adjusted R-squared</a> by adding features that help the most one at a time until the score goes down or you run out of features.</p>
-<pre><code class="language-python">import statsmodels.formula.api as smf
-
-def forward_selected(data, response):
-    """Linear model designed by forward selection.
-
-    Parameters:
-    -----------
-    data : pandas DataFrame with all possible predictors and response
-
-    response: string, name of response column in data
-
-    Returns:
-    --------
-    model: an "optimal" fitted statsmodels linear model
-           with an intercept
-           selected by forward selection
-           evaluated by adjusted R-squared
-    """
-    remaining = set(data.columns)
-    remaining.remove(response)
-    selected = []
-    current_score, best_new_score = 0.0, 0.0
-    while remaining and current_score == best_new_score:
-        scores_with_candidates = []
-        for candidate in remaining:
-            formula = "{} ~ {} + 1".format(response,
-                                           ' + '.join(selected + [candidate]))
-            score = smf.ols(formula, data).fit().rsquared_adj
-            scores_with_candidates.append((score, candidate))
-        scores_with_candidates.sort()
-        best_new_score, best_candidate = scores_with_candidates.pop()
-        if current_score &lt; best_new_score:
-            remaining.remove(best_candidate)
-            selected.append(best_candidate)
-            current_score = best_new_score
-    formula = "{} ~ {} + 1".format(response,
-                                   ' + '.join(selected))
-    model = smf.ols(formula, data).fit()
-    return model</code></pre>
-
-<p>There isn't just one way to design this kind of thing. You could select on some other evaluation metric. You could use internal cross-validation. You might not want to do use forward selection at all. But hey!</p>
-<p>Here's how ours can be applied to a classic data set on <a href="http://data.princeton.edu/wws509/datasets/#salary">Discrimination in Salaries</a>:</p>
-<pre><code class="language-python">import pandas as pd
-
-url = "http://data.princeton.edu/wws509/datasets/salary.dat"
-data = pd.read_csv(url, sep='\\s+')
-
-model = forward_selected(data, 'sl')
-
-print model.model.formula
-# sl ~ rk + yr + 1
-
-print model.rsquared_adj
-# 0.835190760538</code></pre>    
-    ]]></description>
-<link>http://planspace.org/20150423-forward_selection_with_statsmodels/</link>
-<guid>http://planspace.org/20150423-forward_selection_with_statsmodels/</guid>
-<pubDate>Thu, 23 Apr 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
