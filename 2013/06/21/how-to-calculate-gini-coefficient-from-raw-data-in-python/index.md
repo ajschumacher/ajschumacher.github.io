@@ -7,13 +7,13 @@ I don't find the implementation in the R package <a href="http://cran.r-project.
 
 ```
 def gini(list_of_values):
-  sorted_list = sorted(list_of_values)
-  height, area = 0, 0
-  for value in sorted_list:
-    height += value
-    area += height - value / 2.
-  fair_area = height * len(list_of_values) / 2
-  return (fair_area - area) / fair_area
+    sorted_list = sorted(list_of_values)
+    height, area = 0, 0
+    for value in sorted_list:
+        height += value
+        area += height - value / 2.
+    fair_area = height * len(list_of_values) / 2.
+    return (fair_area - area) / fair_area
 ```
 
 To me this is fairly readable and maps nicely to the mental picture of adding up the area under the Lorenz curve and then comparing it to the area under the line of equality. It's just bars and triangles! And I don't think it's any less performant than the <code>ineq</code> way of calculating it.
