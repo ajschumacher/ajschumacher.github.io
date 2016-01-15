@@ -10,7 +10,7 @@ Sometimes people ask me for a bio:
 > with data at Booz Allen Hamilton, New York University, and the New
 > York City Department of Education. He studied mathematics at the
 > University of Wisconsin–Madison and teaching mathematics at Bard
-> College. Aaron's career-best breakdancing result was making it to
+> College. Aaron's career-best breakdancing result was advancing to
 > the semi-finals of the R16 Korea 2009 individual footwork battle.
 
 
