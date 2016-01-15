@@ -6,10 +6,10 @@ Sometimes people ask me for a bio:
 
 > Aaron Schumacher is a data scientist and software engineer for Deep
 > Learning Analytics. He has taught with Python and R for General
-> Assembly and the Metis data science bootcamp. Aaron has previously
-> worked with data at Booz Allen Hamilton, New York University, and
-> the New York City Department of Education. He studied mathematics at
-> the University of Wisconsin–Madison and teaching mathematics at Bard
+> Assembly and the Metis data science bootcamp. Aaron has also worked
+> with data at Booz Allen Hamilton, New York University, and the New
+> York City Department of Education. He studied mathematics at the
+> University of Wisconsin–Madison and teaching mathematics at Bard
 > College. Aaron's career-best breakdancing result was making it to
 > the semi-finals of the R16 Korea 2009 individual footwork battle.
 
