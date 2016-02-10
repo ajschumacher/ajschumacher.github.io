@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-02-09: [How I Blog, or, Colophon](/20160209-how_i_blog/)
  * 2016-02-07: [Talk Like TED](/20160207-talk_like_ted/)
  * 2015-12-31: [Juggling for Programmers](/20151231-juggling_for_programmers/)
  * 2015-12-14: [Hearing Data with Sonic Histograms](/20151214-hearing_data_with_sonic_histograms/)
