@@ -54,9 +54,19 @@ The book follows its outline very tightly, and its core outline is this:
 
 They go through that outline in book form in the first 170 pages, and
 then again in a "starter kit" (think "CliffsNotes") in the next 60
-pages. Together, these parts make for a very pleasantly-dimensioned
-book.
+pages. Frustratingly, very occasionally it seems like things appear in
+the "starter kit" but not the long form text. Together, the two parts
+make for a very pleasantly-dimensioned physical book.
 
-The book is really quite nicely designed by
-[Mine](http://minesf.com/). Mine has a
-[bboy demo reel](https://www.youtube.com/embed/vdGuEwZb378).
+A couple quotes:
+
+> It's not always easy to point out the obvious so that people will
+> see it. (p. 92)
+
+> "Desire, not goal-directedness," [Professor Jeanne Lidtka of the University of Virginia's Darden School of Business] [writes](https://hbr.org/product/beyond-strategic-thinking-strategy-as-experienced/ROT127-PDF-ENG), "is the true driver of behavioral change." (p. 138)
+
+> Org charts are a hoax (p. 142)
+
+> ... experience is not just the best teacher - it's the only one. (p. 163)
+
+The book is really quite nicely designed by [Mine](http://minesf.com/). Mine has a [bboy demo reel](https://www.youtube.com/embed/vdGuEwZb378).
