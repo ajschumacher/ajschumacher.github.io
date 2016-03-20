@@ -7,6 +7,36 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Books for Professionals</title>
+<description><![CDATA[
+
+<p>My sister started her first post-graduate job last year. She asked me to recommend books on how to be a professional.</p>
+<p>In my opinion, "being a professional" has at least two meanings:</p>
+<ol>
+<li>In general, (a) <strong>working effectively</strong> (b) <strong><em>with people</em></strong>.</li>
+<li>In particular, being an expert in your specific field.</li>
+</ol>
+<p>Here are four picks regarding general professionalism.</p>
+<hr>
+<h3>(a) <strong>working effectively</strong></h3>
+<p>I recommend <a href="https://en.wikipedia.org/wiki/How_to_Live_on_24_Hours_a_Day">How to Live on 24 Hours a Day</a> by Arnold Bennett. You can read it for free <a href="http://www.gutenberg.org/ebooks/2274">online via Project Gutenberg</a>.</p>
+<p><img alt="How to Live on 24 Hours a Day" src="how_to_live_on_24_hours_a_day.jpeg"></p>
+<p>I also highly recommend <a href="http://bitliteracy.com/">Bit Literacy</a>, which is a little old now but still relevant especially regarding how to handle email. You can read it for free <a href="http://itunes.apple.com/us/book/isbn9780979368103">in the iBookstore</a>.</p>
+<p><img alt="Bit Literacy" src="bit_literacy.gif"></p>
+<hr>
+<h3>(b) <em>with people</em></h3>
+<p>If you've never read <a href="https://en.wikipedia.org/wiki/How_to_Win_Friends_and_Influence_People">How to Win Friends and Influence People</a>, you should. I don't think it would be very surprising to you, since you're already so well-friended and influential, but it is a sort of classic and worth checking out. Looks like they're still trying to <a href="http://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034">sell it</a>.</p>
+<p><img alt="How to Win Friends and Influence People" src="how_to_win_and_influence.jpg"></p>
+<p>I also recently (well, last November) read <a href="http://shop.oreilly.com/product/0636920042372.do">Debugging Teams</a> and thought it was pretty good. I wrote <a href="http://planspace.org/20151118-debugging_teams/">some stuff</a> about it and pulled out quotes. The book is <a href="http://www.amazon.com/Debugging-Teams-Productivity-through-Collaboration/dp/1491932058">for sale</a>.</p>
+<p><img alt="Debugging Teams" src="debugging_teams.png"></p>
+<hr>
+<p>Where is the line between competency that should be expected of everyone and area of specialist knowledge? This may be particularly confused by so-called "business books", some of which are about being effective in any role, some of which are specifically about "management", and all of which want to sell as many copies as possible at the airport. I suspect that most are weakly rehashing some of the above titles.</p>    
+    ]]></description>
+<link>http://planspace.org/20160320-books_for_professionals/</link>
+<guid>http://planspace.org/20160320-books_for_professionals/</guid>
+<pubDate>Sun, 20 Mar 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Moments of Impact</title>
 <description><![CDATA[
 
@@ -2155,24 +2185,6 @@ planspace.org
 <link>http://planspace.org/20150524-tfidf_is_about_what_matters/</link>
 <guid>http://planspace.org/20150524-tfidf_is_about_what_matters/</guid>
 <pubDate>Sun, 24 May 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Chains</title>
-<description><![CDATA[
-
-<blockquote>
-<p>&#8220;We were arguing energetically about whether the world is actually evolving, headed in a particular direction, or whether the entire universe is just a returning rhythm's game, a renewal of eternity.&#8221;</p>
-</blockquote>
-<p>There&#8217;s this little <a href="https://djjr-courses.wdfiles.com/local--files/soc180%3Akarinthy-chain-links/Karinthy-Chain-Links_1929.pdf">story</a>, published in 1929, by <a href="http://en.wikipedia.org/wiki/Frigyes_Karinthy">Frigyes Karinthy</a>. <a href="http://www.qwantz.com/">Dinosaur Comics</a> put me on to this:</p>
-<p><a href="http://www.qwantz.com/index.php?comic=2646"><img alt="dinosaur comics #2646" src="http://www.qwantz.com/comics/comic2-2656.png"></a></p>
-<blockquote>
-<p>&#8220;Everything returns and renews itself. The difference now is that the rate of these returns has increased, in both space and time, in an unheard-of fashion. Now my thoughts can circle the globe in minutes. Entire passages of world history are played out in a couple of years.&#8221;</p>
-</blockquote>
-<p>Published in 1929.</p>    
-    ]]></description>
-<link>http://planspace.org/20150522-chains/</link>
-<guid>http://planspace.org/20150522-chains/</guid>
-<pubDate>Fri, 22 May 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

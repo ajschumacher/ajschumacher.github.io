@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-03-20: [Books for Professionals](/20160320-books_for_professionals/)
  * 2016-02-15: [Moments of Impact](/20160215-moments_of_impact/)
  * 2016-02-09: [How I Blog, or, Colophon](/20160209-how_i_blog/)
  * 2016-02-07: [Talk Like TED](/20160207-talk_like_ted/)
