@@ -7,6 +7,45 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Books for Programmers</title>
+<description><![CDATA[
+
+<p>Someone found my email address on <a href="https://github.com/">github</a> and wrote asking me to recommend books about software development. Well, here is one book on software development in general, and roughly one book each in connection with Python, JavaScript, Clojure, R, and git.</p>
+<hr>
+<h3>Software development in general</h3>
+<p>Some years ago a mentor lent me a copy of <a href="https://pragprog.com/book/tpp/the-pragmatic-programmer">The Pragmatic Programmer</a>. It is a very useful collection of The Right Way to do things. It's a set of ground rules for doing good work that can make you and the people you work with more effective.</p>
+<p><a href="https://pragprog.com/book/tpp/the-pragmatic-programmer"><img alt="The Pragmatic Programmer" src="prag_prog.jpg"></a></p>
+<p>For more books on software development "in general", it looks like <a href="http://blog.codinghorror.com/recommended-reading-for-developers/">Atwood's list</a> is quite good. I should read some of those. He even lists Tufte!</p>
+<hr>
+<h3>Python</h3>
+<p>I encountered <a href="http://greenteapress.com/wp/think-python-2e/">Think Python</a> and the rest of Downey's books while teaching some data science courses. It's a nice intro to computer science, programming, and Python, and it's available for free online.</p>
+<p><a href="http://greenteapress.com/wp/think-python-2e/"><img alt="Think Python" src="think_python.jpg"></a></p>
+<hr>
+<h3>JavaScript</h3>
+<p>If you want an intro to programming and JavaScript, I think everyone agrees that <a href="http://eloquentjavascript.net/">Eloquent JavaScript</a> is the right book. If you know how to program and want the dense low-down on JavaScript, the classic is <a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a>. There's probably more modern stuff because now you can start a whole company and even convince people to fund you, all with JavaScript. But here's a book I actually read:</p>
+<p><a href="http://shop.oreilly.com/product/0636920028857.do">Functional JavaScript</a> covers interesting functional programming techniques with JavaScript and the <a href="http://underscorejs.org/">underscore</a> library. I liked the content, but I also liked the writing so much that I looked for more by the author, which is what led me to the Clojure book below.</p>
+<p><img alt="Functional JavaScript" src="functional_js.gif"></p>
+<hr>
+<h3>Clojure</h3>
+<p><a href="https://clojure.org/">Clojure</a> is a neat language, and <a href="http://www.joyofclojure.com/">The Joy of Clojure</a> is a neat book. There is a ton to learn. It's "a Clojure book", but as the subtitle, "Thinking the Clojure Way", indicates, the language and the book are not bashful about philosophy, and it's a different philosophy from a lot of other languages and ways of thinking. Use and appreciate functional programming with immutable data structures.</p>
+<p><a href="http://www.joyofclojure.com/"><img alt="The Joy of Clojure" src="joy_of_clojure.png"></a></p>
+<hr>
+<h3>R</h3>
+<p>Years back I loved <a href="https://www.nostarch.com/artofr.htm">The Art of R Programming</a> for acknowledging that you need to program in R. Some books treat R like it's a statistics GUI that, for reasons unknown, you happen to have to type to use.</p>
+<p>Nowadays I think Hadley's freely available <a href="http://adv-r.had.co.nz/">Advanced R</a> is by far the best R book. Despite the title, it does also cover introductory material, but the pace is quicker and the depth is greater than The Art of R Programming.</p>
+<p><a href="http://adv-r.had.co.nz/"><img alt="Advanced R" src="advanced_r.jpg"></a></p>
+<hr>
+<h3>git</h3>
+<p><a href="https://git-scm.com/">git</a> is not a language, it's a version control tool, but I'm including it here because there's an obvious book for it which is free online. It's called <a href="https://git-scm.com/book/en/v2">Pro Git</a>. Newcomers to git sometimes find git confusing, and there's a simple solution: read the book. Read the whole book. Just read it.</p>
+<p><a href="https://git-scm.com/book/en/v2"><img alt="Pro Git" src="pro_git.jpg"></a></p>
+<hr>
+<p>See also <a href="/20160320-books_for_professionals/">Books for Professionals</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20160322-books_for_programmers/</link>
+<guid>http://planspace.org/20160322-books_for_programmers/</guid>
+<pubDate>Tue, 22 Mar 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Books for Professionals</title>
 <description><![CDATA[
 
@@ -30,7 +69,9 @@
 <p>I also recently (well, last November) read <a href="http://shop.oreilly.com/product/0636920042372.do">Debugging Teams</a> and thought it was pretty good. I wrote <a href="http://planspace.org/20151118-debugging_teams/">some stuff</a> about it and pulled out quotes. The book is <a href="http://www.amazon.com/Debugging-Teams-Productivity-through-Collaboration/dp/1491932058">for sale</a>.</p>
 <p><img alt="Debugging Teams" src="debugging_teams.png"></p>
 <hr>
-<p>Where is the line between competency that should be expected of everyone and area of specialist knowledge? This may be particularly confused by so-called "business books", some of which are about being effective in any role, some of which are specifically about "management", and all of which want to sell as many copies as possible at the airport. I suspect that most are weakly rehashing some of the above titles.</p>    
+<p>Where is the line between competency that should be expected of everyone and area of specialist knowledge? This may be particularly confused by so-called "business books", some of which are about being effective in any role, some of which are specifically about "management", and all of which want to sell as many copies as possible at the airport. I suspect that most are weakly rehashing some of the above titles.</p>
+<hr>
+<p>See also <a href="/20160322-books_for_programmers/">Books for Programmers</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20160320-books_for_professionals/</link>
 <guid>http://planspace.org/20160320-books_for_professionals/</guid>
@@ -2107,84 +2148,6 @@ planspace.org
 <link>http://planspace.org/20150530-practical_mergic_at_odsc/</link>
 <guid>http://planspace.org/20150530-practical_mergic_at_odsc/</guid>
 <pubDate>Sat, 30 May 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TF-IDF is about what matters</title>
-<description><![CDATA[
-
-<p>TF-IDF is <em>term frequency inverse document frequency</em>. But what does that mean?</p>
-<p><img alt="cat and dog" src="cat_and_dog.png"></p>
-<!-- Image from Wikimedia Commons: http://commons.wikimedia.org/wiki/File:Cat_and_dog.JPG -->
-
-<p>Consider a collection (or corpus, or set) of four sentences (or documents, or strings) made up of words (or terms, or tokens):</p>
-<ol>
-<li>the cat and dog sat</li>
-<li>the dog and cat sat</li>
-<li>the cat sat and sat</li>
-<li>the cat killed the dog</li>
-</ol>
-<p>One thing we can do is transform this corpus to a bag of words representation, which just means we&#8217;re keeping track of what words there are but not what order they&#8217;re in. We could use binary values to represent whether a word appears or not:</p>
-<pre><code class="language-text">    the    cat    and    dog    sat   killed
-1     1      1      1      1      1        0
-2     1      1      1      1      1        0
-3     1      1      1      0      1        0
-4     1      1      0      1      0        1</code></pre>
-
-<p>In this representation we've lost word order, but we've also lost <em>term frequency</em>: we can't tell that sentence three has twice as much sitting as sentence two. Let's use the counts:</p>
-<pre><code class="language-text">    the    cat    and    dog    sat   killed
-1     1      1      1      1      1        0
-2     1      1      1      1      1        0
-3     1      1      1      0      2        0
-4     2      1      0      1      0        1</code></pre>
-
-<p>Now we can see how many times each term appears in each document.</p>
-<p>Is it good that &#8220;killed&#8221; is given the same score as &#8220;cat&#8221; in sentence four? The word &#8220;killed&#8221; is much rarer, after all; it is more &#8220;special&#8221; to sentence four. Let&#8217;s count the number of sentences that have each word, and call this the <em>document frequency</em>:</p>
-<pre><code class="language-text">    the    cat    and    dog    sat  killed
-      4      4      3      3      3       1</code></pre>
-
-<p>The document frequencies are high for words that are boring, so dividing by the document frequencies will give us low scores for boring words and high scores for interesting words:</p>
-<pre><code class="language-text">    the    cat    and   dog     sat  killed
-1  0.25   0.25   0.33   0.33   0.33       0
-2  0.25   0.25   0.33   0.33   0.33       0
-3  0.25   0.25   0.33      0   0.67       0
-4  0.50   0.25      0   0.33      0    1.00</code></pre>
-
-<p>These scores match the intuition that &#8220;killed&#8221; is a very important word. In addition to making some intuitive sense, scores like these tend to work well in machine learning tasks.</p>
-<p>All we did was this:</p>
-<p>\[ \frac{\text{number of times the word is in this document}}{\text{number of documents the word is in}} \]</p>
-<p>Or, for short:</p>
-<p>\[ \frac{\text{term frequency}}{\text{document frequency}} \]</p>
-<p>Dividing by a number is the same as multiplying by its inverse, \( \frac{1}{\text{a number}} \), so we can call this transformation <em>term frequency inverse document frequency</em>.</p>
-<p>This is not a very difficult idea. You could have invented it yourself. But it gets so buried in terminology and secondary implementation details that people sometimes talk about it as if it were a deep and mysterious modeling technique. (It's not.)</p>
-<p>Here's an <a href="http://www.cs.utexas.edu/~ml/papers/marlin-dissertation-06.pdf">example</a> of how the exposition can lose people. It starts nicely:</p>
-<blockquote>
-<p>&#8220;Tokens that occur frequently in a given string should have higher contribution to similarity than those that occur few times, as should those tokens that are rare among the set of strings under consideration.&#8221;</p>
-</blockquote>
-<p>Who could disagree? Then it jumps to this:</p>
-<blockquote>
-<p>&#8220;The Term Frequency-Inverse Document Frequency (TF-IDF) weighting scheme achieves this by associating a weight \( w_{v_i,s} = \frac{N(v_i,s)}{\text{max}_{v_j \in s} N(v_j,s)} \cdot \text{log} \frac{N}{N(v_i)} \) with every token \( v_i \) from string \( s \), where \( N(v_i, s) \) is the number of times \( v_i \) occurs in \( s \) (term frequency), \( N \) is the number of strings in the overall corpus under consideration, and \( N(v_i) \) is the number of strings in the corpus that include \( v_i \) (document frequency).&#8221;</p>
-</blockquote>
-<p>There's some notation there, and we've also thrown in two normalizations and a log. None of this is a particularly big deal, but it makes TF-IDF seem complicated. There are <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">a lot of ways</a> you could do the particulars of TF-IDF but they all achieve essentially what we did above by just counting and dividing.</p>
-<p>It can also be confusing when results don't match what you expect. Here is what you get by default (with <a href="tfidf.py">this script</a>) from <a href="http://scikit-learn.org/">sklearn</a>'s <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">TfidfVectorizer</a>:</p>
-<pre><code class="language-text">    the    cat    and    dog    sat   killed
-1  0.39   0.39   0.48   0.48   0.48        0
-2  0.39   0.39   0.48   0.48   0.48        0
-3  0.32   0.32   0.40      0   0.79        0
-4  0.63   0.31      0   0.38      0     0.60</code></pre>
-
-<p>The formula <code>sklearn</code> version 0.16.1 uses to compute TF-IDF is this:</p>
-<p>\[ \text{term frequency} \cdot \left ( \text{log} \left ( \frac{\text{number of documents} + 1}{\text{document frequency} +1} \right ) + 1 \right ) \]</p>
-<p>And then <code>sklearn</code> also scales the rows of the results to each have unit length.</p>
-<p>So you could be surprised that the results of a TF-IDF implementation don't exactly match the method you were thinking of. As above, there are a lot of small choices in exactly how to calculate TF-IDF, and <code>sklearn</code> chooses one particular implementation.</p>
-<hr>
-<p>I've seen better classification performance with TF-IDF than with raw counts, but I haven't seen a systematic comparison across various TF-IDF methods; it might be interesting to see such a comparison.</p>
-<hr>
-<p>Thanks to <a href="https://twitter.com/hallr">Rob Hall</a> for doing <a href="https://github.com/ga-students/DAT_SF_13/tree/master/lectures#session-14-natural-language-processing">work</a> that helped inspire this post!</p><!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20150524-tfidf_is_about_what_matters/</link>
-<guid>http://planspace.org/20150524-tfidf_is_about_what_matters/</guid>
-<pubDate>Sun, 24 May 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

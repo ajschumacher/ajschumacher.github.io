@@ -37,3 +37,7 @@ I also recently (well, last November) read [Debugging Teams](http://shop.oreilly
 ---
 
 Where is the line between competency that should be expected of everyone and area of specialist knowledge? This may be particularly confused by so-called "business books", some of which are about being effective in any role, some of which are specifically about "management", and all of which want to sell as many copies as possible at the airport. I suspect that most are weakly rehashing some of the above titles.
+
+---
+
+See also [Books for Programmers](/20160322-books_for_programmers/).
