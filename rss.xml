@@ -7,6 +7,176 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Mindstorms: Children, Computers, and Powerful Ideas</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Mindstorms:_Children,_Computers,_and_Powerful_Ideas">Mindstorms</a> is a book from 1980. It inspired, among many things, <a href="https://en.wikipedia.org/wiki/Lego_Mindstorms">Lego Mindstorms</a>. It's been <a href="http://worrydream.com/LearnableProgramming/">called</a> &#8220;perhaps the greatest book ever written on learning in general&#8221;. And it contains <a href="/20151231-juggling_for_programmers/">a lesson on juggling</a>. Here are some quotes and notes I extracted.</p>
+<p><a href="http://www.amazon.com/Mindstorms-Children-Computers-Powerful-Ideas/dp/0465046746"><img alt="Mindstorms: Children, Computers, and Powerful Ideas" src="mindstorms.jpg"></a></p>
+<hr>
+<p>One of the central themes of the book is "that children can learn to use computers in a masterful way" (p. vii) and one of the central questions I have is whether children today are doing so.</p>
+<hr>
+<p>From the introduction to the second edition (p. xv):</p>
+<blockquote>
+<p>"From the perspective of the 1990s, it appears bizarre or downright reactionary that <em>Mindstorms</em> makes no reference to gender or multiculturalism. I have become convinced that recognizing the <a href="https://en.wikipedia.org/wiki/Androcentrism">androcentric</a> nature of traditional ways of knowing will play a central role in producing change in education."</p>
+<p>"... the ultimate theoretical task in advancing, for example, the learning of mathematics, is not producing a range of so-and-so-centric kinds of mathematical knowledge but rather finding ways of thinking about mathematical knowledge that will allow each individual to make what in <em>Mindstorms</em> I call a <a href="https://en.wiktionary.org/wiki/syntonic">syntonic</a> appropriation."</p>
+</blockquote>
+<p>I relate this to the later work by others in <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">Where Mathematics Comes From</a> which builds mathematical understanding on metaphor "syntonic with" human experience.</p>
+<hr>
+<p>In the preface (p. xxi):</p>
+<blockquote>
+<p>"The computer is the <a href="https://en.wikipedia.org/wiki/Proteus">Proteus</a> of machines."</p>
+</blockquote>
+<hr>
+<p>On page 23:</p>
+<blockquote>
+<p>"... many children are held back in their learning because they have a model of learning in which you have either 'got it' or 'got it wrong.' But when you learn to program you almost never get it right the first time. <strong>Learning to be a master programmer is learning to become highly skilled at isolating and correcting 'bugs,'</strong> the parts that keep the program from working. The question to ask about the program is not whether it is right or wrong, but if it is fixable. <strong>If this way of looking at intellectual products were generalized to how the larger culture thinks about knowledge and its acquisition, we all might be less intimidated by our fears of 'being wrong.'</strong>" (Emphasis mine.)</p>
+</blockquote>
+<hr>
+<p>On page 31:</p>
+<blockquote>
+<p>"... [meaningful use of computers] comes into head-on collision with the many aspects of school whose effect, if not whose intention, is to 'infantilize' the child."</p>
+<p>"I see Piaget as the theorist of learning without curriculum and the theorist of the kind of learning that happens without deliberate teaching. To turn him into the theorist of a new curriculum is to stand him on his head."</p>
+</blockquote>
+<hr>
+<p>On page 32:</p>
+<blockquote>
+<p>"... <strong>educational intervention means changing the culture</strong>, planting new constructive elements in it and eliminating noxious ones. This is a more ambitious undertaking than introducing a curriculum change, ..." (Emphasis mine.)</p>
+<p>"The educator must be an anthropologist."</p>
+</blockquote>
+<hr>
+<p>On page 37 Papert anticipates personal computers being a way to side-step the sluggishness of the traditional education system, leading to the sentence that closes the first chapter:</p>
+<blockquote>
+<p>"There might be a renaissance of thinking about education."</p>
+</blockquote>
+<hr>
+<p>From page 39 to 40:</p>
+<blockquote>
+<p>"To my ear the word 'mathophobia' has two associations. One of these is a widespread fear of mathematics, which often has the intensity of a real phobia. The other comes from the meaning of the stem 'math.' In Greek it means 'learning' in a general sense. In our culture, fear of learning is no less endemic (although more frequently disguised) than fear of mathematics."</p>
+</blockquote>
+<hr>
+<p>Page 50:</p>
+<blockquote>
+<p>"It is easy to understand why math and grammar fail to make sense to children when they fail to make sense to everyone around them and why helping children to make sense of them requires more than a teacher making the right speech or putting the right diagram on the board. I have asked many teachers and parents what they thought mathematics to be and why it was important to learn it. Few held a view of mathematics that was sufficiently coherent to justify devoting several thousand hours of a child's life to learning it, and children sense this. When a teacher tells a student that the reason for those many hours of arithmetic is to be able to check the change at the supermarket, the teacher is simply not believed. Children see such 'reasons' as one more example of adult double talk. The same effect is produced when children are told school math is 'fun' when they are pretty sure that teachers who say so spend their leisure hours on anything except the allegedly fun-filled activity. Nor does it help to tell them that they need math to become scientists - most children don't have such a plan. The children can see perfectly well that the teacher does not like math any more than they do and that the reason for doing it is simply that it has been inscribed into the curriculum. All of this erodes children's confidence in the adult world and the process of education. <em>And I think it introduces a deep element of dishonesty into the educational relationship.</em>" (Emphasis in original.)</p>
+<p>"Children perceive the school's rhetoric about mathematics as double talk. In order to remedy the situation we must first acknowledge that the child's perception is fundamentally correct. The <em>kind of mathematics</em> foisted on children in schools is not meaningful, fun, or even very useful." (Emphasis in original.)</p>
+</blockquote>
+<p>I think this is an important point, and it sets off two trains of thought for me.</p>
+<p>First, and more directly to Papert's point, why learn math? I agree it isn't to make change at a store, just have fun, or prepare for some specialized application. I side with those who hold that math is about thinking, and while it is not clearly present in learning long division, the kind of math that I think is worth spending time on is the distillation of good thinking. Mathematics is argument stripped of rhetoric. If logic is a more comfortable word, then use it, but don't worry about whether you can calculate a square root if you can't <a href="https://www.ets.org/gre/revised_general/prepare/analytical_writing/argument/prepare_task">analyze an argument</a>. One thing that math teaches you is that (at least in certain limited domains or ways) arguments actually can be 100% right and not subject to debate. There are real differences between being right and wrong and we can think about them.</p>
+<p>Second, it is interesting to think about what "makes sense" and how we think about various topics. By this I mean that math, properly taught/learned, "makes sense" in that it has internal consistency and logic that binds its ideas together. On the other hand, English spelling makes very little sense except in very different ways, such as possibly a historical "way of knowing".</p>
+<hr>
+<p>On page 60:</p>
+<blockquote>
+<p>"They learn a general 'mathetic principle,' making components to favor modularity. And they learn to use the very powerful idea of 'state.'"</p>
+</blockquote>
+<hr>
+<p>On page 61:</p>
+<blockquote>
+<p>"The programmer is encouraged to study the bug rather than forget the error."</p>
+</blockquote>
+<hr>
+<p>On page 63:</p>
+<blockquote>
+<p>"Make sense of what you want to learn."</p>
+</blockquote>
+<hr>
+<p>On page 71:</p>
+<blockquote>
+<p>"Of all ideas I have introduced to children, recursion stands out as the one idea that is particularly able to evoke an excited response."</p>
+</blockquote>
+<hr>
+<p>On page 74:</p>
+<blockquote>
+<p>"In the LOGO environment new ideas are often acquired as a means of satisfying a personal need to do something one could not do before."</p>
+</blockquote>
+<hr>
+<p>On page 76:</p>
+<blockquote>
+<p>"... what is important when we give children a theorem to use is not that they should memorize it. What matters most is that by growing up with a few very powerful theorems one comes to appreciate how certain ideas can be used as tools to think with over a lifetime. One learns to enjoy and to respect the power of powerful ideas. <strong>One learns that the most powerful idea of all is the idea of powerful ideas.</strong>" (Emphasis mine.)</p>
+</blockquote>
+<hr>
+<p>On page 96:</p>
+<blockquote>
+<p>"An important component in the history of knowledge is the development of techniques that increase the potency of 'words and diagrams.'"</p>
+</blockquote>
+<hr>
+<p>The idea of the child as epistemologist appears throughout.</p>
+<hr>
+<p>On page 100:</p>
+<blockquote>
+<p>"One might even say that computer science is wrongly so called: Most of it is not the science of computers, but the science of descriptions and descriptive languages."</p>
+</blockquote>
+<hr>
+<p>On page 113:</p>
+<blockquote>
+<p>"<strong>We can learn more, and more quickly, by taking conscious control of the learning process, articulating and analyzing our behavior.</strong>" (Emphasis mine.)</p>
+</blockquote>
+<hr>
+<p>On page 115:</p>
+<blockquote>
+<p>"Discovery cannot be a setup; invention cannot be scheduled."</p>
+</blockquote>
+<hr>
+<p>From page 116 to 117:</p>
+<blockquote>
+<p>"A child (and, indeed, perhaps most adults) lives in a world in which everything is only partially understood; well enough perhaps, but never completely."</p>
+</blockquote>
+<hr>
+<p>On page 120:</p>
+<blockquote>
+<p>"First, relate what is new and to be learned to something you already know. Second, take what is new and make it your own: ..."</p>
+</blockquote>
+<hr>
+<p>On page 129:</p>
+<blockquote>
+<p>"... each of the microworlds we described can function as an explorable and manipulable environment."</p>
+</blockquote>
+<hr>
+<p>From page 139 to 140:</p>
+<blockquote>
+<p>"Everyone is too busy following the cookbook. ... The computer is used to aggravate the already too-quantitative methodology of the physics classes."</p>
+</blockquote>
+<hr>
+<p>Cool stuff from 142 to 145 (roughly) on the importance of working with and updating intuitions rather than discarding them for formalism alone.</p>
+<hr>
+<p>On page 155:</p>
+<blockquote>
+<p>"The cultural assimilation of the computer presence will give rise to a computer literacy. This phrase is often taken as meaning knowing how to program, or knowing about the varied uses made of computers. But true computer literacy is not just knowing how to make use of computers and computational ideas. It is knowing when it is appropriate to do so."</p>
+</blockquote>
+<hr>
+<p>From page 158 to 159:</p>
+<blockquote>
+<p>"the idea of studying learning by focusing on the structure of what is learned"</p>
+</blockquote>
+<p>I think this idea is hugely important and too-often ignored. It is an empty pedagogy that spends all its effort in determining clever ways to teach the wrong things. The example in the text is of learning to ride a bike:</p>
+<blockquote>
+<p>"Thus learning to ride [a bike] does not mean learning to balance, it means learning not to unbalance, learning not to interfere."</p>
+</blockquote>
+<hr>
+<p>The interpretation of <a href="https://en.wikipedia.org/wiki/Nicolas_Bourbaki">Bourbaki</a> on pages 159 and 160 is interesting but does not seem to be prominent today; by the wiki entry anyway, it seems like they were a good deal more formal than would be appropriate for early educational purposes.</p>
+<hr>
+<p>The idea of a "transitional object" (page 161) is interesting and connects possibly to ideas about using manipulatives in math education.</p>
+<hr>
+<p>On page 172:</p>
+<blockquote>
+<p>"Consider another example of how our images of knowledge can subvert our sense of ourselves as intellectual agents. Educators sometimes hold up an ideal of knowledge as having the kind of coherence defined by formal logic. But these ideals bear little resemblance to the way in which most people experience themselves. The subjective experience of knowledge is more similar to the chaos and controversy of competing agents than to the certitude and orderliness of <em>p</em>'s implying <em>q</em>'s. The discrepancy between our experience of ourselves and our idealizations of knowledge has an effect: It intimidates us, it lessens the sense of our own competence, and it leads us into counterproductive strategies for learning and thinking."</p>
+</blockquote>
+<hr>
+<p>On page 177:</p>
+<blockquote>
+<p>"... a particular computer culture, a <a href="https://en.wikipedia.org/wiki/Mathetics">mathetic</a> one, that is, one that helps us not only to learn but to learn about learning."</p>
+</blockquote>
+<hr>
+<p>On page 179:</p>
+<blockquote>
+<p>"In this book we have considered how mathematics might be learned in settings that resemble the Brazilian samba school, in settings that are real, socially cohesive, and where experts and novices are all learning."</p>
+<p>"John Dewey expressed a nostalgia for earlier societies where the child becomes a hunter by real participation and by playful imitation."</p>
+</blockquote>
+<p><a href="http://www.amazon.com/Mindstorms-Children-Computers-Powerful-Ideas/dp/0465046746"><img alt="Mindstorms: Children, Computers, and Powerful Ideas" src="mindstorms.jpg"></a></p>    
+    ]]></description>
+<link>http://planspace.org/20160327-mindstorms/</link>
+<guid>http://planspace.org/20160327-mindstorms/</guid>
+<pubDate>Sun, 27 Mar 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Books for Programmers</title>
 <description><![CDATA[
 
@@ -1590,564 +1760,6 @@ very        0.2           0.3        1.3</code></pre>
 <link>http://planspace.org/20150607-textblob_sentiment/</link>
 <guid>http://planspace.org/20150607-textblob_sentiment/</guid>
 <pubDate>Sun, 07 Jun 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Practical Mergic</title>
-<description><![CDATA[
-
-<p><em>A <a href="http://opendatascicon.com/schedule/practical-mergic-how-to-join-anything/">talk</a> for the <a href="http://opendatascicon.com/">Open Data Science Conference</a> in Boston on Saturday May 30, 2015. Including some material originally given in a <a href="/20150520-practical_mergic/">talk</a> for the <a href="http://www.meetup.com/nyhackr/">New York Open Statistical Programming Meetup</a> on <a href="http://www.meetup.com/nyhackr/events/222328498/">Wednesday May 20, 2015</a> and a <a href="/20150514-mergic/">lightning talk</a> at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>.</em></p>
-<hr>
-<p></p><center>
-planspace.org
-<p>@planarrowspace
-</p></center>
-<hr>
-<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
-<p>I've also done a <a href="/20150520-practical_mergic/">longer version</a> and a <a href="/20150514-mergic/">shorter version</a> of this talk, and those are also on the blog. So if you find yourself wanting more you can get more, and if you want less I can also give you less.</p>
-<p>This is probably the cheekiest of the three versions.</p>
-<hr>
-<p><img width="1000%" alt="Open Data Science Conference title slide for Practical Mergic with Aaron Schumacher" src="img/title_slide.png"></p>
-<hr>
-<p>Here's an official cover slide.</p>
-<hr>
-<p><img height="1000%" alt="Metis" src="img/metis.png"></p>
-<hr>
-<p>I teach at <a href="http://www.thisismetis.com/">Metis</a>, and I'm really happy that we're helping sponsor the Open Data Science Conference. Metis is a data science bootcamp, currently just in New York (sorry Boston). We get the best people, we have a lot of fun, and at the end out come data scientists that you could hire.</p>
-<p>I could just talk about Metis, but instead I thought it'd be a good idea to talk about un-sexy everyday problems.</p>
-<hr>
-<p>problem</p>
-<hr>
-<p>In general it's just one problem, and if you work with data you have this problem.</p>
-<hr>
-<p>your data sucks</p>
-<hr>
-<p>Data is awful! You do not want to swim in a data lake. It's a mess out there!</p>
-<p>Of course these days we have open data, which is a huge improvement.</p>
-<hr>
-<p>our data sucks</p>
-<hr>
-<p>So maybe we release some data sets, put them on a nice Socrata open data portal...</p>
-<hr>
-<pre><code class="language-text">   dbn grade year category num_tested
-01M019     3 2010   Female         16
-01M019     3 2010     Male         20
-01M019     3 2010     Male          2</code></pre>
-
-<hr>
-<p>Here's an example of open data <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">released</a> by the New York City Department of Education.</p>
-<p>The <code>dbn</code> is a school identifier, and <code>grade</code> and <code>year</code> make sense. This file has the number of students tested in three categories: &#8220;Female&#8221;, &#8220;Male&#8221;, and &#8220;Male&#8221;.</p>
-<p>What does that mean?</p>
-<p>There are fourteen hundred extra &#8220;Male&#8221; rows like this!</p>
-<p>You can look more deeply into this and conclude with some confidence that you can probably drop these extra &#8220;Male&#8221; rows. It's clearly a mistake of some kind.</p>
-<hr>
-<p><img width="1000%" title="This happens." src="img/this_happens.png"></p>
-<hr>
-<p><em>Original image from <a href="http://en.wikipedia.org/wiki/Magnolia_%28film%29">Magnolia</a> via <a href="http://indie-outlook.com/2012/09/19/jeremy-blackman-on-magnolia-pta-0s-1s-and-pink-drink/">Indie Outlook</a>.</em></p>
-<p>This is a scene from a movie called Magnolia where it's raining frogs. One of the things they say in that movie is that strange things happen, and if you've worked with any variety of data sets, you've probably encountered very strange things indeed. You need to check everything&#8212;including things that you shouldn&#8217;t have to check.</p>
-<p>I would also like to offer, before I get to what I'm really going to talk about, that it is a serious problem that I can't easily contribute a fix to that DOE data set. We should expect collaborative checking and editing of data sets to be part of the benefit of open data.</p>
-<p>I don't know of any system currently in existence that does this well. We need something in between Wikipedia and GitHub. The <a href="http://dat-data.com/">dat project</a> isn't doing it, at least not yet. I like the architecture of <a href="http://www.datomic.com/">Datomic</a>, but it's not quite right either. <a href="https://www.wikidata.org/">Wikidata</a> might be moving in the right direction, but I'm not sure yet.</p>
-<hr>
-<p>problems when names are the same</p>
-<hr>
-<p>How is this relevant to merging? Well, lots of things can go wrong when you have exact duplicates that you aren't expecting.</p>
-<hr>
-<p>merge</p>
-<hr>
-<p>One big reason to want nice unique IDs is that you would like to merge two data sets, and you need something to match records by. Let's do a quick refresher on merging, or joining.</p>
-<hr>
-<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png"></p>
-<hr>
-<p>This is a section from <a href="http://www.rstudio.com/">RStudio</a>'s <a href="http://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> for <a href="https://github.com/hadley/dplyr">dplyr</a>. These cheatsheets are fantastic.</p>
-<p>We'll do a merge between two data sets. For simplicity say that they have one column which is an identifier for each row, and some data in other columns. There are a couple ways we can join the data.</p>
-<p>Some people like to think about these in terms of Venn diagrams.</p>
-<hr>
-<p><img width="1000%" title="left join" src="img/left_join.png"></p>
-<hr>
-<p>This picture comes from <a href="https://twitter.com/codinghorror">Jeff Atwood</a>'s post called <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">visual explanation of SQL joins</a>.</p>
-<p>A former co-worker told me that seeing these pictures changed his life. I hope you like them.</p>
-<p>This is a left join: you get all the keys from the left data set, regardless of whether they're in the right data set.</p>
-<hr>
-<p><img width="1000%" title="right join" src="img/right_join.png"></p>
-<hr>
-<p>Jeff Atwood doesn't have a picture of a right join on his blog, but you can make one with a little <a href="http://www.imagemagick.org/">ImageMagick</a>.</p>
-<pre><code class="language-bash">$ convert -rotate 180 left_join.png right_join.png</code></pre>
-
-<p>You're welcome.</p>
-<hr>
-<p><img width="1000%" title="inner join" src="img/inner_join.png"></p>
-<hr>
-<p>An inner join, or natural join, only gives you results for keys that appear in both the left and right data sets.</p>
-<hr>
-<p><img width="1000%" title="outer join" src="img/outer_join.png"></p>
-<hr>
-<p>And an outer join gives you everything. Great!</p>
-<p>There are a few other terms we could add, but let's not.</p>
-<hr>
-<p><img height="1000%" title="dplyr cheat sheet joins" src="img/dplyr_joins.png"></p>
-<hr>
-<p>Here's the <code>dplyr</code> summary again. You can see how you can introduce missing values when doing left, right, and outer joins.</p>
-<p>Ready? Here's a test.</p>
-<hr>
-<p>How many rows do you get when you outer join two tables?</p>
-<hr>
-<p>Think about this question, discuss it with somebody near you, come up with everything you can say about the number of rows you might expect when you join two tables. Introduce any quantities you think you'd like to know.</p>
-<p>Take about three minutes and then come back.</p>
-<p><em>three minutes pass</em></p>
-<p>Say there are \( N \) rows in the first table and \( M \) rows in the second table. Then the smallest number of rows we can get from the outer join is the greater of \( N \) and \( M \). But we might get as many as \( N \cdot M \) rows, if all the keys are the same!</p>
-<p>If you said the maximum was \( N + M \), you were probably assuming, implicitly or explicitly, that all they keys were unique. This is a common assumption that you should really check.</p>
-<hr>
-<pre><code class="language-r">&gt; nrow(first)
-## [1] 3
-&gt; nrow(second)
-## [1] 3
-&gt; result &lt;- merge(first, second)
-&gt; nrow(result)
-## [1] 3</code></pre>
-
-<hr>
-<p><em>This code is runnable in <a href="count_trouble.R">count_trouble.R</a>.</em></p>
-<p>Is it enough to check the numbers of rows when we do joins?</p>
-<p>This does an inner join, which is the default for <code>merge</code> in R. (I'm using R here as a personal favor to <a href="https://twitter.com/jaredlander">Jared Lander</a>.)</p>
-<p>Think about it.</p>
-<hr>
-<pre><code class="language-text"> x    y1        x   y2        x    y1   y2
- 1 looks        1 good        1 looks good
- 2    oh        2  boy        2    oh  boy
- 3  well        2   no        2    oh   no</code></pre>
-
-<hr>
-<p>There is no peace while you don't have unique IDs.</p>
-<p>There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.</p>
-<hr>
-<p>problems when names are the same</p>
-<hr>
-<p>This has been a discussion of problems arising from names being the same.</p>
-<hr>
-<p>problems when names aren't the same</p>
-<hr>
-<p>And now, you probably also want to check that the intersection you get is what you expect.</p>
-<p>You don't want to silently drop a ton of rows when you merge!</p>
-<p>This is the beginning of our problems with names that aren't the same.</p>
-<hr>
-<p>let's play tennis</p>
-<hr>
-<p>I downloaded the <a href="https://archive.ics.uci.edu/ml/datasets/Tennis+Major+Tournament+Match+Statistics">Tennis Major Tournament Match Statistics Data Set</a> from the <a href="https://archive.ics.uci.edu/ml/">University of California, Irvine Machine Learning Repository</a>.</p>
-<p>Do you know the process for getting a data set up up on the UCI ML repository?</p>
-<p>The process is this: You fill in a form on their web site, and then maybe they put up your data set.</p>
-<hr>
-<pre><code class="language-bash">$ head -2 AusOpen-women-2013.csv | cut -c 1-40
-## Player1,Player2,Round,Result,FNL1,FNL2,F
-## Serena Williams,Ashleigh Barty,1,1,2,0,5
-
-$ head -2 USOpen-women-2013.csv | cut -c 1-40
-## Player 1,Player 2,ROUND,Result,FNL.1,FNL
-## S Williams,V Azarenka,7,1,2,1,57,44,43,2</code></pre>
-
-<hr>
-<p>There are eight files like this. You can see that the player names are not perfectly consistent.</p>
-<p>Some good people up-state New York contributed this data set, and I got in touch with them. I was curious about where the data came from; it was scraped from some web sites. Did they use it in any of their classes? Yes, it was used for some activities. Did they use it for teaching any particular data cleaning techniques? I haven't heard back since then.</p>
-<hr>
-<pre><code class="language-bash">$ wc -l names.txt
-## 1886
-
-$ sort names.txt | uniq | wc -l
-## 669</code></pre>
-
-<hr>
-<p>So we'll take the tennis player names as our example data set. We have a file with 1,886 names, 669 of which are unique.</p>
-<p>There are too many unique strings&#8212;sometimes more than one string for the same player. As a result, a count of the most common names will not accurately tell us who played the most in these 2013 tennis competitions.</p>
-<hr>
-<pre><code class="language-bash">$ sort names.txt | uniq -c | sort -nr | head -5
-##  21 Rafael Nadal
-##  17 Stanislas Wawrinka
-##  17 Novak Djokovic
-##  17 David Ferrer
-##  15 Roger Federer</code></pre>
-
-<hr>
-<p>The list above is not the answer we&#8217;re looking for. We want to be correct.</p>
-<hr>
-<p>single field deduplication</p>
-<hr>
-<p>We're going to think about this problem, which is pretty common, of de-duplicating (or making a merge table for) a single text field.</p>
-<hr>
-<pre><code>Lukas Lacko             F Pennetta
-Leonardo Mayer          S Williams
-Marcos Baghdatis        C Wozniacki
-Santiago Giraldo        E Bouchard
-Juan Monaco             N.Djokovic
-Dmitry Tursunov         S.Giraldo
-Dudi Sela               Y-H.Lu
-Fabio Fognini           T.Robredo
-...                     ...</code></pre>
-
-<hr>
-<p>To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
-<p>Do you see the match here? (It's Santiago!)</p>
-<p>So we need to find the strings that refer to the same person.</p>
-<hr>
-<p><img width="1000%" title="Open Refine" src="img/open_refine.png"></p>
-<hr>
-<p><a href="http://openrefine.org/">Open Refine</a> is quite good.</p>
-<p>An interesting side story is that Open Refine was formerly Google Refine, and before that <a href="http://en.wikipedia.org/wiki/Metaweb">Metaweb</a>'s &#8220;Freebase Gridworks&#8221;. Google is shutting down <a href="http://www.freebase.com/">Freebase</a>, and we have to hope that <a href="https://www.wikidata.org/">Wikidata</a> will then be the open match for Google's <a href="http://en.wikipedia.org/wiki/Knowledge_Graph">Knowledge Graph</a>.</p>
-<p>Open Refine is quite good, but there are several things I wish it did differently.</p>
-<p>For one, although it has an internal record of changes, the interface Open Refine exposes changes your data in place. That's not okay.</p>
-<hr>
-<pre><code class="language-text">Cluster ID,name
-1,Lukas Lacko
-2,Leonardo Mayer
-3,Marcos Baghdatis
-...</code></pre>
-
-<hr>
-<p>One way to keep output from a deduplication process is a merge table like this. The <code>csvdedupe</code> interface on the Python <a href="https://github.com/datamade/dedupe">dedupe</a> project from <a href="http://datamade.us/">DataMade</a> in Chicago will give you this kind of output. It's much better than no accessible record of the transformation, but it's also not a format I want to look at, as a human.</p>
-<hr>
-<pre><code class="language-json">{
-    "Ann's group": [
-        "Ann"
-    ],
-    "Bob's group": [
-        "Bob",
-        "Robert"
-    ]
-}</code></pre>
-
-<hr>
-<p>Here's a format that I propose could be usable for describing deduplication. It's as readable by humans as any <a href="http://json.org/">JSON</a>, and it can be easily produced and consumed by anything that speaks JSON, which is everything.</p>
-<hr>
-<pre><code class="language-text">new,original
-Ann's group,Ann
-Bob's group,Bob
-Bob's group,Robert</code></pre>
-
-<hr>
-<p>You can still produce a merge table from the JSON representation, and it will have whatever new keys you specify, possibly human-readable ones.</p>
-<hr>
-<p><img height="1000%" title="ermahgerd mergic" src="img/ermahgerd.png"></p>
-<hr>
-<p><code>mergic</code> is a tool that supports doing deduplication with these conventions.</p>
-<hr>
-<ul>
-<li>simple</li>
-<li>customizable</li>
-<li>reproducible</li>
-</ul>
-<hr>
-<p>The goals of <code>mergic</code> are to be:</p>
-<ul>
-<li>simple, meaning largely text-based and obvious; the tool disappears</li>
-<li>customizable, meaning you can easily use a custom distance function</li>
-<li>reproducible, meaning everything you do can be done again automatically</li>
-</ul>
-<hr>
-<p>the tool disappears</p>
-<hr>
-<p>Good tools disappear.</p>
-<p>Whatever text editor you use, the your work product is a text file. You can use any text editor, or use different ones for different purposes, and so on.</p>
-<p>Your merge process shouldn't rely on any particular piece of software for its replicability.</p>
-<hr>
-<p>any distance function</p>
-<hr>
-<p>Your distance function can make all the difference. You need to be able to plug in any distance function that works well for your data.</p>
-<hr>
-<p>really reproducible</p>
-<hr>
-<p>People can see what's happening, and computers can keep doing the process without clicking or re-running particular executables.</p>
-<hr>
-<p><img width="1000%" title="big data" src="img/big_data.png"></p>
-<hr>
-<p>A quick disclaimer!</p>
-<p>This is John Langford's slide, about what big data is. He says that small data is data for which \( O(n^2) \) algorithms are feasible. Currently <code>mergic</code> is strictly for this kind of "artisanal" data, where we want to ensure that our matching is correct but want to reduce the amount of human work to ensure that. And we are about to get very \( O(n^2) \).</p>
-<hr>
-<pre><code>Santiago Giraldo,Leonardo Mayer
-Santiago Giraldo,Dudi Sela
-Santiago Giraldo,Juan Monaco
-Santiago Giraldo,S Williams
-Santiago Giraldo,C Wozniacki
-Santiago Giraldo,S.Giraldo
-Santiago Giraldo,Marcos Baghdatis
-Santiago Giraldo,Y-H.Lu
-...</code></pre>
-
-<hr>
-<p>So we make all possible pairs of identifiers!</p>
-<p>One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.</p>
-<p>All these pairs are annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.</p>
-<p>Do you see the match here? (It's Santiago again!)</p>
-<hr>
-<pre><code>Karolina Pliskova,K Pliskova</code></pre>
-
-<hr>
-<p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
-<p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
-<hr>
-<pre><code>Kristyna Pliskova,K Pliskova</code></pre>
-
-<hr>
-<p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
-<hr>
-<p>sets &gt; pairs</p>
-<hr>
-<p>Both perceptually and logically, it's better to think in sets than in a bunch of individual pairs.</p>
-<hr>
-<p>workflow support for reproducible deduplication and merging</p>
-<hr>
-<p>This is what <code>mergic</code> is for. <code>mergic</code> is a simple tool designed to make it less painful when you need to merge things that don't yet merge.</p>
-<hr>
-<p>demo: mergic tennis</p>
-<hr>
-<p>With all that background, let's see how <code>mergic</code> attempts to support a good workflow.</p>
-<pre><code class="language-bash">$ pew new odsc</code></pre>
-
-<p>I'll start by making a new <a href="https://virtualenv.pypa.io/">virtual environment</a> using <a href="https://github.com/berdario/pew">pew</a>.</p>
-<pre><code class="language-bash">$ pip install mergic</code></pre>
-
-<p><code>mergic</code> is very new (version 0.0.6) and it currently installs with no extra dependencies.</p>
-<pre><code class="language-bash">$ mergic -h</code></pre>
-
-<p><code>mergic</code> includes a command-line script based on <a href="https://docs.python.org/2/library/argparse.html">argparse</a> that uses a default string distance function.</p>
-<pre><code>usage: mergic [-h] {calc,make,check,diff,apply,table} ...
-
-positional arguments:
-  {calc,make,check,diff,apply,table}
-    calc                calculate all partitions of data
-    make                make a JSON partition from data
-    check               check validity of JSON partition
-    diff                diff two JSON partitions
-    apply               apply a patch to a JSON partition
-    table               make merge table from JSON partition
-
-optional arguments:
-  -h, --help            show this help message and exit</code></pre>
-
-<p>In the tennis data, names appear sometimes with full first names and sometimes with only first initials. To get good comparisons, we should:</p>
-<ul>
-<li>Transform all the data to the same format, as nearly as possible.</li>
-<li>Use a good distance on the transformed data.</li>
-</ul>
-<p>We can do both of these things with a simple custom script, <a href="tennis/tennis_mergic.py">tennis_mergic.py</a>. It only <a href="requirements.txt">requires</a> the <code>mergic</code> and <code>python-Levenshtein</code> packages.</p>
-<pre><code class="language-python">#!/usr/bin/env python
-
-import re
-import Levenshtein
-import mergic
-
-
-def first_initial_last(name):
-    initial = re.match("^[A-Z]", name).group()
-    last = re.search("(?&lt;=[ .])[A-Z].+$", name).group()
-    return "{}. {}".format(initial, last)
-
-
-def distance(x, y):
-    x = first_initial_last(x)
-    y = first_initial_last(y)
-    return Levenshtein.distance(x, y)
-
-
-mergic.Blender(distance).script()</code></pre>
-
-<p>Note that there's a transformation step in there, normalizing the form of the names to have just a first initial and last name. This kind of normalization can be very important.</p>
-<p>As a more extreme example, a friend of mine has used the following transform: Google it. Then you can use a distance on the result set to deduplicate.</p>
-<p>Now <a href="tennis/tennis_mergic.py">tennis_mergic.py</a> can be used just like the standard <code>mergic</code> script.</p>
-<pre><code class="language-bash">$ ./tennis_mergic.py calc names.txt
-## num groups, max group, num pairs, cutoff
-## ----------------------------------------
-##        669,         1,         0, -1
-##        358,         5,       384, 0
-##        348,         6,       414, 1
-##        332,         6,       470, 2
-##        262,        85,      5117, 3
-##        165,       324,     52611, 4
-##         86,       496,    122899, 5
-##         46,       584,    170287, 6
-##         24,       624,    194407, 7
-##         16,       641,    205138, 8
-##         10,       650,    210940, 9
-##          4,       663,    219459, 10
-##          2,       668,    222778, 11
-##          1,       669,    223446, 12</code></pre>
-
-<p>There is a clear best cutoff here, as the size of the max group jumps from 6 items to 85 and the number of within-group comparisons jumps from 470 to 5,117. So we create a partition where the Levenshtein distance between names in our standard first initial and last name format is no more than two, and put the result in a file called <code>groups.json</code>:</p>
-<pre><code class="language-bash">$ ./tennis_mergic.py make names.txt 2 &gt; groups.json</code></pre>
-
-<p>This kind of JSON grouping file could be produced and edited by anything, not just <code>mergic</code>.</p>
-<p>As expected, the proposed grouping has combined things over-zealously in some places:</p>
-<pre><code class="language-bash">$ head -5 groups.json
-## {
-##     "Yen-Hsun Lu": [
-##         "Di Wu",
-##         "Yen-Hsun Lu",
-##         "Y-H.Lu",</code></pre>
-
-<p>Manual editing can produce a corrected version of the original grouping, which could be saved as <code>edited.json</code>:</p>
-<pre><code class="language-bash">$ head -8 edited.json
-## {
-##     "Yen-Hsun Lu": [
-##         "Yen-Hsun Lu",
-##         "Y-H.Lu"
-##     ],
-##     "Di Wu": [
-##         "Di Wu"
-##     ],</code></pre>
-
-<p>Parts of the review process would be difficult or impossible for a computer to do accurately.</p>
-<p>After editing, you can check that the new grouping is still valid. At this stage we aren't using anything custom any more, so the default <code>mergic</code> is fine:</p>
-<pre><code class="language-bash">$ mergic check edited.json
-## 669 items in 354 groups</code></pre>
-
-<p>The <code>mergic</code> diffing tools make it easy to make comparisons that would otherwise be difficult, letting us focus on and save only changes that are human reviewers make rather than whole files.</p>
-<pre><code class="language-bash">$ mergic diff groups.json edited.json &gt; diff.json</code></pre>
-
-<p>Now <code>diff.json</code> only has the entries that represent changes from the original <code>groups.json</code>.</p>
-<p>The edited version can be reconstructed from the original and the diff with <code>mergic apply</code>:</p>
-<pre><code class="language-bash">$ mergic apply groups.json diff.json &gt; rebuilt.json</code></pre>
-
-<p>The order of <code>rebuilt.json</code> may not be identical to the original <code>edited.json</code>, but the diff will be empty, meaning the file is equivalent:</p>
-<pre><code class="language-bash">$ mergic diff edited.json rebuilt.json
-## {}</code></pre>
-
-<p>Finally, to generate a CSV merge table that you'll be able to use with any other tool:</p>
-<pre><code class="language-bash">$ mergic table edited.json &gt; merge.csv</code></pre>
-
-<p>Now the file <code>merge.csv</code> has two columns, <code>original</code> and <code>mergic</code>, where <code>original</code> contains all the values that appeared in the original data and <code>mergic</code> contains the deduplicated keys. You can join this on to your original data and go to town.</p>
-<p>Here's how we might do that to quickly get a list of who played the most in these 2013 tennis events:</p>
-<pre><code class="language-bash">$ join -t, &lt;(sort names.txt) &lt;(sort merge.csv) | cut -d, -f2 | sort | uniq -c | sort -nr | head
-##  24 Novak Djokovic
-##  22 Rafael Nadal
-##  21 Serena Williams
-##  21 David Ferrer
-##  20 Na Li
-##  19 Victoria Azarenka
-##  19 Agnieszka Radwanska
-##  18 Stanislas Wawrinka
-##  17 Tommy Robredo
-##  17 Sloane Stephens</code></pre>
-
-<p>Note that this is not the same as the result we got before resolving these name issues:</p>
-<pre><code class="language-bash">$ sort names.txt | uniq -c | sort -nr | head
-##  21 Rafael Nadal
-##  17 Stanislas Wawrinka
-##  17 Novak Djokovic
-##  17 David Ferrer
-##  15 Roger Federer
-##  14 Tommy Robredo
-##  13 Richard Gasquet
-##  11 Victoria Azarenka
-##  11 Tomas Berdych
-##  11 Serena Williams</code></pre>
-
-<p>As it happens, using a cutoff of 0 and doing no hand editing will still give the correct top ten. In general the desired result and desired level of certainty in its correctness will inform the level of effort that is justified.</p>
-<hr>
-<p>distance matters</p>
-<hr>
-<p>Having a good distance function might be the most important thing. It's hard to imagine a machine learning as good a distance function as you could just right based on your human intelligence.</p>
-<p>There is work on learnable edit distances; notably there's a current Python project to implement hidden alignment conditional random fields for classifying string pairs: <a href="https://github.com/dirko/pyhacrf">pyhacrf</a>. Python dedupe is <a href="https://github.com/datamade/dedupe/issues/14">eager</a> to incorporate this.</p>
-<p>See also: <a href="http://www.cs.utexas.edu/users/ml/papers/marlin-kdd-03.pdf">Adaptive Duplicate Detection Using Learnable String Similarity Measures</a></p>
-<hr>
-<p>extension to multiple fields</p>
-<hr>
-<p>We've been talking about single field deduplication.</p>
-<hr>
-<pre><code class="language-text">name
-----
-Bob
-Rob
-Robert</code></pre>
-
-<hr>
-<p>This means that we have one field, say name.</p>
-<hr>
-<pre><code class="language-text">name, name
-----------
-Bob, Bobby
-Bob, Robert
-Bobby, Robert</code></pre>
-
-<hr>
-<p>And we look at all the possible pairs and calculate those pairwise distances.</p>
-<hr>
-<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png"></p>
-<hr>
-<p>While we described it even in Open Refine as &#8220;clustering&#8221;, we've really been doing a classification task: either a pair is in the same group or they aren't. We've had one dimension, and we hope that we can just divide true connections from different items with a simple cutoff.</p>
-<hr>
-<pre><code class="language-text">name,    hometown
------------------
-Bob,     New York
-Rob,     NYC
-Robert,  "NY, NY"</code></pre>
-
-<hr>
-<p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
-<p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
-<hr>
-<p><img height="1000%" title="two dimensional" src="img/two_dimensional.png"></p>
-<hr>
-<p>The reason it might be good to treat the fields separately is that they might be more useful together; we might be able to classify all the true duplicates using the information from both fields.</p>
-<p>Maybe you can find two clusters, one for true duplicates and one for different items.</p>
-<p>Or maybe you could get some training data and use whatever classification algorithm you like.</p>
-<p>The Python <a href="https://github.com/datamade/dedupe">dedupe</a> project and the R <a href="">RecordLinkage</a> package do this.</p>
-<p>The <code>csvdedupe</code> interface using <code>dedupe</code> even asks us to clarify things, doing a live training phase. The hope is that it will learn what matters.</p>
-<p>You can also build this kind of behavior into your own systems; there is an <a href="http://datamade.github.io/dedupe-examples/docs/csv_example.html">example</a>.</p>
-<hr>
-<p>real clustering?</p>
-<hr>
-<p>The &#8220;clustering&#8221; that we've been doing hasn't been much like usual clustering.</p>
-<hr>
-<p><img width="1000%" title="one dimensional" src="img/one_dimensional.png"></p>
-<hr>
-<p>In part, this is because we we've only had distances between strings without having a real &#8220;string space&#8221;.</p>
-<p>I'm going to just sketch out this direction; I think it's interesting but I haven't seen any real results in it yet.</p>
-<hr>
-<p>dog, doge, kitten, kitteh</p>
-<hr>
-<p>Say these are the items we're working with. We can use Levenshtein edit distance to make a distance matrix.</p>
-<hr>
-<pre><code class="language-text">       dog doge kitten kitteh
-   dog   0    1      6      6
-  doge   1    0      5      5
-kitten   6    5      0      1
-kitteh   6    5      1      0</code></pre>
-
-<hr>
-<p>So here's a distance matrix, and it looks the way we'd expect. But we still don't have <em>coordinates</em> for our words.</p>
-<p>Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a>! There's a nice <a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html">implementation in sklearn</a>.</p>
-<hr>
-<pre><code class="language-python">from sklearn.manifold import MDS
-mds = MDS(dissimilarity='precomputed')
-coords = mds.fit_transform(distances)</code></pre>
-
-<hr>
-<p>Here's all the code it takes.</p>
-<hr>
-<p><img width="1000%" title="MDS coordinates from distance matrix" src="img/mds_words.png"></p>
-<hr>
-<p>And here's the result! This is at least a fun visualization, and I wonder if doing clustering in a space like this might sometimes lead to better results.</p>
-<p>The key thing here is that we're clustering on the elements themselves, rather than indirectly via the pairwise distances.</p>
-<p>There are other ways of getting coordinates for words. This includes the very interesting <a href="https://code.google.com/p/word2vec/">word2vec</a> and related techniques.</p>
-<p>Also, you might have items are already naturally coordinates, for example if you have medical data like a person's height or weight.</p>
-<hr>
-<p>open</p>
-<hr>
-<p>This is the Open Data Science Conference, right?</p>
-<p>This mergic project is something I think could be a good direction for particular kinds of data problems. Of course it's <a href="https://github.com/ajschumacher/mergic">on GitHub</a> and of course I'd love help in making it something that might actually help people.</p>
-<p>Our community is bigger than any one problem or any one solution, and I want to hear about what problems are real for you and what solutions you're excited about.</p>
-<hr>
-<p>Thanks!</p>
-<hr>
-<p>Thanks for listening&#8212;let's talk!</p>
-<hr>
-<p></p><center>
-planspace.org
-<p>@planarrowspace
-</p></center>
-<hr>
-<p>This is just me again.</p><!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20150530-practical_mergic_at_odsc/</link>
-<guid>http://planspace.org/20150530-practical_mergic_at_odsc/</guid>
-<pubDate>Sat, 30 May 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
