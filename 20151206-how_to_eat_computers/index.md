@@ -310,7 +310,7 @@ Really a lot of learning is just about trying things.
 
 -----
 
-concessionist, sandwich artist, computer salesperson, box cutter, clerk, assistant system administrator, experimentalist, math teacher, English teacher, analyst, senior data services specialist, data science expert in residence, consultant, data scientist, data science teacher, senior data scientist, senior data scientist and software engineer
+concessionist, sandwich artist, computer salesperson, box cutter, clerk, assistant system administrator, experimentalist, brand manager, math teacher, English teacher, analyst, senior data services specialist, data science expert in residence, consultant, data scientist, data science teacher, senior data scientist, senior data scientist and software engineer
 
 -----
 
