@@ -112,9 +112,9 @@ It is awkward in a flat table to represent things that have multiple
 values. For example, with one row per song and one "artist" field,
 what do you do for a song that has two artists?
 
-One approach is to create a "second artist" field, which might be a
+You might want to create a "second artist" field, which could be a
 solution to a different problem. What we really want is to have two
-entries each in the same place in the data.
+entries each "in the same place" in the data.
 
 Whatever the solution, there is a related interface issue: especially
 with a tabular display, how do we show the user that there are two
@@ -123,7 +123,8 @@ values?
 A technique common in relational databases hacks a graph approach into
 the tabular approach. It uses a table for songs, a table for artists,
 and a third table of "edges" connecting songs and artists together.
-This means you have to know about a lot of the tables' design, and
+This means you have to know about a lot of the tables' design, it's
+overkill when the songs and artists are really just strings, and
 there's definitely not an obvious solution to the interface problem.
 
 You might want to use composite data types: instead of storing one
@@ -134,8 +135,8 @@ spreadsheets, but it generally isn't done. It is easy to do with
 
 [pandas data frames]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
 
-This capability is probably worth having for some use cases. It
-includes its own interface issue, distinct from the issue of an
+Composite data values are probably worth having for some use cases.
+This comes with a new interface issue, distinct from the issue of an
 interface for multiple values. And it isn't a good solution to the
 original problem of allowing multiple values. Aside from lists in
 particular being ordered, there is a difference between something
@@ -143,7 +144,7 @@ having multiple values, and something being one list.
 
 Composite data like lists also introduce complexity that could be
 avoided. It is easy and natural with triple graphs (though not maps)
-to represent multiple values. The interface issue remains.
+to represent multiple values.
 
 ```
 id_song_one, artist, a_jazz_band
