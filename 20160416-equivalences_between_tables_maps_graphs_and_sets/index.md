@@ -1,7 +1,7 @@
 # Equivalences between Tables, Maps, Graphs, and Sets
 
 By _tables_, I mean the common spreadsheet or relational database
-conception of data in tables of rows and columns.
+conception of data in rectangular grids of rows and columns.
 
 ```
 | property_a  | property_b  |
@@ -46,24 +46,24 @@ is _doubles_ of the form `subject, object`.
 
 ```
 id_one, id_property_a_one
-id_property_a_one, property_a
-id_property_a_one, value_a_one
+id_a_one, property_a
+id_a_one, value_a_one
 id_one, id_property_b_one
-id_property_b_one, property_b
-id_property_b_one, value_b_one
+id_b_one, property_b
+id_b_one, value_b_one
 id_two, id_property_a_two
-id_property_a_two, property_a
-id_property_a_two, value_a_two
+id_a_two, property_a
+id_a_two, value_a_two
 id_two, id_property_b_two
-id_property_b_two, property_b
-id_property_b_two, value_b_two
+id_b_two, property_b
+id_b_two, value_b_two
 ```
 
 A visual for one connected component of this _double graph_ shows how
 the additional identity nodes expand the representation but preserve
 the information fairly well.
 
-VISUAL HERE
+![graph of double data](double_graph.png)
 
 ```
 [{{property_a, value_a_one}, {property_b, value_b_one}},
@@ -79,4 +79,4 @@ identities they make explicit. ...
 
 ---
 
-Graph diagram created with [draw.io](https://www.draw.io/).
+I made the graph diagrams with [draw.io](https://www.draw.io/).

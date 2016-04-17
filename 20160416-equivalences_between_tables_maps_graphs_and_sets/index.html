@@ -12,7 +12,7 @@
 <h1>Equivalences between Tables, Maps, Graphs, and Sets</h1>
 <p class="date">Saturday April 16, 2016</p>
 <p>By <em>tables</em>, I mean the common spreadsheet or relational database
-conception of data in tables of rows and columns.</p>
+conception of data in rectangular grids of rows and columns.</p>
 <pre><code>| property_a  | property_b  |
 |-------------|-------------|
 | value_a_one | value_b_one |
@@ -39,22 +39,22 @@ id_two, property_b, value_b_two</code></pre>
 <p>Graphs can also have unlabeled edges, in which case one representation
 is <em>doubles</em> of the form <code>subject, object</code>.</p>
 <pre><code>id_one, id_property_a_one
-id_property_a_one, property_a
-id_property_a_one, value_a_one
+id_a_one, property_a
+id_a_one, value_a_one
 id_one, id_property_b_one
-id_property_b_one, property_b
-id_property_b_one, value_b_one
+id_b_one, property_b
+id_b_one, value_b_one
 id_two, id_property_a_two
-id_property_a_two, property_a
-id_property_a_two, value_a_two
+id_a_two, property_a
+id_a_two, value_a_two
 id_two, id_property_b_two
-id_property_b_two, property_b
-id_property_b_two, value_b_two</code></pre>
+id_b_two, property_b
+id_b_two, value_b_two</code></pre>
 
 <p>A visual for one connected component of this <em>double graph</em> shows how
 the additional identity nodes expand the representation but preserve
 the information fairly well.</p>
-<p>VISUAL HERE</p>
+<p><img alt="graph of double data" src="double_graph.png" /></p>
 <pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
 
@@ -63,7 +63,7 @@ the information fairly well.</p>
 <p>... Many common ways of organizing data differ only in which
 identities they make explicit. ...</p>
 <hr />
-<p>Graph diagram created with <a href="https://www.draw.io/">draw.io</a>.</p>    </article>
+<p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    </article>
     <footer>
       <hr />
       <ul>
