@@ -75,11 +75,94 @@ graphs are equivalent to [sets][].
 
 There are a lot of close equivalences:
 
- * sets are equivalent to double graphs
- * maps are equivalent to triple graphs
+ * sets are mostly equivalent to double graphs
+ * maps are mostly equivalent to triple graphs
  * tables and the above are all mostly equivalent
 
+http://konklone.io/json/
+https://github.com/ajschumacher/dd
+
 ---
+
+Some considerations argue against the primacy of two-dimensional data
+tables, and some of these concerns are valid, but it is not
+insignificant that spreadsheet interfaces seem to work pretty well for
+a lot of humans, and probably even if relying on a different
+underlying structure tables should remain as an interface.
+
+One complaint about spreadsheets in particular, though relational
+databases are not necessarily much better, is that people can and do
+choose layouts for their data that other people find appalling.
+
+Proponents of "data cubes" might also suggest that two dimensions is
+not enough for some types of data.
+
+Wickham's [Tidy Data][] paper provides responses to both of these
+objections. In the first place, a wide range of table layouts are
+equivalent and can be converted to a standard "tidy" format when
+needed. There is no fundamental need to impose any given format in the
+name of aesthetics. In the second place, an arbitrary number of
+dimensions can be represented perfectly well in a two-dimensional
+table, though such a representation may not be ideal for human users.
+There remains a question of how to provide a good interface.
+
+[Tidy Data]: http://vita.had.co.nz/papers/tidy-data.pdf
+
+It is awkward in a flat table to represent things that have multiple
+values. For example, with one row per song and one "artist" field,
+what do you do for a song that has two artists?
+
+One approach is to create a "second artist" field, which might be a
+solution to a different problem. What we really want is to have two
+entries each in the same place in the data.
+
+Whatever the solution, there is a related interface issue: especially
+with a tabular display, how do we show the user that there are two
+values?
+
+A technique common in relational databases hacks a graph approach into
+the tabular approach. It uses a table for songs, a table for artists,
+and a third table of "edges" connecting songs and artists together.
+This means you have to know about a lot of the tables' design, and
+there's definitely not an obvious solution to the interface problem.
+
+You might want to use composite data types: instead of storing one
+simple value in the song-artist position, storing, for example, a list
+of values. This could be done with relational databases or
+spreadsheets, but it generally isn't done. It is easy to do with
+[pandas data frames][] or in JSON.
+
+[pandas data frames]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
+
+This capability is probably worth having for some use cases. It
+includes its own interface issue, distinct from the issue of an
+interface for multiple values. And it isn't a good solution to the
+original problem of allowing multiple values. Aside from lists in
+particular being ordered, there is a difference between something
+having multiple values, and something being one list.
+
+Composite data like lists also introduce complexity that could be
+avoided. It is easy and natural with triple graphs (though not maps)
+to represent multiple values. The interface issue remains.
+
+```
+id_song_one, artist, a_jazz_band
+id_song_one, artist, a_jazz_singer
+```
+
+
+Spreadsheets are not relational databases. Products like Excel
+implement a kind of discrete Cartesian quarter-plane within which
+simple data types can be placed. The spacial nature of the spreadsheet
+supports calculations like "add the value to the left of this one to
+the value three above".
+
+A spreadsheet user may be thinking of tables, and some software
+functionality may support this, but for the most part structure in
+spreadsheets is hallucinated by the user. It is a testament to human
+abilities, combining remarkable gestalt perception with careful
+attention to detail, that anything useful is ever accomplished with
+spreadsheets.
 
 Longer discussion here.
 
@@ -91,6 +174,10 @@ values.
 
 Something about lists as values / the flexibility of more data types
 in some languages...
+
+http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/
+http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/
+
 
 ---
 
