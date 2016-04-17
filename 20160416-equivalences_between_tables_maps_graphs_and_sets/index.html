@@ -18,15 +18,15 @@ conception of data in rectangular grids of rows and columns.</p>
 | value_a_one | value_b_one |
 | value_a_two | value_b_two |</code></pre>
 
-<p>By <em>maps</em>, I mean data represented with a list of <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data
-structures. Maps are also known as associative arrays and
-dictionaries. In JavaScript they're called objects, and JavaScript
-Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a common format for this type of data.</p>
+<p>By <em>maps</em>, I mean data represented with <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data structures. Maps
+are also known as associative arrays or dictionaries. In JavaScript
+they're called objects, and JavaScript Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a
+common format for this type of data.</p>
 <pre><code>[{property_a: value_a_one, property_b: value_b_one},
  {property_a: value_a_two, property_b: value_b_two}]</code></pre>
 
-<p>By <em>graphs</em>, I mean nodes and edges. <a href="https://www.w3.org/RDF/">RDF</a> is an example format with
-labeled edges. It can be represented with <em>triples</em> of the form
+<p>By <em>graphs</em>, I mean nodes and edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example, labels both
+nodes and edges. This can be represented with <em>triples</em> of the form
 <code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code> are nodes,
 and <code>predicate</code> is an edge.</p>
 <pre><code>id_one, property_a, value_a_one
@@ -38,25 +38,24 @@ id_two, property_b, value_b_two</code></pre>
 <p><img alt="graph of triple data" src="triple_graph.png" /></p>
 <p>Graphs can also have unlabeled edges, in which case one representation
 is <em>doubles</em> of the form <code>subject, object</code>.</p>
-<pre><code>id_one, id_property_a_one
+<pre><code>id_one, id_a_one
 id_a_one, property_a
 id_a_one, value_a_one
-id_one, id_property_b_one
+id_one, id_b_one
 id_b_one, property_b
 id_b_one, value_b_one
-id_two, id_property_a_two
+id_two, id_a_two
 id_a_two, property_a
 id_a_two, value_a_two
-id_two, id_property_b_two
+id_two, id_b_two
 id_b_two, property_b
 id_b_two, value_b_two</code></pre>
 
 <p>A visual for one connected component of this <em>double graph</em> shows how
-the additional identity nodes expand the representation but preserve
-the information fairly well.</p>
+the additional identity nodes expand the representation.</p>
 <p><img alt="graph of double data" src="double_graph.png" /></p>
-<p>In this form, there is nothing to distinguish properties from values.
-Double graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">sets</a>.</p>
+<p>In this formulation, with non-identity nodes always leaf nodes, double
+graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">sets</a>.</p>
 <pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
 
@@ -64,6 +63,10 @@ Double graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abst
 <p>Longer discussion here.</p>
 <p>... Many common ways of organizing data differ only in which
 identities they make explicit. ...</p>
+<p>In double graph form, there is nothing to distinguish properties from
+values.</p>
+<p>Something about lists as values / the flexibility of more data types
+in some languages...</p>
 <hr />
 <p>For all the graphs here, I'm not considering duplicate edges.</p>
 <p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    </article>
