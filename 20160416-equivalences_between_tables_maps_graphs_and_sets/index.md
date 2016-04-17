@@ -65,6 +65,11 @@ the information fairly well.
 
 ![graph of double data](double_graph.png)
 
+In this form, there is nothing to distinguish properties from values.
+Double graphs are equivalent to [sets][].
+
+[sets]: https://en.wikipedia.org/wiki/Set_(abstract_data_type)
+
 ```
 [{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]
@@ -78,5 +83,7 @@ Longer discussion here.
 identities they make explicit. ...
 
 ---
+
+For all the graphs here, I'm not considering duplicate edges.
 
 I made the graph diagrams with [draw.io](https://www.draw.io/).
