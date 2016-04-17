@@ -151,12 +151,36 @@ id_song_one, artist, a_jazz_band
 id_song_one, artist, a_jazz_singer
 ```
 
+The other side of multiple values is missing values. Tables, when
+realized as such, are "dense", meaning they have something at every
+intersection of row and column. Since we don't always have a value, a
+database might use NULL, or there could be a special value like NA in
+R. With triple graphs (and maps) these aren't necessary as you always
+have a choice to not include a triple.
+
+```
+| property_a  | property_b  |
+|-------------|-------------|
+| value_a_one | NULL        |
+| NULL        | value_b_two |
+```
+
+```
+[{property_a: value_a_one},
+ {property_b: value_b_two}]
+```
+
+```
+id_one, property_a, value_a_one
+id_two, property_b, value_b_two
+```
 
 Spreadsheets are not relational databases. Products like Excel
 implement a kind of discrete Cartesian quarter-plane within which
 simple data types can be placed. The spacial nature of the spreadsheet
 supports calculations like "add the value to the left of this one to
-the value three above".
+the value three above" and having multiple tables "next to" one
+another.
 
 A spreadsheet user may be thinking of tables, and some software
 functionality may support this, but for the most part structure in
@@ -165,7 +189,49 @@ abilities, combining remarkable gestalt perception with careful
 attention to detail, that anything useful is ever accomplished with
 spreadsheets.
 
-Longer discussion here.
+It seems like giving spreadsheet software well-defined tables rather
+than vast expanses of empty cells would be a change worth making, and
+some tools, such as [editdata][], do this.
+
+[editdata]: http://app.editdata.org/
+
+It's awkward for people to think about things without physical
+metaphor. Set literals have to be written in some order, for example,
+despite not having any order intrinsically. In the same way, tables
+have spacial baggage. Columns are always next to one another. Rows are
+before or after one another.
+
+If you change the order of rows or columns, something has changed.
+
+```
+| property_a  | property_b  |
+|-------------|-------------|
+| value_a_one | value_b_one |
+| value_a_two | value_b_two |
+```
+
+```
+| property_b  | property_a  |
+|-------------|-------------|
+| value_b_one | value_a_one |
+| value_b_two | value_a_two |
+```
+
+If you diff CSV files after re-ordering columns, every line of the
+file has changed, but the data hasn't changed at all.
+
+I think the right way to conceptualize this is to see even a simple
+CSV file as a view of an underlying data set. While we usually don't
+make it explicit, the ordering of columns and rows is characteristic
+of the view and not the data.
+
+Sometimes the order of rows has meaning that should really be in
+another column.
+
+Separate though sometimes conflated with row ordering is the idea of a
+unique identity for each row.
+
+
 
 ... Many common ways of organizing data differ only in which
 identities they make explicit. ...
@@ -173,8 +239,6 @@ identities they make explicit. ...
 In double graph form, there is nothing to distinguish properties from
 values.
 
-Something about lists as values / the flexibility of more data types
-in some languages...
 
 http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/
 http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/
