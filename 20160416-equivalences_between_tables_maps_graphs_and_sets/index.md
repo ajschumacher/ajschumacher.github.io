@@ -23,8 +23,8 @@ common format for this type of data.
  {property_a: value_a_two, property_b: value_b_two}]
 ```
 
-By _graphs_, I mean nodes and edges. [RDF][], for example, labels both
-nodes and edges. This can be represented with _triples_ of the form
+By _graphs_, I mean nodes and edges. [RDF][], for example, has labels
+for both nodes and edges. One representation is _triples_ of the form
 `subject, predicate, object`, where `subject` and `object` are nodes,
 and `predicate` is an edge.
 
@@ -73,6 +73,14 @@ graphs are equivalent to [sets][].
 [{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]
 ```
+
+So we have:
+
+ * sets are equivalent to double graphs
+ * maps are equivalent to triple graphs
+ * tables and the above are all mostly equivalent
+
+There are some details to add, but that will do for a summary.
 
 ---
 

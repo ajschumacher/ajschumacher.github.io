@@ -25,8 +25,8 @@ common format for this type of data.</p>
 <pre><code>[{property_a: value_a_one, property_b: value_b_one},
  {property_a: value_a_two, property_b: value_b_two}]</code></pre>
 
-<p>By <em>graphs</em>, I mean nodes and edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example, labels both
-nodes and edges. This can be represented with <em>triples</em> of the form
+<p>By <em>graphs</em>, I mean nodes and edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example, has labels
+for both nodes and edges. One representation is <em>triples</em> of the form
 <code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code> are nodes,
 and <code>predicate</code> is an edge.</p>
 <pre><code>id_one, property_a, value_a_one
@@ -59,6 +59,13 @@ graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_da
 <pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
 
+<p>So we have:</p>
+<ul>
+<li>sets are equivalent to double graphs</li>
+<li>maps are equivalent to triple graphs</li>
+<li>tables and the above are all mostly equivalent</li>
+</ul>
+<p>There are some details to add, but that will do for a summary.</p>
 <hr />
 <p>Longer discussion here.</p>
 <p>... Many common ways of organizing data differ only in which
