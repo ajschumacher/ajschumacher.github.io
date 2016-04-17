@@ -11,30 +11,29 @@
     <article>
 <h1>Equivalences between Tables, Maps, Graphs, and Sets</h1>
 <p class="date">Saturday April 16, 2016</p>
-<p>By <em>tables</em>, I mean the common spreadsheet or relational database
-conception of data in rectangular grids of rows and columns.</p>
+<p>By <em>tables</em>, I mean the relational database or well-used spreadsheet
+system of data in rectangular grids of rows and columns.</p>
 <pre><code>| property_a  | property_b  |
 |-------------|-------------|
 | value_a_one | value_b_one |
 | value_a_two | value_b_two |</code></pre>
 
-<p>By <em>maps</em>, I mean data represented with <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data structures. Maps
-are also known as associative arrays or dictionaries. In JavaScript
-they're called objects, and JavaScript Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a
-common format for this type of data.</p>
+<p>By <em>maps</em>, I mean data in <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data structures. Maps are also known
+as associative arrays or dictionaries. In JavaScript they're called
+objects, and JavaScript Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a common format.</p>
 <pre><code>[{property_a: value_a_one, property_b: value_b_one},
  {property_a: value_a_two, property_b: value_b_two}]</code></pre>
 
-<p>By <em>graphs</em>, I mean nodes and edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example, has labels
-for both nodes and edges. One representation is <em>triples</em> of the form
-<code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code> are nodes,
-and <code>predicate</code> is an edge.</p>
+<p>By <em>graphs</em>, I mean nodes connected by edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example,
+has labels for both nodes and edges. One representation is <em>triples</em>
+of the form <code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code>
+are nodes, and <code>predicate</code> is an edge.</p>
 <pre><code>id_one, property_a, value_a_one
 id_one, property_b, value_b_one
 id_two, property_a, value_a_two
 id_two, property_b, value_b_two</code></pre>
 
-<p>A visual for this <em>triple graph</em> shows two connected components.</p>
+<p>A visual for this <em>triple graph</em> shows two components.</p>
 <p><img alt="graph of triple data" src="triple_graph.png" /></p>
 <p>Graphs can also have unlabeled edges, in which case one representation
 is <em>doubles</em> of the form <code>subject, object</code>.</p>
@@ -51,21 +50,20 @@ id_two, id_b_two
 id_b_two, property_b
 id_b_two, value_b_two</code></pre>
 
-<p>A visual for one connected component of this <em>double graph</em> shows how
-the additional identity nodes expand the representation.</p>
+<p>A visual for one component of this <em>double graph</em> shows how the
+additional identity nodes expand the representation.</p>
 <p><img alt="graph of double data" src="double_graph.png" /></p>
 <p>In this formulation, with non-identity nodes always leaf nodes, double
 graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">sets</a>.</p>
 <pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
  {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
 
-<p>So we have:</p>
+<p>There are a lot of close equivalences:</p>
 <ul>
 <li>sets are equivalent to double graphs</li>
 <li>maps are equivalent to triple graphs</li>
 <li>tables and the above are all mostly equivalent</li>
 </ul>
-<p>There are some details to add, but that will do for a summary.</p>
 <hr />
 <p>Longer discussion here.</p>
 <p>... Many common ways of organizing data differ only in which

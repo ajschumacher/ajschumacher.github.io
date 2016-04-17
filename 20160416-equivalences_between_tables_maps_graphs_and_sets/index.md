@@ -1,7 +1,7 @@
 # Equivalences between Tables, Maps, Graphs, and Sets
 
-By _tables_, I mean the common spreadsheet or relational database
-conception of data in rectangular grids of rows and columns.
+By _tables_, I mean the relational database or well-used spreadsheet
+system of data in rectangular grids of rows and columns.
 
 ```
 | property_a  | property_b  |
@@ -10,10 +10,9 @@ conception of data in rectangular grids of rows and columns.
 | value_a_two | value_b_two |
 ```
 
-By _maps_, I mean data represented with [map][] data structures. Maps
-are also known as associative arrays or dictionaries. In JavaScript
-they're called objects, and JavaScript Object Notation ([JSON][]) is a
-common format for this type of data.
+By _maps_, I mean data in [map][] data structures. Maps are also known
+as associative arrays or dictionaries. In JavaScript they're called
+objects, and JavaScript Object Notation ([JSON][]) is a common format.
 
 [map]: https://en.wikipedia.org/wiki/Associative_array
 [JSON]: https://en.wikipedia.org/wiki/JSON
@@ -23,10 +22,10 @@ common format for this type of data.
  {property_a: value_a_two, property_b: value_b_two}]
 ```
 
-By _graphs_, I mean nodes and edges. [RDF][], for example, has labels
-for both nodes and edges. One representation is _triples_ of the form
-`subject, predicate, object`, where `subject` and `object` are nodes,
-and `predicate` is an edge.
+By _graphs_, I mean nodes connected by edges. [RDF][], for example,
+has labels for both nodes and edges. One representation is _triples_
+of the form `subject, predicate, object`, where `subject` and `object`
+are nodes, and `predicate` is an edge.
 
 [RDF]: https://www.w3.org/RDF/
 
@@ -37,7 +36,7 @@ id_two, property_a, value_a_two
 id_two, property_b, value_b_two
 ```
 
-A visual for this _triple graph_ shows two connected components.
+A visual for this _triple graph_ shows two components.
 
 ![graph of triple data](triple_graph.png)
 
@@ -59,8 +58,8 @@ id_b_two, property_b
 id_b_two, value_b_two
 ```
 
-A visual for one connected component of this _double graph_ shows how
-the additional identity nodes expand the representation.
+A visual for one component of this _double graph_ shows how the
+additional identity nodes expand the representation.
 
 ![graph of double data](double_graph.png)
 
@@ -74,13 +73,11 @@ graphs are equivalent to [sets][].
  {{property_a, value_a_two}, {property_b, value_b_two}}]
 ```
 
-So we have:
+There are a lot of close equivalences:
 
  * sets are equivalent to double graphs
  * maps are equivalent to triple graphs
  * tables and the above are all mostly equivalent
-
-There are some details to add, but that will do for a summary.
 
 ---
 
