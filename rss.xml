@@ -7,6 +7,225 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Equivalences between Tables, Maps, Graphs, and Sets</title>
+<description><![CDATA[
+
+<p>By <em>tables</em>, I mean the relational database or well-used spreadsheet
+system of data in rectangular grids of rows and columns.</p>
+<pre><code>| property_a  | property_b  |
+|-------------|-------------|
+| value_a_one | value_b_one |
+| value_a_two | value_b_two |</code></pre>
+
+<p>By <em>maps</em>, I mean data in <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data structures. Maps are also known
+as associative arrays or dictionaries. In JavaScript they're called
+objects, and JavaScript Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a common format.</p>
+<pre><code>[{property_a: value_a_one, property_b: value_b_one},
+ {property_a: value_a_two, property_b: value_b_two}]</code></pre>
+
+<p>By <em>graphs</em>, I mean nodes connected by edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example,
+has labels for both nodes and edges. One representation is <em>triples</em>
+of the form <code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code>
+are nodes, and <code>predicate</code> is an edge.</p>
+<pre><code>id_one, property_a, value_a_one
+id_one, property_b, value_b_one
+id_two, property_a, value_a_two
+id_two, property_b, value_b_two</code></pre>
+
+<p>A visual for this <em>triple graph</em> shows two components.</p>
+<p><img alt="graph of triple data" src="triple_graph.png"></p>
+<p>Graphs can also have unlabeled edges, in which case one representation
+is <em>doubles</em> of the form <code>subject, object</code>.</p>
+<pre><code>id_one, id_a_one
+id_a_one, property_a
+id_a_one, value_a_one
+id_one, id_b_one
+id_b_one, property_b
+id_b_one, value_b_one
+id_two, id_a_two
+id_a_two, property_a
+id_a_two, value_a_two
+id_two, id_b_two
+id_b_two, property_b
+id_b_two, value_b_two</code></pre>
+
+<p>A visual for one component of this <em>double graph</em> shows how the
+additional identity nodes expand the representation.</p>
+<p><img alt="graph of double data" src="double_graph.png"></p>
+<p>In this formulation, with non-identity nodes always leaf nodes, double
+graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">sets</a>.</p>
+<pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
+ {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
+
+<p>There are a lot of close equivalences:</p>
+<ul>
+<li>sets are mostly equivalent to double graphs</li>
+<li>maps are mostly equivalent to triple graphs</li>
+<li>tables and the above are all mostly equivalent</li>
+</ul>
+<hr>
+<p>Tabular data can be converted to map data. With <a href="https://www.python.org/">Python</a>'s
+<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> this is as easy as <code>dataframe.to_json()</code>.</p>
+<p>Often maps can be complex in ways that don't correspond immediately to
+tabular data, but still it's often possible for example to
+<a href="http://konklone.io/json/">convert JSON to CSV</a>.</p>
+<p>Graphs often work with doubles or triples directly as a storage
+format.</p>
+<p>Automatically converting tabular or map data to/from triples is less
+common. I have a little toy <a href="https://github.com/ajschumacher/dd">data diff</a> code that does a simple
+version of this. I think some parts of <a href="http://www.datomic.com/">datomic</a>'s internals do
+related conversions.</p>
+<p>Doubles are interesting but I don't know of any automatic converters
+to or from other formats.</p>
+<hr>
+<p>Some considerations argue against the primacy of two-dimensional data
+tables, and some of these concerns are valid, but it is not
+insignificant that spreadsheet interfaces seem to work pretty well for
+a lot of humans, and probably even if relying on a different
+underlying structure tables should remain as an interface.</p>
+<p>One complaint about spreadsheets in particular, though relational
+databases are not necessarily much better, is that people can and do
+choose layouts for their data that other people find appalling.</p>
+<p>Proponents of "data cubes" might also suggest that two dimensions is
+not enough for some types of data.</p>
+<p>Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper provides responses to both of these
+objections. In the first place, a wide range of table layouts are
+equivalent and can be converted to a standard "tidy" format if needed.
+There is no fundamental need to impose any given format in the name of
+aesthetics. In the second place, an arbitrary number of dimensions can
+be represented in a two-dimensional table, though such a
+representation may not be ideal for human users. There remains a
+question of how to provide a good interface.</p>
+<p>It is awkward in a flat table to represent things that have multiple
+values. For example, with one row per song and one "artist" field,
+what do you do for a song that has two artists?</p>
+<p>You might want to create a "second artist" field, which could be a
+solution to a different problem. What we really want is to have two
+entries each "in the same place" in the data.</p>
+<p>Whatever the solution, there is a related interface issue: especially
+with a tabular display, how do we show the user that there are two
+values "in a cell"?</p>
+<p>A technique common in relational databases hacks a graph approach into
+the tabular framework. It uses one table for songs, one table for
+artists, and a third table of "edges" connecting songs and artists
+together. This means you have to know about a lot of the tables'
+design. It can seem like overkill when the songs and artists are
+really just strings. And there's not an obvious solution to the
+interface problem.</p>
+<p>You might want to use composite data types: instead of storing one
+simple value in the song-artist position, for example, store a list of
+values. This could be done with relational databases or spreadsheets,
+but it generally isn't done. It is easy to do with pandas data frames
+or in JSON.</p>
+<p>Composite data values are probably worth having for some use cases.
+This comes with a new interface issue, distinct from the issue of an
+interface for multiple values. And it isn't a good solution to the
+original problem of allowing multiple values. Aside from lists in
+particular being ordered, there is a difference between something
+having multiple values, and something being one list.</p>
+<p>Composite data like lists also introduce complexity that could be
+avoided. It is easy and natural with triple graphs (though not maps)
+to represent multiple values.</p>
+<pre><code>id_song_one, artist, a_jazz_band
+id_song_one, artist, a_jazz_singer</code></pre>
+
+<p>The other side of multiple values is missing values. Tables, when
+realized as such, are "dense", meaning they have something at every
+intersection of row and column. Since we don't always have a value, a
+database might use <code>NULL</code>, or there could be special values like <code>NA</code>
+in <a href="https://www.r-project.org/">R</a>. With triple graphs (and maps) these aren't necessary as you
+always have a choice to not include a triple. Triples are naturally
+"sparse" for missing data (distinct from sparsity for zeros).</p>
+<pre><code>| property_a  | property_b  |
+|-------------|-------------|
+| value_a_one | NULL        |
+| NULL        | value_b_two |</code></pre>
+
+<pre><code>[{property_a: value_a_one},
+ {property_b: value_b_two}]</code></pre>
+
+<pre><code>id_one, property_a, value_a_one
+id_two, property_b, value_b_two</code></pre>
+
+<p>Spreadsheets are not relational databases. Products like Excel
+implement a kind of discrete Cartesian quarter-plane within which
+simple data types can be placed. The spacial nature of the spreadsheet
+supports calculations like "add the value to the left of this one to
+the value three above" and having multiple tables "next to" one
+another.</p>
+<p>A spreadsheet user may be thinking of tables, and some software
+functionality may support this, but for the most part structure in
+spreadsheets is hallucinated by the user. It is a testament to human
+abilities, combining remarkable gestalt perception with careful
+attention to detail, that anything useful is ever accomplished with
+spreadsheets.</p>
+<p>It seems like giving spreadsheet software well-defined tables rather
+than vast expanses of empty cells would be a change worth making. Some
+tools, such as <a href="http://app.editdata.org/">editdata</a>, do this.</p>
+<p>It's awkward for people to think about things without physical
+metaphor. Set literals have to be written in some order, for example,
+despite not having any order intrinsically. In the same way, tables
+have spacial baggage. Columns are always next to one another. Rows are
+before or after one another.</p>
+<p>If you change the order of rows or columns, there is some change, but
+it isn't a very big change.</p>
+<pre><code>| property_a  | property_b  |
+|-------------|-------------|
+| value_a_one | value_b_one |
+| value_a_two | value_b_two |</code></pre>
+
+<pre><code>| property_b  | property_a  |
+|-------------|-------------|
+| value_b_one | value_a_one |
+| value_b_two | value_a_two |</code></pre>
+
+<p>If you diff CSV files after re-ordering columns, every line of the
+file has changed. But in some sense the data hasn't changed at all.</p>
+<p>I think the right way to conceptualize this is to see even a simple
+CSV file as a view of an underlying data set. While we usually don't
+make it explicit, the ordering of columns and rows is characteristic
+of the view and not the data.</p>
+<p>With both tables and maps, sometimes the order of things has meaning
+that should really be in another field.</p>
+<p>Separate though sometimes conflated with ordering is the idea of a
+unique identity for each row or map. By their distinctness they have
+an implicit identity separate from any values.</p>
+<p>Especially when you're interested in comparing two versions of a data
+set, having an ID for each "row" is important. Otherwise you're in the
+fraught position of having to determine what changed and what was
+supposed to be the same, at the same time. This is impossible for at
+least some changes.</p>
+<p>The <a href="http://dat-data.com/">dat project</a> beta, for example, had an import <code>-key</code> option
+(see <a href="https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md">beta docs</a>). The default behavior though was to automatically
+generate a unique ID, which is also what <a href="https://www.mongodb.com/">MongoDB</a> does by default.</p>
+<p>When specifying IDs by hand it is tempting to make choices that turn
+out to be bad, like using a name as an ID and finding later both that
+names can change and multiple things can have the same name.</p>
+<p>Once there are unique IDs for rows/maps, comparison between versions
+easily discovers which have been added and removed, and those that
+remain can be compared to their partners.</p>
+<p>Doubles and sets as a data representation are interesting but may not
+be very useful. There is nothing to distinguish properties from
+values. It could probably still be worked out by finding patterns of
+value occurrences, but this would be expensive along the same lines as
+matching up rows without IDs. It is a little poetic to think about
+expressing things like <code>{smell, roses, raindrops}</code> but in the end the
+sets and doubles don't directly convey all the same information as the
+other formats. A while ago I thought that doubles were <a href="http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/">sufficient</a>,
+but I no longer think so.</p>
+<p>My main interest in all this is dealing with the problem of versioning
+data, and the related problems of diffing and merging data. Often,
+only the most recent version of data is available or even stored
+anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">don't like</a>.</p>
+<hr>
+<p>For all the graphs here, I'm not considering duplicate edges.</p>
+<p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</link>
+<guid>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</guid>
+<pubDate>Sat, 16 Apr 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Mindstorms: Children, Computers, and Powerful Ideas</title>
 <description><![CDATA[
 
@@ -893,7 +1112,7 @@ planspace.org
 <hr>
 <p>Really a lot of learning is just about trying things.</p>
 <hr>
-<p>concessionist, sandwich artist, computer salesperson, box cutter, clerk, assistant system administrator, experimentalist, math teacher, English teacher, analyst, senior data services specialist, data science expert in residence, consultant, data scientist, data science teacher, senior data scientist, senior data scientist and software engineer</p>
+<p>concessionist, sandwich artist, computer salesperson, box cutter, clerk, assistant system administrator, experimentalist, brand manager, math teacher, English teacher, analyst, senior data services specialist, data science expert in residence, consultant, data scientist, data science teacher, senior data scientist, senior data scientist and software engineer</p>
 <hr>
 <p>For example, I've tried a lot of jobs.</p>
 <p>These are most of the job titles I've had since I was 15.</p>
@@ -1684,82 +1903,6 @@ function perceptron() {
 <link>http://planspace.org/20150610-a_javascript_perceptron/</link>
 <guid>http://planspace.org/20150610-a_javascript_perceptron/</guid>
 <pubDate>Wed, 10 Jun 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TextBlob Sentiment: Calculating Polarity and Subjectivity</title>
-<description><![CDATA[
-
-<p>The <a href="http://textblob.readthedocs.org/">TextBlob</a> package for Python is a convenient way to do a lot of Natural Language Processing (NLP) tasks. For example:</p>
-<pre><code class="language-python">from textblob import TextBlob
-
-TextBlob("not a very great calculation").sentiment
-## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
-
-<p>This tells us that the English phrase &#8220;not a very great calculation&#8221; has a <em>polarity</em> of about -0.3, meaning it is slightly negative, and a <em>subjectivity</em> of about 0.6, meaning it is fairly subjective.</p>
-<p>But where do these numbers come from?</p>
-<p>Let's find out by going to the source. (This will refer to <a href="https://github.com/sloria/TextBlob">sloria/TextBlob</a> on GitHub at commit <a href="https://github.com/sloria/TextBlob/tree/eb08c120d364e908646731d60b4e4c6c1712ff63">eb08c12</a>.)</p>
-<p>After digging a bit, you can find that the main default sentiment calculation is defined in <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/_text.py">_text.py</a>, which gives credit to <a href="http://www.clips.ua.ac.be/pages/pattern-web">the pattern library</a>. (I'm not sure how much is original and how much is from <code>pattern</code>.)</p>
-<p>There are helpful comments like this one, which gives us more information about the numbers we're interested in:</p>
-<pre><code class="language-python"># Each word in the lexicon has scores for:
-# 1)     polarity: negative vs. positive    (-1.0 =&gt; +1.0)
-# 2) subjectivity: objective vs. subjective (+0.0 =&gt; +1.0)
-# 3)    intensity: modifies next word?      (x0.5 =&gt; x2.0)</code></pre>
-
-<p>The lexicon it refers to is in <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/en/en-sentiment.xml">en-sentiment.xml</a>, an XML document that includes the following four entries for the word &#8220;great&#8221;.</p>
-<pre><code class="language-xml">&lt;word form="great" cornetto_synset_id="n_a-525317" wordnet_id="a-01123879" pos="JJ" sense="very good" polarity="1.0" subjectivity="1.0" intensity="1.0" confidence="0.9" /&gt;
-&lt;word form="great" wordnet_id="a-01278818" pos="JJ" sense="of major significance or importance" polarity="1.0" subjectivity="1.0" intensity="1.0" confidence="0.9" /&gt;
-&lt;word form="great" wordnet_id="a-01386883" pos="JJ" sense="relatively large in size or number or extent" polarity="0.4" subjectivity="0.2" intensity="1.0" confidence="0.9" /&gt;
-&lt;word form="great" wordnet_id="a-01677433" pos="JJ" sense="remarkable or out of the ordinary in degree or magnitude or effect" polarity="0.8" subjectivity="0.8" intensity="1.0" confidence="0.9" /&gt;</code></pre>
-
-<p>In addition to the polarity, subjectivity, and intensity mentioned in the comment above, there's also &#8220;confidence&#8221;, but I don't see this being used anywhere. In the case of &#8220;great&#8221; here it's all the same part of speech (<code>JJ</code>, adjective), and the senses are themselves natural language and not used. To simplify for readability:</p>
-<pre><code class="language-text">word   polarity  subjectivity  intensity
-great       1.0           1.0        1.0
-great       1.0           1.0        1.0
-great       0.4           0.2        1.0
-great       0.8           0.8        1.0</code></pre>
-
-<p>When calculating sentiment for a single word, TextBlob uses a sophisticated technique known to mathematicians as &#8220;averaging&#8221;.</p>
-<pre><code class="language-python">TextBlob("great").sentiment
-## Sentiment(polarity=0.8, subjectivity=0.75)</code></pre>
-
-<p>At this point we might feel as if we're touring a sausage factory. That feeling isn't going to go away, but remember how delicious sausage is! Even if there isn't a lot of magic here, the results can be useful&#8212;and you certainly can't beat it for convenience.</p>
-<p>TextBlob doesn't not handle negation, and that ain't nothing!</p>
-<pre><code class="language-python">TextBlob("not great").sentiment
-## Sentiment(polarity=-0.4, subjectivity=0.75)</code></pre>
-
-<p>Negation multiplies the polarity by -0.5, and doesn't affect subjectivity.</p>
-<p>TextBlob also handles modifier words! Here's the summarized record for &#8220;very&#8221; from the lexicon:</p>
-<pre><code class="language-text">word   polarity  subjectivity  intensity
-very        0.2           0.3        1.3</code></pre>
-
-<p>Recognizing &#8220;very&#8221; as a modifier word, TextBlob will ignore polarity and subjectivity and just use intensity to modify the following word:</p>
-<pre><code class="language-python">TextBlob("very great").sentiment
-## Sentiment(polarity=1.0, subjectivity=0.9750000000000001)</code></pre>
-
-<p>The polarity gets maxed out at 1.0, but you can see that subjectivity is also modified by &#8220;very&#8221; to become \( 0.75 \cdot 1.3 = 0.975 \).</p>
-<p>Negation combines with modifiers in an interesting way: in addition to multiplying by -0.5 for the polarity, the inverse intensity of the modifier enters for both polarity and subjectivity.</p>
-<pre><code class="language-python">TextBlob("not very great").sentiment
-## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
-
-<p>How's that?</p>
-<p>\[ \text{polarity} = -0.5 \cdot \frac{1}{1.3} \cdot 0.8 \approx -0.31 \]</p>
-<p>\[ \text{subjectivity} = \frac{1}{1.3} \cdot 0.75 \approx 0.58 \]</p>
-<p>TextBlob will ignore one-letter words in its sentiment phrases, which means things like this will work just the same way:</p>
-<pre><code class="language-python">TextBlob("not a very great").sentiment
-## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
-
-<p>And TextBlob will ignore words it doesn't know anything about:</p>
-<pre><code class="language-python">TextBlob("not a very great calculation").sentiment
-## Sentiment(polarity=-0.3076923076923077, subjectivity=0.5769230769230769)</code></pre>
-
-<p>TextBlob goes along finding words and phrases it can assign polarity and subjectivity to, and it averages them all together for longer text.</p>
-<p>And while I'm being a little critical, and such a system of coded rules is in some ways the antithesis of machine learning, it is still a pretty neat system and I think I'd be hard-pressed to code up a better such solution.</p>
-<p>Check out <a href="https://github.com/sloria/TextBlob/blob/eb08c120d364e908646731d60b4e4c6c1712ff63/textblob/_text.py">the source</a> yourself to see all the details!</p><!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20150607-textblob_sentiment/</link>
-<guid>http://planspace.org/20150607-textblob_sentiment/</guid>
-<pubDate>Sun, 07 Jun 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
