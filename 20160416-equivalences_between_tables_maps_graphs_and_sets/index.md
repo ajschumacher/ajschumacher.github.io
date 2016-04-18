@@ -79,8 +79,34 @@ There are a lot of close equivalences:
  * maps are mostly equivalent to triple graphs
  * tables and the above are all mostly equivalent
 
-http://konklone.io/json/
-https://github.com/ajschumacher/dd
+---
+
+Tabular data can be converted to map data. For example, with
+[Python][]'s [pandas data frames][] this is as easy as
+`dataframe.to_json()`.
+
+[Python]: https://www.python.org/
+[pandas data frames]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
+
+Often maps can be complex in ways that don't map immediately to
+tabular data, but still it's often possible for example to
+[convert JSON to CSV][].
+
+[convert JSON to CSV]: http://konklone.io/json/
+
+Graphs often work with doubles or triples directly as a storage or
+representation format.
+
+Automatically converting tabular or map data to/from triples is less
+common. I have a little toy [data diff][] code that does a simple
+version of this. I think some parts of [datomic][]'s internals do
+related conversions.
+
+[data diff]: https://github.com/ajschumacher/dd
+[datomic]: http://www.datomic.com/
+
+Doubles are interesting but I don't know of any automatic converters
+to or from other formats.
 
 ---
 
@@ -131,9 +157,7 @@ You might want to use composite data types: instead of storing one
 simple value in the song-artist position, storing, for example, a list
 of values. This could be done with relational databases or
 spreadsheets, but it generally isn't done. It is easy to do with
-[pandas data frames][] or in JSON.
-
-[pandas data frames]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
+pandas data frames or in JSON.
 
 Composite data values are probably worth having for some use cases.
 This comes with a new interface issue, distinct from the issue of an
@@ -155,8 +179,10 @@ The other side of multiple values is missing values. Tables, when
 realized as such, are "dense", meaning they have something at every
 intersection of row and column. Since we don't always have a value, a
 database might use NULL, or there could be a special value like NA in
-R. With triple graphs (and maps) these aren't necessary as you always
+[R][]. With triple graphs (and maps) these aren't necessary as you always
 have a choice to not include a triple.
+
+[R]: https://www.r-project.org/
 
 ```
 | property_a  | property_b  |
@@ -229,9 +255,22 @@ Sometimes the order of rows has meaning that should really be in
 another column.
 
 Separate though sometimes conflated with row ordering is the idea of a
-unique identity for each row.
+unique identity for each row. Implicit in a row is its identity, which
+is separate from all its visible values.
 
+Especially when you're interested in comparing two versions of a data
+set, having an ID for each "row" is important. Otherwise you're in the
+fraught position of having to determine what changed and what was
+supposed to be the same, at the same time. This is impossible for at
+least some changes.
 
+The [dat project][] beta, for example, had an import `-key` option
+(see [beta docs][]). The default behavior though, like [MongoDB][] as
+well, was to automatically generate a unique ID.
+
+[dat project]: http://dat-data.com/
+[beta docs]: https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md
+[MongoDB]: https://www.mongodb.com/
 
 ... Many common ways of organizing data differ only in which
 identities they make explicit. ...

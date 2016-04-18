@@ -64,8 +64,21 @@ graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_da
 <li>maps are mostly equivalent to triple graphs</li>
 <li>tables and the above are all mostly equivalent</li>
 </ul>
-<p>http://konklone.io/json/
-https://github.com/ajschumacher/dd</p>
+<hr />
+<p>Tabular data can be converted to map data. For example, with
+<a href="https://www.python.org/">Python</a>'s <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> this is as easy as
+<code>dataframe.to_json()</code>.</p>
+<p>Often maps can be complex in ways that don't map immediately to
+tabular data, but still it's often possible for example to
+<a href="http://konklone.io/json/">convert JSON to CSV</a>.</p>
+<p>Graphs often work with doubles or triples directly as a storage or
+representation format.</p>
+<p>Automatically converting tabular or map data to/from triples is less
+common. I have a little toy <a href="https://github.com/ajschumacher/dd">data diff</a> code that does a simple
+version of this. I think some parts of <a href="http://www.datomic.com/">datomic</a>'s internals do
+related conversions.</p>
+<p>Doubles are interesting but I don't know of any automatic converters
+to or from other formats.</p>
 <hr />
 <p>Some considerations argue against the primacy of two-dimensional data
 tables, and some of these concerns are valid, but it is not
@@ -104,7 +117,7 @@ there's definitely not an obvious solution to the interface problem.</p>
 simple value in the song-artist position, storing, for example, a list
 of values. This could be done with relational databases or
 spreadsheets, but it generally isn't done. It is easy to do with
-<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> or in JSON.</p>
+pandas data frames or in JSON.</p>
 <p>Composite data values are probably worth having for some use cases.
 This comes with a new interface issue, distinct from the issue of an
 interface for multiple values. And it isn't a good solution to the
@@ -121,7 +134,7 @@ id_song_one, artist, a_jazz_singer</code></pre>
 realized as such, are "dense", meaning they have something at every
 intersection of row and column. Since we don't always have a value, a
 database might use NULL, or there could be a special value like NA in
-R. With triple graphs (and maps) these aren't necessary as you always
+<a href="https://www.r-project.org/">R</a>. With triple graphs (and maps) these aren't necessary as you always
 have a choice to not include a triple.</p>
 <pre><code>| property_a  | property_b  |
 |-------------|-------------|
@@ -174,7 +187,16 @@ of the view and not the data.</p>
 <p>Sometimes the order of rows has meaning that should really be in
 another column.</p>
 <p>Separate though sometimes conflated with row ordering is the idea of a
-unique identity for each row.</p>
+unique identity for each row. Implicit in a row is its identity, which
+is separate from all its visible values.</p>
+<p>Especially when you're interested in comparing two versions of a data
+set, having an ID for each "row" is important. Otherwise you're in the
+fraught position of having to determine what changed and what was
+supposed to be the same, at the same time. This is impossible for at
+least some changes.</p>
+<p>The <a href="http://dat-data.com/">dat project</a> beta, for example, had an import <code>-key</code> option
+(see <a href="https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md">beta docs</a>). The default behavior though, like <a href="https://www.mongodb.com/">MongoDB</a> as
+well, was to automatically generate a unique ID.</p>
 <p>... Many common ways of organizing data differ only in which
 identities they make explicit. ...</p>
 <p>In double graph form, there is nothing to distinguish properties from
