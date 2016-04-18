@@ -65,14 +65,13 @@ graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_da
 <li>tables and the above are all mostly equivalent</li>
 </ul>
 <hr />
-<p>Tabular data can be converted to map data. For example, with
-<a href="https://www.python.org/">Python</a>'s <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> this is as easy as
-<code>dataframe.to_json()</code>.</p>
-<p>Often maps can be complex in ways that don't map immediately to
+<p>Tabular data can be converted to map data. With <a href="https://www.python.org/">Python</a>'s
+<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> this is as easy as <code>dataframe.to_json()</code>.</p>
+<p>Often maps can be complex in ways that don't correspond immediately to
 tabular data, but still it's often possible for example to
 <a href="http://konklone.io/json/">convert JSON to CSV</a>.</p>
-<p>Graphs often work with doubles or triples directly as a storage or
-representation format.</p>
+<p>Graphs often work with doubles or triples directly as a storage
+format.</p>
 <p>Automatically converting tabular or map data to/from triples is less
 common. I have a little toy <a href="https://github.com/ajschumacher/dd">data diff</a> code that does a simple
 version of this. I think some parts of <a href="http://www.datomic.com/">datomic</a>'s internals do
@@ -106,7 +105,7 @@ solution to a different problem. What we really want is to have two
 entries each "in the same place" in the data.</p>
 <p>Whatever the solution, there is a related interface issue: especially
 with a tabular display, how do we show the user that there are two
-values?</p>
+values "in a cell"?</p>
 <p>A technique common in relational databases hacks a graph approach into
 the tabular framework. It uses one table for songs, one table for
 artists, and a third table of "edges" connecting songs and artists
@@ -213,11 +212,12 @@ value occurrences, but this would be expensive along the same lines as
 matching up rows without IDs. It is a little poetic to think about
 expressing things like <code>{smell, roses, raindrops}</code> but in the end the
 sets and doubles don't directly convey all the same information as the
-other formats. A while ago I thought that doubles <a href="http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/">were sufficient</a>,
+other formats. A while ago I thought that doubles were <a href="http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/">sufficient</a>,
 but I no longer think so.</p>
 <p>My main interest in all this is dealing with the problem of versioning
-data. Often, only the most recent version of data is available or even
-stored anywhere, which <a href="http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">I don't like</a>.</p>
+data, and the related problems of diffing and merging data. Often,
+only the most recent version of data is available or even stored
+anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">don't like</a>.</p>
 <hr />
 <p>For all the graphs here, I'm not considering duplicate edges.</p>
 <p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    </article>

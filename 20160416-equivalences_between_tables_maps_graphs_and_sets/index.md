@@ -81,21 +81,20 @@ There are a lot of close equivalences:
 
 ---
 
-Tabular data can be converted to map data. For example, with
-[Python][]'s [pandas data frames][] this is as easy as
-`dataframe.to_json()`.
+Tabular data can be converted to map data. With [Python][]'s
+[pandas data frames][] this is as easy as `dataframe.to_json()`.
 
 [Python]: https://www.python.org/
 [pandas data frames]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
 
-Often maps can be complex in ways that don't map immediately to
+Often maps can be complex in ways that don't correspond immediately to
 tabular data, but still it's often possible for example to
 [convert JSON to CSV][].
 
 [convert JSON to CSV]: http://konklone.io/json/
 
-Graphs often work with doubles or triples directly as a storage or
-representation format.
+Graphs often work with doubles or triples directly as a storage
+format.
 
 Automatically converting tabular or map data to/from triples is less
 common. I have a little toy [data diff][] code that does a simple
@@ -144,7 +143,7 @@ entries each "in the same place" in the data.
 
 Whatever the solution, there is a related interface issue: especially
 with a tabular display, how do we show the user that there are two
-values?
+values "in a cell"?
 
 A technique common in relational databases hacks a graph approach into
 the tabular framework. It uses one table for songs, one table for
@@ -290,16 +289,17 @@ value occurrences, but this would be expensive along the same lines as
 matching up rows without IDs. It is a little poetic to think about
 expressing things like `{smell, roses, raindrops}` but in the end the
 sets and doubles don't directly convey all the same information as the
-other formats. A while ago I thought that doubles [were sufficient][],
+other formats. A while ago I thought that doubles were [sufficient][],
 but I no longer think so.
 
-[were sufficient]: http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/
+[sufficient]: http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/
 
 My main interest in all this is dealing with the problem of versioning
-data. Often, only the most recent version of data is available or even
-stored anywhere, which [I don't like][].
+data, and the related problems of diffing and merging data. Often,
+only the most recent version of data is available or even stored
+anywhere, which I [don't like][].
 
-[I don't like]: http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/
+[don't like]: http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/
 
 ---
 
