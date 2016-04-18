@@ -92,12 +92,12 @@ choose layouts for their data that other people find appalling.</p>
 not enough for some types of data.</p>
 <p>Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper provides responses to both of these
 objections. In the first place, a wide range of table layouts are
-equivalent and can be converted to a standard "tidy" format when
-needed. There is no fundamental need to impose any given format in the
-name of aesthetics. In the second place, an arbitrary number of
-dimensions can be represented perfectly well in a two-dimensional
-table, though such a representation may not be ideal for human users.
-There remains a question of how to provide a good interface.</p>
+equivalent and can be converted to a standard "tidy" format if needed.
+There is no fundamental need to impose any given format in the name of
+aesthetics. In the second place, an arbitrary number of dimensions can
+be represented in a two-dimensional table, though such a
+representation may not be ideal for human users. There remains a
+question of how to provide a good interface.</p>
 <p>It is awkward in a flat table to represent things that have multiple
 values. For example, with one row per song and one "artist" field,
 what do you do for a song that has two artists?</p>
@@ -108,16 +108,17 @@ entries each "in the same place" in the data.</p>
 with a tabular display, how do we show the user that there are two
 values?</p>
 <p>A technique common in relational databases hacks a graph approach into
-the tabular approach. It uses a table for songs, a table for artists,
-and a third table of "edges" connecting songs and artists together.
-This means you have to know about a lot of the tables' design, it's
-overkill when the songs and artists are really just strings, and
-there's definitely not an obvious solution to the interface problem.</p>
+the tabular framework. It uses one table for songs, one table for
+artists, and a third table of "edges" connecting songs and artists
+together. This means you have to know about a lot of the tables'
+design. It can seem like overkill when the songs and artists are
+really just strings. And there's not an obvious solution to the
+interface problem.</p>
 <p>You might want to use composite data types: instead of storing one
-simple value in the song-artist position, storing, for example, a list
-of values. This could be done with relational databases or
-spreadsheets, but it generally isn't done. It is easy to do with
-pandas data frames or in JSON.</p>
+simple value in the song-artist position, for example, store a list of
+values. This could be done with relational databases or spreadsheets,
+but it generally isn't done. It is easy to do with pandas data frames
+or in JSON.</p>
 <p>Composite data values are probably worth having for some use cases.
 This comes with a new interface issue, distinct from the issue of an
 interface for multiple values. And it isn't a good solution to the
@@ -133,9 +134,10 @@ id_song_one, artist, a_jazz_singer</code></pre>
 <p>The other side of multiple values is missing values. Tables, when
 realized as such, are "dense", meaning they have something at every
 intersection of row and column. Since we don't always have a value, a
-database might use NULL, or there could be a special value like NA in
-<a href="https://www.r-project.org/">R</a>. With triple graphs (and maps) these aren't necessary as you always
-have a choice to not include a triple.</p>
+database might use <code>NULL</code>, or there could be special values like <code>NA</code>
+in <a href="https://www.r-project.org/">R</a>. With triple graphs (and maps) these aren't necessary as you
+always have a choice to not include a triple. Triples are naturally
+"sparse" for missing data (distinct from sparsity for zeros).</p>
 <pre><code>| property_a  | property_b  |
 |-------------|-------------|
 | value_a_one | NULL        |
@@ -160,14 +162,15 @@ abilities, combining remarkable gestalt perception with careful
 attention to detail, that anything useful is ever accomplished with
 spreadsheets.</p>
 <p>It seems like giving spreadsheet software well-defined tables rather
-than vast expanses of empty cells would be a change worth making, and
-some tools, such as <a href="http://app.editdata.org/">editdata</a>, do this.</p>
+than vast expanses of empty cells would be a change worth making. Some
+tools, such as <a href="http://app.editdata.org/">editdata</a>, do this.</p>
 <p>It's awkward for people to think about things without physical
 metaphor. Set literals have to be written in some order, for example,
 despite not having any order intrinsically. In the same way, tables
 have spacial baggage. Columns are always next to one another. Rows are
 before or after one another.</p>
-<p>If you change the order of rows or columns, something has changed.</p>
+<p>If you change the order of rows or columns, there is some change, but
+it isn't a very big change.</p>
 <pre><code>| property_a  | property_b  |
 |-------------|-------------|
 | value_a_one | value_b_one |
@@ -179,30 +182,42 @@ before or after one another.</p>
 | value_b_two | value_a_two |</code></pre>
 
 <p>If you diff CSV files after re-ordering columns, every line of the
-file has changed, but the data hasn't changed at all.</p>
+file has changed. But in some sense the data hasn't changed at all.</p>
 <p>I think the right way to conceptualize this is to see even a simple
 CSV file as a view of an underlying data set. While we usually don't
 make it explicit, the ordering of columns and rows is characteristic
 of the view and not the data.</p>
-<p>Sometimes the order of rows has meaning that should really be in
-another column.</p>
-<p>Separate though sometimes conflated with row ordering is the idea of a
-unique identity for each row. Implicit in a row is its identity, which
-is separate from all its visible values.</p>
+<p>With both tables and maps, sometimes the order of things has meaning
+that should really be in another field.</p>
+<p>Separate though sometimes conflated with ordering is the idea of a
+unique identity for each row or map. By their distinctness they have
+an implicit identity separate from any values.</p>
 <p>Especially when you're interested in comparing two versions of a data
 set, having an ID for each "row" is important. Otherwise you're in the
 fraught position of having to determine what changed and what was
 supposed to be the same, at the same time. This is impossible for at
 least some changes.</p>
 <p>The <a href="http://dat-data.com/">dat project</a> beta, for example, had an import <code>-key</code> option
-(see <a href="https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md">beta docs</a>). The default behavior though, like <a href="https://www.mongodb.com/">MongoDB</a> as
-well, was to automatically generate a unique ID.</p>
-<p>... Many common ways of organizing data differ only in which
-identities they make explicit. ...</p>
-<p>In double graph form, there is nothing to distinguish properties from
-values.</p>
-<p>http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/
-http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/</p>
+(see <a href="https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md">beta docs</a>). The default behavior though was to automatically
+generate a unique ID, which is also what <a href="https://www.mongodb.com/">MongoDB</a> does by default.</p>
+<p>When specifying IDs by hand it is tempting to make choices that turn
+out to be bad, like using a name as an ID and finding later both that
+names can change and multiple things can have the same name.</p>
+<p>Once there are unique IDs for rows/maps, comparison between versions
+easily discovers which have been added and removed, and those that
+remain can be compared to their partners.</p>
+<p>Doubles and sets as a data representation are interesting but may not
+be very useful. There is nothing to distinguish properties from
+values. It could probably still be worked out by finding patterns of
+value occurrences, but this would be expensive along the same lines as
+matching up rows without IDs. It is a little poetic to think about
+expressing things like <code>{smell, roses, raindrops}</code> but in the end the
+sets and doubles don't directly convey all the same information as the
+other formats. A while ago I thought that doubles <a href="http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/">were sufficient</a>,
+but I no longer think so.</p>
+<p>My main interest in all this is dealing with the problem of versioning
+data. Often, only the most recent version of data is available or even
+stored anywhere, which <a href="http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">I don't like</a>.</p>
 <hr />
 <p>For all the graphs here, I'm not considering duplicate edges.</p>
 <p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    </article>
