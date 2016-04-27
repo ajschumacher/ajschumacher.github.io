@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-04-27: [Simple isn't Easy](/20160427-simple_isnt_easy/)
  * 2016-04-17: [Equivalences between Tables, Maps, Graphs, and Sets](/20160417-equivalences_between_tables_maps_graphs_and_sets/)
  * 2016-03-27: [Mindstorms: Children, Computers, and Powerful Ideas](/20160327-mindstorms/)
  * 2016-03-22: [Books for Programmers](/20160322-books_for_programmers/)
