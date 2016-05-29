@@ -7,6 +7,29 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Old Article for the Cardinal: "UW computer models weather patterns"</title>
+<description><![CDATA[
+
+<p>Years ago, the better student newspaper of my alma mater, <a href="http://www.dailycardinal.com/">The Daily Cardinal</a>, decided to get science articles written by people who were in the <a href="https://nerdnite.com/">Nerd Nite</a> Madison <a href="https://www.facebook.com/groups/nerdnite.madison/">Facebook group</a>. I eventually agreed to write an article about a new computer the university was standing up, which ran on November 29, 2011. I happened to find an old copy of that paper recently, and I thought I'd include that old article here, not because it is good for the sake of completism.</p>
+<p>I managed to find <a href="http://www.dailycardinal.com/article/2011/11/uw-computer-models-weather-patterns">the article still on the paper's web site</a>. I also found <a href="11292011.page04.pdf">a PDF of the page from the paper that the article ran on</a> thanks to Google's completist storage of all my old email. I'll put the text of the article below, because why not.</p>
+<hr>
+<h3>UW computer models weather patterns</h3>
+<p>Tuesday, November 29, 2011 - Aaron Schumacher - The Daily Cardinal</p>
+<p>If a butterfly flaps its wings in Brazil, will a hurricane destroy Florida? If a satellite sees clouds in Nevada, will it mean rain for crops or mud slides down mountains? Questions like these need a computer with real muscle, run by the best people, and that&#8217;s what UW-Madison now has.</p>
+<p>The S4 supercomputer built on campus this year is now fully operational and the most powerful resource of its kind at the university&#8217;s disposal. It&#8217;s working to fully incorporate data from satellites in models of the Earth&#8217;s oceans and atmosphere&#8212;data that could help improve our understanding and forecasting of these complex systems.</p>
+<p>Just how powerful is the new supercomputer? Well, it&#8217;s gotten harder to make computer processors faster, so engineers are placing more than one computer brain or &#8220;core&#8221; on each chip. Even your iPhone has two cores that work together to send text messages as quickly as possible. A new iMac has four cores on its single chip, for blazing fast Facebook rendering.</p>
+<p>The processors in the new supercomputer at UW-Madison&#8217;s Space Science and Engineering Center (SSEC) each have 12 cores per chip, while a typical desktop has only one. There are four of these chips in each unit.</p>
+<p>Oh, and there are a whopping 64 of these units working together in the S4, keeping track of a multitude of data and grid points over the Earth&#8217;s surface. In terms of RAM, the working memory of any computer, the S4&#8217;s processing units alone have over 2,000 times what you&#8217;d find in an iMac.</p>
+<p>This speedy behemoth fills up five ceiling-high racks in the 1225 Dayton St. building. There are 26 more computers serving as the collective hard disk, providing a total of 456 terabytes in storage space.</p>
+<p>To fund the construction of the S4 supercomputer, the SSEC received a grant of $1 million from the National Oceanic and Atmospheric Administration (NOAA) earlier this year. This decision was made in favor of UW-Madison largely because computer engineers on campus have the special skills to create such extreme computing systems.</p>
+<p>The S4 supercomputer project extends a collaboration between the NOAA and UW-Madison&#8217;s SSEC. NOAA researchers, including many at UW-Madison, use the supercomputer for important computationally complex tasks.</p>
+<p>The S4 supercomputer is a powerful new resource on campus. Its availability to researchers will help advance atmospheric and oceanic modeling techniques for national applications and will expand the capabilities of UW-Madison researchers working on many other projects.</p>    
+    ]]></description>
+<link>http://planspace.org/20160528-old_article_for_the_cardinal/</link>
+<guid>http://planspace.org/20160528-old_article_for_the_cardinal/</guid>
+<pubDate>Sat, 28 May 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Simple isn't Easy</title>
 <description><![CDATA[
 
@@ -1730,94 +1753,6 @@ planspace.org
 <link>http://planspace.org/20150616-code_reading_question/</link>
 <guid>http://planspace.org/20150616-code_reading_question/</guid>
 <pubDate>Tue, 16 Jun 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The NVIDIA Jetson TK1 with Caffe on MNIST</title>
-<description><![CDATA[
-
-<p>Let's do <a href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> for image classification on a <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>!</p>
-<p>Go!</p>
-<p><img alt="Jetson TK1" src="jetson.png"></p>
-<p><em><a href="https://www.flickr.com/photos/120586634@N05/14488628209/in/album-72157645736592714/">Image from Gareth Halfacree</a>.</em></p>
-<p>The <a href="https://developer.nvidia.com/jetson-tk1">Jetson</a> is a pretty remarkable little machine. And NVIDIA prices it at just $192: one dollar per core on the GPU. But there is a little work involved in getting a Jetson set up. Steps described here:</p>
-<ol>
-<li>Flash the Jetson to most recent OS (L4T 21.3)</li>
-<li>Install the <a href="http://caffe.berkeleyvision.org/">Caffe</a> deep learning framework</li>
-<li>Train a classic <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutional</a> net on <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a></li>
-</ol>
-<p>Without extra hardware, the easiest way to start working with the Jetson is to plug it in directly to your router with an ethernet cable. Then you can <code>ssh</code> in to <code>tegra-ubuntu</code> on the local network, using the default username and password (both <code>ubuntu</code>):</p>
-<pre><code class="language-bash">ssh ubuntu@tegra-ubuntu.local</code></pre>
-
-<h3>1. Flash the Jetson to the most recent OS (L4T 21.3)</h3>
-<p>The GPU on the Jetson is a Tegra K1. The Jetson I received came preinstalled with an <a href="https://developer.nvidia.com/linux-tegra-rel-19">early version</a> of the "<a href="https://developer.nvidia.com/linux-tegra">Linux for Tegra</a>" (L4T) <a href="http://www.ubuntu.com/">Ubuntu</a>-based operating system. Step one is updating to the most recent version (currently <a href="https://developer.nvidia.com/linux-tegra-r213">21.3</a>).</p>
-<p>I flashed with the <a href="https://developer.nvidia.com/jetson-tk1-development-pack">Jetson TK1 Development Pack</a>. Two things about the &#8220;JetPack&#8221;:</p>
-<ul>
-<li>You can only run the JetPack on 64-bit Ubuntu 12.04 and 14.04. I used 14.04.</li>
-<li>The JetPack is about 12 gigabytes in size, so make sure you have enough space on your machine or any virtual machine you plan to use.</li>
-</ul>
-<p>I'm running a Mac over here, so I used <a href="https://www.virtualbox.org/">VirtualBox</a> (4.3.28, plus the extension pack) to install a virtual <a href="http://www.ubuntu.com/download/desktop">Ubuntu Desktop</a> 14.04.2 LTS from ISO. I hadn't created a VirtualBox image this way before; it's pretty cool! You can tell VirtualBox that the ISO is in a virtual DVD drive, and boot from it. An NVIDIA Developer Zone <a href="https://devtalk.nvidia.com/default/topic/718220/tegra-tools/jetson-tegra-k1-development-kit/">post</a> was very helpful in figuring all this out. Takes me back to the days when you had to burn an ISO to a physical CD...</p>
-<p>It took me a couple tries to get everything right; to get it all done in one pass you would want to connect the Jetson via USB and start it in recovery mode now, then adjust the VirtualBox settings so that there's a &#8220;USB Device Filter&#8221; for the &#8220;NVIDIA Corp. APX [0101]&#8221; device accessible, before even installing the VM.</p>
-<p>There was one headache in getting the Ubuntu desktop to display at reasonable resolutions. The display resolution started at 640 by 480, with no apparent way to change it. Thanks to <a href="http://askubuntu.com/users/394518/johnathan-davis">Jonathan Davis</a> for <a href="http://askubuntu.com/questions/588943/experiencing-small-resolution-issue-in-ubuntu-14-04-2-with-virtualbox-getting-s">suggesting</a> a solution that worked for me:</p>
-<pre><code class="language-bash">sudo apt-get remove libcheese-gtk23
-sudo apt-get install xserver-xorg-core
-sudo apt-get install -f virtualbox-guest-x11</code></pre>
-
-<p>Reboot and get full-screen majesty!</p>
-<p>In Ubuntu then I was able to install the JetPack. This whole process takes at least enough time to eat some Thai food.</p>
-<p>After flashing, I cleaned out the old record from <code>~/.ssh/known_hosts</code> and was able to log in to a shiny new &#8220;Linux for Tegra&#8221; 21.3 install!</p>
-<pre><code class="language-bash">ssh ubuntu@tegra-ubuntu.local</code></pre>
-
-<p>At the end of the JetPack process, you need to enter the IP address of your Jetson. You can use <code>ifconfig</code> (as directed) on the Jetson to get the right IP address.</p>
-<p>The JetPack process continues then and includes installing more things on the Jetson, including <code>cuda-toolkit-6-5</code>. Nice!</p>
-<p>The JetPack also includes <a href="http://opencv.org/">OpenCV</a>, but doesn't seem to install it on the Jetson automatically. So move this file onto the Jetson yourself:</p>
-<pre><code class="language-bash">JetPackTK1-1.1/jetpack_download/libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb</code></pre>
-
-<p>On the Jetson then, install it something like the following. The package itself contains three other packages which have to be installed, and which have a couple dependencies that will need to be resolved first:</p>
-<pre><code class="language-bash">sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
-sudo apt-get install libavcodec54 libavformat54 libavutil52 libswscale2
-sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra_2.4.10.1_armhf.deb
-sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra-dev_2.4.10.1_armhf.deb
-sudo dpkg -i /var/opencv4tegra-repo/libopencv4tegra-python_2.4.10.1_armhf.deb</code></pre>
-
-<p>If you're a &#8220;CUDA Registered Developer&#8221; (they have to manually approve applications?) now might be a good time to install <a href="https://developer.nvidia.com/cuDNN">cuDNN</a> R1.</p>
-<h3>2. Install the Caffe deep learning framework.</h3>
-<p>Pete Warden's <a href="http://petewarden.com/2014/10/25/how-to-run-the-caffe-deep-learning-vision-library-on-nvidias-jetson-mobile-gpu-board/">post</a> on setting up Caffe on the Jetson isn't all perfectly applicable after you've flashed to L4T 21.3, but I very much appreciated his translation of the Caffe <a href="http://caffe.berkeleyvision.org/installation.html">install</a> dependencies into Ubuntu package names:</p>
-<pre><code class="language-bash">sudo apt-get install \
-    libprotobuf-dev protobuf-compiler gfortran \
-    libboost-dev cmake libleveldb-dev libsnappy-dev \
-    libboost-thread-dev libboost-system-dev \
-    libatlas-base-dev libhdf5-serial-dev libgflags-dev \
-    libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7</code></pre>
-
-<p>The GCC 4.7 vs. 4.8 issues are resolved now I think, so the last two items there could probably be skipped.</p>
-<p>Warden also advised some manual tweaks to <code>$PATH</code> and <code>$LD_LIBRARY_PATH</code>, but these are taken care of already by the install process. You may still need to <code>source ~/.bashrc</code>, depending on when you last logged in.</p>
-<p>To get Python integration compiled you need <code>numpy</code>:</p>
-<pre><code class="language-bash">sudo apt-get install python-numpy</code></pre>
-
-<p>It looks like it's best to install Caffe from the <code>master</code> branch of the GitHub repository. (The <code>dev</code> branch hasn't been updated in three months.)</p>
-<pre><code class="language-bash">sudo apt-get install git
-git clone https://github.com/BVLC/caffe.git
-cd caffe
-cp Makefile.config.example Makefile.config</code></pre>
-
-<p>Unfortunately <code>master</code> has a really large value for <code>LMDB_MAP_SIZE</code> in <code>src/caffe/util/db.cpp</code>, which confuses our little 32-bit ARM processor on the Jetson, eventually leading to Caffe tests failing with errors like <code>MDB_MAP_FULL: Environment mapsize limit reached</code>. Caffe GitHub issue <a href="https://github.com/BVLC/caffe/issues/1861">#1861</a> has some discussion about this and maybe it will be fixed eventually, but for the moment if you manually adjust the value from <code>1099511627776</code> to <code>536870912</code>, you'll be able to run all the Caffe tests successfully. I'm still having problems actually applying the relevant code paths, but at least the tests pass.</p>
-<pre><code class="language-bash">make -j 4 all
-make -j 4 test
-make -j 4 runtest</code></pre>
-
-<p>Then you can run the following command with a pre-built model and see that you get pretty nice prediction speed!</p>
-<pre><code class="language-bash">run build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0</code></pre>
-
-<h3>3. Train a classic convolutional net on MNIST</h3>
-<p>At this point you can use Caffe for whatever, including all the great tutorials! For example, there's the <a href="http://caffe.berkeleyvision.org/gathered/examples/mnist.html">MNIST tutorial</a>.</p>
-<p>Since Caffe's <a href="http://symas.com/mdb/">LMDB</a> support still isn't working right on my Jetson install, I had to switch the tutorial example to use <a href="http://leveldb.org/">LevelDB</a>. This isn't too hard; just change <code>BACKEND="lmdb"</code> to <code>BACKEND="leveldb"</code> in <code>examples/mnist/create_mnist.sh</code> and then in <code>examples/mnist/lenet_train_test.prototxt</code> change both directories ending in <code>lmdb</code> to end in <code>leveldb</code> and both <code>LMDB</code>s to <code>LEVELDB</code>s.</p>
-<p>Aside from that the <a href="http://caffe.berkeleyvision.org/gathered/examples/mnist.html">tutorial</a> is perfect! (Well, test accuracy gets up to 99.03%, anyway.)</p>
-<p>There's a ton more to work with and think about, even just within the Caffe examples. And Caffe is just one of the available frameworks! What about <a href="http://torch.ch/">Torch</a>? What about <a href="https://code.google.com/p/cuda-convnet2/">CUDA ConvNet</a>? But for now...</p>
-<p>Deep learning: Done!</p>    
-    ]]></description>
-<link>http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/</link>
-<guid>http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/</guid>
-<pubDate>Sun, 14 Jun 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
