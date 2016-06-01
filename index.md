@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-05-31: [A Machine to Foretell the Future?](/20160531-a_machine_to_foretell_the_future/)
  * 2016-05-28: [Old Article for the Cardinal: "UW computer models weather patterns"](/20160528-old_article_for_the_cardinal/)
  * 2016-04-27: [Simple isn't Easy](/20160427-simple_isnt_easy/)
  * 2016-04-17: [Equivalences between Tables, Maps, Graphs, and Sets](/20160417-equivalences_between_tables_maps_graphs_and_sets/)

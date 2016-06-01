@@ -1,0 +1,604 @@
+# A Machine to Foretell the Future?
+
+In 1973 a collection of essays by [E. F. Schumacher](https://en.wikipedia.org/wiki/E._F._Schumacher) was published as [Small Is Beautiful: A Study of Economics As If People Mattered](https://en.wikipedia.org/wiki/Small_Is_Beautiful). I don't always agree with him but I think there's a lot to consider in there, and it's an interesting view from the past—in turns prescient and archaic. The selection excerpted below includes an underrepresented viewpoint for people doing modern data work.
+
+
+[![Small is Beautiful (cover)](small_is_beautiful.jpg)](http://www.amazon.com/dp/0061997765/)
+
+
+---
+
+
+### A Machine to Foretell the Future?
+
+The reason for including a discussion on predictability in this volume
+is that it represents one of the most important metaphysical—and
+therefore practical—problems with which we are faced. There have never
+been so many futurologists, planners, forecasters, and model-builders
+as there are today, and the most intriguing product of technological
+progress, the computer, seems to offer untold new possibilities.
+People talk freely about “machines to foretell the future.” Are not
+such machines just what we have been waiting for? All men at all times
+have been wanting to know the future.
+
+The ancient Chinese used to consult the _I Ching_, also called _The
+Book of Changes_ and reputed to be the oldest book of mankind. Some of
+our contemporaries do so even today. The _I Ching_ is based on the
+conviction that, while everything changes all the time, change itself
+is unchanging and conforms to certain ascertainable metaphysical laws.
+“To everything there is a season,” said Ecclesiastes, “and a time to
+every purpose under heaven ... a time to break down and a time to
+build up ... a time to cast away stones and a time to gather stones
+together,” or, as we might say, a time for expansion and a time for
+consolidation. And the task of the wise man is to understand the great
+rhythms of the Universe and to gear in with them. While the Greeks—and
+I suppose most other nations—went to living oracles, to their Pythias,
+Casandras, prophets and seers, the Chinese, remarkably, went to a book
+setting out the universal and necessary pattern of changes, the very
+Laws of Heaven to which all nature conforms inevitably and to which
+man will conform freely as a result of insight gained either from
+wisdom or from suffering. Modern man goes to the computer.
+
+Tempting as it may be to compare the ancient oracles and the modern
+computer, only a comparison by contrast is possible. The former deal
+exclusively with qualities; the latter, with quantities. The
+inscription over the Delphic temple was “Know Thyself,” while the
+inscription on an electronic computer is more likely to be: “Know Me,”
+that is, “Study the Operating Instructions before Plugging in.” It
+might be thought that the _I Ching_ and the oracles are metaphysical
+while the computer model is “real”; but the fact remains that a
+machine to foretell the future is based on metaphysical assumptions of
+a very definite kind. It is based on the implicit assumption that “the
+future is already here,” that it exists already in a determinate form,
+so that it requires merely good instruments and good techniques to get
+it into focus and make it visible. The reader will agree that this is
+a very far-reaching metaphysical assumption, in fact, a most
+extraordinary assumption which seems to go against all direct personal
+experience. It implies that human freedom does not exist or, in any
+case, that it cannot alter the predetermined course of events. We
+cannot shut our eyes to the fact, on which I have been insisting
+throughout this book, that such an assumption, like all metaphysical
+theses, whether explicit or implicit, has decisive practical
+consequences. The question is simply: is it true or is it untrue?
+
+When the Lord created the world and people to live in it—an enterprise
+which, according to modern science, took a very long time—I could well
+imagine that He reasoned with Himself as follows: “If I make
+everything predictable, these human beings, whom I have endowed with
+pretty good brains, will undoubtedly learn to predict everything, and
+they will thereupon have no motive to do anything at all, because they
+will recognise that the future is totally determined and cannot be
+influenced by any human action. On the other hand, if I make
+everything unpredictable: they will gradually discover that there is
+no rational basis for any decision whatsoever and, as in the first
+case, they will thereupon have no motive to do anything at all.
+Neither scheme would make sense. I must therefore create a mixture of
+the two. Let some things be predictable and let others be
+unpredictable. They will then, amongst many other things, have the
+very important task of finding out which is which.”
+
+And this, indeed, is a very important task, particularly today, when
+people try to devise machines to foretell the future. Before anyone
+makes a prediction, he should be able to give a convincing reason why
+the factor to which his prediction refers is inherently predictable.
+
+Planners, of course, proceed on the assumption that the future is not
+“already here,” that they are not dealing with a predetermined—and
+therefore predictable—system, that they can determine things by their
+own free will, and that their plans will make the future different
+from what it would have been had there been no plan. And yet it is the
+planners, more than perhaps anyone else, who would like nothing better
+than to have a machine to foretell the future. Do they ever wonder
+whether the machine might incidentally also foretell their own plans
+before they have been conceived?
+
+
+##### Need for Semantics
+
+However this may be, it is clear that the question of predictability
+is not only important but also somewhat involved. We talk happily
+about estimating, planning, forecasting, budgeting, about surveys,
+programmes, targets, and so forth, and we tend to use these terms as
+if they were freely interchangeable and as if everybody would
+automatically know what was meant. The result is a great deal of
+confusion, because it is in fact necessary to make a number of
+fundamental distinctions. The terms we use may refer to the past or to
+the future; they may refer to acts or to events; and they may signify
+certainty or uncertainty. The number of combinations possible where
+there are three pairs of this kind is \\(2^3\\), or 8, and we really
+ought to have eight different terms to be quite certain of what we are
+talking about. Our language, however, is not as perfect as that. The
+most important distinction is generally that between acts and events.
+The eight possible cases may there fore be ordered as follows:
+
+```
+1. Act           5. Event
+   Past             Past
+   Certain          Certain
+2. Act           6. Event
+   Future           Future
+   Certain          Certain
+3. Act           7. Event
+   Past             Past
+   Uncertain        Uncertain
+4. Act           8. Event
+   Future           Future
+   Uncertain        Uncertain
+```
+
+The distinction between acts and events is as basic as that between
+active and passive or between “within my control” or “outside my
+control.” To apply the word “planning” to matters outside the
+planner's control is absurd. Events, as far as the planner is
+concerned, simply happen. He may be able to forecast them and this may
+well influence his plan; but they cannot possibly be part of the plan.
+
+The distinction between the past and the future proved to be necessary
+for our purpose, because, in fact, words like “plan” or “estimate” are
+being used to refer to either. If I say: “I shall not visit Paris
+without a plan,” this can mean: “I shall arm myself with a street plan
+for orientation” and would therefore refer to case 5. Or it can mean:
+“I shall arm myself with a plan which outlines in advance where I am
+going to go and how I am going to spend my time and money”—case 2
+or 4. If someone claims that “to have a plan is indispensable,” it is
+not without interest to find out whether he means the former or the
+latter. The two are _essentially_ different.
+
+Similarly, the word “estimate,” which denotes uncertainty, may apply
+to the past or to the future. In an ideal world, it would not be
+necessary to make estimates about things that had already happened.
+But in the actual world, there is much uncertainty even about matters
+which, in principle, could be fully ascertained. Cases 3, 4, 7, and 8
+represent four different types of estimates. Case 3 relates to
+something I have done in the past; case 7, to something that has
+happened in the past. Case 4 relates to something I plan to do in the
+future, while case 8 relates to something I expect to happen in the
+future. Case 8, in fact, is a forecast in the proper sense of the term
+and has nothing whatever to do with “planning.” How often, however,
+are forecasts presented as if they were plans—and _vice versa!_ The
+British “National Plan” of 1965 provides an outstanding example and,
+not surprisingly, came to nothing.
+
+Can we ever speak of future acts or events as certain (cases 2 and 6)?
+If I have made a plan with full knowledge of all the relevant facts,
+being inflexibly resolve to carry it through—case 2—I may, in this
+respect, consider my future actions as certain. Similarly, in
+laboratory science, dealing with carefully isolated deterministic
+systems, future events may he described as certain. The real world,
+however, is not a deterministic system; we may be able to talk with
+certainty about acts or events of the past—cases 1 or 5—but we can do
+so _about future events only on the basis of assumptions._ In other
+words, we can formulate conditional statements about the future, such
+as: “_If_ such and such a trend of events continued for another x
+years, this is where it would take us.” This is not a forecast or
+prediction, which must always be uncertain in the real world, but an
+exploratory calculation, which, being conditional, has the virtue of
+mathematical certainty.
+
+Endless confusion results from the semantic muddle in which we find
+ourselves today. As mentioned before, “plans” are put forward which
+upon inspection turn out to relate to events totally outside the
+control of the planner. “Forecasts” are offered which upon inspection
+turn out to be conditional sentences, in other words, exploratory
+calculations. The latter are misinterpreted as if they were forecasts
+or predictions. “Estimates” are put forward which upon inspection turn
+out to be plans. And so on and so forth. Our academic teachers would
+perform a most necessary and really helpful task if they taught their
+students to make the distinctions discussed above and developed a
+terminology which fixed them in words.
+
+
+##### Predictability
+
+Let us now return to our main subject—predictability. Is prediction or
+forecasting—the two terms would seem to be interchangeable—possible at
+all? The future does not exist; how could there be knowledge about
+something nonexistent? This question is only too well justified. In
+the strict sense of the word, knowledge can only be about the past.
+The future is always in the making, but it is being made _largely_ out
+of existing material, about which a great deal can be known. The
+future, there, is _largely_ predictable, if we have solid and
+extensive knowledge of the past. _Largely_, but by no means wholly;
+for into the making of the future there enters that mysterious and
+irrepressible factor called human freedom. It is the freedom of a
+being of which it has been said that it was made in the image of God
+the Creator: the freedom of creativity.
+
+Strange to say, under the influence of laboratory science many people
+today seem to use their freedom only for the purpose of denying its
+existence. Men and women of great gifts find their purest delight in
+magnifying every “mechanism,” every “inevitability,” everything where
+human freedom does not enter or does not appear to enter. A great
+shout of triumph goes up whenever anybody has found some further
+evidence—in physiology or psychology or sociology or economics or
+politics—of unfreedom, some further indication that people cannot help
+being what they are and doing what they are doing, no matter how
+inhuman their actions might be. The denial of freedom, of course, is a
+denial of responsibility: there are no acts, but only events;
+everything simply happens; no one is responsible. And this is no doubt
+the main cause of the semantic confusion to which I have referred
+above. It is also the cause for the belief that we shall soon have a
+machine to foretell the future.
+
+To be sure, if everything simply happened, if there were no element of
+freedom, choice, human creativity and responsibility, everything would
+be perfectly predictable, subject only to accidental and temporary
+limitations of knowledge. The absence of freedom would make human
+affairs suitable for study by the natural sciences or at least by
+their methods, and reliable results would no doubt quickly follow the
+systematic observation of facts. Professor Phelps Brown, in his
+presidential address to the Royal Economic Society, appears to adopt
+precisely this point of view when talking about “The Underdevelopment
+of Economics.” “Our own science,” he says, “has hardly yet reached its
+seventeenth century.” Believing that economics is _metaphysically_ the
+same as physics, he quotes another economist, Professor Morgenstern,
+approvingly, as follows:
+
+> The decisive break which came in physics in the seventeenth century,
+> specifically in the field of mechanics, was possible only because of
+> previous developments in astronomy. It was backed by several
+> millennia of systematic, scientific, astronomical observation....
+> Nothing of this sort has occurred in economic science. It would have
+> been absurd in physics to have expected Kepler and Newton without
+> Tycho—and there is no reason to hope for an easier development in
+> economics.
+
+Professor Phelps Brown concludes therefore that we need many, many
+more years of observations of behaviour. “_Until then, our
+mathematisation is premature._”
+
+It is the intrusion of human freedom and responsibility that makes
+economics metaphysically different from physics and makes human
+affairs largely unpredictable. We obtain predictability, of course,
+when we or others are acting according to a plan. But this is so
+precisely because a plan is the result of an exercise in the freedom
+of choice: the choice has been made; all alternatives have been
+eliminated. If people stick to their plan, their behaviour is
+predictable simply because they have chosen to surrender their freedom
+to act otherwise than prescribed in the plan.
+
+In principle, everything which is immune to the intrusion of human
+freedom, like the movements of the stars, is predictable, and
+everything subject to this intrusion is unpredictable. Does that mean
+that all human actions are unpredictable? No, because most people,
+most of the time, make no use of their freedom and act purely
+mechanically. Experience shows that when we are dealing with large
+numbers of people many aspects of their behaviour are indeed
+predictable; for out of a large number, at any one time, only a tiny
+minority are using their power of freedom, and they often do not
+significantly affect the total outcome. Yet all really important
+innovations and changes normally start from tiny minorities of people
+who _do_ use their creative freedom.
+
+It is true that social phenomena acquire a certain steadiness and
+predictability from the non-use of freedom, which means that the great
+majority of people responds to a given situation in a way that does
+not alter greatly in time, unless there are really overpowering new
+causes.
+
+We can therefore distinguish as follows:
+
+ 1. Full predictability (in principle) exists only in the absence of
+    human freedom, _i.e._ in “sub-human” nature. The limitations of
+    predictability are purely limitations of knowledge and technique.
+ 2. Relative predictability exists with regard to the behaviour
+    pattern of very large numbers of people doing “normal” things
+    (routine).
+ 3. Relatively full predictability exists with regard to human'
+    actions controlled by a plan which eliminates freedom, _e.g._
+    railway timetable.
+ 4. Individual decisions by individuals are in principle
+    unpredictable.
+
+
+##### Short-Term Forecasts
+
+In practice all prediction is simply extrapolation, modified by known
+“plans.” But how do you extrapolate? How many years do you go back?
+Assuming there is a record of growth, what precisely do you
+extrapolate—the average rate of growth, or the increase in the rate of
+growth, or the annual increment in absolute terms? As a matter of
+fact. there are no rules: it is just a matter of “feel” or judgment.
+(When there are seasonal or cyclical patterns, it is, of course,
+necessary to go back by at least a year or a cycle; but it is a matter
+of judgement to decide how many years or cycles.)
+
+It is good to know of all the different possibilities of using the
+same time series for extrapolations with very different results. Such
+knowledge will prevent us from putting undue faith in any
+extrapolation. At the same time, and by the same token, the
+development of (what purport to be) better forecasting techniques can
+become a vice. In short-term forecasting, say, for next year, a
+refined technique rarely produces significantly different results from
+those of a crude technique. After a year of growth—what can you
+predict?
+
+ 1. that we have reached a (temporary) ceiling;
+ 2. that growth will continue at the same, or a slower, or a faster
+    rate;
+ 3. that there will be a decline.
+
+Now, it seems clear that the choice between these three basic
+alternative predictions cannot be made by “forecasting technique” but
+only by informed judgment. It depends, of course, on what you are
+dealing with. When you have something that is normally growing very
+fast, like the consumption of electricity, your threefold choice is
+between the same rate of growth, a faster rate, or a slower rate.
+
+It is not so much forecasting technique, as a full understanding of
+the current situation shat can help in the formation of a sound
+judgment for the future. If the present level of performance (or rate
+of growth) is known to be influenced by quite abnormal factors which
+are unlikely to apply in the coming year, it is, of course, necessary
+to take these into account. The forecast, “same as last year,” may
+imply a “real” growth or a “real” decline on account of exceptional
+factors being present this year, and this, of course, must be made
+explicit by the forecaster.
+
+I believe, therefore, that all effort needs to be put into
+understanding the current situation, to identify and, if need be,
+eliminate “abnormal” and non-recurrent factors from the current
+picture. This having been done, the method of forecasting can hardly
+be crude enough. No amount of refinement will help one come to the
+fundamental judgment—is next year going to be the same as last year,
+or better, or worse?
+
+At this point, it may be objected that there ought to be great
+possibilities of short-term forecasting with the help of electronic
+computers, because they can very easily and quickly handle a great
+mass of data and fit to them some kind of mathematical expression. By
+means of “feedback” the mathematical expression can be kept up to date
+almost instantaneously, and once you have a really good mathematical
+fit, the the machine can predict the future.
+
+Once again, we need to have a look at the metaphysical basis of such
+claims. What is the meaning of a “good mathematical fit?” Simply that
+a sequence of quantitative changes in the past has been elegantly
+described in precise mathematical language. But the fact that I—or the
+machine—have been able to describe this sequence so exactly by no
+means establishes a presumption that the pattern will continue. It
+could continue only if _(a)_ there were no human freedom and _(b)_
+there was no possibility of any change in the causes that have given
+rise to the observed pattern.
+
+I should accept the claim that a very clear and very strongly
+established pattern (of stability, growth, or decline) can be expected
+to continue for a little longer, unless there is definite knowledge of
+the arrival of new factors likely to change it. But I suggest that for
+the detection of such clear, strong and persistent patterns the
+non-electronic human brain is normally cheaper, faster, and more
+reliable than its electronic rival. Or to put it the other way round:
+if it is really necessary to apply such highly refined methods of
+mathematical analysis for the detection of a pattern that one needs an
+electronic computer, the pattern is too weak and too obscure to be a
+suitable basis for extrapolation in real life.
+
+Crude methods of forecasting—after the current picture has been
+corrected for abnormalities—are not likely to lead into the errors of
+spurious verisimilitude and spurious detailing—the two greatest vices
+of the statistician. Once you have a formula and an electronic
+computer, there is an awful temptation to squeeze the lemon until it
+is dry and to present a picture of the future which through its very
+precision and verisimilitude carries conviction. Yet a man who uses an
+imaginary map, thinking it a true one, is likely to be worse off than
+someone with no map at all; for he will fail to inquire wherever he
+can, to observe every detail on his way, and to search continuously
+with all his senses and all his intelligence for indications of where
+he should go.
+
+The person who makes the forecasts may still have a precise
+appreciation of the assumptions on which they are based. But the
+person who uses the forecasts may have no idea at all that the whole
+edifice, as is often the case, stands and falls with one single,
+unverifiable assumption. He is impressed by the thoroughness of the
+job done, by the fact that everything seems to “add up,” and so forth.
+If the forecasts were presented quite artlessly, as it were, on the
+back of an envelope, he would have a much better chance of
+appreciating their tenuous character and the fact that, forecasts or
+no forecasts, someone has to take an entrepreneurial decision about
+the unknown future.
+
+
+##### Planning
+
+I have already insisted that a plan is something essentially different
+from a forecast. It is a statement of intention, of what the
+planners—or their masters—intend to do. Planning (as I suggest the
+term should be used) is inseparable from power. It is natural and
+indeed desirable that everybody wielding any kind of power should have
+some sort of a plan, that is to say, that he should use power
+deliberately and consciously, looking some distance ahead in time. In
+doing so he must consider what other people are likely to do; in other
+words, he cannot plan sensibly without doing a certain amount of
+forecasting. This is quite straightforward as long as that which has
+to be forecast is, in fact, “forecastable,” if it relates either to
+matters into which human freedom does not enter, or to the routine
+actions of a very large number of individuals, or to the established
+plans of other people wielding power. Unfortunately, the matters to be
+forecast very often belong to none of these categories but are
+dependent on the individual decisions of single persons or small
+groups of persons. In such cases forecasts are little more than
+“inspired guesses,” and no degree of improvement in forecasting
+technique can help. Of course, some people may turn out to make better
+guesses than others, but this will not be due to their possessing a
+better forecasting technique or better mechanical equipment to help
+them in their computations.
+
+What, then, could be the meaning of a “national plan” in a free I
+society? It cannot mean the concentration of all power at one point,
+because that would imply the end of freedom: genuine planning is
+coextensive with power. It seems to me that the only intelligible
+meaning of the words “a national plan” in a free society would be the
+fullest possible statement of intentions by all people wielding
+substantial economic power, such statements being collected and
+collated by some central agency. The very inconsistencies of such a
+composite “plan” might give valuable pointers.
+
+
+##### Long-term Forecasts and Feasibility Studies
+
+Let us now turn to long-term forecasting, by which I mean producing
+estimates dive or more years ahead. It must be clear that, change
+being a function of time, the longer-term future is even less
+predictable than the short-term. In fact, all long-term forecasting is
+somewhat presumptuous and absurd, unless it is of so general a kind
+that it merely states the obvious. All the same, there is often a
+practical necessity for “taking a view” on the future, as decisions
+have to be taken and long-term commitments entered. Is there nothing
+that could help?
+
+Here I should like to emphasise again the distinction between
+forecasts on the one hand and “exploratory calculations” or
+“feasibility studies” on the other. In the one case I assert that this
+or that will be the position in, say, twenty years' time. In the other
+case I merely explore the long-term effect of certain assumed
+tendencies. It is unfortunately true that in macro-economics
+feasibility studies are very rarely carried beyond the most
+rudimentary beginnings. People are content to rely on general
+forecasts which are rarely worth the paper they are written on.
+
+It may be helpful if I give a few examples. It is very topical these
+days to talk about the development of underdeveloped countries and
+countless “plans” (so-called) are being produced to this end. If we go
+by the expectations that are being aroused all over the world, it
+appears to be assumed that within a few decades most people the world
+over are going to be able to live more or less as the western
+Europeans are living today. Now, it seems to me, it would be very
+instructive if someone undertook to make a proper, detailed
+feasibility study of this project. He might choose the year 2000 as
+the terminal date and work backwards from there. What would be the
+required output of foodstuffs, fuels, metals, textile fibres, and so
+forth? What would be the stock of industrial capital? Naturally, he
+would have to introduce many new assumptions as he went along. Each
+assumption could then become the object of a further feasibility
+study. He might then find that he could not solve his equations unless
+he introduced assumptions which transcended all bounds of reasonable
+probability. This might prove highly instructive. It might conceivably
+lead to the conclusion that, while most certainly there ought to be
+substantial economic development throughout the countries where great
+masses of people live in abject misery, there are certain choices
+between alternative _patterns_ of development that could be made, and
+that some types of development would appear more feasible than others.
+
+Long-term thinking, supported by conscientious feasibility studies,
+would seem to be particularly desirable with regard to all
+non-renewable raw materials of limited availability, that is to say,
+mainly fossil fuels and metals. At present, for instance, there is a
+replacement of coal or oil. Some people seem to assume that coal is on
+the way out. A careful feasibility study, making use of all available
+evidence of coal, oil, and natural gas reserves, proved as well as
+merely assumed to exist, would be exceedingly instructive.
+
+On the subject of population increase and food supplies, we have had
+the nearest thing to feasibility studies so far, coming mainly from
+United Nations organisations. They might be carried much further,
+giving not only the totals of food production to be attained by 1980
+or 2000, but also showing in much greater detail than has so far been
+done the timetable of specific steps that would have to be taken in
+the near future if these totals are to be attained.
+
+In all this, the most essential need is a purely intellectual one: a
+clear appreciation of the difference between a forecast and a
+feasibility study. It is surely a sign of statistical illiteracy to
+confuse the two. A long-term forecast, as I said, is presumptuous; but
+a long- term feasibility study is a piece of humble and unpretentious
+work which we shall neglect at our peril.
+
+Again the question arises whether this work could be facilitated by
+more mechanical aids such as electronic computers. Personally, I am
+inclined to doubt it. It seems to me that the endless multiplication
+of mechanical aids in fields which require judgment more than anything
+else is one of the chief dynamic forces behind Parkinson's Law. Of
+course, an electronic computer can work out a vast number of
+permutations, employing varying assumptions, within a few seconds or
+minutes, while it might take the non-electronic brain as many months
+to do the same job. But the point is that the non-electronic brain
+need never attempt to do that job. By the power of judgment it can
+concentrate on a few decisive parameters which are quite sufficient to
+outline the ranges of reasonable probability. Some people imagine that
+it would be possible and helpful to set up a machine for long-range
+forecasting into which current “news” could be fed continuously and
+which, in response, would produce continual revisions of some
+long-term forecasts. No doubt, this would be possible; but would it be
+helpful? Each item of “news” has to be judged for its long-term
+relevance, and a sound judgment is generally not possible immediately.
+Nor can I see any value in the continual revision of long-term
+forecasts, as a matter of mechanical routine. A forecast is required
+only when a long-term decision has to be taken or reviewed, which is a
+comparatively rare event even in the largest of businesses, and then
+it is worth while deliberately and conscientiously to assemble the
+best evidence, to judge each item in the light of accumulated
+experience, and finally to come to a view which appears reasonable to
+the best brains available. It is a matter of self-deception that this
+laborious and uncertain process could be short-circuited by a piece of
+mechanical apparatus.
+
+When it comes to feasibility studies, as distinct from forecasts, it
+may occasionally seem useful to have apparatus which can quickly test
+the effect of variations in one's assumptions. But I have yet to be
+convinced that a slide rule and a set of compound interest tables are
+not quite sufficient for the purpose.
+
+
+##### Unpredictability and Freedom
+
+If I hold a rather negative opinion about the usefulness of
+“automation” in matters of economic forecasting and the like, I do not
+underestimate the value of electronic computers and similar apparatus
+for other tasks, like solving mathematical problems or programming
+production runs. These latter tasks belong to the exact sciences or
+their applications. Their subject matter is non-human, or perhaps I
+should say, sub-human. Their very exactitude is a sign of the absence
+of human freedom, the absence of choice, responsibility and dignity.
+As soon as human freedom enters, we are in an entirely different world
+where there is great danger in any proliferation of mechanical
+devices. The tendencies which attempt to obliterate the distinction
+should be resisted with the utmost determination. Great damage to
+human dignity has resulted from the misguided attempt of the social
+sciences to adopt and imitate the methods of the natural sciences.
+Economics, and even more so, applied economics, is not an exact
+science; it is in fact, or ought to be, something much greater: a
+branch of wisdom. Mr. Colin Clark once claimed “that long-period world
+economic equilibrium develop themselves in their own peculiar manner,
+entirely independently of political and social changes.” On the
+strength of this metaphysical heresy he wrote a book, in 1941,
+entitled _The Economics of 1960_. It would be unjust to say that the
+picture he drew bears no resemblance to what actually came to pass;
+there is, indeed, the kind of resemblance which simply stems from the
+fact that man uses his freedom within an unchanged setting of physical
+laws of nature. But the lesson from Mr. Clark's book is that his
+metaphysical assumption is untrue; that, in fact, world economic
+equilibria, even in the longer run, are highly dependent on political
+and social changes; and that the sophisticated and ingenious methods
+of forecasting employed by Mr. Clark merely served to produce a work
+of spurious verisimilitude.
+
+
+##### Conclusion
+
+I thus come to the cheerful conclusion that life, including economic
+life, is still worth living because it is sufficiently unpredictable
+to be interesting. Neither the economist nor the statistician will get
+it “taped.” Within the limits of the physical laws of nature, we are
+still masters of our individual and collective destiny, for good or
+ill.
+
+But the know-how of the economist, the statistician, the natural
+scientist and engineer, and even of the genuine philosopher can help
+to clarify the limits within which our destiny is confined. The future
+cannot be forecast, but it can be explored. Feasibility studies can
+show us where we appear to be going, and this is more important today
+than ever before, since “growth” has become a keynote of economics all
+over the world.
+
+In his urgent attempt to obtain reliable knowledge about his
+essentially indeterminate future, the modern man of action may
+surround himself by ever-growing armies of forecasters, by
+ever-growing mountains of factual data to be digested by ever more
+wonderful mechanical contrivances: I fear that the result is little
+more than a huge game of make-believe and an ever more marvellous
+vindication of Parkinson's Law. The best decisions will still be based
+on the judgments of mature non-electronic brains possessed by men who
+have looked steadily and calmly at the situation and seen it whole.
+“Stop, look, and listen” is a better motto than “Look it up in the
+forecasts.”
