@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Writing with O'Reilly</title>
+  </head>
+  <body>
+    <article>
+<h1>Writing with O'Reilly</h1>
+<p class="date">Sunday June 19, 2016</p>
+<p><a href="http://www.oreilly.com/">O'Reilly Media</a> is tech publishing brand best known for its iconic <a href="http://shop.oreilly.com/">books</a>. They're also the force behind a number of <a href="http://www.oreilly.com/conferences/">conferences</a> and they've been publishing more web content in their <a href="https://www.oreilly.com/ideas">Ideas</a> and <a href="https://www.oreilly.com/learning">Learning</a> sections. I'm very excited to now be able to contribute a small article which will join their site. "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>" should be live at 7am EDT on Monday July 20, 2016. It was a fun experience getting it there, and I thought I'd describe the process.</p>
+<h3>Summary</h3>
+<ul>
+<li>Inception: Connections, Initiative, Luck</li>
+<li>Editing: Markdown, Google Doc, Web Publishing</li>
+<li>Publishing: Adventure!</li>
+</ul>
+<h3>Inception</h3>
+<p>The post was born through a combination of connections, some initiative, and good fortune.</p>
+<p>I work at <a href="http://www.deeplearninganalytics.com/">Deep Learning Analytics</a> (DLA) and <a href="https://twitter.com/pacoid">Paco</a> at O'Reilly knows our group's leader, John. I think it was Paco who originally proposed a discussion about DLA and O'Reilly doing something together. This led to a call between <a href="https://twitter.com/bigdata">Ben</a> and <a href="https://twitter.com/cmariebeau">Marie</a> from O'Reilly and John and I from DLA. I joined because I've done some blogging and teaching and am interested in such things. (It was surprisingly weird to be on a phone call with Ben after hearing his voice in my headphones during so many episodes of the <a href="http://radar.oreilly.com/tag/oreilly-data-show-podcast">O'Reilly Data Show</a>.) Nothing came directly of our initial call aside from establishing that there was  interest that could eventually take some real form.</p>
+<p>Months later, I was starting to play with TensorFlow on my own time, collecting some notes as I went along, and starting to think about shaping them into a post for my personal blog. I guess I mentioned this to John, who suggested that we cultivate the content a little more and see if it would work as a post for O'Reilly. I was very fortunate in this connection to have the support of DLA to spend some more time writing the post, and to get initial feedback from a number of DLA colleagues.</p>
+<p>After a draft was together, we sent it off to Marie to see if O'Reilly would be interested. Sure enough there was interest, and we moved on to editing. Sometimes O'Reilly republishes existing blog posts, but in this case it wasn't yet published anywhere and Marie wanted to do a round of editing, which I think has turned out to be a very good idea.</p>
+<p>It is interesting how various publishers find things to publish. I've talked to "acquisitions editors" who are looking for people to write books, and I occasionally hear from people who want to republish a blog post or solicit new posts. Everybody wants content. The ease of publishing means anybody can write a book, and a lot of publishers seem to be going for long tail content, or even just <em>anything</em> new.</p>
+<p>I think O'Reilly is the most discerning of the tech publishers. Aside from liking the people who work there, it's their good reputation that made putting an article on their site attractive to me. I mean, this is the house of <a href="http://shop.oreilly.com/product/9780596004927.do">the camel book</a>! That reputation also motivates linking DLA and O'Reilly, however indirectly. The apparent editorial policy of O'Reilly to not do sponsored content or other branding tie-ins preserves their status and makes them the more attractive as an ally.</p>
+<h3>Editing</h3>
+<p>I write generally pretty raw unedited posts (such as this one) for my blog, and I had heard that O'Reilly had cool processes in place for the editing and publishing process, so I was curious to see what it would be like working with them. The article went through three stages, first as markdown, then as a Google Doc, and then in the O'Reilly web publishing platform.</p>
+<p>I almost always write text files with just a little bit of <a href="https://daringfireball.net/projects/markdown/">markdown</a> syntax (<a href="http://planspace.org/20160209-how_i_blog/">more details</a>). For the TensorFlow post, I got feedback on this form first from colleagues at <a href="http://www.deeplearninganalytics.com/">DLA</a>, which included <a href="https://slack.com/">slack</a> comments, email comments, and a pull request. Also, the local <a href="http://www.meetup.com/DC-Machine-Learning-Journal-Club/">machine learning journal club</a> has been working with TensorFlow, and they generously allowed me to present a version at one of their meetups. That experience led to a number of changes, such as clarifying the distinction between graphs and sessions.</p>
+<p>Once I had the draft ready I sent it off as a zip file (including images) to Marie, O'Reilly's lead data editor. Marie put my content into a <a href="https://www.google.com/docs/about/">Google Doc</a>. I never saw Google Docs used so well. It helped that her edits were good, but she also made expert use of change tracking and commenting so that everybody knew what was going on, and I could confirm changes or discuss alternatives. I still prefer the peace of mind of git, but the ease of use of Google Docs combined with Marie's thoroughness was remarkably satisfying.</p>
+<p>In terms of the actual content of the edits, I was incredibly pleased. It has been my experience in the past that collaborative document editing can be among the most painful of endeavors. One manifestation of this is when a collaborator makes changes that decrease the quality of the document. Fortunately my experience here was quite the reverse. Thanks Marie! As one example, my original title was "TensorFlow from the Plumbing Up." John had suggested "Hello TensorFlow Graph" or something like that. When Marie changed it to "Hello, TensorFlow!" it was clear it should never have been anything else.</p>
+<p>We spent some time working with the Google Doc version, and then passed it off to Jenn, O'Reilly's online managing editor. (You may know Jenn's voice from <a href="http://radar.oreilly.com/tag/oreilly-radar-podcast">O'Reilly Radar</a>!) Jenn put the content into the O'Reilly web system, where it appeared to us in read-only preview form behind a login. After a couple rounds of emails for final adjustments, it was ready to go and the publish date was set. I think it looks really nice now - thanks Jenn!</p>
+<p>There was a little bit of friction around the transitions from system to system (markdown to google doc to web publishing system). If I was the dictator of systems I guess I would keep everything markdown, but that probably wouldn't have all the features that the O'Reilly publishing system needs, and I don't know of any markdown applications that have all the collaboration features and ease of use that you get with Google Docs. It's really interesting to me the systems and processes that turn out existing in the world; often they seem to grow more than be built, and even for things that seem like they should be easy it often turns out that there are a lot of details in the way. The system we used worked for us, but it definitely required the expert handling of its masters.</p>
+<h3>Publishing</h3>
+<p>Everything was ready on Friday afternoon, but we agreed that it would be best to run the post on Monday morning. This is presumably because people are much more likely to read it when they're supposed to be working than when they have free time. (I understand this, but I still think it's funny.)</p>
+<p>The last email we exchanged looped in three more O'Reilly folks who do marketing things, as I understand it. I'm curious to see what this will mean for a simple blog post like this.</p>
+<p>The <a href="https://www.oreilly.com/learning">O'Reilly learning</a> site is really beautiful, with great fonts and all those things publishers care about. I'm super excited to see our post up there!</p>
+<p>Dropping Monday June 20: <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> I hope it's not so awful that it irritates Google or other TensorFlow developers and users!</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
