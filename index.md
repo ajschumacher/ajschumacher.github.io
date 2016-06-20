@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-06-20: [Hello, TensorFlow! (Just the Code)](/20160620-hello_tensorflow_just_the_code/)
  * 2016-06-19: [Writing with O'Reilly](/20160619-writing_with_oreilly/)
  * 2016-06-09: [Your Favorite Class](/20160609-your_favorite_class/)
  * 2016-05-31: [A Machine to Foretell the Future?](/20160531-a_machine_to_foretell_the_future/)
