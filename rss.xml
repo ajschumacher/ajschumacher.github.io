@@ -7,6 +7,108 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Presenting “Hello, TensorFlow!”</title>
+<description><![CDATA[
+
+<p><em>A presentation version of my &#8220;Hello, TensorFlow!&#8221; <a href="https://www.oreilly.com/learning/hello-tensorflow">O'Reilly post</a>. Given at the <a href="http://www.meetup.com/TensorFlow-Washington-DC/">TensorFlow Washington DC</a> meetup on Wednesday June 29, 2016, &#8220;<a href="http://www.meetup.com/TensorFlow-Washington-DC/events/231860618/">Deep Dive into TensorFlow</a>&#8221; (<a href="https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334">registration</a>). (<a href="big.html">slides</a>)</em></p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img alt="Hello, TensorFlow! on O'Reilly" src="img/screenshot.png"></p>
+<hr>
+<p>This presentation started as a blog post I <a href="/20160619-writing_with_oreilly/">wrote</a> which was <a href="https://www.oreilly.com/learning/hello-tensorflow">published</a> on O'Reilly about a week and a half ago.</p>
+<p>If you want you can follow along <a href="https://www.oreilly.com/learning/hello-tensorflow">there</a> and we'll stay pretty close to <a href="https://www.oreilly.com/learning/hello-tensorflow">that content</a>.</p>
+<p>Also, please interrupt with comments and questions! We're still working on the <a href="http://www.oreilly.com/oriole/">Oriole</a> version, so your feedback can help others who eventually see that.</p>
+<hr>
+<p><img alt="Deep Learning Analytics" src="img/dla.png"></p>
+<hr>
+<p>A lot of people have already contributed to this material. I work at <a href="http://www.deeplearninganalytics.com/">Deep Learning Analytics</a> (DLA) and have to especially thank John for his support, and all my colleagues there for their feedback. I'm also particularly indebted to the <a href="http://www.meetup.com/DC-Machine-Learning-Journal-Club/">DC Machine Learning Journal Club</a>, and of course the folks at O'Reilly.</p>
+<hr>
+<p><img alt="braided river" src="img/braided_river.jpg"></p>
+<hr>
+<p>This evening is billed as a &#8220;Deep Dive into TensorFlow&#8221;. For my part, you can think of it as a deep dive into the shallow end.</p>
+<p>I'm going to try to show in a very hands-on way some of the details of how TensorFlow works. The idea is not to exercise all the features of TensorFlow but to really understand some of the important underlying concepts.</p>
+<p>It should be a slightly more hands-on thorough exposition of topics Saba touched on <a href="http://blog.altoros.com/videos-from-washington-dc-tensorflow-meetup-march-9-2016.html">in March</a>.</p>
+<p><em>Image from <a href="https://www.flickr.com/photos/alaskanps/8029733984">National Park Service, Alaska Region on Flickr</a>.</em></p>
+<hr>
+<ul>
+<li>tensors</li>
+<li>flows</li>
+<li>pictures</li>
+<li>servers</li>
+</ul>
+<hr>
+<p>But first, a couple interesting things about TensorFlow.</p>
+<p>I'm really only going to demonstrate the middle two, but let's mention them all.</p>
+<hr>
+<p><img alt="not neurons, tensors" src="img/not_neurons.png"></p>
+<hr>
+<p>First thing about TensorFlow: tensors.</p>
+<p>TensorFlow hates neurons and it loves linear algebra.</p>
+<p>When you design software you make choices that affect what you can do and how you can do it.</p>
+<p>For neural nets, there has in the past been a fixation on the biological metaphor and the "neurons" in particular. If you've used software like R's <a href="https://cran.r-project.org/web/packages/neuralnet/">neuralnet</a> package or Python's <a href="http://pybrain.org/">PyBrain</a>, you've seen interfaces where you typically define the number of neurons or "hidden units" that you want in each layer, and the connections between them (and perhaps some other components) are set up automatically one way or another.</p>
+<p>But if you're looking at the math you have to evaluate inside these neural net models, the "neurons" hardly exist at all. The weights on the connections certainly exist, and there are operations that connect values as they flow through the network, but in the end you don't really need "neurons" to be a dominant abstraction in the system.</p>
+<p>If you go this route, everything is just matrix math - or, for arbitrary dimensions, tensor math. This is the choice TensorFlow makes. It makes TensorFlow really flexible and lets it achieve efficient computation that would be more difficult otherwise.</p>
+<p>So TensorFlow can do more than "just" neural nets. As demonstrated in the <a href="https://www.udacity.com/course/deep-learning--ud730">Google/Udacity Deep Learning MOOC</a>, you can implement logistic regression easily with TensorFlow, for example.</p>
+<p>Focusing on (typically fixed-dimension) tensors does arguably make it more awkward to attempt esoteric techniques like dynamically changing the architecture of your neural net by adding neurons, for example. (This comment was inspired by <a href="https://drive.google.com/file/d/0Bxf-khCt_eknWEF6aFJ1ZU4yQ00/view">Let your Networks Grow</a>, <a href="https://sites.google.com/site/nnb2tf/">Neural Nets Back to the Future</a> at <a href="http://icml.cc/2016/">ICML 2016</a>.)</p>
+<p>The linear algebra you actually have to think about is not too tricky, but for our purposes I'm not going to use anything more than individual numbers, so there's no chance of being distracted by linear algebra.</p>
+<p>The relevant point is that while some other software focuses on neurons and mostly ignores weights, in the case of TensorFlow we focus on weights and mostly ignore neurons as a top-level abstraction. In any event, it's all just numbers.</p>
+<hr>
+<p><img alt="simple computation graph" src="img/math_graph.png"></p>
+<hr>
+<p>Second thing about TensorFlow: flows.</p>
+<p>TensorFlow loves graphs.</p>
+<p>It's important to distinguish between graphs and pictures. Here we mean <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graphs</a> as in the abstract data type. Data flow graphs.</p>
+<p>This is a picture of a data flow graph. You might prefer to think of it as \(y=mx+b\). This is what TensorFlow's graphs are like.</p>
+<p>The advantage of graphs is that the software can manipulate them and "reason about" how to answer questions you're asking before it commits to particular execution paths.</p>
+<p>Lots of software is moving toward working via graphs in this way. Often they're <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graphs</a> but I don't care too much about whether that's always strictly the case. <a href="https://twitter.com/planarrowspace/status/569963882900561921">&#129370;</a></p>
+<p>For example, <a href="http://deeplearning.net/software/theano/">Theano</a> works similarly enough to TensorFlow that <a href="http://keras.io/">Keras</a> can use either as its backend. <a href="http://torch.ch/">Torch</a> is also similar.</p>
+<p>Outside of software mostly for deep learning, <a href="http://spark.apache.org/">Spark</a> works with a kind of computation graph to manage distributed processing. Tools like <a href="https://github.com/spotify/luigi">Luigi</a> and <a href="https://github.com/Factual/drake">Drake</a> manage graph pipelines of data. And many <a href="http://drivendata.github.io/cookiecutter-data-science/">recommend</a> that all data work be thought of as graph-like pipelines.</p>
+<p>The graph concept is interesting and worth exploring in order to understand TensorFlow, so I'll spend some time with it today.</p>
+<p><em>Image made with <a href="https://draw.io/">draw.io</a>.</em></p>
+<hr>
+<p><img alt="Visualization of a TensorFlow graph" src="img/graph_vis_animation.gif"></p>
+<hr>
+<p>Third thing about TensorFlow: pictures.</p>
+<p>If you use Python's <a href="http://scikit-learn.org/">scikit-learn</a>, you likely also use a separate visualization tool, likely including <a href="http://matplotlib.org/">matplotlib</a>. If you've tried to <a href="/20151129-see_sklearn_trees_with_d3/">visualize decision tree rules</a>, you may have had a frustrating time. You may or may not use any explicit logging system at all.</p>
+<p>The <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tensorboard/README.md">TensorBoard</a> tooling that comes with TensorFlow is a great logging and visualizing system that gives you access to a lot of internals that could otherwise be a lot of work to expose.</p>
+<p>I think TensorBoard <em>by itself</em> is a compelling reason to use TensorFlow over other similar software.</p>
+<p>TensorBoard is super great and I will be showing several sides of it today.</p>
+<p><em>Image from <a href="https://www.tensorflow.org/versions/r0.8/how_tos/graph_viz/index.html">TensorBoard: Graph Visualization</a>.</em></p>
+<hr>
+<p><img alt="Life of a Servable" src="img/serving_architecture.svg"></p>
+<hr>
+<p>Fourth thing about TensorFlow: servers.</p>
+<p>TensorFlow loves moving directly into production.</p>
+<p>In addition to everything else, TensorFlow has a highly-engineered serving architecture. So if you develop a TensorFlow model on your laptop, you can (relatively) easily build a deployment system to serve that model in a serious way. It seems pretty neat, but I haven't used it and I'm not going to talk more about it.</p>
+<p><em>Image from the <a href="https://tensorflow.github.io/serving/architecture_overview">TensorFlow Serving Architecture Overview</a>.</em></p>
+<hr>
+<p>demo</p>
+<hr>
+<p>From here to the end is just demo! The starting point is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_begin.ipynb">demo_start.ipynb</a> and the ending point (with output) is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_end.ipynb">demo_end.ipynb</a>.</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p><!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20160629-presenting_hello_tensorflow/</link>
+<guid>http://planspace.org/20160629-presenting_hello_tensorflow/</guid>
+<pubDate>Wed, 29 Jun 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Hello, TensorFlow! (Just the Code)</title>
 <description><![CDATA[
 
@@ -2011,91 +2113,6 @@ with open('rules.json', 'w') as f:
 <link>http://planspace.org/20151122-lauren_ipsum/</link>
 <guid>http://planspace.org/20151122-lauren_ipsum/</guid>
 <pubDate>Sun, 22 Nov 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Debugging Teams</title>
-<description><![CDATA[
-
-<p><a href="http://shop.oreilly.com/product/0636920042372.do"><img alt="cover of debugging teams" src="debugging_teams.jpg"></a></p>
-<p>I read this book after listening to <a href="http://radar.oreilly.com/2015/10/the-first-rule-of-management-resist-the-urge-to-manage.html">a podcast</a>. It's been described as &#8220;<a href="https://en.wikipedia.org/wiki/How_to_Win_Friends_and_Influence_People">How to Win Friends and Influence People</a> for programmers&#8221;.</p>
-<p>Debugging Teams is supposed to be a new, less software-developer-specific version of <a href="http://shop.oreilly.com/product/0636920018025.do">Team Geek</a>. I haven't read Team Geek, but Debugging Teams still had pretty much that was focused on software-related things. I thought this was a good thing. Sure it could generalize.</p>
-<p>The main thesis of the book is their &#8220;HRT&#8221;: humility, respect, and trust. These are all good things to have. As they say:</p>
-<ul>
-<li><em>Humility</em> You are not the center of the universe. You&#8217;re neither omniscient nor infallible. You&#8217;re open to self-improvement.</li>
-<li><em>Respect</em> You genuinely care about others you work with. You treat them as human beings, and appreciate their abilities and accomplishments.</li>
-<li><em>Trust</em> You believe others are competent and will do the right thing, and you&#8217;re OK with letting them drive when appropriate.</li>
-</ul>
-<p>Here are some more quotes I pulled out as I was reading; some of them are themselves quotes.</p>
-<blockquote>
-<p>&#8220;People are basically a giant pile of intermittent bugs.&#8221;</p>
-<p>Shouldn&#8217;t people be allowed to work however they want? Actually, no. In this case we assert that you&#8217;re doing it wrong, and it is a big deal. Here&#8217;s why. Hiding Is Considered Harmful</p>
-<p>Bus factor (noun): the number of people that need to get hit by a bus before your project is completely doomed.</p>
-<p>we work best in tight feedback loops.</p>
-<p>Software development is a team sport.</p>
-<p>you are not your code. Say that over and over.</p>
-<p>&#8220;Failure is an option.&#8221;</p>
-<p>Write up &#8220;postmortems,&#8221; as they&#8217;re often called in our business. Take extra care to make sure the postmortem document isn&#8217;t just a useless list of apologies or excuses &#8212; that&#8217;s not its purpose. A proper postmortem should always contain an explanation of what was learned and what is going to change as a result of the learning experience. Then make sure you put it in an easy-to-find place and really follow through on the proposed changes. Remember that properly documenting failures also makes it easier for other people (present and future) to know what happened and avoid repeating history. Don&#8217;t erase your tracks &#8212; light them up like a runway for those who follow you!</p>
-<p>The problem is that once you reach a local maximum on your team, you stop learning.</p>
-<p>The more you are open to influence, the more you are able to influence; the more vulnerable you are, the stronger you appear.</p>
-<p>A &#8220;strong culture&#8221; is one that is open to change that improves it, yet is resistant to radical change that harms it.</p>
-<p>A good general rule around communication is to include as few people as necessary in synchronous communication (like meetings and phone calls), and to go for a broader audience in asynchronous communication (like email, issue trackers, and document comments).</p>
-<p>We like our meetings like we like our sewage treatment plants: few, far between, and downwind.</p>
-<p>We&#8217;ve seen some cultures where meeting attendance is equated with status, so nobody wanted to be left out. Not to put too fine a point on it, but that is patently insane.</p>
-<p>If you&#8217;re trying to design something new, try to include no more than five people in your meeting</p>
-<p>flat out ignore invitations to a meeting that has no agenda.</p>
-<p>many engineers rush right into coding before designing the software they intend to write, and this usually ends very badly.</p>
-<p>When many people first hear about IRC these days, they scoff at its primitive text-based environment because even the most modern of IRC clients tend to be less whizzy than outdated versions of iChat or Google Talk. Don&#8217;t be fooled by the outdated look and feel of IRC &#8212; its killer features are that it was designed for multiperson chat and it&#8217;s asynchronous; most clients keep an unlimited scroll-back record so that you can read back to see conversations among others that you missed. Slack is basically the modern-day version of IRC, and despite its whizzy integration of graphics, avatars, and emoji, at its heart it&#8217;s still a text-based messaging system like IRC. It may be tempting to try out fancy videoconferencing packages, shared whiteboard systems, and more, but these systems often tend to be ineffective and can eliminate the asynchronous advantage of text-based group chat. If you&#8217;re going to use something other than Slack or IRC, find something that is actually designed for group chat and isn&#8217;t just an instant messaging system with group chat bolted on.</p>
-<p>Comments should be focused on why the code is doing what it&#8217;s doing, not what the code is doing.</p>
-<p>infer what various symbols are and what invariants are true about them.</p>
-<p>attempting to add and remove names from a source file is a never-ending exercise in insanity.</p>
-<p>the overwhelming majority of effort that goes into a culture turns out to be communication.</p>
-<p>saying no to all of the distractions is what keeps you focused.</p>
-<p>the best leaders work to serve their team using the principles of humility, respect, and trust.</p>
-<p>A boat without a captain is nothing more than a floating waiting room</p>
-<p>Managers wind up acting like parents, and consequently employees react like children.</p>
-<p>Traditional managers worry about how to get things done, while leaders worry about what things get done&#8230;(and trust their team to figure out how to do it).</p>
-<p>A TL is typically responsible for the technical direction for all (or part) of a product, while a TLM is responsible for the technical direction for all (or part) of a product in addition to the careers and happiness of the people on the team.</p>
-<p>&#8220;Above all, resist the urge to manage.&#8221;</p>
-<p>you should strive to hire people who are smarter than you and can replace you.</p>
-<p>&#8220;Hope is not a strategy.&#8221;</p>
-<p>&#8220;A people hire other A people; B people hire C people.&#8221;</p>
-<p>As an engineer, you likely developed an excellent sense of skepticism and cynicism, but this can be a liability when you&#8217;re trying to lead a team.</p>
-<p>As a leader, your job is to inspire, but inspiration is a 24/7 job.</p>
-<p>In many cases, knowing the right person is more valuable than knowing the right answer.</p>
-<p>We strongly advise against using the compliment sandwich,</p>
-<p>It&#8217;s the behaviors you want to filter out, not particular individuals.</p>
-<p>Document all history: not just code history, but also design decisions, important bug fixes, and prior mistakes.</p>
-<p>Streamline the barrier to entry for newcomers.</p>
-<p>Attention and focus are the scarcest resources you have.</p>
-<p>A strong culture based on HRT is irreplaceable, while technical contributions are definitely replaceable.</p>
-<p>genius is such a commodity these days that it&#8217;s not acceptable to be an eccentric anymore.</p>
-<p>it&#8217;s not worth compromising your culture for the short-term gains</p>
-<p>there are only a few crazy people out there; the Internet just makes it seems like they all live next door.&#8221;</p>
-<p>Most people work in dysfunctional corporate bureaucracies and need to employ certain manipulative techniques to get things done effectively.</p>
-<p>It boils down to this: is your manager serving you? Or are you serving your manager? It should always be the former.</p>
-<p>&#8220;It&#8217;s impossible to simply stop a bad habit; you need to replace it with a good habit.&#8221;</p>
-<p>categorize all work as either &#8220;offensive&#8221; or &#8220;defensive.&#8221;</p>
-<p>Every company has a gray-market favor economy that lives outside the org chart,</p>
-<p>Every company has a &#8220;shadow&#8221; org chart that is unwritten but through which power and influence flow.</p>
-<p>A good Three Bullets and a Call to Action email contains (at most) three bullet points detailing the issue at hand, and one &#8212; and only one &#8212; call to action.</p>
-<p>Most industries are a lot smaller than you think, and people talk more than you think,</p>
-<p>Friends come and go&#8230;enemies accumulate.</p>
-<p>product laziness.</p>
-<p>It&#8217;s really obvious (and infuriating) when a programmer could have made something friendly and easy for the end user but didn&#8217;t bother.</p>
-<p>Most programmers vastly underestimate the importance of application speed (or latency, which sounds more scientific).</p>
-<p>&#8220;Speed is a feature.&#8221;</p>
-<p>An elegant design makes easy things easy and hard things possible.</p>
-<p>the user&#8217;s data needs to be accessible</p>
-<p>learn great patience.</p>
-<p>there is no such thing as a temporary lapse of integrity.</p>
-<p>Trust is your most sacred resource.</p>
-<p>Humans are unpredictable and tricky to deal with no matter what the context.</p>
-</blockquote>
-<p>And finally, <a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html">&#8220;You and Your Research&#8221; by Richard Hamming</a> seems like good reading they recommended.</p>    
-    ]]></description>
-<link>http://planspace.org/20151118-debugging_teams/</link>
-<guid>http://planspace.org/20151118-debugging_teams/</guid>
-<pubDate>Wed, 18 Nov 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
