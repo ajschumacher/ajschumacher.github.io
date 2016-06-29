@@ -48,6 +48,8 @@ This evening is billed as a “Deep Dive into TensorFlow”. For my part, you ca
 
 I'm going to try to show in a very hands-on way some of the details of how TensorFlow works. The idea is not to exercise all the features of TensorFlow but to really understand some of the important underlying concepts.
 
+It should be a slightly more hands-on thorough exposition of topics Saba touched on [in March](http://blog.altoros.com/videos-from-washington-dc-tensorflow-meetup-march-9-2016.html).
+
 *Image from [National Park Service, Alaska Region on Flickr](https://www.flickr.com/photos/alaskanps/8029733984).*
 
 
