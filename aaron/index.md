@@ -16,6 +16,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Hello, TensorFlow!](/20160629-presenting_hello_tensorflow/) at the [TensorFlow Washington DC Meetup](http://www.meetup.com/TensorFlow-Washington-DC/) on [Wednesday June 29, 2016](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334).
  * [How to Eat Computers](/20151206-how_to_eat_computers/) at two schools on December 4 and 8, 2015.
  * [Creative Data Science](/20151112-creative_data_science/) at the [World Bank](http://www.worldbank.org/) on Thursday November 12, 2015.
  * [Practical Mergic](/20150530-practical_mergic_at_odsc/) at the [Open Data Science Conference](http://opendatascicon.com/) on [Saturday May 30, 2015](http://opendatascicon.com/schedule/practical-mergic-how-to-join-anything/).
