@@ -7,6 +7,57 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Conferences: What is the Deal?</title>
+<description><![CDATA[
+
+<p>I was fortunate to attend all six days of the
+<a href="http://icml.cc/">International Conference on Machine Learning</a> in New
+York this year. I hadn't attended such a conference before. Here's
+what I learned about how academic conferences like ICML go down.</p>
+<h3>Conferences: The Deal</h3>
+<p><em>Tutorials</em>: I usually think of tutorials as being mostly how-to
+affairs, possibly with a hands-on component. But ICML tutorials are
+just long talks. They run for two hours each, and provide fairly
+general overviews of a given sub-field or problem type. They're good
+for getting a feel for a broad area, with less focus on new work. The
+first day of the conference (Sunday) was given over to these.</p>
+<p><em>Receptions/Parties/etc.</em>: There's a ton of food and drink and people!
+There are official conference events, and then there are also
+company-sponsored affairs. There's a "job opportunities" email list
+you can get on when you register for the conference, but the real
+reason to subscribe is to get the invites for all the social events.
+It's exhausting.</p>
+<p><em>Main conference</em>: People give fifteen-minute talks about their new
+papers in giant rooms with barely any electrical outlets. This goes on
+for three days. Monday. Tuesday. Wednesday.</p>
+<p><em>Poster sessions</em>: These are what you really want to go to during the
+main conference days. You can quickly check out way more papers than
+you could sit through the talks for, and you can usually start talking
+to one of the authors immediately if you're interested. I found more
+cool things this way. I suppose if you were really proactive you could
+check out all the papers in advance online, but then why are you at
+the conference anyway? (That's a good question in general, by the
+way; see below.)</p>
+<p><em>Workshops</em>: The workshops are like whole mini-conferences, each a day
+long. These ran on Thursday and Friday. They succeed or fail with
+their organizers. I went to a great one on Thursday, and I visited
+four different ones on Friday. Many have their own poster sessions,
+which are great if you can hit them.</p>
+<h3>Conferences: A Good Deal?</h3>
+<p>Maybe you should stay home! With papers on <a href="https://arxiv.org/">arXiv</a>
+and a lot of video turning up online, it may not be worth the trip and
+days of time, if all you want to do is learn about work in the field.
+Of course if you want to meet collaborators or look for a job, your
+incentives are quite different.</p>
+<p>I'm sure other conferences are different. Even the conference that
+might be a "competitor" with ICML, <a href="https://nips.cc/">NIPS</a>, has quite
+a different feel, I'm led to understand.</p>    
+    ]]></description>
+<link>http://planspace.org/20160703-conferences_what_is_the_deal/</link>
+<guid>http://planspace.org/20160703-conferences_what_is_the_deal/</guid>
+<pubDate>Sun, 03 Jul 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Presenting “Hello, TensorFlow!”</title>
 <description><![CDATA[
 
@@ -2099,19 +2150,6 @@ with open('rules.json', 'w') as f:
     ]]></description>
 <link>http://planspace.org/20151122-a_new_culture_of_learning/</link>
 <guid>http://planspace.org/20151122-a_new_culture_of_learning/</guid>
-<pubDate>Sun, 22 Nov 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Lauren Ipsum</title>
-<description><![CDATA[
-
-<p>I finally read a copy of <a href="http://www.laurenipsum.org/">Lauren Ipsum</a> that I had lying around, wanting to read it before giving it away when I go talk at a school as part of their upcoming <a href="https://hourofcode.com/">Hour of Code</a> festivities.</p>
-<p>I liked it so much, I gave my initial copy to a friend who teaches computer science, and I'm getting three more copies to give away at that school and as gifts to others.</p>
-<p>I agree with the Phantom Tollbooth <a href="http://boingboing.net/2014/12/29/lauren-ipsum-the-phantom-toll.html">comparison</a>. The writing is dense at multiple scales with fun computer science concepts, references, and wordplay, from the value of elegant design, to forests of <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black trees</a>, to optimizing away literal <a href="https://en.wikipedia.org/wiki/Tail_call">tails</a>. I laughed out loud.</p>
-<p><a href="http://www.amazon.com/Lauren-Ipsum-Computer-Science-Improbable/dp/1593275749/"><img alt="cover" src="cover.png"></a></p>    
-    ]]></description>
-<link>http://planspace.org/20151122-lauren_ipsum/</link>
-<guid>http://planspace.org/20151122-lauren_ipsum/</guid>
 <pubDate>Sun, 22 Nov 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
