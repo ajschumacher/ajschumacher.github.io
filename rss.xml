@@ -7,6 +7,101 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Highlights from ICML 2016</title>
+<description><![CDATA[
+
+<p>I was fortunate to attend the <a href="http://icml.cc/">International Conference on Machine Learning</a> in New York from June 19-24 this year. There were walls and walls of multi-arm bandit posters (etc.) but I mostly checked out neural net, deep learning things. Here are my highlights.</p>
+<p>In general: People are doing so many interesting things! Wow. Too many things to try. Architectures are more complex and more flexibly experimented with, it seems. And everybody loves <a href="https://arxiv.org/abs/1502.03167">batch norm</a>. I didn't see anything that seemed like a huge conceptual breakthrough that would change the direction of the field, but maybe I'm wishing for too much, maybe the field doesn't need such a thing, or maybe it was there and I missed it!</p>
+<p>For my breakdown of the conference <em>structure</em> itself, see <a href="/20160703-conferences_what_is_the_deal/">Conferences: What is the Deal?</a>.</p>
+<hr>
+<p>Flashiest paper award: <a href="https://arxiv.org/abs/1605.05396">Generative Adversarial Text to Image Synthesis</a> is a system where you put in text and the computer makes a picture.</p>
+<p><a href="https://arxiv.org/abs/1605.05396"><img alt="birds" src="img/birds.png"></a></p>
+<p>Good job, computer!</p>
+<hr>
+<p>Best talk award: <a href="http://www.slideshare.net/ajschumacher/machine-learning-applications-at-bell-labs-holmdel">Machine Learning Applications at Bell Labs, Holmdel</a> was Larry Jackel's history of neural nets, starting back in 1976. Great perspective and personal stories, presented as part of <a href="https://sites.google.com/site/nnb2tf/">Neural Nets Back to the Future</a>.</p>
+<p><a href="http://www.slideshare.net/ajschumacher/machine-learning-applications-at-bell-labs-holmdel"><img alt="bets" src="img/bets.png"></a></p>
+<p>Yes, Jackel's bets involve the <a href="https://en.wikipedia.org/wiki/Vladimir_Vapnik">V</a> of <a href="https://en.wikipedia.org/wiki/VC_dimension">VC Dimension</a>, the <a href="https://en.wikipedia.org/wiki/Yann_LeCun">Le</a> of <a href="http://yann.lecun.com/exdb/lenet/">LeNet</a>, and SGD-master <a href="https://en.wikipedia.org/wiki/L%C3%A9on_Bottou">Bottou</a>.</p>
+<hr>
+<p>The first <a href="http://icml.cc/2016/?page_id=97">tutorial</a> I heard was from <a href="http://kaiminghe.com/">Kaiming He</a> on <a href="http://icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf">Deep Residual Networks</a>. ResNets and their cousins (like <a href="http://people.idsia.ch/~rupesh/very_deep_learning/">highway networks</a>) succeed essentially because wiggling a little tends to be better than going somewhere entirely different.</p>
+<p>The intuition: It's hard to train deeper networks. But they ought to be better! Well, if we take a net and add another layer that encodes the identity, that's deeper, and exactly as good! What if all the layers were like the identity plus a little bit that's learned?</p>
+<p>I was also impressed that, for example, a 152-layer ResNet can have fewer parameters than a 16-layer VGG net. Models aren't always getting more complex in terms of number of parameters!</p>
+<p>Slightly more: If you're careful where you put nonlinearities, it's like you're always <a href="https://twitter.com/planarrowspace/status/744525688829534208">adding</a> instead of multiplying! Stacking two convolutional layers before "reconnecting" works better in practice than doing one or three!</p>
+<p>Boom: you can train a model with a thousand layers.</p>
+<hr>
+<p>The second tutorial I <a href="https://twitter.com/planarrowspace/status/744545675896033280">heard</a> was from <a href="http://www.thespermwhale.com/jaseweston/">Jason Weston</a> on <a href="http://www.thespermwhale.com/jaseweston/icml2016/">Memory Networks for Language Understanding</a>. Interesting references:</p>
+<ul>
+<li><a href="http://arxiv.org/pdf/1511.08130v2.pdf">A Roadmap towards Machine Intelligence</a></li>
+<li><a href="http://arxiv.org/pdf/1506.03340v3.pdf">Teaching Machines to Read and Comprehend</a></li>
+<li><a href="https://arxiv.org/abs/1502.05698">Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks</a></li>
+<li><a href="https://research.facebook.com/research/babi/">bAbI natural language tasks</a></li>
+</ul>
+<p>It was neat seeing what can and can't be done currently for the "toy tasks." And Weston was <a href="https://twitter.com/planarrowspace/status/744549249019437062">stylish</a>.</p>
+<hr>
+<p>The third tutorial I heard was <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Home.html">David Silver</a>'s on <a href="http://hunch.net/~beygel/deep_rl_tutorial.pdf">Deep Reinforcement Learning</a> (with <a href="http://icml.cc/2016/tutorials/AlphaGo-tutorial-slides.pdf">bonus deck on AlphaGo</a>). Reinforcement learning is a big deal and getting bigger, it seems. I should really get into it more. Silver has <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">course materials</a> on his site. Also, <a href="https://openai.com/">OpenAI</a> is into it, and they have a whole <a href="https://gym.openai.com/">OpenAI Gym</a> where you can play with things. Neat!</p>
+<hr>
+<p>I liked the problem statement and solution of CReLUs. Too briefly: With ReLUs you tend to get paired positive/negative filters because one filter can't represent both. So build pairing into your system, and things work better. Very cogent content. Paper: <a href="https://arxiv.org/abs/1603.05201">Understanding and Improving Convolutional Neural Networks via Concatenated Rectified Linear Units</a></p>
+<hr>
+<p>On sizing layers, an <a href="https://twitter.com/planarrowspace/status/745602200366354432">SVD approach</a> based on statistical structure in the weights was interesting. Paper: <a href="https://arxiv.org/abs/1602.02285">A Deep Learning Approach to Unsupervised Ensemble Learning</a></p>
+<hr>
+<p><a href="https://arxiv.org/abs/1605.08283">Discrete Deep Feature Extraction: A Theory and New Architectures</a> is a little math-heavy but close to interesting ideas about understanding and using the internals of neural networks.</p>
+<hr>
+<p><a href="https://arxiv.org/abs/1512.09300">Autoencoding beyond pixels using a learned similarity metric</a> does neat things using the internals of a network for more network work - it might be metaphorically "reflective" - and comes up with some flashy visual results, too.</p>
+<hr>
+<p><a href="https://arxiv.org/abs/1606.01583">Semi-Supervised Learning with Generative Adversarial Networks</a> shows that a fairly natural idea for GANs does in fact work: you can use labels like "real_a, real_b, real_c, fake" instead of just "real, fake".</p>
+<blockquote>
+<p>We show that this method can be used to create a more data-efficient classifier and that it allows for generating higher quality samples than a regular GAN.</p>
+</blockquote>
+<hr>
+<p><a href="https://arxiv.org/abs/1511.06393">Fixed Point Quantization of Deep Convolutional Networks</a> was pretty neat, if you're into that kind of thing.</p>
+<hr>
+<p>I really liked the <a href="https://sites.google.com/site/nnb2tf/">Neural Nets Back to the Future</a> workshop.</p>
+<p><img alt="Back to the Future" src="img/bttf.jpg"></p>
+<p>I was so interested in the historical perspective from the experienced people presenting, for a while I was <a href="https://twitter.com/planarrowspace/status/745958455865933824">tweeting</a> every slide.</p>
+<hr>
+<p>From pictures I took (and <a href="https://twitter.com/planarrowspace/status/745959355724468224">tweeted</a>) I reconstructed <a href="http://www.slideshare.net/ajschumacher/machine-learning-applications-at-bell-labs-holmdel">slides</a> for "Machine Learning Applications at Bell Labs, Holmdel" from Larry Jackel, as mentioned above.</p>
+<hr>
+<p>I also <a href="https://twitter.com/planarrowspace/status/745972920040689664">tweeted</a> all through Gary Tesauro's talk, but thought it was of less general interest.</p>
+<hr>
+<p>Patrice Simard's <a href="http://papers.nips.cc/paper/833-backpropagation-without-multiplication">Backpropagation without Multiplication</a> was fascinating, and much better for his commentary. For example:</p>
+<blockquote>
+<p>Discretizing the gradient is potentially very dangerous. Convergence may no longer be guaranteed, learning may hecome prohibitively slow, and final performance after learning may be be too poor to be interesting,</p>
+</blockquote>
+<p>Simard said that quote from the paper isn't really true; you can just use his method without worrying about that. This is a quote I <a href="https://twitter.com/planarrowspace/status/746035221318012928">took down</a> as he was speaking:</p>
+<blockquote>
+<p>Gradient descent is so robust to errors in the gradient, your code probably has bugs, but you don't need to fix them.</p>
+</blockquote>
+<hr>
+<p>During a panel discussion, Yann LeCun said max pooling makes adversarial training unstable, and so it's better to use strided convolution if you want to downsample.</p>
+<p>Later I noticed related sentiment in Karpathy's <a href="http://cs231n.github.io/convolutional-networks/">notes</a>:</p>
+<blockquote>
+<p><em>Getting rid of pooling.</em>&#8203; Many people dislike the pooling operation and think that we can get away without it. For example, <a href="http://arxiv.org/abs/1412.6806">Striving for Simplicity: The All Convolutional Net</a> proposes to discard the pooling layer in favor of architecture that only consists of repeated CONV layers. To reduce the size of the representation they suggest using larger stride in CONV layer once in a while. Discarding pooling layers has also been found to be important in training good generative models, such as variational autoencoders (VAEs) or generative adversarial networks (GANs). It seems likely that future architectures will feature very few to no pooling layers.</p>
+</blockquote>
+<hr>
+<p><a href="http://www.bcl.hamilton.ie/~barak/">Barak Pearlmutter</a> gave a <a href="https://sites.google.com/site/nnb2tf/abstracts#pearlmutter">talk</a> about automatic differentiation and a really fast system called vlad that I think runs on <a href="https://github.com/barak/stalin">stalin</a>. Pretty impressive speed! Following up later he did add:</p>
+<blockquote>
+<p>keep in mind that if all your computations are actually array
+operations on the GPU, which takes all the time, then the overhead
+of the AD system might not really matter since it's just scheduling
+the appropriate derivative-computing array operations on the GPU.</p>
+</blockquote>
+<p>The next day <a href="https://twitter.com/ryan_p_adams">Ryan Adams</a> gave a talk on the same topic at the <a href="https://sites.google.com/site/automl2016/scientific-program">AutoML workshop</a> featured a Python <a href="https://github.com/HIPS/autograd">autograd</a> package that seemed to have some of the features (closure, for example) as vlad.</p>
+<p>Everybody loves automatic differentiation!</p>
+<hr>
+<p>I was briefly at the <a href="https://sites.google.com/site/ondeviceintelligence/icml2016">Workshop on On-Device Intelligence</a> but ended up wandering.</p>
+<hr>
+<p>I visited the <a href="https://sites.google.com/site/dataefficientml/">Data-Efficient Machine Learning</a> workshop and saw <a href="http://andrewgelman.com/">Gelman</a>'s <a href="https://twitter.com/planarrowspace/status/746357503009689601">amusing</a> talk called Toward Routine Use of Informative Priors.</p>
+<hr>
+<p>I spent some time at the <a href="https://sites.google.com/site/mlsys2016/schedule">Machine Learning Systems</a> workshop.</p>
+<p>Unfortunately I missed <a href="http://daggerfs.com/">Yangqing Jia</a>'s <a href="https://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=ZGVmYXVsdGRvbWFpbnxtbHN5czIwMTZ8Z3g6NGM3ZTgxYmYyZDBiM2VjNA">Towards a better DL framework: Lessons from Brewing Caffe</a>.</p>
+<p>I did see <a href="http://www.slideshare.net/justinbasilico/is-that-a-time-machine-some-design-patterns-for-real-world-machine-learning-systems">Design Patterns for Real-World Machine Learning Systems</a>, at which I was impressed at the <a href="https://twitter.com/planarrowspace/status/746394115240239105">number</a> of named machine learning design patterns at Netflix.</p>
+<hr>
+<p>I closed out the conference at the <a href="https://sites.google.com/site/automl2016/scientific-program">AutoML workshop</a>. Of possible interest in connection with this topic is a recent <a href="http://www.darpa.mil/news-events/2016-06-17">DARPA effort</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20160707-icml_2016/</link>
+<guid>http://planspace.org/20160707-icml_2016/</guid>
+<pubDate>Thu, 07 Jul 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Conferences: What is the Deal?</title>
 <description><![CDATA[
 
@@ -2128,29 +2223,6 @@ with open('rules.json', 'w') as f:
 <link>http://planspace.org/20151129-see_sklearn_trees_with_d3/</link>
 <guid>http://planspace.org/20151129-see_sklearn_trees_with_d3/</guid>
 <pubDate>Sun, 29 Nov 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A New Culture of Learning</title>
-<description><![CDATA[
-
-<p>I read this <a href="http://www.newcultureoflearning.com/">book</a> and it introduced me to the word aporia, which I appreciate. Here is a definition that comes up on Google:</p>
-<blockquote>
-<p>aporia: an irresolvable internal contradiction or logical disjunction in a text, argument, or theory</p>
-</blockquote>
-<p>Here is a summary of this book, in one quote from its page 107:</p>
-<blockquote>
-<p>In our view, MMOs are almost perfect illustrations of a new learning environment.</p>
-</blockquote>
-<p>I have minor gripes and major gripes about this book. A minor gripe is they say "petri dish" a lot, and I think they shouldn't. A major gripe is that the whole book is essentially a false dichotomy between a straw man version of schooling and impoverished, unworkable gesticulations labeled "new learning." It isn't that there aren't any good ideas here, but they are old ideas misunderstood and presented as if new.</p>
-<p>Skip this book.</p>
-<hr>
-<p>A New Culture of Learning: Cultivating the Imagination for a World of Constant Change</p>
-<p>by Douglas Thomas and John Seely Brown</p>
-<p><a href="http://www.amazon.com/New-Culture-Learning-Cultivating-Imagination/dp/1456458884"><img alt="cover" src="cover.jpg"></a></p>    
-    ]]></description>
-<link>http://planspace.org/20151122-a_new_culture_of_learning/</link>
-<guid>http://planspace.org/20151122-a_new_culture_of_learning/</guid>
-<pubDate>Sun, 22 Nov 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
