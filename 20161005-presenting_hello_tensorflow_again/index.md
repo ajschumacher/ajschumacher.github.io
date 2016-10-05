@@ -66,7 +66,7 @@ A lot of people have already contributed to this material. I work at [Deep Learn
 
 -----
 
-A brief note on popularity as measured by development activity on [GitHub](https://github.com/). [Caffe](http://caffe.berkeleyvision.org/) is another framework you might consider for deep learning. This is one way to compare [Caffe](https://github.com/BVLC/caffe/graphs/contributors) and [TensorFlow](https://github.com/tensorflow/tensorflow/graphs/contributors). TensorFlow is pretty active.
+A brief note on popularity as measured by development activity on [GitHub](https://github.com/). [Caffe](http://caffe.berkeleyvision.org/) is another framework you might consider for deep learning. This is one way to compare [Caffe](https://github.com/BVLC/caffe/graphs/contributors) and [TensorFlow](https://github.com/tensorflow/tensorflow/graphs/contributors). TensorFlow is pretty active — so much so that it can be difficult to keep up with all the developments.
 
 _Data and details for producing this graph are in [contrib_plot.ipynb](contrib_plot.ipynb)._
 
@@ -86,6 +86,7 @@ I'm going to try to show in a very hands-on way some of the details of how Tenso
 
  * tensors
  * flows
+ * GPUs
  * pictures
  * servers
 
@@ -148,6 +149,17 @@ Outside of software mostly for deep learning, [Spark](http://spark.apache.org/) 
 The graph concept is interesting and worth exploring in order to understand TensorFlow, so I'll spend some time with it today.
 
 *Image made with [draw.io](https://draw.io/).*
+
+
+-----
+
+![GPU](img/gpu.jpg)
+
+-----
+
+In part because it structures computations with tensors in a computation graph that it can manage, TensorFlow is able to move computation onto GPUs in ways that can improve performance. This can happen automatically or be specified in code; see the [Using GPUs tutorial](https://www.tensorflow.org/versions/r0.11/how_tos/using_gpu/).
+
+This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.
 
 
 -----

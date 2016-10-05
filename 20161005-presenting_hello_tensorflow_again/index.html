@@ -42,7 +42,7 @@ planspace.org</p>
 <hr />
 <p><img alt="caffe and tensorflow contributions on github" src="img/caffe_tf_contrib.png" /></p>
 <hr />
-<p>A brief note on popularity as measured by development activity on <a href="https://github.com/">GitHub</a>. <a href="http://caffe.berkeleyvision.org/">Caffe</a> is another framework you might consider for deep learning. This is one way to compare <a href="https://github.com/BVLC/caffe/graphs/contributors">Caffe</a> and <a href="https://github.com/tensorflow/tensorflow/graphs/contributors">TensorFlow</a>. TensorFlow is pretty active.</p>
+<p>A brief note on popularity as measured by development activity on <a href="https://github.com/">GitHub</a>. <a href="http://caffe.berkeleyvision.org/">Caffe</a> is another framework you might consider for deep learning. This is one way to compare <a href="https://github.com/BVLC/caffe/graphs/contributors">Caffe</a> and <a href="https://github.com/tensorflow/tensorflow/graphs/contributors">TensorFlow</a>. TensorFlow is pretty active — so much so that it can be difficult to keep up with all the developments.</p>
 <p><em>Data and details for producing this graph are in <a href="contrib_plot.ipynb">contrib_plot.ipynb</a>.</em></p>
 <hr />
 <p><img alt="braided river" src="img/braided_river.jpg" /></p>
@@ -53,6 +53,7 @@ planspace.org</p>
 <ul>
 <li>tensors</li>
 <li>flows</li>
+<li>GPUs</li>
 <li>pictures</li>
 <li>servers</li>
 </ul>
@@ -85,6 +86,11 @@ planspace.org</p>
 <p>Outside of software mostly for deep learning, <a href="http://spark.apache.org/">Spark</a> works with a kind of computation graph to manage distributed processing. Tools like <a href="https://github.com/spotify/luigi">Luigi</a> and <a href="https://github.com/Factual/drake">Drake</a> manage graph pipelines of data. And many <a href="http://drivendata.github.io/cookiecutter-data-science/">recommend</a> that all data work be thought of as graph-like pipelines.</p>
 <p>The graph concept is interesting and worth exploring in order to understand TensorFlow, so I'll spend some time with it today.</p>
 <p><em>Image made with <a href="https://draw.io/">draw.io</a>.</em></p>
+<hr />
+<p><img alt="GPU" src="img/gpu.jpg" /></p>
+<hr />
+<p>In part because it structures computations with tensors in a computation graph that it can manage, TensorFlow is able to move computation onto GPUs in ways that can improve performance. This can happen automatically or be specified in code; see the <a href="https://www.tensorflow.org/versions/r0.11/how_tos/using_gpu/">Using GPUs tutorial</a>.</p>
+<p>This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.</p>
 <hr />
 <p><img alt="Visualization of a TensorFlow graph" src="img/graph_vis_animation.gif" /></p>
 <hr />
