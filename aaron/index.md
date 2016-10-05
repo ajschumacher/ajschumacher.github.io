@@ -13,6 +13,9 @@ Sometimes people ask me for a bio:
 > College. Aaron's career-best breakdancing result was advancing to
 > the semi-finals of the R16 Korea 2009 individual footwork battle.
 
+[A version of the above](https://www.oreilly.com/people/aaron-schumacher) went up on O'Reilly with the publication of [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow). The following accompanies the [Chinese version](https://www.oreilly.com.cn/ideas/?p=533):
+
+> Aaron Schumacher是深度学习分析公司的数据科学家和软件工程师。他在联合国大会和麦迪斯数据科学训练营里教授Python和R语言。Aaron曾在博思艾伦咨询公司，纽约大学和纽约市教育局任职并从事数据工作。Aaron生涯最好的霹雳舞成绩是挺近R16韩国2009大赛个人街舞的半决赛。他现在很荣幸地被评为TensorFlow 0.9版的次重要贡献者。
 
 Here are some things I've talked about:
 
