@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2016-10-05: [Presenting “Hello, TensorFlow!” Again](/20161005-presenting_hello_tensorflow_again/)
  * 2016-07-07: [Highlights from ICML 2016](/20160707-icml_2016/)
  * 2016-07-03: [Conferences: What is the Deal?](/20160703-conferences_what_is_the_deal/)
  * 2016-06-29: [Presenting “Hello, TensorFlow!”](/20160629-presenting_hello_tensorflow/)
