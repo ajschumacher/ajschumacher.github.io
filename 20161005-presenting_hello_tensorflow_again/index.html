@@ -91,6 +91,7 @@ planspace.org</p>
 <hr />
 <p>In part because it structures computations with tensors in a computation graph that it can manage, TensorFlow is able to move computation onto GPUs in ways that can improve performance. This can happen automatically or be specified in code; see the <a href="https://www.tensorflow.org/versions/r0.11/how_tos/using_gpu/">Using GPUs tutorial</a>.</p>
 <p>This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.</p>
+<p>You can also distribute computation across multiple GPUs (and multiple machines) but it isn't always automatic. <a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> provides some helpful functionality, and more seems to be becoming available all the time.</p>
 <hr />
 <p><img alt="Visualization of a TensorFlow graph" src="img/graph_vis_animation.gif" /></p>
 <hr />

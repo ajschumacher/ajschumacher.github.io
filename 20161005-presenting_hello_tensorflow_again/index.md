@@ -161,6 +161,8 @@ In part because it structures computations with tensors in a computation graph t
 
 This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.
 
+You can also distribute computation across multiple GPUs (and multiple machines) but it isn't always automatic. [TF-Slim](https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html) provides some helpful functionality, and more seems to be becoming available all the time.
+
 
 -----
 
