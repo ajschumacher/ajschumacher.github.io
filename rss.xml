@@ -7,6 +7,128 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Presenting “Hello, TensorFlow!” Again</title>
+<description><![CDATA[
+
+<p><em>This is an updated presentation version of my &#8220;Hello, TensorFlow!&#8221; <a href="https://www.oreilly.com/learning/hello-tensorflow">O'Reilly post</a>. The <a href="/20160629-presenting_hello_tensorflow/">original</a> was given at the <a href="http://www.meetup.com/TensorFlow-Washington-DC/">TensorFlow Washington DC</a> meetup on Wednesday June 29, 2016, &#8220;<a href="http://www.meetup.com/TensorFlow-Washington-DC/events/231860618/">Deep Dive into TensorFlow</a>.&#8221; This version was created for a Wednesday October 5 2016 guest presentation at the DC <a href="https://generalassemb.ly/education/data-science-immersive">General Assembly Data Science Immersive</a> and for a Wednesday October 26 2016 presentation at the <a href="http://dc.gputechconf.com/">NVIDIA GPU Technology Conference (GTC) in DC</a>. (<a href="big.html">slides</a>)</em></p>
+<p>I've given this talk a couple times, which means this is the improved version.</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img alt="Hello, TensorFlow! on O'Reilly" src="img/screenshot.png"></p>
+<hr>
+<p>This presentation started as a blog post I <a href="/20160619-writing_with_oreilly/">wrote</a> which was <a href="https://www.oreilly.com/learning/hello-tensorflow">published</a> on O'Reilly.</p>
+<p>If you want you can follow along <a href="https://www.oreilly.com/learning/hello-tensorflow">there</a> and we'll stay pretty close to <a href="https://www.oreilly.com/learning/hello-tensorflow">that content</a>.</p>
+<p>I also recorded an O'Reilly <a href="http://www.oreilly.com/oriole/">Oriole</a> video and interactive version which should come out some time soon on O'Reilly's <a href="http://safari.oreilly.com">Safari</a> service.</p>
+<hr>
+<p><img alt="Hello, TensorFlow! on O'Reilly China" src="img/screenshot_chinese.png"></p>
+<hr>
+<p>O'Reilly also translated and published a <a href="https://www.oreilly.com.cn/ideas/?p=533">Chinese version</a>, so if you prefer to read Chinese you can do that too.</p>
+<hr>
+<p>UNCLASSIFIED</p>
+<hr>
+<p>That reminds me, the classification level for this talk is UNCLASSIFIED.</p>
+<p><em>This is a little joke for the government-heavy <a href="http://dc.gputechconf.com/">GTC DC</a> audience, which I hope nobody has reason to take offense at.</em></p>
+<hr>
+<p><img alt="Deep Learning Analytics" src="img/dla.png"></p>
+<hr>
+<p>A lot of people have already contributed to this material. I work at <a href="http://www.deeplearninganalytics.com/">Deep Learning Analytics</a> (DLA) and have to especially thank John for his support, and all my colleagues there for their feedback. I'm also particularly indebted to the <a href="http://www.meetup.com/DC-Machine-Learning-Journal-Club/">DC Machine Learning Journal Club</a>, and of course the folks at O'Reilly.</p>
+<hr>
+<p><img alt="caffe and tensorflow contributions on github" src="img/caffe_tf_contrib.png"></p>
+<hr>
+<p>A brief note on popularity as measured by development activity on <a href="https://github.com/">GitHub</a>. <a href="http://caffe.berkeleyvision.org/">Caffe</a> is another framework you might consider for deep learning. This is one way to compare <a href="https://github.com/BVLC/caffe/graphs/contributors">Caffe</a> and <a href="https://github.com/tensorflow/tensorflow/graphs/contributors">TensorFlow</a>. TensorFlow is pretty active &#8212; so much so that it can be difficult to keep up with all the developments.</p>
+<p><em>Data and details for producing this graph are in <a href="contrib_plot.ipynb">contrib_plot.ipynb</a>.</em></p>
+<hr>
+<p><img alt="braided river" src="img/braided_river.jpg"></p>
+<hr>
+<p>I'm going to try to show in a very hands-on way some of the details of how TensorFlow works. The idea is not to exercise all the features of TensorFlow but to really understand some of the important underlying concepts.</p>
+<p><em>Image from <a href="https://www.flickr.com/photos/alaskanps/8029733984">National Park Service, Alaska Region on Flickr</a>.</em></p>
+<hr>
+<ul>
+<li>tensors</li>
+<li>flows</li>
+<li>GPUs</li>
+<li>pictures</li>
+<li>servers</li>
+</ul>
+<hr>
+<p>There are a couple interesting things about TensorFlow.</p>
+<p>I'm really only going to demonstrate the middle two, but let's mention them all.</p>
+<hr>
+<p><img alt="not neurons, tensors" src="img/not_neurons.png"></p>
+<hr>
+<p>First thing about TensorFlow: tensors.</p>
+<p>TensorFlow hates neurons and it loves linear algebra.</p>
+<p>When you design software you make choices that affect what you can do and how you can do it.</p>
+<p>For neural nets, there has in the past been a fixation on the biological metaphor and the "neurons" in particular. If you've used software like R's <a href="https://cran.r-project.org/web/packages/neuralnet/">neuralnet</a> package or Python's <a href="http://pybrain.org/">PyBrain</a>, you've seen interfaces where you typically define the number of neurons or "hidden units" that you want in each layer, and the connections between them (and perhaps some other components) are set up automatically one way or another.</p>
+<p>TensorFlow does also provide a higher-level interface in <a href="https://www.tensorflow.org/versions/master/tutorials/tflearn/index.html">tf.contrib.learn</a> that talks about hidden units and so on. But if you're looking at the math you have to evaluate inside these neural net models, the "neurons" hardly exist at all. The weights on the connections certainly exist, and there are operations that connect values as they flow through the network, but in the end you don't really need "neurons" to be a dominant abstraction in the system.</p>
+<p>If you go this route, everything is just matrix math - or, for arbitrary dimensions, tensor math. This is the choice TensorFlow makes. It makes TensorFlow really flexible and lets it achieve efficient computation that would be more difficult otherwise.</p>
+<p>So TensorFlow can do more than "just" neural nets. As demonstrated in the <a href="https://www.udacity.com/course/deep-learning--ud730">Google/Udacity Deep Learning MOOC</a>, you can implement logistic regression easily with TensorFlow, for example. There's even now a section of non-machine-learning applications in the <a href="https://www.tensorflow.org/versions/r0.11/tutorials/index.html">official tutorials</a>.</p>
+<p>Focusing on (typically fixed-dimension) tensors does arguably make it more awkward to attempt esoteric techniques like dynamically changing the architecture of your neural net by adding neurons, for example. (This comment was inspired by <a href="https://drive.google.com/file/d/0Bxf-khCt_eknWEF6aFJ1ZU4yQ00/view">Let your Networks Grow</a>, <a href="https://sites.google.com/site/nnb2tf/">Neural Nets Back to the Future</a> at <a href="http://icml.cc/2016/">ICML 2016</a>.)</p>
+<p>The linear algebra you actually have to think about is not too tricky, but for our purposes I'm not going to use anything more than individual numbers, so there's no chance of being distracted by linear algebra.</p>
+<p>The relevant point is that while some other software focuses on neurons and mostly ignores weights, in the case of TensorFlow we focus on weights and mostly ignore neurons as a top-level abstraction. In any event, it's all just numbers.</p>
+<hr>
+<p><img alt="simple computation graph" src="img/math_graph.png"></p>
+<hr>
+<p>Second thing about TensorFlow: flows.</p>
+<p>TensorFlow loves graphs.</p>
+<p>It's important to distinguish between graphs and pictures. Here we mean <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graphs</a> as in the abstract data type. Data flow graphs.</p>
+<p>This is a picture of a data flow graph. You might prefer to think of it as \(y=mx+b\). This is what TensorFlow's graphs are like.</p>
+<p>The advantage of graphs is that the software can manipulate them and "reason about" how to answer questions you're asking before it commits to particular execution paths.</p>
+<p>Lots of software is moving toward working via graphs in this way. Often they're <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graphs</a> but I don't care too much about whether that's always strictly the case. <a href="https://twitter.com/planarrowspace/status/569963882900561921">&#129370;</a></p>
+<p>For example, <a href="http://deeplearning.net/software/theano/">Theano</a> works similarly enough to TensorFlow that <a href="http://keras.io/">Keras</a> can use either as its backend. <a href="http://torch.ch/">Torch</a> is also similar.</p>
+<p>Outside of software mostly for deep learning, <a href="http://spark.apache.org/">Spark</a> works with a kind of computation graph to manage distributed processing. Tools like <a href="https://github.com/spotify/luigi">Luigi</a> and <a href="https://github.com/Factual/drake">Drake</a> manage graph pipelines of data. And many <a href="http://drivendata.github.io/cookiecutter-data-science/">recommend</a> that all data work be thought of as graph-like pipelines.</p>
+<p>The graph concept is interesting and worth exploring in order to understand TensorFlow, so I'll spend some time with it today.</p>
+<p><em>Image made with <a href="https://draw.io/">draw.io</a>.</em></p>
+<hr>
+<p><img alt="GPU" src="img/gpu.jpg"></p>
+<hr>
+<p>In part because it structures computations with tensors in a computation graph that it can manage, TensorFlow is able to move computation onto GPUs in ways that can improve performance. This can happen automatically or be specified in code; see the <a href="https://www.tensorflow.org/versions/r0.11/how_tos/using_gpu/">Using GPUs tutorial</a>.</p>
+<p>This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.</p>
+<p>You can also distribute computation across multiple GPUs (and multiple machines) but it isn't always automatic. <a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> provides some helpful functionality, and more seems to be becoming available all the time.</p>
+<hr>
+<p><img alt="Visualization of a TensorFlow graph" src="img/graph_vis_animation.gif"></p>
+<hr>
+<p>Third thing about TensorFlow: pictures.</p>
+<p>If you use Python's <a href="http://scikit-learn.org/">scikit-learn</a>, you likely also use a separate visualization tool, likely including <a href="http://matplotlib.org/">matplotlib</a>. If you've tried to <a href="/20151129-see_sklearn_trees_with_d3/">visualize decision tree rules</a>, you may have had a frustrating time. You may or may not use any explicit logging system at all.</p>
+<p>The <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tensorboard/README.md">TensorBoard</a> tooling that comes with TensorFlow is a great logging and visualizing system that gives you access to a lot of internals that could otherwise be a lot of work to expose.</p>
+<p>I think TensorBoard <em>by itself</em> is a compelling reason to use TensorFlow over other similar software.</p>
+<p>TensorBoard is super great and I will be showing several sides of it today.</p>
+<p><em>Image from <a href="https://www.tensorflow.org/versions/r0.8/how_tos/graph_viz/index.html">TensorBoard: Graph Visualization</a>.</em></p>
+<hr>
+<p><img alt="Life of a Servable" src="img/serving_architecture.svg"></p>
+<hr>
+<p>Fourth thing about TensorFlow: servers.</p>
+<p>TensorFlow loves moving directly into production.</p>
+<p>In addition to everything else, TensorFlow has a highly-engineered serving architecture. So if you develop a TensorFlow model on your laptop, you can (relatively) easily build a deployment system to serve that model in a serious way. It seems pretty neat, but I haven't used it and I'm not going to talk more about it.</p>
+<p><em>Image from the <a href="https://tensorflow.github.io/serving/architecture_overview">TensorFlow Serving Architecture Overview</a>.</em></p>
+<hr>
+<p>demo</p>
+<hr>
+<p>From here to the end is just demo! The starting point is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_begin.ipynb">demo_start.ipynb</a> and the ending point (with output) is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_end.ipynb">demo_end.ipynb</a>.</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p><!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20161005-presenting_hello_tensorflow_again/</link>
+<guid>http://planspace.org/20161005-presenting_hello_tensorflow_again/</guid>
+<pubDate>Wed, 05 Oct 2016 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Highlights from ICML 2016</title>
 <description><![CDATA[
 
@@ -2141,88 +2263,6 @@ planspace.org
 <link>http://planspace.org/20151206-how_to_eat_computers/</link>
 <guid>http://planspace.org/20151206-how_to_eat_computers/</guid>
 <pubDate>Sun, 06 Dec 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>See sklearn trees with D3</title>
-<description><![CDATA[
-
-<p>The <a href="http://scikit-learn.org/stable/modules/tree.html">decision trees</a> from <a href="http://scikit-learn.org/">scikit-learn</a> are very easy to train and predict with, but it's not easy to see the rules they learn. The code below makes it easier to see inside <code>sklearn</code> classification trees, enabling visualizations that look like this:</p>
-<p><a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f"><img alt="partial tree view" src="partial_tree_view.png"></a></p>
-<p>This shows, for example, that all the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">irises</a> with <code>petal length (cm)</code> less than 2.45 were <code>setosa</code>.</p>
-<p>The ability to interpret the rules of a decision tree is often considered a strength of the algorithm, and in <a href="https://www.r-project.org/">R</a> you can usually <code>summary()</code> and <code>plot()</code> a tree fit to see the rules. In <a href="https://www.python.org/">Python</a> with <code>sklearn</code>, there is <a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html"><code>export_graphviz</code></a>, but it isn't terribly convenient. It shouldn't be so hard to see what's going on inside a tree.</p>
-<p>The following <a href="http://www.json.org/">JSON</a> format is simple and works with common <a href="http://d3js.org/">D3</a> tree graphing code, so let's target this format:</p>
-<pre><code class="language-json">{name: "container thing",
- children: [{name: "leaf thing one"},
-            {name: "leaf thing two"}]}</code></pre>
-
-<p>Each <code>name</code> will describe a true/false decision rule for an inner node or the distribution of training example labels for a leaf node. The first of a pair of <code>children</code> is where the rule is true, and the second is where the rule is false. (These are binary trees.)</p>
-<p>The way <code>sklearn</code> trees store their rules internally is described <a href="https://github.com/scikit-learn/scikit-learn/blob/0.16.1/sklearn/tree/_tree.pyx#L2956-L3008">in <code>_tree.pyc</code></a>. The <code>rules</code> function here examines a fit <code>sklearn</code> decision tree to generate a Python dictionary (with structure like the above) representing the decision tree's rules:</p>
-<pre><code class="language-python">def rules(clf, features, labels, node_index=0):
-    """Structure of rules in a fit decision tree classifier
-
-    Parameters
-    ----------
-    clf : DecisionTreeClassifier
-        A tree that has already been fit.
-
-    features, labels : lists of str
-        The names of the features and labels, respectively.
-
-    """
-    node = {}
-    if clf.tree_.children_left[node_index] == -1:  # indicates leaf
-        count_labels = zip(clf.tree_.value[node_index, 0], labels)
-        node['name'] = ', '.join(('{} of {}'.format(int(count), label)
-                                  for count, label in count_labels))
-    else:
-        feature = features[clf.tree_.feature[node_index]]
-        threshold = clf.tree_.threshold[node_index]
-        node['name'] = '{} &gt; {}'.format(feature, threshold)
-        left_index = clf.tree_.children_left[node_index]
-        right_index = clf.tree_.children_right[node_index]
-        node['children'] = [rules(clf, features, labels, right_index),
-                            rules(clf, features, labels, left_index)]
-    return node</code></pre>
-
-<p>How is this used? Let's get a quick example decision tree and take a look:</p>
-<pre><code class="language-python">from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-
-data = load_iris()
-
-clf = DecisionTreeClassifier(max_depth=3)
-clf.fit(data.data, data.target)
-
-rules(clf, data.feature_names, data.target_names)</code></pre>
-
-<p>The <code>rules</code> function returns the following Python dictionary, formatted for readability here:</p>
-<pre><code class="language-python">{'name': 'petal length (cm) &gt; 2.45000004768',
- 'children': [
-     {'name': 'petal width (cm) &gt; 1.75',
-      'children': [
-         {'name': 'petal length (cm) &gt; 4.85000038147',
-          'children': [
-              {'name': '0 of setosa, 0 of versicolor, 43 of virginica'},
-              {'name': '0 of setosa, 1 of versicolor, 2 of virginica'}]},
-         {'name': 'petal length (cm) &gt; 4.94999980927',
-          'children': [
-              {'name': '0 of setosa, 2 of versicolor, 4 of virginica'},
-              {'name': '0 of setosa, 47 of versicolor, 1 of virginica'}]}]},
-     {'name': '50 of setosa, 0 of versicolor, 0 of virginica'}]}</code></pre>
-
-<p>This is pretty readable, but now we can also write the result out to a file and visualize it with D3:</p>
-<pre><code class="language-python">import json
-
-r = rules(clf, data.feature_names, data.target_names)
-with open('rules.json', 'w') as f:
-    f.write(json.dumps(r))</code></pre>
-
-<p>Check out the <a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f">interactive view</a>! Once again, a partially expanded view looks like this:</p>
-<p><a href="http://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f"><img alt="partial tree view" src="partial_tree_view.png"></a></p>    
-    ]]></description>
-<link>http://planspace.org/20151129-see_sklearn_trees_with_d3/</link>
-<guid>http://planspace.org/20151129-see_sklearn_trees_with_d3/</guid>
-<pubDate>Sun, 29 Nov 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
