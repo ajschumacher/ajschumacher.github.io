@@ -19,8 +19,8 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
- * [Hello, TensorFlow! (again)](/20161005-presenting_hello_tensorflow_again/) at the DC [General Assembly Data Science Immersive](https://generalassemb.ly/education/data-science-immersive) on Wednesday October 5, 2016, and at the [NVIDIA GPU Technology Conference (GTC) in DC](http://dc.gputechconf.com/) on Wednesday October 26, 2016.
- * [Hello, TensorFlow!](/20160629-presenting_hello_tensorflow/) at the [TensorFlow Washington DC Meetup](http://www.meetup.com/TensorFlow-Washington-DC/) on [Wednesday June 29, 2016](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334) ([summary and some video](http://blog.altoros.com/how-tensorflow-can-be-applied-to-wildfire-detection-and-prediction.html))
+ * [Hello, TensorFlow!](/20161005-presenting_hello_tensorflow_again/) ([video](https://www.youtube.com/watch?v=n350wsivoQk)) at the DC [GA Data Science Immersive](https://generalassemb.ly/education/data-science-immersive) on Wednesday October 5, 2016, and at [NVIDIA GTC DC](http://dc.gputechconf.com/) on [Wednesday October 26, 2016](https://mygtc.gputechconf.com/events/35/schedules/3388)
+ * [Hello, TensorFlow!](/20160629-presenting_hello_tensorflow/) at the [TensorFlow DC Meetup](http://www.meetup.com/TensorFlow-Washington-DC/) on [Wednesday June 29, 2016](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334)
  * [How to Eat Computers](/20151206-how_to_eat_computers/) at two schools on December 4 and 8, 2015
  * [Creative Data Science](/20151112-creative_data_science/) at the [World Bank](http://www.worldbank.org/) on Thursday November 12, 2015
  * [Practical Mergic](/20150530-practical_mergic_at_odsc/) at the [Open Data Science Conference](http://opendatascicon.com/) on [Saturday May 30, 2015](http://opendatascicon.com/schedule/practical-mergic-how-to-join-anything/)
