@@ -19,6 +19,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole).
  * [Hello, TensorFlow!](/20161005-presenting_hello_tensorflow_again/) ([video](https://www.youtube.com/watch?v=n350wsivoQk)) at the DC [GA Data Science Immersive](https://generalassemb.ly/education/data-science-immersive) on Wednesday October 5, 2016, and at [NVIDIA GTC DC](http://dc.gputechconf.com/) on [Wednesday October 26, 2016](https://mygtc.gputechconf.com/events/35/schedules/3388)
  * [Hello, TensorFlow!](/20160629-presenting_hello_tensorflow/) at the [TensorFlow DC Meetup](http://www.meetup.com/TensorFlow-Washington-DC/) on [Wednesday June 29, 2016](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334)
  * [How to Eat Computers](/20151206-how_to_eat_computers/) at two schools on December 4 and 8, 2015

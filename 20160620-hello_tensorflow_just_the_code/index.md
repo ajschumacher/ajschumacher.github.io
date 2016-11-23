@@ -27,4 +27,8 @@ sess.run(tf.initialize_all_variables())
 for i in range(100):
     summary_writer.add_summary(sess.run(summaries), i)
     sess.run(train_step)
+
+summary_writer.close()
 ```
+
+[Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole) as well.

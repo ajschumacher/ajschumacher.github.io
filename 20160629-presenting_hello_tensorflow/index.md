@@ -1,6 +1,6 @@
 # Presenting “Hello, TensorFlow!”
 
-*A presentation version of my “Hello, TensorFlow!” [O'Reilly post](https://www.oreilly.com/learning/hello-tensorflow). Given at the [TensorFlow Washington DC](http://www.meetup.com/TensorFlow-Washington-DC/) meetup on Wednesday June 29, 2016, “[Deep Dive into TensorFlow](http://www.meetup.com/TensorFlow-Washington-DC/events/231860618/)” ([registration](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334)). ([slides](big.html)) ([summary with some video](http://blog.altoros.com/how-tensorflow-can-be-applied-to-wildfire-detection-and-prediction.html))*
+*A presentation version of my “Hello, TensorFlow!” [O'Reilly post](https://www.oreilly.com/learning/hello-tensorflow). Given at the [TensorFlow Washington DC](http://www.meetup.com/TensorFlow-Washington-DC/) meetup on Wednesday June 29, 2016, “[Deep Dive into TensorFlow](http://www.meetup.com/TensorFlow-Washington-DC/events/231860618/)” ([registration](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334)). ([slides](big.html)) ([summary with some video](http://blog.altoros.com/how-tensorflow-can-be-applied-to-wildfire-detection-and-prediction.html)) [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole) as well.*
 
 
 -----

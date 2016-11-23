@@ -33,7 +33,11 @@ summary_writer = tf.train.SummaryWriter('log_simple_stats', sess.graph)
 sess.run(tf.initialize_all_variables())
 for i in range(100):
     summary_writer.add_summary(sess.run(summaries), i)
-    sess.run(train_step)</code></pre>    </article>
+    sess.run(train_step)
+
+summary_writer.close()</code></pre>
+
+<p><a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> is now <a href="https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole">an interactive code and video Oriole</a> as well.</p>    </article>
     <footer>
       <hr />
       <ul>
