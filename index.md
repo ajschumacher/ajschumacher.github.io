@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-11: [Does TensorFlow Suffer from the Second-System Effect?](/20170311-does_tensorflow_suffer_from_the_second_system_effect/)
  * 2017-02-16: [OmegaGo](/20170216-omegago/)
  * 2016-10-05: [Presenting “Hello, TensorFlow!” Again](/20161005-presenting_hello_tensorflow_again/)
  * 2016-07-07: [Highlights from ICML 2016](/20160707-icml_2016/)

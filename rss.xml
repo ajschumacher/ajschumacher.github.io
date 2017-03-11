@@ -7,6 +7,34 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Does TensorFlow Suffer from the Second-System Effect?</title>
+<description><![CDATA[
+
+<p>In <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical Man Month</a>, Fred Brooks includes an essay called <a href="http://wiki.c2.com/?SecondSystemEffect">The Second-System Effect</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month"><img alt="The Mythical Man Month (book cover)" src="img/mythical_man_month.jpg"></a></p>
+<p>The second-system effect describes two problems likely when building a new project like one you've done before:</p>
+<ul>
+<li>too many features: "frill after frill and embellishment after embellishment"</li>
+<li>focus on the wrong features: "a tendency to refine [obsolete] techniques"</li>
+</ul>
+<p>The "too many features" problem is the one most commonly associated with the second-system effect.</p>
+<hr>
+<p><a href="https://www.tensorflow.org/">TensorFlow</a> is a second system, in that Google had a system called <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/large_deep_networks_nips2012.pdf">DistBelief</a>, and TensorFlow is <a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">explicitly</a> the second-generation system based on experience with DistBelief.</p>
+<p><a href="https://www.tensorflow.org/"><img alt="TensorFlow" src="img/tensorflow.jpg"></a></p>
+<p>TensorFlow has a <em>lot</em> of features. It aims to support research as well as production, running on multiple processing targets (CPU, GPU, etc.) on single devices and distributed, on mobile devices, workstations, and data centers. It includes a visualization system. It includes a serving system. It includes a compiler. It includes multiple high-level APIs. The tagline it uses is <a href="https://www.youtube.com/watch?v=mWl45NkFBOc">Machine Learning for Everyone</a>.</p>
+<p>TensorFlow may not focus on obsolete features, but it also doesn't necessarily focus on features that matter to every user. The fundamental design priority of the computation graph, which then supports device-specific optimization and distributed execution, also introduces conceptual and computational overhead that may do more harm than good for users who won't use these features.</p>
+<hr>
+<p>While TensorFlow could be seen as a second system, and has some possible symptoms of the second-system effect, criticism of TensorFlow is rare.</p>
+<p>Do people love TensorFlow as much as it seems they do? Or are some people quietly griping about (or just ignoring) TensorFlow, with issues like <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FFT</a> being supported on GPU but not CPU?</p>
+<p>Is the second-system effect no longer relevant? The Mythical Man-Month was published in 1975. Using 26 bytes to handle leap years was an example of second-system excess for Brooks. And this was a <a href="https://en.wikipedia.org/wiki/Waterfall_model">waterfall</a> closed-source world.</p>
+<p>Brooks also focused on individuals: the second-system effect was specifically about second systems <em>for individual developers</em> (or architects). TensorFlow is certainly not the second system <a href="https://www.quora.com/What-are-all-the-Jeff-Dean-facts">Jeff Dean</a> has been involved with. Maybe Google's engineering culture is so good, the second-system effect is no match for it.</p>
+<p>Or was the second-system effect never really a useful idea? Second systems have always had the benefit of experience, as much or more than the temptation of feature creep.</p>    
+    ]]></description>
+<link>http://planspace.org/20170311-does_tensorflow_suffer_from_the_second_system_effect/</link>
+<guid>http://planspace.org/20170311-does_tensorflow_suffer_from_the_second_system_effect/</guid>
+<pubDate>Sat, 11 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>OmegaGo</title>
 <description><![CDATA[
 
@@ -1942,203 +1970,6 @@ END</code></pre>
 <link>http://planspace.org/20151231-juggling_for_programmers/</link>
 <guid>http://planspace.org/20151231-juggling_for_programmers/</guid>
 <pubDate>Thu, 31 Dec 2015 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Hearing Data with Sonic Histograms</title>
-<description><![CDATA[
-
-<p>You can see an iris, and you can smell an iris, and you can measure the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">length and width of 150 iris sepals and petals</a>... but can you <em>hear</em> the iris data?</p>
-<p><audio controls preload="auto" autobuffer>
-    <source src="yes.mp3" type="audio/mpeg"></source>
-    <source src="yes.ogg" type="audio/ogg"></source>
-</audio></p>
-<p><a href="https://en.wikipedia.org/wiki/Iris_flower_data_set"><img alt="iris" src="iris.jpg"></a></p>
-<p><a href="https://en.wikipedia.org/wiki/Histogram">Histograms</a> are a great way to get a sense for the distribution of a set of values. The view you get depends on how wide your bars are.</p>
-<p><img alt="two histograms" src="two_histograms.png"></p>
-<p>Both those histograms look pretty good, but audio isn't so boxy. A cousin of the histogram, <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density estimation</a> (KDE) seems more like audio. Like a histogram, it can be more or less "smooth".</p>
-<p><img alt="two KDEs" src="two_kdes.png"></p>
-<p>Stealing the idea of KDE, we can adapt it for audio. We'll just add up audio pulses that are positioned in time to represent values.</p>
-<p>We can use "wide" audio points <audio controls preload="auto" autobuffer><source src="sonic_point_wide.mp3" type="audio/mpeg"></source><source src="sonic_point_wide.ogg" type="audio/ogg"></source></audio> or "narrow" audio points <audio controls preload="auto" autobuffer><source src="sonic_point_narrow.mp3" type="audio/mpeg"></source><source src="sonic_point_narrow.ogg" type="audio/ogg"></source></audio>.</p>
-<p>Combining a bunch of wide audio points, we get a "smoother" audio histogram. <audio controls preload="auto" autobuffer><source src="sonic_sepal_length_wide.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length_wide.ogg" type="audio/ogg"></source></audio> And if we combine narrow audio points, we get a more "discrete" sounding histogram. <audio controls preload="auto" autobuffer><source src="sonic_sepal_length_narrow.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length_narrow.ogg" type="audio/ogg"></source></audio></p>
-<p>Adding an audio axis label and some sonic tick marks, we get serviceable audio histograms that you can compare to their visible counterparts.</p>
-<p><audio controls preload="auto" autobuffer><source src="sonic_sepal_length.mp3" type="audio/mpeg"></source><source src="sonic_sepal_length.ogg" type="audio/ogg"></source></audio> <img alt="sepal length histogram" src="sepal_length.png"></p>
-<p><audio controls preload="auto" autobuffer><source src="sonic_sepal_width.mp3" type="audio/mpeg"></source><source src="sonic_sepal_width.ogg" type="audio/ogg"></source></audio> <img alt="sepal width histogram" src="sepal_width.png"></p>
-<p><audio controls preload="auto" autobuffer><source src="sonic_petal_length.mp3" type="audio/mpeg"></source><source src="sonic_petal_length.ogg" type="audio/ogg"></source></audio> <img alt="petal length histogram" src="petal_length.png"></p>
-<p><audio controls preload="auto" autobuffer><source src="sonic_petal_width.mp3" type="audio/mpeg"></source><source src="sonic_petal_width.ogg" type="audio/ogg"></source></audio> <img alt="petal width histogram" src="petal_width.png"></p>
-<p>So yes, it kind of works! You can certainly hear bimodality, and even differentiate between the first two distributions if you listen carefully. I probably won't switch from visualizations to sonifications, but it's a fun things to explore!</p>
-<hr>
-<p>Thanks to <a href="https://www.spotify.com/">Spotify</a>'s <a href="http://monthlymusichackathon.org/">Monthly Music Hackathon NYC</a> (<a href="https://twitter.com/musichackathon">@musichackathon</a>) <a href="http://monthlymusichackathon.org/post/133438271112/viz-son">Sound Visualization &amp; Data Sonification Hackathon</a> for providing the push to do this. There's <a href="http://livestream.com/accounts/5176069/events/4582831">video on Livestream</a> (I'm on from about 5:30 to 10:30) but ironically the audio doesn't seem to be working. Thanks also to <a href="https://thomaslevine.com/">Thomas Levine</a> for showing me the <a href="https://cran.r-project.org/web/packages/tuneR/index.html">tuneR</a> library for <a href="https://www.r-project.org/">R</a> which let me jump in and start making sounds really quickly.</p>
-<hr>
-<p>This code was hacked together quickly and is not what you'd call "production grade". It uses the Mac <code>say</code> and also <code>ffmpeg</code> via <code>system</code>, but it's otherwise <a href="play.R">R that might work for you</a> if you want to try it.</p>
-<pre><code class="language-r"># install.packages("tuneR")  # install if not installed
-library("tuneR")
-setWavPlayer('/usr/bin/afplay')  # on Mac
-
-point_at &lt;- function(value,  # data value
-                     lowest,  # data range min
-                     highest,  # data range max
-                     duration,  # seconds
-                     point_width,  # seconds for +/- 3 SD (points are normal)
-                     point_freq=440, sample_rate=44100) {
-  point_width_samples &lt;- point_width * sample_rate
-  point &lt;- sine(point_freq, point_width_samples, stereo=TRUE)
-  filter &lt;- dnorm(seq_along(point), mean = length(point)/2, sd = length(point)/6)
-  filter &lt;- filter / max(filter)
-  point &lt;- point * filter
-  duration &lt;- duration * sample_rate
-  data_range &lt;- highest - lowest
-  left_offset &lt;- value - lowest
-  peak_position &lt;- (left_offset / data_range) * duration
-  left_padding_duration &lt;- peak_position - length(point)/2
-  if (left_padding_duration &gt; 0) {
-    result &lt;- bind(silence(left_padding_duration, stereo=TRUE), point)
-  } else {
-    result &lt;- point[abs(left_padding_duration):length(point)]
-  }
-  if (length(result) &lt; duration) {
-    result &lt;- bind(result, silence(duration - length(result), stereo=TRUE))
-  } else {
-    result &lt;- result[1:duration]
-  }
-  result
-}
-
-points_at &lt;- function(values,  # data values
-                      lowest,  # data range min
-                      highest,  # data range max
-                      duration,  # seconds
-                      point_width,  # seconds for +/- 3 SD (points are normal)
-                      point_freq=440, sample_rate=44100) {
-  result &lt;- silence(duration * sample_rate, stereo = TRUE)
-  for (value in values) {
-    result &lt;- result + point_at(value, lowest, highest, duration, point_width,
-                                point_freq, sample_rate)
-  }
-  result
-}
-
-low_high &lt;- function(values) {
-  breakpoints &lt;- pretty(values)
-  lowest &lt;- breakpoints[1]
-  highest &lt;- breakpoints[length(breakpoints)]
-  c(lowest, highest)
-}
-
-normalized_sonic_hist_content &lt;- function(values,  # data values
-                                          duration=4,  # seconds
-                                          point_width=0.2,  # seconds for +/1 3 SD (points are normal)
-                                          point_freq=440, sample_rate=44100) {
-  breakpoints &lt;- low_high(values)
-  lowest &lt;- breakpoints[1]
-  highest &lt;- breakpoints[2]
-  content &lt;- points_at(values, lowest, highest, duration, point_width,
-                       point_freq, sample_rate)
-  normalize(content)
-}
-
-sonic_hist &lt;- function(values,  # data values
-                       main,  # "title" of variable
-                       duration=4,  # seconds
-                       point_width=0.2,  # seconds for +/1 3 SD (points are normal)
-                       point_freq=440,
-                       legend=TRUE,
-                       units="",
-                       edge=TRUE, edge_freq=880, edge_duration=1000,
-                       sample_rate=44100) {
-  if (missing(main)) {
-    main &lt;- deparse(substitute(values))
-  }
-  breakpoints &lt;- low_high(values)
-  lowest &lt;- breakpoints[1]
-  highest &lt;- breakpoints[2]
-  content &lt;- normalized_sonic_hist_content(values, duration, point_width, point_freq, sample_rate)
-  edge_sound &lt;- sine(edge_freq, duration=edge_duration, stereo=TRUE)
-  if (edge) {
-    content &lt;- bind(edge_sound, content, edge_sound)
-  }
-  if (legend) {
-    system(paste("say", main, "in", duration, "seconds from", lowest, "to", highest, units, "-o t"))
-    system("ffmpeg -i t.aiff -ar 44100 t.wav")
-    legend_mono &lt;- normalize(readWave("t.wav"), pcm=FALSE)
-    legend_stereo &lt;- stereo(legend_mono, legend_mono)
-    system("rm t.aiff t.wav")
-    content &lt;- bind(legend_stereo, content)
-  }
-  content
-}
-
-triple_save &lt;- function(some_wav) {
-  name_prefix &lt;- deparse(substitute(some_wav))
-  wav_name &lt;- paste(name_prefix, ".wav", sep='')
-  mp3_name &lt;- paste(name_prefix, ".mp3", sep='')
-  ogg_name &lt;- paste(name_prefix, ".ogg", sep='')
-  writeWave(some_wav, wav_name)
-  system(paste("ffmpeg -i", wav_name, mp3_name))
-  system(paste("ffmpeg -i", wav_name, ogg_name))
-  system(paste("rm", wav_name))
-}
-
-data("iris")
-
-iris$Sepal.Length
-
-
-png('two_histograms.png', width=800, height=380)
-par(mfrow=c(1, 2))
-hist(iris$Sepal.Length, main="sepal length histogram, default breaks")
-hist(iris$Sepal.Length, breaks=100, xlim=c(4, 8), main="sepal length histogram, 100 breaks")
-dev.off()
-
-png('two_kdes.png', width=800, height=380)
-par(mfrow=c(1, 2))
-plot(density(iris$Sepal.Length), main="sepal length kernel density, default binwidth")
-plot(density(iris$Sepal.Length, bw=0.01), main="sepal length kernel density, 0.01 binwidth")
-dev.off()
-
-sonic_point_wide &lt;- point_at(value=4, lowest=0, highest=8, duration=2, point_width=0.5)
-triple_save(sonic_point_wide)
-sonic_point_narrow &lt;- point_at(value=4, lowest=0, highest=8, duration=2, point_width=0.05)
-triple_save(sonic_point_narrow)
-
-sonic_sepal_length_wide &lt;- sonic_hist(iris$Sepal.Width, legend=F, edge=F, point_width=0.4)
-triple_save(sonic_sepal_length_wide)
-sonic_sepal_length_narrow &lt;- sonic_hist(iris$Sepal.Width, point_width=0.05, legend=F, edge=F)
-triple_save(sonic_sepal_length_narrow)
-
-sonic_tick_mark &lt;- sine(880, duration=1000, stereo=TRUE)
-triple_save(sonic_tick_mark)
-
-png("sepal_length.png", height=380, width=480)
-hist(iris$Sepal.Length, main="sepal length, centimeters")
-dev.off()
-sonic_sepal_length &lt;- sonic_hist(iris$Sepal.Length, main="sepal length", units="centimeters")
-triple_save(sonic_sepal_length)
-
-png("sepal_width.png", height=380, width=480)
-hist(iris$Sepal.Width, main="sepal width, centimeters")
-dev.off()
-sonic_sepal_width &lt;- sonic_hist(iris$Sepal.Width, main="sepal width", units="centimeters")
-triple_save(sonic_sepal_width)
-
-png("petal_length.png", height=380, width=480)
-hist(iris$Petal.Length, main="petal length, centimeters")
-dev.off()
-sonic_petal_length &lt;- sonic_hist(iris$Petal.Length, main="petal length", units="centimeters")
-triple_save(sonic_petal_length)
-
-png("petal_width.png", height=380, width=480)
-hist(iris$Petal.Width, main="petal width, centimeters")
-dev.off()
-sonic_petal_width &lt;- sonic_hist(iris$Petal.Width, main="petal width", units="centimeters")
-triple_save(sonic_petal_width)</code></pre>
-
-<hr>
-<p>If you're having any problems with your sonic histograms, you can adjust them with a <a href="https://en.wikipedia.org/wiki/Sonic_screwdriver">sonic screwdriver</a>.</p>
-<p><img alt="sonic screwdriver" src="sonic_screwdriver.png"></p>    
-    ]]></description>
-<link>http://planspace.org/20151214-hearing_data_with_sonic_histograms/</link>
-<guid>http://planspace.org/20151214-hearing_data_with_sonic_histograms/</guid>
-<pubDate>Mon, 14 Dec 2015 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Does TensorFlow Suffer from the Second-System Effect?</title>
+  </head>
+  <body>
+    <article>
+<h1>Does TensorFlow Suffer from the Second-System Effect?</h1>
+<p class="date">Saturday March 11, 2017</p>
+<p>In <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical Man Month</a>, Fred Brooks includes an essay called <a href="http://wiki.c2.com/?SecondSystemEffect">The Second-System Effect</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month"><img alt="The Mythical Man Month (book cover)" src="img/mythical_man_month.jpg" /></a></p>
+<p>The second-system effect describes two problems likely when building a new project like one you've done before:</p>
+<ul>
+<li>too many features: "frill after frill and embellishment after embellishment"</li>
+<li>focus on the wrong features: "a tendency to refine [obsolete] techniques"</li>
+</ul>
+<p>The "too many features" problem is the one most commonly associated with the second-system effect.</p>
+<hr />
+<p><a href="https://www.tensorflow.org/">TensorFlow</a> is a second system, in that Google had a system called <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/large_deep_networks_nips2012.pdf">DistBelief</a>, and TensorFlow is <a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">explicitly</a> the second-generation system based on experience with DistBelief.</p>
+<p><a href="https://www.tensorflow.org/"><img alt="TensorFlow" src="img/tensorflow.jpg" /></a></p>
+<p>TensorFlow has a <em>lot</em> of features. It aims to support research as well as production, running on multiple processing targets (CPU, GPU, etc.) on single devices and distributed, on mobile devices, workstations, and data centers. It includes a visualization system. It includes a serving system. It includes a compiler. It includes multiple high-level APIs. The tagline it uses is <a href="https://www.youtube.com/watch?v=mWl45NkFBOc">Machine Learning for Everyone</a>.</p>
+<p>TensorFlow may not focus on obsolete features, but it also doesn't necessarily focus on features that matter to every user. The fundamental design priority of the computation graph, which then supports device-specific optimization and distributed execution, also introduces conceptual and computational overhead that may do more harm than good for users who won't use these features.</p>
+<hr />
+<p>While TensorFlow could be seen as a second system, and has some possible symptoms of the second-system effect, criticism of TensorFlow is rare.</p>
+<p>Do people love TensorFlow as much as it seems they do? Or are some people quietly griping about (or just ignoring) TensorFlow, with issues like <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">FFT</a> being supported on GPU but not CPU?</p>
+<p>Is the second-system effect no longer relevant? The Mythical Man-Month was published in 1975. Using 26 bytes to handle leap years was an example of second-system excess for Brooks. And this was a <a href="https://en.wikipedia.org/wiki/Waterfall_model">waterfall</a> closed-source world.</p>
+<p>Brooks also focused on individuals: the second-system effect was specifically about second systems <em>for individual developers</em> (or architects). TensorFlow is certainly not the second system <a href="https://www.quora.com/What-are-all-the-Jeff-Dean-facts">Jeff Dean</a> has been involved with. Maybe Google's engineering culture is so good, the second-system effect is no match for it.</p>
+<p>Or was the second-system effect never really a useful idea? Second systems have always had the benefit of experience, as much or more than the temptation of feature creep.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
