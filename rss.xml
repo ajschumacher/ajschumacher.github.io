@@ -10,17 +10,17 @@
 <title>TensorFlow use of Google Technologies</title>
 <description><![CDATA[
 
-<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project it also pulls in other Google projects: gflags, Bazel, protobuf, gRPC, and gemmlowp. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
+<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, and GFile. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
 <hr>
 <h3>gflags</h3>
-<p>The system TensorFlow users are most likely to encounter in their code is gflags. Formerly Google Commandline Flags, gflags is a Google system for building standard <a href="https://en.wikipedia.org/wiki/Command-line_interface">command-line interfaces</a>.</p>
-<p>There's a <a href="https://github.com/gflags/gflags">C++ implementation</a>, which has <a href="https://gflags.github.io/gflags/">a documentation page</a> reminiscent of a command-line interface. The <a href="https://github.com/google/python-gflags">Python gflags</a> is documented primarily via a collection of <a href="https://github.com/google/python-gflags/tree/master/examples">examples</a>.</p>
-<p>Python users may be more familiar with the Python standard library's <a href="https://docs.python.org/3/library/argparse.html">argparse</a> or perhaps the older <a href="https://docs.python.org/2/library/optparse.html">optparse</a>, which both achieve functionality similar to that of gflags.</p>
-<p>In TensorFlow, gflags appears when you see, for example, <code>tf.app.flags.FLAGS</code> or <code>tf.app.run()</code> (<a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/mnist/trainable/trainer/task.py">example code</a>).</p>
+<p>In TensorFlow code, you may see, for <a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/mnist/trainable/trainer/task.py">example</a>, <code>tf.app.flags.FLAGS</code>. This is part of a TensorFlow <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/flags.py">implementation</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command-line</a> argument parsing. It happens automatically when using <code>tf.app.run()</code>. Internally it uses Python's standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, but the API is inspired by Google's gflags.</p>
+<p>Formerly Google Commandline Flags, gflags is a Google system for building standard command-line interfaces. There's a <a href="https://github.com/gflags/gflags">C++ implementation</a>, which has <a href="https://gflags.github.io/gflags/">a documentation page</a> reminiscent of a command-line interface. The <a href="https://github.com/google/python-gflags">Python gflags</a> is documented primarily via a collection of <a href="https://github.com/google/python-gflags/tree/master/examples">examples</a>.</p>
+<p>Python users may be more familiar with the standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a> API, or perhaps even the older <a href="https://docs.python.org/2/library/optparse.html">optparse</a>, which both achieve functionality similar to that of gflags.</p>
+<p>While TensorFlow doesn't include a full gflags implementation, the TensorFlow version appears in pretty many code examples, where it imparts a little bit of extra Google flavor to argument handling for TensorFlow scripts. You can use it, or opt for a separate and possibly more full-featured package, whether it be the full <a href="https://github.com/google/python-gflags">gflags</a>, <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, or <a href="https://pythonhosted.org/horetu/">something stranger</a>.</p>
 <hr>
 <h3>Bazel</h3>
 <p><a href="https://bazel.build/">Bazel</a> is a build tool like <a href="https://www.gnu.org/software/make/">make</a>. Bazel is <a href="https://github.com/bazelbuild/bazel">open source</a>; <a href="https://en.wikipedia.org/wiki/Bazel_(software)">originally</a> there was Google's internal "Blaze" tool.</p>
-<p>You might encounter Bazel if you're building TensorFlow from source, for example.</p>
+<p>You might encounter Bazel if you're <a href="https://www.tensorflow.org/install/install_sources">building TensorFlow from source</a>, for example.</p>
 <p><img alt="bazel" src="img/bazel.png"></p>
 <hr>
 <h3>protobuf</h3>
@@ -38,7 +38,17 @@
 <p><a href="https://github.com/google/gemmlowp">gemmlowp</a> is Google's open source low-precision matrix multiplication library.</p>
 <p>You won't likely encounter gemmlowp directly, but you'll benefit from it if you're using TensorFlow for <a href="https://github.com/google/gemmlowp/blob/master/doc/low-precision.md">low-precision</a> implementations.</p>
 <hr>
-<p>Thanks to Googlers <a href="https://twitter.com/juliaferraioli">Julia Ferraioli</a>, <a href="https://twitter.com/petewarden">Pete Warden</a>, and <a href="https://twitter.com/martin_wicke">Martin Wicke</a>, for a brief <a href="https://twitter.com/petewarden/status/841062427202527232">twitter exchange</a> that informed this list.</p>
+<h3>StreamExecutor</h3>
+<p><a href="http://www.nvidia.com/">NVIDIA</a> currently dominates the <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> market, and so their <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a> language for programming GPUs is the dominant GPU language. But other vendors would like to sell GPUs too, and they would like everybody to standardize on <a href="https://en.wikipedia.org/wiki/OpenCL">OpenCL</a> for programming them. Programmers would rather just program once for whatever platform; they would like to have <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">general-purpose computing on graphics processing units (GPGPU)</a>.</p>
+<p>StreamExecutor is Google's GPGPU system. They've <a href="http://lists.llvm.org/pipermail/llvm-dev/2016-March/096576.html">talked about</a> open-sourcing it directly as part of the <a href="http://llvm.org/">LLVM project</a>, but as far as I know it still exists in open source only <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/stream_executor">inside TensorFlow</a>.</p>
+<p>OpenCL support is not necessarily perfect, but you may be able to try it out if you <a href="https://www.tensorflow.org/install/install_sources">build from source</a>. It's <a href="https://github.com/tensorflow/tensorflow/issues/22">issue #22</a> for the <a href="https://github.com/tensorflow/tensorflow/issues/22">TensorFlow GitHub project</a>.</p>
+<p>StreamExecutor is another implementation technology that you aren't likely to encounter directly as a user of TensorFlow.</p>
+<hr>
+<h3>GFile</h3>
+<p>Google has C++ file I/O code that avoids thread locking, and <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/lib/io">this</a> is <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/lib/io/file_io.py">included</a> as <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/gfile.py">part</a> TensorFlow.</p>
+<p>This is another implementation technology that should benefit TensorFlow users silently within the system.</p>
+<hr>
+<p>Thanks to Googlers <a href="https://twitter.com/juliaferraioli">Julia Ferraioli</a>, <a href="https://twitter.com/petewarden">Pete Warden</a>, and <a href="https://twitter.com/martin_wicke">Martin Wicke</a>, for a brief <a href="https://twitter.com/petewarden/status/841062427202527232">twitter exchange</a> that informed this list, and to <a href="https://twitter.com/mrry">Derek Murray</a> for <a href="https://twitter.com/mrry/status/841315298221342720">correcting</a> my misconception about gflags in TensorFlow.</p>
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</link>
