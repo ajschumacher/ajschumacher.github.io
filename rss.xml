@@ -7,6 +7,45 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow use of Google Technologies</title>
+<description><![CDATA[
+
+<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project it also pulls in other Google projects: gflags, Bazel, protobuf, gRPC, and gemmlowp. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
+<hr>
+<h3>gflags</h3>
+<p>The system TensorFlow users are most likely to encounter in their code is gflags. Formerly Google Commandline Flags, gflags is a Google system for building standard <a href="https://en.wikipedia.org/wiki/Command-line_interface">command-line interfaces</a>.</p>
+<p>There's a <a href="https://github.com/gflags/gflags">C++ implementation</a>, which has <a href="https://gflags.github.io/gflags/">a documentation page</a> reminiscent of a command-line interface. The <a href="https://github.com/google/python-gflags">Python gflags</a> is documented primarily via a collection of <a href="https://github.com/google/python-gflags/tree/master/examples">examples</a>.</p>
+<p>Python users may be more familiar with the Python standard library's <a href="https://docs.python.org/3/library/argparse.html">argparse</a> or perhaps the older <a href="https://docs.python.org/2/library/optparse.html">optparse</a>, which both achieve functionality similar to that of gflags.</p>
+<p>In TensorFlow, gflags appears when you see, for example, <code>tf.app.flags.FLAGS</code> or <code>tf.app.run()</code> (<a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/mnist/trainable/trainer/task.py">example code</a>).</p>
+<hr>
+<h3>Bazel</h3>
+<p><a href="https://bazel.build/">Bazel</a> is a build tool like <a href="https://www.gnu.org/software/make/">make</a>. Bazel is <a href="https://github.com/bazelbuild/bazel">open source</a>; <a href="https://en.wikipedia.org/wiki/Bazel_(software)">originally</a> there was Google's internal "Blaze" tool.</p>
+<p>You might encounter Bazel if you're building TensorFlow from source, for example.</p>
+<p><img alt="bazel" src="img/bazel.png"></p>
+<hr>
+<h3>protobuf</h3>
+<p><a href="https://developers.google.com/protocol-buffers/">Protocol buffers</a> (often protobuf, or just proto) "are Google's [<a href="https://github.com/google/protobuf">open source</a>] language-neutral, platform-neutral, extensible mechanism for serializing structured data &#8211; think XML, but smaller, faster, and simpler."</p>
+<p>When you look at protocol buffers in their text representations, they look something like <a href="http://www.json.org/">JSON</a>.</p>
+<p>You likely won't encounter protocol buffers directly when using TensorFlow. They're used under the hood all over the place: for example, as the format for <a href="https://www.tensorflow.org/get_started/summaries_and_tensorboard">TensorBoard</a> summaries, and to help make data transfer efficient in distributed settings.</p>
+<hr>
+<h3>gRPC</h3>
+<p><a href="http://www.grpc.io/">gRPC</a> is Google's <a href="https://github.com/grpc/grpc">open source</a> framework for <a href="https://en.wikipedia.org/wiki/Remote_procedure_call">remote procedure call (RPC)</a> systems. It uses protocol buffers.</p>
+<p>If RPC is unfamiliar, there is some comparison to <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> communications for web services.</p>
+<p>You might encounter gRPC if you build a client for a <a href="https://tensorflow.github.io/serving/">TensorFlow serving</a> server, for example.</p>
+<p><img alt="gRPC" src="img/grpc.svg"></p>
+<hr>
+<h3>gemmlowp</h3>
+<p><a href="https://github.com/google/gemmlowp">gemmlowp</a> is Google's open source low-precision matrix multiplication library.</p>
+<p>You won't likely encounter gemmlowp directly, but you'll benefit from it if you're using TensorFlow for <a href="https://github.com/google/gemmlowp/blob/master/doc/low-precision.md">low-precision</a> implementations.</p>
+<hr>
+<p>Thanks to Googlers <a href="https://twitter.com/juliaferraioli">Julia Ferraioli</a>, <a href="https://twitter.com/petewarden">Pete Warden</a>, and <a href="https://twitter.com/martin_wicke">Martin Wicke</a>, for a brief <a href="https://twitter.com/petewarden/status/841062427202527232">twitter exchange</a> that informed this list.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</link>
+<guid>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</guid>
+<pubDate>Mon, 13 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Use only what you need from TensorFlow</title>
 <description><![CDATA[
 
@@ -1869,62 +1908,6 @@ git push</code></pre>
 <link>http://planspace.org/20160209-how_i_blog/</link>
 <guid>http://planspace.org/20160209-how_i_blog/</guid>
 <pubDate>Tue, 09 Feb 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Talk Like TED</title>
-<description><![CDATA[
-
-<p>There are some useful points in this book, but I don't like the book as a whole very much.</p>
-<p><a href="http://gallocommunications.com/books/talk-like-ted-2/"><img alt="Talk Like TED" src="cover.jpg"></a></p>
-<p>I think <a href="https://www.ted.com/">TED</a> talks are now recognized as being more consistently well-presented than truly profound, though both aspects have been diluted by time and <a href="https://www.ted.com/about/programs-initiatives/tedx-program">TEDx</a>. The book is about how to present, and not how to construct a sound argument or make a meaningful discovery, so I shouldn't be as critical as I feel. It's rare that I read something so far from my natural position on the analytical/emotional spectrum, and it wasn't totally pleasant.</p>
-<p>My reaction started from the cover blurbs, with the unmeasured hyperbole in one from Guy Kawasaki: "The premise of this book&#8212;that TED talks provide great examples and lessons&#8212;is a magnificent insight." I would wonder whether it was intended as a sarcastic jab at TED and the book, but Kawasaki is a marketer of some repute. Has he learned that referring to occasionally valid observations as magnificent insights is useful?</p>
-<p>A repeated opening argument from the author is that "Ideas are the true currency of the twenty-first century. So, in order to succeed you need to be able to sell your ideas and yourself persuasively." Those familiar with currency will note that you don't generally need to convince anyone to take it; the book's argument here is ridiculous, but it may be that the illogical presentation is more palatable than a more honest phrasing: "Most people have very little sense, so a practical way to succeed is to focus a lot on selling your ideas and yourself persuasively, regardless of the quality of you and your ideas."</p>
-<p>The second chapter is called "Master the Art of Storytelling". I have to agree that using stories in speaking is a good idea for connecting to audiences and making points emotionally, but I also object because anecdotes are almost never useful grounds for drawing conclusions and as a person who looks at data a lot, a common reaction to a story as part of someone's argument is the feeling that they are probably wrong, deliberately lying, or both. But as the author says, "Abstractions are difficult for most people to process. Stories turn abstract concepts into tangible, emotional, and memorable ideas."</p>
-<p>The author helpfully presents Aristotle's persuasion framework: ethos (credibility), logos (logic), and pathos (emotion). My usual bias is toward logic, and credibility only as much as it measures a person's historical record on logic. But the author is correct that emotion and other kinds of credibility are significant, and I shouldn't ignore them when communicating.</p>
-<p>So I read this book in a state of displeased agreement, disliking the author from the start, whether he was playing fast and loose with propositions and conclusions, advertising his consulting business, or just titling all his books like BuzzFeed listicles. But I realized that his advice was frequently advice I could benefit from following. I just couldn't stand sentences like this one on page 27: "Academically, if you can't measure something you cannot quantify what it actually does." At some point, I gave up counting things like that.</p>
-<p>I was very interested to learn of the <a href="http://m.ragan.com/Main/Articles/Speakers_follow_the_10_TED_Commandments_48603.aspx">Ten TED Commandments</a> that are sent to presenters while they're preparing:</p>
-<ol>
-<li>Thou shalt not simply trot out thy usual shtick.</li>
-<li>Thou shalt dream a great dream, or show forth a wondrous new thing, or share something thou hast never shared before.</li>
-<li>Thou shalt reveal thy curiosity and thy passion.</li>
-<li>Thou shalt tell a story.</li>
-<li>Thou shalt freely comment on the utterances of other speakers for the sake of blessed connection and exquisite controversy.</li>
-<li>Thou shalt not flaunt thine ego. Be thou vulnerable; speak of thy failure as well as thy success.</li>
-<li>Thou shalt not sell from the stage: neither thy company, thy goods, thy writings, not thy desperate need for funding; lest thou be cast aside into outer darkness.</li>
-<li>Thou shalt remember all the while: Laughter is good.</li>
-<li>Thou shalt not read thy speech.</li>
-<li>Thou shalt not steal the time of them that follow thee.</li>
-</ol>
-<p><em>Talk Like TED</em> doesn't actually include the Ten TED Commandments; I had to go find them online. I imagine they weren't included because the author didn't want them to clash with his own list. Here's an annotated <em>Talk Like TED</em> table of contents, with its three parts with three chapters each. As a fun exercise, map the Ten TED Commandments onto <em>Talk Like TED</em>'s chapters!</p>
-<ol>
-<li>Emotional<ol>
-<li><strong>Unleash the Master Within</strong> I was optimistic about this chapter because it comes close to saying "Talk about something you actually know about." It focuses a lot on passion.</li>
-<li><strong>Master the Art of Storytelling</strong> People like stories. People remember stories. Tell stories.</li>
-<li><strong>Have a Conversation</strong> This chapter is actually about having your presentation be technically perfect: well practiced, well delivered, etc. It's really astonishingly far from advocating engaging the audience in real conversation. The book is about one-directional communication, and no surprise; that's the TED format and the format of most things that are thought of as presentations.</li>
-</ol>
-</li>
-<li>Novel<ol>
-<li><strong>Teach Me Something New</strong> Again I like the idea of this chapter as it relates to choosing your content, but a lot of this chapter is also about giving your talk a Twitter-friendly headline.</li>
-<li><strong>Deliver Jaw-Dropping Moments</strong> Be creative and do interesting things! But also speak in soundbites and be quotable on Twitter.</li>
-<li><strong>Lighten Up</strong> This is the chapter on using humor. People like humor!</li>
-</ol>
-</li>
-<li>Memorable<ol>
-<li><strong>Stick to the 18-Minute Rule</strong> No strong rationale for 18 minutes exactly, but the point of being brief is a good one. There's also a lot in here about following the rule of three.</li>
-<li><strong>Paint a Mental Picture with Multisensory Experiences</strong> This probably could have been a section in the storytelling chapter.</li>
-<li><strong>Stay in Your Lane</strong> Be authentic.</li>
-</ol>
-</li>
-</ol>
-<p>Here are a couple other things I particularly liked:</p>
-<p>Quoting Matthieu Ricard on page 26: "It is essential to inspire hope and confidence, since it is what we lack most and need most in our times."</p>
-<p>For a while I've been a fan of separating what a presenter says and what appears on a projector: "Since we're all sick of 'Death by PowerPoint,' it's time to kill it permanently. Let me be clear&#8212;I'm not advocating the end of PowerPoint as a tool, but the end of traditional PowerPoint design cluttered with text and bullet points. ... The old style of PowerPoint is an anachronism on the modern corporate battlefield." <a href="https://en.wikipedia.org/wiki/Edward_Tufte">Tufte</a> has written more convincingly in <a href="http://users.ha.uth.gr/tgd/pt0501/09/Tufte.pdf">The Cognitive Style of PowerPoint</a> about the evils of bullet points as a medium.</p>
-<p>Quoting John Medina on page 213: "To put it bluntly, research shows that <em>we can't multitask</em>. We are biologically of processing attention-rich inputs simultaneously." (Emphasis in original.) I sometimes hear people claiming that they can productively multitask, and I appreciate an excuse to not believe them.</p>
-<p>In the end, <em>Talk Like TED</em> could be summarized as follows: people are irrational, but there are ways you can convince them of whatever you want. I am not so impressed with Carneades's ability to argue both sides of any issue and I identify more with Socrates in Gorgias: Truth is worth pursuing, and is fundamentally more important than the artifices of rhetoric. That said, I do not deny the utility of presenting good ideas well rather than poorly.</p>    
-    ]]></description>
-<link>http://planspace.org/20160207-talk_like_ted/</link>
-<guid>http://planspace.org/20160207-talk_like_ted/</guid>
-<pubDate>Sun, 07 Feb 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
