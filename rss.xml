@@ -10,13 +10,17 @@
 <title>TensorFlow use of Google Technologies</title>
 <description><![CDATA[
 
-<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
+<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, apputils, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
 <hr>
 <h3>gflags</h3>
 <p>In TensorFlow code, you may see, for <a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/mnist/trainable/trainer/task.py">example</a>, <code>tf.app.flags.FLAGS</code>. This is part of a TensorFlow <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/flags.py">implementation</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command-line</a> argument parsing. It happens automatically when using <code>tf.app.run()</code>. Internally it uses Python's standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, but the API is inspired by Google's gflags.</p>
 <p>Formerly Google Commandline Flags, gflags is a Google system for building standard command-line interfaces. There's a <a href="https://github.com/gflags/gflags">C++ implementation</a>, which has <a href="https://gflags.github.io/gflags/">a documentation page</a> reminiscent of a command-line interface. The <a href="https://github.com/google/python-gflags">Python gflags</a> is documented primarily via a collection of <a href="https://github.com/google/python-gflags/tree/master/examples">examples</a>.</p>
 <p>Python users may be more familiar with the standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a> API, or perhaps even the older <a href="https://docs.python.org/2/library/optparse.html">optparse</a>, which both achieve functionality similar to that of gflags.</p>
 <p>While TensorFlow doesn't include a full gflags implementation, the TensorFlow version appears in pretty many code examples, where it imparts a little bit of extra Google flavor to argument handling for TensorFlow scripts. You can use it (though there are <a href="http://stackoverflow.com/questions/33932901/whats-the-purpose-of-tf-app-flags-in-tensorflow/33938519#33938519">reasons not to</a>) or opt for a separate and possibly more full-featured package, whether it be the full <a href="https://github.com/google/python-gflags">gflags</a>, <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, or <a href="https://pythonhosted.org/horetu/">something stranger</a>.</p>
+<hr>
+<h3>apputils</h3>
+<p>The TensorFlow <code>tf.app.run()</code> invocation doesn't actually use Google's Python apputils, but like with gflags, TensorFlow is mimicking some of the behavior of Google tooling.</p>
+<p>The <a href="https://github.com/google/google-apputils">open source google-apputils for Python</a> hasn't been updated since March 2015, but it's still pretty interesting, with a lot of functionality that could still be relevant.</p>
 <hr>
 <h3>Bazel</h3>
 <p><a href="https://bazel.build/">Bazel</a> is a build tool like <a href="https://www.gnu.org/software/make/">make</a>. Bazel is <a href="https://github.com/bazelbuild/bazel">open source</a>; <a href="https://en.wikipedia.org/wiki/Bazel_(software)">originally</a> there was Google's internal "Blaze" tool.</p>

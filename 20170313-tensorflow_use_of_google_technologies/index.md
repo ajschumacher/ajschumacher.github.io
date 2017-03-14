@@ -1,6 +1,6 @@
 # TensorFlow use of Google Technologies
 
-TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.
+TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, apputils, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.
 
 ---
 
@@ -13,6 +13,14 @@ Formerly Google Commandline Flags, gflags is a Google system for building standa
 Python users may be more familiar with the standard [argparse](https://docs.python.org/3/library/argparse.html) API, or perhaps even the older [optparse](https://docs.python.org/2/library/optparse.html), which both achieve functionality similar to that of gflags.
 
 While TensorFlow doesn't include a full gflags implementation, the TensorFlow version appears in pretty many code examples, where it imparts a little bit of extra Google flavor to argument handling for TensorFlow scripts. You can use it (though there are [reasons not to](http://stackoverflow.com/questions/33932901/whats-the-purpose-of-tf-app-flags-in-tensorflow/33938519#33938519)) or opt for a separate and possibly more full-featured package, whether it be the full [gflags](https://github.com/google/python-gflags), [argparse](https://docs.python.org/3/library/argparse.html), or [something stranger](https://pythonhosted.org/horetu/).
+
+---
+
+### apputils
+
+The TensorFlow `tf.app.run()` invocation doesn't actually use Google's Python apputils, but like with gflags, TensorFlow is mimicking some of the behavior of Google tooling.
+
+The [open source google-apputils for Python](https://github.com/google/google-apputils) hasn't been updated since March 2015, but it's still pretty interesting, with a lot of functionality that could still be relevant.
 
 ---
 
