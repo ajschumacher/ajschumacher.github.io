@@ -1,6 +1,6 @@
 # TensorFlow use of Google Technologies
 
-TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, and GFile. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.
+TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.
 
 ---
 
@@ -73,6 +73,18 @@ StreamExecutor is another implementation technology that you aren't likely to en
 Google has C++ file I/O code that avoids thread locking, and [this](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/lib/io) is [included](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/lib/io/file_io.py) as [part](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/gfile.py) TensorFlow.
 
 This is another implementation technology that should benefit TensorFlow users silently within the system.
+
+---
+
+### XLA
+
+The [Accelerated Linear Algebra (XLA)](https://www.tensorflow.org/versions/master/experimental/xla/) system is described as [the TensorFlow compiler framework](https://haosdent.gitbooks.io/tensorflow-document/content/resources/xla_prerelease.html), but there's more to it than that.
+
+For one thing, the aspects of XLA that appear in open source TensorFlow aren't all the XLA that exists; Google uses their own hardware, [TPUs](https://en.wikipedia.org/wiki/Tensor_processing_unit), and both that hardware and the XLA components to target it are internal to Google.
+
+For another, XLA has been described as ["designed for reuse"](https://autodiff-workshop.github.io/slides/JeffDean.pdf), and other projects could incorporate the technology as well.
+
+XLA is still experimental, and largely deep inside TensorFlow's implementation. Users might [try](https://gist.github.com/yaroslavvb/53052184e50cdfec35f0a127dd6df843) turning on XLA to see whether it helps speed up their computations.
 
 ---
 
