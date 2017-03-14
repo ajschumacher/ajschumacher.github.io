@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Command-Line Apps and TensorFlow</title>
+  </head>
+  <body>
+    <article>
+<h1>Command-Line Apps and TensorFlow</h1>
+<p class="date">Tuesday March 14, 2017</p>
+<p>You can do pretty much with TensorFlow interactively in a Python <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a> or <a href="http://jupyter.org/">notebook</a>, but there are a lot of reasons why you might want to turn your code into something you can run at the command line.</p>
+<p>Running model training may take a lot of time, so you may want to run it "by itself" as an independent process. You may prefer to share <code>.py</code> files rather than notebooks, for the universality of text editors over notebook viewers. You may want to make it easier to re-run or eventually productionize your code, and especially to easily run your code on other computers.</p>
+<p>You may also want to test the behavior of a system with a variety of values for certain parameters. It becomes easier and more repeatable to keep your code the same and run it with different command-line arguments, rather than editing values in the code directly and re-running.</p>
+<p>If you're using a cloud service like Google's <a href="https://cloud.google.com/products/machine-learning/">Cloud ML</a>, command-line arguments may be particularly important. As they <a href="https://cloud.google.com/ml-engine/docs/concepts/trainer-considerations">say</a>, "Command-line arguments are the primary mechanism for communicating with your [TensorFlow program] at the time of execution." Writing your program to support command-line arguments like <code>--argument_name argument_value</code> is required, if you're using <a href="https://cloud.google.com/ml-engine/docs/concepts/hyperparameter-tuning-overview">Cloud ML's hyperparameter tuning features</a>.</p>
+<p>There are multiple options for how to set up your command-line app. I'll show eight of them below. (Not all of them are good options!) All the scripts below have the same behavior when called like this:</p>
+<pre><code class="language-bash">$ python script.py --color red
+a red flower</code></pre>
+
+<hr />
+<h3>Script <a href="code/script1_argv.py">1</a>: <code>sys.argv</code></h3>
+<pre><code class="language-python">import sys
+
+def main():
+    assert sys.argv[1] == '--color'
+    print('a {} flower'.format(sys.argv[2]))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>You can access <code>sys.argv</code> to get a list of arguments, split on spaces in the command line, starting with the script name.</p>
+<p>This direct approach is concise, for this simple example, but brittle (what if there are multiple arguments, in different order?) and opaque (what was argument 7 again?).</p>
+<p>The approaches below will improve on this. All of them will make it clearer what the arguments are, both in the code and by automatically providing interactive help information on the command line, with <code>python script.py --help</code>, for example. And they'll all handle the parsing of command lines, taking them from lists of strings to data structures that are more easily used in programs.</p>
+<hr />
+<h3>Script <a href="code/script2_argv_tfappflags.py">2</a>: <code>tf.app.flags</code></h3>
+<pre><code class="language-python">import sys
+import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main():
+    flags.FLAGS._parse_flags(args=sys.argv[1:])
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>You shouldn't do this, for multiple reasons, but it does give our first example of using something that manages your command-line interface more than manipulating <code>sys.argv</code> directly.</p>
+<p>Like all the following examples, we set here a default value and some documentation for the command-line argument. We won't demonstrate other possible features, like specifying constraints on arguments and the like.</p>
+<p>The first <a href="http://stackoverflow.com/questions/33932901/whats-the-purpose-of-tf-app-flags-in-tensorflow/33938519#33938519">reason</a> not to use this particular technique is that while TensorFlow currently includes some argument-parsing functionality, it's there mostly so that it's easy to make cute demos, and it could change at any time.</p>
+<p>The second reason not to do this is that we're still providing <code>sys.argv</code> ourselves, which is awkward, especially with TensorFlow's mechanism here. The next two examples will continue specifying <code>sys.argv</code> like this, before turning to nicer methods.</p>
+<hr />
+<h3>Script <a href="code/script3_argv_gflags.py">3</a>: gflags</h3>
+<pre><code class="language-python">import sys
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main():
+    gflags.FLAGS(sys.argv)
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>The TensorFlow <code>tf.app.flags</code> mechanism is a sort of partial re-implementation of Google's <a href="https://github.com/google/python-gflags">gflags</a> system for command-line arguments. It's an interesting case of <a href="/20170313-tensorflow_use_of_google_technologies/">Google conventions influencing TensorFlow</a>, and the comparison between the TensorFlow code in Script 2 and the gflags code in Script 3 illustrates this.</p>
+<p>The Google gflags for Python <a href="https://pypi.python.org/pypi/python-gflags">package</a> can be installed with <code>pip install python-gflags</code>.</p>
+<hr />
+<h3>Script <a href="code/script4_argv_argparse.py">4</a>: argparse with <code>sys.argv</code></h3>
+<pre><code class="language-python">import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args(sys.argv[1:])
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>The usual way to write command-line programs in Python is with the Python standard library's <a href="https://docs.python.org/3/library/argparse.html">argparse</a>. Interestingly, while the API of TensorFlow's <code>tf.app.flags</code> is very close to gflags, it is itself implemented with argparse.</p>
+<hr />
+<h3>Script <a href="code/script5_tfapprun.py">5</a>: <code>tf.app.run()</code></h3>
+<pre><code class="language-python">import tensorflow as tf
+
+def main(args):
+    assert args[1] == '--color'
+    print('a {} flower'.format(args[2]))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<p>Rather than access <code>sys.argv</code> directly, it's nice to use something that will automatically process it.</p>
+<p>The <code>tf.app.run()</code> functionality does a minimal transformation in this case, passing <code>sys.argv</code> as an argument to <code>main()</code>.</p>
+<p>The choice of <code>main()</code> as the function to run is by convention, and can be overridden, for example like <code>tf.app.run(main=my_cool_function)</code>.</p>
+<p>Just as TensorFlow has built-in functionality that is not gflags but mimics part of gflags, <code>tf.app.run()</code> looks a lot like functionality from Google's <a href="https://github.com/google/google-apputils">apputils</a>. That functionality can't be shown quite as independently as in the example here, because it would automatically involve gflags too. That kind of combination between an argument parser and an app runner will be shown in the next examples.</p>
+<hr />
+<h3>Script <a href="code/script6_tfapprun_tfappflags.py">6</a>: <code>tf.app.run()</code> with <code>tf.app.flags</code></h3>
+<pre><code class="language-python">import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<p>Now only un-parsed arguments are passed to <code>main()</code>, and this is starting to look like something we could use.</p>
+<p>Reasons not to use this built-in TensorFlow functionality still include that it is not officially supported and could change. It's worth noting also though that the TensorFlow argument-parsing and app-running functionality are stripped-down versions, which is enough for simple demos like what I'm showing here, but may not be enough for a real project. And of course you may just feel that some separation of concerns is in order, and TensorFlow shouldn't be doing your machine learning and also managing your command-line arguments.</p>
+<hr />
+<h3>Script <a href="code/script7_apputils_gflags.py">7</a>: apputils and gflags</h3>
+<pre><code class="language-python">import google.apputils.app
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    google.apputils.app.run()</code></pre>
+
+<p>The combination of Google's <a href="https://github.com/google/google-apputils">apputils</a> with gflags looks just like the TensorFlow code in Script 6, but is independent of TensorFlow and offers a lot more features. For example, using <code>google.apputils.app.run()</code> automatically gives your app an extra debugging mode.</p>
+<p>The Google apputils <a href="https://pypi.python.org/pypi/google-apputils">package</a> can be installed with <code>pip install google-apputils</code>. Possible reasons not to use it include that it has not been updated (in the <a href="https://github.com/google/google-apputils">open source</a> version) since March 2015.</p>
+<hr />
+<h3>Script <a href="code/script8_argparse.py">8</a>: argparse</h3>
+<pre><code class="language-python">import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args()
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<p>This is a pretty conventional way to use argparse; just omitting any argument to <code>parse_args()</code> brings in <code>sys.argv</code> automatically.</p>
+<p>A method like this is what you should probably use. For examples of using it in full TensorFlow systems, one place to look is in some of the <a href="https://github.com/GoogleCloudPlatform/cloudml-samples">Google Cloud ML examples</a>.</p>
+<hr />
+<p>Thanks to <a href="https://twitter.com/mrry">Derek Murray</a> at <a href="https://research.google.com/teams/brain/">Google Brain</a> for pointing me in the right direction in understanding the relationship between TensorFlow and gflags.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

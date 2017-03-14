@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-14: [Command-Line Apps and TensorFlow](/20170314-command_line_apps_and_tensorflow/)
  * 2017-03-13: [TensorFlow use of Google Technologies](/20170313-tensorflow_use_of_google_technologies/)
  * 2017-03-12: [Use only what you need from TensorFlow](/20170312-use_only_what_you_need_from_tensorflow/)
  * 2017-03-11: [Does TensorFlow Suffer from the Second-System Effect?](/20170311-does_tensorflow_suffer_from_the_second_system_effect/)
