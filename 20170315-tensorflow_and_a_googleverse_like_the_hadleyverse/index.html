@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TensorFlow and a Googleverse like the Hadleyverse</title>
+  </head>
+  <body>
+    <article>
+<h1>TensorFlow and a Googleverse like the Hadleyverse</h1>
+<p class="date">Wednesday March 15, 2017</p>
+<p>I've been having a good time looking at <a href="/20170313-tensorflow_use_of_google_technologies/">how TensorFlow incorporates Google technologies</a>, and how some things (like the <a href="/20170314-command_line_apps_and_tensorflow/">command-line helpers</a>) seem to reflect Google's internal conventions for development. Taken together, the view of Google software practices via TensorFlow reminds me of the Hadleyverse.</p>
+<p><img alt="Hadley Wickham" src="img/hadley.png" /></p>
+<p>"The Hadleyverse" refers to the many packages that <a href="http://blog.revolutionanalytics.com/2015/03/hadleyverse.html">Hadley Wickham</a> has created and contributed to, which largely replace, for proficient users, the standard functionality available in the <a href="https://www.r-project.org/">R</a> programming environment. Wickham more humbly allows the name "<a href="http://tidyverse.org/">tidyverse</a>" and indeed, tidiness is part of the philosophy of his packages.</p>
+<p>In addition to just providing useful packages with better functionality and better APIs than the ones that come standard with R, the Hadleyverse includes a lot of "how-to" as well. Among Wickham's freely available books are <a href="http://adv-r.had.co.nz/">Advanced R</a>, which contains a <a href="http://adv-r.had.co.nz/Style.html">style guide</a>, and the <a href="http://r-pkgs.had.co.nz/">R Packages</a> book for package developers.</p>
+<p>Wickham is exceptionally productive and has had a large influence in the R community. He's also very open, sharing and communicating freely with tons of people.</p>
+<p>Google might be even more productive than Hadley, but Google doesn't always seem to share as much. So the TensorFlow project can seem like a window into that Googleverse. And like the Hadleyverse, there is code, but there is also philosophy and practices.</p>
+<p><img alt="google" src="img/google.png" /></p>
+<p>For one thing, the TensorFlow <a href="https://github.com/tensorflow/tensorflow">code</a> is an example of a Python code-base that follows the <a href="https://google.github.io/styleguide/pyguide.html">Google Python style guide</a>. (I'm primarily interested in the Python parts.)</p>
+<p>Of course Python has the venerable <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> style guide, and I tend to like the <a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">NumPy/SciPy documentation guide</a> for docstrings. But looking at the TensorFlow code has nearly convinced me that their more concise argument documentation could be the way to go, for example.</p>
+<p>I'm also impressed with the religious use of <a href="https://www.pylint.org/">pylint</a>, and even just the organization of unit tests.</p>
+<p>In places you can see TensorFlow moving from Google-internal things to more standard Python things: <a href="https://github.com/google/python-gflags">gflags</a> and <a href="https://github.com/google/google-apputils">apputils</a> to <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/googletest.py">testing.pybase.googletest</a> to <a href="https://docs.python.org/3/library/unittest.html">unittest</a>.</p>
+<p>Google also doesn't just use <a href="https://github.com/">GitHub</a>; they've got a bunch of cool extra automation and review processes set up. When a pull request is submitted, <a href="https://github.com/googlebot">googlebot</a> and <a href="https://github.com/tensorflow-jenkins">tensorflow-jenkins</a> spring into action. Contributors have to fill out a Contributor License Agreement (CLA) online, and an admin is pulled in for review and to have tests run for the pull request. After all approvals are in, the new code can go in to TensorFlow.</p>
+<p>Oh and there's also <a href="https://github.com/tensorflower-gardener">tensorflower-gardener</a>, which I speculate is some connection between GitHub and work that happens inside Google proper.</p>
+<p>It's interesting to think about what aspects of the Googleverse should (and/or could) be adopted by developers outside Google.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

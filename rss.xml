@@ -7,6 +7,29 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow and a Googleverse like the Hadleyverse</title>
+<description><![CDATA[
+
+<p>I've been having a good time looking at <a href="/20170313-tensorflow_use_of_google_technologies/">how TensorFlow incorporates Google technologies</a>, and how some things (like the <a href="/20170314-command_line_apps_and_tensorflow/">command-line helpers</a>) seem to reflect Google's internal conventions for development. Taken together, the view of Google software practices via TensorFlow reminds me of the Hadleyverse.</p>
+<p><img alt="Hadley Wickham" src="img/hadley.png"></p>
+<p>"The Hadleyverse" refers to the many packages that <a href="http://blog.revolutionanalytics.com/2015/03/hadleyverse.html">Hadley Wickham</a> has created and contributed to, which largely replace, for proficient users, the standard functionality available in the <a href="https://www.r-project.org/">R</a> programming environment. Wickham more humbly allows the name "<a href="http://tidyverse.org/">tidyverse</a>" and indeed, tidiness is part of the philosophy of his packages.</p>
+<p>In addition to just providing useful packages with better functionality and better APIs than the ones that come standard with R, the Hadleyverse includes a lot of "how-to" as well. Among Wickham's freely available books are <a href="http://adv-r.had.co.nz/">Advanced R</a>, which contains a <a href="http://adv-r.had.co.nz/Style.html">style guide</a>, and the <a href="http://r-pkgs.had.co.nz/">R Packages</a> book for package developers.</p>
+<p>Wickham is exceptionally productive and has had a large influence in the R community. He's also very open, sharing and communicating freely with tons of people.</p>
+<p>Google might be even more productive than Hadley, but Google doesn't always seem to share as much. So the TensorFlow project can seem like a window into that Googleverse. And like the Hadleyverse, there is code, but there is also philosophy and practices.</p>
+<p><img alt="google" src="img/google.png"></p>
+<p>For one thing, the TensorFlow <a href="https://github.com/tensorflow/tensorflow">code</a> is an example of a Python code-base that follows the <a href="https://google.github.io/styleguide/pyguide.html">Google Python style guide</a>. (I'm primarily interested in the Python parts.)</p>
+<p>Of course Python has the venerable <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> style guide, and I tend to like the <a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">NumPy/SciPy documentation guide</a> for docstrings. But looking at the TensorFlow code has nearly convinced me that their more concise argument documentation could be the way to go, for example.</p>
+<p>I'm also impressed with the religious use of <a href="https://www.pylint.org/">pylint</a>, and even just the organization of unit tests.</p>
+<p>In places you can see TensorFlow moving from Google-internal things to more standard Python things: <a href="https://github.com/google/python-gflags">gflags</a> and <a href="https://github.com/google/google-apputils">apputils</a> to <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/googletest.py">testing.pybase.googletest</a> to <a href="https://docs.python.org/3/library/unittest.html">unittest</a>.</p>
+<p>Google also doesn't just use <a href="https://github.com/">GitHub</a>; they've got a bunch of cool extra automation and review processes set up. When a pull request is submitted, <a href="https://github.com/googlebot">googlebot</a> and <a href="https://github.com/tensorflow-jenkins">tensorflow-jenkins</a> spring into action. Contributors have to fill out a Contributor License Agreement (CLA) online, and an admin is pulled in for review and to have tests run for the pull request. After all approvals are in, the new code can go in to TensorFlow.</p>
+<p>Oh and there's also <a href="https://github.com/tensorflower-gardener">tensorflower-gardener</a>, which I speculate is some connection between GitHub and work that happens inside Google proper.</p>
+<p>It's interesting to think about what aspects of the Googleverse should (and/or could) be adopted by developers outside Google.</p>    
+    ]]></description>
+<link>http://planspace.org/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/</link>
+<guid>http://planspace.org/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/</guid>
+<pubDate>Wed, 15 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Command-Line Apps and TensorFlow</title>
 <description><![CDATA[
 
@@ -1908,86 +1931,6 @@ anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-o
 <link>http://planspace.org/20160320-books_for_professionals/</link>
 <guid>http://planspace.org/20160320-books_for_professionals/</guid>
 <pubDate>Sun, 20 Mar 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Moments of Impact</title>
-<description><![CDATA[
-
-<p>This is a well-wrought business book about how to lead workshops.</p>
-<p><a href="http://www.amazon.com/Moments-Impact-Strategic-Conversations-Accelerate/dp/1451697627"><img alt="Moments of Impact" src="cover.png"></a></p>
-<p>When I got it, I thought this book was about negotiation: how to have
-conversations that advance your aims. Really by "strategic
-conversations" the authors mean "conversations about strategy" and
-care mostly about getting business executives to work together.</p>
-<p>In addition to open-ended "let's find a new direction" meetings, the
-authors spend a lot of time on what are really questions of education.
-Their guidance is similar to that for running an effective class
-discussion, setting up small group work, or orchestrating experiential
-learning.</p>
-<p>It would be interesting to know what the effect would be of devoting
-similar resources toward educating children as toward educating
-executives.</p>
-<p>The subtitle, "How to design strategic conversations that accelerate
-change", includes the main term the authors are trying to advance:
-"strategic conversations". I think that in a field with little in the
-way of new ideas, authors of business books thrive to the extent that
-they get their phrases to stick. The authors even focus on this kind
-of phrase-finding in the contents of the book, and I think there's
-something to it.</p>
-<p>The book follows its outline very tightly, and its core outline is this:</p>
-<blockquote>
-<p><strong>Core principles and key practices</strong></p>
-<ol>
-<li>Define your purpose<ul>
-<li>Seize your moment</li>
-<li>Pick one purpose</li>
-<li>Go slow to go fast</li>
-</ul>
-</li>
-<li>Engage multiple perspectives<ul>
-<li>Assemble a dream team</li>
-<li>Create a common platform</li>
-<li>Ignite a controlled burn</li>
-</ul>
-</li>
-<li>Frame the issues<ul>
-<li>Stretch (don't break) mind-sets</li>
-<li>Think inside <em>different</em> boxes</li>
-<li>Choose a few key frames</li>
-</ul>
-</li>
-<li>Set the scene<ul>
-<li>Make your space</li>
-<li>Get visual</li>
-<li><em>Do</em> sweat the small stuff</li>
-</ul>
-</li>
-<li>Make it an experience<ul>
-<li>Discover, don't tell</li>
-<li>Engage the whole person</li>
-<li>Create a narrative arc</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<p>They go through that outline in book form in the first 170 pages, and
-then again in a "starter kit" (think "CliffsNotes") in the next 60
-pages. Frustratingly, very occasionally it seems like things appear in
-the "starter kit" but not the long form text. Together, the two parts
-make for a very pleasantly-dimensioned physical book.</p>
-<p>A couple quotes:</p>
-<blockquote>
-<p>It's not always easy to point out the obvious so that people will
-see it. (p. 92)</p>
-<p>"Desire, not goal-directedness," [Professor Jeanne Lidtka of the University of Virginia's Darden School of Business] <a href="https://hbr.org/product/beyond-strategic-thinking-strategy-as-experienced/ROT127-PDF-ENG">writes</a>, "is the true driver of behavioral change." (p. 138)</p>
-<p>Org charts are a hoax (p. 142)</p>
-<p>... experience is not just the best teacher - it's the only one. (p. 163)</p>
-</blockquote>
-<p>The book is really quite nicely designed by <a href="http://minesf.com/">Mine</a>. Mine has a <a href="https://www.youtube.com/embed/vdGuEwZb378">bboy demo reel</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20160215-moments_of_impact/</link>
-<guid>http://planspace.org/20160215-moments_of_impact/</guid>
-<pubDate>Mon, 15 Feb 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
