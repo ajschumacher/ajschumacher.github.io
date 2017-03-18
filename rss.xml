@@ -7,6 +7,33 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Much Ado about the TensorFlow Logo</title>
+<description><![CDATA[
+
+<p>In the beginning, there was <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">G&#246;del, Escher, Bach: An Eternal Golden Braid</a> by Douglas Hofstadter.</p>
+<p><img alt="G&#246;del, Escher, Bach" src="img/geb.jpg"></p>
+<p>This "metaphorical fugue on minds and machines in the spirit of Lewis Carroll" includes the <a href="https://en.wikipedia.org/wiki/Strange_loop">strange loop</a> idea and related discussion of consciousness and formal systems. Hofstadter's influence can be seen, for example, <a href="https://cs.illinois.edu/news/strange-loop-conference">in the name</a> of the <a href="http://www.thestrangeloop.com/">Strange Loop</a> tech conference.</p>
+<p>It seems likely that many people working in artificial intelligence and machine learning have encountered G&#246;del, Escher, Bach.</p>
+<p>Of course, there's also <a href="https://en.wikipedia.org/wiki/Chernin_Entertainment">Chernin Entertainment</a>, the production company.</p>
+<p><img alt="Chernin Entertainment" src="img/chernin.jpg"></p>
+<p>So we shouldn't rule out the possibility that Google engineers are fans of <a href="http://www.imdb.com/company/co0286257/">Chernin's work</a>. I hear <a href="https://en.wikipedia.org/wiki/Hidden_Figures">Hidden Figures</a> is quite good. And I guess a lot of people like <a href="https://en.wikipedia.org/wiki/New_Girl">New Girl</a>?</p>
+<p>In any event, somehow we get to this TensorFlow logo:</p>
+<p><img alt="TensorFlow logo - old?" src="img/tf-old.png"></p>
+<p>If you look carefully, does it seem like the right side of the "T" view is too short?</p>
+<p>This very serious concern appears as <a href="https://github.com/tensorflow/tensorflow/issues/1922">issue #1922</a> on the TensorFlow github, and <a href="https://groups.google.com/a/tensorflow.org/forum/#!topic/discuss/XhO1sqp4l4g">on the TensorFlow mailing list</a> complete with ASCII art illustration.</p>
+<p>The consensus response seemed to be some variant of "won't fix" (it wouldn't look as cool, anyway) until...</p>
+<p><img alt="TensorFlow logo - new?" src="img/tf-new.jpg"></p>
+<p>As of around the 1.0 release of TensorFlow, which was around the first <a href="https://events.withgoogle.com/tensorflow-dev-summit/">TensorFlow Dev Summit</a>, this logo variant seems to be in vogue. It removes the (possibly contentious) shadows, and adds a picture of a computation graph, in case you were about to forget that TensorFlow is about computation graphs. (If you want to think of it as a neural network, you're free to do so.)</p>
+<p>Logos are fun!</p>
+<hr>
+<p>Thanks to <a href="https://twitter.com/divergentdave">David Cook</a> and <a href="https://twitter.com/philipashlock">Philip Ashlock</a> for helping me find Chernin again based on a very murky memory.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170318-much_ado_about_the_tensorflow_logo/</link>
+<guid>http://planspace.org/20170318-much_ado_about_the_tensorflow_logo/</guid>
+<pubDate>Sat, 18 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TensorFlow and a Googleverse like the Hadleyverse</title>
 <description><![CDATA[
 
@@ -1899,38 +1926,6 @@ anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-o
 <link>http://planspace.org/20160322-books_for_programmers/</link>
 <guid>http://planspace.org/20160322-books_for_programmers/</guid>
 <pubDate>Tue, 22 Mar 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Books for Professionals</title>
-<description><![CDATA[
-
-<p>My sister started her first post-graduate job last year. She asked me to recommend books on how to be a professional.</p>
-<p>In my opinion, "being a professional" has at least two meanings:</p>
-<ol>
-<li>In general, (a) <strong>working effectively</strong> (b) <strong><em>with people</em></strong>.</li>
-<li>In particular, being an expert in your specific field.</li>
-</ol>
-<p>Here are four picks regarding general professionalism.</p>
-<hr>
-<h3>(a) <strong>working effectively</strong></h3>
-<p>I recommend <a href="https://en.wikipedia.org/wiki/How_to_Live_on_24_Hours_a_Day">How to Live on 24 Hours a Day</a> by Arnold Bennett. You can read it for free <a href="http://www.gutenberg.org/ebooks/2274">online via Project Gutenberg</a>.</p>
-<p><img alt="How to Live on 24 Hours a Day" src="how_to_live_on_24_hours_a_day.jpeg"></p>
-<p>I also highly recommend <a href="http://bitliteracy.com/">Bit Literacy</a>, which is a little old now but still relevant especially regarding how to handle email. You can read it for free <a href="http://itunes.apple.com/us/book/isbn9780979368103">in the iBookstore</a>.</p>
-<p><img alt="Bit Literacy" src="bit_literacy.gif"></p>
-<hr>
-<h3>(b) <em>with people</em></h3>
-<p>If you've never read <a href="https://en.wikipedia.org/wiki/How_to_Win_Friends_and_Influence_People">How to Win Friends and Influence People</a>, you should. I don't think it would be very surprising to you, since you're already so well-friended and influential, but it is a sort of classic and worth checking out. Looks like they're still trying to <a href="http://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034">sell it</a>.</p>
-<p><img alt="How to Win Friends and Influence People" src="how_to_win_and_influence.jpg"></p>
-<p>I also recently (well, last November) read <a href="http://shop.oreilly.com/product/0636920042372.do">Debugging Teams</a> and thought it was pretty good. I wrote <a href="http://planspace.org/20151118-debugging_teams/">some stuff</a> about it and pulled out quotes. The book is <a href="http://www.amazon.com/Debugging-Teams-Productivity-through-Collaboration/dp/1491932058">for sale</a>.</p>
-<p><img alt="Debugging Teams" src="debugging_teams.png"></p>
-<hr>
-<p>Where is the line between competency that should be expected of everyone and area of specialist knowledge? This may be particularly confused by so-called "business books", some of which are about being effective in any role, some of which are specifically about "management", and all of which want to sell as many copies as possible at the airport. I suspect that most are weakly rehashing some of the above titles.</p>
-<hr>
-<p>See also <a href="/20160322-books_for_programmers/">Books for Programmers</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20160320-books_for_professionals/</link>
-<guid>http://planspace.org/20160320-books_for_professionals/</guid>
-<pubDate>Sun, 20 Mar 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

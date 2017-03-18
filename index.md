@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-18: [Much Ado about the TensorFlow Logo](/20170318-much_ado_about_the_tensorflow_logo/)
  * 2017-03-15: [TensorFlow and a Googleverse like the Hadleyverse](/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/)
  * 2017-03-14: [Command-Line Apps and TensorFlow](/20170314-command_line_apps_and_tensorflow/)
  * 2017-03-13: [TensorFlow use of Google Technologies](/20170313-tensorflow_use_of_google_technologies/)
