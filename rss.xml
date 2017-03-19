@@ -7,6 +7,44 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Thank You for Reaching Out</title>
+<description><![CDATA[
+
+<p>I make myself pretty <a href="/aaron/">easy to contact</a>, and sometimes people contact me.</p>
+<h3>1. Will I hire you?</h3>
+<p>I'm not in a position to hire you (or give you an internship). Please don't send me your r&#233;sum&#233;. If you want to work where I work, or anywhere I've worked before, please go through official channels.</p>
+<h3>2. Will I recommend you for a job?</h3>
+<p>If I already know your work and I know it to be good, then yes.</p>
+<h3>3. How can you find a job?</h3>
+<p>I've found jobs mostly through people I know, and once through a recruiter.</p>
+<p>Don't meet people for the sake of finding a job. Meet people by being active in your community and doing good work. Go to a <a href="https://www.meetup.com/">meetup</a>. Talk to people. Help where you can. Give a talk about something you know or are learning about. Help out on a <a href="http://brigade.codeforamerica.org/brigade/">community project</a>. Keep developing new skills.</p>
+<p>The majority of the cold contacts I get are from recruiters. I don't have an answer for them on this page because they don't <em>care</em>; it is their <em>job</em> to contact people all the time&#8212;even people who don't seem to be looking for work&#8212;on the off chance that they make a contact at exactly the right time. Can they find you? They will send you jobs.</p>
+<h3>4. How can you develop skills?</h3>
+<p>I have a presentation about my career path and things I think are very generally important. It's called <a href="/20151206-how_to_eat_computers/">How to Eat Computers</a> and it was made for children, but even such a very mature person as you might enjoy it.</p>
+<p>I have two short lists of recommended books:</p>
+<ul>
+<li><a href="/20160322-books_for_programmers/">Books for Programmers</a></li>
+<li><a href="/20160320-books_for_professionals/">Books for Professionals</a></li>
+</ul>
+<p>You should read and write a lot. Develop interests and pursue them.</p>
+<h3>5. What educational program should you do?</h3>
+<p>You should go for the best program(s) you can, but remember that individual (student) variability is much larger than variability between programs.</p>
+<h3>6. Should you do online courses?</h3>
+<p>This is like asking "Should I read books?" Put them in the same category. Choose what will best help you learn what you want to learn.</p>
+<h3>7. Should you do a coding bootcamp?</h3>
+<p>Don't think of a bootcamp as a credential. They don't play in the same world as graduate degrees. If you go for a bootcamp, you are saying to the world that you are <em>scrappy</em>; you are going to <em>work hard</em> and you are going to <em>make something happen</em>. The structures of the program may help you to do more than you would on your own, but no program can do everything for you.</p>
+<p>At the end of the program you are going to have your work to show and talk about. Could you have done that work without the program? Yes. Would you have?</p>
+<h3>8. What's the best coding bootcamp?</h3>
+<p>I've taught data science evening classes for <a href="https://generalassemb.ly/">General Assembly</a> and the full-time program for <a href="https://www.thisismetis.com/">Metis</a>. I developed some materials and I hope I helped both programs, but things vary a lot with locations, staff, and time: I don't know which programs are better than others.</p>
+<h3>9. Will I collaborate with you? Will I be your mentor?</h3>
+<p>If you have a project or question that you think I'm uniquely positioned to help with, let's talk about that project or question.</p>
+<p>If you're looking for people in general but don't yet have a project or question to talk about, thank you for thinking of me, and please contact me if I am still the right person to talk to after you do. I keep some project ideas in my blog's <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues">github issues</a>; you could look there to see if anything interests you.</p>    
+    ]]></description>
+<link>http://planspace.org/20170319-thank_you_for_reaching_out/</link>
+<guid>http://planspace.org/20170319-thank_you_for_reaching_out/</guid>
+<pubDate>Sun, 19 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Much Ado about the TensorFlow Logo</title>
 <description><![CDATA[
 
@@ -1887,45 +1925,6 @@ anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-o
 <link>http://planspace.org/20160327-mindstorms/</link>
 <guid>http://planspace.org/20160327-mindstorms/</guid>
 <pubDate>Sun, 27 Mar 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Books for Programmers</title>
-<description><![CDATA[
-
-<p>Someone found my email address on <a href="https://github.com/">github</a> and wrote asking me to recommend books about software development. Well, here is one book on software development in general, and roughly one book each in connection with Python, JavaScript, Clojure, R, and git.</p>
-<hr>
-<h3>Software development in general</h3>
-<p>Some years ago a mentor lent me a copy of <a href="https://pragprog.com/book/tpp/the-pragmatic-programmer">The Pragmatic Programmer</a>. It is a very useful collection of The Right Way to do things. It's a set of ground rules for doing good work that can make you and the people you work with more effective.</p>
-<p><a href="https://pragprog.com/book/tpp/the-pragmatic-programmer"><img alt="The Pragmatic Programmer" src="prag_prog.jpg"></a></p>
-<p>For more books on software development "in general", it looks like <a href="http://blog.codinghorror.com/recommended-reading-for-developers/">Atwood's list</a> is quite good. I should read some of those. He even lists Tufte!</p>
-<hr>
-<h3>Python</h3>
-<p>I encountered <a href="http://greenteapress.com/wp/think-python-2e/">Think Python</a> and the rest of Downey's books while teaching some data science courses. It's a nice intro to computer science, programming, and Python, and it's available for free online.</p>
-<p><a href="http://greenteapress.com/wp/think-python-2e/"><img alt="Think Python" src="think_python.jpg"></a></p>
-<hr>
-<h3>JavaScript</h3>
-<p>If you want an intro to programming and JavaScript, I think everyone agrees that <a href="http://eloquentjavascript.net/">Eloquent JavaScript</a> is the right book. If you know how to program and want the dense low-down on JavaScript, the classic is <a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a>. There's probably more modern stuff because now you can start a whole company and even convince people to fund you, all with JavaScript. But here's a book I actually read:</p>
-<p><a href="http://shop.oreilly.com/product/0636920028857.do">Functional JavaScript</a> covers interesting functional programming techniques with JavaScript and the <a href="http://underscorejs.org/">underscore</a> library. I liked the content, but I also liked the writing so much that I looked for more by the author, which is what led me to the Clojure book below.</p>
-<p><img alt="Functional JavaScript" src="functional_js.gif"></p>
-<hr>
-<h3>Clojure</h3>
-<p><a href="https://clojure.org/">Clojure</a> is a neat language, and <a href="http://www.joyofclojure.com/">The Joy of Clojure</a> is a neat book. There is a ton to learn. It's "a Clojure book", but as the subtitle, "Thinking the Clojure Way", indicates, the language and the book are not bashful about philosophy, and it's a different philosophy from a lot of other languages and ways of thinking. Use and appreciate functional programming with immutable data structures.</p>
-<p><a href="http://www.joyofclojure.com/"><img alt="The Joy of Clojure" src="joy_of_clojure.png"></a></p>
-<hr>
-<h3>R</h3>
-<p>Years back I loved <a href="https://www.nostarch.com/artofr.htm">The Art of R Programming</a> for acknowledging that you need to program in R. Some books treat R like it's a statistics GUI that, for reasons unknown, you happen to have to type to use.</p>
-<p>Nowadays I think Hadley's freely available <a href="http://adv-r.had.co.nz/">Advanced R</a> is by far the best R book. Despite the title, it does also cover introductory material, but the pace is quicker and the depth is greater than The Art of R Programming.</p>
-<p><a href="http://adv-r.had.co.nz/"><img alt="Advanced R" src="advanced_r.jpg"></a></p>
-<hr>
-<h3>git</h3>
-<p><a href="https://git-scm.com/">git</a> is not a language, it's a version control tool, but I'm including it here because there's an obvious book for it which is free online. It's called <a href="https://git-scm.com/book/en/v2">Pro Git</a>. Newcomers to git sometimes find git confusing, and there's a simple solution: read the book. Read the whole book. Just read it.</p>
-<p><a href="https://git-scm.com/book/en/v2"><img alt="Pro Git" src="pro_git.jpg"></a></p>
-<hr>
-<p>See also <a href="/20160320-books_for_professionals/">Books for Professionals</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20160322-books_for_programmers/</link>
-<guid>http://planspace.org/20160322-books_for_programmers/</guid>
-<pubDate>Tue, 22 Mar 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
