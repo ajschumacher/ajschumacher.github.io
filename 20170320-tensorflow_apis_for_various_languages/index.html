@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TensorFlow APIs for Various Languages</title>
+  </head>
+  <body>
+    <article>
+<h1>TensorFlow APIs for Various Languages</h1>
+<p class="date">Monday March 20, 2017</p>
+<p>You couldn't be blamed for thinking that <a href="https://www.tensorflow.org/">TensorFlow</a> is a Python package. And a lot of TensorFlow functionality is unique to Python. But the core of TensorFlow—the part of TensorFlow that most truly <em>is</em> TensorFlow—is the distributed runtime ("TensorFlow Distributed Execution Engine") and Python is just one way to talk to it.</p>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png" /></p>
+<p>(Image from Martin Wicke's TensorFlow Dev Summit 2017 talk, <a href="https://www.youtube.com/watch?v=t64ortpgS-E">TensorFlow High-Level APIs: Models in a Box</a>.)</p>
+<p>The runtime itself is written in C++, but it has APIs ("frontends") in many languages.</p>
+<hr />
+<h3>C</h3>
+<p>The only TensorFlow APIs with any <a href="https://www.tensorflow.org/programmers_guide/version_semantics">official stability</a> are the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/c/c_api.h">C API</a> and (parts of) the Python API.</p>
+<p>TensorFlow <a href="https://www.tensorflow.org/extend/language_bindings">suggests</a> that you use the C API if you are making a TensorFlow API for some other language. Lots of programming languages have mechanisms for connecting with <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>. In a very real sense the TensorFlow C API exists <em>so that</em> other APIs can be built.</p>
+<p>There are a number of non-Python <a href="https://www.tensorflow.org/api_docs/">languages with TensorFlow APIs</a> but for the most part I will consider them "deploy only" ("inference only") and largely ignore them.</p>
+<p><img alt="C programming language" src="img/clang.png" /></p>
+<hr />
+<h3>C++</h3>
+<p>The <a href="https://www.tensorflow.org/api_docs/cc/">C++ API</a> is "exposed through header files in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/cc">tensorflow/cc</a>" and <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a> is the language that the TensorFlow runtime is written in, but the C++ API is still marked as experimental and has fewer features than are accessible via the Python API.</p>
+<p>As a possibly interesting historical note, <a href="https://research.google.com/archive/mapreduce.html">the MapReduce paper</a> was another place where the world saw Google (and Jeff Dean) making something cool with C++. Yahoo! (and others) eventually implemented those concepts in Java, as <a href="http://hadoop.apache.org/">Hadoop</a>. Google seems to continue to do a lot of work in C++.</p>
+<p><img alt="C++ programming language" src="img/cplusplus.png" /></p>
+<hr />
+<h3>Java</h3>
+<p>Possibly recognizing <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java's</a> presence in industry, TensorFlow now has a <a href="https://www.tensorflow.org/api_docs/java/reference/org/tensorflow/package-summary">Java API</a>.</p>
+<p><img alt="Java programming language" src="img/javalang.png" /></p>
+<hr />
+<h3>Go</h3>
+<p><a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a> is a Google programming language, and so it seems appropriate that there is a <a href="https://godoc.org/github.com/tensorflow/tensorflow/tensorflow/go">Go API</a> for TensorFlow.</p>
+<p><img alt="Go programming language" src="img/golang.png" /></p>
+<hr />
+<h3>Rust</h3>
+<p><a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a> is a neat language, and it has a TensorFlow <a href="https://github.com/tensorflow/rust">api</a> too (<a href="https://tensorflow.github.io/rust/tensorflow/">docs</a>).</p>
+<p><img alt="Rust programming language" src="img/rust.png" /></p>
+<hr />
+<h3>Haskell</h3>
+<p><a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell</a> is not a language I would have guessed would have a TensorFlow API, but <a href="https://github.com/tensorflow/haskell">it does</a> (<a href="https://tensorflow.github.io/haskell/haddock/">docs</a>).</p>
+<p><img alt="Haskell programming language" src="img/haskell.png" /></p>
+<hr />
+<h3>Python</h3>
+<p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is where the action is. TensorFlow's <a href="https://www.tensorflow.org/api_docs/python/">Python API documentation</a> is headed simply "All symbols in TensorFlow" and it really does <a href="https://www.tensorflow.org/extend/language_bindings">seem to be</a> that TensorFlow functionality is prototyped in Python and then moved into the C++ core:</p>
+<blockquote>
+<p>Python was the first client language supported by TensorFlow and currently supports the most features. More and more of that functionality is being moved into the core of TensorFlow (implemented in C++) and exposed via a C API.</p>
+</blockquote>
+<p>The Python API is so rich, you'll have to choose which levels of Python API you'll want to use.</p>
+<p><img alt="Python programming language" src="img/python.png" /></p>
+<hr />
+<h3>R</h3>
+<p>The <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a> TensorFlow API made by <a href="https://www.rstudio.com/">RStudio</a> takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. <a href="https://rstudio.github.io/tensorflow/">The R API</a> (<a href="https://github.com/rstudio/tensorflow">on github</a>) wraps the Python API, with all the good and bad that comes with that approach. But whether or not Google approves of the approach, there is a way to access TensorFlow from R!</p>
+<p><img alt="R programming language" src="img/rlang.png" /></p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

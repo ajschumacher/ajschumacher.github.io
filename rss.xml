@@ -7,6 +7,58 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow APIs for Various Languages</title>
+<description><![CDATA[
+
+<p>You couldn't be blamed for thinking that <a href="https://www.tensorflow.org/">TensorFlow</a> is a Python package. And a lot of TensorFlow functionality is unique to Python. But the core of TensorFlow&#8212;the part of TensorFlow that most truly <em>is</em> TensorFlow&#8212;is the distributed runtime ("TensorFlow Distributed Execution Engine") and Python is just one way to talk to it.</p>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<p>(Image from Martin Wicke's TensorFlow Dev Summit 2017 talk, <a href="https://www.youtube.com/watch?v=t64ortpgS-E">TensorFlow High-Level APIs: Models in a Box</a>.)</p>
+<p>The runtime itself is written in C++, but it has APIs ("frontends") in many languages.</p>
+<hr>
+<h3>C</h3>
+<p>The only TensorFlow APIs with any <a href="https://www.tensorflow.org/programmers_guide/version_semantics">official stability</a> are the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/c/c_api.h">C API</a> and (parts of) the Python API.</p>
+<p>TensorFlow <a href="https://www.tensorflow.org/extend/language_bindings">suggests</a> that you use the C API if you are making a TensorFlow API for some other language. Lots of programming languages have mechanisms for connecting with <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>. In a very real sense the TensorFlow C API exists <em>so that</em> other APIs can be built.</p>
+<p>There are a number of non-Python <a href="https://www.tensorflow.org/api_docs/">languages with TensorFlow APIs</a> but for the most part I will consider them "deploy only" ("inference only") and largely ignore them.</p>
+<p><img alt="C programming language" src="img/clang.png"></p>
+<hr>
+<h3>C++</h3>
+<p>The <a href="https://www.tensorflow.org/api_docs/cc/">C++ API</a> is "exposed through header files in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/cc">tensorflow/cc</a>" and <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a> is the language that the TensorFlow runtime is written in, but the C++ API is still marked as experimental and has fewer features than are accessible via the Python API.</p>
+<p>As a possibly interesting historical note, <a href="https://research.google.com/archive/mapreduce.html">the MapReduce paper</a> was another place where the world saw Google (and Jeff Dean) making something cool with C++. Yahoo! (and others) eventually implemented those concepts in Java, as <a href="http://hadoop.apache.org/">Hadoop</a>. Google seems to continue to do a lot of work in C++.</p>
+<p><img alt="C++ programming language" src="img/cplusplus.png"></p>
+<hr>
+<h3>Java</h3>
+<p>Possibly recognizing <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java's</a> presence in industry, TensorFlow now has a <a href="https://www.tensorflow.org/api_docs/java/reference/org/tensorflow/package-summary">Java API</a>.</p>
+<p><img alt="Java programming language" src="img/javalang.png"></p>
+<hr>
+<h3>Go</h3>
+<p><a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a> is a Google programming language, and so it seems appropriate that there is a <a href="https://godoc.org/github.com/tensorflow/tensorflow/tensorflow/go">Go API</a> for TensorFlow.</p>
+<p><img alt="Go programming language" src="img/golang.png"></p>
+<hr>
+<h3>Rust</h3>
+<p><a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a> is a neat language, and it has a TensorFlow <a href="https://github.com/tensorflow/rust">api</a> too (<a href="https://tensorflow.github.io/rust/tensorflow/">docs</a>).</p>
+<p><img alt="Rust programming language" src="img/rust.png"></p>
+<hr>
+<h3>Haskell</h3>
+<p><a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell</a> is not a language I would have guessed would have a TensorFlow API, but <a href="https://github.com/tensorflow/haskell">it does</a> (<a href="https://tensorflow.github.io/haskell/haddock/">docs</a>).</p>
+<p><img alt="Haskell programming language" src="img/haskell.png"></p>
+<hr>
+<h3>Python</h3>
+<p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is where the action is. TensorFlow's <a href="https://www.tensorflow.org/api_docs/python/">Python API documentation</a> is headed simply "All symbols in TensorFlow" and it really does <a href="https://www.tensorflow.org/extend/language_bindings">seem to be</a> that TensorFlow functionality is prototyped in Python and then moved into the C++ core:</p>
+<blockquote>
+<p>Python was the first client language supported by TensorFlow and currently supports the most features. More and more of that functionality is being moved into the core of TensorFlow (implemented in C++) and exposed via a C API.</p>
+</blockquote>
+<p>The Python API is so rich, you'll have to choose which levels of Python API you'll want to use.</p>
+<p><img alt="Python programming language" src="img/python.png"></p>
+<hr>
+<h3>R</h3>
+<p>The <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a> TensorFlow API made by <a href="https://www.rstudio.com/">RStudio</a> takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. <a href="https://rstudio.github.io/tensorflow/">The R API</a> (<a href="https://github.com/rstudio/tensorflow">on github</a>) wraps the Python API, with all the good and bad that comes with that approach. But whether or not Google approves of the approach, there is a way to access TensorFlow from R!</p>
+<p><img alt="R programming language" src="img/rlang.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</link>
+<guid>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</guid>
+<pubDate>Mon, 20 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Thank You for Reaching Out</title>
 <description><![CDATA[
 
@@ -1755,176 +1807,6 @@ anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-o
 <link>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</link>
 <guid>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</guid>
 <pubDate>Sat, 16 Apr 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Mindstorms: Children, Computers, and Powerful Ideas</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Mindstorms:_Children,_Computers,_and_Powerful_Ideas">Mindstorms</a> is a book from 1980. It inspired, among many things, <a href="https://en.wikipedia.org/wiki/Lego_Mindstorms">Lego Mindstorms</a>. It's been <a href="http://worrydream.com/LearnableProgramming/">called</a> &#8220;perhaps the greatest book ever written on learning in general&#8221;. And it contains <a href="/20151231-juggling_for_programmers/">a lesson on juggling</a>. Here are some quotes and notes I extracted.</p>
-<p><a href="http://www.amazon.com/Mindstorms-Children-Computers-Powerful-Ideas/dp/0465046746"><img alt="Mindstorms: Children, Computers, and Powerful Ideas" src="mindstorms.jpg"></a></p>
-<hr>
-<p>One of the central themes of the book is "that children can learn to use computers in a masterful way" (p. vii) and one of the central questions I have is whether children today are doing so.</p>
-<hr>
-<p>From the introduction to the second edition (p. xv):</p>
-<blockquote>
-<p>"From the perspective of the 1990s, it appears bizarre or downright reactionary that <em>Mindstorms</em> makes no reference to gender or multiculturalism. I have become convinced that recognizing the <a href="https://en.wikipedia.org/wiki/Androcentrism">androcentric</a> nature of traditional ways of knowing will play a central role in producing change in education."</p>
-<p>"... the ultimate theoretical task in advancing, for example, the learning of mathematics, is not producing a range of so-and-so-centric kinds of mathematical knowledge but rather finding ways of thinking about mathematical knowledge that will allow each individual to make what in <em>Mindstorms</em> I call a <a href="https://en.wiktionary.org/wiki/syntonic">syntonic</a> appropriation."</p>
-</blockquote>
-<p>I relate this to the later work by others in <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">Where Mathematics Comes From</a> which builds mathematical understanding on metaphor "syntonic with" human experience.</p>
-<hr>
-<p>In the preface (p. xxi):</p>
-<blockquote>
-<p>"The computer is the <a href="https://en.wikipedia.org/wiki/Proteus">Proteus</a> of machines."</p>
-</blockquote>
-<hr>
-<p>On page 23:</p>
-<blockquote>
-<p>"... many children are held back in their learning because they have a model of learning in which you have either 'got it' or 'got it wrong.' But when you learn to program you almost never get it right the first time. <strong>Learning to be a master programmer is learning to become highly skilled at isolating and correcting 'bugs,'</strong> the parts that keep the program from working. The question to ask about the program is not whether it is right or wrong, but if it is fixable. <strong>If this way of looking at intellectual products were generalized to how the larger culture thinks about knowledge and its acquisition, we all might be less intimidated by our fears of 'being wrong.'</strong>" (Emphasis mine.)</p>
-</blockquote>
-<hr>
-<p>On page 31:</p>
-<blockquote>
-<p>"... [meaningful use of computers] comes into head-on collision with the many aspects of school whose effect, if not whose intention, is to 'infantilize' the child."</p>
-<p>"I see Piaget as the theorist of learning without curriculum and the theorist of the kind of learning that happens without deliberate teaching. To turn him into the theorist of a new curriculum is to stand him on his head."</p>
-</blockquote>
-<hr>
-<p>On page 32:</p>
-<blockquote>
-<p>"... <strong>educational intervention means changing the culture</strong>, planting new constructive elements in it and eliminating noxious ones. This is a more ambitious undertaking than introducing a curriculum change, ..." (Emphasis mine.)</p>
-<p>"The educator must be an anthropologist."</p>
-</blockquote>
-<hr>
-<p>On page 37 Papert anticipates personal computers being a way to side-step the sluggishness of the traditional education system, leading to the sentence that closes the first chapter:</p>
-<blockquote>
-<p>"There might be a renaissance of thinking about education."</p>
-</blockquote>
-<hr>
-<p>From page 39 to 40:</p>
-<blockquote>
-<p>"To my ear the word 'mathophobia' has two associations. One of these is a widespread fear of mathematics, which often has the intensity of a real phobia. The other comes from the meaning of the stem 'math.' In Greek it means 'learning' in a general sense. In our culture, fear of learning is no less endemic (although more frequently disguised) than fear of mathematics."</p>
-</blockquote>
-<hr>
-<p>Page 50:</p>
-<blockquote>
-<p>"It is easy to understand why math and grammar fail to make sense to children when they fail to make sense to everyone around them and why helping children to make sense of them requires more than a teacher making the right speech or putting the right diagram on the board. I have asked many teachers and parents what they thought mathematics to be and why it was important to learn it. Few held a view of mathematics that was sufficiently coherent to justify devoting several thousand hours of a child's life to learning it, and children sense this. When a teacher tells a student that the reason for those many hours of arithmetic is to be able to check the change at the supermarket, the teacher is simply not believed. Children see such 'reasons' as one more example of adult double talk. The same effect is produced when children are told school math is 'fun' when they are pretty sure that teachers who say so spend their leisure hours on anything except the allegedly fun-filled activity. Nor does it help to tell them that they need math to become scientists - most children don't have such a plan. The children can see perfectly well that the teacher does not like math any more than they do and that the reason for doing it is simply that it has been inscribed into the curriculum. All of this erodes children's confidence in the adult world and the process of education. <em>And I think it introduces a deep element of dishonesty into the educational relationship.</em>" (Emphasis in original.)</p>
-<p>"Children perceive the school's rhetoric about mathematics as double talk. In order to remedy the situation we must first acknowledge that the child's perception is fundamentally correct. The <em>kind of mathematics</em> foisted on children in schools is not meaningful, fun, or even very useful." (Emphasis in original.)</p>
-</blockquote>
-<p>I think this is an important point, and it sets off two trains of thought for me.</p>
-<p>First, and more directly to Papert's point, why learn math? I agree it isn't to make change at a store, just have fun, or prepare for some specialized application. I side with those who hold that math is about thinking, and while it is not clearly present in learning long division, the kind of math that I think is worth spending time on is the distillation of good thinking. Mathematics is argument stripped of rhetoric. If logic is a more comfortable word, then use it, but don't worry about whether you can calculate a square root if you can't <a href="https://www.ets.org/gre/revised_general/prepare/analytical_writing/argument/prepare_task">analyze an argument</a>. One thing that math teaches you is that (at least in certain limited domains or ways) arguments actually can be 100% right and not subject to debate. There are real differences between being right and wrong and we can think about them.</p>
-<p>Second, it is interesting to think about what "makes sense" and how we think about various topics. By this I mean that math, properly taught/learned, "makes sense" in that it has internal consistency and logic that binds its ideas together. On the other hand, English spelling makes very little sense except in very different ways, such as possibly a historical "way of knowing".</p>
-<hr>
-<p>On page 60:</p>
-<blockquote>
-<p>"They learn a general 'mathetic principle,' making components to favor modularity. And they learn to use the very powerful idea of 'state.'"</p>
-</blockquote>
-<hr>
-<p>On page 61:</p>
-<blockquote>
-<p>"The programmer is encouraged to study the bug rather than forget the error."</p>
-</blockquote>
-<hr>
-<p>On page 63:</p>
-<blockquote>
-<p>"Make sense of what you want to learn."</p>
-</blockquote>
-<hr>
-<p>On page 71:</p>
-<blockquote>
-<p>"Of all ideas I have introduced to children, recursion stands out as the one idea that is particularly able to evoke an excited response."</p>
-</blockquote>
-<hr>
-<p>On page 74:</p>
-<blockquote>
-<p>"In the LOGO environment new ideas are often acquired as a means of satisfying a personal need to do something one could not do before."</p>
-</blockquote>
-<hr>
-<p>On page 76:</p>
-<blockquote>
-<p>"... what is important when we give children a theorem to use is not that they should memorize it. What matters most is that by growing up with a few very powerful theorems one comes to appreciate how certain ideas can be used as tools to think with over a lifetime. One learns to enjoy and to respect the power of powerful ideas. <strong>One learns that the most powerful idea of all is the idea of powerful ideas.</strong>" (Emphasis mine.)</p>
-</blockquote>
-<hr>
-<p>On page 96:</p>
-<blockquote>
-<p>"An important component in the history of knowledge is the development of techniques that increase the potency of 'words and diagrams.'"</p>
-</blockquote>
-<hr>
-<p>The idea of the child as epistemologist appears throughout.</p>
-<hr>
-<p>On page 100:</p>
-<blockquote>
-<p>"One might even say that computer science is wrongly so called: Most of it is not the science of computers, but the science of descriptions and descriptive languages."</p>
-</blockquote>
-<hr>
-<p>On page 113:</p>
-<blockquote>
-<p>"<strong>We can learn more, and more quickly, by taking conscious control of the learning process, articulating and analyzing our behavior.</strong>" (Emphasis mine.)</p>
-</blockquote>
-<hr>
-<p>On page 115:</p>
-<blockquote>
-<p>"Discovery cannot be a setup; invention cannot be scheduled."</p>
-</blockquote>
-<hr>
-<p>From page 116 to 117:</p>
-<blockquote>
-<p>"A child (and, indeed, perhaps most adults) lives in a world in which everything is only partially understood; well enough perhaps, but never completely."</p>
-</blockquote>
-<hr>
-<p>On page 120:</p>
-<blockquote>
-<p>"First, relate what is new and to be learned to something you already know. Second, take what is new and make it your own: ..."</p>
-</blockquote>
-<hr>
-<p>On page 129:</p>
-<blockquote>
-<p>"... each of the microworlds we described can function as an explorable and manipulable environment."</p>
-</blockquote>
-<hr>
-<p>From page 139 to 140:</p>
-<blockquote>
-<p>"Everyone is too busy following the cookbook. ... The computer is used to aggravate the already too-quantitative methodology of the physics classes."</p>
-</blockquote>
-<hr>
-<p>Cool stuff from 142 to 145 (roughly) on the importance of working with and updating intuitions rather than discarding them for formalism alone.</p>
-<hr>
-<p>On page 155:</p>
-<blockquote>
-<p>"The cultural assimilation of the computer presence will give rise to a computer literacy. This phrase is often taken as meaning knowing how to program, or knowing about the varied uses made of computers. But true computer literacy is not just knowing how to make use of computers and computational ideas. It is knowing when it is appropriate to do so."</p>
-</blockquote>
-<hr>
-<p>From page 158 to 159:</p>
-<blockquote>
-<p>"the idea of studying learning by focusing on the structure of what is learned"</p>
-</blockquote>
-<p>I think this idea is hugely important and too-often ignored. It is an empty pedagogy that spends all its effort in determining clever ways to teach the wrong things. The example in the text is of learning to ride a bike:</p>
-<blockquote>
-<p>"Thus learning to ride [a bike] does not mean learning to balance, it means learning not to unbalance, learning not to interfere."</p>
-</blockquote>
-<hr>
-<p>The interpretation of <a href="https://en.wikipedia.org/wiki/Nicolas_Bourbaki">Bourbaki</a> on pages 159 and 160 is interesting but does not seem to be prominent today; by the wiki entry anyway, it seems like they were a good deal more formal than would be appropriate for early educational purposes.</p>
-<hr>
-<p>The idea of a "transitional object" (page 161) is interesting and connects possibly to ideas about using manipulatives in math education.</p>
-<hr>
-<p>On page 172:</p>
-<blockquote>
-<p>"Consider another example of how our images of knowledge can subvert our sense of ourselves as intellectual agents. Educators sometimes hold up an ideal of knowledge as having the kind of coherence defined by formal logic. But these ideals bear little resemblance to the way in which most people experience themselves. The subjective experience of knowledge is more similar to the chaos and controversy of competing agents than to the certitude and orderliness of <em>p</em>'s implying <em>q</em>'s. The discrepancy between our experience of ourselves and our idealizations of knowledge has an effect: It intimidates us, it lessens the sense of our own competence, and it leads us into counterproductive strategies for learning and thinking."</p>
-</blockquote>
-<hr>
-<p>On page 177:</p>
-<blockquote>
-<p>"... a particular computer culture, a <a href="https://en.wikipedia.org/wiki/Mathetics">mathetic</a> one, that is, one that helps us not only to learn but to learn about learning."</p>
-</blockquote>
-<hr>
-<p>On page 179:</p>
-<blockquote>
-<p>"In this book we have considered how mathematics might be learned in settings that resemble the Brazilian samba school, in settings that are real, socially cohesive, and where experts and novices are all learning."</p>
-<p>"John Dewey expressed a nostalgia for earlier societies where the child becomes a hunter by real participation and by playful imitation."</p>
-</blockquote>
-<p><a href="http://www.amazon.com/Mindstorms-Children-Computers-Powerful-Ideas/dp/0465046746"><img alt="Mindstorms: Children, Computers, and Powerful Ideas" src="mindstorms.jpg"></a></p>    
-    ]]></description>
-<link>http://planspace.org/20160327-mindstorms/</link>
-<guid>http://planspace.org/20160327-mindstorms/</guid>
-<pubDate>Sun, 27 Mar 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
