@@ -24,7 +24,7 @@ There are a number of non-Python [languages with TensorFlow APIs](https://www.te
 
 ### C++
 
-The [C++ API](https://www.tensorflow.org/api_docs/cc/) is "exposed through header files in [tensorflow/cc](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/cc)" and [C++](https://en.wikipedia.org/wiki/C%2B%2B) is the language that the TensorFlow runtime is written in, but the C++ API is still marked as experimental and has fewer features than are accessible via the Python API.
+The [C++ API](https://www.tensorflow.org/api_docs/cc/) is "exposed through header files in [tensorflow/cc](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/cc)" and [C++](https://en.wikipedia.org/wiki/C%2B%2B) is the language that the TensorFlow runtime is written in, but the C++ API is still marked as experimental and has fewer features than are accessible via the Python API. It may be where you want to be for some deploy scenarios.
 
 As a possibly interesting historical note, [the MapReduce paper](https://research.google.com/archive/mapreduce.html) was another place where the world saw Google (and Jeff Dean) making something cool with C++. Yahoo! (and others) eventually implemented those concepts in Java, as [Hadoop](http://hadoop.apache.org/). Google seems to continue to do a lot of work in C++.
 
