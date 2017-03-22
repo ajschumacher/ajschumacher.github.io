@@ -7,6 +7,53 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow Logging</title>
+<description><![CDATA[
+
+<p>TensorFlow wraps the standard Python <a href="https://docs.python.org/3/library/logging.html">logging library</a>, exposing functionality at <code>tf.logging</code>.</p>
+<p>This means that you can start logging things immediately after importing TensorFlow:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; tf.logging.info('Things are good!')
+INFO:tensorflow:Things are good!</code></pre>
+
+<p>TensorFlow also automatically logs things using this functionality. For example, estimators will log out information about the many things they're up to.</p>
+<p>The TensorFlow <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py">logging code</a> also adds some non-standard functionality. A comment notes that some of the code "is taken from pyglib/logging". I assume pyglib is a Google-internal Python library. I think it's interesting to see these Google tools <a href="/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/">appearing here and there</a>.</p>
+<p>Here's an example of TensorFlow logging's added functionality: <code>log_every_n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
+INFO:tensorflow:Common error!
+&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
+&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
+INFO:tensorflow:Common error!</code></pre>
+
+<p>(This example won't work in an <a href="https://ipython.org/">IPython</a> shell because every new REPL "read" there looks like a new file to Python.)</p>
+<hr>
+<p>If you want to use regular Python logging techniques in addition to TensorFlow's mechanism, everything should generally work, but it is possible to get into a situation that seems surprising in a REPL.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import logging
+&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; logging.warn('Something interesting!')
+WARNING:root:Something interesting!
+&gt;&gt;&gt; tf.logging.info('1+1=2')
+INFO:tensorflow:1+1=2
+INFO:tensorflow:1+1=2</code></pre>
+
+<p>This doubling is because TensorFlow's log messages are bubbling up to the root logger as intended, but both the root logger and TensorFlow's logger are getting handled in the same place, so we see the message twice.</p>
+<p>Shortly after the initial release of TensorFlow this kind of thing <a href="http://stackoverflow.com/questions/33662648/tensorflow-causes-logging-messages-to-double">was happening more than it should</a>, but the current behavior is correct.</p>
+<p>The situation shown above happens because both the base logging package and TensorFlow's logging are trying to automatically be helpful by writing things out to the interactive session.</p>
+<p>In practice you should set up log handlers yourself, <a href="http://docs.python-guide.org/en/latest/writing/logging/">as appropriate</a>. And of course if you only use one or the other of <code>logging</code> or <code>tf.logging</code> you'll be particularly unlikely to have any conflicts.</p>
+<p>A poor solution to the doubling above would be to turn off log message propagation from the TensorFlow logger.</p>
+<pre><code class="language-python">&gt;&gt;&gt; tf.logging._logger.propagate = False
+&gt;&gt;&gt; tf.logging.info('1+1=2')
+INFO:tensorflow:1+1=2</code></pre>
+
+<p>But I can't recommend using that as anything but a quick fix in a REPL if double messages happen to be bothering you.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170322-tensorflow_logging/</link>
+<guid>http://planspace.org/20170322-tensorflow_logging/</guid>
+<pubDate>Wed, 22 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Various TensorFlow APIs for Python</title>
 <description><![CDATA[
 
@@ -1655,26 +1702,6 @@ forecasts.&#8221;</p><!-- mathjax for formulas -->
 <link>http://planspace.org/20160528-old_article_for_the_cardinal/</link>
 <guid>http://planspace.org/20160528-old_article_for_the_cardinal/</guid>
 <pubDate>Sat, 28 May 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Simple isn't Easy</title>
-<description><![CDATA[
-
-<p><a href="https://www.broadinstitute.org/bios/nick-patterson">Nick Patterson</a> of the <a href="https://www.broadinstitute.org/">Broad Institute</a> was on a recent <a href="http://www.thetalkingmachines.com/blog/2016/2/26/ai-safety-and-the-legacy-of-bletchley-park">episode</a> of the <a href="http://www.thetalkingmachines.com/">Talking Machines</a> podcast. He said some things that seemed right to me.</p>
-<p>First, he said:</p>
-<blockquote>
-<p>I think the most important thing to do on data analysis is to do the simple things right.</p>
-</blockquote>
-<p>I agree. I think that in a field where people are excited about complicated algorithms and flashy visuals, the importance of "fundamentals" is too often neglected.</p>
-<p>He also said:</p>
-<blockquote>
-<p>The smarter you are the less likely you are to make a stupid mistake.</p>
-</blockquote>
-<p>I think this is related to the above, but not necessarily only or even primarily about intelligence. I think it also has to do with humility, thoroughness, responsibility, and experience, at least.</p>    
-    ]]></description>
-<link>http://planspace.org/20160427-simple_isnt_easy/</link>
-<guid>http://planspace.org/20160427-simple_isnt_easy/</guid>
-<pubDate>Wed, 27 Apr 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
