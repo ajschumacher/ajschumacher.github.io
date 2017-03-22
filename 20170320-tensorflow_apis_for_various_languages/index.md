@@ -4,7 +4,7 @@ You couldn't be blamed for thinking that [TensorFlow](https://www.tensorflow.org
 
 ![TensorFlow three-tier diagram](img/tf_three_tiers.png)
 
-(Image from Martin Wicke's TensorFlow Dev Summit 2017 talk, [TensorFlow High-Level APIs: Models in a Box](https://www.youtube.com/watch?v=t64ortpgS-E).)
+(Image from the TensorFlow Dev Summit 2017 [keynote](https://www.youtube.com/watch?v=4n1AHvDvVvw).)
 
 The runtime itself is written in C++, but it has APIs ("frontends") in many languages.
 

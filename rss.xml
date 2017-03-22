@@ -7,12 +7,97 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Various TensorFlow APIs for Python</title>
+<description><![CDATA[
+
+<p>An early <a href="http://fastml.com/what-you-wanted-to-know-about-tensorflow/">perception</a> of TensorFlow was that the API was quite low-level.</p>
+<blockquote>
+<p>"meaning you&#8217;ll be multiplying matrices and vectors."</p>
+</blockquote>
+<p>TensorFlow offers ops for low-level operations, and from the beginning programmers used those low-level ops to build higher-level APIs.</p>
+<p>To paraphrase <a href="http://www.paulgraham.com/avg.html">Paul Graham</a>:</p>
+<blockquote>
+<p>"if you have a choice of several [APIs], it is, all other things being equal, a mistake to program in anything but the [highest-level] one."</p>
+</blockquote>
+<p>You don't need to be a Lisp hacker to make it easier to use TensorFlow the way you want by writing new functions and classes, and you probably should.</p>
+<p>But because TensorFlow had already done the obviously hard work of making low-level things work, it was relatively easy for lots of people to attempt the subtly hard work of designing higher-level APIs.</p>
+<p>This led to a proliferation of Python APIs, which can sometimes be confusing to track.</p>
+<p>Things are still moving around and settling a bit, but Google is communicating a pretty clear plan for official Python APIs for TensorFlow.</p>
+<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png"></p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<p>This plan changes some names and rearranges things slightly, but it's an incremental development of things that have existed for a while. We can look at how things have developed over time both for what's becoming official TensorFlow API and some of the projects that still exist outside official TensorFlow.</p>
+<hr>
+<h3>Python Frontend (op level)</h3>
+<p>You can continue to use TensorFlow's low-level APIs.</p>
+<p>There are ops, like <code>tf.matmul</code> and <code>tf.nn.relu</code>, which you might use to build a neural network architecture in full detail. To do really novel things, you may want this level of control. But you may also prefer to work with larger building blocks. The other other APIs below will mostly specialize in this kind of application.</p>
+<p>There are also ops like <code>tf.image.decode_jpeg</code> (and many others) which may be necessary but don't necessarily relate to what is usually considered the architecture of neural networks. Some higher-level APIs wrap some of this functionality, but they usually stay close to the building of network architectures and the training of such networks once defined.</p>
+<hr>
+<h3>Layers (as from TF-Slim)</h3>
+<p><a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
+<p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
+<p>Other parts of TF-Slim are likely still worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
+<p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
+<p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
+<p><img alt="slim... shady?" src="img/slim_shady.png"></p>
+<hr>
+<h3>Estimator (as from TF Learn)</h3>
+<p>Distinct from TensorFlow, the <a href="http://scikit-learn.org/">scikit-learn</a> project makes a lot of machine learning models conveniently available in Python.</p>
+<p><img alt="scikit-learn logo" src="img/sklearn.png"></p>
+<p>A key design element of scikit is that many different models offer the same simple API: they are all implemented as <em>estimators</em>. So regardless of whether the model is linear regression or a GBM, if your instantiated scikit-learn model object is called <code>estimator</code>, you can do all of these:</p>
+<pre><code class="language-python">estimator.fit(data, labels)       # train
+estimator.score(data, labels)     # test
+estimator.predict(data)           # run on new data</code></pre>
+
+<p>The estimator API for TensorFlow is directly inspired by scikit-learn, though implemented quite independently. Here's nearly equivalent TensorFlow code, assuming you have a TensorFlow estimator model instantiated as <code>estimator</code>:</p>
+<pre><code class="language-python">estimator.fit(data, labels)       # train
+estimator.evaluate(data, labels)  # test
+estimator.predict(data)           # run on new data</code></pre>
+
+<p>The only thing that changed in the code is scikit-learn's <code>score</code> method becomes <code>evaluate</code>, which I think is going to do a lot of good for the self esteem of TensorFlow models.</p>
+<p>There are other differences too. In scikit-learn, usually models have an idea of training "until done"&#8212;but in TensorFlow, if you don't specify a number of steps to train for, the model will go on training forever. TensorFlow estimators also do a lot of things by default, like adding TensorBoard summaries and saving model checkpoints.</p>
+<p>The estimators API started as <a href="https://github.com/tensorflow/skflow">skflow</a> ("scikit-flow") before moving into the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/learn/python/learn">tf.contrib.learn</a> ("TF Learn") and now the base estimator code is getting situated in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/estimator">tf.estimator</a> and <a href="https://www.tensorflow.org/extend/estimators">documentation</a> is accumulating.</p>
+<hr>
+<h3>Keras Model (absorbing Keras)</h3>
+<p><a href="https://keras.io/">Keras</a> was around before TensorFlow. It was always a high-level API for neural nets, originally running with <a href="http://www.deeplearning.net/software/theano/">Theano</a> as its backend.</p>
+<p>After the release of TensorFlow, Keras moved to also work with TensorFlow as a backend. And now TensorFlow is absorbing at least some aspects of the Keras project into the TensorFlow codebase, though <a href="https://twitter.com/fchollet">Fran&#231;ois Chollet</a> seems likely to continue championing Keras as a very fine project in its own right. (See also his response to a <a href="https://www.quora.com/What-will-Keras-do-with-TensorFlow-Slim">Quora question</a> about any possible relationship between TF-Slim and Keras.)</p>
+<p>Once specified, Keras models offer basically the same API (<code>fit</code>/<code>evaluate</code>/<code>predict</code>) as estimators (above).</p>
+<p>Keras is appearing in the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/keras">tf.contrib.keras</a> and should move to <code>tf.keras</code> at TensorFlow 1.2.</p>
+<p><img alt="Keras" src="img/keras.jpg"></p>
+<hr>
+<h3>Canned Estimators</h3>
+<p>Canned estimators are concrete pre-defined models that follow the estimator conventions. Currently there are a bunch right in <code>tf.contrib.learn</code>, such as <code>LinearRegressor</code> and <code>DNNClassifier</code>. There are some elsewhere. For example, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/factorization/g3doc/kmeans.md">kmeans</a> is in <code>tf.contrib.factorization</code>. It isn't clear to me exactly where all the canned estimators will eventually settle down in the API.</p>
+<hr>
+<h3>Other APIs</h3>
+<p>All the APIs that follow are not part of the official TensorFlow project. I guess you could use them.</p>
+<p><img alt="Bucksstar Coffee" src="img/bucksstar.png"></p>
+<hr>
+<h3>Pretty Tensor</h3>
+<p><a href="https://github.com/google/prettytensor">Pretty Tensor</a> is still a Google project, so it might be worth checking out if you really like <a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent interfaces</a> with lots of chaining, like <a href="https://d3js.org/">d3</a>.</p>
+<hr>
+<h3>TFLearn</h3>
+<p>The confusingly named <a href="https://github.com/tflearn/tflearn">TFLearn</a> (no space; perhaps more clearly identified as <a href="(http://tflearn.org/)">TFLearn.org</a>) is not at all the same thing as the TF Learn (with a space) that appears in TensorFlow at <code>tf.contrib.learn</code>. TFLearn is a <a href="http://stackoverflow.com/questions/38859354/what-is-the-difference-between-tf-learn-aka-scikit-flow-and-tflearn-aka-tflea">separate</a> Python package that uses TensorFlow. It seems like it aspires to be like Keras. Here is the TFLearn logo:</p>
+<p><img alt="TFLearn logo" src="img/tflearn.png"></p>
+<hr>
+<h3>TensorLayer</h3>
+<p>Another one with a confusing name is <a href="https://github.com/zsdonghao/tensorlayer/">TensorLayer</a>. This is a separate package from TensorFlow and it's different from TensorFlow's layers API.</p>
+<p><img alt="TensorLayer logo" src="img/tensorlayer.png"></p>
+<hr>
+<p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
+<hr>
+<p>Thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170321-various_tensorflow_apis_for_python/</link>
+<guid>http://planspace.org/20170321-various_tensorflow_apis_for_python/</guid>
+<pubDate>Tue, 21 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TensorFlow APIs for Various Languages</title>
 <description><![CDATA[
 
 <p>You couldn't be blamed for thinking that <a href="https://www.tensorflow.org/">TensorFlow</a> is a Python package. And a lot of TensorFlow functionality is unique to Python. But the core of TensorFlow&#8212;the part of TensorFlow that most truly <em>is</em> TensorFlow&#8212;is the distributed runtime ("TensorFlow Distributed Execution Engine") and Python is just one way to talk to it.</p>
 <p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
-<p>(Image from Martin Wicke's TensorFlow Dev Summit 2017 talk, <a href="https://www.youtube.com/watch?v=t64ortpgS-E">TensorFlow High-Level APIs: Models in a Box</a>.)</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
 <p>The runtime itself is written in C++, but it has APIs ("frontends") in many languages.</p>
 <hr>
 <h3>C</h3>
@@ -52,7 +137,9 @@
 <hr>
 <h3>R</h3>
 <p>The <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a> TensorFlow API made by <a href="https://www.rstudio.com/">RStudio</a> takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. <a href="https://rstudio.github.io/tensorflow/">The R API</a> (<a href="https://github.com/rstudio/tensorflow">on github</a>) wraps the Python API, with all the good and bad that comes with that approach. But whether or not Google approves of the approach, there is a way to access TensorFlow from R!</p>
-<p><img alt="R programming language" src="img/rlang.png"></p>    
+<p><img alt="R programming language" src="img/rlang.png"></p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</link>
 <guid>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</guid>
@@ -1588,225 +1675,6 @@ forecasts.&#8221;</p><!-- mathjax for formulas -->
 <link>http://planspace.org/20160427-simple_isnt_easy/</link>
 <guid>http://planspace.org/20160427-simple_isnt_easy/</guid>
 <pubDate>Wed, 27 Apr 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Equivalences between Tables, Maps, Graphs, and Sets</title>
-<description><![CDATA[
-
-<p>By <em>tables</em>, I mean the relational database or well-used spreadsheet
-system of data in rectangular grids of rows and columns.</p>
-<pre><code>| property_a  | property_b  |
-|-------------|-------------|
-| value_a_one | value_b_one |
-| value_a_two | value_b_two |</code></pre>
-
-<p>By <em>maps</em>, I mean data in <a href="https://en.wikipedia.org/wiki/Associative_array">map</a> data structures. Maps are also known
-as associative arrays or dictionaries. In JavaScript they're called
-objects, and JavaScript Object Notation (<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>) is a common format.</p>
-<pre><code>[{property_a: value_a_one, property_b: value_b_one},
- {property_a: value_a_two, property_b: value_b_two}]</code></pre>
-
-<p>By <em>graphs</em>, I mean nodes connected by edges. <a href="https://www.w3.org/RDF/">RDF</a>, for example,
-has labels for both nodes and edges. One representation is <em>triples</em>
-of the form <code>subject, predicate, object</code>, where <code>subject</code> and <code>object</code>
-are nodes, and <code>predicate</code> is an edge.</p>
-<pre><code>id_one, property_a, value_a_one
-id_one, property_b, value_b_one
-id_two, property_a, value_a_two
-id_two, property_b, value_b_two</code></pre>
-
-<p>A visual for this <em>triple graph</em> shows two components.</p>
-<p><img alt="graph of triple data" src="triple_graph.png"></p>
-<p>Graphs can also have unlabeled edges, in which case one representation
-is <em>doubles</em> of the form <code>subject, object</code>.</p>
-<pre><code>id_one, id_a_one
-id_a_one, property_a
-id_a_one, value_a_one
-id_one, id_b_one
-id_b_one, property_b
-id_b_one, value_b_one
-id_two, id_a_two
-id_a_two, property_a
-id_a_two, value_a_two
-id_two, id_b_two
-id_b_two, property_b
-id_b_two, value_b_two</code></pre>
-
-<p>A visual for one component of this <em>double graph</em> shows how the
-additional identity nodes expand the representation.</p>
-<p><img alt="graph of double data" src="double_graph.png"></p>
-<p>In this formulation, with non-identity nodes always leaf nodes, double
-graphs are equivalent to <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">sets</a>.</p>
-<pre><code>[{{property_a, value_a_one}, {property_b, value_b_one}},
- {{property_a, value_a_two}, {property_b, value_b_two}}]</code></pre>
-
-<p>There are a lot of close equivalences:</p>
-<ul>
-<li>sets are mostly equivalent to double graphs</li>
-<li>maps are mostly equivalent to triple graphs</li>
-<li>tables and the above are all mostly equivalent</li>
-</ul>
-<hr>
-<p>Tabular data can be converted to map data. With <a href="https://www.python.org/">Python</a>'s
-<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas data frames</a> this is as easy as <code>dataframe.to_json()</code>.</p>
-<p>Often maps can be complex in ways that don't correspond immediately to
-tabular data, but still it's often possible for example to
-<a href="http://konklone.io/json/">convert JSON to CSV</a>.</p>
-<p>Graphs often work with doubles or triples directly as a storage
-format.</p>
-<p>Automatically converting tabular or map data to/from triples is less
-common. I have a little toy <a href="https://github.com/ajschumacher/dd">data diff</a> code that does a simple
-version of this. I think some parts of <a href="http://www.datomic.com/">datomic</a>'s internals do
-related conversions.</p>
-<p>Doubles are interesting but I don't know of any automatic converters
-to or from other formats.</p>
-<hr>
-<p>Some considerations argue against the primacy of two-dimensional data
-tables, and some of these concerns are valid, but it is not
-insignificant that spreadsheet interfaces seem to work pretty well for
-a lot of humans, and probably even if relying on a different
-underlying structure tables should remain as an interface.</p>
-<p>One complaint about spreadsheets in particular, though relational
-databases are not necessarily much better, is that people can and do
-choose layouts for their data that other people find appalling.</p>
-<p>Proponents of "data cubes" might also suggest that two dimensions is
-not enough for some types of data.</p>
-<p>Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper provides responses to both of these
-objections. In the first place, a wide range of table layouts are
-equivalent and can be converted to a standard "tidy" format if needed.
-There is no fundamental need to impose any given format in the name of
-aesthetics. In the second place, an arbitrary number of dimensions can
-be represented in a two-dimensional table, though such a
-representation may not be ideal for human users. There remains a
-question of how to provide a good interface.</p>
-<p>It is awkward in a flat table to represent things that have multiple
-values. For example, with one row per song and one "artist" field,
-what do you do for a song that has two artists?</p>
-<p>You might want to create a "second artist" field, which could be a
-solution to a different problem. What we really want is to have two
-entries each "in the same place" in the data.</p>
-<p>Whatever the solution, there is a related interface issue: especially
-with a tabular display, how do we show the user that there are two
-values "in a cell"?</p>
-<p>A technique common in relational databases hacks a graph approach into
-the tabular framework. It uses one table for songs, one table for
-artists, and a third table of "edges" connecting songs and artists
-together. This means you have to know about a lot of the tables'
-design. It can seem like overkill when the songs and artists are
-really just strings. And there's not an obvious solution to the
-interface problem.</p>
-<p>You might want to use composite data types: instead of storing one
-simple value in the song-artist position, for example, store a list of
-values. This could be done with relational databases or spreadsheets,
-but it generally isn't done. It is easy to do with pandas data frames
-or in JSON.</p>
-<p>Composite data values are probably worth having for some use cases.
-This comes with a new interface issue, distinct from the issue of an
-interface for multiple values. And it isn't a good solution to the
-original problem of allowing multiple values. Aside from lists in
-particular being ordered, there is a difference between something
-having multiple values, and something being one list.</p>
-<p>Composite data like lists also introduce complexity that could be
-avoided. It is easy and natural with triple graphs (though not maps)
-to represent multiple values.</p>
-<pre><code>id_song_one, artist, a_jazz_band
-id_song_one, artist, a_jazz_singer</code></pre>
-
-<p>The other side of multiple values is missing values. Tables, when
-realized as such, are "dense", meaning they have something at every
-intersection of row and column. Since we don't always have a value, a
-database might use <code>NULL</code>, or there could be special values like <code>NA</code>
-in <a href="https://www.r-project.org/">R</a>. With triple graphs (and maps) these aren't necessary as you
-always have a choice to not include a triple. Triples are naturally
-"sparse" for missing data (distinct from sparsity for zeros).</p>
-<pre><code>| property_a  | property_b  |
-|-------------|-------------|
-| value_a_one | NULL        |
-| NULL        | value_b_two |</code></pre>
-
-<pre><code>[{property_a: value_a_one},
- {property_b: value_b_two}]</code></pre>
-
-<pre><code>id_one, property_a, value_a_one
-id_two, property_b, value_b_two</code></pre>
-
-<p>Spreadsheets are not relational databases. Products like Excel
-implement a kind of discrete Cartesian quarter-plane within which
-simple data types can be placed. The spacial nature of the spreadsheet
-supports calculations like "add the value to the left of this one to
-the value three above" and having multiple tables "next to" one
-another.</p>
-<p>A spreadsheet user may be thinking of tables, and some software
-functionality may support this, but for the most part structure in
-spreadsheets is hallucinated by the user. It is a testament to human
-abilities, combining remarkable gestalt perception with careful
-attention to detail, that anything useful is ever accomplished with
-spreadsheets.</p>
-<p>It seems like giving spreadsheet software well-defined tables rather
-than vast expanses of empty cells would be a change worth making. Some
-tools, such as <a href="http://app.editdata.org/">editdata</a>, do this.</p>
-<p>It's awkward for people to think about things without physical
-metaphor. Set literals have to be written in some order, for example,
-despite not having any order intrinsically. In the same way, tables
-have spacial baggage. Columns are always next to one another. Rows are
-before or after one another.</p>
-<p>If you change the order of rows or columns, there is some change, but
-it isn't a very big change.</p>
-<pre><code>| property_a  | property_b  |
-|-------------|-------------|
-| value_a_one | value_b_one |
-| value_a_two | value_b_two |</code></pre>
-
-<pre><code>| property_b  | property_a  |
-|-------------|-------------|
-| value_b_one | value_a_one |
-| value_b_two | value_a_two |</code></pre>
-
-<p>If you diff CSV files after re-ordering columns, every line of the
-file has changed. But in some sense the data hasn't changed at all.</p>
-<p>I think the right way to conceptualize this is to see even a simple
-CSV file as a view of an underlying data set. While we usually don't
-make it explicit, the ordering of columns and rows is characteristic
-of the view and not the data.</p>
-<p>With both tables and maps, sometimes the order of things has meaning
-that should really be in another field.</p>
-<p>Separate though sometimes conflated with ordering is the idea of a
-unique identity for each row or map. By their distinctness they have
-an implicit identity separate from any values.</p>
-<p>Especially when you're interested in comparing two versions of a data
-set, having an ID for each "row" is important. Otherwise you're in the
-fraught position of having to determine what changed and what was
-supposed to be the same, at the same time. This is impossible for at
-least some changes.</p>
-<p>The <a href="http://dat-data.com/">dat project</a> beta, for example, had an import <code>-key</code> option
-(see <a href="https://github.com/maxogden/dat/blob/dd984adaa57c35fa08cd2c315e22186378d6f928/docs/cli-docs.md">beta docs</a>). The default behavior though was to automatically
-generate a unique ID, which is also what <a href="https://www.mongodb.com/">MongoDB</a> does by default.</p>
-<p>When specifying IDs by hand it is tempting to make choices that turn
-out to be bad, like using a name as an ID and finding later both that
-names can change and multiple things can have the same name.</p>
-<p>Once there are unique IDs for rows/maps, comparison between versions
-easily discovers which have been added and removed, and those that
-remain can be compared to their partners.</p>
-<p>Doubles and sets as a data representation are interesting but may not
-be very useful. There is nothing to distinguish properties from
-values. It could probably still be worked out by finding patterns of
-value occurrences, but this would be expensive along the same lines as
-matching up rows without IDs. It is a little poetic to think about
-expressing things like <code>{smell, roses, raindrops}</code> but in the end the
-sets and doubles don't directly convey all the same information as the
-other formats. A while ago I thought that doubles were <a href="http://planspace.org/2012/06/27/doubles-are-sufficient-for-all-data/">sufficient</a>,
-but I no longer think so.</p>
-<p>My main interest in all this is dealing with the problem of versioning
-data, and the related problems of diffing and merging data. Often,
-only the most recent version of data is available or even stored
-anywhere, which I <a href="http://planspace.org/2014/04/05/data-done-wrong-the-only-most-recent-data-model/">don't like</a>.</p>
-<hr>
-<p>For all the graphs here, I'm not considering duplicate edges.</p>
-<p>I made the graph diagrams with <a href="https://www.draw.io/">draw.io</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</link>
-<guid>http://planspace.org/20160417-equivalences_between_tables_maps_graphs_and_sets/</guid>
-<pubDate>Sat, 16 Apr 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

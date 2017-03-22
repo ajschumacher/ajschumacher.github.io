@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Various TensorFlow APIs for Python</title>
+  </head>
+  <body>
+    <article>
+<h1>Various TensorFlow APIs for Python</h1>
+<p class="date">Tuesday March 21, 2017</p>
+<p>An early <a href="http://fastml.com/what-you-wanted-to-know-about-tensorflow/">perception</a> of TensorFlow was that the API was quite low-level.</p>
+<blockquote>
+<p>"meaning you’ll be multiplying matrices and vectors."</p>
+</blockquote>
+<p>TensorFlow offers ops for low-level operations, and from the beginning programmers used those low-level ops to build higher-level APIs.</p>
+<p>To paraphrase <a href="http://www.paulgraham.com/avg.html">Paul Graham</a>:</p>
+<blockquote>
+<p>"if you have a choice of several [APIs], it is, all other things being equal, a mistake to program in anything but the [highest-level] one."</p>
+</blockquote>
+<p>You don't need to be a Lisp hacker to make it easier to use TensorFlow the way you want by writing new functions and classes, and you probably should.</p>
+<p>But because TensorFlow had already done the obviously hard work of making low-level things work, it was relatively easy for lots of people to attempt the subtly hard work of designing higher-level APIs.</p>
+<p>This led to a proliferation of Python APIs, which can sometimes be confusing to track.</p>
+<p>Things are still moving around and settling a bit, but Google is communicating a pretty clear plan for official Python APIs for TensorFlow.</p>
+<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png" /></p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<p>This plan changes some names and rearranges things slightly, but it's an incremental development of things that have existed for a while. We can look at how things have developed over time both for what's becoming official TensorFlow API and some of the projects that still exist outside official TensorFlow.</p>
+<hr />
+<h3>Python Frontend (op level)</h3>
+<p>You can continue to use TensorFlow's low-level APIs.</p>
+<p>There are ops, like <code>tf.matmul</code> and <code>tf.nn.relu</code>, which you might use to build a neural network architecture in full detail. To do really novel things, you may want this level of control. But you may also prefer to work with larger building blocks. The other other APIs below will mostly specialize in this kind of application.</p>
+<p>There are also ops like <code>tf.image.decode_jpeg</code> (and many others) which may be necessary but don't necessarily relate to what is usually considered the architecture of neural networks. Some higher-level APIs wrap some of this functionality, but they usually stay close to the building of network architectures and the training of such networks once defined.</p>
+<hr />
+<h3>Layers (as from TF-Slim)</h3>
+<p><a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
+<p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
+<p>Other parts of TF-Slim are likely still worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
+<p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
+<p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
+<p><img alt="slim... shady?" src="img/slim_shady.png" /></p>
+<hr />
+<h3>Estimator (as from TF Learn)</h3>
+<p>Distinct from TensorFlow, the <a href="http://scikit-learn.org/">scikit-learn</a> project makes a lot of machine learning models conveniently available in Python.</p>
+<p><img alt="scikit-learn logo" src="img/sklearn.png" /></p>
+<p>A key design element of scikit is that many different models offer the same simple API: they are all implemented as <em>estimators</em>. So regardless of whether the model is linear regression or a GBM, if your instantiated scikit-learn model object is called <code>estimator</code>, you can do all of these:</p>
+<pre><code class="language-python">estimator.fit(data, labels)       # train
+estimator.score(data, labels)     # test
+estimator.predict(data)           # run on new data</code></pre>
+
+<p>The estimator API for TensorFlow is directly inspired by scikit-learn, though implemented quite independently. Here's nearly equivalent TensorFlow code, assuming you have a TensorFlow estimator model instantiated as <code>estimator</code>:</p>
+<pre><code class="language-python">estimator.fit(data, labels)       # train
+estimator.evaluate(data, labels)  # test
+estimator.predict(data)           # run on new data</code></pre>
+
+<p>The only thing that changed in the code is scikit-learn's <code>score</code> method becomes <code>evaluate</code>, which I think is going to do a lot of good for the self esteem of TensorFlow models.</p>
+<p>There are other differences too. In scikit-learn, usually models have an idea of training "until done"—but in TensorFlow, if you don't specify a number of steps to train for, the model will go on training forever. TensorFlow estimators also do a lot of things by default, like adding TensorBoard summaries and saving model checkpoints.</p>
+<p>The estimators API started as <a href="https://github.com/tensorflow/skflow">skflow</a> ("scikit-flow") before moving into the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/learn/python/learn">tf.contrib.learn</a> ("TF Learn") and now the base estimator code is getting situated in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/estimator">tf.estimator</a> and <a href="https://www.tensorflow.org/extend/estimators">documentation</a> is accumulating.</p>
+<hr />
+<h3>Keras Model (absorbing Keras)</h3>
+<p><a href="https://keras.io/">Keras</a> was around before TensorFlow. It was always a high-level API for neural nets, originally running with <a href="http://www.deeplearning.net/software/theano/">Theano</a> as its backend.</p>
+<p>After the release of TensorFlow, Keras moved to also work with TensorFlow as a backend. And now TensorFlow is absorbing at least some aspects of the Keras project into the TensorFlow codebase, though <a href="https://twitter.com/fchollet">François Chollet</a> seems likely to continue championing Keras as a very fine project in its own right. (See also his response to a <a href="https://www.quora.com/What-will-Keras-do-with-TensorFlow-Slim">Quora question</a> about any possible relationship between TF-Slim and Keras.)</p>
+<p>Once specified, Keras models offer basically the same API (<code>fit</code>/<code>evaluate</code>/<code>predict</code>) as estimators (above).</p>
+<p>Keras is appearing in the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/keras">tf.contrib.keras</a> and should move to <code>tf.keras</code> at TensorFlow 1.2.</p>
+<p><img alt="Keras" src="img/keras.jpg" /></p>
+<hr />
+<h3>Canned Estimators</h3>
+<p>Canned estimators are concrete pre-defined models that follow the estimator conventions. Currently there are a bunch right in <code>tf.contrib.learn</code>, such as <code>LinearRegressor</code> and <code>DNNClassifier</code>. There are some elsewhere. For example, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/factorization/g3doc/kmeans.md">kmeans</a> is in <code>tf.contrib.factorization</code>. It isn't clear to me exactly where all the canned estimators will eventually settle down in the API.</p>
+<hr />
+<h3>Other APIs</h3>
+<p>All the APIs that follow are not part of the official TensorFlow project. I guess you could use them.</p>
+<p><img alt="Bucksstar Coffee" src="img/bucksstar.png" /></p>
+<hr />
+<h3>Pretty Tensor</h3>
+<p><a href="https://github.com/google/prettytensor">Pretty Tensor</a> is still a Google project, so it might be worth checking out if you really like <a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent interfaces</a> with lots of chaining, like <a href="https://d3js.org/">d3</a>.</p>
+<hr />
+<h3>TFLearn</h3>
+<p>The confusingly named <a href="https://github.com/tflearn/tflearn">TFLearn</a> (no space; perhaps more clearly identified as <a href="(http://tflearn.org/)">TFLearn.org</a>) is not at all the same thing as the TF Learn (with a space) that appears in TensorFlow at <code>tf.contrib.learn</code>. TFLearn is a <a href="http://stackoverflow.com/questions/38859354/what-is-the-difference-between-tf-learn-aka-scikit-flow-and-tflearn-aka-tflea">separate</a> Python package that uses TensorFlow. It seems like it aspires to be like Keras. Here is the TFLearn logo:</p>
+<p><img alt="TFLearn logo" src="img/tflearn.png" /></p>
+<hr />
+<h3>TensorLayer</h3>
+<p>Another one with a confusing name is <a href="https://github.com/zsdonghao/tensorlayer/">TensorLayer</a>. This is a separate package from TensorFlow and it's different from TensorFlow's layers API.</p>
+<p><img alt="TensorLayer logo" src="img/tensorlayer.png" /></p>
+<hr />
+<p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
+<hr />
+<p>Thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
