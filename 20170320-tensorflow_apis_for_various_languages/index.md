@@ -78,7 +78,7 @@ The Python API is so rich, you'll have to choose which levels of Python API you'
 
 ### R
 
-The [R](https://en.wikipedia.org/wiki/R_(programming_language)) TensorFlow API made by [RStudio](https://www.rstudio.com/) takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. [The R API](https://rstudio.github.io/tensorflow/) ([on github](https://github.com/rstudio/tensorflow)) wraps the entire Python API. This is not exactly what the TensorFlow project recommends, but it gives R users access to all the features in the Python API, which would be quite a lot of work to replicate using only the C API.
+The [R](https://en.wikipedia.org/wiki/R_(programming_language)) TensorFlow API made by [RStudio](https://www.rstudio.com/) takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. The [R API](https://rstudio.github.io/tensorflow/) ([on github](https://github.com/rstudio/tensorflow)) wraps the entire Python API. This is not exactly what the TensorFlow project recommends, but it gives R users access to all the features in the Python API, which would be quite a lot of work to replicate using only the C API.
 
 ![R programming language](img/rlang.png)
 
