@@ -78,10 +78,12 @@ The Python API is so rich, you'll have to choose which levels of Python API you'
 
 ### R
 
-The [R](https://en.wikipedia.org/wiki/R_(programming_language)) TensorFlow API made by [RStudio](https://www.rstudio.com/) takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. [The R API](https://rstudio.github.io/tensorflow/) ([on github](https://github.com/rstudio/tensorflow)) wraps the Python API, with all the good and bad that comes with that approach. But whether or not Google approves of the approach, there is a way to access TensorFlow from R!
+The [R](https://en.wikipedia.org/wiki/R_(programming_language)) TensorFlow API made by [RStudio](https://www.rstudio.com/) takes a different approach than the APIs that use TensorFlow's C API to connect with TensorFlow. [The R API](https://rstudio.github.io/tensorflow/) ([on github](https://github.com/rstudio/tensorflow)) wraps the entire Python API. This is not exactly what the TensorFlow project recommends, but it gives R users access to all the features in the Python API, which would be quite a lot of work to replicate using only the C API.
 
 ![R programming language](img/rlang.png)
 
 ---
+
+Thanks to [Kevin Ushey](https://blog.rstudio.org/author/kevinusheyrstudio/) for [directing](https://support.rstudio.com/hc/en-us/community/posts/115005611307) me to the right venue, and to [@jjallaire](https://github.com/jjallaire) and [@pourzanj](https://github.com/pourzanj) for an illuminating [discussion](https://github.com/rstudio/tensorflow/issues/105) around the R TensorFlow API.
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
