@@ -84,6 +84,6 @@ The [R](https://en.wikipedia.org/wiki/R_(programming_language)) TensorFlow API m
 
 ---
 
-Thanks to [Kevin Ushey](https://blog.rstudio.org/author/kevinusheyrstudio/) for [directing](https://support.rstudio.com/hc/en-us/community/posts/115005611307) me to the right venue, and to [@jjallaire](https://github.com/jjallaire) and [@pourzanj](https://github.com/pourzanj) for an illuminating [discussion](https://github.com/rstudio/tensorflow/issues/105) around the R TensorFlow API.
+Thanks to [Kevin Ushey](https://blog.rstudio.org/author/kevinusheyrstudio/) for [directing](https://support.rstudio.com/hc/en-us/community/posts/115005611307) me to the right venue, and to [@jjallaire](https://github.com/jjallaire) and [@pourzanj](https://github.com/pourzanj) for an illuminating [discussion](https://github.com/rstudio/tensorflow/issues/105) about the R TensorFlow API.
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
