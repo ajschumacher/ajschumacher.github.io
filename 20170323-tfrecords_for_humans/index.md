@@ -138,4 +138,4 @@ You may eventually want to read TFRecords files with ops in a TensorFlow graph, 
 
 ---
 
-I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017]https://conferences.oreilly.com/oscon/oscon-tx.
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
