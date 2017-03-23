@@ -7,6 +7,110 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TFRecords for Humans</title>
+<description><![CDATA[
+
+<p>TensorFlow <a href="https://www.tensorflow.org/programmers_guide/reading_data#standard_tensorflow_format">recommends</a> its TFRecords format as the standard TensorFlow format for data on disk.</p>
+<p>You <a href="/20170312-use_only_what_you_need_from_tensorflow/">don't have to</a> use TFRecords with TensorFlow. But if you need to read data inside your TensorFlow graph, and a reader op doesn't exist for your data, it might be easier to transform your data to TFRecords than to write a <a href="https://www.tensorflow.org/extend/new_data_formats">custom data reader op</a>.</p>
+<p>Before using TFRecords in a distributed setting, you probably want to understand and work with them locally.</p>
+<hr>
+<h3>The TFRecords Format</h3>
+<p>TFRecords is a <a href="https://www.tensorflow.org/api_guides/python/python_io#TFRecords_Format_Details">simple binary file format</a>. It lets you put one or more strings of bytes into a file. You could put any bytes you like in a TFRecords file, but it'll be more useful to use the formats provided in TensorFlow.</p>
+<p>TensorFlow defines two <a href="https://developers.google.com/protocol-buffers/">protocol buffer</a> message types for use with TFRecords: the <a href="https://www.tensorflow.org/api_docs/python/tf/train/Example">Example</a> message type and the <a href="https://www.tensorflow.org/api_docs/python/tf/train/SequenceExample">SequenceExample</a> message type.</p>
+<p>The pre-defined protocol buffer message types offer flexibility by letting you arrange your data as a map from string keys to values that are lists of integers, lists of 32-bit floats, or lists of bytes.</p>
+<hr>
+<h3>Writing and Reading in the style of <code>Example</code> Records without TensorFlow</h3>
+<p>An equivalent representation of an <code>Example</code> TFRecord using Python dictionaries might look like this:</p>
+<pre><code class="language-python">my_dict = {'features' : {
+    'my_ints': [5, 6],
+    'my_float': [2.7],
+    'my_bytes': 'data'
+}}</code></pre>
+
+<p>In Python 2, the string literal <code>'data'</code> is bytes. The equivalent in Python 3 is <code>bytes('data', 'utf-8')</code>. And Python uses 64-bit floats rather than the 32-bit floats that TFRecords uses, so we have more precision in Python.</p>
+<p>The values in this <code>dict</code> are accessed like this:</p>
+<ul>
+<li><code>my_dict['features']['my_ints']</code></li>
+<li><code>my_dict['features']['my_float']</code></li>
+<li><code>my_dict['features']['my_bytes']</code></li>
+</ul>
+<p>Ordinarily, to save this data (serialize and write to disk) and then read it again (read from disk and deserialize) in Python you might use the <a href="https://docs.python.org/3/library/pickle.html">pickle</a> module. For example:</p>
+<pre><code class="language-python">import pickle
+
+my_dict_str = pickle.dumps(my_dict)
+with open('my_dict.pkl', 'w') as f:
+    f.write(my_dict_str)
+
+with open('my_dict.pkl', 'r') as f:
+    that_dict_str = f.read()
+that_dict = pickle.loads(that_dict_str)</code></pre>
+
+<hr>
+<h3>Writing and Reading <code>Example</code> Records with TensorFlow</h3>
+<p>The TFRecords <code>Example</code> format defines things in detail: An <code>Example</code> contains one <code>Features</code>, which is a map from strings to <code>Feature</code> elements, which can each be <code>Int64List</code>, <code>FloatList</code>, or <code>BytesList</code>. (See also: <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/example.proto">example.proto</a> and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/feature.proto">feature.proto</a>)</p>
+<pre><code class="language-python">import tensorflow as tf
+
+my_example = tf.train.Example(features=tf.train.Features(feature={
+    'my_ints': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
+    'my_float': tf.train.Feature(float_list=tf.train.FloatList(value=[2.7])),
+    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))
+}))</code></pre>
+
+<p>The values in the <code>Example</code> can be accessed then like this:</p>
+<ul>
+<li><code>my_example.features.feature['my_ints'].int64_list.value</code></li>
+<li><code>my_example.features.feature['my_float'].float_list.value</code></li>
+<li><code>my_example.features.feature['my_bytes'].bytes_list.value</code></li>
+</ul>
+<p>Writing to and reading from disk are much like with <code>pickle</code>, except that the reader here provides all the records from a TFRecords file. In this example, there's only one record in the file.</p>
+<pre><code class="language-python">my_example_str = my_example.SerializeToString()
+with tf.python_io.TFRecordWriter('my_example.tfrecords') as writer:
+    writer.write(my_example_str)
+
+reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
+those_examples = [tf.train.Example().FromString(example_str)
+                  for example_str in reader]</code></pre>
+
+<hr>
+<h3>Images in <code>Example</code> Records</h3>
+<p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you.</p>
+<p>For two examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
+<hr>
+<h3>The <code>SequenceExample</code> Record</h3>
+<p>The <code>SequenceExample</code> message type essentially extends <code>Example</code> for sequence data. (You could imagine achieving the same effect with just <code>Example</code>, but it would be awkward.)</p>
+<p>A <code>SequenceExample</code> keeps the same kind of map as <code>Example</code>, but calls it <code>context</code>, because it's thought of as the static context for the dynamic sequence data. And it adds another map, called <code>feature_lists</code>, that maps from string keys to lists of lists.</p>
+<p>In Python dictionaries, a <code>SequenceExample</code> is like this:</p>
+<pre><code class="language-python">my_seq_dict = {
+    'context' : {
+        'my_bytes':
+            'data'},
+    'feature_lists' : {
+        'my_ints': [
+            [5, 6],
+            [7, 8, 9]]}}</code></pre>
+
+<p>A corresponding full <code>SequenceExample</code> is a bit more verbose:</p>
+<pre><code class="language-python">my_seq_ex = tf.train.SequenceExample(
+    context=tf.train.Features(feature={
+        'my_bytes':
+            tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))}),
+    feature_lists=tf.train.FeatureLists(feature_list={
+        'my_ints': tf.train.FeatureList(feature=[
+            tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
+            tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 8, 9]))])}))</code></pre>
+
+<p>You probably don't want to mix <code>Example</code> and <code>SequenceExample</code> records in the same TFRecords file.</p>
+<hr>
+<h3>Reading TFRecords in a TensorFlow Graph</h3>
+<p>You may eventually want to read TFRecords files with ops in a TensorFlow graph, using <a href="https://www.tensorflow.org/api_docs/python/tf/TFRecordReader">tf.TFRecordReader</a>. This will involve a filename queue; for an example, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/fully_connected_reader.py">some MNIST tutorial code</a>.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at [OSCON 2017]https://conferences.oreilly.com/oscon/oscon-tx.</p>    
+    ]]></description>
+<link>http://planspace.org/20170323-tfrecords_for_humans/</link>
+<guid>http://planspace.org/20170323-tfrecords_for_humans/</guid>
+<pubDate>Thu, 23 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TensorFlow Logging</title>
 <description><![CDATA[
 
@@ -1679,29 +1783,6 @@ forecasts.&#8221;</p><!-- mathjax for formulas -->
 <link>http://planspace.org/20160531-a_machine_to_foretell_the_future/</link>
 <guid>http://planspace.org/20160531-a_machine_to_foretell_the_future/</guid>
 <pubDate>Tue, 31 May 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Old Article for the Cardinal: "UW computer models weather patterns"</title>
-<description><![CDATA[
-
-<p>Years ago, the better student newspaper of my alma mater, <a href="http://www.dailycardinal.com/">The Daily Cardinal</a>, decided to get science articles written by people who were in the <a href="https://nerdnite.com/">Nerd Nite</a> Madison <a href="https://www.facebook.com/groups/nerdnite.madison/">Facebook group</a>. I eventually agreed to write an article about a new computer the university was standing up, which ran on November 29, 2011. I happened to find an old copy of that paper recently, and I thought I'd include that old article here, not because it is good for the sake of completism.</p>
-<p>I managed to find <a href="http://www.dailycardinal.com/article/2011/11/uw-computer-models-weather-patterns">the article still on the paper's web site</a>. I also found <a href="11292011.page04.pdf">a PDF of the page from the paper that the article ran on</a> thanks to Google's completist storage of all my old email. I'll put the text of the article below, because why not.</p>
-<hr>
-<h3>UW computer models weather patterns</h3>
-<p>Tuesday, November 29, 2011 - Aaron Schumacher - The Daily Cardinal</p>
-<p>If a butterfly flaps its wings in Brazil, will a hurricane destroy Florida? If a satellite sees clouds in Nevada, will it mean rain for crops or mud slides down mountains? Questions like these need a computer with real muscle, run by the best people, and that&#8217;s what UW-Madison now has.</p>
-<p>The S4 supercomputer built on campus this year is now fully operational and the most powerful resource of its kind at the university&#8217;s disposal. It&#8217;s working to fully incorporate data from satellites in models of the Earth&#8217;s oceans and atmosphere&#8212;data that could help improve our understanding and forecasting of these complex systems.</p>
-<p>Just how powerful is the new supercomputer? Well, it&#8217;s gotten harder to make computer processors faster, so engineers are placing more than one computer brain or &#8220;core&#8221; on each chip. Even your iPhone has two cores that work together to send text messages as quickly as possible. A new iMac has four cores on its single chip, for blazing fast Facebook rendering.</p>
-<p>The processors in the new supercomputer at UW-Madison&#8217;s Space Science and Engineering Center (SSEC) each have 12 cores per chip, while a typical desktop has only one. There are four of these chips in each unit.</p>
-<p>Oh, and there are a whopping 64 of these units working together in the S4, keeping track of a multitude of data and grid points over the Earth&#8217;s surface. In terms of RAM, the working memory of any computer, the S4&#8217;s processing units alone have over 2,000 times what you&#8217;d find in an iMac.</p>
-<p>This speedy behemoth fills up five ceiling-high racks in the 1225 Dayton St. building. There are 26 more computers serving as the collective hard disk, providing a total of 456 terabytes in storage space.</p>
-<p>To fund the construction of the S4 supercomputer, the SSEC received a grant of $1 million from the National Oceanic and Atmospheric Administration (NOAA) earlier this year. This decision was made in favor of UW-Madison largely because computer engineers on campus have the special skills to create such extreme computing systems.</p>
-<p>The S4 supercomputer project extends a collaboration between the NOAA and UW-Madison&#8217;s SSEC. NOAA researchers, including many at UW-Madison, use the supercomputer for important computationally complex tasks.</p>
-<p>The S4 supercomputer is a powerful new resource on campus. Its availability to researchers will help advance atmospheric and oceanic modeling techniques for national applications and will expand the capabilities of UW-Madison researchers working on many other projects.</p>    
-    ]]></description>
-<link>http://planspace.org/20160528-old_article_for_the_cardinal/</link>
-<guid>http://planspace.org/20160528-old_article_for_the_cardinal/</guid>
-<pubDate>Sat, 28 May 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

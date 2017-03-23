@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-23: [TFRecords for Humans](/20170323-tfrecords_for_humans/)
  * 2017-03-22: [TensorFlow Logging](/20170322-tensorflow_logging/)
  * 2017-03-21: [Various TensorFlow APIs for Python](/20170321-various_tensorflow_apis_for_python/)
  * 2017-03-20: [TensorFlow APIs for Various Languages](/20170320-tensorflow_apis_for_various_languages/)
