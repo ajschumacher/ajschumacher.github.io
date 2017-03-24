@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>The TensorFlow Coordinator for Python Threading</title>
+  </head>
+  <body>
+    <article>
+<h1>The TensorFlow Coordinator for Python Threading</h1>
+<p class="date">Friday March 24, 2017</p>
+<p>A lot of Python code doesn't bother with <a href="https://en.wikipedia.org/wiki/Thread_(computing)">threads</a> at all, but TensorFlow <a href="https://www.tensorflow.org/programmers_guide/threading_and_queues">encourages</a> using threads, especially for loading data.</p>
+<p>Threading as TensorFlow recommends still uses the standard Python <a href="https://docs.python.org/3/library/threading.html">threading</a> library, but TensorFlow adds a <a href="https://www.tensorflow.org/api_docs/python/tf/train/Coordinator">Coordinator</a> class that makes some good practices easier and fits with the rest of TensorFlow.</p>
+<p>This <code>Coordinator</code> is for within-process thread coordination on one machine. It doesn't touch the TensorFlow computation graph or "coordinate" across multiple machines.</p>
+<p>The three scripts below show how TensorFlow's <code>Coordinator</code> functionality relates to standard Python functionality.</p>
+<hr />
+<h3>Script <a href="code/base.py">1</a>: Python standard library</h3>
+<p>Four threads are going to run the function <code>sleep_politely</code>. The main script will sleep for five seconds and then ask that all the threads stop, by setting <code>SHOULD_STOP</code> to <code>True</code>. The script then waits for the threads to stop, with <code>thread.join()</code>, before finishing.</p>
+<pre><code class="language-python">def sleep_politely(should_stop):
+    while not should_stop():
+        time.sleep(2)
+
+SHOULD_STOP = False
+should_stop = lambda: SHOULD_STOP
+threads = [threading.Thread(target=sleep_politely, args=(should_stop,))
+           for _ in range(4)]
+
+for thread in threads:
+    thread.start()
+time.sleep(5)
+SHOULD_STOP = True
+for thread in threads:
+    thread.join()</code></pre>
+
+<p>This could be set up to allow requesting stoppage inside <code>sleep_politely</code>, but the setup here parallels the TensorFlow example that comes next.</p>
+<hr />
+<h3>Script <a href="code/tf.py">2</a>: with TensorFlow Coordinator</h3>
+<p>This script behaves just as the above, but uses <code>tf.train.Coordinator</code>.</p>
+<pre><code class="language-python">def sleep_politely(coord):
+    while not coord.should_stop():
+        time.sleep(2)
+
+coord = tf.train.Coordinator()
+threads = [threading.Thread(target=sleep_politely, args=(coord,))
+           for _ in range(4)]
+
+for thread in threads:
+    thread.start()
+time.sleep(5)
+coord.request_stop()
+coord.join(threads)</code></pre>
+
+<p>If appropriate, <code>coord.request_stop()</code> could also be called inside <code>sleep_politely</code> here.</p>
+<hr />
+<p>Coordinating threads is not always easy, and there are some problems with both scripts above.</p>
+<ul>
+<li>If there's an exception in the main script, the threads won't get stopped, and the program will effectively hang forever.</li>
+<li>If there's an exception in any of the threads, everything else will carry on, whether it should or not.</li>
+</ul>
+<hr />
+<h3>Script <a href="code/tf_full.py">3</a>: more complete TensorFlow</h3>
+<pre><code class="language-python">def sleep_politely(coord):
+    with coord.stop_on_exception():
+        while not coord.should_stop():
+            time.sleep(2)
+
+coord = tf.train.Coordinator()
+threads = [threading.Thread(target=sleep_politely, args=(coord,))
+           for _ in range(4)]
+
+try:
+    for thread in threads:
+        thread.start()
+    time.sleep(5)
+except Exception as exception:
+    coord.request_stop(exception)
+finally:
+    coord.request_stop()
+    coord.join(threads)</code></pre>
+
+<p>The <code>try</code>/<code>except</code>/<code>finally</code> here means that even if there's an exception in the main script, the threads should get shut down. We could also do the same without TensorFlow.</p>
+<p>The addition of the <code>coord.stop_on_exception()</code> context manager in <code>sleep_politely</code> means that if there's an exception in one of the threads, this will also shut everything down appropriately and pass along the exception. This would be a little more work to implement without TensorFlow, but it could be done.</p>
+<hr />
+<p>There are two reasons to use TensorFlow's <code>Coordinator</code>:</p>
+<ul>
+<li><code>Coordinator</code> makes some nice things particularly convenient.</li>
+<li><code>Coordinator</code> fits with more pieces of TensorFlow, like the <a href="https://www.tensorflow.org/programmers_guide/threading_and_queues#queuerunner">QueueRunner</a>.</li>
+</ul>
+<p>The <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/coordinator.py">Python <code>Coordinator</code> code</a> is in one Python file and not super entangled with the rest of TensorFlow. For the threading convenience it provides, one could imagine extracting it for use elsewhere. The TensorFlow project seems to like the functionality well enough that it's one of the few components of <code>tf.training</code> that appears in both a Python and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/cc/training/coordinator.cc">C++ version</a>.</p>
+<hr />
+<p>Even with the full <code>Coordinator</code> setup, the SIGINT signal (as from pressing <code>ctrl-c</code>) and the SIGTERM signal (as from <code>kill</code>) will interrupt the main script as exceptions. An additional step would be to set up <a href="https://docs.python.org/3/library/signal.html">signal</a> handlers to orchestrate a more orderly shutdown for these cases, if the main script is doing anything very involved.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
