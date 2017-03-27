@@ -7,6 +7,160 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow and Queues</title>
+<description><![CDATA[
+
+<p>There are many ways to implement <a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">queue data structures</a>, and TensorFlow has some of its own.</p>
+<p><img alt="queue" src="img/queue.png"></p>
+<hr>
+<h3>FIFO Queue with a list</h3>
+<p>In Python, a <a href="https://docs.python.org/3/library/stdtypes.html?highlight=list#list">list</a> can implement a first-in first-out (FIFO) queue, with slightly awkward syntax:</p>
+<pre><code class="language-python">&gt;&gt;&gt; my_list = []
+&gt;&gt;&gt; my_list.insert(0, 'a')
+&gt;&gt;&gt; my_list.insert(0, 'b')
+&gt;&gt;&gt; my_list.insert(0, 'c')
+&gt;&gt;&gt; my_list.pop()
+'a'
+&gt;&gt;&gt; my_list.pop()
+'b'
+&gt;&gt;&gt; my_list.pop()
+'c'</code></pre>
+
+<p>A Python list is not a very efficient implementation for a first-in first-out queue, and it doesn't offer mechanisms for limiting the total length of the queue at any given time, for example. But also, queues are a common way to implement communication between threads, and not everything you might do with a list is perfectly thread-safe (though it is surprisingly close; thanks <a href="https://en.wikipedia.org/wiki/Global_interpreter_lock">GIL</a>).</p>
+<hr>
+<h3>FIFO Queue with the Python standard library</h3>
+<p>The Python standard library's <a href="https://docs.python.org/3/library/queue.html">queue</a> (<code>Queue</code> in Python 2) provides several queue options. The <code>queue.Queue</code> class implements a thread-safe FIFO queue:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import queue
+&gt;&gt;&gt; my_queue = queue.Queue()
+&gt;&gt;&gt; my_queue.put('a')
+&gt;&gt;&gt; my_queue.put('b')
+&gt;&gt;&gt; my_queue.put('c')
+&gt;&gt;&gt; my_queue.get()
+'a'
+&gt;&gt;&gt; my_queue.get()
+'b'
+&gt;&gt;&gt; my_queue.get()
+'c'</code></pre>
+
+<p>When making a <code>queue.Queue</code>, you can specify an integer <code>maxsize</code> argument to set a bound on how many things can be in the queue at any given time. The default is zero, which makes a queue that can store (theoretically) any number of things. And there are no restrictions on what you can put in; anything in Python can be added to one of these queues.</p>
+<hr>
+<h3>Why use TensorFlow Queues?</h3>
+<p>TensorFlow also offers a number of queue options. There are a couple reasons to use TensorFlow queues over standard Python queues:</p>
+<ul>
+<li>TensorFlow queues live in TensorFlow computation graphs, with the attendant benefits of unifying things there and allowing distributed graph computation.</li>
+<li>TensorFlow queues offer a few more methods than standard Python queues, like <code>dequeue_many</code>, which is good for getting training batches.</li>
+<li>TensorFlow queues work with additional TensorFlow constructs, like the <a href="https://www.tensorflow.org/programmers_guide/threading_and_queues#queuerunner">QueueRunner</a>.</li>
+<li>TensorFlow offers queue variants not in the Python standard library: the <a href="https://www.tensorflow.org/api_docs/python/tf/PaddingFIFOQueue">PaddingFIFOQueue</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/RandomShuffleQueue">RandomShuffleQueue</a>.</li>
+</ul>
+<hr>
+<h3>FIFO Queue with TensorFlow</h3>
+<p>Here's a standard TensorFlow <a href="https://www.tensorflow.org/api_docs/python/tf/FIFOQueue">FIFOQueue</a>:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; letter = tf.placeholder(tf.string)
+&gt;&gt;&gt; queue = tf.FIFOQueue(capacity=10, dtypes=[tf.string])
+&gt;&gt;&gt; enqueue = queue.enqueue(letter)
+&gt;&gt;&gt; dequeue = queue.dequeue()
+&gt;&gt;&gt; session = tf.Session()
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'a'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'b'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'c'})
+&gt;&gt;&gt; session.run(dequeue)
+'a'
+&gt;&gt;&gt; session.run(dequeue)
+'b'
+&gt;&gt;&gt; session.run(dequeue)
+'c'</code></pre>
+
+<p>There's a little extra code to deal with the computation graph, and the TensorFlow queue requires a <code>capacity</code> argument and a <code>dtypes</code> argument.</p>
+<p>The <code>capacity</code> is like the <code>maxsize</code> of a regular Python queue.</p>
+<p>The <code>dtypes</code> argument is a list of <a href="https://www.tensorflow.org/programmers_guide/dims_types#data_types">Tensorflow data types</a>. The elements added to the queue will always be lists of tensors with the specified data types. Here, we add a single string tensor at a time to the queue.</p>
+<hr>
+<h3>Comparing Python standard library and TensorFlow queue offerings</h3>
+<p>Here's a listing of queue types in the Python queue library and in TensorFlow.</p>
+<ul>
+<li>Python standard: <a href="https://docs.python.org/3/library/queue.html#queue.Queue">queue.Queue</a> / TensorFlow: <a href="https://www.tensorflow.org/api_docs/python/tf/FIFOQueue">FIFOQueue</a></li>
+<li>Python standard: <a href="https://docs.python.org/3/library/queue.html#queue.LifoQueue">queue.LifoQueue</a> / TensorFlow: no close equivalent</li>
+<li>Python standard: <a href="https://docs.python.org/3/library/queue.html#queue.PriorityQueue">queue.PriorityQueue</a> / TensorFlow: <a href="https://www.tensorflow.org/api_docs/python/tf/PriorityQueue">PriorityQueue</a></li>
+<li>Python standard: no close equivalent / TensorFlow: <a href="https://www.tensorflow.org/api_docs/python/tf/PaddingFIFOQueue">PaddingFIFOQueue</a></li>
+<li>Python standard: no close equivalent / TensorFlow: <a href="https://www.tensorflow.org/api_docs/python/tf/RandomShuffleQueue">RandomShuffleQueue</a></li>
+</ul>
+<hr>
+<h3>Priority Queue with the Python standard library and TensorFlow</h3>
+<p>A priority queue lets you assign a priority to each item as it is added, and the item that comes out when you next de-queue is the item with the highest priority currently in the queue. Higher priority is represented by lower numbers.</p>
+<p>Both the standard Python queue library and TensorFlow have priority queues.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import queue
+&gt;&gt;&gt; my_queue = queue.PriorityQueue()
+&gt;&gt;&gt; my_queue.put([4, 'a'])
+&gt;&gt;&gt; my_queue.put([1, 'b'])
+&gt;&gt;&gt; my_queue.put([2, 'c'])
+&gt;&gt;&gt; my_queue.get()
+[1, 'b']
+&gt;&gt;&gt; my_queue.get()
+[2, 'c']
+&gt;&gt;&gt; my_queue.get()
+[4, 'a']</code></pre>
+
+<p>The TensorFlow priority queue is just like the standard Python one, but with a little more strictness on types. When adding to the queue, the first tensor provided must be <code>tf.int64</code>, the priority.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; priority = tf.placeholder(tf.int64)
+&gt;&gt;&gt; letter = tf.placeholder(tf.string)
+&gt;&gt;&gt; queue = tf.PriorityQueue(capacity=10, types=[tf.string], shapes=[[]])
+&gt;&gt;&gt; enqueue = queue.enqueue([priority, letter])
+&gt;&gt;&gt; dequeue = queue.dequeue()
+&gt;&gt;&gt; session = tf.Session()
+&gt;&gt;&gt; session.run(enqueue, feed_dict={priority: 4, letter: 'a'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={priority: 1, letter: 'b'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={priority: 2, letter: 'c'})
+&gt;&gt;&gt; session.run(dequeue)
+[1, 'b']
+&gt;&gt;&gt; session.run(dequeue)
+[2, 'c']
+&gt;&gt;&gt; session.run(dequeue)
+[4, 'a']</code></pre>
+
+<p>As of TensorFlow 1.0.1 at least, <code>tf.PriorityQueue</code> calls its argument <code>types</code> rather than <code>dtypes</code>, and it seems to be requiring the <code>shapes</code> argument in spite of the documentation.</p>
+<hr>
+<h3>TensorFlow's <code>PaddingFIFOQueue</code></h3>
+<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/PaddingFIFOQueue">PaddingFIFOQueue</a> has mini-batch model training in mind. It allows you to put in tensors of variable size, and when using <code>dequeue_many</code>, shorter ones get zero-padded to the maximum size in the batch.</p>
+<pre><code class="language-python">import tensorflow as tf
+numbers = tf.placeholder(tf.int64)
+queue = tf.PaddingFIFOQueue(capacity=10, dtypes=[tf.int64], shapes=[[]])
+enqueue = queue.enqueue(numbers)
+dequeue_many = queue.dequeue_many(n=3)
+session = tf.Session()
+session.run(enqueue, feed_dict={numbers: [1]})
+session.run(enqueue, feed_dict={numbers: [2, 3]})
+session.run(enqueue, feed_dict={numbers: [3, 4, 5]})
+session.run(dequeue_many)
+array([[1, 0, 0],
+       [2, 3, 0],
+       [3, 4, 5]])</code></pre>
+
+<hr>
+<h3>TensorFlow's <code>RandomShuffleQueue</code></h3>
+<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/RandomShuffleQueue">RandomShuffleQueue</a> also has batching in mind. It draws randomly from items currently in the queue.</p>
+<p>To prevent pulling out items as they go in (not at all randomly) the <code>RandomShuffleQueue</code> has an argument <code>min_after_dequeue</code> which ensures that there are at least that many (plus the number being drawn) to randomly draw from. This requirement is dropped after the queue eventually has <code>.close()</code> called on it, so that all items can be drawn.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; letter = tf.placeholder(tf.string)
+&gt;&gt;&gt; queue = tf.RandomShuffleQueue(capacity=10, dtypes=[tf.string],
+...                               min_after_dequeue=2)
+&gt;&gt;&gt; enqueue = queue.enqueue(letter)
+&gt;&gt;&gt; dequeue = queue.dequeue()
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'a'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'b'})
+&gt;&gt;&gt; session.run(enqueue, feed_dict={letter: 'c'})
+&gt;&gt;&gt; session.run(dequeue)
+'b'  # or 'a', or 'c'</code></pre>
+
+<hr>
+<h3>Queues inside TensorFlow</h3>
+<p>Some parts of TensorFlow automatically create and use queues. For example, <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/train/string_input_producer">tf.train.string_input_producer</a> (among others in <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/input.py">input.py</a>) makes a queue, and a <a href="https://www.tensorflow.org/api_docs/python/tf/train/QueueRunner">QueueRunner</a>, and sets up a TensorBoard summary op.</p>    
+    ]]></description>
+<link>http://planspace.org/20170327-tensorflow_and_queues/</link>
+<guid>http://planspace.org/20170327-tensorflow_and_queues/</guid>
+<pubDate>Mon, 27 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The TensorFlow Coordinator for Python Threading</title>
 <description><![CDATA[
 
@@ -1281,49 +1435,6 @@ summary_writer.close()</code></pre>
 <link>http://planspace.org/20160619-writing_with_oreilly/</link>
 <guid>http://planspace.org/20160619-writing_with_oreilly/</guid>
 <pubDate>Sun, 19 Jun 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Your Favorite Class</title>
-<description><![CDATA[
-
-<p>I read a fairly bad <a href="/20160207-talk_like_ted/">book</a> which included this:</p>
-<blockquote>
-<p>When you think back to your favorite college class, there's a good
-chance the professor you most enjoyed injected a fair amount of
-humor into his or her presentations.</p>
-</blockquote>
-<p>That section was about humor in presentations, but the reference got
-me thinking about my own favorite college class, which wasn't
-particularly funny.</p>
-<p>I couldn't name or even recognize the professor of the class I
-remember most strongly. The class was memorable because the professor
-wasn't doing the same things other professors did. The professor was
-orchestrating the class so that <em>students</em> did things.</p>
-<p>This was the first class I recall in which the professor would pose a
-question and tell us to turn and talk about it with the people near us
-for a solid five minutes, multiple times through a "lecture."</p>
-<p>This class had a long reading list from which we chose what we wanted
-to read. I read <a href="https://www.amazon.com/Agile-Gene-Nature-Turns-Nurture/dp/006000679X">The Agile Gene</a>. I probably thought more about that
-book than anything else I read as an undergrad.</p>
-<p>In this class we did a group project. My group decided to transcribe
-<a href="https://en.wikipedia.org/wiki/Family_Guy">Family Guy</a> in the <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">International Phonetic Alphabet</a>. It was so
-much fun, I'm sure we learned more about the IPA and thought more
-about regional dialects than we would have done with a more typical
-assignment.</p>
-<p>I learned more about teaching techniques like these, which I might
-summarize as <a href="https://en.wikipedia.org/wiki/Student-centred_learning">student-centered</a>, when I studied
-<a href="http://www.bard.edu/mat/">teaching at Bard</a>. They were so rare at <a href="http://www.wisc.edu/">my university</a> that it
-was shocking when I encountered a class that didn't reduce perfectly
-well to a series of videos.</p>
-<p>If the most memorable thing about a class is the person teaching it,
-that's an indictment of the class, not a recommendation. It certainly
-doesn't hurt for a teacher to be charismatic, but it's sad for
-students to go through school hoping to encounter super-teachers who
-are expert entertainers, as if that's the best or only way to learn.</p>    
-    ]]></description>
-<link>http://planspace.org/20160609-your_favorite_class/</link>
-<guid>http://planspace.org/20160609-your_favorite_class/</guid>
-<pubDate>Thu, 09 Jun 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
