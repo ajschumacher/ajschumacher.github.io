@@ -195,3 +195,7 @@ To prevent pulling out items as they go in (not at all randomly) the `RandomShuf
 ### Queues inside TensorFlow
 
 Some parts of TensorFlow automatically create and use queues. For example, [tf.train.string_input_producer](https://www.tensorflow.org/versions/master/api_docs/python/tf/train/string_input_producer) (among others in [input.py](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/input.py)) makes a queue, and a [QueueRunner](https://www.tensorflow.org/api_docs/python/tf/train/QueueRunner), and sets up a TensorBoard summary op.
+
+---
+
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).

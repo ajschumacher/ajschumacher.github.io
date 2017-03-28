@@ -106,3 +106,7 @@ The [Python `Coordinator` code](https://github.com/tensorflow/tensorflow/blob/ma
 ---
 
 Even with the full `Coordinator` setup, the SIGINT signal (as from pressing `ctrl-c`) and the SIGTERM signal (as from `kill`) will interrupt the main script as exceptions. An additional step would be to set up [signal](https://docs.python.org/3/library/signal.html) handlers to orchestrate a more orderly shutdown for these cases, if the main script is doing anything very involved.
+
+---
+
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).

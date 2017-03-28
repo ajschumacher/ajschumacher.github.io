@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TensorFlow as a Distributed Virtual Machine</title>
+  </head>
+  <body>
+    <article>
+<h1>TensorFlow as a Distributed Virtual Machine</h1>
+<p class="date">Tuesday March 28, 2017</p>
+<p>TensorFlow has a flexible API, and it has automatic differentiation, and it can run on GPUs. But the thing that's really neat about TensorFlow is that it gives you a fairly general way to easily program across multiple computers.</p>
+<p>TensorFlow's distributed runtime, the big bottom box in this figure from the <a href="https://research.google.com/pubs/pub45381.html">2016 paper</a> "TensorFlow: A system for large-scale machine learning", is the part of TensorFlow that runs the computation graph.</p>
+<p><img alt="layered TensorFlow architecture" src="img/tensorflow_layers.png" /></p>
+<p>The computation graph, specified with <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">protocol buffers</a>, is much higher level than <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java virtual machine</a> (JVM) bytecode. But I think it's interesting to think of the TensorFlow distributed runtime as a sort of <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a>. This is not a whole system virtual machine, but a process virtual machine, like the JVM, to "execute computer programs in a platform-independent environment." The Python API can be like a <a href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific language</a> for programming the TensorFlow graph.</p>
+<p>Unlike the JVM, and unlike any other system I know, TensorFlow lets you directly put computation on multiple machines, pretty much however you want, and then it quietly handles all the details for you. Wherever it needs to, TensorFlow adds send and receive nodes to allow the graph to be executed as specified. This is shown in this figure from the <a href="https://research.google.com/pubs/pub45166.html">2015 paper</a> "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems" (also <a href="https://arxiv.org/abs/1603.04467">available on arXiv</a> and commonly linked as the <a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">PDF on tensorflow.org</a>).</p>
+<p><img alt="distributing a TensorFlow graph" src="img/distributed_graph.png" /></p>
+<p>The box labels in the figure are for devices, but with TensorFlow they could be on the same machine or on different machines, and it hardly matters.</p>
+<p>The flexibility and ease that result are incredible. It isn't terribly hard to think of implementing your own map-reduce system using TensorFlow. It might even be reasonably performant, if you have a distributed file system! The common TensorFlow distributed model training techniques are a kind of map-reduce, after all. But you could do pretty near anything! This is pretty cool.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

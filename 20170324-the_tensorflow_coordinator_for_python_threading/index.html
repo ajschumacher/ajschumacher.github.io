@@ -90,7 +90,9 @@ finally:
 </ul>
 <p>The <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/coordinator.py">Python <code>Coordinator</code> code</a> is in one Python file and not super entangled with the rest of TensorFlow. For the threading convenience it provides, one could imagine extracting it for use elsewhere. The TensorFlow project seems to like the functionality well enough that it's one of the few components of <code>tf.training</code> that appears in both a Python and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/cc/training/coordinator.cc">C++ version</a>.</p>
 <hr />
-<p>Even with the full <code>Coordinator</code> setup, the SIGINT signal (as from pressing <code>ctrl-c</code>) and the SIGTERM signal (as from <code>kill</code>) will interrupt the main script as exceptions. An additional step would be to set up <a href="https://docs.python.org/3/library/signal.html">signal</a> handlers to orchestrate a more orderly shutdown for these cases, if the main script is doing anything very involved.</p>    </article>
+<p>Even with the full <code>Coordinator</code> setup, the SIGINT signal (as from pressing <code>ctrl-c</code>) and the SIGTERM signal (as from <code>kill</code>) will interrupt the main script as exceptions. An additional step would be to set up <a href="https://docs.python.org/3/library/signal.html">signal</a> handlers to orchestrate a more orderly shutdown for these cases, if the main script is doing anything very involved.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>
       <hr />
       <ul>

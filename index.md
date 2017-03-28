@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-28: [TensorFlow as a Distributed Virtual Machine](/20170328-tensorflow_as_a_distributed_virtual_machine/)
  * 2017-03-27: [TensorFlow and Queues](/20170327-tensorflow_and_queues/)
  * 2017-03-24: [The TensorFlow Coordinator for Python Threading](/20170324-the_tensorflow_coordinator_for_python_threading/)
  * 2017-03-23: [TFRecords for Humans](/20170323-tfrecords_for_humans/)
