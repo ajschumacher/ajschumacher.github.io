@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Protocol Buffers in Python</title>
+  </head>
+  <body>
+    <article>
+<h1>Protocol Buffers in Python</h1>
+<p class="date">Wednesday March 29, 2017</p>
+<p>Google's data interchange format, <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>, is pretty straightforward.</p>
+<hr />
+<h3>Installing Protobuf</h3>
+<p>Python support for protocol buffers can be installed with <code>pip</code>:</p>
+<pre><code class="language-bash">pip install protobuf</code></pre>
+
+<p>The package is imported as <code>google.protobuf</code>, but you likely won't need to import it.</p>
+<p>To define new protocol buffer formats, you'll also want the <code>protoc</code> tool. One way to get it is to find and install a system-specific package, but you can also get it by installing another Google Python package, <code>grpcio-tools</code>:</p>
+<pre><code class="language-bash">pip install grpcio-tools</code></pre>
+
+<p>This won't put a <code>protoc</code> executable in your <code>PATH</code>, but it will let you run <code>protoc</code> via Python, as <code>python -m grpc_tools.protoc</code>. For convenience, you can add an alias in your shell:</p>
+<pre><code class="language-bash">alias protoc='python -m grpc_tools.protoc'</code></pre>
+
+<hr />
+<h3>Defining Protobuf Messages</h3>
+<p>The details of protocol buffer messages types are defined in <code>.proto</code> files like <a href="my_example.proto"><code>my_example.proto</code></a>.</p>
+<pre><code>syntax = "proto3";
+
+message Bottle {
+  string note = 1;
+}</code></pre>
+
+<p>Syntax version 3 has to be specified, as the default is still version 2.</p>
+<p>We're defining a fairly dull message. A <code>Bottle</code> can contain one <code>note</code>, which is a string.</p>
+<p>The number one there is not setting a default value, but specifying a numbering that's used internally when reading and writing binary representations of our messages.</p>
+<hr />
+<h3>Generating Code for our Protobuf</h3>
+<p>Assuming we're in the same directory as <code>my_example.proto</code>, we can use <code>protoc</code> to generate some Python code corresponding to the message type we defined:</p>
+<pre><code class="language-bash">protoc --proto_path=./ --python_out=./ my_example.proto</code></pre>
+
+<p>This will produce a new file <code>my_example_pb2.py</code>. (Syntax version 3 does not affect the filename here.)</p>
+<hr />
+<h3>Using Protobuf Messages in Python</h3>
+<p>With the generated <code>my_example_pb2.py</code> code, we can use our message type in Python, and take advantage of features like serialization and deserialization.</p>
+<pre><code class="language-python">import my_example_pb2
+
+my_bottle = my_example_pb2.Bottle(note='Ahoy!')
+
+with open('my_bottle.pb', 'wb') as f:
+    f.write(my_bottle.SerializeToString())
+
+with open('my_bottle.pb', 'rb') as f:
+    new_bottle = my_example_pb2.Bottle().FromString(f.read())</code></pre>
+
+<p>This looks a lot like <a href="/20170323-tfrecords_for_humans/">examples with TFRecords</a>, because they use the same mechanism.</p>
+<hr />
+<h3>More Information</h3>
+<p>The example here is deliberately minimal. For more detail, the <a href="https://developers.google.com/protocol-buffers/">Google protocol buffers site</a> is quite good, with a very nice <a href="https://developers.google.com/protocol-buffers/docs/pythontutorial">Python tutorial</a>.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

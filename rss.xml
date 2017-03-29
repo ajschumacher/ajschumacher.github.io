@@ -7,6 +7,65 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Protocol Buffers in Python</title>
+<description><![CDATA[
+
+<p>Google's data interchange format, <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a>, is pretty straightforward.</p>
+<hr>
+<h3>Installing Protobuf</h3>
+<p>Python support for protocol buffers can be installed with <code>pip</code>:</p>
+<pre><code class="language-bash">pip install protobuf</code></pre>
+
+<p>The package is imported as <code>google.protobuf</code>, but you likely won't need to import it.</p>
+<p>To define new protocol buffer formats, you'll also want the <code>protoc</code> tool. One way to get it is to find and install a system-specific package, but you can also get it by installing another Google Python package, <code>grpcio-tools</code>:</p>
+<pre><code class="language-bash">pip install grpcio-tools</code></pre>
+
+<p>This won't put a <code>protoc</code> executable in your <code>PATH</code>, but it will let you run <code>protoc</code> via Python, as <code>python -m grpc_tools.protoc</code>. For convenience, you can add an alias in your shell:</p>
+<pre><code class="language-bash">alias protoc='python -m grpc_tools.protoc'</code></pre>
+
+<hr>
+<h3>Defining Protobuf Messages</h3>
+<p>The details of protocol buffer messages types are defined in <code>.proto</code> files like <a href="my_example.proto"><code>my_example.proto</code></a>.</p>
+<pre><code>syntax = "proto3";
+
+message Bottle {
+  string note = 1;
+}</code></pre>
+
+<p>Syntax version 3 has to be specified, as the default is still version 2.</p>
+<p>We're defining a fairly dull message. A <code>Bottle</code> can contain one <code>note</code>, which is a string.</p>
+<p>The number one there is not setting a default value, but specifying a numbering that's used internally when reading and writing binary representations of our messages.</p>
+<hr>
+<h3>Generating Code for our Protobuf</h3>
+<p>Assuming we're in the same directory as <code>my_example.proto</code>, we can use <code>protoc</code> to generate some Python code corresponding to the message type we defined:</p>
+<pre><code class="language-bash">protoc --proto_path=./ --python_out=./ my_example.proto</code></pre>
+
+<p>This will produce a new file <code>my_example_pb2.py</code>. (Syntax version 3 does not affect the filename here.)</p>
+<hr>
+<h3>Using Protobuf Messages in Python</h3>
+<p>With the generated <code>my_example_pb2.py</code> code, we can use our message type in Python, and take advantage of features like serialization and deserialization.</p>
+<pre><code class="language-python">import my_example_pb2
+
+my_bottle = my_example_pb2.Bottle(note='Ahoy!')
+
+with open('my_bottle.pb', 'wb') as f:
+    f.write(my_bottle.SerializeToString())
+
+with open('my_bottle.pb', 'rb') as f:
+    new_bottle = my_example_pb2.Bottle().FromString(f.read())</code></pre>
+
+<p>This looks a lot like <a href="/20170323-tfrecords_for_humans/">examples with TFRecords</a>, because they use the same mechanism.</p>
+<hr>
+<h3>More Information</h3>
+<p>The example here is deliberately minimal. For more detail, the <a href="https://developers.google.com/protocol-buffers/">Google protocol buffers site</a> is quite good, with a very nice <a href="https://developers.google.com/protocol-buffers/docs/pythontutorial">Python tutorial</a>.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170329-protocol_buffers_in_python/</link>
+<guid>http://planspace.org/20170329-protocol_buffers_in_python/</guid>
+<pubDate>Wed, 29 Mar 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TensorFlow as a Distributed Virtual Machine</title>
 <description><![CDATA[
 
@@ -1387,42 +1446,6 @@ planspace.org
 <link>http://planspace.org/20160629-presenting_hello_tensorflow/</link>
 <guid>http://planspace.org/20160629-presenting_hello_tensorflow/</guid>
 <pubDate>Wed, 29 Jun 2016 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Hello, TensorFlow! (Just the Code)</title>
-<description><![CDATA[
-
-<p>This is the final code block from <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> I like it as
-a cheat sheet for TensorFlow basics.</p>
-<pre><code class="language-python">import tensorflow as tf
-
-x = tf.constant(1.0, name='input')
-w = tf.Variable(0.8, name='weight')
-y = tf.mul(w, x, name='output')
-y_ = tf.constant(0.0, name='correct_value')
-loss = tf.pow(y - y_, 2, name='loss')
-train_step = tf.train.GradientDescentOptimizer(0.025).minimize(loss)
-
-for value in [x, w, y, y_, loss]:
-    tf.scalar_summary(value.op.name, value)
-
-summaries = tf.merge_all_summaries()
-
-sess = tf.Session()
-summary_writer = tf.train.SummaryWriter('log_simple_stats', sess.graph)
-
-sess.run(tf.initialize_all_variables())
-for i in range(100):
-    summary_writer.add_summary(sess.run(summaries), i)
-    sess.run(train_step)
-
-summary_writer.close()</code></pre>
-
-<p><a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> is now <a href="https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole">an interactive code and video Oriole</a> as well.</p>    
-    ]]></description>
-<link>http://planspace.org/20160620-hello_tensorflow_just_the_code/</link>
-<guid>http://planspace.org/20160620-hello_tensorflow_just_the_code/</guid>
-<pubDate>Mon, 20 Jun 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
