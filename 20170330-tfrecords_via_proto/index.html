@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TFRecords via Protocol Buffer Definitions</title>
+  </head>
+  <body>
+    <article>
+<h1>TFRecords via Protocol Buffer Definitions</h1>
+<p class="date">Thursday March 30, 2017</p>
+<p>I've written about <a href="/20170323-tfrecords_for_humans/">how to use TFRecords</a>, and I've written about <a href="/20170329-protocol_buffers_in_python/">how protocol buffer messages are defined</a>. Since the data structures in TFRecords are defined as protocol buffer messages, we can use their definitions to understand them.</p>
+<p>Protocol buffer definitions remind me a little bit of <a href="https://en.wikipedia.org/wiki/Syntax_diagram">railroad diagrams</a> like the ones in Douglas Crockford's <a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a>. Here's how Crockford builds up number literals in JavaScript, starting from digits:</p>
+<p><img alt="integer railroad diagram" src="img/railroad_integer.png" /></p>
+<p><img alt="fraction railroad diagram" src="img/railroad_fraction.png" /></p>
+<p><img alt="exponent railroad diagram" src="img/railroad_exponent.png" /></p>
+<p><img alt="number railroad diagram" src="img/railroad_number.png" /></p>
+<p>Small components are fully defined, which can then be built into more complex constructs. (<a href="http://archive.oreilly.com/pub/a/javascript/excerpts/javascript-good-parts/syntax-diagrams.html">More examples</a>.) Protocol buffer definitions are built in much the same way.</p>
+<p>With comments, the TensorFlow source files <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/feature.proto">feature.proto</a> and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/example.proto">example.proto</a> total 400 lines. There are only about 30 lines are not comments. These lines (rearranged slightly) do all the defining of the <code>Example</code> and <code>SequenceExample</code> formats that are used for TFRecords.</p>
+<pre><code>message BytesList {
+  repeated bytes value = 1;
+}
+message FloatList {
+  repeated float value = 1 [packed = true];
+}
+message Int64List {
+  repeated int64 value = 1 [packed = true];
+}
+message Feature {
+  oneof kind {
+    BytesList bytes_list = 1;
+    FloatList float_list = 2;
+    Int64List int64_list = 3;
+  }
+}
+message Features {
+  map&lt;string, Feature> feature = 1;
+}
+message Example {
+  Features features = 1;
+}
+message FeatureList {
+  repeated Feature feature = 1;
+}
+message FeatureLists {
+  map&lt;string, FeatureList> feature_list = 1;
+}
+message SequenceExample {
+  Features context = 1;
+  FeatureLists feature_lists = 2;
+}</code></pre>
+
+<p>These brief definitions give rise to most of the functionality <a href="/20170329-protocol_buffers_in_python/">described</a> for creating, writing, and reading the TFRecords formats.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
