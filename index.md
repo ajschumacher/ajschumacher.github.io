@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-03-31: [On Tyranny: Twenty Lessons from the Twentieth Century](/20170331-on_tyranny/)
  * 2017-03-30: [TFRecords via Protocol Buffer Definitions](/20170330-tfrecords_via_proto/)
  * 2017-03-29: [Protocol Buffers in Python](/20170329-protocol_buffers_in_python/)
  * 2017-03-28: [TensorFlow as a Distributed Virtual Machine](/20170328-tensorflow_as_a_distributed_virtual_machine/)
