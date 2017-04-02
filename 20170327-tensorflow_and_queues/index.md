@@ -183,6 +183,7 @@ To prevent pulling out items as they go in (not at all randomly) the `RandomShuf
 ...                               min_after_dequeue=2)
 >>> enqueue = queue.enqueue(letter)
 >>> dequeue = queue.dequeue()
+>>> session = tf.Session()
 >>> session.run(enqueue, feed_dict={letter: 'a'})
 >>> session.run(enqueue, feed_dict={letter: 'b'})
 >>> session.run(enqueue, feed_dict={letter: 'c'})
