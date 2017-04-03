@@ -74,8 +74,8 @@ those_examples = [tf.train.Example().FromString(example_str)
 
 <hr />
 <h3>Images in <code>Example</code> Records</h3>
-<p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you.</p>
-<p>For two examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
+<p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you. For more on this, see my post on <a href="/20170403-images_and_tfrecords/">Images and TFRecords</a>.</p>
+<p>For two more complete <em>in situ</em> examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
 <hr />
 <h3>The <code>SequenceExample</code> Record</h3>
 <p>The <code>SequenceExample</code> message type essentially extends <code>Example</code> for sequence data. (You could imagine achieving the same effect with just <code>Example</code>, but it would be awkward.)</p>

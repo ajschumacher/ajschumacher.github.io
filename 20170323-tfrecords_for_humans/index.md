@@ -90,9 +90,9 @@ those_examples = [tf.train.Example().FromString(example_str)
 
 ### Images in `Example` Records
 
-The `Example` format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you.
+The `Example` format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you. For more on this, see my post on [Images and TFRecords](/20170403-images_and_tfrecords/).
 
-For two examples of converting images to TFRecords, check out [code for MNIST images](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py) and [code for ImageNet images](https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py). The ImageNet code can be run on the command-line.
+For two more complete _in situ_ examples of converting images to TFRecords, check out [code for MNIST images](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py) and [code for ImageNet images](https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py). The ImageNet code can be run on the command-line.
 
 ---
 
