@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>How Not To Program the TensorFlow Graph</title>
+  </head>
+  <body>
+    <article>
+<h1>How Not To Program the TensorFlow Graph</h1>
+<p class="date">Tuesday April  4, 2017</p>
+<p>Using TensorFlow from Python is like using Python to program <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">another computer</a>. Some Python statements build your TensorFlow program, some Python statements execute that program, and of course some Python statements aren't involved with TensorFlow at all.</p>
+<p>Being thoughtful about the graphs you construct can help you avoid confusion and performance pitfalls. Here are a few considerations.</p>
+<h2>Avoid having many identical ops</h2>
+<!-- Better re-write; maybe separate out a section about Python names for TF ops, losing references to your ops, etc. -->
+
+<p>Lots of methods in TensorFlow create ops in the computation graph, but do not execute them. You may want to execute multiple times, but that doesn't mean you should create lots of copies of the same ops.</p>
+<p>A clear example is <code>tf.global_variables_initializer()</code>.</p>
+<pre><code class="language-python">>>> import tensorflow as tf
+>>> session = tf.Session()
+# Create some variables...
+>>> initializer = tf.global_variables_initializer()
+# Variables are not yet initialized.
+>>> session.run(initializer)
+# Now variables are initialized.
+# Do some more work...
+>>> session.run(initializer)
+# Now variables are re-initialized.</code></pre>
+
+<p>If the call to <code>tf.global_variables_initializer()</code> is repeated, for example directly as the argument to <code>session.run()</code>, there are downsides.</p>
+<pre><code class="language-python">>>> session.run(tf.global_variables_initializer())
+>>> session.run(tf.global_variables_initializer())</code></pre>
+
+<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
+<p>Creating ops inside <code>session.run()</code>, you also don't have a Python variable referring to those ops, so you can't easily reuse them.</p>
+<p>In Python, if you create an object that nothing refers to, it can be garbage collected. The abandoned object will be deleted and and memory it used will be freed. That doesn't happen to things in the TensorFlow graph; everything you put in the graph stays there.</p>
+<p>It's pretty clear that <code>tf.global_variables_initializer()</code> returns an op. But ops are also created in less obvious ways.</p>
+<p>Let's compare to how NumPy works.</p>
+<pre><code class="language-python">>>> import numpy as np
+>>> x = np.array(1.0)
+>>> y = x + 1.0</code></pre>
+
+<p>At this point there are two arrays in memory, <code>x</code> and <code>y</code>. The <code>y</code> has the value 2.0, but there's no record of <em>how</em> it came to have that value. The addition has left no record of itself.</p>
+<p>TensorFlow is different.</p>
+<pre><code class="language-python">>>> x = tf.Variable(1.0)
+>>> y = x + 1.0</code></pre>
+
+<p>Now only <code>x</code> is a TensorFlow variable; <code>y</code> is an <code>add</code> op, which can return the result of that addition if we ever run it.</p>
+<p>One more comparison.</p>
+<pre><code class="language-python">>>> x = np.array(1.0)
+>>> y = x + 1.0
+>>> y = x + 1.0</code></pre>
+
+<p>Here <code>y</code> is assigned to refer to one result array <code>x + 1.0</code>, and then reassigned to point to a different one. The first one will be garbage collected and disappear.</p>
+<pre><code class="language-python">>>> x = tf.Variable(1.0)
+>>> y = x + 1.0
+>>> y = x + 1.0</code></pre>
+
+<p>In this case, <code>y</code> refers to one <code>add</code> op in the TensorFlow graph, and then <code>y</code> is reassigned to point to a different <code>add</code> op in the graph. Since <code>y</code> only points to the second <code>add</code> now, we don't have a convenient way to work with the first one. But both the <code>add</code> ops are still around, in the graph, and will stay there.</p>
+<p>(As an aside, Python's mechanism for defining class-specific addition <a href="http://www.python-course.eu/python3_magic_methods.php">and so on</a>, which is how <code>+</code> is made to create TensorFlow ops, is pretty neat.)</p>
+<p>Especially if you're just working with the default graph and running interactively in a regular REPL or a notebook, you can end up with a lot of abandoned ops in your graph. Every time you re-run a notebook cell that defines any graph ops, you aren't just redefining ops—you're creating new ones.</p>
+<p>Often it's okay to have a few extra ops floating around when you're experimenting. But things can get out of hand.</p>
+<pre><code class="language-python">for _ in range(1e6):
+    x = x + 1</code></pre>
+
+<p>If <code>x</code> is a NumPy array, or just a regular Python number, this will run in constant memory and finish with one value for x.</p>
+<p>But if <code>x</code> is a TensorFlow variable, there will be over a million ops in your TensorFlow graph, just defining a computation and not even <em>doing</em> it.</p>
+<p>One immediate fix for TensorFlow is to use a <code>tf.assign</code> op, which gives behavior more like what you might expect.</p>
+<pre><code class="language-python">increment_x = tf.assign(x, x + 1)
+for _ in range(1e6):
+    session.run(increment_x)</code></pre>
+
+<p>This revised version does not create any ops inside the loop, which is generally good advice. TensorFlow does have <a href="https://www.tensorflow.org/api_guides/python/control_flow_ops">control flow constructs</a> including <a href="https://www.tensorflow.org/api_docs/python/tf/while_loop">while loops</a>. But only use these when really needed.</p>
+<p>Be conscious of when you're creating ops, and only create the ones you need. Try to keep op creation distinct from op execution. And after interactive experimentation, eventually get to a state, probably in a script, where you're only creating the ops that you need.</p>
+<h2>Avoid constants in the graph</h2>
+<p>A particularly unfortunate op to needlessly add to a graph is accidental constant ops, especially large ones.</p>
+<pre><code class="language-python">>>> many_ones = np.ones((1000, 1000))</code></pre>
+
+<p>There are a million ones in the NumPy array <code>many_ones</code>. We can add them up.</p>
+<pre><code class="language-python">>>> many_ones.sum()
+## 1000000.0</code></pre>
+
+<p>What if we add them up with TensorFlow?</p>
+<pre><code class="language-python">>>> session.run(tf.reduce_sum(many_ones))
+## 1000000.0</code></pre>
+
+<p>The result is the same, but the mechanism is quite different. This not only added some ops to the graph—it put a copy of the entire million-element array into the graph as a constant.</p>
+<p>Variations on this pattern can result in accidentally loading an entire data set into the graph as constants. A program might still run, for small data sets. Or your system might fail.</p>
+<p>One simple way to avoid storing data in the graph is to use the <code>feed_dict</code> mechanism.</p>
+<pre><code class="language-python">>>> many_things = tf.placeholder(tf.float64)
+>>> adder = tf.reduce_sum(many_things)
+>>> session.run(adder, feed_dict={many_things: many_ones})
+## 1000000.0</code></pre>
+
+<p>As before, be clear about what you're adding to the graph and when. Concrete data usually only enters the graph at moments of evaluation.</p>
+<h2>TensorFlow as Functional Programming</h2>
+<p>TensorFlow ops are like functions. This is especially clear when an op has one or more placeholder inputs; evaluating the op in a session is like calling a function with those arguments. So Python functions that return TensorFlow ops are like <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>.</p>
+<p>You might decide that it's worth putting a constant into the graph. For example, if you have to reshape a lot of tensors to 28x28, you might make an op that does that.</p>
+<pre><code class="language-python">>>> input_tensor = tf.placeholder(tf.float32)
+>>> reshape_to_28 = tf.reshape(input_tensor, shape=[28, 28])</code></pre>
+
+<p>This is like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> in that the <code>shape</code> argument has now been set. The <code>[28, 28]</code> has become a constant in the graph and specified that argument. Now to evaluate <code>reshape_to_28</code> we only have to provide <code>input_tensor</code>.</p>
+<p>Broader connections have been suggested between <a href="http://colah.github.io/posts/2015-09-NN-Types-FP/">neural networks, types, and functional programming</a>. It's interesting to think of TensorFlow as a system that supports this kind of construction.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

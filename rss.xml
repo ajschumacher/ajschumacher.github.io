@@ -7,6 +7,109 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>How Not To Program the TensorFlow Graph</title>
+<description><![CDATA[
+
+<p>Using TensorFlow from Python is like using Python to program <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">another computer</a>. Some Python statements build your TensorFlow program, some Python statements execute that program, and of course some Python statements aren't involved with TensorFlow at all.</p>
+<p>Being thoughtful about the graphs you construct can help you avoid confusion and performance pitfalls. Here are a few considerations.</p>
+<h2>Avoid having many identical ops</h2>
+<!-- Better re-write; maybe separate out a section about Python names for TF ops, losing references to your ops, etc. -->
+
+<p>Lots of methods in TensorFlow create ops in the computation graph, but do not execute them. You may want to execute multiple times, but that doesn't mean you should create lots of copies of the same ops.</p>
+<p>A clear example is <code>tf.global_variables_initializer()</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; session = tf.Session()
+# Create some variables...
+&gt;&gt;&gt; initializer = tf.global_variables_initializer()
+# Variables are not yet initialized.
+&gt;&gt;&gt; session.run(initializer)
+# Now variables are initialized.
+# Do some more work...
+&gt;&gt;&gt; session.run(initializer)
+# Now variables are re-initialized.</code></pre>
+
+<p>If the call to <code>tf.global_variables_initializer()</code> is repeated, for example directly as the argument to <code>session.run()</code>, there are downsides.</p>
+<pre><code class="language-python">&gt;&gt;&gt; session.run(tf.global_variables_initializer())
+&gt;&gt;&gt; session.run(tf.global_variables_initializer())</code></pre>
+
+<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
+<p>Creating ops inside <code>session.run()</code>, you also don't have a Python variable referring to those ops, so you can't easily reuse them.</p>
+<p>In Python, if you create an object that nothing refers to, it can be garbage collected. The abandoned object will be deleted and and memory it used will be freed. That doesn't happen to things in the TensorFlow graph; everything you put in the graph stays there.</p>
+<p>It's pretty clear that <code>tf.global_variables_initializer()</code> returns an op. But ops are also created in less obvious ways.</p>
+<p>Let's compare to how NumPy works.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; x = np.array(1.0)
+&gt;&gt;&gt; y = x + 1.0</code></pre>
+
+<p>At this point there are two arrays in memory, <code>x</code> and <code>y</code>. The <code>y</code> has the value 2.0, but there's no record of <em>how</em> it came to have that value. The addition has left no record of itself.</p>
+<p>TensorFlow is different.</p>
+<pre><code class="language-python">&gt;&gt;&gt; x = tf.Variable(1.0)
+&gt;&gt;&gt; y = x + 1.0</code></pre>
+
+<p>Now only <code>x</code> is a TensorFlow variable; <code>y</code> is an <code>add</code> op, which can return the result of that addition if we ever run it.</p>
+<p>One more comparison.</p>
+<pre><code class="language-python">&gt;&gt;&gt; x = np.array(1.0)
+&gt;&gt;&gt; y = x + 1.0
+&gt;&gt;&gt; y = x + 1.0</code></pre>
+
+<p>Here <code>y</code> is assigned to refer to one result array <code>x + 1.0</code>, and then reassigned to point to a different one. The first one will be garbage collected and disappear.</p>
+<pre><code class="language-python">&gt;&gt;&gt; x = tf.Variable(1.0)
+&gt;&gt;&gt; y = x + 1.0
+&gt;&gt;&gt; y = x + 1.0</code></pre>
+
+<p>In this case, <code>y</code> refers to one <code>add</code> op in the TensorFlow graph, and then <code>y</code> is reassigned to point to a different <code>add</code> op in the graph. Since <code>y</code> only points to the second <code>add</code> now, we don't have a convenient way to work with the first one. But both the <code>add</code> ops are still around, in the graph, and will stay there.</p>
+<p>(As an aside, Python's mechanism for defining class-specific addition <a href="http://www.python-course.eu/python3_magic_methods.php">and so on</a>, which is how <code>+</code> is made to create TensorFlow ops, is pretty neat.)</p>
+<p>Especially if you're just working with the default graph and running interactively in a regular REPL or a notebook, you can end up with a lot of abandoned ops in your graph. Every time you re-run a notebook cell that defines any graph ops, you aren't just redefining ops&#8212;you're creating new ones.</p>
+<p>Often it's okay to have a few extra ops floating around when you're experimenting. But things can get out of hand.</p>
+<pre><code class="language-python">for _ in range(1e6):
+    x = x + 1</code></pre>
+
+<p>If <code>x</code> is a NumPy array, or just a regular Python number, this will run in constant memory and finish with one value for x.</p>
+<p>But if <code>x</code> is a TensorFlow variable, there will be over a million ops in your TensorFlow graph, just defining a computation and not even <em>doing</em> it.</p>
+<p>One immediate fix for TensorFlow is to use a <code>tf.assign</code> op, which gives behavior more like what you might expect.</p>
+<pre><code class="language-python">increment_x = tf.assign(x, x + 1)
+for _ in range(1e6):
+    session.run(increment_x)</code></pre>
+
+<p>This revised version does not create any ops inside the loop, which is generally good advice. TensorFlow does have <a href="https://www.tensorflow.org/api_guides/python/control_flow_ops">control flow constructs</a> including <a href="https://www.tensorflow.org/api_docs/python/tf/while_loop">while loops</a>. But only use these when really needed.</p>
+<p>Be conscious of when you're creating ops, and only create the ones you need. Try to keep op creation distinct from op execution. And after interactive experimentation, eventually get to a state, probably in a script, where you're only creating the ops that you need.</p>
+<h2>Avoid constants in the graph</h2>
+<p>A particularly unfortunate op to needlessly add to a graph is accidental constant ops, especially large ones.</p>
+<pre><code class="language-python">&gt;&gt;&gt; many_ones = np.ones((1000, 1000))</code></pre>
+
+<p>There are a million ones in the NumPy array <code>many_ones</code>. We can add them up.</p>
+<pre><code class="language-python">&gt;&gt;&gt; many_ones.sum()
+## 1000000.0</code></pre>
+
+<p>What if we add them up with TensorFlow?</p>
+<pre><code class="language-python">&gt;&gt;&gt; session.run(tf.reduce_sum(many_ones))
+## 1000000.0</code></pre>
+
+<p>The result is the same, but the mechanism is quite different. This not only added some ops to the graph&#8212;it put a copy of the entire million-element array into the graph as a constant.</p>
+<p>Variations on this pattern can result in accidentally loading an entire data set into the graph as constants. A program might still run, for small data sets. Or your system might fail.</p>
+<p>One simple way to avoid storing data in the graph is to use the <code>feed_dict</code> mechanism.</p>
+<pre><code class="language-python">&gt;&gt;&gt; many_things = tf.placeholder(tf.float64)
+&gt;&gt;&gt; adder = tf.reduce_sum(many_things)
+&gt;&gt;&gt; session.run(adder, feed_dict={many_things: many_ones})
+## 1000000.0</code></pre>
+
+<p>As before, be clear about what you're adding to the graph and when. Concrete data usually only enters the graph at moments of evaluation.</p>
+<h2>TensorFlow as Functional Programming</h2>
+<p>TensorFlow ops are like functions. This is especially clear when an op has one or more placeholder inputs; evaluating the op in a session is like calling a function with those arguments. So Python functions that return TensorFlow ops are like <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>.</p>
+<p>You might decide that it's worth putting a constant into the graph. For example, if you have to reshape a lot of tensors to 28x28, you might make an op that does that.</p>
+<pre><code class="language-python">&gt;&gt;&gt; input_tensor = tf.placeholder(tf.float32)
+&gt;&gt;&gt; reshape_to_28 = tf.reshape(input_tensor, shape=[28, 28])</code></pre>
+
+<p>This is like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> in that the <code>shape</code> argument has now been set. The <code>[28, 28]</code> has become a constant in the graph and specified that argument. Now to evaluate <code>reshape_to_28</code> we only have to provide <code>input_tensor</code>.</p>
+<p>Broader connections have been suggested between <a href="http://colah.github.io/posts/2015-09-NN-Types-FP/">neural networks, types, and functional programming</a>. It's interesting to think of TensorFlow as a system that supports this kind of construction.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</link>
+<guid>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</guid>
+<pubDate>Tue, 04 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Images and TFRecords</title>
 <description><![CDATA[
 
@@ -1556,128 +1659,6 @@ planspace.org
 <link>http://planspace.org/20170216-omegago/</link>
 <guid>http://planspace.org/20170216-omegago/</guid>
 <pubDate>Thu, 16 Feb 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Presenting “Hello, TensorFlow!” Again</title>
-<description><![CDATA[
-
-<p><em>This is an updated presentation version of my &#8220;Hello, TensorFlow!&#8221; <a href="https://www.oreilly.com/learning/hello-tensorflow">O'Reilly post</a>. The <a href="/20160629-presenting_hello_tensorflow/">original</a> was given at the <a href="http://www.meetup.com/TensorFlow-Washington-DC/">TensorFlow Washington DC</a> meetup on Wednesday June 29, 2016, &#8220;<a href="http://www.meetup.com/TensorFlow-Washington-DC/events/231860618/">Deep Dive into TensorFlow</a>.&#8221; This version was created for a Wednesday October 5 2016 guest presentation at the DC <a href="https://generalassemb.ly/education/data-science-immersive">General Assembly Data Science Immersive</a> and for a Wednesday October 26 2016 presentation at the <a href="http://dc.gputechconf.com/">NVIDIA GPU Technology Conference (GTC) in DC</a>. (<a href="big.html">slides</a>) (<a href="https://mygtc.gputechconf.com/events/35/schedules/3388">NVIDIA page with video link</a>) (<a href="https://www.youtube.com/watch?v=n350wsivoQk">video on youtube</a>) <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> is now <a href="https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole">an interactive code and video Oriole</a> as well.</em></p>
-<p>I've given this talk a couple times, which means this is the improved version.</p>
-<hr>
-<p></p><center>
-planspace.org
-<p>@planarrowspace
-</p></center>
-<hr>
-<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
-<hr>
-<p><img alt="Hello, TensorFlow! on O'Reilly" src="img/screenshot.png"></p>
-<hr>
-<p>This presentation started as a blog post I <a href="/20160619-writing_with_oreilly/">wrote</a> which was <a href="https://www.oreilly.com/learning/hello-tensorflow">published</a> on O'Reilly.</p>
-<p>If you want you can follow along <a href="https://www.oreilly.com/learning/hello-tensorflow">there</a> and we'll stay pretty close to <a href="https://www.oreilly.com/learning/hello-tensorflow">that content</a>.</p>
-<p>I also recorded an O'Reilly <a href="http://www.oreilly.com/oriole/">Oriole</a> video and interactive version which should come out some time soon on O'Reilly's <a href="http://safari.oreilly.com">Safari</a> service.</p>
-<hr>
-<p><img alt="Hello, TensorFlow! on O'Reilly China" src="img/screenshot_chinese.png"></p>
-<hr>
-<p>O'Reilly also translated and published a <a href="https://www.oreilly.com.cn/ideas/?p=533">Chinese version</a>, so if you prefer to read Chinese you can do that too.</p>
-<hr>
-<p>UNCLASSIFIED</p>
-<hr>
-<p>That reminds me, the classification level for this talk is UNCLASSIFIED.</p>
-<p><em>This is a little joke for the government-heavy <a href="http://dc.gputechconf.com/">GTC DC</a> audience, which I hope nobody has reason to take offense at.</em></p>
-<hr>
-<p><img alt="Deep Learning Analytics" src="img/dla.png"></p>
-<hr>
-<p>A lot of people have already contributed to this material. I work at <a href="http://www.deeplearninganalytics.com/">Deep Learning Analytics</a> (DLA) and have to especially thank John for his support, and all my colleagues there for their feedback. I'm also particularly indebted to the <a href="http://www.meetup.com/DC-Machine-Learning-Journal-Club/">DC Machine Learning Journal Club</a>, and of course the folks at O'Reilly.</p>
-<hr>
-<p><img alt="caffe and tensorflow contributions on github" src="img/caffe_tf_contrib.png"></p>
-<hr>
-<p>A brief note on popularity as measured by development activity on <a href="https://github.com/">GitHub</a>. <a href="http://caffe.berkeleyvision.org/">Caffe</a> is another framework you might consider for deep learning. This is one way to compare <a href="https://github.com/BVLC/caffe/graphs/contributors">Caffe</a> and <a href="https://github.com/tensorflow/tensorflow/graphs/contributors">TensorFlow</a>. TensorFlow is pretty active &#8212; so much so that it can be difficult to keep up with all the developments.</p>
-<p><em>Data and details for producing this graph are in <a href="contrib_plot.ipynb">contrib_plot.ipynb</a>.</em></p>
-<hr>
-<p><img alt="braided river" src="img/braided_river.jpg"></p>
-<hr>
-<p>I'm going to try to show in a very hands-on way some of the details of how TensorFlow works. The idea is not to exercise all the features of TensorFlow but to really understand some of the important underlying concepts.</p>
-<p><em>Image from <a href="https://www.flickr.com/photos/alaskanps/8029733984">National Park Service, Alaska Region on Flickr</a>.</em></p>
-<hr>
-<ul>
-<li>tensors</li>
-<li>flows</li>
-<li>GPUs</li>
-<li>pictures</li>
-<li>servers</li>
-</ul>
-<hr>
-<p>There are a couple interesting things about TensorFlow.</p>
-<p>I'm really only going to demonstrate the middle two, but let's mention them all.</p>
-<hr>
-<p><img alt="not neurons, tensors" src="img/not_neurons.png"></p>
-<hr>
-<p>First thing about TensorFlow: tensors.</p>
-<p>TensorFlow hates neurons and it loves linear algebra.</p>
-<p>When you design software you make choices that affect what you can do and how you can do it.</p>
-<p>For neural nets, there has in the past been a fixation on the biological metaphor and the "neurons" in particular. If you've used software like R's <a href="https://cran.r-project.org/web/packages/neuralnet/">neuralnet</a> package or Python's <a href="http://pybrain.org/">PyBrain</a>, you've seen interfaces where you typically define the number of neurons or "hidden units" that you want in each layer, and the connections between them (and perhaps some other components) are set up automatically one way or another.</p>
-<p>TensorFlow does also provide a higher-level interface in <a href="https://www.tensorflow.org/versions/master/tutorials/tflearn/index.html">tf.contrib.learn</a> that talks about hidden units and so on. But if you're looking at the math you have to evaluate inside these neural net models, the "neurons" hardly exist at all. The weights on the connections certainly exist, and there are operations that connect values as they flow through the network, but in the end you don't really need "neurons" to be a dominant abstraction in the system.</p>
-<p>If you go this route, everything is just matrix math - or, for arbitrary dimensions, tensor math. This is the choice TensorFlow makes. It makes TensorFlow really flexible and lets it achieve efficient computation that would be more difficult otherwise.</p>
-<p>So TensorFlow can do more than "just" neural nets. As demonstrated in the <a href="https://www.udacity.com/course/deep-learning--ud730">Google/Udacity Deep Learning MOOC</a>, you can implement logistic regression easily with TensorFlow, for example. There's even now a section of non-machine-learning applications in the <a href="https://www.tensorflow.org/versions/r0.11/tutorials/index.html">official tutorials</a>.</p>
-<p>Focusing on (typically fixed-dimension) tensors does arguably make it more awkward to attempt esoteric techniques like dynamically changing the architecture of your neural net by adding neurons, for example. (This comment was inspired by <a href="https://drive.google.com/file/d/0Bxf-khCt_eknWEF6aFJ1ZU4yQ00/view">Let your Networks Grow</a>, <a href="https://sites.google.com/site/nnb2tf/">Neural Nets Back to the Future</a> at <a href="http://icml.cc/2016/">ICML 2016</a>.)</p>
-<p>The linear algebra you actually have to think about is not too tricky, but for our purposes I'm not going to use anything more than individual numbers, so there's no chance of being distracted by linear algebra.</p>
-<p>The relevant point is that while some other software focuses on neurons and mostly ignores weights, in the case of TensorFlow we focus on weights and mostly ignore neurons as a top-level abstraction. In any event, it's all just numbers.</p>
-<hr>
-<p><img alt="simple computation graph" src="img/math_graph.png"></p>
-<hr>
-<p>Second thing about TensorFlow: flows.</p>
-<p>TensorFlow loves graphs.</p>
-<p>It's important to distinguish between graphs and pictures. Here we mean <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graphs</a> as in the abstract data type. Data flow graphs.</p>
-<p>This is a picture of a data flow graph. You might prefer to think of it as \(y=mx+b\). This is what TensorFlow's graphs are like.</p>
-<p>The advantage of graphs is that the software can manipulate them and "reason about" how to answer questions you're asking before it commits to particular execution paths.</p>
-<p>Lots of software is moving toward working via graphs in this way. Often they're <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graphs</a> but I don't care too much about whether that's always strictly the case. <a href="https://twitter.com/planarrowspace/status/569963882900561921">&#129370;</a></p>
-<p>For example, <a href="http://deeplearning.net/software/theano/">Theano</a> works similarly enough to TensorFlow that <a href="http://keras.io/">Keras</a> can use either as its backend. <a href="http://torch.ch/">Torch</a> is also similar.</p>
-<p>Outside of software mostly for deep learning, <a href="http://spark.apache.org/">Spark</a> works with a kind of computation graph to manage distributed processing. Tools like <a href="https://github.com/spotify/luigi">Luigi</a> and <a href="https://github.com/Factual/drake">Drake</a> manage graph pipelines of data. And many <a href="http://drivendata.github.io/cookiecutter-data-science/">recommend</a> that all data work be thought of as graph-like pipelines.</p>
-<p>The graph concept is interesting and worth exploring in order to understand TensorFlow, so I'll spend some time with it today.</p>
-<p><em>Image made with <a href="https://draw.io/">draw.io</a>.</em></p>
-<hr>
-<p><img alt="GPU" src="img/gpu.jpg"></p>
-<hr>
-<p>In part because it structures computations with tensors in a computation graph that it can manage, TensorFlow is able to move computation onto GPUs in ways that can improve performance. This can happen automatically or be specified in code; see the <a href="https://www.tensorflow.org/versions/r0.11/how_tos/using_gpu/">Using GPUs tutorial</a>.</p>
-<p>This GPU utilization is not only for "neural" computations; TensorFlow can be used as an easy way to move many computations onto GPUs, without having to write any CUDA (etc.) yourself.</p>
-<p>You can also distribute computation across multiple GPUs (and multiple machines) but it isn't always automatic. <a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> provides some helpful functionality, and more seems to be becoming available all the time.</p>
-<hr>
-<p><img alt="Visualization of a TensorFlow graph" src="img/graph_vis_animation.gif"></p>
-<hr>
-<p>Third thing about TensorFlow: pictures.</p>
-<p>If you use Python's <a href="http://scikit-learn.org/">scikit-learn</a>, you likely also use a separate visualization tool, likely including <a href="http://matplotlib.org/">matplotlib</a>. If you've tried to <a href="/20151129-see_sklearn_trees_with_d3/">visualize decision tree rules</a>, you may have had a frustrating time. You may or may not use any explicit logging system at all.</p>
-<p>The <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tensorboard/README.md">TensorBoard</a> tooling that comes with TensorFlow is a great logging and visualizing system that gives you access to a lot of internals that could otherwise be a lot of work to expose.</p>
-<p>I think TensorBoard <em>by itself</em> is a compelling reason to use TensorFlow over other similar software.</p>
-<p>TensorBoard is super great and I will be showing several sides of it today.</p>
-<p><em>Image from <a href="https://www.tensorflow.org/versions/r0.8/how_tos/graph_viz/index.html">TensorBoard: Graph Visualization</a>.</em></p>
-<hr>
-<p><img alt="Life of a Servable" src="img/serving_architecture.svg"></p>
-<hr>
-<p>Fourth thing about TensorFlow: servers.</p>
-<p>TensorFlow loves moving directly into production.</p>
-<p>In addition to everything else, TensorFlow has a highly-engineered serving architecture. So if you develop a TensorFlow model on your laptop, you can (relatively) easily build a deployment system to serve that model in a serious way. It seems pretty neat, but I haven't used it and I'm not going to talk more about it.</p>
-<p><em>Image from the <a href="https://tensorflow.github.io/serving/architecture_overview">TensorFlow Serving Architecture Overview</a>.</em></p>
-<hr>
-<p>demo</p>
-<hr>
-<p>From here to the end is just demo! The starting point is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_begin.ipynb">demo_start.ipynb</a> and the ending point (with output) is <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20160629-presenting_hello_tensorflow/demo_end.ipynb">demo_end.ipynb</a>.</p>
-<hr>
-<p>Thanks!</p>
-<hr>
-<p>Thank you!</p>
-<hr>
-<p></p><center>
-planspace.org
-<p>@planarrowspace
-</p></center>
-<hr>
-<p>This is just me again.</p><!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20161005-presenting_hello_tensorflow_again/</link>
-<guid>http://planspace.org/20161005-presenting_hello_tensorflow_again/</guid>
-<pubDate>Wed, 05 Oct 2016 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
