@@ -13,27 +13,28 @@
 <p class="date">Monday June 20, 2016</p>
 <p>This is the final code block from <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> I like it as
 a cheat sheet for TensorFlow basics.</p>
+<p>I updated this code to work with TensorFlow 1.0.1. Coming from TensorFlow 0.8, this required changing 5 of the 17 lines.</p>
 <pre><code class="language-python">import tensorflow as tf
 
 x = tf.constant(1.0, name='input')
 w = tf.Variable(0.8, name='weight')
-y = tf.mul(w, x, name='output')
+y = tf.multiply(w, x, name='output')
 y_ = tf.constant(0.0, name='correct_value')
 loss = tf.pow(y - y_, 2, name='loss')
 train_step = tf.train.GradientDescentOptimizer(0.025).minimize(loss)
 
 for value in [x, w, y, y_, loss]:
-    tf.scalar_summary(value.op.name, value)
+    tf.summary.scalar(value.op.name, value)
 
-summaries = tf.merge_all_summaries()
+summaries = tf.summary.merge_all()
 
-sess = tf.Session()
-summary_writer = tf.train.SummaryWriter('log_simple_stats', sess.graph)
+session = tf.Session()
+summary_writer = tf.summary.FileWriter('log_simple_stats', session.graph)
 
-sess.run(tf.initialize_all_variables())
+session.run(tf.global_variables_initializer())
 for i in range(100):
-    summary_writer.add_summary(sess.run(summaries), i)
-    sess.run(train_step)
+    summary_writer.add_summary(session.run(summaries), i)
+    session.run(train_step)
 
 summary_writer.close()</code></pre>
 
