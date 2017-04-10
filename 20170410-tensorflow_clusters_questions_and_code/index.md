@@ -127,3 +127,15 @@ server = tf.train.Server(config.cluster_spec,
 ```
 
 At this point, you are ready to begin writing a distributed TensorFlow program.
+
+<!-- helpful references:
+
+https://github.com/tensorflow/tensorflow/blob/17c47804b86e340203d451125a721310033710f1/tensorflow/contrib/learn/python/learn/estimators/run_config.py
+
+https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/census/tensorflowcore/trainer/task.py
+
+-->
+
+---
+
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).

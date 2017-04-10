@@ -83,7 +83,17 @@ server = tf.train.Server(config.cluster_spec,
                          job_name=config.task_type,
                          task_index=config.task_id)</code></pre>
 
-<p>At this point, you are ready to begin writing a distributed TensorFlow program.</p>    
+<p>At this point, you are ready to begin writing a distributed TensorFlow program.</p>
+<!-- helpful references:
+
+https://github.com/tensorflow/tensorflow/blob/17c47804b86e340203d451125a721310033710f1/tensorflow/contrib/learn/python/learn/estimators/run_config.py
+
+https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/census/tensorflowcore/trainer/task.py
+
+-->
+
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170410-tensorflow_clusters_questions_and_code/</link>
 <guid>http://planspace.org/20170410-tensorflow_clusters_questions_and_code/</guid>
