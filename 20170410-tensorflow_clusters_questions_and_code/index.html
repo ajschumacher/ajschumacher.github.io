@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>TensorFlow Clusters: Questions and Code</title>
+  </head>
+  <body>
+    <article>
+<h1>TensorFlow Clusters: Questions and Code</h1>
+<p class="date">Monday April 10, 2017</p>
+<p>One way to think about TensorFlow is as a framework for <a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed computing</a>. I've suggested that TensorFlow is a <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">distributed virtual machine</a>. As such, it offers a lot of flexibility. TensorFlow also suggests some conventions that make writing programs for distributed computation tractable.</p>
+<h2>When is there a cluster?</h2>
+<p>A <a href="http://hadoop.apache.org/">Hadoop</a> or <a href="http://spark.apache.org/">Spark</a> cluster is generally long-lived. The cluster runs, processing jobs as they come to it. A company might have a thousand-node Spark cluster, for example, used by everyone in a division.</p>
+<p>In contrast, TensorFlow clusters generally spring into being for the purpose of running a particular TensorFlow program. There are computers on the network, and they become members of TensorFlow clusters based on what they're running.</p>
+<p>To make this process manageable, you might use a system like <a href="https://kubernetes.io/">Kubernetes</a> or <a href="https://cloud.google.com/ml-engine/">Google Cloud ML</a> to intelligently run TensorFlow programs on specific machines in a larger pool.</p>
+<h2>What does the cluster do for me?</h2>
+<p>In systems like Hadoop MapReduce and Spark, there's usually considerable distance between the programming interface and how the computation actually gets distributed. If you're writing your own map and reduce steps for Hadoop, you're close to that mechanism, but you're still plugging in to the pre-built larger architecture. Most users prefer higher-level APIs like <a href="https://pig.apache.org/">Pig</a> on Hadoop or the standard Spark APIs. And both Hadoop and Spark support at least one SQL-style interface, even farther from the underlying implementations. As a user of Hadoop or Spark, you don't think about putting computation on particular machines, or worry about the different roles that different machines might play.</p>
+<p>With TensorFlow, the abstraction for distributed computing is the same as the abstraction for local computing: the computation graph. Distributing TensorFlow programs means having graphs that span multiple computers. You're responsible for what parts of the graph go where, and what every computer in the cluster does.</p>
+<h2>How many programs do I write?</h2>
+<p>One familiar model of distributed computing is client-server, like the web. Web servers and browsers are quite different programs.</p>
+<p>Closer to TensorFlow applications, a central server could do some computation on request, or it could offer data to be processed on the client side, like <a href="https://setiathome.berkeley.edu/">SETI@home</a> or <a href="https://folding.stanford.edu/">Folding@home</a>. Again, server and client code are distinct.</p>
+<p>Nothing prevents you from writing separate "server" and "client" TensorFlow programs, but it isn't necessary, natural, or recommended. One of TensorFlow's design goals was to get away from the client-server divide in DistBelief.</p>
+<p>The TensorFlow distributed runtime is peer-to-peer: every machine can accept graph nodes from any other machine, and every machine can put graph nodes on any other machine. Generally, every machine will run the same program. Whether the system behaves like a client-server system or something else entirely is up to you.</p>
+<h2>Which computer does what?</h2>
+<p>Distributed TensorFlow works by running the same program on multiple machines, but that doesn't mean that every machine does exactly the same thing.</p>
+<p>If a system with separate client and server programs is like a system of two symbiotic species, your TensorFlow program is like the DNA of an organism whose cells specialize based on their environment.</p>
+<p>The dominant convention is to have two main roles: <em>parameter servers</em> (<code>ps</code>) and <em>workers</em>. You might also have a <em>master</em> role, and one of your workers can be the <em>chief</em> worker, but <code>ps</code> and <code>worker</code> is usually the main division.</p>
+<p>Usually a machine running your TensorFlow program will learn what its role should be based on the <code>TF_CONFIG</code> environment variable, which should be set by your cluster manager.</p>
+<h2>Who knows what about the cluster topology?</h2>
+<p>In Hadoop and Spark, the system is keeping track of all the machines in the cluster. On the web, servers generally only know about client addresses long enough to provide a response.</p>
+<p>Usually every machine in a TensorFlow cluster will be given a complete listing of machines in the cluster.</p>
+<p>If some machines really don't need to know about others in the same cluster, for example if workers never communicate with one another, it's also possible to provide less complete information.</p>
+<p>The cluster topology is also most often provided via the <code>TF_CONFIG</code> environment variable.</p>
+<h2>Code?</h2>
+<p>Let's say you have a network which includes the following machines:</p>
+<ul>
+<li><code>192.168.0.10</code></li>
+<li><code>192.168.0.11</code></li>
+<li><code>192.168.0.12</code></li>
+</ul>
+<p>The machines are all running the same version of TensorFlow. Let's see how we could get them set up to run a distributed TensorFlow program.</p>
+<p>We'll have one parameter server (<code>ps</code>) and two workers. Each machine will know about the cluster's topology.</p>
+<pre><code class="language-python">import tensorflow as tf
+
+cluster = {'ps': ['192.168.0.10:2222'],
+           'worker': ['192.168.0.11:2222', '192.168.0.12:2222']}
+cluster_spec = tf.train.ClusterSpec(cluster)
+server = tf.train.Server(cluster_spec)</code></pre>
+
+<p>In the strings like <code>'192.168.0.10:2222'</code>, the protocol (gRPC) is omitted, and the port (<code>2222</code>) is the default for TensorFlow communication.</p>
+<p>The <code>server</code> that every machine starts is what enables the communication of the TensorFlow distributed runtime; its behavior is largely at a lower level than the code we'll write.</p>
+<p>This code gets the network topology going, but it doesn't tell an individual machine which role it should have. Working out which IP address or hostname refers to the current machine is not necessarily straightforward, but hard-coding different values into different copies of the code would be an even worse idea than hard-coding the topology once. This is where the environment variable <code>TF_CONFIG</code> becomes very useful.</p>
+<p>We'll put cluster and task information into the <code>TF_CONFIG</code> environment variable as a JSON serialization. On the machine that will be our parameter server, the data will look like this as a Python dictionary:</p>
+<pre><code class="language-python">tf_config = {'cluster': {'ps': ['192.168.0.10:2222'],
+                         'worker': ['192.168.0.11:2222', '192.168.0.12:2222']},
+             'task': {'type': 'ps',
+                      'index': 0}}</code></pre>
+
+<p>You can set the environment variable in the usual way in a shell, making small changes to achieve JSON syntax.</p>
+<pre><code class="language-bash">$ export TF_CONFIG='{"cluster": {"ps": ["192.168.0.10:2222"], "worker": ["192.168.0.11:2222", "192.168.0.12:2222"]}, "task": {"type": "ps", "index": 0}}'</code></pre>
+
+<p>To avoid fussing with that directly, you could do it in Python.</p>
+<pre><code class="language-python">import os
+import json
+
+os.environ['TF_CONFIG'] = json.dumps(tf_config)</code></pre>
+
+<p>Really, it'll be best if your cluster manager sets <code>TF_CONFIG</code> for you.</p>
+<p>Once <code>TF_CONFIG</code> is set, you can read it and get to work.</p>
+<pre><code class="language-python">tf_config = json.loads(os.environ['TF_CONFIG'])
+cluster_spec = tf.train.ClusterSpec(tf_config['cluster'])
+task_type = tf_config['task']['type']
+task_id = tf_config['task']['index']
+server = tf.train.Server(cluster_spec,
+                         job_name=task_type,
+                         task_index=task_id)</code></pre>
+
+<p>Another way to do that is with <code>tf.contrib.learn.RunConfig</code>, which automatically checks the <code>TF_CONFIG</code> environment variable.</p>
+<pre><code class="language-python">config = tf.contrib.learn.RunConfig()
+server = tf.train.Server(config.cluster_spec,
+                         job_name=config.task_type,
+                         task_index=config.task_id)</code></pre>
+
+<p>At this point, you are ready to begin writing a distributed TensorFlow program.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
