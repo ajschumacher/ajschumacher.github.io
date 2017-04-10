@@ -103,6 +103,8 @@ import json
 os.environ['TF_CONFIG'] = json.dumps(tf_config)
 ```
 
+<!-- Note that this technique won't leave $TF_CONFIG set in the calling shell... -->
+
 Really, it'll be best if your cluster manager sets `TF_CONFIG` for you.
 
 Once `TF_CONFIG` is set, you can read it and get to work.
