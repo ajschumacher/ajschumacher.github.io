@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-04-11: [Distributed MapReduce with TensorFlow](/20170411-distributed_mapreduce_with_tensorflow/)
  * 2017-04-10: [TensorFlow Clusters: Questions and Code](/20170410-tensorflow_clusters_questions_and_code/)
  * 2017-04-04: [How Not To Program the TensorFlow Graph](/20170404-how_not_to_program_the_tensorflow_graph/)
  * 2017-04-03: [Images and TFRecords](/20170403-images_and_tfrecords/)
