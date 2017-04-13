@@ -7,6 +7,65 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Reading from Disk inside the TensorFlow Graph</title>
+<description><![CDATA[
+
+<p>As I've <a href="/20170312-use_only_what_you_need_from_tensorflow/">noted</a>, the TensorFlow input pipeline misleadingly <a href="https://www.tensorflow.org/programmers_guide/reading_data">described</a> as "reading from files" is far more complicated than many people need or want to deal with. Indeed, TensorFlow developers realize this and are <a href="https://github.com/tensorflow/tensorflow/issues/7951">thinking about</a> adding alternative interfaces for getting data in to TensorFlow programs.</p>
+<p>You can still use any method you like for loading data in Python and then put it in your TensorFlow graph via the <code>feed_dict</code> method. But say you do want to do your file reading with ops that live inside the TensorFlow graph. How does it work?</p>
+<p>TensorFlow does have <a href="https://www.tensorflow.org/api_docs/python/tf/read_file"><code>tf.read_file</code></a> and <a href="https://www.tensorflow.org/api_docs/python/tf/write_file"><code>tf.write_file</code></a>, which let you read and write whole files at once, something like regular Python <code>file.read()</code> and <code>file.write()</code>. But you likely want something a little more helpful.</p>
+<p>In Python, you can read lines from a file like this:</p>
+<pre><code class="language-python">&gt;&gt;&gt; reader = open('filename.txt'):
+&gt;&gt;&gt; for line in reader:
+&gt;&gt;&gt;    print(line)</code></pre>
+
+<p>TensorFlow has readers that generalize this idea of getting multiple things, like lines, from files. The immediate example is the <a href="https://www.tensorflow.org/api_docs/python/tf/TextLineReader"><code>tf.TextLineReader</code></a>. There are also <a href="https://www.tensorflow.org/api_guides/python/io_ops#Readers">readers</a> that read records from TFRecords files, or just fixed number of bytes at a time from arbitrary files. Reading a whole file at a time is sort of degenerate case.</p>
+<p>Instead of taking a filename, however, TensorFlow readers take a queue of filenames. This can be useful:</p>
+<ul>
+<li>You may have lots of files that you want to read from, possibly using multiple machines.</li>
+<li>You may want to read through one or more files multiple times, for multiple epochs of training.</li>
+</ul>
+<p>It's a little awkward to use a queue when you just want to read from one file, but that's how TensorFlow works.</p>
+<p>TensorFlow's file reading gets tangled up with its threading <code>QueueRunner</code> because they're often shown together, but this is not necessary. We <a href="/20170327-tensorflow_and_queues/">can</a> set up a quick and dirty one-item queue like this:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; filename_queue = tf.FIFOQueue(capacity=1, dtypes=[tf.string])
+&gt;&gt;&gt; session = tf.Session()
+&gt;&gt;&gt; session.run(filename_queue.enqueue('limerick.txt'))
+&gt;&gt;&gt; session.run(filename_queue.close())</code></pre>
+
+<p>We make a reader and tell it to read from files in the queue. There are two outputs that update every time you evaluate either of them:</p>
+<ul>
+<li>A <code>key</code>, based on the current filename, which you may not need and don't need to explicitly evaluate.</li>
+<li>A <code>value</code>, which is the bit of data we're probably interested in.</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; reader = tf.TextLineReader()
+&gt;&gt;&gt; key, value = reader.read(filename_queue)
+&gt;&gt;&gt; session.run([key, value])
+['limerick.txt:1', 'This limerick goes in reverse']
+&gt;&gt;&gt; session.run([key, value])
+['limerick.txt:2', "Unless I'm remiss"]
+&gt;&gt;&gt; session.run([key, value])
+['limerick.txt:3', 'The neat thing is this:']
+&gt;&gt;&gt; session.run([key, value])
+['limerick.txt:4', 'If you start from the bottom-most verse']
+&gt;&gt;&gt; session.run([key, value])
+['limerick.txt:5', "This limerick's not any worse"]
+&gt;&gt;&gt; session.run([key, value])
+# raises `OutOfRangeError`</code></pre>
+
+<p>The <a href="limerick.txt">limerick</a> is <a href="http://www.smbc-comics.com/?id=3201">due to</a> Zach Weinersmith.</p>
+<p>If we hadn't closed the filename queue, that last <code>session.run</code> would block, waiting for somebody to add another filename to the filename queue.</p>
+<p>If we had added more filenames to the filename queue, the reader would continue happily reading from the next, and the next.</p>
+<p>The records here are lines of simple ASCII text, so we can immediately see them clearly in the REPL. But for many types of data you'll need a decoder.</p>
+<p>To read CSV files, you would read text lines just as above, and then use the <a href="https://www.tensorflow.org/api_docs/python/tf/decode_csv"><code>tf.decode_csv</code></a> decoder on  <code>value</code>. The <a href="https://www.tensorflow.org/api_docs/python/tf/decode_raw"><code>tf.decode_raw</code></a> decoder turns raw bytes into standard TensorFlow datatypes. And you can parse TFRecords examples.</p>
+<p>Boom! Reading files inside the graph!</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170412-reading_from_disk_inside_the_tensorflow_graph/</link>
+<guid>http://planspace.org/20170412-reading_from_disk_inside_the_tensorflow_graph/</guid>
+<pubDate>Wed, 12 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Distributed MapReduce with TensorFlow</title>
 <description><![CDATA[
 
@@ -1817,32 +1876,6 @@ if __name__ == '__main__':
 <link>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</link>
 <guid>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</guid>
 <pubDate>Mon, 13 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Use only what you need from TensorFlow</title>
-<description><![CDATA[
-
-<p>There isn't just one decision to use <a href="https://www.tensorflow.org/">TensorFlow</a> or not use TensorFlow; you have to make decisions about which pieces of TensorFlow you're going to use.</p>
-<p>I've thought about <a href="/20170311-does_tensorflow_suffer_from_the_second_system_effect/">whether Tensorflow suffers from the second-system effect</a>, and my conclusion is that while TensorFlow has a huge abundance of features, it can't really be said to "suffer" from this. The engineering is solid and it supports very interesting applications.</p>
-<p>For the individual user of TensorFlow, however, <a href="https://en.wikipedia.org/wiki/Overengineering">over-engineering</a> is a relative term, and it's relative to the problem at hand.</p>
-<p>One relevant dimension to consider is where you'll be running your code, which is related to the size of your data.</p>
-<p><img alt="mac mini" src="img/mac_mini.jpg"></p>
-<p>If your data fits in memory and you're running on one local machine, a lot of simple approaches will work for you.</p>
-<p><img alt="data center" src="img/data_center.jpg"></p>
-<p>If you're using massive quantities of data on multitudes of machines in a data center, you have a lot of concerns that you wouldn't have on one machine.</p>
-<p>TensorFlow can run well in large distributed settings. But if you're not going to run that way, you may not need to use all that functionality.</p>
-<p><img alt="TensorFlow data pipeline" src="img/tf_data_pipeline.gif"></p>
-<p>For example, the bulk of the TensorFlow <a href="https://www.tensorflow.org/programmers_guide/reading_data">documentation on reading data</a> focuses on a data pipeline that involves multiple processes and multiple coordinating queues. For reading large datasets from network storage (in <a href="https://wiki.apache.org/hadoop/HDFS">HDFS</a>, say) this might make a lot of sense.</p>
-<p><img alt="the Titanic" src="img/titanic.jpg"></p>
-<p>On the other hand, you may be trying out the <a href="https://www.kaggle.com/c/titanic">Titanic machine learning challenge</a> on <a href="https://www.kaggle.com/">Kaggle</a>, where the entire training set is a single CSV file with 892 lines.</p>
-<p><img alt="the Titanic sinking" src="img/titanic_sinking.jpg"></p>
-<p>If you decide you need to use the full TensorFlow data pipeline instead of something like <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html">pandas.read_csv</a>, you're doing a lot of unnecessary work, before you've even started working on the substance of your problem.</p>
-<p>There's something to be said for trying out functionality you don't really need, just for the sake of learning it for possible future application. And if you're working on a toy problem like <a href="https://www.kaggle.com/c/titanic">Titanic</a>, maybe that is exactly what you want to do.</p>
-<p>But for most work, if <a href="https://en.wikipedia.org/wiki/You_aren't_gonna_need_it">you aren't gonna need it</a>, don't use it&#8212;even if it's available in TensorFlow.</p>    
-    ]]></description>
-<link>http://planspace.org/20170312-use_only_what_you_need_from_tensorflow/</link>
-<guid>http://planspace.org/20170312-use_only_what_you_need_from_tensorflow/</guid>
-<pubDate>Sun, 12 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

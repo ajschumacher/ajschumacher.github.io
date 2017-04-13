@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Reading from Disk inside the TensorFlow Graph</title>
+  </head>
+  <body>
+    <article>
+<h1>Reading from Disk inside the TensorFlow Graph</h1>
+<p class="date">Wednesday April 12, 2017</p>
+<p>As I've <a href="/20170312-use_only_what_you_need_from_tensorflow/">noted</a>, the TensorFlow input pipeline misleadingly <a href="https://www.tensorflow.org/programmers_guide/reading_data">described</a> as "reading from files" is far more complicated than many people need or want to deal with. Indeed, TensorFlow developers realize this and are <a href="https://github.com/tensorflow/tensorflow/issues/7951">thinking about</a> adding alternative interfaces for getting data in to TensorFlow programs.</p>
+<p>You can still use any method you like for loading data in Python and then put it in your TensorFlow graph via the <code>feed_dict</code> method. But say you do want to do your file reading with ops that live inside the TensorFlow graph. How does it work?</p>
+<p>TensorFlow does have <a href="https://www.tensorflow.org/api_docs/python/tf/read_file"><code>tf.read_file</code></a> and <a href="https://www.tensorflow.org/api_docs/python/tf/write_file"><code>tf.write_file</code></a>, which let you read and write whole files at once, something like regular Python <code>file.read()</code> and <code>file.write()</code>. But you likely want something a little more helpful.</p>
+<p>In Python, you can read lines from a file like this:</p>
+<pre><code class="language-python">>>> reader = open('filename.txt'):
+>>> for line in reader:
+>>>    print(line)</code></pre>
+
+<p>TensorFlow has readers that generalize this idea of getting multiple things, like lines, from files. The immediate example is the <a href="https://www.tensorflow.org/api_docs/python/tf/TextLineReader"><code>tf.TextLineReader</code></a>. There are also <a href="https://www.tensorflow.org/api_guides/python/io_ops#Readers">readers</a> that read records from TFRecords files, or just fixed number of bytes at a time from arbitrary files. Reading a whole file at a time is sort of degenerate case.</p>
+<p>Instead of taking a filename, however, TensorFlow readers take a queue of filenames. This can be useful:</p>
+<ul>
+<li>You may have lots of files that you want to read from, possibly using multiple machines.</li>
+<li>You may want to read through one or more files multiple times, for multiple epochs of training.</li>
+</ul>
+<p>It's a little awkward to use a queue when you just want to read from one file, but that's how TensorFlow works.</p>
+<p>TensorFlow's file reading gets tangled up with its threading <code>QueueRunner</code> because they're often shown together, but this is not necessary. We <a href="/20170327-tensorflow_and_queues/">can</a> set up a quick and dirty one-item queue like this:</p>
+<pre><code class="language-python">>>> import tensorflow as tf
+>>> filename_queue = tf.FIFOQueue(capacity=1, dtypes=[tf.string])
+>>> session = tf.Session()
+>>> session.run(filename_queue.enqueue('limerick.txt'))
+>>> session.run(filename_queue.close())</code></pre>
+
+<p>We make a reader and tell it to read from files in the queue. There are two outputs that update every time you evaluate either of them:</p>
+<ul>
+<li>A <code>key</code>, based on the current filename, which you may not need and don't need to explicitly evaluate.</li>
+<li>A <code>value</code>, which is the bit of data we're probably interested in.</li>
+</ul>
+<pre><code class="language-python">>>> reader = tf.TextLineReader()
+>>> key, value = reader.read(filename_queue)
+>>> session.run([key, value])
+['limerick.txt:1', 'This limerick goes in reverse']
+>>> session.run([key, value])
+['limerick.txt:2', "Unless I'm remiss"]
+>>> session.run([key, value])
+['limerick.txt:3', 'The neat thing is this:']
+>>> session.run([key, value])
+['limerick.txt:4', 'If you start from the bottom-most verse']
+>>> session.run([key, value])
+['limerick.txt:5', "This limerick's not any worse"]
+>>> session.run([key, value])
+# raises `OutOfRangeError`</code></pre>
+
+<p>The <a href="limerick.txt">limerick</a> is <a href="http://www.smbc-comics.com/?id=3201">due to</a> Zach Weinersmith.</p>
+<p>If we hadn't closed the filename queue, that last <code>session.run</code> would block, waiting for somebody to add another filename to the filename queue.</p>
+<p>If we had added more filenames to the filename queue, the reader would continue happily reading from the next, and the next.</p>
+<p>The records here are lines of simple ASCII text, so we can immediately see them clearly in the REPL. But for many types of data you'll need a decoder.</p>
+<p>To read CSV files, you would read text lines just as above, and then use the <a href="https://www.tensorflow.org/api_docs/python/tf/decode_csv"><code>tf.decode_csv</code></a> decoder on  <code>value</code>. The <a href="https://www.tensorflow.org/api_docs/python/tf/decode_raw"><code>tf.decode_raw</code></a> decoder turns raw bytes into standard TensorFlow datatypes. And you can parse TFRecords examples.</p>
+<p>Boom! Reading files inside the graph!</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
