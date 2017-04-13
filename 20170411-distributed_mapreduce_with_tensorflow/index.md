@@ -4,6 +4,8 @@ Using many computers to count words is a tired Hadoop example, but might be unex
 
 ---
 
+<!-- somewhere maybe say something about how programming with multiple computers in TensorFlow is like programming with multiple threads in base Python, except your TensorFlow program isn't responsible for starting and stopping the multiple computers -->
+
 ## Set up the cluster
 
 The design will have three roles, or jobs. There will be one task in the `files` job, distributing units of work. There will be one task for the `reduce` role, keeping track of results. There could be arbitrarily many tasks doing the `map` job, but for this example there will be two.
