@@ -38,8 +38,9 @@ if config.task_type == 'reduce':
 if config.task_type == 'map':
     filename_from_queue = filename_queue.dequeue()
     word_count_to_add = tf.placeholder(tf.int32)
-    add_to_total = tf.assign(total_word_count,
-                             total_word_count + word_count_to_add)
+    add_to_total = tf.assign_add(total_word_count,
+                                 word_count_to_add,
+                                 use_locking=True)
     while True:
         filename = session.run(filename_from_queue)
         text = open(filename).read()
