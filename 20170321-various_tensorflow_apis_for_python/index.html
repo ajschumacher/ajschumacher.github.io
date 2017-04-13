@@ -35,8 +35,9 @@
 <hr />
 <h3>Layers (as from TF-Slim)</h3>
 <p><a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
+<p>Sergio Guadarrama, one of the TF-Slim authors, generously confirmed that TensorFlow is converging on a layers API and implementation along these lines, but warns that there can still be some differences. He points out that <code>tf.contrib.layers</code> have <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/framework/arg_scope"><code>arg_scope</code></a>, while <code>tf.layers</code> don't.</p>
 <p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
-<p>Other parts of TF-Slim are likely still worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
+<p>Other parts of TF-Slim are likely also worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
 <p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
 <p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
 <p><img alt="slim... shady?" src="img/slim_shady.png" /></p>
@@ -85,7 +86,7 @@ estimator.predict(data)           # run on new data</code></pre>
 <hr />
 <p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
 <hr />
-<p>Thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
+<p>Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>
       <hr />

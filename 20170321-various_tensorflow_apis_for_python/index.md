@@ -40,9 +40,11 @@ There are also ops like `tf.image.decode_jpeg` (and many others) which may be ne
 
 [TF-Slim](https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html) has a number of [components](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim) but it looks like essentially we're seeing the following: `tf.contrib.slim.layers` became `tf.contrib.layers` becomes `tf.layers`.
 
+Sergio Guadarrama, one of the TF-Slim authors, generously confirmed that TensorFlow is converging on a layers API and implementation along these lines, but warns that there can still be some differences. He points out that `tf.contrib.layers` have [`arg_scope`](https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/framework/arg_scope), while `tf.layers` don't.
+
 This `layers` API provides a first higher level of abstraction over writing things out by individual ops. For example, `tf.layers.conv2d` implements a convolution layer that involves multiple individual ops.
 
-Other parts of TF-Slim are likely still worth using, and there is a collection of [models that use TF-Slim](https://github.com/tensorflow/models/tree/master/slim) in the [TensorFlow models repository](https://github.com/tensorflow/models).
+Other parts of TF-Slim are likely also worth using, and there is a collection of [models that use TF-Slim](https://github.com/tensorflow/models/tree/master/slim) in the [TensorFlow models repository](https://github.com/tensorflow/models).
 
 Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see [earlier documentation](https://github.com/tensorflow/models/tree/master/inception/inception/slim)).
 
@@ -136,6 +138,6 @@ My recommendation is to use the rich APIs available inside TensorFlow. You shoul
 
 ---
 
-Thanks to [Andreas Mueller](https://twitter.com/amuellerml) of scikit-learn for his [summary](https://twitter.com/amuellerml/status/844300337666240514) of the relation between scikit-learn and TensorFlow.
+Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to [Andreas Mueller](https://twitter.com/amuellerml) of scikit-learn for his [summary](https://twitter.com/amuellerml/status/844300337666240514) of the relation between scikit-learn and TensorFlow.
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
