@@ -33,7 +33,7 @@
 <pre><code class="language-python">>>> session.run(tf.global_variables_initializer())
 >>> session.run(tf.global_variables_initializer())</code></pre>
 
-<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
+<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies isn't a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
 <p>Creating ops inside <code>session.run()</code>, you also don't have a Python variable referring to those ops, so you can't easily reuse them.</p>
 <p>In Python, if you create an object that nothing refers to, it can be garbage collected. The abandoned object will be deleted and and memory it used will be freed. That doesn't happen to things in the TensorFlow graph; everything you put in the graph stays there.</p>
 <p>It's pretty clear that <code>tf.global_variables_initializer()</code> returns an op. But ops are also created in less obvious ways.</p>

@@ -34,7 +34,7 @@ If the call to `tf.global_variables_initializer()` is repeated, for example dire
 >>> session.run(tf.global_variables_initializer())
 ```
 
-A new initializer op is created every time the argument to `session.run()` here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.
+A new initializer op is created every time the argument to `session.run()` here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies isn't a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.
 
 Creating ops inside `session.run()`, you also don't have a Python variable referring to those ops, so you can't easily reuse them.
 
