@@ -7,6 +7,86 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow as Automatic MPI</title>
+<description><![CDATA[
+
+<p>TensorFlow raises the level of abstraction in distributed programs from message-passing to data structures and operations directly on those data structures. The difference is analogous to the difference between programming in <a href="https://en.wikipedia.org/wiki/Assembly_language">assembly</a> and programming in a high-level language. TensorFlow may not have every possible high-performance feature for cluster computing, but what it offers is compelling.</p>
+<hr>
+<h2>Message-Passing</h2>
+<p>Leaving aside shared filesystems or directly accessed shared memory, systems that run across multiple computers have to communicate by sending messages to one another. A low-level approach might use <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a> sockets directly. Some convenience could be obtained by using Remote Procedure Calls (<a href="https://en.wikipedia.org/wiki/Remote_procedure_call">RPC</a>).</p>
+<p>The Message-Passing Interface (<a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a>) was created in the early 1990s to make distributed programming easier within the High Performance Computing (HPC) community. It standardized interfaces like <code>MPI_Send</code> and <code>MPI_Recv</code> to facilitate exchanging data between processes of a distributed system.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Actor_model">actor model</a> also focuses on message-passing, as for example in <a href="https://en.wikipedia.org/wiki/Erlang_(programming_language)">Erlang</a> or with <a href="http://akka.io/">Akka</a> in Java or Scala.</p>
+<p>Message-passing gives you fine-grained control over how nodes communicate. You can use message-passing to build up a variety of algorithms and new systems. For example, <a href="http://spark.apache.org/">Spark</a> was built in part with Akka agents for some time, before switching to an RPC-based implementation. TensorFlow also builds its own abstractions using message-passing.</p>
+<hr>
+<h2>Automatic Message-Passing with TensorFlow</h2>
+<p>TensorFlow uses message-passing, but it's largely invisible to TensorFlow users. The TensorFlow API lets you say where data and operations should live, and TensorFlow automatically handles any necessary messaging.</p>
+<p>Programming with explicit messages is like the low-level memory shifting necessary when programming in <a href="https://en.wikipedia.org/wiki/Assembly_language">assembly</a>. For example, here is some assembly pseudo-code:</p>
+<pre><code>copy value from position `a` to register 1
+copy value from position `b` to register 2
+add register 1 and 2
+copy result to position `c`</code></pre>
+
+<p>In a high-level language, this could be:</p>
+<pre><code class="language-python">c = a + b</code></pre>
+
+<p>Similarly, with TensorFlow, you focus on the computation you want performed, and don't worry about how values may need to be moved around to make it happen. A distributed analog to the assembly above might look like this:</p>
+<pre><code>send value of `a` from machine A to machine D
+send value of `b` from machine B to machine D
+add values on machine D
+send result to machine C</code></pre>
+
+<p>And with TensorFlow:</p>
+<pre><code class="language-python">c = a + b</code></pre>
+
+<p>At least, that's the ideal. TensorFlow may still need explicit direction on where things should be placed (<a href="https://www.tensorflow.org/api_docs/python/tf/device">with tf.device</a>) especially when multiple machines are involved. But that direction is more succinct and declarative than the full imperative detail of message-passing.</p>
+<hr>
+<h2>Faster Messages and Collective Communications</h2>
+<p>TensorFlow's user API is essentially message-less, but TensorFlow still uses messages under the hood. The contents of the messages are serialized protocol buffers sent via <a href="http://www.grpc.io/">gRPC</a>, which uses <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a>.</p>
+<p>A message-based approach can be made faster by using a faster transport, and by using faster algorithms. TensorFlow has some early support for both, but other frameworks may offer more. You may or may not care, as the simplicity of TensorFlow's approach may or may not outweigh possible performance boosts.</p>
+<p>One easy transport speedup could come in hardware with NVIDIA's <a href="http://www.nvidia.com/object/nvlink.html">NVLink</a> interconnect, which is faster than <a href="https://en.wikipedia.org/wiki/PCI_Express">PCIe</a>. As far as I can tell NVLink won't require code changes, but it looks like it will be pretty rare: it may be that only some supercomputers (<a href="https://www.olcf.ornl.gov/summit/">Summit</a>, <a href="https://asc.llnl.gov/coral-info">Sierra</a>) will use NVLink, with IBM's <a href="https://en.wikipedia.org/wiki/IBM_POWER_microprocessors">POWER</a> processors.</p>
+<p>Some clusters connect machines with <a href="https://en.wikipedia.org/wiki/InfiniBand">InfiniBand</a> rather than <a href="https://en.wikipedia.org/wiki/Ethernet">ethernet</a>. InfiniBand Remote Direct Memory Access (<a href="https://en.wikipedia.org/wiki/Remote_direct_memory_access">RDMA</a>) is supposed to be pretty fast.</p>
+<p>Jun Shi at Yahoo contributed an <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/verbs/README.md">implementation</a>, <a href="https://github.com/tensorflow/tensorflow/pull/8943">merged</a> four days ago, that begins to let TensorFlow use RDMA for transport via IB verbs, in addition to gRPC.</p>
+<p>MPI implementations often support InfiniBand, and an advantage of using MPI is that you can let that implementation worry about InfiniBand support without writing your own RDMA code. There's an <a href="https://github.com/tensorflow/tensorflow/pull/7710">open pull request</a> to give TensorFlow this kind of MPI integration.</p>
+<p>On the algorithm side, there are <a href="https://computing.llnl.gov/tutorials/mpi/#Collective_Communication_Routines">collective communication</a> operations that can be optimized, and MPI implementations tend to be good at these. For example, <a href="http://research.baidu.com/bringing-hpc-techniques-deep-learning/">ring allreduce</a> is more efficient for syncing up model parameters than sending them all to a central parameter server and then sending them all back out. Baidu has a <a href="https://github.com/baidu-research/tensorflow-allreduce">fork</a> of TensorFlow that adds their <a href="https://github.com/baidu-research/baidu-allreduce">implementation</a> of ring allreduce using MPI at <a href="https://github.com/baidu-research/tensorflow-allreduce/tree/master/tensorflow/contrib/mpi"><code>tf.contrib.mpi</code></a>.</p>
+<p>Outside the MPI world, the NVIDIA Collective Communications Library (<a href="https://devblogs.nvidia.com/parallelforall/fast-multi-gpu-collectives-nccl/">NCCL</a>) works with multiple GPUs on the same machine. TensorFlow has some support for this via <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/nccl"><code>tf.contrib.nccl</code></a>.</p>
+<p>Quite distinct from TensorFlow, the Facebook Incubator project <a href="https://github.com/facebookincubator/gloo">Gloo</a> focuses on collective communication algorithms and supports transport via TCP/IP and InfiniBand without MPI. Gloo is used by <a href="https://caffe2.ai/">Caffe2</a>; the Caffe2 example <a href="https://github.com/caffe2/caffe2/blob/master/caffe2/python/examples/resnet50_trainer.py">resnet50 trainer</a> uses Gloo's ring allreduce.</p>
+<!--
+
+Just for fun, here's an Akka implementation of allreduce that I found:
+https://github.com/brianmartin/akka-allreduce
+I believe that's more of a tree allreduce than a ring allreduce.
+
+-->
+
+<hr>
+<h2>Single-Machine Parallelism</h2>
+<p>The HPC community has an approach called "MPI everywhere" which means running one single-threaded MPI processes per CPU core. The simplicity of writing single-threaded programs with all parallelism via MPI is attractive, but it's not necessarily the best way to use a machine with a lot of cores and possibly GPUs.</p>
+<p>The hybrid approach is to have parallelism both across multiple machines and within each individual machine, usually via threads. HPC folks seem to like to use <a href="https://en.wikipedia.org/wiki/OpenMP">OpenMP</a> for multithreading.</p>
+<p>TensorFlow supports this kind of within-process parallelism. TensorFlow uses threads pretty freely internally, and you can add your own additional parallelism with Python's <a href="https://docs.python.org/3/library/threading.html">threading</a> or <a href="https://docs.python.org/3/library/multiprocessing.html">multiprocessing</a> libraries, among many possible options. Just as with MPI though, when programs are run by a cluster manager, resources may be restricted.</p>
+<hr>
+<h2>Code organization</h2>
+<p>It isn't strictly required for either, but it seems most common to write MPI programs and distributed TensorFlow programs with one entry point that quickly specializes based on the particular role in the cluster for that node. As this implies, every invocation of the program has to know something about the cluster and its place in it.</p>
+<hr>
+<h2>Cluster Topology</h2>
+<p>MPI implementations provide a mechanism in starting a group of processes by which every process knows how many there are in its group and its position or <em>rank</em> in the group. The rank 0 process, called the <em>root</em>, is generally special.</p>
+<p>TensorFlow leaves the starting of distributed processes to a cluster manager like Kubernetes. It's common to have several task groups like <code>ps</code> and <code>worker</code>, with a given process having a task type and a number within that group.</p>
+<p>Gloo is interestingly different in that individual processes may not start with knowledge of the cluster topology, but only with a reference to a central broker which could be a file on a shared filesystem or a Redis server. Each process checks in with and gets information about other members of the cluster via the central broker. Gloo calls this process <em>rendezvous</em>. As with MPI, processes find out about just one group of processes, and in fact Gloo can use MPI for its initial rendezvous setup.</p>
+<hr>
+<h2>See also</h2>
+<ul>
+<li><a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">TensorFlow as a Distributed Virtual Machine</a></li>
+<li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
+<li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
+</ul>
+<hr>
+<p>Thanks to <a href="https://twitter.com/danfujita123">Dan Fujita</a> for suggesting more connections between TensorFlow and MPI, and sharing some MPI code that was helpful. Thanks also to <a href="https://twitter.com/ljdursi">Jonathan Dursi</a>, whose <a href="https://www.dursi.ca/">blog</a> I read with interest. And thanks to <a href="https://github.com/cliffwoolley">Cliff Woolley</a> for <a href="https://github.com/NVIDIA/nccl/issues/86">clarifying</a> the meaning of NCCL.</p>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170423-tensorflow_as_automatic_mpi/</link>
+<guid>http://planspace.org/20170423-tensorflow_as_automatic_mpi/</guid>
+<pubDate>Sun, 23 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Reading from Disk inside the TensorFlow Graph</title>
 <description><![CDATA[
 
@@ -400,7 +480,7 @@ https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/census/tensor
 <pre><code class="language-python">&gt;&gt;&gt; session.run(tf.global_variables_initializer())
 &gt;&gt;&gt; session.run(tf.global_variables_initializer())</code></pre>
 
-<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
+<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies isn't a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
 <p>Creating ops inside <code>session.run()</code>, you also don't have a Python variable referring to those ops, so you can't easily reuse them.</p>
 <p>In Python, if you create an object that nothing refers to, it can be garbage collected. The abandoned object will be deleted and and memory it used will be freed. That doesn't happen to things in the TensorFlow graph; everything you put in the graph stays there.</p>
 <p>It's pretty clear that <code>tf.global_variables_initializer()</code> returns an op. But ops are also created in less obvious ways.</p>
@@ -1461,8 +1541,9 @@ INFO:tensorflow:1+1=2</code></pre>
 <hr>
 <h3>Layers (as from TF-Slim)</h3>
 <p><a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
+<p>Sergio Guadarrama, one of the TF-Slim authors, generously confirmed that TensorFlow is converging on a layers API and implementation along these lines, but warns that there can still be some differences. He points out that <code>tf.contrib.layers</code> have <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/framework/arg_scope"><code>arg_scope</code></a>, while <code>tf.layers</code> don't.</p>
 <p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
-<p>Other parts of TF-Slim are likely still worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
+<p>Other parts of TF-Slim are likely also worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
 <p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
 <p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
 <p><img alt="slim... shady?" src="img/slim_shady.png"></p>
@@ -1511,7 +1592,7 @@ estimator.predict(data)           # run on new data</code></pre>
 <hr>
 <p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
 <hr>
-<p>Thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
+<p>Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170321-various_tensorflow_apis_for_python/</link>
@@ -1818,65 +1899,6 @@ if __name__ == '__main__':
 <link>http://planspace.org/20170314-command_line_apps_and_tensorflow/</link>
 <guid>http://planspace.org/20170314-command_line_apps_and_tensorflow/</guid>
 <pubDate>Tue, 14 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TensorFlow use of Google Technologies</title>
-<description><![CDATA[
-
-<p>TensorFlow is a large project. It has a lot of unique features, and as a Google project, it also connects with other Google projects: gflags, apputils, Bazel, protobuf, gRPC, gemmlowp, StreamExecutor, GFile, and even XLA. To better understand and use TensorFlow, it helps to know what these pieces are and how they fit together.</p>
-<hr>
-<h3>gflags</h3>
-<p>In TensorFlow code, you may see, for <a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/mnist/trainable/trainer/task.py">example</a>, <code>tf.app.flags.FLAGS</code>. This is part of a TensorFlow <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/flags.py">implementation</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command-line</a> argument parsing. It happens automatically when using <code>tf.app.run()</code>. Internally it uses Python's standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, but the API is inspired by Google's gflags.</p>
-<p>Formerly Google Commandline Flags, gflags is a Google system for building standard command-line interfaces. There's a <a href="https://github.com/gflags/gflags">C++ implementation</a>, which has <a href="https://gflags.github.io/gflags/">a documentation page</a> reminiscent of a command-line interface. The <a href="https://github.com/google/python-gflags">Python gflags</a> is documented primarily via a collection of <a href="https://github.com/google/python-gflags/tree/master/examples">examples</a>.</p>
-<p>Python users may be more familiar with the standard <a href="https://docs.python.org/3/library/argparse.html">argparse</a> API, or perhaps even the older <a href="https://docs.python.org/2/library/optparse.html">optparse</a>, which both achieve functionality similar to that of gflags.</p>
-<p>While TensorFlow doesn't include a full gflags implementation, the TensorFlow version appears in pretty many code examples, where it imparts a little bit of extra Google flavor to argument handling for TensorFlow scripts. You can use it (though there are <a href="http://stackoverflow.com/questions/33932901/whats-the-purpose-of-tf-app-flags-in-tensorflow/33938519#33938519">reasons not to</a>) or opt for a separate and possibly more full-featured package, whether it be the full <a href="https://github.com/google/python-gflags">gflags</a>, <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, or <a href="https://pythonhosted.org/horetu/">something stranger</a>.</p>
-<hr>
-<h3>apputils</h3>
-<p>The TensorFlow <code>tf.app.run()</code> invocation doesn't actually use Google's Python apputils, but like with gflags, TensorFlow is mimicking some of the behavior of Google tooling.</p>
-<p>The <a href="https://github.com/google/google-apputils">open source google-apputils for Python</a> hasn't been updated since March 2015, but it's still pretty interesting, with a lot of functionality that could still be relevant.</p>
-<hr>
-<h3>Bazel</h3>
-<p><a href="https://bazel.build/">Bazel</a> is a build tool like <a href="https://www.gnu.org/software/make/">make</a>. Bazel is <a href="https://github.com/bazelbuild/bazel">open source</a>; <a href="https://en.wikipedia.org/wiki/Bazel_(software)">originally</a> there was Google's internal "Blaze" tool.</p>
-<p>You might encounter Bazel if you're <a href="https://www.tensorflow.org/install/install_sources">building TensorFlow from source</a>, for example.</p>
-<p><img alt="bazel" src="img/bazel.png"></p>
-<hr>
-<h3>protobuf</h3>
-<p><a href="https://developers.google.com/protocol-buffers/">Protocol buffers</a> (often protobuf, or just proto) "are Google's [<a href="https://github.com/google/protobuf">open source</a>] language-neutral, platform-neutral, extensible mechanism for serializing structured data &#8211; think XML, but smaller, faster, and simpler."</p>
-<p>When you look at protocol buffers in their text representations, they look something like <a href="http://www.json.org/">JSON</a>.</p>
-<p>You likely won't encounter protocol buffers directly when using TensorFlow. They're used under the hood all over the place: for example, as the format for <a href="https://www.tensorflow.org/get_started/summaries_and_tensorboard">TensorBoard</a> summaries, and to help make data transfer efficient in distributed settings.</p>
-<hr>
-<h3>gRPC</h3>
-<p><a href="http://www.grpc.io/">gRPC</a> is Google's <a href="https://github.com/grpc/grpc">open source</a> framework for <a href="https://en.wikipedia.org/wiki/Remote_procedure_call">remote procedure call (RPC)</a> systems. It uses protocol buffers.</p>
-<p>If RPC is unfamiliar, there is some comparison to <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> communications for web services.</p>
-<p>You might encounter gRPC if you build a client for a <a href="https://tensorflow.github.io/serving/">TensorFlow serving</a> server, for example.</p>
-<p><img alt="gRPC" src="img/grpc.svg"></p>
-<hr>
-<h3>gemmlowp</h3>
-<p><a href="https://github.com/google/gemmlowp">gemmlowp</a> is Google's open source low-precision matrix multiplication library.</p>
-<p>You won't likely encounter gemmlowp directly, but you'll benefit from it if you're using TensorFlow for <a href="https://github.com/google/gemmlowp/blob/master/doc/low-precision.md">low-precision</a> implementations.</p>
-<hr>
-<h3>StreamExecutor</h3>
-<p><a href="http://www.nvidia.com/">NVIDIA</a> currently dominates the <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> market, and so their <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a> language for programming GPUs is the dominant GPU language. But other vendors would like to sell GPUs too, and they would like everybody to standardize on <a href="https://en.wikipedia.org/wiki/OpenCL">OpenCL</a> for programming them. Programmers would rather just program once for whatever platform; they would like to have <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">general-purpose computing on graphics processing units (GPGPU)</a>.</p>
-<p>StreamExecutor is Google's GPGPU system. They've <a href="http://lists.llvm.org/pipermail/llvm-dev/2016-March/096576.html">talked about</a> open-sourcing it directly as part of the <a href="http://llvm.org/">LLVM project</a>, but as far as I know it still exists in open source only <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/stream_executor">inside TensorFlow</a>.</p>
-<p>OpenCL support is not necessarily perfect, but you may be able to try it out if you <a href="https://www.tensorflow.org/install/install_sources">build from source</a>. It's <a href="https://github.com/tensorflow/tensorflow/issues/22">issue #22</a> for the <a href="https://github.com/tensorflow/tensorflow/issues/22">TensorFlow GitHub project</a>.</p>
-<p>StreamExecutor is another implementation technology that you aren't likely to encounter directly as a user of TensorFlow.</p>
-<hr>
-<h3>GFile</h3>
-<p>Google has C++ file I/O code that avoids thread locking, and <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/lib/io">this</a> is <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/lib/io/file_io.py">included</a> as <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/gfile.py">part</a> TensorFlow.</p>
-<p>This is another implementation technology that should benefit TensorFlow users silently within the system.</p>
-<hr>
-<h3>XLA</h3>
-<p>The <a href="https://www.tensorflow.org/versions/master/experimental/xla/">Accelerated Linear Algebra (XLA)</a> system is described as <a href="https://haosdent.gitbooks.io/tensorflow-document/content/resources/xla_prerelease.html">the TensorFlow compiler framework</a>, but there's more to it than that.</p>
-<p>For one thing, the aspects of XLA that appear in open source TensorFlow aren't all the XLA that exists; Google uses their own hardware, <a href="https://en.wikipedia.org/wiki/Tensor_processing_unit">TPUs</a>, and both that hardware and the XLA components to target it are internal to Google.</p>
-<p>For another, XLA has been described as <a href="https://autodiff-workshop.github.io/slides/JeffDean.pdf">"designed for reuse"</a>, and other projects could incorporate the technology as well.</p>
-<p>XLA is still experimental, and largely deep inside TensorFlow's implementation. Users might <a href="https://gist.github.com/yaroslavvb/53052184e50cdfec35f0a127dd6df843">try</a> turning on XLA to see whether it helps speed up their computations.</p>
-<hr>
-<p>Thanks to Googlers <a href="https://twitter.com/juliaferraioli">Julia Ferraioli</a>, <a href="https://twitter.com/petewarden">Pete Warden</a>, and <a href="https://twitter.com/martin_wicke">Martin Wicke</a>, for a brief <a href="https://twitter.com/petewarden/status/841062427202527232">twitter exchange</a> that informed this list, and to <a href="https://twitter.com/mrry">Derek Murray</a> for <a href="https://twitter.com/mrry/status/841315298221342720">correcting</a> my misconception about gflags in TensorFlow.</p>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</link>
-<guid>http://planspace.org/20170313-tensorflow_use_of_google_technologies/</guid>
-<pubDate>Mon, 13 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
