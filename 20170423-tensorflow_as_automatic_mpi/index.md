@@ -118,6 +118,6 @@ Gloo is interestingly different in that individual processes may not start with 
 
 ---
 
-Thanks to [Dan Fujita](https://twitter.com/danfujita123) for suggesting more connections between TensorFlow and MPI, and sharing some MPI code that was helpful. Thanks also to [Jonathan Dursi](https://twitter.com/ljdursi), whose [blog](https://www.dursi.ca/) I read with interest. And thanks to [Cliff Woolley](https://github.com/cliffwoolley) for [clarifying](https://github.com/NVIDIA/nccl/issues/86) the meaning of NCCL.
+Thanks to [Dan Fujita](https://twitter.com/danfujita123) for suggesting more connections between TensorFlow and MPI, and sharing some MPI code that was helpful. Thanks also to [Jonathan Dursi](https://twitter.com/ljdursi), whose [blog](https://www.dursi.ca/) I read with interest. And thanks to [Cliff Woolley](https://github.com/cliffwoolley) of NVIDIA for [clarifying](https://github.com/NVIDIA/nccl/issues/86) the meaning of NCCL.
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
