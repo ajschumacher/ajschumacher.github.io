@@ -223,6 +223,13 @@ same_image = session.run(encode_jpeg, feed_dict={bytes: same_image_bytes,
                                                  shape: same_image_shape})
 ```
 
+<!--
+
+Note it really does have to be `tf.reshape`; `.set_shape` will not work. See:
+http://stackoverflow.com/questions/35451948/clarification-on-tf-tensor-set-shape
+
+-->
+
 In this example, however, the parsing of the `Example` was already done outside the TensorFlow graph, so there isn't a strong reason to stay inside the graph here.
 
 ---
