@@ -53,6 +53,15 @@ message SequenceExample {
 
 These brief definitions give rise to most of the functionality [described](/20170329-protocol_buffers_in_python/) for creating, writing, and reading the TFRecords formats.
 
+<!--
+
+The explanation of the wire format is neat, and explains (for example)
+why floats and ints can be packed, but not bytes.
+
+https://developers.google.com/protocol-buffers/docs/encoding
+
+-->
+
 ---
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
