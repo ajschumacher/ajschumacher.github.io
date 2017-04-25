@@ -130,6 +130,13 @@ my_seq_ex = tf.train.SequenceExample(
 
 You probably don't want to mix `Example` and `SequenceExample` records in the same TFRecords file.
 
+<!--
+
+Good look at `SequenceExample` with different way of making them...
+http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/
+
+-->
+
 ---
 
 ### Reading TFRecords in a TensorFlow Graph
