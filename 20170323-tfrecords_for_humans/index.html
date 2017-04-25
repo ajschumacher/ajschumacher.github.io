@@ -54,7 +54,7 @@ that_dict = pickle.loads(that_dict_str)</code></pre>
 my_example = tf.train.Example(features=tf.train.Features(feature={
     'my_ints': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
     'my_float': tf.train.Feature(float_list=tf.train.FloatList(value=[2.7])),
-    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))
+    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))
 }))</code></pre>
 
 <p>The values in the <code>Example</code> can be accessed then like this:</p>
@@ -72,6 +72,7 @@ reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
 those_examples = [tf.train.Example().FromString(example_str)
                   for example_str in reader]</code></pre>
 
+<p>The file written: <a href="my_example.tfrecords"><code>my_example.tfrecords</code></a>.</p>
 <hr />
 <h3>Images in <code>Example</code> Records</h3>
 <p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you. For more on this, see my post on <a href="/20170403-images_and_tfrecords/">Images and TFRecords</a>.</p>
@@ -100,7 +101,15 @@ those_examples = [tf.train.Example().FromString(example_str)
             tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
             tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 8, 9]))])}))</code></pre>
 
+<p>In a file: <a href="my_seq_ex.tfrecords"><code>my_seq_ex.tfrecords</code></a>.</p>
 <p>You probably don't want to mix <code>Example</code> and <code>SequenceExample</code> records in the same TFRecords file.</p>
+<!--
+
+Good look at `SequenceExample` with different way of making them...
+http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/
+
+-->
+
 <hr />
 <h3>Reading TFRecords in a TensorFlow Graph</h3>
 <p>You may eventually want to read TFRecords files with ops in a TensorFlow graph, using <a href="https://www.tensorflow.org/api_docs/python/tf/TFRecordReader">tf.TFRecordReader</a>. This will involve a filename queue; for an example, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/fully_connected_reader.py">some MNIST tutorial code</a>.</p>

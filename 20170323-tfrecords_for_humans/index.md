@@ -64,7 +64,7 @@ import tensorflow as tf
 my_example = tf.train.Example(features=tf.train.Features(feature={
     'my_ints': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
     'my_float': tf.train.Feature(float_list=tf.train.FloatList(value=[2.7])),
-    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))
+    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))
 }))
 ```
 
@@ -85,6 +85,8 @@ reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
 those_examples = [tf.train.Example().FromString(example_str)
                   for example_str in reader]
 ```
+
+The file written: [`my_example.tfrecords`](my_example.tfrecords).
 
 ---
 
@@ -127,6 +129,8 @@ my_seq_ex = tf.train.SequenceExample(
             tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
             tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 8, 9]))])}))
 ```
+
+In a file: [`my_seq_ex.tfrecords`](my_seq_ex.tfrecords).
 
 You probably don't want to mix `Example` and `SequenceExample` records in the same TFRecords file.
 
