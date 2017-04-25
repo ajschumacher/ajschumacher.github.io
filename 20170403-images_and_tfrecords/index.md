@@ -161,7 +161,7 @@ We can put plain bytes into `Example` TFRecords [without too much trouble](/2017
 
 ```python
 my_example = tf.train.Example(features=tf.train.Features(feature={
-    'png_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=png_bytes))
+    'png_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=[png_bytes]))
 }))
 
 my_example_str = my_example.SerializeToString()
@@ -173,11 +173,8 @@ those_examples = [tf.train.Example().FromString(example_str)
                   for example_str in reader]
 same_example = those_examples[0]
 
-same_png_bytes = ''.join(
-    same_example.features.feature['png_bytes'].bytes_list.value)
+same_png_bytes = same_example.features.feature['png_bytes'].bytes_list.value[0]
 ```
-
-(The `''.join()` relies on Python 2 string behavior.)
 
 When the `same_png_bytes` is decoded by `tf.image.decode_image`, as above, or `tf.image.decode_png` directly, you'll get back a tensor with the correct dimensions, because PNG (and JPEG) include that information in their encodings.
 
@@ -192,7 +189,7 @@ image_bytes = image.tostring()
 image_shape = image.shape
 
 my_example = tf.train.Example(features=tf.train.Features(feature={
-    'image_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=image_bytes)),
+    'image_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_bytes])),
     'image_shape': tf.train.Feature(int64_list=tf.train.Int64List(value=image_shape))
 }))
 
@@ -205,8 +202,7 @@ those_examples = [tf.train.Example().FromString(example_str)
                   for example_str in reader]
 same_example = those_examples[0]
 
-same_image_bytes = ''.join(
-    same_example.features.feature['image_bytes'].bytes_list.value)
+same_image_bytes = same_example.features.feature['image_bytes'].bytes_list.value[0]
 same_image_shape = list(
     same_example.features.feature['image_shape'].int64_list.value)
 ```
