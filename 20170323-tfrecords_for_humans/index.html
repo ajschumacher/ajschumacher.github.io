@@ -25,7 +25,7 @@
 <pre><code class="language-python">my_dict = {'features' : {
     'my_ints': [5, 6],
     'my_float': [2.7],
-    'my_bytes': 'data'
+    'my_bytes': ['data']
 }}</code></pre>
 
 <p>In Python 2, the string literal <code>'data'</code> is bytes. The equivalent in Python 3 is <code>bytes('data', 'utf-8')</code>. And Python uses 64-bit floats rather than the 32-bit floats that TFRecords uses, so we have more precision in Python.</p>
@@ -85,7 +85,7 @@ those_examples = [tf.train.Example().FromString(example_str)
 <pre><code class="language-python">my_seq_dict = {
     'context' : {
         'my_bytes':
-            'data'},
+            ['data']},
     'feature_lists' : {
         'my_ints': [
             [5, 6],
@@ -95,7 +95,7 @@ those_examples = [tf.train.Example().FromString(example_str)
 <pre><code class="language-python">my_seq_ex = tf.train.SequenceExample(
     context=tf.train.Features(feature={
         'my_bytes':
-            tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))}),
+            tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))}),
     feature_lists=tf.train.FeatureLists(feature_list={
         'my_ints': tf.train.FeatureList(feature=[
             tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),

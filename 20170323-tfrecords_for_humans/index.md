@@ -26,7 +26,7 @@ An equivalent representation of an `Example` TFRecord using Python dictionaries 
 my_dict = {'features' : {
     'my_ints': [5, 6],
     'my_float': [2.7],
-    'my_bytes': 'data'
+    'my_bytes': ['data']
 }}
 ```
 
@@ -110,7 +110,7 @@ In Python dictionaries, a `SequenceExample` is like this:
 my_seq_dict = {
     'context' : {
         'my_bytes':
-            'data'},
+            ['data']},
     'feature_lists' : {
         'my_ints': [
             [5, 6],
@@ -123,7 +123,7 @@ A corresponding full `SequenceExample` is a bit more verbose:
 my_seq_ex = tf.train.SequenceExample(
     context=tf.train.Features(feature={
         'my_bytes':
-            tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))}),
+            tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))}),
     feature_lists=tf.train.FeatureLists(feature_list={
         'my_ints': tf.train.FeatureList(feature=[
             tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
