@@ -147,6 +147,7 @@ http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumen
 
 You may eventually want to read TFRecords files with ops in a TensorFlow graph, using [tf.TFRecordReader](https://www.tensorflow.org/api_docs/python/tf/TFRecordReader). This will involve a filename queue; for an example, check out [some MNIST tutorial code](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/fully_connected_reader.py).
 
+
 ---
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
