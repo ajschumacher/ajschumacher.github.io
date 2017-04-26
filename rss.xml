@@ -7,6 +7,78 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Parsing TFRecords inside the TensorFlow Graph</title>
+<description><![CDATA[
+
+<p>You can parse TFRecords using the standard protocol buffer <code>.FromString</code> method, but you can also parse them inside the TensorFlow graph.</p>
+<p>The examples here assume you have in memory the serialized Example <code>my_example_str</code> and SequenceExample <code>my_seq_ex_str</code> from <a href="/20170323-tfrecords_for_humans/">TFRecords for Humans</a>. You could create them, or read them from <a href="/20170323-tfrecords_for_humans/my_example.tfrecords">my_example.tfrecords</a> and <a href="/20170323-tfrecords_for_humans/my_seq_ex.tfrecords">my_seq_ex.tfrecords</a>. That loading could be via <code>tf.python_io.tf_record_iterator</code> or via <code>tf.TFRecordReader</code> following the pattern shown in <a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">Reading from Disk inside the TensorFlow Graph</a>.</p>
+<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/parse_single_example"><code>tf.parse_single_example</code></a> decoder works like <code>tf.decode_csv</code>: it takes a string of raw data and turns it into structured data, based on the options it's created with. The structured data it turns it into is <em>not</em> a protocol buffer message object, but a dictionary that is hopefully easier to work with.</p>
+<pre><code class="language-python">import tensorflow as tf
+
+serialized = tf.placeholder(tf.string)
+
+my_example_features = {'my_ints': tf.FixedLenFeature(shape=[2], dtype=tf.int64),
+                       'my_float': tf.FixedLenFeature(shape=[], dtype=tf.float32),
+                       'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
+my_example = tf.parse_single_example(serialized, features=my_example_features)
+
+session = tf.Session()
+
+session.run(my_example, feed_dict={serialized: my_example_str})
+## {'my_ints': array([5, 6]),
+##  'my_float': 2.7,
+##  'my_bytes': array(['data'], dtype=object)}</code></pre>
+
+<p>The <code>shape</code> parameter is part of the schema we're defining. A <code>shape</code> of <code>[]</code> means a single element, so the result returned won't be in an array, as for <code>my_float</code>. The <code>shape</code> of <code>[1]</code> means an array containing one element, like for <code>my_bytes</code>. Within a Feature, things are always listed, so the choice of how to get a single element back out is decided by the choice of <code>shape</code> argument. A <code>shape</code> of <code>[2]</code> means a list of two elements, naturally enough, and there's no alternative.</p>
+<p>The <code>dtype=object</code> is how NumPy works with strings.</p>
+<p>When some feature might have differing numbers of values across records, they can all be read with <code>tf.VarLenFeature</code>. This distinction is made only when parsing. Records are made with however many values you put in; you don't specify <code>FixedLen</code> or <code>VarLen</code> when you're making an <code>Example</code>. So the <code>my_ints</code> feature just parsed as <code>FixedLen</code> can also be parsed as <code>VarLen</code>.</p>
+<pre><code class="language-python">my_example_features = {'my_ints': tf.VarLenFeature(dtype=tf.int64),
+                       'my_float': tf.FixedLenFeature(shape=[], dtype=tf.float32),
+                       'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
+my_example = tf.parse_single_example(serialized, features=my_example_features)
+
+session.run(my_example, feed_dict={serialized: my_example_str})
+## {'my_ints': SparseTensorValue(indices=array([[0], [1]]),
+##                               values=array([5, 6]),
+##                               dense_shape=array([2])),
+##  'my_float': 2.7,
+##  'my_bytes': array(['data'], dtype=object)}</code></pre>
+
+<p>When parsing as a <code>VarLenFeature</code>, the result is a sparse representation. This can seem a little silly, because features here will always be dense from left to right. Early versions of TensorFlow <a href="https://github.com/tensorflow/tensorflow/issues/976">didn't</a> have the current behavior. But this sparseness is a mechanism by which TensorFlow can support non-rectangular data, for example when forming batches from multiple variable length features, or as seen next with a <code>SequenceExample</code>:</p>
+<pre><code class="language-python">my_context_features = {'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
+my_sequence_features = {'my_ints': tf.VarLenFeature(shape=[2], dtype=tf.int64)}
+my_seq_ex = tf.parse_single_sequence_example(
+                serialized,
+                context_features=my_context_features,
+                sequence_features=my_sequence_features)
+
+result = session.run(my_seq_ex, feed_dict={serialized: my_seq_ex_str})
+result
+## ({'my_bytes': array(['data'], dtype=object)},
+##  {'my_ints': SparseTensorValue(
+##                  indices=array([[0, 0], [0, 1], [1, 0], [1, 1], [1, 2]]),
+##                  values=array([5, 6, 7, 8, 9]),
+##                  dense_shape=array([2, 3]))})</code></pre>
+
+<p>The result is a tuple of two dicts: the context data and the sequence data.</p>
+<p>Since the <code>my_ints</code> sequence feature is parsed as a <code>VarLenFeature</code>, it's returned as a sparse tensor. This example has to be parsed as a <code>VarLenFeature</code>, because the two entries in <code>my_ints</code> are of different lengths (<code>[5, 6]</code> and <code>[7, 8, 9]</code>).</p>
+<p>The way the <code>my_ints</code> values get combined into one sparse tensor is the same as the way it would be done when making a batch from multiple records each containing a <code>VarLenFeature</code>.</p>
+<p>To make it clearer what's going on, we can look at the sparse tensor in dense form:</p>
+<pre><code class="language-python">session.run(tf.sparse_tensor_to_dense(result[1]['my_ints']))
+## array([[5, 6, 0],
+##        [7, 8, 9]])</code></pre>
+
+<p>The other option for parsing sequence features is <code>tf.FixedLenSequenceFeature</code>, which will work if each entry of the sequence feature is the same length. The result then is a dense tensor.</p>
+<p>To parse multiple <code>Example</code> records in one op, there's <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/parse_example"><code>tf.parse_example</code></a>. This returns a dict with the same keys you'd get from parsing a single <code>Example</code>, with the values combining the values from all the parsed examples, in a batch-like fashion. There isn't a corresponding op for <code>SequenceExample</code> records.</p>
+<p>More could be said about sparse tensors and TFRecords. The <a href="https://www.tensorflow.org/api_docs/python/tf/sparse_merge">tf.sparse_merge</a> op is one way to combine sparse tensors, similar to the combination that happened for <code>my_ints</code> in the <code>SequenceExample</code> above. And there's <a href="https://www.tensorflow.org/api_docs/python/tf/SparseFeature"><code>tf.SparseFeature</code></a> for parsing out general sparse features directly from TFRecords (better documentation in <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/parsing_ops.py">source</a>).</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</link>
+<guid>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</guid>
+<pubDate>Wed, 26 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>mystery.tfrecords</title>
 <description><![CDATA[
 
@@ -1454,7 +1526,7 @@ finally:
 <pre><code class="language-python">my_dict = {'features' : {
     'my_ints': [5, 6],
     'my_float': [2.7],
-    'my_bytes': 'data'
+    'my_bytes': ['data']
 }}</code></pre>
 
 <p>In Python 2, the string literal <code>'data'</code> is bytes. The equivalent in Python 3 is <code>bytes('data', 'utf-8')</code>. And Python uses 64-bit floats rather than the 32-bit floats that TFRecords uses, so we have more precision in Python.</p>
@@ -1483,7 +1555,7 @@ that_dict = pickle.loads(that_dict_str)</code></pre>
 my_example = tf.train.Example(features=tf.train.Features(feature={
     'my_ints': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
     'my_float': tf.train.Feature(float_list=tf.train.FloatList(value=[2.7])),
-    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))
+    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))
 }))</code></pre>
 
 <p>The values in the <code>Example</code> can be accessed then like this:</p>
@@ -1501,6 +1573,7 @@ reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
 those_examples = [tf.train.Example().FromString(example_str)
                   for example_str in reader]</code></pre>
 
+<p>The file written: <a href="my_example.tfrecords"><code>my_example.tfrecords</code></a>.</p>
 <hr>
 <h3>Images in <code>Example</code> Records</h3>
 <p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you. For more on this, see my post on <a href="/20170403-images_and_tfrecords/">Images and TFRecords</a>.</p>
@@ -1513,7 +1586,7 @@ those_examples = [tf.train.Example().FromString(example_str)
 <pre><code class="language-python">my_seq_dict = {
     'context' : {
         'my_bytes':
-            'data'},
+            ['data']},
     'feature_lists' : {
         'my_ints': [
             [5, 6],
@@ -1523,13 +1596,21 @@ those_examples = [tf.train.Example().FromString(example_str)
 <pre><code class="language-python">my_seq_ex = tf.train.SequenceExample(
     context=tf.train.Features(feature={
         'my_bytes':
-            tf.train.Feature(bytes_list=tf.train.BytesList(value='data'))}),
+            tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))}),
     feature_lists=tf.train.FeatureLists(feature_list={
         'my_ints': tf.train.FeatureList(feature=[
             tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
             tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 8, 9]))])}))</code></pre>
 
+<p>In a file: <a href="my_seq_ex.tfrecords"><code>my_seq_ex.tfrecords</code></a>.</p>
 <p>You probably don't want to mix <code>Example</code> and <code>SequenceExample</code> records in the same TFRecords file.</p>
+<!--
+
+Good look at `SequenceExample` with different way of making them...
+http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/
+
+-->
+
 <hr>
 <h3>Reading TFRecords in a TensorFlow Graph</h3>
 <p>You may eventually want to read TFRecords files with ops in a TensorFlow graph, using <a href="https://www.tensorflow.org/api_docs/python/tf/TFRecordReader">tf.TFRecordReader</a>. This will involve a filename queue; for an example, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/fully_connected_reader.py">some MNIST tutorial code</a>.</p>
@@ -1792,29 +1873,6 @@ estimator.predict(data)           # run on new data</code></pre>
 <link>http://planspace.org/20170318-much_ado_about_the_tensorflow_logo/</link>
 <guid>http://planspace.org/20170318-much_ado_about_the_tensorflow_logo/</guid>
 <pubDate>Sat, 18 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TensorFlow and a Googleverse like the Hadleyverse</title>
-<description><![CDATA[
-
-<p>I've been having a good time looking at <a href="/20170313-tensorflow_use_of_google_technologies/">how TensorFlow incorporates Google technologies</a>, and how some things (like the <a href="/20170314-command_line_apps_and_tensorflow/">command-line helpers</a>) seem to reflect Google's internal conventions for development. Taken together, the view of Google software practices via TensorFlow reminds me of the Hadleyverse.</p>
-<p><img alt="Hadley Wickham" src="img/hadley.png"></p>
-<p>"The Hadleyverse" refers to the many packages that <a href="http://blog.revolutionanalytics.com/2015/03/hadleyverse.html">Hadley Wickham</a> has created and contributed to, which largely replace, for proficient users, the standard functionality available in the <a href="https://www.r-project.org/">R</a> programming environment. Wickham more humbly allows the name "<a href="http://tidyverse.org/">tidyverse</a>" and indeed, tidiness is part of the philosophy of his packages.</p>
-<p>In addition to just providing useful packages with better functionality and better APIs than the ones that come standard with R, the Hadleyverse includes a lot of "how-to" as well. Among Wickham's freely available books are <a href="http://adv-r.had.co.nz/">Advanced R</a>, which contains a <a href="http://adv-r.had.co.nz/Style.html">style guide</a>, and the <a href="http://r-pkgs.had.co.nz/">R Packages</a> book for package developers.</p>
-<p>Wickham is exceptionally productive and has had a large influence in the R community. He's also very open, sharing and communicating freely with tons of people.</p>
-<p>Google might be even more productive than Hadley, but Google doesn't always seem to share as much. So the TensorFlow project can seem like a window into that Googleverse. And like the Hadleyverse, there is code, but there is also philosophy and practices.</p>
-<p><img alt="google" src="img/google.png"></p>
-<p>For one thing, the TensorFlow <a href="https://github.com/tensorflow/tensorflow">code</a> is an example of a Python code-base that follows the <a href="https://google.github.io/styleguide/pyguide.html">Google Python style guide</a>. (I'm primarily interested in the Python parts.)</p>
-<p>Of course Python has the venerable <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> style guide, and I tend to like the <a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">NumPy/SciPy documentation guide</a> for docstrings. But looking at the TensorFlow code has nearly convinced me that their more concise argument documentation could be the way to go, for example.</p>
-<p>I'm also impressed with the religious use of <a href="https://www.pylint.org/">pylint</a>, and even just the organization of unit tests.</p>
-<p>In places you can see TensorFlow moving from Google-internal things to more standard Python things: <a href="https://github.com/google/python-gflags">gflags</a> and <a href="https://github.com/google/google-apputils">apputils</a> to <a href="https://docs.python.org/3/library/argparse.html">argparse</a>, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/googletest.py">testing.pybase.googletest</a> to <a href="https://docs.python.org/3/library/unittest.html">unittest</a>.</p>
-<p>Google also doesn't just use <a href="https://github.com/">GitHub</a>; they've got a bunch of cool extra automation and review processes set up. When a pull request is submitted, <a href="https://github.com/googlebot">googlebot</a> and <a href="https://github.com/tensorflow-jenkins">tensorflow-jenkins</a> spring into action. Contributors have to fill out a Contributor License Agreement (CLA) online, and an admin is pulled in for review and to have tests run for the pull request. After all approvals are in, the new code can go in to TensorFlow.</p>
-<p>Oh and there's also <a href="https://github.com/tensorflower-gardener">tensorflower-gardener</a>, which I speculate is some connection between GitHub and work that happens inside Google proper.</p>
-<p>It's interesting to think about what aspects of the Googleverse should (and/or could) be adopted by developers outside Google.</p>    
-    ]]></description>
-<link>http://planspace.org/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/</link>
-<guid>http://planspace.org/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/</guid>
-<pubDate>Wed, 15 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-04-26: [Parsing TFRecords inside the TensorFlow Graph](/20170426-parsing_tfrecords_inside_the_tensorflow_graph/)
  * 2017-04-25: [`mystery.tfrecords`](/20170425-mystery.tfrecords/)
  * 2017-04-23: [TensorFlow as Automatic MPI](/20170423-tensorflow_as_automatic_mpi/)
  * 2017-04-12: [Reading from Disk inside the TensorFlow Graph](/20170412-reading_from_disk_inside_the_tensorflow_graph/)
