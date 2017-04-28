@@ -7,6 +7,49 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Everything in the Graph? Even Glob?</title>
+<description><![CDATA[
+
+<p>Programming with TensorFlow is largely building TensorFlow graphs. It can be like using Python to write a program for another computer: the TensorFlow runtime. If you want all your computation to be in the graph, you need to be able to express everything with TensorFlow ops.</p>
+<p>It's not necessarily bad to do work outside the TensorFlow graph. Maybe there's a package that does exactly what you need for one part of your program. It could make sense to use TensorFlow for some things, and then pull off the graph and use the other package.</p>
+<p>Advantages of staying inside the graph might include better performance, as you aren't moving data into and out of the TensorFlow runtime's internal formats. And if you're developing in Python but want to take your graph and ship it using TensorFlow serving, or perhaps use another language, anything outside the graph will need special attention.</p>
+<p>The desire to stay in-graph leads to lots of ops existing that you might not think are essential for a machine learning library. This includes functionality for file formats like PNG and JPEG, queues and queue management, and even the lowly <code>glob</code>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Glob_(programming)"><code>glob</code></a> refers to patterns used for matching filenames. For example, in a shell, you might use a <code>glob</code> to list all the text files in a directory.</p>
+<pre><code class="language-bash">$ ls *.txt
+## one.txt        two.txt</code></pre>
+
+<p>In Python, the standard library includes <a href="https://docs.python.org/3/library/glob.html"><code>glob</code></a> functionality.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import glob
+&gt;&gt;&gt; glob.glob('*.txt')
+## ['one.txt', 'two.txt']</code></pre>
+
+<p>TensorFlow has a similar operation: <a href="https://www.tensorflow.org/api_docs/python/tf/matching_files"><code>tf.matching_files</code></a>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; session = tf.Session()
+&gt;&gt;&gt; glob = tf.matching_files('*.txt')
+&gt;&gt;&gt; session.run(glob)
+## array(['./one.txt', './two.txt'], dtype=object)</code></pre>
+
+<p>TensorFlow's globbing is limited in that it doesn't support wildcards in directory names, and it doesn't support the recursive globbing found in the <code>glob</code> of Python 3.5+.</p>
+<p>Every time a <code>tf.matching_files</code> op is evaluated, it goes and reads filenames from disk. What's often seen instead is <a href="https://www.tensorflow.org/api_docs/python/tf/train/match_filenames_once"><code>tf.train.match_filenames_once</code></a>, which introduces an extra level of lazy evaluation in that it will execute <code>tf.matching_files</code> the first time it's evaluated, and then it caches the results, returning the same list of files when evaluated again even if the files on disk become different. Because this relies on a local variable for the cache (<a href="https://github.com/tensorflow/tensorflow/blob/a5b1fb8e56ceda0ee2794ee05f5a7642157875c5/tensorflow/python/training/input.py#L55">source</a>) you'll have to initialize.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; session = tf.Session()
+&gt;&gt;&gt; glob = tf.train.match_filenames_once('*.txt')
+&gt;&gt;&gt; initializer = tf.local_variables_initializer()
+&gt;&gt;&gt; session.run(initializer)
+&gt;&gt;&gt; session.run(glob)
+## array(['./one.txt', './two.txt'], dtype=object)</code></pre>
+
+<p>With functionality like this, TensorFlow really subsumes a lot of things that could at least in theory be handled separately. The choice of whether to put any particular piece of computation into the TensorFlow graph or not remains up to developer.</p>
+<p><img alt="glob" src="glob.png"></p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170428-everything_in_the_graph_even_glob/</link>
+<guid>http://planspace.org/20170428-everything_in_the_graph_even_glob/</guid>
+<pubDate>Fri, 28 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Sparse Tensors and TFRecords</title>
 <description><![CDATA[
 
@@ -88,7 +131,9 @@ session.run(parsed, feed_dict={serialized: my_example_str})
                    of VarLenFeature.</code></pre>
 
 <p><code>VarLenFeature</code> doesn't support real sparsity or multi-dimensionality though; it only supports "ragged edges" as in the case when one example has three elements and the next has seven, for example.</p>
-<p>It is a little awkward to put together a sparse representation for TFRecords, but it does give you a lot of flexibility. To put a point on it, I don't know what you can do with a <code>SequenceExample</code> that you can't do with a regular <code>Example</code> using all of <code>FixedLenFeature</code>, <code>VarLenFeature</code>, and <code>SparseFeature</code>.</p>    
+<p>It is a little awkward to put together a sparse representation for TFRecords, but it does give you a lot of flexibility. To put a point on it, I don't know what you can do with a <code>SequenceExample</code> that you can't do with a regular <code>Example</code> using all of <code>FixedLenFeature</code>, <code>VarLenFeature</code>, and <code>SparseFeature</code>.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</link>
 <guid>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</guid>
@@ -1896,44 +1941,6 @@ estimator.predict(data)           # run on new data</code></pre>
 <link>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</link>
 <guid>http://planspace.org/20170320-tensorflow_apis_for_various_languages/</guid>
 <pubDate>Mon, 20 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Thank You for Reaching Out</title>
-<description><![CDATA[
-
-<p>I make myself pretty <a href="/aaron/">easy to contact</a>, and sometimes people contact me.</p>
-<h3>1. Will I hire you?</h3>
-<p>I'm not in a position to hire you (or give you an internship). Please don't send me your r&#233;sum&#233;. If you want to work where I work, or anywhere I've worked before, please go through official channels.</p>
-<h3>2. Will I recommend you for a job?</h3>
-<p>If I already know your work and I know it to be good, then yes.</p>
-<h3>3. How can you find a job?</h3>
-<p>I've found jobs mostly through people I know, and once through a recruiter.</p>
-<p>Don't meet people for the sake of finding a job. Meet people by being active in your community and doing good work. Go to a <a href="https://www.meetup.com/">meetup</a>. Talk to people. Help where you can. Give a talk about something you know or are learning about. Help out on a <a href="http://brigade.codeforamerica.org/brigade/">community project</a>. Keep developing new skills.</p>
-<p>The majority of the cold contacts I get are from recruiters. I don't have an answer for them on this page because they don't <em>care</em>; it is their <em>job</em> to contact people all the time&#8212;even people who don't seem to be looking for work&#8212;on the off chance that they make a contact at exactly the right time. Can they find you? They will send you jobs.</p>
-<h3>4. How can you develop skills?</h3>
-<p>I have a presentation about my career path and things I think are very generally important. It's called <a href="/20151206-how_to_eat_computers/">How to Eat Computers</a> and it was made for children, but even such a very mature person as you might enjoy it.</p>
-<p>I have two short lists of recommended books:</p>
-<ul>
-<li><a href="/20160322-books_for_programmers/">Books for Programmers</a></li>
-<li><a href="/20160320-books_for_professionals/">Books for Professionals</a></li>
-</ul>
-<p>You should read and write a lot. Develop interests and pursue them.</p>
-<h3>5. What educational program should you do?</h3>
-<p>You should go for the best program(s) you can, but remember that individual (student) variability is much larger than variability between programs.</p>
-<h3>6. Should you do online courses?</h3>
-<p>This is like asking "Should I read books?" Put them in the same category. Choose what will best help you learn what you want to learn.</p>
-<h3>7. Should you do a coding bootcamp?</h3>
-<p>Don't think of a bootcamp as a credential. They don't play in the same world as graduate degrees. If you go for a bootcamp, you are saying to the world that you are <em>scrappy</em>; you are going to <em>work hard</em> and you are going to <em>make something happen</em>. The structures of the program may help you to do more than you would on your own, but no program can do everything for you.</p>
-<p>At the end of the program you are going to have your work to show and talk about. Could you have done that work without the program? Yes. Would you have?</p>
-<h3>8. What's the best coding bootcamp?</h3>
-<p>I've taught data science evening classes for <a href="https://generalassemb.ly/">General Assembly</a> and the full-time program for <a href="https://www.thisismetis.com/">Metis</a>. I developed some materials and I hope I helped both programs, but things vary a lot with locations, staff, and time: I don't know which programs are better than others.</p>
-<h3>9. Will I collaborate with you? Will I be your mentor?</h3>
-<p>If you have a project or question that you think I'm uniquely positioned to help with, let's talk about that project or question.</p>
-<p>If you're looking for people in general but don't yet have a project or question to talk about, thank you for thinking of me, and please contact me if I am still the right person to talk to after you do. I keep some project ideas in my blog's <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues">github issues</a>; you could look there to see if anything interests you.</p>    
-    ]]></description>
-<link>http://planspace.org/20170319-thank_you_for_reaching_out/</link>
-<guid>http://planspace.org/20170319-thank_you_for_reaching_out/</guid>
-<pubDate>Sun, 19 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
