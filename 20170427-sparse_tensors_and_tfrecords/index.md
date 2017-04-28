@@ -124,3 +124,8 @@ WARNING:tensorflow:SparseFeature is a complicated feature config
 `VarLenFeature` doesn't support real sparsity or multi-dimensionality though; it only supports "ragged edges" as in the case when one example has three elements and the next has seven, for example.
 
 It is a little awkward to put together a sparse representation for TFRecords, but it does give you a lot of flexibility. To put a point on it, I don't know what you can do with a `SequenceExample` that you can't do with a regular `Example` using all of `FixedLenFeature`, `VarLenFeature`, and `SparseFeature`.
+
+
+---
+
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
