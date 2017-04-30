@@ -7,6 +7,135 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>TensorFlow's QueueRunner</title>
+<description><![CDATA[
+
+<p>A TensorFlow <a href="https://www.tensorflow.org/programmers_guide/threading_and_queues#queuerunner">QueueRunner</a> helps to feed a TensorFlow <a href="http://planspace.org/20170327-tensorflow_and_queues/">queue</a> using threads which are optionally managed with a TensorFlow <a href="http://planspace.org/20170324-the_tensorflow_coordinator_for_python_threading/">Coordinator</a>. QueueRunner objects can be used directly, or via higher-level APIs, which also offer automatic TensorBoard summaries.</p>
+<pre><code class="language-python">import tensorflow as tf
+session = tf.Session()</code></pre>
+
+<hr>
+<h2>QueueRunner Directly</h2>
+<p>To use a QueueRunner you need a TensorFlow queue and an op that puts a new thing in the queue every time that op is evaluated. Typically, such an op will itself involve a queue, which is a bit of a tease. To avoid that circularity, this example will use random numbers.</p>
+<pre><code class="language-python">queue = tf.FIFOQueue(capacity=10, dtypes=[tf.float32])
+random_value_to_enqueue = tf.random_normal([])  # shape=[] means a single value
+enqueue_op = queue.enqueue(random_value_to_enqueue)
+random_value_from_queue = queue.dequeue()</code></pre>
+
+<p>At this point if you evaluate <code>random_value_from_queue</code> in the session it will block, because nothing has been put in the queue yet.</p>
+<pre><code class="language-python">queue_runner = tf.train.QueueRunner(queue, [enqueue_op])</code></pre>
+
+<p>Still nothing has been enqueued, but <code>queue_runner</code> stands ready to make threads that will do the enqueuing.</p>
+<p>If you put more enqueue ops in the list, or the same one multiple times, more threads will be started when things get going.</p>
+<pre><code class="language-python">coordinator = tf.train.Coordinator()
+threads = queue_runner.create_threads(session, coord=coordinator, start=True)</code></pre>
+
+<p>Using <code>start=True</code> means we won't have to call <code>.start()</code> for each thread ourselves.</p>
+<pre><code class="language-python">&gt;&gt;&gt; len(threads)
+## 2</code></pre>
+
+<p>There are two threads running: one for handling coordinated shutdown, and one for the enqueue op.</p>
+<p>Now at last we can get at random values from the queue!</p>
+<pre><code class="language-python">&gt;&gt;&gt; session.run(random_value_from_queue)
+## 0.69283932
+&gt;&gt;&gt; session.run(random_value_from_queue)
+## -0.53802371</code></pre>
+
+<p>The feeding thread will try to keep the queue at capacity, which was set to 10, so there should always be more items available to dequeue.</p>
+<p>Since we used a coordinator, we can shut the threads down nicely.</p>
+<pre><code class="language-python">coordinator.request_stop()
+coordinator.join(threads)</code></pre>
+
+<hr>
+<h2>QueueRunner with Higher-Level APIs</h2>
+<p>It's possible to work with QueueRunner directly, as shown above, but it's easier to use higher-level TensorFlow APIs that themselves use QueueRunner.</p>
+<p>It's common for TensorFlow queue-chains to start with a list of filenames (sometimes a list of just one filename) to read data from. The <code>string_input_producer</code> function makes a queue using provided strings.</p>
+<pre><code class="language-python">queue = tf.train.string_input_producer(['a', 'b', 'c', 'd'])
+letter_from_queue = queue.dequeue()</code></pre>
+
+<p>This is a <code>FIFOQueue</code>, just as before, but notice we don't have an enqueue op for it. Like many things in <code>tf.train</code>, here TensorFlow has already done some work for us. A QueueRunner has already been made, and it was added to the <code>queue_runners</code> collection.</p>
+<pre><code class="language-python">&gt;&gt;&gt; tf.get_collection('queue_runners')
+## [&lt;tensorflow.python.training.queue_runner_impl.QueueRunner object at 0x121ee2c10&gt;]</code></pre>
+
+<p>You could access and run that QueueRunner directly, but <code>tf.train</code> makes things easier.</p>
+<!--
+
+Finally, here's a place where it would be useful to be
+doing a session context manager!
+
+-->
+
+<pre><code class="language-python">coordinator.clear_stop()
+threads = tf.train.start_queue_runners(sess=session, coord=coordinator)</code></pre>
+
+<p><code>tf.train.start_queue_runners</code> automatically starts the threads.</p>
+<pre><code class="language-python">&gt;&gt;&gt; session.run(letter_from_queue)
+session.run(letter_from_queue)
+## 'a'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'c'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'd'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'b'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'd'</code></pre>
+
+<p>By default, the queue will go through the original items multiple times, or multiple epochs, and shuffle the order of strings within an epoch.</p>
+<p>Limiting the number of epochs uses a local variable, which must be initialized.</p>
+<pre><code class="language-python">queue = tf.train.string_input_producer(['a', 'b', 'c', 'd'],
+                                       shuffle=False, num_epochs=1)
+letter_from_queue = queue.dequeue()
+initializer = tf.local_variables_initializer()
+session.run(initializer)
+threads = tf.train.start_queue_runners(sess=session, coord=coordinator)</code></pre>
+
+<p>Now the QueueRunner will close the queue when there isn't anything more to put in it, so the dequeue op will eventually give an <code>OutOfRangeError</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; session.run(letter_from_queue)
+## 'a'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'b'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'c'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## 'd'
+&gt;&gt;&gt; session.run(letter_from_queue)
+## OutOfRangeError</code></pre>
+
+<hr>
+<h2>Automatic TensorBoard Summaries</h2>
+<p>A single-epoch queue will be helpful for illustrating an interesting thing about <code>tf.train.string_input_producer</code>: it automatically adds a TensorBoard summary to the graph.</p>
+<p><img alt="shock" src="img/shock_or_something.jpg"></p>
+<p>It's nice to have direct control over every detail of your program, but the conveniences of higher-level APIs are also pretty nice. The summary that gets added is a scalar summary representing the percent full that the queue is.</p>
+<p><img alt="Doctor Strangelog" src="img/strangelog.jpg"></p>
+<pre><code class="language-python">tf.reset_default_graph()  # Starting queue runners will fail if a queue is
+session = tf.Session()    # closed, so we need to clear things out.
+queue = tf.train.string_input_producer(['a', 'b', 'c', 'd'],
+                                       shuffle=False, capacity=4, num_epochs=1)
+letter_from_queue = queue.dequeue()
+summaries = tf.summary.merge_all()
+summary_writer = tf.summary.FileWriter('logs')
+initializer = tf.local_variables_initializer()
+session.run(initializer)
+coordinator = tf.train.Coordinator()
+threads = tf.train.start_queue_runners(sess=session, coord=coordinator)
+for i in range(4):
+    summary_writer.add_summary(session.run(summaries), i)
+    session.run(letter_from_queue)
+summary_writer.add_summary(session.run(summaries), 4)
+summary_writer.flush()  # Ensure everything is written out.</code></pre>
+
+<p>After opening up TensorBoard with <code>tensorboard --logdir=logs</code> and going to <code>http://localhost:6006/</code> and and turning off plot smoothing, you'll see this:</p>
+<p><img alt="log" src="img/fraction_full.png"></p>
+<p>This shows that the queue, with capacity four, started 100% full and then every time something was dequeued from it it became 25 percentage points less full until it was empty.</p>
+<p>For this example, the queue wasn't being refilled, so we knew it would become less and less full. But if you're reading data into an input queue that you expect to keep full, it's a great diagnostic to be able to check how full it actually is while things are running, to find find out if loading data is a bottleneck.</p>
+<p>The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.</p>    
+    ]]></description>
+<link>http://planspace.org/20170430-tensorflows_queuerunner/</link>
+<guid>http://planspace.org/20170430-tensorflows_queuerunner/</guid>
+<pubDate>Sun, 30 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>From Behaviorist to Constructivist AI</title>
 <description><![CDATA[
 
@@ -1855,92 +1984,6 @@ INFO:tensorflow:1+1=2</code></pre>
 <link>http://planspace.org/20170322-tensorflow_logging/</link>
 <guid>http://planspace.org/20170322-tensorflow_logging/</guid>
 <pubDate>Wed, 22 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Various TensorFlow APIs for Python</title>
-<description><![CDATA[
-
-<p>An early <a href="http://fastml.com/what-you-wanted-to-know-about-tensorflow/">perception</a> of TensorFlow was that the API was quite low-level.</p>
-<blockquote>
-<p>"meaning you&#8217;ll be multiplying matrices and vectors."</p>
-</blockquote>
-<p>TensorFlow offers ops for low-level operations, and from the beginning programmers used those low-level ops to build higher-level APIs.</p>
-<p>To paraphrase <a href="http://www.paulgraham.com/avg.html">Paul Graham</a>:</p>
-<blockquote>
-<p>"if you have a choice of several [APIs], it is, all other things being equal, a mistake to program in anything but the [highest-level] one."</p>
-</blockquote>
-<p>You don't need to be a Lisp hacker to make it easier to use TensorFlow the way you want by writing new functions and classes, and you probably should.</p>
-<p>But because TensorFlow had already done the obviously hard work of making low-level things work, it was relatively easy for lots of people to attempt the subtly hard work of designing higher-level APIs.</p>
-<p>This led to a proliferation of Python APIs, which can sometimes be confusing to track.</p>
-<p>Things are still moving around and settling a bit, but Google is communicating a pretty clear plan for official Python APIs for TensorFlow.</p>
-<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png"></p>
-<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
-<p>This plan changes some names and rearranges things slightly, but it's an incremental development of things that have existed for a while. We can look at how things have developed over time both for what's becoming official TensorFlow API and some of the projects that still exist outside official TensorFlow.</p>
-<hr>
-<h3>Python Frontend (op level)</h3>
-<p>You can continue to use TensorFlow's low-level APIs.</p>
-<p>There are ops, like <code>tf.matmul</code> and <code>tf.nn.relu</code>, which you might use to build a neural network architecture in full detail. To do really novel things, you may want this level of control. But you may also prefer to work with larger building blocks. The other other APIs below will mostly specialize in this kind of application.</p>
-<p>There are also ops like <code>tf.image.decode_jpeg</code> (and many others) which may be necessary but don't necessarily relate to what is usually considered the architecture of neural networks. Some higher-level APIs wrap some of this functionality, but they usually stay close to the building of network architectures and the training of such networks once defined.</p>
-<hr>
-<h3>Layers (as from TF-Slim)</h3>
-<p><a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a> has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
-<p>Sergio Guadarrama, one of the TF-Slim authors, generously confirmed that TensorFlow is converging on a layers API and implementation along these lines, but warns that there can still be some differences. He points out that <code>tf.contrib.layers</code> have <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/framework/arg_scope"><code>arg_scope</code></a>, while <code>tf.layers</code> don't.</p>
-<p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
-<p>Other parts of TF-Slim are likely also worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
-<p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
-<p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
-<p><img alt="slim... shady?" src="img/slim_shady.png"></p>
-<hr>
-<h3>Estimator (as from TF Learn)</h3>
-<p>Distinct from TensorFlow, the <a href="http://scikit-learn.org/">scikit-learn</a> project makes a lot of machine learning models conveniently available in Python.</p>
-<p><img alt="scikit-learn logo" src="img/sklearn.png"></p>
-<p>A key design element of scikit is that many different models offer the same simple API: they are all implemented as <em>estimators</em>. So regardless of whether the model is linear regression or a GBM, if your instantiated scikit-learn model object is called <code>estimator</code>, you can do all of these:</p>
-<pre><code class="language-python">estimator.fit(data, labels)       # train
-estimator.score(data, labels)     # test
-estimator.predict(data)           # run on new data</code></pre>
-
-<p>The estimator API for TensorFlow is directly inspired by scikit-learn, though implemented quite independently. Here's nearly equivalent TensorFlow code, assuming you have a TensorFlow estimator model instantiated as <code>estimator</code>:</p>
-<pre><code class="language-python">estimator.fit(data, labels)       # train
-estimator.evaluate(data, labels)  # test
-estimator.predict(data)           # run on new data</code></pre>
-
-<p>The only thing that changed in the code is scikit-learn's <code>score</code> method becomes <code>evaluate</code>, which I think is going to do a lot of good for the self esteem of TensorFlow models.</p>
-<p>There are other differences too. In scikit-learn, usually models have an idea of training "until done"&#8212;but in TensorFlow, if you don't specify a number of steps to train for, the model will go on training forever. TensorFlow estimators also do a lot of things by default, like adding TensorBoard summaries and saving model checkpoints.</p>
-<p>The estimators API started as <a href="https://github.com/tensorflow/skflow">skflow</a> ("scikit-flow") before moving into the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/learn/python/learn">tf.contrib.learn</a> ("TF Learn") and now the base estimator code is getting situated in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/estimator">tf.estimator</a> and <a href="https://www.tensorflow.org/extend/estimators">documentation</a> is accumulating.</p>
-<hr>
-<h3>Keras Model (absorbing Keras)</h3>
-<p><a href="https://keras.io/">Keras</a> was around before TensorFlow. It was always a high-level API for neural nets, originally running with <a href="http://www.deeplearning.net/software/theano/">Theano</a> as its backend.</p>
-<p>After the release of TensorFlow, Keras moved to also work with TensorFlow as a backend. And now TensorFlow is absorbing at least some aspects of the Keras project into the TensorFlow codebase, though <a href="https://twitter.com/fchollet">Fran&#231;ois Chollet</a> seems likely to continue championing Keras as a very fine project in its own right. (See also his response to a <a href="https://www.quora.com/What-will-Keras-do-with-TensorFlow-Slim">Quora question</a> about any possible relationship between TF-Slim and Keras.)</p>
-<p>Once specified, Keras models offer basically the same API (<code>fit</code>/<code>evaluate</code>/<code>predict</code>) as estimators (above).</p>
-<p>Keras is appearing in the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/keras">tf.contrib.keras</a> and should move to <code>tf.keras</code> at TensorFlow 1.2.</p>
-<p><img alt="Keras" src="img/keras.jpg"></p>
-<hr>
-<h3>Canned Estimators</h3>
-<p>Canned estimators are concrete pre-defined models that follow the estimator conventions. Currently there are a bunch right in <code>tf.contrib.learn</code>, such as <code>LinearRegressor</code> and <code>DNNClassifier</code>. There are some elsewhere. For example, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/factorization/g3doc/kmeans.md">kmeans</a> is in <code>tf.contrib.factorization</code>. It isn't clear to me exactly where all the canned estimators will eventually settle down in the API.</p>
-<hr>
-<h3>Other APIs</h3>
-<p>All the APIs that follow are not part of the official TensorFlow project. I guess you could use them.</p>
-<p><img alt="Bucksstar Coffee" src="img/bucksstar.png"></p>
-<hr>
-<h3>Pretty Tensor</h3>
-<p><a href="https://github.com/google/prettytensor">Pretty Tensor</a> is still a Google project, so it might be worth checking out if you really like <a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent interfaces</a> with lots of chaining, like <a href="https://d3js.org/">d3</a>.</p>
-<hr>
-<h3>TFLearn</h3>
-<p>The confusingly named <a href="https://github.com/tflearn/tflearn">TFLearn</a> (no space; perhaps more clearly identified as <a href="(http://tflearn.org/)">TFLearn.org</a>) is not at all the same thing as the TF Learn (with a space) that appears in TensorFlow at <code>tf.contrib.learn</code>. TFLearn is a <a href="http://stackoverflow.com/questions/38859354/what-is-the-difference-between-tf-learn-aka-scikit-flow-and-tflearn-aka-tflea">separate</a> Python package that uses TensorFlow. It seems like it aspires to be like Keras. Here is the TFLearn logo:</p>
-<p><img alt="TFLearn logo" src="img/tflearn.png"></p>
-<hr>
-<h3>TensorLayer</h3>
-<p>Another one with a confusing name is <a href="https://github.com/zsdonghao/tensorlayer/">TensorLayer</a>. This is a separate package from TensorFlow and it's different from TensorFlow's layers API.</p>
-<p><img alt="TensorLayer logo" src="img/tensorlayer.png"></p>
-<hr>
-<p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
-<hr>
-<p>Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170321-various_tensorflow_apis_for_python/</link>
-<guid>http://planspace.org/20170321-various_tensorflow_apis_for_python/</guid>
-<pubDate>Tue, 21 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

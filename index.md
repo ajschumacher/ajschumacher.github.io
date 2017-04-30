@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-04-30: [TensorFlow's QueueRunner](/20170430-tensorflows_queuerunner/)
  * 2017-04-29: [From Behaviorist to Constructivist AI](/20170429-from_behaviorist_to_constructivist_ai/)
  * 2017-04-28: [Everything in the Graph? Even Glob?](/20170428-everything_in_the_graph_even_glob/)
  * 2017-04-27: [Sparse Tensors and TFRecords](/20170427-sparse_tensors_and_tfrecords/)
