@@ -5,7 +5,7 @@ a cheat sheet for TensorFlow basics.
 
 [Hello, TensorFlow!]: https://www.oreilly.com/learning/hello-tensorflow
 
-I updated this code to work with TensorFlow 1.0.1. Coming from TensorFlow 0.8, this required changing 5 of the 17 lines.
+I updated this code to work with TensorFlow 1.0.1. Coming from TensorFlow 0.8, this required changing 5 of the 15 lines involving TensorFlow.
 
 ```python
 import tensorflow as tf
@@ -31,6 +31,12 @@ for i in range(100):
     session.run(train_step)
 
 summary_writer.close()
+```
+
+Then to start TensorBoard in a shell:
+
+```bash
+tensorboard --logdir=log_simple_stats
 ```
 
 [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole) as well.

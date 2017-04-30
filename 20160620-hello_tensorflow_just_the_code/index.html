@@ -13,7 +13,7 @@
 <p class="date">Monday June 20, 2016</p>
 <p>This is the final code block from <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> I like it as
 a cheat sheet for TensorFlow basics.</p>
-<p>I updated this code to work with TensorFlow 1.0.1. Coming from TensorFlow 0.8, this required changing 5 of the 17 lines.</p>
+<p>I updated this code to work with TensorFlow 1.0.1. Coming from TensorFlow 0.8, this required changing 5 of the 15 lines involving TensorFlow.</p>
 <pre><code class="language-python">import tensorflow as tf
 
 x = tf.constant(1.0, name='input')
@@ -37,6 +37,9 @@ for i in range(100):
     session.run(train_step)
 
 summary_writer.close()</code></pre>
+
+<p>Then to start TensorBoard in a shell:</p>
+<pre><code class="language-bash">tensorboard --logdir=log_simple_stats</code></pre>
 
 <p><a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> is now <a href="https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole">an interactive code and video Oriole</a> as well.</p>    </article>
     <footer>
