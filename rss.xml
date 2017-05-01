@@ -7,6 +7,50 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Sampling ImageNet</title>
+<description><![CDATA[
+
+<p><a href="http://image-net.org/">ImageNet</a> is a standard image dataset. It's pretty big; just the IDs and URLs of the images take over a gigabyte of text. I collected a fun <a href="https://github.com/ajschumacher/imagen">sampling</a> for small-scale purposes.</p>
+<hr>
+<p>ImageNet is distributed primarily as a text file of <a href="http://image-net.org/download-imageurls">image URLs</a>. The compressed file is 334 megabytes. The unpacked file is 1.1 gigabytes.</p>
+<pre><code class="language-bash">$ wget http://image-net.org/imagenet_data/urls/imagenet_fall11_urls.tgz
+$ tar zxvf imagenet_fall11_urls.tgz
+$ wc fall11_urls.txt
+##  14197122 28414665 1134662781 fall11_urls.txt
+$ head -3 fall11_urls.txt
+## n00004475_6590   http://farm4.static.flickr.com/3175/2737866473_7958dc8760.jpg
+## n00004475_15899  http://farm4.static.flickr.com/3276/2875184020_9944005d0d.jpg
+## n00004475_32312  http://farm3.static.flickr.com/2531/4094333885_e8462a8338.jpg</code></pre>
+
+<p>The first field is an image ID. The part before the underscore is a WordNet ID, so the first image is of <code>n00004475</code>. What's that?</p>
+<p>The mapping from WordNet ID to a brief text label can be downloaded from a link on the ImageNet <a href="http://image-net.org/download-API">API page</a>.</p>
+<pre><code class="language-bash">$ wget http://image-net.org/archive/words.txt
+$ wc words.txt
+##   82114  302059 2655750 words.txt
+$ head -3 words.txt
+## n00001740   entity
+## n00001930   physical entity
+## n00002137   abstraction, abstract entity</code></pre>
+
+<p>There are 82,114 WordNet IDs. Now we can decode the one we're interested in.</p>
+<pre><code class="language-bash">$ grep n00004475 words.txt
+## n00004475    organism, being</code></pre>
+
+<p>So the first picture in ImageNet is of an "organism, being". What does such a thing look like?</p>
+<p><img alt="organism, being" src="img/n00004475_6590.jpg"></p>
+<p>There are eight examples of "organism, being" and two of the others are cats.</p>
+<p>I think 82,114 categories is too many to try to sample randomly from, for my purposes. I'll use the <a href="http://image-net.org/challenges/LSVRC/2017/browse-det-synsets">200 categories</a> specified for the <a href="http://image-net.org/challenges/LSVRC/2017/">ILSVRC2017</a> object detection <a href="http://image-net.org/challenges/LSVRC/2017/#det">challenge</a>.</p>
+<pre><code class="language-bash">wget -O 200words.html http://image-net.org/challenges/LSVRC/2017/browse-det-synsets</code></pre>
+
+<p>I used Emacs to pull out the 200 WordNet IDs and convenient extra-short descriptions, saved in <a href="200words.csv">200words.csv</a>. The script <a href="make_urls_subset.py">make_urls_subset.py</a> produces <a href="200words100urls.csv">200words100urls.csv</a> with 100 random URLs for each of the categories. Finally, <a href="get_fives.py">get_fives.py</a> downloads five working JPGs for each category. A couple came back with "missing" images, so I manually replaced those with others from the list.</p>
+<p>The results are packaged up on <a href="https://github.com/">GitHub</a> at <a href="https://github.com/ajschumacher/imagen">ajschumacher/imagen</a> and feature such beauties as <a href="img/n02118333_27_fox.jpg">n02118333_27_fox.jpg</a>.</p>
+<p><img alt="n02118333_27_fox.jpg" src="img/n02118333_27_fox.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20170430-sampling_imagenet/</link>
+<guid>http://planspace.org/20170430-sampling_imagenet/</guid>
+<pubDate>Sun, 30 Apr 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>TensorFlow's QueueRunner</title>
 <description><![CDATA[
 
@@ -1937,53 +1981,6 @@ http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumen
 <link>http://planspace.org/20170323-tfrecords_for_humans/</link>
 <guid>http://planspace.org/20170323-tfrecords_for_humans/</guid>
 <pubDate>Thu, 23 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TensorFlow Logging</title>
-<description><![CDATA[
-
-<p>TensorFlow wraps the standard Python <a href="https://docs.python.org/3/library/logging.html">logging library</a>, exposing functionality at <code>tf.logging</code>.</p>
-<p>This means that you can start logging things immediately after importing TensorFlow:</p>
-<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
-&gt;&gt;&gt; tf.logging.info('Things are good!')
-INFO:tensorflow:Things are good!</code></pre>
-
-<p>TensorFlow also automatically logs things using this functionality. For example, estimators will log out information about the many things they're up to.</p>
-<p>The TensorFlow <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py">logging code</a> also adds some non-standard functionality. A comment notes that some of the code "is taken from pyglib/logging". I assume pyglib is a Google-internal Python library. I think it's interesting to see these Google tools <a href="/20170315-tensorflow_and_a_googleverse_like_the_hadleyverse/">appearing here and there</a>.</p>
-<p>Here's an example of TensorFlow logging's added functionality: <code>log_every_n</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
-INFO:tensorflow:Common error!
-&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
-&gt;&gt;&gt; tf.logging.log_every_n(tf.logging.INFO, 'Common error!', 2)
-INFO:tensorflow:Common error!</code></pre>
-
-<p>(This example won't work in an <a href="https://ipython.org/">IPython</a> shell because every new REPL "read" there looks like a new file to Python.)</p>
-<hr>
-<p>If you want to use regular Python logging techniques in addition to TensorFlow's mechanism, everything should generally work, but it is possible to get into a situation that seems surprising in a REPL.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import logging
-&gt;&gt;&gt; import tensorflow as tf
-&gt;&gt;&gt; logging.warn('Something interesting!')
-WARNING:root:Something interesting!
-&gt;&gt;&gt; tf.logging.info('1+1=2')
-INFO:tensorflow:1+1=2
-INFO:tensorflow:1+1=2</code></pre>
-
-<p>This doubling is because TensorFlow's log messages are bubbling up to the root logger as intended, but both the root logger and TensorFlow's logger are getting handled in the same place, so we see the message twice.</p>
-<p>Shortly after the initial release of TensorFlow this kind of thing <a href="http://stackoverflow.com/questions/33662648/tensorflow-causes-logging-messages-to-double">was happening more than it should</a>, but the current behavior is correct.</p>
-<p>The situation shown above happens because both the base logging package and TensorFlow's logging are trying to automatically be helpful by writing things out to the interactive session.</p>
-<p>In practice you should set up log handlers yourself, <a href="http://docs.python-guide.org/en/latest/writing/logging/">as appropriate</a>. And of course if you only use one or the other of <code>logging</code> or <code>tf.logging</code> you'll be particularly unlikely to have any conflicts.</p>
-<p>A poor solution to the doubling above would be to turn off log message propagation from the TensorFlow logger.</p>
-<pre><code class="language-python">&gt;&gt;&gt; tf.logging._logger.propagate = False
-&gt;&gt;&gt; tf.logging.info('1+1=2')
-INFO:tensorflow:1+1=2</code></pre>
-
-<p>But I can't recommend using that as anything but a quick fix in a REPL if double messages happen to be bothering you.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170322-tensorflow_logging/</link>
-<guid>http://planspace.org/20170322-tensorflow_logging/</guid>
-<pubDate>Wed, 22 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

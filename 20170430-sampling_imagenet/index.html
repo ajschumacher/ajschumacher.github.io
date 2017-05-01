@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Sampling ImageNet</title>
+  </head>
+  <body>
+    <article>
+<h1>Sampling ImageNet</h1>
+<p class="date">Sunday April 30, 2017</p>
+<p><a href="http://image-net.org/">ImageNet</a> is a standard image dataset. It's pretty big; just the IDs and URLs of the images take over a gigabyte of text. I collected a fun <a href="https://github.com/ajschumacher/imagen">sampling</a> for small-scale purposes.</p>
+<hr />
+<p>ImageNet is distributed primarily as a text file of <a href="http://image-net.org/download-imageurls">image URLs</a>. The compressed file is 334 megabytes. The unpacked file is 1.1 gigabytes.</p>
+<pre><code class="language-bash">$ wget http://image-net.org/imagenet_data/urls/imagenet_fall11_urls.tgz
+$ tar zxvf imagenet_fall11_urls.tgz
+$ wc fall11_urls.txt
+##  14197122 28414665 1134662781 fall11_urls.txt
+$ head -3 fall11_urls.txt
+## n00004475_6590   http://farm4.static.flickr.com/3175/2737866473_7958dc8760.jpg
+## n00004475_15899  http://farm4.static.flickr.com/3276/2875184020_9944005d0d.jpg
+## n00004475_32312  http://farm3.static.flickr.com/2531/4094333885_e8462a8338.jpg</code></pre>
+
+<p>The first field is an image ID. The part before the underscore is a WordNet ID, so the first image is of <code>n00004475</code>. What's that?</p>
+<p>The mapping from WordNet ID to a brief text label can be downloaded from a link on the ImageNet <a href="http://image-net.org/download-API">API page</a>.</p>
+<pre><code class="language-bash">$ wget http://image-net.org/archive/words.txt
+$ wc words.txt
+##   82114  302059 2655750 words.txt
+$ head -3 words.txt
+## n00001740   entity
+## n00001930   physical entity
+## n00002137   abstraction, abstract entity</code></pre>
+
+<p>There are 82,114 WordNet IDs. Now we can decode the one we're interested in.</p>
+<pre><code class="language-bash">$ grep n00004475 words.txt
+## n00004475    organism, being</code></pre>
+
+<p>So the first picture in ImageNet is of an "organism, being". What does such a thing look like?</p>
+<p><img alt="organism, being" src="img/n00004475_6590.jpg" /></p>
+<p>There are eight examples of "organism, being" and two of the others are cats.</p>
+<p>I think 82,114 categories is too many to try to sample randomly from, for my purposes. I'll use the <a href="http://image-net.org/challenges/LSVRC/2017/browse-det-synsets">200 categories</a> specified for the <a href="http://image-net.org/challenges/LSVRC/2017/">ILSVRC2017</a> object detection <a href="http://image-net.org/challenges/LSVRC/2017/#det">challenge</a>.</p>
+<pre><code class="language-bash">wget -O 200words.html http://image-net.org/challenges/LSVRC/2017/browse-det-synsets</code></pre>
+
+<p>I used Emacs to pull out the 200 WordNet IDs and convenient extra-short descriptions, saved in <a href="200words.csv">200words.csv</a>. The script <a href="make_urls_subset.py">make_urls_subset.py</a> produces <a href="200words100urls.csv">200words100urls.csv</a> with 100 random URLs for each of the categories. Finally, <a href="get_fives.py">get_fives.py</a> downloads five working JPGs for each category. A couple came back with "missing" images, so I manually replaced those with others from the list.</p>
+<p>The results are packaged up on <a href="https://github.com/">GitHub</a> at <a href="https://github.com/ajschumacher/imagen">ajschumacher/imagen</a> and feature such beauties as <a href="img/n02118333_27_fox.jpg">n02118333_27_fox.jpg</a>.</p>
+<p><img alt="n02118333_27_fox.jpg" src="img/n02118333_27_fox.jpg" /></p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
