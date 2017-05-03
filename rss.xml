@@ -7,6 +7,66 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Canned Models with Keras in TensorFlow</title>
+<description><![CDATA[
+
+<p>With TensorFlow 1.1, <a href="https://github.com/fchollet/keras">Keras</a> is now at <code>tf.contrib.keras</code>. With TensorFlow 1.2, it'll be at <code>tf.keras</code>. This is great for making new models, but we also get canned models previously found <a href="https://github.com/fchollet/deep-learning-models">outside core Keras</a>. It's so easy to classify images!</p>
+<pre><code class="language-python">import tensorflow as tf
+
+model = tf.contrib.keras.applications.ResNet50()</code></pre>
+
+<p>This will automatically download trained weights for a model based on <a href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a>. The weights are cached below your home directory, in <code>~/.keras/models/</code>.</p>
+<p>Convenient image tools are also included. Let's use an <a href="https://github.com/ajschumacher/imagen/blob/master/imagen/n01882714_4157_koala_bear.jpg">image</a> of a koala from the <a href="https://github.com/ajschumacher/imagen">imagen</a> ImageNet subset.</p>
+<p><img alt="original koala" src="n01882714_4157_koala_bear.jpg"></p>
+<pre><code class="language-python">filename = 'n01882714_4157_koala_bear.jpg'
+image = tf.contrib.keras.preprocessing.image.load_img(
+    filename, target_size=(224, 224))</code></pre>
+
+<p>This model can take input images that are 224 pixels on a side, so we have to make our image that size. We're just doing it by squishing, in this case.</p>
+<p><img alt="smaller koala" src="smaller_koala.jpg"></p>
+<p>We'll make that into an array that the model can take as input.</p>
+<pre><code class="language-python">import numpy as np
+
+array = tf.contrib.keras.preprocessing.image.img_to_array(image)
+array = np.expand_dims(array, axis=0)</code></pre>
+
+<p>Now we can classify the image!</p>
+<pre><code class="language-python">probabilities = model.predict(array)</code></pre>
+
+<p>We have one thousand probabilities, one for each class the model knows about. To interpret the result, we can use another helpful function.</p>
+<pre><code class="language-python">tf.contrib.keras.applications.resnet50.decode_predictions(probabilities)
+## [[(u'n01882714', u'koala', 0.99466419),
+##   (u'n02497673', u'Madagascar_cat', 0.0013330306),
+##   (u'n01877812', u'wallaby', 0.00085774728),
+##   (u'n02137549', u'mongoose', 0.00063530984),
+##   (u'n02123045', u'tabby', 0.00056512095)]]</code></pre>
+
+<p>Great success! The model is highly confident that it's looking at a koala. Not bad.</p>
+<p>It's pretty fun that this kind of super-easy access to quite good pre-trained models is now available all within the TensorFlow package. Just <code>pip install</code> and go!</p>
+<hr>
+<p>The thousand ImageNet categories this model knows about include some things that are commonly associated with people, but not a "person" class. Still, just for fun, what will <code>ResNet50</code> say about me?</p>
+<pre><code class="language-python">## [[(u'n02883205', u'bow_tie', 0.3144455),
+##   (u'n03787032', u'mortarboard', 0.059674311),
+##   (u'n02992529', u'cellular_telephone', 0.049916871),
+##   (u'n04357314', u'sunscreen', 0.048197504),
+##   (u'n04350905', u'suit', 0.03481029)]]</code></pre>
+
+<p>I guess I'll take it?</p>
+<p><img alt="Aaron" src="aaron.jpg"></p>
+<hr>
+<p><strong>Notes:</strong></p>
+<p>The model may have been trained on the very koala picture we're testing it with. I'm okay with that. Feel free to test your own koala pictures!</p>
+<p>There's also another function, <code>resnet50.preprocess_input</code>, which in theory should help the model work better, but my tests gave seemingly worse results when using that pre-processing. It would be used like this:</p>
+<pre><code class="language-python">array = tf.contrib.keras.applications.resnet50.preprocess_input(array)</code></pre>
+
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20170502-canned_models_with_keras_in_tensorflow/</link>
+<guid>http://planspace.org/20170502-canned_models_with_keras_in_tensorflow/</guid>
+<pubDate>Tue, 02 May 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Sampling ImageNet</title>
 <description><![CDATA[
 
@@ -173,7 +233,9 @@ summary_writer.flush()  # Ensure everything is written out.</code></pre>
 <p><img alt="log" src="img/fraction_full.png"></p>
 <p>This shows that the queue, with capacity four, started 100% full and then every time something was dequeued from it it became 25 percentage points less full until it was empty.</p>
 <p>For this example, the queue wasn't being refilled, so we knew it would become less and less full. But if you're reading data into an input queue that you expect to keep full, it's a great diagnostic to be able to check how full it actually is while things are running, to find find out if loading data is a bottleneck.</p>
-<p>The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.</p>    
+<p>The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.</p>
+<hr>
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
     ]]></description>
 <link>http://planspace.org/20170430-tensorflows_queuerunner/</link>
 <guid>http://planspace.org/20170430-tensorflows_queuerunner/</guid>
@@ -1868,119 +1930,6 @@ finally:
 <link>http://planspace.org/20170324-the_tensorflow_coordinator_for_python_threading/</link>
 <guid>http://planspace.org/20170324-the_tensorflow_coordinator_for_python_threading/</guid>
 <pubDate>Fri, 24 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TFRecords for Humans</title>
-<description><![CDATA[
-
-<p>TensorFlow <a href="https://www.tensorflow.org/programmers_guide/reading_data#standard_tensorflow_format">recommends</a> its TFRecords format as the standard TensorFlow format for data on disk.</p>
-<p>You <a href="/20170312-use_only_what_you_need_from_tensorflow/">don't have to</a> use TFRecords with TensorFlow. But if you need to read data inside your TensorFlow graph, and a reader op doesn't exist for your data, it might be easier to transform your data to TFRecords than to write a <a href="https://www.tensorflow.org/extend/new_data_formats">custom data reader op</a>.</p>
-<p>Before using TFRecords in a distributed setting, you probably want to understand and work with them locally.</p>
-<hr>
-<h3>The TFRecords Format</h3>
-<p>TFRecords is a <a href="https://www.tensorflow.org/api_guides/python/python_io#TFRecords_Format_Details">simple binary file format</a>. It lets you put one or more strings of bytes into a file. You could put any bytes you like in a TFRecords file, but it'll be more useful to use the formats provided in TensorFlow.</p>
-<p>TensorFlow defines two <a href="https://developers.google.com/protocol-buffers/">protocol buffer</a> message types for use with TFRecords: the <a href="https://www.tensorflow.org/api_docs/python/tf/train/Example">Example</a> message type and the <a href="https://www.tensorflow.org/api_docs/python/tf/train/SequenceExample">SequenceExample</a> message type.</p>
-<p>The pre-defined protocol buffer message types offer flexibility by letting you arrange your data as a map from string keys to values that are lists of integers, lists of 32-bit floats, or lists of bytes.</p>
-<hr>
-<h3>Writing and Reading in the style of <code>Example</code> Records without TensorFlow</h3>
-<p>An equivalent representation of an <code>Example</code> TFRecord using Python dictionaries might look like this:</p>
-<pre><code class="language-python">my_dict = {'features' : {
-    'my_ints': [5, 6],
-    'my_float': [2.7],
-    'my_bytes': ['data']
-}}</code></pre>
-
-<p>In Python 2, the string literal <code>'data'</code> is bytes. The equivalent in Python 3 is <code>bytes('data', 'utf-8')</code>. And Python uses 64-bit floats rather than the 32-bit floats that TFRecords uses, so we have more precision in Python.</p>
-<p>The values in this <code>dict</code> are accessed like this:</p>
-<ul>
-<li><code>my_dict['features']['my_ints']</code></li>
-<li><code>my_dict['features']['my_float']</code></li>
-<li><code>my_dict['features']['my_bytes']</code></li>
-</ul>
-<p>Ordinarily, to save this data (serialize and write to disk) and then read it again (read from disk and deserialize) in Python you might use the <a href="https://docs.python.org/3/library/pickle.html">pickle</a> module. For example:</p>
-<pre><code class="language-python">import pickle
-
-my_dict_str = pickle.dumps(my_dict)
-with open('my_dict.pkl', 'w') as f:
-    f.write(my_dict_str)
-
-with open('my_dict.pkl', 'r') as f:
-    that_dict_str = f.read()
-that_dict = pickle.loads(that_dict_str)</code></pre>
-
-<hr>
-<h3>Writing and Reading <code>Example</code> Records with TensorFlow</h3>
-<p>The TFRecords <code>Example</code> format defines things in detail: An <code>Example</code> contains one <code>Features</code>, which is a map from strings to <code>Feature</code> elements, which can each be <code>Int64List</code>, <code>FloatList</code>, or <code>BytesList</code>. (See also: <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/example.proto">example.proto</a> and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/feature.proto">feature.proto</a>)</p>
-<pre><code class="language-python">import tensorflow as tf
-
-my_example = tf.train.Example(features=tf.train.Features(feature={
-    'my_ints': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
-    'my_float': tf.train.Feature(float_list=tf.train.FloatList(value=[2.7])),
-    'my_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))
-}))</code></pre>
-
-<p>The values in the <code>Example</code> can be accessed then like this:</p>
-<ul>
-<li><code>my_example.features.feature['my_ints'].int64_list.value</code></li>
-<li><code>my_example.features.feature['my_float'].float_list.value</code></li>
-<li><code>my_example.features.feature['my_bytes'].bytes_list.value</code></li>
-</ul>
-<p>Writing to and reading from disk are much like with <code>pickle</code>, except that the reader here provides all the records from a TFRecords file. In this example, there's only one record in the file.</p>
-<pre><code class="language-python">my_example_str = my_example.SerializeToString()
-with tf.python_io.TFRecordWriter('my_example.tfrecords') as writer:
-    writer.write(my_example_str)
-
-reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
-those_examples = [tf.train.Example().FromString(example_str)
-                  for example_str in reader]</code></pre>
-
-<p>The file written: <a href="my_example.tfrecords"><code>my_example.tfrecords</code></a>.</p>
-<hr>
-<h3>Images in <code>Example</code> Records</h3>
-<p>The <code>Example</code> format lets you store pretty much any kind of data, including images. But the mechanism for arranging the data into serialized bytes, and then reconstructing the original format again, is left up to you. For more on this, see my post on <a href="/20170403-images_and_tfrecords/">Images and TFRecords</a>.</p>
-<p>For two more complete <em>in situ</em> examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
-<hr>
-<h3>The <code>SequenceExample</code> Record</h3>
-<p>The <code>SequenceExample</code> message type essentially extends <code>Example</code> for sequence data. (You could imagine achieving the same effect with just <code>Example</code>, but it would be awkward.)</p>
-<p>A <code>SequenceExample</code> keeps the same kind of map as <code>Example</code>, but calls it <code>context</code>, because it's thought of as the static context for the dynamic sequence data. And it adds another map, called <code>feature_lists</code>, that maps from string keys to lists of lists.</p>
-<p>In Python dictionaries, a <code>SequenceExample</code> is like this:</p>
-<pre><code class="language-python">my_seq_dict = {
-    'context' : {
-        'my_bytes':
-            ['data']},
-    'feature_lists' : {
-        'my_ints': [
-            [5, 6],
-            [7, 8, 9]]}}</code></pre>
-
-<p>A corresponding full <code>SequenceExample</code> is a bit more verbose:</p>
-<pre><code class="language-python">my_seq_ex = tf.train.SequenceExample(
-    context=tf.train.Features(feature={
-        'my_bytes':
-            tf.train.Feature(bytes_list=tf.train.BytesList(value=['data']))}),
-    feature_lists=tf.train.FeatureLists(feature_list={
-        'my_ints': tf.train.FeatureList(feature=[
-            tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 6])),
-            tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 8, 9]))])}))</code></pre>
-
-<p>In a file: <a href="my_seq_ex.tfrecords"><code>my_seq_ex.tfrecords</code></a>.</p>
-<p>You probably don't want to mix <code>Example</code> and <code>SequenceExample</code> records in the same TFRecords file.</p>
-<!--
-
-Good look at `SequenceExample` with different way of making them...
-http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/
-
--->
-
-<hr>
-<h3>Reading TFRecords in a TensorFlow Graph</h3>
-<p>You may eventually want to read TFRecords files with ops in a TensorFlow graph, using <a href="https://www.tensorflow.org/api_docs/python/tf/TFRecordReader">tf.TFRecordReader</a>. This will involve a filename queue; for an example, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/fully_connected_reader.py">some MNIST tutorial code</a>.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170323-tfrecords_for_humans/</link>
-<guid>http://planspace.org/20170323-tfrecords_for_humans/</guid>
-<pubDate>Thu, 23 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

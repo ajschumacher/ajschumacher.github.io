@@ -130,7 +130,9 @@ summary_writer.flush()  # Ensure everything is written out.</code></pre>
 <p><img alt="log" src="img/fraction_full.png" /></p>
 <p>This shows that the queue, with capacity four, started 100% full and then every time something was dequeued from it it became 25 percentage points less full until it was empty.</p>
 <p>For this example, the queue wasn't being refilled, so we knew it would become less and less full. But if you're reading data into an input queue that you expect to keep full, it's a great diagnostic to be able to check how full it actually is while things are running, to find find out if loading data is a bottleneck.</p>
-<p>The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.</p>    </article>
+<p>The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.</p>
+<hr />
+<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>
       <hr />
       <ul>

@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-05-02: [Canned Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
  * 2017-04-30: [Sampling ImageNet](/20170430-sampling_imagenet/)
  * 2017-04-30: [TensorFlow's QueueRunner](/20170430-tensorflows_queuerunner/)
  * 2017-04-29: [From Behaviorist to Constructivist AI](/20170429-from_behaviorist_to_constructivist_ai/)

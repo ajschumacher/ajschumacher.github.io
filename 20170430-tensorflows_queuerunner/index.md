@@ -180,3 +180,8 @@ This shows that the queue, with capacity four, started 100% full and then every 
 For this example, the queue wasn't being refilled, so we knew it would become less and less full. But if you're reading data into an input queue that you expect to keep full, it's a great diagnostic to be able to check how full it actually is while things are running, to find find out if loading data is a bottleneck.
 
 The automatic TensorBoard logging here is also a nice first taste of all the things that happen with even higher-level TensorFlow APIs.
+
+
+---
+
+I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
