@@ -60,6 +60,7 @@ array = np.expand_dims(array, axis=0)</code></pre>
 <p>There's also another function, <code>resnet50.preprocess_input</code>, which in theory should help the model work better, but my tests gave seemingly worse results when using that pre-processing. It would be used like this:</p>
 <pre><code class="language-python">array = tf.contrib.keras.applications.resnet50.preprocess_input(array)</code></pre>
 
+<p>Keras in TensorFlow also contains <code>vgg16</code>, <code>vgg19</code>, <code>inception_v3</code>, and <code>xception</code> models as well, along the same lines as <code>resnet50</code>.</p>
 <hr />
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>

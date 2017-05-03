@@ -82,6 +82,9 @@ There's also another function, `resnet50.preprocess_input`, which in theory shou
 array = tf.contrib.keras.applications.resnet50.preprocess_input(array)
 ```
 
+Keras in TensorFlow also contains `vgg16`, `vgg19`, `inception_v3`, and `xception` models as well, along the same lines as `resnet50`.
+
+
 ---
 
 I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
