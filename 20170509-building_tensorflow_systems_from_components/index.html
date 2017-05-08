@@ -1,0 +1,369 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Building TensorFlow Systems from Components</title>
+  </head>
+  <body>
+    <article>
+<h1>Building TensorFlow Systems from Components</h1>
+<p class="date">Tuesday May  9, 2017</p>
+<p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">workshop</a> given Tuesday May 9, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a>. (<a href="big.html">slides</a>)</em></p>
+<h3>Workshop participant materials</h3>
+<p>These are the things you'll need for the workshop, organized up front.</p>
+<ul>
+<li>Thing one.</li>
+<li>Thing two.</li>
+<li>Thing three.</li>
+</ul>
+<p>The whole slide deck and everything follows, and it's long.</p>
+<hr />
+<p>Thank you!</p>
+<hr />
+<p>Before starting, I want to take a moment to notice how great it is to have a conference. Thank you for being here! We are all really lucky. If this isn't nice, I don't know what is.</p>
+<hr />
+<p><center>
+planspace.org</p>
+<p>@planarrowspace
+</center></p>
+<hr />
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<p>If you want to participate in the workshop, <em>really go</em> to <code>planspace.org</code> and pull up these materials!</p>
+<hr />
+<pre><code class="language-bash">$ pip install --upgrade tensorflow
+$ pip freeze | grep tensorflow
+## tensorflow==1.1.0</code></pre>
+
+<hr />
+<p>You'll want to have TensorFlow version 1.1 installed. TensorFlow 1.1 was only officially released on April 20, and the API really has changed.</p>
+<p>The <em>core documented</em> API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 has some really neat stuff, like Keras, which we'll use later.</p>
+<hr />
+<p><img src="img/hello_tensorflow.png" alt="Hello, TensorFlow! on O'Reilly" height="100%" /></p>
+<hr />
+<p>As an example: I wrote <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> about a year ago. It used TensorFlow 0.8.</p>
+<p>After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>". It had 15 lines with TensorFlow code. Of that, 5 lines no longer worked: 33% of the lines of my simple TensorFlow example code saw API changes.</p>
+<hr />
+<p><img alt="one third" src="img/one_third.jpg" /></p>
+<hr />
+<p>I was surprised that it was one third.</p>
+<p>I have an <a href="/20160620-hello_tensorflow_just_the_code/">updated code snippet</a>, but we're not doing "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>" today.</p>
+<hr />
+<pre><code class="language-bash">$ pip install --upgrade tensorflow
+$ pip freeze | grep tensorflow
+## tensorflow==1.1.0</code></pre>
+
+<hr />
+<p>So please have TensorFlow 1.1 installed, is the point of that whole story.</p>
+<hr />
+<p>THE BIG IDEA</p>
+<hr />
+<p>Okay! What is this workshop about?</p>
+<hr />
+<p>TensorFlow works for you</p>
+<hr />
+<p>By this I mean: TensorFlow does what you tell it to, not the reverse.</p>
+<p>TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use <a href="/20170312-use_only_what_you_need_from_tensorflow/">some</a> of the pieces. Or you can fire TensorFlow altogether!</p>
+<p>We'll look at several specific aspects of TensorFlow. Maybe you'll want to use them. Maybe you won't. The hope is that you'll be more comfortable with what's available and able to decide what to apply when.</p>
+<hr />
+<p>THE PLAN</p>
+<hr />
+<p>Here's the plan for this workshop.</p>
+<hr />
+<ul>
+<li>one short work</li>
+<li>three longer works</li>
+</ul>
+<hr />
+<p>I'll talk about some things, but the hope of the workshop is that you do some good work.</p>
+<p>I hope that you don't finish all the things you think of, but want to keep working after the workshop is over.</p>
+<p>Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you feel like it.</p>
+<hr />
+<p>Do what you want!</p>
+<hr />
+<p>TensorFlow is really big, and not every part will be interesting or important to you.</p>
+<p>I'll have very specific things for you to work on for each of the works, but if you think of something better to do, you better do it!</p>
+<hr />
+<p>Intro by Logo</p>
+<hr />
+<p>To get creative juices flowing a little, let's explore some logo history.</p>
+<hr />
+<p><img alt="LOGO turle" src="img/logo_turtle.jpg" height="100%" /></p>
+<hr />
+<p>Not that sort of <a href="https://en.wikipedia.org/wiki/Logo_(programming_language)">Logo</a>!</p>
+<p>Fine to think about, though.</p>
+<hr />
+<p><img alt="Gödel, Escher, Bach" src="img/geb.jpg" height="100%" /></p>
+<hr />
+<p>In the beginning, there was <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">Gödel, Escher, Bach: An Eternal Golden Braid</a> by Douglas Hofstadter.</p>
+<p>This "metaphorical fugue on minds and machines in the spirit of Lewis Carroll" includes the <a href="https://en.wikipedia.org/wiki/Strange_loop">strange loop</a> idea and related discussion of consciousness and formal systems. Hofstadter's influence can be seen, for example, <a href="https://cs.illinois.edu/news/strange-loop-conference">in the name</a> of the <a href="http://www.thestrangeloop.com/">Strange Loop</a> tech conference.</p>
+<p>It seems likely that many people working in artificial intelligence and machine learning have encountered Gödel, Escher, Bach.</p>
+<hr />
+<p><img src="img/chernin.jpg" alt="Chernin Entertainment" height="100%" /></p>
+<hr />
+<p>Of course, there's also <a href="https://en.wikipedia.org/wiki/Chernin_Entertainment">Chernin Entertainment</a>, the production company.</p>
+<p>So we shouldn't rule out the possibility that Google engineers are fans of <a href="http://www.imdb.com/company/co0286257/">Chernin's work</a>. <a href="https://en.wikipedia.org/wiki/Hidden_Figures">Hidden Figures</a> is quite good. And I guess a lot of people like <a href="https://en.wikipedia.org/wiki/New_Girl">New Girl</a>?</p>
+<hr />
+<p><img alt="TensorFlow logo - old?" src="img/tf-old-big.png" height="100%" /></p>
+<hr />
+<p>In any event, somehow we get to this TensorFlow logo:</p>
+<p>If you look carefully, does it seem like the right side of the "T" view is too short?</p>
+<hr />
+<p><img alt="Issue 1922" src="img/issue_1922.png" /></p>
+<hr />
+<p>This very serious concern appears as <a href="https://github.com/tensorflow/tensorflow/issues/1922">issue #1922</a> on the TensorFlow github, and <a href="https://groups.google.com/a/tensorflow.org/forum/#!topic/discuss/XhO1sqp4l4g">on the TensorFlow mailing list</a> complete with ASCII art illustration.</p>
+<p>The consensus response seemed to be some variant of "won't fix" (it wouldn't look as cool, anyway) until...</p>
+<hr />
+<p><img alt="TensorFlow logo - new?" src="img/tf-new.jpg" height="100%" /></p>
+<hr />
+<p>As of around the 1.0 release of TensorFlow, which was around the first <a href="https://events.withgoogle.com/tensorflow-dev-summit/">TensorFlow Dev Summit</a>, this logo variant seems to be in vogue. It removes the (possibly contentious) shadows, and adds additional imagery in the background.</p>
+<p>I want to suggest that the image in the background can be a kind of Rorschach test for at least three ways you might be thinking about TensorFlow.</p>
+<ul>
+<li>Is it a diagram of connected neurons? Maybe you're interested in TensorFlow because you want to make neural networks.</li>
+<li>Is it a diagram of a computation graph? Maybe you're interested in TensorFlow for general calculation, possibly using GPUs.</li>
+<li>Is it a diagram of multiple computers in a distributed system? Maybe you're interested in TensorFlow for its distributed capabilities.</li>
+</ul>
+<p>There can be overlap among those interpretations as well, but I hope the point is not lost that TensorFlow can be different things to different people.</p>
+<hr />
+<p>short work</p>
+<hr />
+<p>I want to get you thinking about systems without further restriction. The idea is to imagine and start fleshing out a system that might involve TensorFlow.</p>
+<p>Later on we'll follow the usual workshop pattern of showing you something you can do and having you do it. But it's much more realistic and interesting to start from something you want to do and then try to figure out how to do it. So let's start from the big picture.</p>
+<hr />
+<p>draw a system!</p>
+<ul>
+<li>block diagram</li>
+<li>add detail</li>
+<li>pseudocode?</li>
+</ul>
+<hr />
+<p>You can draw a system you've already made, or something you're making, or something you'd like to make. It could be something you've heard about, or something totally unique.</p>
+<p>You don't have to know how to build everything in the system. You don't need to know how TensorFlow fits in. Feel free to draw what you <em>wish</em> TensorFlow might let you do.</p>
+<p>Keep adding more detail. If you get everything laid out, start to think about what functions or objects you might need to have, and start putting pseudocode together.</p>
+<p>(This will be a five to ten minute work period.)</p>
+<hr />
+<p>short work over</p>
+<hr />
+<p>Moving right along...</p>
+<hr />
+<p>Let's do hard AI!</p>
+<hr />
+<p>I'm going to walk through an example and talk about how TensorFlow can fit in.</p>
+<p>Doing hard AI, or Artificial General Intelligence (AGI), is intended as a joke, but it's increasingly less so, with Google DeepMind and OpenAI both explicitly working on getting to AGI.</p>
+<hr />
+<p>(build)</p>
+<hr />
+<p>I've got 35 slides of sketches, so they're in <a href="build.pdf">a separate PDF</a> to go through.</p>
+<hr />
+<p><img alt="system" src="img/system.jpg" /></p>
+<hr />
+<p>Here's the final system that we built to.</p>
+<p>We're not going to do everything in there today.</p>
+<hr />
+<ul>
+<li>getting data in</li>
+<li>distributed programs</li>
+<li>high-level ML APIs</li>
+</ul>
+<hr />
+<p>These are the three focuses for today.</p>
+<p>The <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">original description</a> for this workshop also mentioned serving, but I'm not covering it today. Sorry. Not enough time.</p>
+<hr />
+<p>What even is TensorFlow?</p>
+<hr />
+<p>Here's one way to think about TensorFlow.</p>
+<hr />
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png" /></p>
+<hr />
+<p>The beating heart of TensorFlow is the Distributed Execution Engine, or runtime.</p>
+<p>One way to think of it is as a <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">virtual machine</a> whose language is the TensorFlow graph.</p>
+<p>That core is written in C++, but lots of TensorFlow functionality lives in the frontends. In particular, there's a lot in the Python frontend.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr />
+<p><img alt="Python programming language" src="img/python.png" /></p>
+<hr />
+<p>Python is the richest frontend for TensorFlow. It's what we'll use today.</p>
+<p>You should remember that not everything in the Python TensorFlow API touches the graph. Some parts are just Python.</p>
+<hr />
+<p><img alt="R programming language" src="img/rlang.png" /></p>
+<hr />
+<p>R has an unofficial <a href="https://rstudio.github.io/tensorflow/">TensorFlow API</a> which is kind of interesting in that it just wraps the Python API. It's really more like an R API to the Python API to TensorFlow. So when you use it, you write R, but Python runs. This is not how TensorFlow encourages languages to implement TensorFlow APIs, but it's out there.</p>
+<hr />
+<p><img alt="C programming language" src="img/clang.png" /></p>
+<hr />
+<p>The way TensorFlow encourages API development is via TensorFlow's C bindings.</p>
+<hr />
+<p><img alt="C++ programming language" src="img/cplusplus.png" /></p>
+<hr />
+<p>You could just C++, of course.</p>
+<hr />
+<p><img alt="Java programming language" src="img/javalang.png" /></p>
+<hr />
+<p>Also there's Java.</p>
+<hr />
+<p><img alt="Go programming language" src="img/golang.png" /></p>
+<hr />
+<p>And there's Go.</p>
+<hr />
+<p><img alt="Rust programming language" src="img/rust.png" /></p>
+<hr />
+<p>And there's Rust.</p>
+<hr />
+<p><img alt="Haskell programming language" src="img/haskell.png" /></p>
+<hr />
+<p>And there's even Haskell!</p>
+<hr />
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png" /></p>
+<hr />
+<p>Currently, languages other than Python have TensorFlow support that is very close to the runtime. Basically make your ops and run them.</p>
+<p>This is likely to be enough support to deploy a TensorFlow system in whatever language you like, but if you're developing and training systems you probably still want to use Python.</p>
+<hr />
+<p>graph or not graph?</p>
+<hr />
+<p>So this is a distinction to think about: Am I using the TensorFlow graph, or not?</p>
+<hr />
+<ul>
+<li>getting data in</li>
+</ul>
+<hr />
+<p>So here we are at the first focus area.</p>
+<p>We'll do two sub-parts.</p>
+<hr />
+<ul>
+<li>getting data in<ul>
+<li>to the graph</li>
+<li>TFRecords</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>First, a quick review of the the graph and putting data into it.</p>
+<p>Second, a bit about the TensorFlow's TFRecords format.</p>
+<hr />
+<p>(notebook)</p>
+<hr />
+<p>There's a Jupyter notebook to talk through at this point.</p>
+<ul>
+<li>Download: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
+<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
+</ul>
+<hr />
+<p>long work</p>
+<hr />
+<p>It's time to do some work!</p>
+<hr />
+<ul>
+<li>distributed programs</li>
+</ul>
+<hr />
+<p>second focus</p>
+<hr />
+<ul>
+<li>distributed programs<ul>
+<li>command-line arguments</li>
+<li>MapReduce example</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>second focus</p>
+<hr />
+<ul>
+<li>high-level ML APIs</li>
+</ul>
+<hr />
+<p>third focus</p>
+<hr />
+<ul>
+<li>high-level ML APIs<ul>
+<li>training an Estimator</li>
+<li>pre-trained Keras</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>third focus</p>
+<hr />
+<p>Thanks!</p>
+<hr />
+<p>Thank you!</p>
+<hr />
+<p><center>
+planspace.org</p>
+<p>@planarrowspace
+</center></p>
+<hr />
+<p>This is just me again.</p>    <script src="/scripts/konami.js"></script>
+    <script type="text/javascript">
+      var easter_egg = new Konami('big.html');
+    </script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
