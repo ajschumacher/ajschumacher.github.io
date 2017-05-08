@@ -10,6 +10,7 @@ You don't need any more extra information specific to that file. Here are a few 
  * [TFRecords via Protocol Buffer Definitions](/20170330-tfrecords_via_proto/)
  * [Images and TFRecords](/20170403-images_and_tfrecords/)
  * [Reading from Disk inside the TensorFlow Graph](/20170412-reading_from_disk_inside_the_tensorflow_graph/)
+ * [Parsing TFRecords inside the TensorFlow Graph](/20170426-parsing_tfrecords_inside_the_tensorflow_graph/)
 
 <!--
 
