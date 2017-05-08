@@ -162,6 +162,20 @@ $ pip freeze | grep tensorflow
 <p>long work</p>
 </div>
 <div>
+<p>work with data!</p>
+<ul>
+<li>your own system?</li>
+<li>planspace.org: <code>mystery.tfrecords</code></li>
+<li>move to graph</li>
+</ul>
+</div>
+<div>
+<p>long work over</p>
+</div>
+<div>
+<p><img alt="data" src="img/data_data.jpg" width="100%" /></p>
+</div>
+<div>
 <ul>
 <li>distributed programs</li>
 </ul>
@@ -174,6 +188,176 @@ $ pip freeze | grep tensorflow
 </ul>
 </li>
 </ul>
+</div>
+<div>
+<p>command-line arguments</p>
+</div>
+<div>
+<pre><code class="language-bash">$ python script.py --color red
+a red flower</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import sys
+
+def main():
+    assert sys.argv[1] == '--color'
+    print('a {} flower'.format(sys.argv[2]))
+
+if __name__ == '__main__':
+    main()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import sys
+import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main():
+    flags.FLAGS._parse_flags(args=sys.argv[1:])
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import sys
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main():
+    gflags.FLAGS(sys.argv)
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args(sys.argv[1:])
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import tensorflow as tf
+
+def main(args):
+    assert args[1] == '--color'
+    print('a {} flower'.format(args[2]))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import google.apputils.app
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    google.apputils.app.run()</code></pre>
+</div>
+<div>
+<pre><code class="language-python">import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args()
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+</div>
+<div>
+<p>Whew!</p>
+</div>
+<div>
+<p>MapReduce example</p>
+</div>
+<div>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png" /></p>
+</div>
+<div>
+<p><code>tf.device()</code></p>
+</div>
+<div>
+<pre><code>with tf.device('/cpu:0'):
+    # Do something.</code></pre>
+</div>
+<div>
+<pre><code>with tf.device('/gpu:0'):
+    # Do something.</code></pre>
+</div>
+<div>
+<pre><code>with tf.device('/job:ps/task:0'):
+    # Do something.</code></pre>
+</div>
+<div>
+<p><img alt="distributing a TensorFlow graph" src="img/distributed_graph.png" /></p>
+</div>
+<div>
+<p><img alt="oh map reduce..." src="img/oh_map_reduce.png" /></p>
+</div>
+<div>
+<p>(demo)</p>
+</div>
+<div>
+<p>(code)</p>
+</div>
+<div>
+<p>long work</p>
+</div>
+<div>
+<p>make something happen!</p>
+<ul>
+<li>your own system?</li>
+<li>different distributed functionality?</li>
+<li>add command-line?</li>
+</ul>
+</div>
+<div>
+<p>long work over</p>
+</div>
+<div>
+<p><img alt="oh kubernetes..." src="img/oh_kubernetes.jpg" /></p>
 </div>
 <div>
 <ul>

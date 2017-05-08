@@ -13,11 +13,25 @@
 <p class="date">Tuesday May  9, 2017</p>
 <p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">workshop</a> given Tuesday May 9, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a>. (<a href="big.html">slides</a>)</em></p>
 <h3>Workshop participant materials</h3>
-<p>These are the things you'll need for the workshop, organized up front.</p>
+<p>These are the things you'll need for the workshop, organized up front. Use them when you need them.</p>
 <ul>
-<li>Thing one.</li>
-<li>Thing two.</li>
-<li>Thing three.</li>
+<li>Focus one: "getting data in"<ul>
+<li>Jupyter notebook:<ul>
+<li>Download: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
+<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
+</ul>
+</li>
+<li><a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a></li>
+</ul>
+</li>
+<li>Focus two: "distributed programs"<ul>
+<li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
+<li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
+<li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
+<li><a href="/20170423-tensorflow_as_automatic_mpi/">TensorFlow as Automatic MPI</a></li>
+</ul>
+</li>
+<li>Focus three: "high-level ML APIs"</li>
 </ul>
 <p>The whole slide deck and everything follows, and it's long.</p>
 <hr />
@@ -67,6 +81,7 @@ $ pip freeze | grep tensorflow
 <p>By this I mean: TensorFlow does what you tell it to, not the reverse.</p>
 <p>TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use <a href="/20170312-use_only_what_you_need_from_tensorflow/">some</a> of the pieces. Or you can fire TensorFlow altogether!</p>
 <p>We'll look at several specific aspects of TensorFlow. Maybe you'll want to use them. Maybe you won't. The hope is that you'll be more comfortable with what's available and able to decide what to apply when.</p>
+<p>If you like <a href="https://www.infoq.com/presentations/Simple-Made-Easy">Rich Hickey words</a>, maybe I'm trying to decomplect the strands within TensorFlow so they can be understood individually.</p>
 <hr />
 <p>THE PLAN</p>
 <hr />
@@ -254,11 +269,30 @@ $ pip freeze | grep tensorflow
 <hr />
 <p>It's time to do some work!</p>
 <hr />
+<p>work with data!</p>
+<ul>
+<li>your own system?</li>
+<li>planspace.org: <code>mystery.tfrecords</code></li>
+<li>move to graph</li>
+</ul>
+<hr />
+<p>Option one is always to work on your own system. Almost certainly there's some data input that needs to happen. How are you going to read that data, and possibly get it into TensorFlow?</p>
+<p>If you want to stay really close to the TensorFlow stuff just demonstrated, there's a fun little puzzle for you: What's in <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a>?</p>
+<p>That could be hard, or it could be easy. If you want to extend it, migrate the reading and parsing of the TFRecords file into the TensorFlow graph. The demonstration in the notebook worked with TFRecords/Examples without using the TensorFlow graph. The links on the <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a> page can help with this.</p>
+<hr />
+<p>long work over</p>
+<hr />
+<p>Moving right along...</p>
+<hr />
+<p><img alt="data" src="img/data_data.jpg" width="100%" /></p>
+<hr />
+<p>As a wrap-up: Working directly with data, trying to get it into the right shape, cleaning it, etc., may not be the most fun, but it's got to be done. Here's a horrible pie chart <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/">from some guy on Forbes</a>, the point of which is that people spend a good deal of time fighting with data.</p>
+<hr />
 <ul>
 <li>distributed programs</li>
 </ul>
 <hr />
-<p>second focus</p>
+<p>We arrive at the second focus area. TensorFlow has some pretty wicked distributed computing capabilities.</p>
 <hr />
 <ul>
 <li>distributed programs<ul>
@@ -268,7 +302,224 @@ $ pip freeze | grep tensorflow
 </li>
 </ul>
 <hr />
-<p>second focus</p>
+<p>I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML uses command-line arguments for hyperparameters, for example.</p>
+<p>Then we'll get to a real distributed example, in which we implement distributed MapReduce word count in 50 lines of Python TensorFlow code.</p>
+<hr />
+<p>command-line arguments</p>
+<hr />
+<p>So let's take a look at some ways to do command-line arguments.</p>
+<p>This section comes from the post <a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a>.</p>
+<hr />
+<pre><code class="language-bash">$ python script.py --color red
+a red flower</code></pre>
+
+<hr />
+<p>I'll show eight variants that all do the same thing. You provide a <code>--color</code> argument, and it outputs a flower of that color.</p>
+<hr />
+<pre><code class="language-python">import sys
+
+def main():
+    assert sys.argv[1] == '--color'
+    print('a {} flower'.format(sys.argv[2]))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr />
+<p>This is a bare-bones <code>sys.argv</code> method. Arguments become elements of the <code>sys.argv</code> list, and can be accessed as such. This has limitations when arguments get more complicated.</p>
+<hr />
+<pre><code class="language-python">import sys
+import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main():
+    flags.FLAGS._parse_flags(args=sys.argv[1:])
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr />
+<p>This <code>FLAGS</code> API is <a href="/20170313-tensorflow_use_of_google_technologies/">familiar to Googlers</a>, I think. It's interesting to me where some Google-internal things peak out from the corners of TensorFlow.</p>
+<hr />
+<pre><code class="language-python">import sys
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main():
+    gflags.FLAGS(sys.argv)
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr />
+<p>You could also install the <code>gflags</code> module, which works much the same way.</p>
+<hr />
+<pre><code class="language-python">import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args(sys.argv[1:])
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr />
+<p>Here's Python's own standard <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>, set up to mimic the <code>gflags</code> example, still using <code>sys.argv</code> explicitly.</p>
+<hr />
+<pre><code class="language-python">import tensorflow as tf
+
+def main(args):
+    assert args[1] == '--color'
+    print('a {} flower'.format(args[2]))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<hr />
+<p>Using <code>tf.app.run()</code>, another Google-ism, frees us from accessing <code>sys.argv</code> directly.</p>
+<hr />
+<pre><code class="language-python">import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<hr />
+<p>We can combine <code>tf.app.run()</code> with <code>tf.app.flags</code>.</p>
+<hr />
+<pre><code class="language-python">import google.apputils.app
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    google.apputils.app.run()</code></pre>
+
+<hr />
+<p>To see the equivalent outside the TensorFlow package, we can combine <code>gflags</code> and <code>google.apputils.app</code>.</p>
+<hr />
+<pre><code class="language-python">import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args()
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr />
+<p>This has all been fun, but here's what you should really do. Just use <code>argparse</code>.</p>
+<hr />
+<p>Whew!</p>
+<hr />
+<p>That was a lot of arguing.</p>
+<hr />
+<p>MapReduce example</p>
+<hr />
+<p>Now to the MapReduce example!</p>
+<hr />
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png" /></p>
+<hr />
+<p>Recall that the core of TensorFlow is a <em>distributed</em> runtime. What does that mean?</p>
+<hr />
+<p><code>tf.device()</code></p>
+<hr />
+<p>Behold, the power of <code>tf.device()</code>!</p>
+<hr />
+<p><pre><code>with tf.device('/cpu:0'):
+    # Do something.</code></pre></p>
+<hr />
+<p>You can specify that work happen on a local CPU.</p>
+<hr />
+<p><pre><code>with tf.device('/gpu:0'):
+    # Do something.</code></pre></p>
+<hr />
+<p>You can specify that work happen on a local GPU.</p>
+<hr />
+<p><pre><code>with tf.device('/job:ps/task:0'):
+    # Do something.</code></pre></p>
+<hr />
+<p>In exactly the same way, you can specify that work happen on <em>a different computer</em>!</p>
+<p>This is pretty amazing. I think of it as sort of <a href="/20170423-tensorflow_as_automatic_mpi/">declarative MPI</a>.</p>
+<hr />
+<p><img alt="distributing a TensorFlow graph" src="img/distributed_graph.png" /></p>
+<hr />
+<p>TensorFlow automatically figures out when it needs to send information between devices, whether they're on the same machine or on different machines. So cool!</p>
+<hr />
+<p><img alt="oh map reduce..." src="img/oh_map_reduce.png" /></p>
+<hr />
+<p>MapReduce is often associated with Hadoop. It's just divide and conquer.</p>
+<p>So let's do it with TensorFlow!</p>
+<hr />
+<p>(demo)</p>
+<hr />
+<p>It's time to see how this looks in practice! (Well, or at least to see how it looks in a cute little demo.)</p>
+<p>The demo uses the contents of the <a href="https://github.com/ajschumacher/mapreduce_with_tensorflow">mapreduce_with_tensorflow</a> repo on GitHub. For more explanation, see <a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a> and <a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a>.</p>
+<hr />
+<p>(code)</p>
+<hr />
+<p>Walking through some details inside <a href="https://github.com/ajschumacher/mapreduce_with_tensorflow/blob/master/count.py"><code>count.py</code></a>.</p>
+<hr />
+<p>long work</p>
+<hr />
+<p>It's time to do some work!</p>
+<hr />
+<p>make something happen!</p>
+<ul>
+<li>your own system?</li>
+<li>different distributed functionality?</li>
+<li>add command-line?</li>
+</ul>
+<hr />
+<p>Option one is always to work on your own system. Maybe command-line args are relevant to you. Maybe running a system across multiple machines is relevant for you. Or maybe not.</p>
+<p>If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could entirely separately change the distributed functionality. (You could make it a distributed neural net training program, for example.)</p>
+<p>Here are some links that might be helpful:</p>
+<ul>
+<li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
+<li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
+<li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
+<li><a href="/20170423-tensorflow_as_automatic_mpi/">TensorFlow as Automatic MPI</a></li>
+</ul>
+<hr />
+<p>long work over</p>
+<hr />
+<p>Moving right along...</p>
+<hr />
+<p><img alt="oh kubernetes..." src="img/oh_kubernetes.jpg" /></p>
+<hr />
+<p>I should probably say that you don't really want to start all your distributed TensorFlow programs by hand. <a href="https://www.docker.com/">Containers</a> and <a href="https://kubernetes.io/">Kubernetes</a> and all that.</p>
 <hr />
 <ul>
 <li>high-level ML APIs</li>
