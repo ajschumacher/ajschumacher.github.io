@@ -5,14 +5,14 @@
 
 ### Workshop participant materials
 
-These are the things you'll need for the workshop, organized up front. Use them when you need them.
+These are things you can use during the workshop. Use them when you need them.
 
  * Focus one: "getting data in"
-     * Jupyter notebook:
-         * Download: [start state](data_start.ipynb) / [end state](data_end.ipynb)
-         * View on GitHub: [start state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb) / [end state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb)
+     * Download notebook: [start state](data_start.ipynb) / [end state](data_end.ipynb)
+     * View notebook on GitHub: [start state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb) / [end state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb)
      * [`mystery.tfrecords`](/20170425-mystery.tfrecords/)
  * Focus two: "distributed programs"
+     * [`mapreduce_with_tensorflow` code and data](https://github.com/ajschumacher/mapreduce_with_tensorflow/)
      * [Command-Line Apps and TensorFlow](/20170314-command_line_apps_and_tensorflow/)
      * [TensorFlow Clusters: Questions and Code](/20170410-tensorflow_clusters_questions_and_code/)
      * [Distributed MapReduce with TensorFlow](/20170411-distributed_mapreduce_with_tensorflow/)
@@ -912,6 +912,46 @@ I should probably say that you don't really want to start all your distributed T
 -----
 
 third focus
+
+
+-----
+
+![TensorFlow six-tier diagram](img/tf_six_tiers.png)
+
+-----
+
+New and exciting things are being added in Python TensorFlow land, building up the ladder of abstraction.
+
+This material comes from [Various TensorFlow APIs for Python](/20170321-various_tensorflow_apis_for_python/).
+
+(Image from the TensorFlow Dev Summit 2017 [keynote](https://www.youtube.com/watch?v=4n1AHvDvVvw).)
+
+
+-----
+
+![slim... shady?](img/slim_shady.png)
+
+-----
+
+The "layer" abstractions largely from TF-Slim are now appearing at `tf.layers`.
+
+
+-----
+
+![scikit-learn logo](img/sklearn.png)
+
+-----
+
+The Estimators API now at `tf.estimator` is drawn from `tf.contrib.learn` work, which is itself heavily inspired by scikit-learn.
+
+
+-----
+
+![Keras](img/keras.jpg)
+
+-----
+
+And Keras is entering TensorFlow first as `tf.contrib.keras` and soon just `tf.keras` with version 1.2.
 
 
 -----

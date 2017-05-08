@@ -13,18 +13,16 @@
 <p class="date">Tuesday May  9, 2017</p>
 <p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">workshop</a> given Tuesday May 9, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a>. (<a href="big.html">slides</a>)</em></p>
 <h3>Workshop participant materials</h3>
-<p>These are the things you'll need for the workshop, organized up front. Use them when you need them.</p>
+<p>These are things you can use during the workshop. Use them when you need them.</p>
 <ul>
 <li>Focus one: "getting data in"<ul>
-<li>Jupyter notebook:<ul>
-<li>Download: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
-<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
-</ul>
-</li>
+<li>Download notebook: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
+<li>View notebook on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
 <li><a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a></li>
 </ul>
 </li>
 <li>Focus two: "distributed programs"<ul>
+<li><a href="https://github.com/ajschumacher/mapreduce_with_tensorflow/"><code>mapreduce_with_tensorflow</code> code and data</a></li>
 <li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
 <li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
 <li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
@@ -526,6 +524,24 @@ if __name__ == '__main__':
 </ul>
 <hr />
 <p>third focus</p>
+<hr />
+<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png" /></p>
+<hr />
+<p>New and exciting things are being added in Python TensorFlow land, building up the ladder of abstraction.</p>
+<p>This material comes from <a href="/20170321-various_tensorflow_apis_for_python/">Various TensorFlow APIs for Python</a>.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr />
+<p><img alt="slim... shady?" src="img/slim_shady.png" /></p>
+<hr />
+<p>The "layer" abstractions largely from TF-Slim are now appearing at <code>tf.layers</code>.</p>
+<hr />
+<p><img alt="scikit-learn logo" src="img/sklearn.png" /></p>
+<hr />
+<p>The Estimators API now at <code>tf.estimator</code> is drawn from <code>tf.contrib.learn</code> work, which is itself heavily inspired by scikit-learn.</p>
+<hr />
+<p><img alt="Keras" src="img/keras.jpg" /></p>
+<hr />
+<p>And Keras is entering TensorFlow first as <code>tf.contrib.keras</code> and soon just <code>tf.keras</code> with version 1.2.</p>
 <hr />
 <ul>
 <li>high-level ML APIs<ul>
