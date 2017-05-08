@@ -108,6 +108,7 @@ The `model_dir` is used for two main purposes:
  * Saving TensorBoard summaries (log info)
  * Saving model checkpoints
 
+
 ### Automatic TensorBoard
 
 [Like](/20170430-tensorflows_queuerunner/) an `input_producer`, an Estimator automatically writes information for TensorBoard. To check them out, point TensorBoard at the `model_dir` and browse to `localhost:6006`.
@@ -138,6 +139,7 @@ By default, summaries are generated every 100 steps, but this can be set via `sa
 
 Further customization, with support for additional metrics, validation on separate data, and even automatic early stopping, is available with [ValidationMonitor](https://www.tensorflow.org/get_started/monitors).
 
+
 ### Automatic Model Save/Restore
 
 After training for 1,000 steps above, TensorFlow saved the model to the `model_dir`. If we point to the same `model_dir` again in a new Python session, the model will be automatically restored from that checkpoint.
@@ -155,13 +157,15 @@ list(model.predict(np.array([[0], [1]])))
 
 For more control over how often and when checkpoints are saved, see [`RunConfig`](https://www.tensorflow.org/api_docs/python/tf/estimator/RunConfig).
 
+
 ### Using input functions
 
 Above, training data was provided via `x` and `y` arguments, which is like how scikit works, but not really what TensorFlow Estimators should use.
 
 The appropriate mechanism is to make an [input function](https://www.tensorflow.org/get_started/input_fn) that returns the equivalents to `x` and `y` when called. The function is passed as the `input_fn` argument to `model.fit()`, for example.
 
-This approach is more flexible. It can handle, for example, coming up with a different training batch for every training step.
+This approach is flexible and makes it easy to avoid, for example, keeping track of separate data structures for data and labels.
+
 
 ### Distributed Training
 

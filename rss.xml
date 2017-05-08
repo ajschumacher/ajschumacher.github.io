@@ -111,7 +111,7 @@ list(model.predict(np.array([[0], [1]])))
 <h3>Using input functions</h3>
 <p>Above, training data was provided via <code>x</code> and <code>y</code> arguments, which is like how scikit works, but not really what TensorFlow Estimators should use.</p>
 <p>The appropriate mechanism is to make an <a href="https://www.tensorflow.org/get_started/input_fn">input function</a> that returns the equivalents to <code>x</code> and <code>y</code> when called. The function is passed as the <code>input_fn</code> argument to <code>model.fit()</code>, for example.</p>
-<p>This approach is more flexible. It can handle, for example, coming up with a different training batch for every training step.</p>
+<p>This approach is flexible and makes it easy to avoid, for example, keeping track of separate data structures for data and labels.</p>
 <h3>Distributed Training</h3>
 <p>Among the <code>tf.contrib.learn</code> <a href="https://www.tensorflow.org/api_guides/python/contrib.learn">goodies</a> is <a href="https://www.tensorflow.org/api_docs/python/tf/contrib/learn/Experiment"><code>tf.contrib.learn.Experiment</code></a>, which works with an Estimator to help do distributed training. It looks like this one is still settling down, with a lot of deprecated bits at the moment. I'm interested to see more about this. For now, you could check out a Google Cloud ML <a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/iris/trainer/task.py">example</a> that works with <code>learn_runner</code>.</p>
 <hr>
