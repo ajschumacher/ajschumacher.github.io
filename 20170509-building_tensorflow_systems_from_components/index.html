@@ -12,16 +12,17 @@
 <h1>Building TensorFlow Systems from Components</h1>
 <p class="date">Tuesday May  9, 2017</p>
 <p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">workshop</a> given Tuesday May 9, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a>. (<a href="big.html">slides</a>)</em></p>
+<hr />
 <h3>Workshop participant materials</h3>
 <p>These are things you can use during the workshop. Use them when you need them.</p>
 <ul>
-<li>Focus one: "getting data in"<ul>
+<li>Focus one: <em>getting data in</em><ul>
 <li>Download notebook: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
 <li>View notebook on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
 <li><a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a></li>
 </ul>
 </li>
-<li>Focus two: "distributed programs"<ul>
+<li>Focus two: <em>distributed programs</em><ul>
 <li><a href="https://github.com/ajschumacher/mapreduce_with_tensorflow/"><code>mapreduce_with_tensorflow</code> code and data</a></li>
 <li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
 <li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
@@ -29,7 +30,13 @@
 <li><a href="/20170423-tensorflow_as_automatic_mpi/">TensorFlow as Automatic MPI</a></li>
 </ul>
 </li>
-<li>Focus three: "high-level ML APIs"</li>
+<li>Focus three: <em>high-level ML APIs</em><ul>
+<li>Download notebook: <a href="high_ml_start.ipynb">start state</a> / <a href="high_ml_end.ipynb">end state</a></li>
+<li>View notebook on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb">end state</a></li>
+<li><a href="/20170506-simple_regression_with_a_tensorflow_estimator/">Simple Regression with a TensorFlow Estimator</a></li>
+<li><a href="/20170502-canned_models_with_keras_in_tensorflow/">Canned Models with Keras in TensorFlow</a></li>
+</ul>
+</li>
 </ul>
 <p>The whole slide deck and everything follows, and it's long.</p>
 <hr />
@@ -51,12 +58,12 @@ $ pip freeze | grep tensorflow
 
 <hr />
 <p>You'll want to have TensorFlow version 1.1 installed. TensorFlow 1.1 was only officially released on April 20, and the API really has changed.</p>
-<p>The <em>core documented</em> API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 has some really neat stuff, like Keras, which we'll use later.</p>
+<p>The <em>core documented</em> API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 brings in some really neat stuff, like Keras, which we'll use later.</p>
 <hr />
 <p><img src="img/hello_tensorflow.png" alt="Hello, TensorFlow! on O'Reilly" height="100%" /></p>
 <hr />
 <p>As an example: I wrote <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> about a year ago. It used TensorFlow 0.8.</p>
-<p>After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>". It had 15 lines with TensorFlow code. Of that, 5 lines no longer worked: 33% of the lines of my simple TensorFlow example code saw API changes.</p>
+<p>After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>". It had 15 lines of TensorFlow code. Of that, 5 lines no longer worked. I had to update 33% of the lines of my simple TensorFlow example code because of API changes.</p>
 <hr />
 <p><img alt="one third" src="img/one_third.jpg" /></p>
 <hr />
@@ -69,6 +76,7 @@ $ pip freeze | grep tensorflow
 
 <hr />
 <p>So please have TensorFlow 1.1 installed, is the point of that whole story.</p>
+<p>The stable bits of TensorFlow really are stable, but there's a lot of exciting new stuff, and I don't want you to miss out today!</p>
 <hr />
 <p>THE BIG IDEA</p>
 <hr />
@@ -77,9 +85,9 @@ $ pip freeze | grep tensorflow
 <p>TensorFlow works for you</p>
 <hr />
 <p>By this I mean: TensorFlow does what you tell it to, not the reverse.</p>
-<p>TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use <a href="/20170312-use_only_what_you_need_from_tensorflow/">some</a> of the pieces. Or you can fire TensorFlow altogether!</p>
+<p>TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use <a href="/20170312-use_only_what_you_need_from_tensorflow/">some</a> of the pieces. Or you can decide not to use TensorFlow altogether!</p>
 <p>We'll look at several specific aspects of TensorFlow. Maybe you'll want to use them. Maybe you won't. The hope is that you'll be more comfortable with what's available and able to decide what to apply when.</p>
-<p>If you like <a href="https://www.infoq.com/presentations/Simple-Made-Easy">Rich Hickey words</a>, maybe I'm trying to decomplect the strands within TensorFlow so they can be understood individually.</p>
+<p>If you like <a href="https://www.infoq.com/presentations/Simple-Made-Easy">Rich Hickey words</a>, maybe I'm trying to <em>decomplect</em> the strands within TensorFlow so they can be understood individually.</p>
 <hr />
 <p>THE PLAN</p>
 <hr />
@@ -92,7 +100,7 @@ $ pip freeze | grep tensorflow
 <hr />
 <p>I'll talk about some things, but the hope of the workshop is that you do some good work.</p>
 <p>I hope that you don't finish all the things you think of, but want to keep working after the workshop is over.</p>
-<p>Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you feel like it.</p>
+<p>Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you need a break.</p>
 <hr />
 <p>Do what you want!</p>
 <hr />
@@ -155,7 +163,6 @@ $ pip freeze | grep tensorflow
 <p>You can draw a system you've already made, or something you're making, or something you'd like to make. It could be something you've heard about, or something totally unique.</p>
 <p>You don't have to know how to build everything in the system. You don't need to know how TensorFlow fits in. Feel free to draw what you <em>wish</em> TensorFlow might let you do.</p>
 <p>Keep adding more detail. If you get everything laid out, start to think about what functions or objects you might need to have, and start putting pseudocode together.</p>
-<p>(This will be a five to ten minute work period.)</p>
 <hr />
 <p>short work over</p>
 <hr />
@@ -210,7 +217,7 @@ $ pip freeze | grep tensorflow
 <hr />
 <p><img alt="C++ programming language" src="img/cplusplus.png" /></p>
 <hr />
-<p>You could just C++, of course.</p>
+<p>You could use C++, of course.</p>
 <hr />
 <p><img alt="Java programming language" src="img/javalang.png" /></p>
 <hr />
@@ -253,7 +260,7 @@ $ pip freeze | grep tensorflow
 </ul>
 <hr />
 <p>First, a quick review of the the graph and putting data into it.</p>
-<p>Second, a bit about the TensorFlow's TFRecords format.</p>
+<p>Second, a bit about TensorFlow's TFRecords format.</p>
 <hr />
 <p>(notebook)</p>
 <hr />
@@ -275,7 +282,7 @@ $ pip freeze | grep tensorflow
 </ul>
 <hr />
 <p>Option one is always to work on your own system. Almost certainly there's some data input that needs to happen. How are you going to read that data, and possibly get it into TensorFlow?</p>
-<p>If you want to stay really close to the TensorFlow stuff just demonstrated, there's a fun little puzzle for you: What's in <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a>?</p>
+<p>If you want to stay really close to the TensorFlow stuff just demonstrated, here's a fun little puzzle for you: What's in <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a>?</p>
 <p>That could be hard, or it could be easy. If you want to extend it, migrate the reading and parsing of the TFRecords file into the TensorFlow graph. The demonstration in the notebook worked with TFRecords/Examples without using the TensorFlow graph. The links on the <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a> page can help with this.</p>
 <hr />
 <p>long work over</p>
@@ -300,8 +307,8 @@ $ pip freeze | grep tensorflow
 </li>
 </ul>
 <hr />
-<p>I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML uses command-line arguments for hyperparameters, for example.</p>
-<p>Then we'll get to a real distributed example, in which we implement distributed MapReduce word count in 50 lines of Python TensorFlow code.</p>
+<p>I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML can use command-line arguments for hyperparameters, for example.</p>
+<p>Then we'll get to a real distributed example, in which we implement a distributed MapReduce word count in 50 lines of Python TensorFlow code.</p>
 <hr />
 <p>command-line arguments</p>
 <hr />
@@ -312,7 +319,7 @@ $ pip freeze | grep tensorflow
 a red flower</code></pre>
 
 <hr />
-<p>I'll show eight variants that all do the same thing. You provide a <code>--color</code> argument, and it outputs a flower of that color.</p>
+<p>I'll show eight variants that all do the same thing. You provide a <code>--color</code> argument, and it outputs (in text) a flower of that color.</p>
 <hr />
 <pre><code class="language-python">import sys
 
@@ -443,6 +450,7 @@ if __name__ == '__main__':
 <p>Whew!</p>
 <hr />
 <p>That was a lot of arguing.</p>
+<p>It may be worth showing all these because you'll encounter various combinations as you read code out there in the world. More recent examples are tending to move to <code>argparse</code>, but there are some of the other variants out there as well.</p>
 <hr />
 <p>MapReduce example</p>
 <hr />
@@ -502,7 +510,7 @@ if __name__ == '__main__':
 </ul>
 <hr />
 <p>Option one is always to work on your own system. Maybe command-line args are relevant to you. Maybe running a system across multiple machines is relevant for you. Or maybe not.</p>
-<p>If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could entirely separately change the distributed functionality. (You could make it a distributed neural net training program, for example.)</p>
+<p>If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could change the distributed functionality without any command-line fiddling. (You could make it a distributed neural net training program, for example.)</p>
 <p>Here are some links that might be helpful:</p>
 <ul>
 <li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
@@ -523,23 +531,23 @@ if __name__ == '__main__':
 <li>high-level ML APIs</li>
 </ul>
 <hr />
-<p>third focus</p>
+<p>Let's to some machine learning!</p>
 <hr />
 <p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png" /></p>
 <hr />
-<p>New and exciting things are being added in Python TensorFlow land, building up the ladder of abstraction.</p>
+<p>New and exciting things are being added in TensorFlow Python land, building up the ladder of abstraction.</p>
 <p>This material comes from <a href="/20170321-various_tensorflow_apis_for_python/">Various TensorFlow APIs for Python</a>.</p>
 <p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
 <hr />
-<p><img alt="slim... shady?" src="img/slim_shady.png" /></p>
+<p><img alt="slim... shady?" src="img/slim_shady.png" height="100%" /></p>
 <hr />
 <p>The "layer" abstractions largely from TF-Slim are now appearing at <code>tf.layers</code>.</p>
 <hr />
-<p><img alt="scikit-learn logo" src="img/sklearn.png" /></p>
+<p><img alt="scikit-learn logo" src="img/sklearn.png" height="100%" /></p>
 <hr />
 <p>The Estimators API now at <code>tf.estimator</code> is drawn from <code>tf.contrib.learn</code> work, which is itself heavily inspired by scikit-learn.</p>
 <hr />
-<p><img alt="Keras" src="img/keras.jpg" /></p>
+<p><img alt="Keras" src="img/keras.jpg" height="100%" /></p>
 <hr />
 <p>And Keras is entering TensorFlow first as <code>tf.contrib.keras</code> and soon just <code>tf.keras</code> with version 1.2.</p>
 <hr />
@@ -551,7 +559,60 @@ if __name__ == '__main__':
 </li>
 </ul>
 <hr />
-<p>third focus</p>
+<p>So let's try this out!</p>
+<hr />
+<p>(notebook)</p>
+<hr />
+<p>There's a Jupyter notebook to talk through at this point.</p>
+<ul>
+<li>Download: <a href="high_ml_start.ipynb">start state</a> / <a href="high_ml_end.ipynb">end state</a></li>
+<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb">end state</a></li>
+</ul>
+<p>There's also a TensorBoard demo baked in there. A couple backup slides follow.</p>
+<hr />
+<p><img alt="graph" src="img/tensorboard_graph.png" /></p>
+<hr />
+<p>This is what the graph should look like in TensorBoard.</p>
+<hr />
+<p><img alt="steps per second" src="img/steps_per_sec.png" /></p>
+<hr />
+<p>Steps per second should look something like this.</p>
+<hr />
+<p><img alt="loss" src="img/loss.png" /></p>
+<hr />
+<p>Loss should look like this.</p>
+<hr />
+<p><img alt="Doctor Strangelog" src="img/strangelog.jpg" height="100%" /></p>
+<hr />
+<p>I just enjoy this image too much not to share it.</p>
+<hr />
+<p>long work</p>
+<hr />
+<p>It's time to do some work!</p>
+<hr />
+<p>make something happen!</p>
+<ul>
+<li>your own system?</li>
+<li>flip regression to classification?</li>
+<li>classify some images?</li>
+</ul>
+<hr />
+<p>Option one is always to work on your own system. Do you need a model of some kind in your system? Maybe you can use TensorFlow's high-level machine learning APIs.</p>
+<p>If you want to work with the stuff just shown some more, that's also totally cool! Instead of simple regression, maybe you want to flip the presidential GDP problem around to be logistic regression. TensorFlow has <code>tf.contrib.learn.LinearClassifier</code> for that. And many more variants!</p>
+<p>Or maybe you want to classify your own images, or start to poke around the model some more. Also good! If you want more example images, there's <a href="https://github.com/ajschumacher/imagen">this set</a>.</p>
+<p>Here are some links that could be helpful:</p>
+<ul>
+<li><a href="/20170506-simple_regression_with_a_tensorflow_estimator/">Simple Regression with a TensorFlow Estimator</a></li>
+<li><a href="/20170502-canned_models_with_keras_in_tensorflow/">Canned Models with Keras in TensorFlow</a></li>
+</ul>
+<hr />
+<p>long work over</p>
+<hr />
+<p>Moving right along...</p>
+<hr />
+<p><img alt="shock" src="img/shock_or_something.jpg" /></p>
+<hr />
+<p>Oh my! Are we out of time already?</p>
 <hr />
 <p>Thanks!</p>
 <hr />

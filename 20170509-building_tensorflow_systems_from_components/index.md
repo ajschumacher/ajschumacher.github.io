@@ -2,22 +2,27 @@
 
 *These are materials for a [workshop](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823) given Tuesday May 9, 2017 at [OSCON](https://conferences.oreilly.com/oscon/). ([slides](big.html))*
 
+---
 
 ### Workshop participant materials
 
 These are things you can use during the workshop. Use them when you need them.
 
- * Focus one: "getting data in"
+ * Focus one: _getting data in_
      * Download notebook: [start state](data_start.ipynb) / [end state](data_end.ipynb)
      * View notebook on GitHub: [start state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb) / [end state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb)
      * [`mystery.tfrecords`](/20170425-mystery.tfrecords/)
- * Focus two: "distributed programs"
+ * Focus two: _distributed programs_
      * [`mapreduce_with_tensorflow` code and data](https://github.com/ajschumacher/mapreduce_with_tensorflow/)
      * [Command-Line Apps and TensorFlow](/20170314-command_line_apps_and_tensorflow/)
      * [TensorFlow Clusters: Questions and Code](/20170410-tensorflow_clusters_questions_and_code/)
      * [Distributed MapReduce with TensorFlow](/20170411-distributed_mapreduce_with_tensorflow/)
      * [TensorFlow as Automatic MPI](/20170423-tensorflow_as_automatic_mpi/)
- * Focus three: "high-level ML APIs"
+ * Focus three: _high-level ML APIs_
+     * Download notebook: [start state](high_ml_start.ipynb) / [end state](high_ml_end.ipynb)
+     * View notebook on GitHub: [start state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb) / [end state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb)
+     * [Simple Regression with a TensorFlow Estimator](/20170506-simple_regression_with_a_tensorflow_estimator/)
+     * [Canned Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
 
 The whole slide deck and everything follows, and it's long.
 
@@ -58,7 +63,7 @@ $ pip freeze | grep tensorflow
 
 You'll want to have TensorFlow version 1.1 installed. TensorFlow 1.1 was only officially released on April 20, and the API really has changed.
 
-The _core documented_ API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 has some really neat stuff, like Keras, which we'll use later.
+The _core documented_ API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 brings in some really neat stuff, like Keras, which we'll use later.
 
 
 -----
@@ -69,7 +74,7 @@ The _core documented_ API, mostly the low-level API, is frozen as of TensorFlow 
 
 As an example: I wrote [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) about a year ago. It used TensorFlow 0.8.
 
-After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "[Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow)". It had 15 lines with TensorFlow code. Of that, 5 lines no longer worked: 33% of the lines of my simple TensorFlow example code saw API changes.
+After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "[Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow)". It had 15 lines of TensorFlow code. Of that, 5 lines no longer worked. I had to update 33% of the lines of my simple TensorFlow example code because of API changes.
 
 
 -----
@@ -95,6 +100,8 @@ $ pip freeze | grep tensorflow
 
 So please have TensorFlow 1.1 installed, is the point of that whole story.
 
+The stable bits of TensorFlow really are stable, but there's a lot of exciting new stuff, and I don't want you to miss out today!
+
 
 -----
 
@@ -113,11 +120,11 @@ TensorFlow works for you
 
 By this I mean: TensorFlow does what you tell it to, not the reverse.
 
-TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use [some](/20170312-use_only_what_you_need_from_tensorflow/) of the pieces. Or you can fire TensorFlow altogether!
+TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use [some](/20170312-use_only_what_you_need_from_tensorflow/) of the pieces. Or you can decide not to use TensorFlow altogether!
 
 We'll look at several specific aspects of TensorFlow. Maybe you'll want to use them. Maybe you won't. The hope is that you'll be more comfortable with what's available and able to decide what to apply when.
 
-If you like [Rich Hickey words](https://www.infoq.com/presentations/Simple-Made-Easy), maybe I'm trying to decomplect the strands within TensorFlow so they can be understood individually.
+If you like [Rich Hickey words](https://www.infoq.com/presentations/Simple-Made-Easy), maybe I'm trying to _decomplect_ the strands within TensorFlow so they can be understood individually.
 
 
 -----
@@ -140,7 +147,7 @@ I'll talk about some things, but the hope of the workshop is that you do some go
 
 I hope that you don't finish all the things you think of, but want to keep working after the workshop is over.
 
-Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you feel like it.
+Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you need a break.
 
 
 -----
@@ -264,8 +271,6 @@ You don't have to know how to build everything in the system. You don't need to 
 
 Keep adding more detail. If you get everything laid out, start to think about what functions or objects you might need to have, and start putting pseudocode together.
 
-(This will be a five to ten minute work period.)
-
 
 -----
 
@@ -379,7 +384,7 @@ The way TensorFlow encourages API development is via TensorFlow's C bindings.
 
 -----
 
-You could just C++, of course.
+You could use C++, of course.
 
 
 -----
@@ -460,7 +465,7 @@ We'll do two sub-parts.
 
 First, a quick review of the the graph and putting data into it.
 
-Second, a bit about the TensorFlow's TFRecords format.
+Second, a bit about TensorFlow's TFRecords format.
 
 
 -----
@@ -496,7 +501,7 @@ work with data!
 
 Option one is always to work on your own system. Almost certainly there's some data input that needs to happen. How are you going to read that data, and possibly get it into TensorFlow?
 
-If you want to stay really close to the TensorFlow stuff just demonstrated, there's a fun little puzzle for you: What's in [`mystery.tfrecords`](/20170425-mystery.tfrecords/)?
+If you want to stay really close to the TensorFlow stuff just demonstrated, here's a fun little puzzle for you: What's in [`mystery.tfrecords`](/20170425-mystery.tfrecords/)?
 
 That could be hard, or it could be easy. If you want to extend it, migrate the reading and parsing of the TFRecords file into the TensorFlow graph. The demonstration in the notebook worked with TFRecords/Examples without using the TensorFlow graph. The links on the [`mystery.tfrecords`](/20170425-mystery.tfrecords/) page can help with this.
 
@@ -537,9 +542,9 @@ We arrive at the second focus area. TensorFlow has some pretty wicked distribute
 
 -----
 
-I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML uses command-line arguments for hyperparameters, for example.
+I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML can use command-line arguments for hyperparameters, for example.
 
-Then we'll get to a real distributed example, in which we implement distributed MapReduce word count in 50 lines of Python TensorFlow code.
+Then we'll get to a real distributed example, in which we implement a distributed MapReduce word count in 50 lines of Python TensorFlow code.
 
 
 -----
@@ -562,7 +567,7 @@ a red flower
 
 -----
 
-I'll show eight variants that all do the same thing. You provide a `--color` argument, and it outputs a flower of that color.
+I'll show eight variants that all do the same thing. You provide a `--color` argument, and it outputs (in text) a flower of that color.
 
 
 -----
@@ -754,6 +759,8 @@ Whew!
 
 That was a lot of arguing.
 
+It may be worth showing all these because you'll encounter various combinations as you read code out there in the world. More recent examples are tending to move to `argparse`, but there are some of the other variants out there as well.
+
 
 -----
 
@@ -875,7 +882,7 @@ make something happen!
 
 Option one is always to work on your own system. Maybe command-line args are relevant to you. Maybe running a system across multiple machines is relevant for you. Or maybe not.
 
-If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could entirely separately change the distributed functionality. (You could make it a distributed neural net training program, for example.)
+If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could change the distributed functionality without any command-line fiddling. (You could make it a distributed neural net training program, for example.)
 
 Here are some links that might be helpful:
 
@@ -903,15 +910,13 @@ Moving right along...
 I should probably say that you don't really want to start all your distributed TensorFlow programs by hand. [Containers](https://www.docker.com/) and [Kubernetes](https://kubernetes.io/) and all that.
 
 
-
-
 -----
 
  * high-level ML APIs
 
 -----
 
-third focus
+Let's to some machine learning!
 
 
 -----
@@ -920,7 +925,7 @@ third focus
 
 -----
 
-New and exciting things are being added in Python TensorFlow land, building up the ladder of abstraction.
+New and exciting things are being added in TensorFlow Python land, building up the ladder of abstraction.
 
 This material comes from [Various TensorFlow APIs for Python](/20170321-various_tensorflow_apis_for_python/).
 
@@ -929,7 +934,7 @@ This material comes from [Various TensorFlow APIs for Python](/20170321-various_
 
 -----
 
-![slim... shady?](img/slim_shady.png)
+<img alt="slim... shady?" src="img/slim_shady.png" height="100%" />
 
 -----
 
@@ -938,7 +943,7 @@ The "layer" abstractions largely from TF-Slim are now appearing at `tf.layers`.
 
 -----
 
-![scikit-learn logo](img/sklearn.png)
+<img alt="scikit-learn logo" src="img/sklearn.png" height="100%" />
 
 -----
 
@@ -947,7 +952,7 @@ The Estimators API now at `tf.estimator` is drawn from `tf.contrib.learn` work, 
 
 -----
 
-![Keras](img/keras.jpg)
+<img alt="Keras" src="img/keras.jpg" height="100%" />
 
 -----
 
@@ -962,12 +967,107 @@ And Keras is entering TensorFlow first as `tf.contrib.keras` and soon just `tf.k
 
 -----
 
-third focus
+So let's try this out!
 
 
+-----
+
+(notebook)
+
+-----
+
+There's a Jupyter notebook to talk through at this point.
+
+ * Download: [start state](high_ml_start.ipynb) / [end state](high_ml_end.ipynb)
+ * View on GitHub: [start state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb) / [end state](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb)
+
+There's also a TensorBoard demo baked in there. A couple backup slides follow.
 
 
+-----
 
+![graph](img/tensorboard_graph.png)
+
+-----
+
+This is what the graph should look like in TensorBoard.
+
+
+-----
+
+![steps per second](img/steps_per_sec.png)
+
+-----
+
+Steps per second should look something like this.
+
+
+-----
+
+![loss](img/loss.png)
+
+-----
+
+Loss should look like this.
+
+
+-----
+
+<img alt="Doctor Strangelog" src="img/strangelog.jpg" height="100%" />
+
+-----
+
+I just enjoy this image too much not to share it.
+
+
+-----
+
+long work
+
+-----
+
+
+It's time to do some work!
+
+
+-----
+
+make something happen!
+
+ * your own system?
+ * flip regression to classification?
+ * classify some images?
+
+-----
+
+Option one is always to work on your own system. Do you need a model of some kind in your system? Maybe you can use TensorFlow's high-level machine learning APIs.
+
+If you want to work with the stuff just shown some more, that's also totally cool! Instead of simple regression, maybe you want to flip the presidential GDP problem around to be logistic regression. TensorFlow has `tf.contrib.learn.LinearClassifier` for that. And many more variants!
+
+Or maybe you want to classify your own images, or start to poke around the model some more. Also good! If you want more example images, there's [this set](https://github.com/ajschumacher/imagen).
+
+Here are some links that could be helpful:
+
+ * [Simple Regression with a TensorFlow Estimator](/20170506-simple_regression_with_a_tensorflow_estimator/)
+ * [Canned Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
+
+
+-----
+
+long work over
+
+-----
+
+Moving right along...
+
+
+-----
+
+![shock](img/shock_or_something.jpg)
+
+-----
+
+Oh my! Are we out of time already?
 
 
 
