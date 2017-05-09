@@ -53,6 +53,17 @@ If you want to participate in the workshop, _really go_ to `planspace.org` and p
 
 -----
 
+![Deep Learning Analytics](img/dla.png)
+
+-----
+
+I work for a company called Deep Learning Analytics.
+
+I'll talk more about DLA tomorrow [as part of TensorFlow Day](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149). Hope to see you there as well!
+
+
+-----
+
 ```bash
 $ pip install --upgrade tensorflow
 $ pip freeze | grep tensorflow

@@ -7,6 +7,642 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Building TensorFlow Systems from Components</title>
+<description><![CDATA[
+
+<p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">workshop</a> given Tuesday May 9, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a>. (<a href="big.html">slides</a>)</em></p>
+<hr>
+<h3>Workshop participant materials</h3>
+<p>These are things you can use during the workshop. Use them when you need them.</p>
+<ul>
+<li>Focus one: <em>getting data in</em><ul>
+<li>Download notebook: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
+<li>View notebook on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
+<li><a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a></li>
+</ul>
+</li>
+<li>Focus two: <em>distributed programs</em><ul>
+<li><a href="https://github.com/ajschumacher/mapreduce_with_tensorflow/"><code>mapreduce_with_tensorflow</code> code and data</a></li>
+<li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
+<li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
+<li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
+<li><a href="/20170423-tensorflow_as_automatic_mpi/">TensorFlow as Automatic MPI</a></li>
+</ul>
+</li>
+<li>Focus three: <em>high-level ML APIs</em><ul>
+<li>Download notebook: <a href="high_ml_start.ipynb">start state</a> / <a href="high_ml_end.ipynb">end state</a></li>
+<li>View notebook on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb">end state</a></li>
+<li><a href="/20170506-simple_regression_with_a_tensorflow_estimator/">Simple Regression with a TensorFlow Estimator</a></li>
+<li><a href="/20170502-canned_models_with_keras_in_tensorflow/">Canned Models with Keras in TensorFlow</a></li>
+</ul>
+</li>
+</ul>
+<p>The whole slide deck and everything follows, and it's long.</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p>Before starting, I want to take a moment to notice how great it is to have a conference. Thank you for being here! We are all really lucky. If this isn't nice, I don't know what is.</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<p>If you want to participate in the workshop, <em>really go</em> to <code>planspace.org</code> and pull up these materials!</p>
+<hr>
+<p><img alt="Deep Learning Analytics" src="img/dla.png"></p>
+<hr>
+<p>I work for a company called Deep Learning Analytics.</p>
+<p>I'll talk more about DLA tomorrow <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149">as part of TensorFlow Day</a>. Hope to see you there as well!</p>
+<hr>
+<pre><code class="language-bash">$ pip install --upgrade tensorflow
+$ pip freeze | grep tensorflow
+## tensorflow==1.1.0</code></pre>
+
+<hr>
+<p>You'll want to have TensorFlow version 1.1 installed. TensorFlow 1.1 was only officially released on April 20, and the API really has changed.</p>
+<p>The <em>core documented</em> API, mostly the low-level API, is frozen as of TensorFlow 1.0, but a lot of higher-level stuff is still changing. TensorFlow 1.1 brings in some really neat stuff, like Keras, which we'll use later.</p>
+<hr>
+<p><img src="img/hello_tensorflow.png" alt="Hello, TensorFlow! on O'Reilly" height="100%"></p>
+<hr>
+<p>As an example: I wrote <a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a> about a year ago. It used TensorFlow 0.8.</p>
+<p>After TensorFlow 1.0 came out, I went and looked at the summary code block at the end of "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>". It had 15 lines of TensorFlow code. Of that, 5 lines no longer worked. I had to update 33% of the lines of my simple TensorFlow example code because of API changes.</p>
+<hr>
+<p><img alt="one third" src="img/one_third.jpg"></p>
+<hr>
+<p>I was surprised that it was one third.</p>
+<p>I have an <a href="/20160620-hello_tensorflow_just_the_code/">updated code snippet</a>, but we're not doing "<a href="https://www.oreilly.com/learning/hello-tensorflow">Hello, TensorFlow!</a>" today.</p>
+<hr>
+<pre><code class="language-bash">$ pip install --upgrade tensorflow
+$ pip freeze | grep tensorflow
+## tensorflow==1.1.0</code></pre>
+
+<hr>
+<p>So please have TensorFlow 1.1 installed, is the point of that whole story.</p>
+<p>The stable bits of TensorFlow really are stable, but there's a lot of exciting new stuff, and I don't want you to miss out today!</p>
+<hr>
+<p>THE BIG IDEA</p>
+<hr>
+<p>Okay! What is this workshop about?</p>
+<hr>
+<p>use what you need</p>
+<hr>
+<p>TensorFlow works for you! Use it where it does things that help you.</p>
+<p>TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use <a href="/20170312-use_only_what_you_need_from_tensorflow/">some</a> of the pieces. Or you can decide not to use TensorFlow altogether!</p>
+<p>We'll look at several specific aspects of TensorFlow. Maybe you'll want to use them. Maybe you won't. The hope is that you'll be more comfortable with what's available and able to decide what to apply when.</p>
+<p>If you like <a href="https://www.infoq.com/presentations/Simple-Made-Easy">Rich Hickey words</a>, maybe I'm trying to <em>decomplect</em> the strands within TensorFlow so they can be understood individually.</p>
+<hr>
+<p>THE PLAN</p>
+<hr>
+<p>Here's the plan for this workshop.</p>
+<hr>
+<ul>
+<li>one short work</li>
+<li>three longer works</li>
+</ul>
+<hr>
+<p>I'll talk about some things, but the hope of the workshop is that you do some good work.</p>
+<p>I hope that you don't finish all the things you think of, but want to keep working after the workshop is over.</p>
+<p>Also, there's a break from 10:30 to 11:00 on the official schedule, but I don't really like that. If we happen to be working during the break, fine. Feel free to take a break whenever you need a break.</p>
+<hr>
+<p>Do what you want!</p>
+<hr>
+<p>TensorFlow is really big, and not every part will be interesting or important to you.</p>
+<p>I'll have very specific things for you to work on for each of the works, but if you think of something better to do, you better do it!</p>
+<hr>
+<p>Intro by Logo</p>
+<hr>
+<p>To get creative juices flowing a little, let's explore some logo history.</p>
+<hr>
+<p><img alt="LOGO turle" src="img/logo_turtle.jpg" height="100%"></p>
+<hr>
+<p>Not that sort of <a href="https://en.wikipedia.org/wiki/Logo_(programming_language)">Logo</a>!</p>
+<p>Fine to think about, though.</p>
+<hr>
+<p><img alt="G&#246;del, Escher, Bach" src="img/geb.jpg" height="100%"></p>
+<hr>
+<p>In the beginning, there was <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">G&#246;del, Escher, Bach: An Eternal Golden Braid</a> by Douglas Hofstadter.</p>
+<p>This "metaphorical fugue on minds and machines in the spirit of Lewis Carroll" includes the <a href="https://en.wikipedia.org/wiki/Strange_loop">strange loop</a> idea and related discussion of consciousness and formal systems. Hofstadter's influence can be seen, for example, <a href="https://cs.illinois.edu/news/strange-loop-conference">in the name</a> of the <a href="http://www.thestrangeloop.com/">Strange Loop</a> tech conference.</p>
+<p>It seems likely that many people working in artificial intelligence and machine learning have encountered G&#246;del, Escher, Bach.</p>
+<hr>
+<p><img src="img/chernin.jpg" alt="Chernin Entertainment" height="100%"></p>
+<hr>
+<p>Of course, there's also <a href="https://en.wikipedia.org/wiki/Chernin_Entertainment">Chernin Entertainment</a>, the production company.</p>
+<p>So we shouldn't rule out the possibility that Google engineers are fans of <a href="http://www.imdb.com/company/co0286257/">Chernin's work</a>. <a href="https://en.wikipedia.org/wiki/Hidden_Figures">Hidden Figures</a> is quite good. And I guess a lot of people like <a href="https://en.wikipedia.org/wiki/New_Girl">New Girl</a>?</p>
+<hr>
+<p><img alt="TensorFlow logo - old?" src="img/tf-old-big.png" height="100%"></p>
+<hr>
+<p>In any event, somehow we get to this TensorFlow logo:</p>
+<p>If you look carefully, does it seem like the right side of the "T" view is too short?</p>
+<hr>
+<p><img alt="Issue 1922" src="img/issue_1922.png"></p>
+<hr>
+<p>This very serious concern appears as <a href="https://github.com/tensorflow/tensorflow/issues/1922">issue #1922</a> on the TensorFlow github, and <a href="https://groups.google.com/a/tensorflow.org/forum/#!topic/discuss/XhO1sqp4l4g">on the TensorFlow mailing list</a> complete with ASCII art illustration.</p>
+<p>The consensus response seemed to be some variant of "won't fix" (it wouldn't look as cool, anyway) until...</p>
+<hr>
+<p><img alt="TensorFlow logo - new?" src="img/tf-new.jpg" height="100%"></p>
+<hr>
+<p>As of around the 1.0 release of TensorFlow, which was around the first <a href="https://events.withgoogle.com/tensorflow-dev-summit/">TensorFlow Dev Summit</a>, this logo variant seems to be in vogue. It removes the (possibly contentious) shadows, and adds additional imagery in the background.</p>
+<p>I want to suggest that the image in the background can be a kind of Rorschach test for at least three ways you might be thinking about TensorFlow.</p>
+<ul>
+<li>Is it a diagram of connected neurons? Maybe you're interested in TensorFlow because you want to make neural networks.</li>
+<li>Is it a diagram of a computation graph? Maybe you're interested in TensorFlow for general calculation, possibly using GPUs.</li>
+<li>Is it a diagram of multiple computers in a distributed system? Maybe you're interested in TensorFlow for its distributed capabilities.</li>
+</ul>
+<p>There can be overlap among those interpretations as well, but I hope the point is not lost that TensorFlow can be different things to different people.</p>
+<hr>
+<p>short work</p>
+<hr>
+<p>I want to get you thinking about systems without further restriction. The idea is to imagine and start fleshing out a system that might involve TensorFlow.</p>
+<p>Later on we'll follow the usual workshop pattern of showing you something you can do and having you do it. But it's much more realistic and interesting to start from something you want to do and then try to figure out how to do it. So let's start from the big picture.</p>
+<hr>
+<p>draw a system!</p>
+<ul>
+<li>block diagram</li>
+<li>add detail</li>
+<li>pseudocode?</li>
+</ul>
+<hr>
+<p>You can draw a system you've already made, or something you're making, or something you'd like to make. It could be something you've heard about, or something totally unique.</p>
+<p>You don't have to know how to build everything in the system. You don't need to know how TensorFlow fits in. Feel free to draw what you <em>wish</em> TensorFlow might let you do.</p>
+<p>Keep adding more detail. If you get everything laid out, start to think about what functions or objects you might need to have, and start putting pseudocode together.</p>
+<hr>
+<p>short work over</p>
+<hr>
+<p>Moving right along...</p>
+<hr>
+<p>Let's do hard AI!</p>
+<hr>
+<p>I'm going to walk through an example and talk about how TensorFlow can fit in.</p>
+<p>Doing hard AI, or Artificial General Intelligence (AGI), is intended as a joke, but it's increasingly less so, with Google DeepMind and OpenAI both explicitly working on getting to AGI.</p>
+<hr>
+<p>(build)</p>
+<hr>
+<p>I've got 35 slides of sketches, so they're in <a href="build.pdf">a separate PDF</a> to go through.</p>
+<hr>
+<p><img alt="system" src="img/system.jpg"></p>
+<hr>
+<p>Here's the final system that we built to.</p>
+<p>We're not going to do everything in there today.</p>
+<hr>
+<ul>
+<li>getting data in</li>
+<li>distributed programs</li>
+<li>high-level ML APIs</li>
+</ul>
+<hr>
+<p>These are the three focuses for today.</p>
+<p>The <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">original description</a> for this workshop also mentioned serving, but I'm not covering it today. Sorry. Not enough time.</p>
+<hr>
+<p>What even is TensorFlow?</p>
+<hr>
+<p>Here's one way to think about TensorFlow.</p>
+<hr>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<hr>
+<p>The beating heart of TensorFlow is the Distributed Execution Engine, or runtime.</p>
+<p>One way to think of it is as a <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">virtual machine</a> whose language is the TensorFlow graph.</p>
+<p>That core is written in C++, but lots of TensorFlow functionality lives in the frontends. In particular, there's a lot in the Python frontend.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr>
+<p><img alt="Python programming language" src="img/python.png"></p>
+<hr>
+<p>Python is the richest frontend for TensorFlow. It's what we'll use today.</p>
+<p>You should remember that not everything in the Python TensorFlow API touches the graph. Some parts are just Python.</p>
+<hr>
+<p><img alt="R programming language" src="img/rlang.png"></p>
+<hr>
+<p>R has an unofficial <a href="https://rstudio.github.io/tensorflow/">TensorFlow API</a> which is kind of interesting in that it just wraps the Python API. It's really more like an R API to the Python API to TensorFlow. So when you use it, you write R, but Python runs. This is not how TensorFlow encourages languages to implement TensorFlow APIs, but it's out there.</p>
+<hr>
+<p><img alt="C programming language" src="img/clang.png"></p>
+<hr>
+<p>The way TensorFlow encourages API development is via TensorFlow's C bindings.</p>
+<hr>
+<p><img alt="C++ programming language" src="img/cplusplus.png"></p>
+<hr>
+<p>You could use C++, of course.</p>
+<hr>
+<p><img alt="Java programming language" src="img/javalang.png"></p>
+<hr>
+<p>Also there's Java.</p>
+<hr>
+<p><img alt="Go programming language" src="img/golang.png"></p>
+<hr>
+<p>And there's Go.</p>
+<hr>
+<p><img alt="Rust programming language" src="img/rust.png"></p>
+<hr>
+<p>And there's Rust.</p>
+<hr>
+<p><img alt="Haskell programming language" src="img/haskell.png"></p>
+<hr>
+<p>And there's even Haskell!</p>
+<hr>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<hr>
+<p>Currently, languages other than Python have TensorFlow support that is very close to the runtime. Basically make your ops and run them.</p>
+<p>This is likely to be enough support to deploy a TensorFlow system in whatever language you like, but if you're developing and training systems you probably still want to use Python.</p>
+<hr>
+<p>graph or not graph?</p>
+<hr>
+<p>So this is a distinction to think about: Am I using the TensorFlow graph, or not?</p>
+<hr>
+<ul>
+<li>getting data in</li>
+</ul>
+<hr>
+<p>So here we are at the first focus area.</p>
+<p>We'll do two sub-parts.</p>
+<hr>
+<ul>
+<li>getting data in<ul>
+<li>to the graph</li>
+<li>TFRecords</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>First, a quick review of the the graph and putting data into it.</p>
+<p>Second, a bit about TensorFlow's TFRecords format.</p>
+<hr>
+<p>(notebook)</p>
+<hr>
+<p>There's a Jupyter notebook to talk through at this point.</p>
+<ul>
+<li>Download: <a href="data_start.ipynb">start state</a> / <a href="data_end.ipynb">end state</a></li>
+<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/data_end.ipynb">end state</a></li>
+</ul>
+<hr>
+<p>long work</p>
+<hr>
+<p>It's time to do some work!</p>
+<hr>
+<p>work with data!</p>
+<ul>
+<li>your own system?</li>
+<li>planspace.org: <code>mystery.tfrecords</code></li>
+<li>move to graph</li>
+</ul>
+<hr>
+<p>Option one is always to work on your own system. Almost certainly there's some data input that needs to happen. How are you going to read that data, and possibly get it into TensorFlow?</p>
+<p>If you want to stay really close to the TensorFlow stuff just demonstrated, here's a fun little puzzle for you: What's in <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a>?</p>
+<p>That could be hard, or it could be easy. If you want to extend it, migrate the reading and parsing of the TFRecords file into the TensorFlow graph. The demonstration in the notebook worked with TFRecords/Examples without using the TensorFlow graph. The links on the <a href="/20170425-mystery.tfrecords/"><code>mystery.tfrecords</code></a> page can help with this.</p>
+<hr>
+<p>long work over</p>
+<hr>
+<p>Moving right along...</p>
+<hr>
+<p><img alt="data" src="img/data_data.jpg" width="100%"></p>
+<hr>
+<p>As a wrap-up: Working directly with data, trying to get it into the right shape, cleaning it, etc., may not be the most fun, but it's got to be done. Here's a horrible pie chart <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/">from some guy on Forbes</a>, the point of which is that people spend a good deal of time fighting with data.</p>
+<hr>
+<ul>
+<li>distributed programs</li>
+</ul>
+<hr>
+<p>We arrive at the second focus area. TensorFlow has some pretty wicked distributed computing capabilities.</p>
+<hr>
+<ul>
+<li>distributed programs<ul>
+<li>command-line arguments</li>
+<li>MapReduce example</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>I'm putting a bit about command-line arguments in here because I think it's interesting. It doesn't necessarily fit in with distributed computing, although you might well have a distributed program that takes command-line arguments. Google Cloud ML can use command-line arguments for hyperparameters, for example.</p>
+<p>Then we'll get to a real distributed example, in which we implement a distributed MapReduce word count in 50 lines of Python TensorFlow code.</p>
+<hr>
+<p>command-line arguments</p>
+<hr>
+<p>So let's take a look at some ways to do command-line arguments.</p>
+<p>This section comes from the post <a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a>.</p>
+<hr>
+<pre><code class="language-bash">$ python script.py --color red
+a red flower</code></pre>
+
+<hr>
+<p>I'll show eight variants that all do the same thing. You provide a <code>--color</code> argument, and it outputs (in text) a flower of that color.</p>
+<hr>
+<pre><code class="language-python">import sys
+
+def main():
+    assert sys.argv[1] == '--color'
+    print('a {} flower'.format(sys.argv[2]))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr>
+<p>This is a bare-bones <code>sys.argv</code> method. Arguments become elements of the <code>sys.argv</code> list, and can be accessed as such. This has limitations when arguments get more complicated.</p>
+<hr>
+<pre><code class="language-python">import sys
+import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main():
+    flags.FLAGS._parse_flags(args=sys.argv[1:])
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr>
+<p>This <code>FLAGS</code> API is <a href="/20170313-tensorflow_use_of_google_technologies/">familiar to Googlers</a>, I think. It's interesting to me where some Google-internal things peak out from the corners of TensorFlow.</p>
+<hr>
+<pre><code class="language-python">import sys
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main():
+    gflags.FLAGS(sys.argv)
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr>
+<p>You could also install the <code>gflags</code> module, which works much the same way.</p>
+<hr>
+<pre><code class="language-python">import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args(sys.argv[1:])
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr>
+<p>Here's Python's own standard <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>, set up to mimic the <code>gflags</code> example, still using <code>sys.argv</code> explicitly.</p>
+<hr>
+<pre><code class="language-python">import tensorflow as tf
+
+def main(args):
+    assert args[1] == '--color'
+    print('a {} flower'.format(args[2]))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<hr>
+<p>Using <code>tf.app.run()</code>, another Google-ism, frees us from accessing <code>sys.argv</code> directly.</p>
+<hr>
+<pre><code class="language-python">import tensorflow as tf
+
+flags = tf.app.flags
+flags.DEFINE_string(flag_name='color',
+                    default_value='green',
+                    docstring='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(flags.FLAGS.color))
+
+if __name__ == '__main__':
+    tf.app.run()</code></pre>
+
+<hr>
+<p>We can combine <code>tf.app.run()</code> with <code>tf.app.flags</code>.</p>
+<hr>
+<pre><code class="language-python">import google.apputils.app
+import gflags
+
+gflags.DEFINE_string(name='color',
+                     default='green',
+                     help='the color to make a flower')
+
+def main(args):
+    print('a {} flower'.format(gflags.FLAGS.color))
+
+if __name__ == '__main__':
+    google.apputils.app.run()</code></pre>
+
+<hr>
+<p>To see the equivalent outside the TensorFlow package, we can combine <code>gflags</code> and <code>google.apputils.app</code>.</p>
+<hr>
+<pre><code class="language-python">import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--color',
+                    default='green',
+                    help='the color to make a flower')
+
+def main():
+    args = parser.parse_args()
+    print('a {} flower'.format(args.color))
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<hr>
+<p>This has all been fun, but here's what you should really do. Just use <code>argparse</code>.</p>
+<hr>
+<p>Whew!</p>
+<hr>
+<p>That was a lot of arguing.</p>
+<p>It may be worth showing all these because you'll encounter various combinations as you read code out there in the world. More recent examples are tending to move to <code>argparse</code>, but there are some of the other variants out there as well.</p>
+<hr>
+<p>MapReduce example</p>
+<hr>
+<p>Now to the MapReduce example!</p>
+<hr>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<hr>
+<p>Recall that the core of TensorFlow is a <em>distributed</em> runtime. What does that mean?</p>
+<hr>
+<p><code>tf.device()</code></p>
+<hr>
+<p>Behold, the power of <code>tf.device()</code>!</p>
+<hr>
+<p></p><pre><code>with tf.device('/cpu:0'):
+    # Do something.</code></pre>
+<hr>
+<p>You can specify that work happen on a local CPU.</p>
+<hr>
+<p></p><pre><code>with tf.device('/gpu:0'):
+    # Do something.</code></pre>
+<hr>
+<p>You can specify that work happen on a local GPU.</p>
+<hr>
+<p></p><pre><code>with tf.device('/job:ps/task:0'):
+    # Do something.</code></pre>
+<hr>
+<p>In exactly the same way, you can specify that work happen on <em>a different computer</em>!</p>
+<p>This is pretty amazing. I think of it as sort of <a href="/20170423-tensorflow_as_automatic_mpi/">declarative MPI</a>.</p>
+<hr>
+<p><img alt="distributing a TensorFlow graph" src="img/distributed_graph.png"></p>
+<hr>
+<p>TensorFlow automatically figures out when it needs to send information between devices, whether they're on the same machine or on different machines. So cool!</p>
+<hr>
+<p><img alt="oh map reduce..." src="img/oh_map_reduce.png"></p>
+<hr>
+<p>MapReduce is often associated with Hadoop. It's just divide and conquer.</p>
+<p>So let's do it with TensorFlow!</p>
+<hr>
+<p>(demo)</p>
+<hr>
+<p>It's time to see how this looks in practice! (Well, or at least to see how it looks in a cute little demo.)</p>
+<p>The demo uses the contents of the <a href="https://github.com/ajschumacher/mapreduce_with_tensorflow">mapreduce_with_tensorflow</a> repo on GitHub. For more explanation, see <a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a> and <a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a>.</p>
+<hr>
+<p>(code)</p>
+<hr>
+<p>Walking through some details inside <a href="https://github.com/ajschumacher/mapreduce_with_tensorflow/blob/master/count.py"><code>count.py</code></a>.</p>
+<hr>
+<p>long work</p>
+<hr>
+<p>It's time to do some work!</p>
+<hr>
+<p>make something happen!</p>
+<ul>
+<li>your own system?</li>
+<li>different distributed functionality?</li>
+<li>add command-line?</li>
+</ul>
+<hr>
+<p>Option one is always to work on your own system. Maybe command-line args are relevant to you. Maybe running a system across multiple machines is relevant for you. Or maybe not.</p>
+<p>If you want to exercise the things just demonstrated, you could add a command-line argument to the distributed word-count program. For example, you could make it count only a particular word, or optionally count characters, or something else. Or you could change the distributed functionality without any command-line fiddling. (You could make it a distributed neural net training program, for example.)</p>
+<p>Here are some links that might be helpful:</p>
+<ul>
+<li><a href="/20170314-command_line_apps_and_tensorflow/">Command-Line Apps and TensorFlow</a></li>
+<li><a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a></li>
+<li><a href="/20170411-distributed_mapreduce_with_tensorflow/">Distributed MapReduce with TensorFlow</a></li>
+<li><a href="/20170423-tensorflow_as_automatic_mpi/">TensorFlow as Automatic MPI</a></li>
+</ul>
+<hr>
+<p>long work over</p>
+<hr>
+<p>Moving right along...</p>
+<hr>
+<p><img alt="oh kubernetes..." src="img/oh_kubernetes.jpg"></p>
+<hr>
+<p>I should probably say that you don't really want to start all your distributed TensorFlow programs by hand. <a href="https://www.docker.com/">Containers</a> and <a href="https://kubernetes.io/">Kubernetes</a> and all that.</p>
+<hr>
+<ul>
+<li>high-level ML APIs</li>
+</ul>
+<hr>
+<p>Let's to some machine learning!</p>
+<hr>
+<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png"></p>
+<hr>
+<p>New and exciting things are being added in TensorFlow Python land, building up the ladder of abstraction.</p>
+<p>This material comes from <a href="/20170321-various_tensorflow_apis_for_python/">Various TensorFlow APIs for Python</a>.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr>
+<p><img alt="slim... shady?" src="img/slim_shady.png" height="100%"></p>
+<hr>
+<p>The "layer" abstractions largely from TF-Slim are now appearing at <code>tf.layers</code>.</p>
+<hr>
+<p><img alt="scikit-learn logo" src="img/sklearn.png" height="100%"></p>
+<hr>
+<p>The Estimators API now at <code>tf.estimator</code> is drawn from <code>tf.contrib.learn</code> work, which is itself heavily inspired by scikit-learn.</p>
+<hr>
+<p><img alt="Keras" src="img/keras.jpg" height="100%"></p>
+<hr>
+<p>And Keras is entering TensorFlow first as <code>tf.contrib.keras</code> and soon just <code>tf.keras</code> with version 1.2.</p>
+<hr>
+<ul>
+<li>high-level ML APIs<ul>
+<li>training an Estimator</li>
+<li>pre-trained Keras</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>So let's try this out!</p>
+<hr>
+<p>(notebook)</p>
+<hr>
+<p>There's a Jupyter notebook to talk through at this point.</p>
+<ul>
+<li>Download: <a href="high_ml_start.ipynb">start state</a> / <a href="high_ml_end.ipynb">end state</a></li>
+<li>View on GitHub: <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_start.ipynb">start state</a> / <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20170509-building_tensorflow_systems_from_components/high_ml_end.ipynb">end state</a></li>
+</ul>
+<p>There's also a TensorBoard demo baked in there. A couple backup slides follow.</p>
+<hr>
+<p><img alt="graph" src="img/tensorboard_graph.png"></p>
+<hr>
+<p>This is what the graph should look like in TensorBoard.</p>
+<hr>
+<p><img alt="steps per second" src="img/steps_per_sec.png"></p>
+<hr>
+<p>Steps per second should look something like this.</p>
+<hr>
+<p><img alt="loss" src="img/loss.png"></p>
+<hr>
+<p>Loss should look like this.</p>
+<hr>
+<p><img alt="Doctor Strangelog" src="img/strangelog.jpg" height="100%"></p>
+<hr>
+<p>I just enjoy this image too much not to share it.</p>
+<hr>
+<p>long work</p>
+<hr>
+<p>It's time to do some work!</p>
+<hr>
+<p>make something happen!</p>
+<ul>
+<li>your own system?</li>
+<li>flip regression to classification?</li>
+<li>classify some images?</li>
+</ul>
+<hr>
+<p>Option one is always to work on your own system. Do you need a model of some kind in your system? Maybe you can use TensorFlow's high-level machine learning APIs.</p>
+<p>If you want to work with the stuff just shown some more, that's also totally cool! Instead of simple regression, maybe you want to flip the presidential GDP problem around to be logistic regression. TensorFlow has <code>tf.contrib.learn.LinearClassifier</code> for that. And many more variants!</p>
+<p>Or maybe you want to classify your own images, or start to poke around the model some more. Also good! If you want more example images, there's <a href="https://github.com/ajschumacher/imagen">this set</a>.</p>
+<p>Here are some links that could be helpful:</p>
+<ul>
+<li><a href="/20170506-simple_regression_with_a_tensorflow_estimator/">Simple Regression with a TensorFlow Estimator</a></li>
+<li><a href="/20170502-canned_models_with_keras_in_tensorflow/">Canned Models with Keras in TensorFlow</a></li>
+</ul>
+<hr>
+<p>long work over</p>
+<hr>
+<p>Moving right along...</p>
+<hr>
+<p><img alt="shock" src="img/shock_or_something.jpg"></p>
+<hr>
+<p>Oh my! Are we out of time already?</p>
+<hr>
+<p>What else?</p>
+<hr>
+<p>There are a lot of things we haven't covered.</p>
+<hr>
+<p>debugging, optimizing (XLA, low-precision, etc.), serving, building custom network architectures, embeddings, recurrent, generative, bazel, protobuf, gRPC, queues, threading...</p>
+<hr>
+<p>Here's a list of the first things that came to mind.</p>
+<p>I hope you continue to explore!</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p>    
+    ]]></description>
+<link>http://planspace.org/20170509-building_tensorflow_systems_from_components/</link>
+<guid>http://planspace.org/20170509-building_tensorflow_systems_from_components/</guid>
+<pubDate>Tue, 09 May 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Simple Regression with a TensorFlow Estimator</title>
 <description><![CDATA[
 
@@ -671,6 +1307,7 @@ result
 <li><a href="/20170330-tfrecords_via_proto/">TFRecords via Protocol Buffer Definitions</a></li>
 <li><a href="/20170403-images_and_tfrecords/">Images and TFRecords</a></li>
 <li><a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">Reading from Disk inside the TensorFlow Graph</a></li>
+<li><a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">Parsing TFRecords inside the TensorFlow Graph</a></li>
 </ul>
 <!--
 
@@ -1821,25 +2458,6 @@ with open('my_bottle.pb', 'rb') as f:
 <link>http://planspace.org/20170329-protocol_buffers_in_python/</link>
 <guid>http://planspace.org/20170329-protocol_buffers_in_python/</guid>
 <pubDate>Wed, 29 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TensorFlow as a Distributed Virtual Machine</title>
-<description><![CDATA[
-
-<p>TensorFlow has a flexible API, and it has automatic differentiation, and it can run on GPUs. But the thing that's really neat about TensorFlow is that it gives you a fairly general way to easily program across multiple computers.</p>
-<p>TensorFlow's distributed runtime, the big bottom box in this figure from the <a href="https://research.google.com/pubs/pub45381.html">2016 paper</a> "TensorFlow: A system for large-scale machine learning", is the part of TensorFlow that runs the computation graph.</p>
-<p><img alt="layered TensorFlow architecture" src="img/tensorflow_layers.png"></p>
-<p>The computation graph, specified with <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">protocol buffers</a>, is much higher level than <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java virtual machine</a> (JVM) bytecode. But I think it's interesting to think of the TensorFlow distributed runtime as a sort of <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a>. This is not a whole system virtual machine, but a process virtual machine, like the JVM, to "execute computer programs in a platform-independent environment." The Python API can be like a <a href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific language</a> for programming the TensorFlow graph.</p>
-<p>Unlike the JVM, and unlike any other system I know, TensorFlow lets you directly put computation on multiple machines, pretty much however you want, and then it quietly handles all the details for you. Wherever it needs to, TensorFlow adds send and receive nodes to allow the graph to be executed as specified. This is shown in this figure from the <a href="https://research.google.com/pubs/pub45166.html">2015 paper</a> "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems" (also <a href="https://arxiv.org/abs/1603.04467">available on arXiv</a> and commonly linked as the <a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">PDF on tensorflow.org</a>).</p>
-<p><img alt="distributing a TensorFlow graph" src="img/distributed_graph.png"></p>
-<p>The box labels in the figure are for devices, but with TensorFlow they could be on the same machine or on different machines, and it hardly matters.</p>
-<p>The flexibility and ease that result are incredible. It isn't terribly hard to think of implementing your own map-reduce system using TensorFlow. It might even be reasonably performant, if you have a distributed file system! The common TensorFlow distributed model training techniques are a kind of map-reduce, after all. But you could do pretty near anything! This is pretty cool.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170328-tensorflow_as_a_distributed_virtual_machine/</link>
-<guid>http://planspace.org/20170328-tensorflow_as_a_distributed_virtual_machine/</guid>
-<pubDate>Tue, 28 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

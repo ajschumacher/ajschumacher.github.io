@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-05-09: [Building TensorFlow Systems from Components](/20170509-building_tensorflow_systems_from_components/)
  * 2017-05-06: [Simple Regression with a TensorFlow Estimator](/20170506-simple_regression_with_a_tensorflow_estimator/)
  * 2017-05-05: [Simple Dataset: US Presidential Party and GDP Growth](/20170505-simple_dataset_us_presidential_party_and_gdp_growth/)
  * 2017-05-02: [Canned Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
