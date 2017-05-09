@@ -114,11 +114,11 @@ Okay! What is this workshop about?
 
 -----
 
-TensorFlow works for you
+use what you need
 
 -----
 
-By this I mean: TensorFlow does what you tell it to, not the reverse.
+TensorFlow works for you! Use it where it does things that help you.
 
 TensorFlow is a tool. It's a very general tool, on the one hand. It's also a tool with lots of pieces. You can use [some](/20170312-use_only_what_you_need_from_tensorflow/) of the pieces. Or you can decide not to use TensorFlow altogether!
 
@@ -1069,6 +1069,25 @@ Moving right along...
 
 Oh my! Are we out of time already?
 
+
+-----
+
+What else?
+
+-----
+
+There are a lot of things we haven't covered.
+
+
+-----
+
+debugging, optimizing (XLA, low-precision, etc.), serving, building custom network architectures, embeddings, recurrent, generative, bazel, protobuf, gRPC, queues, threading...
+
+-----
+
+Here's a list of the first things that came to mind.
+
+I hope you continue to explore!
 
 
 -----
