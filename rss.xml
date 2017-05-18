@@ -7,6 +7,228 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Code Reading Questions at OSCON</title>
+<description><![CDATA[
+
+<p><a href="https://www.oreilly.com/">O'Reilly</a>'s 2017 <a href="https://conferences.oreilly.com/oscon/">OSCON</a> had a "<a href="https://conferences.oreilly.com/oscon/oscon-tx/public/content/game">code game</a>" with ten questions covering nine different languages. It was supposed to get people engaged in the expo hall, but the quiz-like gamification content reminded me of my old <a href="/20150616-code_reading_question/">code reading question</a> idea. The questions are available in a <a href="https://cdn.oreillystatic.com/en/assets/1/event/214/oscon2017_code_game.pdf">PDF</a> (<a href="oscon2017_code_game.pdf">mirror</a>). I'll put the questions here as well.</p>
+<hr>
+<h3>1. Rust</h3>
+<pre><code class="language-rust">use std::collections::HashSet;
+use std::io::{BufRead, Result};
+
+fn f&lt;I: BufRead&gt;(input: &amp;mut I) -&gt; Result&lt;usize&gt; {
+    Ok(input.lines()
+       .map(|r| r.expect(&#8220;ara ara&#8221;))
+       .flat_map(|l| l.split_whitespace()
+                     .map(str::to_owned)
+                     .collect::&lt;Vec&lt;_&gt;&gt;())
+       .collect::&lt;HashSet&lt;_&gt;&gt;()
+       .len())
+}</code></pre>
+
+<p>This function reads input. What else does it do?</p>
+<ul>
+<li>A. Counts the number of white-space-separated &#8220;words&#8221;</li>
+<li>B. Counts the number of distinct &#8220;words&#8221;</li>
+<li>C. Finds the &#8220;word&#8221; that appears most frequently</li>
+<li>D. Finds the longest line</li>
+</ul>
+<!-- Correct: B -->
+
+<hr>
+<h3>2. JavaScript</h3>
+<pre><code class="language-javascript">function search(values, target) {
+  for(var i = 0; i &lt; values.length; ++i){
+    if (values[i] == target) { return i; }
+  }
+  return -1;
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Depth-first search</li>
+<li>B. Binary search</li>
+<li>C. Merge search</li>
+<li>D. Linear search</li>
+</ul>
+<!-- Correct: D -->
+
+<hr>
+<h3>3. Go</h3>
+<pre><code class="language-go">func function(s []float64) float64 {
+        var sum float64 = 0.0
+        for _, n := range s {
+                sum += n
+        }
+        return sum / float64(len(s))
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Sums the contents of a slice</li>
+<li>B. Finds the maximum value in a slice</li>
+<li>C. Averages the contents of a slice</li>
+<li>D. Appends values to a slice</li>
+</ul>
+<!-- Correct: C -->
+
+<hr>
+<h3>4. Perl 5</h3>
+<pre><code class="language-perl">sub mystery {
+    return @_ if @_ &lt; 2;
+    my $p = pop;
+    mystery(grep $_ &lt; $p, @_), $p,
+    mystery(grep $_ &gt;= $p, @_);
+}</code></pre>
+
+<p>What does the mystery subroutine do?</p>
+<ul>
+<li>A. Binary search</li>
+<li>B. Merge sort</li>
+<li>C. Removes items that are too large or too small</li>
+<li>D. Quick sort</li>
+</ul>
+<!-- Correct: D -->
+
+<hr>
+<h3>5. Java 8</h3>
+<pre><code class="language-java">static void function(int[] ar)
+ {
+   Random rnd = ThreadLocalRandom.current();
+   for (int i = ar.length - 1; i &gt; 0; i--)
+   {
+     int index = rnd.nextInt(i + 1);
+     int a = ar[index];
+     ar[index] = ar[i];
+     ar[i] = a;
+   }
+ }</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Merge sort</li>
+<li>B. Shuffle</li>
+<li>C. Increases size of array</li>
+<li>D. Decreases size of array</li>
+</ul>
+<!-- Correct: B -->
+
+<hr>
+<h3>6. Ruby</h3>
+<pre><code class="language-ruby">def f(hash)
+  prs = hash.inject({}) do |hsh, pr|
+    k, v = yield pr
+    hsh.merge(k =&gt; v)
+  end
+  Hash[prs]
+end</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Reverses an array</li>
+<li>B. Administers a booster shot</li>
+<li>C. Enters a freeway safely</li>
+<li>D. Transforms a hash</li>
+</ul>
+<!-- Correct: D -->
+
+<hr>
+<h3>7. Python</h3>
+<pre><code class="language-python">def function(list):
+     return [x for x in list if x == x[::-1]]</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Finds and returns all palindromes within the given list</li>
+<li>B. Reverses all strings in the given list</li>
+<li>C. Swaps the first and last letter in each word in the given list</li>
+<li>D. Returns a list of anagrams for each word in the given list</li>
+</ul>
+<!-- Correct: A -->
+
+<hr>
+<h3>8. Scala</h3>
+<pre><code class="language-scala">object Op {
+  val r1: Regex = &#8220;&#8221;&#8221;([^aeiouAEIOU\d\s]+)([^\d\s]*)$&#8221;&#8221;&#8221;.r
+  val r2: Regex = &#8220;&#8221;&#8221;[aeiouAEIOU][^\d\s]*$&#8221;&#8221;&#8221;.r
+  val s1:String = &#8220;\u0061\u0079&#8221;
+  val s2:String = &#8220;\u0077&#8221; + s1
+  def apply(s: String): String = {
+    s.toList match {
+      case Nil =&gt; &#8220;&#8221;
+      case _ =&gt; s match {
+        case r1(c, r) =&gt; r ++ c ++ s1 case r2(_*) =&gt; s ++ s2
+        case _ =&gt; throw new
+RuntimeException(&#8220;Sorry&#8221;)
+      }
+    }
+  }
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Converts a given String to a JavaScript-based String</li>
+<li>B. Converts a Unix/MacOSX String format into a Windows String format</li>
+<li>C. Converts a word into the children&#8217;s language equivalent called &#8220;Pig Latin&#8221;</li>
+<li>D. Converts a given String to IPV6 format since IP numbers are running out</li>
+</ul>
+<!-- Correct: C -->
+
+<hr>
+<h3>9. Swift</h3>
+<pre><code class="language-swift">import Foundation
+
+let i = &#8220;Hell&#248;, Swift&#8221;
+
+let t = i.precomposedStringWithCanonicalMapping
+
+let c = t.utf8.map({UnicodeScalar($0+2)})
+let j = i.utf8.map({UnicodeScalar($0+1)}).count / 2
+
+var d = String(repeating: String(describing: c[j]), count: j)
+
+d.append(Character(&#8220;&#127462;&#127482;&#127482;&#127480;&#8221;))
+
+let result = &#8220;\(d): \(d.characters.count)&#8221;</code></pre>
+
+<p>What is the value of &#8220;result&#8221;?</p>
+<ul>
+<li>A. ......&#127462;&#127482;&#127482;&#127480;: 7</li>
+<li>B. ......&#127462;&#127482;&#127482;&#127480;: 8</li>
+<li>C. &#8220;&#8221;&#8221;&#8221;&#8221;&#8221;&#127462;&#127482;&#127482;&#127480;: 7</li>
+<li>D. &#8220;&#8221;&#8221;&#8221;&#8221;&#8221;&#127462;&#127482;&#127482;&#127480;: 8</li>
+</ul>
+<!-- Correct: A -->
+
+<hr>
+<h3>10. JavaScript</h3>
+<pre><code class="language-javascript">function thing (n) {
+    for (var i = 0; i &lt; n; i++) {
+        setTimeout(function () {console.log(i);}, 0);
+    }
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Prints numbers 0 through n</li>
+<li>B. Prints n n time</li>
+<li>C. Prints 0 n times</li>
+<li>D. Prints nothing</li>
+</ul>
+<!-- Correct: B -->
+
+<hr>
+<p>View HTML source to see the answers.</p>
+<p>I tried to keep the above close to what appeared on the physical
+cards. I haven't tried to correct the little mistakes and bizarre
+indentation throughout.</p>
+<p>It's fun!</p>    
+    ]]></description>
+<link>http://planspace.org/20170517-code_reading_questions_at_oscon/</link>
+<guid>http://planspace.org/20170517-code_reading_questions_at_oscon/</guid>
+<pubDate>Wed, 17 May 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Caffe and TensorFlow at Deep Learning Analytics</title>
 <description><![CDATA[
 
@@ -2558,59 +2780,6 @@ https://www.amazon.com/Tyranny-Twenty-Lessons-Twentieth-Century/dp/0804190119
 <link>http://planspace.org/20170331-on_tyranny/</link>
 <guid>http://planspace.org/20170331-on_tyranny/</guid>
 <pubDate>Fri, 31 Mar 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>TFRecords via Protocol Buffer Definitions</title>
-<description><![CDATA[
-
-<p>I've written about <a href="/20170323-tfrecords_for_humans/">how to use TFRecords</a>, and I've written about <a href="/20170329-protocol_buffers_in_python/">how protocol buffer messages are defined</a>. Since the data structures in TFRecords are defined as protocol buffer messages, we can use their definitions to understand them.</p>
-<p>Protocol buffer definitions remind me a little bit of <a href="https://en.wikipedia.org/wiki/Syntax_diagram">railroad diagrams</a> like the ones in Douglas Crockford's <a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a>. Here's how Crockford builds up number literals in JavaScript, starting from digits:</p>
-<p><img alt="integer railroad diagram" src="img/railroad_integer.png"></p>
-<p><img alt="fraction railroad diagram" src="img/railroad_fraction.png"></p>
-<p><img alt="exponent railroad diagram" src="img/railroad_exponent.png"></p>
-<p><img alt="number railroad diagram" src="img/railroad_number.png"></p>
-<p>Small components are fully defined, which can then be built into more complex constructs. (<a href="http://archive.oreilly.com/pub/a/javascript/excerpts/javascript-good-parts/syntax-diagrams.html">More examples</a>.) Protocol buffer definitions are built in much the same way.</p>
-<p>With comments, the TensorFlow source files <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/feature.proto">feature.proto</a> and <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/example/example.proto">example.proto</a> total 400 lines. There are only about 30 lines are not comments. These lines (rearranged slightly) do all the defining of the <code>Example</code> and <code>SequenceExample</code> formats that are used for TFRecords.</p>
-<pre><code>message BytesList {
-  repeated bytes value = 1;
-}
-message FloatList {
-  repeated float value = 1 [packed = true];
-}
-message Int64List {
-  repeated int64 value = 1 [packed = true];
-}
-message Feature {
-  oneof kind {
-    BytesList bytes_list = 1;
-    FloatList float_list = 2;
-    Int64List int64_list = 3;
-  }
-}
-message Features {
-  map&lt;string, Feature&gt; feature = 1;
-}
-message Example {
-  Features features = 1;
-}
-message FeatureList {
-  repeated Feature feature = 1;
-}
-message FeatureLists {
-  map&lt;string, FeatureList&gt; feature_list = 1;
-}
-message SequenceExample {
-  Features context = 1;
-  FeatureLists feature_lists = 2;
-}</code></pre>
-
-<p>These brief definitions give rise to most of the functionality <a href="/20170329-protocol_buffers_in_python/">described</a> for creating, writing, and reading the TFRecords formats.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170330-tfrecords_via_proto/</link>
-<guid>http://planspace.org/20170330-tfrecords_via_proto/</guid>
-<pubDate>Thu, 30 Mar 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Code Reading Questions at OSCON</title>
+  </head>
+  <body>
+    <article>
+<h1>Code Reading Questions at OSCON</h1>
+<p class="date">Wednesday May 17, 2017</p>
+<p><a href="https://www.oreilly.com/">O'Reilly</a>'s 2017 <a href="https://conferences.oreilly.com/oscon/">OSCON</a> had a "<a href="https://conferences.oreilly.com/oscon/oscon-tx/public/content/game">code game</a>" with ten questions covering nine different languages. It was supposed to get people engaged in the expo hall, but the quiz-like gamification content reminded me of my old <a href="/20150616-code_reading_question/">code reading question</a> idea. The questions are available in a <a href="https://cdn.oreillystatic.com/en/assets/1/event/214/oscon2017_code_game.pdf">PDF</a> (<a href="oscon2017_code_game.pdf">mirror</a>). I'll put the questions here as well.</p>
+<hr />
+<h3>1. Rust</h3>
+<pre><code class="language-rust">use std::collections::HashSet;
+use std::io::{BufRead, Result};
+
+fn f&lt;I: BufRead>(input: &mut I) -> Result&lt;usize> {
+    Ok(input.lines()
+       .map(|r| r.expect(“ara ara”))
+       .flat_map(|l| l.split_whitespace()
+                     .map(str::to_owned)
+                     .collect::&lt;Vec&lt;_>>())
+       .collect::&lt;HashSet&lt;_>>()
+       .len())
+}</code></pre>
+
+<p>This function reads input. What else does it do?</p>
+<ul>
+<li>A. Counts the number of white-space-separated “words”</li>
+<li>B. Counts the number of distinct “words”</li>
+<li>C. Finds the “word” that appears most frequently</li>
+<li>D. Finds the longest line</li>
+</ul>
+<!-- Correct: B -->
+
+<hr />
+<h3>2. JavaScript</h3>
+<pre><code class="language-javascript">function search(values, target) {
+  for(var i = 0; i &lt; values.length; ++i){
+    if (values[i] == target) { return i; }
+  }
+  return -1;
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Depth-first search</li>
+<li>B. Binary search</li>
+<li>C. Merge search</li>
+<li>D. Linear search</li>
+</ul>
+<!-- Correct: D -->
+
+<hr />
+<h3>3. Go</h3>
+<pre><code class="language-go">func function(s []float64) float64 {
+        var sum float64 = 0.0
+        for _, n := range s {
+                sum += n
+        }
+        return sum / float64(len(s))
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Sums the contents of a slice</li>
+<li>B. Finds the maximum value in a slice</li>
+<li>C. Averages the contents of a slice</li>
+<li>D. Appends values to a slice</li>
+</ul>
+<!-- Correct: C -->
+
+<hr />
+<h3>4. Perl 5</h3>
+<pre><code class="language-perl">sub mystery {
+    return @_ if @_ &lt; 2;
+    my $p = pop;
+    mystery(grep $_ &lt; $p, @_), $p,
+    mystery(grep $_ >= $p, @_);
+}</code></pre>
+
+<p>What does the mystery subroutine do?</p>
+<ul>
+<li>A. Binary search</li>
+<li>B. Merge sort</li>
+<li>C. Removes items that are too large or too small</li>
+<li>D. Quick sort</li>
+</ul>
+<!-- Correct: D -->
+
+<hr />
+<h3>5. Java 8</h3>
+<pre><code class="language-java">static void function(int[] ar)
+ {
+   Random rnd = ThreadLocalRandom.current();
+   for (int i = ar.length - 1; i > 0; i--)
+   {
+     int index = rnd.nextInt(i + 1);
+     int a = ar[index];
+     ar[index] = ar[i];
+     ar[i] = a;
+   }
+ }</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Merge sort</li>
+<li>B. Shuffle</li>
+<li>C. Increases size of array</li>
+<li>D. Decreases size of array</li>
+</ul>
+<!-- Correct: B -->
+
+<hr />
+<h3>6. Ruby</h3>
+<pre><code class="language-ruby">def f(hash)
+  prs = hash.inject({}) do |hsh, pr|
+    k, v = yield pr
+    hsh.merge(k => v)
+  end
+  Hash[prs]
+end</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Reverses an array</li>
+<li>B. Administers a booster shot</li>
+<li>C. Enters a freeway safely</li>
+<li>D. Transforms a hash</li>
+</ul>
+<!-- Correct: D -->
+
+<hr />
+<h3>7. Python</h3>
+<pre><code class="language-python">def function(list):
+     return [x for x in list if x == x[::-1]]</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Finds and returns all palindromes within the given list</li>
+<li>B. Reverses all strings in the given list</li>
+<li>C. Swaps the first and last letter in each word in the given list</li>
+<li>D. Returns a list of anagrams for each word in the given list</li>
+</ul>
+<!-- Correct: A -->
+
+<hr />
+<h3>8. Scala</h3>
+<pre><code class="language-scala">object Op {
+  val r1: Regex = “””([^aeiouAEIOU\d\s]+)([^\d\s]*)$”””.r
+  val r2: Regex = “””[aeiouAEIOU][^\d\s]*$”””.r
+  val s1:String = “\u0061\u0079”
+  val s2:String = “\u0077” + s1
+  def apply(s: String): String = {
+    s.toList match {
+      case Nil => “”
+      case _ => s match {
+        case r1(c, r) => r ++ c ++ s1 case r2(_*) => s ++ s2
+        case _ => throw new
+RuntimeException(“Sorry”)
+      }
+    }
+  }
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Converts a given String to a JavaScript-based String</li>
+<li>B. Converts a Unix/MacOSX String format into a Windows String format</li>
+<li>C. Converts a word into the children’s language equivalent called “Pig Latin”</li>
+<li>D. Converts a given String to IPV6 format since IP numbers are running out</li>
+</ul>
+<!-- Correct: C -->
+
+<hr />
+<h3>9. Swift</h3>
+<pre><code class="language-swift">import Foundation
+
+let i = “Hellø, Swift”
+
+let t = i.precomposedStringWithCanonicalMapping
+
+let c = t.utf8.map({UnicodeScalar($0+2)})
+let j = i.utf8.map({UnicodeScalar($0+1)}).count / 2
+
+var d = String(repeating: String(describing: c[j]), count: j)
+
+d.append(Character(“🇦🇺🇺🇸”))
+
+let result = “\(d): \(d.characters.count)”</code></pre>
+
+<p>What is the value of “result”?</p>
+<ul>
+<li>A. ......🇦🇺🇺🇸: 7</li>
+<li>B. ......🇦🇺🇺🇸: 8</li>
+<li>C. “”””””🇦🇺🇺🇸: 7</li>
+<li>D. “”””””🇦🇺🇺🇸: 8</li>
+</ul>
+<!-- Correct: A -->
+
+<hr />
+<h3>10. JavaScript</h3>
+<pre><code class="language-javascript">function thing (n) {
+    for (var i = 0; i &lt; n; i++) {
+        setTimeout(function () {console.log(i);}, 0);
+    }
+}</code></pre>
+
+<p>What does this function do?</p>
+<ul>
+<li>A. Prints numbers 0 through n</li>
+<li>B. Prints n n time</li>
+<li>C. Prints 0 n times</li>
+<li>D. Prints nothing</li>
+</ul>
+<!-- Correct: B -->
+
+<hr />
+<p>View HTML source to see the answers.</p>
+<p>I tried to keep the above close to what appeared on the physical
+cards. I haven't tried to correct the little mistakes and bizarre
+indentation throughout.</p>
+<p>It's fun!</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
