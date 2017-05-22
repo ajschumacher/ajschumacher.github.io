@@ -104,6 +104,14 @@ Canned estimators are concrete pre-defined models that follow the estimator conv
 
 ---
 
+### Sonnet
+
+Google's [DeepMind](https://deepmind.com/) group [released](https://deepmind.com/blog/open-sourcing-sonnet/) their [Sonnet](https://github.com/deepmind/sonnet) library, which is used in the code for their [learning to learn](https://github.com/deepmind/learning-to-learn) and [Differentiable Neural Computer](https://github.com/deepmind/dnc) projects. Sonnet isn't part of TensorFlow (it builds on top) but it is a Google project, so I'm including it in the list here. Sonnet has a modular approach compared to that of [Torch/nn](https://github.com/torch/nn). Also they have a cool logo.
+
+![Sonnet](img/sonnet.png)
+
+---
+
 ### Other APIs
 
 All the APIs that follow are not part of the official TensorFlow project. I guess you could use them.
@@ -134,10 +142,14 @@ Another one with a confusing name is [TensorLayer](https://github.com/zsdonghao/
 
 ---
 
+### ImageFlow
+
+[ImageFlow](https://github.com/HamedMP/ImageFlow) was supposed to make it easier to do image work with TensorFlow. It looks like it's abandoned.
+
+---
+
 My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.
 
 ---
 
-Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to [Andreas Mueller](https://twitter.com/amuellerml) of scikit-learn for his [summary](https://twitter.com/amuellerml/status/844300337666240514) of the relation between scikit-learn and TensorFlow.
-
-I'm working on [Building TensorFlow systems from components](http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823), a workshop at [OSCON 2017](https://conferences.oreilly.com/oscon/oscon-tx).
+Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to [Andreas Mueller](https://twitter.com/amuelerml) of scikit-learn for his [summary](https://twitter.com/amuellerml/status/844300337666240514) of the relation between scikit-learn and TensorFlow.

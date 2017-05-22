@@ -69,6 +69,10 @@ estimator.predict(data)           # run on new data</code></pre>
 <h3>Canned Estimators</h3>
 <p>Canned estimators are concrete pre-defined models that follow the estimator conventions. Currently there are a bunch right in <code>tf.contrib.learn</code>, such as <code>LinearRegressor</code> and <code>DNNClassifier</code>. There are some elsewhere. For example, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/factorization/g3doc/kmeans.md">kmeans</a> is in <code>tf.contrib.factorization</code>. It isn't clear to me exactly where all the canned estimators will eventually settle down in the API.</p>
 <hr />
+<h3>Sonnet</h3>
+<p>Google's <a href="https://deepmind.com/">DeepMind</a> group <a href="https://deepmind.com/blog/open-sourcing-sonnet/">released</a> their <a href="https://github.com/deepmind/sonnet">Sonnet</a> library, which is used in the code for their <a href="https://github.com/deepmind/learning-to-learn">learning to learn</a> and <a href="https://github.com/deepmind/dnc">Differentiable Neural Computer</a> projects. Sonnet isn't part of TensorFlow (it builds on top) but it is a Google project, so I'm including it in the list here. Sonnet has a modular approach compared to that of <a href="https://github.com/torch/nn">Torch/nn</a>. Also they have a cool logo.</p>
+<p><img alt="Sonnet" src="img/sonnet.png" /></p>
+<hr />
 <h3>Other APIs</h3>
 <p>All the APIs that follow are not part of the official TensorFlow project. I guess you could use them.</p>
 <p><img alt="Bucksstar Coffee" src="img/bucksstar.png" /></p>
@@ -84,10 +88,12 @@ estimator.predict(data)           # run on new data</code></pre>
 <p>Another one with a confusing name is <a href="https://github.com/zsdonghao/tensorlayer/">TensorLayer</a>. This is a separate package from TensorFlow and it's different from TensorFlow's layers API.</p>
 <p><img alt="TensorLayer logo" src="img/tensorlayer.png" /></p>
 <hr />
+<h3>ImageFlow</h3>
+<p><a href="https://github.com/HamedMP/ImageFlow">ImageFlow</a> was supposed to make it easier to do image work with TensorFlow. It looks like it's abandoned.</p>
+<hr />
 <p>My recommendation is to use the rich APIs available inside TensorFlow. You shouldn't have to import anything else, with the possible exception of Keras if you like it and are working before the Keras integration into TensorFlow is complete.</p>
 <hr />
-<p>Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to <a href="https://twitter.com/amuellerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
+<p>Thanks to Googler and TF-Slim developer Sergio Guadarrama for clarifying the development of the layers APIs, and thanks to <a href="https://twitter.com/amuelerml">Andreas Mueller</a> of scikit-learn for his <a href="https://twitter.com/amuellerml/status/844300337666240514">summary</a> of the relation between scikit-learn and TensorFlow.</p>    </article>
     <footer>
       <hr />
       <ul>
