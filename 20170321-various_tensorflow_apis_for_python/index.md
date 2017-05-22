@@ -106,7 +106,7 @@ Canned estimators are concrete pre-defined models that follow the estimator conv
 
 ### Sonnet
 
-Google's [DeepMind](https://deepmind.com/) group [released](https://deepmind.com/blog/open-sourcing-sonnet/) their [Sonnet](https://github.com/deepmind/sonnet) library, which is used in the code for their [learning to learn](https://github.com/deepmind/learning-to-learn) and [Differentiable Neural Computer](https://github.com/deepmind/dnc) projects. Sonnet isn't part of TensorFlow (it builds on top) but it is a Google project, so I'm including it in the list here. Sonnet has a modular approach compared to that of [Torch/nn](https://github.com/torch/nn). Also they have a cool logo.
+Google's [DeepMind](https://deepmind.com/) group [released](https://deepmind.com/blog/open-sourcing-sonnet/) their [Sonnet](https://github.com/deepmind/sonnet) library, which is used in the code for their [learning to learn](https://github.com/deepmind/learning-to-learn) and [Differentiable Neural Computer](https://github.com/deepmind/dnc) projects. Sonnet isn't part of TensorFlow (it builds on top) but it is a Google project, so I'm including it in the list here. Sonnet has a modular approach compared to that of [Torch/NN](https://github.com/torch/nn). Also they have a cool logo.
 
 ![Sonnet](img/sonnet.png)
 
