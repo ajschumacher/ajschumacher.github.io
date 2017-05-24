@@ -7,6 +7,272 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>More and Better: The New TensorFlow APIs</title>
+<description><![CDATA[
+
+<p><em>These are materials for a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a> given Wednesday May 24, 2017. (<a href="big.html">slides</a>) The Jupyter notebook and supporting files for code demos are available in a repository on GitHub: <a href="https://github.com/ajschumacher/tf_api_20170524">tf_api_20170524</a>.</em></p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p>Before starting, I want to take a moment to notice how great it is to have a webinar. Thank you for checking it out! We are all really lucky. If this isn't nice, I don't know what is.</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>Hi! I'm Aaron. This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr>
+<p><img alt="Deep Learning Analytics" src="img/dla.png"></p>
+<hr>
+<p>I work for a company called Deep Learning Analytics. You can find out more about DLA at <a href="https://www.deeplearninganalytics.com/">deeplearninganalytics.com</a>. We work with a number of frameworks, and I've been keeping an eye on TensorFlow.</p>
+<p>I do <em>not</em> work for Google, and I'm not a core TensorFlow developer. I'm just talking about my view of things, which is not authoritative or official.</p>
+<hr>
+<p>motivation</p>
+<hr>
+<p>Why this talk? What is it about, and who should care?</p>
+<hr>
+<p>"a low-level library, meaning you&#8217;ll be multiplying matrices and vectors." (2015)</p>
+<hr>
+<p>This is a description of TensorFlow from an <a href="http://fastml.com/what-you-wanted-to-know-about-tensorflow/">article</a> that came out the same month TensorFlow was released, in November of 2015. It was pretty true then.</p>
+<p>Some people thought this was fine. It was like <a href="http://deeplearning.net/software/theano/">Theano</a>.</p>
+<p>Some people thought it was not so fine, and so they may have decided TensorFlow was not for them.</p>
+<p>But while Theano hasn't radically expanded its API to include tons of higher-level ways of using it, TensorFlow has. TensorFlow is no longer only a low-level library.</p>
+<hr>
+<pre><code class="language-python">...TensorFlow 1.2.0rc0</code></pre>
+
+<hr>
+<p>TensorFlow wasn't "finished" when it was released as open source. It only hit version 1.0 in February of this year. And that means the low-level API is largely stabilized. But high-level APIs are being added at a rapid pace.</p>
+<p>I gave a <a href="/20170509-building_tensorflow_systems_from_components/">workshop</a> on TensorFlow at <a href="https://conferences.oreilly.com/oscon/">OSCON</a> two weeks ago, and one of the APIs I'll talk about today is new since then. I'll also mention things that aren't going to be in TensorFlow for at least a few weeks yet.</p>
+<p>(I'm referring to the <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/data"><code>Dataset</code> API</a>, which entered <code>contrib</code> in 1.2, and the Keras model <code>get_estimator</code> method, respectively.)</p>
+<hr>
+<p>"I don't know which API to use." (2017)</p>
+<hr>
+<p>This is a sentiment I encountered in talking to people at the <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/">DC Deep Learning Working Group</a>.</p>
+<p>There are now so many ways of using TensorFlow, it can be overwhelming, and you might not know where to start. If you do jump in, you might only see one part of the API and not know what else you're missing.</p>
+<hr>
+<p>a tour of TensorFlow APIs</p>
+<hr>
+<p>This talk is not for people who are expert TensorFlow developers or people who have been following TensorFlow development super closely.</p>
+<p>This talk is for people who are new to TensorFlow, or people who may have tried TensorFlow in the past but haven't been following more recent developments.</p>
+<p>The hope is that you'll understand better the options you have for using TensorFlow and be able to choose what to explore.</p>
+<hr>
+<ul>
+<li>language survey</li>
+<li>Python survey</li>
+<li>Python focus</li>
+</ul>
+<hr>
+<p>We'll start very broad and then narrow in on a few high-level APIs for TensorFlow.</p>
+<p>First, considering the way TensorFlow works with multiple programming languages can illuminate the core of TensorFlow's low-level design. This introduces the low-level Python API, and the key distinction between implementations on and off the TensorFlow graph.</p>
+<p>We're not going to cover them all equally, but we'll survey a lot of Python API options and how they relate.</p>
+<p>Finally, we'll focus on aspects of the core TensorFlow Python APIs, especially Keras and the Estimator API, with a little bit more detail and code examples.</p>
+<p>(The following section is based on <a href="/20170320-tensorflow_apis_for_various_languages/">TensorFlow APIs for Various Languages</a>.)</p>
+<hr>
+<p>What even is TensorFlow?</p>
+<hr>
+<p>Here's one way to think about TensorFlow.</p>
+<hr>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<hr>
+<p>The beating heart of TensorFlow is the Distributed Execution Engine, or runtime.</p>
+<p>One way to think of it is as a <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">virtual machine</a> whose language is the TensorFlow graph.</p>
+<p>That core is written in C++, but lots of TensorFlow functionality lives in the frontends. In particular, there's a lot in the Python frontend.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr>
+<p><img alt="Python programming language" src="img/python.png"></p>
+<hr>
+<p>Python is the richest frontend for TensorFlow. It's what we'll use today.</p>
+<p>You should remember that not everything in the Python TensorFlow API touches the graph. Some parts are just Python.</p>
+<hr>
+<p><img alt="R programming language" src="img/rlang.png"></p>
+<hr>
+<p>R has an unofficial <a href="https://rstudio.github.io/tensorflow/">TensorFlow API</a> which is kind of interesting in that it just wraps the Python API. It's really more like an R API to the Python API to TensorFlow. So when you use it, you write R, but Python also runs. This is not how TensorFlow encourages languages to implement TensorFlow APIs, but it's out there.</p>
+<hr>
+<p><img alt="C programming language" src="img/clang.png"></p>
+<hr>
+<p>The way TensorFlow encourages API development is via TensorFlow's C bindings.</p>
+<hr>
+<p><img alt="C++ programming language" src="img/cplusplus.png"></p>
+<hr>
+<p>You could use C++, of course.</p>
+<hr>
+<p><img alt="Java programming language" src="img/javalang.png"></p>
+<hr>
+<p>Also there's Java.</p>
+<hr>
+<p><img alt="Go programming language" src="img/golang.png"></p>
+<hr>
+<p>And there's Go.</p>
+<p>Python, C++, Java, and Go are the only languages with official Google-blessed TensorFlow APIs. But there are projects offering APIs that interface with TensorFlow via the C bindings.</p>
+<hr>
+<p><img alt="Rust programming language" src="img/rust.png"></p>
+<hr>
+<p>There's Rust.</p>
+<hr>
+<p><img alt="C#" src="img/c_sharp.png"></p>
+<hr>
+<p>And there's C#.</p>
+<hr>
+<p><img alt="Julia" src="img/julia.png"></p>
+<hr>
+<p>And there's Julia.</p>
+<hr>
+<p><img alt="Haskell programming language" src="img/haskell.png"></p>
+<hr>
+<p>And there's even Haskell!</p>
+<hr>
+<p><img alt="TensorFlow three-tier diagram" src="img/tf_three_tiers.png"></p>
+<hr>
+<p>Currently, a rough summary is that languages other than Python have TensorFlow support that is close to the runtime. Basically make your ops and run them.</p>
+<p>This is likely to be enough support to deploy a TensorFlow system doing inference in whatever language you like, but if you're developing and training systems you probably still want to use Python.</p>
+<hr>
+<p>graph or not graph?</p>
+<hr>
+<p>So this is a distinction to think about: Am I using the TensorFlow graph, or not?</p>
+<p>The distinction will be pretty clear when using the low-level API. It becomes less obvious when using higher-level APIs, but the situation there is that you can safely assume they're using the graph.</p>
+<hr>
+<p>Python APIs</p>
+<hr>
+<p>So, what's this about multiple Python APIs?</p>
+<p>TensorFlow started with a low-level API, and it's always been possible and even a good idea to build higher-level APIs on top of it. Plenty of people have done so.</p>
+<p>Let's start by checking out some APIs that are entirely outside of TensorFlow.</p>
+<p>(The following section is based on <a href="/20170321-various_tensorflow_apis_for_python/">Various TensorFlow APIs for Python</a>.)</p>
+<hr>
+<p><img alt="Bucksstar Coffee" src="img/bucksstar.png" height="100%"></p>
+<hr>
+<p>It seems like lots of projects got names involving one or the other of "tensor" or "flow". It doesn't mean they're part of TensorFlow, and it doesn't mean they're good.</p>
+<p>Of course, maybe they are; some of these could be good for you, for all I know.</p>
+<hr>
+<p><img alt="TFLearn logo" src="img/tflearn.png" height="100%"></p>
+<hr>
+<p>The confusingly named <a href="https://github.com/tflearn/tflearn">TFLearn</a> (no space; perhaps more clearly identified as <a href="(http://tflearn.org/)">TFLearn.org</a>) is not at all the same thing as the TF Learn (with a space) that appears in TensorFlow at <code>tf.contrib.learn</code>. TFLearn is a <a href="http://stackoverflow.com/questions/38859354/what-is-the-difference-between-tf-learn-aka-scikit-flow-and-tflearn-aka-tflea">separate</a> Python package that uses TensorFlow. It seems like it aspires to be like Keras. Even the TFLearn logo looks like a knock-off.</p>
+<hr>
+<p><img alt="TensorLayer logo" src="img/tensorlayer.png"></p>
+<hr>
+<p>Another one with a confusing name is <a href="https://github.com/zsdonghao/tensorlayer/">TensorLayer</a>. This is a separate package from TensorFlow and it's different from TensorFlow's layers API.</p>
+<hr>
+<p>ImageFlow</p>
+<hr>
+<p><a href="https://github.com/HamedMP/ImageFlow">ImageFlow</a> was supposed to make it easier to do image work with TensorFlow. It looks like it's abandoned.</p>
+<hr>
+<p>Pretty Tensor</p>
+<hr>
+<p><a href="https://github.com/google/prettytensor">Pretty Tensor</a> is still a Google project, so it might be worth checking out if you really like <a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent interfaces</a> with lots of chaining, like <a href="https://d3js.org/">d3</a>.</p>
+<hr>
+<p><img alt="Sonnet" src="img/sonnet.png"></p>
+<hr>
+<p>Google's <a href="https://deepmind.com/">DeepMind</a> group <a href="https://deepmind.com/blog/open-sourcing-sonnet/">released</a> their <a href="https://github.com/deepmind/sonnet">Sonnet</a> library, which is used in the code for their <a href="https://github.com/deepmind/learning-to-learn">learning to learn</a> and <a href="https://github.com/deepmind/dnc">Differentiable Neural Computer</a> projects. Sonnet isn't part of TensorFlow (it builds on top) but it is a Google project. Sonnet has a modular approach compared to that of <a href="https://github.com/torch/nn">Torch/NN</a>. Also they have a cool logo.</p>
+<hr>
+<p><img alt="TensorFlow six-tier diagram" src="img/tf_six_tiers.png"></p>
+<hr>
+<p>The previous APIs exist outside of TensorFlow. Let's now talk about APIs <em>inside</em> TensorFlow.</p>
+<p>We'll trace the development of the stack of available APIs before looking at some code examples.</p>
+<p>(Image from the TensorFlow Dev Summit 2017 <a href="https://www.youtube.com/watch?v=4n1AHvDvVvw">keynote</a>.)</p>
+<hr>
+<p>Python Frontend (op level)</p>
+<hr>
+<p>You can continue to use TensorFlow's low-level APIs.</p>
+<p>There are ops, like <code>tf.matmul</code> and <code>tf.nn.relu</code>, which you might use to build a neural network architecture in full detail. To do really novel things, you may want this level of control. But you may also prefer to work with larger building blocks. The other other APIs below will mostly specialize in this kind of application.</p>
+<p>There are also ops like <code>tf.image.decode_jpeg</code> (and many others) which may be necessary but don't necessarily relate to what is usually considered the architecture of neural networks. Some higher-level APIs wrap some of this functionality, but they usually stay close to the building of network architectures and the training of such networks once defined.</p>
+<hr>
+<p>Layers</p>
+<hr>
+<p>The "layer" abstraction is a natural way to think about deep neural network design.</p>
+<p>This <code>layers</code> API provides a first higher level of abstraction over writing things out by individual ops. For example, <code>tf.layers.conv2d</code> implements a convolution layer that involves multiple individual ops.</p>
+<hr>
+<p><img alt="slim... shady?" src="img/slim_shady.png"></p>
+<hr>
+<p>You may have heard of <a href="https://research.googleblog.com/2016/08/tf-slim-high-level-library-to-define.html">TF-Slim</a>. TF-Slim has a number of <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">components</a> but it looks like essentially we're seeing the following: <code>tf.contrib.slim.layers</code> became <code>tf.contrib.layers</code> becomes <code>tf.layers</code>.</p>
+<p>Sergio Guadarrama, one of the TF-Slim authors, generously confirmed that TensorFlow is converging on a layers API and implementation along these lines, but warns that there can still be some differences. He points out that <code>tf.contrib.layers</code> have <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/contrib/framework/arg_scope"><code>arg_scope</code></a>, while <code>tf.layers</code> don't.</p>
+<p>Other parts of TF-Slim are likely also worth using, and there is a collection of <a href="https://github.com/tensorflow/models/tree/master/slim">models that use TF-Slim</a> in the <a href="https://github.com/tensorflow/models">TensorFlow models repository</a>.</p>
+<p>Historical note: It looks like before calling them layers, TF-Slim overloaded the word "op" for their layer concept (see <a href="https://github.com/tensorflow/models/tree/master/inception/inception/slim">earlier documentation</a>).</p>
+<p>TF-Slim is in the TensorFlow codebase as <code>tf.contrib.slim</code>.</p>
+<hr>
+<p><img alt="Keras" src="img/keras.jpg" height="100%"></p>
+<hr>
+<p><a href="https://keras.io/">Keras</a> was around before TensorFlow. It was always a high-level API for neural nets, originally running with <a href="http://www.deeplearning.net/software/theano/">Theano</a> as its backend.</p>
+<p>After the release of TensorFlow, Keras moved to also work with TensorFlow as a backend. And now TensorFlow is absorbing at least some aspects of the Keras project into the TensorFlow codebase, though <a href="https://twitter.com/fchollet">Fran&#231;ois Chollet</a> seems likely to continue championing Keras as a very fine project in its own right. (See also his response to a <a href="https://www.quora.com/What-will-Keras-do-with-TensorFlow-Slim">Quora question</a> about any possible relationship between TF-Slim and Keras.)</p>
+<p>Keras is appearing in the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/keras">tf.contrib.keras</a> and should move to <code>tf.keras</code> at TensorFlow 1.3, at which point it will also be possible to turn Keras models directly into Estimators, which we'll see next.</p>
+<hr>
+<p><img alt="scikit-learn logo" src="img/sklearn.png" height="100%"></p>
+<hr>
+<p>Distinct from TensorFlow, the <a href="http://scikit-learn.org/">scikit-learn</a> project makes a lot of machine learning models conveniently available in Python.</p>
+<p>A key design element of scikit is that many different models offer the same simple API: they are all implemented as <em>estimators</em>. So regardless of whether the model is linear regression or a GBM (Gradient Boosting Machine), you get the same simple interface.</p>
+<p>The estimators API started as <a href="https://github.com/tensorflow/skflow">skflow</a> ("scikit-flow") before moving into the TensorFlow codebase as <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/learn/python/learn">tf.contrib.learn</a> ("TF Learn") and now the base estimator code is getting situated in <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/estimator">tf.estimator</a> and <a href="/20170521-navigating_tensorflow_estimator_documentation/">documentation</a> is accumulating.</p>
+<hr>
+<p>Estimators</p>
+<hr>
+<p>The Estimators API really just defines an interface. You can design models that fit into the Estimator system, or you can use Estimator-based models that are already "set up" to varying degrees.</p>
+<hr>
+<p>Canned Estimators</p>
+<hr>
+<p>Canned estimators are concrete pre-defined models that follow the estimator conventions. Currently there are a bunch right in <code>tf.contrib.learn</code>, such as <code>LinearRegressor</code> and <code>DNNClassifier</code>. There are some elsewhere. For example, <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/factorization/g3doc/kmeans.md">kmeans</a> is in <code>tf.contrib.factorization</code>. It isn't clear to me exactly where all the canned estimators will eventually settle down in the API; some may eventually move out of <code>contrib</code>.</p>
+<p>"Canned Estimators" are a lot like scikit-learn in the level at which they make functionality available to programmers.</p>
+<hr>
+<ul>
+<li>automatic checkpoints</li>
+<li>automatic logging</li>
+<li>separate train/eval/pred</li>
+<li>easily train distributed</li>
+</ul>
+<hr>
+<p>What do you get with Estimators? A bunch of things!</p>
+<hr>
+<p><img alt="data pipeline" src="img/tf_data_pipeline.gif"></p>
+<hr>
+<p>One more thing: loading data. A lot of people have gotten hung up on the complicated multi-thread, multi-queue, queue-runner design that TensorFlow has espoused for loading data.</p>
+<hr>
+<p>Datasets</p>
+<hr>
+<p>TensorFlow developers <a href="https://github.com/tensorflow/tensorflow/issues/7951">listened</a>, and they came up with <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/data">Datasets</a>, which is a new API that wraps all the complexity in a pretty nice interface.</p>
+<p>This is new as of about a week ago.</p>
+<hr>
+<p><img alt="latest diagram" src="img/io17_tiers.png"></p>
+<hr>
+<p>So this is the latest diagram from Google I/O. It adds XLA, which I won't talk about.</p>
+<p>(Image from <a href="https://www.youtube.com/watch?v=OzAdKMPgUt4">TensorFlow Frontiers</a> at Google I/O '17.)</p>
+<hr>
+<p>code!</p>
+<hr>
+<p>Let's look at some code, shall we?</p>
+<p>Go to a notebook (<a href="https://github.com/ajschumacher/tf_api_20170524/blob/master/APIs_start.ipynb">start</a>/<a href="https://github.com/ajschumacher/tf_api_20170524/blob/master/APIs_finish.ipynb">finish</a>) in the <a href="https://github.com/ajschumacher/tf_api_20170524">tf_api_20170524</a> repo.</p>
+<hr>
+<p>more</p>
+<hr>
+<p>For lots more, there are plenty of places you can go.</p>
+<p>My <a href="/">blog</a> is one place.</p>
+<p><a href="https://www.tensorflow.org/">TensorFlow</a>'s documentation is another.</p>
+<p>The latest <a href="https://www.youtube.com/watch?v=OzAdKMPgUt4">video</a>s from Google is another. The I/O 2017 videos include a few TensorFlow ones, and there's also still the February TensorFlow DevFest video collection.</p>
+<hr>
+<p><img alt="Deep Learning with Python book cover" src="img/chollet_dlp.png"></p>
+<hr>
+<p>I want to also mention this book by the author of Keras: <a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a>. It's pretty good. If you're looking to understand deep learning, this is now the book I recommend. It's currently in pre-release, and the available chapters are pretty great already. It focuses on Keras rather than TensorFlow per se, but especially since Keras is now <em>in</em> TensorFlow, any Keras thing is also a TensorFlow thing.</p>
+<p>The first chapter is free.</p>
+<hr>
+<p><img alt="necessary qualities" src="img/qualities.png"></p>
+<hr>
+<p>I want to close with a thought that is not so much about programming. This is a question I got on LinkedIn, and it made me think.</p>
+<p>It is eventually necessary to have some proficiency with particular tools, but the qualities I find most important are not really particular tool skills.</p>
+<p>What problem do you need to solve? Can you identify it, articulate it, frame it in a way that makes it tractable? Can you work with what's available to come up with a solution?</p>
+<p>I hope knowing more about TensorFlow is helpful to you as you go forward with your work, but I also think it's important to remember that TensorFlow is just a tool. Your success comes from what you do.</p>
+<hr>
+<p>Thanks!</p>
+<hr>
+<p>Thank you!</p>
+<hr>
+<p></p><center>
+planspace.org
+<p>@planarrowspace
+</p></center>
+<hr>
+<p>This is just me again.</p>    
+    ]]></description>
+<link>http://planspace.org/20170524-more_and_better_new_tensorflow_apis/</link>
+<guid>http://planspace.org/20170524-more_and_better_new_tensorflow_apis/</guid>
+<pubDate>Wed, 24 May 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Navigating TensorFlow Estimator Documentation</title>
 <description><![CDATA[
 
@@ -2390,200 +2656,6 @@ for _ in range(1e6):
 <link>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</link>
 <guid>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</guid>
 <pubDate>Tue, 04 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Images and TFRecords</title>
-<description><![CDATA[
-
-<p>There are a number of ways to work with images in TensorFlow and, if you wish, with TFRecords. These methods aren't so mysterious if you <a href="/20170323-tfrecords_for_humans/">understand TFRecords</a> and a little bit about how digital images work.</p>
-<hr>
-<h2>Representations for Images</h2>
-<!--
-
-(I kind of like this paragraph, at least in that it gives credit for the image source, but it's not really key to the development here.)
-
-Wikipedia [tells me](https://en.wikipedia.org/wiki/Keep_Calm_and_Carry_On) that this [poster](https://commons.wikimedia.org/wiki/File:Freedom_Is_In_Peril_Defend_It_With_All_Your_Might.svg), and the more widely known "Keep Calm and Carry On," were not very well received [in 1939](img/freedom_in_tube.jpg). Perhaps its time has come.
-
--->
-
-<p>For example, this image is 600 pixels tall and 400 pixels wide. Every pixel has some intensity in red, green, and blue: three values, or channels, for every pixel. This image has shape [600, 400, 3]. (The order of the dimensions doesn't matter as long as everybody agrees on the convention.) The display on your screen is like a dense matrix; it is a <a href="https://en.wikipedia.org/wiki/Raster_graphics">raster graphic</a>.</p>
-<p><img alt="FREEDOM IS IN PERIL / DEFEND IT WITH ALL YOUR MIGHT" src="img/freedom.png"></p>
-<p>Neural networks that work with images typically work with this kind of dense matrix representation. For this image, the matrix will have 600 * 400 * 3 = 720,000 values. If each value is an unsigned 8-bit integer, that's 720,000 bytes, or about three quarters of a megabyte.</p>
-<p>Images sometimes also have an alpha transparency channel, which is a fourth channel in a color image, but not necessary if there's nothing else "underneath" the image. And not all images are color; greyscale (black and white) images can have just one channel.</p>
-<p>Using unsigned 8-bit integers (256 possible values) for each value in the image array is enough for displaying images to humans. But when working with image data, it isn't uncommon to switch to 32-bit floats, for example. This quadruples the size of the data in memory. As always, remain aware of your data types.</p>
-<h3>Dense Array</h3>
-<p>One way to store complete raster image data is by serializing a NumPy array to disk with <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.save.html"><code>numpy.save</code></a>.</p>
-<pre>720,080 bytes  <a href="img/freedom.npy">freedom.npy</a></pre>
-
-<p>The file <code>freedom.npy</code> has 80 more bytes than the ones required to store the array values. Those extra bytes specify things like the dimensions of the array. If we save raw array values in TFRecords, we'll also have to keep track of this additional information.</p>
-<p>Because storing one or more value for every pixel takes so many bytes, file formats for images typically do something cleverer.</p>
-<h3>JPEG</h3>
-<p><a href="https://en.wikipedia.org/wiki/JPEG">JPEG</a> is lossy. When you save an array as JPG and then read from the JPG, it will generally look about the same, but you won't necessarily get back exactly the same values for your array. JPEG is like <a href="https://en.wikipedia.org/wiki/MP3">MP3</a> for images. JPEG is good for photographs.</p>
-<pre> 25,136 bytes  <a href="img/freedom.jpg">freedom.jpg</a></pre>
-
-<p><code>freedom.jpg</code> is less than 4% the size of the NumPy array, and it still looks pretty good. It does have some ringing artifacts around the letter edges. JPEG file size depends on compression parameters when saving, and on the encoder used. For example, Google <a href="https://research.googleblog.com/2017/03/announcing-guetzli-new-open-source-jpeg.html">released</a> their <a href="https://github.com/google/guetzli/">Guetzli</a> JPEG encoder, which can produce smaller files but takes more computation to do so.</p>
-<pre> 46,567 bytes  <a href="img/freedom2.jpg">freedom2.jpg</a></pre>
-
-<p><code>freedom2.jpg</code> is another JPEG file, saved with higher quality. Ringing artifacts are pretty much gone. The file is still under 7% the size of the NumPy arrray.</p>
-<h3>PNG</h3>
-<p><a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> is lossless. If you save as PNG and then read from the PNG, you can get back exactly what you had originally. PNG is like <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">ZIP</a> for images, but image viewers do the "un-zipping" automatically so they can put a raster image on the screen. PNG is like <a href="https://en.wikipedia.org/wiki/GIF">GIF</a> without animation.</p>
-<pre> 33,192 bytes  <a href="img/freedom.png">freedom.png</a></pre>
-
-<p><code>freedom.png</code> is under 5% the size of the NumPy array, and it preserves the image perfectly. It's less often used, but compression parameters can also affect PNG size, and the encoder can make a difference too. PNG uses deflate (zlip) compression, so Google's <a href="https://github.com/google/zopfli">Zopfli</a> algorithm can be used, for example, while <a href="https://github.com/google/brotli">Brotli</a> cannot.</p>
-<h3>SVG</h3>
-<p><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> doesn't represent pixels directly at all, but represents in a text format the geometry of shapes in the image. SVG images can look good at any zoom level; they don't suffer from pixelization. They can also be edited with different tools than raster images. And for simple images, an SVG can be quite small. SVG is like <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>; you can look at it as text, but to see it as intended requires a program like a web browser.</p>
-<pre> 42,721 bytes  <a href="img/freedom.svg">freedom.svg</a></pre>
-
-<p><code>freedom.svg</code> turns out not be a super efficient encoding of the image; it represents all the letter outlines instead of using plain text in some font, for example. But it represents the image fundamentally differently from just recreating pixels, and it's still under 6% the size of the NumPy array file.</p>
-<h3>TFRecords?</h3>
-<p>TFRecords don't know anything about image formats. You just put bytes in them. So you have your choice of whether that means you store dense arrays of values or a well-known image format. TensorFlow provides <a href="https://www.tensorflow.org/api_guides/python/image">image format support</a> for JPEG, PNG, and GIF in the computation graph.</p>
-<hr>
-<h2>Images without TensorFlow</h2>
-<p>As always, <a href="/20170312-use_only_what_you_need_from_tensorflow/">you have a choice about whether you need to do everything with TensorFlow</a>. If you're loading data batches with a <code>feed_dict</code>, in particular, feel free to use whatever Python functionality you're comfortable with. Even if you're not, you'll probably want to do some work with your data outside of TensorFlow before you move all your computation into the graph.</p>
-<p>The Matplotlib <a href="http://matplotlib.org/users/image_tutorial.html">image tutorial</a> recommends using <a href="http://matplotlib.org/api/image_api.html#matplotlib.image.imread"><code>matplotlib.image.imread</code></a> to read image formats from disk. This function will automatically change image array values to floats between zero and one, and it doesn't give you options about how to read the image.</p>
-<p>The <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.misc.imread.html">scipy.misc.imread</a> function uses the Python Imaging Library (PIL) to support many image formats, including PNG and JPEG. This function also has some useful options. The original <code>freedom.png</code> has an alpha channel which we don't need. Passing <code>mode='RGB'</code> tells the reader to give us just three color channels.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import scipy.misc
-&gt;&gt;&gt; image = scipy.misc.imread('freedom.png', mode='RGB')
-&gt;&gt;&gt; type(image)
-## numpy.ndarray
-&gt;&gt;&gt; image.shape
-## (600, 400, 3)
-&gt;&gt;&gt; image.dtype
-## dtype('uint8')</code></pre>
-
-<p>Matplotlib's <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow">imshow</a> is good for checking out what image arrays look like. (Also specify <code>%matplotlib inline</code> if you're in a notebook.)</p>
-<pre><code class="language-python">&gt;&gt;&gt; import matplotlib.pyplot as plt
-&gt;&gt;&gt; plt.imshow(image)</code></pre>
-
-<p>NumPy gives us a way to save and load its arrays.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; np.save('freedom.npy', image)
-&gt;&gt;&gt; same_image = np.load('freedom.npy')</code></pre>
-
-<p>As long as we have <code>scipy.misc</code> imported, we can use <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.misc.imsave.html">scipy.misc.imsave</a> to write various image formats as well. For saving, <a href="http://matplotlib.org/api/image_api.html#matplotlib.image.imsave">matplotlib.image.imsave</a> actually has more options. Neither of these offer control over compression level, for example.</p>
-<pre><code class="language-python">&gt;&gt;&gt; scipy.misc.imsave('freedom.jpg', image)</code></pre>
-
-<hr>
-<h2>PNG and JPEG with TensorFlow</h2>
-<p>TensorFlow has ops for decoding and encoding PNGs and JPEGs, so we can put these operations into the computation graph.</p>
-<p>Above, <code>imread</code> both read a file from disk and decoded it, and <code>imsave</code> both encoded an image and wrote it to disk. The TensorFlow functionality decouples the decoding and encoding from file reading and writing. This example will avoid using TensorFlow's file reading and writing, to focus just on the encoding and decoding.</p>
-<p>The <code>channels=3</code> passed to <code>tf.image.decode_image()</code> is the equivalent of <code>mode='RGB'</code> above. We don't want to get the alpha channel from the PNG file.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
-&gt;&gt;&gt; with open('freedom.png', 'rb') as f:
-...     png_bytes = f.read()
-&gt;&gt;&gt; bytes = tf.placeholder(tf.string)
-&gt;&gt;&gt; decode_png = tf.image.decode_image(bytes, channels=3)
-&gt;&gt;&gt; session = tf.Session()
-&gt;&gt;&gt; image = session.run(decode_png, feed_dict={bytes: png_bytes})
-&gt;&gt;&gt; type(image)
-## numpy.ndarray
-&gt;&gt;&gt; image.shape
-## (600, 400, 3)
-&gt;&gt;&gt; image.dtype
-## dtype('uint8')</code></pre>
-
-<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/image/decode_image"><code>tf.image.decode_image</code></a> here intelligently uses <a href="https://www.tensorflow.org/api_docs/python/tf/image/decode_png"><code>tf.image.decode_png</code></a>, <a href="https://www.tensorflow.org/api_docs/python/tf/image/decode_jpeg"><code>tf.image.decode_jpeg</code></a>, or <a href="https://www.tensorflow.org/api_docs/python/tf/image/decode_gif"><code>tf.image.decode_gif</code></a>, similar to how above <code>imread</code> can handle a variety of formats. You can also use the appropriate function directly.</p>
-<p>Above, <code>imsave</code> supported writing various formats, choosing the one appropriate for the filename specified. In TensorFlow, you have to use <a href="https://www.tensorflow.org/api_docs/python/tf/image/encode_jpeg"><code>tf.image.encode_jpeg</code></a> or <a href="https://www.tensorflow.org/api_docs/python/tf/image/encode_png"><code>tf.image.encode_png</code></a> directly, and both provide extra arguments controlling compression and more.</p>
-<pre><code class="language-python">&gt;&gt;&gt; tensor = tf.placeholder(tf.uint8)
-&gt;&gt;&gt; encode_jpeg = tf.image.encode_jpeg(tensor)
-&gt;&gt;&gt; jpeg_bytes = session.run(encode_jpeg, feed_dict={tensor: image})
-&gt;&gt;&gt; with open('freedom.jpg', 'wb') as f:
-...     f.write(jpeg_bytes)</code></pre>
-
-<p>With the default settings, TensorFlow encodes a larger JPEG than <code>imsave</code>, coming in at 46,567 bytes. It looks pretty good.</p>
-<hr>
-<h2>PNG and JPEG in TFRecords</h2>
-<p>We can put plain bytes into <code>Example</code> TFRecords <a href="/20170323-tfrecords_for_humans/">without too much trouble</a>. So PNG or JPEG images are easily handled.</p>
-<pre><code class="language-python">my_example = tf.train.Example(features=tf.train.Features(feature={
-    'png_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=[png_bytes]))
-}))
-
-my_example_str = my_example.SerializeToString()
-with tf.python_io.TFRecordWriter('my_example.tfrecords') as writer:
-    writer.write(my_example_str)
-
-reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
-those_examples = [tf.train.Example().FromString(example_str)
-                  for example_str in reader]
-same_example = those_examples[0]
-
-same_png_bytes = same_example.features.feature['png_bytes'].bytes_list.value[0]</code></pre>
-
-<p>When the <code>same_png_bytes</code> is decoded by <code>tf.image.decode_image</code>, as above, or <code>tf.image.decode_png</code> directly, you'll get back a tensor with the correct dimensions, because PNG (and JPEG) include that information in their encodings.</p>
-<hr>
-<h2>Image Arrays in TFRecords</h2>
-<p>If you want to save dense matrix representations in TFRecords, there's a little bit of bookkeeping to do, but it isn't too bad.</p>
-<pre><code>image_bytes = image.tostring()
-image_shape = image.shape
-
-my_example = tf.train.Example(features=tf.train.Features(feature={
-    'image_bytes': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_bytes])),
-    'image_shape': tf.train.Feature(int64_list=tf.train.Int64List(value=image_shape))
-}))
-
-my_example_str = my_example.SerializeToString()
-with tf.python_io.TFRecordWriter('my_example.tfrecords') as writer:
-    writer.write(my_example_str)
-
-reader = tf.python_io.tf_record_iterator('my_example.tfrecords')
-those_examples = [tf.train.Example().FromString(example_str)
-                  for example_str in reader]
-same_example = those_examples[0]
-
-same_image_bytes = same_example.features.feature['image_bytes'].bytes_list.value[0]
-same_image_shape = list(
-    same_example.features.feature['image_shape'].int64_list.value)</code></pre>
-
-<p>With the information recovered from TFRecord form, it's easy to use NumPy to put the image back together.</p>
-<pre><code class="language-python">same_image = np.fromstring(same_image_bytes, dtype=np.uint8)
-same_image.shape = same_image_shape</code></pre>
-
-<p>You can do the same using TensorFlow.</p>
-<pre><code class="language-python">shape = tf.placeholder(tf.int32)
-new_image = tf.reshape(tf.decode_raw(bytes, tf.uint8), shape)
-same_image = session.run(encode_jpeg, feed_dict={bytes: same_image_bytes,
-                                                 shape: same_image_shape})</code></pre>
-
-<p>In this example, however, the parsing of the <code>Example</code> was already done outside the TensorFlow graph, so there isn't a strong reason to stay inside the graph here.</p>
-<hr>
-<h3>Comparison to Caffe and LMDB</h3>
-<p><a href="http://caffe.berkeleyvision.org/">Caffe</a> is an older deep learning framework that can work with data stored in <a href="https://symas.com/offerings/lightning-memory-mapped-database/">LMDB</a> on-disk databases, similar to how TensorFlow can work with data stored in TFRecords files.</p>
-<p>Like TensorFlow, Caffe defines a protocol buffer message for training examples. In Caffe, it's called <code>Datum</code>. These are saved just like in TensorFlow, by serializing them and putting them in a file on disk, but instead of a TFRecords file, which just puts records in a row and reads them out in that order, here Caffe will work with LMDB, which has the semantics of a key-value store.</p>
-<p>TensorFlow's <code>Example</code> format is super flexible, but the trade-off is that it doesn't automatically do things for you. Caffe's <code>Datum</code>, on the other hand, expects you to put in a dense image array, and an integer class label. So here there isn't any fiddling with array size, for example, but the trade-off is that it won't work easily for arbitrary data structures that we might eventually want to store.</p>
-<p>In the TFRecords examples above, we stored only image data, and said nothing about a class label or anything else. This is because TFRecords lets you decide what you want to save, rather than defining a format in advance. You could save an integer label, or a float regression label, or a string of text, or an image mask, and on and on. Here, we're just using the built-in Caffe integer label.</p>
-<pre><code class="language-python">import caffe
-import lmdb
-
-# `image` was read above
-label = 9  # for a classification problem
-
-datum = caffe.io.array_to_datum(arr=image, label=label)
-datum_str = datum.SerializeToString()
-
-env = lmdb.open('lmdb_data')
-txn = env.begin(write=True)
-txn.put(key='my datum', value=datum_str)
-
-cur = txn.cursor()
-same_datum_str = cur.get('my datum')
-
-same_datum = caffe.proto.caffe_pb2.Datum().FromString(same_datum_str)
-same_image = caffe.io.datum_to_array(same_datum)
-same_label = datum.label</code></pre>
-
-<p>To actually work with the Caffe training process, there are some other conditions for the data to satisfy. Caffe expects [channels, height, width] instead of [height, width, channels], for example.</p>
-<hr>
-<h2>What should you use?</h2>
-<p>Prefer doing fewer separate manipulation steps to whatever your original data is, if you can help it: try not to have lots of different versions of your data in different places on disk. This will make your life easier.</p>
-<p>If you are choosing a format, JPEG is good for photos.</p>
-<p>Think about whether you need to put everything into the TensorFlow computation graph. Think about whether you need to use TFRecords. Try to spend your time on things that help solve your problems.</p>
-<p>For two more complete <em>in situ</em> examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170403-images_and_tfrecords/</link>
-<guid>http://planspace.org/20170403-images_and_tfrecords/</guid>
-<pubDate>Mon, 03 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

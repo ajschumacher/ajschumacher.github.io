@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-05-24: [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/)
  * 2017-05-21: [Navigating TensorFlow Estimator Documentation](/20170521-navigating_tensorflow_estimator_documentation/)
  * 2017-05-17: [Code Reading Questions at OSCON](/20170517-code_reading_questions_at_oscon/)
  * 2017-05-10: [Caffe and TensorFlow at Deep Learning Analytics](/20170510-caffe_and_tensorflow_at_dla/)
