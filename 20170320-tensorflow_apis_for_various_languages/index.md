@@ -64,6 +64,22 @@ Possibly recognizing [Java's](https://en.wikipedia.org/wiki/Java_(programming_la
 
 ---
 
+### C#
+
+Also [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))!
+
+![C#](img/c_sharp.png)
+
+---
+
+### Julia
+
+Also [Julia](https://en.wikipedia.org/wiki/Julia_(programming_language))!
+
+![Julia](img/julia.png)
+
+---
+
 ### Python
 
 [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) is where the action is. TensorFlow's [Python API documentation](https://www.tensorflow.org/api_docs/python/) is headed simply "All symbols in TensorFlow" and it really does [seem to be](https://www.tensorflow.org/extend/language_bindings) that TensorFlow functionality is prototyped in Python and then moved into the C++ core:
