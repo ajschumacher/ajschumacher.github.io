@@ -1267,7 +1267,7 @@ Obama 1,              D,    1.98</code></pre>
 <pubDate>Fri, 05 May 2017 12:00:00 -0500</pubDate>
 </item>
 <item>
-<title>Canned Models with Keras in TensorFlow</title>
+<title>Pre-trained Models with Keras in TensorFlow</title>
 <description><![CDATA[
 
 <p>With TensorFlow 1.1, <a href="https://github.com/fchollet/keras">Keras</a> is now at <code>tf.contrib.keras</code>. With TensorFlow 1.2, it'll be at <code>tf.keras</code>. This is great for making new models, but we also get canned models previously found <a href="https://github.com/fchollet/deep-learning-models">outside core Keras</a>. It's so easy to classify images!</p>

@@ -8,7 +8,7 @@ Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, t
  * 2017-05-09: [Building TensorFlow Systems from Components](/20170509-building_tensorflow_systems_from_components/)
  * 2017-05-06: [Simple Regression with a TensorFlow Estimator](/20170506-simple_regression_with_a_tensorflow_estimator/)
  * 2017-05-05: [Simple Dataset: US Presidential Party and GDP Growth](/20170505-simple_dataset_us_presidential_party_and_gdp_growth/)
- * 2017-05-02: [Canned Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
+ * 2017-05-02: [Pre-trained Models with Keras in TensorFlow](/20170502-canned_models_with_keras_in_tensorflow/)
  * 2017-04-30: [Sampling ImageNet](/20170430-sampling_imagenet/)
  * 2017-04-30: [TensorFlow's QueueRunner](/20170430-tensorflows_queuerunner/)
  * 2017-04-29: [From Behaviorist to Constructivist AI](/20170429-from_behaviorist_to_constructivist_ai/)
