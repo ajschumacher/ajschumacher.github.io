@@ -1,6 +1,6 @@
 # More and Better: The New TensorFlow APIs
 
-*These are materials for a [webinar](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/) given Wednesday May 24, 2017. ([slides](big.html)) The Jupyter notebook and supporting files for code demos are available in a repository on GitHub: [tf_api_20170524](https://github.com/ajschumacher/tf_api_20170524).*
+*These are materials for a [webinar](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/) given Wednesday May 24, 2017. ([slides](big.html)) ([video](https://altoros.wistia.com/medias/e5su4b1vtz)) The Jupyter notebook and supporting files for code demos are available in a [repository](https://github.com/ajschumacher/tf_api_20170524) on GitHub.*
 
 
 -----
