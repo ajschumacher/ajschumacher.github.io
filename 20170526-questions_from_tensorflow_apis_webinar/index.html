@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Questions from TensorFlow APIs Webinar</title>
+  </head>
+  <body>
+    <article>
+<h1>Questions from TensorFlow APIs Webinar</h1>
+<p class="date">Friday May 26, 2017</p>
+<p>I did <a href="/20170524-more_and_better_new_tensorflow_apis/">More and Better: The New TensorFlow APIs</a> as a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a>. <a href="https://www.altoros.com/">Altoros</a> ran it using <a href="https://www.gotomeeting.com/webinar">GoToWebinar</a>, which reported all questions from attendees. Questions and answers:</p>
+<hr />
+<h3>What should I learn?</h3>
+<blockquote>
+<p>"New to DL and TF... several people have said to not waste time w/Keras, etc, but go deep into TF to really learn it.  From what you said, it seems like TF changes a lot, though.  Recommendations in terms of sequence/path for learning DL concepts and the tools?"</p>
+</blockquote>
+<p>First, regarding the rate of change of TensorFlow: The low-level API should really be quite stable now. It's the high-level APIs that are still settling down a little bit. And even there, it looks like things are getting pretty set. I wouldn't expect Keras to change a lot, in particular.</p>
+<p>The question of whether to use a high-level API or a low-level API depends on your goals. I don't think it's a waste of time to use Keras. In fact, I think it would be easier to argue that it's "a waste of time" to dig into low-level TensorFlow implementation details, because there's a lot you can get done much more quickly by using Keras.</p>
+<p>It depends on your goals. Do you want to understand every step in the internals of your system? I've heard people like Matt Zeiler suggest that you should write your own deep learning framework from scratch in order to understand all the details of backprop, etc. How far do you want to go?</p>
+<p>For most people, I think higher-level interfaces are a good choice. Sometimes they can actually make it easier to learn the concepts that are really important, because you don't have to deal with all the details that can complicate things.</p>
+<p>That's not to say that it isn't valuable to get into the low-level details as well. Sometimes you really do need to make changes or understand phenomena that are down at that level. But you don't necessarily need to start at the low level; you can also start at higher levels of abstraction and then learn lower levels later.</p>
+<p>As for learning DL concepts and tools, I'm currently a big advocate of <a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a> by François Chollet, the author of Keras. It's still in pre-release, but the chapters that are already available are quite good. I think it's a great book especially for people who are newer to deep learning because it explains a lot of fundamental things in approachable ways.</p>
+<hr />
+<h3>Keras outside or inside TensorFlow?</h3>
+<blockquote>
+<p>"What is the link between keras and tf that is being shown? I have used Keras and I simply indicate that it should use tensorflow in the backend and my calls do not include tf.xxx.keras.xxx... One of the goals of Keras is to be framework independent. To call from Tensorflow doesn’t really maintain that spirit."</p>
+</blockquote>
+<p>You can still use Keras directly with TensorFlow as the backend, maintaining framework independence. As far as I know, Keras will continue to be developed separately from TensorFlow as well as within the TensorFlow codebase. And for many things, using Keras as it appears inside TensorFlow will work just the same way as using independent Keras with the TensorFlow backend.</p>
+<p>Having Keras inside TensorFlow is a convenience, for one, but it should also enable some tighter integrations. I'm expecting the layers API will become even more unified and allow for mixing and matching even more design possibilities. More importantly, I think, Keras models in TensorFlow will be easily convertible to TensorFlow Estimators, which should be pretty neat.</p>
+<hr />
+<h3>C? C++?</h3>
+<blockquote>
+<p>"how come [TensorFlow is] written in C++ but recommended interfaces should talk to the C part?"</p>
+</blockquote>
+<p>I suppose there are at least two reasons. One is that it standardizes the interface, making it very clear what is stable and safe to build an API to. Another is that as a practical matter, lots of languages have established standard ways to connect to a C API. To read more about TensorFlow's take, check out the <a href="https://www.tensorflow.org/extend/language_bindings">language support documentation</a>.</p>
+<hr />
+<h3>On-graph? Off-graph?</h3>
+<blockquote>
+<p>"Can you remind folks about what 'on-graph' is?"</p>
+</blockquote>
+<p>TensorFlow's core way of working is by defining a graph of operations and then running them; anything that runs that way is "on-graph."</p>
+<p>Normal Python code doesn't work that way; you don't define a graph and then run it, you just run your Python code right away.</p>
+<p>Even within the TensorFlow Python API, not everything works by putting things on the graph. For example, <code>tf.python_io.tf_record_iterator</code> doesn't use the TensorFlow graph.</p>
+<p>I wrote some more about this distinction in <a href="/20170428-everything_in_the_graph_even_glob/">Everything in the Graph? Even Glob?</a>. An example of TensorFlow functionality that exists in both off-graph and on-graph versions is TFRecords processing. I have a post that uses the <a href="/20170323-tfrecords_for_humans/">off-graph API</a> and two posts that use the on-graph API: <a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">reading from disk</a> and <a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">parsing TFRecords</a>.</p>
+<hr />
+<h3>Python 2? Python 3?</h3>
+<blockquote>
+<p>"Are you using Python 2.x?  If so why?"</p>
+</blockquote>
+<p>I use Python 2.7 a lot because projects I work on use it. I usually recommend that new projects start up with Python 3.</p>
+<p>The inertia of Python 2.7 is really incredible, but maybe the tide is turning at last. Under a year ago, this quote <a href="https://blog.openai.com/infrastructure-for-deep-learning/">appeared</a> on OpenAI's blog:</p>
+<blockquote>
+<p>"Like much of the deep learning community, we use Python 2.7."</p>
+</blockquote>
+<p>More recently though, another <a href="https://blog.openai.com/openai-baselines-dqn/">post</a> from OpenAI indicated at least some work is now on Python 3:</p>
+<blockquote>
+<p>"We use Python 3 and TensorFlow."</p>
+</blockquote>
+<hr />
+<h3>Hyperparameter tuning?</h3>
+<blockquote>
+<p>"I would like to know if there is a recommended way to make hyperparameter tuning (number of layers, number of nodes in each layer, learning rate, number of epochs)"</p>
+</blockquote>
+<p>For number of epochs, you can evaluate your model multiple times during training to get train and eval performance curves which should help in making that choice.</p>
+<p>For architectural choices like number of layers and number of nodes in each layer, and optimization parameters like learning rate, you can parameterize your code so that choices become command-line arguments, which makes it easier to run experiments and determine what works best.</p>
+<p>Making choices based on your previous experience and what's worked for others can save you a lot of time; usually you don't really want to search over <em>all</em> the things you <em>could</em> vary.</p>
+<p>When you're really not sure, you can search over all your possible parameters. You may be able to do better than grid search: even <a href="http://scikit-learn.org/stable/modules/grid_search.html#randomized-parameter-optimization">random search</a> can be better, and <a href="https://en.wikipedia.org/wiki/Bayesian_optimization">Bayesian optimization</a> could be better yet. Google has <a href="https://cloud.google.com/ml-engine/docs/how-tos/using-hyperparameter-tuning">productized hyperparameter tuning</a>, which may be worth checking out.</p>
+<hr />
+<h3>Visualization for very large models?</h3>
+<blockquote>
+<p>"I have a question, can we also visualize distributed tensorflow on very large models with billion parameters with tensorboard?"</p>
+</blockquote>
+<p>The answer is probably "yes" but there are multiple aspects to this question.</p>
+<p>First, when running  distributed TensorFlow training following the standard pattern, probably you have your chief worker writing out TensorBoard summaries. So that centralizes the "where" of TensorBoard summary writing.</p>
+<p>Second, even with small models, it's possible to generate unwieldy amounts of TensorBoard data. You probably want to think carefully about what you want to save during training. For example, you probably don't need to log things every iteration, and you probably don't need to log every parameter value if a histogram will do the job.</p>
+<p>Third, some of the things you likely want to visualize for a large model are the same as things you want to visualize for a small model, like loss progression through training. There might not be any changes necessary when model size is different.</p>
+<p>If you just want to visualize the model structure (the model graph) then you can take advantage of TensorBoard's grouping functionality so that you can see and reason about components across multiple scales.</p>
+<p>In the end, it will depend on exactly what you want to visualize. TensorBoard has a lot of neat features, but it won't be the right choice for every possible problem.</p>
+<hr />
+<h3>What about serving?</h3>
+<blockquote>
+<p>How does TensorFlow Serving fit in currently?</p>
+</blockquote>
+<p><a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a> is largely distinct from the APIs that I showed, except that Estimators can easily <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator#export_savedmodel">export</a> the SavedModel format that you want to use for serving.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

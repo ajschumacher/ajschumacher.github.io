@@ -7,10 +7,93 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Questions from TensorFlow APIs Webinar</title>
+<description><![CDATA[
+
+<p>I did <a href="/20170524-more_and_better_new_tensorflow_apis/">More and Better: The New TensorFlow APIs</a> as a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a>. <a href="https://www.altoros.com/">Altoros</a> ran it using <a href="https://www.gotomeeting.com/webinar">GoToWebinar</a>, which reported all questions from attendees. Questions and answers:</p>
+<hr>
+<h3>What should I learn?</h3>
+<blockquote>
+<p>"New to DL and TF... several people have said to not waste time w/Keras, etc, but go deep into TF to really learn it.  From what you said, it seems like TF changes a lot, though.  Recommendations in terms of sequence/path for learning DL concepts and the tools?"</p>
+</blockquote>
+<p>First, regarding the rate of change of TensorFlow: The low-level API should really be quite stable now. It's the high-level APIs that are still settling down a little bit. And even there, it looks like things are getting pretty set. I wouldn't expect Keras to change a lot, in particular.</p>
+<p>The question of whether to use a high-level API or a low-level API depends on your goals. I don't think it's a waste of time to use Keras. In fact, I think it would be easier to argue that it's "a waste of time" to dig into low-level TensorFlow implementation details, because there's a lot you can get done much more quickly by using Keras.</p>
+<p>It depends on your goals. Do you want to understand every step in the internals of your system? I've heard people like Matt Zeiler suggest that you should write your own deep learning framework from scratch in order to understand all the details of backprop, etc. How far do you want to go?</p>
+<p>For most people, I think higher-level interfaces are a good choice. Sometimes they can actually make it easier to learn the concepts that are really important, because you don't have to deal with all the details that can complicate things.</p>
+<p>That's not to say that it isn't valuable to get into the low-level details as well. Sometimes you really do need to make changes or understand phenomena that are down at that level. But you don't necessarily need to start at the low level; you can also start at higher levels of abstraction and then learn lower levels later.</p>
+<p>As for learning DL concepts and tools, I'm currently a big advocate of <a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a> by Fran&#231;ois Chollet, the author of Keras. It's still in pre-release, but the chapters that are already available are quite good. I think it's a great book especially for people who are newer to deep learning because it explains a lot of fundamental things in approachable ways.</p>
+<hr>
+<h3>Keras outside or inside TensorFlow?</h3>
+<blockquote>
+<p>"What is the link between keras and tf that is being shown? I have used Keras and I simply indicate that it should use tensorflow in the backend and my calls do not include tf.xxx.keras.xxx... One of the goals of Keras is to be framework independent. To call from Tensorflow doesn&#8217;t really maintain that spirit."</p>
+</blockquote>
+<p>You can still use Keras directly with TensorFlow as the backend, maintaining framework independence. As far as I know, Keras will continue to be developed separately from TensorFlow as well as within the TensorFlow codebase. And for many things, using Keras as it appears inside TensorFlow will work just the same way as using independent Keras with the TensorFlow backend.</p>
+<p>Having Keras inside TensorFlow is a convenience, for one, but it should also enable some tighter integrations. I'm expecting the layers API will become even more unified and allow for mixing and matching even more design possibilities. More importantly, I think, Keras models in TensorFlow will be easily convertible to TensorFlow Estimators, which should be pretty neat.</p>
+<hr>
+<h3>C? C++?</h3>
+<blockquote>
+<p>"how come [TensorFlow is] written in C++ but recommended interfaces should talk to the C part?"</p>
+</blockquote>
+<p>I suppose there are at least two reasons. One is that it standardizes the interface, making it very clear what is stable and safe to build an API to. Another is that as a practical matter, lots of languages have established standard ways to connect to a C API. To read more about TensorFlow's take, check out the <a href="https://www.tensorflow.org/extend/language_bindings">language support documentation</a>.</p>
+<hr>
+<h3>On-graph? Off-graph?</h3>
+<blockquote>
+<p>"Can you remind folks about what 'on-graph' is?"</p>
+</blockquote>
+<p>TensorFlow's core way of working is by defining a graph of operations and then running them; anything that runs that way is "on-graph."</p>
+<p>Normal Python code doesn't work that way; you don't define a graph and then run it, you just run your Python code right away.</p>
+<p>Even within the TensorFlow Python API, not everything works by putting things on the graph. For example, <code>tf.python_io.tf_record_iterator</code> doesn't use the TensorFlow graph.</p>
+<p>I wrote some more about this distinction in <a href="/20170428-everything_in_the_graph_even_glob/">Everything in the Graph? Even Glob?</a>. An example of TensorFlow functionality that exists in both off-graph and on-graph versions is TFRecords processing. I have a post that uses the <a href="/20170323-tfrecords_for_humans/">off-graph API</a> and two posts that use the on-graph API: <a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">reading from disk</a> and <a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">parsing TFRecords</a>.</p>
+<hr>
+<h3>Python 2? Python 3?</h3>
+<blockquote>
+<p>"Are you using Python 2.x?  If so why?"</p>
+</blockquote>
+<p>I use Python 2.7 a lot because projects I work on use it. I usually recommend that new projects start up with Python 3.</p>
+<p>The inertia of Python 2.7 is really incredible, but maybe the tide is turning at last. Under a year ago, this quote <a href="https://blog.openai.com/infrastructure-for-deep-learning/">appeared</a> on OpenAI's blog:</p>
+<blockquote>
+<p>"Like much of the deep learning community, we use Python 2.7."</p>
+</blockquote>
+<p>More recently though, another <a href="https://blog.openai.com/openai-baselines-dqn/">post</a> from OpenAI indicated at least some work is now on Python 3:</p>
+<blockquote>
+<p>"We use Python 3 and TensorFlow."</p>
+</blockquote>
+<hr>
+<h3>Hyperparameter tuning?</h3>
+<blockquote>
+<p>"I would like to know if there is a recommended way to make hyperparameter tuning (number of layers, number of nodes in each layer, learning rate, number of epochs)"</p>
+</blockquote>
+<p>For number of epochs, you can evaluate your model multiple times during training to get train and eval performance curves which should help in making that choice.</p>
+<p>For architectural choices like number of layers and number of nodes in each layer, and optimization parameters like learning rate, you can parameterize your code so that choices become command-line arguments, which makes it easier to run experiments and determine what works best.</p>
+<p>Making choices based on your previous experience and what's worked for others can save you a lot of time; usually you don't really want to search over <em>all</em> the things you <em>could</em> vary.</p>
+<p>When you're really not sure, you can search over all your possible parameters. You may be able to do better than grid search: even <a href="http://scikit-learn.org/stable/modules/grid_search.html#randomized-parameter-optimization">random search</a> can be better, and <a href="https://en.wikipedia.org/wiki/Bayesian_optimization">Bayesian optimization</a> could be better yet. Google has <a href="https://cloud.google.com/ml-engine/docs/how-tos/using-hyperparameter-tuning">productized hyperparameter tuning</a>, which may be worth checking out.</p>
+<hr>
+<h3>Visualization for very large models?</h3>
+<blockquote>
+<p>"I have a question, can we also visualize distributed tensorflow on very large models with billion parameters with tensorboard?"</p>
+</blockquote>
+<p>The answer is probably "yes" but there are multiple aspects to this question.</p>
+<p>First, when running  distributed TensorFlow training following the standard pattern, probably you have your chief worker writing out TensorBoard summaries. So that centralizes the "where" of TensorBoard summary writing.</p>
+<p>Second, even with small models, it's possible to generate unwieldy amounts of TensorBoard data. You probably want to think carefully about what you want to save during training. For example, you probably don't need to log things every iteration, and you probably don't need to log every parameter value if a histogram will do the job.</p>
+<p>Third, some of the things you likely want to visualize for a large model are the same as things you want to visualize for a small model, like loss progression through training. There might not be any changes necessary when model size is different.</p>
+<p>If you just want to visualize the model structure (the model graph) then you can take advantage of TensorBoard's grouping functionality so that you can see and reason about components across multiple scales.</p>
+<p>In the end, it will depend on exactly what you want to visualize. TensorBoard has a lot of neat features, but it won't be the right choice for every possible problem.</p>
+<hr>
+<h3>What about serving?</h3>
+<blockquote>
+<p>How does TensorFlow Serving fit in currently?</p>
+</blockquote>
+<p><a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a> is largely distinct from the APIs that I showed, except that Estimators can easily <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator#export_savedmodel">export</a> the SavedModel format that you want to use for serving.</p>    
+    ]]></description>
+<link>http://planspace.org/20170526-questions_from_tensorflow_apis_webinar/</link>
+<guid>http://planspace.org/20170526-questions_from_tensorflow_apis_webinar/</guid>
+<pubDate>Fri, 26 May 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>More and Better: The New TensorFlow APIs</title>
 <description><![CDATA[
 
-<p><em>These are materials for a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a> given Wednesday May 24, 2017. (<a href="big.html">slides</a>) The Jupyter notebook and supporting files for code demos are available in a repository on GitHub: <a href="https://github.com/ajschumacher/tf_api_20170524">tf_api_20170524</a>.</em></p>
+<p><em>These are materials for a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a> given Wednesday May 24, 2017. (<a href="big.html">slides</a>) (<a href="https://altoros.wistia.com/medias/e5su4b1vtz">video</a>) The Jupyter notebook and supporting files for code demos are available in a <a href="https://github.com/ajschumacher/tf_api_20170524">repository</a> on GitHub.</em></p>
 <hr>
 <p>Thank you!</p>
 <hr>
@@ -2553,109 +2636,6 @@ https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/census/tensor
 <link>http://planspace.org/20170410-tensorflow_clusters_questions_and_code/</link>
 <guid>http://planspace.org/20170410-tensorflow_clusters_questions_and_code/</guid>
 <pubDate>Mon, 10 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>How Not To Program the TensorFlow Graph</title>
-<description><![CDATA[
-
-<p>Using TensorFlow from Python is like using Python to program <a href="/20170328-tensorflow_as_a_distributed_virtual_machine/">another computer</a>. Some Python statements build your TensorFlow program, some Python statements execute that program, and of course some Python statements aren't involved with TensorFlow at all.</p>
-<p>Being thoughtful about the graphs you construct can help you avoid confusion and performance pitfalls. Here are a few considerations.</p>
-<h2>Avoid having many identical ops</h2>
-<!-- Better re-write; maybe separate out a section about Python names for TF ops, losing references to your ops, etc. -->
-
-<p>Lots of methods in TensorFlow create ops in the computation graph, but do not execute them. You may want to execute multiple times, but that doesn't mean you should create lots of copies of the same ops.</p>
-<p>A clear example is <code>tf.global_variables_initializer()</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
-&gt;&gt;&gt; session = tf.Session()
-# Create some variables...
-&gt;&gt;&gt; initializer = tf.global_variables_initializer()
-# Variables are not yet initialized.
-&gt;&gt;&gt; session.run(initializer)
-# Now variables are initialized.
-# Do some more work...
-&gt;&gt;&gt; session.run(initializer)
-# Now variables are re-initialized.</code></pre>
-
-<p>If the call to <code>tf.global_variables_initializer()</code> is repeated, for example directly as the argument to <code>session.run()</code>, there are downsides.</p>
-<pre><code class="language-python">&gt;&gt;&gt; session.run(tf.global_variables_initializer())
-&gt;&gt;&gt; session.run(tf.global_variables_initializer())</code></pre>
-
-<p>A new initializer op is created every time the argument to <code>session.run()</code> here is evaluated. This creates multiple initializer ops in the graph. Having multiple copies isn't a big deal for small ops in an interactive session, and you might even want to do it in the case of the initializer if you've created more variables that need to be included in initialization. But think about whether you need lots of duplicate ops.</p>
-<p>Creating ops inside <code>session.run()</code>, you also don't have a Python variable referring to those ops, so you can't easily reuse them.</p>
-<p>In Python, if you create an object that nothing refers to, it can be garbage collected. The abandoned object will be deleted and and memory it used will be freed. That doesn't happen to things in the TensorFlow graph; everything you put in the graph stays there.</p>
-<p>It's pretty clear that <code>tf.global_variables_initializer()</code> returns an op. But ops are also created in less obvious ways.</p>
-<p>Let's compare to how NumPy works.</p>
-<pre><code class="language-python">&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; x = np.array(1.0)
-&gt;&gt;&gt; y = x + 1.0</code></pre>
-
-<p>At this point there are two arrays in memory, <code>x</code> and <code>y</code>. The <code>y</code> has the value 2.0, but there's no record of <em>how</em> it came to have that value. The addition has left no record of itself.</p>
-<p>TensorFlow is different.</p>
-<pre><code class="language-python">&gt;&gt;&gt; x = tf.Variable(1.0)
-&gt;&gt;&gt; y = x + 1.0</code></pre>
-
-<p>Now only <code>x</code> is a TensorFlow variable; <code>y</code> is an <code>add</code> op, which can return the result of that addition if we ever run it.</p>
-<p>One more comparison.</p>
-<pre><code class="language-python">&gt;&gt;&gt; x = np.array(1.0)
-&gt;&gt;&gt; y = x + 1.0
-&gt;&gt;&gt; y = x + 1.0</code></pre>
-
-<p>Here <code>y</code> is assigned to refer to one result array <code>x + 1.0</code>, and then reassigned to point to a different one. The first one will be garbage collected and disappear.</p>
-<pre><code class="language-python">&gt;&gt;&gt; x = tf.Variable(1.0)
-&gt;&gt;&gt; y = x + 1.0
-&gt;&gt;&gt; y = x + 1.0</code></pre>
-
-<p>In this case, <code>y</code> refers to one <code>add</code> op in the TensorFlow graph, and then <code>y</code> is reassigned to point to a different <code>add</code> op in the graph. Since <code>y</code> only points to the second <code>add</code> now, we don't have a convenient way to work with the first one. But both the <code>add</code> ops are still around, in the graph, and will stay there.</p>
-<p>(As an aside, Python's mechanism for defining class-specific addition <a href="http://www.python-course.eu/python3_magic_methods.php">and so on</a>, which is how <code>+</code> is made to create TensorFlow ops, is pretty neat.)</p>
-<p>Especially if you're just working with the default graph and running interactively in a regular REPL or a notebook, you can end up with a lot of abandoned ops in your graph. Every time you re-run a notebook cell that defines any graph ops, you aren't just redefining ops&#8212;you're creating new ones.</p>
-<p>Often it's okay to have a few extra ops floating around when you're experimenting. But things can get out of hand.</p>
-<pre><code class="language-python">for _ in range(1e6):
-    x = x + 1</code></pre>
-
-<p>If <code>x</code> is a NumPy array, or just a regular Python number, this will run in constant memory and finish with one value for x.</p>
-<p>But if <code>x</code> is a TensorFlow variable, there will be over a million ops in your TensorFlow graph, just defining a computation and not even <em>doing</em> it.</p>
-<p>One immediate fix for TensorFlow is to use a <code>tf.assign</code> op, which gives behavior more like what you might expect.</p>
-<pre><code class="language-python">increment_x = tf.assign(x, x + 1)
-for _ in range(1e6):
-    session.run(increment_x)</code></pre>
-
-<p>This revised version does not create any ops inside the loop, which is generally good advice. TensorFlow does have <a href="https://www.tensorflow.org/api_guides/python/control_flow_ops">control flow constructs</a> including <a href="https://www.tensorflow.org/api_docs/python/tf/while_loop">while loops</a>. But only use these when really needed.</p>
-<p>Be conscious of when you're creating ops, and only create the ones you need. Try to keep op creation distinct from op execution. And after interactive experimentation, eventually get to a state, probably in a script, where you're only creating the ops that you need.</p>
-<h2>Avoid constants in the graph</h2>
-<p>A particularly unfortunate op to needlessly add to a graph is accidental constant ops, especially large ones.</p>
-<pre><code class="language-python">&gt;&gt;&gt; many_ones = np.ones((1000, 1000))</code></pre>
-
-<p>There are a million ones in the NumPy array <code>many_ones</code>. We can add them up.</p>
-<pre><code class="language-python">&gt;&gt;&gt; many_ones.sum()
-## 1000000.0</code></pre>
-
-<p>What if we add them up with TensorFlow?</p>
-<pre><code class="language-python">&gt;&gt;&gt; session.run(tf.reduce_sum(many_ones))
-## 1000000.0</code></pre>
-
-<p>The result is the same, but the mechanism is quite different. This not only added some ops to the graph&#8212;it put a copy of the entire million-element array into the graph as a constant.</p>
-<p>Variations on this pattern can result in accidentally loading an entire data set into the graph as constants. A program might still run, for small data sets. Or your system might fail.</p>
-<p>One simple way to avoid storing data in the graph is to use the <code>feed_dict</code> mechanism.</p>
-<pre><code class="language-python">&gt;&gt;&gt; many_things = tf.placeholder(tf.float64)
-&gt;&gt;&gt; adder = tf.reduce_sum(many_things)
-&gt;&gt;&gt; session.run(adder, feed_dict={many_things: many_ones})
-## 1000000.0</code></pre>
-
-<p>As before, be clear about what you're adding to the graph and when. Concrete data usually only enters the graph at moments of evaluation.</p>
-<h2>TensorFlow as Functional Programming</h2>
-<p>TensorFlow ops are like functions. This is especially clear when an op has one or more placeholder inputs; evaluating the op in a session is like calling a function with those arguments. So Python functions that return TensorFlow ops are like <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>.</p>
-<p>You might decide that it's worth putting a constant into the graph. For example, if you have to reshape a lot of tensors to 28x28, you might make an op that does that.</p>
-<pre><code class="language-python">&gt;&gt;&gt; input_tensor = tf.placeholder(tf.float32)
-&gt;&gt;&gt; reshape_to_28 = tf.reshape(input_tensor, shape=[28, 28])</code></pre>
-
-<p>This is like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> in that the <code>shape</code> argument has now been set. The <code>[28, 28]</code> has become a constant in the graph and specified that argument. Now to evaluate <code>reshape_to_28</code> we only have to provide <code>input_tensor</code>.</p>
-<p>Broader connections have been suggested between <a href="http://colah.github.io/posts/2015-09-NN-Types-FP/">neural networks, types, and functional programming</a>. It's interesting to think of TensorFlow as a system that supports this kind of construction.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</link>
-<guid>http://planspace.org/20170404-how_not_to_program_the_tensorflow_graph/</guid>
-<pubDate>Tue, 04 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
