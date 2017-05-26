@@ -21,6 +21,9 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/) ([video](https://altoros.wistia.com/medias/e5su4b1vtz)) as an Altoros webinar on [Wednesday May 24, 2017](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/)
+ * [Caffe and TensorFlow at Deep Learning Analytics](/20170510-caffe_and_tensorflow_at_dla/) at [OSCON](https://conferences.oreilly.com/oscon/)'s [TensorFlow Day](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/full/tensorflow-day), [Wednesday May 10, 2017](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149)
+ * [Building TensorFlow Systems from Components](/20170509-building_tensorflow_systems_from_components/) at [OSCON](https://conferences.oreilly.com/oscon/) on [Tuesday May 9, 2017](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823)
  * [Hello, TensorFlow!](/20161005-presenting_hello_tensorflow_again/) ([video](https://www.youtube.com/watch?v=n350wsivoQk)) at the DC [GA Data Science Immersive](https://generalassemb.ly/education/data-science-immersive) on Wednesday October 5, 2016, and at [NVIDIA GTC DC](http://dc.gputechconf.com/) on [Wednesday October 26, 2016](https://mygtc.gputechconf.com/events/35/schedules/3388)
  * [Hello, TensorFlow!](/20160629-presenting_hello_tensorflow/) at the [TensorFlow DC Meetup](http://www.meetup.com/TensorFlow-Washington-DC/) on [Wednesday June 29, 2016](https://www.eventbrite.com/e/washington-dc-meetup-deep-dive-into-tensorflow-tickets-26035651334)
  * [How to Eat Computers](/20151206-how_to_eat_computers/) at two schools on December 4 and 8, 2015
