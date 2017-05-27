@@ -1,6 +1,6 @@
 # Pre-trained Models with Keras in TensorFlow
 
-With TensorFlow 1.1, [Keras](https://github.com/fchollet/keras) is now at `tf.contrib.keras`. With TensorFlow 1.2, it'll be at `tf.keras`. This is great for making new models, but we also get canned models previously found [outside core Keras](https://github.com/fchollet/deep-learning-models). It's so easy to classify images!
+With TensorFlow 1.1, [Keras](https://github.com/fchollet/keras) is now at `tf.contrib.keras`. With TensorFlow 1.3, it should be at `tf.keras`. This is great for making new models, but we also get the pre-trained models of [`keras.applications`](https://github.com/fchollet/keras/tree/master/keras/applications) ([also seen elsewhere](https://github.com/fchollet/deep-learning-models)). It's so easy to classify images!
 
 ```python
 import tensorflow as tf
