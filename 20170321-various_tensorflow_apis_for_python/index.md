@@ -12,6 +12,8 @@ To paraphrase [Paul Graham](http://www.paulgraham.com/avg.html):
 
 You don't need to be a Lisp hacker to make it easier to use TensorFlow the way you want by writing new functions and classes, and you probably should.
 
+<!-- something like: programming with functions (even if you're using low level, you shouldn't be using low level) -->
+
 But because TensorFlow had already done the obviously hard work of making low-level things work, it was relatively easy for lots of people to attempt the subtly hard work of designing higher-level APIs.
 
 This led to a proliferation of Python APIs, which can sometimes be confusing to track.
