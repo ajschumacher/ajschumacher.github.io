@@ -60,14 +60,14 @@ E. banal : originality</code></pre>
 <p>These methods are not the best-performing non-human technique for these SAT analogy questions. Littman and Turney <a href="https://www.aclweb.org/aclwiki/index.php?title=SAT_Analogy_Questions_(State_of_the_art)">report</a> several. Latent Relational Analysis comes in at 56% accuracy, against the average US college applicant at 57%.</p>
 <p>This is a case in which "the average human" is not a good bar for measuring AI success. The average human has a remarkably small vocabulary relative to what a computer should easily handle, not to mention that the average human would not be admitted to most colleges you could name.</p>
 <hr />
-<p>I'm grateful to the <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/">DC Deep Learning Working Group</a> for helpful discussions, and particularly Shabnam Tafreshi and Dmitrijs Milajevs for sharing references at <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/events/237114317/">the January 26, 2017 meeting</a>. Thanks also to <a href="https://twitter.com/metasemantic">Travis Hoppe</a> of <a href="http://dc.hackandtell.org/">DC Hack and Tell</a> for always doing cool things with NLP.</p>
+<p>I'm grateful to the <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/">DC Deep Learning Working Group</a> for helpful discussions, and particularly Shabnam Tafreshi and Dmitrijs Milajevs for sharing references at <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/events/237114317/">the January 26, 2017 meeting</a>. Thanks also to <a href="https://twitter.com/metasemantic">Travis Hoppe</a> of <a href="http://dc.hackandtell.org/">DC Hack and Tell</a> for always doing cool things with NLP. Thanks to Peter Turney for providing the dataset and commenting on distances.</p>
 <p>Notes:</p>
 <ul>
 <li>An <a href="https://www.technologyreview.com/s/541356/king-man-woman-queen-the-marvelous-mathematics-of-computational-linguistics/">example</a> of word2vec popularization.</li>
 <li>My code is available at <a href="https://github.com/ajschumacher/sat_analogies">ajschumacher/sat_analogies</a>.</li>
 <li>All but 20 of the 374 questions have five designed answer choices; those 20 have four and "no : choice" as the last option. To maintain comparability I kept those questions in, though it means a human guessing baseline should be slightly over 20%.</li>
 <li>For efficiency, I used GloVe values as 2-byte floats, which is lossy. I also tested with 4-byte floats, and the results varied by at most one question, while being much slower to generate.</li>
-<li>If you don't normalize the relationship vectors to the unit ball, cosine distance appears much more effective than Euclidean distance for this task, and the advantage increases with dimensionality. The effect disappears and the two distances produce almost identical results when the vectors are normalized (varying by at most one question of 374).</li>
+<li>Cosine distance is more effective than Euclidean distance for this task, and the advantage increases with dimensionality.</li>
 </ul>
 <p><img src="img/cosine_advantage.png" width="480" /></p>    </article>
     <footer>

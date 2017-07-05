@@ -62,7 +62,7 @@ This is a case in which "the average human" is not a good bar for measuring AI s
 
 ---
 
-I'm grateful to the [DC Deep Learning Working Group](https://www.meetup.com/DC-Deep-Learning-Working-Group/) for helpful discussions, and particularly Shabnam Tafreshi and Dmitrijs Milajevs for sharing references at [the January 26, 2017 meeting](https://www.meetup.com/DC-Deep-Learning-Working-Group/events/237114317/). Thanks also to [Travis Hoppe](https://twitter.com/metasemantic) of [DC Hack and Tell](http://dc.hackandtell.org/) for always doing cool things with NLP.
+I'm grateful to the [DC Deep Learning Working Group](https://www.meetup.com/DC-Deep-Learning-Working-Group/) for helpful discussions, and particularly Shabnam Tafreshi and Dmitrijs Milajevs for sharing references at [the January 26, 2017 meeting](https://www.meetup.com/DC-Deep-Learning-Working-Group/events/237114317/). Thanks also to [Travis Hoppe](https://twitter.com/metasemantic) of [DC Hack and Tell](http://dc.hackandtell.org/) for always doing cool things with NLP. Thanks to Peter Turney for providing the dataset and commenting on distances.
 
 Notes:
 
@@ -70,6 +70,6 @@ Notes:
  * My code is available at [ajschumacher/sat_analogies](https://github.com/ajschumacher/sat_analogies).
  * All but 20 of the 374 questions have five designed answer choices; those 20 have four and "no : choice" as the last option. To maintain comparability I kept those questions in, though it means a human guessing baseline should be slightly over 20%.
  * For efficiency, I used GloVe values as 2-byte floats, which is lossy. I also tested with 4-byte floats, and the results varied by at most one question, while being much slower to generate.
- * If you don't normalize the relationship vectors to the unit ball, cosine distance appears much more effective than Euclidean distance for this task, and the advantage increases with dimensionality. The effect disappears and the two distances produce almost identical results when the vectors are normalized (varying by at most one question of 374).
+ * Cosine distance is more effective than Euclidean distance for this task, and the advantage increases with dimensionality.
 
 <img src="img/cosine_advantage.png" width="480" />
