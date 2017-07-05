@@ -26,7 +26,7 @@ Michael Littman and Peter Turney have made available [a set of 374 SAT analogy q
 
 Littman and Turney [used](http://cogprints.org/4518/1/NRC-48273.pdf) a vector-based approach on their dataset back in 2005. They achieved 47% accuracy (state of the art at the time) which is a nice benchmark.
 
-They made vectors for each word pair using web data. To get a value for "banal : originality" they would search [AltaVista](https://en.wikipedia.org/wiki/AltaVista) for "banal and not originality" and take the log of the number of hits. With a list of 64 connectives they made vectors with 128 components.
+They made vectors for each word pair using web data. To get one value for "banal : originality" they would search [AltaVista](https://en.wikipedia.org/wiki/AltaVista) for "banal and not originality" and take the log of the number of hits. With a list of 64 connectives they made vectors with 128 components.
 
 I'm using [GloVe](https://nlp.stanford.edu/projects/glove/) and word2vec word vectors that are per-word and based on various text corpora directly. Since the vectors are not specific to particular pairings, they may at a relative disadvantage for the SAT task. To get a vector for a word pair, I just subtract.
 
