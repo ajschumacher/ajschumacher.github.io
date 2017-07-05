@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-07-05: [Word Vectors and SAT Analogies](/20170705-word_vectors_and_sat_analogies/)
  * 2017-05-26: [Questions from TensorFlow APIs Webinar](/20170526-questions_from_tensorflow_apis_webinar/)
  * 2017-05-24: [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/)
  * 2017-05-21: [Navigating TensorFlow Estimator Documentation](/20170521-navigating_tensorflow_estimator_documentation/)
