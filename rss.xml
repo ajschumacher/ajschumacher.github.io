@@ -7,6 +7,36 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A downward spiral destructive of civic virtue</title>
+<description><![CDATA[
+
+<p>From page 166 of <a href="https://en.wikipedia.org/wiki/James_Flynn_(academic)">Flynn</a>'s <a href="https://en.wikipedia.org/wiki/What_Is_Intelligence%3F">What is intelligence?</a>:</p>
+<blockquote>
+<p>Competition for possessions without a rationally imposed limit
+engenders pessimism about acceptance of the restraints necessary to
+avoid ecological disaster.</p>
+<p>Competition for possessions also creates a downward spiral
+destructive of civic virtue. Those who wish to maximize their
+economic status are reluctant to pay taxes and this diminishes state
+provision of health, education, and security against misfortune. As
+the quality of state provision declines, it becomes imperative to
+maximize private wealth for reasons of security even if status
+seeking is set aside. Even principled socialists will pay fees to
+jump the queue for medical care and to get education for their
+children in schools that are not a test of physical survival. The
+more that is true, the more you resent any dollar leaving your
+pocket in tax, so public provision drops further, so willingness to
+be taxed drops further, and so forth. Indeed, since only a few can
+amass the fortune needed to provide self-security, no amount of
+money you can realistically hope to acquire is enough.</p>
+</blockquote>
+<p>I think this passage touches a lot of modern debates.</p>    
+    ]]></description>
+<link>http://planspace.org/20170821-downward_spiral_destructive_of_civic_virtue/</link>
+<guid>http://planspace.org/20170821-downward_spiral_destructive_of_civic_virtue/</guid>
+<pubDate>Mon, 21 Aug 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Word Vectors and SAT Analogies</title>
 <description><![CDATA[
 
@@ -2395,222 +2425,6 @@ I believe that's more of a tree allreduce than a ring allreduce.
 <link>http://planspace.org/20170412-reading_from_disk_inside_the_tensorflow_graph/</link>
 <guid>http://planspace.org/20170412-reading_from_disk_inside_the_tensorflow_graph/</guid>
 <pubDate>Wed, 12 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Distributed MapReduce with TensorFlow</title>
-<description><![CDATA[
-
-<p>Using many computers to count words is a tired Hadoop example, but might be unexpected with TensorFlow. In 50 lines, a TensorFlow program can implement not only map and reduce steps, but a whole MapReduce system.</p>
-<hr>
-<h2>Set up the cluster</h2>
-<p>The design will have three roles, or jobs. There will be one task in the <code>files</code> job, distributing units of work. There will be one task for the <code>reduce</code> role, keeping track of results. There could be arbitrarily many tasks doing the <code>map</code> job, but for this example there will be two.</p>
-<p>TensorFlow programs often use <code>ps</code> (parameter server) and <code>worker</code> tasks, but this is largely a convention. The program here won't follow the convention.</p>
-<p>The four tasks can run on four computers, or on fewer. To stay local, here's a cluster definition that runs them all on your local machine.</p>
-<pre><code class="language-python">cluster = {'files': ['localhost:2222'],
-           'reduce': ['localhost:2223'],
-           'map': ['localhost:2224', 'localhost:2225']}</code></pre>
-
-<p>I have a <a href="make_configs.py"><code>make_configs.py</code></a> script that produces four shell scripts (<a href="config_files_0.sh">1</a>, <a href="config_reduce_0.sh">2</a>, <a href="config_map_0.sh">3</a>, <a href="config_map_1.sh">4</a>). Each should be sourced (like <code>source config_map_0.sh</code>) in a separate shell. This setting of environment variables is work that could be handled by a cluster manager like <a href="https://kubernetes.io/">Kubernetes</a>, but these scripts will get it done.</p>
-<p>Every task will run <a href="count.py"><code>count.py</code></a>. The first few lines establish the cluster.</p>
-<pre><code class="language-python">import tensorflow as tf
-
-config = tf.contrib.learn.RunConfig()
-server = tf.train.Server(config.cluster_spec,
-                         job_name=config.task_type,
-                         task_index=config.task_id)
-session = tf.Session(server.target)</code></pre>
-
-<p>For more on TensorFlow clusters, see <a href="/20170410-tensorflow_clusters_questions_and_code/">TensorFlow Clusters: Questions and Code</a>.</p>
-<p>To avoid lots of indentation, I'm not using <code>tf.Session</code> as a context manager, which is fine for this example. I'll similarly avoid <code>with</code> blocks when reading files later.</p>
-<hr>
-<h2>Set up the data</h2>
-<p>For distributed data processing to make sense, you likely want a distributed file system like HDFS providing a way for workers to grab chunks of data to work on. You might have hundred-megabyte <a href="/20170323-tfrecords_for_humans/">TFRecords files</a> prepared, for example.</p>
-<p>For this example, we'll use <a href="/20170331-on_tyranny/">a dataset of 22 small text files</a>. We'll generate a <a href="filenames.txt">list of filenames</a>. Then, assuming every member of the cluster can access the file system, we can give a worker a filename and have it read the file.</p>
-<pre><code class="language-bash">$ wget http://planspace.org/20170331-on_tyranny/on_tyranny.tar.gz
-$ tar zxvf on_tyranny.tar.gz
-$ find on_tyranny -type f &gt; filenames.txt</code></pre>
-
-<hr>
-<h2>Make a filename distributor</h2>
-<p>The <code>files</code> task will host a <a href="/20170327-tensorflow_and_queues/">queue</a> of filenames.</p>
-<pre><code class="language-python">with tf.device('/job:files/task:0'):
-    filename_queue = tf.FIFOQueue(capacity=10, dtypes=[tf.string],
-                                  shared_name='filename_queue')</code></pre>
-
-<p>This code will be executed by every member of the cluster, but it won't make multiple queues. The <code>tf.device</code> context specifies that the queue lives on the <code>files</code> task machine, and the <code>shared_name</code> uniquely identifies this queue. So just one queue gets made, but every member of the cluster can refer to it with the Python variable name <code>filename_queue</code>.</p>
-<p>The next part of the code only runs on the <code>files</code> task:</p>
-<pre><code class="language-python">if config.task_type == 'files':
-    filename_to_enqueue = tf.placeholder(tf.string)
-    enqueue_filename = filename_queue.enqueue(filename_to_enqueue)
-    close_filename_queue = filename_queue.close()
-    for line in open('filenames.txt'):
-        filename = line.strip()
-        session.run(enqueue_filename,
-                    feed_dict={filename_to_enqueue: filename})
-    session.run(close_filename_queue)
-    server.join()</code></pre>
-
-<p>Device assignment here is left up to TensorFlow, which is fine.</p>
-<p>The <code>file</code> task uses normal Python file reading to get filenames from <a href="filenames.txt"><code>filenames.txt</code></a> and put them in the queue.</p>
-<p>I'm loading the queue explicitly to avoid getting into <code>Coordinator</code> and <code>QueueRunner</code>; you could also use a <code>string_input_producer</code>, for example.</p>
-<p>Then the <code>files</code> task runs <code>server.join()</code>, which keeps it running so that the queue doesn't disappear. We'll have to kill the process eventually because it won't know when to stop. This is another thing a cluster manager could be responsible for.</p>
-<hr>
-<h2>Make a reduce node</h2>
-<p>There's just going to be one variable storing the total word count.</p>
-<pre><code class="language-python">with tf.device('/job:reduce/task:0'):
-    total_word_count = tf.Variable(0, name='total')</code></pre>
-
-<p>Like the code defining the queue, every task in the cluster will run this code, so every task in the cluster can refer to this variable. Variables in specific places are "de-duplicated" using <code>name</code> instead of <code>shared_name</code>.</p>
-<p>There's very little code that only the <code>reduce</code> task runs.</p>
-<pre><code class="language-python">if config.task_type == 'reduce':
-    initializer = tf.global_variables_initializer()
-    session.run(initializer)
-    while True:
-        total_word_count_now = session.run(total_word_count)
-        print('{} words so far'.format(total_word_count_now))
-        time.sleep(2)</code></pre>
-
-<p>The <code>reduce</code> task initializes and then displays the current value of <code>total_word_count</code> every two seconds.</p>
-<p>It would be a bit more like Hadoop MapReduce to have the reducer explicitly receive data emitted from mappers, perhaps via another queue. Then the reducer would have to run some code to reduce down data from that queue.</p>
-<p>The absence of any reducing code in the <code>reduce</code> task demonstrates the way distribution works in TensorFlow. The <code>reduce</code> task owns a variable, but we can add to that variable from another machine.</p>
-<p>Like the <code>files</code> task, the <code>reduce</code> task doesn't have any way of knowing when the counting process is done and then shutting down, which I think is okay for this example.</p>
-<hr>
-<h2>Make map nodes</h2>
-<p>The <code>map</code> task has already run code establishing the filename queue and the total word count variable. Here's what each <code>map</code> task does:</p>
-<pre><code class="language-python">if config.task_type == 'map':
-    filename_from_queue = filename_queue.dequeue()
-    word_count_to_add = tf.placeholder(tf.int32)
-    add_to_total = tf.assign_add(total_word_count,
-                                 word_count_to_add,
-                                 use_locking=True)
-    while True:
-        filename = session.run(filename_from_queue)
-        text = open(filename).read()
-        this_word_count = len(text.split())
-        time.sleep(5)
-        print('{} words in {}'.format(this_word_count, filename))
-        session.run(add_to_total,
-                    feed_dict={word_count_to_add: this_word_count})</code></pre>
-
-<p>Each <code>map</code> task pulls a filename from the queue, reads the file, counts its words, and then adds its count to the total.</p>
-<p>A <code>map</code> task will run until the queue is empty, and then it will die with an <code>OutOfRangeError</code>. This would be a little more careful:</p>
-<pre><code class="language-python">        try:
-            filename = session.run(filename_from_queue)
-        except tf.errors.OutOfRangeError:
-            break</code></pre>
-
-<p>Inside the <code>map</code> task, the actual work that's done is not part of the TensorFlow graph. We can execute arbitrary Python here.</p>
-<p>There's a five second pause in the loop so that things don't happen too fast to watch.</p>
-<p>The total word count is stored off in the <code>reduce</code> task, possibly on a different computer, but that doesn't matter. This is part of what's cool about TensorFlow.</p>
-<hr>
-<h2>Run</h2>
-<p>To execute, we run <a href="count.py"><code>count.py</code></a> in four places with the appropriate environment variables set. That's it. We've counted words with many computers.</p>
-<hr>
-<h2>So what?</h2>
-<p>Programming a cluster with TensorFlow is just like programming a single computer with TensorFlow. This is pretty neat, and it makes a lot of things possible beyond just distributed stochastic gradient descent.</p>
-<p>The example above demonstrates a distributed queue. If you can do that, do you need a separate queueing system like <a href="https://www.rabbitmq.com/">RabbitMQ</a>? Maybe not in every situation.</p>
-<p>The example above sends filenames to workers, which is a pretty general model. What if you feel comfortable sending executable filenames, or some representation of code? You might implement something like <a href="http://www.celeryproject.org/">Celery</a> pretty quickly.</p>
-<p>The example I've shown can probably fail in more ways than I even realize. It would be more work to make it robust. It would be again more work to make it more general. But it's pretty exciting to be able to write something like this at all.</p>
-<p>And while even the typical TensorFlow distributed training is itself a kind of MapReduce process, TensorFlow is general enough that it could be used for wildly different architectures. TensorFlow is an amazing tool.</p>
-<hr>
-<h2>Code</h2>
-<p>Here's <a href="make_configs.py"><code>make_configs.py</code></a>:</p>
-<pre><code class="language-python">import json
-
-cluster = {'files': ['localhost:2222'],
-           'reduce': ['localhost:2223'],
-           'map': ['localhost:2224', 'localhost:2225']}
-for task_type, addresses in cluster.items():
-    for index in range(len(addresses)):
-        tf_config = {'cluster': cluster,
-                     'task': {'type': task_type,
-                              'index': index}}
-        tf_config_string = json.dumps(tf_config, indent=2)
-        with open('config_{}_{}.sh'.format(task_type, index), 'w') as f:
-            f.write("export TF_CONFIG='{}'\n".format(tf_config_string))
-            # GPUs won't be needed, so prevent accessing GPU memory.
-            f.write('export CUDA_VISIBLE_DEVICES=-1\n')</code></pre>
-
-<p>The files produced by <a href="make_configs.py"><code>make_configs.py</code></a> (<a href="config_files_0.sh">1</a>, <a href="config_reduce_0.sh">2</a>, <a href="config_map_0.sh">3</a>, <a href="config_map_1.sh">4</a>) look like this:</p>
-<pre><code class="language-json">export TF_CONFIG='{
-  "cluster": {
-    "files": [
-      "localhost:2222"
-    ], 
-    "map": [
-      "localhost:2224", 
-      "localhost:2225"
-    ], 
-    "reduce": [
-      "localhost:2223"
-    ]
-  }, 
-  "task": {
-    "index": 0, 
-    "type": "map"
-  }
-}'
-export CUDA_VISIBLE_DEVICES=-1</code></pre>
-
-<p>And here's <a href="count.py"><code>count.py</code></a> all together:</p>
-<pre><code class="language-python">from __future__ import print_function
-
-import time
-import tensorflow as tf
-
-config = tf.contrib.learn.RunConfig()
-server = tf.train.Server(config.cluster_spec,
-                         job_name=config.task_type,
-                         task_index=config.task_id)
-session = tf.Session(server.target)
-
-with tf.device('/job:files/task:0'):
-    filename_queue = tf.FIFOQueue(capacity=10, dtypes=[tf.string],
-                                  shared_name='filename_queue')
-
-if config.task_type == 'files':
-    filename_to_enqueue = tf.placeholder(tf.string)
-    enqueue_filename = filename_queue.enqueue(filename_to_enqueue)
-    close_filename_queue = filename_queue.close()
-    for line in open('filenames.txt'):
-        filename = line.strip()
-        session.run(enqueue_filename,
-                    feed_dict={filename_to_enqueue: filename})
-    session.run(close_filename_queue)
-    server.join()
-
-with tf.device('/job:reduce/task:0'):
-    total_word_count = tf.Variable(0, name='total')
-
-if config.task_type == 'reduce':
-    initializer = tf.global_variables_initializer()
-    session.run(initializer)
-    while True:
-        total_word_count_now = session.run(total_word_count)
-        print('{} words so far'.format(total_word_count_now))
-        time.sleep(2)
-
-if config.task_type == 'map':
-    filename_from_queue = filename_queue.dequeue()
-    word_count_to_add = tf.placeholder(tf.int32)
-    add_to_total = tf.assign(total_word_count,
-                             total_word_count + word_count_to_add)
-    while True:
-        filename = session.run(filename_from_queue)
-        text = open(filename).read()
-        this_word_count = len(text.split())
-        time.sleep(5)
-        print('{} words in {}'.format(this_word_count, filename))
-        session.run(add_to_total,
-                    feed_dict={word_count_to_add: this_word_count})</code></pre>
-
-<p>All the files needed to demo this are together in a <a href="https://github.com/ajschumacher/mapreduce_with_tensorflow">repo on GitHub</a>.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170411-distributed_mapreduce_with_tensorflow/</link>
-<guid>http://planspace.org/20170411-distributed_mapreduce_with_tensorflow/</guid>
-<pubDate>Tue, 11 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
