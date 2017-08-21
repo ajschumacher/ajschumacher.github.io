@@ -18,11 +18,11 @@ E. banal : originality
 
 The king/queen example is not difficult, and I don't know whether it was tested or discovered. A better evaluation would use a set of challenging pre-determined questions.
 
-There is a Google set of analogy questions, but all the relationships are grammatical, geographical, or by gender. Typical: "fast : fastest :: old : oldest." ([dataset](http://download.tensorflow.org/data/questions-words.txt), [paper](https://arxiv.org/abs/1301.3781), [context](https://www.aclweb.org/aclwiki/index.php?title=Google_analogy_test_set_(State_of_the_art)))
+There is a Google set of analogy questions, but all the relationships are grammatical, geographical, or by gender. Typical: "fast : fastest :: old : oldest." ([dataset](http://download.tensorflow.org/data/questions-words.txt), [paper](https://arxiv.org/abs/1301.3781), [context](https://aclweb.org/aclwiki/Google_analogy_test_set_(State_of_the_art)))
 
 SAT questions are more interesting. Selecting from fixed answer choices provides a nice guessing baseline (1/5 is 20%) and using a human test means it's easier to get human performance levels (average US college applicant is 57%; human voting is 81.5%).
 
-Michael Littman and Peter Turney have made available [a set of 374 SAT analogy questions](https://www.aclweb.org/aclwiki/index.php?title=SAT_Analogy_Questions_(State_of_the_art)) since 2003. You have to email Turney to get them, and I appreciate that he helped me out.
+Michael Littman and Peter Turney have made available [a set of 374 SAT analogy questions](https://aclweb.org/aclwiki/SAT_Analogy_Questions_(State_of_the_art)) since 2003. You have to email Turney to get them, and I appreciate that he helped me out.
 
 Littman and Turney [used](http://cogprints.org/4518/1/NRC-48273.pdf) a vector-based approach on their dataset back in 2005. They achieved 47% accuracy (state of the art at the time) which is a nice benchmark.
 
@@ -56,7 +56,7 @@ It is pretty impressive that word vectors work as well as they do on this task, 
 
 Still, the idea of word vectors (translating sparse data to a learned dense representation) is super useful, and not just for words. See implementations [in Keras](https://keras.io/layers/embeddings/) and [in TensorFlow](https://www.tensorflow.org/api_docs/python/tf/contrib/layers/embedding_column).
 
-These methods are not the best-performing non-human technique for these SAT analogy questions. Littman and Turney [report](https://www.aclweb.org/aclwiki/index.php?title=SAT_Analogy_Questions_(State_of_the_art)) several. Latent Relational Analysis comes in at 56% accuracy, against the average US college applicant at 57%.
+These methods are not the best-performing non-human technique for these SAT analogy questions. Littman and Turney [report](https://aclweb.org/aclwiki/SAT_Analogy_Questions_(State_of_the_art)) several. Latent Relational Analysis comes in at 56% accuracy, against the average US college applicant at 57%.
 
 This is a case in which "the average human" is not a good bar for measuring AI success. The average human has a remarkably small vocabulary relative to what a computer should easily handle, not to mention that the average human would not be admitted to most colleges you could name.
 
