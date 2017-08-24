@@ -7,6 +7,19 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Unique IDs and Nielsen abuse</title>
+<description><![CDATA[
+
+<p>The Wall Street Journal ran an article online with the headline <a href="https://www.wsj.com/articles/in-tv-ratings-game-networks-try-to-dissguys-bad-newz-from-nielsen-1499350955">In TV Ratings Game, Networks Try to Dissguys Bad Newz from Nielsen</a>. It got picked up by <a href="https://www.theverge.com/2017/7/6/15923722/tv-network-ratings-nielsen-viewership">other outlets</a>, and ran in the print WSJ the next day, on Friday July 7, 2017, on the front page, below the fold.</p>
+<p>The implication is that networks identify their programs to Nielsen via a free text field with no validation; programs don't have unique IDs. Not having unique IDs is a huge pain even when everyone is trying to be consistent. Inevitably you have to do some kind of deduplication and merging. In this case, it leads to abuse (possibly sanctioned unofficially).</p>
+<p><img alt="page 1" src="img/page1.png"></p>
+<p><img alt="page 9" src="img/page9.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20170724-unique_ids_and_nielsen_abuse/</link>
+<guid>http://planspace.org/20170724-unique_ids_and_nielsen_abuse/</guid>
+<pubDate>Mon, 24 Jul 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Transfer of allegiance from theory to theory</title>
 <description><![CDATA[
 
@@ -2261,84 +2274,6 @@ result
 <link>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</link>
 <guid>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</guid>
 <pubDate>Wed, 26 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>mystery.tfrecords</title>
-<description><![CDATA[
-
-<p>Here's a practical puzzle: what's in the file <a href="mystery.tfrecords"><code>mystery.tfrecords</code></a>?</p>
-<hr>
-<p>You don't need any more extra information specific to that file. Here are a few posts about the format and related issues, some of which might be helpful:</p>
-<ul>
-<li><a href="/20170323-tfrecords_for_humans/">TFRecords for Humans</a></li>
-<li><a href="/20170330-tfrecords_via_proto/">TFRecords via Protocol Buffer Definitions</a></li>
-<li><a href="/20170403-images_and_tfrecords/">Images and TFRecords</a></li>
-<li><a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">Reading from Disk inside the TensorFlow Graph</a></li>
-<li><a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">Parsing TFRecords inside the TensorFlow Graph</a></li>
-</ul>
-<!--
-
-Welcome to hidden additional notes! Finding this is a way of solving
-the puzzle, I suppose...
-
-Here's how `mystery.tfrecords` was made:
-
-<pre><code class="language-python">import tensorflow as tf
-
-with open('success.jpg') as f:
-    success = f.read()
-
-example = tf.train.Example(features=tf.train.Features(feature={
-    'jpg': tf.train.Feature(bytes_list=tf.train.BytesList(value=[success]))
-}))
-
-example_str = example.SerializeToString()
-
-with tf.python_io.TFRecordWriter('mystery.tfrecords') as writer:
-    writer.write(example_str)</code></pre>
-
-Here's one way to get the contents back out:
-
-<pre><code class="language-python">reader = tf.python_io.tf_record_iterator('mystery.tfrecords')
-
-examples = [tf.train.Example().FromString(example_str)
-            for example_str in reader]
-# Using `SequenceExample` rather than `Example` also works.
-
-len(examples)  # 1
-# So we know there's just one example in there.
-
-example = examples[0]
-
-example.features.feature.keys()  # 'jpg'
-# If parsed as a SequenceExample, this would instead be:
-# `example.context.feature.keys()`
-
-# It should be clear from the 'jpg' key, but you can also check:
-len(example.features.feature['jpg'].int64_list.value)  # 0
-len(example.features.feature['jpg'].float_list.value)  # 0
-
-len(example.features.feature['jpg'].bytes_list.value)  # 1
-
-jpg = example.features.feature['jpg'].bytes_list.value[0]
-
-# If you don't trust the key, you can check the magic number:
-jpg[:2]  # '\xff\xd8'
-# That's the JPG magic number, FFD8.
-
-with open('success.jpg', 'wb') as f:
-    f.write(jpg)</code></pre>
-
-Success!
-
--->
-
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170425-mystery.tfrecords/</link>
-<guid>http://planspace.org/20170425-mystery.tfrecords/</guid>
-<pubDate>Tue, 25 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

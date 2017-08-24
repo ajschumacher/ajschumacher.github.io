@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-08-24: [Unique IDs and Nielsen abuse](/20170724-unique_ids_and_nielsen_abuse/)
  * 2017-08-23: [Transfer of allegiance from theory to theory](/20170823-transfer_of_allegiance_from_theory_to_theory/)
  * 2017-08-22: [Scientific and historical levels of explanation](/20170822-scientific_and_historical_levels_of_explanation/)
  * 2017-08-21: [A downward spiral destructive of civic virtue](/20170821-downward_spiral_destructive_of_civic_virtue/)
