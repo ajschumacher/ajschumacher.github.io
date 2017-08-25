@@ -7,6 +7,30 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Characteristics of good theories</title>
+<description><![CDATA[
+
+<p>In <a href="https://www.andrew.cmu.edu/user/kk3n/philsciclass/kuhn.pdf">Objectivity, Value Judgment, and Theory Choice</a>, <a href="https://en.wikipedia.org/wiki/Thomas_Kuhn">Kuhn</a> gives a partial list of characteristics that good theories share:</p>
+<ol>
+<li><strong>Accurate</strong>: within its domain, consequences deducible from a theory should be in demonstrated agreement with the results of existing experiments and observations</li>
+<li><strong>Consistent</strong>: internally (with itself) and with other currently accepted theories applicable to related aspects of nature</li>
+<li><strong>Broad scope</strong>: consequences should extend far beyond the particular observations, laws, or subtheories it was originally designed to explain</li>
+<li><strong>Simple</strong>: bringing order to phenomena that in its absence would be individually isolated and, as a set, confused</li>
+<li><strong>Fruitful</strong>: leading to new research findings; disclosing new phenomena or previously unnoted relationships among those already known</li>
+</ol>
+<p>In <a href="https://en.wikipedia.org/wiki/The_Beginning_of_Infinity">The Beginning of Infinity</a>, <a href="https://en.wikipedia.org/wiki/David_Deutsch">David Deutsch</a> objects to positivism or anti-realism, but has not so different criteria to Kuhn. Deutsch focuses on these two:</p>
+<ol>
+<li><strong>Hard to vary</strong>: having no extraneous or non-explanatory characteristics; possibly related to Kuhn's "consistent" and "simple"</li>
+<li><strong>Reach</strong>: similar to Kuhn's "broad scope," "fruitful," and possibly even "simple"</li>
+</ol>
+<p>Deutsch mostly takes "accurate" as a given or obvious requirement. Even this seemingly simple goal becomes complicated when people <a href="/20170823-transfer_of_allegiance_from_theory_to_theory/">disagree</a> about "the results of existing experiments and observations."</p>
+<p>The focus of both authors is on scientific theories, as in (for example) physics. When explaining human affairs, the same criteria may not always be perfect guides. For example, many non-simple conspiracy theories are not true, but there can really be conspiracies, and things may not be obvious.</p>    
+    ]]></description>
+<link>http://planspace.org/20170825-characteristics_of_good_theories/</link>
+<guid>http://planspace.org/20170825-characteristics_of_good_theories/</guid>
+<pubDate>Fri, 25 Aug 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Unique IDs and Nielsen abuse</title>
 <description><![CDATA[
 
@@ -2202,78 +2226,6 @@ session.run(parsed, feed_dict={serialized: my_example_str})
 <link>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</link>
 <guid>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</guid>
 <pubDate>Thu, 27 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Parsing TFRecords inside the TensorFlow Graph</title>
-<description><![CDATA[
-
-<p>You can parse TFRecords using the standard protocol buffer <code>.FromString</code> method, but you can also parse them inside the TensorFlow graph.</p>
-<p>The examples here assume you have in memory the serialized Example <code>my_example_str</code> and SequenceExample <code>my_seq_ex_str</code> from <a href="/20170323-tfrecords_for_humans/">TFRecords for Humans</a>. You could create them, or read them from <a href="/20170323-tfrecords_for_humans/my_example.tfrecords">my_example.tfrecords</a> and <a href="/20170323-tfrecords_for_humans/my_seq_ex.tfrecords">my_seq_ex.tfrecords</a>. That loading could be via <code>tf.python_io.tf_record_iterator</code> or via <code>tf.TFRecordReader</code> following the pattern shown in <a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">Reading from Disk inside the TensorFlow Graph</a>.</p>
-<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/parse_single_example"><code>tf.parse_single_example</code></a> decoder works like <code>tf.decode_csv</code>: it takes a string of raw data and turns it into structured data, based on the options it's created with. The structured data it turns it into is <em>not</em> a protocol buffer message object, but a dictionary that is hopefully easier to work with.</p>
-<pre><code class="language-python">import tensorflow as tf
-
-serialized = tf.placeholder(tf.string)
-
-my_example_features = {'my_ints': tf.FixedLenFeature(shape=[2], dtype=tf.int64),
-                       'my_float': tf.FixedLenFeature(shape=[], dtype=tf.float32),
-                       'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
-my_example = tf.parse_single_example(serialized, features=my_example_features)
-
-session = tf.Session()
-
-session.run(my_example, feed_dict={serialized: my_example_str})
-## {'my_ints': array([5, 6]),
-##  'my_float': 2.7,
-##  'my_bytes': array(['data'], dtype=object)}</code></pre>
-
-<p>The <code>shape</code> parameter is part of the schema we're defining. A <code>shape</code> of <code>[]</code> means a single element, so the result returned won't be in an array, as for <code>my_float</code>. The <code>shape</code> of <code>[1]</code> means an array containing one element, like for <code>my_bytes</code>. Within a Feature, things are always listed, so the choice of how to get a single element back out is decided by the choice of <code>shape</code> argument. A <code>shape</code> of <code>[2]</code> means a list of two elements, naturally enough, and there's no alternative.</p>
-<p>The <code>dtype=object</code> is how NumPy works with strings.</p>
-<p>When some feature might have differing numbers of values across records, they can all be read with <code>tf.VarLenFeature</code>. This distinction is made only when parsing. Records are made with however many values you put in; you don't specify <code>FixedLen</code> or <code>VarLen</code> when you're making an <code>Example</code>. So the <code>my_ints</code> feature just parsed as <code>FixedLen</code> can also be parsed as <code>VarLen</code>.</p>
-<pre><code class="language-python">my_example_features = {'my_ints': tf.VarLenFeature(dtype=tf.int64),
-                       'my_float': tf.FixedLenFeature(shape=[], dtype=tf.float32),
-                       'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
-my_example = tf.parse_single_example(serialized, features=my_example_features)
-
-session.run(my_example, feed_dict={serialized: my_example_str})
-## {'my_ints': SparseTensorValue(indices=array([[0], [1]]),
-##                               values=array([5, 6]),
-##                               dense_shape=array([2])),
-##  'my_float': 2.7,
-##  'my_bytes': array(['data'], dtype=object)}</code></pre>
-
-<p>When parsing as a <code>VarLenFeature</code>, the result is a sparse representation. This can seem a little silly, because features here will always be dense from left to right. Early versions of TensorFlow <a href="https://github.com/tensorflow/tensorflow/issues/976">didn't</a> have the current behavior. But this sparseness is a mechanism by which TensorFlow can support non-rectangular data, for example when forming batches from multiple variable length features, or as seen next with a <code>SequenceExample</code>:</p>
-<pre><code class="language-python">my_context_features = {'my_bytes': tf.FixedLenFeature(shape=[1], dtype=tf.string)}
-my_sequence_features = {'my_ints': tf.VarLenFeature(shape=[2], dtype=tf.int64)}
-my_seq_ex = tf.parse_single_sequence_example(
-                serialized,
-                context_features=my_context_features,
-                sequence_features=my_sequence_features)
-
-result = session.run(my_seq_ex, feed_dict={serialized: my_seq_ex_str})
-result
-## ({'my_bytes': array(['data'], dtype=object)},
-##  {'my_ints': SparseTensorValue(
-##                  indices=array([[0, 0], [0, 1], [1, 0], [1, 1], [1, 2]]),
-##                  values=array([5, 6, 7, 8, 9]),
-##                  dense_shape=array([2, 3]))})</code></pre>
-
-<p>The result is a tuple of two dicts: the context data and the sequence data.</p>
-<p>Since the <code>my_ints</code> sequence feature is parsed as a <code>VarLenFeature</code>, it's returned as a sparse tensor. This example has to be parsed as a <code>VarLenFeature</code>, because the two entries in <code>my_ints</code> are of different lengths (<code>[5, 6]</code> and <code>[7, 8, 9]</code>).</p>
-<p>The way the <code>my_ints</code> values get combined into one sparse tensor is the same as the way it would be done when making a batch from multiple records each containing a <code>VarLenFeature</code>.</p>
-<p>To make it clearer what's going on, we can look at the sparse tensor in dense form:</p>
-<pre><code class="language-python">session.run(tf.sparse_tensor_to_dense(result[1]['my_ints']))
-## array([[5, 6, 0],
-##        [7, 8, 9]])</code></pre>
-
-<p>The other option for parsing sequence features is <code>tf.FixedLenSequenceFeature</code>, which will work if each entry of the sequence feature is the same length. The result then is a dense tensor.</p>
-<p>To parse multiple <code>Example</code> records in one op, there's <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/parse_example"><code>tf.parse_example</code></a>. This returns a dict with the same keys you'd get from parsing a single <code>Example</code>, with the values combining the values from all the parsed examples, in a batch-like fashion. There isn't a corresponding op for <code>SequenceExample</code> records.</p>
-<p>More could be said about sparse tensors and TFRecords. The <a href="https://www.tensorflow.org/api_docs/python/tf/sparse_merge">tf.sparse_merge</a> op is one way to combine sparse tensors, similar to the combination that happened for <code>my_ints</code> in the <code>SequenceExample</code> above. And there's <a href="https://www.tensorflow.org/api_docs/python/tf/SparseFeature"><code>tf.SparseFeature</code></a> for parsing out general sparse features directly from TFRecords (better documentation in <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/parsing_ops.py">source</a>).</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</link>
-<guid>http://planspace.org/20170426-parsing_tfrecords_inside_the_tensorflow_graph/</guid>
-<pubDate>Wed, 26 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
