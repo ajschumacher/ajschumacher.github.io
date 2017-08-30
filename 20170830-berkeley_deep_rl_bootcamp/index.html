@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Berkeley Deep RL Bootcamp</title>
+  </head>
+  <body>
+    <article>
+<h1>Berkeley Deep RL Bootcamp</h1>
+<p class="date">Wednesday August 30, 2017</p>
+<p>At its conclusion, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> said a major goal of his 2017 <a href="https://www.deeprlbootcamp.berkeley.edu/">Deep Reinforcement Learning Bootcamp</a> was to broaden the application of RL techniques. Around 250 representatives from research and industry had just emerged from 22 scheduled hours over a Saturday and Sunday in Berkeley. Abbeel asked the attendees to report back with tales of applying algorithms they may not have known existed previously.</p>
+<p>Instruction came from leaders of modern reinforcement learning research, all delivering their expertise within a framework that highlighted the large-scale structure of the field. I found their organizing diagram to be particularly helpful.</p>
+<p><img alt="landscape" src="img/landscape.png" /></p>
+<p>The reinforcement learning problem statement is simple: at every time step, an agent gets some observation of state \( s \), some reward \( r \), and chooses an action \( a \). So an agent is \( s,r \rightarrow a \), and reinforcement learning is largely about rearranging these three letters.</p>
+<p>For example, the Q function is \( s,a \rightarrow \sum{r} \). You <a href="https://en.wikipedia.org/wiki/Bellman_equation">can</a> learn that function from experience, and it nicely induces a policy \( s \rightarrow a \). If you use a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">ConvNet</a> to learn the Q function, you can then <a href="https://deepmind.com/research/dqn/">publish</a> in <a href="https://www.nature.com/">Nature</a>.</p>
+<p>Of the many good things about the bootcamp, I most valued getting a better conceptual feel for RL. It was also great to hear from experts about practical details, intuitions, and future directions. For all of these I particularly appreciated <a href="https://www.cs.toronto.edu/~vmnih/">Vlad Mnih</a>'s sessions.</p>
+<p>The concerns of RL illuminate deep architectures from unique angles. The big networks that win classification challenges don't win in RL, for example, possibly getting at something about the nature of neural net training and generalization. Vlad described how fixing their target Q-network was more important with the smaller nets they used in development than on their final networks. Wins with <a href="https://arxiv.org/abs/1707.06887">distributional RL</a> may connect to a fundamental affinity of neural nets for categorical problems over regression problems.</p>
+<p>Approaches like <a href="https://arxiv.org/abs/1611.05397">unsupervised auxiliary tasks</a> prompt comparisons with how the brain might work. But even cutting-edge techniques with models (\( s,a \rightarrow s \)) and planning, like <a href="https://arxiv.org/abs/1707.06203">imagination-augmented agents</a> and the <a href="https://arxiv.org/abs/1612.08810">predictron</a>, do as much to highlight differences as similarities with how we think. RL is at least as close to <a href="https://en.wikipedia.org/wiki/Optimal_control">optimal control</a> as it is to <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>.</p>
+<p>Reinforcement learning is home to a profusion of acronyms and initialisms that can be intimidating. As best I can, I've extended the Deep RL Bootcamp's diagram to include everything that was covered, together with a few terms common elsewhere and a set of expansions and links. For didactic resources, start from <a href="https://twitter.com/karpathy">Karpathy</a>'s <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a>.</p>
+<p><img alt="annotated" src="img/annotated.jpg" /></p>
+<ul>
+<li>(<a href="https://en.wikipedia.org/wiki/Partially_observable_Markov_decision_process">PO</a>)<a href="https://en.wikipedia.org/wiki/Markov_decision_process">MDP</a>: (Partially Observable) Markov Decision Process</li>
+<li><a href="https://en.wikipedia.org/wiki/Derivative-free_optimization">DFO</a>: Derivative-Free Optimization</li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-entropy_method">cross-entropy method</a><ul>
+<li><a href="http://iew3.technion.ac.il/CE/files/papers/Learning%20Tetris%20Using%20the%20Noisy%20Cross-Entropy%20Method.pdf">Learning Tetris using the noisy cross-entropy method</a></li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/CMA-ES">CMA</a>: Covariance Matrix Adaptation</li>
+<li><a href="https://en.wikipedia.org/wiki/Natural_evolution_strategy">NES</a>: Natural Evolution Strategy<ul>
+<li><a href="https://blog.openai.com/evolution-strategies/">Evolution strategies as a scalable alternative to reinforcement learning</a></li>
+</ul>
+</li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.2545&amp;rep=rep1&amp;type=pdf">REINFORCE</a>: REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility</li>
+<li><a href="https://arxiv.org/abs/1502.05477">TRPO</a>: Trust Region Policy Optimization</li>
+<li><a href="https://blog.openai.com/openai-baselines-ppo/">PPO</a>: Proximal Policy Optimization</li>
+<li><a href="https://arxiv.org/abs/1510.09142">SVG</a>: Stochastic Value Gradients</li>
+<li><a href="https://arxiv.org/abs/1602.01783">A3C</a>: Asynchronous Advantage Actor Critic</li>
+<li><a href="https://blog.openai.com/baselines-acktr-a2c/">A2C</a>: (Synchronous) Advantage Actor Critic</li>
+<li><a href="https://arxiv.org/abs/1708.05144">ACKTR</a>: Actor Critic using Kronecker-Factored Trust Region</li>
+<li><a href="https://arxiv.org/abs/1611.05397">UNREAL</a>: UNsupervised REinforcement and Auxiliary Learning</li>
+<li><a href="https://en.wikipedia.org/wiki/Temporal_difference_learning">TD</a>: Temporal Difference (also \( TD(\lambda) \))</li>
+<li>FQI: Fitted Q Iteration</li>
+<li><a href="https://deepmind.com/research/dqn/">DQN</a>: Deep Q-Network</li>
+<li><a href="https://arxiv.org/abs/1509.02971">DDPG</a>: Deep Deterministic Policy Gradient</li>
+<li><a href="https://arxiv.org/abs/1603.00748">NAF</a>: Normalized Advantage Functions</li>
+<li><a href="http://realai.org/imitation-learning/">Imitation</a> Learning</li>
+<li><a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa12/slides/inverseRL.pdf">IRL</a>: Inverse Reinforcement Learning</li>
+<li><a href="https://arxiv.org/abs/1603.00448">GCL</a>: Guided Cost Learning</li>
+<li><a href="https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_363">HRL</a>: Hierarchical Reinforcement Learning</li>
+<li>FuN: FeUdal Networks<ul>
+<li><a href="http://www.cs.toronto.edu/~fritz/absps/dh93.pdf">Feudal reinforcement learning</a></li>
+<li><a href="https://arxiv.org/abs/1703.01161">FeUdal Networks for hierarchical reinforcement learning</a></li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Model_predictive_control">MPC</a>: Model Predictive Control</li>
+<li><a href="http://mlg.eng.cam.ac.uk/pub/pdf/DeiRas11.pdf">PILCO</a>: Probabilistic Inference
+for Learning COntrol</li>
+<li>local models specifically as in <a href="https://arxiv.org/abs/1501.05611">Learning contact-rich manipulation skills with guided policy search</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator">LQR</a>: Linear-Quadratic Regulator</li>
+<li><a href="https://arxiv.org/abs/1612.08810">The Predictron: End-to-end learning and planning</a></li>
+<li><a href="https://arxiv.org/abs/1707.06203">I2A</a>: Imagination-Augmented Agent</li>
+<li>(<a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo</a>) (<a href="https://en.wikipedia.org/wiki/Tree_traversal">tree</a>) <a href="https://en.wikipedia.org/wiki/Artificial_intelligence#Search_and_optimization">search</a>, <a href="https://en.wikipedia.org/wiki/Minimax">minimax</a>, etc.</li>
+<li><a href="https://en.wikipedia.org/wiki/Gaussian_process">GP</a>: Gaussian Process</li>
+<li><a href="https://en.wikipedia.org/wiki/Mixture_model#Gaussian_mixture_model">GMM</a>: Gaussian Mixture Model</li>
+<li>(<a href="https://en.wikipedia.org/wiki/Deep_learning">D</a>/<a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">C</a>/<a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">R</a>)<a href="https://en.wikipedia.org/wiki/Artificial_neural_network">NN</a>: (Deep/Convolutional/Recurrent) Neural Network</li>
+<li><a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a>: Long Short-Term Memory</li>
+</ul><!-- mathjax for formulas -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

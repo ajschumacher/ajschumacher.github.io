@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-08-30: [Berkeley Deep RL Bootcamp](/20170830-berkeley_deep_rl_bootcamp/)
  * 2017-08-25: [Characteristics of good theories](/20170825-characteristics_of_good_theories/)
  * 2017-08-24: [Unique IDs and Nielsen abuse](/20170724-unique_ids_and_nielsen_abuse/)
  * 2017-08-23: [Transfer of allegiance from theory to theory](/20170823-transfer_of_allegiance_from_theory_to_theory/)

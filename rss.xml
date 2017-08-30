@@ -7,6 +7,73 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Berkeley Deep RL Bootcamp</title>
+<description><![CDATA[
+
+<p>At its conclusion, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> said a major goal of his 2017 <a href="https://www.deeprlbootcamp.berkeley.edu/">Deep Reinforcement Learning Bootcamp</a> was to broaden the application of RL techniques. Around 250 representatives from research and industry had just emerged from 22 scheduled hours over a Saturday and Sunday in Berkeley. Abbeel asked the attendees to report back with tales of applying algorithms they may not have known existed previously.</p>
+<p>Instruction came from leaders of modern reinforcement learning research, all delivering their expertise within a framework that highlighted the large-scale structure of the field. I found their organizing diagram to be particularly helpful.</p>
+<p><img alt="landscape" src="img/landscape.png"></p>
+<p>The reinforcement learning problem statement is simple: at every time step, an agent gets some observation of state \( s \), some reward \( r \), and chooses an action \( a \). So an agent is \( s,r \rightarrow a \), and reinforcement learning is largely about rearranging these three letters.</p>
+<p>For example, the Q function is \( s,a \rightarrow \sum{r} \). You <a href="https://en.wikipedia.org/wiki/Bellman_equation">can</a> learn that function from experience, and it nicely induces a policy \( s \rightarrow a \). If you use a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">ConvNet</a> to learn the Q function, you can then <a href="https://deepmind.com/research/dqn/">publish</a> in <a href="https://www.nature.com/">Nature</a>.</p>
+<p>Of the many good things about the bootcamp, I most valued getting a better conceptual feel for RL. It was also great to hear from experts about practical details, intuitions, and future directions. For all of these I particularly appreciated <a href="https://www.cs.toronto.edu/~vmnih/">Vlad Mnih</a>'s sessions.</p>
+<p>The concerns of RL illuminate deep architectures from unique angles. The big networks that win classification challenges don't win in RL, for example, possibly getting at something about the nature of neural net training and generalization. Vlad described how fixing their target Q-network was more important with the smaller nets they used in development than on their final networks. Wins with <a href="https://arxiv.org/abs/1707.06887">distributional RL</a> may connect to a fundamental affinity of neural nets for categorical problems over regression problems.</p>
+<p>Approaches like <a href="https://arxiv.org/abs/1611.05397">unsupervised auxiliary tasks</a> prompt comparisons with how the brain might work. But even cutting-edge techniques with models (\( s,a \rightarrow s \)) and planning, like <a href="https://arxiv.org/abs/1707.06203">imagination-augmented agents</a> and the <a href="https://arxiv.org/abs/1612.08810">predictron</a>, do as much to highlight differences as similarities with how we think. RL is at least as close to <a href="https://en.wikipedia.org/wiki/Optimal_control">optimal control</a> as it is to <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>.</p>
+<p>Reinforcement learning is home to a profusion of acronyms and initialisms that can be intimidating. As best I can, I've extended the Deep RL Bootcamp's diagram to include everything that was covered, together with a few terms common elsewhere and a set of expansions and links. For didactic resources, start from <a href="https://twitter.com/karpathy">Karpathy</a>'s <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a>.</p>
+<p><img alt="annotated" src="img/annotated.jpg"></p>
+<ul>
+<li>(<a href="https://en.wikipedia.org/wiki/Partially_observable_Markov_decision_process">PO</a>)<a href="https://en.wikipedia.org/wiki/Markov_decision_process">MDP</a>: (Partially Observable) Markov Decision Process</li>
+<li><a href="https://en.wikipedia.org/wiki/Derivative-free_optimization">DFO</a>: Derivative-Free Optimization</li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-entropy_method">cross-entropy method</a><ul>
+<li><a href="http://iew3.technion.ac.il/CE/files/papers/Learning%20Tetris%20Using%20the%20Noisy%20Cross-Entropy%20Method.pdf">Learning Tetris using the noisy cross-entropy method</a></li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/CMA-ES">CMA</a>: Covariance Matrix Adaptation</li>
+<li><a href="https://en.wikipedia.org/wiki/Natural_evolution_strategy">NES</a>: Natural Evolution Strategy<ul>
+<li><a href="https://blog.openai.com/evolution-strategies/">Evolution strategies as a scalable alternative to reinforcement learning</a></li>
+</ul>
+</li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.2545&amp;rep=rep1&amp;type=pdf">REINFORCE</a>: REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility</li>
+<li><a href="https://arxiv.org/abs/1502.05477">TRPO</a>: Trust Region Policy Optimization</li>
+<li><a href="https://blog.openai.com/openai-baselines-ppo/">PPO</a>: Proximal Policy Optimization</li>
+<li><a href="https://arxiv.org/abs/1510.09142">SVG</a>: Stochastic Value Gradients</li>
+<li><a href="https://arxiv.org/abs/1602.01783">A3C</a>: Asynchronous Advantage Actor Critic</li>
+<li><a href="https://blog.openai.com/baselines-acktr-a2c/">A2C</a>: (Synchronous) Advantage Actor Critic</li>
+<li><a href="https://arxiv.org/abs/1708.05144">ACKTR</a>: Actor Critic using Kronecker-Factored Trust Region</li>
+<li><a href="https://arxiv.org/abs/1611.05397">UNREAL</a>: UNsupervised REinforcement and Auxiliary Learning</li>
+<li><a href="https://en.wikipedia.org/wiki/Temporal_difference_learning">TD</a>: Temporal Difference (also \( TD(\lambda) \))</li>
+<li>FQI: Fitted Q Iteration</li>
+<li><a href="https://deepmind.com/research/dqn/">DQN</a>: Deep Q-Network</li>
+<li><a href="https://arxiv.org/abs/1509.02971">DDPG</a>: Deep Deterministic Policy Gradient</li>
+<li><a href="https://arxiv.org/abs/1603.00748">NAF</a>: Normalized Advantage Functions</li>
+<li><a href="http://realai.org/imitation-learning/">Imitation</a> Learning</li>
+<li><a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa12/slides/inverseRL.pdf">IRL</a>: Inverse Reinforcement Learning</li>
+<li><a href="https://arxiv.org/abs/1603.00448">GCL</a>: Guided Cost Learning</li>
+<li><a href="https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_363">HRL</a>: Hierarchical Reinforcement Learning</li>
+<li>FuN: FeUdal Networks<ul>
+<li><a href="http://www.cs.toronto.edu/~fritz/absps/dh93.pdf">Feudal reinforcement learning</a></li>
+<li><a href="https://arxiv.org/abs/1703.01161">FeUdal Networks for hierarchical reinforcement learning</a></li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Model_predictive_control">MPC</a>: Model Predictive Control</li>
+<li><a href="http://mlg.eng.cam.ac.uk/pub/pdf/DeiRas11.pdf">PILCO</a>: Probabilistic Inference
+for Learning COntrol</li>
+<li>local models specifically as in <a href="https://arxiv.org/abs/1501.05611">Learning contact-rich manipulation skills with guided policy search</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator">LQR</a>: Linear-Quadratic Regulator</li>
+<li><a href="https://arxiv.org/abs/1612.08810">The Predictron: End-to-end learning and planning</a></li>
+<li><a href="https://arxiv.org/abs/1707.06203">I2A</a>: Imagination-Augmented Agent</li>
+<li>(<a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo</a>) (<a href="https://en.wikipedia.org/wiki/Tree_traversal">tree</a>) <a href="https://en.wikipedia.org/wiki/Artificial_intelligence#Search_and_optimization">search</a>, <a href="https://en.wikipedia.org/wiki/Minimax">minimax</a>, etc.</li>
+<li><a href="https://en.wikipedia.org/wiki/Gaussian_process">GP</a>: Gaussian Process</li>
+<li><a href="https://en.wikipedia.org/wiki/Mixture_model#Gaussian_mixture_model">GMM</a>: Gaussian Mixture Model</li>
+<li>(<a href="https://en.wikipedia.org/wiki/Deep_learning">D</a>/<a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">C</a>/<a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">R</a>)<a href="https://en.wikipedia.org/wiki/Artificial_neural_network">NN</a>: (Deep/Convolutional/Recurrent) Neural Network</li>
+<li><a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a>: Long Short-Term Memory</li>
+</ul><!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</link>
+<guid>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</guid>
+<pubDate>Wed, 30 Aug 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Characteristics of good theories</title>
 <description><![CDATA[
 
@@ -2136,96 +2203,6 @@ summary_writer.flush()  # Ensure everything is written out.</code></pre>
 <link>http://planspace.org/20170428-everything_in_the_graph_even_glob/</link>
 <guid>http://planspace.org/20170428-everything_in_the_graph_even_glob/</guid>
 <pubDate>Fri, 28 Apr 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Sparse Tensors and TFRecords</title>
-<description><![CDATA[
-
-<p>When a matrix, array, or tensor has lots of values that are zero, it can be called <em>sparse</em>. You might want to represent the zeros implicitly with a <em>sparse representation</em>. TensorFlow has support for this, and the support extends to its TFRecords <code>Example</code> format.</p>
-<p>Here is a sparse one-dimensional tensor:</p>
-<pre><code class="language-python">[0, 7, 0, 0, 8, 0, 0, 0, 0]</code></pre>
-
-<p>The tensor is sparse, in that it has a lot of zeros, but the representation is dense, in that all those zeros are represented explicitly.</p>
-<p>A sparse representation of the same tensor will focus only on the non-zero values.</p>
-<pre><code class="language-python">values = [7, 8]</code></pre>
-
-<p>We have to also remember where those values occur, by their indices:</p>
-<pre><code class="language-python">indices = [1, 5]</code></pre>
-
-<p>The one-dimensional <code>indices</code> form will work with some methods, for this one-dimensional example, but in general indices have multiple dimensions, so it will be more consistent (and work everywhere) to represent <code>indices</code> like this:</p>
-<pre><code class="language-python">indices = [[1], [5]]</code></pre>
-
-<p>With <code>values</code> and <code>indices</code>, we don't have quite enough information yet. How many zeros are there to the right of the last value? We have to represent the dense shape of the tensor.</p>
-<pre><code class="language-python">dense_shape = [9]</code></pre>
-
-<p>These three things together, <code>values</code>, <code>indices</code>, and <code>dense_shape</code>, are a sparse representation of the tensor.</p>
-<p>TensorFlow accepts lists of values and NumPy arrays to define dense tensors, and it returns NumPy arrays when dense tensors are evaluated. But what to do with sparse tensors? SciPy has <a href="https://docs.scipy.org/doc/scipy/reference/sparse.html">several</a> sparse matrix representations, but not a good match for TensorFlow's general sparse tensor form. So for sparse tensors, instead of reusing an existing Python class, TensorFlow provides <a href="https://www.tensorflow.org/api_docs/python/tf/SparseTensorValue"><code>tf.SparseTensorValue</code></a>. These are values that exist outside the TensorFlow graph, so they can be made without a <code>tf.Session</code>, for example.</p>
-<pre><code class="language-python">tf.SparseTensorValue(values=values, indices=indices, dense_shape=dense_shape)
-## SparseTensorValue(indices=[[1], [5]], values=[7, 8], dense_shape=[9])</code></pre>
-
-<p>Using <a href="https://www.tensorflow.org/api_docs/python/tf/SparseTensor"><code>tf.SparseTensor</code></a> puts that in the TensorFlow graph.</p>
-<pre><code class="language-python">tf.SparseTensor(values=values, indices=indices, dense_shape=dense_shape)
-## &lt;tensorflow.python.framework.sparse_tensor.SparseTensor at 0x11a4e0c10&gt;</code></pre>
-
-<p>That <code>tf.SparseTensor</code> will be constant, since we specified all the pieces of it, and if you run it in a session, you'll get back the equivalent <code>tf.SparseTensorValue</code>.</p>
-<p>TensorFlow has <a href="https://www.tensorflow.org/api_guides/python/sparse_ops">operations</a> specifically for working with sparse tensors, such as <a href="https://www.tensorflow.org/api_docs/python/tf/sparse_matmul"><code>tf.sparse_matmul</code></a>. And you can change a sparse matrix to a dense one with <a href="https://www.tensorflow.org/api_docs/python/tf/sparse_tensor_to_dense"><code>tf.sparse_tensor_to_dense</code></a>. These operations live in the graph, so they have to be run to see a result.</p>
-<pre><code class="language-python">sparse = tf.SparseTensor(values=values, indices=indices, dense_shape=dense_shape)
-dense = tf.sparse_tensor_to_dense(sparse)
-session.run(dense)
-## array([0, 7, 0, 0, 0, 8, 0, 0, 0], dtype=int32)</code></pre>
-
-<p>Going from dense to sparse seems a little less <a href="http://stackoverflow.com/questions/39838234/sparse-matrix-from-a-dense-one-tensorflow">straightforward</a> at the moment, so let's continue assuming we already have the components of our sparse representation.</p>
-<p>Going to more dimensions is quite natural. Here's a two-dimensional tensor with three non-zero values:</p>
-<pre><code class="language-python">[[0, 0, 0, 0, 0, 7],
- [0, 5, 0, 0, 0, 0],
- [0, 0, 0, 0, 9, 0],
- [0, 0, 0, 0, 0, 0]]</code></pre>
-
-<p>This can be represented in sparse form as:</p>
-<pre><code class="language-python">indices = [[0, 5],
-           [1, 1],
-           [2, 4]]
-
-values = [7, 5, 9]
-
-dense_shape = [4, 6]
-
-tf.SparseTensorValue(values=values, indices=indices, dense_shape=dense_shape)
-## SparseTensorValue(indices=[[0, 5], [1, 1], [2, 4]], values=[7, 5, 9], dense_shape=[4, 6])</code></pre>
-
-<p>Now, to represent this in a TFRecords <code>Example</code> requires a little bit of transformation. <a href="/20170323-tfrecords_for_humans/">TFRecords</a> only support lists of integers, floats, and bytestrings. The values are easily represented in one <code>Feature</code>, but to represent the <code>indices</code>, each dimension will need its own <code>Feature</code> in the <code>Example</code>. The <code>dense_shape</code> isn't represented at all; that's left to be specified at parsing.</p>
-<pre><code class="language-python">my_example = tf.train.Example(features=tf.train.Features(feature={
-    'index_0': tf.train.Feature(int64_list=tf.train.Int64List(value=[0, 1, 2])),
-    'index_1': tf.train.Feature(int64_list=tf.train.Int64List(value=[5, 1, 4])),
-    'values': tf.train.Feature(int64_list=tf.train.Int64List(value=[7, 5, 9]))
-}))
-my_example_str = my_example.SerializeToString()</code></pre>
-
-<p>This TFRecord sparse representation can then be <a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">parsed inside the graph</a> as a <a href="https://www.tensorflow.org/api_docs/python/tf/SparseFeature"><code>tf.SparseFeature</code></a>.</p>
-<pre><code class="language-python">my_example_features = {'sparse': tf.SparseFeature(index_key=['index_0', 'index_1'],
-                                                  value_key='values',
-                                                  dtype=tf.int64,
-                                                  size=[4, 6])}
-serialized = tf.placeholder(tf.string)
-parsed = tf.parse_single_example(serialized, features=my_example_features)
-session.run(parsed, feed_dict={serialized: my_example_str})
-## {'sparse': SparseTensorValue(indices=array([[0, 5], [1, 1], [2, 4]]),
-##                              values=array([7, 5, 9]),
-##                              dense_shape=array([4, 6]))}</code></pre>
-
-<p>Support for multi-dimensional sparse features seems to be new in TensorFlow 1.1, and TensorFlow gives this warning when you use <code>SparseFeature</code>:</p>
-<pre><code>WARNING:tensorflow:SparseFeature is a complicated feature config
-                   and should only be used after careful consideration
-                   of VarLenFeature.</code></pre>
-
-<p><code>VarLenFeature</code> doesn't support real sparsity or multi-dimensionality though; it only supports "ragged edges" as in the case when one example has three elements and the next has seven, for example.</p>
-<p>It is a little awkward to put together a sparse representation for TFRecords, but it does give you a lot of flexibility. To put a point on it, I don't know what you can do with a <code>SequenceExample</code> that you can't do with a regular <code>Example</code> using all of <code>FixedLenFeature</code>, <code>VarLenFeature</code>, and <code>SparseFeature</code>.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</link>
-<guid>http://planspace.org/20170427-sparse_tensors_and_tfrecords/</guid>
-<pubDate>Thu, 27 Apr 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
