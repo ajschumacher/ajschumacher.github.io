@@ -72,3 +72,7 @@ It isn't really fair to ask activations trained for visual classification to als
 One direction that aims to address the limitations of simple classification tasks, for example, is sometimes described as grounded perception or embodied cognition. The idea is that an agent needs to interact in an environment to learn things like "this is used for that" and so on. This might be part of an advance.
 
 In my estimation, however, the core problem of neural-symbolic integration seems unlikely to be solved by some kind of accidental emergent property. We struggle to represent input to an intelligent system, and we have very little idea how to represent the internals. Perhaps further inspiration will come from neuroscience.
+
+---
+
+I presented a version of this material at the [2017-09-14 Hack and Tell](https://www.meetup.com/DC-Hack-and-Tell/events/241002526/) using some slides ([PPTX](hack_and_tell.pptx), [PDF](hack_and_tell.pdf)).
