@@ -45,6 +45,7 @@ Here are some things I've talked about:
 Here are some things I've made:
 
  * [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole).
+ * [PerceptronModel](https://simplestatistics.org/docs/#perceptronmodel): simple binary classifier contributed to [simple-statistics](https://simplestatistics.org/)
  * [mergic](https://github.com/ajschumacher/mergic): workflow support for reproducible deduplication and merging
  * [cnfg](https://github.com/ajschumacher/cnfg): simple Python config in your home directory
  * [emacs.link](http://emacs.link/): an attractive convenience site for downloading and installing Emacs
