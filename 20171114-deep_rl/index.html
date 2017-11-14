@@ -162,6 +162,7 @@
 <hr />
 <p>In supervised learning you have a training set of state-action pairs, and you try to learn a function to produce the correct action based on the state alone.</p>
 <p>Supervised learning can blur into imitation learning, which can be taken as a kind of reinforcement learning. For example, <a href="https://arxiv.org/abs/1604.07316">NVIDIA's end-to-end self-driving car</a> is based on learning human driving behaviors. (Sergey Levine <a href="https://www.youtube.com/watch?v=Pw1mvoOD-3A&amp;list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&amp;index=13">explains</a> in some depth.) But I'm not going to talk more about imitation learning, and supervised learning will stand alone.</p>
+<p>You can learn this function with linear regression or support vector machines or whatever you like.</p>
 <hr />
 <p>deep supervised learning</p>
 <ul>
@@ -172,77 +173,104 @@
 <p>There's also semi-supervised learning, when you have some labeled data and some unlabeled data, which can connect to active learning, which has some relation to reinforcement learning, but that's all I'll say about that.</p>
 <hr />
 <p>reinforcement learning</p>
-<p>r, s \rightarrow a</p>
+<ul>
+<li>\(r, s \rightarrow a\)</li>
+</ul>
 <hr />
-<p>note optimal control connection</p>
+<p>Finally, we reach reinforcement learning.</p>
+<p>We're adding a new thing \( r \), which is reward.</p>
 <hr />
-<p>reward r</p>
+<p>reward \( r \)</p>
 <ul>
 <li>-3</li>
 <li>0</li>
-<li>7</li>
-<li>5</li>
+<li>7.4</li>
+<li>1</li>
 </ul>
 <hr />
-<p>text</p>
-<hr />
-<p>r, s \rightarrow a</p>
-<hr />
-<p>agent makes choice</p>
-<hr />
-<p>clock</p>
-<hr />
-<p>text</p>
-<hr />
-<p>r', s' \rightarrow a'</p>
-<hr />
-<p>agent makes choice</p>
-<hr />
-<p>clock</p>
-<hr />
-<p>text</p>
-<hr />
-<p><img alt="standard diagram" src="img/standard_diagram.png" /></p>
-<hr />
-<p>standard agent/env diagram</p>
+<p>Reward is a scalar, and we like positive rewards.</p>
 <hr />
 <p>optimal control / reinforcement learning</p>
 <hr />
-<p>different notation, cost minimization vs. reward maximization</p>
-<p><a href="https://en.wikipedia.org/wiki/Lev_Pontryagin">Lev Pontryagin</a> vs. <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a></p>
+<p>I'll mention that <a href="https://en.wikipedia.org/wiki/Optimal_control">optimal control</a> is closely related to reinforcement learning. It has its own parallel notation and conventions, and I'm going to ignore all that.</p>
+<hr />
+<p>\( r, s \rightarrow a \)</p>
+<hr />
+<p>So here's the reinforcement learning setting.</p>
+<p>We get a reward and a state, and the agent chooses an action.</p>
+<hr />
+<p>tick</p>
+<hr />
+<p>Then, time passes. We're using discrete time, so this is a "tick".</p>
+<hr />
+<p>\( r', s' \rightarrow a' \)</p>
+<hr />
+<p>Then we get a new reward and state, which depend on the previous state and action, and the agent chooses a new action.</p>
+<hr />
+<p>tick</p>
+<hr />
+<p>And so on.</p>
+<hr />
+<p><img alt="standard diagram" src="img/standard_diagram.png" /></p>
+<hr />
+<p>This is the standard reinforcement learning diagram, showing the agent and environment. My notation is similar.</p>
 <hr />
 <p>reinforcement learning</p>
-<p>given r, s, a, r', s', a', ...</p>
-<p>learn s \rightarrow a</p>
+<ul>
+<li>"given" \( r, s, a, r', s', a', ... \)</li>
+<li>learn "good" \( s \rightarrow a \)</li>
+</ul>
 <hr />
-<p>text</p>
+<p>So here's reinforcement learning.</p>
+<p>"Given" is in quotes because the rewards and states that we see depend on the actions we choose.</p>
+<p>"Good" is in quotes because we haven't defined "good" beyond that we like positive rewards.</p>
 <hr />
 <p>Question:</p>
 <p>Can you formulate supervised learning as reinforcement learning?</p>
 <hr />
-<p>text</p>
+<p>Here's a question to think about.</p>
+<hr />
+<p>supervised as reinforcement?</p>
+<ul>
+<li>reward 0 for incorrect, reward 1 for correct<ul>
+<li>beyond binary classification?</li>
+</ul>
+</li>
+<li>reward deterministic</li>
+<li>next state random</li>
+</ul>
+<hr />
+<p>You can re-cast supervised learning as reinforcement learning, but it isn't necessarily as efficient: it's better to be told what the right answer is than to just be told that you're wrong. This is one sense in which Yann LeCun means that reinforcement learning is using fewer bits of information per example.</p>
 <hr />
 <p>Question:</p>
 <p>Why is the Sarsa algorithm called Sarsa?</p>
 <hr />
-<p>Sutton 1996</p>
-<p>on-policy TD control</p>
+<p>Here's a question that you can already figure out!</p>
+<p>(Sarsa is an on-policy TD control algorithm due to Sutton, 1996.)</p>
 <hr />
 <p>reinforcement learning</p>
-<p>r, s \rightarrow a</p>
+<ul>
+<li>\( r, s \rightarrow a \)</li>
+</ul>
 <hr />
-<p>text</p>
+<p>Sarsa: State, Action, Reward, State, Action.</p>
+<p>We'll see the closely related Q-learning algorithm in some detail later on.</p>
 <hr />
 <p>deep reinforcement learning</p>
-<p>r, s \rightarrow a</p>
-<p>with deep neural nets</p>
+<ul>
+<li>\( r, s \rightarrow a \) with deep neural nets</li>
+</ul>
 <hr />
-<p>note: may not be in the obvious place</p>
+<p>Deep reinforcement learning is whenever we do reinforcement learning and somewhere there's a deep neural net.</p>
+<p>The one twist is that in reinforcement learning, the network(s) may not be in the obvious place. We'll need to develop a few more ideas to see more places to put a neural net.</p>
 <hr />
-<p>Markov</p>
-<p>s is enough</p>
+<p>Markov property</p>
+<ul>
+<li>\( s \) is enough</li>
+</ul>
 <hr />
-<p>state it</p>
+<p>We're going to assume <a href="https://en.wikipedia.org/wiki/Markov_property">the Markov property</a>, which means that the state we observe tells us as much as we can know about what will happen next.</p>
+<p>This is frequently not true, but we'll assume it anyway.</p>
 <hr />
 <pre><code>                   Make choices?
                    no                        yes
@@ -250,71 +278,105 @@ Completely    no   Markov chain              MDP: Markov Decision Process
 observable?   yes  HMM: Hidden Markov Model  POMDP: Partially Observable MDP</code></pre>
 
 <hr />
-<p>talk about MDPs, note we ignore partial observability</p>
-<p>blackjack example</p>
-<p>compare Minecraft?</p>
-<p>note usually finite</p>
-<p>based on http://www.pomdp.org/faq.html</p>
+<p>This chart relates a bunch of Markov things, to hopefully help you orient yourself.</p>
+<p>We're working with Markov Decision Processes (MDPs). Even though things are frequently not really completely observable, we'll usually just ignore that. Often this is fine (think about blackjack, for example).</p>
+<p>It's often easiest to think about finite spaces, but this isn't always necessary.</p>
+<p>(The chart is from <a href="http://www.pomdp.org/faq.html">POMDP.org</a>.)</p>
 <hr />
-<p>policy \pi</p>
-<p>\pi: s \rightarrow a</p>
+<p>usual RL problem elaboration</p>
 <hr />
-<p>it's a walker!</p>
-<p>how do we know the policy is good?</p>
+<p>We'll introduce some more notation and a few ideas that help us work on reinforcement learning problems.</p>
+<hr />
+<p>policy \( \pi \)</p>
+<ul>
+<li>\( \pi: s \rightarrow a \)</li>
+</ul>
+<hr />
+<p>This thing that takes a state and produces an action we'll call a "policy" \( \pi \). This effectively <em>is</em> our reinforcement learning agent, and the name of the game is figuring out how to get a good policy.</p>
+<p>But how do we even know whether a policy is good?</p>
+<p>(If you don't like spelling in Greek, you can imagine it's a little walker!)</p>
 <hr />
 <p>return</p>
-<p>\sum r</p>
+<ul>
+<li>\( \sum{r} \)<ul>
+<li>into the future (episodic or ongoing)</li>
+</ul>
+</li>
+</ul>
 <hr />
-<p>aka G</p>
+<p>We want a policy that maximizes "return" \( \sum{r} \). Return is just the sum of all the rewards we'll get into the future. The symbol "G" is also used, but I'll keep writing the sum.</p>
+<p>Reinforcement learning can consider finite-length episodes that always come to an end, or the ongoing setting in which the agent keeps on going. (You can see that there could be a problem with infinity in the ongoing setting.)</p>
 <hr />
 <p><img alt="gridworld" src="img/gridworld.png" /></p>
 <hr />
-<p>simple gridworld 4x4 start/end in corners</p>
-<p>states, actions</p>
-<p>episodic vs. continuing w/re-starts (consider both)</p>
-<p>note infinite reward problem</p>
+<p>Here's a typical toy example for understanding reinforcement learning: a gridworld.</p>
+<p>There are sixteen states, each uniquely identifiable to the agent.</p>
+<p>There are four actions: go up, down, left, right.</p>
+<p>We want the agent to learn to go from the start to the goal.</p>
+<p>We'll say this is episodic, with each episode ending after the agent makes it to the goal.</p>
+<p>So how do we set up the rewards?</p>
+<hr />
+<p><img alt="gridworld reward" src="img/gridworld_reward.png" /></p>
+<hr />
+<p>Here's a natural way to set up reward. You get a reward of one when you complete the task. What does the return at each state look like, then?</p>
+<hr />
+<p><img alt="gridworld return" src="img/gridworld_return.png" /></p>
+<hr />
+<p>The return, unfortunately, is just one everywhere. And this means that there isn't any reason to go directly to the goal. We have all the time in the world, so we could just as well meander randomly until we happen to hit the goal. This isn't very good.</p>
 <hr />
 <p>Question:</p>
 <p>How do we keep our agent from dawdling?</p>
 <hr />
-<p>(or infinite reward?)</p>
+<p>How can we set things up so that going directly to the goal position is incentivized?</p>
+<p>Consider changing rewards, or changing how return is calculated, or anything else.</p>
+<p>There are at least three approaches that are commonly used.</p>
 <hr />
 <p>negative reward at each time step</p>
 <hr />
-<p>-1, -1, -1, -1, ...</p>
-<p>for episodic</p>
-<p>Meeseeks reference</p>
+<p>If we get a negative reward at each time step, the only way to maximize return is to minimize episode length, so we're motivated to end the episode as soon as possible. This certainly makes sense for the episodic setting.</p>
+<p>(It's like existing is pain; the agent is like <a href="http://rickandmorty.wikia.com/wiki/Mr._Meeseeks">Mr. Meeseeks</a>!)</p>
 <hr />
 <p>discounted rewards</p>
-<p>\sum \gamma^tr</p>
+<ul>
+<li>\( \sum{\gamma^tr} \)</li>
+</ul>
 <hr />
-<p>discount factor</p>
+<p>It's very common to use a "discount factor" \( \gamma \), which might be 0.9, for example. Then a reward soon is worth more than a reward later, and again the agent is motivated to do things more directly.</p>
 <hr />
 <p>average rate of reward</p>
-<p>\frac{\sum r}{t}</p>
+<ul>
+<li>\( \frac{\sum{r}}{t} \)</li>
+</ul>
 <hr />
-<p>text</p>
+<p>Average rate of reward is also used in some settings, where it can make things more stable.</p>
 <hr />
 <p>value functions</p>
-<p>v: s \rightarrow \sum r</p>
-<p>q: s, a \rightarrow \sum r</p>
+<ul>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \sum{r} \)</li>
+</ul>
 <hr />
-<p>text</p>
+<p>I already snuck in a value function when we saw green values for every state in the gridworld.</p>
+<p>The state value function \( v \) tells us the return from any state, and the state-action value function \( q \) gives the return from any state-action combination. It might not yet be clear why the two are importantly different, so let's get into that.</p>
 <hr />
 <p>Question:</p>
-<p>Does a value function specify a policy?</p>
+<p>Does a value function specify a policy (if you want to maximize return)?</p>
 <hr />
-<p>text</p>
+<p>Here's the relevant question to consider.</p>
 <hr />
 <p>trick question?</p>
-<p>v_\pi</p>
-<p>q_\pi</p>
+<ul>
+<li>\( v_\pi \)</li>
+<li>\( q_\pi \)</li>
+</ul>
 <hr />
-<p>depends what you do</p>
+<p>Is it a trick question? Really, values depend on what you do, on your policy. But let's assume I just give you a value function and you trust it. Can you use it to induce a policy?</p>
 <hr />
 <p>value functions</p>
-<p>v: s \rightarrow \sum r</p>
-<p>q: s, a \rightarrow \sum r</p>
+<ul>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \sum{r} \)</li>
+</ul>
 <hr />
 <p>q gives policy; not sure for v</p>
 <hr />
