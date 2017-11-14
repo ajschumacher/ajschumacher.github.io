@@ -1,0 +1,681 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Deep Reinforcement Learning</title>
+  </head>
+  <body>
+    <article>
+<h1>Deep Reinforcement Learning</h1>
+<p class="date">Tuesday November 14, 2017</p>
+<p><em>This is a presentation given for <a href="https://www.meetup.com/Data-Science-DC/">Data Science DC</a> on <a href="https://www.meetup.com/Data-Science-DC/events/244145151">Tuesday November 14, 2017</a>. (<a href="deep_rl.pdf">PDF slides</a>, <a href="deep_rl.pptx">PPTX slides</a>, <a href="big.html">HTML slides</a>)</em></p>
+<p>Further resources up front:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1708.05866">A Brief Survey of Deep Reinforcement Learning</a> (paper)</li>
+<li>Karpathy's <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a> (blog post)</li>
+<li><a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a> (textbook)</li>
+<li>David Silver's <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">course</a> (videos and slides)</li>
+<li><a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">Deep Reinforcement Learning Bootcamp</a> (videos, slides, and labs)</li>
+<li>OpenAI <a href="https://github.com/openai/gym">gym</a> / <a href="https://github.com/openai/baselines">baselines</a> (software)</li>
+<li><a href="http://nationalgocenter.org/">National Go Center</a> (physical place)</li>
+<li><a href="http://dc.hackandtell.org/">Hack and Tell</a> (fun meetup)</li>
+</ul>
+<p>The following goes through all the content of the talk:</p>
+<hr />
+<p>Aaron Schumacher</p>
+<ul>
+<li>planspace.org has these slides</li>
+</ul>
+<hr />
+<p>Hi! I'm Aaron. All these slides, and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>
+<hr />
+<p><img alt="Deep Learning Analytics" src="img/dla.png" /></p>
+<hr />
+<p>I work at <a href="http://www.deeplearninganalytics.com/">Deep Learning Analytics</a> (DLA). We do deep learning work for government and commercial customers. DLA is a great place to work, and one of the ways it's great is that it sends us to conferences and such things.</p>
+<hr />
+<p><img alt="Deep RL Bootcamp" src="img/deep_rl_bootcamp.png" /></p>
+<hr />
+<p>DLA sent me to the first UC Berkeley <a href="https://www.deepbootcamp.io/">Deep RL Bootcamp</a> organized by Abbeel, Duan, Chen, and Karpathy. It was a great experience and it largely inspired this talk.</p>
+<p>I have a separate <a href="/20170830-berkeley_deep_rl_bootcamp/">summary write-up</a> about my experience at the bootcamp, and they've since put up all the <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">videos, slides, and labs</a>, so you can see everything that was covered there.</p>
+<hr />
+<p><img alt="Sutton and Barto's textbook" src="img/sutton_and_barto.jpg" /></p>
+<hr />
+<p>The other major source for this talk is Sutton and Barto's textbook, which I like a lot.</p>
+<p>The picture shows <a href="https://mitpress.mit.edu/books/reinforcement-learning">the first edition</a>, which is not what you want. The second edition is <a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">available free online</a>, and was last updated about a week ago (November 5, 2017).</p>
+<p>Sutton and Barto are major figures in reinforcement learning, and they do not follow any <a href="https://en.wikipedia.org/wiki/Wikipedia:No_original_research">no original research rules</a>, making their book really fairly exciting, if you're not put off by the length (over 400 pages).</p>
+<p>(The diagrams on the cover are not neural nets, but backup diagrams.)</p>
+<hr />
+<p>Plan</p>
+<ul>
+<li>applications: what<ul>
+<li>theory</li>
+</ul>
+</li>
+<li>applications: how</li>
+<li>onward</li>
+</ul>
+<hr />
+<p>text</p>
+<hr />
+<p>applications: what</p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="backgammon" src="img/backgammon.png" /></p>
+<hr />
+<p>Backgammon</p>
+<hr />
+<p><img alt="Atari Breakout" src="img/breakout.png" /></p>
+<hr />
+<p>Atari games</p>
+<p>best three (better than human): Video Pinball, Boxing, Breakout</p>
+<hr />
+<p><img alt="tetris" src="img/tetris.png" /></p>
+<hr />
+<p>Tetris</p>
+<hr />
+<p><img alt="go" src="img/go.jpg" /></p>
+<hr />
+<p>Go</p>
+<hr />
+<p>theory</p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="cake" src="img/cake.jpg" /></p>
+<hr />
+<p>Yann LeCun's cake</p>
+<ul>
+<li>cake: unsupervised learning</li>
+<li>icing: supervised learning</li>
+<li>cherry: reinforcement learning</li>
+</ul>
+<hr />
+<p>unsupervised learning</p>
+<p>s</p>
+<hr />
+<p>text</p>
+<p>"We are missing the principles for unsupervised learning." - Yann LeCun
+https://www.youtube.com/watch?v=vdWPQ6iAkT4</p>
+<hr />
+<p>state s</p>
+<ul>
+<li>numbers</li>
+<li>text to numbers</li>
+<li>image to numbers</li>
+<li>sound to numbers</li>
+</ul>
+<hr />
+<p>note no distinction between state and observation</p>
+<p>also often "x"</p>
+<p>also observations or examples</p>
+<p>covariates, explanatory variables, independent variables, predictors
+https://en.wikipedia.org/wiki/Covariate</p>
+<hr />
+<p>unsupervised (?) learning</p>
+<p>given s</p>
+<p>learn s \rightarrow cluster_id</p>
+<p>learn s \rightarrow s</p>
+<hr />
+<p>text</p>
+<p>Unsupervised learning is the <a href="https://en.wikipedia.org/wiki/Dark_matter">dark matter</a> of machine learning.</p>
+<hr />
+<p>deep unsupervised learning</p>
+<p>s</p>
+<p>with deep neural nets</p>
+<hr />
+<p>text</p>
+<hr />
+<p>supervised learning</p>
+<p>s \rightarrow a</p>
+<hr />
+<p>also X, y</p>
+<hr />
+<p>action a</p>
+<ul>
+<li>cat/dog</li>
+<li>left/right</li>
+<li>$price number(s)</li>
+<li>voltage</li>
+</ul>
+<hr />
+<p>aka answer</p>
+<p>also called labels</p>
+<p>really could be anything s can be</p>
+<p>ref NVIDIA car</p>
+<p>imitation learning from Sergey Levine
+https://www.youtube.com/watch?v=Pw1mvoOD-3A&amp;list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&amp;index=13</p>
+<hr />
+<p>supervised learning</p>
+<p>given s, a</p>
+<p>learn s \rightarrow a</p>
+<hr />
+<p>text</p>
+<hr />
+<p>deep supervised learning</p>
+<p>s \rightarrow a</p>
+<p>with deep neural nets</p>
+<hr />
+<p>text</p>
+<p>also semi-supervised</p>
+<p>some s, a</p>
+<p>some s</p>
+<p>mention active learning</p>
+<hr />
+<p>reinforcement learning</p>
+<p>r, s \rightarrow a</p>
+<hr />
+<p>note optimal control connection</p>
+<hr />
+<p>reward r</p>
+<ul>
+<li>-3</li>
+<li>0</li>
+<li>7</li>
+<li>5</li>
+</ul>
+<hr />
+<p>text</p>
+<hr />
+<p>r, s \rightarrow a</p>
+<hr />
+<p>agent makes choice</p>
+<hr />
+<p>clock</p>
+<hr />
+<p>text</p>
+<hr />
+<p>r', s' \rightarrow a'</p>
+<hr />
+<p>agent makes choice</p>
+<hr />
+<p>clock</p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="standard diagram" src="img/standard_diagram.png" /></p>
+<hr />
+<p>standard agent/env diagram</p>
+<hr />
+<p>optimal control / reinforcement learning</p>
+<hr />
+<p>different notation, cost minimization vs. reward maximization</p>
+<p><a href="https://en.wikipedia.org/wiki/Lev_Pontryagin">Lev Pontryagin</a> vs. <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">Richard Bellman</a></p>
+<hr />
+<p>reinforcement learning</p>
+<p>given r, s, a, r', s', a', ...</p>
+<p>learn s \rightarrow a</p>
+<hr />
+<p>text</p>
+<hr />
+<p>Question:</p>
+<p>Can you formulate supervised learning as reinforcement learning?</p>
+<hr />
+<p>text</p>
+<hr />
+<p>Question:</p>
+<p>Why is the Sarsa algorithm called Sarsa?</p>
+<hr />
+<p>Sutton 1996</p>
+<p>on-policy TD control</p>
+<hr />
+<p>reinforcement learning</p>
+<p>r, s \rightarrow a</p>
+<hr />
+<p>text</p>
+<hr />
+<p>deep reinforcement learning</p>
+<p>r, s \rightarrow a</p>
+<p>with deep neural nets</p>
+<hr />
+<p>note: may not be in the obvious place</p>
+<hr />
+<p>Markov</p>
+<p>s is enough</p>
+<hr />
+<p>state it</p>
+<hr />
+<pre><code>                   Make choices?
+                   no                        yes
+Completely    no   Markov chain              MDP: Markov Decision Process
+observable?   yes  HMM: Hidden Markov Model  POMDP: Partially Observable MDP</code></pre>
+
+<hr />
+<p>talk about MDPs, note we ignore partial observability</p>
+<p>blackjack example</p>
+<p>compare Minecraft?</p>
+<p>note usually finite</p>
+<p>based on http://www.pomdp.org/faq.html</p>
+<hr />
+<p>policy \pi</p>
+<p>\pi: s \rightarrow a</p>
+<hr />
+<p>it's a walker!</p>
+<p>how do we know the policy is good?</p>
+<hr />
+<p>return</p>
+<p>\sum r</p>
+<hr />
+<p>aka G</p>
+<hr />
+<p><img alt="gridworld" src="img/gridworld.png" /></p>
+<hr />
+<p>simple gridworld 4x4 start/end in corners</p>
+<p>states, actions</p>
+<p>episodic vs. continuing w/re-starts (consider both)</p>
+<p>note infinite reward problem</p>
+<hr />
+<p>Question:</p>
+<p>How do we keep our agent from dawdling?</p>
+<hr />
+<p>(or infinite reward?)</p>
+<hr />
+<p>negative reward at each time step</p>
+<hr />
+<p>-1, -1, -1, -1, ...</p>
+<p>for episodic</p>
+<p>Meeseeks reference</p>
+<hr />
+<p>discounted rewards</p>
+<p>\sum \gamma^tr</p>
+<hr />
+<p>discount factor</p>
+<hr />
+<p>average rate of reward</p>
+<p>\frac{\sum r}{t}</p>
+<hr />
+<p>text</p>
+<hr />
+<p>value functions</p>
+<p>v: s \rightarrow \sum r</p>
+<p>q: s, a \rightarrow \sum r</p>
+<hr />
+<p>text</p>
+<hr />
+<p>Question:</p>
+<p>Does a value function specify a policy?</p>
+<hr />
+<p>text</p>
+<hr />
+<p>trick question?</p>
+<p>v_\pi</p>
+<p>q_\pi</p>
+<hr />
+<p>depends what you do</p>
+<hr />
+<p>value functions</p>
+<p>v: s \rightarrow \sum r</p>
+<p>q: s, a \rightarrow \sum r</p>
+<hr />
+<p>q gives policy; not sure for v</p>
+<hr />
+<p>environment dynamics</p>
+<p>s, a \rightarrow r', s'</p>
+<hr />
+<p>text</p>
+<hr />
+<p>gridworld again</p>
+<hr />
+<p>don't know where you'll end up!</p>
+<hr />
+<p>model</p>
+<p>s, a \rightarrow r', s'</p>
+<hr />
+<p>often just s'</p>
+<p>model-based vs. model-free</p>
+<p>games vs. learning a model</p>
+<p>in adaptive control "system identification" is our "model learning"</p>
+<hr />
+<p>planning</p>
+<hr />
+<p>relate to value functions</p>
+<p>note not too different from planning in the past</p>
+<p>background vs. decision-time planning</p>
+<hr />
+<ul>
+<li>Dijkstra's algorithm</li>
+<li>A*</li>
+<li>minimax search</li>
+<li>Monte Carlo tree search</li>
+</ul>
+<hr />
+<p>minimax search with alpha-beta pruning</p>
+<hr />
+<p><img alt="backgammon roll" src="img/rollout.jpg" /></p>
+<hr />
+<p>roll-outs</p>
+<p>backgammon dice picture</p>
+<hr />
+<p>everything is stochastic</p>
+<hr />
+<p>not just from dice</p>
+<hr />
+<p>Question:</p>
+<p>How does randomness affect \pi, v, and q?</p>
+<hr />
+<p>text</p>
+<hr />
+<p>\pi: s \rightarrow a</p>
+<p>v: s \rightarrow \sum r</p>
+<p>q: s, a \rightarrow \sum r</p>
+<hr />
+<p>text</p>
+<hr />
+<p>\pi: P(a|s)</p>
+<p>v: s \rightarrow \expected \sum r</p>
+<p>q: s, a \rightarrow \expected \sum r</p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="gridworld with cliff" src="img/cliffworld.png" /></p>
+<hr />
+<p>icy pond: 20% chance you move 90º from where you intend</p>
+<p>cliff</p>
+<p>also in dynamics</p>
+<p>icy pond gridworld</p>
+<p>different optimal behavior depending on dynamics</p>
+<hr />
+<p><img alt="multi-armed bandit" src="img/bandit.jpg" /></p>
+<hr />
+<p>multi-armed bandit</p>
+<p>one state, one set of actions, stochastic reward</p>
+<p>which ad to show, etc.</p>
+<p>(also phrase as supervised learning?)</p>
+<hr />
+<p>exploration vs. exploitation</p>
+<p>\epsilon-greedy policy</p>
+<hr />
+<p>usually do what looks best</p>
+<p>\epsilon of the time, choose random action</p>
+<p>bandit is one-state; even more need to explore in bigger MDPs</p>
+<p>connect to active learning</p>
+<p>two reasons for \epsilon-greedy:</p>
+<ul>
+<li>explore all (find optimal)</li>
+<li>for off-policy (what did I mean, here?)</li>
+</ul>
+<hr />
+<p>Monte Carlo returns</p>
+<hr />
+<p>v(s) = ?</p>
+<p>keep track and average</p>
+<p>run to end</p>
+<p>many times</p>
+<p>average</p>
+<p>sample it! (rollouts again; note doing with model vs. with experience)</p>
+<hr />
+<p>non-stationarity</p>
+<hr />
+<p>v(s) changes over time</p>
+<hr />
+<p>stochastic gradient... moving average</p>
+<hr />
+<p>new mean = old mean + \alpha(new sample - old mean)</p>
+<p>exponential mean</p>
+<p>relate to SGD</p>
+<p>\alpha, \beta vs. \eta</p>
+<hr />
+<p><img alt="MDP diagram" src="img/mdp_diagram.png" /></p>
+<hr />
+<p>Example:</p>
+<p>s_1 to s_2 deterministically</p>
+<p>Question: How is v(s) related to v(s')?</p>
+<p>note another popular way to represent MDPs</p>
+<hr />
+<p>Bellman equation</p>
+<p>v(s) = r' + v(s')</p>
+<hr />
+<p>text</p>
+<p>Bellman mix</p>
+<p>"something not even a Congressman could object to"</p>
+<p>http://arcanesentiment.blogspot.com/2010/04/why-dynamic-programming.html</p>
+<p>img/bellman.jpg</p>
+<p>DP!
+value iteration!
+policy iteration!
+Generalized Policy Iteration!
+CoD!</p>
+<hr />
+<p>temporal difference</p>
+<hr />
+<p>Sutton 1988</p>
+<p>"bootstrap"</p>
+<hr />
+<p>Q-learning</p>
+<p>Q(S, A) = Q(S, A) + \alpha (R + \gamma max_a Q(S', a) - Q(S, A))</p>
+<hr />
+<p>text</p>
+<hr />
+<p>on-policy / off-policy</p>
+<hr />
+<p>importance sampling</p>
+<hr />
+<p>estimate v, q</p>
+<hr />
+<p>something about getting deep w/v,q</p>
+<p>note deadly triad? function approximation, bootstrapping, off-policy training</p>
+<hr />
+<p>policy gradient</p>
+<hr />
+<p>semi-gradient when bootstrapping</p>
+<hr />
+<p>REINFORCE</p>
+<hr />
+<p>text</p>
+<p>http://blog.shakirm.com/2015/11/machine-learning-trick-of-the-day-5-log-derivative-trick/</p>
+<hr />
+<p>actor-critic</p>
+<hr />
+<p>text</p>
+<hr />
+<p>relate softmax and \epsilon-greedy</p>
+<hr />
+<p>text</p>
+<hr />
+<p>RNN/LSTM help w/POMDP?</p>
+<hr />
+<p>text</p>
+<hr />
+<p>applications: how</p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="backgammon" src="img/backgammon.png" /></p>
+<hr />
+<p>Backgammon</p>
+<p>TD-Gammon</p>
+<p>s with custom features</p>
+<p>v with shallow neural net</p>
+<p>TD(\lambda)</p>
+<p>self-play</p>
+<p>shallow forward search</p>
+<hr />
+<p>dqn</p>
+<hr />
+<p>Playing Atari with Deep Reinforcement Learning
+https://arxiv.org/abs/1312.5602
+2013</p>
+<p>Human-level control through Deep Reinforcement Learning
+https://deepmind.com/research/dqn/
+2015</p>
+<hr />
+<p><img alt="tetris" src="img/tetris.png" /></p>
+<hr />
+<p>Tetris</p>
+<p>Learning Tetris Using the Noisy Cross-Entropy Method
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&amp;rep=rep1&amp;type=pdf</p>
+<hr />
+<p>go</p>
+<hr />
+<p>Mastering the game of Go with deep neural networks and tree search
+https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf</p>
+<p>AlphaGo Zero
+Mastering the game of Go without human knowledge
+https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ
+"Our approach is most directly applicable to Zero-sum games of perfect information."</p>
+<p>alphago zero can only play legal moves, but stupid moves aren't
+forbidden, so it is less constrained than alphago original~</p>
+<hr />
+<p><img alt="Amazon Echo" src="img/echo.jpg" /></p>
+<hr />
+<p>conv agent</p>
+<p>https://arxiv.org/abs/1709.02349</p>
+<hr />
+<p>language stuff</p>
+<hr />
+<p>A Deep Reinforcement Learning Chatbot
+https://arxiv.org/abs/1709.02349
+...Bengio</p>
+<p>Amazon Alexa Prize
+https://developer.amazon.com/alexaprize</p>
+<p>Emergence of Grounded Compositional Language in Multi-Agent Populations
+https://arxiv.org/abs/1703.04908
+Igor Mordatch, Pieter Abbeel</p>
+<p>Evolutionary game theory
+https://en.wikipedia.org/wiki/Evolutionary_game_theory</p>
+<p>Peyton Young
+https://en.wikipedia.org/wiki/Peyton_Young</p>
+<hr />
+<p>Neural Architecture Search (NAS)</p>
+<hr />
+<p>policy gradient where the actions design a neural net</p>
+<p>reward is validation set performance</p>
+<p>AutoML for large scale image classification and object detection
+https://research.googleblog.com/2017/11/automl-for-large-scale-image.html</p>
+<p>Learning Transferable Architectures for Scalable Image Recognition
+https://arxiv.org/abs/1707.07012</p>
+<p>Neural Architecture Search with Reinforcement Learning
+https://arxiv.org/abs/1611.01578</p>
+<hr />
+<p><img alt="robot" src="img/robot.jpg" /></p>
+<hr />
+<p>robot control</p>
+<hr />
+<p>robot picture</p>
+<hr />
+<p>left to right: Chelsea Finn, Pieter Abbeel, <a href="http://www.willowgarage.com/pages/pr2/overview">PR2</a>, Trevor Darrell, Sergey Levine</p>
+<p>https://nyti.ms/2hLYbGQ
+Peter Chen, chief executive of Embodied Intelligence; Pieter Abbeel, president and chief scientist; Rocky Duan, chief technology officer; and Tianhao Zhang</p>
+<p>optimal path (robot control)</p>
+<p>conclusion?</p>
+<p>"Ironically, the major advances in RL over the past few years all boil down to making RL look less like RL and more like supervised learning."
+https://twitter.com/dennybritz/status/925028640001105920</p>
+<hr />
+<p><img alt="OpenAI DotA 2" src="img/openai_dota2.jpg" /></p>
+<hr />
+<p>text</p>
+<hr />
+<p><img alt="bootcamp diagram" src="img/annotated.jpg" /></p>
+<hr />
+<p>text</p>
+<p>/20170830-berkeley_deep_rl_bootcamp/</p>
+<hr />
+<p>future directions?</p>
+<hr />
+<p>Deep Learning in Neural Networks: An Overview
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&amp;rep=rep1&amp;type=pdf
+Juergen Schmidhuber
+includes some on RNNs</p>
+<hr />
+<p>Thank you!</p>
+<hr />
+<p>Thank you for coming!</p>
+<p>Thanks again to <a href="https://www.deeplearninganalytics.com/">DLA</a> for supporting me in learning more about reinforcement learning, and in being the audience for the earliest version of this talk, providing lots of valuable feedback.</p>
+<p>Thanks to the <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/">DC Deep Learning Working Group</a> for working through the second iteration of this talk with me, providing even more good feedback.</p>
+<p>Thanks to <a href="https://twitter.com/EricHaengel">Eric Haengel</a> for help with Go and in thinking about the <a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ">AlphaGo Zero paper</a>.</p>
+<hr />
+<p>further resources</p>
+<hr />
+<ul>
+<li><a href="https://arxiv.org/abs/1708.05866">A Brief Survey of Deep Reinforcement Learning</a> (paper)</li>
+<li>Karpathy's <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a> (blog post)</li>
+<li><a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a> (textbook)</li>
+<li>David Silver's <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">course</a> (videos and slides)</li>
+<li><a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">Deep Reinforcement Learning Bootcamp</a> (videos, slides, and labs)</li>
+<li>OpenAI <a href="https://github.com/openai/gym">gym</a> / <a href="https://github.com/openai/baselines">baselines</a> (software)</li>
+<li><a href="http://nationalgocenter.org/">National Go Center</a> (physical place)</li>
+<li><a href="http://dc.hackandtell.org/">Hack and Tell</a> (fun meetup)</li>
+</ul>
+<p>Here are my top resources for learning more about deep reinforcement
+learning (and having a little fun).</p>
+<p>The content of <a href="https://arxiv.org/abs/1708.05866">A Brief Survey of Deep Reinforcement Learning</a> is similar to this talk. It does a quick intro to a lot of deep reinforcement learning.</p>
+<p>Karpathy's <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a> is a readable introduction as well, focused on policy gradient, with readable code.</p>
+<p>If you can afford the time, I recommend all of Sutton and Barto's <a href="http://incompleteideas.net/sutton/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a>. The authors are two major reinforcement learning pioneers, to the extent that they sometimes introduce new concepts in the pages of their textbook.</p>
+<p>David Silver's <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">course</a> is quite good. It largely follows Sutton and Barto's text, and also references Csaba Szepesvári's <a href="https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf">Algorithms for Reinforcement Learning</a>.</p>
+<p>The <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">Deep Reinforcement Learning Bootcamp</a> that inspired this talk has lots of materials online, so you can get the full treatment if you like!</p>
+<p>If you want to get into code, <a href="https://openai.com/">OpenAI</a>'s <a href="https://github.com/openai/gym">gym</a> and <a href="https://github.com/openai/baselines">baselines</a> could be nice places to get started.</p>
+<p>If you want to have fun, you can play Go with humans at the <a href="http://nationalgocenter.org/">National Go Center</a>, and I always recommend the <a href="http://dc.hackandtell.org/">Hack and Tell</a> meetup for a good time nerding out with people over a range of fun projects.</p>    <script src="/scripts/konami.js"></script>
+    <script type="text/javascript">
+      var easter_egg = new Konami('big.html');
+    </script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
