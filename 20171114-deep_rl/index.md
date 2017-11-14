@@ -252,6 +252,8 @@ In supervised learning you have a training set of state-action pairs, and you tr
 
 Supervised learning can blur into imitation learning, which can be taken as a kind of reinforcement learning. For example, [NVIDIA's end-to-end self-driving car](https://arxiv.org/abs/1604.07316) is based on learning human driving behaviors. (Sergey Levine [explains](https://www.youtube.com/watch?v=Pw1mvoOD-3A&list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&index=13) in some depth.) But I'm not going to talk more about imitation learning, and supervised learning will stand alone.
 
+You can learn this function with linear regression or support vector machines or whatever you like.
+
 
 -----
 
@@ -270,70 +272,27 @@ There's also semi-supervised learning, when you have some labeled data and some 
 
 reinforcement learning
 
-r, s \rightarrow a
+ * \\(r, s \rightarrow a\\)
 
 -----
 
-note optimal control connection
+Finally, we reach reinforcement learning.
+
+We're adding a new thing \\( r \\), which is reward.
 
 
 -----
 
-reward r
+reward \\( r \\)
 
  * -3
  * 0
- * 7
- * 5
+ * 7.4
+ * 1
 
 -----
 
-text
-
-
------
-
-r, s \rightarrow a
-
------
-
-agent makes choice
-
-
------
-
-clock
-
------
-
-text
-
-
------
-
-r', s' \rightarrow a'
-
------
-
-agent makes choice
-
-
------
-
-clock
-
------
-
-text
-
-
------
-
-![standard diagram](img/standard_diagram.png)
-
------
-
-standard agent/env diagram
+Reward is a scalar, and we like positive rewards.
 
 
 -----
@@ -342,22 +301,70 @@ optimal control / reinforcement learning
 
 -----
 
-different notation, cost minimization vs. reward maximization
+I'll mention that [optimal control](https://en.wikipedia.org/wiki/Optimal_control) is closely related to reinforcement learning. It has its own parallel notation and conventions, and I'm going to ignore all that.
 
-[Lev Pontryagin](https://en.wikipedia.org/wiki/Lev_Pontryagin) vs. [Richard Bellman](https://en.wikipedia.org/wiki/Richard_E._Bellman)
+
+-----
+
+\\( r, s \rightarrow a \\)
+
+-----
+
+So here's the reinforcement learning setting.
+
+We get a reward and a state, and the agent chooses an action.
+
+
+-----
+
+tick
+
+-----
+
+Then, time passes. We're using discrete time, so this is a "tick".
+
+
+-----
+
+\\( r', s' \rightarrow a' \\)
+
+-----
+
+Then we get a new reward and state, which depend on the previous state and action, and the agent chooses a new action.
+
+
+-----
+
+tick
+
+-----
+
+And so on.
+
+
+-----
+
+![standard diagram](img/standard_diagram.png)
+
+-----
+
+This is the standard reinforcement learning diagram, showing the agent and environment. My notation is similar.
 
 
 -----
 
 reinforcement learning
 
-given r, s, a, r', s', a', ...
-
-learn s \rightarrow a
+ * "given" \\( r, s, a, r', s', a', ... \\)
+ * learn "good" \\( s \rightarrow a \\)
 
 -----
 
-text
+So here's reinforcement learning.
+
+"Given" is in quotes because the rewards and states that we see depend on the actions we choose.
+
+"Good" is in quotes because we haven't defined "good" beyond that we like positive rewards.
 
 
 -----
@@ -368,7 +375,21 @@ Can you formulate supervised learning as reinforcement learning?
 
 -----
 
-text
+Here's a question to think about.
+
+
+-----
+
+supervised as reinforcement?
+
+ * reward 0 for incorrect, reward 1 for correct
+     * beyond binary classification?
+ * reward deterministic
+ * next state random
+
+-----
+
+You can re-cast supervised learning as reinforcement learning, but it isn't necessarily as efficient: it's better to be told what the right answer is than to just be told that you're wrong. This is one sense in which Yann LeCun means that reinforcement learning is using fewer bits of information per example.
 
 
 -----
@@ -379,44 +400,48 @@ Why is the Sarsa algorithm called Sarsa?
 
 -----
 
-Sutton 1996
+Here's a question that you can already figure out!
 
-on-policy TD control
+(Sarsa is an on-policy TD control algorithm due to Sutton, 1996.)
 
 
 -----
 
 reinforcement learning
 
-r, s \rightarrow a
+ * \\( r, s \rightarrow a \\)
 
 -----
 
-text
+Sarsa: State, Action, Reward, State, Action.
+
+We'll see the closely related Q-learning algorithm in some detail later on.
 
 
 -----
 
 deep reinforcement learning
 
-r, s \rightarrow a
-
-with deep neural nets
+ * \\( r, s \rightarrow a \\) with deep neural nets
 
 -----
 
-note: may not be in the obvious place
+Deep reinforcement learning is whenever we do reinforcement learning and somewhere there's a deep neural net.
+
+The one twist is that in reinforcement learning, the network(s) may not be in the obvious place. We'll need to develop a few more ideas to see more places to put a neural net.
 
 
 -----
 
-Markov
+Markov property
 
-s is enough
+ * \\( s \\) is enough
 
 -----
 
-state it
+We're going to assume [the Markov property](https://en.wikipedia.org/wiki/Markov_property), which means that the state we observe tells us as much as we can know about what will happen next.
+
+This is frequently not true, but we'll assume it anyway.
 
 
 -----
@@ -430,38 +455,51 @@ observable?   yes  HMM: Hidden Markov Model  POMDP: Partially Observable MDP
 
 -----
 
-talk about MDPs, note we ignore partial observability
+This chart relates a bunch of Markov things, to hopefully help you orient yourself.
 
-blackjack example
+We're working with Markov Decision Processes (MDPs). Even though things are frequently not really completely observable, we'll usually just ignore that. Often this is fine (think about blackjack, for example).
 
-compare Minecraft?
+It's often easiest to think about finite spaces, but this isn't always necessary.
 
-note usually finite
+(The chart is from [POMDP.org](http://www.pomdp.org/faq.html).)
 
-based on http://www.pomdp.org/faq.html
-
------
-
-policy \pi
-
-\pi: s \rightarrow a
 
 -----
 
-it's a walker!
+usual RL problem elaboration
 
-how do we know the policy is good?
+-----
+
+We'll introduce some more notation and a few ideas that help us work on reinforcement learning problems.
+
+
+-----
+
+policy \\( \pi \\)
+
+ * \\( \pi: s \rightarrow a \\)
+
+-----
+
+This thing that takes a state and produces an action we'll call a "policy" \\( \pi \\). This effectively _is_ our reinforcement learning agent, and the name of the game is figuring out how to get a good policy.
+
+But how do we even know whether a policy is good?
+
+(If you don't like spelling in Greek, you can imagine it's a little walker!)
 
 
 -----
 
 return
 
-\sum r
+ * \\( \sum{r} \\)
+     * into the future (episodic or ongoing)
 
 -----
 
-aka G
+We want a policy that maximizes "return" \\( \sum{r} \\). Return is just the sum of all the rewards we'll get into the future. The symbol "G" is also used, but I'll keep writing the sum.
+
+Reinforcement learning can consider finite-length episodes that always come to an end, or the ongoing setting in which the agent keeps on going. (You can see that there could be a problem with infinity in the ongoing setting.)
 
 
 -----
@@ -470,13 +508,35 @@ aka G
 
 -----
 
-simple gridworld 4x4 start/end in corners
+Here's a typical toy example for understanding reinforcement learning: a gridworld.
 
-states, actions
+There are sixteen states, each uniquely identifiable to the agent.
 
-episodic vs. continuing w/re-starts (consider both)
+There are four actions: go up, down, left, right.
 
-note infinite reward problem
+We want the agent to learn to go from the start to the goal.
+
+We'll say this is episodic, with each episode ending after the agent makes it to the goal.
+
+So how do we set up the rewards?
+
+
+-----
+
+![gridworld reward](img/gridworld_reward.png)
+
+-----
+
+Here's a natural way to set up reward. You get a reward of one when you complete the task. What does the return at each state look like, then?
+
+
+-----
+
+![gridworld return](img/gridworld_return.png)
+
+-----
+
+The return, unfortunately, is just one everywhere. And this means that there isn't any reason to go directly to the goal. We have all the time in the world, so we could just as well meander randomly until we happen to hit the goal. This isn't very good.
 
 
 -----
@@ -487,7 +547,11 @@ How do we keep our agent from dawdling?
 
 -----
 
-(or infinite reward?)
+How can we set things up so that going directly to the goal position is incentivized?
+
+Consider changing rewards, or changing how return is calculated, or anything else.
+
+There are at least three approaches that are commonly used.
 
 
 -----
@@ -496,79 +560,76 @@ negative reward at each time step
 
 -----
 
--1, -1, -1, -1, ...
+If we get a negative reward at each time step, the only way to maximize return is to minimize episode length, so we're motivated to end the episode as soon as possible. This certainly makes sense for the episodic setting.
 
-for episodic
-
-Meeseeks reference
+(It's like existing is pain; the agent is like [Mr. Meeseeks](http://rickandmorty.wikia.com/wiki/Mr._Meeseeks)!)
 
 
 -----
 
 discounted rewards
 
-\sum \gamma^tr
+ * \\( \sum{\gamma^tr} \\)
 
 -----
 
-discount factor
+It's very common to use a "discount factor" \\( \gamma \\), which might be 0.9, for example. Then a reward soon is worth more than a reward later, and again the agent is motivated to do things more directly.
 
 
 -----
 
 average rate of reward
 
-\frac{\sum r}{t}
+ * \\( \frac{\sum{r}}{t} \\)
 
 -----
 
-text
+Average rate of reward is also used in some settings, where it can make things more stable.
 
 
 -----
 
 value functions
 
-v: s \rightarrow \sum r
-
-q: s, a \rightarrow \sum r
+ * \\( v: s \rightarrow \sum{r} \\)
+ * \\( q: s, a \rightarrow \sum{r} \\)
 
 -----
 
-text
+I already snuck in a value function when we saw green values for every state in the gridworld.
+
+The state value function \\( v \\) tells us the return from any state, and the state-action value function \\( q \\) gives the return from any state-action combination. It might not yet be clear why the two are importantly different, so let's get into that.
 
 
 -----
 
 Question:
 
-Does a value function specify a policy?
+Does a value function specify a policy (if you want to maximize return)?
 
 -----
 
-text
+Here's the relevant question to consider.
 
 
 -----
 
 trick question?
 
-v_\pi
-
-q_\pi
+ * \\( v_\pi \\)
+ * \\( q_\pi \\)
 
 -----
 
-depends what you do
+Is it a trick question? Really, values depend on what you do, on your policy. But let's assume I just give you a value function and you trust it. Can you use it to induce a policy?
 
 
 -----
 
 value functions
 
-v: s \rightarrow \sum r
-
-q: s, a \rightarrow \sum r
+ * \\( v: s \rightarrow \sum{r} \\)
+ * \\( q: s, a \rightarrow \sum{r} \\)
 
 -----
 
