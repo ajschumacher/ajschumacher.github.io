@@ -58,34 +58,32 @@
 <li>onward</li>
 </ul>
 <hr />
-<p>text</p>
+<p>The plan for today is to first mention four successful applications of reinforcement learning. Then we'll go through a core of theory. This will let us then understand pretty completely how each of those applications is achieved. Finally, we'll wrap up, looking at a few other applications and thoughts about how things are going.</p>
 <hr />
 <p>applications: what</p>
 <hr />
-<p>text</p>
+<p>The applications here are all going to be games, not because reinforcement learning is only applicable to games, but because games are fun, and these examples are well known and cover a good range of techniques.</p>
 <hr />
 <p><img alt="backgammon" src="img/backgammon.png" /></p>
 <hr />
-<p>Backgammon</p>
+<p>First up, backgammon.</p>
 <hr />
 <p><img alt="Atari Breakout" src="img/breakout.png" /></p>
 <hr />
-<p>Atari games</p>
-<p>best three (better than human): Video Pinball, Boxing, Breakout</p>
+<p>Next, Atari. A lot of Atari games are well played by RL now. The ones shown (Video Pinball, Boxing, Breakout) are some of the ones that RL does the best on.</p>
 <hr />
 <p><img alt="tetris" src="img/tetris.png" /></p>
 <hr />
-<p>Tetris</p>
+<p>I'm also including Tetris, mostly because it's a chance to talk about an interesting technique.</p>
 <hr />
 <p><img alt="go" src="img/go.jpg" /></p>
 <hr />
-<p>Go</p>
+<p>And in the last two years, Go has been pretty much conquered by RL, so we'll talk about that.</p>
 <hr />
 <p>theory</p>
 <hr />
-<p>text</p>
-<hr />
-<p><img alt="cake" src="img/cake.jpg" /></p>
+<p>Let's start to build up the theory of reinforcement learning.</p>
+<p>This is going to start very gradually, but I promise that by the end we'll be moving fast.</p>
 <hr />
 <p>Yann LeCun's cake</p>
 <ul>
@@ -93,77 +91,85 @@
 <li>icing: supervised learning</li>
 <li>cherry: reinforcement learning</li>
 </ul>
+<p><img alt="cake" src="img/cake.jpg" /></p>
+<hr />
+<p>Yann LeCun <a href="https://drive.google.com/file/d/0BxKBnD5y2M8NREZod0tVdW5FLTQ/view">introduced</a> this cake idea for relating three main varieties of machine learning. It's largely based on one view of how much information is used at each training step.</p>
+<p>I'm going to use it to build up and relate these three kinds of learning, while introducing reinforcement learning notation.</p>
 <hr />
 <p>unsupervised learning</p>
-<p>s</p>
-<hr />
-<p>text</p>
-<p>"We are missing the principles for unsupervised learning." - Yann LeCun
-https://www.youtube.com/watch?v=vdWPQ6iAkT4</p>
-<hr />
-<p>state s</p>
 <ul>
-<li>numbers</li>
-<li>text to numbers</li>
-<li>image to numbers</li>
-<li>sound to numbers</li>
+<li>\( s \)</li>
 </ul>
 <hr />
-<p>note no distinction between state and observation</p>
-<p>also often "x"</p>
-<p>also observations or examples</p>
-<p>covariates, explanatory variables, independent variables, predictors
-https://en.wikipedia.org/wiki/Covariate</p>
+<p>In unsupervised learning, we have a collection of states, where each individual state can be referred to with \( s \).</p>
+<p>I'm using "state" without distinguishing "state" from "observation". You could also call these "examples" or "<a href="https://en.wikipedia.org/wiki/Covariate">covariates</a>" or "data points" or whatever you like.</p>
+<p>The symbol "x" is commonly used.</p>
+<hr />
+<p>state \( s \)</p>
+<ul>
+<li>numbers</li>
+<li>text (as numbers)</li>
+<li>image (as numbers)</li>
+<li>sound (as numbers)</li>
+</ul>
+<hr />
+<p>States can be anything as long as it can be expressed numerically. So that includes text, images, and sound. Really anything.</p>
 <hr />
 <p>unsupervised (?) learning</p>
-<p>given s</p>
-<p>learn s \rightarrow cluster_id</p>
-<p>learn s \rightarrow s</p>
+<ul>
+<li>given \( s \)</li>
+<li>learn \( s \rightarrow \text{cluster_id} \)</li>
+<li>learn \( s \rightarrow s \)</li>
+</ul>
 <hr />
-<p>text</p>
-<p>Unsupervised learning is the <a href="https://en.wikipedia.org/wiki/Dark_matter">dark matter</a> of machine learning.</p>
+<p>So say we have a set of a thousand images. Each image is an \( s \).</p>
+<p>We want to learn something, and that tends to mean unsupervised learning starts to resemble supervised learning.</p>
+<p>At two ends of a spectrum we have clustering and <a href="https://en.wikipedia.org/wiki/Autoencoder">autoencoders</a>, and all kinds of dimensionality reduction in between.</p>
+<p>Unsupervised learning is sort of the <a href="https://en.wikipedia.org/wiki/Dark_matter">dark matter</a> of machine learning. Even <a href="https://www.youtube.com/watch?v=vdWPQ6iAkT4">Yann LeCun</a> says "We are missing the principles for unsupervised learning."</p>
 <hr />
 <p>deep unsupervised learning</p>
-<p>s</p>
-<p>with deep neural nets</p>
+<ul>
+<li>\( s \) with deep neural nets</li>
+</ul>
 <hr />
-<p>text</p>
+<p>Deep unsupervised learning is whenever we do unsupervised learning and somewhere there's a deep neural net.</p>
 <hr />
 <p>supervised learning</p>
-<p>s \rightarrow a</p>
+<ul>
+<li>\( s \rightarrow a \)</li>
+</ul>
 <hr />
-<p>also X, y</p>
+<p>Up next is supervised learning. We're introducing a new entity \( a \), which I'll call an "action". It's common to call it a "label" or a "target" and to use the symbol "y". Same thing.</p>
 <hr />
 <p>action a</p>
 <ul>
-<li>cat/dog</li>
-<li>left/right</li>
-<li>$price number(s)</li>
-<li>voltage</li>
+<li>numbers</li>
+<li>"cat"/"dog"</li>
+<li>"left"/"right"</li>
+<li>17.3</li>
+<li>[2.0, 11.7, 5]</li>
+<li>4.2V</li>
 </ul>
 <hr />
-<p>aka answer</p>
-<p>also called labels</p>
-<p>really could be anything s can be</p>
-<p>ref NVIDIA car</p>
-<p>imitation learning from Sergey Levine
-https://www.youtube.com/watch?v=Pw1mvoOD-3A&amp;list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&amp;index=13</p>
+<p>Whatever you call it, the action is again a numeric thing. It could be anything that \( s \) could be, but it tends to be lower-dimensional.</p>
+<p>The cat/dog classifier is a popular example, and a left/right classifier is just the same, but those might feel more like actions.</p>
 <hr />
 <p>supervised learning</p>
-<p>given s, a</p>
-<p>learn s \rightarrow a</p>
+<ul>
+<li>given \( s, a \)</li>
+<li>learn \( s \rightarrow a \)</li>
+</ul>
 <hr />
-<p>text</p>
+<p>In supervised learning you have a training set of state-action pairs, and you try to learn a function to produce the correct action based on the state alone.</p>
+<p>Supervised learning can blur into imitation learning, which can be taken as a kind of reinforcement learning. For example, <a href="https://arxiv.org/abs/1604.07316">NVIDIA's end-to-end self-driving car</a> is based on learning human driving behaviors. (Sergey Levine <a href="https://www.youtube.com/watch?v=Pw1mvoOD-3A&amp;list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&amp;index=13">explains</a> in some depth.) But I'm not going to talk more about imitation learning, and supervised learning will stand alone.</p>
 <hr />
 <p>deep supervised learning</p>
-<p>s \rightarrow a</p>
-<p>with deep neural nets</p>
+<ul>
+<li>\( s \rightarrow a \) with deep neural nets</li>
+</ul>
 <hr />
-<p>text</p>
-<p>also semi-supervised</p>
-<p>some s, a</p>
-<p>some s</p>
-<p>mention active learning</p>
+<p>Deep supervised learning is whenever we do supervised learning and somewhere there's a deep neural net.</p>
+<p>There's also semi-supervised learning, when you have some labeled data and some unlabeled data, which can connect to active learning, which has some relation to reinforcement learning, but that's all I'll say about that.</p>
 <hr />
 <p>reinforcement learning</p>
 <p>r, s \rightarrow a</p>
@@ -607,7 +613,9 @@ learning (and having a little fun).</p>
 <p>David Silver's <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">course</a> is quite good. It largely follows Sutton and Barto's text, and also references Csaba Szepesvári's <a href="https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf">Algorithms for Reinforcement Learning</a>.</p>
 <p>The <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">Deep Reinforcement Learning Bootcamp</a> that inspired this talk has lots of materials online, so you can get the full treatment if you like!</p>
 <p>If you want to get into code, <a href="https://openai.com/">OpenAI</a>'s <a href="https://github.com/openai/gym">gym</a> and <a href="https://github.com/openai/baselines">baselines</a> could be nice places to get started.</p>
-<p>If you want to have fun, you can play Go with humans at the <a href="http://nationalgocenter.org/">National Go Center</a>, and I always recommend the <a href="http://dc.hackandtell.org/">Hack and Tell</a> meetup for a good time nerding out with people over a range of fun projects.</p>    <script src="/scripts/konami.js"></script>
+<p>If you want to have fun, you can play Go with humans at the <a href="http://nationalgocenter.org/">National Go Center</a>, and I always recommend the <a href="http://dc.hackandtell.org/">Hack and Tell</a> meetup for a good time nerding out with people over a range of fun projects.</p><!-- mathjax for formulas -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/scripts/konami.js"></script>
     <script type="text/javascript">
       var easter_egg = new Konami('big.html');
     </script>

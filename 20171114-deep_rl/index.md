@@ -73,7 +73,7 @@ Plan
 
 -----
 
-text
+The plan for today is to first mention four successful applications of reinforcement learning. Then we'll go through a core of theory. This will let us then understand pretty completely how each of those applications is achieved. Finally, we'll wrap up, looking at a few other applications and thoughts about how things are going.
 
 
 -----
@@ -82,7 +82,7 @@ applications: what
 
 -----
 
-text
+The applications here are all going to be games, not because reinforcement learning is only applicable to games, but because games are fun, and these examples are well known and cover a good range of techniques.
 
 
 -----
@@ -91,7 +91,7 @@ text
 
 -----
 
-Backgammon
+First up, backgammon.
 
 
 -----
@@ -100,9 +100,7 @@ Backgammon
 
 -----
 
-Atari games
-
-best three (better than human): Video Pinball, Boxing, Breakout
+Next, Atari. A lot of Atari games are well played by RL now. The ones shown (Video Pinball, Boxing, Breakout) are some of the ones that RL does the best on.
 
 
 -----
@@ -111,7 +109,7 @@ best three (better than human): Video Pinball, Boxing, Breakout
 
 -----
 
-Tetris
+I'm also including Tetris, mostly because it's a chance to talk about an interesting technique.
 
 
 -----
@@ -120,7 +118,7 @@ Tetris
 
 -----
 
-Go
+And in the last two years, Go has been pretty much conquered by RL, so we'll talk about that.
 
 
 -----
@@ -129,12 +127,10 @@ theory
 
 -----
 
-text
+Let's start to build up the theory of reinforcement learning.
 
+This is going to start very gradually, but I promise that by the end we'll be moving fast.
 
------
-
-![cake](img/cake.jpg)
 
 -----
 
@@ -144,139 +140,130 @@ Yann LeCun's cake
  * icing: supervised learning
  * cherry: reinforcement learning
 
+![cake](img/cake.jpg)
+
+-----
+
+
+Yann LeCun [introduced](https://drive.google.com/file/d/0BxKBnD5y2M8NREZod0tVdW5FLTQ/view) this cake idea for relating three main varieties of machine learning. It's largely based on one view of how much information is used at each training step.
+
+I'm going to use it to build up and relate these three kinds of learning, while introducing reinforcement learning notation.
+
 
 -----
 
 unsupervised learning
 
-s
+ * \\( s \\)
 
 -----
 
-text
+In unsupervised learning, we have a collection of states, where each individual state can be referred to with \\( s \\).
 
-"We are missing the principles for unsupervised learning." - Yann LeCun
-https://www.youtube.com/watch?v=vdWPQ6iAkT4
+I'm using "state" without distinguishing "state" from "observation". You could also call these "examples" or "[covariates](https://en.wikipedia.org/wiki/Covariate)" or "data points" or whatever you like.
+
+The symbol "x" is commonly used.
 
 
 -----
 
-state s
+state \\( s \\)
 
  * numbers
- * text to numbers
- * image to numbers
- * sound to numbers
+ * text (as numbers)
+ * image (as numbers)
+ * sound (as numbers)
 
 -----
 
-note no distinction between state and observation
-
-also often "x"
-
-also observations or examples
-
-covariates, explanatory variables, independent variables, predictors
-https://en.wikipedia.org/wiki/Covariate
+States can be anything as long as it can be expressed numerically. So that includes text, images, and sound. Really anything.
 
 
 -----
 
 unsupervised (?) learning
 
-given s
-
-learn s \rightarrow cluster_id
-
-learn s \rightarrow s
+ * given \\( s \\)
+ * learn \\( s \rightarrow \text{cluster_id} \\)
+ * learn \\( s \rightarrow s \\)
 
 -----
 
-text
+So say we have a set of a thousand images. Each image is an \\( s \\).
 
-Unsupervised learning is the [dark matter](https://en.wikipedia.org/wiki/Dark_matter) of machine learning.
+We want to learn something, and that tends to mean unsupervised learning starts to resemble supervised learning.
+
+At two ends of a spectrum we have clustering and [autoencoders](https://en.wikipedia.org/wiki/Autoencoder), and all kinds of dimensionality reduction in between.
+
+Unsupervised learning is sort of the [dark matter](https://en.wikipedia.org/wiki/Dark_matter) of machine learning. Even [Yann LeCun](https://www.youtube.com/watch?v=vdWPQ6iAkT4) says "We are missing the principles for unsupervised learning."
 
 
 -----
 
 deep unsupervised learning
 
-s
-
-with deep neural nets
+ * \\( s \\) with deep neural nets
 
 -----
 
-text
+Deep unsupervised learning is whenever we do unsupervised learning and somewhere there's a deep neural net.
 
 
 -----
 
 supervised learning
 
-s \rightarrow a
+ * \\( s \rightarrow a \\)
 
 -----
 
-also X, y
+Up next is supervised learning. We're introducing a new entity \\( a \\), which I'll call an "action". It's common to call it a "label" or a "target" and to use the symbol "y". Same thing.
 
 
 -----
 
 action a
 
- * cat/dog
- * left/right
- * $price number(s)
- * voltage
+ * numbers
+ * "cat"/"dog"
+ * "left"/"right"
+ * 17.3
+ * [2.0, 11.7, 5]
+ * 4.2V
 
 
 -----
 
-aka answer
+Whatever you call it, the action is again a numeric thing. It could be anything that \\( s \\) could be, but it tends to be lower-dimensional.
 
-also called labels
-
-really could be anything s can be
-
-ref NVIDIA car
-
-imitation learning from Sergey Levine
-https://www.youtube.com/watch?v=Pw1mvoOD-3A&list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&index=13
+The cat/dog classifier is a popular example, and a left/right classifier is just the same, but those might feel more like actions.
 
 
 -----
 
 supervised learning
 
-given s, a
-
-learn s \rightarrow a
+ * given \\( s, a \\)
+ * learn \\( s \rightarrow a \\)
 
 -----
 
-text
+In supervised learning you have a training set of state-action pairs, and you try to learn a function to produce the correct action based on the state alone.
+
+Supervised learning can blur into imitation learning, which can be taken as a kind of reinforcement learning. For example, [NVIDIA's end-to-end self-driving car](https://arxiv.org/abs/1604.07316) is based on learning human driving behaviors. (Sergey Levine [explains](https://www.youtube.com/watch?v=Pw1mvoOD-3A&list=PLkFD6_40KJIxopmdJF_CLNqG3QuDFHQUm&index=13) in some depth.) But I'm not going to talk more about imitation learning, and supervised learning will stand alone.
 
 
 -----
 
 deep supervised learning
 
-s \rightarrow a
-
-with deep neural nets
+ * \\( s \rightarrow a \\) with deep neural nets
 
 -----
 
-text
+Deep supervised learning is whenever we do supervised learning and somewhere there's a deep neural net.
 
-also semi-supervised
-
-some s, a
-
-some s
-
-mention active learning
+There's also semi-supervised learning, when you have some labeled data and some unlabeled data, which can connect to active learning, which has some relation to reinforcement learning, but that's all I'll say about that.
 
 
 -----
