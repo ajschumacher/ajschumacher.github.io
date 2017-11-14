@@ -1,6 +1,9 @@
 # Deep Reinforcement Learning
 
-*This is a presentation given for [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Tuesday November 14, 2017](https://www.meetup.com/Data-Science-DC/events/244145151). ([PDF slides](deep_rl.pdf), [PPTX slides](deep_rl.pptx), [HTML slides](big.html))*
+*This is a presentation given for [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Tuesday November 14, 2017](https://www.meetup.com/Data-Science-DC/events/244145151).*
+
+ * *[PDF slides](deep_rl.pdf)*
+ * *[PPTX slides](deep_rl.pptx)*
 
 Further resources up front:
 
@@ -633,69 +636,139 @@ value functions
 
 -----
 
-q gives policy; not sure for v
+The state-action value function \\( q \\) certainly implies a policy. For whatever state we're in, we check the return for all available actions, and choose the action that's best.
+
+For the state value function \\( v \\), we can get a policy in a similar way, but only if we know what state we'll be in after taking an action. That may or may not be true.
 
 
 -----
 
 environment dynamics
 
-s, a \rightarrow r', s'
+ * \\( s, a \rightarrow r', s' \\)
 
 -----
 
-text
+The next state and reward depend on the previous state and action, and that's determined by the environment. We don't necessarily know what's going on inside the environment.
 
 
 -----
 
-gridworld again
+![gridworld](img/gridworld.png)
 
 -----
 
-don't know where you'll end up!
+When you, a smart human with lots of ideas about physics, look at this picture of a gridworld, you assume that going "right" will do what you expect.
+
+But in general, we don't know in advance how the environment behaves. Maybe going "right" always takes you to the upper left state, for example.
+
+Sometimes you do know the environment dynamics, like with games with well-defined rules. But sometimes you don't. You could try to learn the environment dynamics with a model.
 
 
 -----
 
 model
 
-s, a \rightarrow r', s'
+ * \\( s, a \rightarrow r', s' \\)
 
 -----
 
-often just s'
+Reinforcement learning uses "model" to refer to a model that you learn for the environment dynamics. (Often, just the next state is predicted.)
 
-model-based vs. model-free
+This model is something that the agent has to learn, and depending on whether the agent is learning a model determines whether you're said to be doing model-based vs. model-free reinforcement learning.
 
-games vs. learning a model
-
-in adaptive control "system identification" is our "model learning"
+(In adaptive control this "model learning" is called "system identification".)
 
 
 -----
 
-planning
+learning and acting
 
 -----
 
-relate to value functions
-
-note not too different from planning in the past
-
-background vs. decision-time planning
+Everything to this point has been elaborating the problem setup for reinforcement learning. Now we get into how we actually learn and go forth with RL.
 
 
 -----
+
+learn model of dynamics
+
+ * from experience
+ * difficulty varies
+
+-----
+
+As mentioned, you could try to learn your environment's dynamics. If you can do this well, it's great, but it may not be easy. Model-based RL is an exciting area of research.
+
+
+-----
+
+learn value function(s) with planning
+
+ * assuming we have the environment dynamics or a good model already
+
+-----
+
+To introduce value function learning, let's consider the situation where you know nothing yet but you have the environment dynamics, so you can make decisions by looking ahead. This is a familiar thought process, conceptually.
+
+
+-----
+
+![planning 0](img/planning0.png)
+
+-----
+
+You're in state \\( s_1 \\) and you have to choose between \\( a_1 \\) and \\( a_2 \\).
+
+Because you have the environment dynamics, you can see what would happen next.
+
+
+-----
+
+![planning 1](img/planning1.png)
+
+-----
+
+Looking one time step ahead, you can already start to evaluate your action choices by the rewards you'd get immediately. This is the state-action value view, \\( q \\): you're evaluating the value of the _actions_ directly.
+
+
+-----
+
+![planning 2](img/planning2.png)
+
+-----
+
+Looking two time steps ahead, you can similarly start to evaluate how good the states you would get to are. This is the state value view, \\( v \\).
+
+This example is simple and assumes states and actions never recur. We also haven't introduced a couple more wrinkles. You can think about differences between thinking in terms of \\( v \\) and \\( q \\) later, for example in the case of backgammon.
+
+This kind of planning can happen continuously in the background, or it can be done on demand at decision time. The search space can get quite large.
+
+
+-----
+
+connections
 
  * Dijkstra's algorithm
- * A*
+ * A* algorithm
  * minimax search
+     * two-player games not a problem
  * Monte Carlo tree search
 
 -----
 
-minimax search with alpha-beta pruning
+The graph structure on the previous slide might make you think of a range of algorithms that you could already be familiar with.
+
+You can think of these as smart ways of exploring the possibly very large branching structures that can spring up. [Monte Carlo tree search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) is particularly clever, and it will appear again later.
+
+
+-----
+
+![rollout diagram](img/rollout_diagram.png)
+
+-----
+
+One way of dealing with all the possible tree paths is just to sample from it and try to make estimates on the basis of these.
 
 
 -----
@@ -704,9 +777,7 @@ minimax search with alpha-beta pruning
 
 -----
 
-roll-outs
-
-backgammon dice picture
+I thought it was interesting to learn that the term "roll-out" comes from work on backgammon, where you literally roll dice to move a game along.
 
 
 -----
@@ -715,142 +786,107 @@ everything is stochastic
 
 -----
 
-not just from dice
+Backgammon has randomness in the environment, from the dice, but randomness can enter all over the place.
 
 
 -----
 
-Question:
-
-How does randomness affect \pi, v, and q?
+![stochastic s'](img/stochastic_s.png)
 
 -----
 
-text
-
-
------
-
-\pi: s \rightarrow a
-
-v: s \rightarrow \sum r
-
-q: s, a \rightarrow \sum r
-
------
-
-text
+The next state can be random.
 
 
 -----
 
-\pi: P(a|s)
-
-v: s \rightarrow \expected \sum r
-
-q: s, a \rightarrow \expected \sum r
+![stochastic r'](img/stochastic_r.png)
 
 -----
 
-text
-
-
------
-
-![gridworld with cliff](img/cliffworld.png)
-
------
-
-icy pond: 20% chance you move 90º from where you intend
-
-cliff
-
-also in dynamics
-
-icy pond gridworld
-
-different optimal behavior depending on dynamics
-
-
------
-
-![multi-armed bandit](img/bandit.jpg)
-
------
-
-multi-armed bandit
-
-one state, one set of actions, stochastic reward
-
-which ad to show, etc.
-
-(also phrase as supervised learning?)
+And the next reward can be random, as in the case of [multi-armed bandits](https://en.wikipedia.org/wiki/Multi-armed_bandit).
 
 
 -----
 
 exploration vs. exploitation
 
-\epsilon-greedy policy
+ * \\( \epsilon \\)-greedy policy
+     * usually do what looks best
+     * \\( \epsilon \\) of the time, choose random action
 
 -----
 
-usually do what looks best
+This can always be an issue in unknown environments, but especially with randomness, we encounter the issue of exploration vs. exploitation. The \\( \epsilon \\)-greedy approach is one well-known way to ensure that an agent keeps exploring.
 
-\epsilon of the time, choose random action
 
-bandit is one-state; even more need to explore in bigger MDPs
+-----
 
-connect to active learning
+Question:
 
-two reasons for \epsilon-greedy:
+How does randomness affect \\( \pi \\), \\( v \\), and \\( q \\)?
 
- * explore all (find optimal)
- * for off-policy (what did I mean, here?)
+ * \\( \pi: s \rightarrow a \\)
+ * \\( v: s \rightarrow \sum{r} \\)
+ * \\( q: s, a \rightarrow \sum{r} \\)
+
+-----
+
+Now acknowledging that there's randomness all over the place, I can show another way that my notation is shorthand.
+
+
+-----
+
+Question:
+
+How does randomness affect \\( \pi \\), \\( v \\), and \\( q \\)?
+
+ * \\( \pi: \mathbb{P}(a|s) \\)
+ * \\( v: s \rightarrow \mathbb{E} \sum{r} \\)
+ * \\( q: s, a \rightarrow \mathbb{E} \sum{r} \\)
+
+-----
+
+I haven't been hiding too much. A policy is a probability distribution over possible actions, and value functions give expectations. No problem.
 
 
 -----
 
 Monte Carlo returns
 
+ * \\( v(s) = ? \\)
+ * keep track and average
+ * like "planning" from experienced "roll-outs"
+
 -----
 
-v(s) = ?
-
-keep track and average
-
-
-run to end
-
-many times
-
-average
-
-sample it! (rollouts again; note doing with model vs. with experience)
+Here's our first pass at a model-free learning algorithm. We interact with the environment, and use our experiences in the past just like model-based roll-outs.
 
 
 -----
 
 non-stationarity
 
------
-
-v(s) changes over time
-
+ * \\( v(s) \\) changes over time!
 
 -----
 
-stochastic gradient... moving average
+The environment may change, and we want our methods to be able to deal with this.
+
 
 -----
 
-new mean = old mean + \alpha(new sample - old mean)
+moving average
 
-exponential mean
+ * new mean = old mean + \\( \alpha \\)(new sample - old mean)
 
-relate to SGD
+-----
 
-\alpha, \beta vs. \eta
+This kind of moving average is used all over the place.
+
+The parameter \\( \alpha \\) is a learning rate, and the whole thing can be seen to be a case of stochastic gradient descent, which is a nice early connection to neural nets which start turning up.
+
+(Sutton and Barto use \\( \alpha \\) for learning rate, not the otherwise popular \\( \eta \\). This is a sensible choice for them especially since they sometimes have multiple learning rates in the same algorithm, and the second learning rate can then be \\( \beta \\).)
 
 
 -----
@@ -859,61 +895,46 @@ relate to SGD
 
 -----
 
-Example:
-
-s_1 to s_2 deterministically
-
-Question: How is v(s) related to v(s')?
-
-note another popular way to represent MDPs
+We can think about this question, which is not a trick: the difference is \\( r' \\).
 
 
 -----
 
 Bellman equation
 
-v(s) = r' + v(s')
+ * \\( v(s) = r' + v(s') \\)
 
 -----
 
-text
+That relation gives rise to a bunch of Bellman equations, which are quite useful.
 
+[Bellman](https://en.wikipedia.org/wiki/Richard_E._Bellman) came up with a couple neat things. [Dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming) (despite being [poorly named](http://arcanesentiment.blogspot.com/2010/04/why-dynamic-programming.html)) is great for lots of problems, including those involving Bellman equations.
 
-Bellman mix
-
-"something not even a Congressman could object to"
-
-http://arcanesentiment.blogspot.com/2010/04/why-dynamic-programming.html
-
-img/bellman.jpg
-
-DP!
-value iteration!
-policy iteration!
-Generalized Policy Iteration!
-CoD!
+Bellman also introduced the phrase "[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)".
 
 
 -----
 
-temporal difference
+temporal difference (TD)
 
 -----
 
-Sutton 1988
+Bellman equations give rise to temporal difference (TD) learning (Sutton, 1988).
 
-"bootstrap"
+It's sometimes described as "bootstrap" learning.
 
 
 -----
 
 Q-learning
 
-Q(S, A) = Q(S, A) + \alpha (R + \gamma max_a Q(S', a) - Q(S, A))
+ * \\( \text{new } q(s, a) = q(s, a) + \alpha (r' + \gamma \max_{a} q(s', a) - q(s, a)) \\)
 
 -----
 
-text
+Q-learning is a temporal difference method that combines a lot of the things we've just seen.
+
+You can see in the equation that Sarsa is closely related.
 
 
 -----
@@ -922,65 +943,66 @@ on-policy / off-policy
 
 -----
 
-importance sampling
+Reinforcement learning differentiates between on-policy and off-policy learning. On-policy learning is when you're learning about the policy that you're currently following, and it's generally easier than off-policy learning.
+
+Importance sampling is one way to achieve off-policy learning.
+
+Q-learning is off-policy, which is nice. You can look at the equation and see why.
 
 
 -----
 
-estimate v, q
+estimate \\( v \\), \\( q \\)
+
+ * with a deep neural network
 
 -----
 
-something about getting deep w/v,q
+We've sort of implicitly been doing what's called tabular learning, where each state or state-action has its own estimated return. But we can plug in any kind of supervised learning algorithm, including deep learning. We'll see this in applications.
 
-note deadly triad? function approximation, bootstrapping, off-policy training
+
+-----
+
+back to the \\( \pi \\)
+
+ * parameterize \\( \pi \\) directly
+ * update based on how well it works
+ * REINFORCE
+     * REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility
+
+-----
+
+Stepping back from value functions, we can work with a parameterized policy directly.
+
+REINFORCE is not necessarily a great acronym.
 
 
 -----
 
 policy gradient
 
------
-
-semi-gradient when bootstrapping
-
+ * \\( \nabla \log (\pi(a|s))\\)
 
 -----
 
-REINFORCE
+This is the gradient that you use.
 
------
+You may see the connection to score functions and the so-called [log-derivative trick](http://blog.shakirm.com/2015/11/machine-learning-trick-of-the-day-5-log-derivative-trick/), but we can interpret without all that.
 
-text
-
-http://blog.shakirm.com/2015/11/machine-learning-trick-of-the-day-5-log-derivative-trick/
+If an action contributes to high return, you can encourage it, and if it contributes to low return, you can discourage it.
 
 
 -----
 
 actor-critic
 
------
-
-text
-
-
------
-
-relate softmax and \epsilon-greedy
+ * \\( \pi \\) is the actor
+ * \\( v \\) is the critic
+ * train \\( \pi \\) by policy gradient to encourage actions that work out better than \\( v \\) expected
 
 -----
 
-text
-
-
------
-
-RNN/LSTM help w/POMDP?
-
------
-
-text
+Actor-critic algorithms combine policy gradient and value function methods to reduce variance, and are pretty popular.
 
 
 -----
@@ -989,108 +1011,114 @@ applications: how
 
 -----
 
-text
+We now know enough to understand a lot of the details of big reinforcement learning applications!
 
 
 -----
 
-![backgammon](img/backgammon.png)
+TD-gammon (1992)
+
+ * \\( s \\) is custom features
+ * \\( v \\) with shallow neural net
+ * \\( r \\) is 1 for a win, 0 otherwise
+ * \\( TD(\lambda) \\)
+     * eligibility traces
+ * self play
+ * shallow forward search
 
 -----
 
-Backgammon
+Backgammon was dealt with pretty completely about 25 years ago already.
 
-TD-Gammon
-
-s with custom features
-
-v with shallow neural net
-
-TD(\lambda)
-
-self-play
-
-shallow forward search
-
-
------
-
-dqn
-
------
-
-Playing Atari with Deep Reinforcement Learning
-https://arxiv.org/abs/1312.5602
-2013
-
-Human-level control through Deep Reinforcement Learning
-https://deepmind.com/research/dqn/
-2015
+We know what state the board will be in after any move, and the state of the board is what matters, so it makes sense to use a state value function \\( v \\) here.
 
 
 -----
 
-![tetris](img/tetris.png)
+DQN (2015)
+
+ * \\( s \\) is four frames of video
+ * \\( v \\) with deep convolutional neural net
+ * \\( r \\) is 1 if score increases, -1 if decreases, 0 otherwise
+ * Q-learning
+     * usually-frozen target network
+     * clipping update size, etc.
+ * \\( \epsilon \\)-greedy
+ * experience replay
 
 -----
 
-Tetris
+Deep Q-Networks (DQN) is a well-known algorithm that works well for many Atari games. See:
 
-Learning Tetris Using the Noisy Cross-Entropy Method
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&rep=rep1&type=pdf
-
-
------
-
-go
-
------
-
-Mastering the game of Go with deep neural networks and tree search
-https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf
-
-AlphaGo Zero
-Mastering the game of Go without human knowledge
-https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ
-"Our approach is most directly applicable to Zero-sum games of perfect information."
-
-alphago zero can only play legal moves, but stupid moves aren't
-forbidden, so it is less constrained than alphago original~
+ * [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602) (2013)
+ * [Human-level control through Deep Reinforcement Learning](https://deepmind.com/research/dqn/) (2015)
 
 
 -----
 
-![Amazon Echo](img/echo.jpg)
+evolution (2006)
+
+ * \\( s \\) is custom features
+ * \\( \pi \\) has a simple parameterization
+ * evaluate by final score
+ * cross-entropy method
 
 -----
 
-conv agent
+Surprise! Tetris is well-solved by evolutionary methods, which I didn't mention at all. These methods are sneaky that way. They can work better than you'd think. See:
 
-https://arxiv.org/abs/1709.02349
+ * [Learning Tetris Using the Noisy Cross-Entropy Method](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&rep=rep1&type=pdf) (2006)
+ * [Evolution Strategies as a Scalable Alternative to Reinforcement Learning](https://blog.openai.com/evolution-strategies/)
+
+
+-----
+
+AlphaGo (2016)
+
+ * \\( s \\) is custom features over geometry
+     * big and small variants
+ * \\( \pi_{SL} \\) with deep convolutional neural net, supervised training
+ * \\( \pi_{rollout} \\) with smaller convolutional neural net, supervised training
+ * \\( r \\) is 1 for a win, -1 for a loss, 0 otherwise
+ * \\( \pi_{RL} \\) is \\( \pi_{SL} \\) refined with policy gradient peer-play reinforcement learning
+ * \\( v \\) with deep convolutional neural net, trained based on \\( \pi_{RL} \\) games
+ * asynchronous policy and value Monte Carlo tree search
+     * expand tree with \\( \pi_{SL} \\)
+     * evaluate positions with blend of \\( v \\) and \\( \pi_{rollout} \\) rollouts
+
+-----
+
+AlphaGo surprised a lot of people by reaching super-human levels of Go play. It was a bit complicated. See:
+
+* [Mastering the game of Go with deep neural networks and tree search](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
 
 
 -----
 
-language stuff
+AlphaGo Zero (2017)
+
+ * \\( s \\) is simple features over time and geometry
+ * \\( \pi, v \\) with deep residual convolutional neural net
+ * \\( r \\) is 1 for a win, -1 for a loss, 0 otherwise
+ * Monte Carlo tree search for self-play training and play
 
 -----
 
-A Deep Reinforcement Learning Chatbot
-https://arxiv.org/abs/1709.02349
-...Bengio
+AlphaGo Zero improved on AlphaGo in performance and by requiring no human training data. It reaches incredibly good performance with only its self-play learning method. See:
 
-Amazon Alexa Prize
-https://developer.amazon.com/alexaprize
+ * [Mastering the game of Go without human knowledge](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ)
+     * Interesting quote on reach/limitations: "Our approach is most directly applicable to Zero-sum games of perfect information."
 
-Emergence of Grounded Compositional Language in Multi-Agent Populations
-https://arxiv.org/abs/1703.04908
-Igor Mordatch, Pieter Abbeel
+(AlphaGo Zero can only play legal moves, but stupid moves (like filling eyes) aren't forbidden, so it is less constrained than the original AlphaGo.)
 
-Evolutionary game theory
-https://en.wikipedia.org/wiki/Evolutionary_game_theory
 
-Peyton Young
-https://en.wikipedia.org/wiki/Peyton_Young
+-----
+
+onward
+
+-----
+
+Let's look at some more applications to paint out more of the area that reinforcement learning can influence.
 
 
 -----
@@ -1099,18 +1127,26 @@ Neural Architecture Search (NAS)
 
 -----
 
-policy gradient where the actions design a neural net
+Neural Architecture Search (NAS) uses policy gradient where the actions design a neural net. The reward is validation set performance. See:
 
-reward is validation set performance
+ * [AutoML for large scale image classification and object detection](https://research.googleblog.com/2017/11/automl-for-large-scale-image.html)
+ * [Learning Transferable Architectures for Scalable Image Recognition](https://arxiv.org/abs/1707.07012)
+ * [Neural Architecture Search with Reinforcement Learning](https://arxiv.org/abs/1611.01578)
 
-AutoML for large scale image classification and object detection
-https://research.googleblog.com/2017/11/automl-for-large-scale-image.html
 
-Learning Transferable Architectures for Scalable Image Recognition
-https://arxiv.org/abs/1707.07012
+-----
 
-Neural Architecture Search with Reinforcement Learning
-https://arxiv.org/abs/1611.01578
+![Amazon Echo](img/echo.jpg)
+
+-----
+
+A lot of people are interested in natural language processing. A lot of chatbots are still big nests of `if` statements, but there is interest in using RL for language. See:
+
+ * [A Deep Reinforcement Learning Chatbot](https://arxiv.org/abs/1709.02349)
+     * [Amazon Alexa Prize](https://developer.amazon.com/alexaprize)
+ * [Emergence of Grounded Compositional Language in Multi-Agent Populations](https://arxiv.org/abs/1703.04908)
+
+(In particular in the multi-agent setting, there might be some connection to [evolutionary game theory](https://en.wikipedia.org/wiki/Evolutionary_game_theory) and the work of [Peyton Young](https://en.wikipedia.org/wiki/Peyton_Young).)
 
 
 -----
@@ -1119,27 +1155,24 @@ https://arxiv.org/abs/1611.01578
 
 -----
 
-robot control
+Lots of people think using RL for robot control is pretty neat.
+
+(left to right: Chelsea Finn, Pieter Abbeel, [PR2](http://www.willowgarage.com/pages/pr2/overview), Trevor Darrell, Sergey Levine)
+
+Pieter Abbeel, Peter Chen, Rocky Duan, and Tianhao Zhang [founded Embodied Intelligence](https://nyti.ms/2hLYbGQ) to work on robot stuff, it seems.
 
 
 -----
 
-robot picture
+self-driving cars
+
+ * interest
+ * results?
 
 -----
 
-left to right: Chelsea Finn, Pieter Abbeel, [PR2](http://www.willowgarage.com/pages/pr2/overview), Trevor Darrell, Sergey Levine
+People seem to want to use RL for self-driving cars.
 
-https://nyti.ms/2hLYbGQ
-Peter Chen, chief executive of Embodied Intelligence; Pieter Abbeel, president and chief scientist; Rocky Duan, chief technology officer; and Tianhao Zhang
-
-optimal path (robot control)
-
-
-conclusion?
-
-"Ironically, the major advances in RL over the past few years all boil down to making RL look less like RL and more like supervised learning."
-https://twitter.com/dennybritz/status/925028640001105920
 
 -----
 
@@ -1147,7 +1180,16 @@ https://twitter.com/dennybritz/status/925028640001105920
 
 -----
 
-text
+OpenAI has [beaten](https://blog.openai.com/dota-2/) top human players in one-on-one DotA 2. This is pretty neat. They haven't released details of their methods as they say they're working on the full five-on-five game. We'll see!
+
+
+-----
+
+conclusion
+
+-----
+
+Wrapping up!
 
 
 -----
@@ -1156,21 +1198,63 @@ text
 
 -----
 
-text
-
-/20170830-berkeley_deep_rl_bootcamp/
+There are [a lot of RL algorithms](/20170830-berkeley_deep_rl_bootcamp/) with horrible acronyms.
 
 
 -----
 
-future directions?
+reinforcement learning
+
+ * \\( r,s \rightarrow a \\)
+ * \\( \pi: s \rightarrow a\\)
+ * \\( v: s \rightarrow \sum{r} \\)
+ * \\( q: s,a \rightarrow \sum{r} \\)
 
 -----
 
-Deep Learning in Neural Networks: An Overview
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&rep=rep1&type=pdf
-Juergen Schmidhuber
-includes some on RNNs
+But the core ideas are pretty concise, and lots of work in the field can be quickly understood to a first approximation by relating it back to these core ideas.
+
+
+-----
+
+network architectures for deep RL
+
+ * feature engineering can still matter
+ * if using pixels
+     * often simpler than state-of-the-art for supervised
+     * don't pool away location information if you need it
+ * consider using multiple/auxiliary outputs
+ * consider phrasing regression as classification
+ * room for big advancements
+
+-----
+
+Lots of exciting developments in RL are coming from the use of deep neural nets, and I wanted to say a few things specific to doing these applications of deep learning.
+
+
+-----
+
+the lure and limits of RL
+
+ * seems like AI (?)
+ * needs so much data
+
+-----
+
+There's progress in RL now. The limits of that progress are not yet known.
+
+One hot take [from Denny Britz](https://twitter.com/dennybritz/status/925028640001105920): "Ironically, the major advances in RL over the past few years all boil down to making RL look less like RL and more like supervised learning."
+
+
+-----
+
+Question
+
+ * Should you use reinforcement learning?
+
+-----
+
+It's for you to decide!
 
 
 -----
@@ -1219,3 +1303,5 @@ The [Deep Reinforcement Learning Bootcamp](https://sites.google.com/view/deep-rl
 If you want to get into code, [OpenAI](https://openai.com/)'s [gym](https://github.com/openai/gym) and [baselines](https://github.com/openai/baselines) could be nice places to get started.
 
 If you want to have fun, you can play Go with humans at the [National Go Center](http://nationalgocenter.org/), and I always recommend the [Hack and Tell](http://dc.hackandtell.org/) meetup for a good time nerding out with people over a range of fun projects.
+
+Juergen Schmidhuber's [Deep Learning in Neural Networks: An Overview](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.6579&rep=rep1&type=pdf) didn't make my top list, but it has an interesting section specific to using LSTMs in RL.
