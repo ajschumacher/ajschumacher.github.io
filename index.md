@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2017-11-14: [Deep Reinforcement Learning](/20171114-deep_rl/)
  * 2017-10-22: [Mounting Disks on AWS](/20171022-mounting_disks_on_aws/)
  * 2017-09-17: [Science as Mountaineering](/20170917-science_as_mountaineering/)
  * 2017-09-11: [Problems with ImageNet and its Solutions](/20170911-problems_with_imagenet_and_its_solutions/)

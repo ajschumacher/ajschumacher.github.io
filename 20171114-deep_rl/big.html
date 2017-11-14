@@ -1,0 +1,592 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type='text/css' href="/styles/big.css">
+    <script src="/scripts/big.js"></script>
+  </head>
+  <body>
+<div>
+Deep Reinforcement Learning
+</div>
+<div>
+<p>Aaron Schumacher</p>
+<ul>
+<li>planspace.org has these slides</li>
+</ul>
+</div>
+<div>
+<p><img alt="Deep Learning Analytics" src="img/dla.png" /></p>
+</div>
+<div>
+<p><img alt="Sutton and Barto's textbook" src="img/sutton_and_barto.jpg" /></p>
+</div>
+<div>
+<p>Plan</p>
+<ul>
+<li>applications: what<ul>
+<li>theory</li>
+</ul>
+</li>
+<li>applications: how</li>
+<li>onward</li>
+</ul>
+</div>
+<div>
+<p>applications: what</p>
+</div>
+<div>
+<p><img alt="backgammon" src="img/backgammon.png" /></p>
+</div>
+<div>
+<p><img alt="Atari Breakout" src="img/breakout.png" /></p>
+</div>
+<div>
+<p><img alt="tetris" src="img/tetris.png" /></p>
+</div>
+<div>
+<p><img alt="go" src="img/go.jpg" /></p>
+</div>
+<div>
+<p>theory</p>
+</div>
+<div>
+<p>Yann LeCun's cake</p>
+<ul>
+<li>cake: unsupervised learning</li>
+<li>icing: supervised learning</li>
+<li>cherry: reinforcement learning</li>
+</ul>
+<p><img alt="cake" src="img/cake.jpg" /></p>
+</div>
+<div>
+<p>unsupervised learning</p>
+<ul>
+<li>\( s \)</li>
+</ul>
+</div>
+<div>
+<p>state \( s \)</p>
+<ul>
+<li>numbers</li>
+<li>text (as numbers)</li>
+<li>image (as numbers)</li>
+<li>sound (as numbers)</li>
+</ul>
+</div>
+<div>
+<p>unsupervised (?) learning</p>
+<ul>
+<li>given \( s \)</li>
+<li>learn \( s \rightarrow \text{cluster_id} \)</li>
+<li>learn \( s \rightarrow s \)</li>
+</ul>
+</div>
+<div>
+<p>deep unsupervised learning</p>
+<ul>
+<li>\( s \) with deep neural nets</li>
+</ul>
+</div>
+<div>
+<p>supervised learning</p>
+<ul>
+<li>\( s \rightarrow a \)</li>
+</ul>
+</div>
+<div>
+<p>action a</p>
+<ul>
+<li>numbers</li>
+<li>"cat"/"dog"</li>
+<li>"left"/"right"</li>
+<li>17.3</li>
+<li>[2.0, 11.7, 5]</li>
+<li>4.2V</li>
+</ul>
+</div>
+<div>
+<p>supervised learning</p>
+<ul>
+<li>given \( s, a \)</li>
+<li>learn \( s \rightarrow a \)</li>
+</ul>
+</div>
+<div>
+<p>deep supervised learning</p>
+<ul>
+<li>\( s \rightarrow a \) with deep neural nets</li>
+</ul>
+</div>
+<div>
+<p>reinforcement learning</p>
+<ul>
+<li>\(r, s \rightarrow a\)</li>
+</ul>
+</div>
+<div>
+<p>reward \( r \)</p>
+<ul>
+<li>-3</li>
+<li>0</li>
+<li>7.4</li>
+<li>1</li>
+</ul>
+</div>
+<div>
+<p>optimal control / reinforcement learning</p>
+</div>
+<div>
+<p>\( r, s \rightarrow a \)</p>
+</div>
+<div>
+<p>tick</p>
+</div>
+<div>
+<p>\( r', s' \rightarrow a' \)</p>
+</div>
+<div>
+<p>tick</p>
+</div>
+<div>
+<p><img alt="standard diagram" src="img/standard_diagram.png" /></p>
+</div>
+<div>
+<p>reinforcement learning</p>
+<ul>
+<li>"given" \( r, s, a, r', s', a', ... \)</li>
+<li>learn "good" \( s \rightarrow a \)</li>
+</ul>
+</div>
+<div>
+<p>Question:</p>
+<p>Can you formulate supervised learning as reinforcement learning?</p>
+</div>
+<div>
+<p>supervised as reinforcement?</p>
+<ul>
+<li>reward 0 for incorrect, reward 1 for correct<ul>
+<li>beyond binary classification?</li>
+</ul>
+</li>
+<li>reward deterministic</li>
+<li>next state random</li>
+</ul>
+</div>
+<div>
+<p>Question:</p>
+<p>Why is the Sarsa algorithm called Sarsa?</p>
+</div>
+<div>
+<p>reinforcement learning</p>
+<ul>
+<li>\( r, s \rightarrow a \)</li>
+</ul>
+</div>
+<div>
+<p>deep reinforcement learning</p>
+<ul>
+<li>\( r, s \rightarrow a \) with deep neural nets</li>
+</ul>
+</div>
+<div>
+<p>Markov property</p>
+<ul>
+<li>\( s \) is enough</li>
+</ul>
+</div>
+<div>
+<pre><code>                   Make choices?
+                   no                        yes
+Completely    no   Markov chain              MDP: Markov Decision Process
+observable?   yes  HMM: Hidden Markov Model  POMDP: Partially Observable MDP</code></pre>
+</div>
+<div>
+<p>usual RL problem elaboration</p>
+</div>
+<div>
+<p>policy \( \pi \)</p>
+<ul>
+<li>\( \pi: s \rightarrow a \)</li>
+</ul>
+</div>
+<div>
+<p>return</p>
+<ul>
+<li>\( \sum{r} \)<ul>
+<li>into the future (episodic or ongoing)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div>
+<p><img alt="gridworld" src="img/gridworld.png" /></p>
+</div>
+<div>
+<p><img alt="gridworld reward" src="img/gridworld_reward.png" /></p>
+</div>
+<div>
+<p><img alt="gridworld return" src="img/gridworld_return.png" /></p>
+</div>
+<div>
+<p>Question:</p>
+<p>How do we keep our agent from dawdling?</p>
+</div>
+<div>
+<p>negative reward at each time step</p>
+</div>
+<div>
+<p>discounted rewards</p>
+<ul>
+<li>\( \sum{\gamma^tr} \)</li>
+</ul>
+</div>
+<div>
+<p>average rate of reward</p>
+<ul>
+<li>\( \frac{\sum{r}}{t} \)</li>
+</ul>
+</div>
+<div>
+<p>value functions</p>
+<ul>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \sum{r} \)</li>
+</ul>
+</div>
+<div>
+<p>Question:</p>
+<p>Does a value function specify a policy (if you want to maximize return)?</p>
+</div>
+<div>
+<p>trick question?</p>
+<ul>
+<li>\( v_\pi \)</li>
+<li>\( q_\pi \)</li>
+</ul>
+</div>
+<div>
+<p>value functions</p>
+<ul>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \sum{r} \)</li>
+</ul>
+</div>
+<div>
+<p>environment dynamics</p>
+<ul>
+<li>\( s, a \rightarrow r', s' \)</li>
+</ul>
+</div>
+<div>
+<p><img alt="gridworld" src="img/gridworld.png" /></p>
+</div>
+<div>
+<p>model</p>
+<ul>
+<li>\( s, a \rightarrow r', s' \)</li>
+</ul>
+</div>
+<div>
+<p>learning and acting</p>
+</div>
+<div>
+<p>learn model of dynamics</p>
+<ul>
+<li>from experience</li>
+<li>difficulty varies</li>
+</ul>
+</div>
+<div>
+<p>learn value function(s) with planning</p>
+<ul>
+<li>assuming we have the environment dynamics or a good model already</li>
+</ul>
+</div>
+<div>
+<p><img alt="planning 0" src="img/planning0.png" /></p>
+</div>
+<div>
+<p><img alt="planning 1" src="img/planning1.png" /></p>
+</div>
+<div>
+<p><img alt="planning 2" src="img/planning2.png" /></p>
+</div>
+<div>
+<p>connections</p>
+<ul>
+<li>Dijkstra's algorithm</li>
+<li>A* algorithm</li>
+<li>minimax search<ul>
+<li>two-player games not a problem</li>
+</ul>
+</li>
+<li>Monte Carlo tree search</li>
+</ul>
+</div>
+<div>
+<p><img alt="rollout diagram" src="img/rollout_diagram.png" /></p>
+</div>
+<div>
+<p><img alt="backgammon roll" src="img/rollout.jpg" /></p>
+</div>
+<div>
+<p>everything is stochastic</p>
+</div>
+<div>
+<p><img alt="stochastic s'" src="img/stochastic_s.png" /></p>
+</div>
+<div>
+<p><img alt="stochastic r'" src="img/stochastic_r.png" /></p>
+</div>
+<div>
+<p>exploration vs. exploitation</p>
+<ul>
+<li>\( \epsilon \)-greedy policy<ul>
+<li>usually do what looks best</li>
+<li>\( \epsilon \) of the time, choose random action</li>
+</ul>
+</li>
+</ul>
+</div>
+<div>
+<p>Question:</p>
+<p>How does randomness affect \( \pi \), \( v \), and \( q \)?</p>
+<ul>
+<li>\( \pi: s \rightarrow a \)</li>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \sum{r} \)</li>
+</ul>
+</div>
+<div>
+<p>Question:</p>
+<p>How does randomness affect \( \pi \), \( v \), and \( q \)?</p>
+<ul>
+<li>\( \pi: \mathbb{P}(a|s) \)</li>
+<li>\( v: s \rightarrow \mathbb{E} \sum{r} \)</li>
+<li>\( q: s, a \rightarrow \mathbb{E} \sum{r} \)</li>
+</ul>
+</div>
+<div>
+<p>Monte Carlo returns</p>
+<ul>
+<li>\( v(s) = ? \)</li>
+<li>keep track and average</li>
+<li>like "planning" from experienced "roll-outs"</li>
+</ul>
+</div>
+<div>
+<p>non-stationarity</p>
+<ul>
+<li>\( v(s) \) changes over time!</li>
+</ul>
+</div>
+<div>
+<p>moving average</p>
+<ul>
+<li>new mean = old mean + \( \alpha \)(new sample - old mean)</li>
+</ul>
+</div>
+<div>
+<p><img alt="MDP diagram" src="img/mdp_diagram.png" /></p>
+</div>
+<div>
+<p>Bellman equation</p>
+<ul>
+<li>\( v(s) = r' + v(s') \)</li>
+</ul>
+</div>
+<div>
+<p>temporal difference (TD)</p>
+</div>
+<div>
+<p>Q-learning</p>
+<ul>
+<li>\( \text{new } q(s, a) = q(s, a) + \alpha (r' + \gamma \max_{a} q(s', a) - q(s, a)) \)</li>
+</ul>
+</div>
+<div>
+<p>on-policy / off-policy</p>
+</div>
+<div>
+<p>estimate \( v \), \( q \)</p>
+<ul>
+<li>with a deep neural network</li>
+</ul>
+</div>
+<div>
+<p>back to the \( \pi \)</p>
+<ul>
+<li>parameterize \( \pi \) directly</li>
+<li>update based on how well it works</li>
+<li>REINFORCE<ul>
+<li>REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility</li>
+</ul>
+</li>
+</ul>
+</div>
+<div>
+<p>policy gradient</p>
+<ul>
+<li>\( \nabla \log (\pi(a|s))\)</li>
+</ul>
+</div>
+<div>
+<p>actor-critic</p>
+<ul>
+<li>\( \pi \) is the actor</li>
+<li>\( v \) is the critic</li>
+<li>train \( \pi \) by policy gradient to encourage actions that work out better than \( v \) expected</li>
+</ul>
+</div>
+<div>
+<p>applications: how</p>
+</div>
+<div>
+<p>TD-gammon (1992)</p>
+<ul>
+<li>\( s \) is custom features</li>
+<li>\( v \) with shallow neural net</li>
+<li>\( r \) is 1 for a win, 0 otherwise</li>
+<li>\( TD(\lambda) \)<ul>
+<li>eligibility traces</li>
+</ul>
+</li>
+<li>self play</li>
+<li>shallow forward search</li>
+</ul>
+</div>
+<div>
+<p>DQN (2015)</p>
+<ul>
+<li>\( s \) is four frames of video</li>
+<li>\( v \) with deep convolutional neural net</li>
+<li>\( r \) is 1 if score increases, -1 if decreases, 0 otherwise</li>
+<li>Q-learning<ul>
+<li>usually-frozen target network</li>
+<li>clipping update size, etc.</li>
+</ul>
+</li>
+<li>\( \epsilon \)-greedy</li>
+<li>experience replay</li>
+</ul>
+</div>
+<div>
+<p>evolution (2006)</p>
+<ul>
+<li>\( s \) is custom features</li>
+<li>\( \pi \) has a simple parameterization</li>
+<li>evaluate by final score</li>
+<li>cross-entropy method</li>
+</ul>
+</div>
+<div>
+<p>AlphaGo (2016)</p>
+<ul>
+<li>\( s \) is custom features over geometry<ul>
+<li>big and small variants</li>
+</ul>
+</li>
+<li>\( \pi_{SL} \) with deep convolutional neural net, supervised training</li>
+<li>\( \pi_{rollout} \) with smaller convolutional neural net, supervised training</li>
+<li>\( r \) is 1 for a win, -1 for a loss, 0 otherwise</li>
+<li>\( \pi_{RL} \) is \( \pi_{SL} \) refined with policy gradient peer-play reinforcement learning</li>
+<li>\( v \) with deep convolutional neural net, trained based on \( \pi_{RL} \) games</li>
+<li>asynchronous policy and value Monte Carlo tree search<ul>
+<li>expand tree with \( \pi_{SL} \)</li>
+<li>evaluate positions with blend of \( v \) and \( \pi_{rollout} \) rollouts</li>
+</ul>
+</li>
+</ul>
+</div>
+<div>
+<p>AlphaGo Zero (2017)</p>
+<ul>
+<li>\( s \) is simple features over time and geometry</li>
+<li>\( \pi, v \) with deep residual convolutional neural net</li>
+<li>\( r \) is 1 for a win, -1 for a loss, 0 otherwise</li>
+<li>Monte Carlo tree search for self-play training and play</li>
+</ul>
+</div>
+<div>
+<p>onward</p>
+</div>
+<div>
+<p>Neural Architecture Search (NAS)</p>
+</div>
+<div>
+<p><img alt="Amazon Echo" src="img/echo.jpg" /></p>
+</div>
+<div>
+<p><img alt="robot" src="img/robot.jpg" /></p>
+</div>
+<div>
+<p>self-driving cars</p>
+<ul>
+<li>interest</li>
+<li>results?</li>
+</ul>
+</div>
+<div>
+<p><img alt="OpenAI DotA 2" src="img/openai_dota2.jpg" /></p>
+</div>
+<div>
+<p>conclusion</p>
+</div>
+<div>
+<p><img alt="bootcamp diagram" src="img/annotated.jpg" /></p>
+</div>
+<div>
+<p>reinforcement learning</p>
+<ul>
+<li>\( r,s \rightarrow a \)</li>
+<li>\( \pi: s \rightarrow a\)</li>
+<li>\( v: s \rightarrow \sum{r} \)</li>
+<li>\( q: s,a \rightarrow \sum{r} \)</li>
+</ul>
+</div>
+<div>
+<p>network architectures for deep RL</p>
+<ul>
+<li>feature engineering can still matter</li>
+<li>if using pixels<ul>
+<li>often simpler than state-of-the-art for supervised</li>
+<li>don't pool away location information if you need it</li>
+</ul>
+</li>
+<li>consider using multiple/auxiliary outputs</li>
+<li>consider phrasing regression as classification</li>
+<li>room for big advancements</li>
+</ul>
+</div>
+<div>
+<p>the lure and limits of RL</p>
+<ul>
+<li>seems like AI (?)</li>
+<li>needs so much data</li>
+</ul>
+</div>
+<div>
+<p>Question</p>
+<ul>
+<li>Should you use reinforcement learning?</li>
+</ul>
+</div>
+<div>
+<p>Thank you!</p>
+</div>
+<div>
+<p>further resources</p>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>
