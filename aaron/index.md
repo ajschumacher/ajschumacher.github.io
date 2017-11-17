@@ -45,7 +45,7 @@ Here are some things I've talked about:
 
 Here are some things I've made:
 
- * [ohana](https://github.com/ajschumacher/ohana) Capital One [Code &lt;FAM&gt; hackathon](http://capitalone.hackathon.com/) project
+ * [ohana](https://github.com/ajschumacher/ohana): Capital One [Code &lt;FAM&gt; hackathon](http://capitalone.hackathon.com/) project
  * [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole).
  * [PerceptronModel](https://simplestatistics.org/docs/#perceptronmodel): simple binary classifier contributed to [simple-statistics](https://simplestatistics.org/)
  * [mergic](https://github.com/ajschumacher/mergic): workflow support for reproducible deduplication and merging
