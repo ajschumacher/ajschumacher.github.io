@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Deep Reinforcement Learning](/20171114-deep_rl/) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Tuesday November 14, 2017](https://www.meetup.com/Data-Science-DC/events/244145151/)
  * [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/) ([video](https://altoros.wistia.com/medias/e5su4b1vtz)) as an Altoros webinar on [Wednesday May 24, 2017](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/)
  * [Caffe and TensorFlow at Deep Learning Analytics](/20170510-caffe_and_tensorflow_at_dla/) at [OSCON](https://conferences.oreilly.com/oscon/)'s [TensorFlow Day](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/full/tensorflow-day), [Wednesday May 10, 2017](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149)
  * [Building TensorFlow Systems from Components](/20170509-building_tensorflow_systems_from_components/) at [OSCON](https://conferences.oreilly.com/oscon/) on [Tuesday May 9, 2017](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823)
@@ -44,6 +45,7 @@ Here are some things I've talked about:
 
 Here are some things I've made:
 
+ * [ohana](https://github.com/ajschumacher/ohana) Capital One [Code &lt;FAM&gt; hackathon](http://capitalone.hackathon.com/) project
  * [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole).
  * [PerceptronModel](https://simplestatistics.org/docs/#perceptronmodel): simple binary classifier contributed to [simple-statistics](https://simplestatistics.org/)
  * [mergic](https://github.com/ajschumacher/mergic): workflow support for reproducible deduplication and merging
