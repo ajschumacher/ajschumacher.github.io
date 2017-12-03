@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * Data Science + HR panel at [General Assembly DC](https://generalassemb.ly/locations/washington-dc) on [Wednesday November 29, 2017](https://www.eventbrite.com/e/innovators-breakfast-series-data-science-hr-tickets-39199318216)
  * [Deep Reinforcement Learning](/20171114-deep_rl/) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Tuesday November 14, 2017](https://www.meetup.com/Data-Science-DC/events/244145151/)
  * [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/) ([video](https://altoros.wistia.com/medias/e5su4b1vtz)) as an Altoros webinar on [Wednesday May 24, 2017](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/)
  * [Caffe and TensorFlow at Deep Learning Analytics](/20170510-caffe_and_tensorflow_at_dla/) at [OSCON](https://conferences.oreilly.com/oscon/)'s [TensorFlow Day](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/full/tensorflow-day), [Wednesday May 10, 2017](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149)
