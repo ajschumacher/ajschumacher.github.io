@@ -7,6 +7,45 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Designing Your Life</title>
+<description><![CDATA[
+
+<p>I heard about <a href="http://designingyour.life/the-book/">Designing Your Life</a> in an <a href="https://www.npr.org/2017/08/28/546716951/you-2-0-how-silicon-valley-can-help-you-get-unstuck">episode</a> of <a href="https://en.wikipedia.org/wiki/Shankar_Vedantam">Shankar Vedantam</a>'s <a href="https://www.npr.org/series/423302056/hidden-brain">Hidden Brain</a>.  The book roughly follows a <a href="http://designingyour.life/resources-authorized/">workshop</a> format of a <a href="http://lifedesignlab.stanford.edu/dyl">Stanford class</a>. It's quick to read&#8212;slower to do&#8212;and full of fun examples and good reminders.</p>
+<p><img alt="Designing Your Life" src="designing_your_life_cover.jpg"></p>
+<p>There are five core recommendations:</p>
+<ol>
+<li>be curious (curiosity)</li>
+<li>try stuff (bias to action)</li>
+<li>reframe problems (reframing)</li>
+<li>know it's a process (awareness)</li>
+<li>ask for help (radical collaboration)</li>
+</ol>
+<p>The authors identify two concepts to be wary of:</p>
+<ul>
+<li>gravity problems: things that can't be productively addressed directly, just as eliminating the force of gravity isn't possible</li>
+<li>anchor problems: things that prevent progress because of overcommitment to one issue, solution path, etc.</li>
+</ul>
+<p>Both of these "problems" may involve "dysfunctional beliefs" that may be better reframed.</p>
+<p>The bulk of the text is around a number of <a href="http://designingyour.life/resources-authorized/">activities</a>:</p>
+<ul>
+<li>Evaluate your life along dimensions of love, play, work, and health.</li>
+<li>Write out a "workview" and "lifeview" and think about how they interact.</li>
+<li>Keep track of what you actually enjoy doing ("good time journal").</li>
+<li>Use mind mapping and brainstorming.</li>
+<li>Take incremental steps to learn/try/change things ("prototyping").</li>
+<li>Imagine multiple possible futures ("three odyssey plans") not just one "right" path.</li>
+<li>Network by meeting people ("life design interviews") don't just apply for listed jobs.</li>
+<li>Log and reflect on failures to find growth areas ("failure log").</li>
+</ul>
+<p>The chapter on "How not to get a job" is very sensible.</p>
+<p>Toward the end, the book is somewhat philosophical. It references <a href="https://en.wikipedia.org/wiki/Finite_and_Infinite_Games">Finite and Infinite Games</a> and talks about a "failure immunity" point of view (positive psychology).</p>
+<p>The Hidden Brain episode was called "Getting Unstuck." That describes the book's utility. The ideas are not revolutionary, but it is nice to be reminded, especially when in a rut, to be positive, think creatively, make small improvements, and try new things. The activities in the book help to operationalize these recommendations.</p>    
+    ]]></description>
+<link>http://planspace.org/20171229-designing_your_life/</link>
+<guid>http://planspace.org/20171229-designing_your_life/</guid>
+<pubDate>Fri, 29 Dec 2017 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Deep Reinforcement Learning</title>
 <description><![CDATA[
 
@@ -2778,67 +2817,6 @@ Obama 1,              D,    1.98</code></pre>
 <link>http://planspace.org/20170505-simple_dataset_us_presidential_party_and_gdp_growth/</link>
 <guid>http://planspace.org/20170505-simple_dataset_us_presidential_party_and_gdp_growth/</guid>
 <pubDate>Fri, 05 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Pre-trained Models with Keras in TensorFlow</title>
-<description><![CDATA[
-
-<p>With TensorFlow 1.1, <a href="https://github.com/fchollet/keras">Keras</a> is now at <code>tf.contrib.keras</code>. With TensorFlow 1.3, it should be at <code>tf.keras</code>. This is great for making new models, but we also get the pre-trained models of <a href="https://github.com/fchollet/keras/tree/master/keras/applications"><code>keras.applications</code></a> (<a href="https://github.com/fchollet/deep-learning-models">also seen elsewhere</a>). It's so easy to classify images!</p>
-<pre><code class="language-python">import tensorflow as tf
-
-model = tf.contrib.keras.applications.ResNet50()</code></pre>
-
-<p>This will automatically download trained weights for a model based on <a href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a>. The weights are cached below your home directory, in <code>~/.keras/models/</code>.</p>
-<p>Convenient image tools are also included. Let's use an <a href="https://github.com/ajschumacher/imagen/blob/master/imagen/n01882714_4157_koala_bear.jpg">image</a> of a koala from the <a href="https://github.com/ajschumacher/imagen">imagen</a> ImageNet subset.</p>
-<p><img alt="original koala" src="n01882714_4157_koala_bear.jpg"></p>
-<pre><code class="language-python">filename = 'n01882714_4157_koala_bear.jpg'
-image = tf.contrib.keras.preprocessing.image.load_img(
-    filename, target_size=(224, 224))</code></pre>
-
-<p>This model can take input images that are 224 pixels on a side, so we have to make our image that size. We're just doing it by squishing, in this case.</p>
-<p><img alt="smaller koala" src="smaller_koala.jpg"></p>
-<p>We'll make that into an array that the model can take as input.</p>
-<pre><code class="language-python">import numpy as np
-
-array = tf.contrib.keras.preprocessing.image.img_to_array(image)
-array = np.expand_dims(array, axis=0)</code></pre>
-
-<p>Now we can classify the image!</p>
-<pre><code class="language-python">probabilities = model.predict(array)</code></pre>
-
-<p>We have one thousand probabilities, one for each class the model knows about. To interpret the result, we can use another helpful function.</p>
-<pre><code class="language-python">tf.contrib.keras.applications.resnet50.decode_predictions(probabilities)
-## [[(u'n01882714', u'koala', 0.99466419),
-##   (u'n02497673', u'Madagascar_cat', 0.0013330306),
-##   (u'n01877812', u'wallaby', 0.00085774728),
-##   (u'n02137549', u'mongoose', 0.00063530984),
-##   (u'n02123045', u'tabby', 0.00056512095)]]</code></pre>
-
-<p>Great success! The model is highly confident that it's looking at a koala. Not bad.</p>
-<p>It's pretty fun that this kind of super-easy access to quite good pre-trained models is now available all within the TensorFlow package. Just <code>pip install</code> and go!</p>
-<hr>
-<p>The thousand ImageNet categories this model knows about include some things that are commonly associated with people, but not a "person" class. Still, just for fun, what will <code>ResNet50</code> say about me?</p>
-<pre><code class="language-python">## [[(u'n02883205', u'bow_tie', 0.3144455),
-##   (u'n03787032', u'mortarboard', 0.059674311),
-##   (u'n02992529', u'cellular_telephone', 0.049916871),
-##   (u'n04357314', u'sunscreen', 0.048197504),
-##   (u'n04350905', u'suit', 0.03481029)]]</code></pre>
-
-<p>I guess I'll take it?</p>
-<p><img alt="Aaron" src="aaron.jpg"></p>
-<hr>
-<p><strong>Notes:</strong></p>
-<p>The model may have been trained on the very koala picture we're testing it with. I'm okay with that. Feel free to test your own koala pictures!</p>
-<p>There's also another function, <code>resnet50.preprocess_input</code>, which in theory should help the model work better, but my tests gave seemingly worse results when using that pre-processing. It would be used like this:</p>
-<pre><code class="language-python">array = tf.contrib.keras.applications.resnet50.preprocess_input(array)</code></pre>
-
-<p>Keras in TensorFlow also contains <code>vgg16</code>, <code>vgg19</code>, <code>inception_v3</code>, and <code>xception</code> models as well, along the same lines as <code>resnet50</code>.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170502-canned_models_with_keras_in_tensorflow/</link>
-<guid>http://planspace.org/20170502-canned_models_with_keras_in_tensorflow/</guid>
-<pubDate>Tue, 02 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
