@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-01-15: [The Man in the High Castle](/20180115-man_in_high_castle/)
  * 2017-12-29: [Designing Your Life](/20171229-designing_your_life/)
  * 2017-11-14: [Deep Reinforcement Learning](/20171114-deep_rl/)
  * 2017-10-22: [Mounting Disks on AWS](/20171022-mounting_disks_on_aws/)

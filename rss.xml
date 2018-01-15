@@ -7,6 +7,24 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Man in the High Castle</title>
+<description><![CDATA[
+
+<p>There is less for Nazis to like in <a href="https://en.wikipedia.org/wiki/Philip_K._Dick">Philip K. Dick</a>'s 1962 <a href="https://en.wikipedia.org/wiki/The_Man_in_the_High_Castle">novel</a> than in the 2015 Netflix <a href="https://en.wikipedia.org/wiki/The_Man_in_the_High_Castle">show</a>.</p>
+<p>In both, Nazis won World War II. Also in both the idea of alternate realities is central, so perhaps it is appropriate for the two treatments to vary. And there are different concerns in text versus video. Nevertheless, I wonder about some of the choices in the show.</p>
+<p>In the show, Juliana and an emo Nazi operative largely cooperate and have a kind of will-they-won't-they romantic tension. In the book, they have bad sex and then eventually Juliana slits his throat because he's a monster.</p>
+<p>In the book, Hitler is out of power, suffering the late effects of syphilis. In the show, Hitler is still in power and collects the same film strips prized by the resistance.</p>
+<p>The book spends no time at all in Nazi-controlled settings, while the show luxuriates in Nazi architecture and swastikas. An American who becomes a Nazi is a loving father with a suburban family and home that could just as well appear on <a href="https://en.wikipedia.org/wiki/Leave_It_to_Beaver">Leave It to Beaver</a>.</p>
+<p>The show visits a spotless Nazi school where students learn to take pride in genocide and slavery through US history. We see the disabled are killed&#8211;and the Nazi justification.</p>
+<p>One reason this is all disturbing is that, in a time when <a href="http://www.wusa9.com/news/local/dc/wwii-vets-shaken-by-nazi-flags-in-charlottesville/465189398">the Nazi flag really is waved within US borders</a>, it's uncomfortably likely that some Americans could watch The Man in the High Castle while longing to make America great as it appears under Nazi control.</p>
+<p>The show illustrates the horror of normalizing the horrible, but it may also contribute to such normalization. It is disturbing to consider Nazi arguments, but truly terrifying to think that modern people might take them up as their own.</p>
+<p>Comparing the Netflix show to the alternate universe film strips it features, it is not clear whether it is one that helps the side of democracy or the side of fascism.</p>    
+    ]]></description>
+<link>http://planspace.org/20180115-man_in_high_castle/</link>
+<guid>http://planspace.org/20180115-man_in_high_castle/</guid>
+<pubDate>Mon, 15 Jan 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Designing Your Life</title>
 <description><![CDATA[
 
@@ -2775,48 +2793,6 @@ list(model.predict(np.array([[0], [1]])))
 <link>http://planspace.org/20170506-simple_regression_with_a_tensorflow_estimator/</link>
 <guid>http://planspace.org/20170506-simple_regression_with_a_tensorflow_estimator/</guid>
 <pubDate>Sat, 06 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Simple Dataset: US Presidential Party and GDP Growth</title>
-<description><![CDATA[
-
-<p>Here's a simple <a href="president_gdp.csv">dataset</a> for use in examples. It's taken from the <a href="https://assets.aeaweb.org/assets/production/articles-attachments/aer/app/10604/20140913_app.pdf">online appendix</a> to <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20140913">Presidents and the US Economy: An Econometric Exploration</a> by Blinder and Watson.</p>
-<p><a href="president_gdp.csv"><code>president_gdp.csv</code></a></p>
-<p>The fields are:</p>
-<ul>
-<li><code>term</code>: A short text description of the presidential term, like "Reagan 2".</li>
-<li><code>party</code>: The political party of the presidency, either "D" for the <a href="https://en.wikipedia.org/wiki/Democratic_Party_(United_States)">Democratic Party</a> or "R" for the <a href="https://en.wikipedia.org/wiki/Republican_Party_(United_States)">Republican Party</a>.</li>
-<li><code>growth</code>: The average annualized growth in US Gross Domestic Product (<a href="https://en.wikipedia.org/wiki/Gross_domestic_product">GDP</a>) for that presidential term, expressed as percentage points.</li>
-</ul>
-<p>For more details, please see the <a href="http://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20140913">paper</a> and <a href="https://assets.aeaweb.org/assets/production/articles-attachments/aer/app/10604/20140913_app.pdf">appendix</a>.</p>
-<p>The only changes I've made are to order the data chronologically and put it in the convenient CSV format.</p>
-<p>For example, in <a href="https://www.r-project.org/">R</a>, you can do the following:</p>
-<pre><code class="language-r">&gt; data = read.csv('president_gdp.csv')
-&gt; lm(growth ~ party, data)
-&gt; t.test(growth ~ party, data)</code></pre>
-
-<p>Because the <a href="president_gdp.csv">dataset</a> is so small, I'll also display it as spaced-out text here:</p>
-<pre><code>term,             party,  growth
-Truman,               D,    6.57
-Eisenhower 1,         R,    2.72
-Eisenhower 2,         R,    2.26
-Kennedy-Johnson,      D,    5.74
-Johnson 2,            D,    4.95
-Nixon 1,              R,    3.57
-Nixon-Ford,           R,    1.97
-Carter,               D,    3.56
-Reagan 1,             R,    3.12
-Reagan 2,             R,    3.89
-G.H.W. Bush,          R,    2.05
-Clinton 1,            D,    3.53
-Clinton 2,            D,    4.00
-G.W. Bush 1,          R,    2.78
-G.W. Bush 2,          R,    0.54
-Obama 1,              D,    1.98</code></pre>    
-    ]]></description>
-<link>http://planspace.org/20170505-simple_dataset_us_presidential_party_and_gdp_growth/</link>
-<guid>http://planspace.org/20170505-simple_dataset_us_presidential_party_and_gdp_growth/</guid>
-<pubDate>Fri, 05 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
