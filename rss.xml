@@ -7,6 +7,27 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Boomerang by Michael Lewis</title>
+<description><![CDATA[
+
+<p>Michael Lewis wrote <a href="https://www.amazon.com/Moneyball-Art-Winning-Unfair-Game/dp/0393324818">Moneyball</a> and <a href="https://www.amazon.com/Big-Short-Inside-Doomsday-Machine/dp/0393338827">The Big Short</a>. He also wrote <a href="https://www.amazon.com/Boomerang-Travels-New-Third-World/dp/0393343448">Boomerang: Travels in the New Third World</a>, made up of essays published first in <a href="https://www.vanityfair.com/">Vanity Fair</a>, 2009-2011.</p>
+<p>Each chapter focuses on one country:</p>
+<ol>
+<li>Iceland: dumb young male chauvinist bankers defaulted internationally</li>
+<li>Greece: dumb male chauvinist everyone stole, defaulted, lied; also monks are there</li>
+<li>Ireland: dumb young male chauvinist bankers defaulted on Irish real estate</li>
+<li>Germany: best economy in Europe, still pretty dumb; also lots about poop</li>
+<li>USA: cities promised pensions for cops and firefighters; cities now all bankrupt</li>
+</ol>
+<p>There's a preface with the big shorter from The Big Short, who says that he got himself a million dollars worth of nickels and recommends investing in guns and gold.</p>
+<p>Lots of people, cities, banks, and countries are in a lot of debt, which could be bad.</p>
+<p><img alt="Boomerang cover" src="boomerang_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20180118-boomerang_by_michael_lewis/</link>
+<guid>http://planspace.org/20180118-boomerang_by_michael_lewis/</guid>
+<pubDate>Thu, 18 Jan 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Man in the High Castle</title>
 <description><![CDATA[
 
@@ -2678,121 +2699,6 @@ planspace.org
 <link>http://planspace.org/20170509-building_tensorflow_systems_from_components/</link>
 <guid>http://planspace.org/20170509-building_tensorflow_systems_from_components/</guid>
 <pubDate>Tue, 09 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Simple Regression with a TensorFlow Estimator</title>
-<description><![CDATA[
-
-<p>With TensorFlow 1.1, the <a href="https://www.tensorflow.org/api_guides/python/contrib.learn#estimators">Estimator</a> API is now at <code>tf.estimator</code>. A number of "canned estimators" are <a href="https://www.tensorflow.org/extend/estimators">at</a> <code>tf.contrib.learn</code>. This higher-level API bakes in some best practices and makes it much easier to do a lot quickly with TensorFlow, similar to using APIs available in other languages.</p>
-<hr>
-<h2>Data</h2>
-<p>This example will use the very simple <a href="/20170505-simple_dataset_us_presidential_party_and_gdp_growth/">US Presidential Party and GDP Growth dataset</a>: <a href="/20170505-simple_dataset_us_presidential_party_and_gdp_growth/president_gdp.csv">president_gdp.csv</a>.</p>
-<p>The regression problem will be to predict annualized percentage GDP growth from presidential party.</p>
-<hr>
-<h2>R</h2>
-<p><a href="https://www.r-project.org/">R</a> is made for problems such as this, with an API that makes it quite easy:</p>
-<pre><code class="language-r">&gt; data = read.csv('president_gdp.csv')
-&gt; model = lm(growth ~ party, data)
-&gt; predict(model, data.frame(party=c('R', 'D')))
-##        1        2
-## 2.544444 4.332857</code></pre>
-
-<p>The dataset is very small, and we won't introduce a train/test split. Linear regression is just a way of calculating means: we expect our model to predict the mean GDP growth conditional on party. Annual GDP growth during Republican presidents has been about 2.5%, and during Democratic presidents about 4.3%.</p>
-<hr>
-<h2>sklearn</h2>
-<p>Moving into Python, let's first read in the data and get it ready, using <a href="http://www.numpy.org/">NumPy</a> and <a href="http://pandas.pydata.org/">Pandas</a>.</p>
-<pre><code class="language-python">import numpy as np
-import pandas as pd
-
-data = pd.read_csv('president_gdp.csv')
-party = data.party == 'D'
-party = np.expand_dims(party, axis=1)
-growth = data.growth</code></pre>
-
-<p>With R, we relied on automatic handling of categorical variables. Here we explicitly change the strings 'R' and 'D' to be usable in a model: Boolean values will become zeros and ones. We also adjust the <code>party</code> data shape to be one row per observation.</p>
-<p>Tracking <a href="/20170321-various_tensorflow_apis_for_python/">TensorFlow Python APIs</a>, the Estimator API comes from TF Learn, which is inspired by <a href="http://scikit-learn.org/">scikit-learn</a>. Here's the regression with scikit:</p>
-<pre><code class="language-python">import sklearn.linear_model
-
-model = sklearn.linear_model.LinearRegression()
-model.fit(X=party, y=growth)
-model.predict([[0], [1]])
-## array([ 2.54444444,  4.33285714])</code></pre>
-
-<hr>
-<h2>TensorFlow</h2>
-<p>This will abuse the API a little to maximize comparability to the examples above; you'll see warnings when you run the code, which will be addressed in the next section.</p>
-<pre><code class="language-python">import tensorflow as tf
-
-party_col = tf.contrib.layers.real_valued_column(column_name='')
-model = tf.contrib.learn.LinearRegressor(feature_columns=[party_col])</code></pre>
-
-<p>Unlike with scikit, we need to specify the structure of our regressors when we instantiate the model object. This is done with FeatureColumns. There are several <a href="https://www.tensorflow.org/tutorials/wide#selecting_and_engineering_features_for_the_model">options</a>; <code>real_valued_column</code> is probably the simplest but others are useful for general categorical data, etc.</p>
-<p>We're providing that data as a simple matrix, so it's important that we use the empty string <code>''</code> for <code>column_name</code>. If there is a substantial <code>column_name</code>, we'll have to provide data in dictionaries with column names as keys.</p>
-<pre><code class="language-python">model.fit(x=party, y=growth, steps=1000)
-list(model.predict(np.array([[0], [1]])))
-## [2.5422058, 4.3341689]</code></pre>
-
-<p>TensorFlow needs to be told how many steps of gradient descent to run, or it will keep going indefinitely, without additional configuration. A thousand iterations gets very close to the results achieved with R and with scikit.</p>
-<p>There are a lot of things that <code>LinearRegressor</code> takes care of. In this code, we did not have to explicitly:</p>
-<ul>
-<li>Create any TensorFlow variables.</li>
-<li>Create any Tensorflow ops.</li>
-<li>Choose an optimizer or learning rate.</li>
-<li>Create a TensorFlow session.</li>
-<li>Run ops in a session.</li>
-</ul>
-<p>This API also does a lot more than the R or scikit examples above, and allows for even more extensions.</p>
-<hr>
-<h2>TensorFlow Extensions</h2>
-<p>The Estimator API does a lot by default, and allows for a lot more optionally.</p>
-<p>First, there is a <code>model_dir</code>. Above, TensorFlow automatically used a temporary directory. It's nicer to explicitly choose a <code>model_dir</code>.</p>
-<pre><code class="language-python">model = tf.contrib.learn.LinearRegressor(feature_columns=[party_col],
-                                         model_dir='tflinreg')</code></pre>
-
-<p>The <code>model_dir</code> is used for two main purposes:</p>
-<ul>
-<li>Saving TensorBoard summaries (log info)</li>
-<li>Saving model checkpoints</li>
-</ul>
-<h3>Automatic TensorBoard</h3>
-<p><a href="/20170430-tensorflows_queuerunner/">Like</a> an <code>input_producer</code>, an Estimator automatically writes information for TensorBoard. To check them out, point TensorBoard at the <code>model_dir</code> and browse to <code>localhost:6006</code>.</p>
-<pre><code class="language-bash">$ tensorboard --logdir tflinreg</code></pre>
-
-<p>For the example above, we get the model graph and two scalar summaries.</p>
-<p>Here's what was was constructed in the TensorFlow graph for our <code>LinearRegressor</code>:</p>
-<p><img alt="graph" src="img/graph.png"></p>
-<p>In the scalar summaries, we get a measure of how fast the training process was running, in global steps per second:</p>
-<p><img alt="steps per second" src="img/steps_per_sec.png"></p>
-<p>The variation in speed shown here is not particularly meaningful.</p>
-<p>And we get the training loss:</p>
-<p><img alt="loss" src="img/loss.png"></p>
-<p>We didn't really need to train for a full thousand steps.</p>
-<p>By default, summaries are generated every 100 steps, but this can be set via <code>save_summary_steps</code> in a <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/RunConfig"><code>RunConfig</code></a>, along with several other settings.</p>
-<p>Further customization, with support for additional metrics, validation on separate data, and even automatic early stopping, is available with <a href="https://www.tensorflow.org/get_started/monitors">ValidationMonitor</a>.</p>
-<h3>Automatic Model Save/Restore</h3>
-<p>After training for 1,000 steps above, TensorFlow saved the model to the <code>model_dir</code>. If we point to the same <code>model_dir</code> again in a new Python session, the model will be automatically restored from that checkpoint.</p>
-<pre><code class="language-python">import numpy as np
-import tensorflow as tf
-
-party_col = tf.contrib.layers.real_valued_column(column_name='')
-model = tf.contrib.learn.LinearRegressor(feature_columns=[party_col],
-                                         model_dir='tflinreg')
-list(model.predict(np.array([[0], [1]])))
-## [2.5422058, 4.3341689]</code></pre>
-
-<p>For more control over how often and when checkpoints are saved, see <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/RunConfig"><code>RunConfig</code></a>.</p>
-<h3>Using input functions</h3>
-<p>Above, training data was provided via <code>x</code> and <code>y</code> arguments, which is like how scikit works, but not really what TensorFlow Estimators should use.</p>
-<p>The appropriate mechanism is to make an <a href="https://www.tensorflow.org/get_started/input_fn">input function</a> that returns the equivalents to <code>x</code> and <code>y</code> when called. The function is passed as the <code>input_fn</code> argument to <code>model.fit()</code>, for example.</p>
-<p>This approach is flexible and makes it easy to avoid, for example, keeping track of separate data structures for data and labels.</p>
-<h3>Distributed Training</h3>
-<p>Among the <code>tf.contrib.learn</code> <a href="https://www.tensorflow.org/api_guides/python/contrib.learn">goodies</a> is <a href="https://www.tensorflow.org/api_docs/python/tf/contrib/learn/Experiment"><code>tf.contrib.learn.Experiment</code></a>, which works with an Estimator to help do distributed training. It looks like this one is still settling down, with a lot of deprecated bits at the moment. I'm interested to see more about this. For now, you could check out a Google Cloud ML <a href="https://github.com/GoogleCloudPlatform/cloudml-samples/blob/master/iris/trainer/task.py">example</a> that works with <code>learn_runner</code>.</p>
-<hr>
-<p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20170506-simple_regression_with_a_tensorflow_estimator/</link>
-<guid>http://planspace.org/20170506-simple_regression_with_a_tensorflow_estimator/</guid>
-<pubDate>Sat, 06 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
