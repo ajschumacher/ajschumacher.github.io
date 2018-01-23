@@ -7,6 +7,27 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Why the Rich are Getting Richer</title>
+<description><![CDATA[
+
+<p>The local public <a href="https://www.dclibrary.org/westend">library</a> reopened, and this <a href="https://www.amazon.com/Why-Rich-Are-Getting-Richer/dp/1612680887/">title</a> caught my eye. It turned out to be the opposite of what I expected: a window into Trump philosophy.</p>
+<p><a href="https://en.wikipedia.org/wiki/Robert_Kiyosaki#Criticism_and_controversy">Robert Kiyosaki</a>, also author of <a href="https://en.wikipedia.org/wiki/Rich_Dad_Poor_Dad#Criticism">Rich Dad Poor Dad</a>, is a Trump man. Their names appear together on <a href="https://en.wikipedia.org/wiki/Why_We_Want_You_to_Be_Rich">two</a> <a href="https://en.wikipedia.org/wiki/Midas_Touch_(book)">books</a>, and they have ideas that don't come naturally to me.</p>
+<p>For example, Kiyosaki doesn't like <a href="https://en.wikipedia.org/wiki/Federal_Reserve_System">the Fed</a> or taxes. He thinks "Not paying taxes is patriotic." He also says "Taxes Are Fair." He explains that rich people pay little in taxes because "He who has the gold makes the rules." He also says it's because the government wisely incentivizes things the rich do. It's a little dizzying.</p>
+<blockquote>
+<p>"The good news is that with <em>real</em> financial education, almost everyone can be in the 10% who earn 90% of money."</p>
+</blockquote>
+<p>I'm reminded of Flynn's <a href="/20170821-downward_spiral_destructive_of_civic_virtue/">downward spiral destructive of civic virtue</a>. To Kiyosaki, it isn't a <em>problem</em> that the rich are getting richer, because you too can get rich, if only you buy his books, come to his seminars, invest like him. You're a smart one.</p>
+<p>Kiyosaki has a generalized concern about the dollar not being backed by gold. He recommends cash flow, for example by taking out loans to become a landlord. He's repeatedly dismissive of employees&#8211;of the very idea of work&#8211;but praises job creators.</p>
+<p>I wonder which of his contradictions he has in mind when he quotes Fitzgerald's praise of "the ability to hold two opposing ideas in mind at the same time" at the close of the book.</p>
+<p>Maybe Kiyosaki really does believe it's wrong to help the poor in ways other than the financial education he sells. Certainly, like Trump, he's most focused on image, on selling.</p>
+<p>Maybe the lesson of this book is that some people really do believe all these things.</p>
+<p><img alt="Why the Rich are Getting Richer cover" src="why_the_rich_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20180122-why_the_rich_are_getting_richer/</link>
+<guid>http://planspace.org/20180122-why_the_rich_are_getting_richer/</guid>
+<pubDate>Mon, 22 Jan 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Janesville: An American Story</title>
 <description><![CDATA[
 
@@ -1870,218 +1891,6 @@ indentation throughout.</p>
 <link>http://planspace.org/20170517-code_reading_questions_at_oscon/</link>
 <guid>http://planspace.org/20170517-code_reading_questions_at_oscon/</guid>
 <pubDate>Wed, 17 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Caffe and TensorFlow at Deep Learning Analytics</title>
-<description><![CDATA[
-
-<p><em>These are materials for a <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/62149">presentation</a> given Wednesday May 10, 2017 at <a href="https://conferences.oreilly.com/oscon/">OSCON</a> as part of <a href="https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/full/tensorflow-day">TensorFlow Day</a>. (<a href="big.html">slides</a>)</em></p>
-<hr>
-<p>Thank you!</p>
-<hr>
-<p>Thanks to all the OSCON organizers and participants, and especially to the Google folks organizing TensorFlow Day, and everyone coming out for TensorFlow events! What fun!</p>
-<hr>
-<p><img alt="Deep Learning Analytics" src="img/dla.png" width="100%"></p>
-<hr>
-<p>I work at a company called <a href="https://www.deeplearninganalytics.com/">Deep Learning Analytics</a>, or DLA.</p>
-<p>The advantage of a name like Deep Learning Analytics is that, assuming you've heard of deep learning, you immediately know something about what we do.</p>
-<hr>
-<p>deeplearninganalytics.com</p>
-<hr>
-<p>The disadvantage of a name like Deep Learning Analytics is that our URL is really long.</p>
-<hr>
-<p><img alt="some of the Deep Learning Analytics team" src="img/dla_team.jpg" width="100%"></p>
-<hr>
-<p>This is most of us at our Arlington location, just outside DC. We do a mix of government contracting and commercial work.</p>
-<hr>
-<p><img alt="DarLA" src="img/darla.png" height="100%"></p>
-<hr>
-<p>We have a cute robot mascot called DarLA.</p>
-<p>DarLA the robot could be a metaphor for any machine learning system. You have to build the arms and the legs, and that's a good deal of work. There's also generally a lot of work in getting data to train the system with. But you also need a brain, and that's inevitably sort of the interesting part.</p>
-<p>So what do you use for the brain?</p>
-<hr>
-<p>warning: opinions</p>
-<hr>
-<p>I'm going to comment on a few aspects of a few systems, based on what I've seen. Everybody involved in this space is incredibly smart, and probably correct in some ways even when I disagree.</p>
-<hr>
-<ul>
-<li>Caffe?</li>
-<li>TensorFlow?</li>
-</ul>
-<hr>
-<p>The two systems I'll talk about are Caffe and TensorFlow.</p>
-<p>I'm aware of Caffe 2 but I don't have anything to say about it today, aside from that it seems a lot like Caffe.</p>
-<hr>
-<p><img src="img/nvidia_comparison.jpg" alt="DL framework comparison" height="100%"></p>
-<hr>
-<p>This is a picture of a slide from a talk some NVIDIA folks gave a couple weeks ago. I will now agree and disagree with it.</p>
-<p>Caffe easy to start? I disagree, and I'll talk about why.</p>
-<p>Caffe easy to develop? I disagree, and I'll talk about why.</p>
-<p>Caffe limited capability? I agree, and I'll talk about why.</p>
-<p>TensorFlow portable and nice documentation? I mostly agree.</p>
-<p>TensorFlow slow? I think to the extent this is true, it doesn't matter, and I'll talk about some related considerations.</p>
-<p>My colleagues have done some work in Torch as well, but I'm not going to talk about these others.</p>
-<hr>
-<p>Easy to start?</p>
-<hr>
-<p>So which framework makes it easier to get started?</p>
-<hr>
-<p><code>pip install:</code><br>
-&#10008; Caffe<br>
-&#10004; TensorFlow</p>
-<hr>
-<p>This is a convenience, but it's also really nice. There are advantages to compiling things yourself too. But for quickly getting started, this is great.</p>
-<p>Even if you're happy to compile an optimized build for your system, having easy installation options available can be nice for setting up test environments, for example.</p>
-<hr>
-<p>"Easy" models:<br>
-&#189; Caffe<br>
-&#10004; TensorFlow</p>
-<hr>
-<p>By "easy" models, I mean models that are either completely pre-specified and pre-trained, or very easily specified by a very high-level API.</p>
-<p>The Caffe model zoo might have been the first recognized collection of pre-trained models and model architecture specifications. One or two years ago, it might have been the best way to start working with an interesting deep net without going through the whole training process yourself.</p>
-<p>Now, though, I think TensorFlow is really passing Caffe on this. You can get a number of pre-trained models already with just one line of Python, using <code>tf.contrib.keras</code>. Hopefully others will be able to match that ease of redistribution.</p>
-<p>Further, TensorFlow's "canned models" in <code>tf.contrib.learn</code> provide a scikit-learn-like interface that Caffe never attempts.</p>
-<hr>
-<p>Easy to develop?</p>
-<hr>
-<p>What about ease of development?</p>
-<hr>
-<p>API level:</p>
-<ul>
-<li>high? middle? low?</li>
-</ul>
-<hr>
-<p>For development, it matters what level you want to work at. You can do a lot quickly if you can stay at a high level. But sometimes you need to get low-level to control details or do something slightly non-standard.</p>
-<p>I think TensorFlow now is doing a better job than Caffe of providing API surfaces across a range of levels.</p>
-<p>Caffe's API, at the protocol buffer text format level you have to eventually get to, is sort of a middle-low level. The vocabulary is more limited than what you get with TensorFlow ops.</p>
-<p>You can build higher-level APIs with Caffe, and DLA has an in-house library that we use to make Caffe easier to work with.</p>
-<p>TensorFlow has Keras.</p>
-<hr>
-<p>Python integration:<br>
-&#189; Caffe<br>
-&#10004; TensorFlow</p>
-<hr>
-<p>Both Caffe and TensorFlow are written with C++, but interfacing with Caffe can feel like interfacing with the separate free-standing program, whereas the TensorFlow interface is seamless.</p>
-<p>If there's a way to use Caffe without at some point writing protobuf text files to disk and then having Caffe read them, I don't know it.</p>
-<hr>
-<p>modular design</p>
-<hr>
-<p>I'll show an example of a Caffe layer in order to talk about some of the design issues.</p>
-<hr>
-<pre><code>layer {name: "data"
-       type: "Data"
-       top: "data"
-       top: "label"
-       transform_param {crop_size: 227}
-       data_param {source: "train_lmdb_path"
-                   batch_size: 256
-                   backend: LMDB}}</code></pre>
-
-<hr>
-<p>I condensed a Caffe data layer spec a bit.</p>
-<p>Caffe likes reading data from LMDB databases. So this layer includes a path to a location on disk, where an LMDB database of a particular form needs to be. So this is a layer that reads from disk.</p>
-<p>But wait - this layer spec also specifies the training batch size.</p>
-<p>Does it do anything else? What's that "<code>crop_size</code>"?</p>
-<p>This layer also implicitly takes random crops from the images it reads, 227 pixels by 227 pixels. So the images in the database should be at least that big.</p>
-<p>That's a lot happening in one layer!</p>
-<p>On the one hand, this is pretty neat. Caffe does a lot for you. And once you've made a lot of choices, you can optimize the implementation, which is part of how Caffe gets pretty fast.</p>
-<p>On the other hand, Caffe is making a lot of decisions for us, and it isn't particularly happy if we want to change those decisions. Caffe can feel more like final application code than framework code.</p>
-<p>What if we want non-square crops? What if we want to introduce random distortions? Or if we want to read data from JPG files instead of LMDB? None of these are supported by this LMDB layer, and these changes aren't easily composable. We can switch to a memory data layer to get training batches in, but then we have to independently implement cropping if we want it, and so on.</p>
-<p>In contrast, TensorFlow doesn't have such tight integrations. The closest analog in TensorFlow might be reading from TFRecords files, but that functionality is isolated, and doesn't bundle in choices about batch size or cropping.</p>
-<p>You get a more modular system with TensorFlow, so you shouldn't find yourself having to pick apart tightly-coupled functionality later on.</p>
-<p>At the same time, TensorFlow does include the higher-level APIs mentioned earlier, so it isn't completely a choice between low-level and high-level either.</p>
-<hr>
-<p>multi-GPU</p>
-<hr>
-<p>How do we get multi-GPU systems?</p>
-<hr>
-<p><img src="img/alexnet.png" alt="AlexNet diagram" width="100%"></p>
-<hr>
-<p>This is the diagram from <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet Classification with Deep Convolutional Neural Networks</a>, the 2012 paper that popularized deep learning. It has over 11,000 citations now.</p>
-<p>This was a multi-GPU implementation!</p>
-<p>I want to point out how crazy it is. Alex Krizhevsky split individual convolutional layers between two GPUs. Whoa.</p>
-<hr>
-<p>Caffe</p>
-<hr>
-<p>So how do we do multi-GPU with Caffe?</p>
-<hr>
-<p><img alt="multi-GPU Caffe docs" src="img/caffe_multi.png"></p>
-<hr>
-<p>For Caffe, there's this page of documentation. As far as I know there is no link to this page of documentation. I found it <a href="https://github.com/BVLC/caffe/blob/master/docs/multigpu.md">via</a> the GitHub repo that backs the website.</p>
-<p>There are some limitations in Caffe's multi-GPU support.</p>
-<hr>
-<p>TensorFlow</p>
-<hr>
-<p>Well, how do we do multi-GPU with TensorFlow?</p>
-<hr>
-<p><code>tf.device()</code></p>
-<hr>
-<p>It's the same way we do single-GPU! The API stays the same, and you just say where you want things to run. This is also more flexible in terms of the ways you can parallelize things. You could have two copies of a model on two GPUs, or one really big model across two GPUs, for example.</p>
-<hr>
-<p><img alt="Jenn" src="img/jenn.jpg"></p>
-<hr>
-<p>My colleague Jenn parallelized some GAN (Generative Adversarial Network) code to use multiple GPUs. I was super curious to see what she had to do. She was really puzzled about why I was so curious, because TensorFlow made it so easy.</p>
-<p>Also, if you're curious about GANs, you should really check out Jenn's <a href="https://github.com/jennsleeman/introtogans_dcdatascience_2017">talk on the subject</a>.</p>
-<hr>
-<p>multi-machine</p>
-<hr>
-<p>What if we want to train across multiple machines now?</p>
-<hr>
-<p>Caffe</p>
-<hr>
-<p>How about Caffe?</p>
-<hr>
-<p><img src="img/trivial_mpi.png" alt="trivial MPI" width="100%"></p>
-<hr>
-<p>Caffe doesn't do it, but Yangqing helpfully <a href="https://github.com/BVLC/caffe/issues/876">points out</a> that you could make your own distributed Caffe system by adding MPI. Some people have actually <a href="https://software.intel.com/en-us/articles/caffe-training-on-multi-node-distributed-memory-systems-based-on-intel-xeon-processor-e5">done</a> this. I'm not sure it's trivial.</p>
-<hr>
-<p>TensorFlow</p>
-<hr>
-<p>And TensorFlow?</p>
-<hr>
-<p><code>tf.device()</code></p>
-<hr>
-<p>It's the same API! You just put computation on various machines!</p>
-<p>There is a little bit more to it than that, but I think it's easier than MPI.</p>
-<hr>
-<p><img alt="infrastructure" src="img/infr.png"></p>
-<hr>
-<p>Another thing we're excited about is possibilities for scaling out our work with TensorFlow. OpenAI <a href="https://blog.openai.com/infrastructure-for-deep-learning/">published</a> information and code on their system, and it seems like a pretty great model.</p>
-<hr>
-<p>responsiveness</p>
-<hr>
-<p>I'm going to talk about one anecdotal measures of developer responsiveness. It isn't totally fair, because Caffe development is basically over as Caffe 2 emerges, but it may still be interesting.</p>
-<p>I occasionally submit very minor pull requests, for things like ensuring a variable is the correct type, or fixing typos in documentation. These are simple PRs that don't generally require discussion or alteration; they just get merged in.</p>
-<p>So how quickly does that happen with Caffe and with TensorFlow?</p>
-<hr>
-<p>merge time:</p>
-<ul>
-<li>TensorFlow: 12 hours</li>
-<li>Caffe: 329 days</li>
-</ul>
-<hr>
-<p>TensorFlow developers seem more responsive.</p>
-<p>(<a href="https://github.com/tensorflow/tensorflow/pull/9451">TensorFlow PR</a>)</p>
-<p>(<a href="https://github.com/BVLC/caffe/pull/4182">Caffe PR</a>)</p>
-<hr>
-<p><img alt="TensorFlow logo" src="img/tf.jpg" height="100%"></p>
-<hr>
-<p>And I think that, along with many other things, bodes well for the future of TensorFlow.</p>
-<hr>
-<p>Thanks!</p>
-<hr>
-<p>Thank you!</p>
-<hr>
-<p></p><center>
-planspace.org
-<p>@planarrowspace
-</p></center>
-<hr>
-<p>This is my blog and <a href="https://twitter.com/planarrowspace">my twitter handle</a>. You can get from one to the other. <a href="big.html">This presentation</a> and a corresponding write-up (you're reading it) are on my blog (which you're on).</p>    
-    ]]></description>
-<link>http://planspace.org/20170510-caffe_and_tensorflow_at_dla/</link>
-<guid>http://planspace.org/20170510-caffe_and_tensorflow_at_dla/</guid>
-<pubDate>Wed, 10 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
