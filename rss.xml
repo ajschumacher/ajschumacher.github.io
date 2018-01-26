@@ -7,6 +7,24 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>No More Work by James Livingston</title>
+<description><![CDATA[
+
+<p><a href="http://history.rutgers.edu/faculty-directory/172-livingston-james">James Livingston</a>'s <a href="https://www.uncpress.org/book/9781469630656/no-more-work/">book</a> feels like <a href="https://en.wikipedia.org/wiki/Drunk_History">drunk history</a> about the future. To paraphrase, with the exception of "Fuck work," which appears multiple times:</p>
+<blockquote>
+<p>"The robots are taking all the jobs, man. Did you know that Nixon and <em>Cheney</em> were <a href="https://www.jacobinmag.com/2016/05/richard-nixon-ubi-basic-income-welfare/">trying</a> to do universal basic income way back in the 70's? They <em>knew</em>, man. Fuck work. We don't even <em>need</em> jobs. Just take Social Security from every dollar, and tax companies a little more, no problem, man... We all just have to <em>love</em> one another, that's all it is, man, can you even do that?"</p>
+</blockquote>
+<p>He goes on about Marx and Freud and so on a good deal more, but that's basically it.</p>
+<p>As Livingston points out quite a lot, he's not the only one to say that jobs are evaporating. He distinguishes himself by not thinking it's important that people do something "meaningful" like gardening or carpentry, regardless of whether they get paid. He's okay with everybody watching TV. I gather this is similar to his take in <a href="https://www.amazon.com/Against-Thrift-Consumer-Culture-Environment/dp/0465021867">Against Thrift</a>.</p>
+<p>It is an interesting hodgepodge of ideas of varying goodness. For example, that if owning people is bad, then also renting people is bad.</p>
+<p>I wonder what will happen. Are jobs on the way out? Will the world go post-scarcity, like Star Trek? Will poor people just get trampled on, as seems to largely be the case so far? If you've left the labor force already because you can survive by taking advantage of some existing device, are you the vanguard of the future jobless? What will society be like?</p>
+<p><img alt="No More Work cover" src="no_more_work_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20180125-no_more_work_by_james_livingston/</link>
+<guid>http://planspace.org/20180125-no_more_work_by_james_livingston/</guid>
+<pubDate>Thu, 25 Jan 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Why the Rich are Getting Richer</title>
 <description><![CDATA[
 
@@ -1669,228 +1687,6 @@ planspace.org
 <link>http://planspace.org/20170521-navigating_tensorflow_estimator_documentation/</link>
 <guid>http://planspace.org/20170521-navigating_tensorflow_estimator_documentation/</guid>
 <pubDate>Sun, 21 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Code Reading Questions at OSCON</title>
-<description><![CDATA[
-
-<p><a href="https://www.oreilly.com/">O'Reilly</a>'s 2017 <a href="https://conferences.oreilly.com/oscon/">OSCON</a> had a "<a href="https://conferences.oreilly.com/oscon/oscon-tx/public/content/game">code game</a>" with ten questions covering nine different languages. It was supposed to get people engaged in the expo hall, but the quiz-like gamification content reminded me of my old <a href="/20150616-code_reading_question/">code reading question</a> idea. The questions are available in a <a href="https://cdn.oreillystatic.com/en/assets/1/event/214/oscon2017_code_game.pdf">PDF</a> (<a href="oscon2017_code_game.pdf">mirror</a>). I'll put the questions here as well.</p>
-<hr>
-<h3>1. Rust</h3>
-<pre><code class="language-rust">use std::collections::HashSet;
-use std::io::{BufRead, Result};
-
-fn f&lt;I: BufRead&gt;(input: &amp;mut I) -&gt; Result&lt;usize&gt; {
-    Ok(input.lines()
-       .map(|r| r.expect(&#8220;ara ara&#8221;))
-       .flat_map(|l| l.split_whitespace()
-                     .map(str::to_owned)
-                     .collect::&lt;Vec&lt;_&gt;&gt;())
-       .collect::&lt;HashSet&lt;_&gt;&gt;()
-       .len())
-}</code></pre>
-
-<p>This function reads input. What else does it do?</p>
-<ul>
-<li>A. Counts the number of white-space-separated &#8220;words&#8221;</li>
-<li>B. Counts the number of distinct &#8220;words&#8221;</li>
-<li>C. Finds the &#8220;word&#8221; that appears most frequently</li>
-<li>D. Finds the longest line</li>
-</ul>
-<!-- Correct: B -->
-
-<hr>
-<h3>2. JavaScript</h3>
-<pre><code class="language-javascript">function search(values, target) {
-  for(var i = 0; i &lt; values.length; ++i){
-    if (values[i] == target) { return i; }
-  }
-  return -1;
-}</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Depth-first search</li>
-<li>B. Binary search</li>
-<li>C. Merge search</li>
-<li>D. Linear search</li>
-</ul>
-<!-- Correct: D -->
-
-<hr>
-<h3>3. Go</h3>
-<pre><code class="language-go">func function(s []float64) float64 {
-        var sum float64 = 0.0
-        for _, n := range s {
-                sum += n
-        }
-        return sum / float64(len(s))
-}</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Sums the contents of a slice</li>
-<li>B. Finds the maximum value in a slice</li>
-<li>C. Averages the contents of a slice</li>
-<li>D. Appends values to a slice</li>
-</ul>
-<!-- Correct: C -->
-
-<hr>
-<h3>4. Perl 5</h3>
-<pre><code class="language-perl">sub mystery {
-    return @_ if @_ &lt; 2;
-    my $p = pop;
-    mystery(grep $_ &lt; $p, @_), $p,
-    mystery(grep $_ &gt;= $p, @_);
-}</code></pre>
-
-<p>What does the mystery subroutine do?</p>
-<ul>
-<li>A. Binary search</li>
-<li>B. Merge sort</li>
-<li>C. Removes items that are too large or too small</li>
-<li>D. Quick sort</li>
-</ul>
-<!-- Correct: D -->
-
-<hr>
-<h3>5. Java 8</h3>
-<pre><code class="language-java">static void function(int[] ar)
- {
-   Random rnd = ThreadLocalRandom.current();
-   for (int i = ar.length - 1; i &gt; 0; i--)
-   {
-     int index = rnd.nextInt(i + 1);
-     int a = ar[index];
-     ar[index] = ar[i];
-     ar[i] = a;
-   }
- }</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Merge sort</li>
-<li>B. Shuffle</li>
-<li>C. Increases size of array</li>
-<li>D. Decreases size of array</li>
-</ul>
-<!-- Correct: B -->
-
-<hr>
-<h3>6. Ruby</h3>
-<pre><code class="language-ruby">def f(hash)
-  prs = hash.inject({}) do |hsh, pr|
-    k, v = yield pr
-    hsh.merge(k =&gt; v)
-  end
-  Hash[prs]
-end</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Reverses an array</li>
-<li>B. Administers a booster shot</li>
-<li>C. Enters a freeway safely</li>
-<li>D. Transforms a hash</li>
-</ul>
-<!-- Correct: D -->
-
-<hr>
-<h3>7. Python</h3>
-<pre><code class="language-python">def function(list):
-     return [x for x in list if x == x[::-1]]</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Finds and returns all palindromes within the given list</li>
-<li>B. Reverses all strings in the given list</li>
-<li>C. Swaps the first and last letter in each word in the given list</li>
-<li>D. Returns a list of anagrams for each word in the given list</li>
-</ul>
-<!-- Correct: A -->
-
-<hr>
-<h3>8. Scala</h3>
-<pre><code class="language-scala">object Op {
-  val r1: Regex = &#8220;&#8221;&#8221;([^aeiouAEIOU\d\s]+)([^\d\s]*)$&#8221;&#8221;&#8221;.r
-  val r2: Regex = &#8220;&#8221;&#8221;[aeiouAEIOU][^\d\s]*$&#8221;&#8221;&#8221;.r
-  val s1:String = &#8220;\u0061\u0079&#8221;
-  val s2:String = &#8220;\u0077&#8221; + s1
-  def apply(s: String): String = {
-    s.toList match {
-      case Nil =&gt; &#8220;&#8221;
-      case _ =&gt; s match {
-        case r1(c, r) =&gt; r ++ c ++ s1 case r2(_*) =&gt; s ++ s2
-        case _ =&gt; throw new
-RuntimeException(&#8220;Sorry&#8221;)
-      }
-    }
-  }
-}</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Converts a given String to a JavaScript-based String</li>
-<li>B. Converts a Unix/MacOSX String format into a Windows String format</li>
-<li>C. Converts a word into the children&#8217;s language equivalent called &#8220;Pig Latin&#8221;</li>
-<li>D. Converts a given String to IPV6 format since IP numbers are running out</li>
-</ul>
-<!-- Correct: C -->
-
-<hr>
-<h3>9. Swift</h3>
-<pre><code class="language-swift">import Foundation
-
-let i = &#8220;Hell&#248;, Swift&#8221;
-
-let t = i.precomposedStringWithCanonicalMapping
-
-let c = t.utf8.map({UnicodeScalar($0+2)})
-let j = i.utf8.map({UnicodeScalar($0+1)}).count / 2
-
-var d = String(repeating: String(describing: c[j]), count: j)
-
-d.append(Character(&#8220;&#127462;&#127482;&#127482;&#127480;&#8221;))
-
-let result = &#8220;\(d): \(d.characters.count)&#8221;</code></pre>
-
-<p>What is the value of &#8220;result&#8221;?</p>
-<ul>
-<li>A. ......&#127462;&#127482;&#127482;&#127480;: 7</li>
-<li>B. ......&#127462;&#127482;&#127482;&#127480;: 8</li>
-<li>C. &#8220;&#8221;&#8221;&#8221;&#8221;&#8221;&#127462;&#127482;&#127482;&#127480;: 7</li>
-<li>D. &#8220;&#8221;&#8221;&#8221;&#8221;&#8221;&#127462;&#127482;&#127482;&#127480;: 8</li>
-</ul>
-<!-- Correct: A -->
-
-<hr>
-<h3>10. JavaScript</h3>
-<pre><code class="language-javascript">function thing (n) {
-    for (var i = 0; i &lt; n; i++) {
-        setTimeout(function () {console.log(i);}, 0);
-    }
-}</code></pre>
-
-<p>What does this function do?</p>
-<ul>
-<li>A. Prints numbers 0 through n</li>
-<li>B. Prints n n time</li>
-<li>C. Prints 0 n times</li>
-<li>D. Prints nothing</li>
-</ul>
-<!-- Correct: B -->
-
-<hr>
-<p>View HTML source to see the answers.</p>
-<p>I tried to keep the above close to what appeared on the physical
-cards. I haven't tried to correct the little mistakes and bizarre
-indentation throughout.</p>
-<p>It's fun!</p>    
-    ]]></description>
-<link>http://planspace.org/20170517-code_reading_questions_at_oscon/</link>
-<guid>http://planspace.org/20170517-code_reading_questions_at_oscon/</guid>
-<pubDate>Wed, 17 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
