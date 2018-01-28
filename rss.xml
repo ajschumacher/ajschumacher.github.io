@@ -7,6 +7,22 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Worm by Mark Bowden</title>
+<description><![CDATA[
+
+<p><a href="https://www.amazon.com/Worm-First-Digital-World-War/dp/0802119832">This</a> was the only book on computer security that I could find at my local library, which is a little surprising for DC. It's about the <a href="https://en.wikipedia.org/wiki/Conficker">Conficker worm</a>. It's <a href="http://www.nytimes.com/2011/10/04/books/mark-bowdens-worm-about-conficker-review.html">not</a> a great book.</p>
+<p>I had hoped for more expertise. Even I know that <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a> packets are not "packets of code" and that <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack#Distributed_attack">DDoS</a> is not "Dedicated Denial of Service." That second error appears once, with later expansions being correct, but it is symptomatic of generally weak quality control.</p>
+<p>A scan through the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Conficker">Conficker</a> shows that Worm leaves out a number of interesting technical details: dictionary attacks are not mentioned at all, for example.</p>
+<p>I did enjoy learning about the involvement of <a href="https://www.sri.com/">SRI</a> in connection with Conficker and with the development of the internet in general.</p>
+<p>Bowden focuses on social aspects, and these mostly ring true: Lots of computers aren't updated, and hackers take advantage of them. Coordination, especially with government, can be difficult. Mischel Kwon in particular is not portrayed glowingly, but many of the cast of characters appear infantile in their own words.</p>
+<p>The book succeeds in making security seem pretty inane. Microsoft makes a crummy product, so people get hacked. To stop the hacked machines from doing anything, the good guys try to buy a lot of domain names, and eventually fail. All our technology is both amazing and pitiful.</p>
+<p><img alt="Worm cover" src="worm_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20180128-worm_by_mark_bowden/</link>
+<guid>http://planspace.org/20180128-worm_by_mark_bowden/</guid>
+<pubDate>Sun, 28 Jan 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>No More Work by James Livingston</title>
 <description><![CDATA[
 
@@ -1654,39 +1670,6 @@ planspace.org
 <link>http://planspace.org/20170524-more_and_better_new_tensorflow_apis/</link>
 <guid>http://planspace.org/20170524-more_and_better_new_tensorflow_apis/</guid>
 <pubDate>Wed, 24 May 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Navigating TensorFlow Estimator Documentation</title>
-<description><![CDATA[
-
-<p>The TensorFlow documentation keeps improving, but it can still be hard to find what you're looking for. Here's a way of organizing <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator">Estimator</a>s or <a href="https://www.tensorflow.org/api_guides/python/contrib.learn"><code>tf.contrib.learn</code></a> documentation, from high-level to low-level:</p>
-<ul>
-<li>Using Estimators (already made or "canned")<ul>
-<li><a href="https://www.tensorflow.org/get_started/tflearn"><code>DNNClassifier</code> on iris dataset</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/wide"><code>LinearClassifier</code> (logistic) on census income dataset</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/wide_and_deep"><code>DNNLinearCombinedClassifier</code> (extends census income example)</a></li>
-</ul>
-</li>
-<li>Aspects of using Estimators<ul>
-<li><a href="https://www.tensorflow.org/tutorials/linear">Feature columns (in context of linear models)</a></li>
-<li><a href="https://www.tensorflow.org/get_started/input_fn">Using <code>input_fn</code>; <code>DNNRegressor</code> on Boston housing dataset</a></li>
-<li><a href="https://www.tensorflow.org/get_started/monitors">Logging etc. with <code>ValidationMonitor</code> (extends iris example)</a></li>
-</ul>
-</li>
-<li>Making your own Estimator<ul>
-<li><a href="https://www.tensorflow.org/extend/estimators">With <code>layers</code> in a <code>model_fn</code> on the abalones dataset</a></li>
-<li><a href="https://www.tensorflow.org/tutorials/layers">With <code>layers</code> in a <code>model_fn</code> on MNIST</a></li>
-</ul>
-</li>
-<li>Lower-level API than Estimators<ul>
-<li><a href="https://www.tensorflow.org/get_started/mnist/pros#build_a_multilayer_convolutional_network">Use the lower-level API to make a system for MNIST</a></li>
-</ul>
-</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20170521-navigating_tensorflow_estimator_documentation/</link>
-<guid>http://planspace.org/20170521-navigating_tensorflow_estimator_documentation/</guid>
-<pubDate>Sun, 21 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
