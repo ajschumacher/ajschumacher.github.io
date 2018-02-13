@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-02-13: [Failure to replicate Schwartz-Ziv and Tishby](/20180213-failure_to_replicate_schwartz-ziv_and_tishby/)
  * 2018-02-10: [The Coming Jobs War by Jim Clifton](/20180211-coming_jobs_war/)
  * 2018-01-28: [Worm by Mark Bowden](/20180128-worm_by_mark_bowden/)
  * 2018-01-25: [No More Work by James Livingston](/20180125-no_more_work_by_james_livingston/)

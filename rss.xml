@@ -7,6 +7,57 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Failure to replicate Schwartz-Ziv and Tishby</title>
+<description><![CDATA[
+
+<p><a href="https://arxiv.org/abs/1703.00810">Opening the Black Box of Deep Neural Networks via Information</a> didn't appear at any conferences, to my knowledge, but it still built up some <a href="https://www.quantamagazine.org/new-theory-cracks-open-the-black-box-of-deep-learning-20170921/">buzz</a>. It has been difficult to replicate, for both <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/">bloggers</a> and <a href="https://openreview.net/forum?id=ry_WPG-A-">academics</a>. I attempted to replicate some aspects, and emailed the authors with the message below in an attempt to resolve difficulties. As there has been no response after many weeks, I present the below as an open letter. I hope it can serve as a reference for others who might try to explore these ideas.</p>
+<hr>
+<p>Hi Ravid! I was intrigued by your paper, <a href="https://arxiv.org/abs/1703.00810">Opening the Black Box of Deep Neural Networks via Information</a>, so I wanted to replicate your results. I was particularly interested in your Figure 4; I thought that if I could see these kinds of patterns, maybe they could be used to identify when a network is well-trained, for example.</p>
+<p>Here is the figure I mean:</p>
+<p><img alt="figure 4" src="img/figure_4.png"></p>
+<p>I started by trying to work with a simple ReLU network with two hidden layers, on MNIST, and what I found was that the sizes of gradients decrease through training, and so do differences or variances of those gradients. I couldn't see two distinct phases, or indeed any interesting crossing of two metrics.</p>
+<p>At first, I wasn't sure about how to interpret the "mean" and "standard deviation" of your Figure 4. So I was happy to find your <a href="https://github.com/ravidziv/IDNNs">code</a>, which I've been using at the 2017-11-02 <a href="https://github.com/ravidziv/IDNNs/tree/c4abb1dad4fbb262315eb8b96eb85dc5c3e98e5c">c4abb1d commit</a>.</p>
+<p>Unfortunately, using the definitions of "mean" and "standard deviation" as found in your <code>idnns/plots/plot_gradients.py</code> file, I didn't get results that matched those of your paper any better.</p>
+<p>I started to use your code directly, running <code>main.py</code> with default arguments, adding only <code>-save_grads true</code> so I could then use <code>plot_gradients.py</code>. Here is the result:</p>
+<p><img alt="default mean std" src="img/default_mean_std.png"></p>
+<p>As you can see, there are differences from your published Figure 4.</p>
+<p>Can you help me to replicate your results? What should I be doing differently? I would appreciate your feedback. I also posted comments about my process of trying to understand your work on a <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/">"severely theoretical" blog post</a>; if you would like to add public context there as well it would also be appreciated.</p>
+<p>One thing that I noticed is that in your published Figure 4, one of the solid "mean" lines crosses the others. With the current calculation of "mean" in your code, in which the value for a layer is the sum of an always-positive calculation on each layer up to and including itself, it doesn't seem possible for lines to ever cross. Does this shine any light on what's going on?</p>
+<p>Another thing I noticed is that the caption for your published Figure 4 says "values are normalized by the L2 norms of the weights for each layer" but in the current code, I don't see this happening. Is this perhaps part of what's going on?</p>
+<p>I also noticed that the y axis labels in the plot don't seem to correspond to the values being plotted. For example, the first (leftmost) value for the last layer's "standard deviation" is calculated by your code as 0.49 (I check by inserting <code>print</code> messages) but it appears in the plot as less than 0.1. I think this issue doesn't affect the shapes of the curves but only the labeling, as far as I can tell.</p>
+<p>More generally, is the cumulative sum approach to calculating statistics over layers appropriate? It strikes me that the pattern of the first layer dominates the plotted results, and it's then difficult to see what's happening uniquely in the higher layers.</p>
+<p>I also tried running your <code>main.py</code> with the activation changed to ReLU, using <code>-activation_function 1</code>.</p>
+<p><img alt="relu mean std" src="img/relu_mean_std.png"></p>
+<p>The result here is mostly the same as the previous one, qualitatively, except that the gradient means seem to increase overall through the training process. Naftali Tishby has <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/#comment-183">said</a> that "results [showing non-decreasing mean gradients] are clearly incorrect as the gradients must decease eventually when the training error saturates." How should this be interpreted?</p>
+<p>Let me lay out my understanding of the "mean" and "standard deviation" of your Figure 4, as based on reading your code. Both metrics are calculated for every layer and epoch, so I'll take just one as an example.</p>
+<p>Let's say a network has a first layer with two weights, and there are two batches per epoch. Let's say the gradients for the first layer in the first epoch are <code>[2, 3]</code> and <code>[4, 5]</code>.</p>
+<p>To get the "mean" we calculate the element-wise mean (<code>[3, 4]</code>) and take the norm, so the "mean" is <code>5</code>.</p>
+<p>To get the "standard deviation" we calculate the element-wise variance (<code>[1, 1]</code>) and take the square root of its sum (<code>1.414</code>; call this the "variance") and then take the square root, so the "standard deviation" is <code>1.189</code>.</p>
+<p>To show the cumulative sum aspect of the calculation, say there is a second layer with two weights and identical first-epoch gradients. Then for the second layer, first epoch, the "mean" is <code>5+5=10</code> and the "standard deviation" is the square root of the sum of the "variances" <code>sqrt(1.414+1.414)=1.682</code>.</p>
+<p>This understanding is based on reading and experimenting with your <code>plot_gradients.py</code>. Does it seem right to you? Am I misinterpreting something? Is the intent other than this?</p>
+<p>I would love to replicate the core result of your Figure 4, which I summarize as being "at first, gradients are large but don't vary much, and then later, gradients are small but vary a lot." What's the best way to find this result? I have seen that usually <em>both</em> gradients and the amount they vary decrease through training, but I have been unable to observe the two phases described in your paper.</p>
+<p>While my main focus has been on finding the two phases by statistics on the gradients, I am also interested in the mutual information parts of your paper as well. Here are four plots generated by running your <code>main.py</code> (all default arguments) four times:</p>
+<p><img alt="default info a" src="img/default_info_a.png"></p>
+<p><img alt="default info b" src="img/default_info_b.png"></p>
+<p><img alt="default info c" src="img/default_info_c.png"></p>
+<p><img alt="default info d" src="img/default_info_d.png"></p>
+<p>As you can see, I have not been able to consistently replicate the beautiful plots you have in your paper as Figure 3. In fact, the higher layers consistently fail to show the patterns described in your paper, and the lower layers behave somewhat irregularly. Am I doing something wrong?</p>
+<p>One thing I noticed is that in the caption for Figure 3, the architecture is described as "input=12-10-8-6-4-2-1=output". This is somewhat different from the current default in your code, and in particular it doesn't seem possible to have a single output unit with your code in its current version, because for binary classification it uses a softmax over two output nodes. Is this an important difference? Could it be causing the difficulty in seeing compression phases?</p>
+<p>I also kept the information plots from two runs of <code>main.py</code> with <code>-activation_function 1</code> for ReLU activations. Here they are:</p>
+<p><img alt="relu info a" src="img/relu_info_a.png"></p>
+<p><img alt="relu info b" src="img/relu_info_b.png"></p>
+<p>I'm not sure if anything can be interpreted from these; maybe the code as I found it doesn't support ReLU at present? I know I've read that there are some different issues concerning binning when calculating mutual information involving ReLUs.</p>
+<p>I would appreciate your insight on all these specific issues, but also more broadly: if the phenomena of your paper are general to neural networks, how should I understand the apparent difficulty in seeing similar results with other networks, code, and datasets? How should I understand the apparent difficulty even when using the same dataset, and your code?</p>
+<p>Thank you very much for your help with all this,</p>
+<p>~ Aaron</p>
+<hr>
+<p>I should add for completeness that I am aware of Saxe et al.'s Figure 1A, which seems to replicate Schwartz-Ziv and Tishby's information plane result better than Schwartz-Ziv's code does for me. I would like to know how they achieve that, but the point Saxe et al. make is that the information plane result doesn't hold for most neural nets that are used in practice, so it's kind of beside the point. I haven't seen anyone replicate the result on mean and variance of gradients during training, which is what I am most interested in.</p>    
+    ]]></description>
+<link>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</link>
+<guid>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</guid>
+<pubDate>Tue, 13 Feb 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Coming Jobs War by Jim Clifton</title>
 <description><![CDATA[
 
@@ -1369,89 +1420,6 @@ E. banal : originality</code></pre>
 <link>http://planspace.org/20170705-word_vectors_and_sat_analogies/</link>
 <guid>http://planspace.org/20170705-word_vectors_and_sat_analogies/</guid>
 <pubDate>Wed, 05 Jul 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Questions from TensorFlow APIs Webinar</title>
-<description><![CDATA[
-
-<p>I did <a href="/20170524-more_and_better_new_tensorflow_apis/">More and Better: The New TensorFlow APIs</a> as a <a href="https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/">webinar</a>. <a href="https://www.altoros.com/">Altoros</a> ran it using <a href="https://www.gotomeeting.com/webinar">GoToWebinar</a>, which reported all questions from attendees. Questions and answers:</p>
-<hr>
-<h3>What should I learn?</h3>
-<blockquote>
-<p>"New to DL and TF... several people have said to not waste time w/Keras, etc, but go deep into TF to really learn it.  From what you said, it seems like TF changes a lot, though.  Recommendations in terms of sequence/path for learning DL concepts and the tools?"</p>
-</blockquote>
-<p>First, regarding the rate of change of TensorFlow: The low-level API should really be quite stable now. It's the high-level APIs that are still settling down a little bit. And even there, it looks like things are getting pretty set. I wouldn't expect Keras to change a lot, in particular.</p>
-<p>The question of whether to use a high-level API or a low-level API depends on your goals. I don't think it's a waste of time to use Keras. In fact, I think it would be easier to argue that it's "a waste of time" to dig into low-level TensorFlow implementation details, because there's a lot you can get done much more quickly by using Keras.</p>
-<p>It depends on your goals. Do you want to understand every step in the internals of your system? I've heard people like Matt Zeiler suggest that you should write your own deep learning framework from scratch in order to understand all the details of backprop, etc. How far do you want to go?</p>
-<p>For most people, I think higher-level interfaces are a good choice. Sometimes they can actually make it easier to learn the concepts that are really important, because you don't have to deal with all the details that can complicate things.</p>
-<p>That's not to say that it isn't valuable to get into the low-level details as well. Sometimes you really do need to make changes or understand phenomena that are down at that level. But you don't necessarily need to start at the low level; you can also start at higher levels of abstraction and then learn lower levels later.</p>
-<p>As for learning DL concepts and tools, I'm currently a big advocate of <a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a> by Fran&#231;ois Chollet, the author of Keras. It's still in pre-release, but the chapters that are already available are quite good. I think it's a great book especially for people who are newer to deep learning because it explains a lot of fundamental things in approachable ways.</p>
-<hr>
-<h3>Keras outside or inside TensorFlow?</h3>
-<blockquote>
-<p>"What is the link between keras and tf that is being shown? I have used Keras and I simply indicate that it should use tensorflow in the backend and my calls do not include tf.xxx.keras.xxx... One of the goals of Keras is to be framework independent. To call from Tensorflow doesn&#8217;t really maintain that spirit."</p>
-</blockquote>
-<p>You can still use Keras directly with TensorFlow as the backend, maintaining framework independence. As far as I know, Keras will continue to be developed separately from TensorFlow as well as within the TensorFlow codebase. And for many things, using Keras as it appears inside TensorFlow will work just the same way as using independent Keras with the TensorFlow backend.</p>
-<p>Having Keras inside TensorFlow is a convenience, for one, but it should also enable some tighter integrations. I'm expecting the layers API will become even more unified and allow for mixing and matching even more design possibilities. More importantly, I think, Keras models in TensorFlow will be easily convertible to TensorFlow Estimators, which should be pretty neat.</p>
-<hr>
-<h3>C? C++?</h3>
-<blockquote>
-<p>"how come [TensorFlow is] written in C++ but recommended interfaces should talk to the C part?"</p>
-</blockquote>
-<p>I suppose there are at least two reasons. One is that it standardizes the interface, making it very clear what is stable and safe to build an API to. Another is that as a practical matter, lots of languages have established standard ways to connect to a C API. To read more about TensorFlow's take, check out the <a href="https://www.tensorflow.org/extend/language_bindings">language support documentation</a>.</p>
-<hr>
-<h3>On-graph? Off-graph?</h3>
-<blockquote>
-<p>"Can you remind folks about what 'on-graph' is?"</p>
-</blockquote>
-<p>TensorFlow's core way of working is by defining a graph of operations and then running them; anything that runs that way is "on-graph."</p>
-<p>Normal Python code doesn't work that way; you don't define a graph and then run it, you just run your Python code right away.</p>
-<p>Even within the TensorFlow Python API, not everything works by putting things on the graph. For example, <code>tf.python_io.tf_record_iterator</code> doesn't use the TensorFlow graph.</p>
-<p>I wrote some more about this distinction in <a href="/20170428-everything_in_the_graph_even_glob/">Everything in the Graph? Even Glob?</a>. An example of TensorFlow functionality that exists in both off-graph and on-graph versions is TFRecords processing. I have a post that uses the <a href="/20170323-tfrecords_for_humans/">off-graph API</a> and two posts that use the on-graph API: <a href="/20170412-reading_from_disk_inside_the_tensorflow_graph/">reading from disk</a> and <a href="/20170426-parsing_tfrecords_inside_the_tensorflow_graph/">parsing TFRecords</a>.</p>
-<hr>
-<h3>Python 2? Python 3?</h3>
-<blockquote>
-<p>"Are you using Python 2.x?  If so why?"</p>
-</blockquote>
-<p>I use Python 2.7 a lot because projects I work on use it. I usually recommend that new projects start up with Python 3.</p>
-<p>The inertia of Python 2.7 is really incredible, but maybe the tide is turning at last. Under a year ago, this quote <a href="https://blog.openai.com/infrastructure-for-deep-learning/">appeared</a> on OpenAI's blog:</p>
-<blockquote>
-<p>"Like much of the deep learning community, we use Python 2.7."</p>
-</blockquote>
-<p>More recently though, another <a href="https://blog.openai.com/openai-baselines-dqn/">post</a> from OpenAI indicated at least some work is now on Python 3:</p>
-<blockquote>
-<p>"We use Python 3 and TensorFlow."</p>
-</blockquote>
-<hr>
-<h3>Hyperparameter tuning?</h3>
-<blockquote>
-<p>"I would like to know if there is a recommended way to make hyperparameter tuning (number of layers, number of nodes in each layer, learning rate, number of epochs)"</p>
-</blockquote>
-<p>For number of epochs, you can evaluate your model multiple times during training to get train and eval performance curves which should help in making that choice.</p>
-<p>For architectural choices like number of layers and number of nodes in each layer, and optimization parameters like learning rate, you can parameterize your code so that choices become command-line arguments, which makes it easier to run experiments and determine what works best.</p>
-<p>Making choices based on your previous experience and what's worked for others can save you a lot of time; usually you don't really want to search over <em>all</em> the things you <em>could</em> vary.</p>
-<p>When you're really not sure, you can search over all your possible parameters. You may be able to do better than grid search: even <a href="http://scikit-learn.org/stable/modules/grid_search.html#randomized-parameter-optimization">random search</a> can be better, and <a href="https://en.wikipedia.org/wiki/Bayesian_optimization">Bayesian optimization</a> could be better yet. Google has <a href="https://cloud.google.com/ml-engine/docs/how-tos/using-hyperparameter-tuning">productized hyperparameter tuning</a>, which may be worth checking out.</p>
-<hr>
-<h3>Visualization for very large models?</h3>
-<blockquote>
-<p>"I have a question, can we also visualize distributed tensorflow on very large models with billion parameters with tensorboard?"</p>
-</blockquote>
-<p>The answer is probably "yes" but there are multiple aspects to this question.</p>
-<p>First, when running  distributed TensorFlow training following the standard pattern, probably you have your chief worker writing out TensorBoard summaries. So that centralizes the "where" of TensorBoard summary writing.</p>
-<p>Second, even with small models, it's possible to generate unwieldy amounts of TensorBoard data. You probably want to think carefully about what you want to save during training. For example, you probably don't need to log things every iteration, and you probably don't need to log every parameter value if a histogram will do the job.</p>
-<p>Third, some of the things you likely want to visualize for a large model are the same as things you want to visualize for a small model, like loss progression through training. There might not be any changes necessary when model size is different.</p>
-<p>If you just want to visualize the model structure (the model graph) then you can take advantage of TensorBoard's grouping functionality so that you can see and reason about components across multiple scales.</p>
-<p>In the end, it will depend on exactly what you want to visualize. TensorBoard has a lot of neat features, but it won't be the right choice for every possible problem.</p>
-<hr>
-<h3>What about serving?</h3>
-<blockquote>
-<p>How does TensorFlow Serving fit in currently?</p>
-</blockquote>
-<p><a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a> is largely distinct from the APIs that I showed, except that Estimators can easily <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator#export_savedmodel">export</a> the SavedModel format that you want to use for serving.</p>    
-    ]]></description>
-<link>http://planspace.org/20170526-questions_from_tensorflow_apis_webinar/</link>
-<guid>http://planspace.org/20170526-questions_from_tensorflow_apis_webinar/</guid>
-<pubDate>Fri, 26 May 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
