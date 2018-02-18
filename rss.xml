@@ -7,6 +7,34 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Scarcity by Sendhil Mullainathan and Eldar Shafir</title>
+<description><![CDATA[
+
+<p>The promise of <a href="https://scholar.harvard.edu/sendhil/scarcity">Scarcity</a> is an uplifting unified <a href="/20170825-characteristics_of_good_theories/">theory</a> that "accounts for a diverse set of phenomena" (page 162) and has social policy implications. It's a research-based rationale for compassion rather than blame, encapsulated on page 144:</p>
+<blockquote>
+<p>'Scarcity creates a mindset that perpetuates scarcity. If all this seems bleak, consider the alternative viewpoint: the poor are poor because they lack skills. The lonely are lonely because they are unlikable; dieters lack willpower; and the busy are busy because they lack the capacity to organize their lives. In this alternative view, scarcity is the consequence of deep personal problems, very difficult to change.</p>
+<p>'The scarcity mindset, in contrast, is a contextual outcome, more open to remedies. Rather than a personal trait, it is the outcome of environmental conditions brought on by scarcity itself, conditions that can often be managed.'</p>
+</blockquote>
+<p>The book expands and applies some ideas that were present in <a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a>:</p>
+<blockquote>
+<p>'Imagine that you are asked to retain a list of seven digits for a minute or two. While your attention is focused on the digits, you are offered a choice between two desserts: a sinful chocolate cake and a virtuous fruit salad. The evidence suggests that you would be more likely to select the tempting chocolate cake when your mind is loaded with digits.'</p>
+</blockquote>
+<p>The book is about how scarcity, like (or as) a distracting mental task, makes it harder to make good decisions, which makes it harder to escape scarcity.</p>
+<p>The biggest new contributions are probably from the authors' <a href="http://www.sciencemag.org/">Science</a> paper, <a href="http://science.sciencemag.org/content/341/6149/976.long">Poverty Impedes Cognitive Function</a>. They found, for example, that farmers did better on an IQ test shortly after being payed for their yearly harvest, compared to before.</p>
+<p>The authors grant that some scarcity, like shortness of time before a deadline, can improve performance by increasing focus. They call this the "focus dividend." But focusing can mean other things are neglected; they speak of "tunneling" and a "bandwidth tax."</p>
+<p>They praise the "slack" time and money that some people enjoy. If you're operating without slack, a surprise can do a lot of damage, for example starting a downward spiral of payday loans. If you don't have slack you also need to really trade off in making decisions, which might prevent you from making certain cognitive errors of scale, but requires bandwidth.</p>
+<p>Some of the organizational applications remind me of <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical Man-Month</a>. For example, they describe a NASA project that was behind, so they skipped integration tests, and eventually failed catastrophically.</p>
+<blockquote>
+<p>'The truly efficient laborer will be found not to crowd his day with work, but will saunter to his task surrounded by a wide halo of ease and leisure.' (Henry David Thoreau, quoted page 194)</p>
+</blockquote>
+<p>I particularly appreciated that the authors made a noticeable effort to anticipate and address readers' possible objections, but I was already largely in agreement, so it may have been hard for me to judge their success in this regard. They also got me curious about <a href="http://www.portfoliosofthepoor.com/">Portfolios of the Poor</a>, which seems like it could be a good window into how the global poor live. Mullainathan and Shafir inspire one to understand more.</p>
+<p><img alt="Scarcity cover" src="scarcity_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</link>
+<guid>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</guid>
+<pubDate>Sun, 18 Feb 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Failure to replicate Schwartz-Ziv and Tishby</title>
 <description><![CDATA[
 
@@ -1352,74 +1380,6 @@ money you can realistically hope to acquire is enough.</p>
 <link>http://planspace.org/20170821-downward_spiral_destructive_of_civic_virtue/</link>
 <guid>http://planspace.org/20170821-downward_spiral_destructive_of_civic_virtue/</guid>
 <pubDate>Mon, 21 Aug 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Word Vectors and SAT Analogies</title>
-<description><![CDATA[
-
-<p>In 2013, <a href="https://code.google.com/archive/p/word2vec/">word2vec</a> popularized <a href="http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/">word vectors</a> and <em>king - man + woman = queen</em>.</p>
-<p><a href="http://p.migdal.pl/2017/01/06/king-man-woman-queen-why.html"><img alt="king queen etc." src="img/king_queen.png"></a></p>
-<p>This reminded me of <a href="https://en.wikipedia.org/wiki/SAT">SAT</a> analogy questions, which <a href="http://blog.prepscholar.com/sat-analogies-and-comparisons-why-removed-what-replaced-them">disappeared from the SAT in 2005</a>, but looked like this:</p>
-<pre><code>PALTRY : SIGNIFICANCE ::
-
-A. redundant : discussion
-B. austere : landscape
-C. opulent : wealth
-D. oblique : familiarity
-E. banal : originality</code></pre>
-
-<p>The king/queen example is not difficult, and I don't know whether it was tested or discovered. A better evaluation would use a set of challenging pre-determined questions.</p>
-<p>There is a Google set of analogy questions, but all the relationships are grammatical, geographical, or by gender. Typical: "fast : fastest :: old : oldest." (<a href="http://download.tensorflow.org/data/questions-words.txt">dataset</a>, <a href="https://arxiv.org/abs/1301.3781">paper</a>, <a href="https://aclweb.org/aclwiki/Google_analogy_test_set_(State_of_the_art)">context</a>)</p>
-<p>SAT questions are more interesting. Selecting from fixed answer choices provides a nice guessing baseline (1/5 is 20%) and using a human test means it's easier to get human performance levels (average US college applicant is 57%; human voting is 81.5%).</p>
-<p>Michael Littman and Peter Turney have made available <a href="https://aclweb.org/aclwiki/SAT_Analogy_Questions_(State_of_the_art)">a set of 374 SAT analogy questions</a> since 2003. You have to email Turney to get them, and I appreciate that he helped me out.</p>
-<p>Littman and Turney <a href="http://cogprints.org/4518/1/NRC-48273.pdf">used</a> a vector-based approach on their dataset back in 2005. They achieved 47% accuracy (state of the art at the time) which is a nice benchmark.</p>
-<p>They made vectors for each word pair using web data. To get one value for "banal : originality" they would search <a href="https://en.wikipedia.org/wiki/AltaVista">AltaVista</a> for "banal and not originality" and take the log of the number of hits. With a list of 64 connectives they made vectors with 128 components.</p>
-<p>I'm using <a href="https://nlp.stanford.edu/projects/glove/">GloVe</a> and word2vec word vectors that are per-word and based on various text corpora directly. Since the vectors are not specific to particular pairings, they may at a relative disadvantage for the SAT task. To get a vector for a word pair, I just subtract.</p>
-<p>Stanford provides a variety of GloVe vectors pre-trained on three different corpora:</p>
-<ul>
-<li>Twitter (<code>glove.twitter</code>)<ul>
-<li>2B tweets, 27B tokens, 1.2M vocab, uncased</li>
-<li>as each of 25d, 50d, 100d, &amp; 200d vectors</li>
-</ul>
-</li>
-<li>Wikipedia 2014 + Gigaword 5 (<code>glove.6B</code>)<ul>
-<li>6B tokens, 400K vocab, uncased</li>
-<li>as each of 50d, 100d, 200d, &amp; 300d vectors</li>
-</ul>
-</li>
-<li>Common Crawl<ul>
-<li>uncased (<code>glove.42B</code>) 42B tokens, 1.9M vocab, 300d vectors</li>
-<li>cased (<code>glove.840B</code>) 840B tokens, 2.2M vocab, 300d vectors</li>
-</ul>
-</li>
-</ul>
-<p>I have one word2vec model: <code>GoogleNews-vectors</code> trained on a Google News dataset, providing 300d vectors.</p>
-<p><img src="img/accuracy.png" width="480"></p>
-<ul>
-<li>The best word vectors for the SAT analogies task (<code>glove.840B</code>) achieve 49% accuracy. This outperforms the 2005 47% result, but is still within the confidence bounds of 42.2% to 52.5% that they report.</li>
-<li>Holding the training set constant and varying the size of the vectors affects performance on the SAT analogies task: bigger vectors work better, though performance may be plateauing around 300d.</li>
-<li>Twitter data does markedly worse on the SAT analogies task. This is consistent with Twitter's limitations and reputation for being less than erudite.</li>
-</ul>
-<p>Trained word vectors provide a fixed vocabulary. When a word was missing, I used a vector of zeros. Most embeddings only missed one to eight words from the 374 questions, but <code>glove.twitter</code> missed 105. I also checked accuracies when excluding questions that had unsupported words for a set of embeddings, and the results were remarkably close, even with the Twitter embeddings. So the accuracies are due to the embeddings and not just gaps in the vocabularies.</p>
-<p>It is pretty impressive that word vectors work as well as they do on this task, but nobody should consider word vectors a solution to natural language understanding. Problems with word vectors have been pointed out (<a href="http://www.aclweb.org/anthology/N15-1098">source</a>, <a href="http://www.aclweb.org/anthology/C/C16/C16-1262.pdf">source</a>, <a href="http://anthology.aclweb.org/W16-2503">source</a>, <a href="https://arxiv.org/abs/1705.11168">source</a>).</p>
-<p>Still, the idea of word vectors (translating sparse data to a learned dense representation) is super useful, and not just for words. See implementations <a href="https://keras.io/layers/embeddings/">in Keras</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/contrib/layers/embedding_column">in TensorFlow</a>.</p>
-<p>These methods are not the best-performing non-human technique for these SAT analogy questions. Littman and Turney <a href="https://aclweb.org/aclwiki/SAT_Analogy_Questions_(State_of_the_art)">report</a> several. Latent Relational Analysis comes in at 56% accuracy, against the average US college applicant at 57%.</p>
-<p>This is a case in which "the average human" is not a good bar for measuring AI success. The average human has a remarkably small vocabulary relative to what a computer should easily handle, not to mention that the average human would not be admitted to most colleges you could name.</p>
-<hr>
-<p>I'm grateful to the <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/">DC Deep Learning Working Group</a> for helpful discussions, and particularly Shabnam Tafreshi and Dmitrijs Milajevs for sharing references at <a href="https://www.meetup.com/DC-Deep-Learning-Working-Group/events/237114317/">the January 26, 2017 meeting</a>. Thanks also to <a href="https://twitter.com/metasemantic">Travis Hoppe</a> of <a href="http://dc.hackandtell.org/">DC Hack and Tell</a> for always doing cool things with NLP. Thanks to Peter Turney for providing the dataset and commenting on distances.</p>
-<p>Notes:</p>
-<ul>
-<li>An <a href="https://www.technologyreview.com/s/541356/king-man-woman-queen-the-marvelous-mathematics-of-computational-linguistics/">example</a> of word2vec popularization.</li>
-<li>My code is available at <a href="https://github.com/ajschumacher/sat_analogies">ajschumacher/sat_analogies</a>.</li>
-<li>All but 20 of the 374 questions have five designed answer choices; those 20 have four and "no : choice" as the last option. To maintain comparability I kept those questions in, though it means a human guessing baseline should be slightly over 20%.</li>
-<li>For efficiency, I used GloVe values as 2-byte floats, which is lossy. I also tested with 4-byte floats, and the results varied by at most one question, while being much slower to generate.</li>
-<li>Cosine distance is more effective than Euclidean distance for this task, and the advantage increases with dimensionality.</li>
-</ul>
-<p><img src="img/cosine_advantage.png" width="480"></p>    
-    ]]></description>
-<link>http://planspace.org/20170705-word_vectors_and_sat_analogies/</link>
-<guid>http://planspace.org/20170705-word_vectors_and_sat_analogies/</guid>
-<pubDate>Wed, 05 Jul 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

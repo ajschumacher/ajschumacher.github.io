@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-02-18: [Scarcity by Sendhil Mullainathan and Eldar Shafir](/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/)
  * 2018-02-13: [Failure to replicate Schwartz-Ziv and Tishby](/20180213-failure_to_replicate_schwartz-ziv_and_tishby/)
  * 2018-02-10: [The Coming Jobs War by Jim Clifton](/20180211-coming_jobs_war/)
  * 2018-01-28: [Worm by Mark Bowden](/20180128-worm_by_mark_bowden/)
