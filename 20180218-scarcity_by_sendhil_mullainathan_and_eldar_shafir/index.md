@@ -12,7 +12,7 @@ The book expands and applies some ideas that were present in [Thinking, Fast and
 
 The book is about how scarcity, like (or as) a distracting mental task, makes it harder to make good decisions, which makes it harder to escape scarcity.
 
-The biggest new contributions are probably from the authors' [Science](http://www.sciencemag.org/) paper, [Poverty Impedes Cognitive Function](http://science.sciencemag.org/content/341/6149/976.long). They found, for example, that farmers did better on an IQ test shortly after being payed for their yearly harvest, compared to before.
+The biggest new contributions are probably from the authors' [Science](http://www.sciencemag.org/) paper, [Poverty Impedes Cognitive Function](http://science.sciencemag.org/content/341/6149/976.long). They found, for example, that farmers did better on an IQ test shortly after being paid for their yearly harvest, compared to before.
 
 The authors grant that some scarcity, like shortness of time before a deadline, can improve performance by increasing focus. They call this the "focus dividend." But focusing can mean other things are neglected; they speak of "tunneling" and a "bandwidth tax."
 
