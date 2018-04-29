@@ -160,6 +160,13 @@ new_image = tf.reshape(tf.decode_raw(bytes, tf.uint8), shape)
 same_image = session.run(encode_jpeg, feed_dict={bytes: same_image_bytes,
                                                  shape: same_image_shape})</code></pre>
 
+<!--
+
+Note it really does have to be `tf.reshape`; `.set_shape` will not work. See:
+http://stackoverflow.com/questions/35451948/clarification-on-tf-tensor-set-shape
+
+-->
+
 <p>In this example, however, the parsing of the <code>Example</code> was already done outside the TensorFlow graph, so there isn't a strong reason to stay inside the graph here.</p>
 <hr />
 <h3>Comparison to Caffe and LMDB</h3>
@@ -193,7 +200,7 @@ same_label = datum.label</code></pre>
 <p>Prefer doing fewer separate manipulation steps to whatever your original data is, if you can help it: try not to have lots of different versions of your data in different places on disk. This will make your life easier.</p>
 <p>If you are choosing a format, JPEG is good for photos.</p>
 <p>Think about whether you need to put everything into the TensorFlow computation graph. Think about whether you need to use TFRecords. Try to spend your time on things that help solve your problems.</p>
-<p>For two more complete <em>in situ</em> examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
+<p>For two more complete <em>in situ</em> examples of converting images to TFRecords, check out <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py">code for MNIST images</a> and <a href="https://github.com/tensorflow/models/blob/master/research/inception/inception/data/build_imagenet_data.py">code for ImageNet images</a>. The ImageNet code can be run on the command-line.</p>
 <hr />
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>

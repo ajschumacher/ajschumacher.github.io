@@ -278,7 +278,7 @@ If you are choosing a format, JPEG is good for photos.
 
 Think about whether you need to put everything into the TensorFlow computation graph. Think about whether you need to use TFRecords. Try to spend your time on things that help solve your problems.
 
-For two more complete _in situ_ examples of converting images to TFRecords, check out [code for MNIST images](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py) and [code for ImageNet images](https://github.com/tensorflow/models/blob/master/inception/inception/data/build_imagenet_data.py). The ImageNet code can be run on the command-line.
+For two more complete _in situ_ examples of converting images to TFRecords, check out [code for MNIST images](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/how_tos/reading_data/convert_to_records.py) and [code for ImageNet images](https://github.com/tensorflow/models/blob/master/research/inception/inception/data/build_imagenet_data.py). The ImageNet code can be run on the command-line.
 
 ---
 
