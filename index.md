@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-04-29: [Portfolios of the Poor](/20180429-portfolios_of_the_poor/)
  * 2018-03-12: [Consider Phlebas by Iain M. Banks](/20180312-consider_phlebas_by_iain_m_banks/)
  * 2018-02-18: [Scarcity by Sendhil Mullainathan and Eldar Shafir](/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/)
  * 2018-02-13: [Failure to replicate Schwartz-Ziv and Tishby](/20180213-failure_to_replicate_schwartz-ziv_and_tishby/)
