@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-07-23: [The Broken Earth trilogy](/20180723-broken_earth_trilogy/)
  * 2018-07-19: [Geolocation precision by digit](/20180719-geolocation_precision_by_digit/)
  * 2018-04-29: [Portfolios of the Poor](/20180429-portfolios_of_the_poor/)
  * 2018-03-12: [Consider Phlebas by Iain M. Banks](/20180312-consider_phlebas_by_iain_m_banks/)

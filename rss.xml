@@ -7,6 +7,75 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Broken Earth trilogy</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/N._K._Jemisin">N. K. Jemisin</a>'s three-book tale is both enjoyable and sufficiently deep to support a lot of conversation. The first <a href="https://en.wikipedia.org/wiki/Hugo_Award">Hugo</a>-winning book, <a href="https://en.wikipedia.org/wiki/The_Fifth_Season_(novel)">The Fifth Season</a>, was the first book I read for a book club. I couldn't stop, and finished <a href="https://en.wikipedia.org/wiki/The_Obelisk_Gate">The Obelisk Gate</a> and <a href="https://en.wikipedia.org/wiki/The_Stone_Sky">The Stone Sky</a> as well.</p>
+<p><img alt="Broken Earth covers" src="BrokenEarth.jpg"></p>
+<p>Here some aspects of the trilogy that I found interesting:</p>
+<ul>
+<li>Revolution vs. gradual change or "working within the system": What
+   is possible, and when is revolutionary change justified/necessary?</li>
+<li>Science fiction vs. fantasy (possibly philosophy of science?):
+   Arthur C. Clarke's "Any sufficiently advanced technology is
+   indistinguishable from magic" is relevant, but also, what if some
+   sufficiently advanced science turns out to be very different from
+   what the current popular scientific view thinks is likely?</li>
+<li>Gift vs. curse: Having special powers isn't always as great as in
+   Harry Potter; this is a little more like X-Men, but more extreme.</li>
+<li>Race and slavery: There's a lot to think about; one aspect is an
+   R-word that maps pretty directly to the real-world N-word.</li>
+</ul>
+<p>I noted some quotes from each book, though I started saving more after
+the first volume:</p>
+<h3>The Fifth Season</h3>
+<blockquote>
+<p>"It's a gift if it makes us better. It's a curse if we let it
+destroy us." (p. 418)</p>
+</blockquote>
+<h3>The Obelisk Gate</h3>
+<blockquote>
+<p>"He's never hurt you, though. The world has, but not him. Maybe the
+world deserved to be destroyed." (p. 31)</p>
+<p>"Something else, neither flesh nor stone. Something immaterial, and
+yet it is there for you to perceive. It glimmers in threads strung
+between the bits of him, crossing itself in lattices, shifting
+constantly. A... tension? An energy, shining and streaming.
+Potential. Intention." (p. 101)</p>
+<p>"He showed you-again and again, unrelentingly, he would not let you
+pretend otherwise-that if obedience did not make one feel safe from
+the Guardians or the nodes or the lynchings or the breeding or the
+disrespect, then what was the point? The game was too rigged to
+bother playing." (p. 159)</p>
+<p>"Like those weird cults that crop up from time to time. I heard of one that asks an old man in the sky to keep them alive every time they go to sleep. People need to believe there's more to the world than there is." (p. 166)</p>
+<p>"It isn't fair. You just want your life to matter."</p>
+</blockquote>
+<h3>The Stone Sky</h3>
+<blockquote>
+<p>'When a slave rebels, it is nothing much to the people who read
+about it later. Just thin words on thinner paper worn finer by the
+friction of history. ("So you were slaves, so what?" they whisper.
+Like it's nothing.)' (p. 7)</p>
+<p>"People who are not tuners can perceive magic only in rudimentary
+ways; they use machines and instruments to do what is natural for
+us." (p. 107)</p>
+<p>"But breathing doesn't always mean living, and maybe... maybe
+genocide doesn't always leave bodies." (p. 179)</p>
+<p>'"Because it must be his choice, first." Harder voice here. A
+reprimand. You flinch. "More importantly, because we are fragile at
+the beginning, like all new creatures. It takes centuries for us,
+the who of us, to...cool. Even the slightest of pressures-like you,
+demanding that he fit himself to your needs rather than his own-can
+damage the final shape of his personality."' (p. 282)</p>
+<p>'"Orogeny," I say, sharply so she will pay attention, "was never the
+only way to change the world."' (p. 396)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20180723-broken_earth_trilogy/</link>
+<guid>http://planspace.org/20180723-broken_earth_trilogy/</guid>
+<pubDate>Mon, 23 Jul 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Geolocation precision by digit</title>
 <description><![CDATA[
 
@@ -1473,19 +1542,6 @@ for Learning COntrol</li>
 <link>http://planspace.org/20170825-characteristics_of_good_theories/</link>
 <guid>http://planspace.org/20170825-characteristics_of_good_theories/</guid>
 <pubDate>Fri, 25 Aug 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Unique IDs and Nielsen abuse</title>
-<description><![CDATA[
-
-<p>The Wall Street Journal ran an article online with the headline <a href="https://www.wsj.com/articles/in-tv-ratings-game-networks-try-to-dissguys-bad-newz-from-nielsen-1499350955">In TV Ratings Game, Networks Try to Dissguys Bad Newz from Nielsen</a>. It got picked up by <a href="https://www.theverge.com/2017/7/6/15923722/tv-network-ratings-nielsen-viewership">other outlets</a>, and ran in the print WSJ the next day, on Friday July 7, 2017, on the front page, below the fold.</p>
-<p>The implication is that networks identify their programs to Nielsen via a free text field with no validation; programs don't have unique IDs. Not having unique IDs is a huge pain even when everyone is trying to be consistent. Inevitably you have to do some kind of deduplication and merging. In this case, it leads to abuse (possibly sanctioned unofficially).</p>
-<p><img alt="page 1" src="img/page1.png"></p>
-<p><img alt="page 9" src="img/page9.png"></p>    
-    ]]></description>
-<link>http://planspace.org/20170724-unique_ids_and_nielsen_abuse/</link>
-<guid>http://planspace.org/20170724-unique_ids_and_nielsen_abuse/</guid>
-<pubDate>Mon, 24 Jul 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
