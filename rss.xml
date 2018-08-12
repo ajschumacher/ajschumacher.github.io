@@ -7,6 +7,36 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Land of Lisp</title>
+<description><![CDATA[
+
+<p><a href="http://landoflisp.com/">Land of Lisp</a> is an irresistibly fun <a href="https://common-lisp.net/">Common Lisp</a> book. The cartoon illustrations and "Learn to program in Lisp, one game at a time" subtitle don't fully suggest the depth of the content. Recursion is in Chapter 2, you write both <a href="https://www.graphviz.org/">Graphviz</a> and raw <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> for graphics, you code up a web server from scratch, and you write your own lazy evaluation and multiple <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>s with macros before the end of the book. With that much material, some glitches sneak in, but it's still a very nice book.</p>
+<p><img alt="Land of Lisp cover" src="land_of_lisp-cover.jpg"></p>
+<p>I've done a little bit with <a href="https://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a> and <a href="https://clojure.org/">Clojure</a>, but this was my first time learning anything much about Common Lisp. Thinking about languages through contrast (<a href="https://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/">one old example of mine</a>) is fun, and there's a good deal of that in Land of Lisp.</p>
+<p><img alt="Haskell/Lisp map" src="map.png"></p>
+<p>I really liked some of the organization/presentation of material. The Periodic Table of the Loop Macro on pages 200 and 201 was one striking example.</p>
+<p><img alt="Periodic Table of the Loop Macro" src="loop_table.png"></p>
+<p>The way the author <a href="https://en.wikipedia.org/wiki/Memoization">memoized</a> functions, by first defining the un-memoized version and then defining the memoized version with the same name, capturing the original function by <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">closure</a>, really tickled me.</p>
+<p>There was also reference to a Haskel functional-style "<a href="http://happs.org/">database</a>" that I thought was interesting. Maybe sort of like <a href="https://www.datomic.com/">Datomic</a>? And there were occasional references to other neat things; I may now read <a href="https://cs.brown.edu/~sk/Publications/Papers/Published/khmgpf-impl-use-plt-web-server-journal/">Implementation and Use of the PLT Scheme Web Server</a>, for example.</p>
+<p>I've thought about good ways to learn to program a little bit, even <a href="https://planspace.org/20150101-learn_to_code_with_emacs/">suggesting</a> that learning Emacs/Lisp might be good. Then at least you can use Emacs Lisp to customize your editor. I don't think I know of any current Common Lisp projects.</p>
+<p>It's nice when learning (and working with) a language to have a handy documentation system. Emacs Lisp <a href="https://planspace.org/20141230-use_info_in_emacs/">has this</a> in spades. In Python, I think beginners should know about, for example, <code>help()</code> and <code>dir()</code> very early. There's nothing like this covered in Land of Lisp. The only documentation referenced, as I recall, was the <a href="http://www.lispworks.com/documentation/HyperSpec/Front/">Common Lisp HyperSpec</a>, which doesn't seem very beginner-friendly.</p>
+<p>The most extremely anti-didactic bit of the book, however, has to be on page 382: "The only way to understand [these functions] is to stare at them for a long time." I think non-explanations like this are not likely to be helpful to anyone.</p>
+<p>Then there are little glitches in the book. I suspect the book kept expanding and editors were overwhelmed:</p>
+<ul>
+<li>The intro to Chapter 7 claims to include things that don't start until Chapter 8.</li>
+<li><code>sexp</code> is used in code but never <a href="https://en.wikipedia.org/wiki/S-expression">explained</a>, which I don't think is a good idea.</li>
+<li><code>pushnew</code> is used on page 149 but not explained until page 368.</li>
+<li>On page 445 it says "Restarts are discussed in Chapter 14," but they aren't.</li>
+<li>On page 450 a reference to Chapter 16 should be to Chapter 17.</li>
+</ul>
+<p>In the end the book can't cover everything. For example, the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System">Common Lisp Object System</a> is praised but not explained in enough detail for me to know why it's so great. That was particularly frustrating because I'd still love to see more about managing large projects in languages like Common Lisp or Clojure (with OO concepts or not).</p>
+<p>I liked the book a lot; it's great recreational reading for language breadth.</p>    
+    ]]></description>
+<link>http://planspace.org/20180812-land_of_lisp/</link>
+<guid>http://planspace.org/20180812-land_of_lisp/</guid>
+<pubDate>Sun, 12 Aug 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Broken Earth trilogy</title>
 <description><![CDATA[
 
@@ -1518,30 +1548,6 @@ for Learning COntrol</li>
 <link>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</link>
 <guid>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</guid>
 <pubDate>Wed, 30 Aug 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Characteristics of good theories</title>
-<description><![CDATA[
-
-<p>In <a href="https://www.andrew.cmu.edu/user/kk3n/philsciclass/kuhn.pdf">Objectivity, Value Judgment, and Theory Choice</a>, <a href="https://en.wikipedia.org/wiki/Thomas_Kuhn">Kuhn</a> gives a partial list of characteristics that good theories share:</p>
-<ol>
-<li><strong>Accurate</strong>: within its domain, consequences deducible from a theory should be in demonstrated agreement with the results of existing experiments and observations</li>
-<li><strong>Consistent</strong>: internally (with itself) and with other currently accepted theories applicable to related aspects of nature</li>
-<li><strong>Broad scope</strong>: consequences should extend far beyond the particular observations, laws, or subtheories it was originally designed to explain</li>
-<li><strong>Simple</strong>: bringing order to phenomena that in its absence would be individually isolated and, as a set, confused</li>
-<li><strong>Fruitful</strong>: leading to new research findings; disclosing new phenomena or previously unnoted relationships among those already known</li>
-</ol>
-<p>In <a href="https://en.wikipedia.org/wiki/The_Beginning_of_Infinity">The Beginning of Infinity</a>, <a href="https://en.wikipedia.org/wiki/David_Deutsch">David Deutsch</a> objects to positivism or anti-realism, but has not so different criteria to Kuhn. Deutsch focuses on these two:</p>
-<ol>
-<li><strong>Hard to vary</strong>: having no extraneous or non-explanatory characteristics; possibly related to Kuhn's "consistent" and "simple"</li>
-<li><strong>Reach</strong>: similar to Kuhn's "broad scope," "fruitful," and possibly even "simple"</li>
-</ol>
-<p>Deutsch mostly takes "accurate" as a given or obvious requirement. Even this seemingly simple goal becomes complicated when people <a href="/20170823-transfer_of_allegiance_from_theory_to_theory/">disagree</a> about "the results of existing experiments and observations."</p>
-<p>The focus of both authors is on scientific theories, as in (for example) physics. When explaining human affairs, the same criteria may not always be perfect guides. For example, many non-simple conspiracy theories are not true, but there can really be conspiracies, and things may not be obvious.</p>    
-    ]]></description>
-<link>http://planspace.org/20170825-characteristics_of_good_theories/</link>
-<guid>http://planspace.org/20170825-characteristics_of_good_theories/</guid>
-<pubDate>Fri, 25 Aug 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
