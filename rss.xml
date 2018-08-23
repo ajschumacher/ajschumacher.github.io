@@ -7,6 +7,66 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Machine learning / Deep learning</title>
+<description><![CDATA[
+
+<p>I participated in a
+<a href="https://www.meetup.com/TechinMotionDC/events/252910659/">panel</a> on
+deep learning yesterday, so I thought about some of the introductory
+questions and wrote out my responses.</p>
+<hr>
+<h3>How would you define machine learning?</h3>
+<p>Machine learning is programming with examples instead of instructions.</p>
+<p>It's a way to get computers to do something: in that sense it's
+"programming." It's been called
+<a href="https://medium.com/@karpathy/software-2-0-a64152b37c35">Software 2.0</a>.</p>
+<p>Usually we program by writing explicit instructions, step by step.
+With machine learning, we program using examples, by which I mean
+data.</p>
+<p>Say that programming is writing functions, which is basically right. A
+function takes some input and returns some output.</p>
+<p><a href="https://en.wikipedia.org/wiki/Higher-order_programming">Higher-order programming</a>
+involves functions as the inputs and outputs of other functions, and
+machine learning is a specific kind of higher-order programming.</p>
+<p>Machine learning is done by a function that takes data (examples) as
+input and produces a function as output. Running that higher-order
+function is when machine learning takes place. We say that we learn a
+function.</p>
+<p>Sometimes learned functions are called models, and learning them is
+sometimes called training or fitting.</p>
+<p>There can also be functions that learn functions that learn functions,
+as in <a href="https://arxiv.org/abs/1611.01578">Neural Architecture Search</a>,
+which involves machine learning at multiple levels.</p>
+<h3>What is deep learning? What is the difference between deep learning and machine learning?</h3>
+<p>Deep learning is machine learning where the function you're learning
+has a particular style of implementation.</p>
+<p>In deep learning, the learned function has an internal implementation
+involving one or more intermediate representations.</p>
+<p>Aspects of these intermediate stages are sometimes called layers or
+activations.</p>
+<p>The number of layers is how we measure the depth of the model.</p>
+<p>I don't care to argue about how many layers you "need" to be "deep."
+As far as I'm concerned if there's more than zero intermediate
+representations, you can call it deep if you want to. But it's common
+to have five, ten, twenty, or more layers.</p>
+<p>Usually, but not always, when people talk about deep learning they're
+also talking about neural nets, and usually using
+<a href="https://en.wikipedia.org/wiki/Backpropagation">backpropagation</a>.</p>
+<p>The reason people care about deep learning is that it performs better
+than many machine learning alternatives on a lot of hard problems
+typically involving high-dimensional inputs, like images, audio, and
+text.</p>
+<hr>
+<p>Cassie Kozyrkov's <a href="https://www.youtube.com/watch?v=iLu9XyZ55oI">talk</a>
+has a number of useful metaphors for machine learning in practice and
+I found it helpful for thinking about how to explain things to a
+general audience.</p>    
+    ]]></description>
+<link>http://planspace.org/20180823-machine_learning_deep_learning/</link>
+<guid>http://planspace.org/20180823-machine_learning_deep_learning/</guid>
+<pubDate>Thu, 23 Aug 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Land of Lisp</title>
 <description><![CDATA[
 
@@ -1481,73 +1541,6 @@ chown ubuntu disk1  # make the disk accessible to the admin account</code></pre>
 <link>http://planspace.org/20170911-problems_with_imagenet_and_its_solutions/</link>
 <guid>http://planspace.org/20170911-problems_with_imagenet_and_its_solutions/</guid>
 <pubDate>Mon, 11 Sep 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Berkeley Deep RL Bootcamp</title>
-<description><![CDATA[
-
-<p>At its conclusion, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> said a major goal of his 2017 <a href="https://www.deeprlbootcamp.berkeley.edu/">Deep Reinforcement Learning Bootcamp</a> was to broaden the application of RL techniques. Around 250 representatives from research and industry had just emerged from 22 scheduled hours over a Saturday and Sunday in Berkeley. Abbeel asked the attendees to report back with tales of applying algorithms they may not have known existed previously.</p>
-<p>Instruction came from leaders of modern reinforcement learning research, all delivering their expertise within a framework that highlighted the large-scale structure of the field. I found their organizing diagram to be particularly helpful.</p>
-<p><img alt="landscape" src="img/landscape.png"></p>
-<p>The reinforcement learning problem statement is simple: at every time step, an agent gets some observation of state \( s \), some reward \( r \), and chooses an action \( a \). So an agent is \( s,r \rightarrow a \), and reinforcement learning is largely about rearranging these three letters.</p>
-<p>For example, the Q function is \( s,a \rightarrow \sum{r} \). You <a href="https://en.wikipedia.org/wiki/Bellman_equation">can</a> learn that function from experience, and it nicely induces a policy \( s \rightarrow a \). If you use a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">ConvNet</a> to learn the Q function, you can then <a href="https://deepmind.com/research/dqn/">publish</a> in <a href="https://www.nature.com/">Nature</a>.</p>
-<p>Of the many good things about the bootcamp, I most valued getting a better conceptual feel for RL. It was also great to hear from experts about practical details, intuitions, and future directions. For all of these I particularly appreciated <a href="https://www.cs.toronto.edu/~vmnih/">Vlad Mnih</a>'s sessions.</p>
-<p>The concerns of RL illuminate deep architectures from unique angles. The big networks that win classification challenges don't win in RL, for example, possibly getting at something about the nature of neural net training and generalization. Vlad described how fixing their target Q-network was more important with the smaller nets they used in development than on their final networks. Wins with <a href="https://arxiv.org/abs/1707.06887">distributional RL</a> may connect to a fundamental affinity of neural nets for categorical problems over regression problems.</p>
-<p>Approaches like <a href="https://arxiv.org/abs/1611.05397">unsupervised auxiliary tasks</a> prompt comparisons with how the brain might work. But even cutting-edge techniques with models (\( s,a \rightarrow s \)) and planning, like <a href="https://arxiv.org/abs/1707.06203">imagination-augmented agents</a> and the <a href="https://arxiv.org/abs/1612.08810">predictron</a>, do as much to highlight differences as similarities with how we think. RL is at least as close to <a href="https://en.wikipedia.org/wiki/Optimal_control">optimal control</a> as it is to <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>.</p>
-<p>Reinforcement learning is home to a profusion of acronyms and initialisms that can be intimidating. As best I can, I've extended the Deep RL Bootcamp's diagram to include everything that was covered, together with a few terms common elsewhere and a set of expansions and links. For didactic resources, start from <a href="https://twitter.com/karpathy">Karpathy</a>'s <a href="http://karpathy.github.io/2016/05/31/rl/">Pong from Pixels</a>.</p>
-<p><img alt="annotated" src="img/annotated.jpg"></p>
-<ul>
-<li>(<a href="https://en.wikipedia.org/wiki/Partially_observable_Markov_decision_process">PO</a>)<a href="https://en.wikipedia.org/wiki/Markov_decision_process">MDP</a>: (Partially Observable) Markov Decision Process</li>
-<li><a href="https://en.wikipedia.org/wiki/Derivative-free_optimization">DFO</a>: Derivative-Free Optimization</li>
-<li><a href="https://en.wikipedia.org/wiki/Cross-entropy_method">cross-entropy method</a><ul>
-<li><a href="http://iew3.technion.ac.il/CE/files/papers/Learning%20Tetris%20Using%20the%20Noisy%20Cross-Entropy%20Method.pdf">Learning Tetris using the noisy cross-entropy method</a></li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/CMA-ES">CMA</a>: Covariance Matrix Adaptation</li>
-<li><a href="https://en.wikipedia.org/wiki/Natural_evolution_strategy">NES</a>: Natural Evolution Strategy<ul>
-<li><a href="https://blog.openai.com/evolution-strategies/">Evolution strategies as a scalable alternative to reinforcement learning</a></li>
-</ul>
-</li>
-<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.2545&amp;rep=rep1&amp;type=pdf">REINFORCE</a>: REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility</li>
-<li><a href="https://arxiv.org/abs/1502.05477">TRPO</a>: Trust Region Policy Optimization</li>
-<li><a href="https://blog.openai.com/openai-baselines-ppo/">PPO</a>: Proximal Policy Optimization</li>
-<li><a href="https://arxiv.org/abs/1510.09142">SVG</a>: Stochastic Value Gradients</li>
-<li><a href="https://arxiv.org/abs/1602.01783">A3C</a>: Asynchronous Advantage Actor Critic</li>
-<li><a href="https://blog.openai.com/baselines-acktr-a2c/">A2C</a>: (Synchronous) Advantage Actor Critic</li>
-<li><a href="https://arxiv.org/abs/1708.05144">ACKTR</a>: Actor Critic using Kronecker-Factored Trust Region</li>
-<li><a href="https://arxiv.org/abs/1611.05397">UNREAL</a>: UNsupervised REinforcement and Auxiliary Learning</li>
-<li><a href="https://en.wikipedia.org/wiki/Temporal_difference_learning">TD</a>: Temporal Difference (also \( TD(\lambda) \))</li>
-<li>FQI: Fitted Q Iteration</li>
-<li><a href="https://deepmind.com/research/dqn/">DQN</a>: Deep Q-Network</li>
-<li><a href="https://arxiv.org/abs/1509.02971">DDPG</a>: Deep Deterministic Policy Gradient</li>
-<li><a href="https://arxiv.org/abs/1603.00748">NAF</a>: Normalized Advantage Functions</li>
-<li><a href="http://realai.org/imitation-learning/">Imitation</a> Learning</li>
-<li><a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa12/slides/inverseRL.pdf">IRL</a>: Inverse Reinforcement Learning</li>
-<li><a href="https://arxiv.org/abs/1603.00448">GCL</a>: Guided Cost Learning</li>
-<li><a href="https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_363">HRL</a>: Hierarchical Reinforcement Learning</li>
-<li>FuN: FeUdal Networks<ul>
-<li><a href="http://www.cs.toronto.edu/~fritz/absps/dh93.pdf">Feudal reinforcement learning</a></li>
-<li><a href="https://arxiv.org/abs/1703.01161">FeUdal Networks for hierarchical reinforcement learning</a></li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Model_predictive_control">MPC</a>: Model Predictive Control</li>
-<li><a href="http://mlg.eng.cam.ac.uk/pub/pdf/DeiRas11.pdf">PILCO</a>: Probabilistic Inference
-for Learning COntrol</li>
-<li>local models specifically as in <a href="https://arxiv.org/abs/1501.05611">Learning contact-rich manipulation skills with guided policy search</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator">LQR</a>: Linear-Quadratic Regulator</li>
-<li><a href="https://arxiv.org/abs/1612.08810">The Predictron: End-to-end learning and planning</a></li>
-<li><a href="https://arxiv.org/abs/1707.06203">I2A</a>: Imagination-Augmented Agent</li>
-<li>(<a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo</a>) (<a href="https://en.wikipedia.org/wiki/Tree_traversal">tree</a>) <a href="https://en.wikipedia.org/wiki/Artificial_intelligence#Search_and_optimization">search</a>, <a href="https://en.wikipedia.org/wiki/Minimax">minimax</a>, etc.</li>
-<li><a href="https://en.wikipedia.org/wiki/Gaussian_process">GP</a>: Gaussian Process</li>
-<li><a href="https://en.wikipedia.org/wiki/Mixture_model#Gaussian_mixture_model">GMM</a>: Gaussian Mixture Model</li>
-<li>(<a href="https://en.wikipedia.org/wiki/Deep_learning">D</a>/<a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">C</a>/<a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">R</a>)<a href="https://en.wikipedia.org/wiki/Artificial_neural_network">NN</a>: (Deep/Convolutional/Recurrent) Neural Network</li>
-<li><a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a>: Long Short-Term Memory</li>
-</ul><!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</link>
-<guid>http://planspace.org/20170830-berkeley_deep_rl_bootcamp/</guid>
-<pubDate>Wed, 30 Aug 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
