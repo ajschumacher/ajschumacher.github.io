@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Deep Learning Tech Panel](/20180823-machine_learning_deep_learning/) at [WeWork White House](https://www.wework.com/buildings/white-house--washington-DC) on [Wednesday August 22, 2018](https://www.meetup.com/TechinMotionDC/events/252910659/)
  * Data Science + HR panel at [General Assembly DC](https://generalassemb.ly/locations/washington-dc) on [Wednesday November 29, 2017](https://www.eventbrite.com/e/innovators-breakfast-series-data-science-hr-tickets-39199318216)
  * [Deep Reinforcement Learning](/20171114-deep_rl/) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Tuesday November 14, 2017](https://www.meetup.com/Data-Science-DC/events/244145151/)
  * [More and Better: The New TensorFlow APIs](/20170524-more_and_better_new_tensorflow_apis/) ([video](https://altoros.wistia.com/medias/e5su4b1vtz)) as an Altoros webinar on [Wednesday May 24, 2017](https://www.altoros.com/blog/event/more-and-better-the-new-tensorflow-apis/)
