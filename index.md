@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-11-25: [How To Invent Everything](/20181125-how_to_invent_everything/)
  * 2018-08-23: [Machine learning / Deep learning](/20180823-machine_learning_deep_learning/)
  * 2018-08-12: [Land of Lisp](/20180812-land_of_lisp/)
  * 2018-07-23: [The Broken Earth trilogy](/20180723-broken_earth_trilogy/)
