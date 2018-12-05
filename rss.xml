@@ -7,6 +7,30 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Is it worth doing even if it fails?</title>
+<description><![CDATA[
+
+<p>Many things can "succeed" or "fail." Avoid anything that isn't worth
+doing even if it fails.</p>
+<p>If two tasks each have a probability of success and payout, but one is
+worth doing regardless of success and one is only about payout, it
+almost doesn't matter what the probabilities and payouts are. One
+guarantees a good use of time.</p>
+<p>This filter also averts unhealthy fixation on "winning" and excessive
+disappointment with "losing." It lets you focus on the task itself,
+which is the right focus.</p>
+<p>You can't always choose what you have to do. But you can try to find
+or create value even in endeavors you wouldn't otherwise choose.</p>
+<p>Asking "Is it worth doing even if it fails?" encourages healthy things
+like sports, discourages antisocial things like fraud, and provides a
+positive direction to move everything in between. I think it's a
+useful question.</p>    
+    ]]></description>
+<link>http://planspace.org/20181204-worth_doing_even_if_it_fails/</link>
+<guid>http://planspace.org/20181204-worth_doing_even_if_it_fails/</guid>
+<pubDate>Tue, 04 Dec 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>How To Invent Everything</title>
 <description><![CDATA[
 
@@ -1485,22 +1509,6 @@ chown ubuntu disk1  # make the disk accessible to the admin account</code></pre>
 <link>http://planspace.org/20171022-mounting_disks_on_aws/</link>
 <guid>http://planspace.org/20171022-mounting_disks_on_aws/</guid>
 <pubDate>Sun, 22 Oct 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Science as Mountaineering</title>
-<description><![CDATA[
-
-<p>In <a href="https://www.andrew.cmu.edu/user/kk3n/philsciclass/kuhn.pdf">Objectivity, Value Judgment, and Theory Choice</a>, <a href="https://en.wikipedia.org/wiki/Thomas_Kuhn">Kuhn</a> addresses "textbook science" that ironically distances students from science.</p>
-<p>For example, a textbook might use <a href="https://en.wikipedia.org/wiki/Foucault_pendulum">Foucault's pendulum</a> as evidence that the Earth rotates. The issue with "experiments" like this, Kuhn says, is that "By the time they were performed no scientist still needed to be convinced of the validity of the theory their outcome is now used to demonstrate. Those decisions had long since been made on the basis of significantly more equivocal evidence."</p>
-<p>Textbook science becomes a series of just-so stories, sanitized of the actual messy scientific process. Brief clear explanations are not necessarily bad, but they may not prepare a student for the very different mode of reading (and doing) research. Textbooks can be trusted, for the most part, but new work may be relatively poorly explained, not yet clearly correct, or even just incorrect.</p>
-<p>I like the comparison to mountaineering. Science teachers want to get students up the mountain, so they rely on well-trod trails. Discoverers may have originally gone by entirely different paths. Some routes were only evident when looking down from higher ground.</p>
-<p>Students take stairs up quickly to very steep terrain. If they miss the opportunity to learn how to climb on the easier hills, they face a difficult transition if they want to do work without guard rails.</p>
-<p>I think this analysis isn't specific to science; the focus could be seen as critical thinking, evaluating evidence, and so on. Even within the <a href="https://www.nextgenscience.org/">Next Generation Science Standards</a>, however, the skills I think are important seem surprisingly minimized, as the "science and engineering practices" focus on "engineering design" rather than figuring out what's true.</p>
-<p>Some of <a href="http://modeling.asu.edu/R&amp;E/ModelingThryPhysics.pdf">Hestene's work</a> is in the direction of teaching more appropriate skills, and I know many science teachers emphasize the scientific method. I think in both cases practices that could be helpful even outside of science can seem isolated and academic, and I wonder what other approaches might help more people handle themselves on the mountain.</p>    
-    ]]></description>
-<link>http://planspace.org/20170917-science_as_mountaineering/</link>
-<guid>http://planspace.org/20170917-science_as_mountaineering/</guid>
-<pubDate>Sun, 17 Sep 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

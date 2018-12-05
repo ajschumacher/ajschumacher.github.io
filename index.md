@@ -2,6 +2,7 @@
 
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-12-04: [Is it worth doing even if it fails?](/20181204-worth_doing_even_if_it_fails/)
  * 2018-11-25: [How To Invent Everything](/20181125-how_to_invent_everything/)
  * 2018-08-23: [Machine learning / Deep learning](/20180823-machine_learning_deep_learning/)
  * 2018-08-12: [Land of Lisp](/20180812-land_of_lisp/)
