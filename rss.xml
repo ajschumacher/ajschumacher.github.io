@@ -7,6 +7,66 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Brain Rules for Baby</title>
+<description><![CDATA[
+
+<p>To be a good parent, be a good person. The core recommendations on "How to raise a smart and happy child from zero to five" are empathy and understanding emotion.</p>
+<blockquote>
+<p>"Human learning ... is primarily a relational exercise." (page 111)</p>
+</blockquote>
+<p>Medina aims for objective reasonableness, and it's usually easy for me to agree.</p>
+<p>For the abbreviated book (and a few extra nuggets) check out the 15 pages of "practical tips" starting on page 287. Here's my summary of recommendations:</p>
+<p>When someone is in an emotional state, use "the empathy reflex" (page 83):</p>
+<ol>
+<li>Describe the emotional changes you think you see.</li>
+<li>Make a guess as to where those emotional changes come from.</li>
+</ol>
+<p>This is like a flip of "<a href="https://en.wikipedia.org/wiki/I-message">I statements</a>."</p>
+<p>After empathy, the second major focus is on understanding emotion: talking about emotions, accepting them as natural, and (eventually) not being ruled by them.</p>
+<p>There are lots of concrete recommendations:</p>
+<ul>
+<li>(During pregnancy) Gain appropriate weight, eat a balanced diet, exercise moderately, reduce stress.</li>
+<li>Breast-feed for a year.</li>
+<li>Talk to your baby a lot.</li>
+<li>Praise effort, not IQ (encourage a growth mindset).</li>
+<li>Use "authoritative parenting" which is "demanding and warm" and involves:<ul>
+<li>Clear, consistent rules and rewards</li>
+<li>Swift punishment</li>
+<li>Rules that are explained</li>
+</ul>
+</li>
+<li>(Your child should) Watch no TV before age two.</li>
+<li>(Your child should) Exercise frequently.</li>
+<li>(Your child should) Play a lot in open-ended ways, such as the "mature dramatic play" of <a href="https://toolsofthemind.org/">Tools of the Mind</a>, which may involve making a "play plan."</li>
+<li>(Your child should) Learn sign language.</li>
+<li>(Your child should) Study a musical instrument for ten years.</li>
+</ul>
+<p>Medina gives a very reasonable presentation of intelligence and IQ, including this historical tidbit on how we got the term "Intelligence Quotient" in the first place:</p>
+<blockquote>
+<p>"The score was the ratio of a child's mental age to his or her chronological age, multiplied by 100. So a 10-year-old who could solve problems normally solved only by 15-year-olds had an IQ of 150: (15/10) X 100." (page 95)</p>
+</blockquote>
+<p>On page 100 we get five ingredients of human intelligence stew, which I like:</p>
+<ul>
+<li>The desire to explore</li>
+<li>Self-control</li>
+<li>Creativity</li>
+<li>Verbal communication</li>
+<li>Interpreting nonverbal communication</li>
+</ul>
+<p>The associating, questioning, observing, experimenting, and networking from an old Harvard Business Review article on "<a href="https://hbr.org/2009/12/the-innovators-dna">Innovators DNA</a>" get woven in, and it's not awful.</p>
+<p>Three last details I enjoyed:</p>
+<ul>
+<li>Episodic memory is a distinct kind of memory, and may be particularly useful for creative thinking. (page 106) Maybe consciously draw on it when brainstorming?</li>
+<li>There's a test of creativity called the <a href="https://en.wikipedia.org/wiki/Torrance_Tests_of_Creative_Thinking">Torrance Tests of Creative Thinking</a>. (page 107) It's mostly things like "how many uses can you come up with for X?"</li>
+<li>There's a Harvard-developed test of morality, now at <a href="http://www.moralsensetest.com/">moralsensetest.com</a>. (page 222) It's mostly variations on <a href="https://en.wikipedia.org/wiki/Trolley_problem">the trolley problem</a>.</li>
+</ul>
+<p><img alt="Brain Rules for Baby cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20181209-brain_rules_for_baby/</link>
+<guid>http://planspace.org/20181209-brain_rules_for_baby/</guid>
+<pubDate>Sun, 09 Dec 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Is it worth doing even if it fails?</title>
 <description><![CDATA[
 
@@ -1487,28 +1547,6 @@ learning (and having a little fun).</p>
 <link>http://planspace.org/20171114-deep_rl/</link>
 <guid>http://planspace.org/20171114-deep_rl/</guid>
 <pubDate>Tue, 14 Nov 2017 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Mounting Disks on AWS</title>
-<description><![CDATA[
-
-<p>I don't hand-mount disks much these days, but sometimes I want to spin up a quick <a href="https://aws.amazon.com/ec2/">EC2</a> instance to hammer something out, and I want to use the fast <a href="https://en.wikipedia.org/wiki/Solid-state_drive">SSD</a> storage that comes with some instances, and those disks don't auto-mount.</p>
-<p>Amazon has <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/add-instance-store-volumes.html#making-instance-stores-available-on-your-instances">some documentation</a> but it isn't quite enough for me by itself. Here are commands that have served me well on Ubuntu:</p>
-<pre><code class="language-bash">df -h  # see what's already mounted
-lsblk  # find out the /dev/ paths of devices, like say /dev/xvdb
-mkfs.ext4 /dev/xvdb  # format a disk using the Ext4 filesystem
-mkdir disk  # make a mount point
-mount /dev/xvdb disk  # mount the disk
-df -h  # check for success and size of the new disk
-chown ubuntu disk1  # make the disk accessible to the admin account</code></pre>
-
-<p>Some of those will need <code>sudo</code>.</p>
-<p>I don't really know that Ext4 is the best filesystem to use; let me know if some other one is better!</p>
-<p>Some instances come with multiple SSDs, in which case it might be fun to use them in a <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_0">RAID-0</a> configuration for even more speed. I haven't tried this yet, but there is some <a href="http://www.tldp.org/HOWTO/Software-RAID-HOWTO-5.html#ss5.5">documentation</a> to start from. Has anyone tried this?</p>    
-    ]]></description>
-<link>http://planspace.org/20171022-mounting_disks_on_aws/</link>
-<guid>http://planspace.org/20171022-mounting_disks_on_aws/</guid>
-<pubDate>Sun, 22 Oct 2017 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
