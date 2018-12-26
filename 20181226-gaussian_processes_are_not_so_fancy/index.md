@@ -85,7 +85,7 @@ represented via a kernel function.
 ### Using the Gaussian Process prediction equation
 
 This is Rasmussen and Williams' Equation 2.19 for the predictive
-posterior distribution:
+posterior distribution, which I promise isn't as bad as it looks:
 
 \\[ \mathbf{f_{\ast}} | X_{\ast}, X, \mathbf{f} \sim \mathcal{N}( K(X_{\ast}, X) K(X,X)^{-1} \mathbf{f}, \\\\ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \\]
 
