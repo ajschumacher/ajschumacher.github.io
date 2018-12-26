@@ -11,10 +11,12 @@
     <article>
 <h1>Gaussian Processes are Not So Fancy</h1>
 <p class="date">Wednesday December 26, 2018</p>
-<p>Gaussian Processes have a mystique related to the dense probabilistic
-terminology that's already evident in their name. But Gaussian
-Processes are just models, and they're much more like k-nearest
-neighbors and linear regression than may at first be apparent.</p>
+<p><a href="https://en.wikipedia.org/wiki/Gaussian_process">Gaussian Process</a>es
+have a mystique related to the dense probabilistic terminology that's
+already evident in their name. But Gaussian Processes are just models,
+and they're much more like k-nearest neighbors and linear regression
+than may at first be apparent.</p>
+<p><img alt="Predictive mean and range" src="img/predictive_mean_and_range.png" /></p>
 <hr />
 <h3>A simple training data set</h3>
 <p>A model is trained with predictors \( X \) and known labels \( y
@@ -66,7 +68,8 @@ and as the example shows, it reflects a core concern with nearness as
 represented via a kernel function.</p>
 <hr />
 <h3>Using the Gaussian Process prediction equation</h3>
-<p>This is Rasmussen and Williams' Equation 2.19:</p>
+<p>This is Rasmussen and Williams' Equation 2.19 for the predictive
+posterior distribution:</p>
 <p>\[ \mathbf{f_{\ast}} | X_{\ast}, X, \mathbf{f} \sim \mathcal{N}( K(X_{\ast}, X) K(X,X)^{-1} \mathbf{f}, \\ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \]</p>
 <p>Here \( \mathbf{f_{\ast}} \) is the predicted \( y \) for a test
 point in \( X_{\ast} \) based on the training data \( X \) and \(
@@ -110,6 +113,9 @@ the prediction. And it isn't really quite as simple as a weighted
 average; there's a little bit more curve-fitting going on.</p>
 <hr />
 <h3>It's linear regression</h3>
+<p>The mean prediction of a Gaussian Process is the same as a linear
+regression with a particular choice of coordinates. Let's talk about
+how.</p>
 <p>Why is \( K(X,X)^{-1} \) involved in the predictive mean?</p>
 <p>Consider the kernel matrix as a transformation of the original
 training data \( X \) into new variables, where each of the new
@@ -230,8 +236,8 @@ machine learning products. -->
 <hr />
 <p>The code and plots from this post are all in
 <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb">a Jupyter notebook</a>.</p>
-<p>Thanks to Erica Blom, Marco Pariguana, and Sylvia Blom for reading
-drafts of this post.</p>
+<p>Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, and Travis Hoppe
+for reading drafts of this post and providing feedback.</p>
 <!-- mathjax for formulas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     </article>

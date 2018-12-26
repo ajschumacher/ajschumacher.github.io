@@ -1,9 +1,12 @@
 # Gaussian Processes are Not So Fancy
 
-Gaussian Processes have a mystique related to the dense probabilistic
-terminology that's already evident in their name. But Gaussian
-Processes are just models, and they're much more like k-nearest
-neighbors and linear regression than may at first be apparent.
+[Gaussian Process](https://en.wikipedia.org/wiki/Gaussian_process)es
+have a mystique related to the dense probabilistic terminology that's
+already evident in their name. But Gaussian Processes are just models,
+and they're much more like k-nearest neighbors and linear regression
+than may at first be apparent.
+
+![Predictive mean and range](img/predictive_mean_and_range.png)
 
 
 ---
@@ -81,7 +84,8 @@ represented via a kernel function.
 
 ### Using the Gaussian Process prediction equation
 
-This is Rasmussen and Williams' Equation 2.19:
+This is Rasmussen and Williams' Equation 2.19 for the predictive
+posterior distribution:
 
 \\[ \mathbf{f_{\ast}} | X_{\ast}, X, \mathbf{f} \sim \mathcal{N}( K(X_{\ast}, X) K(X,X)^{-1} \mathbf{f}, \\\\ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \\]
 
@@ -150,6 +154,10 @@ average; there's a little bit more curve-fitting going on.
 ---
 
 ### It's linear regression
+
+The mean prediction of a Gaussian Process is the same as a linear
+regression with a particular choice of coordinates. Let's talk about
+how.
 
 Why is \\( K(X,X)^{-1} \\) involved in the predictive mean?
 
@@ -320,5 +328,5 @@ machine learning products. -->
 The code and plots from this post are all in
 [a Jupyter notebook](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb).
 
-Thanks to Erica Blom, Marco Pariguana, and Sylvia Blom for reading
-drafts of this post.
+Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, and Travis Hoppe
+for reading drafts of this post and providing feedback.
