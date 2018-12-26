@@ -83,7 +83,7 @@ represented via a kernel function.
 
 This is Rasmussen and Williams' Equation 2.19:
 
-\\[ \mathbf{f_{\ast}} | X_{\ast}, X, \mathbf{f} \sim \mathcal{N}( K(X_{\ast}, X) K(X,X)^{-1} \mathbf{f}, K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \\]
+\\[ \mathbf{f_{\ast}} | X_{\ast}, X, \mathbf{f} \sim \mathcal{N}( K(X_{\ast}, X) K(X,X)^{-1} \mathbf{f}, \\\\ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \\]
 
 Here \\( \mathbf{f_{\ast}} \\) is the predicted \\( y \\) for a test
 point in \\( X_{\ast} \\) based on the training data \\( X \\) and \\(
