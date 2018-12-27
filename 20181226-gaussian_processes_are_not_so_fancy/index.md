@@ -1,12 +1,20 @@
 # Gaussian Processes are Not So Fancy
 
-[Gaussian Process](https://en.wikipedia.org/wiki/Gaussian_process)es
+[Gaussian Processes](https://en.wikipedia.org/wiki/Gaussian_process)
 have a mystique related to the dense probabilistic terminology that's
 already evident in their name. But Gaussian Processes are just models,
 and they're much more like k-nearest neighbors and linear regression
 than may at first be apparent.
 
 ![Predictive mean and range](img/predictive_mean_and_range.png)
+
+Gaussian Processes have
+[applications](https://en.wikipedia.org/wiki/Kriging#Applications)
+ranging from finding gold to
+[optimizing hyperparameters](https://cloud.google.com/blog/products/gcp/hyperparameter-tuning-cloud-machine-learning-engine-using-bayesian-optimization)
+of other models. The focus here is on how Gaussian Processes work,
+using an example that's simple enough to show completely from
+beginning to end.
 
 
 ---
@@ -34,7 +42,7 @@ x \\).
 
 ### Applying a kernel function
 
-Like [SVM](https://en.wikipedia.org/wiki/Support_vector_machine)s,
+Like [SVMs](https://en.wikipedia.org/wiki/Support_vector_machine),
 Gaussian Processes use kernel functions. A kernel gives a closeness,
 or similarity, between two points. This is related to distances, and a
 kernel may involve distance. Here's the matrix of Euclidean distances
@@ -315,18 +323,11 @@ that it is sophisticated just because the language around it often is,
 or that its results are automatically true just because they have
 error bars.
 
-<!-- I thought about linking to something on kriging, whether for gold
-or for hyperparameter optimization, but in the end I thought it would
-just confuse things. For example,
-http://efavdb.com/gaussian-processes/ is one of the better posts, and
-it's just unbearably bad. Maybe Google has something decent in their
-documentation, but it would also be basically an ad for their cloud
-machine learning products. -->
 
 ---
 
 The code and plots from this post are all in
 [a Jupyter notebook](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb).
 
-Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, and Travis Hoppe
-for reading drafts of this post and providing feedback.
+Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and
+Ajay Deonarine for reading drafts of this post and providing feedback.

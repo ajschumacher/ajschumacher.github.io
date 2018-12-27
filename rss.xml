@@ -10,12 +10,19 @@
 <title>Gaussian Processes are Not So Fancy</title>
 <description><![CDATA[
 
-<p><a href="https://en.wikipedia.org/wiki/Gaussian_process">Gaussian Process</a>es
+<p><a href="https://en.wikipedia.org/wiki/Gaussian_process">Gaussian Processes</a>
 have a mystique related to the dense probabilistic terminology that's
 already evident in their name. But Gaussian Processes are just models,
 and they're much more like k-nearest neighbors and linear regression
 than may at first be apparent.</p>
 <p><img alt="Predictive mean and range" src="img/predictive_mean_and_range.png"></p>
+<p>Gaussian Processes have
+<a href="https://en.wikipedia.org/wiki/Kriging#Applications">applications</a>
+ranging from finding gold to
+<a href="https://cloud.google.com/blog/products/gcp/hyperparameter-tuning-cloud-machine-learning-engine-using-bayesian-optimization">optimizing hyperparameters</a>
+of other models. The focus here is on how Gaussian Processes work,
+using an example that's simple enough to show completely from
+beginning to end.</p>
 <hr>
 <h3>A simple training data set</h3>
 <p>A model is trained with predictors \( X \) and known labels \( y
@@ -30,7 +37,7 @@ shown in a simple figure:</p>
 x \).</p>
 <hr>
 <h3>Applying a kernel function</h3>
-<p>Like <a href="https://en.wikipedia.org/wiki/Support_vector_machine">SVM</a>s,
+<p>Like <a href="https://en.wikipedia.org/wiki/Support_vector_machine">SVMs</a>,
 Gaussian Processes use kernel functions. A kernel gives a closeness,
 or similarity, between two points. This is related to distances, and a
 kernel may involve distance. Here's the matrix of Euclidean distances
@@ -224,19 +231,11 @@ regression.</p>
 that it is sophisticated just because the language around it often is,
 or that its results are automatically true just because they have
 error bars.</p>
-<!-- I thought about linking to something on kriging, whether for gold
-or for hyperparameter optimization, but in the end I thought it would
-just confuse things. For example,
-http://efavdb.com/gaussian-processes/ is one of the better posts, and
-it's just unbearably bad. Maybe Google has something decent in their
-documentation, but it would also be basically an ad for their cloud
-machine learning products. -->
-
 <hr>
 <p>The code and plots from this post are all in
 <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb">a Jupyter notebook</a>.</p>
-<p>Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, and Travis Hoppe
-for reading drafts of this post and providing feedback.</p>
+<p>Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and
+Ajay Deonarine for reading drafts of this post and providing feedback.</p>
 <!-- mathjax for formulas -->
 
     ]]></description>
