@@ -1,7 +1,9 @@
 # plan <span class="shake shake-slow">➔</span> space
 
-Hello, I'm [Aaron](/aaron/) and these are some things that I've put here. (Oh, there's [RSS](/rss.xml) too.)
+Hello, I'm [Aaron](/aaron/) and these are some things that I've put
+here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2018-12-27: [The Whole-Brain Child](/20181227-the_whole_brain_child/)
  * 2018-12-26: [Gaussian Processes are Not So Fancy](/20181226-gaussian_processes_are_not_so_fancy/)
  * 2018-12-09: [Brain Rules for Baby](/20181209-brain_rules_for_baby/)
  * 2018-12-04: [Is it worth doing even if it fails?](/20181204-worth_doing_even_if_it_fails/)
