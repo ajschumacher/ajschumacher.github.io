@@ -1,9 +1,9 @@
 # The Equation of a Plane
 
 I wasn't a great undergraduate student, but I had at least one great
-professor. She connected me with the first step of my post-graduate
-career path, and she taught some of my calculus classes. One day she
-turned briefly from the chalkboard and said with a smile:
+professor. She connected me with my post-graduate career path, and she
+taught some of my calculus classes. One day she turned briefly from
+the chalkboard and said with a smile:
 
 > "If you don't know equation of a plane, I kill you!"
 
