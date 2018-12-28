@@ -7,6 +7,58 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Equation of a Plane</title>
+<description><![CDATA[
+
+<p>I wasn't a great undergraduate student, but I had at least one great
+professor. She connected me with the first step of my post-graduate
+career path, and she taught some of my calculus classes. One day she
+turned briefly from the chalkboard and said with a smile:</p>
+<blockquote>
+<p>"If you don't know equation of a plane, I kill you!"</p>
+</blockquote>
+<p>I thought it was funny, and it wasn't what we were really working on
+in class, so I didn't think much more about it. But because I never
+thought it through then, doubt remained for some fifteen years: Was my
+life in danger?</p>
+<p>That teacher wasn't even an associate professor back then, by official
+title. Recently, I learned that she's become an associate dean of the
+college. I was inspired to finally think about the equation of a
+plane.</p>
+<p>Maybe she just meant that the equation of a plane is linear in
+Cartesian coordinates. That could have been it. But I think she was
+also getting at something about using the axis intercepts.</p>
+<p>I learned \( y=mx+b \) like a kind of incantation, and I don't think
+it was only because I went to Catholic schools. The "standard form" is
+<a href="http://jwilson.coe.uga.edu/emt668/emat6680.2002/jackson/chapter%205%20lesson%20plan/day6.html">treated</a>
+like a purposeless afterthought, more about following rules than
+understanding anything.</p>
+<p>But if the \( x \)-intercept is \( a \) and the \( y
+\)-intercept is \( b \), then \( bx + ay = ab \) is a very nice
+equation of a line. Maybe call it both-intercepts form.</p>
+<p>Adding a \( z \)-intercept of \( c \), a plane then has a similar
+equation: \( bcx + acy + abz = abc \).</p>
+<p>I don't know for sure whether that's the equation that should have
+spared my life back then, but it's a charming one. It's fun to think
+about how it's related to other forms, and other dimensions&#8212;and how
+silly a rule like "\( A \), \( B \), and \( C \) must be
+integers" is.</p>
+<p>I wish I had been a better student back then. I had no idea how useful
+multivariate calculus and linear algebra would turn out to be, in
+particular. But I've been very lucky, and I'm honored to have had
+teachers who give me the pleasure of thinking things through, even
+little things like this, and even many years later than I should have.
+And I am deeply pleased to see that people who were so helpful to me
+have themselves found greater success, and positions from which to
+help many more people.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20181228-the_equation_of_a_plane/</link>
+<guid>http://planspace.org/20181228-the_equation_of_a_plane/</guid>
+<pubDate>Fri, 28 Dec 2018 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Whole-Brain Child</title>
 <description><![CDATA[
 
@@ -963,24 +1015,6 @@ Consider Phlebas, who was once handsome and tall as you.
 <link>http://planspace.org/20180118-boomerang_by_michael_lewis/</link>
 <guid>http://planspace.org/20180118-boomerang_by_michael_lewis/</guid>
 <pubDate>Thu, 18 Jan 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Man in the High Castle</title>
-<description><![CDATA[
-
-<p>There is less for Nazis to like in <a href="https://en.wikipedia.org/wiki/Philip_K._Dick">Philip K. Dick</a>'s 1962 <a href="https://en.wikipedia.org/wiki/The_Man_in_the_High_Castle">novel</a> than in the 2015 Netflix <a href="https://en.wikipedia.org/wiki/The_Man_in_the_High_Castle">show</a>.</p>
-<p>In both, Nazis won World War II. Also in both the idea of alternate realities is central, so perhaps it is appropriate for the two treatments to vary. And there are different concerns in text versus video. Nevertheless, I wonder about some of the choices in the show.</p>
-<p>In the show, Juliana and an emo Nazi operative largely cooperate and have a kind of will-they-won't-they romantic tension. In the book, they have bad sex and then eventually Juliana slits his throat because he's a monster.</p>
-<p>In the book, Hitler is out of power, suffering the late effects of syphilis. In the show, Hitler is still in power and collects the same film strips prized by the resistance.</p>
-<p>The book spends no time at all in Nazi-controlled settings, while the show luxuriates in Nazi architecture and swastikas. An American who becomes a Nazi is a loving father with a suburban family and home that could just as well appear on <a href="https://en.wikipedia.org/wiki/Leave_It_to_Beaver">Leave It to Beaver</a>.</p>
-<p>The show visits a spotless Nazi school where students learn to take pride in genocide and slavery through US history. We see the disabled are killed&#8211;and the Nazi justification.</p>
-<p>One reason this is all disturbing is that, in a time when <a href="http://www.wusa9.com/news/local/dc/wwii-vets-shaken-by-nazi-flags-in-charlottesville/465189398">the Nazi flag really is waved within US borders</a>, it's uncomfortably likely that some Americans could watch The Man in the High Castle while longing to make America great as it appears under Nazi control.</p>
-<p>The show illustrates the horror of normalizing the horrible, but it may also contribute to such normalization. It is disturbing to consider Nazi arguments, but truly terrifying to think that modern people might take them up as their own.</p>
-<p>Comparing the Netflix show to the alternate universe film strips it features, it is not clear whether it is one that helps the side of democracy or the side of fascism.</p>    
-    ]]></description>
-<link>http://planspace.org/20180115-man_in_high_castle/</link>
-<guid>http://planspace.org/20180115-man_in_high_castle/</guid>
-<pubDate>Mon, 15 Jan 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
