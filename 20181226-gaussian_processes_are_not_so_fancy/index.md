@@ -196,7 +196,7 @@ values—and this enforces smoothness.
 
 Here's the covariance part of Equation 2.19 again. It has two terms:
 
-\\[ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) ) \\]
+\\[ K(X_{\ast}, X_{\ast}) - K(X_{\ast}, X) K(X,X)^{-1} K(X, X_{\ast}) \\]
 
 The positive first term shows that test point(s) vary together when
 they're close to one another. The negative second term (which is also
