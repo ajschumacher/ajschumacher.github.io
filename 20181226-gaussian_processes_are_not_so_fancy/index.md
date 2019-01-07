@@ -251,10 +251,16 @@ Gaussian Processes have Bayesian priors. For the example here, the
 assumption is that the function is always zero with covariance one,
 until we see training data showing otherwise.
 
+In Equation 2.19, you can think of the mean as zero plus contributions
+from the training data; that's where the zero comes from. Covariance
+comes from the kernel function, which gets as big as one. To change
+the prior on the covariance, change the kernel function.
+
 ![Predictive mean and range (wider view)](img/predictive_mean_and_range_wider_view.png)
 
-This is visible when the bounds of the plot are expanded. Gaussian
-Processes focus on local interpolation more than extrapolation.
+The prior is visible when the bounds of the plot are expanded, which
+illustrates that Gaussian Processes often focus on local interpolation
+more than extrapolation.
 
 
 ---
