@@ -161,7 +161,7 @@ The comparison here to a kind of weighted average nearest neighbors is
 much more directly valid for
 [kernel regression](https://en.wikipedia.org/wiki/Kernel_regression),
 which is another technique that also uses kernels. With Gaussian
-Processes, there's really another step of curve-fitting going on.
+Processes, there's really a further step of curve-fitting going on.
 
 
 ---
