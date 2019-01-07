@@ -335,5 +335,4 @@ error bars.
 The code and plots from this post are all in
 [a Jupyter notebook](https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb).
 
-Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and
-Ajay Deonarine for reading drafts of this post and providing feedback.
+Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and Ajay Deonarine for reading drafts of this post and providing feedback. Thanks also to everybody [on Reddit](https://www.reddit.com/r/MachineLearning/comments/ac6er3/d_gaussian_processes_are_not_so_fancy/), [on HN](https://news.ycombinator.com/item?id=18814776), [on DataTau](https://www.datatau.com/item?id=28391), [on Twitter](https://twitter.com/search?f=tweets&vertical=default&q=https%3A%2F%2Fplanspace.org%2F20181226-gaussian_processes_are_not_so_fancy%2F&src=typd), [on Pinboard](https://pinboard.in/url:077f95c750f2b064e882bafb0d7899b7a3eaf48a/), and elsewhere!

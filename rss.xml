@@ -308,9 +308,14 @@ are useful.</p>
 <p>Gaussian Processes have Bayesian priors. For the example here, the
 assumption is that the function is always zero with covariance one,
 until we see training data showing otherwise.</p>
+<p>In Equation 2.19, you can think of the mean as zero plus contributions
+from the training data; that's where the zero comes from. Covariance
+comes from the kernel function, which gets as big as one. To change
+the prior on the covariance, change the kernel function.</p>
 <p><img alt="Predictive mean and range (wider view)" src="img/predictive_mean_and_range_wider_view.png"></p>
-<p>This is visible when the bounds of the plot are expanded. Gaussian
-Processes focus on local interpolation more than extrapolation.</p>
+<p>The prior is visible when the bounds of the plot are expanded, which
+illustrates that Gaussian Processes often focus on local interpolation
+more than extrapolation.</p>
 <hr>
 <h3>Length scale matters</h3>
 <p>The kernel specifies the scale of the variance, and in the case of the
@@ -359,8 +364,7 @@ error bars.</p>
 <hr>
 <p>The code and plots from this post are all in
 <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20181226-gaussian_processes_are_not_so_fancy/gaussian_processes.ipynb">a Jupyter notebook</a>.</p>
-<p>Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and
-Ajay Deonarine for reading drafts of this post and providing feedback.</p>
+<p>Thanks to Erica Blom, Marco Pariguana, Sylvia Blom, Travis Hoppe, and Ajay Deonarine for reading drafts of this post and providing feedback. Thanks also to everybody <a href="https://www.reddit.com/r/MachineLearning/comments/ac6er3/d_gaussian_processes_are_not_so_fancy/">on Reddit</a>, <a href="https://news.ycombinator.com/item?id=18814776">on HN</a>, <a href="https://www.datatau.com/item?id=28391">on DataTau</a>, <a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=https%3A%2F%2Fplanspace.org%2F20181226-gaussian_processes_are_not_so_fancy%2F&amp;src=typd">on Twitter</a>, <a href="https://pinboard.in/url:077f95c750f2b064e882bafb0d7899b7a3eaf48a/">on Pinboard</a>, and elsewhere!</p>
 <!-- mathjax for formulas -->
 
     ]]></description>
