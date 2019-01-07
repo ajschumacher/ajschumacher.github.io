@@ -155,8 +155,13 @@ every training point.
 
 With Gaussian Processes, however, you don't have to specify a number
 of neighbors \\( k \\). Every point that is near enough contributes to
-the prediction. And it isn't really quite as simple as a weighted
-average; there's a little bit more curve-fitting going on.
+the prediction.
+
+The comparison here to a kind of weighted average nearest neighbors is
+much more directly valid for
+[kernel regression](https://en.wikipedia.org/wiki/Kernel_regression),
+which is another technique that also uses kernels. With Gaussian
+Processes, there's really another step of curve-fitting going on.
 
 
 ---
