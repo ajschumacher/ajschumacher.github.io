@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-01-28: [Bird by Bird, by Anne Lamott](/20190128-bird_by_bird_by_anne_lamott/)
  * 2018-12-31: [The Expectant Father and so on](/20181231-expectant_father/)
  * 2018-12-28: [The Equation of a Plane](/20181228-the_equation_of_a_plane/)
  * 2018-12-27: [The Whole-Brain Child](/20181227-the_whole_brain_child/)
