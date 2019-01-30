@@ -26,4 +26,6 @@ This is a phenomenon I've thought about in the context of breakdancing
 competitions, and it is interesting to think about it also in writing,
 and elsewhere.
 
+Also she is very character-first. Plot comes from character, she says.
+
 ![Bird by Bird (cover)](bird_by_bird_cover.jpg)
