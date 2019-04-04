@@ -7,6 +7,38 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The One Thing</title>
+<description><![CDATA[
+
+<p>This book is not all bad. A copy found its way from an airport
+bookstore to a <a href="https://littlefreelibrary.org/">little free library</a>
+to me, and I read it. Key points:</p>
+<ul>
+<li>Do the most important thing(s).</li>
+<li>Make time to do things, blocking four-hour AM calendar "meetings"
+   if need be.</li>
+</ul>
+<p>There's some other stuff in there about thinking big, identifying the proximal task, staying healthy, trying to not be a workaholic, etc. The book repeats pop science hits like <a href="https://en.wikipedia.org/wiki/Stanford_marshmallow_experiment">the marshmallow experiment</a> unquestioningly and without more recent <a href="https://www.theatlantic.com/family/archive/2018/06/marshmallow-test/561779/">updates</a>. There are ample cute turns of phrase that seem designed to play well in motivational speaking. It's not a great book, but it's quick to read, and it does sort of pump you up.</p>
+<p>I think the core idea is not so bad. Two important aspects:</p>
+<ul>
+<li><strong>Just <em>completing</em> anything.</strong> There are so many distractions and
+   ways to waste time, it's possible to "work" a lot and not actually
+   get things done. It's helpful to identify a thing to do and then
+   focus on completing it. The book mentions the inefficiency of
+   multitasking, which rings true to me.</li>
+<li><strong>Doing the <em>right</em> thing.</strong> There are many paths to not
+   accomplishing anything. You can work on a problem for a long time,
+   even get a lot of things done, without actually making real
+   progress. You might end up with everything to show for your work
+   except what you actually needed.</li>
+</ul>
+<p><img alt="The One Thing (cover)" src="the_one_thing_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20190403-the_one_thing/</link>
+<guid>http://planspace.org/20190403-the_one_thing/</guid>
+<pubDate>Wed, 03 Apr 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Swimming with Sharks, by Joris Luyendijk</title>
 <description><![CDATA[
 
@@ -1083,22 +1115,6 @@ Consider Phlebas, who was once handsome and tall as you.
 <link>http://planspace.org/20180211-coming_jobs_war/</link>
 <guid>http://planspace.org/20180211-coming_jobs_war/</guid>
 <pubDate>Sun, 11 Feb 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Worm by Mark Bowden</title>
-<description><![CDATA[
-
-<p><a href="https://www.amazon.com/Worm-First-Digital-World-War/dp/0802119832">This</a> was the only book on computer security that I could find at my local library, which is a little surprising for DC. It's about the <a href="https://en.wikipedia.org/wiki/Conficker">Conficker worm</a>. It's <a href="http://www.nytimes.com/2011/10/04/books/mark-bowdens-worm-about-conficker-review.html">not</a> a great book.</p>
-<p>I had hoped for more expertise. Even I know that <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a> packets are not "packets of code" and that <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack#Distributed_attack">DDoS</a> is not "Dedicated Denial of Service." That second error appears once, with later expansions being correct, but it is symptomatic of generally weak quality control.</p>
-<p>A scan through the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Conficker">Conficker</a> shows that Worm leaves out a number of interesting technical details: dictionary attacks are not mentioned at all, for example.</p>
-<p>I did enjoy learning about the involvement of <a href="https://www.sri.com/">SRI</a> in connection with Conficker and with the development of the internet in general.</p>
-<p>Bowden focuses on social aspects, and these mostly ring true: Lots of computers aren't updated, and hackers take advantage of them. Coordination, especially with government, can be difficult. Mischel Kwon in particular is not portrayed glowingly, but many of the cast of characters appear infantile in their own words.</p>
-<p>The book succeeds in making security seem pretty inane. Microsoft makes a crummy product, so people get hacked. To stop the hacked machines from doing anything, the good guys try to buy a lot of domain names, and eventually fail. All our technology is both amazing and pitiful.</p>
-<p><img alt="Worm cover" src="worm_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20180128-worm_by_mark_bowden/</link>
-<guid>http://planspace.org/20180128-worm_by_mark_bowden/</guid>
-<pubDate>Sun, 28 Jan 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
