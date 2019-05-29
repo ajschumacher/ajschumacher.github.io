@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-05-29: [Understanding MyinTuition](/20190529-understanding_myintuition/)
  * 2019-04-03: [The One Thing](/20190403-the_one_thing/)
  * 2019-02-04: [Swimming with Sharks, by Joris Luyendijk](/20190204-swimming_with_sharks/)
  * 2019-01-29: [The Unreal and The Real, Volume Two](/20190129-unreal_and_the_real_volume_two/)

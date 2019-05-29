@@ -7,6 +7,41 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Understanding MyinTuition</title>
+<description><![CDATA[
+
+<p><a href="https://myintuition.org/">MyinTuition</a> is a simple online college
+cost estimator for about 50 schools. I was curious about how it
+worked, so I figured it out. I suspect they don't want me to say, and
+I like them, so I won't. But here are some of my opinions and
+experiences.</p>
+<p>The rhetoric around MyinTuition is all about transparency, as in the
+creator's 2014 paper about it, <a href="https://www.brookings.edu/wp-content/uploads/2016/06/12_transparency_in_college_costs_levine.pdf)">Transparency in College Costs</a>.
+They want to be transparent about this message:
+<a href="https://www.nytimes.com/interactive/2018/06/05/opinion/columnists/what-college-really-costs.html">Top Colleges Are Cheaper Than You Think (Unless You&#8217;re Rich)</a>.</p>
+<p>College affordability is important. An expanded idea of transparency
+might further include how the MyinTuition calculations are done, and
+how the different schools vary. That's what I was curious about.</p>
+<p>I originally thought I'd try to use machine learning to understand how
+MyinTuition works, which would mean first collecting training data.
+I'm not sure this was ever a good idea. For one thing, it doesn't seem
+practical if data collection is severely rate-limited.</p>
+<p>I explored on and off for a couple months. It was fun! It wouldn't be
+as much fun to do now, what with the <a href="https://www.google.com/recaptcha/">CAPTCHA</a>s they've put
+in. And unfortunately it may no longer be possible to access
+MyinTuition at all using the IP addresses I was on at the time.</p>
+<p>Figuring out the MyinTuition calculations and parameters for different
+schools was interesting. I'll just recommend that you try a bunch of
+schools and see what you get. You can find the calculators for all
+participating schools <a href="https://myintuition.org/quick-college-cost-estimator/">on their site</a>.</p>
+<p>Never stop learning, kids!</p>
+<!-- https://bitbucket.org/ajschumacher/college_cost/ -->    
+    ]]></description>
+<link>http://planspace.org/20190529-understanding_myintuition/</link>
+<guid>http://planspace.org/20190529-understanding_myintuition/</guid>
+<pubDate>Wed, 29 May 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The One Thing</title>
 <description><![CDATA[
 
@@ -1067,54 +1102,6 @@ Consider Phlebas, who was once handsome and tall as you.
 <link>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</link>
 <guid>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</guid>
 <pubDate>Tue, 13 Feb 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Coming Jobs War by Jim Clifton</title>
-<description><![CDATA[
-
-<p>I read this book because current populist, protectionist urges seem like nationalistic competition for globally dwindling jobs, which might be called a "jobs war," and I wondered if <a href="https://en.wikipedia.org/wiki/Jim_Clifton">Jim Clifton</a>, the leader of <a href="https://en.wikipedia.org/wiki/Gallup_(company)">Gallup</a>, had unique insight on this phenomenon through the polling and research of his company. Unfortunately, the CEO's <a href="http://www.gallup.com/press/178343/gallup-press.aspx">self-published</a> book is surprisingly light on evidence, heavy on political proselytizing and advertising for Gallup. Jim Clifton is a slightly more sophisticated <a href="/20180122-why_the_rich_are_getting_richer/">Robert Kiyosaki</a>.</p>
-<p>I'm surprised nobody, for the sake of Gallup's image, prevented Clifton from publishing his solution to high healthcare costs in the US, which has two prongs: (a) have people die sooner, and (b) fat-shaming. I'm not exaggerating:</p>
-<blockquote>
-<p>'Somebody has to tell Uncle Louie it's time to cross to the other side and go join his friends, not run doctor to doctor, accepting one low-probability procedure after another.' (pages 155-156)</p>
-<p>'Unfit should mean something worse than it currently does. Unfit should mean "intervention required." Unfit should mean less employable because unfit is a cause of lower energy.' (page 160)</p>
-</blockquote>
-<p>Even if there are germs of reasonable ideas buried in what Clifton espouses, it's hard to get past his caustic victim-blaming, which is most extreme on healthcare, but present throughout.</p>
-<p>Clifton sings the praises of entrepreneurs, with a kind of <a href="https://en.wikipedia.org/wiki/Great_man_theory">great man</a> delusion blended with borderline eugenic fatalism.</p>
-<blockquote>
-<p>'Some leaders even believe that anyone can be trained to be an entrepreneur. This is a mistaken assumption. Entrepreneurs have a rare gift. My estimate is that for every 1,000 people, there are only about three with the potential to develop an organization with $50 million or more in annual revenue.' (page 96)</p>
-<p>'Nothing fixes bad managers, not coaching, competency training, incentives, or warnings &#8211; nothing works. A bad manager never gets better.' (page 114)</p>
-</blockquote>
-<p>Jim Clifton became CEO of Gallup when and because <a href="http://journalstar.com/gallup-s-clifton-dies-at-age-this-story-ran-in/article_cb499250-04a5-5852-b48f-282c047ff505.html">his father, Don Clifton</a>, bought Gallup and installed him as CEO. It's a little hard to take him seriously about individuals' abilities to be totally self-made, or when, with a perfect lack of self-awareness, he goes on to talk about the importance of fixing schools.</p>
-<p>Even the core premise of the book, that "What the whole world wants is a good job," isn't well supported with evidence. I had assumed there would be some detailed analysis of polls, maybe some psychological research, but the closest thing to this didn't come very close at all:</p>
-<blockquote>
-<p>'Of the 7 billion people on Earth, there are 5 billion adults aged 15 and older. Of these 5 billion, 3 billion tell Gallup they work or want to work.' (page 2)</p>
-</blockquote>
-<p>So the strongest evidence provided that everyone wants to work is that 60% of adults say they <em>do</em> work, <em>or</em> want to work. I have no way of knowing whether "wanting to work" is separated from "wanting to have a decent standard of living." For example, how many people would want to work if they were <a href="/20180125-no_more_work_by_james_livingston/">guaranteed</a> a basic income and social services?</p>
-<p>I also expected Clifton would address <a href="/20180121-janesville_an_american_story/">job loss</a> trends due to automation and so on, but there's scarcely a mention. He maintains that people just need to keep making companies, and that will make jobs. He is singularly focused on keeping US GDP higher than China's, never mind per-capita GDP or the strength of the connection between jobs and GDP.</p>
-<p>Here are some questions listed in a section called "Defective employees." The questions are supposed to both help evaluate managers and "neatly factor all workers into the three categories of engaged, not engaged, and actively disengaged" (page 104):</p>
-<ol>
-<li>I know what is expected of me at work.</li>
-<li>I have the materials and equipment I need to do my work right.</li>
-<li>At work, I have the opportunity to do what I do best every day.</li>
-<li>In the last seven days, I have received recognition or praise for doing good work.</li>
-<li>My supervisor, or someone at work, seems to care about me as a person.</li>
-<li>There is someone at work who encourages my development.</li>
-<li>At work, my opinions seem to count.</li>
-<li>The mission or purpose of my organization makes me feel my job is important.</li>
-<li>My associates or fellow employees are committed to doing quality work.</li>
-<li>I have a best friend at work.</li>
-<li>In the last six months, someone at work has talked to me about my progress.</li>
-<li>This last year, I have had opportunities at work to learn and grow.</li>
-</ol>
-<p>Most of these items map onto good advice for companies, but number ten's appearance on the list I think is symptomatic of a "<a href="https://www.wired.com/2008/06/pb-theory/">death of science</a>" problem in analysis. Why is "I have a best friend at work" on this list? I suspect the answer is that having a best friend at work is associated with being less likely to quit, and largely independent of other factors, so the item looks good statistically, despite being mostly useless to employees or managers.</p>
-<p>Sometimes it's possible to see in Clifton's positions what could be genuine caring for people: a desire that everyone reach their full potential. Supporting people's strengths sounds good, and some of the ideas in the book are not all bad. But there are so many bad ideas, it's like picking through a dumpster.</p>
-<p>I had thought that a book from <a href="https://en.wikipedia.org/wiki/Gallup_(company)">Gallup</a> might have interesting, relevant data and analysis. I really like the idea of using poll data to better understand the world. I had only known of Gallup's polling operation, not their management consulting side. Unfortunately, based on this book, it seems management consulting dominates their attention.</p>
-<p>The only people who should read this book are those considering working with Gallup, the better to understand what they would be getting into.</p>
-<p><img alt="The Coming Jobs War cover" src="coming_jobs_war_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20180211-coming_jobs_war/</link>
-<guid>http://planspace.org/20180211-coming_jobs_war/</guid>
-<pubDate>Sun, 11 Feb 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
