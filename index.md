@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-05-31: [Null impact of letters to very unlikely voters](/20190531-null_impact_of_letters_to_very_unlikely_voters/)
  * 2019-05-29: [Understanding MyinTuition](/20190529-understanding_myintuition/)
  * 2019-04-03: [The One Thing](/20190403-the_one_thing/)
  * 2019-02-04: [Swimming with Sharks, by Joris Luyendijk](/20190204-swimming_with_sharks/)

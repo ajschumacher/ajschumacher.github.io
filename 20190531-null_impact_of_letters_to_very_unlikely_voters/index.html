@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Null impact of letters to very unlikely voters</title>
+  </head>
+  <body>
+    <article>
+<h1>Null impact of letters to very unlikely voters</h1>
+<p class="date">Friday May 31, 2019</p>
+<p>Before the November 2018 election, I sent 2,181 personalized letters to very unlikely voters registered in New York's state senate district 5, encouraging them to vote. I sent 1,180 "birthday letters" in the months before the election, and 1,001 more conventional letters shortly before the election. Unfortunately, I didn't meaningfully increase voting rates in either group compared to control. This null result supports the conventional wisdom that extremely low-propensity voters are not optimal targets for get-out-the-vote efforts.</p>
+<pre><code>| Group           | Total | Voted | % Voted |
+|-----------------|-------|-------|---------|
+| Control         | 3,135 | 349   | 11.13%  |
+| Birthday letter | 1,180 | 140   | 11.86%  |
+| Timely letter   | 1,001 | 111   | 11.09%  |</code></pre>
+
+<p><strong>Statistical analysis</strong>: These results are not distinguishable. By t-test, p-values are 0.25 at best. The treatments are very similar, but one "effect" is positive and the other negative.</p>
+<p><strong>Group selection</strong>: Using a 2018-07-20 voter file for NY SD5, I selected active registered Democrats who had voted at least once but not voted in the last five years. Back-testing showed equivalent groups had historically voted at low rates in midterm elections: 9%, 8%, and 4% in 2006, 2010, and 2014, respectively.</p>
+<p><strong>Rationale</strong>: I hoped that by communicating with more people who wouldn't otherwise vote, more could be swayed. I was aware of the common practice of targeting people judged to be around 50% likely to vote, but I hoped to find a novel result, and thought that especially in the particularly high-saliency 2018 midterm, my approach could work.</p>
+<p><strong>Birthday letter</strong>: To encourage engagement, I thought it would be fun to send birthday letters. This experiment group was the subset of the larger group with birthdays from August 19 to November 6. The letters had brief birthday greetings before the pro-voting message, and a "happy birthday" sticker on the outside of the hand-addressed envelopes. Letters were mailed a week before each birthday.</p>
+<p><strong>Timely letter</strong>: These letters were nearly identical to birthday letters, but with generic greetings and no stickers. They were mailed a week before the election. This group was a random selection from the larger group not selected for birthday letters. (The remainder became the control group, not receiving any letter.) Research suggests timely messaging should be <em>more</em> effective, making the outcome of this treatment even more discouraging.</p>
+<p><strong>Deliverability</strong>: I got 8% of letters bounced back to my address, which I hope is high for this kind of campaign. Of bounces, 6% voted. (I wouldn't read much into this.)</p>
+<p><strong>Direct response</strong>: Letters included my personal mailing and email addresses. I had hoped to make a person-to-person connection with voters. I heard back from three people:</p>
+<ul>
+<li>One person was an active voter who had moved, but family at his
+   previous address got the letter to him. He emailed and was very
+   supportive.</li>
+<li>One person found me on Twitter and was briefly curious about the
+   project.</li>
+<li>The mother of a letter's intended recipient emailed to say she was
+   pro-voting but upset that I had the address and birthday of her
+   daughter.</li>
+</ul>
+<p><strong>Results data</strong>: I used a 2019-02-28 voter file for NY SD5. Voters were re-identified by New York State Board of Elections voter ID.</p>
+<p><strong>Conclusions</strong>: I wouldn't do this again. It was a learning experience, and it made me feel like I was doing something at the time. The overall change in turnout from 2014 to 2018 was dramatically greater than any effect ever achieved by a postal get-out-the-vote effort, which makes me think other influences are important.</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

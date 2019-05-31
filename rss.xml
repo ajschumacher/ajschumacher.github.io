@@ -7,6 +7,41 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Null impact of letters to very unlikely voters</title>
+<description><![CDATA[
+
+<p>Before the November 2018 election, I sent 2,181 personalized letters to very unlikely voters registered in New York's state senate district 5, encouraging them to vote. I sent 1,180 "birthday letters" in the months before the election, and 1,001 more conventional letters shortly before the election. Unfortunately, I didn't meaningfully increase voting rates in either group compared to control. This null result supports the conventional wisdom that extremely low-propensity voters are not optimal targets for get-out-the-vote efforts.</p>
+<pre><code>| Group           | Total | Voted | % Voted |
+|-----------------|-------|-------|---------|
+| Control         | 3,135 | 349   | 11.13%  |
+| Birthday letter | 1,180 | 140   | 11.86%  |
+| Timely letter   | 1,001 | 111   | 11.09%  |</code></pre>
+
+<p><strong>Statistical analysis</strong>: These results are not distinguishable. By t-test, p-values are 0.25 at best. The treatments are very similar, but one "effect" is positive and the other negative.</p>
+<p><strong>Group selection</strong>: Using a 2018-07-20 voter file for NY SD5, I selected active registered Democrats who had voted at least once but not voted in the last five years. Back-testing showed equivalent groups had historically voted at low rates in midterm elections: 9%, 8%, and 4% in 2006, 2010, and 2014, respectively.</p>
+<p><strong>Rationale</strong>: I hoped that by communicating with more people who wouldn't otherwise vote, more could be swayed. I was aware of the common practice of targeting people judged to be around 50% likely to vote, but I hoped to find a novel result, and thought that especially in the particularly high-saliency 2018 midterm, my approach could work.</p>
+<p><strong>Birthday letter</strong>: To encourage engagement, I thought it would be fun to send birthday letters. This experiment group was the subset of the larger group with birthdays from August 19 to November 6. The letters had brief birthday greetings before the pro-voting message, and a "happy birthday" sticker on the outside of the hand-addressed envelopes. Letters were mailed a week before each birthday.</p>
+<p><strong>Timely letter</strong>: These letters were nearly identical to birthday letters, but with generic greetings and no stickers. They were mailed a week before the election. This group was a random selection from the larger group not selected for birthday letters. (The remainder became the control group, not receiving any letter.) Research suggests timely messaging should be <em>more</em> effective, making the outcome of this treatment even more discouraging.</p>
+<p><strong>Deliverability</strong>: I got 8% of letters bounced back to my address, which I hope is high for this kind of campaign. Of bounces, 6% voted. (I wouldn't read much into this.)</p>
+<p><strong>Direct response</strong>: Letters included my personal mailing and email addresses. I had hoped to make a person-to-person connection with voters. I heard back from three people:</p>
+<ul>
+<li>One person was an active voter who had moved, but family at his
+   previous address got the letter to him. He emailed and was very
+   supportive.</li>
+<li>One person found me on Twitter and was briefly curious about the
+   project.</li>
+<li>The mother of a letter's intended recipient emailed to say she was
+   pro-voting but upset that I had the address and birthday of her
+   daughter.</li>
+</ul>
+<p><strong>Results data</strong>: I used a 2019-02-28 voter file for NY SD5. Voters were re-identified by New York State Board of Elections voter ID.</p>
+<p><strong>Conclusions</strong>: I wouldn't do this again. It was a learning experience, and it made me feel like I was doing something at the time. The overall change in turnout from 2014 to 2018 was dramatically greater than any effect ever achieved by a postal get-out-the-vote effort, which makes me think other influences are important.</p>    
+    ]]></description>
+<link>http://planspace.org/20190531-null_impact_of_letters_to_very_unlikely_voters/</link>
+<guid>http://planspace.org/20190531-null_impact_of_letters_to_very_unlikely_voters/</guid>
+<pubDate>Fri, 31 May 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Understanding MyinTuition</title>
 <description><![CDATA[
 
@@ -1051,57 +1086,6 @@ Consider Phlebas, who was once handsome and tall as you.
 <link>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</link>
 <guid>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</guid>
 <pubDate>Sun, 18 Feb 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Failure to replicate Schwartz-Ziv and Tishby</title>
-<description><![CDATA[
-
-<p><a href="https://arxiv.org/abs/1703.00810">Opening the Black Box of Deep Neural Networks via Information</a> didn't appear at any conferences, to my knowledge, but it still built up some <a href="https://www.quantamagazine.org/new-theory-cracks-open-the-black-box-of-deep-learning-20170921/">buzz</a>. It has been difficult to replicate, for both <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/">bloggers</a> and <a href="https://openreview.net/forum?id=ry_WPG-A-">academics</a>. I attempted to replicate some aspects, and emailed the authors with the message below in an attempt to resolve difficulties. As there has been no response after many weeks, I present the below as an open letter. I hope it can serve as a reference for others who might try to explore these ideas.</p>
-<hr>
-<p>Hi Ravid! I was intrigued by your paper, <a href="https://arxiv.org/abs/1703.00810">Opening the Black Box of Deep Neural Networks via Information</a>, so I wanted to replicate your results. I was particularly interested in your Figure 4; I thought that if I could see these kinds of patterns, maybe they could be used to identify when a network is well-trained, for example.</p>
-<p>Here is the figure I mean:</p>
-<p><img alt="figure 4" src="img/figure_4.png"></p>
-<p>I started by trying to work with a simple ReLU network with two hidden layers, on MNIST, and what I found was that the sizes of gradients decrease through training, and so do differences or variances of those gradients. I couldn't see two distinct phases, or indeed any interesting crossing of two metrics.</p>
-<p>At first, I wasn't sure about how to interpret the "mean" and "standard deviation" of your Figure 4. So I was happy to find your <a href="https://github.com/ravidziv/IDNNs">code</a>, which I've been using at the 2017-11-02 <a href="https://github.com/ravidziv/IDNNs/tree/c4abb1dad4fbb262315eb8b96eb85dc5c3e98e5c">c4abb1d commit</a>.</p>
-<p>Unfortunately, using the definitions of "mean" and "standard deviation" as found in your <code>idnns/plots/plot_gradients.py</code> file, I didn't get results that matched those of your paper any better.</p>
-<p>I started to use your code directly, running <code>main.py</code> with default arguments, adding only <code>-save_grads true</code> so I could then use <code>plot_gradients.py</code>. Here is the result:</p>
-<p><img alt="default mean std" src="img/default_mean_std.png"></p>
-<p>As you can see, there are differences from your published Figure 4.</p>
-<p>Can you help me to replicate your results? What should I be doing differently? I would appreciate your feedback. I also posted comments about my process of trying to understand your work on a <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/">"severely theoretical" blog post</a>; if you would like to add public context there as well it would also be appreciated.</p>
-<p>One thing that I noticed is that in your published Figure 4, one of the solid "mean" lines crosses the others. With the current calculation of "mean" in your code, in which the value for a layer is the sum of an always-positive calculation on each layer up to and including itself, it doesn't seem possible for lines to ever cross. Does this shine any light on what's going on?</p>
-<p>Another thing I noticed is that the caption for your published Figure 4 says "values are normalized by the L2 norms of the weights for each layer" but in the current code, I don't see this happening. Is this perhaps part of what's going on?</p>
-<p>I also noticed that the y axis labels in the plot don't seem to correspond to the values being plotted. For example, the first (leftmost) value for the last layer's "standard deviation" is calculated by your code as 0.49 (I check by inserting <code>print</code> messages) but it appears in the plot as less than 0.1. I think this issue doesn't affect the shapes of the curves but only the labeling, as far as I can tell.</p>
-<p>More generally, is the cumulative sum approach to calculating statistics over layers appropriate? It strikes me that the pattern of the first layer dominates the plotted results, and it's then difficult to see what's happening uniquely in the higher layers.</p>
-<p>I also tried running your <code>main.py</code> with the activation changed to ReLU, using <code>-activation_function 1</code>.</p>
-<p><img alt="relu mean std" src="img/relu_mean_std.png"></p>
-<p>The result here is mostly the same as the previous one, qualitatively, except that the gradient means seem to increase overall through the training process. Naftali Tishby has <a href="https://severelytheoretical.wordpress.com/2017/09/28/no-information-bottleneck-probably-doesnt-open-the-black-box-of-deep-neural-networks/#comment-183">said</a> that "results [showing non-decreasing mean gradients] are clearly incorrect as the gradients must decease eventually when the training error saturates." How should this be interpreted?</p>
-<p>Let me lay out my understanding of the "mean" and "standard deviation" of your Figure 4, as based on reading your code. Both metrics are calculated for every layer and epoch, so I'll take just one as an example.</p>
-<p>Let's say a network has a first layer with two weights, and there are two batches per epoch. Let's say the gradients for the first layer in the first epoch are <code>[2, 3]</code> and <code>[4, 5]</code>.</p>
-<p>To get the "mean" we calculate the element-wise mean (<code>[3, 4]</code>) and take the norm, so the "mean" is <code>5</code>.</p>
-<p>To get the "standard deviation" we calculate the element-wise variance (<code>[1, 1]</code>) and take the square root of its sum (<code>1.414</code>; call this the "variance") and then take the square root, so the "standard deviation" is <code>1.189</code>.</p>
-<p>To show the cumulative sum aspect of the calculation, say there is a second layer with two weights and identical first-epoch gradients. Then for the second layer, first epoch, the "mean" is <code>5+5=10</code> and the "standard deviation" is the square root of the sum of the "variances" <code>sqrt(1.414+1.414)=1.682</code>.</p>
-<p>This understanding is based on reading and experimenting with your <code>plot_gradients.py</code>. Does it seem right to you? Am I misinterpreting something? Is the intent other than this?</p>
-<p>I would love to replicate the core result of your Figure 4, which I summarize as being "at first, gradients are large but don't vary much, and then later, gradients are small but vary a lot." What's the best way to find this result? I have seen that usually <em>both</em> gradients and the amount they vary decrease through training, but I have been unable to observe the two phases described in your paper.</p>
-<p>While my main focus has been on finding the two phases by statistics on the gradients, I am also interested in the mutual information parts of your paper as well. Here are four plots generated by running your <code>main.py</code> (all default arguments) four times:</p>
-<p><img alt="default info a" src="img/default_info_a.png"></p>
-<p><img alt="default info b" src="img/default_info_b.png"></p>
-<p><img alt="default info c" src="img/default_info_c.png"></p>
-<p><img alt="default info d" src="img/default_info_d.png"></p>
-<p>As you can see, I have not been able to consistently replicate the beautiful plots you have in your paper as Figure 3. In fact, the higher layers consistently fail to show the patterns described in your paper, and the lower layers behave somewhat irregularly. Am I doing something wrong?</p>
-<p>One thing I noticed is that in the caption for Figure 3, the architecture is described as "input=12-10-8-6-4-2-1=output". This is somewhat different from the current default in your code, and in particular it doesn't seem possible to have a single output unit with your code in its current version, because for binary classification it uses a softmax over two output nodes. Is this an important difference? Could it be causing the difficulty in seeing compression phases?</p>
-<p>I also kept the information plots from two runs of <code>main.py</code> with <code>-activation_function 1</code> for ReLU activations. Here they are:</p>
-<p><img alt="relu info a" src="img/relu_info_a.png"></p>
-<p><img alt="relu info b" src="img/relu_info_b.png"></p>
-<p>I'm not sure if anything can be interpreted from these; maybe the code as I found it doesn't support ReLU at present? I know I've read that there are some different issues concerning binning when calculating mutual information involving ReLUs.</p>
-<p>I would appreciate your insight on all these specific issues, but also more broadly: if the phenomena of your paper are general to neural networks, how should I understand the apparent difficulty in seeing similar results with other networks, code, and datasets? How should I understand the apparent difficulty even when using the same dataset, and your code?</p>
-<p>Thank you very much for your help with all this,</p>
-<p>~ Aaron</p>
-<hr>
-<p>I should add for completeness that I am aware of Saxe et al.'s Figure 1A, which seems to replicate Schwartz-Ziv and Tishby's information plane result better than Schwartz-Ziv's code does for me. I would like to know how they achieve that, but the point Saxe et al. make is that the information plane result doesn't hold for most neural nets that are used in practice, so it's kind of beside the point. I haven't seen anyone replicate the result on mean and variance of gradients during training, which is what I am most interested in.</p>    
-    ]]></description>
-<link>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</link>
-<guid>http://planspace.org/20180213-failure_to_replicate_schwartz-ziv_and_tishby/</guid>
-<pubDate>Tue, 13 Feb 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
