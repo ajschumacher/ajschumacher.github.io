@@ -7,6 +7,28 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Book Thing of Baltimore</title>
+<description><![CDATA[
+
+<p>I really like <a href="https://bookthing.org/">The Book Thing of Baltimore</a>. It's like a <a href="https://littlefreelibrary.org/">Little Free Library</a> but <a href="https://en.wikipedia.org/wiki/The_Book_Thing">with 200,000 books</a>. It's as great <a href="https://www.atlasobscura.com/places/the-book-thing-baltimore-maryland">as everyone says</a> and I think there should be more of them.</p>
+<p><img alt="inside the book thing" src="book_thing.jpg"></p>
+<p>Thoughts at the thing:</p>
+<ul>
+<li>Books can seem so major, so heavy, so important... but most of them
+   are ephemeral.</li>
+<li>Nearly all book-reading is for entertainment.</li>
+<li>Many things that we own, we don't really need to own.</li>
+<li>Operations don't need to be complicated: The book thing doesn't
+   track each book, doesn't cycle them or worry about staleness; you
+   don't have to sign up to volunteer, you just show up. Their
+   "processes" are dead simple, and it works.</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20190602-book_thing_of_baltimore/</link>
+<guid>http://planspace.org/20190602-book_thing_of_baltimore/</guid>
+<pubDate>Sun, 02 Jun 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Null impact of letters to very unlikely voters</title>
 <description><![CDATA[
 
@@ -1058,34 +1080,6 @@ Consider Phlebas, who was once handsome and tall as you.
 <link>http://planspace.org/20180312-consider_phlebas_by_iain_m_banks/</link>
 <guid>http://planspace.org/20180312-consider_phlebas_by_iain_m_banks/</guid>
 <pubDate>Mon, 12 Mar 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Scarcity by Sendhil Mullainathan and Eldar Shafir</title>
-<description><![CDATA[
-
-<p>The promise of <a href="https://scholar.harvard.edu/sendhil/scarcity">Scarcity</a> is an uplifting unified <a href="/20170825-characteristics_of_good_theories/">theory</a> that "accounts for a diverse set of phenomena" (page 162) and has social policy implications. It's a research-based rationale for compassion rather than blame, encapsulated on page 144:</p>
-<blockquote>
-<p>'Scarcity creates a mindset that perpetuates scarcity. If all this seems bleak, consider the alternative viewpoint: the poor are poor because they lack skills. The lonely are lonely because they are unlikable; dieters lack willpower; and the busy are busy because they lack the capacity to organize their lives. In this alternative view, scarcity is the consequence of deep personal problems, very difficult to change.</p>
-<p>'The scarcity mindset, in contrast, is a contextual outcome, more open to remedies. Rather than a personal trait, it is the outcome of environmental conditions brought on by scarcity itself, conditions that can often be managed.'</p>
-</blockquote>
-<p>The book expands and applies some ideas that were present in <a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a>:</p>
-<blockquote>
-<p>'Imagine that you are asked to retain a list of seven digits for a minute or two. While your attention is focused on the digits, you are offered a choice between two desserts: a sinful chocolate cake and a virtuous fruit salad. The evidence suggests that you would be more likely to select the tempting chocolate cake when your mind is loaded with digits.'</p>
-</blockquote>
-<p>The book is about how scarcity, like (or as) a distracting mental task, makes it harder to make good decisions, which makes it harder to escape scarcity.</p>
-<p>The biggest new contributions are probably from the authors' <a href="http://www.sciencemag.org/">Science</a> paper, <a href="http://science.sciencemag.org/content/341/6149/976.long">Poverty Impedes Cognitive Function</a>. They found, for example, that farmers did better on an IQ test shortly after being paid for their yearly harvest, compared to before.</p>
-<p>The authors grant that some scarcity, like shortness of time before a deadline, can improve performance by increasing focus. They call this the "focus dividend." But focusing can mean other things are neglected; they speak of "tunneling" and a "bandwidth tax."</p>
-<p>They praise the "slack" time and money that some people enjoy. If you're operating without slack, a surprise can do a lot of damage, for example starting a downward spiral of payday loans. If you don't have slack you also need to really trade off in making decisions, which might prevent you from making certain cognitive errors of scale, but requires bandwidth.</p>
-<p>Some of the organizational applications remind me of <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical Man-Month</a>. For example, they describe a NASA project that was behind, so they skipped integration tests, and eventually failed catastrophically.</p>
-<blockquote>
-<p>'The truly efficient laborer will be found not to crowd his day with work, but will saunter to his task surrounded by a wide halo of ease and leisure.' (Henry David Thoreau, quoted page 194)</p>
-</blockquote>
-<p>I particularly appreciated that the authors made a noticeable effort to anticipate and address readers' possible objections, but I was already largely in agreement, so it may have been hard for me to judge their success in this regard. They also got me curious about <a href="http://www.portfoliosofthepoor.com/">Portfolios of the Poor</a>, which seems like it could be a good window into how the global poor live. Mullainathan and Shafir inspire one to understand more.</p>
-<p><img alt="Scarcity cover" src="scarcity_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</link>
-<guid>http://planspace.org/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/</guid>
-<pubDate>Sun, 18 Feb 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
