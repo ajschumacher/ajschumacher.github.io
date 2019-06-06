@@ -10,7 +10,7 @@ Before the November 2018 election, I sent 2,181 personalized letters to very unl
 | Timely letter   | 1,001 | 111   | 11.09%  |
 ```
 
-**Statistical analysis**: These results are not distinguishable. By t-test, p-values are 0.25 at best. The treatments are very similar, but one "effect" is positive and the other negative.
+**Statistical analysis**: These results are not distinguishable. The best p-value I get is 0.25. The treatments are very similar, but one "effect" is positive and the other negative.
 
 **Group selection**: Using a 2018-07-20 voter file for NY SD5, I selected active registered Democrats who had voted at least once but not voted in the last five years. Back-testing showed equivalent groups had historically voted at low rates in midterm elections: 9%, 8%, and 4% in 2006, 2010, and 2014, respectively.
 
