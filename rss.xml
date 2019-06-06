@@ -7,6 +7,19 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Designing Data-Intensive Applications</title>
+<description><![CDATA[
+
+<p>This book was <a href="https://fullstackdeeplearning.com/march2019">recommended</a> by <a href="https://sergeykarayev.com/">Sergey Karayev</a> and I agree: this is a very good book.</p>
+<p>The <a href="https://martin.kleppmann.com/">author</a> is expert in both content and communication, erudite and humane. Everyone who works with data would do well to read this book. And it has <a href="https://martin.kleppmann.com/2017/03/15/map-distributed-data-systems.html">maps</a>!</p>
+<p>What is it about? Lots of things... Check out the <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/#toc-start">table of contents</a>. It's so good.</p>
+<p><img alt="cover" src="boar_cover.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20190606-designing_data-intensive_applications/</link>
+<guid>http://planspace.org/20190606-designing_data-intensive_applications/</guid>
+<pubDate>Thu, 06 Jun 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Book Thing of Baltimore</title>
 <description><![CDATA[
 
@@ -1047,39 +1060,6 @@ system?</p>
 <link>http://planspace.org/20180429-portfolios_of_the_poor/</link>
 <guid>http://planspace.org/20180429-portfolios_of_the_poor/</guid>
 <pubDate>Sun, 29 Apr 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Consider Phlebas by Iain M. Banks</title>
-<description><![CDATA[
-
-<p>Amazon <a href="http://variety.com/2018/tv/news/consider-phlebas-iain-m-banks-amazon-novel-dennis-kelly-1202706327/">is</a> making a sci-fi TV show based on the 1987 <a href="https://en.wikipedia.org/wiki/Consider_Phlebas">Consider Phlebas</a>. Focusing on certain cultural aspects would be interesting, or it could be just another space opera.</p>
-<p>There's a war between <a href="https://en.wikipedia.org/wiki/The_Culture">The Culture</a> and the <a href="https://en.wikipedia.org/wiki/List_of_civilisations_in_the_Culture_series#Idirans">Idirans</a>. They could stand in for modern American society: The Culture is liberal, the Idirans are conservative. In one paragraph Banks uses the word "contempt" eight times, which reminded me of <a href="https://www.amazon.com/Politics-Resentment-Consciousness-Wisconsin-American/dp/022634911X">The Politics of Resentment</a>. The comparison isn't perfect, but it could be explored.</p>
-<p>Unfortunately, the bulk of the 514 pages is given to the details of who punched who, and how. Some ideas infiltrate a chapter about a cannibalistic cult, or poker for human lives. The chapters, especially early ones, are very episodic, and I could imagine Amazon following the material closely if they wanted to.</p>
-<p>The Culture has sentient artificial Minds that participate in and even guide their society. This is the kind of thing I was hoping to read about, but it's largely swamped by swashbuckling. It would be neat to see Amazon produce a slightly more conceptual adventure based on the source material.</p>
-<p>Why the weird title? It's from <a href="https://en.wikipedia.org/wiki/T._S._Eliot">T. S. Eliot</a>'s poem, <a href="https://en.wikipedia.org/wiki/The_Waste_Land">The Waste Land</a>. The relevant section:</p>
-<hr>
-<pre>
-IV. Death by Water
-
-Phlebas the Phoenician, a fortnight dead,
-Forgot the cry of gulls, and the deep sea swell
-And the profit and loss.
-                                   A current under sea
-Picked his bones in whispers. As he rose and fell
-He passed the stages of his age and youth
-Entering the whirlpool.
-                                  Gentile or Jew
-O you who turn the wheel and look to windward,
-Consider Phlebas, who was once handsome and tall as you.
-</pre>
-
-<hr>
-<p><a href="https://www.poetryfoundation.org/poems/47311/the-waste-land">The Waste Land</a> overflows with allusion; just to read the words as written requires six languages or so. <a href="https://en.wikipedia.org/wiki/Consider_Phlebas">Consider Phlebas</a>, in comparison, is much less dense.</p>
-<p><img alt="Consider Phlebas cover" src="consider_phlebas.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20180312-consider_phlebas_by_iain_m_banks/</link>
-<guid>http://planspace.org/20180312-consider_phlebas_by_iain_m_banks/</guid>
-<pubDate>Mon, 12 Mar 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-06-06: [Designing Data-Intensive Applications](/20190606-designing_data-intensive_applications/)
  * 2019-06-02: [The Book Thing of Baltimore](/20190602-book_thing_of_baltimore/)
  * 2019-05-31: [Null impact of letters to very unlikely voters](/20190531-null_impact_of_letters_to_very_unlikely_voters/)
  * 2019-05-29: [Understanding MyinTuition](/20190529-understanding_myintuition/)
