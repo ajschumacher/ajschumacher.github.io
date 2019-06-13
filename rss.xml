@@ -7,6 +7,105 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Exhalation by Ted Chiang</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Ted_Chiang">Ted Chiang</a> wrote <a href="https://en.wikipedia.org/wiki/Story_of_Your_Life">Story of Your Life</a>, which I liked a lot and became the movie <a href="https://en.wikipedia.org/wiki/Arrival_(film)">Arrival</a>. <a href="https://www.penguinrandomhouse.com/books/538034/exhalation-by-ted-chiang/9781101947883/">Exhalation</a> has two more single-timeline <a href="https://samharris.org/books/free-will/">deterministic</a> time-travel stories at the beginning, but then it opens up a bit. Chiang's <a href="https://en.wikipedia.org/wiki/Stories_of_Your_Life_and_Others">first collection</a> might be better, but read this one too.</p>
+<p>Spoilers as I briefly describe Exhalation's stories:</p>
+<ul>
+<li>The Merchant and the Alchemist's Gate<ul>
+<li>Single-timeline time-travel with portals that can take you
+   whenever they existed.</li>
+</ul>
+</li>
+<li>Exhalation<ul>
+<li>Entropy kills (but also some neat stuff on trying to understand
+   brains).</li>
+</ul>
+</li>
+<li>What's Expected of Us<ul>
+<li>Oh man there's no free will.</li>
+</ul>
+</li>
+<li>The Lifecycle of Software Objects<ul>
+<li>Humanlike AI requires humanlike entities. I tend to agree with
+   his take here.</li>
+</ul>
+</li>
+<li>Dacey's Patent Automatic Nanny<ul>
+<li>Some kid develops an attachment to machines rather than people.</li>
+</ul>
+</li>
+<li>The Truth of Fact, the Truth of Feeling<ul>
+<li>Let's understand Trump as pre-literate / maybe perfect (video)
+   memory is cool?</li>
+</ul>
+</li>
+<li>The Great Silence<ul>
+<li>Maybe parrots are really smart?</li>
+</ul>
+</li>
+<li>Omphalos<ul>
+<li>A world with physical proof of creationism finds out it was
+   God's practice planet.</li>
+</ul>
+</li>
+<li>Anxiety Is the Dizziness of Freedom<ul>
+<li>Devices for communicating between two parallel universes (one
+   pair per device).</li>
+</ul>
+</li>
+</ul>
+<p>I never wrote about <a href="https://en.wikipedia.org/wiki/Stories_of_Your_Life_and_Others">Stories of Your Life and Others</a>, so I'll describe those too:</p>
+<ul>
+<li>Tower of Babylon<ul>
+<li>It gets so high that it breaks through the firmament.</li>
+</ul>
+</li>
+<li>Understand<ul>
+<li>A guy gets crazy smart and fights with another smart guy.</li>
+</ul>
+</li>
+<li>Division by Zero<ul>
+<li>Whoa what if arithmetic is
+   <a href="https://en.wikipedia.org/wiki/Consistency">inconsistent</a>.</li>
+</ul>
+</li>
+<li>Story of Your Life<ul>
+<li>Cross-time awareness (single timeline) with aliens and writing.</li>
+</ul>
+</li>
+<li>Seventy-Two Letters<ul>
+<li>What if people really did grow from
+   <a href="https://en.wikipedia.org/wiki/Homunculus">homunculi</a> (also
+   other weird stuff).</li>
+</ul>
+</li>
+<li>The Evolution of Human Science<ul>
+<li>People make more advanced humans and we can't understand them
+   any more. (Possible connection to AI explainability?)</li>
+</ul>
+</li>
+<li>Hell is the Absence of God<ul>
+<li>A world where angels are real and messy, heaven and hell are
+   real, etc.</li>
+</ul>
+</li>
+<li>Liking What You See: A Documentary<ul>
+<li>Turning off visual perception of human beauty.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Exhalation" src="exhalation.jpg"></p>
+<hr>
+<p>Thanks <a href="https://twitter.com/rememberlenny">Lenny</a> for letting me know
+that Exhalation was available!</p>    
+    ]]></description>
+<link>http://planspace.org/20190613-exhalation_by_ted_chiang/</link>
+<guid>http://planspace.org/20190613-exhalation_by_ted_chiang/</guid>
+<pubDate>Thu, 13 Jun 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Designing Data-Intensive Applications</title>
 <description><![CDATA[
 
@@ -980,86 +1079,6 @@ system?</p>
 <link>http://planspace.org/20180719-geolocation_precision_by_digit/</link>
 <guid>http://planspace.org/20180719-geolocation_precision_by_digit/</guid>
 <pubDate>Thu, 19 Jul 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Portfolios of the Poor</title>
-<description><![CDATA[
-
-<blockquote>
-<p>"One of the biggest challenges of living on two dollars a day is that it doesn't always come." (page 181)</p>
-</blockquote>
-<p><a href="http://www.portfoliosofthepoor.com/"><img alt="Portfolios of the Poor (cover)" src="cover.jpg"></a></p>
-<blockquote>
-<p>"Convenience, flexibility, and reliability are at the heart of building workable financial tools for the poor, and are key to understanding the economic lives of poor households more broadly. Just as we found no households truly living hand to mouth&#8211;even among the very poor&#8211;we found no households so absolutely limited in their resources that price was the overriding determinant of financial choices." (page 153)</p>
-</blockquote>
-<p><a href="http://www.portfoliosofthepoor.com/">Portfolios of the Poor</a> is a 2009 book referenced in <a href="/20180218-scarcity_by_sendhil_mullainathan_and_eldar_shafir/">Scarcity</a>. While <em>Scarcity</em> positions itself as explaining why poor people make bad financial decisions, <em>Portfolios</em> explores without judgment how people who are poor manage their money: <em>Portfolios</em> doesn't necessarily think a high-interest loan is "bad" if it helps someone solve a pressing problem.</p>
-<p>The source data are <a href="http://financialdiaries.com/">financial diaries</a>, collected in a kind of ethnographic process in Bangladesh, India, and <a href="https://www.datafirst.uct.ac.za/dataportal/index.php/catalog/2">South Africa</a>. They follow around 250 families for a year or more each, collecting detailed information that frequently surfaces as personal anecdotes.</p>
-<p>You can get a quick summary by reading Chapter Seven, where they present their recommendations (based on observations) in just eleven pages, with this structure:</p>
-<ul>
-<li>Opportunities: Cash-flow management, building savings, loans for all uses</li>
-<li>Principles: Reliability, convenience, flexibility, structure</li>
-</ul>
-<p>Chapter One is a more complete overview of the book and its methods. Chapter two focuses on cash flow, and the "triple whammy" of low income, irregular income, and lack of really helpful financial instruments. Chapter three is on dealing with risk, chapter four is on building up usefully large sums of money, and chapter five is on the sometimes strange world of pricing financial instruments for the poor.</p>
-<p>One interesting service involves having money collected and kept over time for a fee, which seems like a negative interest rate. But in a repeated setting, the difference between saving and borrowing can blur.</p>
-<blockquote>
-<p>"In Vijaywada, there are customers who simply didn't distinguish between deposit collectors and moneylenders, so similar is the service provided. Both offered repeated money-accumulation cycles for a fee." (page 151)</p>
-</blockquote>
-<p>The authors explore this and other cases in which the rich-world focus on interest rates may not be the most appropriate, as costs often behave more like fees. Interest is rarely compounded, for example (page 136), and terms are not always as strict as they may seem, though this doesn't necessarily benefit everyone in the same ways.</p>
-<blockquote>
-<p>"...repayment delays are factored into the nominal price, with the effect that the customer who repays on time pays the highest price. This inverted pattern of incentives can be seen as one of the more unsatisfactory aspects of informal loan finance." (page 141)</p>
-</blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Microfinance">Microfinance</a> is not the largest money-mover in the diaries, but the authors are interested in it, and in improving it. Especially in Bangladesh many diary households were working with microfinance providers like <a href="https://en.wikipedia.org/wiki/Grameen_Bank">Grameen Bank</a>. Author Stuart Rutherford founded <a href="http://www.safesave.org/">SafeSave</a> which is now part of <a href="https://en.wikipedia.org/wiki/BRAC_(organization)">BRAC</a>, and they also mention <a href="https://en.wikipedia.org/wiki/Association_for_Social_Advancement">ASA</a>. The main microfinance recommendation in the book is probably that loans shouldn't be only for micro-entrepreneurial purposes: people have a range of needs that loans can help with.</p>
-<p><em>Portfolios</em> was talking about <a href="https://en.wikipedia.org/wiki/Behavioral_economics">behavioral economics</a> before it was cool. It was interesting hearing about rural microfinance administered through weekly group meetings, sometimes with the risks of group liability. They also describe some people's preferences for borrowing on interest rather than spending from savings because of the attendant motivation to pay back quickly, and ideas for commitment savings devices.</p>
-<p>There were a lot of things I wasn't familiar with, and the authors provide a helpful glossary in a table footnote on pages 207-208.</p>
-<ul>
-<li><em>Chit funds</em> are a government regulated form of RoSCA (see below) found only in India.</li>
-<li><em>Pro-poor insurers</em> are found only in Bangladesh: they adapt the methods of NGO microcredit banks to offer endowments (savings plans linked to life insurance) to the poor, and to recycle the premiums as loans to the poor.</li>
-<li><em>Saving-up clubs</em> are clubs where participants save together toward a particular event, such as a religious festival: they do not recycle the fund as loans.</li>
-<li><em>RoSCAs</em>, or rotating savings and credit associations, are a form of savings-and-loan club in which a fixed number of members pay a fixed sum into a pool at a fixed interval, and on each occasion one of the members takes the whole of the pool (there are many variants on this theme).</li>
-<li><em>ASCAs</em>, or accumulating savings and credit associations differ from RoSCAs in that regularly depositing members accumulate their fund and lend it out when required to one or more of their members.</li>
-<li><em>Burial societies</em>, as found in South Africa, are informal clubs where members insure each other against funeral costs.</li>
-<li><em>Stokvels</em> and <em>umgalelos</em> are different names for South African RoSCAs and ASCAs.</li>
-<li><em>Salary timing</em> is an agreement with others to share salaries as they arrive.</li>
-<li><em>Reciprocal interest-free lending and borrowing</em> are loans between friends, neighbors or family members that are interest-free but bear the implied obligation to reciprocate at some time in the future.</li>
-<li><em>Mahajan</em> and <em>mashonisa</em> are South Asian and South African terms for local money-lenders who lend for profit.</li>
-<li><em>Moneyguarding</em> is having someone look after your money for you, often a relative, neighbor, employer or shopkeeper.</li>
-<li><em>Remitting cash to the village</em> is often practiced by town dwellers as a way of saving and of building up assets in the home village. Note that in the South African study, we treated remitting cash to the village as an expense rather than a financial instrument because we knew that the households receiving the remittances were using it for their own needs rather than saving it. In Bangladesh and India, it was more often (but not always) the case that the money was invested in some way: in land or housing or lent out, for example, and we have treated remittances as savings.</li>
-</ul>
-<p>One of the interesting RoSCA variants is the auction RoSCA, whereby members effectively achieve different interest rates depending on how quickly they want it to be their turn for the lump payment.</p>
-<p>There were also terms that aren't so obscure but were still not familiar to me.</p>
-<ul>
-<li><a href="https://www.investopedia.com/terms/c/credit_life_insurance.asp">Credit Life Insurance</a><ul>
-<li>Pays off your debt if you die.</li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Endowment_policy">Life-Endowment Savings</a><ul>
-<li>Pays a lump sum after a term, or if you die.</li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Debenture">Debenture</a><ul>
-<li>Basically a bond; maybe (even) less asset-secured.</li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Net_present_value">Net Present Value</a> (NPV)<ul>
-<li>For a fixed period, positive if we beat a fixed compounding interest rate, negative if not: "Am I better off over the next three years buying this investment, or putting that money in the bank at 1.5% interest? (And by how much?)"</li>
-</ul>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Internal_rate_of_return">Internal Rate of Return</a> (IRR)<ul>
-<li>Compounding interest rate equivalent of an investment: "If this factory were a bank account, what would it's APR be?"</li>
-</ul>
-</li>
-</ul>
-<p>It's pretty far from the purpose of the book, but I did appreciate the excuse to finally understand IRR a little better, along with everything else.</p>
-<!-- The book has only a few typographic problems. For example, incorrect parentheses break the equation in the sixth endnote to chapter five, on page 257. -->
-
-<blockquote>
-<p>"In human affairs, incremental improvements can provide the basis for broader changes." (page 64)</p>
-</blockquote>
-<p><em>Thanks to the <a href="https://www.dclibrary.org/">DC Public Library</a> for supporting my access to this book.</em></p>    
-    ]]></description>
-<link>http://planspace.org/20180429-portfolios_of_the_poor/</link>
-<guid>http://planspace.org/20180429-portfolios_of_the_poor/</guid>
-<pubDate>Sun, 29 Apr 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
