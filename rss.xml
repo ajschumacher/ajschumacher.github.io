@@ -7,6 +7,35 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Aladdin translated by Yasmine Seale</title>
+<description><![CDATA[
+
+<p>The history of the story of Aladdin, given in some detail in the
+introduction, is interesting. In the story itself, I was hoping for
+something really different from Disney's Aladdin, and I was somewhat
+disappointed there. There are differences, but they're not so huge.</p>
+<p>The front flap of the cover promises "a newfound appreciation for the
+ingenuity of the heroine, Princess Badr al-Budur, who outwits an evil
+magician to ultimately save Aladdin's life." I was looking forward to
+that, but Aladdin makes the plan to have the princess poison the
+magician. The princess does successfully poison the magician's drink
+(exactly as Aladdin directed her) but I was hoping for a little more
+agency for the princess.</p>
+<p>The translator and editor point out that the story has a feel
+consistent with being told by someone telling stories for their life,
+and I think that's true: pushing the action foward, and-then'ing the
+next chapter and the next, with no time to go back and edit. It's
+probably a good thing that most stories aren't produced that way.</p>
+<p><img alt="Aladdin cover" src="aladdin.jpg"></p>
+<hr>
+<p>Thanks <a href="https://twitter.com/rememberlenny">Lenny</a> for the
+recommendation!</p>    
+    ]]></description>
+<link>http://planspace.org/20190617-aladdin_translated_by_yasmine_seale/</link>
+<guid>http://planspace.org/20190617-aladdin_translated_by_yasmine_seale/</guid>
+<pubDate>Mon, 17 Jun 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Exhalation by Ted Chiang</title>
 <description><![CDATA[
 
@@ -1004,81 +1033,6 @@ only way to change the world."' (p. 396)</p>
 <link>http://planspace.org/20180723-broken_earth_trilogy/</link>
 <guid>http://planspace.org/20180723-broken_earth_trilogy/</guid>
 <pubDate>Mon, 23 Jul 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Geolocation precision by digit</title>
-<description><![CDATA[
-
-<p>Latitude and longitude define increasingly fine grids over the Earth
-as you add digits after the decimal points, but no matter how fine the
-grid, most things still aren't at points of intersection. How far you
-can get from a closest point of intersection as the grid gets finer is
-a way to describe precision. This precision can be compared to
-measurement accuracy and the sizes of objects of interest.</p>
-<p>The Earth is not perfectly spherical, and the size of one degree can
-vary, especially for longitude. To get an upper bound on error, we'll
-use the circumference of the Earth at the equator, around 40,075 km,
-to start calculations. With correct rounding, maximum error in one
-direction is half a unit. That maximum error could happen in two
-directions. Using the usual Pythagorean theorem on a plane for the
-worst-case diagonal distance is easy and will be slightly higher than
-the actual distance along the Earth's surface, assuming no change in
-elevation, so the bound won't even be as tight as it could be. Also
-I'll round up.</p>
-<hr>
-<h3>0.&#176; lat, 0.&#176; lon: 80 km</h3>
-<p>Every point that rounds, to the nearest degree, to a particular
-latitude and longitude, is within 80 kilometers of the exact
-intersection of those lines of latitude and longitude.</p>
-<h3>0.1&#176; lat, 0.1&#176; lon: 8 km</h3>
-<p>With one decimal place, you're within 8 km. This might already be
-precise enough to describe a large city.</p>
-<h3>0&#176; 59' lat, 0&#176; 59' lon: 1.4 km</h3>
-<p>Any point that is the same to the nearest minute in latitude and
-longitude is within 1.4 km of that position exactly.</p>
-<p>I recommend sticking with the decimal system.</p>
-<h3>0.12&#176; lat, 0.12&#176; lon: 800 m</h3>
-<p>Two decimal places of precision gets you within 800 meters.</p>
-<h3>0.123&#176; lat, 0.123&#176; lon: 80 m</h3>
-<p>Three decimal places will always be within 80 m of the point
-described. This is specific enough already for the smallest towns and
-even large buildings.</p>
-<h3>0&#176; 59' 59" lat, 0&#176; 59&#176; 59" lon: 22 m</h3>
-<p>When you have a location to the nearest second, it's within 22 m of
-that exact location.</p>
-<p>This is the annoying format that you get, for example, from the Apple
-Compass app. If your phone's location accuracy
-<a href="https://www.gps.gov/systems/gps/performance/accuracy/">is within 5 m</a>,
-then you likely have your location correct to the nearest second,
-though you may not. (Your phone reports more precise location values
-internally, as you can see on your map.)</p>
-<h3>0.1234&#176; lat, 0.1234&#176; lon: 8 m</h3>
-<p>Four decimal places is enough to specify pretty much any landmark.</p>
-<h3>0.12345&#176; lat, 0.12345&#176; lon: 80 cm</h3>
-<p>You probably consider everything within your five-digit
-latitude/longitude location your personal space. But also, at five
-decimal places of precision, my best guess is that error in the
-accuracy of your GPS is around the same size or greater than the error
-from using this many digits.</p>
-<h3>0.123456&#176; lat, 0.123456&#176; lon: 8 cm</h3>
-<p>You don't need six digits of precision for the locations of buildings;
-you need six digits of precision to describe where each plate is set
-on the dinner table.</p>
-<p>If you can measure your location as accurately as this, you have
-specialized equipment and probably know more about these kinds of
-error issues than I do.</p>
-<h3>0.1234567&#176; lat, 0.1234567&#176; lon: &lt; 1 cm</h3>
-<p>With seven digits of precision you can differentiate one marble from
-the marble next to it.</p>
-<h3>0.12345678&#176; lat, 0.12345678&#176; lon: &lt; 1 mm</h3>
-<p>Is latitude and longitude really your best choice of coordinate
-system?</p>
-<hr>
-<p>You can check out my calculations in <a href="latlon.ipynb">latlon.ipynb</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20180719-geolocation_precision_by_digit/</link>
-<guid>http://planspace.org/20180719-geolocation_precision_by_digit/</guid>
-<pubDate>Thu, 19 Jul 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
