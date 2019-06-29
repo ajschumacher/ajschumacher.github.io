@@ -7,6 +7,106 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Using Pipenv</title>
+<description><![CDATA[
+
+<p>If you use Python, you should use <a href="https://docs.pipenv.org/en/latest/">Pipenv</a> for
+environment/requirement management.</p>
+<hr>
+<h3>Installing</h3>
+<p>Do you have Pipenv installed? (Try <code>which pipenv</code>.) If you don't have
+it, install it:</p>
+<pre><code class="language-bash">$ pip install --user pipenv</code></pre>
+
+<p>Now you can read <code>pipenv --help</code>, but I'll continue to highlight
+common tasks.</p>
+<hr>
+<h3>Existing project</h3>
+<p>Is there an existing <code>Pipfile</code>? To get things installed, run this in
+the project directory:</p>
+<pre><code class="language-bash">$ pipenv sync</code></pre>
+
+<hr>
+<h3>New project</h3>
+<p>Starting a new project? There's no explicit "new" command, but you can
+do this:</p>
+<pre><code class="language-bash">$ pipenv --python 3.7</code></pre>
+
+<p>You can also skip that and just start installing things.</p>
+<p>Keep <code>Pipfile</code> and <code>Pipfile.lock</code> in version control.</p>
+<hr>
+<h3>Installing your requirements</h3>
+<p>Just use <code>pipenv</code> instead of <code>pip</code> (or other alternatives).</p>
+<pre><code class="language-bash">$ pipenv install some_cool_python_package</code></pre>
+
+<p><code>Pipfile</code> and <code>Pipfile.lock</code> will be kept up to date automatically.</p>
+<hr>
+<h3>Development requirements</h3>
+<p>Pipenv keeps dev packages (like <a href="https://www.pylint.org/">Pylint</a>, for
+example) separate. Just use the <code>--dev</code> flag:</p>
+<pre><code class="language-bash">$ pipenv install --dev some_cool_python_package
+$ pipenv sync --dev  # install base AND dev packages</code></pre>
+
+<hr>
+<h3>Running things</h3>
+<p>Just use <code>pipenv run</code> a lot.</p>
+<pre><code class="language-bash">pipenv run python whatever.py --etc</code></pre>
+
+<hr>
+<h3>That's it!</h3>
+<p>Pipenv does a lot for you, while requiring very little from you.</p>
+<p>I do have more thoughts though...</p>
+<hr>
+<h3>Why is it good?</h3>
+<p>Without Pipenv, maybe you track big-picture requirements in
+<code>setup.py</code>'s <code>install_requires</code>, and/or elsewhere. Maybe you have a
+<code>requirements.txt</code> so you have known-good exact versions of
+everything. Maybe another such file for dev requirements. And you
+probably have to remember to take separate actions to keep these all
+up to date and in sync. The pain! The mistakes!</p>
+<hr>
+<h3>Working directory</h3>
+<p>I don't generally love magic based on my current working directory,
+but Pipenv has won me over. I appreciate that it's explicit, at least.
+No environment variables get automatically changed when you change
+directories, for example. You have to run some <code>pipenv</code> command to do
+anything with the environment corresponding to where you are on disk.</p>
+<hr>
+<h3>History</h3>
+<p>I used to <a href="/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/">advocate for Pew</a>, so I was interested to see that Pipenv
+is a kind of descendant of Pew. Pipenv's implementation used to rely
+on Pew, even.</p>
+<p>You can get a shell in your project environment with <code>pipenv shell</code>
+and it seems to work more like <code>pew workon</code> than <code>source activate</code>.</p>
+<p>Perhaps the major workflow difference is that now <code>pipenv run</code> (like
+<code>pew in</code>) is commonly used, to the exclusion of changing your shell. I
+think this is a good thing in that it's more explicit and removes the
+risk of forgetting what the current state of your shell is.</p>
+<hr>
+<h3>Where's my venv, though?</h3>
+<p>Unless you mess with defaults, virtual environments are stored,
+consistent with <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>,
+in <code>~/.local/share/virtualenvs/</code>. They're associated with a Pipfile
+via a hash of its path.</p>
+<p>Here's a simplified version of <a href="https://github.com/pypa/pipenv/blob/08b35715c0b34461df184d907654250f60b5a0d7/pipenv/project.py#L376">the hashing</a>:</p>
+<pre><code class="language-python">import hashlib, base64
+
+def short_hash(path_to_pipfile):
+    hash = hashlib.sha256(path_to_pipfile.encode()).digest()[:6]
+    return base64.urlsafe_b64encode(hash)</code></pre>
+
+<p>So the venv for <code>/home/me/project/Pipfile</code> will be called
+<code>project-fPIxLfK7</code>. You can always check your project with <code>pipenv
+--venv</code>.</p>
+<p>This does mean that if you move or otherwise rename your project
+directory, Pipenv can lose track of your virtualenv &#8212; but it's super
+easy to just run <code>pipenv sync</code> and you're ready to go again.</p>    
+    ]]></description>
+<link>http://planspace.org/20190629-using_pipenv/</link>
+<guid>http://planspace.org/20190629-using_pipenv/</guid>
+<pubDate>Sat, 29 Jun 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Circe by Madeline Miller</title>
 <description><![CDATA[
 
@@ -1012,36 +1112,6 @@ general audience.</p>
 <link>http://planspace.org/20180823-machine_learning_deep_learning/</link>
 <guid>http://planspace.org/20180823-machine_learning_deep_learning/</guid>
 <pubDate>Thu, 23 Aug 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Land of Lisp</title>
-<description><![CDATA[
-
-<p><a href="http://landoflisp.com/">Land of Lisp</a> is an irresistibly fun <a href="https://common-lisp.net/">Common Lisp</a> book. The cartoon illustrations and "Learn to program in Lisp, one game at a time" subtitle don't fully suggest the depth of the content. Recursion is in Chapter 2, you write both <a href="https://www.graphviz.org/">Graphviz</a> and raw <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> for graphics, you code up a web server from scratch, and you write your own lazy evaluation and multiple <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>s with macros before the end of the book. With that much material, some glitches sneak in, but it's still a very nice book.</p>
-<p><img alt="Land of Lisp cover" src="land_of_lisp-cover.jpg"></p>
-<p>I've done a little bit with <a href="https://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a> and <a href="https://clojure.org/">Clojure</a>, but this was my first time learning anything much about Common Lisp. Thinking about languages through contrast (<a href="https://planspace.org/20141129-ruby_symbols_are_not_lisp_symbols/">one old example of mine</a>) is fun, and there's a good deal of that in Land of Lisp.</p>
-<p><img alt="Haskell/Lisp map" src="map.png"></p>
-<p>I really liked some of the organization/presentation of material. The Periodic Table of the Loop Macro on pages 200 and 201 was one striking example.</p>
-<p><img alt="Periodic Table of the Loop Macro" src="loop_table.png"></p>
-<p>The way the author <a href="https://en.wikipedia.org/wiki/Memoization">memoized</a> functions, by first defining the un-memoized version and then defining the memoized version with the same name, capturing the original function by <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">closure</a>, really tickled me.</p>
-<p>There was also reference to a Haskel functional-style "<a href="http://happs.org/">database</a>" that I thought was interesting. Maybe sort of like <a href="https://www.datomic.com/">Datomic</a>? And there were occasional references to other neat things; I may now read <a href="https://cs.brown.edu/~sk/Publications/Papers/Published/khmgpf-impl-use-plt-web-server-journal/">Implementation and Use of the PLT Scheme Web Server</a>, for example.</p>
-<p>I've thought about good ways to learn to program a little bit, even <a href="https://planspace.org/20150101-learn_to_code_with_emacs/">suggesting</a> that learning Emacs/Lisp might be good. Then at least you can use Emacs Lisp to customize your editor. I don't think I know of any current Common Lisp projects.</p>
-<p>It's nice when learning (and working with) a language to have a handy documentation system. Emacs Lisp <a href="https://planspace.org/20141230-use_info_in_emacs/">has this</a> in spades. In Python, I think beginners should know about, for example, <code>help()</code> and <code>dir()</code> very early. There's nothing like this covered in Land of Lisp. The only documentation referenced, as I recall, was the <a href="http://www.lispworks.com/documentation/HyperSpec/Front/">Common Lisp HyperSpec</a>, which doesn't seem very beginner-friendly.</p>
-<p>The most extremely anti-didactic bit of the book, however, has to be on page 382: "The only way to understand [these functions] is to stare at them for a long time." I think non-explanations like this are not likely to be helpful to anyone.</p>
-<p>Then there are little glitches in the book. I suspect the book kept expanding and editors were overwhelmed:</p>
-<ul>
-<li>The intro to Chapter 7 claims to include things that don't start until Chapter 8.</li>
-<li><code>sexp</code> is used in code but never <a href="https://en.wikipedia.org/wiki/S-expression">explained</a>, which I don't think is a good idea.</li>
-<li><code>pushnew</code> is used on page 149 but not explained until page 368.</li>
-<li>On page 445 it says "Restarts are discussed in Chapter 14," but they aren't.</li>
-<li>On page 450 a reference to Chapter 16 should be to Chapter 17.</li>
-</ul>
-<p>In the end the book can't cover everything. For example, the <a href="https://en.wikipedia.org/wiki/Common_Lisp_Object_System">Common Lisp Object System</a> is praised but not explained in enough detail for me to know why it's so great. That was particularly frustrating because I'd still love to see more about managing large projects in languages like Common Lisp or Clojure (with OO concepts or not).</p>
-<p>I liked the book a lot; it's great recreational reading for language breadth.</p>    
-    ]]></description>
-<link>http://planspace.org/20180812-land_of_lisp/</link>
-<guid>http://planspace.org/20180812-land_of_lisp/</guid>
-<pubDate>Sun, 12 Aug 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
