@@ -7,6 +7,24 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Expert Python Programming by Jaworski and Ziadé</title>
+<description><![CDATA[
+
+<p>The authors use "half a loaf is better than none" on page 545 in reference to <a href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor"><code>run_in_executor</code></a>, and that saying is also applicable to their book. <a href="https://www.packtpub.com/application-development/expert-python-programming-third-edition">Expert Python Programming</a> is not a good book, but it's also not entirely without value.</p>
+<p>The editing could be better. Either no native English speakers were involved, or they didn't have enough time to work with the Polish and French authors' prose. A next section promised on page 391 never appears. On page 546 there are two different next chapters. There's even a code block on page 576 that is printed with all the newlines stripped out.</p>
+<p>Beyond simple issues, explanation is sometimes poor or missing. The <a href="https://en.wikipedia.org/wiki/Token_bucket">token bucket</a> explanation is particularly unclear. They say that Python string concatenation is quadratic, but they don't explain <a href="https://stackoverflow.com/questions/44487537/why-does-naive-string-concatenation-become-quadratic-above-a-certain-length/44487738#44487738">why</a>. On page 496 they suggest that non-deterministic caching has been solved numerous times, so the reader can just go look on PyPI.</p>
+<p>The publication date of this third edition is April 2019, and yet there's no mention of <a href="/20190629-using_pipenv/">Pipenv</a>. They <a href="https://github.com/pytest-dev/pytest/issues/1629#issue-161422224">still</a> say py.test rather than pytest. They mention nose but not nose2. Chunks of the book refer to Python 3.5, while the cover promises 3.7.</p>
+<p>The perspective of the authors is unfamiliar to me, as when they say on page 187 that "Using binary bit-wise operations to combine options is common in Python."</p>
+<p>I'd like to be able to trust the completeness of a book like this. If it doesn't know about Pipenv, what else is it missing that should really be included?</p>
+<p>But it isn't all bad. I don't recall seeing the Python 3.7 <code>asyncio.run()</code>, but the larger-scale explanations of <a href="https://docs.python.org/3/library/asyncio.html"><code>asyncio</code></a> weren't awful. If I'm understanding properly, the interesting thing about <code>await</code> is that it <em>doesn't</em> wait, in the sense of blocking.</p>
+<p>So I'm not upset that I read the book. I suspect the authors are technically competent people who did the best they could with limited resources from <a href="https://www.packtpub.com/">Packt</a>. The book contains their take on things, and it broadened what I was aware of.</p>
+<p><img alt="cover" src="cover.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</link>
+<guid>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</guid>
+<pubDate>Sun, 07 Jul 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Using Pipenv</title>
 <description><![CDATA[
 
@@ -1052,66 +1070,6 @@ useful question.</p>
 <link>http://planspace.org/20181125-how_to_invent_everything/</link>
 <guid>http://planspace.org/20181125-how_to_invent_everything/</guid>
 <pubDate>Sun, 25 Nov 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Machine learning / Deep learning</title>
-<description><![CDATA[
-
-<p>I participated in a
-<a href="https://www.meetup.com/TechinMotionDC/events/252910659/">panel</a> on
-deep learning yesterday, so I thought about some of the introductory
-questions and wrote out my responses.</p>
-<hr>
-<h3>How would you define machine learning?</h3>
-<p>Machine learning is programming with examples instead of instructions.</p>
-<p>It's a way to get computers to do something: in that sense it's
-"programming." It's been called
-<a href="https://medium.com/@karpathy/software-2-0-a64152b37c35">Software 2.0</a>.</p>
-<p>Usually we program by writing explicit instructions, step by step.
-With machine learning, we program using examples, by which I mean
-data.</p>
-<p>Say that programming is writing functions, which is basically right. A
-function takes some input and returns some output.</p>
-<p><a href="https://en.wikipedia.org/wiki/Higher-order_programming">Higher-order programming</a>
-involves functions as the inputs and outputs of other functions, and
-machine learning is a specific kind of higher-order programming.</p>
-<p>Machine learning is done by a function that takes data (examples) as
-input and produces a function as output. Running that higher-order
-function is when machine learning takes place. We say that we learn a
-function.</p>
-<p>Sometimes learned functions are called models, and learning them is
-sometimes called training or fitting.</p>
-<p>There can also be functions that learn functions that learn functions,
-as in <a href="https://arxiv.org/abs/1611.01578">Neural Architecture Search</a>,
-which involves machine learning at multiple levels.</p>
-<h3>What is deep learning? What is the difference between deep learning and machine learning?</h3>
-<p>Deep learning is machine learning where the function you're learning
-has a particular style of implementation.</p>
-<p>In deep learning, the learned function has an internal implementation
-involving one or more intermediate representations.</p>
-<p>Aspects of these intermediate stages are sometimes called layers or
-activations.</p>
-<p>The number of layers is how we measure the depth of the model.</p>
-<p>I don't care to argue about how many layers you "need" to be "deep."
-As far as I'm concerned if there's more than zero intermediate
-representations, you can call it deep if you want to. But it's common
-to have five, ten, twenty, or more layers.</p>
-<p>Usually, but not always, when people talk about deep learning they're
-also talking about neural nets, and usually using
-<a href="https://en.wikipedia.org/wiki/Backpropagation">backpropagation</a>.</p>
-<p>The reason people care about deep learning is that it performs better
-than many machine learning alternatives on a lot of hard problems
-typically involving high-dimensional inputs, like images, audio, and
-text.</p>
-<hr>
-<p>Cassie Kozyrkov's <a href="https://www.youtube.com/watch?v=iLu9XyZ55oI">talk</a>
-has a number of useful metaphors for machine learning in practice and
-I found it helpful for thinking about how to explain things to a
-general audience.</p>    
-    ]]></description>
-<link>http://planspace.org/20180823-machine_learning_deep_learning/</link>
-<guid>http://planspace.org/20180823-machine_learning_deep_learning/</guid>
-<pubDate>Thu, 23 Aug 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

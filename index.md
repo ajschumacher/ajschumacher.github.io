@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-07-07: [Expert Python Programming by Jaworski and Ziadé](/20190707-expert_python_programming_by_jaworski_and_ziade/)
  * 2019-06-29: [Using Pipenv](/20190629-using_pipenv/)
  * 2019-06-26: [Circe by Madeline Miller](/20190626-circe_by_madeline_miller/)
  * 2019-06-17: [Aladdin translated by Yasmine Seale](/20190617-aladdin_translated_by_yasmine_seale/)
