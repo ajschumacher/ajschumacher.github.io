@@ -7,6 +7,28 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>SQL Performance Explained, by Winand</title>
+<description><![CDATA[
+
+<p>This is the printed version of "<a href="https://use-the-index-luke.com/">Use the index, Luke</a>." It avoids the Jedi goofiness&#8212;and the author's <a href="https://winand.at/static/markus_winand.Y-sfxgk9.jpg">unsettling gaze</a>. It's pretty good, especially for a self-published book, and it delivers on the promise of explaining, very accessibly, how SQL engines run.</p>
+<p>The mental model offered goes beyond just "index means \(O(log(n))\)," though there are the obligatory graphs showing linear vs. log growth. Winand describes tree traversal of indexes, but then also (depending on data and query) linked-list traversal, and how this relates to accessing data that isn't in the index, and connected trade-offs.</p>
+<p>The material starts rudimentary, but reaches details such as this, on page 140:</p>
+<blockquote>
+<p>"The Oracle database cannot read an index backwards in order to execute a pipelined <code>group by</code> that is followed by an <code>order by</code>."</p>
+</blockquote>
+<p>One of the most interesting things for me turned out to be the frequent comparisons and notes specific to SQL implementations. Very often the notes were explaining that MySQL didn't offer a particular feature, or that a feature was only available in Postgres. MS SQL Server and Oracle seem to be somewhere in the middle.</p>
+<p>The level of detail was also sufficient to make clear that declarative languages like SQL are not the panacea that they are sometimes made out to be. I hadn't realized, for example, that SQL engines make execution choices based on statistics they keep about the data they store, and that those statistics can be incorrect, leading to bad choices.</p>
+<p>Winand is also critical of <a href="https://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a>s that can lead to bad SQL. Though I didn't find these examples particularly compelling, I do think it's a related case of trading control for convenience.</p>
+<p>Also, the book comes with a bookmark, which is a laminated miniature of the cover.</p>
+<p><img alt="SQL Performance Explained cover" src="sql_cover.jpg"></p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20190727-sql_performance_explained_by_winand/</link>
+<guid>http://planspace.org/20190727-sql_performance_explained_by_winand/</guid>
+<pubDate>Sat, 27 Jul 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Expert Python Programming by Jaworski and Ziadé</title>
 <description><![CDATA[
 
@@ -1054,22 +1076,6 @@ useful question.</p>
 <link>http://planspace.org/20181204-worth_doing_even_if_it_fails/</link>
 <guid>http://planspace.org/20181204-worth_doing_even_if_it_fails/</guid>
 <pubDate>Tue, 04 Dec 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>How To Invent Everything</title>
-<description><![CDATA[
-
-<p><a href="http://www.howtoinventeverything.com/">How To Invent Everything</a> is like <a href="https://www.billnye.com/">Bill Nye</a> writing how-tos for <a href="https://www.youtube.com/channel/UCAL3JXZSzSm8AlZyD3nQdBA">Primitive Technology</a>, in the distinctive voice of <a href="https://www.qwantz.com/">Dinosaur Comics</a> writer and actual author <a href="https://en.wikipedia.org/wiki/Ryan_North">Ryan North</a>. It's fun!</p>
-<blockquote>
-<p>"Scientists are often seen as turbonerds, but the philosophical foundations of science are actually those of pure punk-rock anarchy: never respect authority, never take anyone's word on anything, and test all the things you <em>think</em> you know to confirm or deny them for yourself." (page 34)</p>
-</blockquote>
-<p>The book is a compendium of "<a href="http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html">You</a> <a href="http://www.ams.org/notices/200601/fea-chow.pdf">could</a> <a href="https://reprog.wordpress.com/2010/05/13/you-could-have-invented-git-and-maybe-you-already-have/">have</a> <a href="http://luis.impa.br/aulas/lectures/inventingTopology.pdf">invented</a>" <a href="http://blog.ezyang.com/2012/02/anatomy-of-you-could-have-invented/">articles</a> for everything from language to selective breeding to steel to the <a href="https://en.wikipedia.org/wiki/Pelton_wheel">pelton wheel</a> to computers. A lot of fun (and some dangerous) science fair projects could be adopted from these pages. Do you know how to make your own charcoal? Or that clover is a <a href="https://en.wikipedia.org/wiki/Legume">legume</a> useful in crop rotation? This book is chockablock with <a href="https://minecraft.gamepedia.com/Recipe">Minecraft recipes</a> for the real world.</p>
-<p>The "survival guide for the stranded time traveler" framing is amusing, but it's historical details (like the story of the <a href="https://en.wikipedia.org/wiki/Semmelweis_reflex">Semmelweis reflex</a>) that really add interest. There are a few <a href="http://www.howtoinventeverything.com/errata">errata</a> but overall this is the most easily recommendable book I've read in some time.</p>
-<p><img alt="How To Invent Everything cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20181125-how_to_invent_everything/</link>
-<guid>http://planspace.org/20181125-how_to_invent_everything/</guid>
-<pubDate>Sun, 25 Nov 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

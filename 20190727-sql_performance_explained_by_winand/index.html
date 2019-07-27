@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>SQL Performance Explained, by Winand</title>
+  </head>
+  <body>
+    <article>
+<h1>SQL Performance Explained, by Winand</h1>
+<p class="date">Saturday July 27, 2019</p>
+<p>This is the printed version of "<a href="https://use-the-index-luke.com/">Use the index, Luke</a>." It avoids the Jedi goofiness—and the author's <a href="https://winand.at/static/markus_winand.Y-sfxgk9.jpg">unsettling gaze</a>. It's pretty good, especially for a self-published book, and it delivers on the promise of explaining, very accessibly, how SQL engines run.</p>
+<p>The mental model offered goes beyond just "index means \(O(log(n))\)," though there are the obligatory graphs showing linear vs. log growth. Winand describes tree traversal of indexes, but then also (depending on data and query) linked-list traversal, and how this relates to accessing data that isn't in the index, and connected trade-offs.</p>
+<p>The material starts rudimentary, but reaches details such as this, on page 140:</p>
+<blockquote>
+<p>"The Oracle database cannot read an index backwards in order to execute a pipelined <code>group by</code> that is followed by an <code>order by</code>."</p>
+</blockquote>
+<p>One of the most interesting things for me turned out to be the frequent comparisons and notes specific to SQL implementations. Very often the notes were explaining that MySQL didn't offer a particular feature, or that a feature was only available in Postgres. MS SQL Server and Oracle seem to be somewhere in the middle.</p>
+<p>The level of detail was also sufficient to make clear that declarative languages like SQL are not the panacea that they are sometimes made out to be. I hadn't realized, for example, that SQL engines make execution choices based on statistics they keep about the data they store, and that those statistics can be incorrect, leading to bad choices.</p>
+<p>Winand is also critical of <a href="https://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a>s that can lead to bad SQL. Though I didn't find these examples particularly compelling, I do think it's a related case of trading control for convenience.</p>
+<p>Also, the book comes with a bookmark, which is a laminated miniature of the cover.</p>
+<p><img alt="SQL Performance Explained cover" src="sql_cover.jpg" /></p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
