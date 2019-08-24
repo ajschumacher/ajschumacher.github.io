@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The $100 Startup</title>
+<description><![CDATA[
+
+<p>Maybe I should stop reading books based just on what's in local Little
+Free Libraries. Regardless, <em>The $100 Startup</em> was a fine vacation
+read: light on content but interesting enough to inspire some thought.</p>
+<p>The core of Chris Guillebeau's book (and brand overall, it seems) is
+wish fulfillment along the lines of
+<a href="/2011/03/14/listened-to-four-hour-work-week/">The Four-Hour Work Week</a>
+(referenced indirectly on page 123) or
+<a href="/20180122-why_the_rich_are_getting_richer/">Why the Rich are Getting Richer</a>.
+He's a self-help guy: his success is in capturing imaginations.</p>
+<p>The encouragement is nice, and generally less irresponsible than that
+of some of his peers. Guillebeau currently seems to be recommending
+"side hustles" rather than quitting your job outright. The book is
+still a bit cavalier in places, as on page 170 where it nearly
+endorses auto loan fraud as a startup funding method.</p>
+<p>Health insurance is on pages 236-237. There "self-insured" means
+"uninsured" and one individual says "My health-care plan involves
+prayer, vitamins, and avoiding sharp objects." Aside from the national
+crisis of the US healthcare system, this section speaks to the reality
+that many entrepreneurs just aren't doing terribly well.</p>
+<p>There's an acknowledgement on page 247: "The fact is that the majority
+of people don't own their own business." There are good economic
+reasons for this, based on efficiency and risk reduction. It's fun to
+think about, along with whether it needs to be true for you.</p>
+<p><img alt="The $100 Startup cover" src="startup.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20190824-100_startup/</link>
+<guid>http://planspace.org/20190824-100_startup/</guid>
+<pubDate>Sat, 24 Aug 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>SQL Performance Explained, by Winand</title>
 <description><![CDATA[
 
@@ -1052,30 +1085,6 @@ error bars.</p>
 <link>http://planspace.org/20181209-brain_rules_for_baby/</link>
 <guid>http://planspace.org/20181209-brain_rules_for_baby/</guid>
 <pubDate>Sun, 09 Dec 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Is it worth doing even if it fails?</title>
-<description><![CDATA[
-
-<p>Many things can "succeed" or "fail." Avoid anything that isn't worth
-doing even if it fails.</p>
-<p>If two tasks each have a probability of success and payout, but one is
-worth doing regardless of success and one is only about payout, it
-almost doesn't matter what the probabilities and payouts are. One
-guarantees a good use of time.</p>
-<p>This filter also averts unhealthy fixation on "winning" and excessive
-disappointment with "losing." It lets you focus on the task itself,
-which is the right focus.</p>
-<p>You can't always choose what you have to do. But you can try to find
-or create value even in endeavors you wouldn't otherwise choose.</p>
-<p>Asking "Is it worth doing even if it fails?" encourages healthy things
-like sports, discourages antisocial things like fraud, and provides a
-positive direction to move everything in between. I think it's a
-useful question.</p>    
-    ]]></description>
-<link>http://planspace.org/20181204-worth_doing_even_if_it_fails/</link>
-<guid>http://planspace.org/20181204-worth_doing_even_if_it_fails/</guid>
-<pubDate>Tue, 04 Dec 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
