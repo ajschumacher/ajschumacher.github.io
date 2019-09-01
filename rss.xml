@@ -7,6 +7,64 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The AWK Programming Language</title>
+<description><![CDATA[
+
+<p>The 1988 <a href="https://en.wikipedia.org/wiki/The_AWK_Programming_Language">book</a> on <a href="https://en.wikipedia.org/wiki/AWK"><code>awk</code></a> by Aho, Weinberger, and Kernighan is as good as everyone says, and I will highly recommend it for programmers and data science folks.</p>
+<p>Specialized tools <a href="/2013/05/21/command-line-data-manipulation/">like <code>cut</code> and <code>bc</code></a> handle many simple tasks, and general languages like Python can do pretty complicated things. For a long time I avoided properly learning <code>awk</code>, perhaps because I didn't understand that it fills such a useful space between those two extremes, and that the learning curve is really reasonable.</p>
+<p>Awk is good at processing lines of delimited text quickly and easily, with defaults that are often convenient. For example, here's adding a <a href="https://en.wikipedia.org/wiki/Body_mass_index">BMI</a> column to <a href="biostats.csv">this file</a> I <a href="https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html">found</a>:</p>
+<pre><code class="language-bash">cat biostats.csv | awk -F, 'NR == 1 {print $0, ",BMI"} \
+                            NR &gt; 1 {print $0, "," ($5/2.205) / ($4/39.37)^2}'</code></pre>
+
+<p>That would probably take more effort with most other tools.</p>
+<p>Unfortunately <code>awk</code> doesn't make it very easy to deal with some complications that can show up in CSV (quoting, newlines inside fields, etc.). A Python project called <a href="https://github.com/alecthomas/pawk"><code>pawk</code></a> looks like it could be the answer, if you don't mind installing it and using Python syntax.</p>
+<p>Here's the conclusion from the book:</p>
+<blockquote>
+<p>Awk is not a solution to every programming problem, but it's an
+indispensible part of a programmer's toolbox, especially on Unix,
+where easy connection of tools is a way of life. Although the larger
+examples in the book might give a different impression, most awk
+programs are short and simple and do tasks the language was
+originally meant for: counting things, converting data from one form
+to another, adding up numbers, extracting information for reports.</p>
+<p>For tasks like these, where program development time is more
+important than run time, awk is hard to beat. The implicit input
+loop and the pattern-action paradigm simplify and often entirely
+eliminate control flow. Field splitting parses the most common forms
+of input, while numbers and strings and the coercions between them
+handle the most common data types. Associative arrays provide both
+conventional array storage and the much richer possibilities of
+arbitrary subscripts. Regular expressions are a uniform notation for
+describing patterns of text. Default initialization and the absence
+of declarations shorten programs.</p>
+<p>What we did not anticipate were the less conventional applications.
+For example, the transition from "not programming" to "programming"
+is quite gradual: the absence of the syntactic baggage of
+conventional languages like C or Pascal makes awk easy enough to
+learn that it has been the first language for a surprising number of
+people.</p>
+<p>The features added in 1985, especially the ability to define
+functions, have led to a variety of unexpected applications, like
+small database systems and compilers for little languages. In many
+cases, awk is used for a prototype, an experiment to demonstrate
+feasibility and to play with features and user interfaces, although
+sometimes the awk program remains the production version. Awk has
+even been used for software engineering courses, because it's
+possible to experiment with designs much more readily than with
+larger languages.</p>
+<p>Of course, one must be wary of going too far &#8212; any tool can be
+pushed beyond its limits &#8212; but many people have found awk to be
+valuable for a wide range of problems. We hope we have suggested
+ways in which awk might be useful to you as well.</p>
+</blockquote>
+<p>They take <code>awk</code> pretty far in the book, and it's delightful to see, even if you only end up using <code>awk</code> for simpler things like my example above.</p>
+<p><img alt="AWK book cover" src="awk_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20190901-awk_programming_language/</link>
+<guid>http://planspace.org/20190901-awk_programming_language/</guid>
+<pubDate>Sun, 01 Sep 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The $100 Startup</title>
 <description><![CDATA[
 
@@ -1025,66 +1083,6 @@ error bars.</p>
 <link>http://planspace.org/20181226-gaussian_processes_are_not_so_fancy/</link>
 <guid>http://planspace.org/20181226-gaussian_processes_are_not_so_fancy/</guid>
 <pubDate>Wed, 26 Dec 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Brain Rules for Baby</title>
-<description><![CDATA[
-
-<p>To be a good parent, be a good person. The core recommendations on "How to raise a smart and happy child from zero to five" are empathy and understanding emotion.</p>
-<blockquote>
-<p>"Human learning ... is primarily a relational exercise." (page 111)</p>
-</blockquote>
-<p>Medina aims for objective reasonableness, and it's usually easy for me to agree.</p>
-<p>For the abbreviated book (and a few extra nuggets) check out the 15 pages of "practical tips" starting on page 287. Here's my summary of recommendations:</p>
-<p>When someone is in an emotional state, use "the empathy reflex" (page 83):</p>
-<ol>
-<li>Describe the emotional changes you think you see.</li>
-<li>Make a guess as to where those emotional changes come from.</li>
-</ol>
-<p>This is like a flip of "<a href="https://en.wikipedia.org/wiki/I-message">I statements</a>."</p>
-<p>After empathy, the second major focus is on understanding emotion: talking about emotions, accepting them as natural, and (eventually) not being ruled by them.</p>
-<p>There are lots of concrete recommendations:</p>
-<ul>
-<li>(During pregnancy) Gain appropriate weight, eat a balanced diet, exercise moderately, reduce stress.</li>
-<li>Breast-feed for a year.</li>
-<li>Talk to your baby a lot.</li>
-<li>Praise effort, not IQ (encourage a growth mindset).</li>
-<li>Use "authoritative parenting" which is "demanding and warm" and involves:<ul>
-<li>Clear, consistent rules and rewards</li>
-<li>Swift punishment</li>
-<li>Rules that are explained</li>
-</ul>
-</li>
-<li>(Your child should) Watch no TV before age two.</li>
-<li>(Your child should) Exercise frequently.</li>
-<li>(Your child should) Play a lot in open-ended ways, such as the "mature dramatic play" of <a href="https://toolsofthemind.org/">Tools of the Mind</a>, which may involve making a "play plan."</li>
-<li>(Your child should) Learn sign language.</li>
-<li>(Your child should) Study a musical instrument for ten years.</li>
-</ul>
-<p>Medina gives a very reasonable presentation of intelligence and IQ, including this historical tidbit on how we got the term "Intelligence Quotient" in the first place:</p>
-<blockquote>
-<p>"The score was the ratio of a child's mental age to his or her chronological age, multiplied by 100. So a 10-year-old who could solve problems normally solved only by 15-year-olds had an IQ of 150: (15/10) X 100." (page 95)</p>
-</blockquote>
-<p>On page 100 we get five ingredients of human intelligence stew, which I like:</p>
-<ul>
-<li>The desire to explore</li>
-<li>Self-control</li>
-<li>Creativity</li>
-<li>Verbal communication</li>
-<li>Interpreting nonverbal communication</li>
-</ul>
-<p>The associating, questioning, observing, experimenting, and networking from an old Harvard Business Review article on "<a href="https://hbr.org/2009/12/the-innovators-dna">Innovators DNA</a>" get woven in, and it's not awful.</p>
-<p>Three last details I enjoyed:</p>
-<ul>
-<li>Episodic memory is a distinct kind of memory, and may be particularly useful for creative thinking. (page 106) Maybe consciously draw on it when brainstorming?</li>
-<li>There's a test of creativity called the <a href="https://en.wikipedia.org/wiki/Torrance_Tests_of_Creative_Thinking">Torrance Tests of Creative Thinking</a>. (page 107) It's mostly things like "how many uses can you come up with for X?"</li>
-<li>There's a Harvard-developed test of morality, now at <a href="http://www.moralsensetest.com/">moralsensetest.com</a>. (page 222) It's mostly variations on <a href="https://en.wikipedia.org/wiki/Trolley_problem">the trolley problem</a>.</li>
-</ul>
-<p><img alt="Brain Rules for Baby cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20181209-brain_rules_for_baby/</link>
-<guid>http://planspace.org/20181209-brain_rules_for_baby/</guid>
-<pubDate>Sun, 09 Dec 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

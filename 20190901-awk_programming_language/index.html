@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>The AWK Programming Language</title>
+  </head>
+  <body>
+    <article>
+<h1>The AWK Programming Language</h1>
+<p class="date">Sunday September  1, 2019</p>
+<p>The 1988 <a href="https://en.wikipedia.org/wiki/The_AWK_Programming_Language">book</a> on <a href="https://en.wikipedia.org/wiki/AWK"><code>awk</code></a> by Aho, Weinberger, and Kernighan is as good as everyone says, and I will highly recommend it for programmers and data science folks.</p>
+<p>Specialized tools <a href="/2013/05/21/command-line-data-manipulation/">like <code>cut</code> and <code>bc</code></a> handle many simple tasks, and general languages like Python can do pretty complicated things. For a long time I avoided properly learning <code>awk</code>, perhaps because I didn't understand that it fills such a useful space between those two extremes, and that the learning curve is really reasonable.</p>
+<p>Awk is good at processing lines of delimited text quickly and easily, with defaults that are often convenient. For example, here's adding a <a href="https://en.wikipedia.org/wiki/Body_mass_index">BMI</a> column to <a href="biostats.csv">this file</a> I <a href="https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html">found</a>:</p>
+<pre><code class="language-bash">cat biostats.csv | awk -F, 'NR == 1 {print $0, ",BMI"} \
+                            NR > 1 {print $0, "," ($5/2.205) / ($4/39.37)^2}'</code></pre>
+
+<p>That would probably take more effort with most other tools.</p>
+<p>Unfortunately <code>awk</code> doesn't make it very easy to deal with some complications that can show up in CSV (quoting, newlines inside fields, etc.). A Python project called <a href="https://github.com/alecthomas/pawk"><code>pawk</code></a> looks like it could be the answer, if you don't mind installing it and using Python syntax.</p>
+<p>Here's the conclusion from the book:</p>
+<blockquote>
+<p>Awk is not a solution to every programming problem, but it's an
+indispensible part of a programmer's toolbox, especially on Unix,
+where easy connection of tools is a way of life. Although the larger
+examples in the book might give a different impression, most awk
+programs are short and simple and do tasks the language was
+originally meant for: counting things, converting data from one form
+to another, adding up numbers, extracting information for reports.</p>
+<p>For tasks like these, where program development time is more
+important than run time, awk is hard to beat. The implicit input
+loop and the pattern-action paradigm simplify and often entirely
+eliminate control flow. Field splitting parses the most common forms
+of input, while numbers and strings and the coercions between them
+handle the most common data types. Associative arrays provide both
+conventional array storage and the much richer possibilities of
+arbitrary subscripts. Regular expressions are a uniform notation for
+describing patterns of text. Default initialization and the absence
+of declarations shorten programs.</p>
+<p>What we did not anticipate were the less conventional applications.
+For example, the transition from "not programming" to "programming"
+is quite gradual: the absence of the syntactic baggage of
+conventional languages like C or Pascal makes awk easy enough to
+learn that it has been the first language for a surprising number of
+people.</p>
+<p>The features added in 1985, especially the ability to define
+functions, have led to a variety of unexpected applications, like
+small database systems and compilers for little languages. In many
+cases, awk is used for a prototype, an experiment to demonstrate
+feasibility and to play with features and user interfaces, although
+sometimes the awk program remains the production version. Awk has
+even been used for software engineering courses, because it's
+possible to experiment with designs much more readily than with
+larger languages.</p>
+<p>Of course, one must be wary of going too far — any tool can be
+pushed beyond its limits — but many people have found awk to be
+valuable for a wide range of problems. We hope we have suggested
+ways in which awk might be useful to you as well.</p>
+</blockquote>
+<p>They take <code>awk</code> pretty far in the book, and it's delightful to see, even if you only end up using <code>awk</code> for simpler things like my example above.</p>
+<p><img alt="AWK book cover" src="awk_cover.jpg" /></p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

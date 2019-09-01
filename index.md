@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-09-01: [The AWK Programming Language](/20190901-awk_programming_language/)
  * 2019-08-24: [The $100 Startup](/20190824-100_startup/)
  * 2019-07-27: [SQL Performance Explained, by Winand](/20190727-sql_performance_explained_by_winand/)
  * 2019-07-07: [Expert Python Programming by Jaworski and Ziadé](/20190707-expert_python_programming_by_jaworski_and_ziade/)
