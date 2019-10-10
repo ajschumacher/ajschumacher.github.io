@@ -7,6 +7,40 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Influence, by Cialdini</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Influence:_Science_and_Practice">Influence: Science and Practice</a> is a sort of cross between <a href="/2011/03/05/how-to-win-friends-and-influence-people/">How to Win Friends and Influence People</a> and <a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a>. Originally published well before Kahneman's popular book, it cites some of his earlier work. <em>Influence</em> describes six principles used by "compliance professionals," a category rather broader than "marketers."</p>
+<ol>
+<li>Reciprocation</li>
+<li>Commitment/Consistency</li>
+<li>Social proof</li>
+<li>Liking</li>
+<li>Authority</li>
+<li>Scarcity</li>
+</ol>
+<p>I believe it was this book that popularized the term "social proof"&#8212;<em>Influence</em> has been influential. I heard about the book in <a href="/20190824-100_startup/">The $100 Startup</a>.</p>
+<p>The tone can be militant. The principles are called "weapons of influence" and the examples include the Jonestown Massacre and techniques used on American prisoners during the Korean War. Referring to "boycott, threat, confrontation, censure, tirade, nearly anything to retaliate," Cialdini says "I don't consider myself pugnacious by nature, but I actively advocate such beligerent actions because in a way I am at war with the exploiters."</p>
+<blockquote>
+<p>I have recently become impressed by evidence suggesting that the
+form and pace of modern life is not allowing us to make fully
+thoughtful decisions, even on many personally relevant topics. That
+is, sometimes the issues may be so complicated, the time so tight,
+the distractions so intrusive, the emotional arousal so strong, or
+the mental fatigue so deep that we are in no cognitive condition to
+operate mindfully.</p>
+</blockquote>
+<p>Largely a collection of anecdotes and research results presented as stories, <em>Influence</em> plays hard into the tendency of readers to reason from the specific to the general. This includes at least one example I know to be at least partially debunked in connection with <a href="https://en.wikipedia.org/wiki/Murder_of_Kitty_Genovese">the bystander effect</a>.</p>
+<p>In connection with the "Liking" principle, I was interested to learn something I hadn't been aware of previously about the <a href="https://en.wikipedia.org/wiki/Jigsaw_(teaching_technique)">jigsaw</a> teaching technique: that it was designed "to help weaken racial cliques in forcibly integrated schools." I feel like I should have known that earlier!</p>
+<p>One other fun connection was to the machine learning idea of <a href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>. Kahneman's automatic "<a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow#Two_systems">system one</a>" thinking is helpful but can lead to errors, often because it focuses on just one feature of a situation. Biological intelligence is sometimes held up as not having any drawbacks of ML, but it's interesting to draw this parallel.</p>
+<p>This book was first published in 1984. I read the fifth edition, which has been updated so that on page 219 there's a picture of an Apple store with a caption about "the china department of Harrod's." <a href="https://en.wikipedia.org/wiki/Robert_Cialdini">Cialdini</a> is 74 now. His book has been successful.</p>
+<p><img alt="Influence cover" src="influence.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20191009-influence_by_cialdini/</link>
+<guid>http://planspace.org/20191009-influence_by_cialdini/</guid>
+<pubDate>Wed, 09 Oct 2019 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>How to be Miserable, by Paterson</title>
 <description><![CDATA[
 
@@ -886,58 +920,6 @@ help many more people.</p>
 <link>http://planspace.org/20181228-the_equation_of_a_plane/</link>
 <guid>http://planspace.org/20181228-the_equation_of_a_plane/</guid>
 <pubDate>Fri, 28 Dec 2018 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Whole-Brain Child</title>
-<description><![CDATA[
-
-<p>The advice of this book overlaps substantially with that in
-<a href="/20181209-brain_rules_for_baby/">Brain Rules for Baby</a>. In
-comparison, the science here feels less rigorous, but the advice still
-seems reasonable. There's more focus on memory, which I mostly like.</p>
-<blockquote>
-<p>"... children whose parents talk with them about their experiences
-tend to have better access to the memories of those experiences."
-(page 8)</p>
-</blockquote>
-<p>If there's an overall theme, it is a kind of Western presentation of a
-<a href="https://en.wikipedia.org/wiki/Middle_Way">middle way</a> between logic
-and emotion, then between reactive thought and higher executive
-function (shades of
-<a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a>).
-There's a kind of meditative concept they call
-<a href="https://www.drdansiegel.com/about/mindsight/">mindsight</a>.</p>
-<p>The way they think about human development reminds me a little bit of
-Montessori's "spontaneous discipline" - people become better.</p>
-<blockquote>
-<p>"As you create a whole-brain family, you also join a broader vision
-of creating an entire society full of rich, relational communities
-where emotional well-being is nurtured for this and future
-generations." (page 148)</p>
-</blockquote>
-<p>Here are their "12 revolutionary strategies to nurture your child's
-developing mind":</p>
-<ol>
-<li>Connect and redirect: Surfing emotional waves</li>
-<li>Name it to tame it: Telling stories to calm big emotions</li>
-<li>Engage, don't enrage: Appealing to the upstairs brain</li>
-<li>Use it or lose it: Exercising the upstairs brain</li>
-<li>Move it or lose it: Moving the body to avoid losing the mind</li>
-<li>Use the remote of the mind: Replaying memories</li>
-<li>Remember to remember: Making recollection a part of your family's daily life</li>
-<li>Let the clouds of emotion roll by: Teaching that feelings come and go</li>
-<li>SIFT (Sensations, Images, Feelings, Thoughts): Paying attention to what's going on inside</li>
-<li>Exercise mindsight: Getting back to the hub</li>
-<li>Increase the family fun factor: Making a point to enjoy each other</li>
-<li>Connect through conflict: Teach kids to argue with a "we" in mind</li>
-</ol>
-<p>There's also a one-page (front and back) "refrigerator sheet" at the
-back of the book, which is cute.</p>
-<p><img alt="cover of The Whole-Brain Child" src="whole_brain_child_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20181227-the_whole_brain_child/</link>
-<guid>http://planspace.org/20181227-the_whole_brain_child/</guid>
-<pubDate>Thu, 27 Dec 2018 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
