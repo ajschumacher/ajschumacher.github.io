@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Event Sourcing](https://www.meetup.com/Joy-of-Programming-DC/events/xpnxbpyzmbgb/) at [The Joy of Programming meetup](https://www.meetup.com/Joy-of-Programming-DC/) on Wednesday September 4, 2019
  * Data Science Hiring Panel at [General Assembly DC](https://generalassemb.ly/locations/washington-dc) on Thursday May 2, 2019
  * Action and Analysis in the 2018 NY Senate District 5 Election (lightning talk) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Thursday March 14, 2019](https://www.meetup.com/Data-Science-DC/events/259302275/)
  * [Deep Learning Tech Panel](/20180823-machine_learning_deep_learning/) at [WeWork White House](https://www.wework.com/buildings/white-house--washington-DC) on [Wednesday August 22, 2018](https://www.meetup.com/TechinMotionDC/events/252910659/)
