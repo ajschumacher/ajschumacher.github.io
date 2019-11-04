@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Q-Learning Tic-Tac-Toe, Briefly</title>
+  </head>
+  <body>
+    <article>
+<h1>Q-Learning Tic-Tac-Toe, Briefly</h1>
+<p class="date">Sunday November  3, 2019</p>
+<p><a href="https://en.wikipedia.org/wiki/Tic-tac-toe">Tic-tac-toe</a> doesn't call for <a href="/20171114-deep_rl/">reinforcement learning</a>, except as
+an exercise or illustration. Recently, I saw several examples
+implementing <a href="https://en.wikipedia.org/wiki/Q-learning">Q-learning</a>, all of which were rather long. I thought
+I'd give tic-tac-toe with Q-learning a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20191103-q_learning_tic_tac_toe_briefly/q_learning_tic_tac_toe.ipynb">try</a> myself, using Python
+and TensorFlow, aiming for brevity.</p>
+<p>The board is represented with a matrix, where zero means empty.</p>
+<pre><code class="language-python">def new_board(size):
+    return np.zeros(shape=(size, size))</code></pre>
+
+<p>Moves are represented by their coordinates, like <code>[0, 0]</code> for the
+upper left.</p>
+<pre><code class="language-python">def available_moves(board):
+    return np.argwhere(board == 0)</code></pre>
+
+<p>The first player is <code>+1</code> and the second player is <code>-1</code>, so having
+three in a row means getting a row, column, or diagonal to sum to <code>+3</code>
+or <code>-3</code>, respectively.</p>
+<pre><code class="language-python">def check_game_end(board):
+    best = max(list(board.sum(axis=0)) +    # columns
+               list(board.sum(axis=1)) +    # rows
+               [board.trace()] +            # main diagonal
+               [np.fliplr(board).trace()],  # other diagonal
+               key=abs)
+    if abs(best) == board.shape[0]:  # assumes square board
+        return np.sign(best)  # winning player, +1 or -1
+    if available_moves(board).size == 0:
+        return 0  # a draw (otherwise, return None by default)</code></pre>
+
+<p>Q-learning will require some state, so a player will be an object with
+a <code>move</code> method that takes a board and returns the coordinates of the
+chosen move. Here's a random player:</p>
+<pre><code class="language-python">class RandomPlayer(Player):
+    def move(self, board):
+        return random.choice(available_moves(board))</code></pre>
+
+<p>This is sufficient for the game loop, starting from any initial board:</p>
+<pre><code class="language-python">def play(board, player_objs):
+    player = +1
+    game_end = check_game_end(board)
+    while game_end is None:
+        move = player_objs[player].move(board)
+        board[tuple(move)] = player
+        game_end = check_game_end(board)
+        player *= -1  # switch players
+    return game_end</code></pre>
+
+<p>So this plays out a game between two random players and gives the
+result:</p>
+<pre><code class="language-python">play(new_board(3), {+1: RandomPlayer(), -1: RandomPlayer()})</code></pre>
+
+<p>Playing out 10,000 games, it's clear that the first random player is
+more likely to win, and also that results can vary a good deal even
+when averaging over 500 games.</p>
+<p><img alt="3x3 tic-tac-toe, two random players" src="img/3x3random-random.png" /></p>
+<p>Here's a boring player that chooses the first available move from left
+to right, top to bottom:</p>
+<pre><code class="language-python">class BoringPlayer(Player):
+    def move(self, board):
+        return available_moves(board)[0]</code></pre>
+
+<p>Games between boring players always end the same way. The comparison
+with the random player is more interesting. This table give results
+for 10,000 games per row:</p>
+<pre><code>| Size | First Player | Second Player | Draw |
+|------|--------------|---------------|------|
+| 3x3  | Random: 59%  | Random: 29%   | 12%  |
+| 3x3  | Boring: 78%  | Random: 18%   |  4%  |
+| 3x3  | Random: 52%  | Boring: 44%   |  4%  |</code></pre>
+
+<p>The boring player does better than a random player whether it plays
+first or second. Now we have multiple "baselines." A learning agent
+should do better than the baselines.</p>
+<p>The Q-learning player starts with a neural network that takes a board
+as input and produces an estimate of how good each move is from that
+position: Q-values.</p>
+<pre><code class="language-python">class Agent(Player):
+    def __init__(self, size):
+        self.size = size
+        self.model = tf.keras.Sequential()
+        self.model.add(tf.keras.layers.Dense(size**2))
+        self.model.compile(optimizer='sgd', loss='mean_squared_error')</code></pre>
+
+<p>A couple helper methods make the interface nicer for using and
+training the neural net. (There may be a better way of achieving
+this.)</p>
+<pre><code class="language-python">    def predict_q(self, board):
+        return self.model.predict(
+            np.array([board.ravel()])).reshape(self.size, self.size)
+
+    def fit_q(self, board, q_values):
+        self.model.fit(
+            np.array([board.ravel()]), np.array([q_values.ravel()]), verbose=0)</code></pre>
+
+<p>The Q-learning agent preserves some history, which is reset when a new
+game starts.</p>
+<pre><code class="language-python">    def new_game(self):
+        self.last_move = None
+        self.board_history = []
+        self.q_history = []</code></pre>
+
+<p>The <code>move</code> method uses the Q-network to choose the best available move
+and then calls the <code>reward</code> method to operationalize Q-learning's
+<a href="https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation">Bellman equation</a>.</p>
+<pre><code class="language-python">    def move(self, board):
+        q_values = self.predict_q(board)
+        temp_q = q_values.copy()
+        temp_q[board != 0] = temp_q.min() - 1  # no illegal moves
+        move = np.unravel_index(np.argmax(temp_q), board.shape)
+        value = temp_q.max()
+        if self.last_move is not None:
+            self.reward(value)
+        self.board_history.append(board.copy())
+        self.q_history.append(q_values)
+        self.last_move = move
+        return move</code></pre>
+
+<p>The <code>reward</code> method trains the Q-network, updating a previous estimate
+of Q-values with a new estimate for the last chosen move.</p>
+<pre><code class="language-python">    def reward(self, reward_value):
+        new_q = self.q_history[-1].copy()
+        new_q[self.last_move] = reward_value
+        self.fit_q(self.board_history[-1], new_q)</code></pre>
+
+<p>Using a <code>play</code> function that resets games and delivers a reward of
+<code>+1</code> for wins and <code>-1</code> for losses and draws (see the full
+<a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20191103-q_learning_tic_tac_toe_briefly/q_learning_tic_tac_toe.ipynb">notebook</a>), a Q-learning agent plays a random agent:</p>
+<p><img alt="3x3 tic-tac-toe, q-learning vs. random player" src="img/3x3qlearn-random.png" /></p>
+<p>The Q-learning player quickly achieves much stronger play than the
+baselines.</p>
+<pre><code>| Size | First Player | Second Player | Draw |
+|------|--------------|---------------|------|
+| 3x3  | Random:  59% | Random:  29%  | 12%  |
+| 3x3  | Boring:  78% | Random:  18%  |  4%  |
+| 3x3  | Random:  52% | Boring:  44%  |  4%  |
+| 3x3  | Q-Learn: 93% | Random:   6%  |  1%  |
+| 3x3  | Random:  21% | Q-Learn: 78%  |  1%  |</code></pre>
+
+<p>(For Q-learning players, they play 10,000 games while learning and
+then another 10,000 games while frozen to evaluate their performance
+level after learning, which is what's shown in the table.)</p>
+<p>And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
+100 lines of code.</p>
+<hr />
+<h3>Ideas for doing more</h3>
+<ul>
+<li>The Q-learning player didn't achieve a "perfect" strategy in which
+   it never loses. Why not? Can you fix it? Further ideas below may
+   contribute to a solution.</li>
+<li>You can write your own perfect tic-tac-toe player, or use a package
+   like <a href="https://github.com/dwayne/xo-python">xo</a>. How does the Q-learning player do against a perfect
+   player?</li>
+<li>The initialization of the network and the play of the random
+   opponent vary from run to run. How consistent are results? How do
+   they vary? What source of randomness matters more?</li>
+<li>Draws require nine moves, but it's possible to win in five. How
+   does game length vary by player strategy and over the course of
+   training the Q-learning player?</li>
+<li>The Q-learning algorithm here is simplified, with no reward decay,
+   for example. Can you re-complicate the algorithm and perhaps
+   achieve shorter game lengths?</li>
+<li>There is no explicit exploration mechanism in the Q-learning
+   algorithm here. Can you add one and improve performance?</li>
+<li>What happens when the Q-learning player plays against the boring
+   player, and what does this suggest?</li>
+<li>What happens when a Q-learning player plays against one type of
+   player, and then faces a different player? How can this vary and
+   what does it suggest?</li>
+<li>None of the players in these implementations are ever told which
+   player they are, and none of them explicitly work it out for
+   themselves, though this is possible. How does a Q-learning player
+   that has played as first player do when made to play as second
+   player instead? Can you improve this?</li>
+<li>How effective is self-play (Q-learning player vs. another
+   Q-learning player)?</li>
+<li>Can you quantify the sample efficiency of the Q-learning algorithm,
+   which should capture how many games or moves the algorithm needs to
+   learn a good strategy?</li>
+<li>There are lots of enhancements to Q-learning, for example
+   <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.PDF">experience replay</a>. Can you improve sample efficiency using such
+   a mechanism?</li>
+<li>There are symmetries in the tic-tac-toe board; can you take
+   advantage of these?</li>
+<li>The neural network used here is very simple. It is not at all
+   "deep," for example. Does a more sophisticated network architecture
+   give better results?<ul>
+<li>Convolutional filters are useful in neural networks for
+   computer vision. Can this kind of domain-specific approach
+   inform an architecture design specialized for tic-tac-toe?</li>
+</ul>
+</li>
+<li>Lots of defaults are used in the implementation here, for example
+   for the neural network's learning rate. Can you find better values?</li>
+<li>The rewards for a loss and a tie are both <code>-1</code> in the
+   implementation here. What happens when ties aren't as bad as
+   losses? Is zero a good reward for a tie?</li>
+<li>The code shown here aims to be brief. Is this good or bad for
+   readability, maintainability, and extensibility? Are other
+   characteristics also important? How can you improve the code?</li>
+<li>Experiment with different board sizes:</li>
+</ul>
+<pre><code>| Size | First Player | Second Player | Draw |
+|------|--------------|---------------|------|
+| 3x3  | Random: 59%  | Random: 29%   | 12%  |
+| 4x4  | Random: 31%  | Random: 27%   | 42%  |
+| 5x5  | Random: 25%  | Random: 15%   | 60%  |</code></pre>
+
+<p>As the board gets bigger, the advantage of going first decreases and
+the probability of a draw goes up considerably.</p>
+<p>It also takes a good deal more games to learn a good strategy:</p>
+<p><img alt="3x3 tic-tac-toe, q-learning vs. random player" src="img/5x5qlearn-random.png" /></p>
+<p>For the implementations here, some results are as follows:</p>
+<pre><code>| Size | First Player | Second Player | Draw |
+|------|--------------|---------------|------|
+| 4x4  | Random:  31% | Random:  27%  | 42%  |
+| 4x4  | Q-Learn: 83% | Random:  10%  |  7%  |
+| 4x4  | Random:  11% | Q-Learn: 80%  |  9%  |
+| 5x5  | Random:  25% | Random:  15%  | 60%  |
+| 5x5  | Q-Learn: 79% | Random:   5%  | 16%  |
+| 5x5  | Random:  18% | Q-Learn: 53%  | 29%  |</code></pre>
+
+<p>What is optimal for these larger boards? How well can you do? At what
+point is a Q-learning approach more effective (considering the trade
+with compute time) than exhaustive minimax search, if ever?</p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
