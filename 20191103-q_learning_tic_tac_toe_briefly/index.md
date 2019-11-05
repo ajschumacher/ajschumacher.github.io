@@ -212,9 +212,20 @@ And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
  * You can write your own perfect tic-tac-toe player, or use a package
    like [xo][]. How does the Q-learning player do against a perfect
    player?
+ * For tic-tac-toe, it's also possible to implement tabular
+   Q-learning: a table keeps track of the estimated Q-value for every
+   board state/action combination. How does this compare to the neural
+   net approach here, in terms of game performance, sample efficiency,
+   and space/time/compute complexity? The network architecture here
+   has just 90 parameters, which is a good deal less space than is
+   needed for a full table. What are the trade-offs? (Thanks to Chris
+   Marciniak for suggesting this topic.)
  * The initialization of the network and the play of the random
    opponent vary from run to run. How consistent are results? How do
    they vary? What source of randomness matters more?
+ * How can you analyze and describe the "strategies" that the system
+   learns? How much do these vary from run to run, or when varying
+   other things?
  * Draws require nine moves, but it's possible to win in five. How
    does game length vary by player strategy and over the course of
    training the Q-learning player?
@@ -249,6 +260,13 @@ And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
      * Convolutional filters are useful in neural networks for
        computer vision. Can this kind of domain-specific approach
        inform an architecture design specialized for tic-tac-toe?
+ * The form of the input to the neural network here has only nine
+   elements, which can each be positive or negative. Especially with a
+   simple network architecture, this may not be ideal. (For example,
+   consider how the current setup manifests the
+   [exclusive or (XOR) problem][].) What other board representations
+   can you use as input to the neural net? Do some work better than
+   others?
  * Lots of defaults are used in the implementation here, for example
    for the neural network's learning rate. Can you find better values?
  * The rewards for a loss and a tie are both `-1` in the
@@ -261,6 +279,7 @@ And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
 
 [xo]: https://github.com/dwayne/xo-python
 [experience replay]: https://www.cs.toronto.edu/~vmnih/docs/dqn.PDF
+[exclusive or (XOR problem)]:http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html
 
 ```
 | Size | First Player | Second Player | Draw |
