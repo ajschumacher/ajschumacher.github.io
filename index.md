@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2019-11-08: [Accelerando, by Stross](/20191108-accelerando_by_stross/)
  * 2019-11-03: [Q-Learning Tic-Tac-Toe, Briefly](/20191103-q_learning_tic_tac_toe_briefly/)
  * 2019-10-09: [Influence, by Cialdini](/20191009-influence_by_cialdini/)
  * 2019-10-05: [How to be Miserable, by Paterson](/20191005-how_to_be_miserable/)
