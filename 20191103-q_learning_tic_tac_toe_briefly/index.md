@@ -279,7 +279,7 @@ And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
 
 [xo]: https://github.com/dwayne/xo-python
 [experience replay]: https://www.cs.toronto.edu/~vmnih/docs/dqn.PDF
-[exclusive or (XOR problem)]:http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html
+[exclusive or (XOR) problem]:http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html
 
 ```
 | Size | First Player | Second Player | Draw |
