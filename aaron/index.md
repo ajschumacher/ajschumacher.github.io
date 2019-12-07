@@ -70,6 +70,7 @@ Here are some things I've made:
 
 Here is some nice recognition:
 
+ * Awardee: [Analyst Institute](https://analystinstitute.org/) Expy [Award](https://twitter.com/planarrowspace/status/1203037558088904705) for outstanding [experiment](/20190531-null_impact_of_letters_to_very_unlikely_voters/), 2019
  * Winner: [Texata Big Data Analytics World Championship](http://www.texata.com/) for 2017
  * Press coverage: [Show-And-Tell For The Hacker Crowd](http://wamu.org/programs/metro_connection/14/11/14/show_and_tell_for_the_hacker_crowd) on [WAMU](http://wamu.org/) on November 14, 2014
  * Winning team: [Arlington Public Schools](http://www.arlington.k12.va.us/) [Big Data Roundtable](http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html), September 10, 2014
