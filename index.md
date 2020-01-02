@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-01-01: [How To, by Randall Munroe](/20200101-how_to_by_randall_munroe/)
  * 2019-12-29: [Look Look Look, by Callista Buchen](/20191229-look_look_look_by_callista_buchen/)
  * 2019-11-09: [Open Borders, by Caplan and Weinersmith](/20191109-open_borders_by_caplan_and_weinersmith/)
  * 2019-11-08: [Accelerando, by Stross](/20191108-accelerando_by_stross/)

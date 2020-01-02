@@ -7,6 +7,21 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>How To, by Randall Munroe</title>
+<description><![CDATA[
+
+<p>"<a href="https://xkcd.com/how-to/">How To</a>" is essentially more "What If?" (<a href="https://what-if.xkcd.com/">blog</a>/<a href="https://store.xkcd.com/pages/if-you-re-looking-for-the-what-if-book">book</a>). It's an excuse for <a href="https://en.wikipedia.org/wiki/Randall_Munroe">Munroe</a> to talk about interesting things, and it's great. Here are some things I thought were neat:</p>
+<p>In "How to Keep Your House from Moving," I learned that you really can't, because of tectonic plates. Keeping track of where things are is surprisingly hard! If you use latitude and longitude, your location will become incorrect as plates move. This is part of why different localities use their own local coordinate systems, which has frustrated me in the past in part because I didn't see any reason for them to do that.</p>
+<p>In "How to Play Tag," I learned that Usain Bolt's agent told The New Yorker that Bolt has never run a mile. That's Munroe's careful phrasing, which I appreciate, but it's also just interesting to think about that level of specialization. I tend to value generalization, or cross-training, but it may not always be necessary.</p>
+<p>In "How to Power Your House (On Earth)," I learned that <a href="https://en.wikipedia.org/wiki/Panicum_virgatum">switchgrass</a> is a really cool plant, and that <a href="https://en.wikipedia.org/wiki/Betz%27s_law">Betz's law</a> says that wind turbines can't capture more than 16/27 of wind energy because the wind has to keep moving or the turbine won't keep working.</p>
+<p>On page 274 it says that UTC is "from its French acronym," which isn't quite right, and the <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time#Etymology">real story</a> is much more fun. But in general the book seems basically correct in its wild order-of-magnitude flights of fancy, and it's a darn good time.</p>
+<p><img alt="cover" src="how_to_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200101-how_to_by_randall_munroe/</link>
+<guid>http://planspace.org/20200101-how_to_by_randall_munroe/</guid>
+<pubDate>Wed, 01 Jan 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Look Look Look, by Callista Buchen</title>
 <description><![CDATA[
 
@@ -1084,58 +1099,6 @@ to me, and I read it. Key points:</p>
 <link>http://planspace.org/20190403-the_one_thing/</link>
 <guid>http://planspace.org/20190403-the_one_thing/</guid>
 <pubDate>Wed, 03 Apr 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Swimming with Sharks, by Joris Luyendijk</title>
-<description><![CDATA[
-
-<p>"Inside the world of the bankers,"</p>
-<blockquote>
-<p>"You see a cluster of islands in the fog, staffed by mercenaries."
-(page 145)</p>
-</blockquote>
-<p><a href="https://twitter.com/JORISLUIJENDIJK">Luyendijk</a> wrote
-<a href="https://www.theguardian.com/commentisfree/joris-luyendijk-banking-blog">a 2011-2013 banking blog</a>
-for the Guardian based on interviews with bankers in London. It became
-this 2015 book. It's quite late to the "What happened in 2008?"
-party, and even makes the observation that</p>
-<blockquote>
-<p>"the sector has become immune to exposure." (page 252)</p>
-</blockquote>
-<p>It does seem like some things these days are so bad they can hardly be
-made to look worse, and yet far from being stopped, some people really
-like them.</p>
-<p>So Luyendijk writes about how things in finance are complicated, and
-bad, but it's hard to single out any bad guys by name. His Dutch
-perspective is interesting: he identifies lack of job security as a
-major cause of problems in finance, for example.</p>
-<p>On page 254 he has one paragraph of recommendations for law to change
-the system:</p>
-<ol>
-<li>Break up banks so nothing is too big or too complex to fail</li>
-<li>Don't let units of the same company have conflicts of interest
-    with one another</li>
-<li>Don't allow the building/selling/owning of overly complex
-    financial products</li>
-<li>Only allow bonuses that have symmetric risk</li>
-</ol>
-<p>No problem, right?</p>
-<p>The observation and recommendation that resonated the most for me was
-reconnecting reward to risk. With big public companies, a trader has
-essentially only upside: good performance means a big bonus, but bad
-performance means at worst finding another high-paying job at a
-different company.</p>
-<blockquote>
-<p>"nobody should have more reason to lie awake at night worrying over
-the risks to the bank's capital or reputation than the bankers
-taking those risks." (page 254)</p>
-</blockquote>
-<p>I can get behind the sentiment, at least.</p>
-<p><img alt="Swimming with Sharks cover" src="sharks_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20190204-swimming_with_sharks/</link>
-<guid>http://planspace.org/20190204-swimming_with_sharks/</guid>
-<pubDate>Mon, 04 Feb 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
