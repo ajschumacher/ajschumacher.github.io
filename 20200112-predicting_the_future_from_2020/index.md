@@ -58,7 +58,7 @@ some things will be slightly worse.
  * S&P 500 closes above 8,000.
 
 
-General trends: Climate continues to change. Unemployment get worse
+General trends: Climate continues to change. Unemployment gets worse
 not because companies don't want to hire but because they can't find
 employees with positive marginal value. Rich continue to get richer
 while the poor are largely left behind. Some governments sell the poor
