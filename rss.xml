@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>What If? by Randall Munroe</title>
+<description><![CDATA[
+
+<p>I read this after enjoying <a href="/20200101-how_to_by_randall_munroe/">How To</a> by the same author. This one is
+more directly from the <a href="https://what-if.xkcd.com/">blog</a>, which I had only read occasionally.
+It's laugh-out-loud funny physics nerdery.</p>
+<p>Even when it isn't funny, it explains things in ways that provide
+quick understanding:</p>
+<blockquote>
+<p>"Chemotherapy drugs are blunt instruments. Some are more precisely
+targeted than others, but many simply interrupt cell division in
+general. The reason that this selectively kills cancer cells,
+instead of harming the patient and the cancer equally, is that
+cancer cells are dividing all the time, whereas most normal cells
+divide only occasionally." (page 134)</p>
+</blockquote>
+<p>My only gripe is this apparent inconsistency:</p>
+<blockquote>
+<p>"Q. How hard would a puck have to be shot to be able to knock the
+goalie himself backward into the net? A. This can't really happen."
+(page 112)</p>
+<p>"If it's going fast enough, a feather can <em>absolutely</em> knock you
+over." page 177</p>
+</blockquote>
+<p>But in general the book seems basically correct in its wild
+order-of-magnitude flights of fancy, and it's a darn good time.</p>
+<p><img alt="What If? cover" src="what_if_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200207-what_if_by_randall_munroe/</link>
+<guid>http://planspace.org/20200207-what_if_by_randall_munroe/</guid>
+<pubDate>Fri, 07 Feb 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Practical Statistics for Data Scientists, 2nd Edition</title>
 <description><![CDATA[
 
@@ -1171,28 +1204,6 @@ that Exhalation was available!</p>
 <link>http://planspace.org/20190606-designing_data-intensive_applications/</link>
 <guid>http://planspace.org/20190606-designing_data-intensive_applications/</guid>
 <pubDate>Thu, 06 Jun 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Book Thing of Baltimore</title>
-<description><![CDATA[
-
-<p>I really like <a href="https://bookthing.org/">The Book Thing of Baltimore</a>. It's like a <a href="https://littlefreelibrary.org/">Little Free Library</a> but <a href="https://en.wikipedia.org/wiki/The_Book_Thing">with 200,000 books</a>. It's as great <a href="https://www.atlasobscura.com/places/the-book-thing-baltimore-maryland">as everyone says</a> and I think there should be more of them.</p>
-<p><img alt="inside the book thing" src="book_thing.jpg"></p>
-<p>Thoughts at the thing:</p>
-<ul>
-<li>Books can seem so major, so heavy, so important... but most of them
-   are ephemeral.</li>
-<li>Nearly all book-reading is for entertainment.</li>
-<li>Many things that we own, we don't really need to own.</li>
-<li>Operations don't need to be complicated: The book thing doesn't
-   track each book, doesn't cycle them or worry about staleness; you
-   don't have to sign up to volunteer, you just show up. Their
-   "processes" are dead simple, and it works.</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20190602-book_thing_of_baltimore/</link>
-<guid>http://planspace.org/20190602-book_thing_of_baltimore/</guid>
-<pubDate>Sun, 02 Jun 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
