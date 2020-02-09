@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-02-09: [Zombie Ideas](/20200209-zombie_ideas/)
  * 2020-02-07: [What If? by Randall Munroe](/20200207-what_if_by_randall_munroe/)
  * 2020-02-06: [Practical Statistics for Data Scientists, 2nd Edition](/20200206-practical_statistics_for_data_scientists_2nd_ed/)
  * 2020-01-24: [The Three Body Problem (Remembrance of Earth's Past)](/20200124-three_body_problem_remembrance_of_earths_past/)

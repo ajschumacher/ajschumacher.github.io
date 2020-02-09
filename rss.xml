@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Zombie Ideas</title>
+<description><![CDATA[
+
+<ul><a id="zombie"></a>
+</ul>
+
+<h3>What is this?</h3>
+<p>Sometimes I put ideas in <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues">my blog's GitHub Issues</a> "for later"&#8212;but
+then I don't look at them any more. It's an idea graveyard. So this
+hits the GitHub API and randomly shows eight old ideas on every page
+load. (View source to see code.) Maybe I'll be inspired?</p>
+<p>New ideas seem exciting, and urgent things get done urgently. But I do
+find myself sometimes looking for something to do (like finding a show
+to watch) rather than realizing I could work on one of these old
+ideas.</p>
+<p>Some ideas got so little attention that I've even forgotten what my
+note for the idea means. See also <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a>. There's also
+some connection here to prioritization, to-do lists, deciding to say
+no to an idea, etc...</p>
+<p>Amusingly, I'd forgotten that this very idea was <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/164">#164</a> "random idea
+refresher" until it came up while I was testing this:</p>
+<blockquote>
+<p>"some way of showing you a sample of your own ideas, things to think
+about, quotes, etc."</p>
+</blockquote>
+<p>I still think this is a neat idea. For the time being, this page will
+replace my usual new browser tab image.</p>    
+    ]]></description>
+<link>http://planspace.org/20200209-zombie_ideas/</link>
+<guid>http://planspace.org/20200209-zombie_ideas/</guid>
+<pubDate>Sun, 09 Feb 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>What If? by Randall Munroe</title>
 <description><![CDATA[
 
@@ -1191,19 +1224,6 @@ that Exhalation was available!</p>
 <link>http://planspace.org/20190613-exhalation_by_ted_chiang/</link>
 <guid>http://planspace.org/20190613-exhalation_by_ted_chiang/</guid>
 <pubDate>Thu, 13 Jun 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Designing Data-Intensive Applications</title>
-<description><![CDATA[
-
-<p>This book was <a href="https://fullstackdeeplearning.com/march2019">recommended</a> by <a href="https://sergeykarayev.com/">Sergey Karayev</a> and I agree: this is a very good book.</p>
-<p>The <a href="https://martin.kleppmann.com/">author</a> is expert in both content and communication, erudite and humane. Everyone who works with data would do well to read this book. And it has <a href="https://martin.kleppmann.com/2017/03/15/map-distributed-data-systems.html">maps</a>!</p>
-<p>What is it about? Lots of things... Check out the <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/#toc-start">table of contents</a>. It's so good.</p>
-<p><img alt="cover" src="boar_cover.png"></p>    
-    ]]></description>
-<link>http://planspace.org/20190606-designing_data-intensive_applications/</link>
-<guid>http://planspace.org/20190606-designing_data-intensive_applications/</guid>
-<pubDate>Thu, 06 Jun 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
