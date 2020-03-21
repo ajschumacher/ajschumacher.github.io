@@ -54,6 +54,7 @@ Here are some things I've made:
  * [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow) is now [an interactive code and video Oriole](https://www.safaribooksonline.com/oriole/hello-tensorflow-oriole).
  * [PerceptronModel](https://simplestatistics.org/docs/#perceptronmodel): simple binary classifier contributed to [simple-statistics](https://simplestatistics.org/)
  * [mergic](https://github.com/ajschumacher/mergic): workflow support for reproducible deduplication and merging
+ * [askreduce](https://survive-python.herokuapp.com/): tiny Django app; workshop question sequence for Python newcomers
  * [cnfg](https://github.com/ajschumacher/cnfg): simple Python config in your home directory
  * [emacs.link](http://emacs.link/): an attractive convenience site for downloading and installing Emacs
  * [rjstat](https://github.com/ajschumacher/rjstat): an R package to read and write JSON-stat
