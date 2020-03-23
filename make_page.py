@@ -125,32 +125,35 @@ def make_page(filename):
     return plain_html, slides_html
 
 
-def build_in_cwd():
-    plain_html, slides_html = make_page('index.md')
-    with codecs.open('index.html', 'w', encoding='utf-8') as f:
+def build_in_cwd(filename):
+    plain_html, slides_html = make_page(filename)
+    out_parts = filename.split('.')
+    out_parts[-1] = 'html'
+    with codecs.open('.'.join(out_parts), 'w', encoding='utf-8') as f:
         f.write(plain_html)
     if slides_html:
         with codecs.open('big.html', 'w', encoding='utf-8') as f:
             f.write(slides_html)
 
 
-def recurse():
+def recurse(filename):
     things = os.listdir('.')
     directories = filter(lambda x: os.path.isdir(x), things)
     for directory in directories:
         print directory
         os.chdir(directory)
         recurse()
-        if os.path.exists('index.md'):
-            build_in_cwd()
+        if os.path.exists(filename):
+            build_in_cwd(filename)
         os.chdir(os.pardir)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='make page(s)')
+    parser.add_argument('-f', '--filename', default='index.md')
     parser.add_argument('-r', '--recurse', action='store_true',
                         help='make pages recursively')
     args = parser.parse_args()
-    if os.path.exists('index.md'):
-        build_in_cwd()
+    if os.path.exists(args.filename):
+        build_in_cwd(args.filename)
     if args.recurse:
-        recurse()
+        recurse(args.filename)
