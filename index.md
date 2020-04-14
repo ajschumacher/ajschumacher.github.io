@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-04-13: [The Ultimate Question 2.0, by Reichheld](/20200413-ultimate_question_by_reichheld/)
  * 2020-03-22: [The Montessori Toddler, by Simone Davies](/20200322-montessori_toddler/)
  * 2020-02-09: [Zombie Ideas](/20200209-zombie_ideas/)
  * 2020-02-07: [What If? by Randall Munroe](/20200207-what_if_by_randall_munroe/)
