@@ -7,6 +7,204 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Tyranny of Metrics, by Muller</title>
+<description><![CDATA[
+
+<p><a href="https://press.princeton.edu/books/hardcover/9780691174952/the-tyranny-of-metrics" title="The Tyranny of Metrics (Princeton University Press)">The Tyranny of Metrics</a> is the book version of the author's
+<a href="https://www.the-american-interest.com/2015/08/03/the-costs-of-accountability/" title="The Costs of Accountability (The American Interest)">earlier article</a>. It's a pretty good <a href="https://www.technologyreview.com/2013/05/31/178263/the-dictatorship-of-data/" title="The Dictatorship of Data (MIT Technology Review)">collection</a> of <a href="https://www.amstat.org/asa/files/pdfs/POL-ASAVAM-Statement.pdf" title="ASA Statement on Using Value-Added Models for Educational Assessment">concerns</a>
+around measurement, focused on <a href="https://fs.blog/2018/02/unintended-consequences/" title="The Law of Unintended Consequences: Shakespeare, Cobra Breeding, and a Tower in Pisa (Farnam Street)">unintended consequences</a>.</p>
+<p>One thing that <a href="https://history.catholic.edu/faculty-and-research/faculty-profiles/muller-jerry/index.html">Muller</a>'s historical perspective brought out was the
+development of <a href="https://en.wikipedia.org/wiki/Scientific_management">scientific management</a> and <a href="https://en.wikipedia.org/wiki/Management_consulting">management consulting</a>
+as practices distinct from particular fields or businesses. I think
+there are parallels to the development of data science.</p>
+<p>He also maintains that the main value of a metric can come from
+looking at outliers rather than tracking averages or otherwise using
+the metric over all cases. I think this is an often neglected focus.</p>
+<p>There's a lot of interesting stuff. Here are some quotes that I
+thought were particularly interesting:</p>
+<hr>
+<blockquote>
+<p>"Accountability ought to mean being held responsible for one's
+actions. But by a sort of linguistic sleight of hand, accountability
+has come to mean demonstrating success through standardized
+measurement, as if only that which can be counted really counts."
+(page 4)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When proponents of metrics advocate "accountability," they tacitly
+combine two meanings of the word. On the one hand, to be accountable
+means to be responsible. But it can also mean "capable of being
+counted."" (page 17)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"This book is not about the evils of measuring. It is about the
+unintended consequences of trying to substitute standardized
+measures of performance for personal judgment based on experience.
+The problem is not measurement, but excessive measurement and
+inappropriate measurement&#8212;not metrics, but metric fixation." (page
+4)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The key components of metric fixation are</p>
+<ul>
+<li>"the belief that it is possible and desirable to replace judgment,
+  acquired by personal experience and talent, with numerical
+  indicators of comparative performance based upon standardized data
+  (metrics);</li>
+<li>"the belief that making such metrics public (transparent) assures
+  that institutions are actually carrying out their purposes
+  (accountability);</li>
+<li>"the belief that the best way to motivate people within these
+  organizations is by attaching rewards and penalties to their
+  measured performance, rewards that are either monetary
+  (pay-for-performance) or reputational (rankings)." (page 18)</li>
+</ul>
+</blockquote>
+<hr>
+<p>"Recurring Flaws" from Chapter 2:</p>
+<blockquote>
+<ul>
+<li>"Measuring the most easily measurable"</li>
+<li>"measuring the simple when the desired outcome is complex"</li>
+<li>"Measuring inputs rather than outcomes"</li>
+<li>"Degrading information quality through standardization"</li>
+<li>"Gaming through creaming"</li>
+<li>"Improving numbers by lowering standards"</li>
+<li>"Improving numbers through omission or distortion of data"</li>
+<li>"Cheating"</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Under scientific management the managers assume ... the burden of
+gathering together all of the traditional knowledge which in the
+past has been possessed by the workmen and then of classifying,
+tabulating, and reducing this knowledge to rules, laws, formulae...
+Thus all of the planning which under the old system was done by the
+workmen, must of necessity under the new system be done by
+management in accordance with the law of science." (<a href="https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor">Taylor</a>
+quoted pages 32-33)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It is only through <em>enforced</em> standardization of methods,
+<em>enforced</em> adoption of the best implements and working conditions,
+and <em>enforced</em> cooperation that this faster work can be assured. And
+the duty of enforcing the adoption of standards and enforcing this
+cooperation rests with <em>management</em> alone." (<a href="https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor">Taylor</a> quoted page
+33)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The calculative is the enemy of the imaginative." (page 61)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"This lends a certain air of unreality to the explorations of what
+one might call the unworldly economists, who combine hard measures
+of statistical validity with weak interest in the validity of the
+units of measurement." (page 72)</p>
+</blockquote>
+<hr>
+<p>The effect of valuing quantity over quality in academic publishing
+leads to:</p>
+<blockquote>
+<p>"a great stream of publications that are both uninteresting and
+unread." (page 79)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"This is an instance of <em>diagnostic</em> metrics. It provides data that
+can be used by a practitioner (physician), or internally within an
+institution (hospital), or shared among practitioners and
+institutions to discover what is working and what is not, and to use
+that information to improve performance." (page 110)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... the metrics matter because of the way they are embedded into a
+larger institutional culture." (page 110)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Extrinsic rewards become an important determinant of job
+satisfaction only among workers for whom intrinsic rewards are
+relatively unavailable." (<a href="https://www.jstor.org/stable/2778664" title="The Happy Worker: An Analysis of Educational and Occupational Differences in Determinants of Job Satisfaction">Gruenberg</a> quoted page 137)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The fact that allies spy on one another to a certain degree to
+determine intentions, capacities, and vulnerabilities is well known
+to practitioners of government. But it cannot be publicly
+acknowledged, since it represents a threat to the amour propre of
+other nations." (page 164)</p>
+</blockquote>
+<hr>
+<p>Chapter 15 "Unintended but predictable negative consequences":</p>
+<blockquote>
+<ul>
+<li>"Goal displacement through diversion of effort to what gets
+  measured"</li>
+<li>"Promoting short-termism"</li>
+<li>"Costs in employee time"</li>
+<li>"Diminishing utility"</li>
+<li>"Rule cascades" (to prevent gaming the metrics, etc.)</li>
+<li>"Rewarding luck"</li>
+<li>"Discouraging risk-taking"</li>
+<li>"Discouraging innovation"</li>
+<li>"Discouraging cooperation and common purpose"</li>
+<li>"Degradation of work" (the experience of working people)</li>
+<li>"Costs to productivity"</li>
+</ul>
+</blockquote>
+<hr>
+<p>Chapter 16 "When and how to use metrics":</p>
+<blockquote>
+<ol>
+<li>"What <em>kind</em> of information are you thinking of measuring?"</li>
+<li>"How <em>useful</em> is the information?"</li>
+<li>"How useful are <em>more</em> metrics?"</li>
+<li>"What are the costs of <em>not</em> relying upon standardized
+   measurement?"</li>
+<li>"To what <em>purposes</em> will the measurement be put, or to put it
+   another way, to <em>whom</em> will the information be made transparent?"</li>
+<li>"What are the <em>costs</em> of acquiring the metrics?"</li>
+<li>"Ask why the people at the top of the organization are demanding
+   performance metrics."</li>
+<li>"<em>How</em> and <em>by whom</em> are the measures of performance developed?"</li>
+<li>"Remember that <em>even the best measures are subject to corruption
+   or goal diversion.</em>"</li>
+<li>"Remember that sometimes, recognizing the limits of the possible
+    is the beginning of wisdom."</li>
+</ol>
+</blockquote>
+<hr>
+<p>Here Muller lists a factor outside the control of the American medical
+system, citing page 84 of <em>In Excellent Health</em> by Atlas and a paper
+on <a href="https://www.nber.org/papers/w14333" title="Socioeconomic Status and Health: Dimensions and Mechanisms">Socioeconomic Status and Health</a>:</p>
+<blockquote>
+<p>"Moreover, the United States is an ethnically heterogeneous country,
+and some ethnic groups (such as African Americans) have
+disproportionately high rates of infant mortality, reflecting
+social, cultural, and possibly genetic factors." (p. 106)</p>
+</blockquote>
+<p>This strikes me as, at the very least, unfortunate phrasing. Here's
+<a href="https://www.americanprogress.org/issues/early-childhood/reports/2018/02/01/445576/exploring-african-americans-high-maternal-infant-death-rates/" title="Exploring African Americans&#8217; High Maternal and Infant Death Rates">how some others talk</a> about African American infant mortality rates:</p>
+<blockquote>
+<p>"It is racism, not race itself, that threatens the lives of African
+American women and infants."</p>
+</blockquote>
+<hr>
+<p><img alt="cover" src="tyranny.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200425-tyranny_of_metrics_by_muller/</link>
+<guid>http://planspace.org/20200425-tyranny_of_metrics_by_muller/</guid>
+<pubDate>Sat, 25 Apr 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Ultimate Question 2.0, by Reichheld</title>
 <description><![CDATA[
 
@@ -1153,84 +1351,6 @@ easy to just run <code>pipenv sync</code> and you're ready to go again.</p>
 <link>http://planspace.org/20190629-using_pipenv/</link>
 <guid>http://planspace.org/20190629-using_pipenv/</guid>
 <pubDate>Sat, 29 Jun 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Circe by Madeline Miller</title>
-<description><![CDATA[
-
-<p>I didn't know anything about
-<a href="https://en.wikipedia.org/wiki/Circe">the Circe of mythology</a>, so to
-me Miller's book was mostly fan fiction for classics majors, sort of
-like Twilight but backward. Then I learned there's a whole history of
-misogynist vs. feminist versions of Circe, which gives the book a bit
-more gravitas. I think it's a fine book regardless of how deeply into
-the history you go.</p>
-<p>I frequently liked the writing, which was obviously wrought but rarely
-overwrought. Here are a couple lines I pulled out, in retrospect more
-for their sentiment than their language per se:</p>
-<blockquote>
-<p>"Beneath the smooth, familiar face of things is another that waits
-to tear the world in two." (p. 16)</p>
-<p>"<em>Bold action and bold manner are not the same.</em>" (p. 21, italics in
-original)</p>
-</blockquote>
-<p>Miller's Circe is on the feminist side. Here's one small example,
-drawing attention to a false dichotomy that probably has a name:</p>
-<blockquote>
-<p>"Would I be skimmed milk for crying, or a harpy with a heart of
-stone? There was nothing in between." (p. 98)</p>
-</blockquote>
-<p>This book loves foreshadowing, from the very first line: "When I was
-born, the name for what I was did not exist." (She's a witch.)
-Foreshadowing is everywhere. In particular, I thought I noticed a
-couple instances before the reveal that Circe is pregnant.</p>
-<p>This first selection is arguably just sexual, but "belly" made me
-start to wonder whether Circe was starting to think about a child:</p>
-<blockquote>
-<p>"My smooth belly glowed beneath my hand, the color of honey shining
-in the sun. I drew him down to me." (p. 215)</p>
-</blockquote>
-<p>I think this one is clearer. It follows a discussion of another mother
-(with "a thousand wiles") and her child:</p>
-<blockquote>
-<p>"I cupped my own hands in the dark. I did not have a thousand wiles,
-and I was no fixed star, yet for the first time I felt something in
-that space. A hope, a living breath, that might yet grow between."
-(p. 226)</p>
-</blockquote>
-<p>I'm not sure if this one counts as foreshadowing because it's so
-explicit:</p>
-<blockquote>
-<p>"And last of all, still in its cedar box: silphium ground with
-wormwood, the draught I had taken each moon since the first time I
-lay with Hermes. Each moon except the last." (p. 234)</p>
-</blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Silphium">Silphium</a> is an extinct
-natural contraceptive.</p>
-<p>In addition to all the foreshadowing, there's explicit prophecy from
-the gods.</p>
-<blockquote>
-<p>"It was [the Fates'] favorite bitter joke: those who fight against
-prophecy only draw it more tightly around their throats." (p. 291)</p>
-</blockquote>
-<p>As with <a href="https://en.wikipedia.org/wiki/Oedipus">Oedipus</a>, the
-realization of prophecy is independent of whether you know it in
-advance. I hadn't thought about this before, but it's not so different
-from <a href="/20190613-exhalation_by_ted_chiang/">Ted Chiang</a>'s
-single-timeline time travel. Maybe the ancient Greek's didn't like
-paradoxes?</p>
-<p>As you read, there are also references to earlier parts of the book,
-which ask you to remember it pretty well. On page 358, it says "<em>Then,
-child, make another,</em>" and you have to remember that the giant fish
-god said that back on page 282, and that in context it meant "make
-another world" (as in, take bold steps to change your situation).</p>
-<p>Madeline Miller has made another world in Circe: a world humane to
-both the goddess and the reader.</p>
-<p><img alt="Circe cover" src="circe.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20190626-circe_by_madeline_miller/</link>
-<guid>http://planspace.org/20190626-circe_by_madeline_miller/</guid>
-<pubDate>Wed, 26 Jun 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
