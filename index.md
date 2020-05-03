@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-05-02: [Looks like people don't die on weekends](/20200502-looks_like_people_dont_die_on_weekends/)
  * 2020-04-25: [The Tyranny of Metrics, by Muller](/20200425-tyranny_of_metrics_by_muller/)
  * 2020-04-13: [The Ultimate Question 2.0, by Reichheld](/20200413-ultimate_question_by_reichheld/)
  * 2020-03-22: [The Montessori Toddler, by Simone Davies](/20200322-montessori_toddler/)

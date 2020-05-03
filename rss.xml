@@ -7,6 +7,47 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Looks like people don't die on weekends</title>
+<description><![CDATA[
+
+<p>Like a lot of people, my hobby recently has been checking COVID-19
+stats more often than is helpful. It can be hard to tell if a new
+day's numbers are relatively good or bad, in part because of a
+distinct weekly pattern.</p>
+<p><img alt="Daily new COVID-19 deaths (USA)" src="data_and_trend.png"></p>
+<p>If you take out the trend, it's clear that there are consistently
+relatively fewer deaths reported on Sundays and Mondays. There's a
+compensatory tendency for Tuesdays and Wednesdays to have higher
+numbers of deaths reported.</p>
+<p><img alt="Week day average COVID-19 deaths (USA) relative to trend" src="week_day_residuals.png"></p>
+<p>This clearly shows that the way to fight COVID-19 is by instituting an
+all-weekend policy.</p>
+<p>But it really is an interesting phenomenon. What's causing this effect
+in the data?</p>
+<ul>
+<li>Do people really avoid death on weekends? I could imagine a small
+   effect in that direction, but I wouldn't think it would be anything
+   like this big.</li>
+<li>Is it purely a reporting effect? Lots of health professionals are
+   working weekends these days, I suspect, but maybe clerical staff or
+   others in the reporting chain take consistent weekends? I suspect
+   this is the main explanation.</li>
+<li>Why is it primarily Sunday and Monday rather than Saturday and
+   Sunday? Do the daily numbers correspond more accurately to the
+   prior day?</li>
+</ul>
+<p>In any event, it's a good idea to, for example, use a 7-day rolling
+average (as <a href="https://www.ft.com/coronavirus-latest">in the Financial Times</a>) to avoid being mislead by this
+weekly pattern.</p>
+<hr>
+<p>I used the New York Times' <a href="https://github.com/nytimes/covid-19-data">covid-19-data</a>. My code is all up
+<a href="https://github.com/ajschumacher/covid_weekend">on GitHub</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20200502-looks_like_people_dont_die_on_weekends/</link>
+<guid>http://planspace.org/20200502-looks_like_people_dont_die_on_weekends/</guid>
+<pubDate>Sat, 02 May 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Tyranny of Metrics, by Muller</title>
 <description><![CDATA[
 
@@ -1251,106 +1292,6 @@ think about, along with whether it needs to be true for you.</p>
 <link>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</link>
 <guid>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</guid>
 <pubDate>Sun, 07 Jul 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Using Pipenv</title>
-<description><![CDATA[
-
-<p>If you use Python, you should use <a href="https://docs.pipenv.org/en/latest/">Pipenv</a> for
-environment/requirement management.</p>
-<hr>
-<h3>Installing</h3>
-<p>Do you have Pipenv installed? (Try <code>which pipenv</code>.) If you don't have
-it, install it:</p>
-<pre><code class="language-bash">$ pip install --user pipenv</code></pre>
-
-<p>Now you can read <code>pipenv --help</code>, but I'll continue to highlight
-common tasks.</p>
-<hr>
-<h3>Existing project</h3>
-<p>Is there an existing <code>Pipfile</code>? To get things installed, run this in
-the project directory:</p>
-<pre><code class="language-bash">$ pipenv sync</code></pre>
-
-<hr>
-<h3>New project</h3>
-<p>Starting a new project? There's no explicit "new" command, but you can
-do this:</p>
-<pre><code class="language-bash">$ pipenv --python 3.7</code></pre>
-
-<p>You can also skip that and just start installing things.</p>
-<p>Keep <code>Pipfile</code> and <code>Pipfile.lock</code> in version control.</p>
-<hr>
-<h3>Installing your requirements</h3>
-<p>Just use <code>pipenv</code> instead of <code>pip</code> (or other alternatives).</p>
-<pre><code class="language-bash">$ pipenv install some_cool_python_package</code></pre>
-
-<p><code>Pipfile</code> and <code>Pipfile.lock</code> will be kept up to date automatically.</p>
-<hr>
-<h3>Development requirements</h3>
-<p>Pipenv keeps dev packages (like <a href="https://www.pylint.org/">Pylint</a>, for
-example) separate. Just use the <code>--dev</code> flag:</p>
-<pre><code class="language-bash">$ pipenv install --dev some_cool_python_package
-$ pipenv sync --dev  # install base AND dev packages</code></pre>
-
-<hr>
-<h3>Running things</h3>
-<p>Just use <code>pipenv run</code> a lot.</p>
-<pre><code class="language-bash">pipenv run python whatever.py --etc</code></pre>
-
-<hr>
-<h3>That's it!</h3>
-<p>Pipenv does a lot for you, while requiring very little from you.</p>
-<p>I do have more thoughts though...</p>
-<hr>
-<h3>Why is it good?</h3>
-<p>Without Pipenv, maybe you track big-picture requirements in
-<code>setup.py</code>'s <code>install_requires</code>, and/or elsewhere. Maybe you have a
-<code>requirements.txt</code> so you have known-good exact versions of
-everything. Maybe another such file for dev requirements. And you
-probably have to remember to take separate actions to keep these all
-up to date and in sync. The pain! The mistakes!</p>
-<hr>
-<h3>Working directory</h3>
-<p>I don't generally love magic based on my current working directory,
-but Pipenv has won me over. I appreciate that it's explicit, at least.
-No environment variables get automatically changed when you change
-directories, for example. You have to run some <code>pipenv</code> command to do
-anything with the environment corresponding to where you are on disk.</p>
-<hr>
-<h3>History</h3>
-<p>I used to <a href="/20150120-use_pew_not_virtualenvwrapper_for_python_virtualenvs/">advocate for Pew</a>, so I was interested to see that Pipenv
-is a kind of descendant of Pew. Pipenv's implementation used to rely
-on Pew, even.</p>
-<p>You can get a shell in your project environment with <code>pipenv shell</code>
-and it seems to work more like <code>pew workon</code> than <code>source activate</code>.</p>
-<p>Perhaps the major workflow difference is that now <code>pipenv run</code> (like
-<code>pew in</code>) is commonly used, to the exclusion of changing your shell. I
-think this is a good thing in that it's more explicit and removes the
-risk of forgetting what the current state of your shell is.</p>
-<hr>
-<h3>Where's my venv, though?</h3>
-<p>Unless you mess with defaults, virtual environments are stored,
-consistent with <a href="https://www.python.org/dev/peps/pep-0370/">PEP 370</a>,
-in <code>~/.local/share/virtualenvs/</code>. They're associated with a Pipfile
-via a hash of its path.</p>
-<p>Here's a simplified version of <a href="https://github.com/pypa/pipenv/blob/08b35715c0b34461df184d907654250f60b5a0d7/pipenv/project.py#L376">the hashing</a>:</p>
-<pre><code class="language-python">import hashlib, base64
-
-def short_hash(path_to_pipfile):
-    hash = hashlib.sha256(path_to_pipfile.encode()).digest()[:6]
-    return base64.urlsafe_b64encode(hash)</code></pre>
-
-<p>So the venv for <code>/home/me/project/Pipfile</code> will be called
-<code>project-fPIxLfK7</code>. You can always check your project with <code>pipenv
---venv</code>.</p>
-<p>This does mean that if you move or otherwise rename your project
-directory, Pipenv can lose track of your virtualenv &#8212; but it's super
-easy to just run <code>pipenv sync</code> and you're ready to go again.</p>    
-    ]]></description>
-<link>http://planspace.org/20190629-using_pipenv/</link>
-<guid>http://planspace.org/20190629-using_pipenv/</guid>
-<pubDate>Sat, 29 Jun 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
