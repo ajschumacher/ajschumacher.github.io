@@ -41,6 +41,19 @@ in the data?</p>
 average (as <a href="https://www.ft.com/coronavirus-latest">in the Financial Times</a>) to avoid being mislead by this
 weekly pattern.</p>
 <hr />
+<p>Update 2020-05-04: The plot above uses an average of numbers of
+deaths, which feels raw and real, but isn't super meaningful against
+the changing scale of the pandemic in the US over time. The version
+below is by percent difference (weighted by the trend, to avoid undue
+influence when the numbers were all small and the fit of the trend
+isn't as good.)</p>
+<p><img alt="Week day average COVID-19 deaths (USA) relative to trend (percentage)" src="week_day_residuals_percent.png" /></p>
+<p>The plot looks very similar, but these percentages can be used (with a
+little math) to try to "seasonally adjust" daily US COVID-19 death
+numbers. I'm not saying this has any particular statistical validity,
+but it's one way to try to guess what a Sunday or Monday number really
+means, for example.</p>
+<hr />
 <p>I used the New York Times' <a href="https://github.com/nytimes/covid-19-data">covid-19-data</a>. My code is all up
 <a href="https://github.com/ajschumacher/covid_weekend">on GitHub</a>.</p>    </article>
     <footer>
