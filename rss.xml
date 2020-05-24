@@ -7,6 +7,166 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Peopleware: Productive Projects and Teams</title>
+<description><![CDATA[
+
+<blockquote>
+<p>"... the major issues of software development are human, not
+technical."</p>
+</blockquote>
+<p>This <a href="https://en.wikipedia.org/wiki/Peopleware:_Productive_Projects_and_Teams">1987 book</a> has wisdom still in rare supply. Humans are
+non-modular. Solving problems relies on people more than technology.
+The best management is something like an evolution of Montessori
+teaching. The book is organized into six parts:</p>
+<blockquote>
+<ol>
+<li>"Managing the Human Resource" (introduction)</li>
+<li>"The Office Environment" (literally, setting up a nice physical
+   space)</li>
+<li>"The Right People" (people are important, hire well, avoid
+   turnover)</li>
+<li>"Growing Productive Teams" (encourage teams to jell)</li>
+<li>"Fertile Soil" (good practices for meetings, email, etc.)</li>
+<li>"It's Supposed to Be Fun to Work Here" (conclusion)</li>
+</ol>
+</blockquote>
+<h2>The book's recommendations</h2>
+<p>Make it possible for people to work without interruption.</p>
+<p>Everyone can be self-coordinating:</p>
+<blockquote>
+<p>"Each time you're inclined to send a coordinating e-mail to a
+colleague or to anyone who works for you, think about what steps you
+have to make to coach that person to self-coordinate. Don't expect
+this to be easy. Telling someone what to do <em>is</em> easy, while
+instilling self-coordinating abilities in that same person is much
+more complicated. But it pays off in the long run." (page 202)</p>
+</blockquote>
+<p>Process rules and strict methodologies are bad. Let people have good
+<em>training</em>, <em>tools</em>, and <em>peer review</em> (page 180).</p>
+<p>Every project should be trying exactly one really new thing. Apart
+from escaping local maxima, this is based on an interesting
+interpretation of <a href="https://en.wikipedia.org/wiki/Hawthorne_effect">the Hawthorne Effect</a>:</p>
+<blockquote>
+<p>"... the <em>Hawthorne Effect</em>. Loosely stated, it says that people
+perform better when they're trying something new." (page 181)</p>
+</blockquote>
+<p>Consider "Open-Space meetings" which are informal "mingling" meetings
+that allow small group conversations (pages 190-191).</p>
+<p>They recommend brainstorming techniques &#224; la <a href="https://en.wikipedia.org/wiki/Edward_de_Bono">de Bono</a> on page 228:</p>
+<blockquote>
+<ul>
+<li>"Analogy thinking (How does nature solve this or some similar
+  problem?)"</li>
+<li>"Inversion (How might we achieve the opposite of our goal?)"</li>
+<li>"Immersion (How might you project yourself into the problem?)"</li>
+</ul>
+</blockquote>
+<p>They encourage considering fallback plans, especially regarding
+deadlines:</p>
+<blockquote>
+<p>"The risk we tend not to manage is the risk of our own failure."
+(page 184)</p>
+</blockquote>
+<h2>Flipping attitudes</h2>
+<p>The Netflix "<a href="https://igormroz.com/documents/netflix_culture.pdf">freedom and responsibility</a>" approach provides an
+interesting contrast. Netflix wants to be "a pro sports team" with
+coaches who "cut smartly, so we have stars".</p>
+<p>The Peopleware authors note explicitly (page 158) that they dislike
+the sports team comparison, because sports teams have internal
+competition and individuals can succeed or fail independent of the
+group.</p>
+<p>The Netflix approach can sound exciting, but it's also why Netflix is
+known for a <a href="https://qz.com/work/1439451/the-seven-ways-netflix-culture-sounds-like-your-worst-work-nightmare/">culture of fear</a>. Peopleware is much more like
+<a href="/20151118-debugging_teams/">Debugging Teams</a>, with its focus on humility, respect, and trust.
+"Above all, resist the urge to manage."</p>
+<p>I hadn't known anything about TQM (<a href="https://en.wikipedia.org/wiki/Total_quality_management">Total Quality Management</a>) but I
+was interested to see that it's a real flip from what I'd expect from
+such a bureaucratic-sounding name.</p>
+<p><a href="https://asq.org/quality-resources/total-quality-management/deming-points">Deming&#8217;s 14 Points on Quality Management</a>:</p>
+<blockquote>
+<ol>
+<li>"Create constancy of purpose for improving products and
+   services."</li>
+<li>"Adopt the new philosophy."</li>
+<li>"Cease dependence on inspection to achieve quality."</li>
+<li>"End the practice of awarding business on price alone; instead,
+   minimize total cost by working with a single supplier."</li>
+<li>"Improve constantly and forever every process for planning,
+   production and service."</li>
+<li>"Institute training on the job."</li>
+<li>"Adopt and institute leadership."</li>
+<li>"Drive out fear."</li>
+<li>"Break down barriers between staff areas."</li>
+<li>"Eliminate slogans, exhortations and targets for the workforce."</li>
+<li>"Eliminate numerical quotas for the workforce and numerical
+    goals for management."</li>
+<li>"Remove barriers that rob people of pride of workmanship, and
+    eliminate the annual rating or merit system."</li>
+<li>"Institute a vigorous program of education and self-improvement
+    for everyone."</li>
+<li>"Put everybody in the company to work accomplishing the
+    transformation."</li>
+</ol>
+</blockquote>
+<p>Some of those points seem opposed to <a href="/20200425-tyranny_of_metrics_by_muller/">metrics</a>, which isn't always
+the stance of the Peopleware authors:</p>
+<blockquote>
+<p>"Gilb's Law: <em>Anything you need to quantify can be measured in some
+way that is superior to not measuring it at all.</em>" (page 58)</p>
+</blockquote>
+<h2>Hiring and development</h2>
+<p>The authors seem generally capable of holding
+<a href="https://quoteinvestigator.com/2020/01/05/intelligence/">two opposed ideas at the same time</a>, and this is especially true in
+their takes on hiring and development of employees.</p>
+<blockquote>
+<p>"... managers are unlikely to change their people in any meaningful
+way. ... If they're not right for the job from the start, they never
+will be." (page 94)</p>
+<p>"At Southern California Edison some years ago, the person in charge
+of all data processing began as a meter reader. At EG&amp;G, there was a
+program of retraining administrative staff to become systems
+analysts. At the Bureau of Labor Statistics, philosophy Ph.D.s are
+hired to become software developers and the retraining starts with
+their first day on the job. At Hitachi Software, the chief scientist
+has as his principal function the training of new hires. At Pacific
+Bell, a main source of new systems people is the retrained lineman
+or operator." (page 123)</p>
+<p>"If your staff isn't up to the job at hand, you will fail. Of
+course, if the people are badly suited to the job, you should get
+new people. But once you've decided to go with a given group, your
+best tactic is to trust them. Any defensive measure taken to
+guarantee success in spite of them will only make things worse."
+(page 144)</p>
+</blockquote>
+<p>This is an interesting apparent tension.</p>
+<h2>Signs of age, signs of prescience</h2>
+<p>Peopleware was updated in 2013, but it isn't completely modern.
+Innocuously, it refers to the <a href="https://en.wikipedia.org/wiki/Data_General#32-bit_Project_Eagle_-_the_Eagle_project">Eagle project</a> as if everyone knows
+it. More unfortunately, it uses "<a href="https://www.investopedia.com/terms/o/open-kimono.asp">open kimono</a>" as if there's no
+reason not to.</p>
+<p>The authors rail against the interruptions of the telephone. At least
+for me, this is dated. They're right, phones are awful, but everybody
+knows this now and I can't remember the last time somebody called me
+for work.</p>
+<p>They emphasize the importance of uninterrupted work time and <a href="https://en.wikipedia.org/wiki/Flow_(psychology)">flow</a>
+in a way that is pretty well known now, I think. Paul Graham's 2009
+<a href="http://www.paulgraham.com/makersschedule.html">Maker's Schedule, Manager's Schedule</a> is one related
+popularization.</p>
+<p>The authors don't comment at all on remote work, which I think is
+unfortunate.</p>
+<h2>Two more quotes</h2>
+<blockquote>
+<p>"There is very little true teamwork required in most of our work."
+(page 136)</p>
+<p>"Managers are often not true members of their teams" (page 137)</p>
+</blockquote>
+<p><img alt="cover" src="peopleware.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200523-peopleware_productive_projects_and_teams/</link>
+<guid>http://planspace.org/20200523-peopleware_productive_projects_and_teams/</guid>
+<pubDate>Sat, 23 May 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Looks like people don't die on weekends</title>
 <description><![CDATA[
 
@@ -39,6 +199,19 @@ in the data?</p>
 <p>In any event, it's a good idea to, for example, use a 7-day rolling
 average (as <a href="https://www.ft.com/coronavirus-latest">in the Financial Times</a>) to avoid being mislead by this
 weekly pattern.</p>
+<hr>
+<p>Update 2020-05-04: The plot above uses an average of numbers of
+deaths, which feels raw and real, but isn't super meaningful against
+the changing scale of the pandemic in the US over time. The version
+below is by percent difference (weighted by the trend, to avoid undue
+influence when the numbers were all small and the fit of the trend
+isn't as good.)</p>
+<p><img alt="Week day average COVID-19 deaths (USA) relative to trend (percentage)" src="week_day_residuals_percent.png"></p>
+<p>The plot looks very similar, but these percentages can be used (with a
+little math) to try to "seasonally adjust" daily US COVID-19 death
+numbers. I'm not saying this has any particular statistical validity,
+but it's one way to try to guess what a Sunday or Monday number really
+means, for example.</p>
 <hr>
 <p>I used the New York Times' <a href="https://github.com/nytimes/covid-19-data">covid-19-data</a>. My code is all up
 <a href="https://github.com/ajschumacher/covid_weekend">on GitHub</a>.</p>    
@@ -1274,24 +1447,6 @@ think about, along with whether it needs to be true for you.</p>
 <link>http://planspace.org/20190727-sql_performance_explained_by_winand/</link>
 <guid>http://planspace.org/20190727-sql_performance_explained_by_winand/</guid>
 <pubDate>Sat, 27 Jul 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Expert Python Programming by Jaworski and Ziadé</title>
-<description><![CDATA[
-
-<p>The authors use "half a loaf is better than none" on page 545 in reference to <a href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor"><code>run_in_executor</code></a>, and that saying is also applicable to their book. <a href="https://www.packtpub.com/application-development/expert-python-programming-third-edition">Expert Python Programming</a> is not a good book, but it's also not entirely without value.</p>
-<p>The editing could be better. Either no native English speakers were involved, or they didn't have enough time to work with the Polish and French authors' prose. A next section promised on page 391 never appears. On page 546 there are two different next chapters. There's even a code block on page 576 that is printed with all the newlines stripped out.</p>
-<p>Beyond simple issues, explanation is sometimes poor or missing. The <a href="https://en.wikipedia.org/wiki/Token_bucket">token bucket</a> explanation is particularly unclear. They say that Python string concatenation is quadratic, but they don't explain <a href="https://stackoverflow.com/questions/44487537/why-does-naive-string-concatenation-become-quadratic-above-a-certain-length/44487738#44487738">why</a>. On page 496 they suggest that non-deterministic caching has been solved numerous times, so the reader can just go look on PyPI.</p>
-<p>The publication date of this third edition is April 2019, and yet there's no mention of <a href="/20190629-using_pipenv/">Pipenv</a>. They <a href="https://github.com/pytest-dev/pytest/issues/1629#issue-161422224">still</a> say py.test rather than pytest. They mention nose but not nose2. Chunks of the book refer to Python 3.5, while the cover promises 3.7.</p>
-<p>The perspective of the authors is unfamiliar to me, as when they say on page 187 that "Using binary bit-wise operations to combine options is common in Python."</p>
-<p>I'd like to be able to trust the completeness of a book like this. If it doesn't know about Pipenv, what else is it missing that should really be included?</p>
-<p>But it isn't all bad. I don't recall seeing the Python 3.7 <code>asyncio.run()</code>, but the larger-scale explanations of <a href="https://docs.python.org/3/library/asyncio.html"><code>asyncio</code></a> weren't awful. If I'm understanding properly, the interesting thing about <code>await</code> is that it <em>doesn't</em> wait, in the sense of blocking.</p>
-<p>So I'm not upset that I read the book. I suspect the authors are technically competent people who did the best they could with limited resources from <a href="https://www.packtpub.com/">Packt</a>. The book contains their take on things, and it broadened what I was aware of.</p>
-<p><img alt="cover" src="cover.png"></p>    
-    ]]></description>
-<link>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</link>
-<guid>http://planspace.org/20190707-expert_python_programming_by_jaworski_and_ziade/</guid>
-<pubDate>Sun, 07 Jul 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
