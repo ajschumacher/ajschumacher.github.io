@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-07-14: [Asimov's Foundation trilogy](/20200714-foundation_trilogy/)
  * 2020-05-23: [Peopleware: Productive Projects and Teams](/20200523-peopleware_productive_projects_and_teams/)
  * 2020-05-02: [Looks like people don't die on weekends](/20200502-looks_like_people_dont_die_on_weekends/)
  * 2020-04-25: [The Tyranny of Metrics, by Muller](/20200425-tyranny_of_metrics_by_muller/)
