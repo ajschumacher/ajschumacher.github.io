@@ -7,6 +7,56 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Lateral Thinking: Creativity Step by Step</title>
+<description><![CDATA[
+
+<p>After a reference in <a href="/20200523-peopleware_productive_projects_and_teams/">Peopleware</a>, I found Edward de Bono's <a href="https://www.amazon.com/Lateral-Thinking-Creativity-Step/dp/0060903252">book</a>
+on <a href="https://en.wikipedia.org/wiki/Lateral_thinking">Lateral Thinking</a>. I'd mostly heard about lateral thinking in
+the context of brain-teasers, and was pleased to find much more depth.
+This book could be a companion to <a href="/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/">How to Solve It</a>.</p>
+<blockquote>
+<p>"creativity is usually treated as something desirable which is to be
+brought about by vague exhortation." (page 7)</p>
+</blockquote>
+<p>Lateral Thinking is almost a textbook for a class in creativity,
+complete with very concrete activities and teachers' guides. The topic
+is orthogonal to deductive reasoning; it's about finding more starting
+points rather than following one path.</p>
+<p>This can be applied to problems with "correct" answers, but it also
+applies to many other things: writing, design, planning, deciding what
+other problems to work on. Nearly anything can benefit from "insight
+restructuring."</p>
+<p>One technique for finding new ideas is to use random input: take a
+<a href="https://randomword.com/">random word</a> or <a href="https://en.wikipedia.org/wiki/Special:Random">random WikiPedia article</a>, juxtapose it with
+your topic or problem, and see where you go. Using random input
+reminds me of <a href="http://proceedings.mlr.press/v97/zhou19d/zhou19d.pdf">noise in training neural networks</a>.</p>
+<p>Throughout, de Bono emphasizes suspending judgment, which is useful
+not just in brainstorming. One related practice is <a href="https://en.wikipedia.org/wiki/Yes,_and...">yes, and</a>: build
+from ideas rather than shutting them down. A possible tactic is
+"extracting the functional principle of the idea" (page 163): even if
+the particulars seem unworkable, the underlying concept could be
+affirmed and expanded.</p>
+<hr>
+<p>A few quotes:</p>
+<blockquote>
+<p>"<em>It is historical continuity that maintains most assumptions&#8212;not a
+repeated assessment of their validity.</em>" (page 91, italics in
+original)</p>
+<p>"The purpose of thinking is not to be right but to be effective."
+(page 107)</p>
+<p>"Unless one can pick out the dominant idea one is going to be
+dominated by it." (page 123)</p>
+<p>"There is no harm in reinventing things that have already been
+invented. It is very good practice." (page 282)</p>
+</blockquote>
+<hr>
+<p><img alt="Lateral Thinking cover" src="lateral_thinking_cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</link>
+<guid>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</guid>
+<pubDate>Thu, 16 Jul 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Communicate Immediately</title>
 <description><![CDATA[
 
@@ -1495,64 +1545,6 @@ perfect example.</p>
 <link>http://planspace.org/20191005-how_to_be_miserable/</link>
 <guid>http://planspace.org/20191005-how_to_be_miserable/</guid>
 <pubDate>Sat, 05 Oct 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The AWK Programming Language</title>
-<description><![CDATA[
-
-<p>The 1988 <a href="https://en.wikipedia.org/wiki/The_AWK_Programming_Language">book</a> on <a href="https://en.wikipedia.org/wiki/AWK"><code>awk</code></a> by Aho, Weinberger, and Kernighan is as good as everyone says, and I will highly recommend it for programmers and data science folks.</p>
-<p>Specialized tools <a href="/2013/05/21/command-line-data-manipulation/">like <code>cut</code> and <code>bc</code></a> handle many simple tasks, and general languages like Python can do pretty complicated things. For a long time I avoided properly learning <code>awk</code>, perhaps because I didn't understand that it fills such a useful space between those two extremes, and that the learning curve is really reasonable.</p>
-<p>Awk is good at processing lines of delimited text quickly and easily, with defaults that are often convenient. For example, here's adding a <a href="https://en.wikipedia.org/wiki/Body_mass_index">BMI</a> column to <a href="biostats.csv">this file</a> I <a href="https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html">found</a>:</p>
-<pre><code class="language-bash">cat biostats.csv | awk -F, 'NR == 1 {print $0, ",BMI"} \
-                            NR &gt; 1 {print $0, "," ($5/2.205) / ($4/39.37)^2}'</code></pre>
-
-<p>That would probably take more effort with most other tools.</p>
-<p>Unfortunately <code>awk</code> doesn't make it very easy to deal with some complications that can show up in CSV (quoting, newlines inside fields, etc.). A Python project called <a href="https://github.com/alecthomas/pawk"><code>pawk</code></a> looks like it could be the answer, if you don't mind installing it and using Python syntax.</p>
-<p>Here's the conclusion from the book:</p>
-<blockquote>
-<p>Awk is not a solution to every programming problem, but it's an
-indispensible part of a programmer's toolbox, especially on Unix,
-where easy connection of tools is a way of life. Although the larger
-examples in the book might give a different impression, most awk
-programs are short and simple and do tasks the language was
-originally meant for: counting things, converting data from one form
-to another, adding up numbers, extracting information for reports.</p>
-<p>For tasks like these, where program development time is more
-important than run time, awk is hard to beat. The implicit input
-loop and the pattern-action paradigm simplify and often entirely
-eliminate control flow. Field splitting parses the most common forms
-of input, while numbers and strings and the coercions between them
-handle the most common data types. Associative arrays provide both
-conventional array storage and the much richer possibilities of
-arbitrary subscripts. Regular expressions are a uniform notation for
-describing patterns of text. Default initialization and the absence
-of declarations shorten programs.</p>
-<p>What we did not anticipate were the less conventional applications.
-For example, the transition from "not programming" to "programming"
-is quite gradual: the absence of the syntactic baggage of
-conventional languages like C or Pascal makes awk easy enough to
-learn that it has been the first language for a surprising number of
-people.</p>
-<p>The features added in 1985, especially the ability to define
-functions, have led to a variety of unexpected applications, like
-small database systems and compilers for little languages. In many
-cases, awk is used for a prototype, an experiment to demonstrate
-feasibility and to play with features and user interfaces, although
-sometimes the awk program remains the production version. Awk has
-even been used for software engineering courses, because it's
-possible to experiment with designs much more readily than with
-larger languages.</p>
-<p>Of course, one must be wary of going too far &#8212; any tool can be
-pushed beyond its limits &#8212; but many people have found awk to be
-valuable for a wide range of problems. We hope we have suggested
-ways in which awk might be useful to you as well.</p>
-</blockquote>
-<p>They take <code>awk</code> pretty far in the book, and it's delightful to see, even if you only end up using <code>awk</code> for simpler things like my example above.</p>
-<p><img alt="AWK book cover" src="awk_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20190901-awk_programming_language/</link>
-<guid>http://planspace.org/20190901-awk_programming_language/</guid>
-<pubDate>Sun, 01 Sep 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

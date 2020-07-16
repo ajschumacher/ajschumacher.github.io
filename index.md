@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-07-16: [Lateral Thinking: Creativity Step by Step](/20200716-lateral_thinking_creativity_step_by_step/)
  * 2020-07-15: [Communicate Immediately](/20200715-communicate_immediately/)
  * 2020-07-14: [Asimov's Foundation trilogy](/20200714-foundation_trilogy/)
  * 2020-05-23: [Peopleware: Productive Projects and Teams](/20200523-peopleware_productive_projects_and_teams/)
