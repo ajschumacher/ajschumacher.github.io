@@ -83,7 +83,7 @@ paragraph should always be a complete version of your message, not an
 introduction.
 
 The one-line version of your message may be just a sketch, but a
-well-crafted paragraph let's you convey, [Pareto][]-style, a complete
+well-crafted paragraph lets you convey, [Pareto][]-style, a complete
 core message, missing only detail.
 
 [Pareto]: https://en.wikipedia.org/wiki/Pareto_principle
