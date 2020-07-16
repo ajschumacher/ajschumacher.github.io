@@ -7,6 +7,129 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Communicate Immediately</title>
+<description><![CDATA[
+
+<p>Discover what's important and present it early and concisely to refine
+your ideas and engage with your audience. <a href="https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)">Don't bury the lede</a>. Put
+the <a href="https://en.wikipedia.org/wiki/BLUF_(communication)">Bottom Line Up Front</a>. Communicate as if you may be
+interrupted.</p>
+<ul>
+<li><a href="#message">Identify your message</a></li>
+<li><a href="#line">Give a one-line version</a></li>
+<li><a href="#paragraph">Give a one-paragraph version</a></li>
+<li><a href="#detail">Add detail until complete</a></li>
+<li><a href="#media">Use the best of text and other media</a></li>
+</ul>
+<h3><a name="message"></a>Identify your message</h3>
+<p>What your audience needs most is your unique contribution: a result or
+recommendation, a summary or synthesis. Help them to understand.
+Prepare them to take action.</p>
+<p>If you don't know what your message is, you have little chance of
+communicating it. Think beyond listing what you've done, what you've
+read, what you've seen. Find a deeper conclusion. Even without an
+audience, you should be doing this for yourself.</p>
+<p>According to <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">Shannon</a>, information is related to surprise. One
+heuristic is to identify the most central "surprise" you have to
+communicate. What does your audience not know? Can you anticipate
+questions they would ask, and answer them?</p>
+<p>Don't force your audience to come to their own conclusions. Your
+message won't prevent them from doing that anyway, if you are honest
+and <a href="#detail">complete</a>. Your message isn't the final word. It should
+be a generous starting point.</p>
+<p>Regardless of audience, the practice of articulating a message into
+short concrete forms can help you to clarify and improve your ideas,
+possibly through several iterations.</p>
+<h3><a name="line"></a>Give a one-line version</h3>
+<p>Start with a title, or subject line, or initial answer to a question.
+A one-line version should be complete enough that the audience can
+choose whether to continue.</p>
+<p>Good newspaper headlines, like "Truman wins presidency," are tiny
+versions of their articles. Clickbait titles illustrate what not to
+do, as in "You won't believe what Truman did." Emulate good headlines.</p>
+<!-- https://en.wikipedia.org/wiki/Dewey_Defeats_Truman -->
+
+<p>Good one-line versions are usually complete sentences, not just noun
+phrases. Don't convey just the subject you're talking about, include
+what you're saying about it.</p>
+<p>Feel free to use the specialized language of your field.
+<a href="https://arxiv.org/abs/2006.10029v1">Big Self-Supervised Models are Strong Semi-Supervised Learners</a> is
+a great title for a Machine Learning paper, though it may seem opaque
+to botanists.</p>
+<p>Though the need for summarizing is real, there's value in retaining
+important detail. For example, "Technique X Improves Results" is
+likely not a better one-line version than "Technique X Improves Metric
+Y by 3%." Include specifics as much as you can.</p>
+<p>It may be challenging to distill your message into a faithful one-line
+representation, but it can be done. In some cases, a one-line version
+is all you need.</p>
+<h3><a name="paragraph"></a>Give a one-paragraph version</h3>
+<p>Whether it's labeled as an abstract or a summary or not, a first
+paragraph should always be a complete version of your message, not an
+introduction.</p>
+<p>The one-line version of your message may be just a sketch, but a
+well-crafted paragraph let's you convey, <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto</a>-style, a complete
+core message, missing only detail.</p>
+<p>The practice of skipping quickly to an article's conclusion is not a
+natural part of reading, it is a defensive work-around for bad
+writing. Present the conclusion at the beginning.</p>
+<p>You shouldn't require your audience go all the way to the end. For
+example, if the purpose of an email is to make a request, make the
+request clear at the beginning.</p>
+<p>The focus here is effective, purposeful, reality-oriented
+communication. This is distinct from small talk, poetry, or fiction,
+where it may make sense to approach a topic obliquely over time, to
+carefully build an effect.</p>
+<p>With a useful one-paragraph version at the beginning, the audience can
+determine what information is being communicated and what further
+detail they're interested in. This is kind to your audience&#8212;and your
+audience may be you.</p>
+<h3><a name="detail"></a>Add detail until complete</h3>
+<p>Including condensed versions at the beginning doesn't mean omitting
+supporting detail, clarification, data, and other supplementary
+material. Be very inclusive. The expectation is not that the audience
+must review everything, but that they may.</p>
+<p>Organize for the benefit of the audience. Make it easy to find things.
+This should follow from the nature of what you're communicating, and
+could also be responsive to the expectations of your audience.</p>
+<p>The overall structure should often be fractal, in that further
+sections are organized following the overall guidelines, starting with
+short versions.</p>
+<p>Generally, information density and polish should decrease gradually.
+Content at the beginning is likely still elaborating the core message.
+More related detail is added gradually, until toward the end one might
+include a list of references, notes, logs of activities over time,
+source data, audio or transcriptions from interviews, and the like.</p>
+<p>Enough should be provided that the audience can replicate your
+conclusions or form their own. Nothing should be hidden.</p>
+<h3><a name="media"></a>Use the best of text and other media</h3>
+<p>Text is a mighty tool, but it is not the only tool. Always use the
+best available tool for communicating. Outside of conversation, text
+and its variants together with two-dimensional graphics (especially
+data visualizations) are most useful, with time-distributed media and
+interactive artifacts only sometimes worthwhile.</p>
+<p>Text can be used in many ways. Headings add structure. Numbered and
+bulleted lists and tables can help organize and summarize. Fonts,
+weights, sizes, and styles can assist in communication when used well.
+<a href="https://en.wikipedia.org/wiki/Hypertext">Hypertext</a> allows linking easily to related resources.</p>
+<p>Numbers are data visualizations, as are quantitative tables. Carefully
+presented numbers can be very communicative.</p>
+<p>Graphics can help communicate ideas diagrammatically. Graphical data
+visualizations (plots, graphs, charts) can convey quantitative
+information exceptionally well; their effective use is an extended
+topic. Images can also sometimes be useful.</p>
+<p>Time-distributed media refers principally to audio and video. To date,
+these are difficult to search or skim. They tend to require the
+audience to sit through them. Similarly, interactive artifacts are
+relatively oblique rather than communicating directly. There are
+places for all of these, but they are not often the best choice for
+direct communication.</p>    
+    ]]></description>
+<link>http://planspace.org/20200715-communicate_immediately/</link>
+<guid>http://planspace.org/20200715-communicate_immediately/</guid>
+<pubDate>Wed, 15 Jul 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Asimov's Foundation trilogy</title>
 <description><![CDATA[
 
@@ -1430,39 +1553,6 @@ ways in which awk might be useful to you as well.</p>
 <link>http://planspace.org/20190901-awk_programming_language/</link>
 <guid>http://planspace.org/20190901-awk_programming_language/</guid>
 <pubDate>Sun, 01 Sep 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The $100 Startup</title>
-<description><![CDATA[
-
-<p>Maybe I should stop reading books based just on what's in local Little
-Free Libraries. Regardless, <em>The $100 Startup</em> was a fine vacation
-read: light on content but interesting enough to inspire some thought.</p>
-<p>The core of Chris Guillebeau's book (and brand overall, it seems) is
-wish fulfillment along the lines of
-<a href="/2011/03/14/listened-to-four-hour-work-week/">The Four-Hour Work Week</a>
-(referenced indirectly on page 123) or
-<a href="/20180122-why_the_rich_are_getting_richer/">Why the Rich are Getting Richer</a>.
-He's a self-help guy: his success is in capturing imaginations.</p>
-<p>The encouragement is nice, and generally less irresponsible than that
-of some of his peers. Guillebeau currently seems to be recommending
-"side hustles" rather than quitting your job outright. The book is
-still a bit cavalier in places, as on page 170 where it nearly
-endorses auto loan fraud as a startup funding method.</p>
-<p>Health insurance is on pages 236-237. There "self-insured" means
-"uninsured" and one individual says "My health-care plan involves
-prayer, vitamins, and avoiding sharp objects." Aside from the national
-crisis of the US healthcare system, this section speaks to the reality
-that many entrepreneurs just aren't doing terribly well.</p>
-<p>There's an acknowledgement on page 247: "The fact is that the majority
-of people don't own their own business." There are good economic
-reasons for this, based on efficiency and risk reduction. It's fun to
-think about, along with whether it needs to be true for you.</p>
-<p><img alt="The $100 Startup cover" src="startup.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20190824-100_startup/</link>
-<guid>http://planspace.org/20190824-100_startup/</guid>
-<pubDate>Sat, 24 Aug 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
