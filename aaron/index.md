@@ -1,6 +1,6 @@
 # Aaron Schumacher
 
-You can connect with me via [Twitter](https://twitter.com/planarrowspace), [LinkedIn](https://www.linkedin.com/in/ajschumacher), [Google+](https://plus.google.com/112658546306232777448/), [GitHub](https://github.com/ajschumacher), and [email](mailto:ajschumacher@gmail.com).
+You can connect with me via [Twitter](https://twitter.com/planarrowspace), [LinkedIn](https://www.linkedin.com/in/ajschumacher), [GitHub](https://github.com/ajschumacher), and [email](mailto:ajschumacher@gmail.com).
 
 I made a little [FAQ](/20170319-thank_you_for_reaching_out/) based on questions I get from people.
 
