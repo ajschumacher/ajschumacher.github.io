@@ -7,6 +7,411 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Art of Doing Science and Engineering, by Hamming</title>
+<description><![CDATA[
+
+<p>You should definitely read <a href="https://en.wikipedia.org/wiki/Richard_Hamming">Hamming</a>'s "You and Your Research"
+<a href="https://www.cs.virginia.edu/~robins/YouAndYourResearch.html">talk</a>, and probably also his 1996 <a href="http://worrydream.com/refs/Hamming-TheArtOfDoingScienceAndEngineering.pdf">book</a> (both freely available).
+I read the beautiful new printing from <a href="https://press.stripe.com/">Stripe Press</a>, with a
+forward by <a href="https://en.wikipedia.org/wiki/Bret_Victor">Victor</a>. Hamming may not be perfect, but he has a lot of
+ideas.</p>
+<blockquote>
+<p>"We live in an age of exponential growth in knowledge, and it is
+increasingly futile to teach only polished theorems and proofs. We
+must abandon the guided tour through the art gallery of mathematics,
+and instead teach how to create the mathematics we need. In my
+opinion, there is no long-term practical alternative." (page v,
+epigraph quoting Hamming)</p>
+</blockquote>
+<p>The book is roughly Hamming's lectures from a graduate course he
+taught after he could teach whatever he felt like. It is "Hamming on
+Hamming" in that it's largely him expounding on whatever he liked.
+It's a bit like a (very technical) grandparent telling stories and
+giving advice to their grandkids.</p>
+<p><img alt="book cover" src="book_cover.jpg"></p>
+<p>The cover image is a visual form of the book's inspirational message:
+A random walk won't take you anywhere, but if you have a vision, a
+direction that you keep trying to pursue, then even if not every step
+is correct, you will make progress in that direction.</p>
+<hr>
+<blockquote>
+<p>"What is wanted in the long run, of course, is that the man with the
+problem does the actual writing of the code with no human interface,
+as we all too often have these days, between the person who knows
+the problem and the person who knows the programming language. This
+date is unfortunately too far off to do much good immediately, but I
+would think by the year 2020 it would be fairly universal practice
+for the expert in the field of application to do the actual program
+preparation rather than have experts in computers (and ignorant of
+the field of application) do the program preparation." (page 55;
+writing around 1995)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"You read constantly about "engineering the production of software,"
+both for the efficiency of production and for the reliability of the
+product. But you do not expect novelists to "engineer the production
+of novels." The question arises: "Is programming closer to novel
+writing than it is to classical engineering?" I suggest yes! Given
+the problem of getting a man into outer space, both the Russians and
+the Americans did it pretty much the same way, all things
+considered, and allowing for some espionage. They were both limited
+by the same firm laws of physics. But give two novelists the problem
+of writing on "the greatness and misery of man," and you will
+probably get two very different novels (without saying just how to
+measure this). Give the same complex problem to two modern
+programmers and you will, I claim, get two rather different
+programs. Hence my belief that current programming practice is
+closer to novel writing than it is to engineering. The novelists are
+bound only by their imaginations, which is somewhat as the
+programmers are when they are writing software. Both activities have
+a large creative component, and while you would like to make
+programming resemble engineering, it will take a lot of time to get
+there&#8212;and maybe you really, in the long run, do not want to do it!
+Maybe it just sounds good. You will have to think about it many
+times in the coming years; you might as well start now and discount
+propaganda you hear, as well as all the wishful thinking which goes
+on in the area! The software of the utility programs of computers
+has been done often enough, and is so limited in scope, so it might
+reasonably be expected to become "engineered," but the general
+software preparation is not likely to be under "engineering control"
+for many, many years.</p>
+<p>"There are many proposals on how to improve the productivity of the
+individual programmer, as well as groups of programmers. I have
+already mentioned top-down and bottom-up; there are others, such as
+head programmer, lead programmer, proving the program is correct in
+a mathematical sense, and the waterfall model of programming, to
+name but a few. While each has some merit I have faith in only one,
+which is almost never mentioned&#8212;<em>think before you write the
+program,</em> it might be called. Before you start, think carefully
+about the whole thing, <em>including</em> what will be your acceptance test
+that it is right, as well as how later field maintenance will be
+done. Getting it right the first time is much better than fixing it
+up later!</p>
+<p>"One trouble with much of programming is simply that often there is
+not a well-defined job to be done; rather, the programming process
+itself will gradually discover what the problem is! The desire that
+you will be given a well-defined problem before you start
+programming often does not match reality, and hence a lot of the
+current proposals to "solve the programming problem" will fall to
+the ground if adopted rigorously." (pages 57-58)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Many studies have shown programmers differ in productivity, from
+worst to best, by much more than a factor of ten. From this I long
+ago concluded the best policy is to pay your good programmers very
+well but regularly fire the poorer ones&#8212;if you can get away with it!
+One way is, of course, to hire them on contract rather than as
+regularly employed people, but that is increasingly against the law,
+which seems to want to guarantee even the worst have some
+employment. In practice you may actually be better off to pay the
+worst to stay home and not get in the way of the more capable (and I
+am serious)!" (page 59)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I made the comparison of writing software with the act of literary
+writing; both seem to depend fundamentally on clear thinking. Can
+good programming be taught? If we look at the corresponding teaching
+of "creative writing" courses we find most students of such courses
+do not become great writers, and most great writers in the past did
+not take creative writing courses! Hence it is dubious that great
+programmers can be trained easily.</p>
+<p>"Does experience help? Do bureaucrats after years of writing reports
+and instructions get better? I have no real data, but I suspect with
+time they get worse! The habitual use of "governmentese" over the
+years probably seeps into their writing style and makes them worse.
+I suspect the same for programmers! Neither years of experience nor
+the number of languages used is any reason for thinking the
+programmer is getting better from these experiences. An examination
+of books on programming suggests most of the authors are not good
+programmers!</p>
+<p>"The results I picture are not nice, but all you have to oppose it
+is wishful thinking&#8212;I have evidence of years and years of
+programming on my side!" (pages 60-61)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"People often make the mistake of saying, "Thinking is what Newton
+and Einstein did." But by that definition most of us cannot
+think&#8212;and usually we do not like that conclusion!" (page 79)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... Of course robots will displace many humans doing routine jobs.
+In a very real sense, machines can best do routine jobs, thus
+freeing humans for more humane jobs. Unfortunately, many humans at
+present are not equipped to compete with machines&#8212;they are unable to
+do much more than routine jobs. There is a widespread belief (hope?)
+that humans can compete, once they are given proper training.
+However, I have long publicly doubted you could take many coal
+miners and make them into useful programmers. I have my reservations
+on the fraction of the human population that can be made into
+programmers in the classical sense; if you call getting money from
+the bank dispensing "machine programming," or the dialing of a
+telephone number (both of which apply the human input to an
+elaborate program which is then executed, much like an interpreter
+acts on your program input), then of course most people can be made
+into programmers. But if you mean the more classical activity of
+careful analysis of a situation and then the detailed specification
+as to what is to be done, then I say there are doubts as to what
+fraction of the population can <em>compete</em> with computers, even with
+nice interactive prompting menus.</p>
+<p>"Computers have both displaced so many people from jobs, and also
+made so many new jobs, it is hopeless to try to answer which is the
+larger number. But it is clear that on average it is the lower-level
+jobs which are disappearing and the higher-level jobs which are
+appearing. Again, one would like to believe <em>most</em> people can be
+trained in the future to do the higher-level jobs&#8212;but that is a hope
+without any real evidence." (pag 94)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"We started to play games on computers to study the human thought
+processes and not to win the game; the goal has been perverted to
+win, and never mind the insight into the human mind and how it
+works." (page 100)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Thus AI requires your careful thought and should not be dismissed
+lightly just because many experts make obviously false claims."
+(page 103)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<em>Information theory</em> was created by C.E. Shannon in the late 1940s.
+The management of Bell Telephone Labs wanted him to call it
+"communication theory," as that is a far more accurate name, but for
+obvious publicity reasons "information theory" has a much greater
+impact&#8212;this Shannon chose and so it is known to this day." (page
+163)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It is always wise to adopt a standard notation and framework of
+thinking of diverse things&#8212;one field of application may suggest
+things to do in the other. I have found it of great value to do so
+whenever possible&#8212;remove the extraneous scale factors and get to the
+basic expressions. (But then I was originally trained as a
+mathematician.)" (page 184)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It is another example of why you need to know the fundamentals very
+well; the fancy parts then follow easily and you can do things that
+they never told you about." (page 186)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Many people had the opportunity to discover (really rediscover) the
+Gibbs phenomenon, and it was Gibbs who made the effort. It is
+another example of what I maintain, that there are opportunities all
+around and few people reach for them. As Pasteur said, "Luck favors
+the prepared mind."" (page 201)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It must be your friends, in some sense, who make you famous by
+quoting and citing you, and it pays, so I claim, to be helpful to
+others as they try to do their work. They may in time give you
+credit for the work, which is better than trying to claim it
+yourself. Cooperation is essential in these days of complex
+projects; the day of the individual worker is dying fast. Teamwork
+is more and more essential, and hence learning to work on a team,
+indeed possibly seeking out places where you can help others, is a
+good idea. In any case the fun of working with good people on
+important problems is more pleasure than the resulting fame." (page
+210)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Moral: when you know something cannot be done, also remember the
+essential reason why, so later, when the circumstances have changed,
+you will not say, "It can't be done."" (page 218, on how he missed
+the opportunity to help develop FFT)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Let us analyze carefully what we do and its implications, because
+<em>what we do to a great extent controls what we can see.</em>" (page 219)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If you will only ask yourself, "Is what I am being told really
+true?," it is amazing how much you can find is, or borders on, being
+false, even in a well-developed field!" (page 227)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When I went to Bell Telephone Laboratories in 1946 I soon found
+myself in the early stages of the design of the earliest Nike system
+of guided missiles." (page 238)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I have emphasized the necessity of having the underlying laws of
+whatever field you are simulating well under control. But there are
+no such laws of economics! The only law of economics that I believe
+in is Hamming's law: "You cannot consume what is not produced."
+There is not another single reliable law in all of economics I know
+of which is not either a tautology in mathematics or else sometimes
+false. Hence when you do simulations in economics you have not the
+reliability you have in the hard sciences." (page 250)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Now this fact, once understood, impacts design! Good design
+protects you from the need for too many highly accurate components
+in the system. But such design principles are still, to this date,
+ill understood and need to be researched extensively. Not that good
+designers do not understand this intuitively, merely it is not
+easily incorporated into the design methods you were taught in
+school. Good minds are still needed in spite of all the computing
+tools we have developed. But the best mind will be the one who gets
+the principle into the design methods taught so it will be
+automatically available for lesser minds!" (page 269)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"You also realize any dictionary must be circular; the first word
+you look up must be defined in terms of other words&#8212;there can be no
+first definition which does not use words." (page 307)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When stuck I often ask myself, "If I had a solution, what would it
+look like?" This tends to sharpen up the approach, and may reveal
+new ways of looking at the problem you had subconsciously ignored
+but now see should not be excluded. What must the solution involve?
+Are there conservation laws which must apply? Is there some
+symmetry? How does each assumption enter into the solution, and is
+each one really necessary? Have you recognized all the relevant
+factors?" (page 327)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"...saturate the subconscious with the problem, try to not think
+seriously about anything else for hours days, or even weeks, and
+thus the subconscious ... is left with only the problem to mull
+over. We simply deprive it of all else as best we can! ... In a way,
+I am repeating Pasteur, "Luck favors the prepared mind." You prepare
+your mind for success "by thinking on it constantly" (Newton), and
+occasionally you are lucky." (page 328)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Probably the most important tool in creativity is the use of an
+<em>analogy.</em> Something seems like something else which we knew in the
+past. Wide acquaintance with various fields of knowledge is thus a
+help&#8212;<em>provided</em> you have the knowledge filed away so it is available
+when needed, rather than to be found only when led directly to it.
+This flexible access to pieces of knowledge seems to come from
+looking at knowledge <em>while you are acquiring it</em> from many
+different angles, turning over any new idea to see its many sides
+before filing it away. This implies effort on your part not to take
+the easy, immediately useful "memorizing the material" path, but to
+prepare your mind for the future. It is for this reason I have urged
+you in many of the chapters to get down to the fundamentals of a
+field, since it implies you must examine things in many ways before
+you can decide what is fundamental and what is frills. In fact, for
+one person they may be in one order, and for another in the opposite
+order. What is fundamental partly depends on the individual and
+their mental makeup. It is obvious you need many "hooks" on the
+knowledge if you are to use it in new situations.</p>
+<p>"... I can only advise you to do what I do&#8212;when you learn something
+new, think of other applications of it, ones which have not arisen
+in your past but which might in your future. How easy to say, but
+how hard to do! Yet what else can I say about how to organize your
+mind so useful things will be recalled readily at the right time?"
+(pages 328-329)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The person who thinks they understand the problem and does not is
+usually more of a curse (blockage) than the person who knows they do
+not understand the problem." (page 333)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It has been my experience, as well as the experience of many others
+who have looked, that data is generally much less accurate than it
+is advertised to be." (page 345)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"From that experience I learned never to process any data until I
+had first examined it carefully for errors. There have been
+complaints that I would take too long, but almost always I found
+errors, and when I showed the errors to them they had to admit I was
+wise in taking the precautions I did. No matter how sacred the data
+and urgent the answer, I have learned to pretest it for consistency
+and outliers at a minimum." (page 348)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Second, you cannot gather a really large amount of data accurately.
+It is a known fact which is constantly ignored. It is always a
+matter of limited resources and limited time. The management will
+usually want a 100% survey when a small one consisting of a good
+deal less, say 1% or even 0.1%, will yield more accurate results! It
+is known, I say, but ignored. The telephone companies, in order to
+distribute the income to the various companies involved in a single
+long-distance phone call, used to take a very small, carefully
+selected sample, and on the basis of this sample they distributed
+the money among the partners. The same is now done by the airlines.
+It took them a long while before they listened, but they finally
+came to realize the truth that <em>small samples carefully taken are
+better than large samples poorly done</em>&#8212;better both in lower cost and
+in greater accuracy." (page 355)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Of the things you can choose to measure some are hard, firm
+measurements, such as height and weight, while some are soft, such
+as social attitudes. There is always a tendency to grab the hard,
+firm measurement, though it may be quite irrelevant as compared to
+the soft one, which in the long run may be much more relevant to
+your goals. <em>Accuracy</em> of measurement tends to get confused with
+<em>relevance</em> of measurement, much more than most people believe. That
+a measurement is accurate, reproducible, and easy to make does not
+mean it should be done; instead, a much poorer one which is more
+closely related to your goals may be much preferable. For example,
+in school it is easy to measure training and hard to measure
+education, and hence you tend to see on final exams an emphasis on
+the training part and a great neglect of the education part.</p>
+<p>"Let me turn to another effect of a measurement system, and
+illustrate it by the definition and use of IQs. What is done is a
+plausible list of questions&#8212;plausible from past experience&#8212;is made
+and then tried out on a small number of people. Those questions
+which show an internal correlation with others are kept and those
+which do not correlate well are dropped. Next, the revised test is
+calibrated by using it on a much larger sample. How? Simply by
+taking the accumulated scores (the number of people's score which
+are below the given amount) and plotting these revised numbers on
+probability paper&#8212;meaning the cumulative probabilities of a normal
+distribution are the horizontal lines. Next, the points where the
+cumulative actual scores fall at a given percentage points are
+related, via a calibration table, to the corresponding points on the
+cumulative normal probability curve. As a result it is observed
+intelligence has a normal distribution in the population! Of course
+it has, it was made to be that way! Furthermore, they have defined
+intelligence to be what is measured by the calibrated exam, and if
+that is the definition of intelligence, then of course intelligence
+is normally distributed. But if you think maybe intelligence is not
+exactly what the calibrated exam measures, then you are entitled to
+doubt intelligence is normally distributed in the population. Again,
+you get what was measured, and the normal distribution announced is
+an artifact of the method of measurement and hardly relates to
+reality." (pages 374-375)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20200725-art_of_doing_science_and_engineering/</link>
+<guid>http://planspace.org/20200725-art_of_doing_science_and_engineering/</guid>
+<pubDate>Sat, 25 Jul 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Lateral Thinking: Creativity Step by Step</title>
 <description><![CDATA[
 
@@ -1445,106 +1850,6 @@ operate mindfully.</p>
 <link>http://planspace.org/20191009-influence_by_cialdini/</link>
 <guid>http://planspace.org/20191009-influence_by_cialdini/</guid>
 <pubDate>Wed, 09 Oct 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>How to be Miserable, by Paterson</title>
-<description><![CDATA[
-
-<p>CGP Grey recommended this <a href="https://www.newharbinger.com/how-be-miserable">book</a> in his <a href="https://www.youtube.com/watch?v=LO1mTELoj6o">video</a> highlighting seven
-of its "40 strategies you already use" to increase misery. It's a fun,
-quick read, during which occasionally some things may hit close to
-home and force you to remind yourself that the advice is deliberately
-bad. I especially liked "Lesson 20: Work Endlessly on Your
-Self-Esteem."</p>
-<hr>
-<h3>Lesson 20: Work Endlessly on Your Self-Esteem</h3>
-<p>Do you have a cat? If so, does it seem to think well of itself, or
-does it appear to slink around in deep shame at being an inferior sort
-of feline?</p>
-<p>Most people sense that the cats they know have perfectly high
-self-esteem&#8288;&#8212;despite never having had psychotherapy, attending no
-esteem-building workshops, and reading very few self-help books. How
-do they do it?</p>
-<p>We live in a culture with a deep and abiding faith in the concept of
-self-esteem. To follow this particular path downward, all you have to
-do is go along with the crowd. Like them, view self-esteem as
-something that you are born without and must build up, brick by brick,
-into a tall and sturdy structure. Assume that self-esteem is something
-separate from confidence in your ability to perform any particular
-task, like juggling or changing the oil in your car. This makes it
-vague and amorphous enough that constructing it becomes a futile&#8288;&#8212;and
-thus misery-inducing&#8288;&#8212;effort.</p>
-<p>But wait. Isn't self-esteem real? You've been taught about it since
-birth. It can't possibly be just another Easter Bunny, can it?</p>
-<p>Let's find out. Imagine a person with terrible self-esteem visiting
-the bank and then walking to a caf&#233; for lunch. What's he thinking
-about?</p>
-<blockquote>
-<p><em>I probably looked like an idiot when I dropped my pen back there,
-and the teller could see my bank balance&#8212;she probably thought I'm a
-complete failure. Even now, these people on the sidewalk can see
-what a loser I am, and my hair is sticking up everywhere. When I get
-lunch, I'll probably spill it on myself and look even worse.</em></p>
-</blockquote>
-<p>Sound plausible?</p>
-<p>Now imagine a person with great self-esteem doing the same thing.
-What's he thinking about?</p>
-<blockquote>
-<p><em>Wow, I really impressed them all at the bank back there&#8212;when I bent
-over to pick up my pen they could see how toned my rear end is,
-after all that work at the gym, and my balance probably made the
-teller drool. Look at all these lucky people sharing the sidewalk
-with me, envying me for my great hair. And when I get to the caf&#233;,
-they'll put me at the table in the front window to attract other
-customers. Hey, I know: let me recite positive affirmations to
-myself on the way.</em></p>
-</blockquote>
-<p>You think?</p>
-<p>Or is he more likely to be wondering, <em>Do I want the soup or just a
-chicken sandwich?</em></p>
-<p>The truth is, people with good self-esteem are not constantly
-evaluating themselves. It's the ones without it who do this. Our
-culture teaches us that having self-esteem is an active process of
-building ourselves up. It isn't. Cats, three-year-olds, and adults
-with self-esteem aren't doing much of anything&#8212;they're just focused on
-the task at hand.</p>
-<p>The active process is to have <em>low</em> self-esteem, to be constantly
-tearing ourselves down. When we wake up in the morning, before our
-mind starts going, our self-esteem is fine. We only begin feeling
-inadequate when we start rehearsing the negative story that we tell
-ourselves. By focusing on self-esteem, we cleverly divert attention
-from the real issue.</p>
-<p>Self-esteem, in other words, <em>does not exist.</em> Self-loathing, however,
-is very real.</p>
-<p>In the classic French film <em>Jean de Florette,</em> townspeople in Provence
-conspire to trick a man out of the property he has inherited by
-capping the farm's only source of water, thus starving his crops and
-ensuring his downfall. Jean strives mightily to haul water to the
-farm, unaware that it already has an inexhaustible supply just
-underground.</p>
-<p>Similarly, believers in self-esteem strive to import a sense of
-self-worth, neglecting the fact that no such efforts are really
-necessary: all they need to do is remove the plug that prevents
-self-worth from flowing. That plug is the relentless self-criticism in
-which they engage.</p>
-<p>Your mission, then, is to affirm your faith in the concept of
-self-esteem. Strive to build it up within yourself. Attend workshop
-after workshop, recite affirmations, invite friends and therapists to
-exalt your achievements. In doing so, you will reinforce both the
-hidden conviction that there is much to make up for and the
-corresponding belief in your inherent faultiness.</p>
-<p>Sisyphus found an ideal path to misery: endlessly rolling a stone up a
-hill, only to have it repeatedly escape his grasp and tumble to the
-bottom. Trying to create self-esteem is like trying to construct a
-ladder out of water. Futility leads to unhappiness, and seeing
-yourself as lacking something that does not actually exist is a
-perfect example.</p>
-<hr>
-<p><img alt="How to be Miserable (cover)" src="miserable_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20191005-how_to_be_miserable/</link>
-<guid>http://planspace.org/20191005-how_to_be_miserable/</guid>
-<pubDate>Sat, 05 Oct 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-07-25: [The Art of Doing Science and Engineering, by Hamming](/20200725-art_of_doing_science_and_engineering/)
  * 2020-07-16: [Lateral Thinking: Creativity Step by Step](/20200716-lateral_thinking_creativity_step_by_step/)
  * 2020-07-15: [Communicate Immediately](/20200715-communicate_immediately/)
  * 2020-07-14: [Asimov's Foundation trilogy](/20200714-foundation_trilogy/)
