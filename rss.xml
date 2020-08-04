@@ -7,6 +7,123 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Man Who Solved the Market, by Zuckerman</title>
+<description><![CDATA[
+
+<p>This <a href="https://www.penguinrandomhouse.com/books/557104/the-man-who-solved-the-market-by-gregory-zuckerman/">book</a> demystifies <a href="https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)">Jim Simons</a> and makes his
+<a href="https://en.wikipedia.org/wiki/Renaissance_Technologies#Monemetrics">Medallion Fund</a> seem more like grinding at a poker table than like
+solving the market. I was interested to read about his connection to
+<a href="https://en.wikipedia.org/wiki/Robert_Mercer">Robert Mercer</a> and otherwise hiring "smart people" regardless of
+<a href="https://en.wikipedia.org/wiki/The_No_Asshole_Rule">other characteristics</a>.</p>
+<p>Technical detail is light, but Zuckerman emphasizes that Renaissance
+used a monolithic trading model that could accept additional signals
+over time, manage <a href="https://en.wikipedia.org/wiki/Slippage_(finance)">slippage</a> sometimes to the extent that signals
+Renaissance was using could be made to disappear to outside observers
+while exploited, and that frequently was basically based on reversion
+to the mean. And Renaissance was not at all shy about using any
+available tax dodges.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"Simons was struck by the unique way talented researchers were
+recruited and managed in his unit [of <a href="https://en.wikipedia.org/wiki/Institute_for_Defense_Analyses" title="the Institute for Defense Analyses">IDA</a>]. Staff members, most
+of whom had doctorates, were hired for their brainpower, creativity,
+and ambition, rather than for any specific expertise or background.
+The assumption was that researchers would find problems to work on
+and be clever enough to solve them. Lenny Baum, among the most
+accomplished code-breakers, developed a saying that became the
+group's credo: "Bad ideas is good, good ideas terrific, no ideas is
+terrible."" (pages 24-25)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Courting accomplished candidates, Simons developed a unique
+perspective on talent. He told one Stony Brook professor, Hershel
+Farkas, that he valued "killers," those with a single-minded focus
+who wouldn't quit on a math problem until arriving at a solution.
+Simons told another colleague that some academics were "super smart"
+yet weren't original thinkers worthy of a position at the
+university.</p>
+<p>""There are guys and there are <em>real</em> guys," he said." (pages 34-35)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Truth ... is much too complicated to allow for anything but
+approximations." (page 67, epigraph quoting John von Neuman)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"No one ever made a decision because of a number. They need a
+story." (page 161, epigraph quoting Daniel Kahneman)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Early one evening, his eyes blurry from staring at his computer
+screen for hours on end, Magerman spotted something odd: A line of
+simulation code used for Brown and Mercer&#8217;s trading system showed
+the Standard &amp; Poor&#8217;s 500 at an unusually low level. This test code
+appeared to use a figure from back in 1991 that was roughly half the
+current number. Mercer had written it as a static figure, rather
+than as a variable that updated with each move in the market.</p>
+<p>"When Magerman fixed the bug and updated the number, a second
+problem&#8212;an algebraic error&#8212;appeared elsewhere in the code. Magerman
+spent most of the night on it but he thought he solved that one,
+too. Now the simulator&#8217;s algorithms could finally recommend an ideal
+portfolio for the Nova system to execute, including how much
+borrowed money should be employed to expand its stock holdings. The
+resulting portfolio seemed to generate big profits, at least
+according to Magerman&#8217;s calculations.</p>
+<p>"Overcome with excitement, he raced to tell Brown what he had
+discovered. Brown flashed his breathless colleague a look of deep
+skepticism but agreed to hear Magerman out. Afterward, Brown still
+showed little enthusiasm. Mercer had done the coding for the system,
+after all. Everyone knew Mercer rarely made errors, especially
+mathematical ones. Crestfallen, Magerman slunk away. His screwup had
+branded him a nuisance, not any kind of potential savior.</p>
+<p>"Without much to lose, Magerman brought his work to Mercer, who also
+agreed to take a look. Sitting at his desk, hunched over his
+computer, Mercer patiently examined the old code, line by line,
+comparing it to Magerman&#8217;s new code. Slowly, a smile formed on his
+face. Mercer reached for some paper and a pencil from his desk and
+began working on a formula. He was checking Magerman&#8217;s work. After
+about fifteen minutes of scribbling, Mercer put his pencil down and
+looked up.</p>
+<p>"&#8220;You&#8217;re right,&#8221; Mercer told Magerman.</p>
+<p>"Later, Mercer convinced Brown that Magerman was on to something.
+But when Brown and Mercer told other staffers about the problem that
+had been uncovered, as well as the fix, they were met with
+incredulity, even laughter. A junior programmer fixed the problem?
+The same guy who had crashed the system a few weeks after being
+hired?</p>
+<p>"Brown and Mercer ignored the doubts and restarted the system, with
+Simons&#8217;s backing, incorporating the improvements and corrections.
+Instant gains resulted, defying the skeptics. The long losing streak
+was over. Magerman finally received the appreciation he longed for,
+receiving a cherished pat on the back from Brown.</p>
+<p>"&#8220;This is great,&#8221; Simons boomed at a weekly meeting. &#8220;Let&#8217;s keep it
+going.&#8221;</p>
+<p>"A new era for both Magerman and the firm seemed within reach."
+(pages 194-195)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When asked to comment, Bannon said there are "errors of fact" in
+this description of events surrounding the election and his
+interactions with the Mercers, though he wouldn't specify the
+inaccuracies. "Dude, it's not my fucking book," he said in an
+email." (footnote page 280)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>&#8220;We can teach you about money,&#8221; Patterson explains. &#8220;We can&#8217;t teach
+you about smart.&#8221; (page 284)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20200804-man_who_solved_the_market/</link>
+<guid>http://planspace.org/20200804-man_who_solved_the_market/</guid>
+<pubDate>Tue, 04 Aug 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Technological Revolutions and Financial Capital, by Perez</title>
 <description><![CDATA[
 
@@ -1753,256 +1870,6 @@ get built. Could be worse.</p>
 <link>http://planspace.org/20191108-accelerando_by_stross/</link>
 <guid>http://planspace.org/20191108-accelerando_by_stross/</guid>
 <pubDate>Fri, 08 Nov 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Q-Learning Tic-Tac-Toe, Briefly</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Tic-tac-toe">Tic-tac-toe</a> doesn't call for <a href="/20171114-deep_rl/">reinforcement learning</a>, except as
-an exercise or illustration. Recently, I saw several examples
-implementing <a href="https://en.wikipedia.org/wiki/Q-learning">Q-learning</a>, all of which were rather long. I thought
-I'd give tic-tac-toe with Q-learning a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20191103-q_learning_tic_tac_toe_briefly/q_learning_tic_tac_toe.ipynb">try</a> myself, using Python
-and TensorFlow, aiming for brevity.</p>
-<p>The board is represented with a matrix, where zero means empty.</p>
-<pre><code class="language-python">def new_board(size):
-    return np.zeros(shape=(size, size))</code></pre>
-
-<p>Moves are represented by their coordinates, like <code>[0, 0]</code> for the
-upper left.</p>
-<pre><code class="language-python">def available_moves(board):
-    return np.argwhere(board == 0)</code></pre>
-
-<p>The first player is <code>+1</code> and the second player is <code>-1</code>, so having
-three in a row means getting a row, column, or diagonal to sum to <code>+3</code>
-or <code>-3</code>, respectively.</p>
-<pre><code class="language-python">def check_game_end(board):
-    best = max(list(board.sum(axis=0)) +    # columns
-               list(board.sum(axis=1)) +    # rows
-               [board.trace()] +            # main diagonal
-               [np.fliplr(board).trace()],  # other diagonal
-               key=abs)
-    if abs(best) == board.shape[0]:  # assumes square board
-        return np.sign(best)  # winning player, +1 or -1
-    if available_moves(board).size == 0:
-        return 0  # a draw (otherwise, return None by default)</code></pre>
-
-<p>Q-learning will require some state, so a player will be an object with
-a <code>move</code> method that takes a board and returns the coordinates of the
-chosen move. Here's a random player:</p>
-<pre><code class="language-python">class RandomPlayer(Player):
-    def move(self, board):
-        return random.choice(available_moves(board))</code></pre>
-
-<p>This is sufficient for the game loop, starting from any initial board:</p>
-<pre><code class="language-python">def play(board, player_objs):
-    player = +1
-    game_end = check_game_end(board)
-    while game_end is None:
-        move = player_objs[player].move(board)
-        board[tuple(move)] = player
-        game_end = check_game_end(board)
-        player *= -1  # switch players
-    return game_end</code></pre>
-
-<p>So this plays out a game between two random players and gives the
-result:</p>
-<pre><code class="language-python">play(new_board(3), {+1: RandomPlayer(), -1: RandomPlayer()})</code></pre>
-
-<p>Playing out 10,000 games, it's clear that the first random player is
-more likely to win, and also that results can vary a good deal even
-when averaging over 500 games.</p>
-<p><img alt="3x3 tic-tac-toe, two random players" src="img/3x3random-random.png"></p>
-<p>Here's a boring player that chooses the first available move from left
-to right, top to bottom:</p>
-<pre><code class="language-python">class BoringPlayer(Player):
-    def move(self, board):
-        return available_moves(board)[0]</code></pre>
-
-<p>Games between boring players always end the same way. The comparison
-with the random player is more interesting. This table give results
-for 10,000 games per row:</p>
-<pre><code>| Size | First Player | Second Player | Draw |
-|------|--------------|---------------|------|
-| 3x3  | Random: 59%  | Random: 29%   | 12%  |
-| 3x3  | Boring: 78%  | Random: 18%   |  4%  |
-| 3x3  | Random: 52%  | Boring: 44%   |  4%  |</code></pre>
-
-<p>The boring player does better than a random player whether it plays
-first or second. Now we have multiple "baselines." A learning agent
-should do better than the baselines.</p>
-<p>The Q-learning player starts with a neural network that takes a board
-as input and produces an estimate of how good each move is from that
-position: Q-values.</p>
-<pre><code class="language-python">class Agent(Player):
-    def __init__(self, size):
-        self.size = size
-        self.model = tf.keras.Sequential()
-        self.model.add(tf.keras.layers.Dense(size**2))
-        self.model.compile(optimizer='sgd', loss='mean_squared_error')</code></pre>
-
-<p>A couple helper methods make the interface nicer for using and
-training the neural net. (There may be a better way of achieving
-this.)</p>
-<pre><code class="language-python">    def predict_q(self, board):
-        return self.model.predict(
-            np.array([board.ravel()])).reshape(self.size, self.size)
-
-    def fit_q(self, board, q_values):
-        self.model.fit(
-            np.array([board.ravel()]), np.array([q_values.ravel()]), verbose=0)</code></pre>
-
-<p>The Q-learning agent preserves some history, which is reset when a new
-game starts.</p>
-<pre><code class="language-python">    def new_game(self):
-        self.last_move = None
-        self.board_history = []
-        self.q_history = []</code></pre>
-
-<p>The <code>move</code> method uses the Q-network to choose the best available move
-and then calls the <code>reward</code> method to operationalize Q-learning's
-<a href="https://en.wikipedia.org/wiki/Bellman_equation#The_Bellman_equation">Bellman equation</a>.</p>
-<pre><code class="language-python">    def move(self, board):
-        q_values = self.predict_q(board)
-        temp_q = q_values.copy()
-        temp_q[board != 0] = temp_q.min() - 1  # no illegal moves
-        move = np.unravel_index(np.argmax(temp_q), board.shape)
-        value = temp_q.max()
-        if self.last_move is not None:
-            self.reward(value)
-        self.board_history.append(board.copy())
-        self.q_history.append(q_values)
-        self.last_move = move
-        return move</code></pre>
-
-<p>The <code>reward</code> method trains the Q-network, updating a previous estimate
-of Q-values with a new estimate for the last chosen move.</p>
-<pre><code class="language-python">    def reward(self, reward_value):
-        new_q = self.q_history[-1].copy()
-        new_q[self.last_move] = reward_value
-        self.fit_q(self.board_history[-1], new_q)</code></pre>
-
-<p>Using a <code>play</code> function that resets games and delivers a reward of
-<code>+1</code> for wins and <code>-1</code> for losses and draws (see the full
-<a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20191103-q_learning_tic_tac_toe_briefly/q_learning_tic_tac_toe.ipynb">notebook</a>), a Q-learning agent plays a random agent:</p>
-<p><img alt="3x3 tic-tac-toe, q-learning vs. random player" src="img/3x3qlearn-random.png"></p>
-<p>The Q-learning player quickly achieves much stronger play than the
-baselines.</p>
-<pre><code>| Size | First Player | Second Player | Draw |
-|------|--------------|---------------|------|
-| 3x3  | Random:  59% | Random:  29%  | 12%  |
-| 3x3  | Boring:  78% | Random:  18%  |  4%  |
-| 3x3  | Random:  52% | Boring:  44%  |  4%  |
-| 3x3  | Q-Learn: 93% | Random:   6%  |  1%  |
-| 3x3  | Random:  21% | Q-Learn: 78%  |  1%  |</code></pre>
-
-<p>(For Q-learning players, they play 10,000 games while learning and
-then another 10,000 games while frozen to evaluate their performance
-level after learning, which is what's shown in the table.)</p>
-<p>And that's it! Tic-tac-toe with a Q-learning agent, comfortably under
-100 lines of code.</p>
-<hr>
-<h3>Ideas for doing more</h3>
-<ul>
-<li>The Q-learning player didn't achieve a "perfect" strategy in which
-   it never loses. Why not? Can you fix it? Further ideas below may
-   contribute to a solution.</li>
-<li>You can write your own perfect tic-tac-toe player, or use a package
-   like <a href="https://github.com/dwayne/xo-python">xo</a>. How does the Q-learning player do against a perfect
-   player?</li>
-<li>For tic-tac-toe, it's also possible to implement tabular
-   Q-learning: a table keeps track of the estimated Q-value for every
-   board state/action combination. How does this compare to the neural
-   net approach here, in terms of game performance, sample efficiency,
-   and space/time/compute complexity? The network architecture here
-   has just 90 parameters, which is a good deal less space than is
-   needed for a full table. What are the trade-offs? (Thanks to Chris
-   Marciniak for suggesting this topic.)</li>
-<li>The initialization of the network and the play of the random
-   opponent vary from run to run. How consistent are results? How do
-   they vary? What source of randomness matters more?</li>
-<li>How can you analyze and describe the "strategies" that the system
-   learns? How much do these vary from run to run, or when varying
-   other things?</li>
-<li>Draws require nine moves, but it's possible to win in five. How
-   does game length vary by player strategy and over the course of
-   training the Q-learning player?</li>
-<li>The Q-learning algorithm here is simplified, with no reward decay,
-   for example. Can you re-complicate the algorithm and perhaps
-   achieve shorter game lengths?</li>
-<li>There is no explicit exploration mechanism in the Q-learning
-   algorithm here. Can you add one and improve performance?</li>
-<li>What happens when the Q-learning player plays against the boring
-   player, and what does this suggest?</li>
-<li>What happens when a Q-learning player plays against one type of
-   player, and then faces a different player? How can this vary and
-   what does it suggest?</li>
-<li>None of the players in these implementations are ever told which
-   player they are, and none of them explicitly work it out for
-   themselves, though this is possible. How does a Q-learning player
-   that has played as first player do when made to play as second
-   player instead? Can you improve this?</li>
-<li>How effective is self-play (Q-learning player vs. another
-   Q-learning player)?</li>
-<li>Can you quantify the sample efficiency of the Q-learning algorithm,
-   which should capture how many games or moves the algorithm needs to
-   learn a good strategy?</li>
-<li>There are lots of enhancements to Q-learning, for example
-   <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.PDF">experience replay</a>. Can you improve sample efficiency using such
-   a mechanism?</li>
-<li>There are symmetries in the tic-tac-toe board; can you take
-   advantage of these?</li>
-<li>The neural network used here is very simple. It is not at all
-   "deep," for example. Does a more sophisticated network architecture
-   give better results?<ul>
-<li>Convolutional filters are useful in neural networks for
-   computer vision. Can this kind of domain-specific approach
-   inform an architecture design specialized for tic-tac-toe?</li>
-</ul>
-</li>
-<li>The form of the input to the neural network here has only nine
-   elements, which can each be positive or negative. Especially with a
-   simple network architecture, this may not be ideal. (For example,
-   consider how the current setup manifests the
-   <a href="http://www.ece.utep.edu/research/webfuzzy/docs/kk-thesis/kk-thesis-html/node19.html">exclusive or (XOR) problem</a>.) What other board representations
-   can you use as input to the neural net? Do some work better than
-   others?</li>
-<li>Lots of defaults are used in the implementation here, for example
-   for the neural network's learning rate. Can you find better values?</li>
-<li>The rewards for a loss and a tie are both <code>-1</code> in the
-   implementation here. What happens when ties aren't as bad as
-   losses? Is zero a good reward for a tie?</li>
-<li>The code shown here aims to be brief. Is this good or bad for
-   readability, maintainability, and extensibility? Are other
-   characteristics also important? How can you improve the code?</li>
-<li>Experiment with different board sizes:</li>
-</ul>
-<pre><code>| Size | First Player | Second Player | Draw |
-|------|--------------|---------------|------|
-| 3x3  | Random: 59%  | Random: 29%   | 12%  |
-| 4x4  | Random: 31%  | Random: 27%   | 42%  |
-| 5x5  | Random: 25%  | Random: 15%   | 60%  |</code></pre>
-
-<p>As the board gets bigger, the advantage of going first decreases and
-the probability of a draw goes up considerably.</p>
-<p>It also takes a good deal more games to learn a good strategy:</p>
-<p><img alt="3x3 tic-tac-toe, q-learning vs. random player" src="img/5x5qlearn-random.png"></p>
-<p>For the implementations here, some results are as follows:</p>
-<pre><code>| Size | First Player | Second Player | Draw |
-|------|--------------|---------------|------|
-| 4x4  | Random:  31% | Random:  27%  | 42%  |
-| 4x4  | Q-Learn: 83% | Random:  10%  |  7%  |
-| 4x4  | Random:  11% | Q-Learn: 80%  |  9%  |
-| 5x5  | Random:  25% | Random:  15%  | 60%  |
-| 5x5  | Q-Learn: 79% | Random:   5%  | 16%  |
-| 5x5  | Random:  18% | Q-Learn: 53%  | 29%  |</code></pre>
-
-<p>What is optimal for these larger boards? How well can you do? At what
-point is a Q-learning approach more effective (considering the trade
-with compute time) than exhaustive minimax search, if ever?</p>    
-    ]]></description>
-<link>http://planspace.org/20191103-q_learning_tic_tac_toe_briefly/</link>
-<guid>http://planspace.org/20191103-q_learning_tic_tac_toe_briefly/</guid>
-<pubDate>Sun, 03 Nov 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
