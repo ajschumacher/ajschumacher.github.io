@@ -7,6 +7,73 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Factfulness, by Rosling</title>
+<description><![CDATA[
+
+<p><a href="https://www.gapminder.org/factfulness-book/">Factfulness</a> finds <a href="https://en.wikipedia.org/wiki/Hans_Rosling">Rosling</a> realizing that facts are not enough,
+because thinking is polluted by "dramatic instincts," so his
+presentation of little-known optimistic trends is organized to address
+not just ignorance, but systematic biases in how people think.</p>
+<ol>
+<li><em>The Gap Instinct</em>: Giving its name to his <a href="https://www.gapminder.org/">foundation</a>, this is
+   the tendency to think groups are completely different. Usually even
+   if group averages are different, the distributions significantly
+   overlap.</li>
+<li><em>The Negativity Instinct</em>: Bad news is reported and feels salient,
+   even if trends are positive overall.</li>
+<li><em>The Straight Line Instinct</em>: Trends are not always linear, but
+   it's easiest to extrapolate as if they were&#8212;and be wrong.</li>
+<li><em>The Fear Instinct</em>: Fear is often not calibrated to true risk.</li>
+<li><em>The Size Instinct</em>: Understanding "big" requires appropriate
+   comparison.</li>
+<li><em>The Generalization Instinct</em>: Both categories and anecdotes can be
+   misleading.</li>
+<li><em>The Destiny Instinct</em>: Slow change is not the same as no change.</li>
+<li><em>The Single Perspective Instinct</em>: Understanding requires more than
+   one approach, view, or tool (even statistics).</li>
+<li><em>The Blame Instinct</em>: Whether effects are good or bad, the reasons
+   are probably more complex than just one individual or organization.</li>
+<li><em>The Urgency Instinct</em>: It's better to think and act carefully
+    than jump into drastic moves.</li>
+</ol>
+<p>Rosling wants us to realize our shared humanity, see that things have
+mostly gotten better over long time scales, and work to keep improving
+things. The philanthropy of <a href="https://www.gatesnotes.com/books/factfulness">Bill Gates</a> is largely working to
+continue the trends Rosling focuses on, for example.</p>
+<p>Like his classic <a href="https://www.youtube.com/watch?v=jbkSRLYSojo">presentation</a>, celebrated by data visualizers, the
+book is a study in good communication. I particularly noticed that he
+often found opportunities to present dialogue rather than just
+narrative, and that he used cute attention-getting flourishes like
+using hypothetical "chimps" to stand in for random performance on his
+quizzes.</p>
+<p>I agree there's risk in assuming positive trends inevitably continue.
+But it isn't fair to say Rosling ignored future risks. He listed five
+things that he thought we <em>should</em> worry about:</p>
+<ol>
+<li>Global pandemic</li>
+<li>Financial collapse</li>
+<li>World War III</li>
+<li>Climate change</li>
+<li>Extreme poverty</li>
+</ol>
+<p>Writing in 2017, he seems particularly prescient today.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"... free access to data doesn't turn into knowledge without
+effort." (page 79)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It will be helpful to you if you always assume your categories are
+misleading." (page 158)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20200805-factfulness_by_rosling/</link>
+<guid>http://planspace.org/20200805-factfulness_by_rosling/</guid>
+<pubDate>Wed, 05 Aug 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Man Who Solved the Market, by Zuckerman</title>
 <description><![CDATA[
 
@@ -1822,54 +1889,6 @@ convincing as I had hoped it would be.</p>
 <link>http://planspace.org/20191109-open_borders_by_caplan_and_weinersmith/</link>
 <guid>http://planspace.org/20191109-open_borders_by_caplan_and_weinersmith/</guid>
 <pubDate>Sat, 09 Nov 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Accelerando, by Stross</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Accelerando">Accelerando</a> was referenced in <a href="https://jack-clark.net/2019/10/21/import-ai-169-multi-task-testing-for-vision-floating-drones-could-build-communications-networks-in-the-future-medical-tech-gets-fda-approval/">Issue 169</a> of the <a href="https://jack-clark.net/about/">Import AI</a>
-newsletter. The Accelerando ebook is available <a href="https://www.antipope.org/charlie/blog-static/fiction/accelerando/accelerando-intro.html">for free</a>, along
-with <a href="https://en.wikipedia.org/wiki/Charles_Stross">the author</a>'s charming story of how the book came to be.
-Accelerando is a reasonably fun, wacky romp through the
-<a href="https://en.wikipedia.org/wiki/Technological_singularity">technological singularity</a>.</p>
-<p>Bits of the story, such as the space lobster AI, have an absurdist
-element along the lines of <a href="https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy">Hitchhiker's Guide</a>. A difference is
-that Accelerando has more connections to actual science and
-technology: different kinds of reminders of how strange reality can
-be.</p>
-<p>The book was born in the late 90s, published as short stories, and
-finally released as a novel in 2005. Now, after the rise and
-(arguable) fall of <a href="https://en.wikipedia.org/wiki/Google_Glass">Google Glass</a>, among other things, it's
-interesting to consider how progress toward this imagining of the
-singularity is going.</p>
-<p>The likes of <a href="https://deepmind.com/">DeepMind</a> and <a href="https://openai.com/">OpenAI</a> keep announcing new results,
-but the last 5% of the driverless car problem still seems hard.
-Language models are good enough to <a href="https://www.blog.google/products/search/search-language-understanding-bert/">improve Google search</a>, but
-don't really seem to be moving toward <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>. Some kind of progress
-is being made, but it isn't always clear how much any particular
-advance moves us toward specific long-term goals.</p>
-<p>Is technology making people more productive? In the rich world, it
-sometimes feels like it might be doing the opposite, on average.
-Fiction loves a <a href="https://en.wikipedia.org/wiki/Great_man_theory">great personality</a>, but I can't really see
-canonizing folks who are automating content farms, for example.</p>
-<p>The book has dystopian elements, perhaps from the over-association of
-tech startup culture and singularity theorizing. Corporate structures
-become sentient. Legal battles and financial concerns still command a
-surprising amount of attention in the post-scarcity future of
-Accelerando.</p>
-<p>Also typical of fiction, the book keeps you wondering what's going to
-happen. Somewhat atypically, the premise is that the world changes so
-much that humans can't understand it any more, so by definition the
-book can't deliver a satisfying conclusion, in some respects.</p>
-<p>The characters have more sexuality than personality, but if you can
-ignore that and <a href="https://www.youtube.com/watch?v=nQHBAdShgYI">the transporter problem</a> you get to upload your
-brain to a tiny <a href="https://en.wikipedia.org/wiki/Solar_sail">light sail</a> starship and watch a <a href="https://en.wikipedia.org/wiki/Dyson_sphere">Dyson sphere</a>
-get built. Could be worse.</p>
-<p><img alt="cover" src="accelerando_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20191108-accelerando_by_stross/</link>
-<guid>http://planspace.org/20191108-accelerando_by_stross/</guid>
-<pubDate>Fri, 08 Nov 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
