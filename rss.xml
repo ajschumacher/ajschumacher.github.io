@@ -7,6 +7,59 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Life expectancy is historically misleading</title>
+<description><![CDATA[
+
+<p>The modern distribution of age at death is substantially novel. In
+today's wealthiest countries most people die at an age near their life
+expectancy, but historically a third of people died as young children
+and the remainder died over a wide range of ages.</p>
+<p><a href="https://en.wikipedia.org/wiki/Life_expectancy">Life expectancy</a> at birth, an average of possible ages at death, is
+now a measure of central tendency, but even just 100 years ago the
+distribution of age at death didn't really <em>have</em> a central tendency.
+Interpreting it as if it did gives a misleading impression of past
+cultures.</p>
+<p><img alt="Life Expectancy and Distribution of Age at Death Over Time in Sweden" src="lifetimes_in_sweden.png"></p>
+<p>Inspired by <a href="/20200805-factfulness_by_rosling/">Hans Rosling</a>, I went looking for <a href="https://en.wikipedia.org/wiki/Life_table">life tables</a>.
+Appropriately enough, his native Sweden birthed the first National
+Statistical Office, with 270 years of life tables <a href="https://www.mortality.org/cgi-bin/hmd/country.php?cntr=SWE&amp;level=1">available</a>.
+That's enough history to show how the world used to be, and as a rich
+country Sweden also shows us where the whole world is (hopefully)
+heading.</p>
+<p>Back when life expectancy was mid-thirties, you were more likely to
+die in your seventies than in your thirties. If you interpret a life
+expectancy of 36 to mean "most people died around age 36" you might
+incorrectly imagine a world with very few people over 50.</p>
+<p>Or, as Rosling explains it:</p>
+<blockquote>
+<p>"Back in 1800, when Swedes starved to death and British children
+worked in coal mines, life expectancy was roughly 30 years
+everywhere in the world. That was what it had been throughout
+history. Among all babies who were ever born, roughly half died
+during their childhood. Most of the other half died between the ages
+of 50 and 70. So the average was around 30. It doesn't mean most
+people lived to be 30. It's just an average, and with averages we
+must always remember that there's a spread." (<a href="/20200805-factfulness_by_rosling/">Factfulness</a>, page
+54)</p>
+</blockquote>
+<p>This doesn't mean that life expectancy isn't a useful statistic for
+tracking development! It can be both limited and useful.</p>
+<p>I like the visualization I made (above) because it shows enough
+information to see distributional changes over time.</p>
+<p>The question of whether life expectancy will <em>continue</em> to go up is an
+interesting one. I'm not sure this data has much to say. The length of
+past lives has an <a href="https://www.bbc.com/future/article/20181002-how-long-did-ancient-people-live-life-span-versus-longevity">uncertain</a> relationship with theoretical/possible
+lifespan. Are people living longer, or just not dying earlier? There's
+also a possible question about quality of life at extreme ages which
+might be complicating.</p>
+<hr>
+<p>Source for the visualization above is <a href="https://github.com/ajschumacher/life_expectancy">on github</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</link>
+<guid>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</guid>
+<pubDate>Thu, 06 Aug 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Factfulness, by Rosling</title>
 <description><![CDATA[
 
@@ -1846,49 +1899,6 @@ look, look.</p>
 <link>http://planspace.org/20191229-look_look_look_by_callista_buchen/</link>
 <guid>http://planspace.org/20191229-look_look_look_by_callista_buchen/</guid>
 <pubDate>Sun, 29 Dec 2019 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Open Borders, by Caplan and Weinersmith</title>
-<description><![CDATA[
-
-<p>I'd heard about some of <a href="http://www.bcaplan.com/">Caplan</a>'s books, but I hadn't read any
-until the guy who does <a href="http://smbc-comics.com/">SMBC</a> advertised the one he worked with
-Caplan on. It's a comic book that reads in an evening. I'm glad it's
-out there, but I'm not sure the book will change many minds.</p>
-<p>The first chapter is called "Global Apartheid," which seems to be
-typical of Caplan's flare for the provocative. I don't think the
-current system of national borders is quite the same as <a href="https://en.wikipedia.org/wiki/Apartheid">apartheid</a>.
-I didn't think it was a good choice to start the book with this
-heading, which risks destroying the appearance of arguing in good
-faith.</p>
-<p>The comic medium can probably be persuasive, but this book sometimes
-prioritizes cartoon over argument. For example, on page 34 a central
-result from <a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.25.3.83">a paper by Clemens</a> is mentioned, and the next four
-pages illustrate the largeness of an amount of money, while I still
-wasn't convinced about how the result was obtained.</p>
-<p>It sometimes seems that Caplan isn't aware of how he might sound to
-readers. On page 36:</p>
-<blockquote>
-<p>"Open borders isn't 'trickle-down economics.' It's Niagara Falls
-economics!"</p>
-</blockquote>
-<p>Caplan is pictured going over Niagara Falls in an open barrel. Is this
-supposed to be a good thing? If you think trickle-down economics is a
-fraud, is this larger version a bigger fraud? The comparison and
-imagery are not effective.</p>
-<p>On page 39, Caplan jokes (?) that if not for borders being relatively
-open for academics, he would work at Harvard rather than George Mason
-University. This suggests a "yes, some people won't get their
-preferred jobs" discussion, which isn't addressed.</p>
-<p>I was hoping to find a compelling book that argues strongly for open
-borders. This one does introduce a lot of arguments, and it may even
-be correct throughout, but the overall effect is not as coherent and
-convincing as I had hoped it would be.</p>
-<p><img alt="Open Borders (cover)" src="open_borders.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20191109-open_borders_by_caplan_and_weinersmith/</link>
-<guid>http://planspace.org/20191109-open_borders_by_caplan_and_weinersmith/</guid>
-<pubDate>Sat, 09 Nov 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

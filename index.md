@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-08-06: [Life expectancy is historically misleading](/20200806-life_expectancy_is_historically_misleading/)
  * 2020-08-05: [Factfulness, by Rosling](/20200805-factfulness_by_rosling/)
  * 2020-08-04: [The Man Who Solved the Market, by Zuckerman](/20200804-man_who_solved_the_market/)
  * 2020-07-28: [Technological Revolutions and Financial Capital, by Perez](/20200728-technological_revolutions_and_financial_capital/)
