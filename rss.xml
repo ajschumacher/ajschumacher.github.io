@@ -7,6 +7,71 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Green Eggs and Ham uses 50 words</title>
+<description><![CDATA[
+
+<p>I recently heard that Dr. Seuss wrote Green Eggs and Ham using
+<a href="https://en.wikipedia.org/wiki/Green_Eggs_and_Ham#Background">just 50 words</a> to win a bet. Naturally, I had to check. Counting
+"Sam-I-am" as three distinct words, it is indeed exactly 50 unique
+words, used 802 total times, with no use of the letters J, P, Q, V, or
+Z.</p>
+<hr>
+<p>Dr. Seuss introduces no more than 7 new words on any one of the book's
+62 pages, and indeed eight pages introduce just one new word.</p>
+<p><img alt="Introduction of words by page in Green Eggs and Ham" src="new_words_by_page.png"></p>
+<p>I used only the words that appear printed as text in the book, which
+ignores the "I am Sam" sign carried by Sam in the illustration on page
+three (and similar sign on page seven). If those are included, word
+counts change slightly and the maximum new words on a page is just
+five.</p>
+<hr>
+<p>Green Eggs and Ham doesn't seem to follow <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's Law</a> very well. If
+it did, the log-log plot here should show a straight line rather than
+being concave. The repetitive nature of the text means more words
+appear more often than a <a href="https://en.wikipedia.org/wiki/Power_law">power law</a> would suggest.</p>
+<p><img alt="Word frequencies in Green Eggs and Ham" src="frequencies_log_log.png"></p>
+<p>Of course this is a small sample of text, so
+<a href="https://xkcd.com/2268/">draw conclusions accordingly</a>.</p>
+<hr>
+<p>Here's a list showing numbers of occurrences and each word that
+appears with that frequency (there are 25 unique frequencies):</p>
+<ul>
+<li>84: not</li>
+<li>82: I</li>
+<li>61: them</li>
+<li>59: a</li>
+<li>44: like</li>
+<li>40: in</li>
+<li>37: do</li>
+<li>33: you</li>
+<li>26: would</li>
+<li>25: and, eat</li>
+<li>21: will</li>
+<li>19: with</li>
+<li>16: Sam</li>
+<li>14: could</li>
+<li>13: am</li>
+<li>11: green, eggs, ham, here, the</li>
+<li>9: there, train</li>
+<li>8: or, anywhere, house, mouse</li>
+<li>7: box, fox, car, on, dark</li>
+<li>6: tree</li>
+<li>5: say, so</li>
+<li>4: may, see, let, me, be, rain, goat, try</li>
+<li>3: that, boat</li>
+<li>2: they, are, good, thank</li>
+<li>1: if</li>
+</ul>
+<hr>
+<p>Data and code is <a href="https://github.com/ajschumacher/green_eggs_and_ham">on GitHub</a>.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</link>
+<guid>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</guid>
+<pubDate>Sat, 15 Aug 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Life expectancy is historically misleading</title>
 <description><![CDATA[
 
@@ -1869,36 +1934,6 @@ reflecting on all these predictions in the future!</p>
 <link>http://planspace.org/20200101-how_to_by_randall_munroe/</link>
 <guid>http://planspace.org/20200101-how_to_by_randall_munroe/</guid>
 <pubDate>Wed, 01 Jan 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Look Look Look, by Callista Buchen</title>
-<description><![CDATA[
-
-<p>This short <a href="https://www.blacklawrence.com/look-look-look/">book</a> of prose poems is an intensely personal,
-frequently painful look at the author's experiences of motherhood. I'm
-no expert in poetry, but it seems like a success.</p>
-<p>There are five untitled parts, the first three of which correspond to
-periods around the birth of a first child, then the loss before birth
-of a child, and then the birth of a second child. The last two parts
-might be less obviously demarcated subsequent periods or aspects. None
-of the parts seem to have been particularly easy for the author.</p>
-<p>One short sentence, "We do the research," stuck out to me as
-emblematic of the modern experience of educated people approaching the
-enigmatic corporeal realities of fertility.</p>
-<p>The author and her husband and I were high school classmates, which
-adds something. Reading the poem "Sadness" on page 49, there's the
-abstract author, there are the people I went to school with, and
-there's the recasting with my family and others. It's also interesting
-to see the language change, becoming more direct, at the beginning of
-the third part&#8212;a deliberate device, or the unconscious development of
-the author over time?</p>
-<p>It's like reading a diary, but everyone has been invited to look,
-look, look.</p>
-<p><img alt="cover" src="look_look_look.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20191229-look_look_look_by_callista_buchen/</link>
-<guid>http://planspace.org/20191229-look_look_look_by_callista_buchen/</guid>
-<pubDate>Sun, 29 Dec 2019 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Green Eggs and Ham uses 50 words</title>
+  </head>
+  <body>
+    <article>
+<h1>Green Eggs and Ham uses 50 words</h1>
+<p class="date">Saturday August 15, 2020</p>
+<p>I recently heard that Dr. Seuss wrote Green Eggs and Ham using
+<a href="https://en.wikipedia.org/wiki/Green_Eggs_and_Ham#Background">just 50 words</a> to win a bet. Naturally, I had to check. Counting
+"Sam-I-am" as three distinct words, it is indeed exactly 50 unique
+words, used 802 total times, with no use of the letters J, P, Q, V, or
+Z.</p>
+<hr />
+<p>Dr. Seuss introduces no more than 7 new words on any one of the book's
+62 pages, and indeed eight pages introduce just one new word.</p>
+<p><img alt="Introduction of words by page in Green Eggs and Ham" src="new_words_by_page.png" /></p>
+<p>I used only the words that appear printed as text in the book, which
+ignores the "I am Sam" sign carried by Sam in the illustration on page
+three (and similar sign on page seven). If those are included, word
+counts change slightly and the maximum new words on a page is just
+five.</p>
+<hr />
+<p>Green Eggs and Ham doesn't seem to follow <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's Law</a> very well. If
+it did, the log-log plot here should show a straight line rather than
+being concave. The repetitive nature of the text means more words
+appear more often than a <a href="https://en.wikipedia.org/wiki/Power_law">power law</a> would suggest.</p>
+<p><img alt="Word frequencies in Green Eggs and Ham" src="frequencies_log_log.png" /></p>
+<p>Of course this is a small sample of text, so
+<a href="https://xkcd.com/2268/">draw conclusions accordingly</a>.</p>
+<hr />
+<p>Here's a list showing numbers of occurrences and each word that
+appears with that frequency (there are 25 unique frequencies):</p>
+<ul>
+<li>84: not</li>
+<li>82: I</li>
+<li>61: them</li>
+<li>59: a</li>
+<li>44: like</li>
+<li>40: in</li>
+<li>37: do</li>
+<li>33: you</li>
+<li>26: would</li>
+<li>25: and, eat</li>
+<li>21: will</li>
+<li>19: with</li>
+<li>16: Sam</li>
+<li>14: could</li>
+<li>13: am</li>
+<li>11: green, eggs, ham, here, the</li>
+<li>9: there, train</li>
+<li>8: or, anywhere, house, mouse</li>
+<li>7: box, fox, car, on, dark</li>
+<li>6: tree</li>
+<li>5: say, so</li>
+<li>4: may, see, let, me, be, rain, goat, try</li>
+<li>3: that, boat</li>
+<li>2: they, are, good, thank</li>
+<li>1: if</li>
+</ul>
+<hr />
+<p>Data and code is <a href="https://github.com/ajschumacher/green_eggs_and_ham">on GitHub</a>.</p>
+<hr />
+<p><img alt="cover" src="cover.jpg" /></p>    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
