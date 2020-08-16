@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>_e_: The Story of a Number (and more)</title>
+  </head>
+  <body>
+    <article>
+<h1><em>e</em>: The Story of a Number (and more)</h1>
+<p class="date">Sunday August 16, 2020</p>
+<p><a href="https://en.wikipedia.org/wiki/Eli_Maor">Eli Maor</a> gives a great <a href="https://press.princeton.edu/books/paperback/9780691168487/e-the-story-of-a-number">history</a> of <a href="https://simple.wikipedia.org/wiki/E_(mathematical_constant)"><em>e</em></a>, full of
+personalities and math concepts that I found very enjoyable. I was
+reminded of the difference between historical development and modern
+understanding, which led me to revisit
+<a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">Where Mathematics Comes From</a>, which has in its part VI perhaps a
+better presentation of the latter way of knowing about <em>e</em>.</p>
+<p>The historical perspective reminds me that math didn't start as formal
+as it is now. Like <a href="https://en.wikipedia.org/wiki/Nicolas_Bourbaki">Bourbaki</a> leading to <a href="https://en.wikipedia.org/wiki/New_Math">New Math</a>, modern
+formalism may not be the best way to teach concepts. Being able to
+prove something and understanding it are not the same thing. I'm not
+sure I agree completely with the idea of what math is in <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">WMCF</a>, but
+I do agree that humans do better when they understand things as
+something more than just a game of symbol manipulation. In a similar
+spirit to the <a href="https://tauday.com/tau-manifesto">tau movement</a>, I think mathematical notation, proof,
+and especially education should focus on communicating <em>meaning</em>.</p>
+<p>More broadly, I think there ought to be <a href="https://fs.blog/2012/04/feynman-technique/">Feynman explanations</a> for
+more topics.</p>
+<ul>
+<li><a href="#is_e_so_natural">Is <em>e</em> so "natural?"</a></li>
+<li><a href="#a_quick_trip">A quick trip to \( e^{\pi i} -1 = 0\)</a></li>
+<li><a href="#a_few_quotes">A few quotes from <em>e</em>: The Story of a Number</a></li>
+</ul>
+<hr />
+<h3><a name="is_e_so_natural"></a>Is <em>e</em> so "natural?"</h3>
+<p>I think <em>e</em> is not always the best choice of base, despite being the
+"natural" log base. The advantages of <em>e</em> are largely to do with
+calculus, and may not help in a particular application.</p>
+<p>In the math for radioactive decay, often <em>e</em> is used even though
+things are mostly otherwise in terms of half-life. This <a href="https://www.khanacademy.org/science/physics/quantum-physics/in-in-nuclei/v/exponential-decay-formula-proof-can-skip-involves-calculus">introduces</a>
+complexity that just isn't necessary. It would be more convenient to
+use 1/2 as the base. (I wonder whether <em>e</em> is used just because that's
+the button people have on their calculators.)</p>
+<p>In finance, interest is usually based on some finite period, like 1/12
+of a year in the case of my savings account and mortgage. I did find,
+<a href="https://twitter.com/planarrowspace/status/1293999229363458051">with help</a>, <a href="https://www.myfreeholdbank.com/savings.aspx">one bank</a> that compounds continuously for some
+products. But usually \( e^x \) will be an approximation, not what
+is really going on, for finance.</p>
+<p>When scaling data with a log, changing the base is the same as
+multiplying the scaled data by some constant. Especially if you're
+already going to normalize that data (with a z-score, for example) or
+use scale invariant techniques on the transformed data, it doesn't
+matter what log base you use.</p>
+<p>For <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>, we do care about the derivative, but not really about
+whether it's <em>exactly</em> equal to the function's value. When training a
+neural net, the constant factor is "neutralized" by the constant
+factor we introduce in the learning rate. At inference, using a
+different base is the same thing as changing the softmax temperature,
+which people already do for various reasons.</p>
+<p>The number \( e \) is very cool, no doubt, but that doesn't mean it
+has to be used for every application.</p>
+<hr />
+<h3><a name="a_quick_trip"></a>A quick trip to \( e^{\pi i} -1 = 0\)</h3>
+<p>What function is always equal to its own derivative?</p>
+<p>\[ f(x) = f'(x) \tag{1} \]</p>
+<p>The constant function \( f(x) = 0 \) has that property, but is dull,
+so leave it out.</p>
+<p>The function can't ever touch the x-axis: the closer it gets, the
+slower it approaches.</p>
+<!-- Then the function can't ever touch the x-axis, because of
+something like Zeno's paradox." -->
+
+<p>The function can't be moved up or down, because that would break
+equality with its derivative. It can be moved left or right, and it
+can be flipped over the x-axis, so to pick a unique function, set the
+y-intercept to be 1.</p>
+<p>\[ f(0) = 1 \tag{2} \]</p>
+<p>Equations (1) and (2) are enough to write out the function as a
+polynomial.</p>
+<p>Equation (2) says the constant term is 1. Equation (1) says the
+polynomial must include a term whose derivative is 1, so the linear
+term is \( \int{1} = x \). By the same reasoning, the next term is
+\( \int{x} = \frac{1}{2} x^2 \), and the next is \( \frac{1}{3}
+\cdot \frac{1}{2} x^3 \), and so on. This gives equation (3).</p>
+<p>\[ f(x) =
+    1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \dots =
+    \sum_{n=0}^{\infty} \frac{x^n}{n!}
+    \tag{3} \]</p>
+<p>The functions with derivatives proportional to their values are the
+exponential functions, \( f(x) = b^x \). Equation (2) is aligned
+with \( b^0 = 1 \). Using \( b^1 = b \) identifies the base for
+equation (3).</p>
+<p>\[ f(1) =
+    \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \dots =
+    2.718281828
+    \tag{4} \]</p>
+<p>This is \( e \), and it's \( e \) not by numerical equality but
+because this is the essence of \( e \): the base of the exponential
+whose derivative equals its value.</p>
+<p>\[ e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} \tag{5} \]</p>
+<p>This relates exponentiation using arbitrary powers with using only
+integer powers. It already supports complex exponents if you don't
+mind doing some calculating.</p>
+<pre><code class="language-python">import math
+
+def approx_exp(x, terms=20):
+    return sum(x**n / math.factorial(n) for n in range(terms))
+
+approx_exp(math.pi * 1j)
+## (-1.0000000035290801-5.289182672965142e-10j)</code></pre>
+
+<p>\[ e^{\pi i} + 1 = 0 \tag{6} \]</p>
+<p>To understand why that should be, consider that exponentiation
+connects addition and multiplication, as \( b^{m + n} = b^m \cdot b^n
+\). Imaginary numbers add as usual, but their multiplication amounts
+to rotation. The base \( e \) has the property that rotation is
+given in radians, so \( \pi i \) means one half turn, taking the
+result to -1.</p>
+<p>This can also be seen by discovering that \( e^{xi} = \cos{x} + i
+\sin{x} \), for example by checking that their values at 0 and all
+their derivatives are equal.</p>
+<p>Negative bases have the funny property that their even exponents give
+positive results, but odd exponents give negative results. What should
+the result be for an exponent like 1.2, then? Thinking of rotation, it
+makes sense that results sweep through complex values to get from the
+positive real axis to the negative real axis and so on. This is a fine
+way to draw a <a href="https://en.wikipedia.org/wiki/Logarithmic_spiral">logarithmic spiral</a>. It can be connected to equation
+(6).</p>
+<p>\[ (-b)^x = b^x (-1)^x = b^x (e^{\pi i})^x = b^x e^{x \pi i} \tag{7} \]</p>
+<p>The rotation comes from the negative base <em>already</em> being rotated to
+begin with. In fact it's only the boring positive real numbers that
+don't rotate when exponentiated.</p>
+<hr />
+<p>Forgive me for using \( \pi \) despite mentioning \( \tau \)
+above; \( \pi \) is so familiar in this context that I didn't want
+to introduce a separate new thing, even though \( \tau \) is
+arguably better <em>especially</em> in this setting.</p>
+<hr />
+<h3><a name="a_few_quotes"></a>A few quotes from <em>e</em>: The Story of a Number</h3>
+<blockquote>
+<p>"Though [William] Oughtred held no official university position, his
+contributions to mathematics were substantial. In his most
+influential work, the <em>Clavis mathematicae</em> (1631), a book on
+arithmetic and algebra, he introduced many new mathematical symbols,
+some of which are still in use today. (Among them is the symbol ×
+for multiplication, to which Leibniz later objected because of its
+similarity to the letter <em>x</em>; two other symbols that can still be
+seen occasionally are :: to denote a proportion and ~ for "the
+difference between.")" (page 15)</p>
+<p>"The Pythagoreans believed that numbers are the prime cause behind
+everything in the world, from the laws of musical harmony to the
+motion of the planets. "Number rules the universe" was their motto,
+and by "number" they meant natural numbers and their ratios;
+everything else—negative numbers, irrational numbers, and even
+zero—was excluded." (page 51)</p>
+<p>"[William Rowan] Hamilton's rigorous approach marked the beginning
+of axiomatic algebra: ..." (page 167)</p>
+</blockquote>
+<hr />
+<p>Thanks to <a href="https://twitter.com/wmkarney">Will Karnasiewicz</a> for pointing me to a continuously
+compounding bank, and Mervin Chen for pointing me to Khan's gratuitous
+calculus.</p>
+<hr />
+<p><img alt="e: The Story of a Number" src="e_cover.jpg" /></p>
+<p><img alt="Where Mathematics Comes From" src="Where_Mathematics_Comes_From.jpg" /></p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+      <ul>
+        <li id="back_link">
+          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
+        </li>
+        <li>
+          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
+        </li>
+        <li>
+          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
+          <ul>
+            <li>
+              <a href="https://twitter.com/planarrowspace">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
+            </li>
+            <li>
+              <a href="https://github.com/ajschumacher">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:ajschumacher@gmail.com">email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Comment below
+        </li>
+      </ul>
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
