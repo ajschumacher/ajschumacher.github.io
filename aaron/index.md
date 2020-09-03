@@ -38,6 +38,7 @@ Here are some things I've talked about:
  * [Practical Mergic](/20150520-practical_mergic/) at the [New York Open Statistical Programming Meetup](http://www.meetup.com/nyhackr/) on [Wednesday May 20, 2015](http://www.meetup.com/nyhackr/events/222328498/)
  * [mergic](/20150514-mergic/) (lightning talk) at [PyData NYC](http://www.meetup.com/PyDataNYC/) on [Thursday May 14, 2015](http://www.meetup.com/PyDataNYC/events/222329250/)
  * [Data Science isn't Magic](/20150220-data_science_isnt_magic/) at [DC Open Data Day](http://dc.opendataday.org/) on Friday February 20, 2015
+ * [gog: a separate layer for visualization](/20150119-gog_a_separate_layer_for_visualization/) at the DC [Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) on [Monday January 19, 2015](http://www.meetup.com/TrackMaven-Monthly-Challenge/events/219314544/)
  * [Please stop saying “Big Data”](/20141215-please_stop_saying_big_data/) at [AIR](http://www.air.org/) on Monday December 15, 2014
  * [Well-Used Simple Tools](/20141117-well_used_simple_tools/) at [Design Thinking DC](http://www.meetup.com/Design-Thinking-DC/) on [Monday November 17, 2014](http://www.meetup.com/Design-Thinking-DC/events/216029412/)
  * [JSON-stat and rjstat](/20141023-rjstat_lightning/) at [Statistical Programming DC](http://www.meetup.com/stats-prog-dc/) on [Thursday October 23, 2014](http://www.meetup.com/stats-prog-dc/events/177772502/)
@@ -55,6 +56,7 @@ Here are some things I've made:
  * [PerceptronModel](https://simplestatistics.org/docs/#perceptronmodel): simple binary classifier contributed to [simple-statistics](https://simplestatistics.org/)
  * [mergic](https://github.com/ajschumacher/mergic): workflow support for reproducible deduplication and merging
  * [askreduce](https://survive-python.herokuapp.com/): tiny Django app; workshop question sequence for Python newcomers
+ * [gog](/20150119-gog_a_separate_layer_for_visualization/): a separate layer for visualization
  * [cnfg](https://github.com/ajschumacher/cnfg): simple Python config in your home directory
  * [emacs.link](http://emacs.link/): an attractive convenience site for downloading and installing Emacs
  * [rjstat](https://github.com/ajschumacher/rjstat): an R package to read and write JSON-stat
