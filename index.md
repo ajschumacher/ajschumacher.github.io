@@ -1,13 +1,30 @@
 # plan <span class="shake shake-slow">➔</span> space
 
+Hi! I'm [Aaron](/aaron/). Here are some of my favorite posts on ML and
+data visualization:
+
+ * [Gaussian Processes are Not So Fancy](/20181226-gaussian_processes_are_not_so_fancy/)
+ * [Q-Learning Tic-Tac-Toe, Briefly](/20191103-q_learning_tic_tac_toe_briefly/)
+ * [Life expectancy is historically misleading](/20200806-life_expectancy_is_historically_misleading/)
+
+
+---
+
+If you sign up, I'll send you an email when I add new interesting things.
+
 <p><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates with cool new stuff" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />
 </form></p>
 <p>This site also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+
+---
+
+Here's the big list of everything:
 
  * 2020-09-02: [Share a tmux session](/20200902-share_a_tmux_session/)
  * 2020-08-16: [_e_: The Story of a Number (and more)](/20200816-e_the_story_of_a_number_and_more/)

@@ -25,7 +25,7 @@ with codecs.open('index.html', encoding='utf-8') as f:
     index = f.read()
 
 tree = html.fromstring(index)
-post_paths = tree.xpath('//ul[1]/li/a/@href')[:20]
+post_paths = tree.xpath('//ul[2]/li/a/@href')[:20]
 
 
 for post_path in post_paths:
