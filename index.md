@@ -3,6 +3,7 @@
 Hello, I'm [Aaron](/aaron/) and these are some things that I've put
 here. (Oh, there's [RSS](/rss.xml) too.)
 
+ * 2020-09-02: [Share a tmux session](/20200902-share_a_tmux_session/)
  * 2020-08-16: [_e_: The Story of a Number (and more)](/20200816-e_the_story_of_a_number_and_more/)
  * 2020-08-15: [Green Eggs and Ham uses 50 words](/20200815-green_eggs_and_ham_uses_50_words/)
  * 2020-08-06: [Life expectancy is historically misleading](/20200806-life_expectancy_is_historically_misleading/)
