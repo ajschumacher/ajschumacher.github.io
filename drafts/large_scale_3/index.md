@@ -24,7 +24,7 @@ big win with convolutional net
 not only the performance is bad but it also takes a very long time to
 give you a bad answer
 chop off the last layer of the convolutional net and train an SVM on it
-SVM has a compinatorial discrete choice issue
+SVM has a combinatorial discrete choice issue
 
 re-show couple slides from last time...
 - consider: why not squeeze down axis in the not-steep loss-function direction?
