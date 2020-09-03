@@ -54,6 +54,24 @@ a:active {
   -o-transform: rotate(180deg);
 }
 
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.4em;
+  margin: 0 0 0 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #dcdcdc;
+}
+
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 1024px),
 only screen and (min--moz-device-pixel-ratio: 2) and (max-device-width: 1024px),

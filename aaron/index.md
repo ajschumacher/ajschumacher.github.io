@@ -76,5 +76,3 @@ Here is some nice recognition:
  * Press coverage: [Show-And-Tell For The Hacker Crowd](http://wamu.org/programs/metro_connection/14/11/14/show_and_tell_for_the_hacker_crowd) on [WAMU](http://wamu.org/) on November 14, 2014
  * Winning team: [Arlington Public Schools](http://www.arlington.k12.va.us/) [Big Data Roundtable](http://www.washingtonpost.com/local/education/arlington-schools-announce-key-findings-from-big-data-competition/2014/09/10/fff0ee3a-3903-11e4-8601-97ba88884ffd_story.html), September 10, 2014
  * Winning team: [Institute for Public Knowledge](https://ipk.nyu.edu/) [Datathon](https://ipk.nyu.edu/initiatives/datathons) on Climate Change and Cities, March 9-10, 2013
-
-Also since 2016 I'm a member of the Strata+Hadoop World (NYC) program committee.

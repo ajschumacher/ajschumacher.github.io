@@ -1,7 +1,13 @@
 # plan <span class="shake shake-slow">➔</span> space
 
-Hello, I'm [Aaron](/aaron/) and these are some things that I've put
-here. (Oh, there's [RSS](/rss.xml) too.)
+<p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates with cool new stuff" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p>This site also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
 
  * 2020-09-02: [Share a tmux session](/20200902-share_a_tmux_session/)
  * 2020-08-16: [_e_: The Story of a Number (and more)](/20200816-e_the_story_of_a_number_and_more/)
