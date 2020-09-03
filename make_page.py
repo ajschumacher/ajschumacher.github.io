@@ -142,7 +142,7 @@ def recurse(filename):
     for directory in directories:
         print directory
         os.chdir(directory)
-        recurse()
+        recurse(filename)
         if os.path.exists(filename):
             build_in_cwd(filename)
         os.chdir(os.pardir)

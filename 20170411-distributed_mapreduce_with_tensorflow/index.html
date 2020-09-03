@@ -13,6 +13,8 @@
 <p class="date">Tuesday April 11, 2017</p>
 <p>Using many computers to count words is a tired Hadoop example, but might be unexpected with TensorFlow. In 50 lines, a TensorFlow program can implement not only map and reduce steps, but a whole MapReduce system.</p>
 <hr />
+<!-- somewhere maybe say something about how programming with multiple computers in TensorFlow is like programming with multiple threads in base Python, except your TensorFlow program isn't responsible for starting and stopping the multiple computers -->
+
 <h2>Set up the cluster</h2>
 <p>The design will have three roles, or jobs. There will be one task in the <code>files</code> job, distributing units of work. There will be one task for the <code>reduce</code> role, keeping track of results. There could be arbitrarily many tasks doing the <code>map</code> job, but for this example there will be two.</p>
 <p>TensorFlow programs often use <code>ps</code> (parameter server) and <code>worker</code> tasks, but this is largely a convention. The program here won't follow the convention.</p>
@@ -220,37 +222,15 @@ if config.task_type == 'map':
 <p>I'm working on <a href="http://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/57823">Building TensorFlow systems from components</a>, a workshop at <a href="https://conferences.oreilly.com/oscon/oscon-tx">OSCON 2017</a>.</p>    </article>
     <footer>
       <hr />
-      <ul>
-        <li id="back_link">
-          <a href="/">Plan <span class="rotate180">➔</span> Space</a>
-        </li>
-        <li>
-          <a id="edit_link" href="https://github.com/ajschumacher/ajschumacher.github.io">Edit</a> this page
-        </li>
-        <li>
-          Find <a id="aaron_link" href="/aaron/">Aaron</a> on
-          <ul>
-            <li>
-              <a href="https://twitter.com/planarrowspace">Twitter</a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>
-            </li>
-            <li>
-              <a href="https://plus.google.com/112658546306232777448/">Google+</a>
-            </li>
-            <li>
-              <a href="https://github.com/ajschumacher">GitHub</a>
-            </li>
-            <li>
-              <a href="mailto:ajschumacher@gmail.com">email</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          Comment below
-        </li>
-      </ul>
+<p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
       <hr />
     </footer>
 
