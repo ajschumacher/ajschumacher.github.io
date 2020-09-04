@@ -45,3 +45,5 @@ http://www.une.edu.au/WebStat/unit_materials/c4_descriptive_statistics/sums_of_s
 http://www.psych.utoronto.ca/courses/c1/chap11/chap11.html
 
 still exists: http://www.ablongman.com/graziano6e/text_site/MATERIAL/Stats/manvar.htm
+
+exists _and_ has a nice derivation! http://psychology.emory.edu/clinical/mcdowell/PSYCH560/Basics/var.html (for population variance, but still...)
