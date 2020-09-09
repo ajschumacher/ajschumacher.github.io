@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-09-09: [A Mathematician's Lament, by Lockhart](/20200909-mathematicians_lament_by_lockhart/)
  * 2020-09-02: [Share a tmux session](/20200902-share_a_tmux_session/)
  * 2020-08-16: [_e_: The Story of a Number (and more)](/20200816-e_the_story_of_a_number_and_more/)
  * 2020-08-15: [Green Eggs and Ham uses 50 words](/20200815-green_eggs_and_ham_uses_50_words/)

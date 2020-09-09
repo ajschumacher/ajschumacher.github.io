@@ -7,6 +7,104 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A Mathematician's Lament, by Lockhart</title>
+<description><![CDATA[
+
+<p><a href="https://www.maa.org/external_archive/devlin/LockhartsLament.pdf">Lockhart&#8217;s Lament</a> (and <a href="https://en.wikipedia.org/wiki/A_Mathematician%27s_Lament">Exultation</a>!) is <a href="https://smile.amazon.com/Mathematicians-Lament-School-Fascinating-Imaginative/dp/1934137170/">available</a> as a
+beautiful little book. It&#8217;s in the familiar territory of balancing
+doing original things versus learning what others have done, but he&#8217;s
+probably right that many people don&#8217;t really know what <em>doing</em> math
+is. I particularly identify with his emphasis on understanding and
+good explanations.</p>
+<p>Lockhart&#8217;s recommendation to do math for the pleasure of it reminds me
+of McCullough&#8217;s similar thought on history:</p>
+<blockquote>
+<p>"It should be taught for pleasure: The pleasure of history, like art
+or music or literature, consists of an expansion of the experience
+of being alive, which is what education is largely about."
+(<a href="https://imprimis.hillsdale.edu/knowing-history-and-knowing-who-we-are/">McCullough</a>)</p>
+</blockquote>
+<p>This is important to remember: People don&#8217;t really do things they
+don&#8217;t enjoy. Pleasure can be found in most things, but it can be more
+or less difficult to find. Finding it is important.</p>
+<p>Lockhart correctly identifies the epistemology of math, in my opinion.
+He points out that most people don&#8217;t need or use the math that&#8217;s
+currently taught in schools, so losing it wouldn't be a great loss.
+Carpenters don&#8217;t use trigonometry. Have you ever used the quadratic
+formula?</p>
+<p>I&#8217;m not sure Lockhart wrote to change anyone&#8217;s mind, and he doesn&#8217;t
+include many approachable recommendations. On page 82 he says, "There
+should be no standards, and no curriculum." He recommends <a href="https://www.usgo.org/news/2016/07/paul-lockhart-named-teacher-of-the-year/">games</a>,
+which is something, at least. He also teaches at a K-12 school where
+students interview for a chance to pay $50k <a href="https://saintannsny.org/divisions-and-offices/finance/parents/tuition-financial-aid/tuition/">tuition</a>. I like his
+ideas, but is there an accessible implementation?</p>
+<hr>
+<blockquote>
+<p>"By concentrating on <em>what</em>, and leaving out <em>why</em>, mathematics is
+reduced to an empty shell. The art is not in the &#8220;truth&#8221; but in the
+explanation, the argument. It is the argument itself that gives the
+truth its context, and determines what is really being said and
+meant. Mathematics is <em>the art of explanation</em>." (page 29)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mental acuity of any kind comes from solving problems yourself, not
+from being told how to solve them." (pages 53-54)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"[Accepting the standard math curriculum as being synonymous with math itself]
+is intimately connected to what I call the &#8220;ladder myth&#8221;&#8212;the idea
+that mathematics can be arranged as a sequence of &#8220;subjects&#8221; each
+being in some way more advanced, or &#8220;higher,&#8221; than the previous. The
+effect is to make school mathematics into a race&#8212;some students are
+&#8220;ahead&#8221; of others, and parents worry that their child is &#8220;falling
+behind.&#8221;" (page 56)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"High school students must learn to use the secant function, &#8216;sec
+<em>x</em>,&#8217; as an abbreviation for the reciprocal of the cosine function,
+&#8216;1 / cos <em>x</em>,&#8217; a definition with as much intellectual weight as the
+decision to use &#8216;&amp;&#8217; in place of &#8220;and.&#8221; That this particular
+shorthand, a holdover from fifteenth-century nautical tables, is
+still with us (whereas others, such as &#8220;versine,&#8221; have died out) is
+mere historical accident, and is of utterly no value in an era when
+rapid and precise shipboard computation is no longer an issue. Thus
+we clutter our math classes with pointless nomenclature for its own
+sake." (pages 58-59)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematics is about problems, and problems must be made the focus
+of a student&#8217;s mathematical life." (pages 60-61)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I was made to learn by heart: &#8220;The square of the sum of two numbers
+is equal to the sum of their squares increased by twice their
+product.&#8221; I had not the vaguest idea what this meant and when I
+could not remember the words, my tutor threw the book at my head,
+which did not stimulate my intellect in any way." (quoting Bertrand
+Russell, pages 61-62)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There should be no standards, and no curriculum." (page 82)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Ultimately you have to face the fact that people are different, and
+that&#8217;s just fine." (page 82)</p>
+</blockquote>
+<hr>
+<p><img alt="cover" src="A_Mathematician's_Lament.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20200909-mathematicians_lament_by_lockhart/</link>
+<guid>http://planspace.org/20200909-mathematicians_lament_by_lockhart/</guid>
+<pubDate>Wed, 09 Sep 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Share a tmux session</title>
 <description><![CDATA[
 
@@ -1959,93 +2057,6 @@ enlivened by examples and historical detail, which I enjoyed.</p>
 <link>http://planspace.org/20200206-practical_statistics_for_data_scientists_2nd_ed/</link>
 <guid>http://planspace.org/20200206-practical_statistics_for_data_scientists_2nd_ed/</guid>
 <pubDate>Thu, 06 Feb 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Three Body Problem (Remembrance of Earth's Past)</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Liu_Cixin">Liu Cixin</a>'s popular trilogy is a problematic page-turner. It's
-hard sci-fi fascinated with society but culturally backward and
-exceptionally pessimistic. It's kind of fun to play what-if with the
-author, but these books feel like artifacts of a bad old world.</p>
-<p><img alt="trilogy covers" src="trilogy_covers.png"></p>
-<p>The main concept of the books' universe is that there's tons of
-intelligent life, but life always decides to preemptively annihilate
-any other life it can find, and therefore also to hide. This
-<a href="https://en.wikipedia.org/wiki/The_Dark_Forest">Dark Forest</a> idea resolves the <a href="https://en.wikipedia.org/wiki/Fermi_paradox">Fermi paradox</a>. Stephen Hawking
-even <a href="https://www.theguardian.com/commentisfree/2010/apr/26/stephen-hawking-issues-warning-on-aliens">co-signs</a>.</p>
-<p>Annihilation is typically done by wrecking stars, but also sometimes
-by locally reducing the number of spatial dimensions. The universe is
-11-dimensional, but war has effectively reduced it to 3D, and most
-humans get killed when the solar system is reduced to 2D.</p>
-<p>There's a surprising amount of smoking. Two hundred years in the
-future, the big advance is that cigarettes are self-lighting. Bad
-communication between a father and son is held up as somehow noble.
-The character Fraisse is arguably a <a href="https://en.wikipedia.org/wiki/Magical_Negro">Magical Negro</a>.</p>
-<p>The books have a problematic relationship with women. The trilogy
-opens with a wife betraying her husband as he's murdered by young
-girls in a public display. This couple's daughter goes on to invite
-aliens to conquer Earth, like Eve with a backstory.</p>
-<p>We meet the protagonist of book two while he's trying to remember the
-name of the woman he just slept with. She's immediately killed by an
-assassination attempt meant for him. This important man falls in love
-with an imaginary woman, until later he describes her and has people
-go find a real woman like his imaginary lover, who is brought to live
-with him and then marries him and bears him a child.</p>
-<p>An initially competent woman is introduced in the third book. She goes
-on to allow aliens to conquer Earth because of her "maternal
-instinct," and then yet again to doom the Earth further because she
-wouldn't let a man do what he wanted.</p>
-<blockquote>
-<p>"Twice, she had been placed in a position of authority second only
-to God, and both times she had pushed the world into the abyss in
-the name of love." (Death's End, page 641)</p>
-</blockquote>
-<p>The books are deeply pessimistic. There's a lot of suicide, including
-humanity-wide:</p>
-<blockquote>
-<p>"The most surprising aspect of the Earth-Trisolaris Movement was
-that so many people had abandoned all hope in human civilization,
-hated and were willing to betray their own species, and even
-cherished as their highest ideal the elimination of the entire human
-race, including themselves and their children." (The Three Body
-Problem, page 317)</p>
-</blockquote>
-<p>(There actually is a <a href="https://en.wikipedia.org/wiki/Voluntary_Human_Extinction_Movement">Voluntary Human Extinction Movement</a>. It is
-not very popular.)</p>
-<p>When people do want to keep living they very quickly turn on one
-another. The zero-sum nature of the universe is an axiom of these
-books. A little bit of fun comes out of the explorations of deception
-in the face of full-information competition, but it's a sad world.</p>
-<p>The first book <a href="http://peterbutler.blog/the-shooter-and-the-farmer/">teases</a> that it might explore fun ideas around
-foundations or philosophy, but there's no real payoff to these plot
-directions. It feels like something from an earlier draft that never
-got edited out.</p>
-<p>The first book is a long introduction to the trilogy. The backdrop of
-the <a href="https://en.wikipedia.org/wiki/Cultural_Revolution">Cultural Revolution</a> is interesting for the unfamiliar, but
-what I most enjoyed hearing from Liu was his sci-fi speculation, and
-that really only gets rolling in book two.</p>
-<p>I like science and all, but I didn't need all the pro-STEM pandering,
-much less the anti-environmentalism. (<a href="https://en.wikipedia.org/wiki/Silent_Spring">Silent Spring</a> helps inspire
-a desire to kill all humans, for example.)</p>
-<p>I liked Ken Liu's translation of the first and third books, and his
-brief notes. He says that translation shouldn't read as if it was
-originally written in the target language, which I thought was
-interesting. The second book's translator may have taken Ken's advice
-too far, stilting the dialogue and having people refer to one another
-as "doctor" far too much.</p>
-<p>The Remembrance of Earth's Past is unique to me in that while I found
-it engrossing, I can't really recommend it. Read <a href="/20180723-broken_earth_trilogy/">The Broken Earth</a>
-instead.</p>
-<blockquote>
-<p>"The era for humanity's degenerate freedom is over. If you want to
-survive here, you must relearn collectivism and retrieve the dignity
-of your race!" (Death's End, page 235)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20200124-three_body_problem_remembrance_of_earths_past/</link>
-<guid>http://planspace.org/20200124-three_body_problem_remembrance_of_earths_past/</guid>
-<pubDate>Fri, 24 Jan 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
