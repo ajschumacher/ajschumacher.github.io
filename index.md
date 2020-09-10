@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-09-10: [GPU environment variables](/20200910-gpu_environment_variables/)
  * 2020-09-09: [A Mathematician's Lament, by Lockhart](/20200909-mathematicians_lament_by_lockhart/)
  * 2020-09-02: [Share a tmux session](/20200902-share_a_tmux_session/)
  * 2020-08-16: [_e_: The Story of a Number (and more)](/20200816-e_the_story_of_a_number_and_more/)

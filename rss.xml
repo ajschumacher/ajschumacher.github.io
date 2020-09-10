@@ -7,6 +7,25 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>GPU environment variables</title>
+<description><![CDATA[
+
+<p><code>CUDA_DEVICE_ORDER</code> can default to <code>FASTEST_FIRST</code>, which may not
+match the order you see in <code>nvidia-smi</code> output. Use
+<code>CUDA_DEVICE_ORDER=PCI_BUS_ID</code>.</p>
+<p>Set <code>CUDA_VISIBLE_DEVICES=2</code> to only run on GPU 2. That GPU will then
+be accessed as GPU 0, not GPU 2.</p>
+<p>When using TensorFlow, you <a href="https://www.tensorflow.org/guide/gpu#limiting_gpu_memory_growth">can</a> set
+<code>TF_FORCE_GPU_ALLOW_GROWTH=true</code> to keep TF from preemptively claiming
+all the GPU memory. However, in my tests (with the older version 1.14)
+TF still allocates way more memory than it really needs, so this
+setting doesn't help much in practice.</p>    
+    ]]></description>
+<link>http://planspace.org/20200910-gpu_environment_variables/</link>
+<guid>http://planspace.org/20200910-gpu_environment_variables/</guid>
+<pubDate>Thu, 10 Sep 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>A Mathematician's Lament, by Lockhart</title>
 <description><![CDATA[
 
@@ -2037,26 +2056,6 @@ order-of-magnitude flights of fancy, and it's a darn good time.</p>
 <link>http://planspace.org/20200207-what_if_by_randall_munroe/</link>
 <guid>http://planspace.org/20200207-what_if_by_randall_munroe/</guid>
 <pubDate>Fri, 07 Feb 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Practical Statistics for Data Scientists, 2nd Edition</title>
-<description><![CDATA[
-
-<p>I was happy to do a pre-publication technical review of the upcoming
-<a href="https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/">second edition</a> of this fine book by three folks including the
-founder of <a href="https://www.statistics.com/">statistics.com</a>. The book has a unique perspective
-enlivened by examples and historical detail, which I enjoyed.</p>
-<!--
- * Honorarium was $300
- * My notes are in:
-     https://bitbucket.org/ajschumacher/vis_book/src/master/stat_for_ds[-personal].md
--->
-
-<p><img alt="cover" src="prac_stat_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200206-practical_statistics_for_data_scientists_2nd_ed/</link>
-<guid>http://planspace.org/20200206-practical_statistics_for_data_scientists_2nd_ed/</guid>
-<pubDate>Thu, 06 Feb 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
