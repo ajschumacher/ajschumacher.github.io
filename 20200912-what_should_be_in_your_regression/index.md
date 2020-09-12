@@ -2,7 +2,8 @@
 
 If you're fitting a model in the hopes of better understanding the
 effect of _x_ on _y_, then including another predictor variable _z_
-could be necessary, or could be harmful.
+could be necessary, or could be harmful. Determining which depends on
+identifying how the variables are causally related.
 
  * [Simple direct causation](#direct)
  * [Mediated causation](#mediated)
@@ -24,11 +25,8 @@ other modeling methods may be more appropriate.
 
 ![x -> y](direct.png)
 
-The diagram indicates that you assume _x_ influences _y_ (not the
-reverse) and no other variables are involved.
-
-Assumptions like these come from you and are generally hard to check.
-For the artificial data generated here, we know they're true.
+Say the reality is that _x_ influences _y_ (not the reverse) and no
+other variables are involved.
 
 <!-- set.seed(99) -->
 
@@ -41,7 +39,7 @@ summary(lm(y ~ x))
 ```
 
 The estimate of 1.077 is close to the true value of 1. The very low
-p-value (and three stars) indicates confidence that there is a
+p-value (with three stars) indicates confidence that there is a
 non-random relationship between _x_ and _y_.
 
 
@@ -51,7 +49,12 @@ non-random relationship between _x_ and _y_.
 
 ![x -> z -> y](mediated.png)
 
-Here, _x_ influences _z_, which then influences _y_.
+Here, the reality is that _x_ influences _z_, which then influences
+_y_.
+
+In this case, _x_ really does influence _y_, so you're right to look
+for the relationship. And it might be tempting to control for _z_,
+perhaps because of a desire to “isolate” the effect of _x_.
 
 If you include _z_ in your regression, the desired estimate of the
 effect of _x_ will disappear.
@@ -86,8 +89,13 @@ Leaving _z_ out gives a good estimate of the effect of _x_.
 
 ![x <- z -> y](common_cause.png)
 
-In this case, _z_ influences both _x_ and _y_, which are otherwise
-unrelated.
+In this case, the reality is that _z_ influences both _x_ and _y_,
+which are otherwise unrelated.
+
+This is an extreme example, in the sense that you'd be totally wrong
+to look for an effect of _x_ on _y_ in this case. The case where
+there's also a direct connection between _x_ and _y_ is similar, but
+for simplicity this example doesn't have one.
 
 If you don't include _z_ in your regression, the relationship between
 _x_ and _y_ could be misleading.
@@ -124,8 +132,12 @@ influencing factor.
 
 ![x -> z <- y](collider.png)
 
-Here, _x_ and _y_ are really completely unrelated, but they both
-influence _z_.
+Here, the reality is that _x_ and _y_ are completely unrelated, but
+they both influence _z_.
+
+As with [common cause](#common_cause), it's more interesting when
+there's also a direct connection between _x_ and _y_, but the behavior
+is similar and this example keeps things simpler.
 
 Somewhat surprisingly, if you include _z_ in your regression, you'll
 see evidence that both _z_ and _x_ influence _y_.
@@ -142,7 +154,7 @@ summary(lm(y ~ x + z))
 ##  z            0.44439    0.04971   8.939 2.62e-14 ***
 ```
 
-This is a case of "[explaining away][]."
+This is a case of “[explaining away][].”
 
 [explaining away]: https://www.researchgate.net/publication/3192123_Explaining_explaining_away%27
 
@@ -164,3 +176,8 @@ With a more complex causal graph, it may not be obvious what you need
 to control for, or it may be that conventional methods of control
 aren't sufficient. Methods like Judea Pearl's do-calculus might be
 helpful.
+
+
+---
+
+Thanks to Erica Blom and Ben Klemens for providing helpful feedback.
