@@ -2,18 +2,22 @@
 
 If you're fitting a model in the hopes of better understanding the
 effect of _x_ on _y_, then including another predictor variable _z_
-could be necessary, or could be harmful. Determining which depends on
-identifying how the variables are causally related.
+could be necessary, or could be harmful. Deciding whether to control
+for _z_ depends on identifying how the variables are causally related.
 
  * [Simple direct causation](#direct)
- * [Mediated causation](#mediated)
- * [Common cause (confounding)](#common_cause)
- * [Common effect (collider)](#common_effect)
+ * [Mediated causation](#mediated): don't control for _z_
+ * [Common cause (confounding)](#common_cause): control for _z_
+ * [Common effect (collider)](#common_effect): don't control for _z_
  * [More complicated cases](#complicated)
 
-These [R][] examples use random [normal][] data, additive
-relationships, and linear regression. With real data and processes,
-other modeling methods may be more appropriate.
+These examples vary the data generating process (which isn't possible
+in practice) in order to illustrate what happens in each case when you
+do or don't control for _z_.
+
+The [R][] code uses random [normal][] data, additive relationships,
+and linear regression. With real data and processes, other modeling
+methods may be more appropriate.
 
 [R]: https://www.r-project.org/about.html
 [normal]: https://en.wikipedia.org/wiki/Normal_distribution
@@ -180,4 +184,5 @@ helpful.
 
 ---
 
-Thanks to Erica Blom and Ben Klemens for providing helpful feedback.
+Thanks to Erica Blom, Ben Klemens, and Jonathan Robinson for providing
+helpful feedback.

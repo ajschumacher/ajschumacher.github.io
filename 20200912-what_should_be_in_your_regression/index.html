@@ -13,18 +13,21 @@
 <p class="date">Saturday September 12, 2020</p>
 <p>If you're fitting a model in the hopes of better understanding the
 effect of <em>x</em> on <em>y</em>, then including another predictor variable <em>z</em>
-could be necessary, or could be harmful. Determining which depends on
-identifying how the variables are causally related.</p>
+could be necessary, or could be harmful. Deciding whether to control
+for <em>z</em> depends on identifying how the variables are causally related.</p>
 <ul>
 <li><a href="#direct">Simple direct causation</a></li>
-<li><a href="#mediated">Mediated causation</a></li>
-<li><a href="#common_cause">Common cause (confounding)</a></li>
-<li><a href="#common_effect">Common effect (collider)</a></li>
+<li><a href="#mediated">Mediated causation</a>: don't control for <em>z</em></li>
+<li><a href="#common_cause">Common cause (confounding)</a>: control for <em>z</em></li>
+<li><a href="#common_effect">Common effect (collider)</a>: don't control for <em>z</em></li>
 <li><a href="#complicated">More complicated cases</a></li>
 </ul>
-<p>These <a href="https://www.r-project.org/about.html">R</a> examples use random <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a> data, additive
-relationships, and linear regression. With real data and processes,
-other modeling methods may be more appropriate.</p>
+<p>These examples vary the data generating process (which isn't possible
+in practice) in order to illustrate what happens in each case when you
+do or don't control for <em>z</em>.</p>
+<p>The <a href="https://www.r-project.org/about.html">R</a> code uses random <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a> data, additive relationships,
+and linear regression. With real data and processes, other modeling
+methods may be more appropriate.</p>
 <hr />
 <h3><a name="direct"></a>Simple direct causation</h3>
 <p><img alt="x -&gt; y" src="direct.png" /></p>
@@ -132,7 +135,8 @@ to control for, or it may be that conventional methods of control
 aren't sufficient. Methods like Judea Pearl's do-calculus might be
 helpful.</p>
 <hr />
-<p>Thanks to Erica Blom and Ben Klemens for providing helpful feedback.</p>    </article>
+<p>Thanks to Erica Blom, Ben Klemens, and Jonathan Robinson for providing
+helpful feedback.</p>    </article>
     <footer>
       <hr />
 <p><form class="email_updates">

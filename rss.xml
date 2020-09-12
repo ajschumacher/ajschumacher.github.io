@@ -7,6 +7,141 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>What should be in your regression?</title>
+<description><![CDATA[
+
+<p>If you're fitting a model in the hopes of better understanding the
+effect of <em>x</em> on <em>y</em>, then including another predictor variable <em>z</em>
+could be necessary, or could be harmful. Deciding whether to control
+for <em>z</em> depends on identifying how the variables are causally related.</p>
+<ul>
+<li><a href="#direct">Simple direct causation</a></li>
+<li><a href="#mediated">Mediated causation</a>: don't control for <em>z</em></li>
+<li><a href="#common_cause">Common cause (confounding)</a>: control for <em>z</em></li>
+<li><a href="#common_effect">Common effect (collider)</a>: don't control for <em>z</em></li>
+<li><a href="#complicated">More complicated cases</a></li>
+</ul>
+<p>These examples vary the data generating process (which isn't possible
+in practice) in order to illustrate what happens in each case when you
+do or don't control for <em>z</em>.</p>
+<p>The <a href="https://www.r-project.org/about.html">R</a> code uses random <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a> data, additive relationships,
+and linear regression. With real data and processes, other modeling
+methods may be more appropriate.</p>
+<hr>
+<h3><a name="direct"></a>Simple direct causation</h3>
+<p><img alt="x -&gt; y" src="direct.png"></p>
+<p>Say the reality is that <em>x</em> influences <em>y</em> (not the reverse) and no
+other variables are involved.</p>
+<!-- set.seed(99) -->
+
+<pre><code class="language-r">x = rnorm(100)
+y = x + rnorm(100)
+summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.07747    0.11931   9.031 1.53e-14 ***</code></pre>
+
+<p>The estimate of 1.077 is close to the true value of 1. The very low
+p-value (with three stars) indicates confidence that there is a
+non-random relationship between <em>x</em> and <em>y</em>.</p>
+<hr>
+<h3><a name="mediated"></a>Mediated causation</h3>
+<p><img alt="x -&gt; z -&gt; y" src="mediated.png"></p>
+<p>Here, the reality is that <em>x</em> influences <em>z</em>, which then influences
+<em>y</em>.</p>
+<p>In this case, <em>x</em> really does influence <em>y</em>, so you're right to look
+for the relationship. And it might be tempting to control for <em>z</em>,
+perhaps because of a desire to &#8220;isolate&#8221; the effect of <em>x</em>.</p>
+<p>If you include <em>z</em> in your regression, the desired estimate of the
+effect of <em>x</em> will disappear.</p>
+<!-- set.seed(101) -->
+
+<pre><code class="language-r">x = rnorm(100)
+z = x + rnorm(100)
+y = z + rnorm(100)
+summary(lm(y ~ x + z))
+##               Estimate Std. Error t value Pr(&gt;|t|)
+##  x           -0.146874   0.135695  -1.082    0.282
+##  z            1.127586   0.087819  12.840   &lt;2e-16 ***</code></pre>
+
+<p>Including <em>z</em> makes it appear that <em>x</em> has no significant influence on
+<em>y</em>, which is incorrect.</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.11140    0.15343   7.244    1e-10 ***</code></pre>
+
+<p>Leaving <em>z</em> out gives a good estimate of the effect of <em>x</em>.</p>
+<hr>
+<h3><a name="common_cause"></a>Common cause (confounding)</h3>
+<p><img alt="x &lt;- z -&gt; y" src="common_cause.png"></p>
+<p>In this case, the reality is that <em>z</em> influences both <em>x</em> and <em>y</em>,
+which are otherwise unrelated.</p>
+<p>This is an extreme example, in the sense that you'd be totally wrong
+to look for an effect of <em>x</em> on <em>y</em> in this case. The case where
+there's also a direct connection between <em>x</em> and <em>y</em> is similar, but
+for simplicity this example doesn't have one.</p>
+<p>If you don't include <em>z</em> in your regression, the relationship between
+<em>x</em> and <em>y</em> could be misleading.</p>
+<!-- set.seed(103) -->
+
+<pre><code class="language-r">z = rnorm(100)
+x = z + rnorm(100)
+y = z + rnorm(100)
+summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            0.56257    0.10365   5.428 4.14e-07 ***</code></pre>
+
+<p>There is a relationship between <em>x</em> and <em>y</em>, but it's because of <em>z</em>,
+not because of <em>x</em>. The regression result ignoring <em>z</em> could easily be
+misinterpreted.</p>
+<pre><code class="language-r">summary(lm(y ~ x + z))
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## x            0.03608    0.10590   0.341    0.734
+## z            1.05814    0.13556   7.806 6.93e-12 ***</code></pre>
+
+<p>With <em>z</em> in the model, the result correctly indicates that <em>z</em> is the
+influencing factor.</p>
+<hr>
+<h3><a name="common_effect"></a>Common effect (collider)</h3>
+<p><img alt="x -&gt; z &lt;- y" src="collider.png"></p>
+<p>Here, the reality is that <em>x</em> and <em>y</em> are completely unrelated, but
+they both influence <em>z</em>.</p>
+<p>As with <a href="#common_cause">common cause</a>, it's more interesting when
+there's also a direct connection between <em>x</em> and <em>y</em>, but the behavior
+is similar and this example keeps things simpler.</p>
+<p>Somewhat surprisingly, if you include <em>z</em> in your regression, you'll
+see evidence that both <em>z</em> and <em>x</em> influence <em>y</em>.</p>
+<!-- set.seed(105) -->
+
+<pre><code class="language-r">x = rnorm(100)
+y = rnorm(100)
+z = x + y + rnorm(100)
+summary(lm(y ~ x + z))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x           -0.46951    0.08831  -5.317 6.76e-07 ***
+##  z            0.44439    0.04971   8.939 2.62e-14 ***</code></pre>
+
+<p>This is a case of &#8220;<a href="https://www.researchgate.net/publication/3192123_Explaining_explaining_away%27">explaining away</a>.&#8221;</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x           -0.11308    0.10586  -1.068    0.288</code></pre>
+
+<p>Without <em>z</em> in the regression, the result correctly indicates no
+relationship between <em>x</em> and <em>y</em>.</p>
+<hr>
+<h3><a name="complicated"></a>More complicated cases</h3>
+<p>With a more complex causal graph, it may not be obvious what you need
+to control for, or it may be that conventional methods of control
+aren't sufficient. Methods like Judea Pearl's do-calculus might be
+helpful.</p>
+<hr>
+<p>Thanks to Erica Blom, Ben Klemens, and Jonathan Robinson for providing
+helpful feedback.</p>    
+    ]]></description>
+<link>http://planspace.org/20200912-what_should_be_in_your_regression/</link>
+<guid>http://planspace.org/20200912-what_should_be_in_your_regression/</guid>
+<pubDate>Sat, 12 Sep 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>GPU environment variables</title>
 <description><![CDATA[
 
@@ -2023,39 +2158,6 @@ replace my usual new browser tab image.</p>
 <link>http://planspace.org/20200209-zombie_ideas/</link>
 <guid>http://planspace.org/20200209-zombie_ideas/</guid>
 <pubDate>Sun, 09 Feb 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>What If? by Randall Munroe</title>
-<description><![CDATA[
-
-<p>I read this after enjoying <a href="/20200101-how_to_by_randall_munroe/">How To</a> by the same author. This one is
-more directly from the <a href="https://what-if.xkcd.com/">blog</a>, which I had only read occasionally.
-It's laugh-out-loud funny physics nerdery.</p>
-<p>Even when it isn't funny, it explains things in ways that provide
-quick understanding:</p>
-<blockquote>
-<p>"Chemotherapy drugs are blunt instruments. Some are more precisely
-targeted than others, but many simply interrupt cell division in
-general. The reason that this selectively kills cancer cells,
-instead of harming the patient and the cancer equally, is that
-cancer cells are dividing all the time, whereas most normal cells
-divide only occasionally." (page 134)</p>
-</blockquote>
-<p>My only gripe is this apparent inconsistency:</p>
-<blockquote>
-<p>"Q. How hard would a puck have to be shot to be able to knock the
-goalie himself backward into the net? A. This can't really happen."
-(page 112)</p>
-<p>"If it's going fast enough, a feather can <em>absolutely</em> knock you
-over." page 177</p>
-</blockquote>
-<p>But in general the book seems basically correct in its wild
-order-of-magnitude flights of fancy, and it's a darn good time.</p>
-<p><img alt="What If? cover" src="what_if_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200207-what_if_by_randall_munroe/</link>
-<guid>http://planspace.org/20200207-what_if_by_randall_munroe/</guid>
-<pubDate>Fri, 07 Feb 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
