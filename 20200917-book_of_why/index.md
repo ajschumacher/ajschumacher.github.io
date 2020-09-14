@@ -44,6 +44,9 @@ I also liked the material (starting pages 200 and 309) on
 
 [Simpson's Paradox]: https://en.wikipedia.org/wiki/Simpson%27s_paradox
 
+To be clear, I think the book is trying to offer some useful ideas. I
+wish it were more successful in conveying them.
+
 
 ---
 
