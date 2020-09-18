@@ -88,6 +88,10 @@ causation is given an axiomatic existence and becomes a silent arrow.
 
 [Feynman]: https://youtu.be/36GT2zI8lVA
 
+The arrows aren't necessarily bad, but the book is so
+[busy](#impediments) begging for unrelated praise that we don't get a
+clear picture of what they're good for.
+
 
 ---
 
@@ -128,24 +132,23 @@ disagree with him on how [communication](#conversation) works, and the
 
 ### <a name="impediments"></a>Difficulties in reading
 
-This is Pearl closing a section about the work of his students:
+I have to imagine that Pearl is likable in person, but his style here
+reads as extreme self-praise and even putting down others to seem
+better by comparison. Knowing him only through this book, it's hard to
+root for him.
 
-> "If I were less modest, I would close here with Isaac Newton's
-> famous saying about “standing on the shoulders of giants.”" (page
-> 244)
+He tilts at straw men, writing as if [statisticians][] and economists
+have never thought about causality without his guidance. But
+researchers have [not][] been afraid to say things are "most likely a
+cause, not just a correlate" even without his work.
+
+[statisticians]: https://stats.stackexchange.com/questions/376920/the-book-of-why-by-judea-pearl-why-is-he-bashing-statistics
+[not]: https://www.ncjrs.gov/pdffiles1/Digitization/141324NCJRS.pdf
 
 To make his work seem more novel, he keeps it at a distance from
 [familiar](#coefficients) topics, even when only the interpretation is
 different, preventing readers from easily connecting with prior
 knowledge.
-
-He tilts at straw men, writing as if [statisticians][] and economists
-have never thought about causality without his guidance. Researchers
-have [not][] been afraid to say things are "most likely a cause, not
-just a correlate" even without his work.
-
-[statisticians]: https://stats.stackexchange.com/questions/376920/the-book-of-why-by-judea-pearl-why-is-he-bashing-statistics
-[not]: https://www.ncjrs.gov/pdffiles1/Digitization/141324NCJRS.pdf
 
 He writes as if he could have more quickly shown a connection between
 smoking and lung cancer, but does not support this with evidence or
@@ -165,13 +168,15 @@ page 83, but as far as I can tell it is incomplete or incorrect. (I
 emailed the authors asking for clarification and will update as
 appropriate.)
 
-Andrew Gelman's [notes][] mention some issues with the book. Some are
-[glaring](#asylum). But also: Sherlock Holmes is not known for
-deduction or induction, but for abduction. It's not clear why we
-should change multiple variables on page 279, but freeze them on page
-312.
+Andrew Gelman's [notes][] mention some issues with the book. (And some
+others are even more [glaring](#asylum).) But also: Sherlock Holmes is
+not known for deduction or induction, but for abduction (page 93).
+It's not clear why we should change multiple variables on page 279,
+but freeze them on page 312.
 
 [notes]: https://statmodeling.stat.columbia.edu/2019/01/08/book-pearl-mackenzie/
+
+This book could have been so much better.
 
 
 ---
@@ -307,7 +312,8 @@ It's hard to see how this is an improvement over the [Hill guidelines][]
 > 244)
 
 This is at the close of a section about the work his students have
-done.
+done. The generous interpretation is that he isn't saying that he's
+the giant.
 
 
 ---
