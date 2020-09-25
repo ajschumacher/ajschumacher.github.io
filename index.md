@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-09-25: [How Not to Be Wrong, by Ellenberg](/20200925-how_not_to_be_wrong_by_ellenberg/)
  * 2020-09-24: [Trivia rewards test-time effort](/20200924-trivia_rewards_effort/)
  * 2020-09-23: [Axiomatic Thinking (Hilbert, 1918)](/20200923-axiomatic_thinking_hilbert_1918/)
  * 2020-09-17: [The Book of Why, by Pearl and Mackenzie](/20200917-book_of_why/)

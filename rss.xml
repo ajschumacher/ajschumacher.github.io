@@ -7,6 +7,642 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>How Not to Be Wrong, by Ellenberg</title>
+<description><![CDATA[
+
+<p>I like <a href="https://www.jordanellenberg.com/how-not-to-be-wrong/">this book</a> a lot. The five parts (Linearity, Inference,
+Expectation, Regression, Existence) provide beautiful large-scale
+structure, and it also shimmers on every page. Supreme court justices
+encounter the word "orthogonal." There's a beautiful proof of
+<a href="https://en.wikipedia.org/wiki/Buffon%27s_needle_problem">Buffon's needle problem</a>. There's some philosophy of math.
+Ellenberg is a delight.</p>
+<p>In some ways, How Not to Be Wrong is like a long version of
+<a href="/20200909-mathematicians_lament_by_lockhart/">Lockhart's exultation</a>, with examples. Lockhart extols the
+<a href="https://en.wikipedia.org/wiki/Method_of_exhaustion">method of exhaustion</a>; Ellenberg teaches it. The author clearly
+loves math, and shares it generously with the reader.</p>
+<p>The "How Not to Be Wrong" is delivered by exposing numerous common
+fallacies or errors in understanding. Not every phenomenon is linear.
+"Don't talk about percentages of numbers when the numbers might be
+negative." "Improbable things happen a lot," and that affects how you
+should think about significance tests and related things. The book is
+a joy to read, I'd also read a "handbook" version collecting just the
+main ideas.</p>
+<hr>
+<h3>Selected quotations and (rarely) comments</h3>
+<hr>
+<blockquote>
+<p>"Those [homework] integrals are to mathematics as weight training
+and calisthenics are to soccer. If you want to play soccer&#8212;I mean,
+<em>really play</em>, at a competitive level&#8212;you've got to do a lot of
+boring, repetitive, apparently pointless drills." (page 2)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Math is woven into the way we reason." (page 2)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Here's an old mathematician's trick that makes the picture
+perfectly clear: <em>set some variables to zero</em>." (pages 6-7)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"What assumptions are you making? And are they justified?" (page 7)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematics <em>is</em> common sense." (page 10)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematicians like to give names to the phenomena our common sense
+describes: instead of saying &#8220;<em>This</em> thing added to <em>that</em> thing is
+the <em>same</em> thing as <em>that</em> thing added to <em>this</em> thing,&#8221; we say
+&#8220;Addition is commutative.&#8221;" (page 11)</p>
+</blockquote>
+<p>Seems like a philosophy similar to <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">Where Mathematics Comes From</a>.</p>
+<hr>
+<blockquote>
+<p>"We tend to teach mathematics as a long list of rules. You learn
+them in order and you have to obey them, because if you don&#8217;t obey
+them you get a C-. <em>This is not mathematics.</em> Mathematics is the
+study of things that come out a certain way because there is no
+other way they could possibly be." (page 12)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The specialized language in which mathematicians converse with one
+another is a magnificent tool for conveying complex ideas precisely
+and swiftly. But its foreignness can create among outsiders the
+impression of a sphere of thought totally alien to ordinary
+thinking. That's exactly wrong." (page 12)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematics is the extension of common sense by other means." (page
+13)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"School mathematics is largely made up of a sequence of facts and
+rules, facts which are certain, rules which come from a higher
+authority and cannot be questioned." (page 14)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematics is not settled." (page 14)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"(Aside: it's important to point out here that people with
+out-of-the-mainstream ideas who compare themselves to Edison and
+Galileo are <em>never actually right</em>. I get letters with this kind of
+language at least once a month, usually from people who have
+&#8220;proofs&#8221; of mathematical statements that have been known for
+hundreds of years to be false. I can guarantee you Einstein did not
+go around telling people, &#8220;Look, I know this theory of general
+relativity sounds wacky, but that's what they said about Galileo!&#8221;)"
+(page 27)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... the oldest false syllogism in the book:"</p>
+<p>"It <em>could</em> be the case that lowering taxes will increase government
+revenue;"</p>
+<p>"I <em>want</em> it to be the case that lowering taxes will increase
+government revenue;"</p>
+<p>"Therefore, <em>it is</em> the case that lowering taxes will increase
+government revenue." (page 30)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The Pythagoreans, you have to remember, were extremely weird."
+(page 33)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"A basic rule of mathematical life: if the universe hands you a hard
+problem, try to solve an easier one instead, and hope the simple
+version is close enough to the original problem that the universe
+doesn't object." (page 35)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"What's the numerical value of an infinite sum? It doesn't have
+one&#8212;<em>until we give it one</em>." (page 47)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"(In mathematics, you very seldom get the clearest account of an
+idea from the person who invented it.)" (page 49)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Cauchy was not interested in the needs of engineers. Cauchy was
+interested in the truth. It's hard to defend Cauchy's stance on
+pedagogical grounds." (page 49)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Working an integral or performing a linear regression is something
+a computer can do quite effectively. Understanding whether the
+result makes sense&#8212;or deciding whether the method is the right one
+to use in the first place&#8212;requires a guiding human hand. When we
+teach mathematics we are supposed to be explaining how to be that
+guide. A math course that fails to do so is essentially training the
+student to be a very slow, buggy version of Microsoft Excel." (page
+56)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"there are algorithms I think we can safely discard in the modern
+world. We don't need to teach students how to extract square roots
+by hand, or in their head ..." (page 57)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Of course it's no better (in fact, it's substantially worse) to
+pass along a population of students who've developed some wispy
+sense of mathematical meaning but can't work examples swiftly and
+correctly. A math teacher's least favorite thing to hear from a
+student is &#8220;I get the concept, but I couldn't do the problems.&#8221;
+Though the student doesn't know it, this is shorthand for &#8220;I don't
+get the concept.&#8221; The ideas of mathematics can sound abstract, but
+they make sense only in reference to concrete computations. William
+Carlos Williams put it crisply: <em>no ideas but in things</em>." (page 58)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The situation [of school geometry] is so dire that the Fields
+Medalist David Mumford has suggested that we might dispense with
+plane geometry entirely and replace it with a first course in
+programming." (page 58)</p>
+</blockquote>
+<p>Mumford <a href="https://www.dam.brown.edu/people/mumford/beyond/education.html">links</a> to his <a href="https://www.dam.brown.edu/people/mumford/beyond/papers/CurtisArticleRev10-6.pdf">manuscript</a>, "What Mathematics Serves the
+Majority of 21st Century American Students?"</p>
+<hr>
+<blockquote>
+<p>"If a tiny state like South Dakota experiences a rash of brain
+cancer, you might presume that the spike is in large measure due to
+luck, and you might estimate that the rate of brain cancer in the
+future is likely to be closer to the overall national number. You
+could accomplish this by taking some kind of weighted average of the
+South Dakota rate with the national rate. But how to weight the two
+numbers? That's a bit of an art, involving a fair amount of
+technical labor I'll spare you here." (pages 70-71)</p>
+</blockquote>
+<p>I think he's referring to <a href="https://en.wikipedia.org/wiki/Multilevel_model">multi-level modeling</a>, in the Gelman
+style.</p>
+<hr>
+<blockquote>
+<p>"<em>Don't talk about percentages of numbers when the numbers might be
+negative.</em>" (page 78)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<em>Improbable things happen a lot.</em>" (page 98)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When we are scientists, or Torah scholars, or toddlers gaping at
+the clouds, we are presented with <em>observations</em> and asked to build
+<em>theories</em>&#8211;what went into the box to produce the world that we see?
+Inference is a hard thing, maybe the hardest thing." (page 110)</p>
+</blockquote>
+<p>Ellenberg says "inference" but I might say "abduction."</p>
+<hr>
+<p>Dangers of comparing very small rates:</p>
+<blockquote>
+<p>"... <em>twice a tiny number is a tiny number</em>. How good or bad it is
+to double something depends on how big that something is!" (page
+120)</p>
+<p>"Risk ratios are much easier for the brain to grasp than tiny
+splinters of probability like 1 in 7,000. But risk ratios applied to
+small probabilities can easily mislead you." (page 120)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The truth is, the null hypothesis, if we take it literally, is
+probably just about always false." (page 120)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If only we could go back in time to the dawn of statistical
+nomenclature and declare that a result passing Fisher's test with a
+p-value of less than 0.05 was &#8220;statistically noticeable&#8221; or
+&#8220;statistically detectable&#8221; instead of &#8220;statistically significant&#8221;!
+That would be truer to the meaning of the method, which merely
+counsels us about the existence of an effect but is silent about its
+size or importance. But it's too late for that. We have the language
+we have." (page 121)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It has come to my attention that hardly anybody knows what the
+logarithm is. Let me take a step toward fixing this. The logarithm
+of a positive number <em>N</em>, called <em>log N</em>, is the number of digits it
+has." (page 139)</p>
+</blockquote>
+<p>He goes on to call this the "fake logarithm," of "flogarithm."</p>
+<hr>
+<blockquote>
+<p>"In particular, the view that the primary concern of statistics is
+making decisions is more closely associated with Neyman than with
+Pearson." (page 159)</p>
+</blockquote>
+<p>Reminds me of <a href="https://en.wikipedia.org/wiki/Cassie_Kozyrkov">Cassie Kozyrkov</a>, the Google Decision Scientist.</p>
+<hr>
+<blockquote>
+<p>"<em>The significance test is the detective, not the judge.</em>" (page
+161)</p>
+</blockquote>
+<hr>
+<p>I have <em>tried</em> to find the origin of the Target pregnancy prediction
+story before, but somehow I never tracked it down. Ellenberg has it!</p>
+<p><a href="https://charlesduhigg.com/how-companies-learn-your-secrets-part-1/">How Companies Learn Your Secrets</a>, by Charles Duhigg</p>
+<hr>
+<blockquote>
+<p>"The p-value is the answer to the question</p>
+<p>""The chance that the observed experimental result would occur,
+given that the null hypothesis is correct."</p>
+<p>"But what we <em>want</em> to know is the other conditional probability:</p>
+<p>""The chance that the null hypothesis is correct, given that we
+observed a certain experimental result."" (page 170)</p>
+</blockquote>
+<p>This is connected to Bayesian stats as "inverse probability", and he
+also notes that it's referred to as "<a href="https://en.wikipedia.org/wiki/Prosecutor%27s_fallacy">the prosecutor's fallacy</a>" and
+references the book <em>Math on Trial</em>.</p>
+<hr>
+<blockquote>
+<p>"no scientific worker has a fixed level of significance at which
+from year to year, and in all circumstances, he rejects hypotheses;
+he rather gives his mind to each particular case in the light of his
+evidence and his ideas" (page 180, quoting Fisher)</p>
+</blockquote>
+<p>Saying that even Fisher thinks our prior beliefs enter our work;
+Fisher just has certain ideas about when it's appropriate to invoke
+probability: he insists on some actual chance process.</p>
+<hr>
+<blockquote>
+<p>"We tend to like simpler theories better than more complicated ones;
+theories that rest on analogies to things we already know about
+better than theories that posit totally novel phenomena." (page 182)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... you have to be careful about the universe of theories you
+consider. Just as there may be more than one solution to a quadratic
+equation, there may be multiple theories that give rise to the same
+observation, and if we don't consider them all, our inferences may
+lead us badly astray." (page 185)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It is an old maxim of mine that when you have excluded the
+impossible, whatever remains, however improbably, must be the truth,
+unless the truth is a hypothesis it didn't occur to me to consider."
+(page 188)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"And as much as I love Bayesian inference, I think people are
+probably best off arriving at their faith, or discarding it, in a
+non-quantitative way." (page 191)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Expected value is not the value you expect" (page 198)</p>
+</blockquote>
+<hr>
+<p><a href="https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Abrams2011.pdf">Finding Good Bets in the Lottery, and Why You Shouldn&#8217;t Take Them</a> is a great reference, which I connect to my <a href="/2012/06/04/expected-value-is-not-useful-for-making/">Expected value is not useful for making decisions about lottery tickets</a>.</p>
+<hr>
+<blockquote>
+<p>"Any given ticket is probably worthless, but if you've got a
+thousand tickets, it's essentially certain that you'll make your
+money back and then some." (page 209)</p>
+</blockquote>
+<p>This gets at what I think is important: It isn't the expected value
+you care about, it's your probability of being in a state that doesn't
+suck. You want P(losing money) to become negligible, and that can
+happen if you have positive expected value <em>and</em> enough tickets.</p>
+<hr>
+<blockquote>
+<p>"When you're faced with a math problem you don't know how to do,
+you've got two basic options. You can make the problem easier, or
+you can make it harder." (page 218)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematics as currently practiced is a delicate interplay between
+monastic contemplation and blowing stuff up with dynamite." (page
+223)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If gambling is exciting, you're doing it wrong" (page 227)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>The doctrine of expected utility is appealingly straightforward and
+simple: presented with a set of choices, pick the one with the
+highest expected utility. It is perhaps the closest thing we have to
+a simple mathematical theory of individual decision making. And it
+captures many features of the way humans make choices, which is why
+it remains a central part of the quantitative social scientist's
+tool kit. (page 248)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In the decision-theory literature, the former kind of unknown is
+called <em>risk</em>, the latter <em>uncertainty</em>." (page 251)</p>
+</blockquote>
+<p>The former is known unknowns (30% chance of drawing a black ball) and
+the latter is unknown unknowns (maybe we're wrong about what the
+chance is).</p>
+<hr>
+<blockquote>
+<p>"As always, it can be easier to see what's going on with the math if
+we make the numbers small enough that we can draw pictures." (page
+258)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematical elegance and practical utility are close companions,
+as the history of science has shown again and again." (page 266)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The Patent Department would not release the thing until they had
+patent coverage. ... I didn't believe that they could patent a bunch
+of mathematical formulas. I said they couldn't. They said, "Watch
+us." They were right. And since then I have known that I have a very
+weak understanding of patent laws because, regularly, things that
+you shouldn't be able to patent&#8211;it's outrageous&#8211;you can patent."
+(page 276, quoting Hamming)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Cohn works at Microsoft Research, which is in a way a continuation
+of the Bell Labs model of pure math supported by high-tech industry,
+hopefully to the benefit of both." (page 281)</p>
+</blockquote>
+<hr>
+<p>Apparently Galton wrote an article called "Statistical Inquiries into
+the Efficacy of Prayer". (page 299)</p>
+<hr>
+<blockquote>
+<p>"You have made a convert of an opponent in one sense, for I have
+always maintained that excepting fools, men did not differ much in
+intellect, only in zeal and hard work; and I still think this is an
+eminently important difference." (page 300, quoting Charles Darwin's
+letter to his cousin Francis Galton on the effect of reading
+Galton's "Hereditary Genius")</p>
+</blockquote>
+<hr>
+<p>Ellenberg includes a fun table of Galton's on page 316, which has the
+character of a visualization in that you can see an ellipse, sort of
+like a two-dimensional stem and leaf plot...</p>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/History_of_anthropometry#Forensic_anthropometry">Bertillonage</a> (page 325) is kind of interesting and can be related
+to modern systems that use data to track people, but it's also a lot
+like a primitive "hashing" method for more quickly finding a record.</p>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/Parsons_code">Parsons code</a> is pretty neat, and can be used for contour search at
+<a href="https://www.musipedia.org/">Musipedia</a>. (page 329)</p>
+<hr>
+<blockquote>
+<p>"A democracy cannot endure unless it be composed of able citizens;
+therefore it must in self-defence withstand the free introduction of
+degenerate stock." (page 335, quoting Galton)</p>
+<p>"There is real danger that, by strengthening our abilities to
+analyze some questions mathematically, we acquire a general
+confidence in our beliefs, which extends unjustifiably to those
+things we're still wrong about." (page 335)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Darwin showed that one could meaningfully talk about progress
+without any need to invoke purpose. Galton showed that one could
+meaningfully talk about association without any need to invoke
+underlying cause." (page 336)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Mathematicians ever since Descartes have enjoyed the wonderful
+freedom to flip back and forth between algebraic and geometric
+descriptions of the world. The advantage of algebra is that it's
+easier to formalize and to type into a computer. The advantage of
+geometry is that it allows us to bring our physical intuition to
+bear on the situation, particularly when you can draw a picture. I
+seldom feel I <em>really</em> understand a piece of mathematics until I
+know what it's about in geometric language." (page 336)</p>
+</blockquote>
+<p>This relates to "The Rule of Three" in the McCallum et al. <em>Multivariable Calculus</em>:</p>
+<blockquote>
+<p>"Every topic should be presented geometrically, numerically and
+algebraically." (page v)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It may sound impressive that we can do geometry in ten dimensions
+(or a hundred, or a million...), but the mental pictures we keep in
+our mind are two- or at most three-dimensional. That's all our
+brains can handle. Fortunately, this impoverished vision is usually
+enough." (page 338)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... a mathematical tool that's just right for one purpose tends to
+make itself useful again and again." (page 340)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Correlation is not transitive. It's more like "blood relation"&#8211;I'm
+related to my son, who's related to my wife, but my wife and I
+aren't blood relatives to each other. In fact, it's not a terrible
+idea to think of correlated variables as "sharing part of their
+DNA."" (page 342)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Undecided voters, by and large, aren't undecided because they're
+carefully weighing the merits of each candidate, unprejudiced by
+political dogma. They're undecided because they're barely paying
+attention." (page 346)</p>
+</blockquote>
+<hr>
+<p>A section titled "It's not always wrong to be wrong" on page 354
+suggests decision-making by expected value can be appropriate even if
+it turns out later that a risk isn't as previously believed.</p>
+<hr>
+<blockquote>
+<p>"There is no such thing as public opinion" (page 365)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The "majority rules" system is simple and elegant and feels fair,
+but it's at its best when deciding between just two options. Any
+more than two, and contradictions start to seep into the majority's
+preferences." (page 368)</p>
+</blockquote>
+<p>Ellenberg's immediate (and real, October 2010) example:</p>
+<ul>
+<li>52% oppose ACA</li>
+<li>41% support ACA</li>
+</ul>
+<p>But:</p>
+<ul>
+<li>37% favor repeal of ACA</li>
+<li>10% favor weakening ACA</li>
+<li>15% favor maintaining ACA</li>
+<li>36% favor expanding ACA</li>
+</ul>
+<p>This implies that some of the "oppose" people oppose it because they
+want <em>more extreme</em> policy than ACA, not less.</p>
+<blockquote>
+<p>"The poll watcher who aspires not to be wrong has to test each of
+the poll's options, to see whether it might break down into
+different-colored pieces." (page 368)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Public opinion doesn't exist. More precisely, it exists sometimes,
+concerning matters about which there's a clear majority view." (page
+369)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"the inconsistency of aggregate judgments." (page 374)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Maybe individual people seem irrational because they aren't really
+individuals." (page 383)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"For most people, nowadays, the appeal of democratic choice is that
+it's <em>fair</em>; we speak in the language of rights and believe on moral
+grounds that people should be able to choose their own rulers,
+whether these choices are wise or not." (page 393)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"This is a story told in mathematics again and again: we develop a
+method that works for one problem, and if it is a <em>good</em> method, one
+that really contains a new idea, we typically find that the same
+proof works in many different contexts, which may be as different
+from the original as a sphere is from a plane, or more so." (page
+399)</p>
+</blockquote>
+<hr>
+<p>Describes formalism as being the tradition of definition; thinking
+about what "1 - 1 + 1 -1 + ..." should be <em>defined as</em>, rather that
+what it <em>is</em>. This can have the effect of replacing <em>meaning</em> with
+definition.</p>
+<hr>
+<blockquote>
+<p>"If we're to be precise, Russell was not a formalist, like Hilbert,
+who declared that the axioms were just strings of symbols with no
+defined meaning; rather, he was a "logicist," whose view was that
+the axioms were actually true statements about logical facts. Both
+groups shared a vigorous interest in figuring out which statements
+could be deduced from the axioms. The extent to which you care about
+this distinction is a good measure of whether you would enjoy going
+to graduate school in analytic philosophy." (page 409)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The genius cult tells students it's not worth doing mathematics
+unless you're the <em>best</em> at mathematics, because those special few
+are the only ones whose contributions matter." (page 412)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The cult of genius also tends to undervalue hard work." (page 413)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Sitting around waiting for inspiration leads to failure, no matter
+how much of a whiz kid you are." (page 414)</p>
+</blockquote>
+<hr>
+<p>Poincar&#233;'s essay <em>Mathematical Creation</em> is in his book
+<a href="https://www.google.com/books/edition/_/qgkeAAAAMAAJ">The Foundations of Science</a>.</p>
+<hr>
+<blockquote>
+<p>"Genius is a thing that happens, not a kind of person." (page 416)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Political logic is not a formal system in the sense that Hilbert
+and the mathematical logicians meant, but mathematicians with a
+formalist outlook couldn't help but approach politics with the same
+kind of methodological sympathies. They were encouraged in this by
+Hilbert himself, who in his 1918 lecture "<a href="/20200923-axiomatic_thinking_hilbert_1918/">Axiomatic Thought</a>"
+advocated that the other sciences adopt the axiomatic approach that
+had been so successful in mathematics."</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There's such a thing as being too precise." (page 430)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Philosophers of a mathematical bent call this brittleness in formal
+logic <em>ex falso quodlibet</em>, or, among friends, "the principle of
+explosion."" (page 433)</p>
+</blockquote>
+<p>Say we have a contradiction, both A and not A, and want to show B.</p>
+<p>Consider A and not B. A is false, so A and not B is false. Then since
+A and not B is false, and A is true, not B is false, so B is true.</p>
+<hr>
+<blockquote>
+<p>"Believe whatever you believe by day; but at night, argue against
+the propositions you hold most dear." (page 434)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"[F. Scott Fitzgerald's] endorsement of holding contradictory
+beliefs ["the test of a first-rate intelligence is the ability to
+hold two opposed ideas in the mind at the same time, and still
+retain the ability to function"] comes from "The Crack-Up," his
+1936 essay about his own irreparable brokenness. The opposing ideas
+he has in mind there are "the sense of futility of effort and the
+sense of the necessity to struggle."" (page 434)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"All mathematical writing is creative writing." (page 436)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Logic forms a narrow channel through which intuition flows with
+vastly augmented force." (page 437)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... mathematical certainty is one thing, the softer convictions we
+find attached to us in everyday life another, and we should keep
+track of the difference if we can." (page 437)</p>
+</blockquote>
+<hr>
+<h3>Some fun words</h3>
+<p>demotic: denoting or relating to the kind of language used by ordinary
+people; popular or colloquial. (page 340)</p>
+<p>diverticular disease: bulges in the large intestine; diverticulosis.
+(page 309)</p>
+<p>physiognomy: a person's facial features or expression, especially when
+regarded as indicative of character or ethnic origin. (page 328)</p>
+<p>recondite: (of a subject or knowledge) little known; abstruse. (page 3)</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20200925-how_not_to_be_wrong_by_ellenberg/</link>
+<guid>http://planspace.org/20200925-how_not_to_be_wrong_by_ellenberg/</guid>
+<pubDate>Fri, 25 Sep 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Trivia rewards test-time effort</title>
 <description><![CDATA[
 
@@ -2704,204 +3340,6 @@ means, for example.</p>
 <link>http://planspace.org/20200502-looks_like_people_dont_die_on_weekends/</link>
 <guid>http://planspace.org/20200502-looks_like_people_dont_die_on_weekends/</guid>
 <pubDate>Sat, 02 May 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Tyranny of Metrics, by Muller</title>
-<description><![CDATA[
-
-<p><a href="https://press.princeton.edu/books/hardcover/9780691174952/the-tyranny-of-metrics" title="The Tyranny of Metrics (Princeton University Press)">The Tyranny of Metrics</a> is the book version of the author's
-<a href="https://www.the-american-interest.com/2015/08/03/the-costs-of-accountability/" title="The Costs of Accountability (The American Interest)">earlier article</a>. It's a pretty good <a href="https://www.technologyreview.com/2013/05/31/178263/the-dictatorship-of-data/" title="The Dictatorship of Data (MIT Technology Review)">collection</a> of <a href="https://www.amstat.org/asa/files/pdfs/POL-ASAVAM-Statement.pdf" title="ASA Statement on Using Value-Added Models for Educational Assessment">concerns</a>
-around measurement, focused on <a href="https://fs.blog/2018/02/unintended-consequences/" title="The Law of Unintended Consequences: Shakespeare, Cobra Breeding, and a Tower in Pisa (Farnam Street)">unintended consequences</a>.</p>
-<p>One thing that <a href="https://history.catholic.edu/faculty-and-research/faculty-profiles/muller-jerry/index.html">Muller</a>'s historical perspective brought out was the
-development of <a href="https://en.wikipedia.org/wiki/Scientific_management">scientific management</a> and <a href="https://en.wikipedia.org/wiki/Management_consulting">management consulting</a>
-as practices distinct from particular fields or businesses. I think
-there are parallels to the development of data science.</p>
-<p>He also maintains that the main value of a metric can come from
-looking at outliers rather than tracking averages or otherwise using
-the metric over all cases. I think this is an often neglected focus.</p>
-<p>There's a lot of interesting stuff. Here are some quotes that I
-thought were particularly interesting:</p>
-<hr>
-<blockquote>
-<p>"Accountability ought to mean being held responsible for one's
-actions. But by a sort of linguistic sleight of hand, accountability
-has come to mean demonstrating success through standardized
-measurement, as if only that which can be counted really counts."
-(page 4)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"When proponents of metrics advocate "accountability," they tacitly
-combine two meanings of the word. On the one hand, to be accountable
-means to be responsible. But it can also mean "capable of being
-counted."" (page 17)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"This book is not about the evils of measuring. It is about the
-unintended consequences of trying to substitute standardized
-measures of performance for personal judgment based on experience.
-The problem is not measurement, but excessive measurement and
-inappropriate measurement&#8212;not metrics, but metric fixation." (page
-4)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The key components of metric fixation are</p>
-<ul>
-<li>"the belief that it is possible and desirable to replace judgment,
-  acquired by personal experience and talent, with numerical
-  indicators of comparative performance based upon standardized data
-  (metrics);</li>
-<li>"the belief that making such metrics public (transparent) assures
-  that institutions are actually carrying out their purposes
-  (accountability);</li>
-<li>"the belief that the best way to motivate people within these
-  organizations is by attaching rewards and penalties to their
-  measured performance, rewards that are either monetary
-  (pay-for-performance) or reputational (rankings)." (page 18)</li>
-</ul>
-</blockquote>
-<hr>
-<p>"Recurring Flaws" from Chapter 2:</p>
-<blockquote>
-<ul>
-<li>"Measuring the most easily measurable"</li>
-<li>"measuring the simple when the desired outcome is complex"</li>
-<li>"Measuring inputs rather than outcomes"</li>
-<li>"Degrading information quality through standardization"</li>
-<li>"Gaming through creaming"</li>
-<li>"Improving numbers by lowering standards"</li>
-<li>"Improving numbers through omission or distortion of data"</li>
-<li>"Cheating"</li>
-</ul>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Under scientific management the managers assume ... the burden of
-gathering together all of the traditional knowledge which in the
-past has been possessed by the workmen and then of classifying,
-tabulating, and reducing this knowledge to rules, laws, formulae...
-Thus all of the planning which under the old system was done by the
-workmen, must of necessity under the new system be done by
-management in accordance with the law of science." (<a href="https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor">Taylor</a>
-quoted pages 32-33)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It is only through <em>enforced</em> standardization of methods,
-<em>enforced</em> adoption of the best implements and working conditions,
-and <em>enforced</em> cooperation that this faster work can be assured. And
-the duty of enforcing the adoption of standards and enforcing this
-cooperation rests with <em>management</em> alone." (<a href="https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor">Taylor</a> quoted page
-33)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The calculative is the enemy of the imaginative." (page 61)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"This lends a certain air of unreality to the explorations of what
-one might call the unworldly economists, who combine hard measures
-of statistical validity with weak interest in the validity of the
-units of measurement." (page 72)</p>
-</blockquote>
-<hr>
-<p>The effect of valuing quantity over quality in academic publishing
-leads to:</p>
-<blockquote>
-<p>"a great stream of publications that are both uninteresting and
-unread." (page 79)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"This is an instance of <em>diagnostic</em> metrics. It provides data that
-can be used by a practitioner (physician), or internally within an
-institution (hospital), or shared among practitioners and
-institutions to discover what is working and what is not, and to use
-that information to improve performance." (page 110)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... the metrics matter because of the way they are embedded into a
-larger institutional culture." (page 110)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Extrinsic rewards become an important determinant of job
-satisfaction only among workers for whom intrinsic rewards are
-relatively unavailable." (<a href="https://www.jstor.org/stable/2778664" title="The Happy Worker: An Analysis of Educational and Occupational Differences in Determinants of Job Satisfaction">Gruenberg</a> quoted page 137)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The fact that allies spy on one another to a certain degree to
-determine intentions, capacities, and vulnerabilities is well known
-to practitioners of government. But it cannot be publicly
-acknowledged, since it represents a threat to the amour propre of
-other nations." (page 164)</p>
-</blockquote>
-<hr>
-<p>Chapter 15 "Unintended but predictable negative consequences":</p>
-<blockquote>
-<ul>
-<li>"Goal displacement through diversion of effort to what gets
-  measured"</li>
-<li>"Promoting short-termism"</li>
-<li>"Costs in employee time"</li>
-<li>"Diminishing utility"</li>
-<li>"Rule cascades" (to prevent gaming the metrics, etc.)</li>
-<li>"Rewarding luck"</li>
-<li>"Discouraging risk-taking"</li>
-<li>"Discouraging innovation"</li>
-<li>"Discouraging cooperation and common purpose"</li>
-<li>"Degradation of work" (the experience of working people)</li>
-<li>"Costs to productivity"</li>
-</ul>
-</blockquote>
-<hr>
-<p>Chapter 16 "When and how to use metrics":</p>
-<blockquote>
-<ol>
-<li>"What <em>kind</em> of information are you thinking of measuring?"</li>
-<li>"How <em>useful</em> is the information?"</li>
-<li>"How useful are <em>more</em> metrics?"</li>
-<li>"What are the costs of <em>not</em> relying upon standardized
-   measurement?"</li>
-<li>"To what <em>purposes</em> will the measurement be put, or to put it
-   another way, to <em>whom</em> will the information be made transparent?"</li>
-<li>"What are the <em>costs</em> of acquiring the metrics?"</li>
-<li>"Ask why the people at the top of the organization are demanding
-   performance metrics."</li>
-<li>"<em>How</em> and <em>by whom</em> are the measures of performance developed?"</li>
-<li>"Remember that <em>even the best measures are subject to corruption
-   or goal diversion.</em>"</li>
-<li>"Remember that sometimes, recognizing the limits of the possible
-    is the beginning of wisdom."</li>
-</ol>
-</blockquote>
-<hr>
-<p>Here Muller lists a factor outside the control of the American medical
-system, citing page 84 of <em>In Excellent Health</em> by Atlas and a paper
-on <a href="https://www.nber.org/papers/w14333" title="Socioeconomic Status and Health: Dimensions and Mechanisms">Socioeconomic Status and Health</a>:</p>
-<blockquote>
-<p>"Moreover, the United States is an ethnically heterogeneous country,
-and some ethnic groups (such as African Americans) have
-disproportionately high rates of infant mortality, reflecting
-social, cultural, and possibly genetic factors." (p. 106)</p>
-</blockquote>
-<p>This strikes me as, at the very least, unfortunate phrasing. Here's
-<a href="https://www.americanprogress.org/issues/early-childhood/reports/2018/02/01/445576/exploring-african-americans-high-maternal-infant-death-rates/" title="Exploring African Americans&#8217; High Maternal and Infant Death Rates">how some others talk</a> about African American infant mortality rates:</p>
-<blockquote>
-<p>"It is racism, not race itself, that threatens the lives of African
-American women and infants."</p>
-</blockquote>
-<hr>
-<p><img alt="cover" src="tyranny.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200425-tyranny_of_metrics_by_muller/</link>
-<guid>http://planspace.org/20200425-tyranny_of_metrics_by_muller/</guid>
-<pubDate>Sat, 25 Apr 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
