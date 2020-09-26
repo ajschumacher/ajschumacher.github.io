@@ -31,8 +31,8 @@ future tense. The useless class is here already.
 
 It might be better to discuss issues of the future of society in
 connections with AI rather than not at all, but I worry that the focus
-on AI can distract from bigger trends approaches that aren't tied to
-AI. It isn't useful to make new AI a scapegoat for existing phenomena.
+on AI can distract from trends and approaches that aren't tied to AI.
+It isn't useful to make new AI a scapegoat for existing phenomena.
 
 I think Lee overestimates the magnitude of AI's direct impact on jobs,
 but maybe not the magnitude of the overall trend in jobs. Regardless,
