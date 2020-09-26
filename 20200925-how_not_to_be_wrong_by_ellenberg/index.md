@@ -2,7 +2,7 @@
 
 I like [this book][] a lot. The five parts (Linearity, Inference,
 Expectation, Regression, Existence) provide beautiful large-scale
-structure, and it also shimmers on every page. Supreme court justices
+structure, and it also shimmers on every page. Supreme Court justices
 encounter the word "orthogonal." There's a beautiful proof of
 [Buffon's needle problem][]. There's some philosophy of math.
 Ellenberg is a delight.
