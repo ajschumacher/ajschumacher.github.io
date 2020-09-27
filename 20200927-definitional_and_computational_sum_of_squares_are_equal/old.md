@@ -1,6 +1,12 @@
 # Sum of Squares: from Definitional to Computational Formula
 
-drafted 2014-08-17 (?)
+This is a very old draft, from perhaps 2014-08-17 or so. I don't
+really remember why I started the way I did, so I thought I'd keep it
+around. I dropped the idea of writing this up for a long time and just
+came back to it [now](index.html).
+
+
+---
 
 In introductory statistics the Sum of Squares \\( SS \\), implicitly
 the sum of the squared deviations from the mean, is taught early on
@@ -39,11 +45,3 @@ Computational Formula for the Sum of Squares.
 
 If you're like me, it isn't immediately clear that these two are
 equal. The computational formula doesn't even have the mean in it!
-
-http://www.une.edu.au/WebStat/unit_materials/c4_descriptive_statistics/sums_of_squares.htm
-
-http://www.psych.utoronto.ca/courses/c1/chap11/chap11.html
-
-still exists: http://www.ablongman.com/graziano6e/text_site/MATERIAL/Stats/manvar.htm
-
-exists _and_ has a nice derivation! http://psychology.emory.edu/clinical/mcdowell/PSYCH560/Basics/var.html (for population variance, but still...)

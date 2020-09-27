@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Sum of Squares: from Definitional to Computational Formula</title>
+  </head>
+  <body>
+    <article>
+<h1>Sum of Squares: from Definitional to Computational Formula</h1>
+<p class="date">Sunday September 27, 2020</p>
+<p>This is a very old draft, from perhaps 2014-08-17 or so. I don't
+really remember why I started the way I did, so I thought I'd keep it
+around. I dropped the idea of writing this up for a long time and just
+came back to it <a href="index.html">now</a>.</p>
+<hr />
+<p>In introductory statistics the Sum of Squares \( SS \), implicitly
+the sum of the squared deviations from the mean, is taught early on
+along with variance and standard deviation. Often a "definitional" and
+"computational" formula are introduced in rapid succession. Especially
+for folks who aren't terribly comfortable with math notation, this can
+be confusing. I will explain what's going on.</p>
+<p>Here is how you get the Sum of Squares \( SS \).</p>
+<p>You start with a bunch of numbers. Call them \( X_1, X_2, ..., X_N
+\). So you have \( N \) numbers.</p>
+<p>You get the mean of these numbers, which we'll call \( \overline{X}
+\) (read as "x-bar"). First add up all the numbers. That's \(
+\sum\limits_{i=1}^{N} X_i \). This is sometimes written as just \(
+\sum X \) but for later clarity let's keep the limits. Then you
+divide that sum by \( N \) to get the average, also known as
+arithmetic mean, \( \overline{X} \). We'll use this equation later.</p>
+<p>\[ \overline{X}=\frac{\sum\limits_{i=1}^{N} X_i}{N} \]</p>
+<p>Now that we have the mean, we can go through all our numbers again.
+For each one, we subtract the mean to get the deviation \( X_i -
+\overline{X} \). Deviations may be positive or negative. We square
+each one that we get, and we add these all up. This is the Sum of
+Squares \( SS \). This is the <em>definition</em> of the Sum of
+Squares. So it's called the Definitional Formula.</p>
+<p>\[ SS=\sum\limits_{i=1}^{N} \left(X_i-\overline{X}\right)^2 \]</p>
+<p>So far everything is very sensible. But then you hear about the
+Computational Formula for the Sum of Squares.</p>
+<p>\[ SS=\sum\limits_{i=1}^{N} X_i^2-\frac{\left(\sum\limits_{i=1}^{N} X_i\right)^2}{N} \]</p>
+<p>If you're like me, it isn't immediately clear that these two are
+equal. The computational formula doesn't even have the mean in it!</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

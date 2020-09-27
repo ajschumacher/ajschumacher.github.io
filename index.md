@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-09-27: [Definitional and Computational Sum of Squares are equal](/20200927-definitional_and_computational_sum_of_squares_are_equal/)
  * 2020-09-26: [AI Superpowers, by Lee](/20200926-ai_superpowers_by_lee/)
  * 2020-09-25: [How Not to Be Wrong, by Ellenberg](/20200925-how_not_to_be_wrong_by_ellenberg/)
  * 2020-09-24: [Trivia rewards test-time effort](/20200924-trivia_rewards_effort/)

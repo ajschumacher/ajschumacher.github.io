@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Definitional and Computational Sum of Squares are equal</title>
+  </head>
+  <body>
+    <article>
+<h1>Definitional and Computational Sum of Squares are equal</h1>
+<p class="date">Sunday September 27, 2020</p>
+<p>The definitional (or conceptual) and computational forms of the
+<a href="https://en.wikipedia.org/wiki/Total_sum_of_squares">sum of squared deviations from the mean</a> are equivalent, as in
+Equation 1.</p>
+<p>\[ SS = \sum \left( x - \overline{x} \right)^2 =
+         \sum x^2 - \frac{ \left( \sum x \right)^2 }{ N } \tag{1} \]</p>
+<p>We have \( N \) numbers \( x_i \). Their mean is \( \overline{x} \).</p>
+<p>\[ \overline{x} = \frac{ \sum_{i=1}^{N} x_i }{ N }  \tag{2} \]</p>
+<p>The limits of every sum here are the same, and always range over the
+numbers \( x_i \), so the limits and subscript \( i \) are not
+shown outside of Equation 2.</p>
+<p>The sum of squared deviations from the mean is defined as in Equation
+1.</p>
+<p>\[ \sum \left( x - \overline{x} \right)^2 \tag{3} \]</p>
+<p>Distributing and rearranging, Expression 3 is the same as Expression
+4.</p>
+<p>\[ \sum \left( x^2 + \overline{x} \left( \overline{x} - 2x \right) \right) \tag{4} \]</p>
+<p>Considering the properties of sums, Expression 4 can be re-written as
+Expression 5.</p>
+<p>\[ \sum x^2 + \overline{x} \left( \sum \overline{x} -2 \sum x \right) \tag{5} \]</p>
+<p>The mean \( \overline{x} \) is a constant, so summing over it gives
+\( N \overline{x} \). As can be seen from Equation 2, the sum over
+\( x \) is also \( N \overline{x} \). Using these, Expression 5
+becomes Expression 6.</p>
+<p>\[ \sum x^2 - N \overline{x}^2 \tag{6} \]</p>
+<p>Replacing the mean \( \overline{x} \) with its definition as in
+Equation 2, we arrive at the computational form.</p>
+<p>\[ \sum x^2 - \frac{ \left( \sum x \right)^2 }{ N } \tag{7} \]</p>
+<p>Expression 3 and Expression 7 are therefore equal, as shown in
+Equation 1. \( \blacksquare \)</p>
+<hr />
+<p>I thought about writing this up years ago; here's an old
+<a href="old.html">draft</a>. I referred to McDowell's <a href="http://psychology.emory.edu/clinical/mcdowell/PSYCH560/Basics/var.html">derivation</a> (nominally
+for variance) in writing the above. The computational form is nice
+especially if you're calculating by hand, and is (has been?) sometimes
+<a href="http://www.ablongman.com/graziano6e/text_site/MATERIAL/Stats/manvar.htm">taught</a> as a procedure, sort of like long division. I don't think
+teaching that is really a good idea, if what you care about is
+teaching statistics, but it could be a neat example in the right kind
+of course on implementation of algorithms (applied math or CS,
+maybe?).</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

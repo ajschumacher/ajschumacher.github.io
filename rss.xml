@@ -7,6 +7,56 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Definitional and Computational Sum of Squares are equal</title>
+<description><![CDATA[
+
+<p>The definitional (or conceptual) and computational forms of the
+<a href="https://en.wikipedia.org/wiki/Total_sum_of_squares">sum of squared deviations from the mean</a> are equivalent, as in
+Equation 1.</p>
+<p>\[ SS = \sum \left( x - \overline{x} \right)^2 =
+         \sum x^2 - \frac{ \left( \sum x \right)^2 }{ N } \tag{1} \]</p>
+<p>We have \( N \) numbers \( x_i \). Their mean is \( \overline{x} \).</p>
+<p>\[ \overline{x} = \frac{ \sum_{i=1}^{N} x_i }{ N }  \tag{2} \]</p>
+<p>The limits of every sum here are the same, and always range over the
+numbers \( x_i \), so the limits and subscript \( i \) are not
+shown outside of Equation 2.</p>
+<p>The sum of squared deviations from the mean is defined as in Equation
+1.</p>
+<p>\[ \sum \left( x - \overline{x} \right)^2 \tag{3} \]</p>
+<p>Distributing and rearranging, Expression 3 is the same as Expression
+4.</p>
+<p>\[ \sum \left( x^2 + \overline{x} \left( \overline{x} - 2x \right) \right) \tag{4} \]</p>
+<p>Considering the properties of sums, Expression 4 can be re-written as
+Expression 5.</p>
+<p>\[ \sum x^2 + \overline{x} \left( \sum \overline{x} -2 \sum x \right) \tag{5} \]</p>
+<p>The mean \( \overline{x} \) is a constant, so summing over it gives
+\( N \overline{x} \). As can be seen from Equation 2, the sum over
+\( x \) is also \( N \overline{x} \). Using these, Expression 5
+becomes Expression 6.</p>
+<p>\[ \sum x^2 - N \overline{x}^2 \tag{6} \]</p>
+<p>Replacing the mean \( \overline{x} \) with its definition as in
+Equation 2, we arrive at the computational form.</p>
+<p>\[ \sum x^2 - \frac{ \left( \sum x \right)^2 }{ N } \tag{7} \]</p>
+<p>Expression 3 and Expression 7 are therefore equal, as shown in
+Equation 1. \( \blacksquare \)</p>
+<hr>
+<p>I thought about writing this up years ago; here's an old
+<a href="old.html">draft</a>. I referred to McDowell's <a href="http://psychology.emory.edu/clinical/mcdowell/PSYCH560/Basics/var.html">derivation</a> (nominally
+for variance) in writing the above. The computational form is nice
+especially if you're calculating by hand, and is (has been?) sometimes
+<a href="http://www.ablongman.com/graziano6e/text_site/MATERIAL/Stats/manvar.htm">taught</a> as a procedure, sort of like long division. I don't think
+teaching that is really a good idea, if what you care about is
+teaching statistics, but it could be a neat example in the right kind
+of course on implementation of algorithms (applied math or CS,
+maybe?).</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20200927-definitional_and_computational_sum_of_squares_are_equal/</link>
+<guid>http://planspace.org/20200927-definitional_and_computational_sum_of_squares_are_equal/</guid>
+<pubDate>Sun, 27 Sep 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>AI Superpowers, by Lee</title>
 <description><![CDATA[
 
@@ -3281,166 +3331,6 @@ might invalidate predictions.</p>
 <link>http://planspace.org/20200714-foundation_trilogy/</link>
 <guid>http://planspace.org/20200714-foundation_trilogy/</guid>
 <pubDate>Tue, 14 Jul 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Peopleware: Productive Projects and Teams</title>
-<description><![CDATA[
-
-<blockquote>
-<p>"... the major issues of software development are human, not
-technical."</p>
-</blockquote>
-<p>This <a href="https://en.wikipedia.org/wiki/Peopleware:_Productive_Projects_and_Teams">1987 book</a> has wisdom still in rare supply. Humans are
-non-modular. Solving problems relies on people more than technology.
-The best management is something like an evolution of Montessori
-teaching. The book is organized into six parts:</p>
-<blockquote>
-<ol>
-<li>"Managing the Human Resource" (introduction)</li>
-<li>"The Office Environment" (literally, setting up a nice physical
-   space)</li>
-<li>"The Right People" (people are important, hire well, avoid
-   turnover)</li>
-<li>"Growing Productive Teams" (encourage teams to jell)</li>
-<li>"Fertile Soil" (good practices for meetings, email, etc.)</li>
-<li>"It's Supposed to Be Fun to Work Here" (conclusion)</li>
-</ol>
-</blockquote>
-<h2>The book's recommendations</h2>
-<p>Make it possible for people to work without interruption.</p>
-<p>Everyone can be self-coordinating:</p>
-<blockquote>
-<p>"Each time you're inclined to send a coordinating e-mail to a
-colleague or to anyone who works for you, think about what steps you
-have to make to coach that person to self-coordinate. Don't expect
-this to be easy. Telling someone what to do <em>is</em> easy, while
-instilling self-coordinating abilities in that same person is much
-more complicated. But it pays off in the long run." (page 202)</p>
-</blockquote>
-<p>Process rules and strict methodologies are bad. Let people have good
-<em>training</em>, <em>tools</em>, and <em>peer review</em> (page 180).</p>
-<p>Every project should be trying exactly one really new thing. Apart
-from escaping local maxima, this is based on an interesting
-interpretation of <a href="https://en.wikipedia.org/wiki/Hawthorne_effect">the Hawthorne Effect</a>:</p>
-<blockquote>
-<p>"... the <em>Hawthorne Effect</em>. Loosely stated, it says that people
-perform better when they're trying something new." (page 181)</p>
-</blockquote>
-<p>Consider "Open-Space meetings" which are informal "mingling" meetings
-that allow small group conversations (pages 190-191).</p>
-<p>They recommend brainstorming techniques &#224; la <a href="https://en.wikipedia.org/wiki/Edward_de_Bono">de Bono</a> on page 228:</p>
-<blockquote>
-<ul>
-<li>"Analogy thinking (How does nature solve this or some similar
-  problem?)"</li>
-<li>"Inversion (How might we achieve the opposite of our goal?)"</li>
-<li>"Immersion (How might you project yourself into the problem?)"</li>
-</ul>
-</blockquote>
-<p>They encourage considering fallback plans, especially regarding
-deadlines:</p>
-<blockquote>
-<p>"The risk we tend not to manage is the risk of our own failure."
-(page 184)</p>
-</blockquote>
-<h2>Flipping attitudes</h2>
-<p>The Netflix "<a href="https://igormroz.com/documents/netflix_culture.pdf">freedom and responsibility</a>" approach provides an
-interesting contrast. Netflix wants to be "a pro sports team" with
-coaches who "cut smartly, so we have stars".</p>
-<p>The Peopleware authors note explicitly (page 158) that they dislike
-the sports team comparison, because sports teams have internal
-competition and individuals can succeed or fail independent of the
-group.</p>
-<p>The Netflix approach can sound exciting, but it's also why Netflix is
-known for a <a href="https://qz.com/work/1439451/the-seven-ways-netflix-culture-sounds-like-your-worst-work-nightmare/">culture of fear</a>. Peopleware is much more like
-<a href="/20151118-debugging_teams/">Debugging Teams</a>, with its focus on humility, respect, and trust.
-"Above all, resist the urge to manage."</p>
-<p>I hadn't known anything about TQM (<a href="https://en.wikipedia.org/wiki/Total_quality_management">Total Quality Management</a>) but I
-was interested to see that it's a real flip from what I'd expect from
-such a bureaucratic-sounding name.</p>
-<p><a href="https://asq.org/quality-resources/total-quality-management/deming-points">Deming&#8217;s 14 Points on Quality Management</a>:</p>
-<blockquote>
-<ol>
-<li>"Create constancy of purpose for improving products and
-   services."</li>
-<li>"Adopt the new philosophy."</li>
-<li>"Cease dependence on inspection to achieve quality."</li>
-<li>"End the practice of awarding business on price alone; instead,
-   minimize total cost by working with a single supplier."</li>
-<li>"Improve constantly and forever every process for planning,
-   production and service."</li>
-<li>"Institute training on the job."</li>
-<li>"Adopt and institute leadership."</li>
-<li>"Drive out fear."</li>
-<li>"Break down barriers between staff areas."</li>
-<li>"Eliminate slogans, exhortations and targets for the workforce."</li>
-<li>"Eliminate numerical quotas for the workforce and numerical
-    goals for management."</li>
-<li>"Remove barriers that rob people of pride of workmanship, and
-    eliminate the annual rating or merit system."</li>
-<li>"Institute a vigorous program of education and self-improvement
-    for everyone."</li>
-<li>"Put everybody in the company to work accomplishing the
-    transformation."</li>
-</ol>
-</blockquote>
-<p>Some of those points seem opposed to <a href="/20200425-tyranny_of_metrics_by_muller/">metrics</a>, which isn't always
-the stance of the Peopleware authors:</p>
-<blockquote>
-<p>"Gilb's Law: <em>Anything you need to quantify can be measured in some
-way that is superior to not measuring it at all.</em>" (page 58)</p>
-</blockquote>
-<h2>Hiring and development</h2>
-<p>The authors seem generally capable of holding
-<a href="https://quoteinvestigator.com/2020/01/05/intelligence/">two opposed ideas at the same time</a>, and this is especially true in
-their takes on hiring and development of employees.</p>
-<blockquote>
-<p>"... managers are unlikely to change their people in any meaningful
-way. ... If they're not right for the job from the start, they never
-will be." (page 94)</p>
-<p>"At Southern California Edison some years ago, the person in charge
-of all data processing began as a meter reader. At EG&amp;G, there was a
-program of retraining administrative staff to become systems
-analysts. At the Bureau of Labor Statistics, philosophy Ph.D.s are
-hired to become software developers and the retraining starts with
-their first day on the job. At Hitachi Software, the chief scientist
-has as his principal function the training of new hires. At Pacific
-Bell, a main source of new systems people is the retrained lineman
-or operator." (page 123)</p>
-<p>"If your staff isn't up to the job at hand, you will fail. Of
-course, if the people are badly suited to the job, you should get
-new people. But once you've decided to go with a given group, your
-best tactic is to trust them. Any defensive measure taken to
-guarantee success in spite of them will only make things worse."
-(page 144)</p>
-</blockquote>
-<p>This is an interesting apparent tension.</p>
-<h2>Signs of age, signs of prescience</h2>
-<p>Peopleware was updated in 2013, but it isn't completely modern.
-Innocuously, it refers to the <a href="https://en.wikipedia.org/wiki/Data_General#32-bit_Project_Eagle_-_the_Eagle_project">Eagle project</a> as if everyone knows
-it. More unfortunately, it uses "<a href="https://www.investopedia.com/terms/o/open-kimono.asp">open kimono</a>" as if there's no
-reason not to.</p>
-<p>The authors rail against the interruptions of the telephone. At least
-for me, this is dated. They're right, phones are awful, but everybody
-knows this now and I can't remember the last time somebody called me
-for work.</p>
-<p>They emphasize the importance of uninterrupted work time and <a href="https://en.wikipedia.org/wiki/Flow_(psychology)">flow</a>
-in a way that is pretty well known now, I think. Paul Graham's 2009
-<a href="http://www.paulgraham.com/makersschedule.html">Maker's Schedule, Manager's Schedule</a> is one related
-popularization.</p>
-<p>The authors don't comment at all on remote work, which I think is
-unfortunate.</p>
-<h2>Two more quotes</h2>
-<blockquote>
-<p>"There is very little true teamwork required in most of our work."
-(page 136)</p>
-<p>"Managers are often not true members of their teams" (page 137)</p>
-</blockquote>
-<p><img alt="cover" src="peopleware.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200523-peopleware_productive_projects_and_teams/</link>
-<guid>http://planspace.org/20200523-peopleware_productive_projects_and_teams/</guid>
-<pubDate>Sat, 23 May 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
