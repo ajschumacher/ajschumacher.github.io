@@ -7,6 +7,64 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Give the model epistemology</title>
+<description><![CDATA[
+
+<p>Jaskie has a nice paper with
+<a href="https://ieeexplore.ieee.org/document/9048765">A Modified Logistic Regression for Positive and Unlabeled Learning</a>.
+I like that it extends the usual logistic function in a way that
+captures the idea that labels may be incorrect. I wonder about
+extending the idea to multi-class softmax, and its relationship with
+label smoothing.</p>
+<p>Here's the usual <a href="https://en.wikipedia.org/wiki/Logistic_function">logistic function</a>.</p>
+<p>\[ \frac{ 1 }{ 1 + e^{-x} } \tag{1} \]</p>
+<p>What Jaskie does is introduce another term in the denominator:</p>
+<p>\[ \frac{ 1 }{ 1 + b^2 + e^{-x} } \tag{2} \]</p>
+<p>The \( b \) term is squared to be non-negative, and learned during
+model fitting. The effect is that the maximum score for a positive
+example is less than one.</p>
+<p>This makes sense in the positive unlabeled setting because Jaskie
+differentiates between whether an example <em>is</em> positive and whether an
+example is <em>labeled</em> positive. We only have the labels, and we know
+that some positive examples may not be positively labeled, so the
+probability based on the example that it is positively labeled is less
+than one.</p>
+<p>It's somewhat surprising that this seems to work quite well, as
+demonstrated (for example) in Jaskie's Figure 6. (SLR is Standard
+Logistic Regression, MLR is Jaskie's Modified Logistic Regression.)</p>
+<p><img alt="Figure 6" src="figure_6.png"></p>
+<p>Let's speculate about extending this idea to the multi-class setting.
+First, just moving things around, Equation 2 becomes Equation 3.</p>
+<p>\[ \frac{ e^x }{ (1 + b^2) e^x + 1 } \tag{3} \]</p>
+<p>That form makes it easy to see the analogy between the usual logistic
+function and the multi-class <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>. Then the natural thing to
+suggest is Equation 4.</p>
+<p>\[ \frac{ e^{x_i} }{ \sum (1 + b_i^2) e^{x_i} } \tag{4} \]</p>
+<p>The semi-supervised setting in which there's a pile of unlabeled data
+in addition to the labeled data is pretty common, especially when
+labeling is expensive, and if something relatively simple like this
+were to give similar performance benefits to Jaskie's binary case, it
+could easily become very popular. (Assume you have a "garbage" class
+as well, in the <a href="https://paperswithcode.com/task/open-set-learning">open set</a> sense.)</p>
+<p>There's probably a similar extension to keep the negative example
+scores from going all the way to zero, if you think some of the true
+negatives might have incorrectly positive labels (or otherwise wrong
+labels in the multi-class setting).</p>
+<p>I wonder about the relationship between these techniques and
+<a href="https://arxiv.org/abs/1906.02629">label smoothing</a>... With smoothed labels you still have fixed (or
+at least sort of balanced) target probabilities, whereas the above
+techniques allow learning where the targets should be... But I think
+you wouldn't get the limits on logit growth, with the above
+techniques... It would be neat if the above techniques gave you good
+calibration <em>and</em> informative logits in the distillation sense. Hmm!</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20201005-give_the_model_epistemology/</link>
+<guid>http://planspace.org/20201005-give_the_model_epistemology/</guid>
+<pubDate>Mon, 05 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Drawbridge Up, by Enzensberger</title>
 <description><![CDATA[
 
@@ -3245,129 +3303,6 @@ invented. It is very good practice." (page 282)</p>
 <link>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</link>
 <guid>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</guid>
 <pubDate>Thu, 16 Jul 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Communicate Immediately</title>
-<description><![CDATA[
-
-<p>Discover what's important and present it early and concisely to refine
-your ideas and engage with your audience. <a href="https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)">Don't bury the lede</a>. Put
-the <a href="https://en.wikipedia.org/wiki/BLUF_(communication)">Bottom Line Up Front</a>. Communicate as if you may be
-interrupted.</p>
-<ul>
-<li><a href="#message">Identify your message</a></li>
-<li><a href="#line">Give a one-line version</a></li>
-<li><a href="#paragraph">Give a one-paragraph version</a></li>
-<li><a href="#detail">Add detail until complete</a></li>
-<li><a href="#media">Use the best of text and other media</a></li>
-</ul>
-<h3><a name="message"></a>Identify your message</h3>
-<p>What your audience needs most is your unique contribution: a result or
-recommendation, a summary or synthesis. Help them to understand.
-Prepare them to take action.</p>
-<p>If you don't know what your message is, you have little chance of
-communicating it. Think beyond listing what you've done, what you've
-read, what you've seen. Find a deeper conclusion. Even without an
-audience, you should be doing this for yourself.</p>
-<p>According to <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">Shannon</a>, information is related to surprise. One
-heuristic is to identify the most central "surprise" you have to
-communicate. What does your audience not know? Can you anticipate
-questions they would ask, and answer them?</p>
-<p>Don't force your audience to come to their own conclusions. Your
-message won't prevent them from doing that anyway, if you are honest
-and <a href="#detail">complete</a>. Your message isn't the final word. It should
-be a generous starting point.</p>
-<p>Regardless of audience, the practice of articulating a message into
-short concrete forms can help you to clarify and improve your ideas,
-possibly through several iterations.</p>
-<h3><a name="line"></a>Give a one-line version</h3>
-<p>Start with a title, or subject line, or initial answer to a question.
-A one-line version should be complete enough that the audience can
-choose whether to continue.</p>
-<p>Good newspaper headlines, like "Truman wins presidency," are tiny
-versions of their articles. Clickbait titles illustrate what not to
-do, as in "You won't believe what Truman did." Emulate good headlines.</p>
-<!-- https://en.wikipedia.org/wiki/Dewey_Defeats_Truman -->
-
-<p>Good one-line versions are usually complete sentences, not just noun
-phrases. Don't convey just the subject you're talking about, include
-what you're saying about it.</p>
-<p>Feel free to use the specialized language of your field.
-<a href="https://arxiv.org/abs/2006.10029v1">Big Self-Supervised Models are Strong Semi-Supervised Learners</a> is
-a great title for a Machine Learning paper, though it may seem opaque
-to botanists.</p>
-<p>Though the need for summarizing is real, there's value in retaining
-important detail. For example, "Technique X Improves Results" is
-likely not a better one-line version than "Technique X Improves Metric
-Y by 3%." Include specifics as much as you can.</p>
-<p>It may be challenging to distill your message into a faithful one-line
-representation, but it can be done. In some cases, a one-line version
-is all you need.</p>
-<h3><a name="paragraph"></a>Give a one-paragraph version</h3>
-<p>Whether it's labeled as an abstract or a summary or not, a first
-paragraph should always be a complete version of your message, not an
-introduction.</p>
-<p>The one-line version of your message may be just a sketch, but a
-well-crafted paragraph lets you convey, <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto</a>-style, a complete
-core message, missing only detail.</p>
-<p>The practice of skipping quickly to an article's conclusion is not a
-natural part of reading, it is a defensive work-around for bad
-writing. Present the conclusion at the beginning.</p>
-<p>You shouldn't require your audience go all the way to the end. For
-example, if the purpose of an email is to make a request, make the
-request clear at the beginning.</p>
-<p>The focus here is effective, purposeful, reality-oriented
-communication. This is distinct from small talk, poetry, or fiction,
-where it may make sense to approach a topic obliquely over time, to
-carefully build an effect.</p>
-<p>With a useful one-paragraph version at the beginning, the audience can
-determine what information is being communicated and what further
-detail they're interested in. This is kind to your audience&#8212;and your
-audience may be you.</p>
-<h3><a name="detail"></a>Add detail until complete</h3>
-<p>Including condensed versions at the beginning doesn't mean omitting
-supporting detail, clarification, data, and other supplementary
-material. Be very inclusive. The expectation is not that the audience
-must review everything, but that they may.</p>
-<p>Organize for the benefit of the audience. Make it easy to find things.
-This should follow from the nature of what you're communicating, and
-could also be responsive to the expectations of your audience.</p>
-<p>The overall structure should often be fractal, in that further
-sections are organized following the overall guidelines, starting with
-short versions.</p>
-<p>Generally, information density and polish should decrease gradually.
-Content at the beginning is likely still elaborating the core message.
-More related detail is added gradually, until toward the end one might
-include a list of references, notes, logs of activities over time,
-source data, audio or transcriptions from interviews, and the like.</p>
-<p>Enough should be provided that the audience can replicate your
-conclusions or form their own. Nothing should be hidden.</p>
-<h3><a name="media"></a>Use the best of text and other media</h3>
-<p>Text is a mighty tool, but it is not the only tool. Always use the
-best available tool for communicating. Outside of conversation, text
-and its variants together with two-dimensional graphics (especially
-data visualizations) are most useful, with time-distributed media and
-interactive artifacts only sometimes worthwhile.</p>
-<p>Text can be used in many ways. Headings add structure. Numbered and
-bulleted lists and tables can help organize and summarize. Fonts,
-weights, sizes, and styles can assist in communication when used well.
-<a href="https://en.wikipedia.org/wiki/Hypertext">Hypertext</a> allows linking easily to related resources.</p>
-<p>Numbers are data visualizations, as are quantitative tables. Carefully
-presented numbers can be very communicative.</p>
-<p>Graphics can help communicate ideas diagrammatically. Graphical data
-visualizations (plots, graphs, charts) can convey quantitative
-information exceptionally well; their effective use is an extended
-topic. Images can also sometimes be useful.</p>
-<p>Time-distributed media refers principally to audio and video. To date,
-these are difficult to search or skim. They tend to require the
-audience to sit through them. Similarly, interactive artifacts are
-relatively oblique rather than communicating directly. There are
-places for all of these, but they are not often the best choice for
-direct communication.</p>    
-    ]]></description>
-<link>http://planspace.org/20200715-communicate_immediately/</link>
-<guid>http://planspace.org/20200715-communicate_immediately/</guid>
-<pubDate>Wed, 15 Jul 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
