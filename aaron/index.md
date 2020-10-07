@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Experiment with Abseil Flags](https://us02web.zoom.us/webinar/register/WN_yadCehvlTKmjbCYGr9bxQg) at [Magnimind](https://magnimindacademy.com/) on Wednesday September 9, 2020
  * [Event Sourcing](https://www.meetup.com/Joy-of-Programming-DC/events/xpnxbpyzmbgb/) at [The Joy of Programming meetup](https://www.meetup.com/Joy-of-Programming-DC/) on Wednesday September 4, 2019
  * Data Science Hiring Panel at [General Assembly DC](https://generalassemb.ly/locations/washington-dc) on Thursday May 2, 2019
  * Action and Analysis in the 2018 NY Senate District 5 Election (lightning talk) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Thursday March 14, 2019](https://www.meetup.com/Data-Science-DC/events/259302275/)
