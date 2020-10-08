@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Fusion isn't so hard</title>
+<description><![CDATA[
+
+<p>I saw somebody <a href="https://www.guinnessworldrecords.com/amp/news/2020/10/middle-school-student-achieved-nuclear-fusion-in-his-family-playroom-631163">post</a> about a kid achieving nuclear fusion at home,
+and I was sure it was fake news. It referenced <a href="https://fusor.net/">fusor.net</a>, which
+also looks fake. But the concept, at least, is real!
+(<a href="https://en.wikipedia.org/wiki/Fusor">WikiPedia</a>/<a href="https://spectrum.ieee.org/energy/nuclear/fusion-on-a-budget">IEEE</a>) How cool! For a couple thousand dollars or
+so, you can make a fusion reactor in your house, on a desk! I feel
+like this should be more widely known.</p>
+<p>You mostly hear about fusion in stars, which makes it seem... big. And
+far away. Knowing you can do it as a hobbyist if you feel like makes
+it seem so much more approachable! Together with the naturally
+occurring fission <a href="https://blogs.scientificamerican.com/guest-blog/natures-nuclear-reactors-the-2-billion-year-old-natural-fission-reactors-in-gabon-western-africa/">reactors</a>, there are cool non-bomb, non-star
+examples of both fission and fusion. Nice!</p>
+<p>Also did you know you can buy <a href="https://en.wikipedia.org/wiki/Deuterium">deuterium</a>? I think you can probably
+get it as a gas, but you can also just buy yourself some heavy water
+if you want! It's just water, but with extra neutrons on the hydrogen!
+How cool!</p>
+<p>The good and bad of home fusion is that it's just a <em>little</em> bit of
+fusion, and it takes a lot more energy to make it happen than you get
+out. So it doesn't blow up, and the extra radioactivity won't kill you
+very fast. As far as I can tell, these fusor devices are in a weird
+zone of not being regulated, I think, because they're hard enough to
+make and not quite dangerous enough to be a big risk.</p>
+<p>I think it'd be a great thing to see more fusors in children's museums
+(and other science museums). They don't have to turn it on; it'd just
+be a cool exhibit to demonstrate that it's so possible.</p>    
+    ]]></description>
+<link>http://planspace.org/20201008-fusion_isnt_so_hard/</link>
+<guid>http://planspace.org/20201008-fusion_isnt_so_hard/</guid>
+<pubDate>Thu, 08 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Give the model epistemology</title>
 <description><![CDATA[
 
@@ -3253,56 +3286,6 @@ reality." (pages 374-375)</p>
 <link>http://planspace.org/20200725-art_of_doing_science_and_engineering/</link>
 <guid>http://planspace.org/20200725-art_of_doing_science_and_engineering/</guid>
 <pubDate>Sat, 25 Jul 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Lateral Thinking: Creativity Step by Step</title>
-<description><![CDATA[
-
-<p>After a reference in <a href="/20200523-peopleware_productive_projects_and_teams/">Peopleware</a>, I found Edward de Bono's <a href="https://www.amazon.com/Lateral-Thinking-Creativity-Step/dp/0060903252">book</a>
-on <a href="https://en.wikipedia.org/wiki/Lateral_thinking">Lateral Thinking</a>. I'd mostly heard about lateral thinking in
-the context of brain-teasers, and was pleased to find much more depth.
-This book could be a companion to <a href="/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/">How to Solve It</a>.</p>
-<blockquote>
-<p>"creativity is usually treated as something desirable which is to be
-brought about by vague exhortation." (page 7)</p>
-</blockquote>
-<p>Lateral Thinking is almost a textbook for a class in creativity,
-complete with very concrete activities and teachers' guides. The topic
-is orthogonal to deductive reasoning; it's about finding more starting
-points rather than following one path.</p>
-<p>This can be applied to problems with "correct" answers, but it also
-applies to many other things: writing, design, planning, deciding what
-other problems to work on. Nearly anything can benefit from "insight
-restructuring."</p>
-<p>One technique for finding new ideas is to use random input: take a
-<a href="https://randomword.com/">random word</a> or <a href="https://en.wikipedia.org/wiki/Special:Random">random WikiPedia article</a>, juxtapose it with
-your topic or problem, and see where you go. Using random input
-reminds me of <a href="http://proceedings.mlr.press/v97/zhou19d/zhou19d.pdf">noise in training neural networks</a>.</p>
-<p>Throughout, de Bono emphasizes suspending judgment, which is useful
-not just in brainstorming. One related practice is <a href="https://en.wikipedia.org/wiki/Yes,_and...">yes, and</a>: build
-from ideas rather than shutting them down. A possible tactic is
-"extracting the functional principle of the idea" (page 163): even if
-the particulars seem unworkable, the underlying concept could be
-affirmed and expanded.</p>
-<hr>
-<p>A few quotes:</p>
-<blockquote>
-<p>"<em>It is historical continuity that maintains most assumptions&#8212;not a
-repeated assessment of their validity.</em>" (page 91, italics in
-original)</p>
-<p>"The purpose of thinking is not to be right but to be effective."
-(page 107)</p>
-<p>"Unless one can pick out the dominant idea one is going to be
-dominated by it." (page 123)</p>
-<p>"There is no harm in reinventing things that have already been
-invented. It is very good practice." (page 282)</p>
-</blockquote>
-<hr>
-<p><img alt="Lateral Thinking cover" src="lateral_thinking_cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</link>
-<guid>http://planspace.org/20200716-lateral_thinking_creativity_step_by_step/</guid>
-<pubDate>Thu, 16 Jul 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
