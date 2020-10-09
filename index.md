@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-10-09: [Anki is easy](/20201009-anki_is_easy/)
  * 2020-10-08: [Fusion isn't so hard](/20201008-fusion_isnt_so_hard/)
  * 2020-10-05: [Give the model epistemology](/20201005-give_the_model_epistemology/)
  * 2020-10-01: [Drawbridge Up, by Enzensberger](/20201001-drawbridge_up_by_enzensberger/)
