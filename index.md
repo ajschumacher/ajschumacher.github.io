@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-10-12: [Bad Arguments, by Almossawi](/20201012-bad_arguments_by_almossawi/)
  * 2020-10-11: [Bad Choices, by Almossawi](/20201011-bad_choices_by_almossawi/)
  * 2020-10-09: [Anki is easy](/20201009-anki_is_easy/)
  * 2020-10-08: [Fusion isn't so hard](/20201008-fusion_isnt_so_hard/)

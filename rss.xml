@@ -7,6 +7,227 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Bad Arguments, by Almossawi</title>
+<description><![CDATA[
+
+<p>I wondered if there was a book of fallacies, and it turned out there
+were several. Almossawi's is the cutest by far, and it's
+<a href="https://bookofbadarguments.com/">freely available</a> online.</p>
+<p>Thinking about fallacies is a fun way to think about how we reason,
+and how we conceptualize things. There's no one correct taxonomy of
+fallacies, and fallacies aren't always bad arguments. Books like this
+are good for starting to access some of these ideas.</p>
+<hr>
+<p>Almossawi has one of his distinctive <a href="https://en.wikipedia.org/wiki/Mind_map">mind map</a>s at the beginning of
+the book. Linearized, the topics in the book look something like this:</p>
+<ul>
+<li>Logical fallacies<ul>
+<li>Formal<ul>
+<li>Propositional<ul>
+<li><strong>Affirming the consequent</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Informal<ul>
+<li>Ambiguity<ul>
+<li><strong>Equivocation</strong><ul>
+<li>Redefinition<ul>
+<li><strong>No true Scotsman</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Causal<ul>
+<li><strong>Not a cause for a cause</strong><ul>
+<li><strong>Slippery slope</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unwarranted assumption<ul>
+<li><strong>False dilemma</strong></li>
+<li><strong>Composition and division</strong></li>
+</ul>
+</li>
+<li>Begging the question<ul>
+<li><strong>Circular reasoning</strong></li>
+</ul>
+</li>
+<li>Weak analogy<ul>
+<li>Unrepresentative sample<ul>
+<li><strong>Hasty generalization</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Missing data<ul>
+<li><strong>Appeal to ignorance</strong></li>
+</ul>
+</li>
+<li>Red herrings<ul>
+<li><strong>Argument from consequences</strong></li>
+<li><strong>Guilt by association</strong></li>
+<li><strong>Straw man</strong></li>
+<li><strong>Appeal to the bandwagon</strong></li>
+<li>Emotional appeal<ul>
+<li><strong>Appeal to fear</strong></li>
+</ul>
+</li>
+<li><strong>Genetic fallacy</strong><ul>
+<li><strong>Appeal to irrelevant authority</strong></li>
+<li><strong>Ad hominem</strong></li>
+<li><strong>Appeal to hypocrisy</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I think it's a good idea to organize ideas like this. It shows
+clearly, for example, how many "different" fallacies are fundamentally
+red herrings, according to the author. It also helps draw out that the
+names of the fallacies aren't so important; in each case you could
+just as well simply explain an argument's problem without using the
+name.</p>
+<p>It's fun to think about organizing these. Here's a different way I was
+thinking about:</p>
+<ul>
+<li>Problems with premises<ul>
+<li><strong>Circular reasoning</strong> (A implies A is fine; the problem is
+   starting with A.)</li>
+</ul>
+</li>
+<li>Arguing the wrong thing<ul>
+<li>Ambiguity<ul>
+<li><strong>Equivocation</strong></li>
+</ul>
+</li>
+<li>Redefinition<ul>
+<li><strong>No true Scotsman</strong></li>
+<li><strong>Straw man</strong></li>
+</ul>
+</li>
+<li><strong>False dilemma</strong></li>
+</ul>
+</li>
+<li>Problems with form of argument (Non Sequitur)<ul>
+<li><strong>Affirming the consequent</strong></li>
+<li>Weak analogy<ul>
+<li>Unrepresentative sample<ul>
+<li><strong>Hasty generalization</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Missing data<ul>
+<li><strong>Appeal to ignorance</strong></li>
+</ul>
+</li>
+<li>Causal<ul>
+<li><strong>Not a cause for a cause</strong></li>
+<li><strong>Slippery slope</strong> (This is sort of an odd one out; it's
+   only a fallacy if it introduces some fallacious component,
+   which could just as well be identified separately.
+   [<a href="http://www.csun.edu/~dgw61315/fallacies.html#Slippery%20slope">discussion</a>])</li>
+</ul>
+</li>
+<li>Unwarranted assumption<ul>
+<li><strong>Composition and division</strong></li>
+</ul>
+</li>
+<li>Distractions from topic<ul>
+<li><strong>Argument from consequences</strong></li>
+<li><strong>Guilt by association</strong></li>
+<li><strong>Appeal to the bandwagon</strong></li>
+<li>Emotional appeal<ul>
+<li><strong>Appeal to fear</strong></li>
+</ul>
+</li>
+<li><strong>Genetic fallacy</strong><ul>
+<li><strong>Appeal to irrelevant authority</strong></li>
+<li><strong>Ad hominem</strong></li>
+<li><strong>Appeal to hypocrisy</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I think red herrings are generally non sequiturs, but they may not
+necessarily be fallacies, in a probabilistic sense. Heck, even the
+most "logical" fallacy (affirming the consequent) can still count as
+evidence for a proposition.</p>
+<p>Almossawi does also note on page 40 (ad hominem) "That said, there are
+situations where one may legitimately question a person's credibility,
+such as during trial testimony."</p>
+<hr>
+<blockquote>
+<p>"The first principle is that you must not fool yourself and you are
+the easiest person to fool. - Richard P. Feynman"</p>
+</blockquote>
+<hr>
+<p>On page 4, a reference to Gula's <a href="https://www.amazon.com/Nonsense-Herrings-Sacred-Everyday-Language/dp/1604191252/">Nonsense</a>, which might be a sort
+of non-illustrated/longer version of Bad Arguments.</p>
+<blockquote>
+<p>"That book reminded me of a list of guidelines that I had scribbled
+down in a notebook a decade ago about how to argue; they were the
+result of several years of arguing with strangers in online forums
+and they included, for example, "Try not to make general claims
+about things." That is obvious to me now, but to a schoolboy, it was
+an exciting revelation." (page 4)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"One may reasonably appeal to <em>pertinent</em> authority, as scientists
+and academics typically do. A vast majority of the things that we
+believe in, such as atoms and the solar system, are on reliable
+authority, as are all historical statements, to paraphrase C. S.
+Lewis."</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/C._S._Lewis">C. S. Lewis</a> "was a British writer and lay theologian" - is
+Almossawi paraphrasing him on the appeal to authority as a joke? Not
+that the claim is wrong, just that it's a funny place to cite an
+unrelated figure.</p>
+<hr>
+<blockquote>
+<p>"Inductive argument: An <em>argument</em> in which if the <em>premisses</em> are
+true, then it is probable that the conclusion will also be true."</p>
+</blockquote>
+<p>This is what P&#243;lya calls plausible reasoning, maybe to avoid the
+confusion with mathematical induction or the specific/general
+explanation (which I reject) for deductive/inductive reasoning.</p>
+<p>I think <a href="https://www.livescience.com/21569-deduction-vs-induction.html">this</a> claim: "Inductive reasoning is the opposite of
+deductive reasoning." is not particularly helpful. (This site is heavy
+on the "deduction is general to specific, induction is specific to
+general".)</p>
+<p>This <a href="https://plato.stanford.edu/entries/abduction/#DedIndAbd">other</a> site has this example of induction: &#8220;John lives in
+Chelsea&#8221; and &#8220;Most people living in Chelsea are rich&#8221; gives to &#8220;John
+is rich.&#8221; This does not go from specific to general.</p>
+<p>Plausible reasoning precedes logical reasoning (Almossawi quotes
+Minsky: "Logic no more explains how we think than grammar explains how
+we speak") and yet logical fallacies somewhat rudely direct us to
+mistrust heuristics that are useful for plausible reasoning. This
+relates to the idea of language being a model: the famous syllogism
+takes "All men are mortal" as true, but really it's just highly
+plausible. You really have to assume the premises.</p>
+<p>In fact we could just as well speak of the Inductive Fallacy, and use
+it to argue against all manner of things that are understood to be
+true.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20201012-bad_arguments_by_almossawi/</link>
+<guid>http://planspace.org/20201012-bad_arguments_by_almossawi/</guid>
+<pubDate>Mon, 12 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Bad Choices, by Almossawi</title>
 <description><![CDATA[
 
@@ -2732,123 +2953,6 @@ misleading." (page 158)</p>
 <link>http://planspace.org/20200805-factfulness_by_rosling/</link>
 <guid>http://planspace.org/20200805-factfulness_by_rosling/</guid>
 <pubDate>Wed, 05 Aug 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Man Who Solved the Market, by Zuckerman</title>
-<description><![CDATA[
-
-<p>This <a href="https://www.penguinrandomhouse.com/books/557104/the-man-who-solved-the-market-by-gregory-zuckerman/">book</a> demystifies <a href="https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)">Jim Simons</a> and makes his
-<a href="https://en.wikipedia.org/wiki/Renaissance_Technologies#Monemetrics">Medallion Fund</a> seem more like grinding at a poker table than like
-solving the market. I was interested to read about his connection to
-<a href="https://en.wikipedia.org/wiki/Robert_Mercer">Robert Mercer</a> and otherwise hiring "smart people" regardless of
-<a href="https://en.wikipedia.org/wiki/The_No_Asshole_Rule">other characteristics</a>.</p>
-<p>Technical detail is light, but Zuckerman emphasizes that Renaissance
-used a monolithic trading model that could accept additional signals
-over time, manage <a href="https://en.wikipedia.org/wiki/Slippage_(finance)">slippage</a> sometimes to the extent that signals
-Renaissance was using could be made to disappear to outside observers
-while exploited, and that frequently was basically based on reversion
-to the mean. And Renaissance was not at all shy about using any
-available tax dodges.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"Simons was struck by the unique way talented researchers were
-recruited and managed in his unit [of <a href="https://en.wikipedia.org/wiki/Institute_for_Defense_Analyses" title="the Institute for Defense Analyses">IDA</a>]. Staff members, most
-of whom had doctorates, were hired for their brainpower, creativity,
-and ambition, rather than for any specific expertise or background.
-The assumption was that researchers would find problems to work on
-and be clever enough to solve them. Lenny Baum, among the most
-accomplished code-breakers, developed a saying that became the
-group's credo: "Bad ideas is good, good ideas terrific, no ideas is
-terrible."" (pages 24-25)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Courting accomplished candidates, Simons developed a unique
-perspective on talent. He told one Stony Brook professor, Hershel
-Farkas, that he valued "killers," those with a single-minded focus
-who wouldn't quit on a math problem until arriving at a solution.
-Simons told another colleague that some academics were "super smart"
-yet weren't original thinkers worthy of a position at the
-university.</p>
-<p>""There are guys and there are <em>real</em> guys," he said." (pages 34-35)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Truth ... is much too complicated to allow for anything but
-approximations." (page 67, epigraph quoting John von Neuman)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"No one ever made a decision because of a number. They need a
-story." (page 161, epigraph quoting Daniel Kahneman)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Early one evening, his eyes blurry from staring at his computer
-screen for hours on end, Magerman spotted something odd: A line of
-simulation code used for Brown and Mercer&#8217;s trading system showed
-the Standard &amp; Poor&#8217;s 500 at an unusually low level. This test code
-appeared to use a figure from back in 1991 that was roughly half the
-current number. Mercer had written it as a static figure, rather
-than as a variable that updated with each move in the market.</p>
-<p>"When Magerman fixed the bug and updated the number, a second
-problem&#8212;an algebraic error&#8212;appeared elsewhere in the code. Magerman
-spent most of the night on it but he thought he solved that one,
-too. Now the simulator&#8217;s algorithms could finally recommend an ideal
-portfolio for the Nova system to execute, including how much
-borrowed money should be employed to expand its stock holdings. The
-resulting portfolio seemed to generate big profits, at least
-according to Magerman&#8217;s calculations.</p>
-<p>"Overcome with excitement, he raced to tell Brown what he had
-discovered. Brown flashed his breathless colleague a look of deep
-skepticism but agreed to hear Magerman out. Afterward, Brown still
-showed little enthusiasm. Mercer had done the coding for the system,
-after all. Everyone knew Mercer rarely made errors, especially
-mathematical ones. Crestfallen, Magerman slunk away. His screwup had
-branded him a nuisance, not any kind of potential savior.</p>
-<p>"Without much to lose, Magerman brought his work to Mercer, who also
-agreed to take a look. Sitting at his desk, hunched over his
-computer, Mercer patiently examined the old code, line by line,
-comparing it to Magerman&#8217;s new code. Slowly, a smile formed on his
-face. Mercer reached for some paper and a pencil from his desk and
-began working on a formula. He was checking Magerman&#8217;s work. After
-about fifteen minutes of scribbling, Mercer put his pencil down and
-looked up.</p>
-<p>"&#8220;You&#8217;re right,&#8221; Mercer told Magerman.</p>
-<p>"Later, Mercer convinced Brown that Magerman was on to something.
-But when Brown and Mercer told other staffers about the problem that
-had been uncovered, as well as the fix, they were met with
-incredulity, even laughter. A junior programmer fixed the problem?
-The same guy who had crashed the system a few weeks after being
-hired?</p>
-<p>"Brown and Mercer ignored the doubts and restarted the system, with
-Simons&#8217;s backing, incorporating the improvements and corrections.
-Instant gains resulted, defying the skeptics. The long losing streak
-was over. Magerman finally received the appreciation he longed for,
-receiving a cherished pat on the back from Brown.</p>
-<p>"&#8220;This is great,&#8221; Simons boomed at a weekly meeting. &#8220;Let&#8217;s keep it
-going.&#8221;</p>
-<p>"A new era for both Magerman and the firm seemed within reach."
-(pages 194-195)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"When asked to comment, Bannon said there are "errors of fact" in
-this description of events surrounding the election and his
-interactions with the Mercers, though he wouldn't specify the
-inaccuracies. "Dude, it's not my fucking book," he said in an
-email." (footnote page 280)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>&#8220;We can teach you about money,&#8221; Patterson explains. &#8220;We can&#8217;t teach
-you about smart.&#8221; (page 284)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20200804-man_who_solved_the_market/</link>
-<guid>http://planspace.org/20200804-man_who_solved_the_market/</guid>
-<pubDate>Tue, 04 Aug 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
