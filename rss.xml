@@ -7,6 +7,89 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Problem Solving 101, by Watanabe</title>
+<description><![CDATA[
+
+<p>This <a href="https://www.penguinrandomhouse.com/books/304164/problem-solving-101-by-ken-watanabe/">book</a> by a former <a href="https://en.wikipedia.org/wiki/McKinsey_%26_Company">McKinsey</a> consultant "started as a simple
+guide to teach Japanese schoolchildren critical thinking skills." It's
+a different perspective than the more math-focused
+<a href="https://en.wikipedia.org/wiki/How_to_Solve_It">How to Solve It</a>, for example, focusing on problems of everyday
+life.</p>
+<h3>Watanabe's steps:</h3>
+<ol>
+<li>"understand the current situation"</li>
+<li>"identify the root cause of the problem"</li>
+<li>"develop an effective action plan"</li>
+<li>"execute until the problem is solved, making modifications as necessary"</li>
+</ol>
+<h3>P&#243;lya's steps:</h3>
+<ol>
+<li>First, you have to understand the problem.</li>
+<li>After understanding, make a plan.</li>
+<li>Carry out the plan.</li>
+<li>Look back on your work. How could it be better?</li>
+</ol>
+<p>From these we learn that five steps is too many steps.</p>
+<p>Watanabe emphasizes a number of visual aids:</p>
+<ul>
+<li>"Logic tree" - break something down into sub-groups, exhaustively</li>
+<li>"Yes/no tree" - a logic tree with yes/no logic, drawn as a
+   flowchart</li>
+<li>"Problem-solving design plan" - columns for Issue, Hypothesis,
+   Rationale, Analysis/Activities, Information Source (mostly about
+   understanding the problem)</li>
+<li>"Hypothesis pyramid" - Boxes with arrows to show (possible)
+   contributing factors for a conclusion, both for plausible reasoning
+   and for deductive reasoning as appropriate</li>
+<li>"Pros and cons; Criteria and evaluation" - Tables with various
+   structure for pros and cons</li>
+</ul>
+<p>A couple times he also uses quadrant charts where the axes are impact
+and effort (for prioritizing). An interesting variation is that he has
+his characters think about how to <em>change</em> the required effort by
+asking friends for help, etc.</p>
+<hr>
+<h3>Selected quotes and (very rarely) comments</h3>
+<hr>
+<blockquote>
+<p>"Being a problem solver isn't just an ability; it's a whole
+mind-set, one that drives people to bring out the best in themselves
+and to shape the world in a positive way." (page ix)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... approaches to broaden and organize one's thinking ..." (page x)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Problem solving isn't a talent limited to the lucky few. It's
+actually a skill and a habit that you can learn." (page 4)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"People often fall into the trap of collecting information and
+conducting analyses just for the sake of doing them." (page 38)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If you start collecting and analyzing data without first clarifying
+the question you are trying to answer, you're probably doing
+yourself more harm than good." (page 39)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"As Seneca said, "Luck is what happens when preparation meets
+opportunity."" (page 109)</p>
+</blockquote>
+<p>That quote is <a href="https://en.wikiquote.org/wiki/Seneca_the_Younger#Disputed">disputed</a>.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20201018-problem_solving_101_by_watanabe/</link>
+<guid>http://planspace.org/20201018-problem_solving_101_by_watanabe/</guid>
+<pubDate>Sun, 18 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Bad Arguments, by Almossawi</title>
 <description><![CDATA[
 
@@ -2886,73 +2969,6 @@ might be complicating.</p>
 <link>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</link>
 <guid>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</guid>
 <pubDate>Thu, 06 Aug 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Factfulness, by Rosling</title>
-<description><![CDATA[
-
-<p><a href="https://www.gapminder.org/factfulness-book/">Factfulness</a> finds <a href="https://en.wikipedia.org/wiki/Hans_Rosling">Rosling</a> realizing that facts are not enough,
-because thinking is polluted by "dramatic instincts," so his
-presentation of little-known optimistic trends is organized to address
-not just ignorance, but systematic biases in how people think.</p>
-<ol>
-<li><em>The Gap Instinct</em>: Giving its name to his <a href="https://www.gapminder.org/">foundation</a>, this is
-   the tendency to think groups are completely different. Usually even
-   if group averages are different, the distributions significantly
-   overlap.</li>
-<li><em>The Negativity Instinct</em>: Bad news is reported and feels salient,
-   even if trends are positive overall.</li>
-<li><em>The Straight Line Instinct</em>: Trends are not always linear, but
-   it's easiest to extrapolate as if they were&#8212;and be wrong.</li>
-<li><em>The Fear Instinct</em>: Fear is often not calibrated to true risk.</li>
-<li><em>The Size Instinct</em>: Understanding "big" requires appropriate
-   comparison.</li>
-<li><em>The Generalization Instinct</em>: Both categories and anecdotes can be
-   misleading.</li>
-<li><em>The Destiny Instinct</em>: Slow change is not the same as no change.</li>
-<li><em>The Single Perspective Instinct</em>: Understanding requires more than
-   one approach, view, or tool (even statistics).</li>
-<li><em>The Blame Instinct</em>: Whether effects are good or bad, the reasons
-   are probably more complex than just one individual or organization.</li>
-<li><em>The Urgency Instinct</em>: It's better to think and act carefully
-    than jump into drastic moves.</li>
-</ol>
-<p>Rosling wants us to realize our shared humanity, see that things have
-mostly gotten better over long time scales, and work to keep improving
-things. The philanthropy of <a href="https://www.gatesnotes.com/books/factfulness">Bill Gates</a> is largely working to
-continue the trends Rosling focuses on, for example.</p>
-<p>Like his classic <a href="https://www.youtube.com/watch?v=jbkSRLYSojo">presentation</a>, celebrated by data visualizers, the
-book is a study in good communication. I particularly noticed that he
-often found opportunities to present dialogue rather than just
-narrative, and that he used cute attention-getting flourishes like
-using hypothetical "chimps" to stand in for random performance on his
-quizzes.</p>
-<p>I agree there's risk in assuming positive trends inevitably continue.
-But it isn't fair to say Rosling ignored future risks. He listed five
-things that he thought we <em>should</em> worry about:</p>
-<ol>
-<li>Global pandemic</li>
-<li>Financial collapse</li>
-<li>World War III</li>
-<li>Climate change</li>
-<li>Extreme poverty</li>
-</ol>
-<p>Writing in 2017, he seems particularly prescient today.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"... free access to data doesn't turn into knowledge without
-effort." (page 79)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It will be helpful to you if you always assume your categories are
-misleading." (page 158)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20200805-factfulness_by_rosling/</link>
-<guid>http://planspace.org/20200805-factfulness_by_rosling/</guid>
-<pubDate>Wed, 05 Aug 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
