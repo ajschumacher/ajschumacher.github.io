@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-10-19: [The Point of Pointless Work, by Almossawi](/20201019-point_of_pointless_work_by_almossawi/)
  * 2020-10-18: [Problem Solving 101, by Watanabe](/20201018-problem_solving_101_by_watanabe/)
  * 2020-10-12: [Bad Arguments, by Almossawi](/20201012-bad_arguments_by_almossawi/)
  * 2020-10-11: [Bad Choices, by Almossawi](/20201011-bad_choices_by_almossawi/)

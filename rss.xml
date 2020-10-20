@@ -7,6 +7,54 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Point of Pointless Work, by Almossawi</title>
+<description><![CDATA[
+
+<p>The title's not quite right, but there's some on that. <a href="https://almossawi.com/pointless-work/">It</a>'s mostly
+Almossawi's personal adventures in publishing: the stories of
+<a href="/20201012-bad_arguments_by_almossawi/">Bad Arguments</a> and <a href="/20201011-bad_choices_by_almossawi/">Bad Choices</a>. I enjoyed it.</p>
+<p>I liked the detail about publishing, including buying a pack of ten
+ISBNs, and agonizing about getting pallets of books from a ship and
+into Amazon fulfillment centers.</p>
+<p>I also think he's right that it's good for people to do things not
+just out of economic necessity, and we're fortunate when we're able to
+do so.</p>
+<hr>
+<h3>Selected quotes and commentary</h3>
+<hr>
+<blockquote>
+<p>"Anatol Rapoport has excellent advice about how to criticize. A
+critic, he says, ought to begin by stating the other side's position
+in a fair and objective way, then mentioning the areas of agreement,
+and only then mentioning the areas of disagreement. The approach
+does wonders when the goal is to turn something into a better
+version of itself rather than to posture." (page 42)</p>
+</blockquote>
+<p>I also found more on this in a <a href="http://www.rightattitudes.com/2017/06/16/rapoport-rules-criticism/">post</a> based on a book by Dennett
+which is in my to-read pile.</p>
+<hr>
+<blockquote>
+<p>"I was surprised to find that the copyeditors were all freelancers.
+... When [prior employee copyeditors] retired, the publisher
+determined that it made economic and organizational sense to
+outsource that responsibility to freelancers." (page 74)</p>
+</blockquote>
+<p>Yet another example of trying to get work done by contractors rather
+than employees.</p>
+<hr>
+<blockquote>
+<p>"... Abraham Flexner's essay from almost a century ago on useless
+knowledge." (page 100)</p>
+</blockquote>
+<p>This is <a href="https://library.ias.edu/files/UsefulnessHarpers.pdf">The Usefulness of Useless Knowledge</a>.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20201019-point_of_pointless_work_by_almossawi/</link>
+<guid>http://planspace.org/20201019-point_of_pointless_work_by_almossawi/</guid>
+<pubDate>Mon, 19 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Problem Solving 101, by Watanabe</title>
 <description><![CDATA[
 
@@ -2916,59 +2964,6 @@ appears with that frequency (there are 25 unique frequencies):</p>
 <link>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</link>
 <guid>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</guid>
 <pubDate>Sat, 15 Aug 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Life expectancy is historically misleading</title>
-<description><![CDATA[
-
-<p>The modern distribution of age at death is substantially novel. In
-today's wealthiest countries most people die at an age near their life
-expectancy, but historically a third of people died as young children
-and the remainder died over a wide range of ages.</p>
-<p><a href="https://en.wikipedia.org/wiki/Life_expectancy">Life expectancy</a> at birth, an average of possible ages at death, is
-now a measure of central tendency, but even just 100 years ago the
-distribution of age at death didn't really <em>have</em> a central tendency.
-Interpreting it as if it did gives a misleading impression of past
-cultures.</p>
-<p><img alt="Life Expectancy and Distribution of Age at Death Over Time in Sweden" src="lifetimes_in_sweden.png"></p>
-<p>Inspired by <a href="/20200805-factfulness_by_rosling/">Hans Rosling</a>, I went looking for <a href="https://en.wikipedia.org/wiki/Life_table">life tables</a>.
-Appropriately enough, his native Sweden birthed the first National
-Statistical Office, with 270 years of life tables <a href="https://www.mortality.org/cgi-bin/hmd/country.php?cntr=SWE&amp;level=1">available</a>.
-That's enough history to show how the world used to be, and as a rich
-country Sweden also shows us where the whole world is (hopefully)
-heading.</p>
-<p>Back when life expectancy was mid-thirties, you were more likely to
-die in your seventies than in your thirties. If you interpret a life
-expectancy of 36 to mean "most people died around age 36" you might
-incorrectly imagine a world with very few people over 50.</p>
-<p>Or, as Rosling explains it:</p>
-<blockquote>
-<p>"Back in 1800, when Swedes starved to death and British children
-worked in coal mines, life expectancy was roughly 30 years
-everywhere in the world. That was what it had been throughout
-history. Among all babies who were ever born, roughly half died
-during their childhood. Most of the other half died between the ages
-of 50 and 70. So the average was around 30. It doesn't mean most
-people lived to be 30. It's just an average, and with averages we
-must always remember that there's a spread." (<a href="/20200805-factfulness_by_rosling/">Factfulness</a>, page
-54)</p>
-</blockquote>
-<p>This doesn't mean that life expectancy isn't a useful statistic for
-tracking development! It can be both limited and useful.</p>
-<p>I like the visualization I made (above) because it shows enough
-information to see distributional changes over time.</p>
-<p>The question of whether life expectancy will <em>continue</em> to go up is an
-interesting one. I'm not sure this data has much to say. The length of
-past lives has an <a href="https://www.bbc.com/future/article/20181002-how-long-did-ancient-people-live-life-span-versus-longevity">uncertain</a> relationship with theoretical/possible
-lifespan. Are people living longer, or just not dying earlier? There's
-also a possible question about quality of life at extreme ages which
-might be complicating.</p>
-<hr>
-<p>Source for the visualization above is <a href="https://github.com/ajschumacher/life_expectancy">on github</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</link>
-<guid>http://planspace.org/20200806-life_expectancy_is_historically_misleading/</guid>
-<pubDate>Thu, 06 Aug 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
