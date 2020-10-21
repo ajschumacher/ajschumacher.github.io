@@ -7,6 +7,30 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Sampling can be hard to beat, for text understanding</title>
+<description><![CDATA[
+
+<p>If you have a lot of related documents (like thousands of reviews of a
+product, or answers to a survey question) you might be tempted to use
+an automatic procedure to summarize them (maybe making a word cloud,
+or applying <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">LDA</a>, or something fancier). No automated process is
+flawless, but if you need to work with many groups of documents, such
+an approach could be called for. Regardless of whether you use an
+automated technique, you should still start by reading a sample of
+documents, and in fact reading may be the best way to understand what
+people have said.</p>
+<p>This is a special case of a few more general principles:</p>
+<ul>
+<li>Look at the data</li>
+<li>Simple techniques can be very effective</li>
+<li>Start with a baseline for comparison</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20201021-sampling_can_be_hard_to_beat/</link>
+<guid>http://planspace.org/20201021-sampling_can_be_hard_to_beat/</guid>
+<pubDate>Wed, 21 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Point of Pointless Work, by Almossawi</title>
 <description><![CDATA[
 
@@ -2899,71 +2923,6 @@ calculus.</p>
 <link>http://planspace.org/20200816-e_the_story_of_a_number_and_more/</link>
 <guid>http://planspace.org/20200816-e_the_story_of_a_number_and_more/</guid>
 <pubDate>Sun, 16 Aug 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Green Eggs and Ham uses 50 words</title>
-<description><![CDATA[
-
-<p>I recently heard that Dr. Seuss wrote Green Eggs and Ham using
-<a href="https://en.wikipedia.org/wiki/Green_Eggs_and_Ham#Background">just 50 words</a> to win a bet. Naturally, I had to check. Counting
-"Sam-I-am" as three distinct words, it is indeed exactly 50 unique
-words, used 802 total times, with no use of the letters J, P, Q, V, or
-Z.</p>
-<hr>
-<p>Dr. Seuss introduces no more than 7 new words on any one of the book's
-62 pages, and indeed eight pages introduce just one new word.</p>
-<p><img alt="Introduction of words by page in Green Eggs and Ham" src="new_words_by_page.png"></p>
-<p>I used only the words that appear printed as text in the book, which
-ignores the "I am Sam" sign carried by Sam in the illustration on page
-three (and similar sign on page seven). If those are included, word
-counts change slightly and the maximum new words on a page is just
-five.</p>
-<hr>
-<p>Green Eggs and Ham doesn't seem to follow <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's Law</a> very well. If
-it did, the log-log plot here should show a straight line rather than
-being concave. The repetitive nature of the text means more words
-appear more often than a <a href="https://en.wikipedia.org/wiki/Power_law">power law</a> would suggest.</p>
-<p><img alt="Word frequencies in Green Eggs and Ham" src="frequencies_log_log.png"></p>
-<p>Of course this is a small sample of text, so
-<a href="https://xkcd.com/2268/">draw conclusions accordingly</a>.</p>
-<hr>
-<p>Here's a list showing numbers of occurrences and each word that
-appears with that frequency (there are 25 unique frequencies):</p>
-<ul>
-<li>84: not</li>
-<li>82: I</li>
-<li>61: them</li>
-<li>59: a</li>
-<li>44: like</li>
-<li>40: in</li>
-<li>37: do</li>
-<li>33: you</li>
-<li>26: would</li>
-<li>25: and, eat</li>
-<li>21: will</li>
-<li>19: with</li>
-<li>16: Sam</li>
-<li>14: could</li>
-<li>13: am</li>
-<li>11: green, eggs, ham, here, the</li>
-<li>9: there, train</li>
-<li>8: or, anywhere, house, mouse</li>
-<li>7: box, fox, car, on, dark</li>
-<li>6: tree</li>
-<li>5: say, so</li>
-<li>4: may, see, let, me, be, rain, goat, try</li>
-<li>3: that, boat</li>
-<li>2: they, are, good, thank</li>
-<li>1: if</li>
-</ul>
-<hr>
-<p>Data and code is <a href="https://github.com/ajschumacher/green_eggs_and_ham">on GitHub</a>.</p>
-<hr>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</link>
-<guid>http://planspace.org/20200815-green_eggs_and_ham_uses_50_words/</guid>
-<pubDate>Sat, 15 Aug 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
