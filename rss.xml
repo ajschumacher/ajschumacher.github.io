@@ -7,6 +7,371 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Failure to Disrupt, by Reich</title>
+<description><![CDATA[
+
+<p>As is especially salient during a pandemic, "technology alone can't
+transform education." Reich's <a href="https://failuretodisrupt.com/">book</a> nicely wraps up the most recent
+edtech hype cycle, which I was more optimistic about <a href="/2011/09/10/future-of-education/">at the time</a>. Reich thinks we have to keep <a href="/2010/07/31/thoughts-on-tinkering-toward-utopia/">tinkering toward utopia</a>.</p>
+<ul>
+<li>Kinds of edtech "learning at scale"<ul>
+<li><a href="#chapter1">MOOCs</a> (instructor-guided)</li>
+<li><a href="#chapter2">adaptive tutors</a> (algorithm-guided)</li>
+<li><a href="#chapter3">open world</a> (self/peer-guided)</li>
+<li><a href="#chapter4">games</a> (aspects mostly of adaptive and open)</li>
+</ul>
+</li>
+<li>Challenges<ul>
+<li><a href="#chapter5">difficult to get adoption</a></li>
+<li><a href="#chapter6">mostly helps those who least need help</a></li>
+<li><a href="#chapter7">complex tasks defy simple assessments</a></li>
+<li><a href="#chapter8">data/experiments risks/benefits</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<p>I mostly agree with Reich, except that now I tend to put more weight
+on knowledge &#224; la <a href="https://en.wikipedia.org/wiki/E._D._Hirsch">Hirsch</a>, and I still have hope for the
+application of tools like <a href="/20201009-anki_is_easy/">Anki</a> in educational settings.</p>
+<hr>
+<p><img alt="cover" src="cover.png"></p>
+<hr>
+<h3><a name="chapter1"></a>Chapter 1: Instructor-Guided Learning at Scale: Massive Open Online Courses</h3>
+<hr>
+<blockquote>
+<p>"To a first approximation, there are only two primary approaches to
+teaching and learning. As Plutarch wrote in "On Listening" in the
+first century CE, "Education is not the filling of a pail, but the
+lighting of a fire."" (page 22)</p>
+</blockquote>
+<p>Reich then identifies "instructionism" and "social constructivism" as
+names for these approaches, associated with Edward L. Thorndike and
+John Dewey, respectively.</p>
+<p>One thing I thought I noticed in edtech over the years was a trend in
+which companies that focused on algorithms (like <a href="https://en.wikipedia.org/wiki/Knewton">Knewton</a>) moved
+toward being more like content companies over time. In a sense they
+started as pail companies, but found people wouldn't buy empty pails.
+Might be related to the <a href="#chapter5">adoption problem</a>.</p>
+<p>This is a fun metaphor to play with. I think it might be better as
+"not the stacking of wood, but the lighting of a fire." When a fire is
+burning, you want to keep getting more wood. The wood is largely the
+same in both approaches; the difference is the motivation or
+application around it.</p>
+<hr>
+<blockquote>
+<p>"... teaching how to reason from evidence is one of the main
+purposes of higher education, ..." (page 27)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"People develop self-regulated learning strategies through direct
+instruction and practice, often through a long apprenticeship in
+formal educational systems." (page 36)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I have jokingly summarized the bulk of MOOC learning research as
+proving Reich's Law: "People who do stuff do more stuff, and people
+who do stuff do better than people who don't do stuff."" (page 39)</p>
+</blockquote>
+<p>See also:</p>
+<ul>
+<li><a href="http://blogs.edweek.org/edweek/edtechresearcher/2014/03/big_data_mooc_research_breakthrough_learning_activities_lead_to_achievement.html">Big Data MOOC Research Breakthrough: Learning Activities Lead to Achievement</a></li>
+</ul>
+<p>This is a slight contradiction to the above in that it says some stuff
+is better than other stuff, but still a nice reference:</p>
+<ul>
+<li><a href="http://pact.cs.cmu.edu/pubs/koedinger,%20Kim,%20Jia,%20McLaughlin,%20Bier%202015.pdf">Learning is Not a Spectator Sport: Doing is Better than Watching for Learning from a MOOC</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>"It turns out that one can have terabytes of data about what people
+do online and very little understanding of what changes inside their
+heads." (page 39)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Since we know that most people who register for a course drop out
+soon after enrollment, we start our courses with short "capsule"
+units that summarize the most important ideas of the course." (page
+41)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Social inequality is a tenacious feature of educational systems."
+(page 42)</p>
+</blockquote>
+<hr>
+<h3><a name="chapter2"></a>Chapter 2: Algorithm-Guided Learning at Scale: Adaptive Tutors and Computer-Assisted Instruction</h3>
+<hr>
+<blockquote>
+<p>"... a feature of logistic curves is that when plotted against
+log-transformed <em>x</em> and <em>y</em> axes, the S-curve becomes a linear
+straight line." (page 60)</p>
+</blockquote>
+<p>This doesn't seem true. Maybe it means that with a log y axis, the
+left and right sides are each approximately linear? I <a href="https://twitter.com/planarrowspace/status/1311371349957505030">tweeted</a> at
+Reich about this.</p>
+<hr>
+<blockquote>
+<p>"Reading instructors sometimes discuss a transition, which happens
+in about the third grade, from learning to read&#8211;learning how to
+decode the sounds and meaning of text&#8211;to reading to learn&#8211;using
+reading to advance content knowledge." (pages 63-64)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Ritter's research team looked at how much adaptive mastery learning
+teachers actually allowed in their classes, and they found that some
+teachers assigned work in Carnegie Learning in such a way that it
+wasn't really personalized&#8211;these teachers required students to work
+on problem sets related to the topics being taught at that moment to
+the whole class. By contrast, other teachers allowed students to
+work at their own pace, even if this meant that some students were
+still doing practice problems on topics that might have been covered
+in class weeks earlier. Ritter's team found that overall learning
+gains were higher in the classes where students were allowed more
+opportunities to move at their own pace; in other words, the
+teachers who used Carnegie Learning as intended had more learning
+gains in their classrooms than did the teachers who kept their
+students moving in lockstep." (page 70)</p>
+</blockquote>
+<p>Makes me think about whole-group single track, tracking, personalized
+via computer, tutoring, and how these are thought about in different
+ways...</p>
+<hr>
+<h3><a name="chapter3"></a>Chapter 3: Peer-Guided Learning at Scale: Networked Learning Communities</h3>
+<hr>
+<blockquote>
+<p>"The consensus about the great potential of personalized learning
+depended on a stark disagreement about what the term actually
+meant." (page 77)</p>
+</blockquote>
+<p>Roughly, this is referring to personalizing <em>pace</em> (go through the
+same material but at whatever speed you like) versus personalizing
+<em>content</em> (choose your own area of interest, pursue it however you
+want).</p>
+<hr>
+<blockquote>
+<p>"... a shift in identity where the learning activity is a part of
+who they are rather than something that they do ..." (page 91)</p>
+</blockquote>
+<hr>
+<p>On page 95, a reference to
+<a href="https://www.tandfonline.com/doi/pdf/10.1207/s15326985ep4102_1">Why Minimal Guidance During Instruction Does Not Work: An Analysis of the Failure of Constructivist, Discovery, Problem-Based, Experiential, and Inquiry-Based Teaching</a>:</p>
+<blockquote>
+<p>"The advantage of guidance begins to recede only when learners have
+sufficiently high prior knowledge to provide &#8220;internal&#8221; guidance."
+(from the abstract)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Put simply, people have a limited working memory, and when learners
+allocate that working memory to solving a problem, they often are
+not permanently encoding learning about the patterns and practices
+that let them solve that type of problem." (page 95)</p>
+</blockquote>
+<hr>
+<p>Reich raises the issue of people choosing to get involved in bad stuff
+like hate groups. So total freedom in what to get into isn't
+necessarily great.</p>
+<hr>
+<blockquote>
+<p>"Somehow, millions of people around the world find ways to teach and
+learn with one another online without any formal training and
+sometimes without any organization, and yet when designers try to
+create these kinds of environments with intention, they encounter
+substantial challenges with motivation and comprehension." (page
+102)</p>
+</blockquote>
+<p>Is he deliberately avoiding the obvious interpretation from
+selection/observation bias? In a whole world, some people have
+motivation and comprehension to do great things. If you have a fixed
+group of students that isn't skimming those people, many won't. It
+seems highly likely that peer-guided learning at scale has the same
+issue as other MOOCs, in that the people who benefit are
+overwhelmingly people who are already doing really well to begin with.</p>
+<hr>
+<p>Thinking about the various ways to do whole class together vs. totally
+personalized/independent learning... When I was teaching,
+"differentiation" was the popular term for customizing class
+activities for students who were struggling or way ahead...</p>
+<p>I think really, there's some stuff that we want all students to learn,
+and there are learning experiences that make sense to do with a whole
+class: stuff about working in groups, communication, etc. It would be
+neat to have more explicit separation between a small whole-group set
+of content, and scaffolding for students to study more things on their
+own.</p>
+<hr>
+<h3><a name="chapter4"></a>Chapter 4: Testing the Genres of Learning at Scale: Learning Games</h3>
+<hr>
+<p>The difficulty of <em>transfer</em> (mentioned page 109) makes me wonder to
+what extent transfer is related to general intelligence - or whether
+they might even be largely the same thing.</p>
+<p>The referenced <em>Critical Thinking: Why Is It So Hard to Teach?</em>
+(<a href="https://www.readingrockets.org/article/critical-thinking-why-it-so-hard-teach">web</a>, <a href="https://www.aft.org/sites/default/files/periodicals/Crit_Thinking.pdf">more complete PDF</a>) is quite good.</p>
+<hr>
+<blockquote>
+<p>"A more pessimistic view built upon the research on transfer is that
+people who spend a lot of time playing <em>Minecraft</em> will primarily
+learn about playing <em>Minecraft</em>." (page 119)</p>
+</blockquote>
+<p>But: some reasonable notes on, for example, the general strategy of
+knowing to look things up online.</p>
+<blockquote>
+<p>"Domain-independent skills are slightly useful in lots of different
+domains but not deeply useful in any particular domain." (page 120)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"an <em>edtech Matthew effect</em> is quite common: that new technologies
+disproportionately benefit learners with the financial, social, and
+technical capital to take advantage of new innovations." (page 125)</p>
+</blockquote>
+<hr>
+<p>This <a href="https://www.youtube.com/watch?v=5Prw3xbk1Wo&amp;ab_channel=HippoCrit">Zoombinis</a> game seems kind of neat? Maybe mathier puzzles than
+other puzzle games? Or not? Shrug?</p>
+<hr>
+<h3><a name="chapter5"></a>Chapter 5: The Curse of the Familiar</h3>
+<hr>
+<blockquote>
+<p>"The dilemma that Resnick and colleagues face as Scratch is widely
+adopted in schools is that a variety of typical school structures
+are inimical to the pedagogical philosophy behind Scratch." (page
+134)</p>
+</blockquote>
+<p>I think Reich is neglecting something that Scratch has in common with
+most edtech, and which he comments on for other types: Learning with
+Scratch depends hugely on the student being prepared for and/or having
+characteristics that align with learning with Scratch.</p>
+<hr>
+<blockquote>
+<p>"Another approach from the Scratch team has been to develop decks of
+physical coding cards ..." (page 138)</p>
+</blockquote>
+<p><a href="https://nostarch.com/scratchcards3">Published</a> by No Starch.</p>
+<hr>
+<blockquote>
+<p>"... Getting Unstuck, a twenty-one-day email-based course during
+which participants received daily creative challenges, ..." (page
+140)</p>
+</blockquote>
+<p><a href="https://gettingunstuck.gse.harvard.edu/about">From</a> Harvard. Aha! They have <a href="https://gettingunstuck.gse.harvard.edu/strategies">strategies for getting unstuck</a>!</p>
+<hr>
+<blockquote>
+<p>"Education technology is a good field for those who see themselves
+as patient optimists." (page 147)</p>
+</blockquote>
+<hr>
+<h3><a name="chapter6"></a>Chapter 6: The Edtech Matthew Effect</h3>
+<hr>
+<blockquote>
+<p>"Sociologist Tressie McMillan Cottom argues that technologists often
+imagine their students as "roaming autodidacts," which she describes
+as "a self-motivated, able learner that is simultaneously embedded
+in technocratic futures <em>and</em> disembedded from place, culture,
+history, and markets."" (page 159)</p>
+</blockquote>
+<hr>
+<h3><a name="chapter7"></a>Chapter 7: The Trap of Routine Assessment</h3>
+<hr>
+<blockquote>
+<p>"Autograders excel at assessing routine tasks. These are exactly the
+kinds of tasks that we no longer need humans to do." (page 171)</p>
+</blockquote>
+<p>This is incomplete. There are lots of basic things that humans need to
+be able to do that can be assessed automatically. But I agree that
+higher-level skills are difficult to assess automatically.</p>
+<hr>
+<p>Reich makes an example of a plumber who installs a water heater with
+an LED panel and then says on page 175: "What would it be like to
+explain to the young men in that apprenticeship program that fifty
+years later, plumbers would be computer programmers?" This isn't the
+case. The plumber who in fact installed his water heater didn't do any
+programming. This was a bad example for the point I think Reich hoped
+to make.</p>
+<hr>
+<blockquote>
+<p>"... the "reification fallacy," when we uncritically believe that
+something's name accurately represents what that thing actually is."
+(page 176)</p>
+</blockquote>
+<p>Somewhat unusual way of explaining <a href="https://en.wikipedia.org/wiki/Reification_(fallacy)">this</a>. Interesting.</p>
+<hr>
+<blockquote>
+<p>"Computers can mostly assess what computers are good at doing, and
+these are things we do not need humans to do in the labor market."
+(page 197)</p>
+</blockquote>
+<p>I already commented on this, but I'll comment again: I think he's
+ignoring the many things that humans should be able to do that
+computers can also do. I'm thinking mostly of simple recall, where
+knowing something by heart (immediately) is way better than being able
+to look it up (if you even know that it exists, to look up).</p>
+<hr>
+<h3><a name="chapter8"></a>Chapter 8: The Toxic Power of Data and Experiments</h3>
+<hr>
+<p>Mostly, I think Reich is pulling punches in this chapter. He doesn't
+go where I thought he was going to: He doesn't really address possible
+abuses of student data or the negative effects that can arise
+(intentionally or accidentally) from data and experiment.</p>
+<hr>
+<blockquote>
+<p>"If online learning leads to better outcomes from students, it will
+be through the amalgamation of a thousand or ten thousand studies
+like this one that incrementally accrete a knowledge base about
+effective online learning." (page 223)</p>
+</blockquote>
+<p>I think Reich takes his "tinkering" a little too far sometimes. If
+what's really needed is a bigger leap, ten thousand incremental
+experiments won't necessarily get there.</p>
+<hr>
+<h3><a name="conclusion"></a>Conclusion: Preparing for the Next Learning-at-Scale Hype Cycle</h3>
+<hr>
+<blockquote>
+<p>"In 1913, Thomas Edision declared that the age of books was about to
+give way to the age of motion pictures. He told an interviewer,
+"Books will soon be obsolete in the public schools. Scholars will be
+instructed through the eye. It is possible to teach every branch of
+human knowledge with the motion picture. Our school system will be
+completely changed inside of ten years." When Edison's ten-year
+prediction failed to come to pass, he simple gave himself more time.
+In 1923, speaking before the Federal Trade Commission, Edison
+explained, "I made an experiment with a lot of [motion] pictures to
+teach children chemistry. I got twelve children and asked them to
+write down what they had learned, from the [motion] pictures. I was
+amazed that such a complicated subject as chemistry was readily
+grasped by them to a large extent through [motion] pictures. The
+parts of the [motion] pictures they did not understand I did over
+and over again until they finally understood the entire [motion]
+picture. I think motion pictures have just started and it is my
+opinion that in 20 years children will be taught through [motion]
+pictures and not through textbooks."" (pages 229-230)</p>
+</blockquote>
+<p>It was worth reading the book just for these quotes, for this
+video-hater.</p>
+<p>Quote Investigator has the <a href="https://quoteinvestigator.com/2012/02/15/books-obsolete/">receipts</a>, as usual. And you can read
+the <a href="https://virginiachronicle.com/cgi-bin/virginia?a=d&amp;d=HR19230518.2.11">newspaper</a> for the second quote.</p>
+<p>Reich mention's Khan's 2011 <a href="https://www.ted.com/talks/sal_khan_let_s_use_video_to_reinvent_education">Let's Use Video to Reinvent Education</a> on page 231 as well.</p>
+<hr>
+<blockquote>
+<p>"The students who tend to thrive in these kinds of environments are
+those who have already demonstrated academic proficiency, since most
+people develop self-regulated learning through an apprenticeship in
+the formal education system." (page 235)</p>
+</blockquote>
+<p>(As also seen on page 36.)</p>
+<hr>
+<blockquote>
+<p>"... step change is what continuous, incremental change looks like
+from a distance." (page 245)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20201028-failure_to_disrupt_by_reich/</link>
+<guid>http://planspace.org/20201028-failure_to_disrupt_by_reich/</guid>
+<pubDate>Wed, 28 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Sampling can be hard to beat, for text understanding</title>
 <description><![CDATA[
 
@@ -2758,171 +3123,6 @@ generally do the job.</p>
 <link>http://planspace.org/20200902-share_a_tmux_session/</link>
 <guid>http://planspace.org/20200902-share_a_tmux_session/</guid>
 <pubDate>Wed, 02 Sep 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>e: The Story of a Number (and more)</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Eli_Maor">Eli Maor</a> gives a great <a href="https://press.princeton.edu/books/paperback/9780691168487/e-the-story-of-a-number">history</a> of <a href="https://simple.wikipedia.org/wiki/E_(mathematical_constant)"><em>e</em></a>, full of
-personalities and math concepts that I found very enjoyable. I was
-reminded of the difference between historical development and modern
-understanding, which led me to revisit
-<a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">Where Mathematics Comes From</a>, which has in its part VI perhaps a
-better presentation of the latter way of knowing about <em>e</em>.</p>
-<p>The historical perspective reminds me that math didn't start as formal
-as it is now. Like <a href="https://en.wikipedia.org/wiki/Nicolas_Bourbaki">Bourbaki</a> leading to <a href="https://en.wikipedia.org/wiki/New_Math">New Math</a>, modern
-formalism may not be the best way to teach concepts. Being able to
-prove something and understanding it are not the same thing. I'm not
-sure I agree completely with the idea of what math is in <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From">WMCF</a>, but
-I do agree that humans do better when they understand things as
-something more than just a game of symbol manipulation. In a similar
-spirit to the <a href="https://tauday.com/tau-manifesto">tau movement</a>, I think mathematical notation, proof,
-and especially education should focus on communicating <em>meaning</em>.</p>
-<p>More broadly, I think there ought to be <a href="https://fs.blog/2012/04/feynman-technique/">Feynman explanations</a> for
-more topics.</p>
-<ul>
-<li><a href="#is_e_so_natural">Is <em>e</em> so "natural?"</a></li>
-<li><a href="#a_quick_trip">A quick trip to \( e^{\pi i} -1 = 0\)</a></li>
-<li><a href="#a_few_quotes">A few quotes from <em>e</em>: The Story of a Number</a></li>
-</ul>
-<hr>
-<h3><a name="is_e_so_natural"></a>Is <em>e</em> so "natural?"</h3>
-<p>I think <em>e</em> is not always the best choice of base, despite being the
-"natural" log base. The advantages of <em>e</em> are largely to do with
-calculus, and may not help in a particular application.</p>
-<p>In the math for radioactive decay, often <em>e</em> is used even though
-things are mostly otherwise in terms of half-life. This <a href="https://www.khanacademy.org/science/physics/quantum-physics/in-in-nuclei/v/exponential-decay-formula-proof-can-skip-involves-calculus">introduces</a>
-complexity that just isn't necessary. It would be more convenient to
-use 1/2 as the base. (I wonder whether <em>e</em> is used just because that's
-the button people have on their calculators.)</p>
-<p>In finance, interest is usually based on some finite period, like 1/12
-of a year in the case of my savings account and mortgage. I did find,
-<a href="https://twitter.com/planarrowspace/status/1293999229363458051">with help</a>, <a href="https://www.myfreeholdbank.com/savings.aspx">one bank</a> that compounds continuously for some
-products. But usually \( e^x \) will be an approximation, not what
-is really going on, for finance.</p>
-<p>When scaling data with a log, changing the base is the same as
-multiplying the scaled data by some constant. Especially if you're
-already going to normalize that data (with a z-score, for example) or
-use scale invariant techniques on the transformed data, it doesn't
-matter what log base you use.</p>
-<p>For <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>, we do care about the derivative, but not really about
-whether it's <em>exactly</em> equal to the function's value. When training a
-neural net, the constant factor is "neutralized" by the constant
-factor we introduce in the learning rate. At inference, using a
-different base is the same thing as changing the softmax temperature,
-which people already do for various reasons.</p>
-<p>The number \( e \) is very cool, no doubt, but that doesn't mean it
-has to be used for every application.</p>
-<hr>
-<h3><a name="a_quick_trip"></a>A quick trip to \( e^{\pi i} -1 = 0\)</h3>
-<p>What function is always equal to its own derivative?</p>
-<p>\[ f(x) = f'(x) \tag{1} \]</p>
-<p>The constant function \( f(x) = 0 \) has that property, but is dull,
-so leave it out.</p>
-<p>The function can't ever touch the x-axis: the closer it gets, the
-slower it approaches.</p>
-<!-- Then the function can't ever touch the x-axis, because of
-something like Zeno's paradox." -->
-
-<p>The function can't be moved up or down, because that would break
-equality with its derivative. It can be moved left or right, and it
-can be flipped over the x-axis, so to pick a unique function, set the
-y-intercept to be 1.</p>
-<p>\[ f(0) = 1 \tag{2} \]</p>
-<p>Equations (1) and (2) are enough to write out the function as a
-polynomial.</p>
-<p>Equation (2) says the constant term is 1. Equation (1) says the
-polynomial must include a term whose derivative is 1, so the linear
-term is \( \int{1} = x \). By the same reasoning, the next term is
-\( \int{x} = \frac{1}{2} x^2 \), and the next is \( \frac{1}{3}
-\cdot \frac{1}{2} x^3 \), and so on. This gives equation (3).</p>
-<p>\[ f(x) =
-    1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \dots =
-    \sum_{n=0}^{\infty} \frac{x^n}{n!}
-    \tag{3} \]</p>
-<p>The functions with derivatives proportional to their values are the
-exponential functions, \( f(x) = b^x \). Equation (2) is aligned
-with \( b^0 = 1 \). Using \( b^1 = b \) identifies the base for
-equation (3).</p>
-<p>\[ f(1) =
-    \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \dots =
-    2.718281828
-    \tag{4} \]</p>
-<p>This is \( e \), and it's \( e \) not by numerical equality but
-because this is the essence of \( e \): the base of the exponential
-whose derivative equals its value.</p>
-<p>\[ e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} \tag{5} \]</p>
-<p>This relates exponentiation using arbitrary powers with using only
-integer powers. It already supports complex exponents if you don't
-mind doing some calculating.</p>
-<pre><code class="language-python">import math
-
-def approx_exp(x, terms=20):
-    return sum(x**n / math.factorial(n) for n in range(terms))
-
-approx_exp(math.pi * 1j)
-## (-1.0000000035290801-5.289182672965142e-10j)</code></pre>
-
-<p>\[ e^{\pi i} + 1 = 0 \tag{6} \]</p>
-<p>To understand why that should be, consider that exponentiation
-connects addition and multiplication, as \( b^{m + n} = b^m \cdot b^n
-\). Imaginary numbers add as usual, but their multiplication amounts
-to rotation. The base \( e \) has the property that rotation is
-given in radians, so \( \pi i \) means one half turn, taking the
-result to -1.</p>
-<p>This can also be seen by discovering that \( e^{xi} = \cos{x} + i
-\sin{x} \), for example by checking that their values at 0 and all
-their derivatives are equal.</p>
-<p>Negative bases have the funny property that their even exponents give
-positive results, but odd exponents give negative results. What should
-the result be for an exponent like 1.2, then? Thinking of rotation, it
-makes sense that results sweep through complex values to get from the
-positive real axis to the negative real axis and so on. This is a fine
-way to draw a <a href="https://en.wikipedia.org/wiki/Logarithmic_spiral">logarithmic spiral</a>. It can be connected to equation
-(6).</p>
-<p>\[ (-b)^x = b^x (-1)^x = b^x (e^{\pi i})^x = b^x e^{x \pi i} \tag{7} \]</p>
-<p>The rotation comes from the negative base <em>already</em> being rotated to
-begin with. In fact it's only the boring positive real numbers that
-don't rotate when exponentiated.</p>
-<hr>
-<p>Forgive me for using \( \pi \) despite mentioning \( \tau \)
-above; \( \pi \) is so familiar in this context that I didn't want
-to introduce a separate new thing, even though \( \tau \) is
-arguably better <em>especially</em> in this setting.</p>
-<hr>
-<h3><a name="a_few_quotes"></a>A few quotes from <em>e</em>: The Story of a Number</h3>
-<blockquote>
-<p>"Though [William] Oughtred held no official university position, his
-contributions to mathematics were substantial. In his most
-influential work, the <em>Clavis mathematicae</em> (1631), a book on
-arithmetic and algebra, he introduced many new mathematical symbols,
-some of which are still in use today. (Among them is the symbol &#215;
-for multiplication, to which Leibniz later objected because of its
-similarity to the letter <em>x</em>; two other symbols that can still be
-seen occasionally are :: to denote a proportion and ~ for "the
-difference between.")" (page 15)</p>
-<p>"The Pythagoreans believed that numbers are the prime cause behind
-everything in the world, from the laws of musical harmony to the
-motion of the planets. "Number rules the universe" was their motto,
-and by "number" they meant natural numbers and their ratios;
-everything else&#8212;negative numbers, irrational numbers, and even
-zero&#8212;was excluded." (page 51)</p>
-<p>"[William Rowan] Hamilton's rigorous approach marked the beginning
-of axiomatic algebra: ..." (page 167)</p>
-</blockquote>
-<hr>
-<p>Thanks to <a href="https://twitter.com/wmkarney">Will Karnasiewicz</a> for pointing me to a continuously
-compounding bank, and Mervin Chen for pointing me to Khan's gratuitous
-calculus.</p>
-<hr>
-<p><img alt="e: The Story of a Number" src="e_cover.jpg"></p>
-<p><img alt="Where Mathematics Comes From" src="Where_Mathematics_Comes_From.jpg"></p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20200816-e_the_story_of_a_number_and_more/</link>
-<guid>http://planspace.org/20200816-e_the_story_of_a_number_and_more/</guid>
-<pubDate>Sun, 16 Aug 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-10-28: [Failure to Disrupt, by Reich](/20201028-failure_to_disrupt_by_reich/)
  * 2020-10-21: [Sampling can be hard to beat, for text understanding](/20201021-sampling_can_be_hard_to_beat/)
  * 2020-10-19: [The Point of Pointless Work, by Almossawi](/20201019-point_of_pointless_work_by_almossawi/)
  * 2020-10-18: [Problem Solving 101, by Watanabe](/20201018-problem_solving_101_by_watanabe/)
