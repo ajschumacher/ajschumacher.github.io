@@ -7,6 +7,62 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Variance Sum Law is Interesting</title>
+<description><![CDATA[
+
+<p>The <a href="http://onlinestatbook.com/2/glossary/variance_sum_law.html">Variance Sum Law</a> is simple enough that it's often given
+without explanation, but I think it's interesting enough that it
+deserves a little thought.</p>
+<p>The Variance Sum Law says that for two independent random variables
+\( A \) and \( B \) with variances \( \sigma_A^2 \) and \(
+\sigma_B^2 \), the sum \( A+B \) has variance \( \sigma_{A+B}^2 =
+\sigma_A^2 + \sigma_B^2 \).</p>
+<p>Explaining an application of this, you might consider an example: say
+\( a = 10 \) and \( b = 3 \).</p>
+<p>This kind of example is used in at least one course to introduce
+<a href="https://online.stat.psu.edu/stat501/lesson/2/2.5">analysis of variance</a>. After introducing the \( 13 = 10 + 3 \)
+part, they continue:</p>
+<blockquote>
+<p>"Although the derivation isn't as simple as it seems, the
+decomposition holds for the sum of the squared distances, too."</p>
+</blockquote>
+<p>It's possible to find a <a href="http://web.pdx.edu/~joel8/resources/ConceptualPresentationResources/VarianceSumLaw.pdf">derivation</a>, but they're generally not very
+satisfying. And you know that the sum of squares is not the same as
+the square of the sum: \( 13^2 \neq 10^2 + 3^2 \) because \( 169
+\neq 109\). So what's going on?</p>
+<p>Using a single example helps explain what one element of data looks
+like, but a single example doesn't have a variance.</p>
+<p>We can make the example just slightly more complete to show how
+variances add.</p>
+<p>Say \( A \) is \( +10 \) half the time and \( -10 \) half the
+time, while \( B \) is equally likely to be \( +3 \) or \( -3
+\). So \( \sigma_A^2 = 100 \) and \( \sigma_B^2 = 9 \).</p>
+<p>All our squares will be positive, so we can ignore negative outcomes
+by symmetry here.</p>
+<p>With that simplification, notice \( A + B \) is equally likely to be
+\( 10 - 3 = 7 \) or \( 10 + 3 = 13 \).</p>
+<p>\[ \frac{(10-3)^2 + (10-3)^2}{2} = \frac{7^2 + 13^2}{2} = \frac{49 + 169}{2} = \frac{218}{2} = 109 = 100 + 9 = 10^2 + 3^2 \]</p>
+<p>The addition and subtraction cancel out after squaring so that the
+variances add.</p>
+<p>This property, that \( (a+b)^2 + (a-b)^2 = 2(a^2 + b^2)\), is what
+makes variance decomposition work, for uncorrelated components.</p>
+<p>It's simple algebra, but it's still kind of neat. Here's a geometric
+illustration:</p>
+<p><img alt="geometric illustration" src="geometric_illustration.jpg"></p>
+<p>\[ (a-b)^2 + (a+b)^2 = b^2 + a^2 + a^2 + b^2 \]</p>
+<p>Maybe this is completely intuitive for some people, but for me this
+balancing of increased and decreased squares is something of a
+pleasant surprise. Stop and smell the mathematical roses, you know?</p>
+<p>There's <a href="https://stats.stackexchange.com/a/420387/122282">also</a> a Pythagorean connection, which I think is neat, but
+I haven't so far gotten it lined up with my intuition.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20201030-the_variance_sum_law_is_interesting/</link>
+<guid>http://planspace.org/20201030-the_variance_sum_law_is_interesting/</guid>
+<pubDate>Fri, 30 Oct 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Failure to Disrupt, by Reich</title>
 <description><![CDATA[
 
@@ -3072,57 +3128,6 @@ that&#8217;s just fine." (page 82)</p>
 <link>http://planspace.org/20200909-mathematicians_lament_by_lockhart/</link>
 <guid>http://planspace.org/20200909-mathematicians_lament_by_lockhart/</guid>
 <pubDate>Wed, 09 Sep 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Share a tmux session</title>
-<description><![CDATA[
-
-<p>Multiple people can connect to the same <a href="https://github.com/tmux/tmux/wiki">tmux</a> session, with all
-participants able to control the session. Combined with a voice
-connection (phone, etc.) this can be used for remote pair programming
-in an editor like <a href="https://www.gnu.org/software/emacs/">Emacs</a>, for example.</p>
-<pre><code class="language-bash"># originating:
-tmux -S /tmp/party_socket new -s party_session
-chgrp shared_group /tmp/party_socket
-# joining:
-tmux -S /tmp/party_socket attach -t party_session</code></pre>
-
-<hr>
-<p>All participants need to be logged in to the same machine, likely
-using <a href="https://www.ssh.com/ssh/">ssh</a>. If everyone's logged in as the same user, you're
-already done: just make a session and have everyone join it. If people
-have separate user accounts, you need to think about sockets.</p>
-<p>tmux uses a <a href="https://en.wikipedia.org/wiki/Unix_domain_socket">socket</a> for communication. Joining will require access
-to that socket.</p>
-<pre><code class="language-bash">tmux -S /tmp/party_socket new -s party_session</code></pre>
-
-<p>That line names the socket and the session explicitly, which is
-convenient. In an existing tmux session, you can find your current
-socket with "<code>echo $TMUX</code>", and you can check your session name with
-"<code>tmux display-message -p '#S'</code>".</p>
-<p>Let's grant access at the <a href="https://en.wikipedia.org/wiki/Group_identifier">group</a> level, assuming everyone is in a
-group called <code>shared_group</code>. You can check using <a href="https://www.gnu.org/software/coreutils/manual/html_node/groups-invocation.html#groups-invocation">groups</a> and use an
-existing shared group (<code>user</code> is common) which is convenient but will
-allow anyone in that group to join. Or you could create a new group
-for the purpose and add only the intended participants.</p>
-<pre><code class="language-bash">chgrp shared_group /tmp/party_socket</code></pre>
-
-<p>Now the group has access to the socket, and can join the tmux session.</p>
-<pre><code class="language-bash">tmux -S /tmp/party_socket attach -t party_session</code></pre>
-
-<p>If people don't need to control the session, they can add "<code>-r</code>" to
-that line to join read-only.</p>
-<p>This is a simple way to check who's connected to the session:</p>
-<pre><code class="language-bash">ps -eo user:16,cmd | grep party_session</code></pre>
-
-<p>That could be made fancier (as in <a href="https://github.com/zolrath/wemux">wemux</a>, for example) but should
-generally do the job.</p>
-<hr>
-<p>Thanks to <a href="https://www.howtoforge.com/sharing-terminal-sessions-with-tmux-and-screen">HowtoForge</a>, from which I adapted the core of this.</p>    
-    ]]></description>
-<link>http://planspace.org/20200902-share_a_tmux_session/</link>
-<guid>http://planspace.org/20200902-share_a_tmux_session/</guid>
-<pubDate>Wed, 02 Sep 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
