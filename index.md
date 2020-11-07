@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-11-06: [How to Live on 24 Hours a Day, by Bennett](/20201107-how_to_live_on_24_hours_a_day/)
  * 2020-10-30: [The Variance Sum Law is Interesting](/20201030-the_variance_sum_law_is_interesting/)
  * 2020-10-28: [Failure to Disrupt, by Reich](/20201028-failure_to_disrupt_by_reich/)
  * 2020-10-21: [Sampling can be hard to beat, for text understanding](/20201021-sampling_can_be_hard_to_beat/)
