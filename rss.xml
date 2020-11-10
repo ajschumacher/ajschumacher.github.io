@@ -7,6 +7,85 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Economics of Star Trek, by Webb</title>
+<description><![CDATA[
+
+<p>I read the print version of the <a href="https://medium.com/@RickWebb/the-economics-of-star-trek-29bab88d50">blog post</a>, which delivers on the
+fun of thinking about a world with the economics of the Star Trek
+future. In the end you can't expect scifi to deliver economic
+salvation, but imaginative inspiration is a fine starting point for
+learning and thinking more.</p>
+<p>I didn't really find Webb's guesses to constitute a workable system,
+though I can't really say whether the problem is his, Star Trek's, or
+the failure of my imagination.</p>
+<p>There's also an even more serious book on this topic: <a href="https://en.wikipedia.org/wiki/Trekonomics">Trekonomics</a>,
+by Manu Saadia.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"If you don't believe that nothing is forever, if you don't believe
+that society and humans can change, then you do not believe in the
+future (and, incidentally, you do not believe in the past either)."
+(page 11, in Manu Saadia's Foreward)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The one thing the show gets right is violence.</p>
+<p>"I would point to a recent book by Stanford historian Walter
+Scheidel: <em>The Great Leveler: Violence and The History of Inequality
+from the Stone Age to the Twenty First Century</em> (Princeton
+University Press, 2017). Professor Scheidel's thesis is that
+throughout human history, only violence and war have truly managed
+to solve economic conflicts&#8211;and even more so when economic
+inequality got out of control, whether in pre-modern agrarian
+societies or during the turbulent and genocidal last century.
+Western Europe's prosperity rose out of the ashes and gas chambers
+of World War II. The war annihilated the old social hierarchies on
+the Continent, capitalists who happily collaborated with the Nazis
+were cast out of society and expropriated, thus removing the main
+opposition to expansive social safety net and to the modern welfare
+state. Former enemies began to cooperate and to coordinate, first
+economically and later politically. The European Union grew out of
+the War, it was a project borne out of the resistance to Nazism. The
+same is true of the post-war economic order (mostly, the
+Bretton-Woods accords shepherded by John Maynard Keynes) and of the
+United Nations. It is important to remember that all these were
+noble yet practical projects, conceived and imagined by idealists
+while the war was raging on and its outcome was still very much in
+the balance. If anything this proves that there is value in
+imagination and idealism, especially in times of great upheaval. One
+must always be ready." (pages 12-13, in Manu Saadia's Foreward)</p>
+</blockquote>
+<p>This is a strange mix of dark and light...</p>
+<p>(In Star Trek, many advances happened following
+<a href="https://memory-alpha.fandom.com/wiki/Eugenics_Wars">The Eugenics Wars of the 1990s</a>.)</p>
+<p>Webb also opines on page 141 that "the sense lingers that if we <em>are</em>
+to arrive at a Trek vision of the future, we might have to go through
+our own version of The Eugenics Wars to get there."</p>
+<hr>
+<blockquote>
+<p>"The Federation seems a bit like Williamsburg&#8211;a lot of artists who
+don't need to work." (page 41)</p>
+</blockquote>
+<hr>
+<p>Interesting bit on page 90 about a UBI study showing it increased
+divorce rates (which people took as a bad thing, I think) but then
+later it turned out the divorce result was a statistical error.</p>
+<hr>
+<p>John Kenneth Galbraith's <a href="https://en.wikipedia.org/wiki/The_Affluent_Society">The Affluent Society</a> is referenced on
+pages 134-135 as a text whose "arguments can be said to underpin [the]
+Trek ideal."</p>
+<p>Page 135 also references Fred Hirsch's <a href="https://en.wikipedia.org/wiki/Fred_Hirsch#Limits_to_Growth">Social Limits to Growth</a>.</p>
+<p>Page 141 references
+<a href="https://en.wikipedia.org/wiki/Inventing_the_Future:_Postcapitalism_and_a_World_Without_Work">Inventing the Future: Postcapitalism and a World Without Work</a> and
+the <a href="https://en.wikipedia.org/wiki/Mont_Pelerin_Society">Mont Pelerin Society</a> (though as "the Mount Perlan Society").</p>    
+    ]]></description>
+<link>http://planspace.org/20201109-economics_of_star_trek_by_webb/</link>
+<guid>http://planspace.org/20201109-economics_of_star_trek_by_webb/</guid>
+<pubDate>Mon, 09 Nov 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Game Changer, by Solomon and Blumberg</title>
 <description><![CDATA[
 
@@ -3204,141 +3283,6 @@ it with determinism." (page 364)</p>
 <link>http://planspace.org/20200917-book_of_why/</link>
 <guid>http://planspace.org/20200917-book_of_why/</guid>
 <pubDate>Thu, 17 Sep 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>What should be in your regression?</title>
-<description><![CDATA[
-
-<p>If you're fitting a model in the hopes of better understanding the
-effect of <em>x</em> on <em>y</em>, then including another predictor variable <em>z</em>
-could be necessary, or could be harmful. Deciding whether to control
-for <em>z</em> depends on identifying how the variables are causally related.</p>
-<ul>
-<li><a href="#direct">Simple direct causation</a></li>
-<li><a href="#mediated">Mediated causation</a>: don't control for <em>z</em></li>
-<li><a href="#common_cause">Common cause (confounding)</a>: control for <em>z</em></li>
-<li><a href="#common_effect">Common effect (collider)</a>: don't control for <em>z</em></li>
-<li><a href="#complicated">More complicated cases</a></li>
-</ul>
-<p>These examples vary the data generating process (which isn't possible
-in practice) in order to illustrate what happens in each case when you
-do or don't control for <em>z</em>.</p>
-<p>The <a href="https://www.r-project.org/about.html">R</a> code uses random <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a> data, additive relationships,
-and linear regression. With real data and processes, other modeling
-methods may be more appropriate.</p>
-<hr>
-<h3><a name="direct"></a>Simple direct causation</h3>
-<p><img alt="x -&gt; y" src="direct.png"></p>
-<p>Say the reality is that <em>x</em> influences <em>y</em> (not the reverse) and no
-other variables are involved.</p>
-<!-- set.seed(99) -->
-
-<pre><code class="language-r">x = rnorm(100)
-y = x + rnorm(100)
-summary(lm(y ~ x))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            1.07747    0.11931   9.031 1.53e-14 ***</code></pre>
-
-<p>The estimate of 1.077 is close to the true value of 1. The very low
-p-value (with three stars) indicates confidence that there is a
-non-random relationship between <em>x</em> and <em>y</em>.</p>
-<hr>
-<h3><a name="mediated"></a>Mediated causation</h3>
-<p><img alt="x -&gt; z -&gt; y" src="mediated.png"></p>
-<p>Here, the reality is that <em>x</em> influences <em>z</em>, which then influences
-<em>y</em>.</p>
-<p>In this case, <em>x</em> really does influence <em>y</em>, so you're right to look
-for the relationship. And it might be tempting to control for <em>z</em>,
-perhaps because of a desire to &#8220;isolate&#8221; the effect of <em>x</em>.</p>
-<p>If you include <em>z</em> in your regression, the desired estimate of the
-effect of <em>x</em> will disappear.</p>
-<!-- set.seed(101) -->
-
-<pre><code class="language-r">x = rnorm(100)
-z = x + rnorm(100)
-y = z + rnorm(100)
-summary(lm(y ~ x + z))
-##               Estimate Std. Error t value Pr(&gt;|t|)
-##  x           -0.146874   0.135695  -1.082    0.282
-##  z            1.127586   0.087819  12.840   &lt;2e-16 ***</code></pre>
-
-<p>Including <em>z</em> makes it appear that <em>x</em> has no significant influence on
-<em>y</em>, which is incorrect.</p>
-<pre><code class="language-r">summary(lm(y ~ x))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            1.11140    0.15343   7.244    1e-10 ***</code></pre>
-
-<p>Leaving <em>z</em> out gives a good estimate of the effect of <em>x</em>.</p>
-<hr>
-<h3><a name="common_cause"></a>Common cause (confounding)</h3>
-<p><img alt="x &lt;- z -&gt; y" src="common_cause.png"></p>
-<p>In this case, the reality is that <em>z</em> influences both <em>x</em> and <em>y</em>,
-which are otherwise unrelated.</p>
-<p>This is an extreme example, in the sense that you'd be totally wrong
-to look for an effect of <em>x</em> on <em>y</em> in this case. The case where
-there's also a direct connection between <em>x</em> and <em>y</em> is similar, but
-for simplicity this example doesn't have one.</p>
-<p>If you don't include <em>z</em> in your regression, the relationship between
-<em>x</em> and <em>y</em> could be misleading.</p>
-<!-- set.seed(103) -->
-
-<pre><code class="language-r">z = rnorm(100)
-x = z + rnorm(100)
-y = z + rnorm(100)
-summary(lm(y ~ x))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            0.56257    0.10365   5.428 4.14e-07 ***</code></pre>
-
-<p>There is a relationship between <em>x</em> and <em>y</em>, but it's because of <em>z</em>,
-not because of <em>x</em>. The regression result ignoring <em>z</em> could easily be
-misinterpreted.</p>
-<pre><code class="language-r">summary(lm(y ~ x + z))
-##             Estimate Std. Error t value Pr(&gt;|t|)
-## x            0.03608    0.10590   0.341    0.734
-## z            1.05814    0.13556   7.806 6.93e-12 ***</code></pre>
-
-<p>With <em>z</em> in the model, the result correctly indicates that <em>z</em> is the
-influencing factor.</p>
-<hr>
-<h3><a name="common_effect"></a>Common effect (collider)</h3>
-<p><img alt="x -&gt; z &lt;- y" src="collider.png"></p>
-<p>Here, the reality is that <em>x</em> and <em>y</em> are completely unrelated, but
-they both influence <em>z</em>.</p>
-<p>As with <a href="#common_cause">common cause</a>, it's more interesting when
-there's also a direct connection between <em>x</em> and <em>y</em>, but the behavior
-is similar and this example keeps things simpler.</p>
-<p>Somewhat surprisingly, if you include <em>z</em> in your regression, you'll
-see evidence that both <em>z</em> and <em>x</em> influence <em>y</em>.</p>
-<!-- set.seed(105) -->
-
-<pre><code class="language-r">x = rnorm(100)
-y = rnorm(100)
-z = x + y + rnorm(100)
-summary(lm(y ~ x + z))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x           -0.46951    0.08831  -5.317 6.76e-07 ***
-##  z            0.44439    0.04971   8.939 2.62e-14 ***</code></pre>
-
-<p>This is a case of &#8220;<a href="https://www.researchgate.net/publication/3192123_Explaining_explaining_away%27">explaining away</a>.&#8221;</p>
-<pre><code class="language-r">summary(lm(y ~ x))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x           -0.11308    0.10586  -1.068    0.288</code></pre>
-
-<p>Without <em>z</em> in the regression, the result correctly indicates no
-relationship between <em>x</em> and <em>y</em>.</p>
-<hr>
-<h3><a name="complicated"></a>More complicated cases</h3>
-<p>With a more complex causal graph, it may not be obvious what you need
-to control for, or it may be that conventional methods of control
-aren't sufficient. Methods like Judea Pearl's do-calculus might be
-helpful.</p>
-<hr>
-<p>Thanks to Erica Blom, Ben Klemens, and Jonathan Robinson for providing
-helpful feedback.</p>    
-    ]]></description>
-<link>http://planspace.org/20200912-what_should_be_in_your_regression/</link>
-<guid>http://planspace.org/20200912-what_should_be_in_your_regression/</guid>
-<pubDate>Sat, 12 Sep 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

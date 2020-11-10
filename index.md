@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-11-09: [The Economics of Star Trek, by Webb](/20201109-economics_of_star_trek_by_webb/)
  * 2020-11-08: [Game Changer, by Solomon and Blumberg](/20201108-game_changer_solomon_blumberg/)
  * 2020-11-07: [How to Live on 24 Hours a Day, by Bennett](/20201107-how_to_live_on_24_hours_a_day/)
  * 2020-10-30: [The Variance Sum Law is Interesting](/20201030-the_variance_sum_law_is_interesting/)
