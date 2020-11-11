@@ -7,6 +7,78 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Cattell didn't say we process words faster than pictures</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/James_McKeen_Cattell">James Cattell</a> wrote: "experiments I have made show that we can
+recognise a single colour or picture in a slightly shorter time than a
+word or letter, but take longer to name it."</p>
+<p><img alt="diagram of reading vs. seeing an image" src="diagram.jpg"></p>
+<p>This is consistent with words being distinct from the concepts they
+represent.</p>
+<hr>
+<p>Reading the excellent
+<a href="https://www.northernpublicradio.org/post/how-flawed-idea-teaching-millions-kids-be-poor-readers">How a flawed idea is teaching millions of kids to be poor readers</a>,
+I was struck by this interesting claim:</p>
+<blockquote>
+<p>"If you're a skilled reader, your brain has gotten so good at
+reading words that you process the word "chair" faster than you
+process a picture of a chair."</p>
+</blockquote>
+<p>That sentence points to footnote 34:</p>
+<blockquote>
+<p>"This was established in the late 19th century by a researcher named
+James Cattell who compared reaction times to words and images using
+a newly developed timing mechanism that could measure reactions to
+within 1/1,000th of a second. See <a href="https://www.wiley.com/en-us/Essentials+of+Assessing%2C+Preventing%2C+and+Overcoming+Reading+Difficulties+-p-9781118845240">this book</a>, p. 30."</p>
+</blockquote>
+<p>That book is
+<a href="https://www.wiley.com/en-us/-p-9781118845240">Essentials of Assessing, Preventing, and Overcoming Reading Difficulties</a>,
+and the relevant paragraph on page 30 is:</p>
+<blockquote>
+<p>"James Cattell published a paper in 1886 demonstrating a newly
+developed timing mechanism that could measure reaction times to
+within 1 millisecond (i.e., 1/1,000th of a second). With this level
+of precision, he discovered that the reaction times for reading
+printed words like <em>chair</em> or <em>tree</em> were faster than reaction times
+for naming a chair or a tree when shown a picture of those items.
+Thus, over 125 years ago, there was evidence that naming objects and
+naming written words were not the same skills, contrary to our
+intuitions."</p>
+</blockquote>
+<p>That 1886 paper is <a href="https://academic.oup.com/mind/article-abstract/os-XI/41/63/2888375">The Time it Takes to See and Name Objects</a>. The
+paper is under three pages long. It doesn't convince me that Cattell
+had millisecond precision in his measurements, and it's not
+principally about comparing words and images. There's one relevant
+paragraph:</p>
+<blockquote>
+<p>"The time required to see and name colours and pictures of objects
+was determined in the same way. The time was found to be about the
+same (over &#189;sec.) for colours as for pictures, and about twice as
+long as for words and letters. Other experiments I have made show
+that we can recognise a single colour or picture in a slightly
+shorter time than a word or letter, but take longer to name it. This
+is because in the case of words and letters the association between
+the idea and name has taken place so often that the process has
+become automatic, whereas in the case of colours and pictures we
+must by a voluntary effort choose the name. Such experiments would
+be useful in investigating aphasia."</p>
+</blockquote>
+<p>It isn't explained in the paper, but I have to imagine he measured
+recognition as distinct from naming via some mechanism like tapping
+when you see a picture of a tree, for example.</p>
+<p>So the consistency of the quotes above with the Cattell source depends
+on what it means "to process." If it means "to name," then it's
+consistent. But if it means "to recognize," which I think is more
+natural, then it doesn't convey the result Cattell published.</p>
+<p>I think this is all fascinating; I'd love to learn about more recent
+research on this topic.</p>    
+    ]]></description>
+<link>http://planspace.org/20201111-cattell_didnt_say_we_process_words_faster_than_pictures/</link>
+<guid>http://planspace.org/20201111-cattell_didnt_say_we_process_words_faster_than_pictures/</guid>
+<pubDate>Wed, 11 Nov 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Economics of Star Trek, by Webb</title>
 <description><![CDATA[
 
@@ -2970,319 +3042,6 @@ his example."</p>
 <link>http://planspace.org/20200923-axiomatic_thinking_hilbert_1918/</link>
 <guid>http://planspace.org/20200923-axiomatic_thinking_hilbert_1918/</guid>
 <pubDate>Wed, 23 Sep 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Book of Why, by Pearl and Mackenzie</title>
-<description><![CDATA[
-
-<p>In <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a>, Judea Pearl explains that <a href="https://en.wikipedia.org/wiki/Judea_Pearl">Judea Pearl</a>'s
-work is very important and most statisticians are malicious, fools, or
-both. The attempt to popularize his work fails to usefully communicate
-his contributions. You're better off reading his <a href="https://ftp.cs.ucla.edu/pub/stat_ser/r481.pdf">Seven Tools</a>
-paper, which in six pages is more complete than and as instructive as
-the book.</p>
-<ul>
-<li><a href="#useful">Possibly useful ideas</a></li>
-<li><a href="#no_causality">Sidestepping causality</a></li>
-<li><a href="#no_ai">Wishful AI</a></li>
-<li><a href="#impediments">Difficulties in reading</a></li>
-<li><a href="#quotes">Selected quotes</a></li>
-</ul>
-<hr>
-<h3><a name="useful"></a>Possibly useful ideas</h3>
-<p>The book is about how to answer questions based on data, which is a
-topic I'm very interested in. I tried to <a href="/20200912-what_should_be_in_your_regression/">summarize</a> some of the
-simplest ideas conveyed, about what variables to control for when
-estimating an effect. The book isn't a textbook, but I wish it had
-better explained how to implement more sophisticated control
-techniques.</p>
-<p>Pearl references a <a href="https://scholar.harvard.edu/files/aglynn/files/glynnkashin-frontdoor.pdf">paper</a> whose authors used paired observational
-and experimental data, finding that "front-door adjustment" with the
-observational data gives a result like that from the experimental
-data. That's compelling! How can I use that adjustment?</p>
-<p>I also liked the material (starting pages 200 and 309) on
-<a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson's Paradox</a>.</p>
-<p>To be clear, I think the book is trying to offer some useful ideas. I
-wish it were more successful in conveying them.</p>
-<hr>
-<h3><a name="no_causality"></a>Sidestepping causality</h3>
-<p>You might think this book is about determining whether something
-causes something else, based on data. It is <a href="#hill_guidelines">not</a>.</p>
-<blockquote>
-<p>"... causal questions can never be answered from data alone." (page
-351)</p>
-</blockquote>
-<p>Despite Pearl's finality, there is research on doing just this. It
-goes by <a href="https://paperswithcode.com/task/causal-discovery">causal discovery</a> or <a href="https://en.wikipedia.org/wiki/Exploratory_causal_analysis">exploratory causal analysis</a>. In
-<a href="http://www.chalearn.org/challenges.html">experiments</a>, some machine learning <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/guyon_isabelle_causality_challenge_final_short_r02.pdf">methods</a> do much better than
-chance in identifying known causal relationships. Pearl even advised a
-<a href="https://arxiv.org/abs/1301.2312">related paper</a>. I agree there are epistemological uncertainties in
-this field, but it's interesting!</p>
-<p>The closest the book comes to model identification are some allusions
-to independence tests that can indicate data isn't consistent with a
-model (or "Fit Indices" in <a href="https://ftp.cs.ucla.edu/pub/stat_ser/r481.pdf">Seven Tools</a>). Pearl's causal models
-come from the outside knowledge of humans.</p>
-<p>The book also doesn't have much to say on the philosophy of causation.</p>
-<blockquote>
-<p>"... I have not attempted to define causation anywhere in this book
-..." (page 48)</p>
-</blockquote>
-<p>That isn't quite true, because he does eventually discuss
-counterfactual definitions of causality. But for the most part,
-causation is given an axiomatic existence and becomes a silent arrow.
-<a href="https://youtu.be/36GT2zI8lVA">Feynman</a> is more fun.</p>
-<p>The arrows aren't necessarily bad, but the book is so
-<a href="#impediments">busy</a> begging for unrelated praise that we don't get a
-clear picture of what they're good for.</p>
-<hr>
-<h3><a name="no_ai"></a>Wishful AI</h3>
-<p>Distinctions between statistics, machine learning, and AI can be
-murky, but this book has a mostly statistical flavor. Given a causal
-model and data, it's possible to estimate (learn) parameters and make
-predictions.</p>
-<p>As <a href="#no_causality">above</a>, there's no developed mechanism to learn
-what the causal graph should be. Systems like
-<a href="https://automaticstatistician.com/">The Automatic Statistician</a> do more to discover relationships in
-data. Pearl's methods require a human to provide a causal graph.</p>
-<p>I quite agree with Pearl that current AI seems too <a href="/20170429-from_behaviorist_to_constructivist_ai/">behaviorist</a>.
-Mental models seem important to intelligence. His approach of defining
-a <a href="https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence">symbolic</a> solution to a class of problems he likes is not a
-compelling solution.</p>
-<p>Like the proposal of Gary Marcus in The Algebraic Mind, Pearl
-<a href="#brain">offers</a> that the symbolic system of his design "must be close
-to the way that our brains represent" things (page 269). This is not
-clear to me.</p>
-<p>I agree that more advanced AI should be able to understand causality.
-I'm not sure Pearl's explicit methods will play a part. I further
-disagree with him on how <a href="#conversation">communication</a> works, and the
-<a href="#chinese_room">Chinese Room</a>.</p>
-<hr>
-<h3><a name="impediments"></a>Difficulties in reading</h3>
-<p>I have to imagine that Pearl is likable in person, but his style here
-reads as extreme self-praise and even putting down others to seem
-better by comparison. Knowing him only through this book, it's hard to
-root for him.</p>
-<p>He tilts at straw men, writing as if <a href="https://stats.stackexchange.com/questions/376920/the-book-of-why-by-judea-pearl-why-is-he-bashing-statistics">statisticians</a> and economists
-have never thought about causality without his guidance. But
-researchers have <a href="https://www.ncjrs.gov/pdffiles1/Digitization/141324NCJRS.pdf">not</a> been afraid to say things are "most likely a
-cause, not just a correlate" even without his work.</p>
-<p>To make his work seem more novel, he keeps it at a distance from
-<a href="#coefficients">familiar</a> topics, even when only the interpretation is
-different, preventing readers from easily connecting with prior
-knowledge.</p>
-<p>He writes as if he could have more quickly shown a connection between
-smoking and lung cancer, but does not support this with evidence or
-example of a feasible mechanism. You might disagree with Tufte about
-whether data visualization could have prevented the Challenger
-disaster, but at least Tufte <a href="https://blogs.stockton.edu/hist4690/files/2012/06/Edward-Tufte-Visual-and-Statistical-Thinking.pdf">shows</a> you the visualization.</p>
-<p>In <a href="#interaction1">multiple</a> <a href="#interaction2">places</a>, Pearl says
-linear models don't support interactions. There must be an
-interpretation of this that is true, but I don't know what it is.
-Interactions are commonly modeled with linear models.</p>
-<p>I had hoped that with some effort I'd be able to follow the example on
-page 83, but as far as I can tell it is incomplete or incorrect. (I
-emailed the authors asking for clarification and will update as
-appropriate.)</p>
-<p>Andrew Gelman's <a href="https://statmodeling.stat.columbia.edu/2019/01/08/book-pearl-mackenzie/">notes</a> mention some issues with the book. (And some
-others are even more <a href="#asylum">glaring</a>.) But also: Sherlock Holmes is
-not known for deduction or induction, but for abduction (page 93).
-It's not clear why we should change multiple variables on page 279,
-but freeze them on page 312.</p>
-<p>This book could have been so much better.</p>
-<hr>
-<h3><a name="quotes"></a>Selected quotes</h3>
-<hr>
-<blockquote>
-<p>"... statistics focused exclusively on how to summarize data, not on
-how to interpret it." (page 6)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Another advantage causal models have that data mining and deep
-learning lack is adaptability." (page 17)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In his book <em>Sapiens</em>, historial Yuval Harari posits that our
-ancestors' capacity to imagine nonexistent things was the key to
-everything, for it allowed them to communicate better." (page 25)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The difference is profound and lies in the absence of a model of
-reality." (page 30)</p>
-</blockquote>
-<hr>
-<p><a name="chinese_room"></a></p>
-<blockquote>
-<p>"Searle's [Chinese Room] challenge has only one flaw: cheating
-[meaning having a working Chinese Room] is not easy; in fact, it is
-impossible." (page 38)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Instead of predicting whether a prisoner is alive or dead, we might
-want to predict how much the unemployment rate will go up if we
-raise the minimum wage." (page 43)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"a philosophical school called positivism, which holds that the
-universe is a product of human thought and that science is only a
-description of those thoughts." (page 67)</p>
-</blockquote>
-<p>This is at best a tortured interpretation of <a href="https://en.wikipedia.org/wiki/Positivism">positivism</a>. Wikipedia
-says: "Positivism asserts that all authentic knowledge allows
-verification and that all authentic knowledge assumes that the only
-valid knowledge is scientific."</p>
-<hr>
-<p><a name="hill_guidelines"></a></p>
-<blockquote>
-<p>"Two people who believe in two different causal diagrams can analyze
-the same data and may never come to the same conclusion, regardless
-of how &#8220;big&#8221; the data are." (page 90)</p>
-</blockquote>
-<p>It's hard to see how this is an improvement over the <a href="https://en.wikipedia.org/wiki/Bradford_Hill_criteria">Hill guidelines</a></p>
-<hr>
-<blockquote>
-<p>"Generally [sensitivity] is the same for all types of patients,
-because it depends only on the technical capability of the testing
-instrument to detect the abnormalities associated with the disease."
-(page 104)</p>
-<p>"... the sensitivity of mammograms for forty-year-old women is 73
-percent." (page 105)</p>
-</blockquote>
-<hr>
-<p><a name="asylum"></a></p>
-<blockquote>
-<p>"(Applicants for asylum must prove that they have fifteen family
-members in the Netherlands.)" (page 122)</p>
-</blockquote>
-<p><a href="https://skeptics.stackexchange.com/questions/45502/applicants-for-asylum-must-prove-that-they-have-fifteen-family-members-in-the-n?newreg=cbb6f3f1487f4560bcb4db567af373d2">This is not true.</a> There is an update in the <a href="http://bayes.cs.ucla.edu/WHY/errata-pages-PearlMackenzie_BookofWhy_Final.pdf">errata</a>, but it's still surprising it made it to print.</p>
-<hr>
-<blockquote>
-<p>"... if you have identified a sufficient set of deconfounders in
-your diagram, gathered data on them, and properly adjusted for them,
-then you have every right to say that you have computed the causal
-effect <em>X</em> &#10132; <em>Y</em> (provided, of course, that you can defend your
-causal diagram on scientific grounds)." (page 139)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Statisticians have devised ingenius methods for handling this
-&#8220;curse of dimensionality&#8221; problem. Most involve some sort of
-extrapolation, whereby a smooth function is fitted to the data and
-used to fill in the holes created by the empty strata." (page 221)</p>
-</blockquote>
-<hr>
-<p><a name="coefficients"></a></p>
-<blockquote>
-<p>"Regression coefficients, whether adjusted or not, are only
-statistical trends, conveying no causal information in themselves.
-\( r_{YX.Z} \) represents the causal effect of <em>X</em> on <em>Y</em>, whereas
-\( r_{YX} \) does not, exclusively because we have a diagram
-showing <em>Z</em> as a confounder of <em>X</em> and <em>Y</em>." (page 223)</p>
-<p>"Path coefficients are fundamentally different from regression
-coefficients, although they can often be computed from the latter."
-(page 223)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"If I were less modest, I would close here with Isaac Newton's
-famous saying about &#8220;standing on the shoulders of giants.&#8221;" (page
-244)</p>
-</blockquote>
-<p>This is at the close of a section about the work his students have
-done. The generous interpretation is that he isn't saying that he's
-the giant.</p>
-<hr>
-<blockquote>
-<p>"As argued in Chapter 1, our ability to conceive of alternative,
-nonexistent worlds separated us from our protohuman ancestors and
-indeed from any other creature on the planet." (page 260)</p>
-</blockquote>
-<hr>
-<p><a name="brain"></a></p>
-<blockquote>
-<p>"Could structural models, in some shape or form, be the actual
-shortcut that we use [in our physical brains]? I think it is very
-likely, for two reasons. First, structural causal models are a
-shortcut that works, and there aren't any competitors around with
-that miraculous property. Second, they were modeled on Bayesian
-networks, which in turn were modeled on David Rumelhart's
-description of message passing in the brain." (page 268)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Causal diagrams, with their simple rules of following and erasing
-arrows, must be close to the way that our brains represent
-counterfactuals." (page 269)</p>
-</blockquote>
-<hr>
-<p><a name="interaction1"></a></p>
-<blockquote>
-<p>"[Linear models] also cannot represent interactions between
-variables." (page 286)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Provided the assumptions of no confounding and no protection hold,
-the rung-one metric of FAR [Fraction of Attributable Risk] is
-promoted to rung three, where it becomes <em>PN</em>
-[Probability of Necessity]." (page 292)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Using her data and path analysis, she computed the direct effect of
-parental IQ on children's IQ and found that only 35 percent, or
-about one-third, of IQ variation is inherited. In other words,
-parents with an IQ fifteen points above average would typically have
-children five points above average." (page 306)</p>
-</blockquote>
-<hr>
-<p><a name="interaction2"></a></p>
-<blockquote>
-<p>"... linear models do not allow interactions ..." (page 322)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"This was one of the three greatest blunders of my career." (page
-331)</p>
-</blockquote>
-<p>I didn't notice if the other two were mentioned.</p>
-<hr>
-<blockquote>
-<p>"The questions I have just asked are all causal, and causal
-questions can never be answered from data alone." (page 351)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I wish I could present the reader with successful case studies of a
-complex transportability task and recovery from selection bias, but
-the techniques are still too new to have penetrated into general
-usage." (page 357)</p>
-</blockquote>
-<hr>
-<p><a name="conversation"></a></p>
-<blockquote>
-<p>"If our robots will all be as opaque as AlphaGo, we will not be able
-to hold a meaningful conversation with them, and that would be quite
-unfortunate." (page 361)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I think that understanding the benefits of the illusion of free
-will is the key to the stubbornly enigmatic problem of reconciling
-it with determinism." (page 364)</p>
-</blockquote>
-<hr>
-<p><img alt="cover" src="book_of_why.jpg"></p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20200917-book_of_why/</link>
-<guid>http://planspace.org/20200917-book_of_why/</guid>
-<pubDate>Thu, 17 Sep 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
