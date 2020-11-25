@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>relaxing news</title>
+<script>
+urls = [
+  "https://www.nationalgeographic.com/content/dam/travel/2017-digital/treehouse-lodges/Maguire-house.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/01-6405123_uploadsmember841950yourshot-841950-6405123jpg_4rqovi3jgy3njmkxy5diojb673p3eflutfvvbpyjwjhzlmh4iziq_2672x1503.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/02-7774618_uploadsmember882741yourshot-882741-7774618jpg_do3ut3d5zyhjbk72xnpc6xndj4zxs2udwatjavjxeftgooyp4jfa_4500x3003.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/03-7866381_uploadsmember167019yourshot-167019-7866381jpg_ywggzy5szxhk3dmsg4utjlyocdp3eflutfvvbpyjwjhzlmh4iziq_7197x4803.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/05-8423652_uploadsmember1329036yourshot-1329036-8423652jpg_l3fmhh6b4svc3xflnyk6emwmv3p3eflutfvvbpyjwjhzlmh4iziq_1840x1227.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/06-8423652_uploadsmember1329036yourshot-1329036-8423652jpg_l3fmhh6b4svc3xflnyk6emwmv3p3eflutfvvbpyjwjhzlmh4iziq_1840x1227.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/07-8679453_uploadsmember754803yourshot-754803-8679453jpg_x4lu6hv4mjci2zk5t3v7cdjdapp3eflutfvvbpyjwjhzlmh4iziq_2500x1669.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/08-8817246_uploadsmember1182075yourshot-1182075-8817246jpg_hcuwhdcwabzdq7ssxlttjh6lh7p3eflutfvvbpyjwjhzlmh4iziq_6899x4604.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/09-9226610_uploadsmember665562yourshot-665562-9226610jpg_igdjhxksrjifxjzu4rgbsw37bhp3eflutfvvbpyjwjhzlmh4iziq_3000x2000.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/10-9216986_uploadsmember923450yourshot-923450-9216986jpg_66lnqe3zjpeyrvrgic5oomr4nxp3eflutfvvbpyjwjhzlmh4iziq_6903x4808.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/11-9217910_uploadsmember1023471yourshot-1023471-9217910jpg_igdjhxksrjifxjzu4rgbsw37bhp3eflutfvvbpyjwjhzlmh4iziq_3000x2000.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/12-9192469_uploadsmember1371289yourshot-1371289-9192469jpg_btophk6lwpce7pjfoo7ww24a3hp3eflutfvvbpyjwjhzlmh4iziq_4000x2667.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/13-9192190_uploadsmember1401990yourshot-1401990-9192190jpg_m6qya2553w2b5mtnridhfbysctp3eflutfvvbpyjwjhzlmh4iziq_3000x1959.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/14-9189114_uploadsmember321431yourshot-321431-9189114jpg_eh4euawhgnuwpchprshjfdeik3p3eflutfvvbpyjwjhzlmh4iziq_2000x1389.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/15-9168726_uploadsmember1179235yourshot-1179235-9168726jpg_6eion7zzd7txg4am6jikw2da23p3eflutfvvbpyjwjhzlmh4iziq_1920x1282.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/16-9154838_uploadsmember516662yourshot-516662-9154838jpg_ekc3qcvrtc4diwvyxwqwxf74bezxs2udwatjavjxeftgooyp4jfa_5760x3840.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/17-9127551_uploadsmember261757yourshot-261757-9127551jpg_6fiiwgksao7yg4y23pahhzxvn7p3eflutfvvbpyjwjhzlmh4iziq_4453x2970.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/18-9107552_uploadsmember1002418yourshot-1002418-9107552jpg_lyth7bok7fq25n2z6wx6k2xuitp3eflutfvvbpyjwjhzlmh4iziq_5216x3477.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/19-9031940_uploadsmember190273yourshot-190273-9031940jpg_u7ky3jc3kr4y7kjiy3n776nyl7p3eflutfvvbpyjwjhzlmh4iziq_1600x1066.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/20-9022779_uploadsmember103628yourshot-103628-9022779jpg_uaxzkw45qgtkmixoubxmaccg2hp3eflutfvvbpyjwjhzlmh4iziq_6044x4003.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/21-9007831_uploadsmember798135yourshot-798135-9007831jpg_d47p2agkcwd57mx3z6mvdz32ahp3eflutfvvbpyjwjhzlmh4iziq_4041x2273.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/22-9008970_uploadsmember37146yourshot-37146-9008970jpg_xjnypo7bbbjyaa6veqvcrbooldp3eflutfvvbpyjwjhzlmh4iziq_5589x3726.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/23-9009024_uploadsmember1383882yourshot-1383882-9009024jpg_lq5lai5edzbtara4uopaohjuc3p3eflutfvvbpyjwjhzlmh4iziq_4256x2832.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/24-9007740_uploadsmember798135yourshot-798135-9007740jpg_ci6qt7qzhqldf4ex35to2j2as7p3eflutfvvbpyjwjhzlmh4iziq_3066x1725.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/25-8969945_uploadsmember1378432yourshot-1378432-8969945jpg_ccg544jetqhu5l57y7xsfmvkq7p3eflutfvvbpyjwjhzlmh4iziq_1600x1067.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/26-8968975_uploadsmember1377915yourshot-1377915-8968975jpg_dgi6a4wvtiqulxfnn4e3rzo3e3p3eflutfvvbpyjwjhzlmh4iziq_4608x2592.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/27-8955738_uploadsmember908120yourshot-908120-8955738jpg_2zlrdv36hw2jm653u6ulsrfgo3p3eflutfvvbpyjwjhzlmh4iziq_9144x5715.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/28-8924784_uploadsmember1373509yourshot-1373509-8924784jpg_zlwjqybuzvjc6jcsxmc64mq5tpp3eflutfvvbpyjwjhzlmh4iziq_5760x3840.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/29-8946948_uploadsmember1375342yourshot-1375342-8946948jpg_leynmlnj32denspb46u2muavtdp3eflutfvvbpyjwjhzlmh4iziq_5856x3910.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/30-8919831_uploadsmember136628yourshot-136628-8919831jpg_qftcyvx4ghhkejyf6yrbtvtgllp3eflutfvvbpyjwjhzlmh4iziq_1800x1260.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/31-8866373_uploadsmember959567yourshot-959567-8866373jpg_2gwtovfpz7jifexn5dbysdcjo7p3eflutfvvbpyjwjhzlmh4iziq_4288x2717.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/32-8834825_uploadsmember1365240yourshot-1365240-8834825jpg_xx64wskou42ajcgjhaolyll5ztp3eflutfvvbpyjwjhzlmh4iziq_5908x3939.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/35-9085088_uploadsmember53582yourshot-53582-9085088jpg_qum3toqaoeu7ndkcpdesvrzmypp3eflutfvvbpyjwjhzlmh4iziq_1620x1080.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/36-9103583_uploadsmember109690yourshot-109690-9103583jpg_ccg544jetqhu5l57y7xsfmvkq7p3eflutfvvbpyjwjhzlmh4iziq_1600x1067.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/37-9141960_uploadsmember882741yourshot-882741-9141960jpg_3y6topkwvby2s4lo423wydnghxp3eflutfvvbpyjwjhzlmh4iziq_3500x2185.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/38-9181903_uploadsmember83804yourshot-83804-9181903jpg_fflpn6un7ndot4nsg6dfp7rcdtp3eflutfvvbpyjwjhzlmh4iziq_2500x1667.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/40-8894123_uploadsmember1306394yourshot-1306394-8894123jpg_3ldshya3uj6alyomja7c527n2dp3eflutfvvbpyjwjhzlmh4iziq_6948x4636.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/42-9195097_uploadsmember352973yourshot-352973-9195097jpg_ex2yzsfg6ukkue7ukhy2zsymjxp3eflutfvvbpyjwjhzlmh4iziq_5822x3881.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/photography/PROOF/2017/April/epic-landscapes/43-9157092_uploadsmember687702yourshot-687702-9157092jpg_3zddqdveshkevxsr6ujkqtmblxp3eflutfvvbpyjwjhzlmh4iziq_1920x1280.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/travel/2020-digital/best-of-the-world-2021/000b_melissa_findley-lordhowe-australia-diver_mountgower.adapt.1190.1.jpg",
+  "https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2020/12/great-lakes/great-lakes-floodwater-walkway-chicago.adapt.1190.1.jpg"];
+url = urls[Math.floor(Math.random() * urls.length)];
+window.location.replace(url);
+</script>
+</head><body>redirecting to relaxing news</body></html>
