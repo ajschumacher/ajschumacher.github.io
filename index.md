@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-11-25: [Relaxing News](/20201125-relaxing_news/)
  * 2020-11-24: [Take notes like Paul Halmos](/20201124-take_notes_like_paul_halmos/)
  * 2020-11-11: [Cattell didn't say we process words faster than pictures](/20201111-cattell_didnt_say_we_process_words_faster_than_pictures/)
  * 2020-11-09: [The Economics of Star Trek, by Webb](/20201109-economics_of_star_trek_by_webb/)
