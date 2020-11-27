@@ -49,7 +49,7 @@ non-random relationship between _x_ and _y_.
 
 ---
 
-### <a name="mediated"></a>Mediated causation
+### <a name="mediated"></a>Mediated causation: don't control for _z_
 
 ![x -> z -> y](mediated.png)
 
@@ -89,7 +89,7 @@ Leaving _z_ out gives a good estimate of the effect of _x_.
 
 ---
 
-### <a name="common_cause"></a>Common cause (confounding)
+### <a name="common_cause"></a>Common cause (confounding): control for _z_
 
 ![x <- z -> y](common_cause.png)
 
@@ -132,7 +132,7 @@ influencing factor.
 
 ---
 
-### <a name="common_effect"></a>Common effect (collider)
+### <a name="common_effect"></a>Common effect (collider): don't control for _z_
 
 ![x -> z <- y](collider.png)
 

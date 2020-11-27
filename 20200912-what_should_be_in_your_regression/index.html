@@ -45,7 +45,7 @@ summary(lm(y ~ x))
 p-value (with three stars) indicates confidence that there is a
 non-random relationship between <em>x</em> and <em>y</em>.</p>
 <hr />
-<h3><a name="mediated"></a>Mediated causation</h3>
+<h3><a name="mediated"></a>Mediated causation: don't control for <em>z</em></h3>
 <p><img alt="x -&gt; z -&gt; y" src="mediated.png" /></p>
 <p>Here, the reality is that <em>x</em> influences <em>z</em>, which then influences
 <em>y</em>.</p>
@@ -72,7 +72,7 @@ summary(lm(y ~ x + z))
 
 <p>Leaving <em>z</em> out gives a good estimate of the effect of <em>x</em>.</p>
 <hr />
-<h3><a name="common_cause"></a>Common cause (confounding)</h3>
+<h3><a name="common_cause"></a>Common cause (confounding): control for <em>z</em></h3>
 <p><img alt="x &lt;- z -&gt; y" src="common_cause.png" /></p>
 <p>In this case, the reality is that <em>z</em> influences both <em>x</em> and <em>y</em>,
 which are otherwise unrelated.</p>
@@ -102,7 +102,7 @@ misinterpreted.</p>
 <p>With <em>z</em> in the model, the result correctly indicates that <em>z</em> is the
 influencing factor.</p>
 <hr />
-<h3><a name="common_effect"></a>Common effect (collider)</h3>
+<h3><a name="common_effect"></a>Common effect (collider): don't control for <em>z</em></h3>
 <p><img alt="x -&gt; z &lt;- y" src="collider.png" /></p>
 <p>Here, the reality is that <em>x</em> and <em>y</em> are completely unrelated, but
 they both influence <em>z</em>.</p>
