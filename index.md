@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-11-28: [Add variance to achieve a given correlation](/20201128-add_variance_to_achieve_a_given_correlation/)
  * 2020-11-27: [Correlation can be confounder determination](/20201127-correlation_can_be_confounder_determination/)
  * 2020-11-25: [Relaxing News](/20201125-relaxing_news/)
  * 2020-11-24: [Take notes like Paul Halmos](/20201124-take_notes_like_paul_halmos/)
