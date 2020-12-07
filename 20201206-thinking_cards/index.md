@@ -4,7 +4,7 @@ Inspired by [How to Solve It][], [Lateral Thinking][], and others,
 I've started to collect tactics for problem-solving. The shuffle
 button is so that you can easily choose a random tactic to try.
 
-[How to Solve It]: 2013/09/28/polyas-how-to-solve-it-quotes-and-comments/
+[How to Solve It]: /2013/09/28/polyas-how-to-solve-it-quotes-and-comments/
 [Lateral Thinking]: /20200716-lateral_thinking_creativity_step_by_step/
 
 I might do more with this and I'd love feedback/suggestions;
@@ -139,7 +139,7 @@ join or form? What people or other resources can you engage with?</p>
 <div class="card">
 <hr />
 <h3><a href="#13" name="13">13</a>. Understand the problem</h3>
-<p>Do you completely understan what you're working on? Are all the
+<p>Do you completely understand what you're working on? Are all the
 definitions clear? Does everyone involved agree on the problem
 statement and objective?</p>
 </div>
@@ -380,7 +380,7 @@ possibilities. What else could you make a list of?</p>
 <hr />
 <h3><a href="#43" name="43">43</a>. Eliminate possibilities</h3>
 <p>What can you rule out? What hasn't worked already? What's impossible?
-What has to be wrong? Whhy is that? What are the constraints? What can
+What has to be wrong? Why is that? What are the constraints? What can
 you learn from what doesn't work?</p>
 </div>
 
