@@ -1,0 +1,478 @@
+# Thinking Cards
+
+Inspired by [How to Solve It][], [Lateral Thinking][], and others,
+I've started to collect tactics for problem-solving. The shuffle
+button is so that you can easily choose a random tactic to try.
+
+[How to Solve It]: 2013/09/28/polyas-how-to-solve-it-quotes-and-comments/
+[Lateral Thinking]: /20200716-lateral_thinking_creativity_step_by_step/
+
+I might do more with this and I'd love feedback/suggestions;
+[comment or message me](#contact)!
+
+<script>
+// Thanks to https://stackoverflow.com/a/43980082/1655496
+function shuffle() {
+  var container = document.getElementsByTagName("article")[0];
+  var elementsArray = Array.prototype.slice.call(container.getElementsByClassName('card'));
+    elementsArray.forEach(function(element){
+    container.removeChild(element);
+  })
+  shuffleArray(elementsArray);
+  elementsArray.forEach(function(element){
+  container.appendChild(element);
+})
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+</script>
+
+<center>
+  <input type="submit" onclick="shuffle()" value="Shuffle" style="width: 49%" />
+</center>
+
+<!-- Copy in cards.md below here -->
+
+<div class="card">
+<hr />
+<h3><a href="#1" name="1">1</a>. Embrace problems</h3>
+<p>The word "problem" has a negative connotation, and some problems are
+hard to love. But in general, problems make life more interesting and
+give us opportunities to learn, grow, and improve. Keep your problems
+close.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#2" name="2">2</a>. Take care of yourself</h3>
+<p>Are you hungry? Tired? Stressed? Eat well, sleep well, and look after
+your mental health. Try to do something right now to make your body
+and mind more effective, like stretching.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#3" name="3">3</a>. Take the pressure off</h3>
+<p>What can you do to approach the problem calmly? Should you ask for
+help or otherwise communicate with others? Should you make a back-up
+plan or adjust your goal?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#4" name="4">4</a>. Reinforce the positive</h3>
+<p>You have an opportunity for growth. You're learning. Celebrate all
+progress, even small progress. Feel good about what you're doing. You
+can do this.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#5" name="5">5</a>. Remove distractions</h3>
+<p>Turn off the TV. Turn off your phone. Turn off notifications. Don't
+check the news. Multitasking is a lie. If other thoughts come, jot
+them down elsewhere to return to later.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#6" name="6">6</a>. Get inspired</h3>
+<p>Why are you working on this? What's the larger goal? What are the
+larger benefits? What other problems or people have done work you
+admire? Appreciate and aspire to greatness.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#7" name="7">7</a>. Make a plan</h3>
+<p>If you know how to attack the problem, make a plan to do that. Even if
+you don't, make a plan to spend time on the problem, not all at once,
+but consistently over a longer period.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#8" name="8">8</a>. Do other things</h3>
+<p>Don't forget to eat and sleep, but also, spend time on complementary
+and even unrelated tasks. Read a book. Tutor a student. Revisit other
+things. Take a walk.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#9" name="9">9</a>. Work hard</h3>
+<p>You need to focus. You need to put in time and effort. Sometimes you
+have to stop looking for shortcuts and do the work. There is no royal
+road. Work harder than anyone else.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#10" name="10">10</a>. Relax</h3>
+<p>Take some time to change the nature of your focus on the problem. Pull
+back from single-minded concentration. Don't focus on anything else
+either. Relax. Don't micromanage your brain. What comes to you?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#11" name="11">11</a>. Work smart</h3>
+<p>Even if you're already making progress, is there something you could
+do more effectively? Can you find a better process if you reconsider?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#12" name="12">12</a>. Find support</h3>
+<p>What would help you to be effective? Is there a group or team you can
+join or form? What people or other resources can you engage with?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#13" name="13">13</a>. Understand the problem</h3>
+<p>Do you completely understan what you're working on? Are all the
+definitions clear? Does everyone involved agree on the problem
+statement and objective?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#14" name="14">14</a>. Find roots</h3>
+<p>What is the root cause (or causes) of the problem? Is the problem as
+stated the real problem? How did the problem come to be? Keep asking
+why.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#15" name="15">15</a>. Know what you know</h3>
+<p>What do you know, and how do you know it? Are you sure? Could you
+explain it to someone else? What do you not know, and how could you
+come to know it? What else might be relevant?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#16" name="16">16</a>. Question assumptions</h3>
+<p>What are you taking for granted? What is so obvius that you haven't
+thought about it? What biases might be affecting your thinking? Are
+there alternatives that seem "out there"?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#17" name="17">17</a>. Find similar problems</h3>
+<p>Do you know a related problem? What have others done in similar
+situations? How is a similar problem solved in nature, or in another
+field? Can you build on work you or others have done before?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#18" name="18">18</a>. Consider quitting</h3>
+<p>Is this a problem that shouldn't be solved? Is this problem the right
+use of your time, right now? What if you didn't solve this particular
+problem?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#19" name="19">19</a>. Get an easy win</h3>
+<p>Find a task that you can succeed at in the next two minutes. It could
+be getting out a pen, or opening a book. Do it, then praise yourself
+for that victory. It may be easier to keep making progress afterward.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#20" name="20">20</a>. Start things cooking</h3>
+<p>Many tasks involve some waiting after you initiate them, like waiting
+for food to marinate, or waiting for responses to an email. Make a
+point to get these things started as soon as you can.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#21" name="21">21</a>. Take a step</h3>
+<p>Even if you're not sure of your whole plan, do something now. You can
+always reevaluate afterward. Choose some goal that you can accomplish,
+and do it now.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#22" name="22">22</a>. Do an experiment</h3>
+<p>You don't have to only do things that you know will work. Try
+something and see what happens. Be prepared to throw it away. You'll
+learn from it and it will help you to make progress.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#23" name="23">23</a>. Guess and check</h3>
+<p>A particular kind of experiment is to choose a next step, even if you
+don't know that it's right, and see what happens next. Follow the
+consequences forward. Even if you guessed wrong, you'll learn
+something.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#24" name="24">24</a>. Record your progress</h3>
+<p>Keep some log of what you've been doing, what you've tried, and what
+the results have been. If you haven't been doing this, try to remember
+and write down what you've done so far.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#25" name="25">25</a>. Try again</h3>
+<p>Sometimes when you try something and it doesn't work, it isn't that
+the approach was bad, it's that something didn't align that time. It
+could be worth trying again, especially with things you tried when you
+knew less.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#26" name="26">26</a>. Zoom in</h3>
+<p>How close can you get to the tiniest pieces? What happens for exactly
+one component? For a global problem, how does a single individual play
+a part on a daily basis?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#27" name="27">27</a>. Zoom out</h3>
+<p>What's the big picture? How does the problem fit into larger systems?
+What's the global view? What's the long term view?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#28" name="28">28</a>. Draw a picture</h3>
+<p>Make a graphical representation. It could be a sketch, a plot, a
+diagram, a mind map, a flow chart. Make something you can see.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#29" name="29">29</a>. Change representations</h3>
+<p>What's another way to conceptualize the problem? In math, you might
+switch between numeric, geometric, and algebraic forms. You might
+change domains, or phrase the problem as a story.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#30" name="30">30</a>. Use a different tool</h3>
+<p>Try saying it out loud. Try typing, or writing longhand, or recording
+a video. Try post-it notes or index cards. Try paper and pencil, or a
+calculator, a diagramming tool, or a programming language.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#31" name="31">31</a>. Use analogy</h3>
+<p>What else is this like? Can you compare to something else, even if
+it's a stretch? What do the similarities and differences tell you?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#32" name="32">32</a>. Change viewpoints</h3>
+<p>How does this look from different perspectives? How do different
+people, pieces, places see the problem? Can you imagine yourself in
+different positions?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#33" name="33">33</a>. Organize concepts</h3>
+<p>What's the deep structure of this problem? Can you model the problem?
+Are there axes or other ways of representing the ideas of your
+problem?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#34" name="34">34</a>. Add randomness</h3>
+<p>Consider something you wouldn't otherwise: a random word, WikiPedia
+article, or the concept of randomness itself. Go to a museum, or a
+store. Whatever you find, relate it to your problem. What could it
+mean?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#35" name="35">35</a>. Talk it through</h3>
+<p>Have a conversation with someone. Or imagine a conversation with
+someone. Or have a conversation with yourself. Explain everything
+you're thinking about.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#36" name="36">36</a>. Decompose/Recompose</h3>
+<p>What are the words and ideas that you're using? Are they cliché? Are
+they appropriate? What if you broke down the way you're understanding
+the problem and rebuilt it? Can you articulate the problem and
+solution spaces?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#37" name="37">37</a>. Get feedback</h3>
+<p>Get an outside view on your problem and your work on it. Try to
+solicit feedback that helps you see things you aren't otherwise
+seeing.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#38" name="38">38</a>. Learn more</h3>
+<p>You may not know enough to solve your problem, and you may not even
+know what it is that you don't know. Keep learning! Be curious about
+topics near and far. Read and study for pleasure.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#39" name="39">39</a>. Ask for help</h3>
+<p>Other people can help you a lot. Put effort into finding the right
+place and way to ask, and others will often put effort into helping
+you.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#40" name="40">40</a>. Break it up</h3>
+<p>Sometimes you can break big problems into many more manageable steps.
+It may even be possible for multiple people to work on separate parts.
+Regardless, pursue and celebrate partial progress.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#41" name="41">41</a>. Use inversion</h3>
+<p>How might you achieve the opposite of your goal? Are there other
+reversals or inversions that might be illuminating? What's the worst
+case outcome? Can you avoid it?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#42" name="42">42</a>. Make a list</h3>
+<p>Generate lots of ideas. What are all the options? Consider more
+possibilities. What else could you make a list of?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#43" name="43">43</a>. Eliminate possibilities</h3>
+<p>What can you rule out? What hasn't worked already? What's impossible?
+What has to be wrong? Whhy is that? What are the constraints? What can
+you learn from what doesn't work?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#44" name="44">44</a>. Work backward</h3>
+<p>Assume you have a solution. How would it come to be? What would
+immediately lead to it? Can you follow steps backward from the end?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#45" name="45">45</a>. Consider special cases</h3>
+<p>Are there some specific forms of the problem that are more tractable
+or help with understanding? Can you extend a method based on these?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#46" name="46">46</a>. Consider extremes</h3>
+<p>What if something in your problem disappeared, or was huge? What if
+the problem itself was much worse, or more minor?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#47" name="47">47</a>. Add a constraint</h3>
+<p>Add a deadline for something. Can you come up with ten ideas in ten
+minutes? What if you have to be done today? What if your techniques or
+resources were limited? What if you couldn't use a tool you're
+currently using?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#48" name="48">48</a>. Simplify</h3>
+<p>In what ways could a complicated problem be made less so? What does
+simplifying it mean? Can you solve the simpler problem? If so, is that
+good enough, or is there a way to build on the solution?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#49" name="49">49</a>. Generalize</h3>
+<p>Can you make your problem a special case of some other problem? Can
+you solve that problem? Maybe a general-purpose tool or approach can
+be used or adapted for your problem.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#50" name="50">50</a>. Change the goal</h3>
+<p>Maybe you don't need to solve exactly the problem you started with.
+What's most important? Can you focus on that? Can you compromise to
+find something that you can make progress on?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#51" name="51">51</a>. Imagine the end</h3>
+<p>"Begin with the end in mind." What would a solution look like? Would
+it necessarily have certain properties? What properties?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#52" name="52">52</a>. Find checks</h3>
+<p>If you had a solution, how would you know that it's a good solution?
+What would be the "check" in a "guess and check" approach? What can
+you learn from your checks?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#53" name="53">53</a>. Think beyond the end</h3>
+<p>If you had a solution, what would you do next? How does this step fit
+into your ideas for where you want to go? Would you be happy, once you
+had a solution? Why?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#54" name="54">54</a>. Choose the right tactic</h3>
+<p>Which tactic is the one that will help you the most right now?
+Choosing them should be natural as you work on problems all the time.
+Think about your problem and what would be best.</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#55" name="55">55</a>. Make your own tactic</h3>
+<p>Add a new tactic that works for you. What fits with how you think, and
+the problems that you care about? Have you learned something that
+works for you? Do you need something specific to your current problem?</p>
+</div>
