@@ -39,7 +39,7 @@ function shuffleArray(array) {
   <input type="submit" onclick="shuffle()" value="Shuffle" style="width: 49%" />
 </center>
 
-<!-- Copy in cards.md below here -->
+<!-- Copy in cards.html below here -->
 
 <div class="card">
 <hr />
@@ -227,7 +227,7 @@ something.</p>
 
 <div class="card">
 <hr />
-<h3><a href="#24" name="24">24</a>. Record your progress</h3>
+<h3><a href="#24" name="24">24</a>. Write down what you’ve done</h3>
 <p>Keep some log of what you've been doing, what you've tried, and what
 the results have been. If you haven't been doing this, try to remember
 and write down what you've done so far.</p>
@@ -475,4 +475,20 @@ Think about your problem and what would be best.</p>
 <p>Add a new tactic that works for you. What fits with how you think, and
 the problems that you care about? Have you learned something that
 works for you? Do you need something specific to your current problem?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#56" name="56">56</a>. Implement an existing solution</h3>
+<p>Try applying an approach that's worked for you or someone else in the
+past, even if it came from a slightly different problem. What do you
+learn from trying this? Can you adapt the solution?</p>
+</div>
+
+<div class="card">
+<hr />
+<h3><a href="#57" name="57">57</a>. Quantify your progress</h3>
+<p>Can you measure how much you've done, and how much is left to to?
+Finding a metric can help you better understand your goal and what's
+working to get you there.</p>
 </div>
