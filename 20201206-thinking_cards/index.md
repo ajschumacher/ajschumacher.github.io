@@ -1,8 +1,8 @@
 # Thinking Cards
 
 Inspired by [How to Solve It][], [Lateral Thinking][], and others,
-I've started to collect tactics for problem-solving. The shuffle
-button is so that you can easily choose a random tactic to try.
+I've started to collect tactics for problem-solving. The shuffling
+stuff is so that you can easily choose a random tactic to try.
 
 [How to Solve It]: /2013/09/28/polyas-how-to-solve-it-quotes-and-comments/
 [Lateral Thinking]: /20200716-lateral_thinking_creativity_step_by_step/
@@ -500,6 +500,9 @@ function shuffle() {
     populate(container, randomCards);
 }
 
+// This is trying to do Fisher-Yates,
+// but why does it seem to leave the first thing unchanged so much?
+// Maybe it's fine...
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));

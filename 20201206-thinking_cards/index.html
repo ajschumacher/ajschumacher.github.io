@@ -12,8 +12,8 @@
 <h1>Thinking Cards</h1>
 <p class="date">Sunday December  6, 2020</p>
 <p>Inspired by <a href="/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/">How to Solve It</a>, <a href="/20200716-lateral_thinking_creativity_step_by_step/">Lateral Thinking</a>, and others,
-I've started to collect tactics for problem-solving. The shuffle
-button is so that you can easily choose a random tactic to try.</p>
+I've started to collect tactics for problem-solving. The shuffling
+stuff is so that you can easily choose a random tactic to try.</p>
 <p>I might do more with this and I'd love feedback/suggestions;
 <a href="#contact">comment or message me</a>!</p>
 <p><center>
@@ -483,6 +483,7 @@ var container = document.getElementsByTagName("article")[0];
 
 var orderedCards = Array.prototype.slice.call(container.getElementsByClassName('card'));
 
+// Thanks to https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/
 var randomCards = orderedCards.slice();
 // randomCards and orderedCards always hold the same elements
 
@@ -504,6 +505,9 @@ function shuffle() {
     populate(container, randomCards);
 }
 
+// This is trying to do Fisher-Yates,
+// but why does it seem to leave the first thing unchanged so much?
+// Maybe it's fine...
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
