@@ -10,33 +10,9 @@ button is so that you can easily choose a random tactic to try.
 I might do more with this and I'd love feedback/suggestions;
 [comment or message me](#contact)!
 
-<script>
-// Thanks to https://stackoverflow.com/a/43980082/1655496
-function shuffle() {
-  var container = document.getElementsByTagName("article")[0];
-  var elementsArray = Array.prototype.slice.call(container.getElementsByClassName('card'));
-    elementsArray.forEach(function(element){
-    container.removeChild(element);
-  })
-  shuffleArray(elementsArray);
-  elementsArray.forEach(function(element){
-  container.appendChild(element);
-})
-}
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-</script>
-
 <center>
-  <input type="submit" onclick="shuffle()" value="Shuffle" style="width: 49%" />
+  <input id="shuffle" type="submit" value="Shuffle" style="width: 49%" />
+  <input id="order" type="submit" value="Put in order" style="width: 49%" />
 </center>
 
 <!-- Copy in cards.html below here -->
@@ -492,3 +468,56 @@ learn from trying this? Can you adapt the solution?</p>
 Finding a metric can help you better understand your goal and what's
 working to get you there.</p>
 </div>
+
+<!-- Don't remove this stuff down here... -->
+
+<script>
+// Thanks to https://stackoverflow.com/a/43980082/1655496
+
+var container = document.getElementsByTagName("article")[0];
+
+var orderedCards = Array.prototype.slice.call(container.getElementsByClassName('card'));
+
+var randomCards = orderedCards.slice();
+// randomCards and orderedCards always hold the same elements
+
+function clear(container, elementsArray) {
+    elementsArray.forEach(function(element) {
+        container.removeChild(element);
+    });
+}
+
+function populate(container, elementsArray) {
+    elementsArray.forEach(function(element){
+        container.appendChild(element);
+    });
+}
+
+function shuffle() {
+    clear(container, randomCards);
+    shuffleArray(randomCards);
+    populate(container, randomCards);
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+function order() {
+    clear(container, orderedCards);
+    populate(container, orderedCards);
+}
+
+document.getElementById("shuffle").onclick = shuffle;
+document.getElementById("order").onclick = order;
+
+shuffle();
+shuffle();
+
+</script>
