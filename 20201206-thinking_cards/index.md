@@ -478,6 +478,7 @@ var container = document.getElementsByTagName("article")[0];
 
 var orderedCards = Array.prototype.slice.call(container.getElementsByClassName('card'));
 
+// Thanks to https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/
 var randomCards = orderedCards.slice();
 // randomCards and orderedCards always hold the same elements
 
