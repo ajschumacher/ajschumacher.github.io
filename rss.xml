@@ -7,6 +7,281 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Pragmatic Programmer</title>
+<description><![CDATA[
+
+<p>I read the original <a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">Pragmatic Programmer</a> years ago, and now read
+the 20th anniversary edition with some of my colleagues. It was an
+important book to me early in my career, and still has lots of useful
+reminders and updates with the new edition.</p>
+<p>I wish the whole book was available as pages on the public web. It's
+"written as a series of self-contained sections" in a way that would
+work really well with hyperlinks.</p>
+<h3>Quotes and notes by chapter</h3>
+<ul>
+<li><a href="#ch1">Chapter 1: A Pragmatic Philosophy</a></li>
+<li><a href="#ch2">Chapter 2: A Pragmatic Approach</a></li>
+<li><a href="#ch3">Chapter 3: The Basic Tools</a></li>
+<li><a href="#ch4">Chapter 4: Pragmatic Paranoia</a></li>
+<li><a href="#ch5">Chapter 5: Bend, or Break</a></li>
+<li><a href="#ch6">Chapter 6: Concurrency</a></li>
+<li><a href="#ch7">Chapter 7: While You Are Coding</a></li>
+<li><a href="#ch8">Chapter 8: Before the Project</a></li>
+<li><a href="#ch9">Chapter 9: Pragmatic Projects</a></li>
+<li><a href="#ch10">Chapter 10: Postface</a></li>
+</ul>
+<p><img alt="cover" src="pragprog.jpg"></p>
+<hr>
+<h3><a name="ch1"></a>Chapter 1: A Pragmatic Philosophy</h3>
+<hr>
+<p>The "broken windows" terminology hasn't aged terribly well because of
+the controversy around <a href="https://en.wikipedia.org/wiki/Broken_windows_theory">broken windows policing</a>; I agree broadly
+with the software development message, but the term has some unwanted
+connotations.</p>
+<hr>
+<blockquote>
+<p>"Tip 9: Invest Regularly in Your Knowledge Portfolio" (page 15)</p>
+</blockquote>
+<p>The "Knowledge Portfolio" metaphor is pretty good. I also want people
+to be life-long knowledge investors.</p>
+<p>They list five items in managing a knowledge portfolio:</p>
+<ul>
+<li>Invest regularly</li>
+<li>Diversify</li>
+<li>Manage risk</li>
+<li>Buy low, sell high</li>
+<li>Review and rebalance</li>
+</ul>
+<hr>
+<blockquote>
+<p>"While there's a glut of short-form essays and occasionally reliable
+answers on the web, for deep understanding you need long-form
+books." (page 16)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"A favorite consulting trick: ask "why?" at least five times." (page
+18)</p>
+</blockquote>
+<p>In <a href="https://hbr.org/2018/09/curiosity">Why Curiosity Matters</a> they reference "Toyota&#8217;s 5 Whys approach."</p>
+<hr>
+<blockquote>
+<p>"One of the Neuro Linguistic Programming suppositions is "The
+meaning of your communication is the response you get."" (page 20)</p>
+</blockquote>
+<hr>
+<h3><a name="ch2"></a>Chapter 2: A Pragmatic Approach</h3>
+<hr>
+<p>They note "Meyer's <em>Uniform Access principle</em>," which <a href="https://en.wikipedia.org/wiki/Uniform_access_principle">states</a> that
+"All services offered by a module should be available through a
+uniform notation, which does not betray whether they are implemented
+through storage or through computation."</p>
+<p>In Python this doesn't have to mean exposing getters and setters;
+using <a href="https://docs.python.org/3/library/functions.html#property">@property</a> is a good solution.</p>
+<hr>
+<blockquote>
+<p>"<em>If it isn't easy, people won't do it.</em>" (page 38)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In fact, this book is written in Markdown, and typeset directly
+from the Markdown source." (page 45)</p>
+</blockquote>
+<p>How? How do they do footnotes, etc.? Sounds like ConTeXt can do some
+part... But presumably they have their own custom stuff. Lots of
+details, I imagine.</p>
+<hr>
+<blockquote>
+<p>"Model building can be both creative and useful in the long term.
+Often, the process of building the model leads to discoveries of
+underlying patterns and processes that weren't apparent on the
+surface." (page 67)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"During the calculation phase, you get answers that seem strange.
+Don't be too quick to dismiss them. If your arithmetic is correct,
+your understanding of the problem or your model is probably wrong.
+This is valuable information." (page 68)</p>
+</blockquote>
+<hr>
+<h3><a name="ch3"></a>Chapter 3: The Basic Tools</h3>
+<hr>
+<p>The footnote on page 100 cites <a href="http://pignottia.faculty.mjc.edu/math134/homework/doodlingCaseStudy.pdf">What Does Doodling do?</a>, which seems
+kind of neat. I don't completely trust the result in the paper though,
+or at least the interpretation. Here's the abstract:</p>
+<blockquote>
+<p>Doodling is a way of passing the time when bored by a lecture or
+telephone call. Does it improve or hinder attention to the primary
+task? To answer this question, 40 participants monitored a
+monotonous mock telephone message for the names of people coming to
+a party. Half of the group was randomly assigned to a &#8216;doodling&#8217;
+condition where they shaded printed shapes while listening to the
+telephone call. The doodling group performed better on the
+monitoring task and recalled 29% more information on a surprise
+memory test. Unlike many dual task situations, doodling while
+working can be beneficial. Future research could test whether
+doodling aids cognitive performance by reducing daydreaming</p>
+</blockquote>
+<hr>
+<h3><a name="ch4"></a>Chapter 4: Pragmatic Paranoia</h3>
+<hr>
+<blockquote>
+<p>"DBC [Design By Contract] is more efficient (and DRY-er) than
+defensive programming, where <em>everyone</em> has to validate data in case
+no one else does." (page 108)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"By expressing the domain of the square root function in the
+precondition of the <code>sqrt</code> routine, you shift the burden of
+correctness to the caller&#8211;where it belongs." (page 110)</p>
+</blockquote>
+<p>And other "fail fast" kinds of things... "crashing early" etc...</p>
+<hr>
+<p>In Python, <code>with open</code> blocks help implement "Finish What You Start"
+(page 118).</p>
+<hr>
+<h3><a name="ch5"></a>Chapter 5: Bend, or Break</h3>
+<p>This chapter is <em>very substantially</em> different from the original
+version, and in interesting ways. Here's a quick summary of the
+content:</p>
+<ul>
+<li>Decoupling</li>
+<li>Events<ul>
+<li>Finite State Machines</li>
+<li>The Observer Pattern</li>
+<li>Publish/Subscribe</li>
+<li>Reactive Programming and Streams</li>
+</ul>
+</li>
+<li>Functional programming</li>
+<li>Don't use inheritance<ul>
+<li>Interfaces and protocols</li>
+<li>Delegation</li>
+<li>Mixins and traits</li>
+</ul>
+</li>
+<li>Configuration (as a service)</li>
+</ul>
+<hr>
+<blockquote>
+<p>"When we try to pick out anything by itself, we find it hitched to
+everything else in the Universe." (page 130, quoting John Muir, My
+First Summer in the Sierra)</p>
+</blockquote>
+<hr>
+<p>On page 148, they list files such as <code>dry.pml</code> which I guess means
+they write using "Pragmatic Markup Language" as their custom
+Markdown...</p>
+<hr>
+<blockquote>
+<p>"Do you program in an object-oriented language? Do you use
+inheritance?</p>
+<p>"If so, stop! It probably isn't what you want to do." (page 158)</p>
+</blockquote>
+<hr>
+<h3><a name="ch6"></a>Chapter 6: Concurrency</h3>
+<hr>
+<blockquote>
+<p>"[Concurrency] is often implemented using things such as fibers,
+threads, and processes." (page 169)</p>
+</blockquote>
+<p>I wasn't familiar with <a href="https://en.wikipedia.org/wiki/Fiber_(computer_science)">fibers</a>. Cute name. Connected to coroutines
+(cooperative multitasking). Seems like fibers is common terminology in
+Ruby.</p>
+<hr>
+<blockquote>
+<p>"... messaging systems (such as Kafka and NATS)" (page 189)</p>
+</blockquote>
+<p>I wasn't familiar with <a href="https://en.wikipedia.org/wiki/NATS_Messaging">NATS</a>. It's a messaging system. According
+the <a href="https://docs.nats.io/faq">FAQ</a>:</p>
+<blockquote>
+<p>"NATS stands for Neural Autonomic Transport System. Derek Collison
+conceived NATS as a messaging platform that functions like a central
+nervous system."</p>
+</blockquote>
+<hr>
+<h3><a name="ch7"></a>Chapter 7: While You Are Coding</h3>
+<hr>
+<p>"Testing is not about finding bugs, it&#8217;s about getting feedback on
+your code: aspects of design, the API, coupling, and so on. That means
+that the major benefits of testing happen when you think about and
+write the tests, not just when you run them." (page 325)</p>
+<hr>
+<p>"If you&#8217;re not sure why it works, you won&#8217;t know why it fails." (page
+339)</p>
+<hr>
+<blockquote>
+<p>"Tip 68: Build End-to-End, Not Top-Down or Bottom Up" (page 366)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Testing, design, coding&#8212;it&#8217;s all programming." (page 374)</p>
+</blockquote>
+<hr>
+<p>Property-based testing seems like fuzzing...</p>
+<hr>
+<p>That NIST thing on having reasonable password rules:
+https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf</p>
+<hr>
+<h3><a name="ch8"></a>Chapter 8: Before the Project</h3>
+<p>This is good stuff, but I didn't pull out specific notes. It's on
+working in tight feedback loops rather than trying to "collect
+requirements" all at the beginning.</p>
+<hr>
+<h3><a name="ch9"></a>Chapter 9: Pragmatic Projects</h3>
+<hr>
+<blockquote>
+<p>"Programmers are a bit like cats: intelligent, strong willed,
+opinionated, independent, and often worshiped by the net." (page
+437)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Tip 85: Schedule It to Make It Happen" (page 441)</p>
+</blockquote>
+<hr>
+<p><a href="https://www.researchgate.net/publication/324959836_Mythical_Unit_Test_Coverage">Mythical Unit Test Coverage</a>
+is neat. Abstract:</p>
+<blockquote>
+<p>"It is a continuous struggle to understand how much a product should
+be tested before its delivery to the market. Ericsson, as a global
+software development company, decided to evaluate the adequacy of
+the unit-test-coverage criterion that it had employed for years as a
+guide for sufficiency of testing. Naturally, one can think that if
+increasing coverage decreases the number of defects significantly,
+then coverage can be considered a criterion for test sufficiency. To
+test this hypothesis in practice, we investigated the relationship
+of unit-test-coverage measures and post-unit-test defects in a large
+commercial product of Ericsson. The results indicate that high
+unit-test coverage did not seem to be any tangible help in producing
+defect-free software."</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Even though your title might be some variation of &#8220;Software
+Developer&#8221; or &#8220;Software Engineer,&#8221; in truth it should be &#8220;Problem
+Solver.&#8221; That&#8217;s what we do, and that&#8217;s the essence of a Pragmatic
+Programmer. We solve problems." (page 464)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Anonymity, especially on large projects, can provide a breeding
+ground for sloppiness, mistakes, sloth, and bad code." (page 466)</p>
+</blockquote>
+<hr>
+<h3><a name="ch10"></a>Chapter 10: Postface</h3>
+<hr>
+<blockquote>
+<p>"Tip 99: Don&#8217;t Enable Scumbags" (page 472)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20201210-pragmatic_programmer/</link>
+<guid>http://planspace.org/20201210-pragmatic_programmer/</guid>
+<pubDate>Thu, 10 Dec 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Thinking Cards</title>
 <description><![CDATA[
 
@@ -2170,81 +2445,6 @@ calibration <em>and</em> informative logits in the distillation sense. Hmm!</p>
 <link>http://planspace.org/20201005-give_the_model_epistemology/</link>
 <guid>http://planspace.org/20201005-give_the_model_epistemology/</guid>
 <pubDate>Mon, 05 Oct 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Drawbridge Up, by Enzensberger</title>
-<description><![CDATA[
-
-<p>This <a href="https://smile.amazon.com/Drawbridge-Up-Mathematics-Cultural-Anathema/dp/156881156X">talk</a> from <a href="https://en.wikipedia.org/wiki/Hans_Magnus_Enzensberger">the author of The Number Devil</a> is unfortunately
-hard to find at a reasonable price. It's a beautiful short version of
-the not uncommon sentiment that math should be more widely
-appreciated.</p>
-<ul>
-<li>Short: Drawbridge Up, by Enzensberger</li>
-<li>Medium: <a href="/20200909-mathematicians_lament_by_lockhart/">A Mathematician's Lament, by Lockhart</a></li>
-<li>Long: <a href="//20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong, by Ellenberg</a></li>
-</ul>
-<p>At least <a href="https://en.wikipedia.org/wiki/David_Mumford">Mumford</a>'s preface is <a href="https://www.dam.brown.edu/people/mumford/beyond/education.html">available</a>:</p>
-<blockquote>
-<p>"I am accustomed, as a professional mathematician, to living in a
-sort of vacuum, surrounded by people who, as in the first paragraph
-of Enzensberger's essay, declare with an odd sort of pride that they
-are mathematically illiterate. How astonishing to come to the
-International Congress and find a distinguished poet and essayist
-who analyzes this problem with such a deep understanding and
-sensitivity. This is a beautiful essay and great delight for a
-mathematician to read. Here the strange contradictions with which we
-live are laid bare with accuracy of a dissecting microscope. He is
-onto our schizophrenic world in which, with one hand, we take pride
-in building an elegant world utterly divorced from the demands of
-reality and, with the other, claim that our ideas underlie virtually
-all technological developments of significance. I was particularly
-pleased to find that he believes progress is possible in teaching
-mathematics, that it can be made exciting to young minds. I tried
-(unsuccessfully) to get each high school in which my children were
-enrolled to go outside during geometry class and find out how tall
-the oak in the yard really is. Instead they buckled under to the
-establishment and even removed that staple of my generation: the odd
-formulaic Euclidean-style proof in which the pedigree of each step
-was detailed. This old game, the one piece of high school
-mathematics often mentioned warmly by people who otherwise hated
-math, had been found wanting by the mathematical puritans described
-in the Stewart quote, where the mathematician is unwilling to "lie a
-bit, like everyone else does". I hope the right people read this
-essay -- the movers and shakers of school curricula -- and that it
-moves them to let a hundred flowers bloom in the classroom."</p>
-</blockquote>
-<p>Let me know if you want to borrow my copy.</p>
-<hr>
-<h3>Selected quotes</h3>
-<hr>
-<blockquote>
-<p>"We know that ignorance is a cosmic force of truly insuperable
-power." (page 21)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The unforeseen utility of mathematical models is somewhat
-puzzling." (page 27)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The ancient debate among the Platonists, the Formalists and the
-Constructivists appears to be petering out into an exhausting
-stalemate. Mathematicians hardly concern themselves in their praxis
-with such questions." (page 29</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It seems a pedagogical <em>id&#233;e fixe</em> that children are incapable of
-abstract thinking." (page 37)</p>
-</blockquote>
-<hr>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20201001-drawbridge_up_by_enzensberger/</link>
-<guid>http://planspace.org/20201001-drawbridge_up_by_enzensberger/</guid>
-<pubDate>Thu, 01 Oct 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
