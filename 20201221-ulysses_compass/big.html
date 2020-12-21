@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type='text/css' href="/styles/big.css">
+    <script src="/scripts/big.js"></script>
+  </head>
+  <body>
+<div>
+Ulysses' compass
+</div>
+<div>
+<pre><code>🐉 Scylla of overfitting
+  ⛵ Ulysses' compass 🧭
+🌪 Charybdis of underfitting</code></pre>
+</div>
+<div>
+<p><img alt="overfitting" src="overfitting.jpg" /></p>
+</div>
+<div>
+<pre><code class="language-python">from math import log
+
+# Truth (as in Problem 7E1)
+p = [0.7, 0.3]  # heads, tails</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Entropy, H(p)
+H = lambda p: -sum(p_i * log(p_i) for p_i in p)
+H(p)  # 0.6108643020548935</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Candidate "models"
+q = [0.5, 0.5]
+r = [0.9, 0.1]</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Cross-Entropy, H(p, q), xH here because Python
+xH = lambda p, q: -sum(p_i * log(q_i) for p_i, q_i in zip(p, q))
+xH(p, q)  # 0.6931471805599453
+xH(p, r)  # 0.764527888858692</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># KL Divergence, D(p, q)
+D = lambda p, q: sum(p_i * log(p_i/q_i) for p_i, q_i in zip(p, q))
+D(p, q)  # 0.08228287850505178
+D(p, r)  # 0.15366358680379852</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># D(p, q) = H(p, q) - H(p)
+D(p, q) == xH(p, q) - H(p)  # True</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Data
+d = [0, 0, 1]  # heads, heads, tails</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Log probability (likelihood) score
+S = lambda d, p: sum(log(p[d_i]) for d_i in d)
+S(d, q)  # -2.0794415416798357
+S(d, r)  # -2.513306124309698</code></pre>
+</div>
+<div>
+<p>Positive log likelihoods happen!</p>
+</div>
+<div>
+<pre><code class="language-python"># True vs. predictive
+S(d, p)  # -1.917322692203401
+S(d, [2/3, 1/3])
+         # -1.9095425048844388</code></pre>
+</div>
+<div>
+<pre><code class="language-python"># Deviance
+deviance = lambda d, p: -2 * S(d, p)
+S(d, p)         # -1.917322692203401
+deviance(d, p)  #  3.834645384406802</code></pre>
+</div>
+<div>
+<p><em>Regular</em>ization!</p>
+</div>
+<div>
+<p><img alt="silly meme" src="silly_meme.png" /></p>
+</div>
+<div>
+<ul>
+<li>AIC: Akaike Information Criterion</li>
+<li>BIC: Bayesian Information Criterion (aka Schwarz criterion)</li>
+<li>CV: Cross-Validation</li>
+<li>DIC: Deviance Information Criterion</li>
+<li>lppd: Log Pointwise Predictive Density</li>
+<li>PSIS: Pareto-smoothed importance sampling cross-validation</li>
+<li>R^2: "variance explained" or "coefficient of determination"</li>
+<li>WAIC: [Widely Applicable | Watanabe-Akaike] Information Criterion</li>
+</ul>
+</div>
+<div>
+<p>compare but don't select</p>
+</div>
+<div>
+<pre><code># Mine (Python)
+def sum_log_prob(a, b):
+    return max(a, b) + math.log1p(math.exp(0 - abs(a - b)))
+
+# McElreath's (R)
+log_sum_exp &lt;- function( x ) {
+    xmax &lt;- max(x)
+    xsum &lt;- sum( exp( x - xmax ) )
+    xmax + log(xsum)
+}</code></pre>
+</div>
+<div>
+<p>Ulysses' compass</p>
+<ul>
+<li>Don't overfit</li>
+<li>Use log likelihood</li>
+<li>Use CV and/or IC</li>
+</ul>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </body>
+</html>

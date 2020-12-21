@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-12-21: [Ulysses' compass](/20201221-ulysses_compass/)
  * 2020-12-10: [The Pragmatic Programmer](/20201210-pragmatic_programmer/)
  * 2020-12-06: [Thinking Cards](/20201206-thinking_cards/)
  * 2020-11-28: [Add variance to achieve a given correlation](/20201128-add_variance_to_achieve_a_given_correlation/)
