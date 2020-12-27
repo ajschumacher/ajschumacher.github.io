@@ -146,7 +146,7 @@ data_lid(roll)
 The code here is also available in a [notebook][] with slightly more
 technical commentary.
 
-[notebook]: https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201226-estimate_manifold_dimensionality_with_lid/lid.ipynb
+[notebook]: https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201227-estimate_manifold_dimensionality_with_lid/lid.ipynb
 
 
 ### <a name="derivation" href="#derivation">Mathematical derivation of LID</a>
