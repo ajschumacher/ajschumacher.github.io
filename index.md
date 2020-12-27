@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2020-12-27: [Estimate manifold dimensionality with LID](/20201227-estimate_manifold_dimensionality_with_lid/)
  * 2020-12-21: [Ulysses' compass](/20201221-ulysses_compass/)
  * 2020-12-10: [The Pragmatic Programmer](/20201210-pragmatic_programmer/)
  * 2020-12-06: [Thinking Cards](/20201206-thinking_cards/)

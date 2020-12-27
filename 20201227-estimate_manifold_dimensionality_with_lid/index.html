@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Estimate manifold dimensionality with LID</title>
+  </head>
+  <body>
+    <article>
+<h1>Estimate manifold dimensionality with LID</h1>
+<p class="date">Sunday December 27, 2020</p>
+<p>Local Intrinsic Dimensionality (LID) is based on assuming locally
+uniform density and using the geometric idea that in \( D \)
+dimensions the volume of a ball with radius \( r \) goes as \( r^D
+\). With an outer radius \( r_{\text{bound}} \) from some point and
+a distance \( r \lt r_{\text{bound}} \) to a neighboring point, the
+maximum likelihood estimator of LID is \( 1 / \log{\left(
+r_{\text{bound}}/r \right)} \), and multiple estimates are averaged
+with the harmonic mean.</p>
+<p><a href="https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre/figures"><img src="swiss_roll.jpg" style="float: right; margin-left: 1em;" title="Image from: Non-linear scaling techniques for uncovering the perceptual dimensions of timbre" /></a></p>
+<p>For example, Swiss roll data curves through three dimensions but only
+on a two-dimensional manifold. LID for the three-dimensional Swiss
+roll data is about two, which is informative.</p>
+<ul>
+<li><a href="#calculating">Calculating LID with Python</a><ul>
+<li><a href="#cloud">In a cloud of points</a></li>
+<li><a href="#roll">For a Swiss roll dataset</a></li>
+</ul>
+</li>
+<li><a href="#derivation">Mathematical derivation of LID</a><ul>
+<li><a href="#cdf">Cumulative Distribution Function (CDF) of radius</a></li>
+<li><a href="#pdf">Probability Density Function (PDF) of radius</a></li>
+<li><a href="#ev">Expected Value of radius</a></li>
+<li><a href="#mle">Maximum Likelihood Estimate of dimension</a></li>
+<li><a href="#harmonic">Harmonic mean for dimensionality</a></li>
+</ul>
+</li>
+<li><a href="#caveats">Caveats</a></li>
+<li><a href="#literature">LID in the literature</a></li>
+<li><a href="#topological">Topological extensions</a></li>
+</ul>
+<h3><a name="calculating" href="#calculating">Calculating LID with Python</a></h3>
+<p>The maximum likelihood estimator of Local Intrinsic Dimensionality is
+\( 1 / \log{\left( r_{\text{bound}}/r \right)} \).</p>
+<pre><code class="language-python">import math
+
+def lid(radius, radius_bound):
+    return 1 / math.log(radius_bound / radius)</code></pre>
+
+<p>The radii will be distances measured from data using
+<a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a>.</p>
+<pre><code class="language-python">def euclidean(xs, ys):  # Euclidean distance
+    return math.sqrt(sum((x - y)**2 for x, y in zip(xs, ys)))</code></pre>
+
+<p>To average multiple estimates of dimensionality, use the
+<a href="#harmonic">harmonic mean</a>.</p>
+<pre><code class="language-python">def harmonic_mean(numbers):
+    return len(numbers) / sum(1 / number for number in numbers)</code></pre>
+
+<p>Filter out zeros (such as the distance from a point to itself).</p>
+<pre><code class="language-python">def positive(numbers):
+    return [number for number in numbers if number > 0]</code></pre>
+
+<p>For a point in some data, find the distances to its \( k+1 \)
+nearest neighbors. The greatest of these is \( r_{\text{bound}} \),
+and the estimates based on the \( k \) nearest neighbors are
+averaged.</p>
+<pre><code class="language-python">def neighbors_lid(origin, points, k=1, distance=euclidean):
+    radii = sorted(positive([distance(origin, point) for point in points]))
+    return harmonic_mean([lid(radius, radii[k]) for radius in radii[:k]])</code></pre>
+
+<h4><a name="cloud" href="#cloud">In a cloud of points</a></h4>
+<p>A uniformly random cloud of points in \( D \) dimensions has
+dimensionality equal to \( D \).</p>
+<pre><code class="language-python">import random
+
+def cloud(dimensions, count=100, bounds=(-1, 1)):
+    return [[random.uniform(*bounds) for _ in range(dimensions)]
+            for _ in range(count)]</code></pre>
+
+<p>LID can be calculated from anywhere in the cloud, such as the origin,
+as in this seven-dimensional example.</p>
+<pre><code class="language-python">neighbors_lid([0]*7, cloud(7))
+## 6.851551579378687</code></pre>
+
+<p>These estimates are very noisy, depending on the particular random
+points in the cloud; it's very likely that a given run won't be so
+close to seven. Repeating the experiment many times is more
+reassuring.</p>
+<pre><code class="language-python">harmonic_mean([neighbors_lid([0]*7, cloud(7)) for _ in range(1000)])
+## 7.006859728132216</code></pre>
+
+<h4><a name="roll" href="#roll">For a Swiss roll dataset</a></h4>
+<p>To estimate a dataset's dimensionality, average LID from each point in
+the dataset.</p>
+<pre><code class="language-python">def data_lid(points, k=1, distance=euclidean):
+    return harmonic_mean([neighbors_lid(point, points, k=k, distance=distance)
+                          for point in points])</code></pre>
+
+<p><a href="https://en.wikipedia.org/wiki/Swiss_roll">Swiss roll</a> data, first introduced in the <a href="https://web.mit.edu/cocosci/Papers/sci_reprint.pdf" title="A Global Geometric Framework for Nonlinear Dimensionality Reduction">Isomap paper</a>, is a
+two-dimensional <a href="https://en.wikipedia.org/wiki/Manifold">manifold</a> embedded in three dimensions. It's not
+terribly hard to make from scratch, but the
+<a href="https://github.com/scikit-learn/scikit-learn/blob/42aff4e2e/sklearn/datasets/_samples_generator.py#L1402">scikit-learn implementation</a> is convenient.</p>
+<p><a href="https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre" title="Image from: Non-linear scaling techniques for uncovering the perceptual dimensions of timbre"><img alt="swiss roll" src="swiss_roll.jpg" /></a></p>
+<pre><code class="language-python">import sklearn.datasets
+
+roll, _ = sklearn.datasets.make_swiss_roll()
+data_lid(roll)
+## 2.0706005383894444</code></pre>
+
+<p>The code here is also available in a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201227-estimate_manifold_dimensionality_with_lid/lid.ipynb">notebook</a> with slightly more
+technical commentary.</p>
+<h3><a name="derivation" href="#derivation">Mathematical derivation of LID</a></h3>
+<p>Local Intrinsic Dimensionality arises from considering radius from a
+given point to another point nearer than \( r_{\text{bound}} \) as a
+random variable \( R \) which takes a specific value \( r \).</p>
+<h4><a name="cdf" href="#cdf">Cumulative Distribution Function (CDF) of radius</a></h4>
+<p>With uniform density, the probability of encountering a point is
+proportional to volume, and the volume of a radius \( r \) ball in
+\( D \) dimensions is proportional to \( r^D \), giving the
+<a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">CDF</a>.</p>
+<p>\[ P(R&lt;r) = \frac{r^D}{r_{\text{bound}}^D} = \left(\frac{r}{r_{\text{bound}}}\right)^D \]</p>
+<h4><a name="pdf" href="#pdf">Probability Density Function (PDF) of radius</a></h4>
+<p>The <a href="https://en.wikipedia.org/wiki/Probability_density_function">PDF</a> is the derivative of the CDF with respect to \( r \).</p>
+<p>\[ P(R=r) = D \left( \frac{r}{r_{\text{bound}}} \right)^{D-1} \]</p>
+<h4><a name="ev" href="#ev">Expected Value of radius</a></h4>
+<p>Integrating the PDF times \( r \) from 0 to \( r_{\text{bound}} \)
+gives the <a href="https://en.wikipedia.org/wiki/Expected_value">expected value</a> of \( R \), which is \( \frac{D}{D+1}
+r_{\text{bound}} \). This isn't terribly important to the derivation
+here, but it shows that as dimensionality increases, points are likely
+to be closer and closer to the outer radius. This is an aspect of the
+<a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a> and the phenomenon that LID is based on.</p>
+<h4><a name="mle" href="#mle">Maximum Likelihood Estimate of dimension</a></h4>
+<p>For a given measured \( r \) within \( r_{\text{bound}} \), some
+dimensionality \( D \) maximizes the likelihood of that observation.
+The probability density function is a likelihood, and the log of that
+function has the same maximum where both derivatives are zero. Setting
+the derivative with respect to \( D \) of the natural log likelihood
+equal to zero gives a simple solution.</p>
+<p>\[ \log{\left( \frac{r}{r_{\text{bound}}} \right)} + \frac{1}{D} = 0 \]</p>
+<p>\[ D = \frac{1}{\log{ \left( \frac{r_{\text{bound}}}{r} \right)}} \]</p>
+<h4><a name="harmonic" href="#harmonic">Harmonic mean for dimensionality</a></h4>
+<p>With two observed radii \( r_1 \) and \( r_2 \), the joint
+probability is two (PDF) likelihoods multiplied together, and the log
+likelihood sums. Maximizing gives the <a href="https://en.wikipedia.org/wiki/Harmonic_mean">harmonic mean</a> of two
+individual estimates.</p>
+<p>\[ \log{\left( \frac{r_1}{r_{\text{bound}}} \right)} + \frac{1}{D} + \log{\left( \frac{r_2}{r_{\text{bound}}} \right)} + \frac{1}{D} = 0 \]</p>
+<p>\[ D = \frac{2}{\log{\left( \frac{r_{\text{bound}}}{r_1} \right)} + \log{\left( \frac{r_{\text{bound}}}{r_2} \right)}} \]</p>
+<p>The same thing happens for any number of measurements; the harmonic
+mean is the appropriate way to average estimates of dimensionality.</p>
+<p>The harmonic mean is typically appropriate for averaging <em>rates</em>, so
+its appearance here suggests thinking of <em>dimension</em> as a <em>rate</em>.
+Perhaps dimension is the rate at which "space" becomes available, or
+entropy becomes possible, per distance traveled.</p>
+<h3><a name="caveats" href="#caveats">Caveats</a></h3>
+<p>It's very common for distance to not really make sense in a dataset.
+Scaling of variables can be very important, for example (not to
+mention categorical variables).</p>
+<p>Even with a meaningful distance, in high dimensions, "nearest
+neighbors" <a href="https://members.loria.fr/MOBerger/Enseignement/Master2/Exposes/beyer.pdf" title="When Is “Nearest Neighbor” Meaningful?">may not be meaningful</a>.</p>
+<p>Euclidean distance is assumed here, but <a href="https://bib.dbvis.de/uploadedFiles/155.pdf" title="On the Surprising Behavior of Distance Metrics in High Dimensional Space">other distances</a> may also
+be worth considering. There is also an <a href="https://arxiv.org/abs/2006.12880" title="ABID: Angle Based Intrinsic Dimensionality">angle-based approach</a> to
+estimating LID.</p>
+<h3><a name="literature" href="#literature">LID in the literature</a></h3>
+<p>A common reference is <a href="https://www.stat.berkeley.edu/~bickel/mldim.pdf" title="Maximum Likelihood Estimation of Intrinsic Dimension">Levina and Bickel</a>, "Maximum Likelihood
+Estimation of Intrinsic Dimension." Their derivation is slightly
+different, but the result is the same: their Equation 8 is
+<a href="#mle">the MLE above</a> in different notation.</p>
+<p>Levina and Bickel suggest an adjustment to the harmonic mean when \(
+k \rightarrow \infty \). In practice it may be better to keep \( k
+\) small in the interest of maintaining locality and not adjust.</p>
+<p>Another form of the MLE sometimes appears (e.g. <a href="https://arxiv.org/abs/1801.02613" title="Characterizing Adversarial Subspaces Using Local Intrinsic Dimensionality">1</a>, <a href="https://epubs.siam.org/doi/abs/10.1137/1.9781611975673.21" title="Intrinsic Dimensionality Estimation within Tight Localities">2</a>) but is
+not recommended.</p>
+<p>\[ \widehat{LID}(x) = -\left( \frac{1}{k} \sum_{i=1}^k{ \log{ \frac{r_i(x)}{r_k(x)} } } \right)^{-1} \]</p>
+<p>In this form, \( r_i(x) \) is the distance to the \( i\text{-th}
+\) nearest neighbor of the point \( x \), and \( r_k(x) \) is the
+maximum of these distances. Here the \( k \) neighbors include the
+farthest one, defining \( r_k(x) \), which is elsewhere called \(
+r_{\text{bound}} \). The effect of this inclusion is to add a \(
+\log(1) = 0 \) term to the sum (which would not be meaningful as an
+individual estimate) or equivalently to average \( k-1 \) estimates
+as if there were \( k \). With two nearest neighbors, this will
+incorrectly double the estimate, and it will always inflate it to some
+degree.</p>
+<p>In addition to the arithmetic mean, sometimes a regression approach is
+used to combine estimates of dimensionality. <a href="https://www.nature.com/articles/s41598-017-11873-y.pdf" title="Estimating the intrinsic dimension of datasets by a minimal neighborhood information">Facco et al.</a> apply
+such an approach, noting and dropping large outliers in order to get
+more robust estimates. The <a href="#harmonic">harmonic mean</a> (itself
+<a href="https://stats.stackexchange.com/questions/264368/harmonic-mean-minimizes-sum-of-squared-relative-errors" title="Harmonic mean minimizes sum of squared relative errors">a kind of robust regression</a>) is more appropriate.</p>
+<h3><a name="topological" href="#topological">Topological extensions</a></h3>
+<p>Topological approaches use nearest neighbors to turn point-like data
+into <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-like data (okay, <a href="https://en.wikipedia.org/wiki/Simplicial_complex">simplicial complexes</a>). <a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> is
+a popular modern technique based on this idea.</p>
+<p>In <a href="https://web.mit.edu/cocosci/Papers/sci_reprint.pdf" title="A Global Geometric Framework for Nonlinear Dimensionality Reduction">Isomap</a>, a graph enforces geodesic distances, staying on the
+manifold via neighbors connected in the graph. For estimating
+dimensionality, a graph lets you avoid polluting the set of nearest
+neighbors with points from actually distant parts of the manifold
+(imagine jumping between sheets in Swiss roll data, for example). Some
+work on dimensionality (e.g. <a href="https://www.nature.com/articles/srep31377" title="Accurate Estimation of the Intrinsic Dimension Using Graph Distances: Unraveling the Geometric Complexity of Datasets">A</a>, <a href="http://hal.cse.msu.edu/assets/pdfs/papers/2019-cvpr-intrinsic-dimensionality.pdf" title="On the Intrinsic Dimensionality of Image Representations">B</a>) involves this approach.</p>
+<p><a href="https://en.wikipedia.org/wiki/Stephen_Wolfram">Stephen Wolfram</a> has some <a href="https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/">topological ideas about physics</a>,
+including a very literal <a href="https://www.wolframphysics.org/technical-introduction/limiting-behavior-and-emergent-geometry/the-notion-of-dimension/">interpretation of dimensionality</a> being
+the rate at which traveling a distance gives you access to more space.</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

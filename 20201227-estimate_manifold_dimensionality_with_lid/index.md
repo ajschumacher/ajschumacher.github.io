@@ -27,7 +27,7 @@ roll data is about two, which is informative.
      * [Harmonic mean for dimensionality](#harmonic)
  * [Caveats](#caveats)
  * [LID in the literature](#literature)
- * [Topological extensions of LID](#topological)
+ * [Topological extensions](#topological)
 
 
 ### <a name="calculating" href="#calculating">Calculating LID with Python</a>
@@ -53,9 +53,7 @@ def euclidean(xs, ys):  # Euclidean distance
 ```
 
 To average multiple estimates of dimensionality, use the
-[harmonic mean][].
-
-[harmonic mean]: https://en.wikipedia.org/wiki/Harmonic_mean
+[harmonic mean](#harmonic).
 
 ```python
 def harmonic_mean(numbers):
@@ -83,8 +81,8 @@ def neighbors_lid(origin, points, k=1, distance=euclidean):
 
 #### <a name="cloud" href="#cloud">In a cloud of points</a>
 
-A random cloud of points in \\( D \\) dimensions has dimensionality
-equal to \\( D \\).
+A uniformly random cloud of points in \\( D \\) dimensions has
+dimensionality equal to \\( D \\).
 
 ```python
 import random
@@ -102,9 +100,10 @@ neighbors_lid([0]*7, cloud(7))
 ## 6.851551579378687
 ```
 
-These estimates are very noisy; it's very likely that a given run
-won't be so close to seven. Repeating the experiment many times is
-more reassuring.
+These estimates are very noisy, depending on the particular random
+points in the cloud; it's very likely that a given run won't be so
+close to seven. Repeating the experiment many times is more
+reassuring.
 
 ```python
 harmonic_mean([neighbors_lid([0]*7, cloud(7)) for _ in range(1000)])
@@ -129,7 +128,7 @@ terribly hard to make from scratch, but the
 [scikit-learn implementation][] is convenient.
 
 [Swiss roll]: https://en.wikipedia.org/wiki/Swiss_roll
-[Isomap paper]: https://web.mit.edu/cocosci/Papers/sci_reprint.pdf
+[Isomap paper]: https://web.mit.edu/cocosci/Papers/sci_reprint.pdf "A Global Geometric Framework for Nonlinear Dimensionality Reduction"
 [manifold]: https://en.wikipedia.org/wiki/Manifold
 [scikit-learn implementation]: https://github.com/scikit-learn/scikit-learn/blob/42aff4e2e/sklearn/datasets/_samples_generator.py#L1402
 
@@ -152,7 +151,7 @@ technical commentary.
 ### <a name="derivation" href="#derivation">Mathematical derivation of LID</a>
 
 Local Intrinsic Dimensionality arises from considering radius from a
-given point to another nearer than \\( r_{\text{bound}} \\) as a
+given point to another point nearer than \\( r_{\text{bound}} \\) as a
 random variable \\( R \\) which takes a specific value \\( r \\).
 
 
@@ -211,6 +210,8 @@ probability is two (PDF) likelihoods multiplied together, and the log
 likelihood sums. Maximizing gives the [harmonic mean][] of two
 individual estimates.
 
+[harmonic mean]: https://en.wikipedia.org/wiki/Harmonic_mean
+
 \\[ \log{\left( \frac{r_1}{r_{\text{bound}}} \right)} + \frac{1}{D} + \log{\left( \frac{r_2}{r_{\text{bound}}} \right)} + \frac{1}{D} = 0 \\]
 
 \\[ D = \frac{2}{\log{\left( \frac{r_{\text{bound}}}{r_1} \right)} + \log{\left( \frac{r_{\text{bound}}}{r_2} \right)}} \\]
@@ -220,8 +221,8 @@ mean is the appropriate way to average estimates of dimensionality.
 
 The harmonic mean is typically appropriate for averaging _rates_, so
 its appearance here suggests thinking of _dimension_ as a _rate_.
-Dimension is the rate at which space that becomes available, per
-distance traveled.
+Perhaps dimension is the rate at which "space" becomes available, or
+entropy becomes possible, per distance traveled.
 
 
 ### <a name="caveats" href="#caveats">Caveats</a>
@@ -233,14 +234,14 @@ mention categorical variables).
 Even with a meaningful distance, in high dimensions, "nearest
 neighbors" [may not be meaningful][].
 
-[may not be meaningful]: https://members.loria.fr/MOBerger/Enseignement/Master2/Exposes/beyer.pdf
+[may not be meaningful]: https://members.loria.fr/MOBerger/Enseignement/Master2/Exposes/beyer.pdf "When Is “Nearest Neighbor” Meaningful?"
 
 Euclidean distance is assumed here, but [other distances][] may also
 be worth considering. There is also an [angle-based approach][] to
 estimating LID.
 
-[other distances]: https://bib.dbvis.de/uploadedFiles/155.pdf
-[angle-based approach]: https://arxiv.org/abs/2006.12880
+[other distances]: https://bib.dbvis.de/uploadedFiles/155.pdf "On the Surprising Behavior of Distance Metrics in High Dimensional Space"
+[angle-based approach]: https://arxiv.org/abs/2006.12880 "ABID: Angle Based Intrinsic Dimensionality"
 
 
 ### <a name="literature" href="#literature">LID in the literature</a>
@@ -250,11 +251,11 @@ Estimation of Intrinsic Dimension." Their derivation is slightly
 different, but the result is the same: their Equation 8 is
 [the MLE above](#mle) in different notation.
 
+[Levina and Bickel]: https://www.stat.berkeley.edu/~bickel/mldim.pdf "Maximum Likelihood Estimation of Intrinsic Dimension"
+
 Levina and Bickel suggest an adjustment to the harmonic mean when \\(
 k \rightarrow \infty \\). In practice it may be better to keep \\( k
 \\) small in the interest of maintaining locality and not adjust.
-
-[Levina and Bickel]: https://www.stat.berkeley.edu/~bickel/mldim.pdf
 
 Another form of the MLE sometimes appears (e.g. [1][], [2][]) but is
 not recommended.
@@ -281,11 +282,11 @@ such an approach, noting and dropping large outliers in order to get
 more robust estimates. The [harmonic mean](#harmonic) (itself
 [a kind of robust regression][]) is more appropriate.
 
-[Facco et al.]: https://www.nature.com/articles/s41598-017-11873-y.pdf
-[a kind of robust regression]: https://stats.stackexchange.com/questions/264368/harmonic-mean-minimizes-sum-of-squared-relative-errors
+[Facco et al.]: https://www.nature.com/articles/s41598-017-11873-y.pdf "Estimating the intrinsic dimension of datasets by a minimal neighborhood information"
+[a kind of robust regression]: https://stats.stackexchange.com/questions/264368/harmonic-mean-minimizes-sum-of-squared-relative-errors "Harmonic mean minimizes sum of squared relative errors"
 
 
-### <a name="topological" href="#topological">Topological extensions of LID</a>
+### <a name="topological" href="#topological">Topological extensions</a>
 
 Topological approaches use nearest neighbors to turn point-like data
 into [graph][]-like data (okay, [simplicial complexes][]). [UMAP][] is
@@ -302,7 +303,7 @@ neighbors with points from actually distant parts of the manifold
 (imagine jumping between sheets in Swiss roll data, for example). Some
 work on dimensionality (e.g. [A][], [B][]) involves this approach.
 
-[Isomap]: https://web.mit.edu/cocosci/Papers/sci_reprint.pdf
+[Isomap]: https://web.mit.edu/cocosci/Papers/sci_reprint.pdf "A Global Geometric Framework for Nonlinear Dimensionality Reduction"
 [A]: https://www.nature.com/articles/srep31377 "Accurate Estimation of the Intrinsic Dimension Using Graph Distances: Unraveling the Geometric Complexity of Datasets"
 [B]: http://hal.cse.msu.edu/assets/pdfs/papers/2019-cvpr-intrinsic-dimensionality.pdf "On the Intrinsic Dimensionality of Image Representations"
 
