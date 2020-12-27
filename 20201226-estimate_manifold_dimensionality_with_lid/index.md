@@ -25,6 +25,7 @@ roll data is about two, which is informative.
      * [Expected Value of radius](#ev)
      * [Maximum Likelihood Estimate of dimension](#mle)
      * [Harmonic mean for dimensionality](#harmonic)
+ * [Caveats](#caveats)
  * [LID in the literature](#literature)
  * [Topological extensions of LID](#topological)
 
@@ -223,6 +224,25 @@ Dimension is the rate at which space that becomes available, per
 distance traveled.
 
 
+### <a name="caveats" href="#caveats">Caveats</a>
+
+It's very common for distance to not really make sense in a dataset.
+Scaling of variables can be very important, for example (not to
+mention categorical variables).
+
+Even with a meaningful distance, in high dimensions, "nearest
+neighbors" [may not be meaningful][].
+
+[may not be meaningful]: https://members.loria.fr/MOBerger/Enseignement/Master2/Exposes/beyer.pdf
+
+Euclidean distance is assumed here, but [other distances][] may also
+be worth considering. There is also an [angle-based approach][] to
+estimating LID.
+
+[other distances]: https://bib.dbvis.de/uploadedFiles/155.pdf
+[angle-based approach]: https://arxiv.org/abs/2006.12880
+
+
 ### <a name="literature" href="#literature">LID in the literature</a>
 
 A common reference is [Levina and Bickel][], "Maximum Likelihood
@@ -267,16 +287,24 @@ more robust estimates. The [harmonic mean](#harmonic) (itself
 
 ### <a name="topological" href="#topological">Topological extensions of LID</a>
 
-I understand topological data approaches as being basically about
-turning point-like data into graph-like data, usually by specifying
-edges based on nearest neighbors. Then you might, as in the
-[Isomap paper][], require geodesic travel via near neighbors
-(connected in the graph) in order to say on the manifold.
+Topological approaches use nearest neighbors to turn point-like data
+into [graph][]-like data (okay, [simplicial complexes][]). [UMAP][] is
+a popular modern technique based on this idea.
 
-did that in
-2000, [UMAP][] did that in 2018.
-
+[graph]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+[simplicial complexes]: https://en.wikipedia.org/wiki/Simplicial_complex
 [UMAP]: https://umap-learn.readthedocs.io/en/latest/
+
+In [Isomap][], a graph enforces geodesic distances, staying on the
+manifold via neighbors connected in the graph. For estimating
+dimensionality, a graph lets you avoid polluting the set of nearest
+neighbors with points from actually distant parts of the manifold
+(imagine jumping between sheets in Swiss roll data, for example). Some
+work on dimensionality (e.g. [A][], [B][]) involves this approach.
+
+[Isomap]: https://web.mit.edu/cocosci/Papers/sci_reprint.pdf
+[A]: https://www.nature.com/articles/srep31377 "Accurate Estimation of the Intrinsic Dimension Using Graph Distances: Unraveling the Geometric Complexity of Datasets"
+[B]: http://hal.cse.msu.edu/assets/pdfs/papers/2019-cvpr-intrinsic-dimensionality.pdf "On the Intrinsic Dimensionality of Image Representations"
 
 [Stephen Wolfram][] has some [topological ideas about physics][],
 including a very literal [interpretation of dimensionality][] being
