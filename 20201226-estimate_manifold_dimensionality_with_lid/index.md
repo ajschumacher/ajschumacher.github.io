@@ -10,7 +10,7 @@ r_{\text{bound}}/r \right)} \\), and multiple estimates are averaged
 with the harmonic mean.
 
 
-<a href="https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre/figures"><img src="swiss_roll.jpg" style="float: right; margin-left: 1em;" /></a>
+<a href="https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre/figures"><img src="swiss_roll.jpg" style="float: right; margin-left: 1em;" title="Image from: Non-linear scaling techniques for uncovering the perceptual dimensions of timbre" /></a>
 
 For example, Swiss roll data curves through three dimensions but only
 on a two-dimensional manifold. LID for the three-dimensional Swiss
@@ -25,9 +25,7 @@ roll data is about two, which is informative.
      * [Expected Value of radius](#ev)
      * [Maximum Likelihood Estimate of dimension](#mle)
      * [Harmonic mean for dimensionality](#harmonic)
- * [Comparison to selected literature](#literature)
-     * [Characterizing Adversarial Subspaces](#subspaces)
-     * [Minimal Neighborhood Information](#minimal)
+ * [LID in the literature](#literature)
  * [Topological extensions of LID](#topological)
 
 
@@ -134,7 +132,7 @@ terribly hard to make from scratch, but the
 [manifold]: https://en.wikipedia.org/wiki/Manifold
 [scikit-learn implementation]: https://github.com/scikit-learn/scikit-learn/blob/42aff4e2e/sklearn/datasets/_samples_generator.py#L1402
 
-[![swiss roll](swiss_roll.jpg)](https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre)
+[![swiss roll](swiss_roll.jpg)](https://www.researchgate.net/publication/200688576_Non-linear_scaling_techniques_for_uncovering_the_perceptual_dimensions_of_timbre "Image from: Non-linear scaling techniques for uncovering the perceptual dimensions of timbre")
 
 ```python
 import sklearn.datasets
@@ -225,78 +223,45 @@ Dimension is the rate at which space that becomes available, per
 distance traveled.
 
 
-### <a name="literature" href="#literature">Comparison to selected literature</a>
+### <a name="literature" href="#literature">LID in the literature</a>
 
-Reasoning about dimensionality isn't always easy. I'm grateful for two
-papers in particular that helped me to think about Local Intrinsic
-Dimensionality.
+A common reference is [Levina and Bickel][], "Maximum Likelihood
+Estimation of Intrinsic Dimension." Their derivation is slightly
+different, but the result is the same: their Equation 8 is
+[the MLE above](#mle) in different notation.
 
+Levina and Bickel suggest an adjustment to the harmonic mean when \\(
+k \rightarrow \infty \\). In practice it may be better to keep \\( k
+\\) small in the interest of maintaining locality and not adjust.
 
-#### <a name="subspaces" href="#subspaces">Characterizing Adversarial Subspaces</a>
+[Levina and Bickel]: https://www.stat.berkeley.edu/~bickel/mldim.pdf
 
-I first encountered LID in [Ma et al.][], where they use it to study
-adversarial examples for deep neural networks. Their Equation 4
-defines the \\( \widehat{LID} \\) estimator that they use.
+Another form of the MLE sometimes appears (e.g. [1][], [2][]) but is
+not recommended.
 
-[Ma et al.]: https://arxiv.org/abs/1801.02613
+[1]: https://arxiv.org/abs/1801.02613 "Characterizing Adversarial Subspaces Using Local Intrinsic Dimensionality"
+[2]: https://epubs.siam.org/doi/abs/10.1137/1.9781611975673.21 "Intrinsic Dimensionality Estimation within Tight Localities"
 
 \\[ \widehat{LID}(x) = -\left( \frac{1}{k} \sum_{i=1}^k{ \log{ \frac{r_i(x)}{r_k(x)} } } \right)^{-1} \\]
 
-The notation is slightly different, but this is the same estimate of
-\\( D \\) as given above, except that it includes a \\( \log{(1)} \\)
-term in the sum (when \\( i = k \\)). As an individual estimate, such
-a term wouldn't be useful because it leads to division by zero (or an
-estimate of infinite dimensionality) and couldn't be properly averaged
-by harmonic mean. Especially for low \\( k \\), including that zero
-term inflates the estimate of dimensionality, but this isn't a
-significant issue for Ma et al. because they use the same estimator
-consistently and are concerned with comparisons between rather than
-magnitudes of \\( D \\).
+In this form, \\( r_i(x) \\) is the distance to the \\( i\text{-th}
+\\) nearest neighbor of the point \\( x \\), and \\( r_k(x) \\) is the
+maximum of these distances. Here the \\( k \\) neighbors include the
+farthest one, defining \\( r_k(x) \\), which is elsewhere called \\(
+r_{\text{bound}} \\). The effect of this inclusion is to add a \\(
+\log(1) = 0 \\) term to the sum (which would not be meaningful as an
+individual estimate) or equivalently to average \\( k-1 \\) estimates
+as if there were \\( k \\). With two nearest neighbors, this will
+incorrectly double the estimate, and it will always inflate it to some
+degree.
 
-To estimate dimensionality, nearest neighbors should be gathered
-starting from points belonging to the dataset, or at least "within the
-cloud" of the dataset. Ma et al. use their estimator to compare points
-that belong to a dataset with points that don't necessarily belong to
-that dataset. In this way, LID can be used as a metric for outlier
-detection.
-
-
-#### <a name="minimal" href="#minimal">Minimal Neighborhood Information</a>
-
-It's possible to use the [CDF](#cdf) to find quantiles. For example,
-the \\( r \\) that gives \\( P(R<r)=0.5 \\) is the median of the
-distribution. Further, if the median \\( r \\) is \\( r_{1/2} \\),
-then dimensionality is:
-
-\\[ D = \frac{\log{2}}{\log{ \frac{r_{\text{bound}}}{r_{1/2}} }} \\]
-
-More generally, if the \\( \frac{n}{N+1} \\) quantile \\( r \\) is
-\\( r_n \\), then the following gives dimensionality:
-
-\\[ D = \frac{ \log{ \frac{N+1}{n} } }{ \log{ \frac{r_{\text{bound}}}{r_n} } } \\]
-
-So if you have a set of \\( N \\) points evenly spaced (in
-probability) within an \\( r_{\text{bound}} \\), the \\( n \\)th point
-would be the \\( \frac{n}{N+1} \\) quantile, each ratio above would
-give the correct value for \\( D \\), and if you plotted the numerator
-against the denominator for all the points, the result would be a
-straight line with slope \\( D \\).
-
-[Facco et al.][] use this technique. After substitutions and adjusting
-for an off-by-one issue, their Equation 7 is identical to the above.
-Facco et al. note that they find considerable outliers in their data
-that have to be removed before they can apply their technique of
-estimating \\( D \\) by regression of the line described.
+In addition to the arithmetic mean, sometimes a regression approach is
+used to combine estimates of dimensionality. [Facco et al.][] apply
+such an approach, noting and dropping large outliers in order to get
+more robust estimates. The [harmonic mean](#harmonic) (itself
+[a kind of robust regression][]) is more appropriate.
 
 [Facco et al.]: https://www.nature.com/articles/s41598-017-11873-y.pdf
-
-For large \\( N \\), the technique of Facco et al. is close to the
-maximum likelihood estimator. It helps that the average of \\( \log{
-\left( \frac{N+1}{n} \right) } \\) for \\( n \\) from 1 to \\( N \\)
-is close to 1. I suspect that using the maximum likelihood estimator
-(with harmonic mean) is preferable, and note also that the harmonic
-mean is itself [a kind of robust regression][].
-
 [a kind of robust regression]: https://stats.stackexchange.com/questions/264368/harmonic-mean-minimizes-sum-of-squared-relative-errors
 
 
