@@ -140,6 +140,9 @@ the derivative with respect to \( D \) of the natural log likelihood
 equal to zero gives a simple solution.</p>
 <p>\[ \log{\left( \frac{r}{r_{\text{bound}}} \right)} + \frac{1}{D} = 0 \]</p>
 <p>\[ D = \frac{1}{\log{ \left( \frac{r_{\text{bound}}}{r} \right)}} \]</p>
+<p>This choice of natural log is not arbitrary, because a derivative is
+taken; using a different log base would introduce an additional
+constant factor.</p>
 <h4><a name="harmonic" href="#harmonic">Harmonic mean for dimensionality</a></h4>
 <p>With two observed radii \( r_1 \) and \( r_2 \), the joint
 probability is two (PDF) likelihoods multiplied together, and the log

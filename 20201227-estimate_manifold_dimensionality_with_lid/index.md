@@ -202,6 +202,10 @@ equal to zero gives a simple solution.
 
 \\[ D = \frac{1}{\log{ \left( \frac{r_{\text{bound}}}{r} \right)}} \\]
 
+This choice of natural log is not arbitrary, because a derivative is
+taken; using a different log base would introduce an additional
+constant factor.
+
 
 #### <a name="harmonic" href="#harmonic">Harmonic mean for dimensionality</a>
 
