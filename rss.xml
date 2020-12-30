@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The weather outside is frightening</title>
+<description><![CDATA[
+
+<p>Based on ten years of daily GHCN data, it is too cold, too hot, and
+too wet out there. Best chances for livable weather: parts of the
+Mexican plateau, California, and maybe Hawaii.</p>
+<p><img src="chance_of_freezing.png" width="49%">
+<img src="chance_of_heat.png" width="49%">
+<img src="chance_of_precipitation.png" width="49%">
+<img src="most_habitable.png" width="49%"></p>
+<hr>
+<h3><a name="temp" href="#temp">Temperature</a></h3>
+<p>Lots of land is up north where it gets cold, and everything around the
+equator gets too hot. Is there a Goldilocks region in between that's
+"just right" year-round? No. Your best hope is Stockholm syndrome: "I
+love the seasons!"</p>
+<p><img src="chance_of_freezing.png" width="49%">
+<img src="chance_of_heat.png" width="49%"></p>
+<p>To get a moderate temperature all year, you have to rely on oceans, or
+mountainous elevations, or both. Thanks a lot, solar system.</p>
+<h3><a name="prcp" href="#prcp">Precipitation</a></h3>
+<p>Even with over 15 thousand stations and ten years of <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">GHCN</a> data,
+there's spotty coverage for Africa, South America, and Asia. It also
+looks like the US precipitation data may be systematically different
+from Canadian and Mexican data. Thanks a lot, humans.</p>
+<p><img alt="Chance of precipitation" src="chance_of_precipitation.png"></p>
+<p>Precipitation: Can't live with it, can't have nice plants without it.
+Thanks a lot, water cycle. Let's say once every six to nine days is
+acceptable to avoid deserts.</p>
+<h3><a name="habitable" href="#habitable">Habitable areas</a></h3>
+<p><img alt="Even slightly habitable" src="even_slightly_habitable.png"></p>
+<p>Mexico! With ocean on two sides and a high plateau to cut the
+temperature and humidity, Mexico ought to be where everybody lives.
+<a href="https://weather-and-climate.com/average-monthly-Rainfall-Temperature-Sunshine,zacatecas-zacatecas-mx,Mexico">Zacatecas</a> seems particularly good.</p>
+<p>California has some okay spots, like San Diego and Monterey. Look out
+for forest fires.</p>
+<p>Hawaii isn't out of bounds, but even the lows are high, so if you
+aren't at the beach it might not be ideal. Avoid the volcanoes.</p>
+<p>Then there are survivable places, including lots of the west coast of
+the Americas, New Zealand, and the southern coast of Australia. The
+tip of South Africa and large parts of Europe could be okay. I think
+that's roughly Japan and Korea seeming not quite deadly.</p>
+<h3><a name="methods" href="#methods">Methods</a></h3>
+<p>This slapdash analysis <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201230-weather_outside_is_frightening/prepare_data.sh">gathers some data</a> and visualizes it with a
+Python <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201230-weather_outside_is_frightening/visualize.ipynb">notebook</a>, which has all the details and a few more fun
+maps.</p>
+<p>The chances of cold, heat, and precipitation are fractions of days
+with low temperature under 0&#176; C (32&#176; F), high temperature over 30&#176; C
+(86&#176; F), and precipitation over one millimeter, respectively. The
+precipitation score may have issues. The scales on these maps go all
+the way from 0% to 100%, using the plasma color scale. Legends are
+ugly.</p>
+<p>A location's score is the sum of the cold score, hot score, and
+distance of the precipitation score from the range 1/6 to 1/9. It's
+not quite a rate any more, just a badness score. The "Most habitable"
+map colors scores less than 1/4, and the "Even slightly habitable" map
+colors scores less than 3/5. <em>Do you really want to live somewhere
+with a score over 60%?</em></p>    
+    ]]></description>
+<link>http://planspace.org/20201230-weather_outside_is_frightening/</link>
+<guid>http://planspace.org/20201230-weather_outside_is_frightening/</guid>
+<pubDate>Wed, 30 Dec 2020 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Estimate manifold dimensionality with LID</title>
 <description><![CDATA[
 
@@ -2755,28 +2819,6 @@ them from different perspectives." (page 125)</p>
 <link>http://planspace.org/20201011-bad_choices_by_almossawi/</link>
 <guid>http://planspace.org/20201011-bad_choices_by_almossawi/</guid>
 <pubDate>Sun, 11 Oct 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Anki is easy</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Anki_(software)">Anki</a>, named after the Japanese for "memorization," is a
-<a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> flashcard app. I've been interested in it
-before, but I didn't jump in because it seemed like a commitment to
-install it and be an Anki person. It turns out you don't need to
-install anything, you can use <a href="https://ankiweb.net/">AnkiWeb</a> for free online, so I've
-started adding cards and it's fun!</p>
-<p>Now I keep an <a href="https://ankiweb.net/">AnkiWeb</a> tab open and add things I want to remember
-as I come across them. A failure mode I experienced playing with
-similar software in the past was adding pre-made decks of cards from
-other people, which leads to frustration and just not caring about
-them. Much better to add just occasional things that you care about.</p>
-<p>Now instead of just complaining about my memory, I'm also doing
-something about it!</p>    
-    ]]></description>
-<link>http://planspace.org/20201009-anki_is_easy/</link>
-<guid>http://planspace.org/20201009-anki_is_easy/</guid>
-<pubDate>Fri, 09 Oct 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
