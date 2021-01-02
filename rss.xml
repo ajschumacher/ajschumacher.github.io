@@ -7,6 +7,97 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Predicting the future from 2021</title>
+<description><![CDATA[
+
+<p>Second year of doing <a href="/20200112-predicting_the_future_from_2020/">these</a>! Let's make some predictions for 1, 5,
+10, and 20 years out!</p>
+<h3>By 2022</h3>
+<ul>
+<li>Vaccine effective in controlling all strains of COVID-19.</li>
+<li>No additional pandemic on the scale of COVID-19.</li>
+<li>Donald Trump indicted.</li>
+<li>S&amp;P 500 closes above 4,000.</li>
+</ul>
+<h3>By 2026</h3>
+<ul>
+<li>At least one of <a href="https://en.wikipedia.org/wiki/Facebook,_Apple,_Amazon,_Netflix_and_Google">FAANG</a> split up by government intervention.</li>
+<li>Joe Biden is dead.</li>
+<li>Democratic presidential ticket of Harris and Buttigieg loses.
+   [<a href="#1">1</a>]</li>
+<li>Intelligent extraterrestrials clearly real and communicating with
+   humans. [<a href="#2">2</a>]</li>
+<li>S&amp;P 500 closes above 6,000.
+ <!-- * My grandparents are dead. --></li>
+</ul>
+<h3>By 2031</h3>
+<ul>
+<li>S&amp;P 500 closes above 8,000.</li>
+</ul>
+<h3>By 2041</h3>
+<ul>
+<li>S&amp;P 500 closes above 12,000.</li>
+</ul>
+<p>[<a name="1" href="#1">1</a>] What odds would you give me?</p>
+<p>[<a name="2" href="#2">2</a>] I've included one low-probability, never
+occurred before, possibly impossible prediction, at the recommendation
+of my sister. There were <a href="https://en.wikipedia.org/wiki/Haim_Eshed">Haim Eshed</a>'s claims, after all, and those
+<a href="https://en.wikipedia.org/wiki/Pentagon_UFO_videos">videos</a>. And wouldn't it be fun? I'll give aliens an optimistic 2%
+for the next five years and reevaluate then as needed.</p>
+<hr>
+<h3>Reviewing predictions from 2020</h3>
+<p>All my one-year <a href="/20200112-predicting_the_future_from_2020/">predictions</a> were correct, at least if you interpret my
+"S&amp;P under 3,000" as meaning any time during the year, not just at the
+end of the year.</p>
+<p>I'm feeling more optimistic about the stock market now than I was last
+year. Maybe that's a sign that it'll do more poorly now?</p>
+<p>I had Justice Ginsberg dead by 2025, so my timing was sadly not
+maximally precise.</p>
+<p>Most of my predictions from last year were very conservative.
+Understanding the present is a good method for predicting the near
+future, but it isn't very interesting.</p>
+<p>I have less to say about the farther future. It's harder to predict,
+and I already <a href="/20200112-predicting_the_future_from_2020/">predicted</a> some things in the range of 10-20 years
+out last year. No changing them now! I'm also just thinking more about
+personal plans/goals; this stuff is just for fun.</p>
+<h3>Probabilistic predictions?</h3>
+<p><a href="https://slatestarcodex.com/2020/04/29/predictions-for-2020/">Some people</a> assign probabilities to all their predictions, and I
+think this isn't very interesting, because it's easy to nod along with
+probabilities. Predictions are interesting when they're surprising,
+and certainty can increase surprise.</p>
+<p>It would be possible to compare probabilities between people and see
+where they're most different. I could imagine making a little web
+survey/app for this, which might be fun and good to do in a class
+learning about <a href="/20201221-ulysses_compass/">cross-entropy</a>, for example.</p>
+<p>A possible taxonomy of predictions by probability:</p>
+<ul>
+<li>Very likely based on the present. (More hurricanes.)</li>
+<li>Coin flip. (Old person dies in some period.)</li>
+<li>Slightly unlikely. (Underdog wins something.)</li>
+<li>Very rare but known possible. (Pandemic.)</li>
+<li>Possibly impossible. (Aliens visit Earth for wine and cheese party.)</li>
+</ul>
+<p>It's the very likely ones that make the most sense to think about most
+of the time, I think, both because they don't require hedging and
+because there's less uncertainty <em>in the estimate of the probability
+itself</em>.</p>
+<h3>COVID-19 and the right questions</h3>
+<p>COVID-19 is the big thing that wasn't predicted for 2020: very rare
+but known possible. I'm not going to predict any other things in this
+category this year either, because that's easier and usually right.</p>
+<p>When I wrote my 2020 predictions, there was already some news about
+COVID-19. Is there something like that right now that I'm missing? I
+googled "early signs" but didn't find anything likely to make me seem
+perspicacious.</p>
+<p>The things that turn out to be important are hard to predict because
+you have to ask the right questions to even consider them. What aren't
+we considering now that will turn out to be important?</p>    
+    ]]></description>
+<link>http://planspace.org/20210102-predicting_the_future_from_2021/</link>
+<guid>http://planspace.org/20210102-predicting_the_future_from_2021/</guid>
+<pubDate>Sat, 02 Jan 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The weather outside is frightening</title>
 <description><![CDATA[
 
@@ -2686,139 +2777,6 @@ true.</p>
 <link>http://planspace.org/20201012-bad_arguments_by_almossawi/</link>
 <guid>http://planspace.org/20201012-bad_arguments_by_almossawi/</guid>
 <pubDate>Mon, 12 Oct 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Bad Choices, by Almossawi</title>
-<description><![CDATA[
-
-<p>I enjoyed Almossawi's illustrated introduction to computational
-thinking, which is <a href="https://bookofbadchoices.com/">freely available</a> online. I've been <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/198">thinking</a>
-about non-fiction(ish) books for kids, and this one could be read by
-middle-schoolers, I think, and possibly spark interest in learning
-more. It illustrates the challenges and rewards of telling stories
-about computer science topics.</p>
-<hr>
-<p>Almossawi has one of his distinctive <a href="https://en.wikipedia.org/wiki/Mind_map">mind map</a>s toward the end of
-the book. Linearized, the topics in the book look something like this:</p>
-<ul>
-<li>Fundamentals<ul>
-<li>Stacks</li>
-<li>Arrays</li>
-<li>Linked lists</li>
-<li>Asymptotic notation</li>
-<li>Worst, average cases</li>
-</ul>
-</li>
-<li>Searching<ul>
-<li>Binary search</li>
-<li>Linear search</li>
-<li>Hash tables</li>
-</ul>
-</li>
-<li>Sorting<ul>
-<li>Library sort</li>
-<li>Priority queues</li>
-<li>Mergesort</li>
-<li>Quicksort</li>
-<li>Insertion sort</li>
-</ul>
-</li>
-<li>Graphs<ul>
-<li>Maze-solving</li>
-<li>Link analysis</li>
-</ul>
-</li>
-<li>Strings<ul>
-<li>Huffman coding</li>
-</ul>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p>"Note that all the lines in this book are plotted on a log-log
-scale, which is why the shapes of the lines are the way they are."
-(page xi)</p>
-</blockquote>
-<p>I would have liked to see this better explained. The lines are never
-labeled, and I'm not sure why this was intentional.</p>
-<blockquote>
-<p>"The lines in those graphs were intentionally unlabeled." (page 137)</p>
-</blockquote>
-<p>Unless it was for this reason:</p>
-<blockquote>
-<p>"In my experience, any learning environment that encourages students
-to be fast learners is setting its students up for failure." (page
-xi)</p>
-</blockquote>
-<p>That's interesting, but I'm not sure it's a good justification. At
-least, I think it would be good to be explicit, like: "Add your own
-labels to these," if that's what the reader is supposed to do.</p>
-<hr>
-<blockquote>
-<p>"If you look at human history, you're likely to find that many of
-the names you recognize belong to people who were educated as
-apprentices rather than as note takers." (page 3)</p>
-</blockquote>
-<p>The "to learn more" section says this is from "Most Likely to Succeed:
-Preparing Our Kids for the Innovation Era."</p>
-<hr>
-<p>A glitch in the <a href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a> example (starting page 69) is
-corrected in the <a href="https://github.com/almossawi/badchoices/wiki/Errata">errata</a>.</p>
-<hr>
-<blockquote>
-<p>"Interestingly, though, Morse determined the frequency of various
-letters not by talking to experts or conducting a study or analyzing
-data, but by counting the number of types in a printer's type box.
-So the next time a pedant questions your research methods, take
-heart." (page 72)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The <em>Wall Street Journal</em> published an article recently about the
-rise of scrabble champions in Nigeria, and how their winning edge
-isn't necessarily due to a better vocabulary but rather to the
-counterintuitive tactic of opting for shorter words." (page 80)</p>
-</blockquote>
-<p>The "to learn more" section references <a href="https://www.wsj.com/articles/for-nigerian-scrabble-stars-short-tops-shorter-1463669734">For World&#8217;s Newest Scrabble Stars, SHORT Tops SHORTER</a>.</p>
-<hr>
-<blockquote>
-<p>"We tend to interpret new information in a way that fits with what
-we already believe. It's what computer scientist Alan Kay calls
-relativizing." (page 84)</p>
-</blockquote>
-<p>This seems sort of interesting, but I don't see a good reference for
-it.</p>
-<hr>
-<blockquote>
-<p>"Douglas Carl Engelbart, inventor of the computer mouse, has written
-about the need to not only make the process of completing a set of
-tasks more efficient, but also the process of questioning whether
-the tasks are essential to begin with." (page 84)</p>
-</blockquote>
-<p>I would love to find this writing!</p>
-<hr>
-<blockquote>
-<p>"We can't really explain a heap by analogy." (page 120)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"When Feynman was once asked how he developed his legendary ability
-to solve problems so quickly, he said that it was because he modeled
-those problems in a multitude of ways, which is to say he looked at
-them from different perspectives." (page 125)</p>
-</blockquote>
-<hr>
-<p>The "to learn more" section includes references to:</p>
-<ul>
-<li><a href="http://nautil.us/issue/21/information/the-man-who-tried-to-redeem-the-world-with-logic">The Man Who Tried to Redeem the World with Logic</a></li>
-<li><a href="https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf">Computational Thinking</a></li>
-</ul>
-<hr>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20201011-bad_choices_by_almossawi/</link>
-<guid>http://planspace.org/20201011-bad_choices_by_almossawi/</guid>
-<pubDate>Sun, 11 Oct 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
