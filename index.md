@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-02-07: [The Enchiridion in 52 sentences](/20210107-enchiridion_in_52_sentences/)
  * 2021-01-02: [Predicting the future from 2021](/20210102-predicting_the_future_from_2021/)
  * 2020-12-30: [The weather outside is frightening](/20201230-weather_outside_is_frightening/)
  * 2020-12-27: [Estimate manifold dimensionality with LID](/20201227-estimate_manifold_dimensionality_with_lid/)
