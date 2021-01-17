@@ -613,7 +613,7 @@ Hunt advocates using a personal wiki.
 
 > "The real beauty of this approach is that once you have a place to
 > put a specific bit of information, you'll notice that new, relevant
-> bits of data suddnely start to show up otu of nowhere. It's a
+> bits of data suddenly start to show up out of nowhere. It's a
 > similar phenomenon to _sense tuning_."
 
 He doesn't quite manage to say Baader-Meinhof.
