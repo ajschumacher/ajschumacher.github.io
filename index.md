@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-01-21: [Entangled Life, by Sheldrake](/20210121-entangled_life_by_sheldrake/)
  * 2021-01-16: [Pragmatic Thinking and Learning, by Andy Hunt](/20210116-pragmatic_thinking_and_learning/)
  * 2021-01-07: [The Enchiridion in 52 sentences](/20210107-enchiridion_in_52_sentences/)
  * 2021-01-02: [Predicting the future from 2021](/20210102-predicting_the_future_from_2021/)
