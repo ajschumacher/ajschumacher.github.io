@@ -7,6 +7,26 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Let's share books!</title>
+<description><![CDATA[
+
+<p>Books on shelves are sad. They should be read! Please read my books.</p>
+<p>You can browse over 500 of our household's books in two ways:</p>
+<ul>
+<li><a href="https://www.librarycat.org/lib/ajschumacher">a modern-ish search-based interface</a></li>
+<li><a href="https://www.librarything.com/catalog/ajschumacher">an old-looking list interface where you can see everything</a></li>
+</ul>
+<p><a href="/aaron/">Contact me</a> if something catches your eye!</p>
+<p>If you'd like, you can join <a href="https://www.librarything.com/">LibraryThing</a> too. You can search there
+through all your friends' books (add <a href="https://www.librarything.com/profile/ajschumacher">me</a>!) which is pretty neat.
+You can add your books too! The LibraryThing phone app is pretty good
+for easily adding books.</p>    
+    ]]></description>
+<link>http://planspace.org/20210122-lets_share_books/</link>
+<guid>http://planspace.org/20210122-lets_share_books/</guid>
+<pubDate>Fri, 22 Jan 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Entangled Life, by Sheldrake</title>
 <description><![CDATA[
 
@@ -3045,30 +3065,6 @@ from a distance." (page 245)</p>
 <link>http://planspace.org/20201028-failure_to_disrupt_by_reich/</link>
 <guid>http://planspace.org/20201028-failure_to_disrupt_by_reich/</guid>
 <pubDate>Wed, 28 Oct 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Sampling can be hard to beat, for text understanding</title>
-<description><![CDATA[
-
-<p>If you have a lot of related documents (like thousands of reviews of a
-product, or answers to a survey question) you might be tempted to use
-an automatic procedure to summarize them (maybe making a word cloud,
-or applying <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">LDA</a>, or something fancier). No automated process is
-flawless, but if you need to work with many groups of documents, such
-an approach could be called for. Regardless of whether you use an
-automated technique, you should still start by reading a sample of
-documents, and in fact reading may be the best way to understand what
-people have said.</p>
-<p>This is a special case of a few more general principles:</p>
-<ul>
-<li>Look at the data</li>
-<li>Simple techniques can be very effective</li>
-<li>Start with a baseline for comparison</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20201021-sampling_can_be_hard_to_beat/</link>
-<guid>http://planspace.org/20201021-sampling_can_be_hard_to_beat/</guid>
-<pubDate>Wed, 21 Oct 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
