@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-01-31: [101 things to learn in art school, by Kit White](/20210131-101_things_to_learn_in_art_school_by_white/)
  * 2021-01-22: [Let's share books!](/20210122-lets_share_books/)
  * 2021-01-21: [Entangled Life, by Sheldrake](/20210121-entangled_life_by_sheldrake/)
  * 2021-01-16: [Pragmatic Thinking and Learning, by Andy Hunt](/20210116-pragmatic_thinking_and_learning/)
