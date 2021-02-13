@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-02-13: [High Concept Pitch Generator](/20210213-high_concept_pitch_generator/)
  * 2021-01-31: [101 things to learn in art school, by Kit White](/20210131-101_things_to_learn_in_art_school_by_white/)
  * 2021-01-22: [Let's share books!](/20210122-lets_share_books/)
  * 2021-01-21: [Entangled Life, by Sheldrake](/20210121-entangled_life_by_sheldrake/)

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>High Concept Pitch Generator</title>
+  </head>
+  <body>
+    <article>
+<h1>High Concept Pitch Generator</h1>
+<p class="date">Saturday February 13, 2021</p>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<script>
+
+d3.csv('sites.csv', function(sites){
+  d3.csv('fields.csv', function(fields){
+    site = sites[Math.floor(Math.random() * sites.length)].site;
+    field = fields[Math.floor(Math.random() * fields.length)].field;
+    $('#concept').append('"It\'s the '+site+" of "+field+'."')
+  });
+});
+
+</script>
+
+<p><center>
+<h3>We had a three-day retreat and came up with a new startup concept:</h3></p>
+<h1><div id="concept"></div></h1>
+
+<h5>(reload for a new billion-dollar idea) (royalties to <a href="https://twitter.com/planarrowspace">@planarrowspace</a> and <a href="https://twitter.com/chris_whong">@chris_whong</a>)</h5>
+
+<p></center></p>
+<hr />
+<p>This is a re-hosting of the <a href="http://bl.ocks.org/ajschumacher/raw/5511522/">original</a> Chris and I made in 2013. We
+were reminded of it by <a href="http://pitchdeck.business/">Pitch Deck</a>, which turns this idea into a
+party game (with better <a href="https://gist.github.com/ajschumacher/5511522">lists</a>, I think).</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
