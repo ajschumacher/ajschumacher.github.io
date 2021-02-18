@@ -7,6 +7,50 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Microphones matter</title>
+<description><![CDATA[
+
+<table>
+<tr>
+
+<td>
+MacBook Air built-in mic
+<audio controls src="computer_mic.mp3"></audio>
+</td>
+
+<td>
+Apple wired headphone mic
+<audio controls src="wired_apple_headphone_mic.mp3"></audio>
+</td>
+
+</tr>
+<tr>
+
+<td>
+Bose QC35 II wireless headphone mic
+<audio controls src="wireless_headphone_mic.mp3"></audio>
+</td>
+
+<td>
+Blue Yeti USB mic
+<audio controls src="new_mic.mp3"></audio>
+</td>
+
+</tr>
+</table>
+
+<p>These sound different! The laptop mic has <em>tons</em> of room noise. I
+think the Bose headphones are trying hard to do clever signal
+processing which reduces background noise but also makes my voice more
+muted and a little robotic in places. The Yeti is pretty good but
+still picks up some unintended nearby sounds despite being in
+directional mode.</p>    
+    ]]></description>
+<link>http://planspace.org/20210218-microphones_matter/</link>
+<guid>http://planspace.org/20210218-microphones_matter/</guid>
+<pubDate>Thu, 18 Feb 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Big Con, by Maurer</title>
 <description><![CDATA[
 
@@ -2593,188 +2637,6 @@ the <a href="https://en.wikipedia.org/wiki/Mont_Pelerin_Society">Mont Pelerin So
 <link>http://planspace.org/20201109-economics_of_star_trek_by_webb/</link>
 <guid>http://planspace.org/20201109-economics_of_star_trek_by_webb/</guid>
 <pubDate>Mon, 09 Nov 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Game Changer, by Solomon and Blumberg</title>
-<description><![CDATA[
-
-<p>I picked this up because of the subtitle, "How to be 10x in the talent
-economy." I'm interested in human <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/174">differences in productivity</a>. The
-<a href="https://www.harpercollinsleadership.com/game-changer/">book</a> had little to say on the technical side, but emphasized
-balancing "hard" and "soft" skills, with a big focus on continual
-improvement via feedback and coaching. The book is largely an
-advertisement for the authors' businesses (10x <a href="https://www.10xmanagement.com/">management</a> /
-<a href="https://10xascend.com/">ascend</a>) and I think fairly effective as such.</p>
-<p>I've worked in a couple companies with variations on the theme of
-having a "career manager" and a "project manager," sometimes the same
-person, which can engender conflicts of interest. Solomon and
-Blumberg's talent management model essentially outsources your career
-management to an independent firm, which is interesting. It could be
-viewed as a kind of <a href="https://www.pmi.org/learning/library/matrix-organization-structure-reason-evolution-1837">matrixing</a> that extends beyond company borders.</p>
-<p>Another way of viewing it is as starting your own consultancy but
-outsourcing lead generation (and some other functions, like contracts)
-to Solomon and Blumberg. That removes a major difficulty of going it
-alone, if it works well. There are still trade-offs associated with
-working 1099 vs. W-2 jobs; better health insurance options etc. would
-still help more people make the leap toward greater independence from
-corporations.</p>
-<hr>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<p>The authors give a quantitative example early on to make "10x" real:</p>
-<blockquote>
-<p>"Two weeks later, Nicole returned to our office with the news that
-she had let go of no less than thirty-three of her thirty-six-person
-team. <em>More than 90 percent.</em> She was sorry to lay off that many
-fine workers and was quick to mention that they were well taken care
-of, but there was no way around this one simple fact: Our three
-recommended 10xers could deliver a better, stronger, more
-sustainable product than thirty-three or even a hundred engineers
-who were just "very good."" (page xiv)</p>
-</blockquote>
-<p>There's some interesting conversation to be had about labor relations,
-the future of work, and what direction we really want to move in, I
-think.</p>
-<hr>
-<blockquote>
-<p>"In the new talent economy, everybody you deal with better be 10x,
-or at least striving to be." (page xiv)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Great talent becomes 10x when it develops the quality of
-<em>manageability</em>&#8211;the ability to seek out and internalize powerful
-outside guidance, built on an insatiable desire for growth and
-improvement." (page xx)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... they do it because <em>they love the doing of it</em>&#8211;it's the most
-important thing you can know about 10xers." (page 6)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... the future will see work and learning blend into one." (page
-14, quoting <a href="https://www.forbes.com/sites/adigaskell/2019/01/02/solving-future-skills-challenges/">The Key To Solving Future Skills Challenges</a>)</p>
-</blockquote>
-<hr>
-<p>On page 16 they reference
-<a href="https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success">The two-pizza rule and the secret of Amazon's success</a>.</p>
-<hr>
-<p>They speak positively about Objectives and Key Results (<a href="https://felipecastro.com/en/okr/what-is-okr/">OKRs</a>)...
-Maybe I should try those?</p>
-<hr>
-<p>They have a neat <a href="https://10xascend.com/calculator/">Lifestyle Calculator</a> for considering 24 different
-priorities in considering a job.</p>
-<hr>
-<blockquote>
-<p>"When you see a door, what do you do? Do you break it down, kick it
-open? Or do you go under it, over it? I need people who consider
-every possibility, who can't just look at a thing for what it
-usually is. They find strategic solutions from every angle. If you
-can't do that, then you're the kind of person that gets stuck, and I
-don't have time to help you when you do." (page 34, quoting Jesse
-Lee)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Addiction, self-sabotage, procrastination, laziness, rage, chronic
-fatigue, and depression are all ways that we withhold our full
-participation in the program of life that we are offered." (page 43,
-quoting Charles <a href="https://en.wikipedia.org/wiki/Charles_Eisenstein#The_More_Beautiful_World_Our_Hearts_Know_is_Possible">Eisenstein</a>)</p>
-</blockquote>
-<hr>
-<p>Chapter 3, "Success and Sabotage&#8211;The Manageability Continuum," is
-largely about growth via feedback, and hiring for people who can do
-that.</p>
-<hr>
-<blockquote>
-<p>"The cost of a bad hire is incalculable, and not just from a
-financial perspective." (page 57)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""I don't think you can fix a temper. For the bottom 10 percent,
-sabotage is just so ingrained in their personality. And I'm not a
-big fan of performance improvement plans. Ninety-five percent of the
-time, they're not going to make it, and if they do make it, you're
-just excusing the fact that they're not really the right person for
-the job because you don't want HR to be upset. It's very unusual for
-someone from that lower 10 percent or 15 percent to suddenly become
-a top 10 percent. At best you can move them into the middle group
-where they can contribute without getting in the way."</p>
-<p>"Goldsmith is far more optimistic about the 80 percent in the
-middle, those with mixed impulses. "<em>They</em> can change. I've seen
-examples when great leaders have been put in place that inspire
-previously unsuccessful teams and individuals."" (pages 58-59,
-quoting Scott Goldsmith)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""The biggest change was...the leader worked hard to help the
-individuals on that team to <em>change their mindset.</em>"" (page 59,
-quoting Scott Goldsmith)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""I ask potential new hires one question: <em>'On a scale of one to
-ten, how weird are you?'</em> And I never hire lower than a seven.""
-(page 59, quoting Scott Goldsmith)</p>
-</blockquote>
-<hr>
-<p>On pages 62-63, they highlight three interview questions:</p>
-<ol>
-<li>How well did the potential 10xer handle a significant mistake of
-   their own making?</li>
-<li>How does the potential 10xer handle a situation where a boss or
-   client wants something he or she thinks is a bad idea?</li>
-<li>What does the potential 10xer identify as their biggest
-   professional weaknesses?</li>
-</ol>
-<hr>
-<p>On page 70 they talk about the <a href="https://en.wikipedia.org/wiki/Johari_window">Johari window</a>.</p>
-<hr>
-<blockquote>
-<p>""In fact, I believe that in the future we're going to look back and
-say that what we did before genetic engineering was barbaric and
-like playing a genetic lottery on our children."" (page 125, quoting
-Bryan Bishop)</p>
-</blockquote>
-<p>The book doesn't say much of anything about genetic contributions to
-being "10x" and this quote isn't intended to be related to that topic,
-but the concept is sort of uncomfortably in the background somehow...</p>
-<hr>
-<blockquote>
-<p>"... once you lose the talent war, you completely limit a company's
-ability to compete and excel." (page 140)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"After all, the difference between management and leadership is
-huge." (page 142)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I am humbly and strongly requesting your feedback. We have a lot of
-contact on an ongoing basis and I am really focused on learning more
-about my weaknesses, blind spots, or other areas that need
-meaningful improvement." (page 164)</p>
-</blockquote>
-<p>(Part of some recommended language for soliciting feedback.)</p>
-<hr>
-<blockquote>
-<p>""Talent hits a target no one else can hit. Genius hits a target no
-one else can see."" (page 187, quoting Arthur Schopenhauer)</p>
-</blockquote>
-<hr>
-<p>On page 200, they talk about what they call a "L.E.A.P. doc" which is
-an employment List of Expectations and Priorities, which they suggest
-sending as a kind of first move in negotiating employment. An
-interesting idea.</p>    
-    ]]></description>
-<link>http://planspace.org/20201108-game_changer_solomon_blumberg/</link>
-<guid>http://planspace.org/20201108-game_changer_solomon_blumberg/</guid>
-<pubDate>Sun, 08 Nov 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-02-18: [Microphones matter](/20210218-microphones_matter/)
  * 2021-02-14: [The Big Con, by Maurer](/20210214-the_big_con_by_maurer/)
  * 2021-02-13: [High Concept Pitch Generator](/20210213-high_concept_pitch_generator/)
  * 2021-01-31: [101 things to learn in art school, by Kit White](/20210131-101_things_to_learn_in_art_school_by_white/)
