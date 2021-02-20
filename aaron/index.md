@@ -21,8 +21,16 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * Statistical Rethinking: [Ulysses' compass](/20201221-ulysses_compass/) at GDMS ML CoI on Monday January 25, 2021
  * [Experiment with Abseil Flags](https://us02web.zoom.us/webinar/register/WN_yadCehvlTKmjbCYGr9bxQg) at [Magnimind](https://magnimindacademy.com/) on Wednesday September 9, 2020
+ * Abseil and Vexilog for ML Experiment Management at GDMS ML CoI on
+   Monday July 13, 2020
+ * DoD Ethical Principles for Artificial Intelligence at GDMS ML CoI
+   on Monday March 23, 2020
+ * ML ATR in ISAR Video at GDMS ML CoI on Monday February 24, 2020
  * [Event Sourcing](https://www.meetup.com/Joy-of-Programming-DC/events/xpnxbpyzmbgb/) at [The Joy of Programming meetup](https://www.meetup.com/Joy-of-Programming-DC/) on Wednesday September 4, 2019
+ * What Machine Learning can do for You at GDMS ML CoI on Monday
+   August 26, 2019
  * Data Science Hiring Panel at [General Assembly DC](https://generalassemb.ly/locations/washington-dc) on Thursday May 2, 2019
  * Action and Analysis in the 2018 NY Senate District 5 Election (lightning talk) at [Data Science DC](https://www.meetup.com/Data-Science-DC/) on [Thursday March 14, 2019](https://www.meetup.com/Data-Science-DC/events/259302275/)
  * [Deep Learning Tech Panel](/20180823-machine_learning_deep_learning/) at [WeWork White House](https://www.wework.com/buildings/white-house--washington-DC) on [Wednesday August 22, 2018](https://www.meetup.com/TechinMotionDC/events/252910659/)
