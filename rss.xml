@@ -7,6 +7,260 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Everybody Lies, by Stephens-Davidowitz</title>
+<description><![CDATA[
+
+<p>I finally read my copy of this <a href="http://sethsd.com/everybodylies">book</a>, which is a final form of the
+author's collected <a href="http://sethsd.com/research">research</a> using "non-traditional" data, chiefly
+Google search data. The contribution of <a href="https://twitter.com/natesilver538/status/703975062500732932">racism</a> to Trump's election
+is a headline claim. I don't know that I'm as optimistic as the author
+that these techniques all yield uniformly stronger claims than
+"conventional" research.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"As if the tradeoff between tractability and richness weren't bad
+enough, scientists of human nature are vexed by the Law of Small
+Numbers&#8211;Amos Tversky and Daniel Kahneman's name for the fallacy of
+thinking that the traits of a population will be reflected in any
+sample, no matter how small." (page x, in the foreword by Steven
+Pinker)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The true divide [of racism in the US], Google search data
+suggested, was not South versus North; it was East versus West. You
+don't get this sort of thing much west of the Mississippi." (pages
+7-8)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I am now convinced that Google searches are the most important
+dataset ever collected on the human psyche." (page 14)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"At Google, major decisions are based on only a tiny sampling of all
+their data." (page 21)</p>
+</blockquote>
+<p>This is citing Hal Varian's <a href="https://www.aeaweb.org/articles?id=10.1257/jep.28.2.3">Big Data: New Tricks for Econometrics</a>.</p>
+<hr>
+<blockquote>
+<p>"Good data science is less complicated than people think. The best
+data science is, in fact, surprisingly intuitive." (page 26)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If you can't understand a study, the problem is probably with the
+study, not with you." (page 27)</p>
+</blockquote>
+<hr>
+<blockquote>
+<ol>
+<li>"Offering up new types of data is the first power of Big Data."</li>
+<li>"Providing honest data is the second power of Big Data."</li>
+<li>"Allowing us to zoom in on small subsets of people is the third
+   power of Big Data."</li>
+<li>"Allowing us to do many causal experiments is the fourth power of
+   Big Data." (pages 53-54)</li>
+</ol>
+</blockquote>
+<hr>
+<p>On page 57 he mentions "<a href="https://research.google/pubs/pub41695/">Google Correlate</a>," which seems neat
+("Google Trends in reverse") and was publicly available from 2011 to
+2019.</p>
+<hr>
+<blockquote>
+<p>"The Big Data revolution is less about collecting more and more
+data. It is about collecting the right data." (page 62)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"First, and perhaps most important, if you are going to try to use
+new data to revolutionize a field, it is best to go into a field
+where old methods are lousy."</p>
+</blockquote>
+<p>He's going through a sort of "Moneyball for X" survey of people:</p>
+<ul>
+<li>Horse racing: Jeff Seder</li>
+<li>Wine: Orley Ashenfelter</li>
+</ul>
+<blockquote>
+<p>"The second lesson is that, when trying to make predictions, you
+needn't worry too much about why your models work."</p>
+<p>"The final lesson to be learned from Seder's successful attempt to
+predict a potential Triple Crown winner is that you have to be open
+and flexible in determining what counts as data." (pages 71-74)</p>
+</blockquote>
+<hr>
+<p>On page 91, he references a <a href="https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-016-0093-1" title="The emotional arcs of stories are dominated by six basic shapes">study</a> that provides quantitative
+evidence for Vonnegut's <a href="https://www.youtube.com/watch?v=oP3c1h8v2ZQ&amp;ab_channel=DavidComberg">Shapes of Stories</a>.</p>
+<hr>
+<blockquote>
+<p>""About one-third of the time, people lie in real life," he
+suggests. "The habits carry over to surveys."" (page 107, quoting
+Roger Tourangeau)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Another reason for lying is simply to mess with surveys. This is a
+huge problem for any research regarding teenagers, fundamentally
+complicating our ability to understand this age group. Researchers
+originally found a correlation between a teenager's being adopted
+and a variety of negative behaviors, such as using drugs, drinking
+alcohol, and skipping school. In subsequent research, they found
+this correlation was entirely explained by the 19 percent of
+self-reported adopted teenagers who weren't actually adopted.
+Follow-up research has found that a meaningful percent of teenagers
+tell surveys they are more than seven feet tall, weigh more than
+four hundred pounds, or have three children. One survey found 99
+percent of students who reported having an artificial limb to
+academic researchers were kidding." (page 108)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"He has always known he was attracted to men, he says, but thought
+that this was universal and something that all men just hid." (page
+119)</p>
+</blockquote>
+<p>This kind of thing is fascinating to me&#8211;private conspiracy theories
+that are self-protecting and secretly mislead those who form them. I
+imagine that many racist people, "proud boys," etc. believe that most
+people agree with them but hide their belief. See also expressions
+like "He's saying what we're all thinking," which is a statement that is difficult to verify.</p>
+<hr>
+<blockquote>
+<p>"One thing that does not seem to matter
+[for explaining Trump support]: economics." (page 139)</p>
+</blockquote>
+<hr>
+<p>Around page 144, he's talking about how the internet is less
+segregated than you might think, in terms of people of all political
+persuasions reading the most popular news sites and so on. He points
+out also that "a surprising amount of the information people get on
+Facebook comes from people with opposing views." This makes me wonder
+how much the perception/reality of increased polarization is <em>caused
+by</em> more communication and exposure to different views. If I never
+hear about my aunt's crazy beliefs, I'm less likely to get upset about
+them and feel like I need to advocate against them. Maybe hearing
+about anti-racism makes some people more racist? Hmm.</p>
+<hr>
+<blockquote>
+<p>"I think it's safe to say that the Great Recession did make child
+abuse worse, although the traditional measures did not show it."
+(page 147)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"We can't blindly trust government data. The government may tell us
+that child abuse or abortion has fallen and politicians may
+celebrate this achievement. But the results we think we're seeing
+may be an artifact of flaws in the methods of collection. The truth
+may be different&#8211;and sometimes, far darker." (pages 149-150)</p>
+</blockquote>
+<p>This is not a critique that is specific to government data...</p>
+<hr>
+<blockquote>
+<p>"Digital truth serum has revealed an abiding interest in judging
+people based on their looks; the continued existence of millions of
+closeted gay men; a meaningful percentage of women fantasizing about
+rape; widespread animus against African-Americans; a hidden child
+abuse and self-induced abortion crisis; and an outbreak of violent
+Islamophobic rage that only got worse when the president appealed
+for tolerance." (page 158)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"First, there can be comfort in knowing that you are not alone in
+you insecurities and embarrassing behavior."</p>
+<p>"The second benefit of digital truth serum is that it alerts us to
+people who are suffering."</p>
+<p>"The final&#8211;and, I think, most powerful&#8211;value in this digital truth
+serum is indeed its ability to lead us from problems to solutions."
+(pages 158-162)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Recall that Chetty's team was trying to figure out what areas are
+good at allowing people to reach the upper middle class. My study
+was trying to figure out what areas are good at allowing people to
+reach fame. The results are strikingly different." (page 184)</p>
+</blockquote>
+<p>This is sort of an interesting look at success for the masses versus
+success for the few, or at least at different levels/types of
+"success"... A possible hypothesis might be that the two should go
+together (more general success, more peak success) but that doesn't
+seem to be the case. The ideas of success may be too different?</p>
+<hr>
+<blockquote>
+<p>"On a given day in some schools in rural India, more than 40 percent
+of teachers are absent." (page 209)</p>
+</blockquote>
+<p>That's referencing <a href="https://economics.mit.edu/files/5582">Incentives Work: Getting Teachers to Come to School</a>, which has this abstract:</p>
+<blockquote>
+<p>"We use a randomized experiment and a structural model to test
+whether monitoring and financial incentives can reduce teacher
+absence and increase learning in India. In treatment schools,
+teachers&#8217; attendance was monitored daily using cameras, and their
+salaries were made a nonlinear function of attendance. Teacher
+absenteeism in the treatment group fell by 21 percentage points
+relative to the control group, and the children&#8217;s test scores
+increased by 0.17 standard deviations. We estimate a structural
+dynamic labor supply model and find that teachers respond strongly
+to financial incentives. Our model is used to compute
+cost-minimizing compensation policies."</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Many economists previously leaned toward the view that leaders
+largely were impotent figureheads pushed around by external forces.
+Not so, according to Jones and Olken's analysis of nature's
+experiment." (page 228)</p>
+</blockquote>
+<p>That's referencing <a href="https://economics.mit.edu/files/3055">Hit or Miss? The Effect of Assassinations on Institutions and War</a>, which has this abstract:</p>
+<blockquote>
+<p>"Assassinations are a persistent feature of the political landscape.
+Using a new dataset of assassination attempts on all world leaders
+from 1875 to 2004, we exploit inherent randomness in the success or
+failure of assassination attempts to identify the effects of
+assassination. We find that, on average, successful assassinations
+of autocrats produce sustained moves toward democracy. We also find
+that assassinations affect the intensity of small-scale conflicts.
+The results document a contemporary source of institutional change,
+inform theories of conflict, and show that small sources of
+randomness can have a pronounced effect on history."</p>
+</blockquote>
+<p>Kind of an interesting analysis for <a href="https://en.wikipedia.org/wiki/Great_man_theory">the great man theory</a>...</p>
+<hr>
+<p>Some discussion around page 238 of the (non-)benefit of going to
+Harvard etc... It's more useful to be the kind of person who <em>could</em>
+go to Harvard (get in, etc.) - the perceived incremental benefit of
+going to Harvard vs. some other school may not be real.</p>
+<hr>
+<blockquote>
+<p>"Generally, if someone tells you he will pay you back, he will not
+pay you back." (page 259)</p>
+</blockquote>
+<p>This is about people writing on microfinance sites. Sounds about
+right; interesting to see quantitative support for this kind of thing.</p>
+<hr>
+<blockquote>
+<p>"social science is becoming a real science."</p>
+</blockquote>
+<p>He says this is the "big point" of his book...</p>
+<hr>
+<p>Strong praise for Jawbone on page 277, which turned out to be bad
+timing as the company went under the year the book came out (2017)...</p>
+<hr>
+<p>On page 283 there's a reference to Ellenberg's <a href="https://en.wikipedia.org/wiki/Hawking_Index">Hawking Index</a>,
+which was amusing to me because I've enjoyed following Ellenberg a
+little bit since reading his <a href="/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20210314-everybody_lies_by_stephens-davidowitz/</link>
+<guid>http://planspace.org/20210314-everybody_lies_by_stephens-davidowitz/</guid>
+<pubDate>Sun, 14 Mar 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Intuition, action, and luck (and Harry Potter)</title>
 <description><![CDATA[
 
@@ -2533,22 +2787,6 @@ still visible.</p>
 <link>http://planspace.org/20201127-correlation_can_be_confounder_determination/</link>
 <guid>http://planspace.org/20201127-correlation_can_be_confounder_determination/</guid>
 <pubDate>Fri, 27 Nov 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Relaxing News</title>
-<description><![CDATA[
-
-<p>Often, when I check the news, I don't really want news. I just want to
-stop looking at whatever I was looking at. Just for a second. But the
-news is distracting. So I made a <a href="relax.html">redirect</a> that goes to a random
-nice picture. It's available at <a href="https://bit.ly/relaxing-news">bit.ly/relaxing-news</a>. Enjoy!</p>
-<h1><a href="https://bit.ly/relaxing-news">bit.ly/relaxing-news</a></h1>
-<p>The pictures are from <a href="https://www.nationalgeographic.com/photography/proof/2017/04/your-shot-unbelievable-landscapes/">National Geographic</a>. The redirect goes to
-their servers.</p>    
-    ]]></description>
-<link>http://planspace.org/20201125-relaxing_news/</link>
-<guid>http://planspace.org/20201125-relaxing_news/</guid>
-<pubDate>Wed, 25 Nov 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
