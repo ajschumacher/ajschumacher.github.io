@@ -202,7 +202,7 @@ This is not a critique that is specific to government data...
 ---
 
 > "First, there can be comfort in knowing that you are not alone in
-> you insecurities and embarrassing behavior."
+> your insecurities and embarrassing behavior."
 
 > "The second benefit of digital truth serum is that it alerts us to
 > people who are suffering."
