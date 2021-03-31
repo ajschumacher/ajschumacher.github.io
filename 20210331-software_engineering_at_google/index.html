@@ -1,0 +1,1346 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Software Engineering at Google</title>
+  </head>
+  <body>
+    <article>
+<h1>Software Engineering at Google</h1>
+<p class="date">Wednesday March 31, 2021</p>
+<p>I read <a href="https://www.oreilly.com/library/view/software-engineering-at/9781492082781/">this</a> over half a year with a book club of colleagues at
+work, one chapter per week, which is part of why I have such a lot of
+notes below. Interesting stuff! Even when it isn't perfectly
+applicable to my own work, it's neat to peek a little bit inside the
+giant company.</p>
+<p><img alt="cover" src="cover.jpg" /></p>
+<ol>
+<li><a href="#ch1">What is Software Engineering?</a></li>
+<li><a href="#ch2">How to Work Well on Teams</a></li>
+<li><a href="#ch3">Knowledge Sharing</a></li>
+<li><a href="#ch4">Engineering for Equity</a></li>
+<li><a href="#ch5">How to Lead a Team</a></li>
+<li><a href="#ch6">Leading at Scale</a></li>
+<li><a href="#ch7">Measuring Engineering Productivity</a></li>
+<li><a href="#ch8">Style Guides and Rules</a></li>
+<li><a href="#ch9">Code Review</a></li>
+<li><a href="#ch10">Documentation</a></li>
+<li><a href="#ch11">Testing Overview</a></li>
+<li><a href="#ch12">Unit Testing</a></li>
+<li><a href="#ch13">Test Doubles</a></li>
+<li><a href="#ch14">Larger Testing</a></li>
+<li><a href="#ch15">Deprecation</a></li>
+<li><a href="#ch16">Version Control and Branch Management</a></li>
+<li><a href="#ch17">Code Search</a></li>
+<li><a href="#ch18">Build Systems and Build Philosophy</a></li>
+<li><a href="#ch19">Critique: Google's Code Review Tool</a></li>
+<li><a href="#ch20">Static Analysis</a></li>
+<li><a href="#ch21">Dependency Management</a></li>
+<li><a href="#ch22">Large-Scale Changes</a></li>
+<li><a href="#ch23">Continuous Integration</a></li>
+<li><a href="#ch24">Continuous Delivery</a></li>
+<li><a href="#ch25">Compute as a Service</a></li>
+</ol>
+<hr />
+<h3>Chapter 1: <a href="#ch1" name="ch1">What is Software Engineering?</a></h3>
+<hr />
+<blockquote>
+<p>"It's <em>programming</em> if 'clever' is a compliment, but it's <em>software
+engineering</em> if 'clever' is an accusation." (page 10)</p>
+</blockquote>
+<p>A colleague notes: "I don’t even think clever in programming should be
+a compliment most times. Elegance deserves a compliment, though."</p>
+<hr />
+<blockquote>
+<p>"... the goal is consensus, not unanimity." (page 18)</p>
+</blockquote>
+<p>I haven't thought about it much before, but if consensus isn't
+unanimity, it's hard to define.</p>
+<hr />
+<blockquote>
+<p>"Efficiency gains from keeping engineers happy, focused, and engaged
+can easily dominate other factors, simply because focus and
+productivity are so variable, and a 10-to-20% difference is easy to
+imagine." (pages 18-19)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"We often say, "Google is a data-driven culture." In fact, that's a
+simplification: even when there isn't <em>data</em>, there might still be
+<em>evidence</em>, <em>precedent</em>, and <em>argument</em>." (page 19)</p>
+</blockquote>
+<p>Also, page 24 adds "<em>assumption</em>."</p>
+<hr />
+<p>Discussion of whether to use an existing thing, fork it to modify it,
+or build your own, on page 22...</p>
+<hr />
+<h3>Chapter 2: <a href="#ch2" name="ch2">How to Work Well on Teams</a></h3>
+<p>This chapter is largely a short version of <a href="/20151118-debugging_teams/">Debugging Teams</a> by the
+same author, which is very welcome.</p>
+<hr />
+<blockquote>
+<p>"Many humans have the instinct to find and worship idols." (page 28)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"The Genius Myth is the tendency that we as humans need to ascribe
+the success of a team to a single person/leader." (page 28)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"The vast majority of the work at Google (and at most companies!)
+doesn't require genius-level intellect, but 100% of the work
+requires a minimal level of social skills." (page 29)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Hopefully most engineers recognize that it is better to be one part
+of a successful project than the critical part of a failed project."
+(page 31)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"We think the middle ground
+[between individual offices and open floor plans] is really the best
+solution. Group teams of four to eight people together in small
+rooms (or large offices) to make it easy (and non-embarrassing) for
+spontaneous conversation to happen." (page 33)</p>
+</blockquote>
+<p>This is similar to advice in <a href="/20200523-peopleware_productive_projects_and_teams/">Peopleware</a>.</p>
+<hr />
+<blockquote>
+<p>"If less-knowledgeable [or, really, any] people on your team feel
+that there's a barrier to asking you a question, it's a problem:
+finding the right balance is an art." (page 33)</p>
+</blockquote>
+<hr />
+<h3>Chapter 3: <a href="#ch3" name="ch3">Knowledge Sharing</a></h3>
+<hr />
+<p>The problem of "all-or-nothing expertise" (page 44)</p>
+<hr />
+<blockquote>
+<p>"Tribal and written knowledge complement each other." (page 46)</p>
+</blockquote>
+<hr />
+<p>They reference <a href="https://rework.withgoogle.com/blog/five-keys-to-a-successful-google-team/">The five keys to a successful Google team
+</a>, which are:</p>
+<ul>
+<li>Psychological safety: Can we take risks on this team without
+   feeling insecure or embarrassed?</li>
+<li>Dependability: Can we count on each other to do high quality work
+   on time?</li>
+<li>Structure &amp; clarity: Are goals, roles, and execution plans on our
+   team clear?</li>
+<li>Meaning of work: Are we working on something that is personally
+   important for each of us?</li>
+<li>Impact of work: Do we fundamentally believe that the work we’re
+   doing matters?</li>
+</ul>
+<hr />
+<blockquote>
+<p>"... Moma, Google's intranet search engine." (page 51)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"YAQS ("Yet Another Question System") is a Google-internal version
+of a Stack Overflow-like website" (page 52)</p>
+</blockquote>
+<p>a Google-internal version of a Stack Overflow-like website</p>
+<hr />
+<p>g3doc is pretty neat. Described more in: <a href="https://www.usenix.org/conference/srecon16europe/program/presentation/macnamara">The Knowledge: Towards a Culture of Engineering Documentation</a></p>
+<hr />
+<p>https://codelabs.developers.google.com/</p>
+<hr />
+<p>This stuff on readability is interesting, since the Google meaning of
+readability is not the same as the usual meaning of readability. It
+helps me better understand such <a href="https://tilde.news/s/zghf2x/what_are_all_jeff_dean_facts">Jeff Dean facts</a> as:</p>
+<ul>
+<li>"Jeff Dean once bit a spider, the spider got super powers and C++
+   readability."</li>
+<li>"Jeff Dean has punch card readability."</li>
+<li>"Jeff Dean has binary readability."</li>
+<li>"Jeff Dean acquired Sawzall readability after writing 58 lines of
+   Sawzall code. As part of his readability review, he pointed out a
+   flaw in the style guide which was promptly corrected by the
+   reviewer."</li>
+<li>"Jeff got Java readability with only 8 lines of code."</li>
+<li>"Jeff Dean has Perl Readability. (TRUE)"</li>
+</ul>
+<hr />
+<p>Engelbart's <a href="https://www.dougengelbart.org/content/view/115/000/">Bootstrapping Organizations Into the 21st Century</a> is
+largely about knowledge sharing.</p>
+<hr />
+<h3>Chapter 4: <a href="#ch4" name="ch4">Engineering for Equity</a></h3>
+<hr />
+<p>In discussing "technology to scan, capture, and identify people
+walking down the street" (page 73) it kind of highlights how fraught
+discussions of ethics are: Is the problem "racial variance in facial
+recognition" or is the problem doing facial recognition <em>at all</em>?</p>
+<hr />
+<blockquote>
+<p>"Google now offers statistical training within the context of AI to
+help ensure that datasets are not intrinsically biased." (page 74)</p>
+</blockquote>
+<p>I asked for more info: https://twitter.com/planarrowspace/status/1317130678643941379</p>
+<hr />
+<blockquote>
+<p>"Ratings, although an important way to measure performance during a
+specific period, are not predictive of future performance and should
+not be used to gauge readiness for a future role or qualify an
+internal candidate for a different team." (page 77)</p>
+</blockquote>
+<hr />
+<h3>Chapter 5: <a href="#ch5" name="ch5">How to Lead a Team</a></h3>
+<hr />
+<blockquote>
+<p>"A <em>Manager</em> is a leader of people, whereas a <em>Tech Lead</em> leads
+technology efforts." (page 81)</p>
+</blockquote>
+<p>Both of these (and the <em>Tech Lead Manager</em>, when one person does both
+roles) seem to be tied to a team (in contrast to "matrix" style).</p>
+<hr />
+<blockquote>
+<p>"Most TLs are also individual contributors, which often forces them
+to choose between doing something quickly themselves or delegating
+it to a team member to do (sometimes) more slowly." (page 82)</p>
+</blockquote>
+<hr />
+<p><a href="https://takeout.google.com/">Google Takeout</a> is a public-facing tool
+(also?) now. (page 83)</p>
+<hr />
+<blockquote>
+<p>"Before the computing age, "management" and "labor" might have taken
+on almost antagonistic roles, with the manager wielding all of the
+power and labor requiring collective action to achieve its own ends.
+But that isn't how modern software companies work." (page 86)</p>
+</blockquote>
+<p>This seems... incomplete.</p>
+<hr />
+<blockquote>
+<p>"Traditional managers worry about how to get things done, whereas
+great managers worry about what things get done (and trust their
+team to figure out how to do it)." (page 87)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"If your employees are so uninterested in their job that they
+actually need traditional-manager babysitting to be convinced to
+work, <em>that</em> is your real problem."</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"[with low performers] It almost always requires temporary
+micromanagement, ..." (page 90)</p>
+</blockquote>
+<hr />
+<p>On page 95, the emphasis on asking questions (rather than giving
+direct advice, etc.) is a good reminder.</p>
+<hr />
+<h3>Chapter 6: <a href="#ch6" name="ch6">Leading at Scale</a></h3>
+<hr />
+<ul>
+<li>Always Be Deciding<ul>
+<li>Identify blinders</li>
+<li>Identify trade-offs</li>
+<li>Decide</li>
+</ul>
+</li>
+<li>Always Be Leaving<ul>
+<li>Build a "self-driving" team</li>
+</ul>
+</li>
+<li>Always Be Scaling<ul>
+<li>Important versus urgent</li>
+<li>Learn to drop balls</li>
+<li>Protecting your energy</li>
+</ul>
+</li>
+</ul>
+<hr />
+<blockquote>
+<p>"... if you agree that your mission is to build a self-driving
+organization, the main mechanism of teaching is through delegation."
+(page 113)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"You give them an assignment, let them fail, and then try again and
+again." (page 113)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"One technique for fighting the feeling that you don't know what
+you're doing is to simply pretend that <em>some</em> expert out there knows
+exactly what to do, and that they're simply on vacation and you're
+temporarily subbing in for them. It's a great way to remove the
+personal stakes and give yourself permission to fail and learn."
+(page 116)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"... over time, as you grow older, your overall stamina builds up.
+Early in your career, working eight hours a day in an office can
+feel like a shock; you come home tired and dazed. But just like
+training for a marathon, your brain and body build up larger
+reserves of stamina over time." (page 120)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Your brain operates in natural 90-minute cycles." (page 121)</p>
+</blockquote>
+<p>They reference <a href="https://en.wikipedia.org/wiki/Basic_rest%E2%80%93activity_cycle">BRAC</a> (Basic Rest-Activity Cycle)... I'm not sure
+how much formal research evidence there really is, but I'm still down
+with taking breaks every once in a while.</p>
+<hr />
+<h3>Chapter 7: <a href="#ch7" name="ch7">Measuring Engineering Productivity</a></h3>
+<hr />
+<p>The "Triage: Is It Even Worth Measuring?" section starting page 125
+reminds me of <a href="https://en.wikipedia.org/wiki/Cassie_Kozyrkov">Cassie Kozyrkov</a>'s "decision science" stuff, focusing
+on statistics for decision-making.</p>
+<hr />
+<p>On page 127 they imagine "there's a major funding deadline
+approaching" which makes me wonder what this means inside Google. How
+is funding determined?</p>
+<hr />
+<p>On page 129 they start talking about Goals/Signals/Metrics (GSM). They
+identify QUANTS categories (Quality of the code, Attention from
+engineers, Intellectual complexity, Tempo and velocity, Satisfaction).
+It seems like this is related to the <a href="https://www.productplan.com/glossary/heart-framework/">HEART framework</a> (Happiness,
+Engagement, Adoption, Retention, Task success) which also uses GSM.</p>
+<hr />
+<p>Page 129 also references Dijkstra's
+<a href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD10xx/EWD1036.html">On the cruelty of really teaching computing science</a> in a footnote.</p>
+<hr />
+<blockquote>
+<p>"Although academic literature has proposed many proxies for code
+quality, none of them have truly captured it. For readability, we
+had a decision of either using a poor proxy and possibly making a
+decision based on it, or simply acknowledging that this is a point
+that cannot currently be measured. Ultimately, we decided not to
+capture this as a quantitative measure, though we did ask engineers
+to self-rate their code quality." (page 133)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"It has routinely been our experience at Google that when the
+quantitative and qualitative metrics disagree, it was because the
+quantitative metrics were not capturing the expected result." (page
+133)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"There is a temptation to use such metrics to evaluate individual
+engineers, or perhaps even to identify high and low performers.
+Doing so would be counterproductive, though. If productivity metrics
+are used for performance reviews, engineers will be quick to game
+the metrics, and they will no longer be useful for measuring and
+improving productivity across the organization. The only way to make
+these measurements work is to let go of the idea of measuring
+individuals and embrace measuring the aggregate effect." (page 134)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Qualitative metrics should also align with the quantitative
+metrics; if they do not, it is likely the quantitative metrics that
+are incorrect." (page 138)</p>
+</blockquote>
+<hr />
+<h3>Chapter 8: <a href="#ch8" name="ch8">Style Guides and Rules</a></h3>
+<hr />
+<blockquote>
+<p>"... our C++ rules disallow use of exceptions, a language feature
+widely used outside of Google code." (page 142)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"SREs, library engineers, and code janitors" (page 147)</p>
+</blockquote>
+<p>I didn't know Google used the term "code janitor"... I found at least
+one <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/37755.pdf">ref</a> that also uses "janitors."</p>
+<hr />
+<p>Page 149 mentions <a href="https://github.com/bazelbuild/starlark">Starlark</a>, which I don't think I'd heard of
+before.</p>
+<hr />
+<blockquote>
+<p>"We place higher value on simplified, straightforward code that is
+easier to understand and maintain." (page 150)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"... multiple inheritance, something explicitly forbidden for all
+other C++ code." (page 151)</p>
+</blockquote>
+<hr />
+<p>I used to like the NumPy comment guidelines, but these days I prefer
+the Google <a href="https://google.github.io/styleguide/pyguide#38-comments-and-docstrings">ones</a> mentioned on page 152.</p>
+<hr />
+<p>I hadn't realized that Google had their own Python autoformatter, as
+mentioned on page 161. Seems like <a href="https://github.com/google/yapf">yapf</a> is very similar to
+<a href="https://github.com/psf/black">black</a>.</p>
+<hr />
+<h3>Chapter 9: <a href="#ch9" name="ch9">Code Review</a></h3>
+<hr />
+<blockquote>
+<p>“At Google, reviewers may even directly share suggested edits with
+an author within the code review tool itself.” (page 503)</p>
+</blockquote>
+<p>GitLab does this, but only for single-line changes, as far as I
+know...</p>
+<hr />
+<blockquote>
+<p>“After you check that piece of code into the codebase, it is no
+longer yours in any case.” (page 507)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“Probably the most important practice to keep the code review
+process nimble is to keep changes small.” (page 509)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“A change description should indicate its type of change on the
+first line, as a summary. The first line is prime real estate and is
+used to provide summaries within the code review tool itself, to act
+as the subject line in any associated emails, and to become the
+visible line Google engineers see in a history summary within Code
+Search (see Chapter 17), so that first line is important.” (page
+512)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Keep Reviewers to a Minimum" (page 514)</p>
+</blockquote>
+<hr />
+<h3>Chapter 10: <a href="#ch10" name="ch10">Documentation</a></h3>
+<hr />
+<blockquote>
+<p>“At Google, our most successful efforts have been when documentation
+is treated like code and incorporated into the traditional
+engineering workflow, making it easier for engineers to write and
+maintain simple documents.” (page 530)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“When we deprecated GooWiki, we found that around 90% of the
+documents had no views or updates in the previous few months.” (page
+593)</p>
+</blockquote>
+<p>And they focus a lot on staleness etc. being connected to <em>ownership</em>.</p>
+<hr />
+<blockquote>
+<p>“...one thing we’ve found is that it helps to keep your documents
+<em>short</em>.” (page 548)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“Most teams at Google require an approved design document before
+starting work on any major project. A software engineer typically
+writes the proposed design document using a specific design doc
+template approved by the team. Such documents are designed to be
+collaborative, so they are often shared in Google Docs, which has
+good collaboration tools. Some teams require such design documents
+to be discussed and debated at specific team meetings, where the
+finer points of the design can be discussed or critiqued by experts.
+In some respects, these design discussions act as a form of code
+review before any code is written.” (page 560)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“If comments are the unit tests of documentation, conceptual
+documents are the integration tests.” (page 568)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“At Google, we often attach “freshness dates” to documentation. Such
+documents note the last time a document was reviewed, and metadata
+in the documentation set will send email reminders when the document
+hasn’t been touched in, for example, three months. Such freshness
+dates, as shown in the following example—and tracking your documents
+as bugs—can help make a documentation set easier to maintain over
+time, which is the main concern for a document” (page 585)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“If you can’t explain it and can’t define it, you probably haven’t designed it well enough.” (page 187)</p>
+</blockquote>
+<hr />
+<h3>Chapter 11: <a href="#ch11" name="ch11">Testing Overview</a></h3>
+<hr />
+<blockquote>
+<p>“The more and faster you want to change your systems, the more you
+need a fast way to test them. The act of writing tests also improves
+the design of your systems.” (page 594)</p>
+</blockquote>
+<hr />
+<ul>
+<li>write tests</li>
+<li>run tests</li>
+<li>react when tests fail</li>
+</ul>
+<hr />
+<p>Benefits:</p>
+<ul>
+<li>less debugging</li>
+<li>increased confidence in changes</li>
+<li>improved documentation</li>
+<li>simpler reviews</li>
+<li>thoughtful design</li>
+<li>fast, high-quality releases</li>
+</ul>
+<hr />
+<blockquote>
+<p>“We have come to the conclusion that there are two distinct
+dimensions for every test case: size and scope. Size refers to the
+resources that are required to run a test case: things like memory,
+processes, and time. Scope refers to the specific code paths we are
+verifying.”</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“in brief, <em>small</em> tests run in a single process, <em>medium</em> tests run
+on a single machine, and <em>large</em> tests run wherever they want”</p>
+</blockquote>
+<hr />
+<p>The <a href="https://testing.googleblog.com/">Google Testing Blog</a> includes their "testing on the toilet"
+one-pagers.</p>
+<hr />
+<blockquote>
+<p>“Code coverage can provide some insight into untested code, but it
+is not a substitute for thinking critically about how well your
+system is tested.”</p>
+</blockquote>
+<hr />
+<ul>
+<li>Orientation classes</li>
+<li>Test certified</li>
+<li>Testing on the toilet</li>
+</ul>
+<hr />
+<p>pH: Project Health</p>
+<hr />
+<h3>Chapter 12: <a href="#ch12" name="ch12">Unit Testing</a></h3>
+<hr />
+<blockquote>
+<p>“Because they make up such a big part of engineers’ lives, Google
+puts a lot of focus on <em>test maintainability</em>. Maintainable tests
+are ones that “just work”: after writing them, engineers don’t need
+to think about them again until they fail, and those failures
+indicate real bugs with clear causes. The bulk of this chapter
+focuses on exploring the idea of maintainability and techniques for
+achieving it.”</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“a brittle test is one that fails in the face of an unrelated change
+to production code that does not introduce any real bugs”</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Strive for Unchanging Tests"</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Test via Public APIs"</p>
+</blockquote>
+<p>Or: <a href="http://xunitpatterns.com/Principles%20of%20Test%20Automation.html#Use%20the%20Front%20Door%20First">Use the front door first</a></p>
+<hr />
+<blockquote>
+<p>"Test State, Not Interactions"</p>
+</blockquote>
+<p>That is, test the <em>result</em>, not <em>how</em> it's achieved.</p>
+<hr />
+<blockquote>
+<p>"Make Your Tests Complete and Concise"</p>
+</blockquote>
+<hr />
+<p>"given, when, then" or "arrange, act, assert"</p>
+<hr />
+<blockquote>
+<p>"Don't Put Logic in Tests"</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>“The lesson is clear: in test code, stick to straight-line code over
+clever logic, and consider tolerating some duplication when it makes
+the test more descriptive and meaningful.”</p>
+</blockquote>
+<hr />
+<p>DAMP (Descriptive and Meaningful Phrases) rather than pure DRY (Don't
+Repeat Yourself)</p>
+<hr />
+<blockquote>
+<p>“test infrastructure must always have its own tests.”</p>
+</blockquote>
+<hr />
+<h3>Chapter 13: <a href="#ch13" name="ch13">Test Doubles</a></h3>
+<hr />
+<p>The tl;dr on page 280 is a pretty good summary:</p>
+<blockquote>
+<ul>
+<li>A real implementation should be preferred over a test double.</li>
+<li>A fake is often the ideal solution if a real implementation can't
+  be used in a test.</li>
+<li>Overuse of stubbing leads to tests that are unclear and brittle.</li>
+<li>Interaction testing should be avoided when possible: it leads to
+  tests that are brittle because it exposes implementation details
+  of the system under test.</li>
+</ul>
+</blockquote>
+<hr />
+<blockquote>
+<p>"[Tests using mocking frameworks] required constant effort to
+maintain while rarely finding bugs." (page 259)</p>
+</blockquote>
+<hr />
+<p>They talk about dependency injection, which I think is generally a
+good idea, especially if you can separate in the style of "functional
+shell, imperative core" so that you're testing mostly pure functions.</p>
+<p>I hadn't known about "automated dependency injection frameworks" -
+maybe they're neat?</p>
+<ul>
+<li>https://github.com/google/guice</li>
+<li>https://github.com/google/dagger</li>
+</ul>
+<p>Are there any for Python? At least one:</p>
+<ul>
+<li>https://python-dependency-injector.ets-labs.org/</li>
+</ul>
+<p>I'm not sure I want to use it... It seems mostly for very
+object-oriented designs, though I could be wrong.</p>
+<p>The book also says:</p>
+<blockquote>
+<p>"With dynamically typed languages such as Python or JavaScript, it
+is possible to dynamically replace individual functions or object
+methods. Dependency injection is less important in these languages
+because this capability makes it possible to use real
+implementations of dependencies in tests while only overriding
+functions or methods of the dependency that are unsuitable for
+tests." (page 261)</p>
+</blockquote>
+<p>I mean, I guess so, but I don't love that style either.</p>
+<p>I agree more with this:</p>
+<blockquote>
+<p>"Code written without testing in mind typically needs to be
+refactored or rewritten before you can add appropriate tests." (page
+261)</p>
+</blockquote>
+<hr />
+<p>Techniques for using test doubles:</p>
+<ul>
+<li>Faking: A parallel implementation stands in</li>
+<li>Stubbing: Force something to return a specific value</li>
+<li>Interaction testing: Check that something <em>was</em> called (don't
+   actually call it)</li>
+</ul>
+<p>But: Prefer real implementations ("classical testing")</p>
+<hr />
+<blockquote>
+<p>"Stubbing leaks implementation details of your code into your test."
+(page 273)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Another downside of interaction testing is that it utilizes
+implementation details of the system under test" (page 276)</p>
+</blockquote>
+<p>aka "change-detector tests"</p>
+<hr />
+<h3>Chapter 14: <a href="#ch14" name="ch14">Larger Testing</a></h3>
+<hr />
+<blockquote>
+<p>"At Google, configuration changes are the number one reason for our
+major outages." (page 284)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Without clear ownership, a test rots." (page 285)</p>
+</blockquote>
+<hr />
+<p>On page 286 they mention "C/J Build" as Google's "first continuous
+build framework" and TAP as its replacement. Mike Bland has an
+interesting <a href="https://mike-bland.com/2012/06/21/chris-jay-continuous-build.html">history</a> of the "Chris/Jay continuous build" and the
+"Test Automation Platform."</p>
+<hr />
+<p>On page 289, I think they may have their math wrong. They say two 10%
+inaccurate things have a combined likelihood of a bug of 99% (1 -
+(0.1 * 0.1)). I think they're trying to do one minus the probability
+of no bugs, which should be (1 - (0.9 * 0.9)), or 19%. That's higher
+than 10%, but it isn't as bad as 99%. I'm not sure what they intended
+here.</p>
+<hr />
+<p>They advocate "record/replay proxies" as a testing technique, rather
+than faking things out more completely, in contrast with
+<a href="https://martinfowler.com/articles/consumerDrivenContracts.html">consumer-driven contracts</a>. They point to some <a href="https://github.com/googleapis/google-cloud-go/blob/master/rpcreplay/doc.go">Go source</a> (with
+comments) for <code>rpcreplay</code>.</p>
+<hr />
+<blockquote>
+<p>"At Google, we have a specialized engineering role of "Test
+Engineer," and one of the things we look for in a good test engineer
+is the ability to outline a test strategy for our products." (page
+296)</p>
+</blockquote>
+<hr />
+<p>They refer on page 299 to <a href="https://en.wikipedia.org/wiki/Bug_bash">bug bashes</a>.</p>
+<hr />
+<p>Google has <a href="https://www.infoq.com/news/2019/06/chaos-community-day-v4/">Catzilla</a>, which is analogous to <a href="https://netflix.github.io/chaosmonkey/">Chaos Monkey</a>.</p>
+<hr />
+<blockquote>
+<p>"Rater evaluation is critical for nondeterministic systems like
+machine learning systems for which there is no clear correct answer,
+only a notion of better or worse." (page 304)</p>
+</blockquote>
+<hr />
+<p>Google has published about <a href="https://research.google/pubs/pub36356/">Dapper</a>, which I think is a fancy system
+for getting and tracking unique IDs through request chains, to help
+with debugging etc.</p>
+<hr />
+<p>This chapter had the most glitches (typos, a paragraph that appeared
+twice, etc.) of any in the book so far, I think.</p>
+<hr />
+<h3>Chapter 15: <a href="#ch15" name="ch15">Deprecation</a></h3>
+<hr />
+<blockquote>
+<p>"<em>code is a liability, not an asset</em>" (page 312)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"In health care, this phenomenon is known as "<a href="https://psnet.ahrq.gov/primer/alert-fatigue">alert fatigue</a>.""</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"These sorts of important-not-urgent cleanup tasks are a great use
+of 20% time and provide engineers exposure to other parts of the
+codebase." (page 320)</p>
+</blockquote>
+<p>I thought 20% time was supposed to be more fun than that.</p>
+<hr />
+<p>There isn't an obvious deprecation system in Python, as far as I know.
+There is a built-in <code>DeprecationWarning</code>. There is a <a href="https://pypi.org/project/deprecation/">package</a> but
+you have to install it. If you already have TensorFlow installed, you
+can use <code>tensorflow.contrib.framework.deprecated</code> from it (in TF
+1.14.0).</p>
+<hr />
+<h3>Chapter 16: <a href="#ch16" name="ch16">Version Control and Branch Management</a></h3>
+<hr />
+<p>The chapter is by Titus Winters, and he refers to what Google does as
+"trunk-based development." I think he also likes to say "live at head"
+to mean largely the same thing. He references <a href="https://www.devops-research.com/research.html" title="DevOps Research and Assessment organization">DORA</a>, who agrees,
+and was aquired by Google.</p>
+<hr />
+<p>I was reminded of the bad old days at a previous employer, where for
+some code we couldn't version control we would pass around a big green
+translucent serving platter to represent "having a lock" on the code.</p>
+<hr />
+<p>A commit is like an instantaneous lock/edit/unlock.</p>
+<hr />
+<blockquote>
+<p>"... considering common <em>usage</em>, both the centralized and DVCS
+[Distributed Version Control System] models are largely
+interchangeable:" (page 333)</p>
+</blockquote>
+<hr />
+<p>Hard to not want to nit-pick the focus on time (cf. Time, Clocks, and
+the Ordering of Events in a Distributed System) and think of Git's
+time-free approach. Apparently Google's versions are incrementing
+integers?</p>
+<blockquote>
+<p>"Monotonically increasing version numbers, rather than commit
+hashes, are particularly troublesome. Many systems and scripts have
+grown up in the Google developer ecosystem that assume that the
+numeric ordering of commits is the same as the temporal
+order–undoing those hidden dependencies is difficult." (page 333)</p>
+</blockquote>
+<hr />
+<p>Google's main version control system, for the giant monorepo, is
+called Piper. I think I saw somewhere that it used to be Perforce?</p>
+<hr />
+<pre><code>Abseil : C++ :: Guava : Java</code></pre>
+
+<hr />
+<p>Seems like Java "shading" is (a little bit) like Python's dunderscore
+mangling, but specifically for dependencies. Google hates dependency
+conflicts.</p>
+<hr />
+<p>On page 343 they reference <a href="https://itrevolution.com/book/the-phoenix-project">The Phoenix Project</a>: A Novel About IT,
+DevOps, and Helping Your Business Win. Apparently it advocates
+"reducing work-in-progress" among other things.</p>
+<hr />
+<blockquote>
+<p>"Our various teams have all sorts of policies about release branches
+given that relatively few teams have arrived at the sort of rapid
+release cadence promised by CD [Continuous Delivery] that obviates
+the need or desire for a release branch." (page 344)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"<a href="https://jlbp.dev/what-is-a-diamond-dependency-conflict">diamond dependencies</a>" (page 345)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"We expect a shift in VCS technology that assumes constant network
+availability, focusing more on storage and build in the cloud to
+avoid transmitting unnecessary files and artifacts." (page 348)</p>
+</blockquote>
+<p>I like not having to be connected all the time.</p>
+<hr />
+<blockquote>
+<p>"Long-lived dev branches are not a good default plan." (page 349)</p>
+</blockquote>
+<p>Agree.</p>
+<hr />
+<p>They really advocate "for interrepository dependencies to be
+unpinned/"at head"/"trunk based."" I think this must make sense when
+you're running a ton of interdependent things. Most of my work is on
+quite independent projects, like a statistical analysis that can run
+with its own universe of dependencies that never need to be aligned
+with any other repo's dependencies. For my stuff, pinning dependencies
+pretty aggressively is good for reproducibility.</p>
+<hr />
+<h3>Chapter 17: <a href="#ch17" name="ch17">Code Search</a></h3>
+<hr />
+<p>The old "external Code Search" is described <a href="https://en.wikipedia.org/wiki/Google_Code_Search">on Wikipedia</a>.</p>
+<p>Hmm! There is some <a href="https://developers.google.com/code-search">public Google code search</a>, not mentioned in the
+text. It... doesn't seem great? But maybe I don't know what to look
+for.</p>
+<p>Hmm! Google's <code>RE2</code> regular expression engine is <a href="https://github.com/google/re2">open source</a> and
+has a <a href="https://pypi.org/project/google-re2/">Python wrapper</a>. Looks like the trade-off is speed in
+exchange for "various PCRE features (e.g. backreferences, look-around
+assertions) are not supported".</p>
+<hr />
+<p>Ah! I thought so! Yegge was behind <a href="https://en.wikipedia.org/wiki/Google_Kythe#Grok">Grok</a>, which became/merged with
+<a href="https://kythe.io/">Kythe</a>, which knows all about programming.</p>
+<hr />
+<p>One page 353 they advocate "using named types rather than generic
+things like strings or integers, because it's then easy to find all
+usages." Okay.</p>
+<hr />
+<p>On page 354 they mention "how to compute a fingerprint for integer
+values efficiently" and I think that could be referring to getting the
+hash of something; are they talking about hashing integers? Are these
+integers so big that they can't just be their own hashes? Or is that
+cheating?</p>
+<hr />
+<p>On page 357 there's a screenshot of a log viewer that seems to be
+called "Analog" but I think it's different from the
+<a href="https://en.wikipedia.org/wiki/Analog_(program)">web log analyzer</a> of that name...</p>
+<hr />
+<p>They have a <a href="https://github.com/Tendrl/documentation/wiki/Best-Practices-for-Response-Times-and-Latency">surprising reference</a> for the "responsive if latencies
+are below 200 ms" bit on page 359.</p>
+<hr />
+<p>The code for the <a href="https://github.com/google/codesearch">old internal Google code search</a> is up, and also
+you can read <a href="https://swtch.com/~rsc/regexp/regexp4.html">Russ Cox</a> explaining it. Trigrams!</p>
+<hr />
+<p>The reference to searching 20GB/s is now <a href="https://www.scalyr.com/blog/searching-1tb-sec-systems-engineering-before-algorithms/">searching 1.5TB/s</a>!</p>
+<p>Had to go Wayback, but there's also <a href="https://web.archive.org/web/20190830155843/volnitsky.com/project/str_search">a bunch on substring matching</a>.</p>
+<hr />
+<p>Summarizing Google's code search history:</p>
+<ul>
+<li><code>grep</code></li>
+<li>trigram</li>
+<li><a href="https://en.wikipedia.org/wiki/Suffix_array">suffix array</a></li>
+<li>token-based sparse n-gram (uses Google's "primary indexing and search stack")</li>
+</ul>
+<p>They describe moving the inverted index from memory to flash storage,
+which I guess probably isn't relevant to the current state.</p>
+<hr />
+<p>On page 369 they mention "low recall accuracy" and go on to say that
+means "nonmatches need to be filtered out of the result set." I think
+they're using "recall accuracy" to mean "precision"?</p>
+<hr />
+<h3>Chapter 18: <a href="#ch18" name="ch18">Build Systems and Build Philosophy</a></h3>
+<hr />
+<p>Did they seriously just have a whole chapter on build systems and not
+mention <a href="https://en.wikipedia.org/wiki/Make_(software)">make</a>? They mention "Ant, Maven, Gradle, Grunt, and Rake"
+(page 376) but can't mention <a href="https://en.wikipedia.org/wiki/Make_(software)">make</a>?</p>
+<hr />
+<p>There's some disconnect between their "engineers love the build
+system" and the footnote that says "83% of Googlers reported being
+satisfied with the build system" (page 371).</p>
+<hr />
+<ul>
+<li>Google's internal "Blaze" build tool<ul>
+<li><a href="https://buck.build/">Buck</a>, a Facebook tool apparently inspired by Blaze</li>
+<li><a href="https://www.pantsbuild.org/">Pants</a>, a tool inspired by Blaze</li>
+<li><a href="https://bazel.build/">Bazel</a>, the open source Blaze</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>They point out that the artifact-based input/output structure of Bazel
+is analogous to functional programming. That's true. In this way,
+Bazel is similar to lots of DAG-based systems, like <a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">Airflow</a>,
+<a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/86">etc.</a></p>
+<hr />
+<p>They mention C++ can include other files and that this is an issue for
+knowing what's changed, but I didn't see that they described Bazel
+having a solution for this...</p>
+<hr />
+<p>They mention "the 1:1:1 rule" on page 391 but don't really explain it.
+Finding an <a href="https://v1.pantsbuild.org/build_files.html">old version</a> of their link:</p>
+<blockquote>
+<p>"The idiom of having one target per directory, representing a single
+package, is sometimes referred to as the 1:1:1 rule."</p>
+</blockquote>
+<p>So that's 1 directory, 1 target, 1 package.</p>
+<hr />
+<blockquote>
+<p>"<a href="https://github.com/bazelbuild/bazel-gazelle">Gazelle</a> is a Bazel build file generator for Bazel projects. It
+natively supports Go and protobuf, and it may be extended to support
+new languages and custom rule sets."</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Automatically managed dependencies
+["*", "+", "&gt;" in version specifications] can be convenient for
+small projects, but they're usually a recipe for disaster on
+projects of nontrivial size or that are being worked on by more than
+one engineer." (page 394)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"... we enforce a strict <a href="https://opensource.google/docs/thirdparty/oneversion/"><em>One-Version Rule</em></a> for all third-party
+dependencies in our internal codebase." (page 394)</p>
+</blockquote>
+<hr />
+<p>A thought I had in connection with all this monorepo stuff is: Is this
+part of the motivation for microservices? A microservice can (in
+theory?) just expose an API but otherwise have an isolated codebase,
+OS, etc. It seems like Google jumps through a lot of hoops and
+introduces a lot of coordination in order to make the monorepo work...</p>
+<hr />
+<p>The advice (page 396) to mirror external dependencies so you don't
+depend on somebody continuing to host them the same way is pretty good
+advice. (Continues to use Docker Hub base images etc...)</p>
+<hr />
+<h3>Chapter 19: <a href="#ch19" name="ch19">Critique: Google's Code Review Tool</a></h3>
+<hr />
+<p>On page 400 they reference Google's "web-based code editing tool". On
+page 406 it's "Cider, an online IDE for editing source code stored in
+the cloud". I don't see much about it online, but there is this fun
+<a href="https://github.com/jhuangtw/xg2xg">table</a> showing Google-internal things and how they map to
+non-Google things.</p>
+<hr />
+<blockquote>
+<p>"In emergency cases, the author can forcefully commit their changes
+and have it reviewed after commit." (page 402)</p>
+</blockquote>
+<p>Nice to have in a pinch; could allow abuse but still.</p>
+<hr />
+<p>They mention on page 403 that their diff does move detection, which
+many diff tools don't do terribly well... I wonder if theirs is much
+better.</p>
+<hr />
+<p>I saw somebody online who likes Critique and they said
+https://reviewable.io/ is the closest publicly available tool...</p>
+<hr />
+<p>Apparently Critique does screenshot diffs of UIs generated by code,
+which is neat. (page 404)</p>
+<hr />
+<blockquote>
+<p>"When users drill down to the file level, Critique provides a UI
+widget with a compact display of the chain of snapshot versions of a
+file;" (page 404)</p>
+</blockquote>
+<hr />
+<p>This "Zapfhahn" test coverage tool seemed to be mentioned (page 406)
+only in this book, outside of Google... Similarly for the "GwsQ" for
+passing code review to someone in a list automatically.</p>
+<hr />
+<p>I like this behavior of Critique:</p>
+<blockquote>
+<p>"As mentioned earlier, comments are drafted as-you-go, but then
+"published" atomically, as shown in Figure 19-7. This allows authors
+and reviewers to ensure that they are happy with their comments
+before sending them out." (page 409)</p>
+</blockquote>
+<hr />
+<p>On page 414 they say "each commit is reviewed separately" but I think
+they must mean each "change set" or branch (in the case of git)...</p>
+<hr />
+<h3>Chapter 20: <a href="#ch20" name="ch20">Static Analysis</a></h3>
+<hr />
+<p>Google's static analysis system: <a href="https://research.google/pubs/pub43322/" title="Tricorder: Building a Program Analysis Ecosystem">Tricorder</a></p>
+<hr />
+<blockquote>
+<p>"Static analysis tools at Google must scale to the size of Google's
+multibillion-line codebase. To do this, analysis tools are shardable
+and incremental. Instead of analyzing entire large projects, we
+focus analyses on files affected by a pending code change, and
+typically show analysis results only for edited files or lines."
+(page 418)</p>
+</blockquote>
+<p>This is different from most usages of "scaling" that I've seen. "We
+scale by not trying to scale." I mean, I guess it is a kind of
+scaling?</p>
+<p>Also on page 423, they make it sound like analysis is always
+single-function (not involving more of the codebase).</p>
+<hr />
+<blockquote>
+<p>"Research about static analysis tools traditionally focused on
+reducing false negatives; in practice, low false-positive rates are
+often critical for developers to actually want to use a tool–who
+wants to wade through hundreds of false reports in search of a few
+true ones?" (page 419-420)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"An issue is an "effective false positive" if developers did not
+take some positive action after seeing the issue." (page 420)</p>
+</blockquote>
+<hr />
+<p>On page 421 they mention <a href="https://github.com/google/Refaster">Refaster</a>, which has been eaten by
+<a href="https://errorprone.info/">Error Prone</a>.</p>
+<hr />
+<blockquote>
+<p>"Seven of these [more than 100] analyzers are themselves plug-in
+systems that have hundreds of additional checks, again contributed
+from developers across Google." (page 422)</p>
+</blockquote>
+<p>I hadn't thought of this before! How crazy: My plug-in has plug-ins!</p>
+<hr />
+<blockquote>
+<p>"before we established clear feedback channels, many developers
+would just ignore analysis results they did not understand." (page
+423)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Instead of reenabling customizability, we asked users why they were
+annoyed and found all kinds of bugs and false positives with the
+linters. For example, the C++ linter also ran on Objective-C files
+but produced incorrect, useless results. ... In short, user
+customization resulted in hidden bugs and suppressing feedback."
+(page 425)</p>
+</blockquote>
+<p>Some humans do work at Google!</p>
+<hr />
+<blockquote>
+<p>"We have found repeatedly that developers ignore compiler warnings."
+(page 427)</p>
+</blockquote>
+<hr />
+<h3>Chapter 21: <a href="#ch21" name="ch21">Dependency Management</a></h3>
+<hr />
+<p>C++ has a <a href="https://en.cppreference.com/w/cpp/language/definition">one definition rule</a>.</p>
+<hr />
+<blockquote>
+<p>"Within Google, there is a constant stream of guidance directed to
+our engineers to help them consider this difference between "I got
+it to work" and "this is working in a supported fashion."" (page
+435)</p>
+</blockquote>
+<hr />
+<p>Russ Cox stuff:</p>
+<ul>
+<li><a href="https://research.swtch.com/deps">Our Software Dependency Problem</a></li>
+<li><a href="https://research.swtch.com/vgo-import">Semantic Import Versioning</a><ul>
+<li>Not Russ Cox, but this is related to <a href="https://www.youtube.com/watch?v=oyLBGkS5ICk&amp;ab_channel=ClojureTV">Clojure</a> having the
+   same idea about making major versions separate packages,
+   really.</li>
+</ul>
+</li>
+<li><a href="https://research.swtch.com/vgo-mvs">Minimal Version Selection</a></li>
+</ul>
+<hr />
+<p>On page 439 they mention <a href="https://www.boost.org/">Boost</a> as a library with "no compatibility promise" that is "particularly risky"—which makes me wonder whether this is why Google has its own linalg packages, including (at least) <a href="https://github.com/google/gemmlowp">gemmlowp</a>.</p>
+<hr />
+<p>"SAT" as in "SAT-solver" is an <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">unsatisfying</a> name because it is not
+an initialism, as far as I can tell.</p>
+<hr />
+<blockquote>
+<p>"Live at Head ... is theoretically sound, but places new and costly
+burdens on participants in a dependency network." (page 442)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"Prefer languages that have good control over public/private access
+to APIs of all forms." (page 445)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"there is some loss of fidelity in this compression of software
+changes into version numbers." (page 448)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"the model of dependency management given infinite resources is
+effectively that of the Live at Head model." (page 452)</p>
+</blockquote>
+<hr />
+<p>I was interested in the example of open-sourcing <a href="https://github.com/gflags/gflags">gflags</a>, which
+illustrated some of the costs/risks to a company of open-sourcing a
+thing.</p>
+<hr />
+<p>It does kind of seem like a lot of Google's pain with regard to
+dependencies is self-inflicted in the sense of existing largely
+because they insist on the monorepo. I guess that's the trade-off:
+they like the monorepo so much, they'll fight dependency management
+fights a lot.</p>
+<hr />
+<blockquote>
+<p>"external users of an API cost a lot more to maintain than internal
+ones." (page 455)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"When evaluating whether to release something, be aware of the
+long-term risks: externally shared dependencies are often much more
+expensive to modify over time." (page 455)</p>
+</blockquote>
+<hr />
+<p>The author advocates for using testing to resolve empirically whether
+"a new set of versions work together" which could work if you really
+trust that everything is well tested.</p>
+<hr />
+<h3>Chapter 22: <a href="#ch22" name="ch22">Large-Scale Changes</a></h3>
+<hr />
+<blockquote>
+<p>"Although funding and staffing a team to run these kinds of
+migrations can seem like an additional cost, it is actually just
+internalizing the externalities that an unfunded mandate creates,
+with the additional benefits of economies of scale." (page 462)</p>
+</blockquote>
+<hr />
+<p>The author's paper: <a href="https://ieeexplore.ieee.org/abstract/document/8443579">Non-Atomic Refactoring and Software Sustainability</a></p>
+<hr />
+<blockquote>
+<p>"The SREs who run Google's production services have a mantra: "No
+Haunted Graveyards." A haunted graveyard in this sense is a system
+that is so ancient, obtuse, or complex that no one dares enter it.
+Haunted graveyards are often business-critical systems that are
+frozen in time because any attempt to change them could cause the
+system to fail in incomprehensible ways, costing the business real
+money. They pose a real existential risk and can consume an
+inordinate amount of resources." (page 464)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"perhaps the most important support for LSCs has been the evolution
+of cultural norms around large-scale changes and the oversight given
+to them." (page 468)</p>
+</blockquote>
+<hr />
+<ul>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/6676954">Large-Scale Automated Refactoring Using ClangMR</a> (C++)</li>
+<li><a href="https://cacm.acm.org/magazines/2018/4/226371-lessons-from-building-static-analysis-tools-at-google/">JavacFlume</a> is the same idea but for Java</li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/41876.pdf">Scalable, Example-Based Refactorings with Refaster</a> (also for Java)</li>
+</ul>
+<hr />
+<blockquote>
+<p>"As a rule of thumb, we've long held that if a change requires more
+than 500 edits, it's usually more efficient for an engineer to learn
+and execute our change-generation tools rather than manually execute
+that edit. For experienced "code janitors," that number is often
+much smaller." (page 470)</p>
+</blockquote>
+<hr />
+<p><a href="https://opensource.google/docs/glossary/#rosie">Rosie</a> is "An internal tool for doing large scale cleanups and code
+changes. It splits a large patch into smaller pieces which can be
+reviewed, tested, and submitted independently."</p>
+<hr />
+<blockquote>
+<p>"languages that tend to be viewed as more focused on developer
+productivity tend to be more difficult to maintain." (page 471)</p>
+</blockquote>
+<hr />
+<ul>
+<li><a href="https://talks.golang.org/2016/refactor.article">Codebase Refactoring (with help from Go)</a></li>
+<li><a href="https://github.com/google/google-java-format">google-java-format</a></li>
+<li><a href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a> (for C++)</li>
+</ul>
+<hr />
+<h3>Chapter 23: <a href="#ch23" name="ch23">Continuous Integration</a></h3>
+<hr />
+<p>TAP (Test Automation Platform) playing a key role again here...</p>
+<hr />
+<blockquote>
+<p>"Relying heavily on feature-flag-guarding is a common paradigm for
+Continuous Delivery" (page 482)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"By improving test output readability, you automate the
+understanding of feedback." (page 483)</p>
+</blockquote>
+<hr />
+<p>They reference <a href="https://sre.google/sre-book/automation-at-google/">The Evolution of Automation at Google</a> (oh right! <a href="https://sre.google/sre-book/table-of-contents/">The SRE book</a> is online!)</p>
+<hr />
+<p>There's this idea of "green head" as the point just beyond head in the
+"live at head" sense... Interesting. There isn't just a single head,
+really? Close to, but not quite? "Green head" is the latest change
+that's passed tests but not yet committed... Could there be multiple
+green heads, then, if people are working on different things?</p>
+<hr />
+<p><a href="https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/">Borg: The Predecessor to Kubernetes</a></p>
+<hr />
+<p><a href="https://sre.google/sre-book/release-engineering/">Rapid</a> (the release automation tool) is in the SRE book too.</p>
+<hr />
+<p>They mention on page 485 that tests to run can be "selected based on a
+model that predicts their likelihood of detecting a failure." I wonder
+what sorts of models they use. (Are they learned?)</p>
+<hr />
+<p>On pages 494-495, she mentions a "Build Cop" role as the person who
+takes responsibility for getting builds green. Interesting.</p>
+<hr />
+<blockquote>
+<p>"Engineers who want to spend less time waiting end up making
+smaller, targeted changes, which is a win for everyone." (page 496)</p>
+</blockquote>
+<p>Benefits of things being slow.</p>
+<hr />
+<h3>Chapter 24: <a href="#ch24" name="ch24">Continuous Delivery</a></h3>
+<hr />
+<blockquote>
+<p>"There is a saying among educators that no lesson plan survives its
+first contact with the student body." (page 505)</p>
+</blockquote>
+<p>This seems to be traceable really to a military quote from
+<a href="https://en.wikiquote.org/wiki/Helmuth_von_Moltke_the_Elder">von Moltke</a>, usually paraphrased as "No plan survives contact with
+the enemy."</p>
+<hr />
+<blockquote>
+<p>"One of our codebases, YouTube, is a large, monolithic Python
+application." (page 507)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"A key to reliable continuous releases is to make sure engineers
+"flag guard" <em>all changes</em>." (page 508, emphasis in original)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"One issue we noticed when doing deployments to Android was that we
+could expect a statistically significant change in user metrics
+<em>simply from pushing an update</em>. This meant that even if we made no
+changes to our product, pushing an update could affect device and
+user behavior in ways that were difficult to predict. As a result,
+although canarying the update to a small percentage of user traffic
+could give us good information about crashes or stability problems,
+it told us very little about whether the newer version of our app
+was in fact better than the older one." (page 512, emphasis in
+original)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"One release responsibility is to protect the product from the
+developers." (page 514)</p>
+</blockquote>
+<hr />
+<h3>Chapter 25: <a href="#ch25" name="ch25">Compute as a Service</a></h3>
+<hr />
+<p><a href="https://research.google/pubs/pub43438/">Large-scale cluster management at Google with Borg</a></p>
+<hr />
+<p>On page 519 they mention <a href="https://prometheus.io/">Prometheus</a> and <a href="https://github.com/grafana/grafana">Grafana</a> somewhat
+confusingly with Grafana mentioned first, while Prometheus is more of
+a data source for Grafana, so I think it makes more sense to list
+Prometheus first... Probably capabilities overlap, I guess.</p>
+<hr />
+<blockquote>
+<p>"Google has chosen, long ago, that the latency degradation due to
+disk swap is so horrible that an out-of-memory kill and a migration
+to a different machine is universally preferable—so in Google's
+case, it's always an out-of-memory kill." (page 521)</p>
+</blockquote>
+<hr />
+<p>On page 522 they mention <a href="https://github.com/google/lmctfy">LMCTFY</a>, which I think I wasn't aware of.
+An old open source version of Google's containerization, which isn't
+developed any more as Docker ate the world. Of course there's also
+<a href="https://en.wikipedia.org/wiki/Singularity_(software)">Singularity</a>, and I hear people like <a href="https://firecracker-microvm.github.io/">Firecracker</a>, etc.</p>
+<hr />
+<blockquote>
+<p>"The canonical framework for doing this
+[distributing work across workers] at Google was MapReduce, later
+replaced by Flume." (page 526)</p>
+</blockquote>
+<hr />
+<p><a href="https://research.google/pubs/pub48030/">Fast key-value stores: An idea whose time has come and gone</a></p>
+<hr />
+<blockquote>
+<p>"Note that retries need to be implemented correctly—with backoff,
+graceful degradation and tools to avoid cascading failures like
+<a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">jitter</a>."</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"One useful tool to help with idempotency is client-assigned
+identifiers: if you are creating something (e.g., an order to
+deliver a pizza to a specific address), the order is assigned some
+identifier by the client; and if an order with that identifier was
+already recorded, the server assumes it's a repeated request and
+reports success (it might also validate that the parameters of the
+order match)." (page 529)</p>
+</blockquote>
+<hr />
+<p>On page 536 they mention <a href="https://openwhisk.apache.org/">OpenWhisk</a> and <a href="https://knative.dev/">Knative</a>. Looks like
+both help run serverless stuff; Knative is more closely tied to
+Kubernetes.</p>
+<hr />
+<blockquote>
+<p>"To take one specific instance of that
+[compromises around system control], the Google Code Jam team
+(running a programming contest for thousands of participants, with a
+frontend running on Google AppEngine) had a custom-made script to
+hit the contest webpage with an artificial traffic spike several
+minutes before the contest start, in order to warm up enough
+instances of the app to serve the actual traffic that happened when
+the contest started. This worked, but it's the sort of hand-tweaking
+(and also hacking) that one would hope to get away from by choosing
+a serverless solution." (page 542)</p>
+</blockquote>
+<hr />
+<p>Interesting to see a mention of <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">Zimki</a>, the short-lived PaaS...</p>
+<hr />
+<h3>Afterward</h3>
+<hr />
+<blockquote>
+<p>"The passage of time and the importance of change cannot be
+ignored." (page 550)</p>
+</blockquote>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
