@@ -7,6 +7,202 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>How to Lie with Statistics, by Huff</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Darrell_Huff">Darrell Huff</a> and his <a href="https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics">popular 1954 book</a> have <a href="/20210330-how_to_make_the_world_add_up_by_harford/">received</a>
+criticism. Huff was wrong about cigarettes and cancer, but he did warn
+us that people are biased. In 142 breezy pages, the book manages to
+cover quite a lot, with perhaps moderate levels of prejudice for its
+time.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<ul>
+<li>Chapter 1: &#8220;The Sample with the Built-in Bias&#8221; (sampling)</li>
+<li>Chapter 2: &#8220;The Well-Chosen Average&#8221; (mean vs. median)</li>
+<li>Chapter 3: &#8220;The Little Figures That Are Not There&#8221; (variance etc.)</li>
+<li>Chapter 4: &#8220;Much Ado about Practically Nothing&#8221; (small differences and measurement uncertainty)</li>
+<li>Chapter 5: &#8220;The Gee-Whiz Graph&#8221; (funny y-axes)</li>
+<li>Chapter 6: &#8220;The One-Dimensional Picture&#8221; (dimensional distortion of comparisons)</li>
+<li>Chapter 7: &#8220;The Semiattached Figure&#8221; (non-sequitur logic)</li>
+<li>Chapter 8: &#8220;Post Hoc Rides Again&#8221; (correlation &#8800; causation)</li>
+<li>Chapter 9: &#8220;How to Statistculate&#8221; (&#8220;statistically
+   manipulate&#8221;&#8212;nonsense math)</li>
+<li>Chapter 10: &#8220;How to Talk Back to a Statistic&#8221; (ask questions)<ul>
+<li>&#8220;Who says so?&#8221;</li>
+<li>&#8220;How does he know?&#8221;</li>
+<li>&#8220;What&#8217;s missing?&#8221;</li>
+<li>&#8220;Did somebody change the subject?&#8221;</li>
+<li>&#8220;Does it make sense?&#8221;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>"There are at least three levels of sampling involved. Dr. Kinsey's
+samples of the population (one level) are far from random ones and
+may not be particularly representative, but they are enormous
+samples by comparison with anything done in his field before and his
+figures must be accepted as revealing and important if not
+necessarily on the nose. It is possibly more important to remember
+that any questionnaire is only a sample (another level) of the
+possible questions and that the answer the lady gives is no more
+than a sample (third level) of her attitudes and experiences on each
+question." (page 23)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Some of the strongest feeling against public-opinion polls is found
+in liberal or left-wing circles, where it is rather commonly
+believed that polls are generally rigged. Behind this view is the
+fact that poll results so often fail to square with the opinions and
+desires of those whose thinking is not in the conservative
+direction. Polls, they point out, seem to elect Republicans even
+when voters shortly thereafter do otherwise." (page 26)</p>
+</blockquote>
+<p>Interesting historical perspective; modern concerns about polls are
+not necessarily new issues.</p>
+<hr>
+<blockquote>
+<p>"You will also learn if you read back into the tables that the
+figure is based on a sample of such size that there are nineteen
+chances out of twenty that the estimate&#8212;$3,107 before it was
+rounded&#8212;is correct within a margin of $59 plus or minus." (pages
+35-36)</p>
+</blockquote>
+<p>I don&#8217;t know a confidence interval technique that will give you quite
+that interpretation; this could be erroneous.</p>
+<hr>
+<p>"Degree of significance" (p-value) is presented on page 42 as a thing
+that is usually hidden from the public, which may have been (and may
+still often be) the case. These days I hear more about problems with
+significance tests than demands for them.</p>
+<hr>
+<blockquote>
+<p>"It is dangerous to mention any subject having high emotional
+content without hastily saying where you are for or agin it." (page
+46, amusing spelling in original)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The <a href="https://en.wikipedia.org/wiki/Procrustes">Procrustean</a> Statistic" (graphic page 43)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In somewhat the same fashion those little figures
+[reporting variance] that are missing from what are called
+&#8220;Gessell&#8217;s norms&#8221; have produced pain in papas and mamas. Let a
+parent read, as many have done in such places as Sunday rotogravure
+sections, that &#8220;a child&#8221; learns to sit erect at the age of so many
+months and he thinks at once of his own child. Let his child fail to
+sit by the specified age and the parent must conclude that his
+offspring is &#8220;retarded&#8221; or &#8220;subnormal&#8221; or something equally
+invidious. Since half the children are bound to fail to sit by the
+time mentioned, a good many parents are made unhappy. Of course,
+speaking mathematically, this happiness is balanced by the joy of
+the other fifty per cent of parents in discovering that their
+children are &#8220;advanced.&#8221; But harm can come of the efforts of the
+unhappy parents to force their children to conform to the norms and
+thus be backward no longer." (pages 44-45)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<em>Newsweek</em> once showed how &#8220;U. S. Old Folks Grow Older&#8221; by means of
+a chart on which appeared two male figures, one representing the
+68.2-year life expectancy of today, the other the 34-year life
+expectancy of 1879-1889.'"</p>
+</blockquote>
+<p>Here Huff is complaining that the person twice as tall appears 8 times
+as massive, but there are other issues with interpreting
+<a href="/20200806-life_expectancy_is_historically_misleading/">historical life expectancy</a>...</p>
+<hr>
+<blockquote>
+<p>"Who knows what germ causes colds, particularly since it probably
+isn&#8217;t a germ at all?" (page 75)</p>
+</blockquote>
+<p>What does he think causes colds? They knew about viruses in the 50s,
+didn&#8217;t they?</p>
+<hr>
+<blockquote>
+<p>"Let us say that during a period in which race prejudice is growing
+you are employed to &#8220;prove&#8221; otherwise. It is not a difficult
+assignment. Set up a poll or, better yet, have the polling done for
+you by an organization of good reputation. Ask that usual cross
+section of the population if they think blacks have as good a chance
+as white people to get jobs. Repeat your polling at intervals so
+that you will have a trend to report.</p>
+<p>"Princeton&#8217;s Office of Public Opinion Research tested this question
+once. What turned up is interesting that things, especially in
+opinion polls, are not always what they seem. Each person who was
+asked the question about jobs was also asked some questions designed
+to discover if he was strongly prejudiced against blacks. It turned
+out that people most strongly prejudiced were most likely to answer
+Yes to the question about job opportunities. (It worked out that
+about two-thirds of those who were sympathetic toward blacks did not
+think the black had as good a chance at a job as a white person did,
+and about two-thirds of those showing prejudice said that blacks
+were getting as good breaks as whites.) It was pretty evident that
+from this poll you would learn very little about employment
+conditions for blacks, although you might learn some interesting
+things about a man&#8217;s racial attitudes." (pages 75-76)</p>
+</blockquote>
+<p>A couple striking dehumanizing "blacks" vs. "white people" phrasings
+here. The reportage of veiled (?) racism in survey responses still
+seems relevant today.</p>
+<hr>
+<blockquote>
+<p>"A civilian population includes infants, the old, and the ill, all
+of whom have a higher death rate wherever they are." (page 85)</p>
+</blockquote>
+<p>It&#8217;s incidental to the point of the text here, but it&#8217;s interesting to
+see a reference to infants having a high death rate. I think this
+sounds out of place, today. When Huff was born in 1913, something like
+ten percent of babies died before age five.
+(<a href="/20200806-life_expectancy_is_historically_misleading/">historical life expectancy</a>)</p>
+<hr>
+<blockquote>
+<p>"Keep in mind that a correlation may be real and based on real cause
+and effect&#8212;and still be almost worthless in determining action in
+any single case." (page 93)</p>
+</blockquote>
+<p>I read this as pointing to variability. Was he already thinking about
+smoking?</p>
+<hr>
+<blockquote>
+<p>"But arbitrarily rejecting statistical methods makes no sense
+either. That is like refusing to read because writers sometimes use
+words to hide facts and relationships rather than to reveal them."
+(page 121)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I&#8217;ll face up to the serious purpose that I like to think lurks just
+beneath the surface of this book: explaining how to look a phony
+statistic in the eye and face it down; and no less important, how to
+recognize sound and usable data in that wilderness of fraud to which
+the previous chapters have been largely devoted." (page 122)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"You may be familiar with the Rudolf Flesch readability formula. It
+purports to measure how easy a piece of prose is to read, by such
+simple and objective items as length of words and sentences. Like
+all devices for reducing the imponderable to a number and
+substituting arithmetic for judgment, it is an appealing idea."
+(page 137)</p>
+</blockquote>
+<p>I&#8217;m interested in the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">readability stuff</a>, but it also strikes me
+that the last sentence there is quite a good joke:</p>
+<blockquote>
+<p>"Like all devices for reducing the imponderable to a number and
+substituting arithmetic for judgment, it is an appealing idea."</p>
+</blockquote>
+<p>That could be an epigraph!</p>    
+    ]]></description>
+<link>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</link>
+<guid>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</guid>
+<pubDate>Mon, 05 Apr 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Trekonomics, by Saadia</title>
 <description><![CDATA[
 
@@ -3988,281 +4184,6 @@ a <a href="https://rdrr.io/github/rmcelreath/rethinking/src/R/distributions.r">p
 <link>http://planspace.org/20201221-ulysses_compass/</link>
 <guid>http://planspace.org/20201221-ulysses_compass/</guid>
 <pubDate>Mon, 21 Dec 2020 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Pragmatic Programmer</title>
-<description><![CDATA[
-
-<p>I read the original <a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">Pragmatic Programmer</a> years ago, and now read
-the 20th anniversary edition with some of my colleagues. It was an
-important book to me early in my career, and still has lots of useful
-reminders and updates with the new edition.</p>
-<p>I wish the whole book was available as pages on the public web. It's
-"written as a series of self-contained sections" in a way that would
-work really well with hyperlinks.</p>
-<h3>Quotes and notes by chapter</h3>
-<ul>
-<li><a href="#ch1">Chapter 1: A Pragmatic Philosophy</a></li>
-<li><a href="#ch2">Chapter 2: A Pragmatic Approach</a></li>
-<li><a href="#ch3">Chapter 3: The Basic Tools</a></li>
-<li><a href="#ch4">Chapter 4: Pragmatic Paranoia</a></li>
-<li><a href="#ch5">Chapter 5: Bend, or Break</a></li>
-<li><a href="#ch6">Chapter 6: Concurrency</a></li>
-<li><a href="#ch7">Chapter 7: While You Are Coding</a></li>
-<li><a href="#ch8">Chapter 8: Before the Project</a></li>
-<li><a href="#ch9">Chapter 9: Pragmatic Projects</a></li>
-<li><a href="#ch10">Chapter 10: Postface</a></li>
-</ul>
-<p><img alt="cover" src="pragprog.jpg"></p>
-<hr>
-<h3><a name="ch1"></a>Chapter 1: A Pragmatic Philosophy</h3>
-<hr>
-<p>The "broken windows" terminology hasn't aged terribly well because of
-the controversy around <a href="https://en.wikipedia.org/wiki/Broken_windows_theory">broken windows policing</a>; I agree broadly
-with the software development message, but the term has some unwanted
-connotations.</p>
-<hr>
-<blockquote>
-<p>"Tip 9: Invest Regularly in Your Knowledge Portfolio" (page 15)</p>
-</blockquote>
-<p>The "Knowledge Portfolio" metaphor is pretty good. I also want people
-to be life-long knowledge investors.</p>
-<p>They list five items in managing a knowledge portfolio:</p>
-<ul>
-<li>Invest regularly</li>
-<li>Diversify</li>
-<li>Manage risk</li>
-<li>Buy low, sell high</li>
-<li>Review and rebalance</li>
-</ul>
-<hr>
-<blockquote>
-<p>"While there's a glut of short-form essays and occasionally reliable
-answers on the web, for deep understanding you need long-form
-books." (page 16)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"A favorite consulting trick: ask "why?" at least five times." (page
-18)</p>
-</blockquote>
-<p>In <a href="https://hbr.org/2018/09/curiosity">Why Curiosity Matters</a> they reference "Toyota&#8217;s 5 Whys approach."</p>
-<hr>
-<blockquote>
-<p>"One of the Neuro Linguistic Programming suppositions is "The
-meaning of your communication is the response you get."" (page 20)</p>
-</blockquote>
-<hr>
-<h3><a name="ch2"></a>Chapter 2: A Pragmatic Approach</h3>
-<hr>
-<p>They note "Meyer's <em>Uniform Access principle</em>," which <a href="https://en.wikipedia.org/wiki/Uniform_access_principle">states</a> that
-"All services offered by a module should be available through a
-uniform notation, which does not betray whether they are implemented
-through storage or through computation."</p>
-<p>In Python this doesn't have to mean exposing getters and setters;
-using <a href="https://docs.python.org/3/library/functions.html#property">@property</a> is a good solution.</p>
-<hr>
-<blockquote>
-<p>"<em>If it isn't easy, people won't do it.</em>" (page 38)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In fact, this book is written in Markdown, and typeset directly
-from the Markdown source." (page 45)</p>
-</blockquote>
-<p>How? How do they do footnotes, etc.? Sounds like ConTeXt can do some
-part... But presumably they have their own custom stuff. Lots of
-details, I imagine.</p>
-<hr>
-<blockquote>
-<p>"Model building can be both creative and useful in the long term.
-Often, the process of building the model leads to discoveries of
-underlying patterns and processes that weren't apparent on the
-surface." (page 67)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"During the calculation phase, you get answers that seem strange.
-Don't be too quick to dismiss them. If your arithmetic is correct,
-your understanding of the problem or your model is probably wrong.
-This is valuable information." (page 68)</p>
-</blockquote>
-<hr>
-<h3><a name="ch3"></a>Chapter 3: The Basic Tools</h3>
-<hr>
-<p>The footnote on page 100 cites <a href="http://pignottia.faculty.mjc.edu/math134/homework/doodlingCaseStudy.pdf">What Does Doodling do?</a>, which seems
-kind of neat. I don't completely trust the result in the paper though,
-or at least the interpretation. Here's the abstract:</p>
-<blockquote>
-<p>Doodling is a way of passing the time when bored by a lecture or
-telephone call. Does it improve or hinder attention to the primary
-task? To answer this question, 40 participants monitored a
-monotonous mock telephone message for the names of people coming to
-a party. Half of the group was randomly assigned to a &#8216;doodling&#8217;
-condition where they shaded printed shapes while listening to the
-telephone call. The doodling group performed better on the
-monitoring task and recalled 29% more information on a surprise
-memory test. Unlike many dual task situations, doodling while
-working can be beneficial. Future research could test whether
-doodling aids cognitive performance by reducing daydreaming</p>
-</blockquote>
-<hr>
-<h3><a name="ch4"></a>Chapter 4: Pragmatic Paranoia</h3>
-<hr>
-<blockquote>
-<p>"DBC [Design By Contract] is more efficient (and DRY-er) than
-defensive programming, where <em>everyone</em> has to validate data in case
-no one else does." (page 108)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"By expressing the domain of the square root function in the
-precondition of the <code>sqrt</code> routine, you shift the burden of
-correctness to the caller&#8211;where it belongs." (page 110)</p>
-</blockquote>
-<p>And other "fail fast" kinds of things... "crashing early" etc...</p>
-<hr>
-<p>In Python, <code>with open</code> blocks help implement "Finish What You Start"
-(page 118).</p>
-<hr>
-<h3><a name="ch5"></a>Chapter 5: Bend, or Break</h3>
-<p>This chapter is <em>very substantially</em> different from the original
-version, and in interesting ways. Here's a quick summary of the
-content:</p>
-<ul>
-<li>Decoupling</li>
-<li>Events<ul>
-<li>Finite State Machines</li>
-<li>The Observer Pattern</li>
-<li>Publish/Subscribe</li>
-<li>Reactive Programming and Streams</li>
-</ul>
-</li>
-<li>Functional programming</li>
-<li>Don't use inheritance<ul>
-<li>Interfaces and protocols</li>
-<li>Delegation</li>
-<li>Mixins and traits</li>
-</ul>
-</li>
-<li>Configuration (as a service)</li>
-</ul>
-<hr>
-<blockquote>
-<p>"When we try to pick out anything by itself, we find it hitched to
-everything else in the Universe." (page 130, quoting John Muir, My
-First Summer in the Sierra)</p>
-</blockquote>
-<hr>
-<p>On page 148, they list files such as <code>dry.pml</code> which I guess means
-they write using "Pragmatic Markup Language" as their custom
-Markdown...</p>
-<hr>
-<blockquote>
-<p>"Do you program in an object-oriented language? Do you use
-inheritance?</p>
-<p>"If so, stop! It probably isn't what you want to do." (page 158)</p>
-</blockquote>
-<hr>
-<h3><a name="ch6"></a>Chapter 6: Concurrency</h3>
-<hr>
-<blockquote>
-<p>"[Concurrency] is often implemented using things such as fibers,
-threads, and processes." (page 169)</p>
-</blockquote>
-<p>I wasn't familiar with <a href="https://en.wikipedia.org/wiki/Fiber_(computer_science)">fibers</a>. Cute name. Connected to coroutines
-(cooperative multitasking). Seems like fibers is common terminology in
-Ruby.</p>
-<hr>
-<blockquote>
-<p>"... messaging systems (such as Kafka and NATS)" (page 189)</p>
-</blockquote>
-<p>I wasn't familiar with <a href="https://en.wikipedia.org/wiki/NATS_Messaging">NATS</a>. It's a messaging system. According
-the <a href="https://docs.nats.io/faq">FAQ</a>:</p>
-<blockquote>
-<p>"NATS stands for Neural Autonomic Transport System. Derek Collison
-conceived NATS as a messaging platform that functions like a central
-nervous system."</p>
-</blockquote>
-<hr>
-<h3><a name="ch7"></a>Chapter 7: While You Are Coding</h3>
-<hr>
-<p>"Testing is not about finding bugs, it&#8217;s about getting feedback on
-your code: aspects of design, the API, coupling, and so on. That means
-that the major benefits of testing happen when you think about and
-write the tests, not just when you run them." (page 325)</p>
-<hr>
-<p>"If you&#8217;re not sure why it works, you won&#8217;t know why it fails." (page
-339)</p>
-<hr>
-<blockquote>
-<p>"Tip 68: Build End-to-End, Not Top-Down or Bottom Up" (page 366)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Testing, design, coding&#8212;it&#8217;s all programming." (page 374)</p>
-</blockquote>
-<hr>
-<p>Property-based testing seems like fuzzing...</p>
-<hr>
-<p>That NIST thing on having reasonable password rules:
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf</p>
-<hr>
-<h3><a name="ch8"></a>Chapter 8: Before the Project</h3>
-<p>This is good stuff, but I didn't pull out specific notes. It's on
-working in tight feedback loops rather than trying to "collect
-requirements" all at the beginning.</p>
-<hr>
-<h3><a name="ch9"></a>Chapter 9: Pragmatic Projects</h3>
-<hr>
-<blockquote>
-<p>"Programmers are a bit like cats: intelligent, strong willed,
-opinionated, independent, and often worshiped by the net." (page
-437)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Tip 85: Schedule It to Make It Happen" (page 441)</p>
-</blockquote>
-<hr>
-<p><a href="https://www.researchgate.net/publication/324959836_Mythical_Unit_Test_Coverage">Mythical Unit Test Coverage</a>
-is neat. Abstract:</p>
-<blockquote>
-<p>"It is a continuous struggle to understand how much a product should
-be tested before its delivery to the market. Ericsson, as a global
-software development company, decided to evaluate the adequacy of
-the unit-test-coverage criterion that it had employed for years as a
-guide for sufficiency of testing. Naturally, one can think that if
-increasing coverage decreases the number of defects significantly,
-then coverage can be considered a criterion for test sufficiency. To
-test this hypothesis in practice, we investigated the relationship
-of unit-test-coverage measures and post-unit-test defects in a large
-commercial product of Ericsson. The results indicate that high
-unit-test coverage did not seem to be any tangible help in producing
-defect-free software."</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Even though your title might be some variation of &#8220;Software
-Developer&#8221; or &#8220;Software Engineer,&#8221; in truth it should be &#8220;Problem
-Solver.&#8221; That&#8217;s what we do, and that&#8217;s the essence of a Pragmatic
-Programmer. We solve problems." (page 464)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Anonymity, especially on large projects, can provide a breeding
-ground for sloppiness, mistakes, sloth, and bad code." (page 466)</p>
-</blockquote>
-<hr>
-<h3><a name="ch10"></a>Chapter 10: Postface</h3>
-<hr>
-<blockquote>
-<p>"Tip 99: Don&#8217;t Enable Scumbags" (page 472)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20201210-pragmatic_programmer/</link>
-<guid>http://planspace.org/20201210-pragmatic_programmer/</guid>
-<pubDate>Thu, 10 Dec 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

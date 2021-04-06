@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-04-05: [How to Lie with Statistics, by Huff](/20210405-how_to_lie_with_statistics_by_huff/)
  * 2021-04-03: [Trekonomics, by Saadia](/20210401-trekonomics_by_saadia/)
  * 2021-03-31: [Software Engineering at Google](/20210331-software_engineering_at_google/)
  * 2021-03-30: [How to Make the World Add Up, by Harford](/20210330-how_to_make_the_world_add_up_by_harford/)
