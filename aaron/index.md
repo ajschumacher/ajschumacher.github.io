@@ -21,6 +21,7 @@ Sometimes people ask me for a bio:
 
 Here are some things I've talked about:
 
+ * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on Monday April 5, 2021
  * Statistical Rethinking: [Ulysses' compass](/20201221-ulysses_compass/) at GDMS ML CoI on Monday January 25, 2021
  * [Experiment with Abseil Flags](https://us02web.zoom.us/webinar/register/WN_yadCehvlTKmjbCYGr9bxQg) at [Magnimind](https://magnimindacademy.com/) on Wednesday September 9, 2020
  * Abseil and Vexilog for ML Experiment Management at GDMS ML CoI on
