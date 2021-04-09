@@ -554,6 +554,48 @@ Yes, do this.
 
 ---
 
+> "Without statistics, then, governments would fumble in ignorance.
+> But there is an intriguing counterargument, which is that
+> governments are so reliably incompetent that giving them more
+> information is risky: it will only encourage them.
+>
+> "One prominent advocate of this view was Sir John Cowperthwaite. Sir
+> John was the financial secretary of Hong Kong throughout the 1960s,
+> at a time when it was still under the control of the British—and
+> when it was experiencing scorchingly rapid economic growth. Exactly
+> how rapid was hard to say, because Sir John refused to collect basic
+> information about Hong Kong’s economy. The economist Milton
+> Friedman, later to win the Nobel Memorial Prize in Economics, met
+> Sir John at the time and asked him why. ‘Cowperthwaite explained
+> that he had resisted requests from civil servants to provide such
+> data because he was convinced that once the data was published there
+> would be pressure to use them for government intervention in the
+> economy.’
+>
+> "There was a logic to this. Hong Kong’s rapid growth was partly
+> thanks to an influx of immigrants from famine-struck communist
+> China, but Cowperthwaite and Friedman also believed—with some
+> reason—that it was flourishing thanks to a laissez-faire approach to
+> policy. Cowperthwaite’s government levied low taxes and provided
+> very little in the way of public services. The private sector, he
+> argued, would tend to solve people’s problems more quickly and
+> efficiently than the state. Why, the, collect data that would only
+> encourage meddling from the authorities back in London?
+> Cowperthwaite figured that the less London’s politicians did, the
+> better—and the less they knew, the less they would try to do." (page
+> 212)
+
+(Cites [Hong Kong’s postwar transformation shows how fewer data can sometimes boost growth](https://blogs.lse.ac.uk/businessreview/2017/06/30/hong-kongs-postwar-transformation-shows-how-fewer-data-can-sometimes-boost-growth/).)
+
+Also discusses _Seeing Like a State_, describing it as more
+respect-local-people than free-market-is-only-good...
+
+In the end he thinks bad governments do bad things despite data (or
+its absence) rather than because of it.
+
+
+---
+
 ### Chapter 9: <a href="#ch9" name="ch9">Be skeptical of visualizations.</a>
 
 
