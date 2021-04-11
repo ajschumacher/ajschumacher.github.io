@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-04-11: [Learn You a Haskell for Great Good! by Lipovača](/20210411-learn_you_a_haskell_for_great_good_by_lipovaca/)
  * 2021-04-05: [How to Lie with Statistics, by Huff](/20210405-how_to_lie_with_statistics_by_huff/)
  * 2021-04-03: [Trekonomics, by Saadia](/20210401-trekonomics_by_saadia/)
  * 2021-03-31: [Software Engineering at Google](/20210331-software_engineering_at_google/)

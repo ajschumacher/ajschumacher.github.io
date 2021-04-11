@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Learn You a Haskell for Great Good! by Lipovača</title>
+  </head>
+  <body>
+    <article>
+<h1>Learn You a Haskell for Great Good! by Lipovača</h1>
+<p class="date">Sunday April 11, 2021</p>
+<p>Here's a good <a href="http://learnyouahaskell.com/">book</a> you can read for free. Like it says on the
+back, "Maps, Monads, Monoids, and More!" It does a great job
+explaining things in ways that are helpful. The humble list can be a
+functor, an applicative functor, a monoid, and a monad.</p>
+<p>There's a <a href="http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html">joke</a>: "A monad is just a monoid in the category of
+endofunctors, what's the problem?" This is like saying "the median is
+just a medoid on the field of reals."</p>
+<p>In both cases, if you don't know what the first term is, you likely
+don't know what the others are. It's not a good way to explain.</p>
+<p>In both cases, the explanatory terms are needlessly obscure: "endo" is
+likely gratuitous; "field of reals" is probably not better than
+"numbers".</p>
+<p>Also in both cases, the explanation isn't complete; it describes
+without defining. For the median, the L1 norm has to be specified. For
+monads, the monoid function has to be <code>join</code>. See also
+<a href="https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem">Crockett's explanation</a> and my <a href="/20150125-monads_by_diagram/">pictures</a> showing how <code>map</code> and
+<code>join</code> give you <code>bind</code>.</p>
+<p>I'm not giving a complete explanation here either. Read the book! It
+has <a href="https://en.wikipedia.org/wiki/Zipper_(data_structure)">zippers</a> too!</p>
+<hr />
+<p><img alt="cover" src="cover.jpg" /></p>
+<hr />
+<p>Forcing non-pure stuff into <code>do</code> blocks, as seems common in Haskell,
+is very reminiscent of the <a href="https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell">functional core, imperative shell</a>
+pattern.</p>
+<hr />
+<p>Haskell's pattern-matching (often instead of conditionals) is pretty
+neat. Python is getting <a href="https://mathspp.com/blog/pydonts/pattern-matching-tutorial-for-pythonic-code">something analogous</a> in 3.10.</p>
+<hr />
+<p>Haskell's type inference gives behavior sort of like coercion in other
+languages, but without the craziness. So <code>3 + 4.5</code> will work like
+you'd expect, but there's no chance <code>'3' + 4.5</code> will turn out to be
+<code>'34.5'</code> (which is what happens in JavaScript).</p>
+<hr />
+<p>Haskell has a funny quirk in some of its ranges:</p>
+<pre><code>ghci> [0.1, 0.3 .. 1]
+[0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]</code></pre>
+
+<p>It's surprising that 1.1 is in there, when 1 was the upper bound. This
+is because of a rule that if the value is within half the step size
+(for floats and things like them) then it gets included in the result.
+Wacky!</p>
+<hr />
+<blockquote>
+<p>"<em>Sets and maps from <code>Data.Set</code> and <code>Data.map</code> are implemented using
+trees, but instead of normal binary search trees, they use</em> balanced
+<em>binary search trees.</em>" (page 135)</p>
+</blockquote>
+<p>Interesting! Usually these would be hash maps... Hmm! The closest
+Haskell gets to a "normal" hash map (I think <a href="https://hackage.haskell.org/package/unordered-containers-0.2.13.0/docs/Data-HashMap-Strict.html">this</a>?) is implemented
+with <a href="https://en.wikipedia.org/wiki/Hash_array_mapped_trie">hash array mapped tries</a>. Also good for persistence (meaning
+re-using things in memory rather than creating everything from
+scratch, because we don’t mutate). Fun!</p>
+<hr />
+<blockquote>
+<p>"We can read the type of <code>putStrLn</code> like this: <code>putStrLn</code> takes a
+string and returns an <em>I/O action</em> that has a result type of <code>()</code>
+(that is, the empty tuple, also known as <em>unit</em>)." (page 155)</p>
+</blockquote>
+<p>The wiki for <a href="https://en.wikipedia.org/wiki/Unit_type">unit type</a> is helpful for understanding why it's
+called that.</p>
+<hr />
+<p>On page 275, he defines a pipe operator with <code>x -: f = f x</code>. Pretty
+neat!</p>
+<hr />
+<blockquote>
+<p>"While similar to a normal list, a <em>difference list</em> is actually a
+function that takes a list and prepends another list to it. For
+example, the difference list equivalent of a list like <code>[1,2,3]</code> is
+the function <code>\xs -&gt; [1,2,3] ++ xs</code>. A normal empty list is <code>[]</code>,
+whereas an empty difference list is the function <code>\xs -&gt; [] ++ xs</code>."
+(page 307)</p>
+</blockquote>
+<p>And so we get efficient appending to linked lists!</p>
+<hr />
+<blockquote>
+<p>"the function monad is also called the <em>reader monad</em>." (page 312)</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>"For instance, if we have <code>Just (Just 9)</code>, can we make that into
+<code>Just 9</code>? It turns out that any nested monadic value can be
+flattened and that this is actually a property unique to monads."
+(page 326)</p>
+</blockquote>
+<p>This makes it sound fancier than it is, I think because the author
+talks about <code>bind</code> more than <code>join</code> and doesn't talk about the
+<a href="/20150125-monads_by_diagram/">relationship between them</a>.</p>
+<hr />
+<blockquote>
+<p>"We don't usually set out to make a monad with the sole purpose of
+making a monad. Rather, we make a type whose purpose is to model an
+aspect of some problem, and then later on, if we see that the type
+represents a value with a context and can act like a monad, we give
+it a <code>Monad</code> instance." (page 336)</p>
+</blockquote>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
