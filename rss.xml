@@ -7,6 +7,92 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A simple Instrumental Variable</title>
+<description><![CDATA[
+
+<p>Instrumental variables can let you estimate effects despite
+confounding, which is pretty neat. The idea is sort of that the
+instrument helps identify a non-confounded version of a variable, as
+illustrated in the over-simplified version of
+<a href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation#Interpretation_as_two-stage_least_squares">two-stage least squares</a> below.</p>
+<p>We seek to estimate the impact of <em>x</em> on <em>y</em>, where they&#8217;re both
+influenced by <em>u</em>.</p>
+<p><img alt="diagram of simple instrumental variable setup" src="simple_iv.jpg"></p>
+<p>Unfortunately, <em>u</em> is <em>u</em>nobserved, so we can&#8217;t control for it.
+But lo, there is <em>z</em> influencing <em>x</em>. Let&#8217;s simulate data where all
+the true coefficients are one.</p>
+<!-- set.seed(42) -->
+
+<pre><code class="language-r">u = rnorm(100)
+z = rnorm(100)
+x = u + z + rnorm(100)
+y = u + x + rnorm(100)</code></pre>
+
+<p>Regressing naively, we get an incorrect estimate for the effect of <em>x</em>
+on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.35260    0.07697  17.573   &lt;2e-16 ***</code></pre>
+
+<p>Luckily, <em>z</em> is an &#8220;instrument,&#8221; satisfying three requirements
+(following <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a>):</p>
+<ul>
+<li><em>z</em> is independent of <em>u</em></li>
+<li><em>z</em> is not independent of <em>x</em></li>
+<li><em>z</em> doesn&#8217;t influence <em>y</em> except through <em>x</em></li>
+</ul>
+<p>But how do we use the instrument? Throwing it in the regression makes
+things <em>worse</em>:</p>
+<pre><code class="language-r">summary(lm(y ~ x + z))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.52949    0.09207  16.612  &lt; 2e-16 ***
+##  z           -0.54659    0.17099  -3.197  0.00188 **</code></pre>
+
+<p>A fancier model-fitting approach is needed. McElreath points out that
+two-stage least squares is not the only way to do this, and also that
+there should be some adjustments to make the standard errors make
+sense. I&#8217;m going to ignore adjustments and just try to get some
+intuition from how two-stage least squares works.</p>
+<p>Stage one: Do a regression using <em>z</em> to predict <em>x</em>. Then get the
+predictions for <em>x</em> from that model, which I&#8217;ll call <em>x_from_z</em>. This
+uses the independence of <em>z</em> from <em>u</em> to make a &#8220;version of&#8221; (maybe a
+component of) <em>x</em> that is independent of <em>u</em>: the variation of <em>x</em> due
+to <em>z</em>.</p>
+<p>Stage two: Do a regression using <em>x_from_z</em> to predict <em>y</em>.</p>
+<pre><code class="language-r">x_from_z = predict(lm(x ~ z))
+summary(lm(y ~ x_from_z))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x_from_z     1.03978    0.23886   4.353  3.3e-05 ***</code></pre>
+
+<p>We&#8217;ve recovered a fair estimate of the true parameter for <em>x</em>, despite
+not using the unobserved confound <em>u</em>!</p>
+<p>Here&#8217;s the same thing as above but with the <code>ivreg</code> <a href="https://john-d-fox.github.io/ivreg/">package</a>,
+correcting the standard error:</p>
+<pre><code class="language-r">summary(ivreg(y ~ x | z))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.03978    0.13844   7.511 2.77e-11 ***</code></pre>
+
+<p>You could also use <a href="https://en.wikipedia.org/wiki/Hamiltonian_Monte_Carlo">HMC</a> as in <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a> &#167;14.3.</p>
+<hr>
+<h3>Simpler cases</h3>
+<p>This example of an instrumental variable situation extends the earlier
+collection of four simpler regression situations,
+<a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></p>
+<hr>
+<h3>More complicated cases</h3>
+<p>The <a href="http://www.dagitty.net/">dagitty</a> tools seems to be a great way to analyze a given
+situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you should
+control for and/or whether there are instruments you can use to
+estimate a given effect.</p>
+<p>There&#8217;s also the front-door criterion, which I&#8217;m not yet sure how to
+fit a model for. Maybe I&#8217;ll try to write something up eventually.</p>
+<p>Maybe regression discontinuity is another kind of case?</p>    
+    ]]></description>
+<link>http://planspace.org/20210430-a_simple_instrumental_variable/</link>
+<guid>http://planspace.org/20210430-a_simple_instrumental_variable/</guid>
+<pubDate>Fri, 30 Apr 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Diamond Age, by Stephenson</title>
 <description><![CDATA[
 
@@ -4200,70 +4286,6 @@ we considering now that will turn out to be important?</p>
 <link>http://planspace.org/20210102-predicting_the_future_from_2021/</link>
 <guid>http://planspace.org/20210102-predicting_the_future_from_2021/</guid>
 <pubDate>Sat, 02 Jan 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The weather outside is frightening</title>
-<description><![CDATA[
-
-<p>Based on ten years of daily GHCN data, it is too cold, too hot, and
-too wet out there. Best chances for livable weather: parts of the
-Mexican plateau, California, and maybe Hawaii.</p>
-<p><img src="chance_of_freezing.png" width="49%">
-<img src="chance_of_heat.png" width="49%">
-<img src="chance_of_precipitation.png" width="49%">
-<img src="most_habitable.png" width="49%"></p>
-<hr>
-<h3><a name="temp" href="#temp">Temperature</a></h3>
-<p>Lots of land is up north where it gets cold, and everything around the
-equator gets too hot. Is there a Goldilocks region in between that's
-"just right" year-round? No. Your best hope is Stockholm syndrome: "I
-love the seasons!"</p>
-<p><img src="chance_of_freezing.png" width="49%">
-<img src="chance_of_heat.png" width="49%"></p>
-<p>To get a moderate temperature all year, you have to rely on oceans, or
-mountainous elevations, or both. Thanks a lot, solar system.</p>
-<h3><a name="prcp" href="#prcp">Precipitation</a></h3>
-<p>Even with over 15 thousand stations and ten years of <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">GHCN</a> data,
-there's spotty coverage for Africa, South America, and Asia. It also
-looks like the US precipitation data may be systematically different
-from Canadian and Mexican data. Thanks a lot, humans.</p>
-<p><img alt="Chance of precipitation" src="chance_of_precipitation.png"></p>
-<p>Precipitation: Can't live with it, can't have nice plants without it.
-Thanks a lot, water cycle. Let's say once every six to nine days is
-acceptable to avoid deserts.</p>
-<h3><a name="habitable" href="#habitable">Habitable areas</a></h3>
-<p><img alt="Even slightly habitable" src="even_slightly_habitable.png"></p>
-<p>Mexico! With ocean on two sides and a high plateau to cut the
-temperature and humidity, Mexico ought to be where everybody lives.
-<a href="https://weather-and-climate.com/average-monthly-Rainfall-Temperature-Sunshine,zacatecas-zacatecas-mx,Mexico">Zacatecas</a> seems particularly good.</p>
-<p>California has some okay spots, like San Diego and Monterey. Look out
-for forest fires.</p>
-<p>Hawaii isn't out of bounds, but even the lows are high, so if you
-aren't at the beach it might not be ideal. Avoid the volcanoes.</p>
-<p>Then there are survivable places, including lots of the west coast of
-the Americas, New Zealand, and the southern coast of Australia. The
-tip of South Africa and large parts of Europe could be okay. I think
-that's roughly Japan and Korea seeming not quite deadly.</p>
-<h3><a name="methods" href="#methods">Methods</a></h3>
-<p>This slapdash analysis <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201230-weather_outside_is_frightening/prepare_data.sh">gathers some data</a> and visualizes it with a
-Python <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20201230-weather_outside_is_frightening/visualize.ipynb">notebook</a>, which has all the details and a few more fun
-maps.</p>
-<p>The chances of cold, heat, and precipitation are fractions of days
-with low temperature under 0&#176; C (32&#176; F), high temperature over 30&#176; C
-(86&#176; F), and precipitation over one millimeter, respectively. The
-precipitation score may have issues. The scales on these maps go all
-the way from 0% to 100%, using the plasma color scale. Legends are
-ugly.</p>
-<p>A location's score is the sum of the cold score, hot score, and
-distance of the precipitation score from the range 1/6 to 1/9. It's
-not quite a rate any more, just a badness score. The "Most habitable"
-map colors scores less than 1/4, and the "Even slightly habitable" map
-colors scores less than 3/5. <em>Do you really want to live somewhere
-with a score over 60%?</em></p>    
-    ]]></description>
-<link>http://planspace.org/20201230-weather_outside_is_frightening/</link>
-<guid>http://planspace.org/20201230-weather_outside_is_frightening/</guid>
-<pubDate>Wed, 30 Dec 2020 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>A simple Instrumental Variable</title>
+  </head>
+  <body>
+    <article>
+<h1>A simple Instrumental Variable</h1>
+<p class="date">Friday April 30, 2021</p>
+<p>Instrumental variables can let you estimate effects despite
+confounding, which is pretty neat. The idea is sort of that the
+instrument helps identify a non-confounded version of a variable, as
+illustrated in the over-simplified version of
+<a href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation#Interpretation_as_two-stage_least_squares">two-stage least squares</a> below.</p>
+<p>We seek to estimate the impact of <em>x</em> on <em>y</em>, where they’re both
+influenced by <em>u</em>.</p>
+<p><img alt="diagram of simple instrumental variable setup" src="simple_iv.jpg" /></p>
+<p>Unfortunately, <em>u</em> is <em>u</em>nobserved, so we can’t control for it.
+But lo, there is <em>z</em> influencing <em>x</em>. Let’s simulate data where all
+the true coefficients are one.</p>
+<!-- set.seed(42) -->
+
+<pre><code class="language-r">u = rnorm(100)
+z = rnorm(100)
+x = u + z + rnorm(100)
+y = u + x + rnorm(100)</code></pre>
+
+<p>Regressing naively, we get an incorrect estimate for the effect of <em>x</em>
+on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x            1.35260    0.07697  17.573   &lt;2e-16 ***</code></pre>
+
+<p>Luckily, <em>z</em> is an “instrument,” satisfying three requirements
+(following <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a>):</p>
+<ul>
+<li><em>z</em> is independent of <em>u</em></li>
+<li><em>z</em> is not independent of <em>x</em></li>
+<li><em>z</em> doesn’t influence <em>y</em> except through <em>x</em></li>
+</ul>
+<p>But how do we use the instrument? Throwing it in the regression makes
+things <em>worse</em>:</p>
+<pre><code class="language-r">summary(lm(y ~ x + z))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x            1.52949    0.09207  16.612  &lt; 2e-16 ***
+##  z           -0.54659    0.17099  -3.197  0.00188 **</code></pre>
+
+<p>A fancier model-fitting approach is needed. McElreath points out that
+two-stage least squares is not the only way to do this, and also that
+there should be some adjustments to make the standard errors make
+sense. I’m going to ignore adjustments and just try to get some
+intuition from how two-stage least squares works.</p>
+<p>Stage one: Do a regression using <em>z</em> to predict <em>x</em>. Then get the
+predictions for <em>x</em> from that model, which I’ll call <em>x_from_z</em>. This
+uses the independence of <em>z</em> from <em>u</em> to make a “version of” (maybe a
+component of) <em>x</em> that is independent of <em>u</em>: the variation of <em>x</em> due
+to <em>z</em>.</p>
+<p>Stage two: Do a regression using <em>x_from_z</em> to predict <em>y</em>.</p>
+<pre><code class="language-r">x_from_z = predict(lm(x ~ z))
+summary(lm(y ~ x_from_z))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x_from_z     1.03978    0.23886   4.353  3.3e-05 ***</code></pre>
+
+<p>We’ve recovered a fair estimate of the true parameter for <em>x</em>, despite
+not using the unobserved confound <em>u</em>!</p>
+<p>Here’s the same thing as above but with the <code>ivreg</code> <a href="https://john-d-fox.github.io/ivreg/">package</a>,
+correcting the standard error:</p>
+<pre><code class="language-r">summary(ivreg(y ~ x | z))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x            1.03978    0.13844   7.511 2.77e-11 ***</code></pre>
+
+<p>You could also use <a href="https://en.wikipedia.org/wiki/Hamiltonian_Monte_Carlo">HMC</a> as in <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a> §14.3.</p>
+<hr />
+<h3>Simpler cases</h3>
+<p>This example of an instrumental variable situation extends the earlier
+collection of four simpler regression situations,
+<a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></p>
+<hr />
+<h3>More complicated cases</h3>
+<p>The <a href="http://www.dagitty.net/">dagitty</a> tools seems to be a great way to analyze a given
+situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you should
+control for and/or whether there are instruments you can use to
+estimate a given effect.</p>
+<p>There’s also the front-door criterion, which I’m not yet sure how to
+fit a model for. Maybe I’ll try to write something up eventually.</p>
+<p>Maybe regression discontinuity is another kind of case?</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

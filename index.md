@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-04-30: [A simple Instrumental Variable](/20210430-a_simple_instrumental_variable/)
  * 2021-04-22: [The Diamond Age, by Stephenson](/20210422-the_diamond_age_by_stephenson/)
  * 2021-04-11: [Learn You a Haskell for Great Good! by Lipovača](/20210411-learn_you_a_haskell_for_great_good_by_lipovaca/)
  * 2021-04-05: [How to Lie with Statistics, by Huff](/20210405-how_to_lie_with_statistics_by_huff/)
