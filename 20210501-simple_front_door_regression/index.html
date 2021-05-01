@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Simple Front Door Regression</title>
+  </head>
+  <body>
+    <article>
+<h1>Simple Front Door Regression</h1>
+<p class="date">Saturday May  1, 2021</p>
+<p>If you have a mediator, you can estimate effects despite confounding,
+which is neat. The idea is like flip of <a href="/20210430-a_simple_instrumental_variable/">instrumental variables</a>;
+here the constructed non-confounded variable is what’s not explained
+by the confounded one. A <a href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation#Interpretation_as_two-stage_least_squares">two-stage regression</a> illustrates the
+idea.</p>
+<p>We seek to estimate the impact of <em>x</em> on <em>y</em>, where they’re both
+influenced by <em>u</em>.</p>
+<p><img alt="front door scenario" src="front_door.jpg" /></p>
+<p>Unfortunately, <em>u</em> is <em>u</em>nobserved, so we can’t control for it.
+But lo, there is <em>z</em>, a perfect mediator between <em>x</em> and <em>y</em>. Let’s
+simulate data where all the true coefficients are one.</p>
+<!-- set.seed(101) -->
+
+<pre><code class="language-r">u = rnorm(100)
+x = u + rnorm(100)
+z = x + rnorm(100)
+y = u + z + rnorm(100)</code></pre>
+
+<p>Regressing naively, we get an incorrect estimate for the effect of <em>x</em>
+on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x            1.54648    0.09848  15.704   &lt;2e-16 ***</code></pre>
+
+<p>Luckily, <em>z</em> is in there, and it isn’t confounded with <em>u</em>.</p>
+<p>But how do we use it? Throwing it in the regression doesn’t help.</p>
+<pre><code class="language-r">summary(lm(y ~ x + z))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x            0.46175    0.15517   2.976  0.00369 **
+##  z            1.02436    0.12740   8.041  2.2e-12 ***</code></pre>
+
+<p>A fancier model-fitting approach is needed. Here’s an illustrative
+two-stage regression, ignoring standard error concerns.</p>
+<p>Stage one: Do a regression using <em>x</em> to predict <em>z</em>. Note the
+coefficient on <em>x</em>. Then get the residuals for <em>z</em> from that model,
+which I’ll call <em>z_not_from_x</em>. This uses the non-confounding of <em>z</em>
+with <em>u</em> to make a “version of” (maybe a component of) <em>z</em> that is
+independent of <em>u</em> (because it’s independent of <em>x</em>): the variation of
+<em>z</em> not due to <em>x</em> (or <em>u</em>).</p>
+<p>Stage two: Do a regression using <em>z_not_from_x</em> to predict <em>y</em>.</p>
+<p>Multiplying the coefficients from the two models gives the effect of
+<em>x</em> on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(z ~ x))
+##              Estimate Std. Error t value Pr(>|t|)
+##  x           1.058940   0.060797  17.418   &lt;2e-16 ***
+z_not_from_x = residuals(lm(z ~ x))
+summary(lm(y ~ z_not_from_x))
+##               Estimate Std. Error t value Pr(>|t|)
+##  z_not_from_x   1.0244     0.2889   3.546 0.000601 ***
+1.058940 * 1.0244  # Estimate for x on y
+##  1.084778</code></pre>
+
+<p>We’ve recovered a fair estimate of the true parameter for <em>x</em>, despite
+not using the unobserved confound <em>u</em>!</p>
+<p>Here’s the same thing as above but with the <code>lavaan</code> <a href="https://lavaan.ugent.be/">package</a> for
+<a href="https://en.wikipedia.org/wiki/Structural_equation_modeling">SEM</a>, following <a href="http://www.felixthoemmes.com/blog/the-front-door-criterion-in-linear-parametric-models/">Thoemmes</a>.</p>
+<pre><code class="language-r">model = "z ~ x_on_z * x
+         y ~ z_on_y * z
+         x ~~ y  # Allow x and y to still covary
+         x_on_y := x_on_z * z_on_y"
+summary(sem(model, data.frame(x=x, z=z, y=y)))
+##                   Estimate  Std.Err  z-value  P(>|z|)
+##    x_on_z            1.059    0.060   17.594    0.000
+##    z_on_y            1.024    0.125    8.164    0.000
+##    x_on_y            1.085    0.146    7.406    0.000</code></pre>
+
+<p>So there’s standard errors for you!</p>
+<hr />
+<h3>Other cases</h3>
+<p>This example goes well with a collection of four simpler ("back door")
+regression situations, <a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a> It goes
+especially well with its cousin, <a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a>.</p>
+<hr />
+<h3>More complicated cases</h3>
+<p>The <a href="http://www.dagitty.net/">dagitty</a> tools seems to be a great way to analyze a given
+situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you can do with
+it.</p>
+<p>Maybe regression discontinuity is another kind of case?</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:ajschumacher@gmail.com">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

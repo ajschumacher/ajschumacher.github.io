@@ -7,6 +7,93 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Simple Front Door Regression</title>
+<description><![CDATA[
+
+<p>If you have a mediator, you can estimate effects despite confounding,
+which is neat. The idea is like flip of <a href="/20210430-a_simple_instrumental_variable/">instrumental variables</a>;
+here the constructed non-confounded variable is what&#8217;s not explained
+by the confounded one. A <a href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation#Interpretation_as_two-stage_least_squares">two-stage regression</a> illustrates the
+idea.</p>
+<p>We seek to estimate the impact of <em>x</em> on <em>y</em>, where they&#8217;re both
+influenced by <em>u</em>.</p>
+<p><img alt="front door scenario" src="front_door.jpg"></p>
+<p>Unfortunately, <em>u</em> is <em>u</em>nobserved, so we can&#8217;t control for it.
+But lo, there is <em>z</em>, a perfect mediator between <em>x</em> and <em>y</em>. Let&#8217;s
+simulate data where all the true coefficients are one.</p>
+<!-- set.seed(101) -->
+
+<pre><code class="language-r">u = rnorm(100)
+x = u + rnorm(100)
+z = x + rnorm(100)
+y = u + z + rnorm(100)</code></pre>
+
+<p>Regressing naively, we get an incorrect estimate for the effect of <em>x</em>
+on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(y ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            1.54648    0.09848  15.704   &lt;2e-16 ***</code></pre>
+
+<p>Luckily, <em>z</em> is in there, and it isn&#8217;t confounded with <em>u</em>.</p>
+<p>But how do we use it? Throwing it in the regression doesn&#8217;t help.</p>
+<pre><code class="language-r">summary(lm(y ~ x + z))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x            0.46175    0.15517   2.976  0.00369 **
+##  z            1.02436    0.12740   8.041  2.2e-12 ***</code></pre>
+
+<p>A fancier model-fitting approach is needed. Here&#8217;s an illustrative
+two-stage regression, ignoring standard error concerns.</p>
+<p>Stage one: Do a regression using <em>x</em> to predict <em>z</em>. Note the
+coefficient on <em>x</em>. Then get the residuals for <em>z</em> from that model,
+which I&#8217;ll call <em>z_not_from_x</em>. This uses the non-confounding of <em>z</em>
+with <em>u</em> to make a &#8220;version of&#8221; (maybe a component of) <em>z</em> that is
+independent of <em>u</em> (because it&#8217;s independent of <em>x</em>): the variation of
+<em>z</em> not due to <em>x</em> (or <em>u</em>).</p>
+<p>Stage two: Do a regression using <em>z_not_from_x</em> to predict <em>y</em>.</p>
+<p>Multiplying the coefficients from the two models gives the effect of
+<em>x</em> on <em>y</em>.</p>
+<pre><code class="language-r">summary(lm(z ~ x))
+##              Estimate Std. Error t value Pr(&gt;|t|)
+##  x           1.058940   0.060797  17.418   &lt;2e-16 ***
+z_not_from_x = residuals(lm(z ~ x))
+summary(lm(y ~ z_not_from_x))
+##               Estimate Std. Error t value Pr(&gt;|t|)
+##  z_not_from_x   1.0244     0.2889   3.546 0.000601 ***
+1.058940 * 1.0244  # Estimate for x on y
+##  1.084778</code></pre>
+
+<p>We&#8217;ve recovered a fair estimate of the true parameter for <em>x</em>, despite
+not using the unobserved confound <em>u</em>!</p>
+<p>Here&#8217;s the same thing as above but with the <code>lavaan</code> <a href="https://lavaan.ugent.be/">package</a> for
+<a href="https://en.wikipedia.org/wiki/Structural_equation_modeling">SEM</a>, following <a href="http://www.felixthoemmes.com/blog/the-front-door-criterion-in-linear-parametric-models/">Thoemmes</a>.</p>
+<pre><code class="language-r">model = "z ~ x_on_z * x
+         y ~ z_on_y * z
+         x ~~ y  # Allow x and y to still covary
+         x_on_y := x_on_z * z_on_y"
+summary(sem(model, data.frame(x=x, z=z, y=y)))
+##                   Estimate  Std.Err  z-value  P(&gt;|z|)
+##    x_on_z            1.059    0.060   17.594    0.000
+##    z_on_y            1.024    0.125    8.164    0.000
+##    x_on_y            1.085    0.146    7.406    0.000</code></pre>
+
+<p>So there&#8217;s standard errors for you!</p>
+<hr>
+<h3>Other cases</h3>
+<p>This example goes well with a collection of four simpler ("back door")
+regression situations, <a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a> It goes
+especially well with its cousin, <a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a>.</p>
+<hr>
+<h3>More complicated cases</h3>
+<p>The <a href="http://www.dagitty.net/">dagitty</a> tools seems to be a great way to analyze a given
+situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you can do with
+it.</p>
+<p>Maybe regression discontinuity is another kind of case?</p>    
+    ]]></description>
+<link>http://planspace.org/20210501-simple_front_door_regression/</link>
+<guid>http://planspace.org/20210501-simple_front_door_regression/</guid>
+<pubDate>Sat, 01 May 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>A simple Instrumental Variable</title>
 <description><![CDATA[
 
@@ -4195,97 +4282,6 @@ the <a href="https://smile.amazon.com/Enchiridion-Epictetus/dp/B08BG7536P/">Long
 <link>http://planspace.org/20210107-enchiridion_in_52_sentences/</link>
 <guid>http://planspace.org/20210107-enchiridion_in_52_sentences/</guid>
 <pubDate>Thu, 07 Jan 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Predicting the future from 2021</title>
-<description><![CDATA[
-
-<p>Second year of doing <a href="/20200112-predicting_the_future_from_2020/">these</a>! Let's make some predictions for 1, 5,
-10, and 20 years out!</p>
-<h3>By 2022</h3>
-<ul>
-<li>Vaccine effective in controlling all strains of COVID-19.</li>
-<li>No additional pandemic on the scale of COVID-19.</li>
-<li>Donald Trump indicted.</li>
-<li>S&amp;P 500 closes above 4,000.</li>
-</ul>
-<h3>By 2026</h3>
-<ul>
-<li>At least one of <a href="https://en.wikipedia.org/wiki/Facebook,_Apple,_Amazon,_Netflix_and_Google">FAANG</a> split up by government intervention.</li>
-<li>Joe Biden is dead.</li>
-<li>Democratic presidential ticket of Harris and Buttigieg loses.
-   [<a href="#1">1</a>]</li>
-<li>Intelligent extraterrestrials clearly real and communicating with
-   humans. [<a href="#2">2</a>]</li>
-<li>S&amp;P 500 closes above 6,000.
- <!-- * My grandparents are dead. --></li>
-</ul>
-<h3>By 2031</h3>
-<ul>
-<li>S&amp;P 500 closes above 8,000.</li>
-</ul>
-<h3>By 2041</h3>
-<ul>
-<li>S&amp;P 500 closes above 12,000.</li>
-</ul>
-<p>[<a name="1" href="#1">1</a>] What odds would you give me?</p>
-<p>[<a name="2" href="#2">2</a>] I've included one low-probability, never
-occurred before, possibly impossible prediction, at the recommendation
-of my sister. There were <a href="https://en.wikipedia.org/wiki/Haim_Eshed">Haim Eshed</a>'s claims, after all, and those
-<a href="https://en.wikipedia.org/wiki/Pentagon_UFO_videos">videos</a>. And wouldn't it be fun? I'll give aliens an optimistic 2%
-for the next five years and reevaluate then as needed.</p>
-<hr>
-<h3>Reviewing predictions from 2020</h3>
-<p>All my one-year <a href="/20200112-predicting_the_future_from_2020/">predictions</a> were correct, at least if you interpret my
-"S&amp;P under 3,000" as meaning any time during the year, not just at the
-end of the year.</p>
-<p>I'm feeling more optimistic about the stock market now than I was last
-year. Maybe that's a sign that it'll do more poorly now?</p>
-<p>I had Justice Ginsberg dead by 2025, so my timing was sadly not
-maximally precise.</p>
-<p>Most of my predictions from last year were very conservative.
-Understanding the present is a good method for predicting the near
-future, but it isn't very interesting.</p>
-<p>I have less to say about the farther future. It's harder to predict,
-and I already <a href="/20200112-predicting_the_future_from_2020/">predicted</a> some things in the range of 10-20 years
-out last year. No changing them now! I'm also just thinking more about
-personal plans/goals; this stuff is just for fun.</p>
-<h3>Probabilistic predictions?</h3>
-<p><a href="https://slatestarcodex.com/2020/04/29/predictions-for-2020/">Some people</a> assign probabilities to all their predictions, and I
-think this isn't very interesting, because it's easy to nod along with
-probabilities. Predictions are interesting when they're surprising,
-and certainty can increase surprise.</p>
-<p>It would be possible to compare probabilities between people and see
-where they're most different. I could imagine making a little web
-survey/app for this, which might be fun and good to do in a class
-learning about <a href="/20201221-ulysses_compass/">cross-entropy</a>, for example.</p>
-<p>A possible taxonomy of predictions by probability:</p>
-<ul>
-<li>Very likely based on the present. (More hurricanes.)</li>
-<li>Coin flip. (Old person dies in some period.)</li>
-<li>Slightly unlikely. (Underdog wins something.)</li>
-<li>Very rare but known possible. (Pandemic.)</li>
-<li>Possibly impossible. (Aliens visit Earth for wine and cheese party.)</li>
-</ul>
-<p>It's the very likely ones that make the most sense to think about most
-of the time, I think, both because they don't require hedging and
-because there's less uncertainty <em>in the estimate of the probability
-itself</em>.</p>
-<h3>COVID-19 and the right questions</h3>
-<p>COVID-19 is the big thing that wasn't predicted for 2020: very rare
-but known possible. I'm not going to predict any other things in this
-category this year either, because that's easier and usually right.</p>
-<p>When I wrote my 2020 predictions, there was already some news about
-COVID-19. Is there something like that right now that I'm missing? I
-googled "early signs" but didn't find anything likely to make me seem
-perspicacious.</p>
-<p>The things that turn out to be important are hard to predict because
-you have to ask the right questions to even consider them. What aren't
-we considering now that will turn out to be important?</p>    
-    ]]></description>
-<link>http://planspace.org/20210102-predicting_the_future_from_2021/</link>
-<guid>http://planspace.org/20210102-predicting_the_future_from_2021/</guid>
-<pubDate>Sat, 02 Jan 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
