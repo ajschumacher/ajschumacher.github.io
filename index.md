@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-05-02: [The Scout Mindset, by Galef](/20210502-the_scout_mindset_by_galef/)
  * 2021-05-01: [Simple Front Door Regression](/20210501-simple_front_door_regression/)
  * 2021-04-30: [A simple Instrumental Variable](/20210430-a_simple_instrumental_variable/)
  * 2021-04-22: [The Diamond Age, by Stephenson](/20210422-the_diamond_age_by_stephenson/)
