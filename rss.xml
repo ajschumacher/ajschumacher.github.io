@@ -7,6 +7,20 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Wise Charlie Mental Models (cards)</title>
+<description><![CDATA[
+
+<p>These <a href="https://www.wisecharlie.com/shop">100 cards</a> are kind of cute. They summarize mental models in
+the style of <a href="https://en.wikipedia.org/wiki/Charlie_Munger#%22Elementary,_worldly_wisdom%22">Charlie Munger</a>; some are distinct Munger-isms. The
+descriptions aren't terribly good and there are errors. I like the
+<a href="https://fs.blog/mental-models/">general idea</a>, and I like cards; these are mediocre but not bad.</p>
+<p><img alt="image" src="image.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20210527-wise_charlie_mental_models/</link>
+<guid>http://planspace.org/20210527-wise_charlie_mental_models/</guid>
+<pubDate>Thu, 27 May 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The End of Everything, by Mack</title>
 <description><![CDATA[
 
@@ -5753,26 +5767,6 @@ exist."</p>
 <link>http://planspace.org/20210131-101_things_to_learn_in_art_school_by_white/</link>
 <guid>http://planspace.org/20210131-101_things_to_learn_in_art_school_by_white/</guid>
 <pubDate>Sun, 31 Jan 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Let's share books!</title>
-<description><![CDATA[
-
-<p>Books on shelves are sad. They should be read! Please read my books.</p>
-<p>You can browse over 500 of our household's books in two ways:</p>
-<ul>
-<li><a href="https://www.librarycat.org/lib/ajschumacher">a modern-ish search-based interface</a></li>
-<li><a href="https://www.librarything.com/catalog/ajschumacher">an old-looking list interface where you can see everything</a></li>
-</ul>
-<p><a href="/aaron/">Contact me</a> if something catches your eye!</p>
-<p>If you'd like, you can join <a href="https://www.librarything.com/">LibraryThing</a> too. You can search there
-through all your friends' books (add <a href="https://www.librarything.com/profile/ajschumacher">me</a>!) which is pretty neat.
-You can add your books too! The LibraryThing phone app is pretty good
-for easily adding books.</p>    
-    ]]></description>
-<link>http://planspace.org/20210122-lets_share_books/</link>
-<guid>http://planspace.org/20210122-lets_share_books/</guid>
-<pubDate>Fri, 22 Jan 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
