@@ -7,6 +7,113 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Books for Machine Learning</title>
+<description><![CDATA[
+
+<blockquote>
+<p>"for someone that doesn't have a lot of experience with machine
+learning, what books would you recommend starting with? machine
+learning for dummies?"</p>
+</blockquote>
+<hr>
+<div style="display:block; float:left;">
+
+<a href="https://www.statlearning.com/">
+<img src="intro_stat_learn.png" alt="Introduction to Statistical Learning" width="24%">
+</a>
+
+<a href="https://www.manning.com/books/deep-learning-with-python">
+<img src="dl_with_py.png" alt="Deep Learning with Python" width="24%">
+</a>
+
+<a href="/20210508-statistical_rethinking_by_mcelreath/">
+<img src="stat_rethink.jpg" alt="Statistical Rethinking" width="24%">
+</a>
+
+<a href="http://www.mmds.org/">
+<img src="mine_massive.jpg" alt="Mining of Massive Datasets" width="24%">
+</a>
+
+</div>
+
+<hr>
+<p><a href="https://www.statlearning.com/">Intro to Statistical Learning</a>: The friendly version of
+<a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements</a> has <a href="https://www.r-bloggers.com/2014/09/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">MOOC videos</a> and a 2nd edition coming soon, all
+free online. Is there a better intro? Maybe using Python?</p>
+<p><a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a>: The creator of <a href="https://keras.io/">Keras</a> provides
+pretty good explanations and code, as I recall. Is there a better
+intro? Maybe something using <a href="https://pytorch.org/">PyTorch</a>?</p>
+<p><a href="/20210508-statistical_rethinking_by_mcelreath/">Statistical Rethinking</a> has great explanations, examples, and
+philosophical commentary for understanding Bayesian approaches.</p>
+<p><a href="http://www.mmds.org/">Mining of Massive Datasets</a> is much better than its cover, with
+good coverage of both more and less commonly discussed techniques (and
+a <a href="https://online.stanford.edu/courses/soe-ycs0007-mining-massive-data-sets">MOOC</a>).</p>
+<hr>
+<h3>See also:</h3>
+<ul>
+<li>William Chen's <a href="http://www.wzchen.com/data-science-books">22 Free Data Science Books</a> includes three of my
+   four selections.</li>
+<li>My <a href="/20160320-books_for_professionals/">Books for Professionals</a> selects four titles on professional
+   life.</li>
+<li>My <a href="/20160322-books_for_programmers/">Books for Programmers</a> recommends for Python, JavaScript,
+   Clojure, R, and git.</li>
+</ul>
+<hr>
+<p>Thanks to a couple of colleagues who inspired this collection of
+recommended books!</p>
+<p>What else would you add/change in this list?</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
+    ]]></description>
+<link>http://planspace.org/20210721-books_for_machine_learning/</link>
+<guid>http://planspace.org/20210721-books_for_machine_learning/</guid>
+<pubDate>Wed, 21 Jul 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Wise Charlie Mental Models (cards)</title>
 <description><![CDATA[
 
@@ -15,6 +122,52 @@ the style of <a href="https://en.wikipedia.org/wiki/Charlie_Munger#%22Elementary
 descriptions aren't terribly good and there are errors. I like the
 <a href="https://fs.blog/mental-models/">general idea</a>, and I like cards; these are mediocre but not bad.</p>
 <p><img alt="image" src="image.jpg"></p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210527-wise_charlie_mental_models/</link>
 <guid>http://planspace.org/20210527-wise_charlie_mental_models/</guid>
@@ -138,6 +291,52 @@ or something because of the sense that you do get to transcend
 something. You touch something eternal. That word, eternal: very
 important. It's very, very, very important."" (page 207)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210508-the_end_of_everything_by_mack/</link>
 <guid>http://planspace.org/20210508-the_end_of_everything_by_mack/</guid>
@@ -1920,6 +2119,52 @@ know?"</p>
 <p>"The data and its analysis are the scientific product. The paper is
 just an advertisement." (page 555)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210508-statistical_rethinking_by_mcelreath/</link>
 <guid>http://planspace.org/20210508-statistical_rethinking_by_mcelreath/</guid>
@@ -2150,6 +2395,52 @@ this schmuck behind a curtain.&#8221;" (page 212)</p>
 </li>
 </ul>
 <!-- https://twitter.com/planarrowspace/status/1388919415660548102 -->    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210502-the_scout_mindset_by_galef/</link>
 <guid>http://planspace.org/20210502-the_scout_mindset_by_galef/</guid>
@@ -2237,6 +2528,52 @@ especially well with its cousin, <a href="/20210430-a_simple_instrumental_variab
 situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you can do with
 it.</p>
 <p>Maybe regression discontinuity is another kind of case?</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210501-simple_front_door_regression/</link>
 <guid>http://planspace.org/20210501-simple_front_door_regression/</guid>
@@ -2323,6 +2660,52 @@ estimate a given effect.</p>
 <p>There&#8217;s also the front-door criterion, which I&#8217;m not yet sure how to
 fit a model for. Maybe I&#8217;ll try to write something up eventually.</p>
 <p>Maybe regression discontinuity is another kind of case?</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210430-a_simple_instrumental_variable/</link>
 <guid>http://planspace.org/20210430-a_simple_instrumental_variable/</guid>
@@ -2685,6 +3068,52 @@ all when she was confronted with a handful of organized peasants."
 <p>"all of the societies that had grown up around the concept of a
 centralized, hierarchical Feed." (page 498)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210422-the_diamond_age_by_stephenson/</link>
 <guid>http://planspace.org/20210422-the_diamond_age_by_stephenson/</guid>
@@ -2790,6 +3219,52 @@ aspect of some problem, and then later on, if we see that the type
 represents a value with a context and can act like a monad, we give
 it a <code>Monad</code> instance." (page 336)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210411-learn_you_a_haskell_for_great_good_by_lipovaca/</link>
 <guid>http://planspace.org/20210411-learn_you_a_haskell_for_great_good_by_lipovaca/</guid>
@@ -2986,6 +3461,52 @@ that the last sentence there is quite a good joke:</p>
 substituting arithmetic for judgment, it is an appealing idea."</p>
 </blockquote>
 <p>That could be an epigraph!</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</link>
 <guid>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</guid>
@@ -3169,6 +3690,52 @@ marginal ones. For all intents and purposes, and save for a few
 minor imperfections, the global economy already acts as one massive
 replicator." (page 232)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210401-trekonomics_by_saadia/</link>
 <guid>http://planspace.org/20210401-trekonomics_by_saadia/</guid>
@@ -4466,6 +5033,52 @@ a serverless solution." (page 542)</p>
 <p>"The passage of time and the importance of change cannot be
 ignored." (page 550)</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210331-software_engineering_at_google/</link>
 <guid>http://planspace.org/20210331-software_engineering_at_google/</guid>
@@ -5087,6 +5700,52 @@ although such use also raises ethical considerations. Future
 intersections of narrative research with ongoing discussions in
 science communication are introduced."</p>
 </blockquote>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210330-how_to_make_the_world_add_up_by_harford/</link>
 <guid>http://planspace.org/20210330-how_to_make_the_world_add_up_by_harford/</guid>
@@ -5341,6 +6000,52 @@ timing as the company went under the year the book came out (2017)...</p>
 <p>On page 283 there's a reference to Ellenberg's <a href="https://en.wikipedia.org/wiki/Hawking_Index">Hawking Index</a>,
 which was amusing to me because I've enjoyed following Ellenberg a
 little bit since reading his <a href="/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong</a>.</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210314-everybody_lies_by_stephens-davidowitz/</link>
 <guid>http://planspace.org/20210314-everybody_lies_by_stephens-davidowitz/</guid>
@@ -5394,6 +6099,52 @@ It's a bias toward action&#8211;playful action&#8211;and trying things that are
 <p>There aren't any luck potions, but <a href="https://www.instituteforgiving.org/resources-for-fundraisers/fundraising-verities/item/313-verities-65-luck-favors-the-prepared-mind">luck favors the prepared mind</a>.
 This kind of intuition-guided flow state isn't a consistent method,
 but it's nice when it happens.</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210227-intuition_action_and_luck_and_harry_potter/</link>
 <guid>http://planspace.org/20210227-intuition_action_and_luck_and_harry_potter/</guid>
@@ -5426,6 +6177,52 @@ and conscience
 of the Creator of the Universe,
 you fool.
 </pre>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210226-vision_and_mission/</link>
 <guid>http://planspace.org/20210226-vision_and_mission/</guid>
@@ -5442,6 +6239,52 @@ to a <a href="https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_Sta
 <p><a href="https://docs.google.com/spreadsheets/d/1iv8Wdui64jiDkrM3fo5UFzhYFaXdvrl-O1vbJ8nEgYk/edit?usp=sharing"><img alt="table" src="table.png"></a></p>
 <p>See all 324 data rows <a href="https://docs.google.com/spreadsheets/d/1iv8Wdui64jiDkrM3fo5UFzhYFaXdvrl-O1vbJ8nEgYk/edit?usp=sharing">as a Google Sheet</a>, or sources and processing
 in the <a href="https://github.com/ajschumacher/ajschumacher.github.io/tree/master/20210225-elementary_presidents_of_the_us_nations">README</a>.</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210225-elementary_presidents_of_the_us_nations/</link>
 <guid>http://planspace.org/20210225-elementary_presidents_of_the_us_nations/</guid>
@@ -5486,6 +6329,52 @@ processing which reduces background noise but also makes my voice more
 muted and a little robotic in places. The Yeti is pretty good but
 still picks up some unintended nearby sounds despite being in
 directional mode.</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210218-microphones_matter/</link>
 <guid>http://planspace.org/20210218-microphones_matter/</guid>
@@ -5697,6 +6586,52 @@ of the sympathetic public opinion he has for so long enjoyed." (page
 <li><em>winchell</em>: a confidence trickster&#8217;s victim, a sucker (from the
    image of gossip writer Walter Winchell as &#8216;swallowing&#8217; any story)</li>
 </ul>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210214-the_big_con_by_maurer/</link>
 <guid>http://planspace.org/20210214-the_big_con_by_maurer/</guid>
@@ -5717,56 +6652,56 @@ of the sympathetic public opinion he has for so long enjoyed." (page
 <p>This is a re-hosting of the <a href="http://bl.ocks.org/ajschumacher/raw/5511522/">original</a> Chris and I made in 2013. We
 were reminded of it by <a href="http://pitchdeck.business/">Pitch Deck</a>, which turns this idea into a
 party game (with better <a href="https://gist.github.com/ajschumacher/5511522">lists</a>, I think).</p>    
+    <footer>
+      <hr>
+<p><a name="contact"></a></p><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%">
+  <input type="submit" value="Get email updates" style="width: 49%">
+  <input type="hidden" name="_subject" value="planspace.org updates list">
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
+</form>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr>
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
+
     ]]></description>
 <link>http://planspace.org/20210213-high_concept_pitch_generator/</link>
 <guid>http://planspace.org/20210213-high_concept_pitch_generator/</guid>
 <pubDate>Sat, 13 Feb 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>101 things to learn in art school, by Kit White</title>
-<description><![CDATA[
-
-<p>I picked up this little coffee table <a href="https://mitpress.mit.edu/books/101-things-learn-art-school">book</a> at the
-<a href="https://bookshop.org/shop/themitpressbookstore">MIT Press Bookstore</a> a while ago. It's cute. Some good stuff in
-there. I'm a sucker for this kind of format recently.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<h3>My four favorite items from the book:</h3>
-<blockquote>
-<p>"16. Words are images. The power of the visual belongs to all things
-received visually. The written word is both symbol and cognitive
-catalyst; image and thought embodied. But words also conjure the
-image that lives only as a thought or non-embodied object. Some
-ideas are most potent when not embodied and exist as ephemeral,
-fleeting experiences. Concept has form."</p>
-<p>"25. Style is the consequence of something being described in the
-way most appropriate to its content. It is not a hemline height or a
-gratuitous decorative flourish added to modify or embellish an
-image. Style is the by-product of saying what has to be said in the
-most appropriate way a maker can say it. Meaningful style emerges
-from the necessity of description; it is not a product of
-self-conscious selection."</p>
-<p>"29. "Conception cannot precede execution." (Maurice Merleau-Ponty,
-<em>Sense and Non-Sense</em>) Art is a process of discovery through making,
-and our ability to discover is generally greater than our ability to
-invent. Think of your work process as a form of travel. Look for the
-things you don't know, the things that are revealed or inadvertently
-uncovered. It is easier to find a world than to make one."</p>
-<p>"45. Work from your intuition, analyze with your intellect. To keep
-your work spontaneous and inventive, try to draw upon what lies
-beneath normal cognition in an uninhibited way. Intuition is not
-hocus-pocus. It is simply a judgment system that operates without
-immediately available conscious evidence. Intuition draws upon
-subliminal knowledge and allows the unfiltered, unfamiliar, and
-unknown to enter your work. Once there, you can apply your powers of
-rational analysis to discover what you have done. At this stage, you
-can always edit, but don't edit or preclude what does not yet
-exist."</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20210131-101_things_to_learn_in_art_school_by_white/</link>
-<guid>http://planspace.org/20210131-101_things_to_learn_in_art_school_by_white/</guid>
-<pubDate>Sun, 31 Jan 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

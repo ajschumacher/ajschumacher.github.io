@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-07-21: [Books for Machine Learning](/20210721-books_for_machine_learning/)
  * 2021-05-27: [Wise Charlie Mental Models (cards)](/20210527-wise_charlie_mental_models/)
  * 2021-05-08: [The End of Everything, by Mack](/20210508-the_end_of_everything_by_mack/)
  * 2021-05-08: [Statistical Rethinking, by McElreath](/20210508-statistical_rethinking_by_mcelreath/)
