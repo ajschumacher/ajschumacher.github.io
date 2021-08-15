@@ -1,9 +1,9 @@
 # Communicate Immediately
 
 Discover what's important and present it early and concisely to refine
-your ideas and engage with your audience. [Don't bury the lede][]. Put
-the [Bottom Line Up Front][]. Communicate as if you may be
-interrupted.
+your ideas and engage with your audience. [Don't bury the lede][]. Get
+to the point. Put the [Bottom Line Up Front][]. Communicate as if you
+may be interrupted.
 
 [Don't bury the lede]: https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)
 [Bottom Line Up Front]: https://en.wikipedia.org/wiki/BLUF_(communication)
@@ -161,3 +161,11 @@ audience to sit through them. Similarly, interactive artifacts are
 relatively oblique rather than communicating directly. There are
 places for all of these, but they are not often the best choice for
 direct communication.
+
+
+---
+
+Update 2021-08-15: Added "Get to the point" in first paragraph,
+inspired [by Mckay Wrigley][].
+
+[by Mckay Wrigley]: https://twitter.com/mckaywrigley/status/1283678891530280960
