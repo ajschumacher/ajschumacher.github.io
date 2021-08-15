@@ -140,7 +140,7 @@ def recurse(filename):
     things = os.listdir('.')
     directories = filter(lambda x: os.path.isdir(x), things)
     for directory in directories:
-        print directory
+        print(directory)
         os.chdir(directory)
         recurse(filename)
         if os.path.exists(filename):

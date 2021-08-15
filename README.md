@@ -1,6 +1,9 @@
 This is my blog!
 
-[http://ajschumacher.github.io/](http://ajschumacher.github.io/) or [http://planspace.org/](http://planspace.org/)
+[http://planspace.org/](http://planspace.org/) (or
+[http://ajschumacher.github.io/](http://ajschumacher.github.io/))
+
+Now running Python 3.8.11!
 
 Weirdnesses:
 
