@@ -48,7 +48,7 @@ for post_path in post_paths:
             article.remove(script)
         except:
             pass
-    description = html.tostring(article)
+    description = html.tostring(article, encoding='unicode')
     description = description.replace("<article>", "")
     description = description.replace("</article>", "")
     rss += "<title>" + title + "</title>\n"

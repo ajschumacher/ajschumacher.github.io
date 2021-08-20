@@ -1,0 +1,177 @@
+# How to be a pro (Halmos)
+
+This is a section (pages 264-268) from
+[I want to be a mathematician][], by Halmos.
+
+[I want to be a mathematician]: https://smile.amazon.com/I-Want-be-Mathematician-Automathography/dp/0387960783/
+
+> Anna, one of the mathematics department secretaries at Chicago,
+> complained to me once when we met at a party and she had already
+> consumed several gin and tonics. She was a good typist, and she
+> didn't have much trouble picking up the art of technical,
+> mathematical, typing—but she hated every minute of it. You have to
+> look at every symbol separately, you have to keep changing "typits"
+> or Selectric balls, you have to shift a half space up or down for
+> exponents and subscripts, and you have no idea what you're doing.
+> "I'm not going to spend my life flipping that damned carriage up and
+> down", she said.
+>
+> Another time Bruno, a well-known mathematician, asked me: "How did
+> you manage to make your ten lectures at the CBMS conference all the
+> same length? Isn't it true that some things take longer? When I did
+> it, some of my talks were 45 minutes, and some 75."
+>
+> More recently still I asked Calvin, a colleague, "Can you give a
+> graduate student a ride to this month's Wabash functional analysis
+> seminar?" "No", he said, "you better get someone else. I've been
+> away, giving colloquium talks twice this month, and that's enough
+> travelling."
+>
+> I didn't make up any of this (except the names). Do you see what
+> these three stories have in common? To me it's obvious, it jumps to
+> the eye, and it horrifies me. What Anna, Bruno, and Calvin share and
+> express is widespread and bad: it's the "me" attitude. It is the
+> attitude that says "I do only what's important to me, and I am more
+> important to me than the profession."
+>
+> I think an automobile transmission mechanic should try to be the
+> best automobile transmission mechanic he has the talent to be, and
+> butlers, college presidents, shoe salesmen, and hod-carriers should
+> aim for perfection in their professions. Try to rise, improve
+> conditions if you can, and change professions if you must, but as
+> long as you are a hod-carrier, keep carrying those hods. If you set
+> out to be a mathematician, you must learn the profession, every part
+> of it, and then work at it, profess it, live it as best you can. If
+> you keep asking "what's there in it for me?", you're in the wrong
+> business. If you're looking for comfort, money, fame, and glory, you
+> probably won't get them, but if you keep trying to be a
+> mathematician, you might.
+>
+> I didn't preach to Calvin, but if I had done so, my sermon would
+> have said that you support an activity such as the Wabash seminar
+> (I'll tell more about that seminar later) without even thinking
+> about it—it's an integral part of professional life. You go to such
+> seminars the way you get dressed in the morning, nod amiably to an
+> acquaintance you pass on the street, or brush your teeth before you
+> go to bed at night. Sometimes you feel like doing it and sometimes
+> not, but you do it always—it's a part of life and you have no
+> choice. You don't expect to get rewarded if you do and punished if
+> you don't, you don't think about it—you just do it.
+>
+> A professional must know every part of his profession and (we all
+> hope) like it, and in the profession of mathematics, as in most
+> others, there are many parts to know. To be a mathematician you have
+> to know how to be a janitor, a secretary, a businessman, a
+> conventioneer, an educational consultant, a visiting lecturer, and,
+> last but not least, in fact above all, a scholar.
+>
+> As a mathematician you will use blackboards, and you should know
+> which ones are good and what is the best way and the best time to
+> clean them. There are many kinds of chalk and erasers; would you
+> just as soon make do with the worst? At some lecture halls you have
+> no choice—you must use the overhead projector, and if you don't come
+> prepared with transparencies, your audience will be in trouble. Word
+> processors and typewriters, floppy disks and lift-off
+> ribbons—ignorance is never preferable to bliss. Should you ditto
+> your preprints, or use mimeograph, or multilith, or xerox? Who
+> should make decisions about these trivialities—you, or someone who
+> doesn't care about your stuff at all?
+>
+> From time to time you'll be asked for advice. A manufacturer will
+> consult you about the best shape for a beer bottle, a dean will
+> consult you about the standing of his mathematics department, a
+> publisher will consult you about the probably sales of a proposed
+> textbook on fuzzy cohomology. Possibly they will be genteel and not
+> even mention paying for your service; at other times they will refer
+> delicately to an unspecified honorarium that will be forthcoming.
+> Would they treat a surgeon the same way, or an attorney, or an
+> architect? Would you? Could you?
+>
+> I am sometimes tempted to tell people that I am a _real_ doctor,
+> not the medical kind; my education lasted a lot longer than their
+> lawyer's and cost at least as much; my time and expertise are worth
+> at least as much as their architect's. In fact, I do not use tough
+> language, but I've long ago decided not to accept "honoraria" but to
+> charge fees, carefully spelled out and agreed on in advance. I set
+> my rates some years back, when I was being asked to review more
+> textbooks than I had time for. I'd tell the inquiring publisher that
+> my fee is $1.00 per typewritten page or $50.00 per hour, whichever
+> comes to less. Sometimes the answer was: "Oh, sorry, we didn't
+> really want to spend that much", and at other times it was,
+> matter-of-factly, "O.K., send us your bill along with your report".
+> The result was that I had less of that sort of work to do and got
+> paid more respectably for what I still did. My doctor, lawyer, and
+> architect friends tell me that prices have changed since I
+> established mine. The time has com, they say, to double the charges.
+> The answers, they predict, will remain the same: half "no" and half
+> "sure, of course".
+>
+> A professional mathematician talks about mathematics at lunch and
+> at tea. The subject doesn't have to be hot new theorems and proofs
+> (which can make for ulcers or ecstasy, depending)—it can be a new
+> teaching twist, a complaint about a fiendish piece of student
+> skullduggery, or a rumor about an error in the proof of the four
+> color theorem. At many good universities there is a long-standing
+> tradition of brown-bag (or faculty club) mathematics lunches, and
+> they are an important constituent of high quality. They keep the
+> members of the department in touch with one another; they make it
+> easy for each to use the brains and the memory of all. At a few
+> universities I had a hand in establishing the lunch tradition, which
+> then took root and flourished long after I left.
+>
+> The pros go to colloquia, seminars, meetings, conferences, and
+> international congresses—and they use the right word for each. The
+> pros invite one another to give colloquium talks at their
+> universities, and the visitor knows—should know—that his duty is not
+> discharged by one lecture delivered between 4:10 and 5:00 p.m. on
+> Thursday. The lunch, which gives some of the locals a chance to meet
+> and have a relaxed conversation with the gues, the possible
+> specialists' seminar for the in-group at 2:00, the pre-lecture
+> coffee hour at 3:00, and the post-lecture dinner and evening party
+> are essential parts of the visitor's job description. It makes for
+> an exhausting day, but that's how it goes, that's what it means to
+> be a colloquium lecturer.
+>
+> Sometimes you are not just a colloquium lecturer, but the "Class of
+> 1909 distinguished Visitor", invited to spend a whole week on the
+> campus, give two or three mathematics talks and one "general"
+> lecture, and, in between, mingle, consult, and interact. Some do it
+> by arriving in time for a Monday afternoon talk, squeezing in a
+> Tuesday colloquium at a sister university 110 miles down the road,
+> reappearing for a Wednesday talk and a half of Thursday (spent
+> mostly with the specialist crony who arranged the visit), and
+> catching the plane home at 6:05 p.m. Bad show—malfeasance and
+> nonfeasance—that's not what the idea is at all. When Bombieri came
+> to Bloomington, I understood much of his first lecture, almost none
+> of the second, and gave up on the third (answered my mail
+> instead)—but I got a lot out of his presence. I heard him hold forth
+> on meromorphic functions at lunch on Monday, explain the Mordell
+> conjecture over a cup of coffee Wednesday afternoon, and at dinner
+> Friday evening guess at the probably standing of Euler and Gauss a
+> hundred years from now. We also talked about clocks and children and
+> sport and wine. I learned some mathematics and I got a little
+> insight into what makes one of the outstanding mathematicians of our
+> time tick. He earned his keep as Distinguished Visitor, not because
+> he is a great mathematician (that helps!) but because he took the
+> job seriously. It didn't take his talent to do that; that's
+> something us lesser people can do too.
+>
+> Mathematical talent is probably congenital, but aside from that the
+> most important attribute of a genuine professional mathematician is
+> scholarship. The scholar is always studying, always ready and eager
+> to learn. The scholar knows the connections of his specialty with
+> the subject as a whole; he knows not only the technical details of
+> his specialty, but its history and its present standing; he knows
+> about the others who are working on it and how far they have
+> reached. He knows the literature, and he trusts nobody: he himself
+> examines the original paper. He acquires firsthand knowledge no only
+> of its intellectual content, but also of the date of the work, the
+> spelling of the author's name, and the punctuation of the title; he
+> insists on getting every detail of every reference absolutely
+> straight. The scholar tries to be as broad as possible. No one can
+> know all of mathematics, but the scholar can succeed in knowing the
+> outline of it all: what are its parts and what are their places in
+> the whole?
+>
+> These are the things, some of the things, that go to make up a
+> pro.
