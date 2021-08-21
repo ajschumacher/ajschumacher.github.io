@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-08-21: [I want to be a mathematician, by Halmos](/20210821-i_want_to_be_a_mathematician_by_halmos/)
  * 2021-08-20: [How to be a pro (Halmos)](/20210820-how_to_be_a_pro_halmos/)
  * 2021-07-21: [Books for Machine Learning](/20210721-books_for_machine_learning/)
  * 2021-05-27: [Wise Charlie Mental Models (cards)](/20210527-wise_charlie_mental_models/)
