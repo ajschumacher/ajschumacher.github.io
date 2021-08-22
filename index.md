@@ -1,11 +1,11 @@
 # plan <span class="shake shake-slow">➔</span> space
 
-Hi! I'm [Aaron](/aaron/). Here are some of my favorite posts on ML and
-data visualization:
+Hi! I'm [Aaron](/aaron/). Here are some of my favorite posts:
 
  * [Gaussian Processes are Not So Fancy](/20181226-gaussian_processes_are_not_so_fancy/)
  * [Q-Learning Tic-Tac-Toe, Briefly](/20191103-q_learning_tic_tac_toe_briefly/)
  * [Life expectancy is historically misleading](/20200806-life_expectancy_is_historically_misleading/)
+ * [Thinking Cards](/20201206-thinking_cards/)
 
 
 ---
