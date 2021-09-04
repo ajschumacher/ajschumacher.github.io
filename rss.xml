@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Dot product really does give you cosine</title>
+<description><![CDATA[
+
+<p>The <a href="https://en.wikipedia.org/wiki/Dot_product">dot product</a> of \( A \) and \( B \) gives you the
+<a href="https://en.wikipedia.org/wiki/Trigonometric_functions">cosine</a> of the angle \( \gamma \) between them, scaled by the
+product of their lengths, \( a \) and \( b \) (Equation 1). Here's
+a proof using the Law of Cosines.</p>
+<p>\[ A \cdot B = \cos \left( \gamma \right) a b \tag{1} \]</p>
+<p></p><center><img src="diagram.jpg" height="200px"></center>
+<p>Equation 1 is invoked, for example, in defining <a href="https://en.wikipedia.org/wiki/Cosine_similarity">cosine similarity</a>,
+often without derivation.</p>
+<p>If, in \( n \) dimensions, the <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian coordinates</a> of a point
+\( X \) are \( x_1, x_2, \dotso, x_n \), then the dot product \(
+A \cdot B \) is the sum of element-wise products as in Equation 2.</p>
+<p>\[ A \cdot B = \sum_{i=1}^n{a_i b_i} \tag{2} \]</p>
+<p>The dot product is so simple, it's a little surprising a nice
+trigonometric function like cosine should come out of it in arbitrary
+high-dimensional spaces.</p>
+<p>Notation has been chosen so as to write the <a href="https://en.wikipedia.org/wiki/Law_of_cosines">Law of Cosines</a> as
+usual in Equation 3.</p>
+<p>\[ c^2 = a^2 + b^2 - 2 a b \cos \left( \gamma \right) \tag{3} \]</p>
+<p>The \( c^2 \) in Equation 3 is the square of the distance from \( A
+\) to \( B \) and can also be written, using the
+<a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>, as in Equation 4.</p>
+<p>\[ c^2 =
+    \sum_{i=1}^k{ \left( a_i - b_i \right)^2 } =
+    \sum_{i=1}^k{ a_i^2 + b_i^2 - 2 a_i b_i } =
+    a^2 + b^2 - 2 \sum_{i=1}^k{ a_i b_i } \tag{4} \]</p>
+<p>Equating the right hands of Equations 3 and 4, and recognizing the dot
+product as in Equation 2, we've built Equation 1 from scratch. \(
+\Box \)</p>
+<hr>
+<p>It's also possible to use two-dimensional right triangle visualization
+thinking to see how dot product projects one vector onto another, with
+scaling by the lengths of the vectors. 3Blue1Brown has a great
+<a href="https://www.youtube.com/watch?v=LyGKycYT2v0&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&amp;index=10">video</a>. It's easy to connect to the usual definition of cosine.</p>
+<p>Since you can always rotate your coordinate frame to get one vector
+with all zero coordinates except for one, and the other vector with
+all zero coordinates except for that one and one more, it's clear that
+dot product should give cosine in that frame, but it isn't necessarily
+obvious (to me) that everything works out in other coordinate frames.
+The proof above gives me confidence that it does. (Not that I didn't
+believe it before, but it's nice to have a reason.)</p>
+<hr>
+<p>I wasn't quite satisfied with cosine similarity via dot product for a
+long time. My satisfaction now and the proof above is based quite
+directly on the proof Hamming generously gives on pages 117-118 of
+<a href="/20200725-art_of_doing_science_and_engineering/">The Art of Doing Science and Engineering</a>. As he says there
+(italics in original):</p>
+<blockquote>
+<p>"I have found it very valuable in important situations to review
+<em>all the basic derivations involved</em> so I have a firm feeling for
+what is going on."</p>
+</blockquote>
+<p>He uses different (possibly better?) notation, and his figure is
+certainly nicer than mine.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20210904-dot_product_really_does_give_you_cosine/</link>
+<guid>http://planspace.org/20210904-dot_product_really_does_give_you_cosine/</guid>
+<pubDate>Sat, 04 Sep 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Working Backwards, by Bryar and Carr</title>
 <description><![CDATA[
 
@@ -6393,22 +6457,6 @@ you fool.
 <link>http://planspace.org/20210226-vision_and_mission/</link>
 <guid>http://planspace.org/20210226-vision_and_mission/</guid>
 <pubDate>Fri, 26 Feb 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Elementary Presidents of the US Nations</title>
-<description><![CDATA[
-
-<p>There are 10 two-letter codes that correspond to both <a href="https://en.wikipedia.org/wiki/List_of_U.S._state_and_territory_abbreviations">US states</a>
-and ISO 3166 <a href="https://www.iso.org/iso-3166-country-codes.html">country codes</a> and (lowercasing the second letter) an
-element from the <a href="https://ptable.com/">periodic table</a> with atomic number corresponding
-to a <a href="https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States">US president</a>.</p>
-<p><a href="https://docs.google.com/spreadsheets/d/1iv8Wdui64jiDkrM3fo5UFzhYFaXdvrl-O1vbJ8nEgYk/edit?usp=sharing"><img alt="table" src="table.png"></a></p>
-<p>See all 324 data rows <a href="https://docs.google.com/spreadsheets/d/1iv8Wdui64jiDkrM3fo5UFzhYFaXdvrl-O1vbJ8nEgYk/edit?usp=sharing">as a Google Sheet</a>, or sources and processing
-in the <a href="https://github.com/ajschumacher/ajschumacher.github.io/tree/master/20210225-elementary_presidents_of_the_us_nations">README</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20210225-elementary_presidents_of_the_us_nations/</link>
-<guid>http://planspace.org/20210225-elementary_presidents_of_the_us_nations/</guid>
-<pubDate>Thu, 25 Feb 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
