@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-09-07: [Try a table instead of a Pareto chart](/20210907-try_a_table_instead_of_a_pareto_chart/)
  * 2021-09-04: [Dot product really does give you cosine](/20210904-dot_product_really_does_give_you_cosine/)
  * 2021-09-03: [Working Backwards, by Bryar and Carr](/20210903-working_backwards_by_bryar_and_carr/)
  * 2021-08-21: [I want to be a mathematician, by Halmos](/20210821-i_want_to_be_a_mathematician_by_halmos/)
