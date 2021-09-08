@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Spaced repetition is _O(log n)_ sustainable</title>
+  </head>
+  <body>
+    <article>
+<h1>Spaced repetition is <em>O(log n)</em> sustainable</h1>
+<p class="date">Wednesday September  8, 2021</p>
+<p>If you use <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> software like <a href="https://apps.ankiweb.net/">Anki</a> for a long
+time, will you have to spend more and more time studying every day?
+Yes, but the increase is <a href="https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time">logarithmic</a> with time, which is a very
+slow increase. If you add ten cards a day, then after a year you do 85
+reviews per day. After ten years, that goes to 118 reviews per day,
+and even after 100 years, it's 152 reviews per day—still only half an
+hour or so each day.</p>
+<p>The major simplifying assumption here is that review delays double, so
+that after <em>n</em> days, the number of days that are contributing their
+cards to today's review is <em>log<sub>2</sub>(n)</em>.</p>
+<p>Your review delays won't be exactly that, and you won't add cards
+evenly across days. For me, the estimate is close but slightly high
+after 336 days of using Anki.</p>
+<p>The average number of cards added per day is an important
+multiplicative factor; my average is currently 11.3 cards per day and
+trending lower. It might be higher for full-time students, but I'd be
+surprised if many people stayed much above ten cards per day over
+multiple years. When you stop adding so many cards, daily reviews
+decrease rapidly.</p>
+<p>I think spaced repetition study could reasonably be a lifelong
+practice, like daily exercise.</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
