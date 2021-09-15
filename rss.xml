@@ -7,6 +7,95 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The flow metaphor for matrix multiplication</title>
+<description><![CDATA[
+
+<blockquote>
+<p><em>“I cannot believe that anything so ugly as multiplication of
+matrices is an essential part of the scheme of nature.” (Arthur
+Eddington, 1936)</em></p>
+</blockquote>
+<p>Even <a href="https://smile.amazon.com/Linear-Algebra-Its-Applications-4th/dp/0030105676/">Strang</a> introduces matrix multiplication by saying “there is
+only one possible rule, and I am not sure who discovered it. It makes
+everything work.” This is not satisfying or helpful for understanding.
+The flow metaphor of graphical linear algebra makes matrix
+multiplication seem natural and helps provide intuition for
+understanding linear algebra.</p>
+<ul>
+<li><a href="#diagram">A simple diagram style</a></li>
+<li><a href="#mult">Matrix multiplication</a></li>
+<li><a href="#directions">Aligning directions</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+<hr>
+<h3><a name="diagram" href="#diagram">A simple diagram style</a></h3>
+<p>The inputs <em>x</em> and <em>y</em> pass from left to right along the arrow
+paths—getting multiplied by <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em>, respectively—and
+then adding up to outputs <em>i</em> and <em>j</em>.</p>
+<p><img alt="vector - matrix multiplication" src="vec_mat_mult.png"></p>
+<p>The diagram is equivalent to the usual notation for a simple
+vector-matrix multiplication.</p>
+<p>\[ \begin{bmatrix} i \\ j \end{bmatrix} =
+    \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}
+    \begin{bmatrix} x \\ y \end{bmatrix} =
+    \begin{bmatrix} ax+by \\ cx+dy \end{bmatrix} \]</p>
+<p>You can visualize inputs entering at the top and outputs going out the
+side. For example, the <em>x</em> enters the 2-by-2 matrix over the <em>a</em>, and
+then exits to the left to contribute <em>ax</em> to <em>i</em>. The <em>y</em> enters over
+the <em>b</em> and exits to the left to contribute <em>by</em> to <em>i</em>.</p>
+<hr>
+<h3><a name="mult" href="#mult">Matrix multiplication</a></h3>
+<p>To compose two matrix diagrams, follow the paths from inputs to
+outputs. For example, to go from <em>x</em> to <em>u</em>, there's the <em>ae</em> path
+that goes via <em>i</em>, and there's the <em>cf</em> path that goes via <em>j</em>, so the
+simplified single path from <em>x</em> to <em>u</em> is <em>ae + cf</em>.</p>
+<p><img alt="matrix - matrix multiplication" src="mat_mat_mult.png"></p>
+<p>This is matrix multiplication that makes sense. After the input-output
+behavior <a href="#diagram">above</a> is established, there's no other way for matrix
+multiplication to come out.</p>
+<p>\[ \begin{bmatrix} e &amp; f \\ g &amp; h \end{bmatrix}
+    \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} =
+    \begin{bmatrix} ae+cf &amp; be+df \\ ag+ch &amp; bg+dh \end{bmatrix} \]</p>
+<p>Why do the inner dimensions need to be the same for two matrices
+you're multiplying? Because you have to match up outputs from one with
+inputs for the other.</p>
+<p>I find this <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From" title="Where Mathematics Comes From: How the Embodied Mind Brings Mathematics into Being">metaphor</a> really helpful, and I suspect it could help
+people learning linear algebra for the first time as well. I think it
+can be complementary with thinking about (and <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" title="Essence of linear algebra, from 3Blue1Brown">visualizing</a>) vector
+spaces.</p>
+<hr>
+<h3><a name="directions" href="#directions">Aligning directions</a></h3>
+<p>I think it's a good thing that the diagrams make it obvious that
+direction matters. I'd rather have both the diagrams and matrix
+notation read naturally from left to right, but I don't think
+everybody will change how they write their linear algebra.</p>
+<p>There's nothing special about the usual orientation. Both directions
+are “on” by default; you can multiply a row vector and matrix, which
+is like going right to left along the diagram for the matrix. You can
+see the result isn't equivalent unless you transpose.</p>
+<p>Transpose is the operation that swaps inputs with outputs For example,
+\( (A B)^T = B^T A^T \). Visualize rotating two connected pieces of
+pipe.</p>
+<hr>
+<h3><a name="sources" href="#sources">Sources</a></h3>
+<p>I started thinking about this based on §3.2.2.4 in Spivak's <em>Category
+Theory for the Sciences</em>. A complete, rigorous formulation as
+Graphical Linear Algebra is nicely introduced in
+<a href="https://graphicallinearalgebra.net/">Sobocinski's blog</a>. The best brief introduction I've seen is in a
+<a href="https://www.youtube.com/watch?v=ptWK8ehQvyw&amp;t=3379s">presentation from Paixão</a>. (Thanks to Spivak and Sobocinski for
+helpful pointers over email as well!)</p>
+<p>The quote at top from <a href="https://en.wikipedia.org/wiki/Arthur_Eddington">Sir Eddington</a> about the ugliness of matrix
+multiplication is from page 36 of his <em>Relativity Theory of Electrons
+and Protons</em>, published in 1936 by Cambridge University Press, as
+quoted in Macedo and Oliveira's <a href="https://arxiv.org/abs/1312.4818">Typing linear algebra</a>.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20210915-flow_metaphor_for_matrix_multiplication/</link>
+<guid>http://planspace.org/20210915-flow_metaphor_for_matrix_multiplication/</guid>
+<pubDate>Wed, 15 Sep 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Didau's 2019 book: Plagiarism and one main bad idea</title>
 <description><![CDATA[
 
@@ -5147,189 +5236,6 @@ substituting arithmetic for judgment, it is an appealing idea."</p>
 <link>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</link>
 <guid>http://planspace.org/20210405-how_to_lie_with_statistics_by_huff/</guid>
 <pubDate>Mon, 05 Apr 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Trekonomics, by Saadia</title>
-<description><![CDATA[
-
-<p>This is the <a href="https://en.wikipedia.org/wiki/Trekonomics">best book</a> on Star Trek economics that I've read
-(sorry, <a href="/20201109-economics_of_star_trek_by_webb/" title="The Economics of Star Trek, by Webb">Webb</a>). Personal, erudite, and optimistic, <a href="https://www.inkshares.com/books/trekonomics">it</a> suggests
-that post-scarcity has started, and that while there's still a long
-way to go, we can work merrily to advance farther.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"It is almost a paradox to state it this way, but in a society where
-nothing is scarce and consequently where work is no longer a
-prerequisite for survival, finding good reasons to work becomes
-paramount, the defining existential question that everyone has to
-ask themselves." (pages 44-45)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"For those who can't swing it, the imperative to build a meaningful
-life through work becomes a source of unbearable anxiety." (page 58)</p>
-</blockquote>
-<hr>
-<p>The <a href="https://en.wikipedia.org/wiki/RepRap_project">RepRap project</a> to make a 3D printer that can print copies of
-itself is pretty neat!</p>
-<hr>
-<blockquote>
-<p>"As with most open-source projects, what is learned and invented
-along the way is as valuable as the stated goal." (page 79)</p>
-</blockquote>
-<hr>
-<p><a href="https://en.wikipedia.org/wiki/CFM_International_LEAP">LEAP</a> stands for "Leading Edge Aviation Propulsion."</p>
-<hr>
-<p>On page 86 he mentions "Pareto improvement" which refers to a change
-that helps something and hurts nothing else, which is a neat idea from
-<a href="https://en.wikipedia.org/wiki/Pareto_efficiency">Pareto efficiency</a> (not to be confused with the
-<a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto principle</a>). I think a <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">ROC curve</a> should represent a
-Pareto frontier...</p>
-<hr>
-<blockquote>
-<p>"Empirical data suggests that given enough time, all rival goods are
-either substituted or become nonrival." (page 100)</p>
-</blockquote>
-<hr>
-<p>The emphasis on reputation as a motivator is interesting. Thinking of
-modern social media, which is a kind of focus on reputation, it seems
-like a system with risks. It matters whose opinion you value. If you
-spend all your time on public reputation management and none on quiet
-work, for example, reputation may be a distraction rather than a
-focusing agent.</p>
-<hr>
-<p>There's some fairly naive exponential extrapolation of economic
-productivity to the 24th century... Seems like some discussion of
-exponential vs. sigmoid might be appropriate...</p>
-<hr>
-<blockquote>
-<p>"Our culture hungers for the cheap thrills of apocalypse." (page
-106)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"News of our imminent demise has been greatly exaggerated." (page
-107)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Elinor_Ostrom">Elinor Ostrom</a>, <em>Governing the Commons: The Evolution of
-Institutions for Collective Action</em> (Cambridge: Cambridge University
-Press, 1990), p. 183. It is hands-down one of the most important
-books of the past fifty years."</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Without rules or regulations, be they self-imposed or enforced by
-an external intrumentality (an agency or a government),
-overconsumption is almost always guaranteed. Such rules and
-regulations are extremely hard to devise, and enforcement is very
-complex." (page 121)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Thanks to science and political activism, we mustered the power to
-ban lead in domestic products. However, the public health
-consequences and the costs borne by society were enormous (including
-but not limited to widespread disruption of prefrontal cortex
-development in children, leading to significant increases in violent
-crime). We let oil and car companies free ride on the back of
-society. It would have taken much longer to ban lead had it not been
-for the heroic work of Caltech geochemist <a href="https://en.wikipedia.org/wiki/Clair_Cameron_Patterson">Clair Patterson</a>."
-(page 122)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Free riding takes place at a myriad of points in the overall
-system, from individuals to corporations to states. Many private
-economic actors routinely engage in various forms of legal and
-illegal tax evasion, weakening the very same public institutions
-that help and guarantee their business. This is free riding, but on
-government. The usual self-servicing argument that everybody does it
-anyway does not make the practice any less craven or repellent. The
-managers and stockholders of these multinational corporations are
-perfectly aware that they are breaching the contract between their
-companies and society as a whole. Basically, they behave no better
-than Third World dictators who stuff stolen cash in Swiss vaults.
-Only a residual sense of guilt about the extent of their free riding
-makes them publicize their paltry philanthropic efforts and their
-so-called corporate-citizenship initiatives. They operate with the
-dread of getting caught, and thus aggressively support political
-parties, economists, and opinion makers who agitate against taxes
-out of naive philosophical principles. The perverse result is that
-all too often and in too many countries, the party of the free
-market, which in truth should defend open society, progress, and
-civic spirit, ends up as the party of tax evasion, monopoly, and
-free riding." (page 124)</p>
-</blockquote>
-<hr>
-<p>Saadia recommends <a href="https://en.wikipedia.org/wiki/Stalker_(1979_film)">Stalker</a>, which is based on <a href="https://en.wikipedia.org/wiki/Roadside_Picnic">Roadside Picnic</a>.</p>
-<hr>
-<blockquote>
-<p>"<a href="https://en.wikipedia.org/wiki/The_Dispossessed"><em>The Dispossessed</em></a> specifically makes the case that
-post-scarcity is not so much a matter of material wealth or natural
-bounty, but an organizational option for society." (page 143)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"By the time <em>Next Generation</em> rolls around, the conflict between
-the messy present and the aspirational future has been resolved.
-Stoicism has won. The <em>Enterprise</em>'s new crew is all Spock and no
-Kirk." (page 172)</p>
-</blockquote>
-<hr>
-<p>Keynes' 1930 <a href="https://www.aspeninstitute.org/wp-content/uploads/files/content/upload/Intro_and_Section_I.pdf">Economic Possibilities for our Grandchildren</a></p>
-<hr>
-<blockquote>
-<p>"Even more pointedly, if we take a step back from Hollywood's
-romance of space travel, with its gizmos and its aliens, we may soon
-come to the rather disquieting realization that we <em>already</em> live in
-Keynes's, and therefore <em>Star Trek</em>'s, cornucopia. Economic bliss is
-just very unevenly distributed, to paraphrase science-fiction author
-William Gibson." (page 211)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"If you believe that <em>Star Trek</em> is about space travel, you are
-taking it too literally." (page 215)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"We are an incredibly sedentary species." (page 216)</p>
-</blockquote>
-<hr>
-<p><a href="https://en.wikipedia.org/wiki/Alcubierre_drive">Alcubierre drive</a> is a specific kind of warp drive.</p>
-<hr>
-<p><a href="https://www.researchgate.net/publication/286996693_Economics_and_the_Fermi_paradox">Economics and the Fermi paradox</a>: Maybe it's just not worth it to
-go to space.</p>
-<hr>
-<p><a href="https://mason.gmu.edu/~rhanson/dreamautarky.html">Dreams of Autarky</a>: Doux commerce for everything.</p>
-<hr>
-<blockquote>
-<p>"In a world where work is no longer compulsary, it must become truly
-meaningful." (page 223)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The zero-marginal cost society, as economist and essayist Jeremy
-Rifkin calls it, is an everyday, practical reality." (page 230)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"While nominally the subject of monetary transactions, everything
-that matters is as good as free to many of us. When allocation
-decisions consist in choosing between your new iPhone
-storage-capacity options or the trim of the car, then you know you
-have whittled down your ninety-nine problems to the last few
-marginal ones. For all intents and purposes, and save for a few
-minor imperfections, the global economy already acts as one massive
-replicator." (page 232)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20210401-trekonomics_by_saadia/</link>
-<guid>http://planspace.org/20210401-trekonomics_by_saadia/</guid>
-<pubDate>Thu, 01 Apr 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
