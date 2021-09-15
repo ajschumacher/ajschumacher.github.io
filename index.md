@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-09-15: [You can derive the formula for the determinant](/20210915-you_can_devive_the_formula_for_the_determinant/)
  * 2021-09-15: [The flow metaphor for matrix multiplication](/20210915-flow_metaphor_for_matrix_multiplication/)
  * 2021-09-14: [Didau's 2019 book: Plagiarism and one main bad idea](/20210914-didaus_2019_book_plagiarism_and_one_main_bad_idea/)
  * 2021-09-14: [David Didau's 2015 book endorses eugenics](/20210914-david_didaus_2015_book_endorses_eugenics/)
