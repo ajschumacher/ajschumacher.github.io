@@ -63,20 +63,31 @@ inputs for the other.</p>
 <p>I find this <a href="https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From" title="Where Mathematics Comes From: How the Embodied Mind Brings Mathematics into Being">metaphor</a> really helpful, and I suspect it could help
 people learning linear algebra for the first time as well. I think it
 can be complementary with thinking about (and <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" title="Essence of linear algebra, from 3Blue1Brown">visualizing</a>) vector
-spaces.</p>
+spaces. Exposition might proceed from introducing the idea of linear
+combinations, to the diagram form, to the matrix notation, for
+example.</p>
 <hr />
 <h3><a name="directions" href="#directions">Aligning directions</a></h3>
-<p>I think it's a good thing that the diagrams make it obvious that
-direction matters. I'd rather have both the diagrams and matrix
-notation read naturally from left to right, but I don't think
-everybody will change how they write their linear algebra.</p>
+<p>I think it's a good thing that the diagrams make it obvious that order
+matters. I'd rather have both the diagrams and matrix notation read
+naturally from left to right, but I don't think everybody will change
+how they write their linear algebra.</p>
 <p>There's nothing special about the usual orientation. Both directions
-are “on” by default; you can multiply a row vector and matrix, which
+are “on” by default. You can multiply a row vector and matrix, which
 is like going right to left along the diagram for the matrix. You can
 see the result isn't equivalent unless you transpose.</p>
 <p>Transpose is the operation that swaps inputs with outputs For example,
 \( (A B)^T = B^T A^T \). Visualize rotating two connected pieces of
 pipe.</p>
+<p>For a given order, sometimes it feels more natural to think about
+going left to right rather than right to left. For example, in the \(
+y = X \beta \) of linear regression, it feels better to me to think
+of moving a row of the data matrix \( X \) through the coefficient
+transformation \( \beta \), rather than thinking of the data \( X
+\) as transforming the coefficients. Either way.</p>
+<p>Note also that a column vector is not the same as a row vector, and
+neither are the same as a vector. We probably shouldn't say a vector
+<em>is</em> any particular matrix.</p>
 <hr />
 <h3><a name="sources" href="#sources">Sources</a></h3>
 <p>I started thinking about this based on §3.2.2.4 in Spivak's <em>Category
@@ -89,6 +100,18 @@ helpful pointers over email as well!)</p>
 multiplication is from page 36 of his <em>Relativity Theory of Electrons
 and Protons</em>, published in 1936 by Cambridge University Press, as
 quoted in Macedo and Oliveira's <a href="https://arxiv.org/abs/1312.4818">Typing linear algebra</a>.</p>
+<blockquote>
+<p>“So the way we normally teach linear algebra to students is we write
+down the formula for multiplying a matrix. Where does this formula
+come from? I mean everyone learns it in first year, right, so we
+don't question it, but it's actually very difficult to explain. I
+mean I have to teach linear algebra to first-year students and, you
+know, it takes them quite a bit of time to get it. And they learn
+it, they get it by memorizing, you know, these kinds of algorithms
+in their heads, but this is not the way we should teach maths. We
+shouldn't teach maths, you know, by telling people to memorize
+algorithms.” (<a href="https://www.youtube.com/watch?v=yHUp23AyF2A">Sobocinski</a>)</p>
+</blockquote>
 <!-- mathjax for formulas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     </article>
