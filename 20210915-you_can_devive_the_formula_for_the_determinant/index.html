@@ -26,10 +26,11 @@ different points. So we seek a solution to a system of equations.</p>
 <p>\[ \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}
     \begin{bmatrix} x \\ y \end{bmatrix} =
     \begin{bmatrix} 0 \\ 0 \end{bmatrix} \]</p>
-<p>Eliminating \( x \) and \( y \) yields the familiar \( ad - bc =
-0 \). That is, if \( ad - bc = 0 \), there's some \( x \) and \(
-y \) (not both zero) that the matrix maps to the origin, and so the
-matrix is not invertible. The determinant is \( ad - bc \).</p>
+<p>Eliminating \( x \) and \( y \) (<a href="#solution">example solution below</a>)
+yields the familiar \( ad - bc = 0 \). That is, if \( ad - bc = 0
+\), there's some \( x \) and \( y \) (not both zero) that the
+matrix maps to the origin, and so the matrix is not invertible. The
+determinant is \( ad - bc \).</p>
 <p>I worked through this also for the three-by-three case and was
 satisfied to recover the usual expression. There's probably a deeper
 proof or other connection to more linear algebra, but I don't recall
@@ -39,11 +40,24 @@ this to show at this level. It's slower, but if you happen to forget
 the formula for the determinant, you can always work it out again this
 way!</p>
 <hr />
+<h3><a name="solution" href="#solution">Example solution</a></h3>
+<p>The matrix equation above is equivalent to Equations 1 and 2.</p>
+<p>\[ ax + by = 0 \tag{1} \]</p>
+<p>\[ cx + dy = 0 \tag{2} \]</p>
+<p>Solving Equation 1 for \( x \) produces Equation 3.</p>
+<p>\[ x = - \frac{b}{a} y \tag{3} \]</p>
+<p>Substituting Equation 3 into Equation 2 yields Equation 4.</p>
+<p>\[ - \frac{cb}{a}y + dy = 0 \tag{4} \]</p>
+<p>Multiplying by \( a \), dividing by \( y \), and reordering then
+recovers the familiar form of the determinant in Equation 5.</p>
+<p>\[ ad - bc = 0 \tag{5} \]</p>
+<hr />
 <p>If I was just sleeping through linear algebra, please let
 <a href="/aaron/">me</a> know what I missed! Also let me know if there are any
 problems with or alternatives to this method! Thanks!</p>
 <p>The quote at top from <a href="https://en.wikipedia.org/wiki/Sheldon_Axler">Axler</a> is from his 1995 paper,
-<a href="https://www.axler.net/DwD.html">Down with Determinants!</a></p>
+<a href="https://www.axler.net/DwD.html">Down with Determinants!</a>.</p>
+<p>Thanks to Erica for helpful feedback!</p>
 <!-- mathjax for formulas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     </article>

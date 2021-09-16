@@ -28,10 +28,14 @@ different points. So we seek a solution to a system of equations.
     \begin{bmatrix} 0 \\\ 0 \end{bmatrix} \\]
 
 
-Eliminating \\( x \\) and \\( y \\) yields the familiar \\( ad - bc =
-0 \\). That is, if \\( ad - bc = 0 \\), there's some \\( x \\) and \\(
-y \\) (not both zero) that the matrix maps to the origin, and so the
-matrix is not invertible. The determinant is \\( ad - bc \\).
+Eliminating \\( x \\) and \\( y \\) ([example solution below][])
+yields the familiar \\( ad - bc = 0 \\). That is, if \\( ad - bc = 0
+\\), there's some \\( x \\) and \\( y \\) (not both zero) that the
+matrix maps to the origin, and so the matrix is not invertible. The
+determinant is \\( ad - bc \\).
+
+[example solution below]: #solution
+
 
 I worked through this also for the three-by-three case and was
 satisfied to recover the usual expression. There's probably a deeper
@@ -45,12 +49,38 @@ way!
 
 ---
 
+### <a name="solution" href="#solution">Example solution</a>
+
+The matrix equation above is equivalent to Equations 1 and 2.
+
+\\[ ax + by = 0 \tag{1} \\]
+
+\\[ cx + dy = 0 \tag{2} \\]
+
+Solving Equation 1 for \\( x \\) produces Equation 3.
+
+\\[ x = - \frac{b}{a} y \tag{3} \\]
+
+Substituting Equation 3 into Equation 2 yields Equation 4.
+
+\\[ - \frac{cb}{a}y + dy = 0 \tag{4} \\]
+
+Multiplying by \\( a \\), dividing by \\( y \\), and reordering then
+recovers the familiar form of the determinant in Equation 5.
+
+\\[ ad - bc = 0 \tag{5} \\]
+
+
+---
+
 If I was just sleeping through linear algebra, please let
 [me](/aaron/) know what I missed! Also let me know if there are any
 problems with or alternatives to this method! Thanks!
 
 The quote at top from [Axler][] is from his 1995 paper,
-[Down with Determinants!][]
+[Down with Determinants!][].
 
 [Axler]: https://en.wikipedia.org/wiki/Sheldon_Axler
 [Down with Determinants!]: https://www.axler.net/DwD.html
+
+Thanks to Erica for helpful feedback!
