@@ -7,6 +7,199 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Staff Engineer, by Larson</title>
+<description><![CDATA[
+
+<p>It's all <a href="https://staffeng.com/">online for free too</a>, but I enjoyed reading a paper copy
+of <a href="https://lethain.com/">Larson</a>'s <a href="https://staffeng.com/guides">Staff Engineer</a>. (Well: I skimmed some of the
+interviews that pad out the page count.) I really liked the use of QR
+codes with the endnote links. That could work well in Tufte-style
+margins too.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"There's a popular vision of heroic leadership that centers on
+extraordinarily productive individuals whose decisions change their
+company's future. Most of those narratives are intentionally
+designed by public relations teams to create a good story. You're
+far more likely to change your company's long-term trajectory by
+growing the engineers around you than through personal heroics. The
+best way to grow those around you is by creating an active practice
+of mentorship and sponsorship." (page 22)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"It might be addressing the sudden realization that your primary
+database only has three months of remaining disk space, and you
+can't upgrade to a larger size (in my experience, a surprisingly
+frequent problem at fast-growing startups)." (page 24)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"For mentorship and sponsorship, spend some time with Lara Hogan's
+<a href="https://larahogan.me/blog/what-sponsorship-looks-like/">What Does Sponsorship Look Like?</a>, and for being glue, spend time
+with Tanya Reilly's piece that bore the phrase, <a href="https://noidea.dog/glue">Being Glue</a>."
+(page 34)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The first place to look for work that matters is exploring whether
+your company is experiencing an existential risk." (page 39)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Foster growth" (page 40)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Specific statements create alignment; generic statements create the
+illusion of alignment." (page 47)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There's no such thing as winning, only learning and earning the
+chance to keep playing." (page 52)</p>
+</blockquote>
+<p>Reminds me of <a href="https://en.wikipedia.org/wiki/Finite_and_Infinite_Games">Finite and Infinite Games</a>.</p>
+<hr>
+<blockquote>
+<p>"Premature processes add more friction than value and are quick to
+expose themselves as ineffective." (page 43)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There's the old joke about <a href="https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act">Sarbannes-Oxley</a> [sic]: it doesn't
+reduce risk; it just makes it clear to blame when things go wrong."
+(page 54)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... adopting the "define errors out of existence" approach
+described in A Philosophy of Software Design." (page 54)</p>
+</blockquote>
+<p>At a quick look, it seems like this is something like "give your
+functions defaults rather than exceptions" so if you ask for something
+out of range, for example, you get the last thing rather than throwing.</p>
+<hr>
+<blockquote>
+<p>"Genuine best practice has to be supported by research, and the best
+source of research on this topic is <a href="https://itrevolution.com/accelerate-book/">Accelerate</a>." (page 56)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When it comes to complex systems and interdependencies, moving
+quickly is just optics. It's methodical movement that gets the job
+done." (page 69)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I think this is the most important lesson I've learned over the
+past few years: the most effective leaders spend more time following
+than they do leading. This idea also comes up in the idea of the
+"<a href="https://www.ted.com/talks/derek_sivers_how_to_start_a_movement">the first follower creates a leader</a>," but effective leaders
+don't split the world into a leader and follower dichotomy, rather
+they move in and out of the leadership and follower roles with the
+folks around them." (page 76)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There's a well-worn model of genius encapsulated in
+<a href="https://wiki.c2.com/?FeynmanAlgorithm">the Feynman algorithm</a>: "1) Write down a problem. 2) Think very
+hard. 3) Write down the solution." This mystical view of genius is
+both unapproachable and discouraging. It's also unrealistic, but
+it's hard for folks to know it's unrealistic if we don't write down
+our thinking process for others to follow. By writing down the
+process of finding an answer, as well as the rationale for the
+answer, folks around us can being to <em>learn from</em> our decisions
+rather than simply being <em>directed</em> by them" (page 85)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Barbara Minto, whose The Pyramid Principle is the most influential
+work on effective business communication, is also a big fan of
+structure: "Controlling the sequence in which you present your ideas
+is the single most important act necessary to clear writing. The
+clearest sequence is always to give the summarizing idea before you
+give the individual ideas being summarized. I cannot emphasize this
+point too much."" (page 96)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<a href="https://jvns.ca/blog/brag-documents/">brag document</a>" (page 106)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Whether your company does ad-hoc promotions or uses a calibration
+process, promotions are a team activity and as Julia Grace, then of
+Slack, advised me once during a job search, "Don't play team games
+along, you'll lose."" (page 110)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Share weekly notes of your work to your team and stakeholders in a
+way that other folks can get access to your notes if they're
+interested" (page 128)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The flying wedge pattern of one senior leader joining a company and
+then bringing on their previous coworkers is a well-known and
+justifiably-despised pattern that relies on this built-in
+referrer-as-sponsor, but it doesn't have to be toxic if done
+sparingly." (page 139)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There are some wonderful engineering leaders creating pockets of
+equitable access to Staff-plus roles, but those pockets can quickly
+turn into a <a href="https://lethain.com/values-oasis/">Values Oasis</a> that can't sustain itself once the
+sponsoring leader departs the company or changes roles." (page 139)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Back in 2012, Patrick McKenzie wrote <a href="https://www.kalzumeus.com/2012/01/23/salary-negotiation/">Salary Negotiation</a>, which
+has since become the defacto [sic] guide to negotiating salaries for
+software engineers." (page 145)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Staff-plus is all about enabling other people to do better work -
+to be a force multiplier." (page 184, from Bert Fan)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"This is not a meritocracy and your professional network is
+important." (page 186, from Bert Fan)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"To reach Staff Engineer, you have to know and do more than what you
+currently know." (page 209, from Ritu Vincent)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"A quote I love from Seneca is <em>"Luck is what happens when
+preparation meets opportunity."</em>" (page 267, from Damian
+Schenkelman)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In the quest for efficiency over effectiveness, many companies trap
+their managers in a staggering amount of coordination and
+bureaucracy." (page 309)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When we talk about designing a Staff-plus engineer interview loop,
+the first thing to talk about is that absolutely no one is confident
+their Staff-plus interview loop works well." (page 312)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20210919-staff_engineer_by_larson/</link>
+<guid>http://planspace.org/20210919-staff_engineer_by_larson/</guid>
+<pubDate>Sun, 19 Sep 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Weight of Evidence is logistic coefficients</title>
 <description><![CDATA[
 
@@ -4737,368 +4930,6 @@ fit a model for. Maybe I’ll try to write something up eventually.</p>
 <link>http://planspace.org/20210430-a_simple_instrumental_variable/</link>
 <guid>http://planspace.org/20210430-a_simple_instrumental_variable/</guid>
 <pubDate>Fri, 30 Apr 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Diamond Age, by Stephenson</title>
-<description><![CDATA[
-
-<p>This <a href="https://www.nealstephenson.com/the-diamond-age.html">novel</a> about an educational book invites comparison to its
-subject. Stephenson's pedagogy walks you through Chekhov's armory,
-dense with mental condensation nuclei, firing guns at the end but
-maintaining ambiguity. Steam punk nanotech is backdrop for a My Fair
-Lady story and revolution, with themes of <a href="https://en.wikipedia.org/wiki/Mind%E2%80%93body_dualism">dualism</a> and generally
-flawed humans.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<h3>Economics and technology</h3>
-<p>I read Diamond Age because it was mentioned in <a href="https://planspace.org/20210401-trekonomics_by_saadia/">Trekonomics</a>. They
-have a technology like a replicator, but it doesn't really feel like a
-post-scarcity world because its use is centrally controlled/limited.</p>
-<blockquote>
-<p>"... the Feed is not a system of control and oppression, as CryptNet
-would maintain. It is the only way order can be maintained in modern
-society—if everyone possessed a Seed, anyone could produce weapons
-whose destructive power rivalled that of Elizabethan nuclear
-weapons." (page 384, Hackworth speaking unconvincingly)</p>
-</blockquote>
-<p>The Seed, never quite achieved in the book, is a nanotech magic bean
-that promises to usher in a decentralized post-scarcity world, like
-farming communes where you can grow anything effortlessly, biological
-or mechanical. Its creation is opposed by the less obviously
-destructive factions based on fear of loss of control.</p>
-<p>Some of the rich and powerful are referred to as "Equity Lords," which
-is an interesting title, especially in relation to modern tech
-companies where people have equity to varying degrees, or more
-generally in connection with people who own stock in the markets.</p>
-<h3>Anti-relativism</h3>
-<blockquote>
-<p>"Finkle-McGraw began to develop an opinion that was to shape his
-political views in later years, namely, that while people were not
-<em>genetically</em> different, they were <em>culturally</em> as different as they
-could possibly be, and that some cultures were simply better than
-others. This was not a subjective value judgment, merely an
-observation that some cultures thrived and expanded while others
-failed. It was a view implicitly shared by nearly everyone but, in
-those days, never voiced." (pages 20-21)</p>
-<p>"[Nell's mother] didn't like craftsmen, she said, because they were
-too much like actual Victorians, always spouting all kinds of crap
-about how one thing was better than another thing, which eventually
-led, she explained, to the belief that some people were better than
-others." (page 185)</p>
-<p>"it is upon moral qualities that a society is ultimately founded.
-All the prosperity and technological sophistication in the world is
-of no use without that foundation—we learned this in the late
-twentieth century, when it became unfashionable to teach these
-things." (page 322, Miss Matheson speaking)</p>
-</blockquote>
-<p>The "Neo-Victorian" group is largely a reaction to techno-hedonism. It
-reminds me of how it can seem these days that wealthier people are
-more likely to choose old-fashioned wooden toys and the like for their
-children, more likely to avoid screen time.</p>
-<p>In the extreme, I think this kind of view takes a form like
-<a href="https://www.amazon.com/Absolute-Relativism-Dictatorship-What-about/dp/1933919469">Absolute Relativism: The New Dictatorship</a>.</p>
-<h3>Rugged individualism</h3>
-<blockquote>
-<p>"Grandfather loved to tell stories of these criminals, how they had
-tried to excuse their own crimes by pleading that they were
-economically disadvantaged or infected with the disease of substance
-abuse, and how the Lone Eagles—many of whom had overcome poverty or
-addiction themselves—had dispatched them with firing squads and left
-them posted around the edge of their territory as NO TRESPASSING
-signs that even the illiterate could read." (pages 405-406)</p>
-<p>"... the usual crowd of starving peasants and professional amputees"
-(page 449)</p>
-</blockquote>
-<p>For one thing, it's pretty clearly not a post-scarcity society. For
-another, it's not very shy about seeming to blame people for not doing
-better for themselves despite this.</p>
-<h3>Tribalism</h3>
-<p>There's a lot of tribalism, much of it racial/racist. I think the
-reasoning was that with the dissolution of traditional governments,
-people needed to form their own equivalents more than they previously
-did, but this wasn't super clear to me.</p>
-<p>The major conflict, which develops mostly in the background until the
-end of the book, is a second <a href="https://en.wikipedia.org/wiki/Boxer_Rebellion">Boxer Rebellion</a>.</p>
-<p>It's not clear whether the ends justify the means, but there's at
-least a chance the Seed could be a good idea. Would tribalism recede
-in a true post-scarcity environment?</p>
-<h3>Dualism</h3>
-<p>Nanotechnology represents the material, physical world.</p>
-<blockquote>
-<p>"But [Hackworth, the nanotech engineer] had felt the need to go
-beyond that—he had wanted to reach beyond mere matter and into
-someone's soul." (page 188)</p>
-</blockquote>
-<p>Mercifully, there's no mention of quantum mechanics to introduce false
-confusion. The technology is very physical in the classical sense;
-nanotech computers use "rod logic" to achieve their results. With the
-Neo-Victorians, it contributes to a steam punk vibe.</p>
-<p>The discussion of dualism is extended to computing, with a substantial
-exploration of Turing machines.</p>
-<blockquote>
-<p>"... a Turing machine, no matter how complex, was not human. It had
-no soul. It could not do what a human did." (page 442)</p>
-</blockquote>
-<p>There's also no mention of <a href="https://en.wikipedia.org/wiki/Hypercomputation">hypercomputation</a>... An amusing thought:
-is hypercomputation fundamentally dualist (implying non-physical
-phenomena)?</p>
-<h3>Education</h3>
-<p>I'm interested in educational technology. It's largely <a href="/20201028-failure_to_disrupt_by_reich/">failed</a> to
-revolutionize education so far, but many like <a href="https://moores.samaltman.com/">Altman</a> hold out hope
-for "AI teachers that can diagnose and explain exactly what a student
-doesn’t understand" and the like.</p>
-<p>What is the goal of education? The instigator of the creation of the
-AI teaching books says he wants to encourage subversion, but he also
-thinks the effect of this will be creating people who tend to agree
-with him.</p>
-<blockquote>
-<p>"You encourage subversiveness because you think that it will have an
-effect opposite to what one might naively suppose." (page 365, Carl
-Hollywood addressing Finkle-McGraw)</p>
-</blockquote>
-<p>Of the girls who get the three "original" books with voices done by
-remote human voice actors, one girl becomes an actor in a strange
-troupe, one joins a faction opposed to that of Finkle-McGraw (though
-he thinks she'll return eventually), and one works scripts at a
-specialist brothel and then eventually stymies (at least briefly) a
-revolution that threatens a person she loves. Is this successful
-education? Maybe?</p>
-<p>There are also hundreds of thousands of girls who were raised by books
-with computer-generated voices. Their books were also further modified
-by Hackworth.</p>
-<blockquote>
-<p>"At this point, John Percival Hackworth, almost without thinking
-about it and without appreciating the ramifications of what he was
-doing, devised a trick and slipped it in under the radar of the
-Judge and Dr. X and all of the other people in the theatre, who were
-better at noticing tricks than most other people in the world.
-"While I'm at it, if it pleases the court, I can also," Hackworth
-said, most obsequiously, "make changes in the content so that it
-will be more suitable for the unique cultural requirements of the
-Han readership."" (page 180)</p>
-</blockquote>
-<p>Everybody who gets the Chinese-language version of the Primer goes on
-to form the "mouse army" that serves Nell for unclear reasons toward
-the end of the book.</p>
-<p>Diamond Age definitely suggests that valuable aspects of human
-development work best (or only) through human interaction. Multiple
-times the importance of culture generally is emphasized. The AI book
-is not necessarily any more enlightened than other kinds of education.
-Maybe it can stand in for ed tech that is just a computerized version
-of antique methods, despite all its customization.</p>
-<p>There are other comments about education, but Stephenson sometimes
-seems to be effectively free-associating, suggesting different aspects
-to connect and consider.</p>
-<hr>
-<h3>More selected quotes</h3>
-<hr>
-<blockquote>
-<p>"By nature, men are nearly alike; by practice, they get to be wide
-apart." (epigraph, quoting <a href="https://china.usc.edu/confucius-analects-17">Confucius</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"A sizable investment, but the best a father could make." (page 78,
-referring to education)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... Nell knew better than to fret over things she could not
-change." (page 123)</p>
-</blockquote>
-<p>The Primer seems to have helped make Nell a <a href="/20210107-enchiridion_in_52_sentences/">stoic</a>.</p>
-<hr>
-<blockquote>
-<p>"If the Coastal Republic had believed in the <em>existence</em> of virtue,
-it could at least have aspired to hypocrisy." (page 144)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"He is worth a thousand lesser engineers." (page 170, Dr. X
-referring to Hackworth)</p>
-</blockquote>
-<hr>
-<p>On page 184, the Primer is described as "a <a href="https://en.wikipedia.org/wiki/Propaedeutics">Propædeutic</a>
-Enchiridion."</p>
-<hr>
-<blockquote>
-<p>"She often put it under her pillow, though, and sometimes she even
-woke up in the middle of the night and heard it whispering things to
-her that she had just been dreaming about." (page 184)</p>
-</blockquote>
-<p>This seems to imply that the Primer employed some kinds of
-subconscious programming techniques...</p>
-<hr>
-<blockquote>
-<p>"But I think it is not likely to be the only instance in which real
-life turns out to be more complicated than what you have seen in the
-book." (page 281, Constable Moore speaking)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""Nell," the Constable continued, indicating through his tone of
-voice that the lesson was concluding, "the difference between
-ignorant people and educated people is that the latter know more
-facts. But that has nothing to do with whether they are stupid or
-intelligent. The difference between stupid and intelligent
-people—and this is true whether or not they are well-educated—is
-that intelligent people can handle subtlety. They are not baffled by
-ambiguous or even contradictory situations—in fact, they expect them
-and are apt to become suspicious when things seem overly
-straightforward.</p>
-<p>"In your Primer you have a resource that will make you highly
-educated, but it will never make you intelligent. That comes from
-life. Your life up to this point has given you all of the experience
-you need to be intelligent, but you have to think about those
-experiences. If you don't think about them, you'll be
-psychologically unwell. If you do think about them, you will become
-not merely educated but intelligent" (page 283)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"She appears to be learning new material that isn't explicitly
-covered in the Primer, and she's developing more sophisticated forms
-of social interaction, suggesting that she's spending more time
-around a higher class of people." (pages 284-285, Miranda speaking)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"And there was an ocean of history to be learned: first biblical,
-Greek, and Roman, and then the history of many other peoples around
-the world that essentially served as backdrop for History of the
-English-Speaking Peoples." (page 312, describing the stodgy school)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Miss Stricken handled the big payoff at the end of each period and
-at the end of each unit. She stormed in to explain what conclusion
-they were being led to and to make sure that all of them got it."
-(page 313)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"She was tormented by the irrationality of this place." (page 319,
-referring to the stodgy school)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Now, there was a time when we believed that what a human mind could
-accomplish was determined by genetic factors. Piffle, of course, but
-it looked convincing for many years, because distinctions between
-tribes were so evident. Now we understand that it's all cultural.
-That, after all, is what a culture is—a group of poeple who share in
-common certain acquired traits." (page 321, Miss Matheson speaking)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It is the hardest thing in the world to make educated Westerners
-pull together," Miss Matheson went on. "That is the job of people
-like Miss Stricken. We must forgive them their imperfections. She is
-like an avatar—do you children know about avatars? She is the
-physical embodiment of a principle. That principle is that outside
-the comfortable and well-defended borders of our phyle is a hard
-world that will come and hurt us if we are not careful. It is not an
-easy job to have. We must all feel sorry for Miss Stricken." (page
-323)</p>
-</blockquote>
-<hr>
-<p>On pages 353 and 354 Miss Matheson goes on about how Nell is special.
-"You are different." and so on. Are we supposed to believe her, or is
-this just an aspect of the stodgy school weirdness? Other aspects of
-the book don't seem aligned with Great Man thinking.</p>
-<hr>
-<blockquote>
-<p>""Which path do you intend to take, Nell?" said the Constable,
-sounding very interested. "Conformity or rebellion?""</p>
-<p>""Neither one. Both ways are simple-minded—they are only for people
-who cannot cope with contradiction and ambiguity."" (page 356)</p>
-</blockquote>
-<p>She goes to seek her fortune as a writer for a particularly involved
-brothel.</p>
-<hr>
-<blockquote>
-<p>""... [Miranda] was not merely Nell's tutor. She became Nell's
-mother."" (page 357, Carl Hollywood speaking)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""In a tribe such as the F.D.R. [First Distributed Republic], whose
-view of the universe contains no absolutes, this ritual
-[elaborate trust-falls] creates an artificial absolute."" (page 378,
-Hackworth explaining)</p>
-</blockquote>
-<hr>
-<p>On page 383 there's a "thirty-third level" which seems like a
-throwaway reference to Masonry...</p>
-<hr>
-<blockquote>
-<p>"... Princess Nell had become so beautiful over the years and had
-developed such a fine bearing that few people would mistake her for
-a commoner now, even if she were dressed in rags and walking
-barefoot."</p>
-<p>"... Nell wondered at that. Princesses were not genetically
-different from commoners." (page 386)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"learning the language, which was extremely pithy and made heavy use
-of parentheses."</p>
-</blockquote>
-<p>Some Lisp? Cute reference.</p>
-<hr>
-<blockquote>
-<p>"Her stories were being digested, not by the Primer, but by another
-human being, becoming a part of that person's mind." (pages 402-403)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"But the Primer was, itself, a Turing machine, or so she suspected;
-so how could it understand Nell?"</p>
-<p>"Could it be that the Primer was just a conduit, a technological
-system that mediated between Nell and some human being who really
-loved her?" (page 403)</p>
-</blockquote>
-<p>Miranda provides the voicing for whatever the Primer wants to say.</p>
-<hr>
-<blockquote>
-<p>""Belief isn't a binary state, not here at least. Does anyone
-believe anything one hundred percent?"" (page 425)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>""Society has never been good at answering these questions—the sorts
-of questions you can't just look up in a reference database."" (page
-428)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"But the human mind didn't work like a digital computer and was
-capable of doing some funny things." (page 433)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It would be more correct to say that, although it was virtuous to
-save them, it was mistaken to believe that they could be raised
-properly. We lacked the resources to raise them individually, and so
-we raised them with books. But the only proper way to raise a child
-is within a family. The Master <a href="https://china.usc.edu/confucius-analects-17">Confucius</a> could have told us as
-much, had we listened to his words." (page 455, Dr. X speaking)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... all of Nell's intellect, her vast knowledge and skills,
-accumulated over a lifetime of intensive training, meant nothing at
-all when she was confronted with a handful of organized peasants."
-(page 469)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"all of the societies that had grown up around the concept of a
-centralized, hierarchical Feed." (page 498)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20210422-the_diamond_age_by_stephenson/</link>
-<guid>http://planspace.org/20210422-the_diamond_age_by_stephenson/</guid>
-<pubDate>Thu, 22 Apr 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-09-19: [Staff Engineer, by Larson](/20210919-staff_engineer_by_larson/)
  * 2021-09-17: [Weight of Evidence is logistic coefficients](/20210917-weight_of_evidence_is_logistic_coefficients/)
  * 2021-09-15: [You can derive the formula for the determinant](/20210915-you_can_devive_the_formula_for_the_determinant/)
  * 2021-09-15: [The flow metaphor for matrix multiplication](/20210915-flow_metaphor_for_matrix_multiplication/)
