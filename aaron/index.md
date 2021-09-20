@@ -1,8 +1,14 @@
 # Aaron Schumacher
 
-You can connect with me via [Twitter](https://twitter.com/planarrowspace), [LinkedIn](https://www.linkedin.com/in/ajschumacher), [GitHub](https://github.com/ajschumacher), and [email](mailto:aaron@planspace.org). Let's [share books](/20210122-lets_share_books/)!
+You can connect with me via
+[Twitter](https://twitter.com/planarrowspace),
+[LinkedIn](https://www.linkedin.com/in/ajschumacher),
+[GitHub](https://github.com/ajschumacher), and
+[email](mailto:aaron@planspace.org). Let's
+[share books](/20210122-lets_share_books/)!
 
-I made a little [FAQ](/20170319-thank_you_for_reaching_out/) based on questions I get from people.
+I made a little [FAQ](/20170319-thank_you_for_reaching_out/) based on
+questions I get from people.
 
 Sometimes people ask me for a bio:
 
@@ -16,15 +22,24 @@ Sometimes people ask me for a bio:
 > career-best breakdancing result was advancing to the semi-finals of
 > the R16 Korea 2009 individual footwork battle.
 
-[An older version of the above](https://www.oreilly.com/people/aaron-schumacher) went up on O'Reilly with the publication of [Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow). The following accompanies the [Chinese version](https://www.oreilly.com.cn/ideas/?p=533):
+[An older version of the above](https://www.oreilly.com/people/aaron-schumacher)
+went up on O'Reilly with the publication of
+[Hello, TensorFlow!](https://www.oreilly.com/learning/hello-tensorflow).
+The following accompanies the
+[Chinese version](https://www.oreilly.com.cn/ideas/?p=533):
 
 > Aaron Schumacher是深度学习分析公司的数据科学家和软件工程师。他在联合国大会和麦迪斯数据科学训练营里教授Python和R语言。Aaron曾在博思艾伦咨询公司，纽约大学和纽约市教育局任职并从事数据工作。Aaron生涯最好的霹雳舞成绩是挺近R16韩国2009大赛个人街舞的半决赛。他现在很荣幸地被评为TensorFlow 0.9版的次重要贡献者。
 
 Here are some things I've talked about:
 
- * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on Monday April 5, 2021
- * Statistical Rethinking: [Ulysses' compass](/20201221-ulysses_compass/) at GDMS ML CoI on Monday January 25, 2021
- * [Experiment with Abseil Flags](https://us02web.zoom.us/webinar/register/WN_yadCehvlTKmjbCYGr9bxQg) at [Magnimind](https://magnimindacademy.com/) on Wednesday September 9, 2020
+ * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on
+   Monday April 5, 2021
+ * Statistical Rethinking:
+   [Ulysses' compass](/20201221-ulysses_compass/) at GDMS ML CoI on
+   Monday January 25, 2021
+ * [Experiment with Abseil Flags](https://us02web.zoom.us/webinar/register/WN_yadCehvlTKmjbCYGr9bxQg)
+   at [Magnimind](https://magnimindacademy.com/) on Wednesday
+   September 9, 2020
  * Abseil and Vexilog for ML Experiment Management at GDMS ML CoI on
    Monday July 13, 2020
  * DoD Ethical Principles for Artificial Intelligence at GDMS ML CoI
