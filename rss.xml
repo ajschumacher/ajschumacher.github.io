@@ -7,6 +7,61 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>XGBoost/LightGBM/CatBoost (briefly)</title>
+<description><![CDATA[
+
+<p>There are many explainers of the popular gradient boosted tree models,
+but this is short.</p>
+<table width="100%" border="1">
+  <tr>
+    <th style="width:33%;">
+      <a href="https://xgboost.readthedocs.io/">XGBoost</a></th>
+    <th style="width:34%;">
+      <a href="https://lightgbm.readthedocs.io/">LightGBM</a></th>
+    <th style="width:33%;">
+      <a href="https://catboost.ai/">CatBoost</a></th>
+  </tr>
+  <tr>
+    <td>search missing high and low</td>
+    <td>search, then assign missing</td>
+    <td>specify missing high or low</td>
+  </tr>
+  <tr>
+    <td>"normal" balanced trees</td>
+    <td>leaf-first tree growth</td>
+    <td>oblivious trees (tables)</td>
+  </tr>
+  <tr>
+    <td>you handle categories</td>
+    <td>smart categorical ordering</td>
+    <td>permuted target coding</td>
+  </tr>
+  <tr>
+    <td>weighted quantile sketch</td>
+    <td>sample high-grad examples</td>
+    <td>permuted boosting</td>
+  </tr>
+  <tr>
+    <td>regularized objective</td>
+    <td>exclusive feature bundling</td>
+    <td>learns category interactions</td>
+  </tr>
+  <tr>
+    <td><a href="https://arxiv.org/abs/1603.02754">2016 paper</a></td>
+    <td><a href="https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html">2017 paper</a></td>
+    <td><a href="https://arxiv.org/abs/1706.09516">2017 paper</a></td>
+  </tr>
+</table>
+
+<p>This is close to correct, I think. It probably won't help you
+understand what's going on, but if you already know it might help jog
+your memory. The models all work pretty well.</p>    
+    ]]></description>
+<link>http://planspace.org/20211003-xgboost_lightgbm_catboost_briefly/</link>
+<guid>http://planspace.org/20211003-xgboost_lightgbm_catboost_briefly/</guid>
+<pubDate>Sun, 03 Oct 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Staff Engineer, by Larson</title>
 <description><![CDATA[
 
@@ -4844,92 +4899,6 @@ it.</p>
 <link>http://planspace.org/20210501-simple_front_door_regression/</link>
 <guid>http://planspace.org/20210501-simple_front_door_regression/</guid>
 <pubDate>Sat, 01 May 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A simple Instrumental Variable</title>
-<description><![CDATA[
-
-<p>Instrumental variables can let you estimate effects despite
-confounding, which is pretty neat. The idea is sort of that the
-instrument helps identify a non-confounded version of a variable, as
-illustrated in the over-simplified version of
-<a href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation#Interpretation_as_two-stage_least_squares">two-stage least squares</a> below.</p>
-<p>We seek to estimate the impact of <em>x</em> on <em>y</em>, where they’re both
-influenced by <em>u</em>.</p>
-<p><img alt="diagram of simple instrumental variable setup" src="simple_iv.jpg"></p>
-<p>Unfortunately, <em>u</em> is <em>u</em>nobserved, so we can’t control for it.
-But lo, there is <em>z</em> influencing <em>x</em>. Let’s simulate data where all
-the true coefficients are one.</p>
-<!-- set.seed(42) -->
-
-<pre><code class="language-r">u = rnorm(100)
-z = rnorm(100)
-x = u + z + rnorm(100)
-y = u + x + rnorm(100)</code></pre>
-
-<p>Regressing naively, we get an incorrect estimate for the effect of <em>x</em>
-on <em>y</em>.</p>
-<pre><code class="language-r">summary(lm(y ~ x))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            1.35260    0.07697  17.573   &lt;2e-16 ***</code></pre>
-
-<p>Luckily, <em>z</em> is an “instrument,” satisfying three requirements
-(following <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a>):</p>
-<ul>
-<li><em>z</em> is independent of <em>u</em></li>
-<li><em>z</em> is not independent of <em>x</em></li>
-<li><em>z</em> doesn’t influence <em>y</em> except through <em>x</em></li>
-</ul>
-<p>But how do we use the instrument? Throwing it in the regression makes
-things <em>worse</em>:</p>
-<pre><code class="language-r">summary(lm(y ~ x + z))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            1.52949    0.09207  16.612  &lt; 2e-16 ***
-##  z           -0.54659    0.17099  -3.197  0.00188 **</code></pre>
-
-<p>A fancier model-fitting approach is needed. McElreath points out that
-two-stage least squares is not the only way to do this, and also that
-there should be some adjustments to make the standard errors make
-sense. I’m going to ignore adjustments and just try to get some
-intuition from how two-stage least squares works.</p>
-<p>Stage one: Do a regression using <em>z</em> to predict <em>x</em>. Then get the
-predictions for <em>x</em> from that model, which I’ll call <em>x_from_z</em>. This
-uses the independence of <em>z</em> from <em>u</em> to make a “version of” (maybe a
-component of) <em>x</em> that is independent of <em>u</em>: the variation of <em>x</em> due
-to <em>z</em>.</p>
-<p>Stage two: Do a regression using <em>x_from_z</em> to predict <em>y</em>.</p>
-<pre><code class="language-r">x_from_z = predict(lm(x ~ z))
-summary(lm(y ~ x_from_z))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x_from_z     1.03978    0.23886   4.353  3.3e-05 ***</code></pre>
-
-<p>We’ve recovered a fair estimate of the true parameter for <em>x</em>, despite
-not using the unobserved confound <em>u</em>!</p>
-<p>Here’s the same thing as above but with the <code>ivreg</code> <a href="https://john-d-fox.github.io/ivreg/">package</a>,
-correcting the standard error:</p>
-<pre><code class="language-r">summary(ivreg(y ~ x | z))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  x            1.03978    0.13844   7.511 2.77e-11 ***</code></pre>
-
-<p>You could also use <a href="https://en.wikipedia.org/wiki/Hamiltonian_Monte_Carlo">HMC</a> as in <a href="https://xcelab.net/rm/statistical-rethinking/">McElreath</a> §14.3.</p>
-<hr>
-<h3>Simpler cases</h3>
-<p>This example of an instrumental variable situation extends the earlier
-collection of four simpler regression situations,
-<a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></p>
-<hr>
-<h3>More complicated cases</h3>
-<p>The <a href="http://www.dagitty.net/">dagitty</a> tools seems to be a great way to analyze a given
-situation (expressed as a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>) and figure out what you should
-control for and/or whether there are instruments you can use to
-estimate a given effect.</p>
-<p>There’s also the front-door criterion, which I’m not yet sure how to
-fit a model for. Maybe I’ll try to write something up eventually.</p>
-<p>Maybe regression discontinuity is another kind of case?</p>    
-    ]]></description>
-<link>http://planspace.org/20210430-a_simple_instrumental_variable/</link>
-<guid>http://planspace.org/20210430-a_simple_instrumental_variable/</guid>
-<pubDate>Fri, 30 Apr 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
