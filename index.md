@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-10-06: [The Case Against Education, by Caplan](/20211006-case_against_education_by_caplan/)
  * 2021-10-03: [XGBoost/LightGBM/CatBoost (briefly)](/20211003-xgboost_lightgbm_catboost_briefly/)
  * 2021-09-19: [Staff Engineer, by Larson](/20210919-staff_engineer_by_larson/)
  * 2021-09-17: [Weight of Evidence is logistic coefficients](/20210917-weight_of_evidence_is_logistic_coefficients/)
