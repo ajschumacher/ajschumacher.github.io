@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-10-17: [“how the world could be made a good and happy place”](/20211017-how_the_world_could_be_made_a_good_and_happy_place/)
  * 2021-10-06: [The Case Against Education, by Caplan](/20211006-case_against_education_by_caplan/)
  * 2021-10-03: [XGBoost/LightGBM/CatBoost (briefly)](/20211003-xgboost_lightgbm_catboost_briefly/)
  * 2021-09-19: [Staff Engineer, by Larson](/20210919-staff_engineer_by_larson/)
