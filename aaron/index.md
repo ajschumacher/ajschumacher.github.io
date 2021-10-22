@@ -7,8 +7,13 @@ You can connect with me via
 [email](mailto:aaron@planspace.org). Let's
 [share books](/20210122-lets_share_books/)!
 
-I made a little [FAQ](/20170319-thank_you_for_reaching_out/) based on
-questions I get from people.
+
+I made a little [FAQ][] based on questions I get from people. I have a
+[vision and mission][].
+
+[FAQ]: /20170319-thank_you_for_reaching_out/
+[vision and mission]: /20210226-vision_and_mission/
+
 
 Sometimes people ask me for a bio:
 
