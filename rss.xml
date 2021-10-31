@@ -7,6 +7,66 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>My daily routine</title>
+<description><![CDATA[
+
+<p>Especially since reading <a href="/2014/01/19/daily-rituals-is-sort-of-inspiring/" title="Daily Rituals is sort of inspiring">Daily Rituals</a>, I've thought about how
+people structure their days. This year I've been working on my
+routines, especially mornings. Here's how it's looking.</p>
+<h3>6:00-6:30 — <a href="https://en.wikipedia.org/wiki/Spaced_repetition" title="Spaced repetition on Wikipedia">Spaced repetition</a> review with <a href="https://apps.ankiweb.net/" title="Anki App">Anki</a></h3>
+<p>I review about a hundred cards per day in the <a href="https://apps.ankiweb.net/" title="Anki App">Anki</a> app. I
+<a href="/20201009-anki_is_easy/" title="Anki is easy">got into this</a> about a year ago, and I think I'm going to
+<a href="/20210908-spaced_repetition_is_o_log_n_sustainable/" title="Spaced repetition is O(log n) sustainable">stick with it</a>. It's pretty common to recommend daily physical
+exercise, and I think of this as being a similar practice for
+knowledge and memory.</p>
+<h3>6:30-7:00 — Writing in journal aka “<a href="https://juliacameronlive.com/basic-tools/morning-pages/" title="Morning Pages">Morning pages</a>”</h3>
+<p>This is a <a href="https://juliacameronlive.com/basic-tools/morning-pages/" title="Morning Pages">Julia Cameron thing</a> I picked up from
+<a href="/20210116-pragmatic_thinking_and_learning/" title="Pragmatic Thinking and Learning, by Andy Hunt">Andy Hunt's book</a>. It's pretty good. I don't always write a full
+three pages, but I make a point to always write something.</p>
+<h3>7:00-7:30 — Physical exercise</h3>
+<p>I alternate running about three miles outside and doing a 21-minute
+“Smart Workout” with the <a href="https://7minuteworkout.jnj.com/" title="The Johnson &amp; Johnson Official 7 Minute Workout® App">J&amp;J 7-Minute Workout app</a> in the basement.
+Running allows podcast listening.</p>
+<p>Then I try to shower and everything by eight.</p>
+<h3>Food and drink</h3>
+<p>During the week, my breakfast and lunch have gotten pretty consistent.</p>
+<ul>
+<li>Breakfast: Granola with a little whole milk Greek yogurt</li>
+<li>Lunch: Turkey and Swiss sandwich on whole grain bread with mustard</li>
+</ul>
+<p>Also in a typical day I drink two to four 8.4-ounce cans of Red Bull
+Sugar Free.</p>
+<h3>“Dailies”</h3>
+<p>There are a number of little things I try to do every day. They can
+change, and aren't always super strict. Here are some examples:</p>
+<ul>
+<li>Read today's entry from Tolstoy's <a href="https://en.wikipedia.org/wiki/A_Calendar_of_Wisdom">Calendar of Wisdom</a></li>
+<li>Copy one of my old book posts into <a href="https://www.goodreads.com/user/show/34234019-aaron-schumacher">Goodreads</a> and Amazon reviews</li>
+<li>Post a picture of my algae tank on Instagram</li>
+<li>Greet someone I wasn't otherwise planning to talk to today</li>
+<li>Do a lesson and reviews on <a href="https://www.executeprogram.com/">Execute Program</a></li>
+<li>Come up with one new idea based on a random word</li>
+</ul>
+<p>Some of these I track in a spreadsheet.</p>
+<h3>Evening — Read a book</h3>
+<p>I try to read a chapter, or an hour, or at least <em>something</em> that
+isn't screaming at me from a screen. This is usually a paper book
+because I like them, but the main characteristic of this reading is
+that it's deliberate rather than reactive. I record what I've read in
+my journal.</p>
+<hr>
+<p>I'm not perfect in following all of this, but recently I've been
+getting more consistent, and I like it. One way I think about this is
+that it raises the floor for how much I do in a day. Even if I do
+nothing else, if I do these things I've done something to be happy
+about. And of course these things have benefits that help me do other
+things too. Always room to learn and improve more too!</p>    
+    ]]></description>
+<link>http://planspace.org/20211030-my_daily_routine/</link>
+<guid>http://planspace.org/20211030-my_daily_routine/</guid>
+<pubDate>Sat, 30 Oct 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Core RAPPOR</title>
 <description><![CDATA[
 
@@ -3204,129 +3264,6 @@ descriptions aren't terribly good and there are errors. I like the
 <link>http://planspace.org/20210527-wise_charlie_mental_models/</link>
 <guid>http://planspace.org/20210527-wise_charlie_mental_models/</guid>
 <pubDate>Thu, 27 May 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The End of Everything, by Mack</title>
-<description><![CDATA[
-
-<p>Here's a fun <a href="http://www.astrokatie.com/book">book</a> by a millennial astrophysicist. I hadn't thought
-about a big bang with an infinite universe before; that's fun. I would
-have enjoyed more on how we know we're in a false vacuum and how fast
-everything has moved over time, but it's a light pop book.</p>
-<p>Ways for the universe to end:</p>
-<ul>
-<li>Big Crunch (gravity crushes us)</li>
-<li>Heat Death (best guess; things get cold and lonely)</li>
-<li>Big Rip (things eventually spread out explosively, on local scales)</li>
-<li>Vacuum Decay (suddenly ice-9 but for everything)</li>
-<li>Bounce (maybe we hit another 3-brane or something?)</li>
-</ul>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"I knew I would only ever really be able to accept the kind of truth
-I could rederive mathematically." (page 4)</p>
-</blockquote>
-<p>If this is the standard, you will only accept mathematical truths. The
-book seems to care quite a bit about observation and measurement, so I
-assume she's being rather loose with language here.</p>
-<hr>
-<blockquote>
-<p>"Translating redshifts to speeds, the pattern Hubble detected meant
-that the more distant a galaxy, the faster it's receding from us."
-(page 57)</p>
-</blockquote>
-<p>As explained in the book, it seems like this could be read "the faster
-it <em>was</em> receding from us" because light from far away is quite old. I
-didn't catch it if there was an explanation of how we work out how
-fast we think those distant things are moving away now.</p>
-<p>This is particularly perplexing because the book explains that it
-looks like (by redshift) very distant things are receding fastest,
-less distant things look to be receding less fast, and the nearest
-things look to be coming toward us. So my naive thought is: How do we
-know that the distant things aren't currently coming toward us now?</p>
-<p>There is presumably some clever way to work this out?</p>
-<blockquote>
-<p>"We glossed over this a bit in the previous chapter, but it turns
-out that even just determining the past expansion rate is far more
-difficult than it seems like it has any right to be." (page 115)</p>
-</blockquote>
-<p>That introduces the <a href="https://en.wikipedia.org/wiki/Cosmic_distance_ladder">distance ladder</a>, but I think still doesn't
-address the above.</p>
-<hr>
-<blockquote>
-<p>"Just like a curved fiber-optic cable can make the light inside it
-turn a corner, a massive object bending space can cause light to
-curve around it." (page 68)</p>
-</blockquote>
-<p>It isn't quite "just like" that, I think... I mean, the trampoline
-analogy isn't good either...</p>
-<hr>
-<blockquote>
-<p>"Measuring <em>distance</em> accurately over billions of light-years,
-however, is a lot harder [than measuring redshift]." (page 69)</p>
-</blockquote>
-<p>This, I think, is very true. What does distance even mean?</p>
-<hr>
-<p>The play <a href="https://en.wikipedia.org/wiki/Arcadia_(play)">Arcadia</a>, quoted in the epigraph of Chapter 4, seems neat.</p>
-<hr>
-<blockquote>
-<p>"To throw some more terminology into the mix, an evolving (i.e.,
-nonconstant) dark energy is often called <em>quintessence</em>, after the
-"fifth element," a mysterious something-or-other that was popular to
-philosophize about in the Middle Ages and is not really much more
-precisely specified now." (page 80)</p>
-</blockquote>
-<p>Leeloo Dallas Multipass</p>
-<hr>
-<blockquote>
-<p>"As of this writing, supernova measurements allow us to measure the
-Hubble Constant to an accuracy of 2.4 percent."</p>
-<p>"Which is weird, because the number we get totally disagrees with
-the value of the exact same number we derive from looking at the
-cosmic microwave background." (pages 125-126)</p>
-</blockquote>
-<hr>
-<p>How does the data suggest that we're in a local minimum vacuum? How
-can we tell that?</p>
-<hr>
-<blockquote>
-<p>"This has led physicists to suggest solutions ranging from abstract
-arguments aimed at narrowing down the total range of possible
-universes to philosophical debates about how to make advances in
-areas of theory in which experimental evidence may never appear."
-(page 161)</p>
-</blockquote>
-<hr>
-<p>The epigraph for Chapter 8 quotes Hozier's "<a href="https://www.youtube.com/watch?v=gXq_J29V5Io">No Plan</a>" but I prefer
-their "<a href="https://www.youtube.com/watch?v=0C5IS21neGA">Nobody</a>." The drums are bananas.</p>
-<hr>
-<blockquote>
-<p>""By thinking about the end of the universe, just like with its
-beginning, you can sharpen your own thinking about what you think is
-happening now, and how to extrapolate. I feel like extrapolations in
-fundamental physics are essential," says Hiranya Peiris, a
-cosmologist at University College London." (page 179)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"But personally, I still feel there's a big difference, in some
-emotional sense, between "we go on forever" and "we don't." Nima
-Arkani-Hamed feels the same way. "At the absolute, absolute deepest
-level ... whether or not people explicitly admit to thinking about
-it or not (and if they don't they're all the poorer for it) ... If
-you think there is a purpose to life, then I at least don't know how
-to find one that doesn't connect to something that transcends our
-little mortality," he tells me. "I think a lot of people at some
-level—again, either explicitly or implicitly—will do science or art
-or something because of the sense that you do get to transcend
-something. You touch something eternal. That word, eternal: very
-important. It's very, very, very important."" (page 207)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20210508-the_end_of_everything_by_mack/</link>
-<guid>http://planspace.org/20210508-the_end_of_everything_by_mack/</guid>
-<pubDate>Sat, 08 May 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
