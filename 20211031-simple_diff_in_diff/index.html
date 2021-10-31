@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Simple diff-in-diff</title>
+  </head>
+  <body>
+    <article>
+<h1>Simple diff-in-diff</h1>
+<p class="date">Sunday October 31, 2021</p>
+<p>Things are always changing. <a href="https://en.wikipedia.org/wiki/Difference_in_differences">Difference in differences</a> tries to
+identify how much of a change is due to some treatment by comparing to
+a control that's also changing over time.</p>
+<p><img alt="diff-in-diff diagram" src="diff_in_diff.jpg" /></p>
+<p>This is often presented graphically with response value against time.</p>
+<p><img alt="diff-in-diff graph" src="diff_in_diff_graph.jpg" /></p>
+<p>A noiseless design matrix illustrates how this becomes a diff-in-diff
+regression.</p>
+<pre><code>| treatment base | control base | common diff | treatment diff | response |
+|----------------|--------------|-------------|----------------|----------|
+| 1              | 0            | 0           | 0              |  3       |
+| 0              | 1            | 0           | 0              |  2       |
+| 1              | 0            | 1           | 1              | 12       |
+| 0              | 1            | 1           | 0              |  7       |
+</code></pre>
+
+<p>Real data will have noise; here's a simulation in <a href="https://www.r-project.org/">R</a>.</p>
+<pre><code class="language-r">treatment_base = c(rep(1, 100), rep(0, 100), rep(1, 100), rep(0, 100))
+control_base   = c(rep(0, 100), rep(1, 100), rep(0, 100), rep(1, 100))
+common_diff    = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(1, 100))
+treatment_diff = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(0, 100))
+response = c(rnorm(100, mean=3),
+             rnorm(100, mean=2),
+             rnorm(100, mean=3) + rnorm(100, mean=5) + rnorm(100, mean=4),
+             rnorm(100, mean=2) + rnorm(100, mean=5))
+summary(lm(response ~ treatment_base + control_base + common_diff + treatment_diff + 0))
+##                Estimate Std. Error t value Pr(>|t|)
+## treatment_base   3.0747     0.1367   22.50   &lt;2e-16 ***
+## control_base     1.9798     0.1367   14.49   &lt;2e-16 ***
+## common_diff      5.0990     0.1933   26.38   &lt;2e-16 ***
+## treatment_diff   3.9453     0.2733   14.44   &lt;2e-16 ***</code></pre>
+
+<p>Diff-in-diff can get <a href="https://andrewcbaker.netlify.app/2019/09/25/difference-in-differences-methodology/">more complicated</a>, but the simple version
+isn't too bad.</p>
+<hr />
+<p>Thanks to Dr. Erica Blom for valuable discussion and references on
+this topic.</p>
+<hr />
+<h3>See also</h3>
+<ul>
+<li>Four “back door” regression situations:
+   <a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></li>
+<li><a href="/20210501-simple_front_door_regression/">Simple Front Door Regression</a></li>
+<li><a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a></li>
+</ul>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

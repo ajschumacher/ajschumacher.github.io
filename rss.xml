@@ -7,6 +7,60 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Simple diff-in-diff</title>
+<description><![CDATA[
+
+<p>Things are always changing. <a href="https://en.wikipedia.org/wiki/Difference_in_differences">Difference in differences</a> tries to
+identify how much of a change is due to some treatment by comparing to
+a control that's also changing over time.</p>
+<p><img alt="diff-in-diff diagram" src="diff_in_diff.jpg"></p>
+<p>This is often presented graphically with response value against time.</p>
+<p><img alt="diff-in-diff graph" src="diff_in_diff_graph.jpg"></p>
+<p>A noiseless design matrix illustrates how this becomes a diff-in-diff
+regression.</p>
+<pre><code>| treatment base | control base | common diff | treatment diff | response |
+|----------------|--------------|-------------|----------------|----------|
+| 1              | 0            | 0           | 0              |  3       |
+| 0              | 1            | 0           | 0              |  2       |
+| 1              | 0            | 1           | 1              | 12       |
+| 0              | 1            | 1           | 0              |  7       |
+</code></pre>
+
+<p>Real data will have noise; here's a simulation in <a href="https://www.r-project.org/">R</a>.</p>
+<pre><code class="language-r">treatment_base = c(rep(1, 100), rep(0, 100), rep(1, 100), rep(0, 100))
+control_base   = c(rep(0, 100), rep(1, 100), rep(0, 100), rep(1, 100))
+common_diff    = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(1, 100))
+treatment_diff = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(0, 100))
+response = c(rnorm(100, mean=3),
+             rnorm(100, mean=2),
+             rnorm(100, mean=3) + rnorm(100, mean=5) + rnorm(100, mean=4),
+             rnorm(100, mean=2) + rnorm(100, mean=5))
+summary(lm(response ~ treatment_base + control_base + common_diff + treatment_diff + 0))
+##                Estimate Std. Error t value Pr(&gt;|t|)
+## treatment_base   3.0747     0.1367   22.50   &lt;2e-16 ***
+## control_base     1.9798     0.1367   14.49   &lt;2e-16 ***
+## common_diff      5.0990     0.1933   26.38   &lt;2e-16 ***
+## treatment_diff   3.9453     0.2733   14.44   &lt;2e-16 ***</code></pre>
+
+<p>Diff-in-diff can get <a href="https://andrewcbaker.netlify.app/2019/09/25/difference-in-differences-methodology/">more complicated</a>, but the simple version
+isn't too bad.</p>
+<hr>
+<p>Thanks to Dr. Erica Blom for valuable discussion and references on
+this topic.</p>
+<hr>
+<h3>See also</h3>
+<ul>
+<li>Four “back door” regression situations:
+   <a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></li>
+<li><a href="/20210501-simple_front_door_regression/">Simple Front Door Regression</a></li>
+<li><a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a></li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20211031-simple_diff_in_diff/</link>
+<guid>http://planspace.org/20211031-simple_diff_in_diff/</guid>
+<pubDate>Sun, 31 Oct 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>My daily routine</title>
 <description><![CDATA[
 
@@ -3255,20 +3309,6 @@ recommended books!</p>
 <link>http://planspace.org/20210721-books_for_machine_learning/</link>
 <guid>http://planspace.org/20210721-books_for_machine_learning/</guid>
 <pubDate>Wed, 21 Jul 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Wise Charlie Mental Models (cards)</title>
-<description><![CDATA[
-
-<p>These <a href="https://www.wisecharlie.com/shop">100 cards</a> are kind of cute. They summarize mental models in
-the style of <a href="https://en.wikipedia.org/wiki/Charlie_Munger#%22Elementary,_worldly_wisdom%22">Charlie Munger</a>; some are distinct Munger-isms. The
-descriptions aren't terribly good and there are errors. I like the
-<a href="https://fs.blog/mental-models/">general idea</a>, and I like cards; these are mediocre but not bad.</p>
-<p><img alt="image" src="image.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20210527-wise_charlie_mental_models/</link>
-<guid>http://planspace.org/20210527-wise_charlie_mental_models/</guid>
-<pubDate>Thu, 27 May 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

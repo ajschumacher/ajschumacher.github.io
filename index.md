@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-10-31: [Simple diff-in-diff](/20211031-simple_diff_in_diff/)
  * 2021-10-30: [My daily routine](/20211030-my_daily_routine/)
  * 2021-10-19: [Core RAPPOR](/20211019-core_rappor/)
  * 2021-10-17: [“how the world could be made a good and happy place”](/20211017-how_the_world_could_be_made_a_good_and_happy_place/)
