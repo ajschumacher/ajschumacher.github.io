@@ -92,3 +92,10 @@ that it raises the floor for how much I do in a day. Even if I do
 nothing else, if I do these things I've done something to be happy
 about. And of course these things have benefits that help me do other
 things too. Always room to learn and improve more too!
+
+The routines here are the least important parts of my days; I hope
+they support the things I value and don't conflict with them.
+
+I'm very fortunate to be largely free to choose how I spend so much
+time; I owe so much to Erica in particular for supporting me and
+making our family's life better every day.
