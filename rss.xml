@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Visualizing Cohen's h</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Cohen%27s_h">Cohen's <em>h</em></a> is an effect size for differences between two
+proportions. It ranges from 0 to \( \pi \) (when nondirectional) and
+adjusts for whether the proportions are “extreme” (near 0 or 1) so
+that equal Cohen's <em>h</em> means equal statistical detectability (Cohen
+1988).</p>
+<p><img alt="Cohen's h" src="cohens_h.png"></p>
+<p>The heuristic values of 0.2 for “small,” 0.5 for “medium,” and 0.8 for
+“large” are analogous to the 0.05 confidence level: often taken more
+seriously than they should be.</p>
+<p>Cohen's <em>h</em> is the difference between the two proportions'
+<a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transforms</a>.</p>
+<p><img alt="arcsin transformation" src="arcsin_transform.png"></p>
+<p>The arcsin transform stretches out values near 0 and 1 more than
+values around 0.5. It is bounded though, so for example if your
+baseline proportion is 0.95, there is no proportion higher than that
+which will register as a “medium” effect size.</p>
+<p>You could replace the arcsin transform with <a href="https://en.wikipedia.org/wiki/Logit">log odds</a>; the logit
+would allow any size difference anywhere, at least in principle. But I
+don't think it would have any useful connection to variance, as the
+<a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transformation</a> does.</p>
+<hr>
+<p>Code is <a href="https://github.com/ajschumacher/cohens_h">on GitHub</a>.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20211106-visualizing_cohens_h/</link>
+<guid>http://planspace.org/20211106-visualizing_cohens_h/</guid>
+<pubDate>Sat, 06 Nov 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Simple diff-in-diff</title>
 <description><![CDATA[
 
@@ -3248,67 +3281,6 @@ pro.</p>
 <link>http://planspace.org/20210820-how_to_be_a_pro_halmos/</link>
 <guid>http://planspace.org/20210820-how_to_be_a_pro_halmos/</guid>
 <pubDate>Fri, 20 Aug 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Books for Machine Learning</title>
-<description><![CDATA[
-
-<blockquote>
-<p>"for someone that doesn't have a lot of experience with machine
-learning, what books would you recommend starting with? machine
-learning for dummies?"</p>
-</blockquote>
-<hr>
-<div style="display:block; float:left;">
-
-<a href="https://www.statlearning.com/">
-<img src="intro_stat_learn.png" alt="Introduction to Statistical Learning" width="24%">
-</a>
-
-<a href="https://www.manning.com/books/deep-learning-with-python">
-<img src="dl_with_py.png" alt="Deep Learning with Python" width="24%">
-</a>
-
-<a href="/20210508-statistical_rethinking_by_mcelreath/">
-<img src="stat_rethink.jpg" alt="Statistical Rethinking" width="24%">
-</a>
-
-<a href="http://www.mmds.org/">
-<img src="mine_massive.jpg" alt="Mining of Massive Datasets" width="24%">
-</a>
-
-</div>
-
-<hr>
-<p><a href="https://www.statlearning.com/">Intro to Statistical Learning</a>: The friendly version of
-<a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements</a> has <a href="https://www.r-bloggers.com/2014/09/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">MOOC videos</a> and a 2nd edition coming soon, all
-free online. Is there a better intro? Maybe using Python?</p>
-<p><a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a>: The creator of <a href="https://keras.io/">Keras</a> provides
-pretty good explanations and code, as I recall. Is there a better
-intro? Maybe something using <a href="https://pytorch.org/">PyTorch</a>?</p>
-<p><a href="/20210508-statistical_rethinking_by_mcelreath/">Statistical Rethinking</a> has great explanations, examples, and
-philosophical commentary for understanding Bayesian approaches.</p>
-<p><a href="http://www.mmds.org/">Mining of Massive Datasets</a> is much better than its cover, with
-good coverage of both more and less commonly discussed techniques (and
-a <a href="https://online.stanford.edu/courses/soe-ycs0007-mining-massive-data-sets">MOOC</a>).</p>
-<hr>
-<h3>See also:</h3>
-<ul>
-<li>William Chen's <a href="http://www.wzchen.com/data-science-books">22 Free Data Science Books</a> includes three of my
-   four selections.</li>
-<li>My <a href="/20160320-books_for_professionals/">Books for Professionals</a> selects four titles on professional
-   life.</li>
-<li>My <a href="/20160322-books_for_programmers/">Books for Programmers</a> recommends for Python, JavaScript,
-   Clojure, R, and git.</li>
-</ul>
-<hr>
-<p>Thanks to a couple of colleagues who inspired this collection of
-recommended books!</p>
-<p>What else would you add/change in this list?</p>    
-    ]]></description>
-<link>http://planspace.org/20210721-books_for_machine_learning/</link>
-<guid>http://planspace.org/20210721-books_for_machine_learning/</guid>
-<pubDate>Wed, 21 Jul 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
