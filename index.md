@@ -26,6 +26,7 @@ If you sign up, I'll send you an email when I add new interesting things.
 
 Here's the big list of everything:
 
+ * 2021-11-07: [Parallel coordinate plots for visualizing functions](/20211107-parallel_coordinate_plots_for_visualizing_functions/)
  * 2021-11-06: [Visualizing Cohen's _h_](/20211106-visualizing_cohens_h/)
  * 2021-10-31: [Simple diff-in-diff](/20211031-simple_diff_in_diff/)
  * 2021-10-30: [My daily routine](/20211030-my_daily_routine/)

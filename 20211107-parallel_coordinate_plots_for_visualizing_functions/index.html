@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Parallel coordinate plots for visualizing functions</title>
+  </head>
+  <body>
+    <article>
+<h1>Parallel coordinate plots for visualizing functions</h1>
+<p class="date">Sunday November  7, 2021</p>
+<p>While thinking about the <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transform</a> for <a href="/20211106-visualizing_cohens_h/">Cohen's <em>h</em></a>, I
+described the function as “stretching” its inputs, and compared it to
+the <a href="https://en.wikipedia.org/wiki/Logit">logit function</a>. I wondered whether a
+<a href="https://en.wikipedia.org/wiki/Parallel_coordinates">parallel coordinates plot</a> could visualize the “stretching” more
+clearly than the traditional Cartesian plot. I think it kind of works!</p>
+<p><img alt="parallel coordinates plots" src="parallel.png" /></p>
+<p>This left-to-right function input-to-output view is pleasing in some
+ways. I think it succeeds in showing how the function is “stretching”
+the input, as desired. It's hard to show very many input/output pairs
+though, and it would be hard to show non-monotonic functions well, or
+show multiple functions on the same axes. For the logit, I think it's
+less clear in implying the function is unbounded than with the
+Cartesian version.</p>
+<p><img alt="traditional cartesian plots" src="cartesian.png" /></p>
+<p>The usual way of plotting functions feels a little drier. “Stretching”
+is greater where the plot is more vertical; I feel this less
+immediately here than with the parallel coordinates version. Overall
+this is still a great way to visualize functions, of course. I
+wouldn't mind the occasional parallel coordinates plot as an
+alternative visualization though!</p>
+<hr />
+<p>Code is <a href="https://github.com/ajschumacher/parallel_coordinate_functions">on GitHub</a>.</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
