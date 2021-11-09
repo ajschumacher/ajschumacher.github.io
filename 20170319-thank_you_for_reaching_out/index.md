@@ -6,17 +6,29 @@ I make myself pretty [easy to contact](/aaron/), and sometimes people contact me
 
 ### 1. Will I hire you?
 
-I'm not in a position to hire you (or give you an internship). Please don't send me your résumé. If you want to work where I work, or anywhere I've worked before, please go through official channels.
+I'm not in a position to hire you (or give you an internship).
+However, see #2.
+
+<!-- Please don't send me your résumé. If you want to work where I
+work, or anywhere I've worked before, please go through official
+channels. -->
 
 
 ### 2. Will I recommend you for a job?
 
-If I already know your work and I know it to be good, then yes.
+I'd be happy to [refer you][] for jobs at Meta: Facebook, Instagram,
+WhatsApp, etc.
+
+[refer you]: /20211109-come_work_at_meta/
+
+<!-- If I already know your work and I know it to be good, then yes.
+-->
 
 
 ### 3. How can you find a job?
 
-I've found jobs mostly through people I know, and once through a recruiter.
+I've found jobs mostly through people I know, and twice through
+recruiters.
 
 Don't meet people for the sake of finding a job. Meet people by being active in your community and doing good work. Go to a [meetup](https://www.meetup.com/). Talk to people. Help where you can. Give a talk about something you know or are learning about. Help out on a [community project](http://brigade.codeforamerica.org/brigade/). Keep developing new skills.
 
