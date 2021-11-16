@@ -469,18 +469,18 @@ if __name__ == '__main__':
 <hr />
 <p>Behold, the power of <code>tf.device()</code>!</p>
 <hr />
-<p><pre><code>with tf.device('/cpu:0'):
-    # Do something.</code></pre></p>
+<pre><code>with tf.device('/cpu:0'):
+    # Do something.</code></pre>
 <hr />
 <p>You can specify that work happen on a local CPU.</p>
 <hr />
-<p><pre><code>with tf.device('/gpu:0'):
-    # Do something.</code></pre></p>
+<pre><code>with tf.device('/gpu:0'):
+    # Do something.</code></pre>
 <hr />
 <p>You can specify that work happen on a local GPU.</p>
 <hr />
-<p><pre><code>with tf.device('/job:ps/task:0'):
-    # Do something.</code></pre></p>
+<pre><code>with tf.device('/job:ps/task:0'):
+    # Do something.</code></pre>
 <hr />
 <p>In exactly the same way, you can specify that work happen on <em>a different computer</em>!</p>
 <p>This is pretty amazing. I think of it as sort of <a href="/20170423-tensorflow_as_automatic_mpi/">declarative MPI</a>.</p>
@@ -646,7 +646,7 @@ planspace.org</p>
       <hr />
 <p><a name="contact"></a><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />

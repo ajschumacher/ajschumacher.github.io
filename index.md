@@ -10,11 +10,11 @@ Hi! I'm [Aaron](/aaron/). Here are some of my favorite posts:
 
 ---
 
-If you sign up, I'll send you an email when I add new interesting things.
+If you sign up, I'll send you an email update every month or so with new stuff.
 
 <p><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />

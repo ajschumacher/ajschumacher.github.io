@@ -33,7 +33,6 @@ Dmitry Tursunov         S.Giraldo
 Dudi Sela               Y-H.Lu
 Fabio Fognini           T.Robredo
 ...                     ...</code></pre>
-
 <hr />
 <p>The problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
 <p>Do you see the match here? (It's Santiago!)</p>
@@ -56,7 +55,6 @@ Santiago Giraldo,S.Giraldo
 Santiago Giraldo,Marcos Baghdatis
 Santiago Giraldo,Y-H.Lu
 ...</code></pre>
-
 <hr />
 <p>So we make all possible pairs of identifiers! This is annoying for a computer, and awful for humans. The computer can calculate a lot of pairwise distances, but I don't want to look at all the pairs.</p>
 <p>Do you see the match here? (It's Santiago again!)</p>
@@ -70,18 +68,15 @@ Do these records refer to the same thing?
 (y)es / (n)o / (u)nsure / (f)inished
 
 O.o?</code></pre>
-
 <hr />
 <p>The is a "screen shot" of the <a href="https://github.com/datamade/csvdedupe">csvdedupe</a> interface, which is based on the Python <a href="https://github.com/datamade/dedupe">dedupe</a> project, which is very cool. It could be exactly what you want for larger amounts of more complex data. There's even work on getting learnable edit distances implemented now, which would be great to see. But for very simple data sets, <code>dedupe</code> can be overkill. Also, you don't get much sense of the big picture of your data set, and it's still very pair-oriented.</p>
 <hr />
 <pre><code>Karolina Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
 <p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
 <hr />
 <pre><code>Kristyna Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
 <hr />
@@ -229,7 +224,7 @@ planspace.org</p>
       <hr />
 <p><a name="contact"></a><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />

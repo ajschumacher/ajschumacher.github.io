@@ -38,8 +38,7 @@
 </tr>
 </tbody>
 </table>
-
-<p>I might fill in those empty cells as follows:
+<p>I might fill in those empty cells as follows:</p>
 <table>
 <tbody>
 <tr>
@@ -64,7 +63,7 @@
 </tr>
 </tbody>
 </table>
-And I guess we never go on systematically adding more features forever in the same way that we systematically go on adding more data forever.</p>
+<p>And I guess we never go on systematically adding more features forever in the same way that we systematically go on adding more data forever.</p>
 <p>After the introduction by LeCun, Langford took over for the main lecture, about on-line learning for <a href="http://en.wikipedia.org/wiki/Statistical_classification">classification</a>. (I was going to specify <a href="http://en.wikipedia.org/wiki/Supervised_learning">supervised</a>, but apparently this is redundant.) As they were switching computers, we could see that Langford was running Outlook in a Windows VM on his laptop - maybe that's the price you pay when you work at Microsoft Research? The real demonstration tool of choice is <a href="http://hunch.net/~vw/">Vowpal Wabbit</a>, which is the creation of Langford himself. Maybe I should call it the reference implementation. As you can see on the published <a href="http://cilvr.cs.nyu.edu/diglib/lsml/lecture01-online-linear.pdf">slides</a> for the lecture, the first directions were to clone and make <a href="https://github.com/JohnLangford/vowpal_wabbit">vw</a> from github. Of course <a href="http://en.wikipedia.org/wiki/Make_(software)">make</a> just failed on my Mac and I didn't have time to figure out why. It wasn't really necessary to have vw to follow along, but I should really get that to work... I did feel, throughout the lecture, that I was much better off for previously having seen Langford give a <a href="http://www.meetup.com/NYC-Machine-Learning/events/31554622/">talk</a> about vw at the <a href="http://www.meetup.com/NYC-Machine-Learning/">NYC Machine Learning meetup</a> back in September of 2011. Of course it also helped that he was being much more didactic in his presentation.</p>
 <p>It wasn't long before the mathematics was enough to keep me busy and I was typing a good deal less. There were also lighter moments, as for example when Langford enjoyed getting in a little rip against <a href="http://mahout.apache.org/">Mahout</a>, which it seems is often much slower than his vw. If it's really true that the biggest data set they even try to crunch is processed in about a second on his laptop in vw, I guess that's fair!</p>
 <p>Langford spent most of his time talking about choosing a loss function and online learning generally. I hope we get to hear more in the future about how vw uses hashing to achieve its speed. I kind of think this must not be that complex a topic, but I'd like to understand it better.</p>
@@ -77,7 +76,7 @@ And I guess we never go on systematically adding more features forever in the sa
       <hr />
 <p><a name="contact"></a><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />

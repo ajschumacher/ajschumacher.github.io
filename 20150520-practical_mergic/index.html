@@ -230,7 +230,6 @@ data %>%
 > result &lt;- merge(first, second)
 > nrow(result)
 ## [1] 3</code></pre>
-
 <hr />
 <p><em>This code is runnable in <a href="count_trouble.R">count_trouble.R</a>.</em></p>
 <p>Is it enough to check the numbers of rows when we do joins?</p>
@@ -241,7 +240,6 @@ data %>%
  1 looks        1 good        1 looks good
  2    oh        2  boy        2    oh  boy
  3  well        2   no        2    oh   no</code></pre>
-
 <hr />
 <p>There is no peace while you don't have unique IDs.</p>
 <p>There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.</p>
@@ -319,7 +317,6 @@ Dmitry Tursunov         S.Giraldo
 Dudi Sela               Y-H.Lu
 Fabio Fognini           T.Robredo
 ...                     ...</code></pre>
-
 <hr />
 <p><em>Here begins material also presented in a <a href="/20150514-mergic/">lightning talk</a> at the <a href="http://www.meetup.com/PyDataNYC/events/222329250/">May meeting</a> (<a href="http://www.bloomberg.com/event-registration/?id=39288">registration</a>) of the <a href="http://www.meetup.com/PyDataNYC/">PyData NYC meetup group</a>.</em></p>
 <p>To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
@@ -415,7 +412,6 @@ Santiago Giraldo,S.Giraldo
 Santiago Giraldo,Marcos Baghdatis
 Santiago Giraldo,Y-H.Lu
 ...</code></pre>
-
 <hr />
 <p>So we make all possible pairs of identifiers!</p>
 <p>One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.</p>
@@ -423,13 +419,11 @@ Santiago Giraldo,Y-H.Lu
 <p>Do you see the match here? (It's Santiago again!)</p>
 <hr />
 <pre><code>Karolina Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
 <p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
 <hr />
 <pre><code>Kristyna Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
 <hr />
@@ -608,7 +602,6 @@ mergic.Blender(distance).script()</code></pre>
 Bob
 Rob
 Robert</code></pre>
-
 <hr />
 <p>This means that we have one field, say name.</p>
 <hr />
@@ -617,7 +610,6 @@ Robert</code></pre>
 Bob, Bobby
 Bob, Robert
 Bobby, Robert</code></pre>
-
 <hr />
 <p>And we look at all the possible pairs and calculate those pairwise distances.</p>
 <hr />
@@ -630,7 +622,6 @@ Bobby, Robert</code></pre>
 Bob,     New York
 Rob,     NYC
 Robert,  "NY, NY"</code></pre>
-
 <hr />
 <p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
 <p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
@@ -726,7 +717,6 @@ write.table(RLdata500, "RLdata500.txt",
   doge   1    0      5      5
 kitten   6    5      0      1
 kitteh   6    5      1      0</code></pre>
-
 <hr />
 <p>So here's a distance matrix, and it looks the way we'd expect. But we still don't have <em>coordinates</em> for our words.</p>
 <p>Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a>! There's a nice <a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html">implementation in sklearn</a>.</p>
@@ -734,7 +724,6 @@ kitteh   6    5      1      0</code></pre>
 <pre><code class="language-python">from sklearn.manifold import MDS
 mds = MDS(dissimilarity='precomputed')
 coords = mds.fit_transform(distances)</code></pre>
-
 <hr />
 <p>Here's all the code it takes.</p>
 <hr />
@@ -800,7 +789,7 @@ planspace.org</p>
       <hr />
 <p><a name="contact"></a><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />

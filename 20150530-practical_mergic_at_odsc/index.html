@@ -48,7 +48,6 @@ planspace.org</p>
 01M019     3 2010   Female         16
 01M019     3 2010     Male         20
 01M019     3 2010     Male          2</code></pre>
-
 <hr />
 <p>Here's an example of open data <a href="http://schools.nyc.gov/NR/exeres/05289E74-2D81-4CC0-81F6-E1143E28F4C4,frameless.htm">released</a> by the New York City Department of Education.</p>
 <p>The <code>dbn</code> is a school identifier, and <code>grade</code> and <code>year</code> make sense. This file has the number of students tested in three categories: “Female”, “Male”, and “Male”.</p>
@@ -119,7 +118,6 @@ planspace.org</p>
 > result &lt;- merge(first, second)
 > nrow(result)
 ## [1] 3</code></pre>
-
 <hr />
 <p><em>This code is runnable in <a href="count_trouble.R">count_trouble.R</a>.</em></p>
 <p>Is it enough to check the numbers of rows when we do joins?</p>
@@ -130,7 +128,6 @@ planspace.org</p>
  1 looks        1 good        1 looks good
  2    oh        2  boy        2    oh  boy
  3  well        2   no        2    oh   no</code></pre>
-
 <hr />
 <p>There is no peace while you don't have unique IDs.</p>
 <p>There are times when you don't want every ID to be unique in a table, but really really often you do. You probably want to check that uniqueness explicitly.</p>
@@ -158,7 +155,6 @@ planspace.org</p>
 $ head -2 USOpen-women-2013.csv | cut -c 1-40
 ## Player 1,Player 2,ROUND,Result,FNL.1,FNL
 ## S Williams,V Azarenka,7,1,2,1,57,44,43,2</code></pre>
-
 <hr />
 <p>There are eight files like this. You can see that the player names are not perfectly consistent.</p>
 <p>Some good people up-state New York contributed this data set, and I got in touch with them. I was curious about where the data came from; it was scraped from some web sites. Did they use it in any of their classes? Yes, it was used for some activities. Did they use it for teaching any particular data cleaning techniques? I haven't heard back since then.</p>
@@ -168,7 +164,6 @@ $ head -2 USOpen-women-2013.csv | cut -c 1-40
 
 $ sort names.txt | uniq | wc -l
 ## 669</code></pre>
-
 <hr />
 <p>So we'll take the tennis player names as our example data set. We have a file with 1,886 names, 669 of which are unique.</p>
 <p>There are too many unique strings—sometimes more than one string for the same player. As a result, a count of the most common names will not accurately tell us who played the most in these 2013 tennis competitions.</p>
@@ -179,7 +174,6 @@ $ sort names.txt | uniq | wc -l
 ##  17 Novak Djokovic
 ##  17 David Ferrer
 ##  15 Roger Federer</code></pre>
-
 <hr />
 <p>The list above is not the answer we’re looking for. We want to be correct.</p>
 <hr />
@@ -196,7 +190,6 @@ Dmitry Tursunov         S.Giraldo
 Dudi Sela               Y-H.Lu
 Fabio Fognini           T.Robredo
 ...                     ...</code></pre>
-
 <hr />
 <p>To be clear, the problem looks like this. And the problem often looks like this: You have either two columns with slightly different versions of identifiers, or one long list of things that you need to resolve to common names. These problems are fundamentally the same.</p>
 <p>Do you see the match here? (It's Santiago!)</p>
@@ -214,7 +207,6 @@ Fabio Fognini           T.Robredo
 2,Leonardo Mayer
 3,Marcos Baghdatis
 ...</code></pre>
-
 <hr />
 <p>One way to keep output from a deduplication process is a merge table like this. The <code>csvdedupe</code> interface on the Python <a href="https://github.com/datamade/dedupe">dedupe</a> project from <a href="http://datamade.us/">DataMade</a> in Chicago will give you this kind of output. It's much better than no accessible record of the transformation, but it's also not a format I want to look at, as a human.</p>
 <hr />
@@ -227,7 +219,6 @@ Fabio Fognini           T.Robredo
         "Robert"
     ]
 }</code></pre>
-
 <hr />
 <p>Here's a format that I propose could be usable for describing deduplication. It's as readable by humans as any <a href="http://json.org/">JSON</a>, and it can be easily produced and consumed by anything that speaks JSON, which is everything.</p>
 <hr />
@@ -235,7 +226,6 @@ Fabio Fognini           T.Robredo
 Ann's group,Ann
 Bob's group,Bob
 Bob's group,Robert</code></pre>
-
 <hr />
 <p>You can still produce a merge table from the JSON representation, and it will have whatever new keys you specify, possibly human-readable ones.</p>
 <hr />
@@ -284,7 +274,6 @@ Santiago Giraldo,S.Giraldo
 Santiago Giraldo,Marcos Baghdatis
 Santiago Giraldo,Y-H.Lu
 ...</code></pre>
-
 <hr />
 <p>So we make all possible pairs of identifiers!</p>
 <p>One of the things that Open Refine gets right is that it doesn't show us humans all the pairs it's looking at.</p>
@@ -292,13 +281,11 @@ Santiago Giraldo,Y-H.Lu
 <p>Do you see the match here? (It's Santiago again!)</p>
 <hr />
 <pre><code>Karolina Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Aside from being a drag to look at, there's a bigger problem with verifying equality on a pairwise basis.</p>
 <p>Do these two records refer to the same person? (Tennis fans may see where I'm going with this.)</p>
 <hr />
 <pre><code>Kristyna Pliskova,K Pliskova</code></pre>
-
 <hr />
 <p>Karolina has a twin sister, and Kristyna also plays professional tennis! This may well not be obvious if you only look at pairs individually. What matters is the set of names that are transitively judged as equal.</p>
 <hr />
@@ -470,7 +457,6 @@ mergic.Blender(distance).script()</code></pre>
 Bob
 Rob
 Robert</code></pre>
-
 <hr />
 <p>This means that we have one field, say name.</p>
 <hr />
@@ -479,7 +465,6 @@ Robert</code></pre>
 Bob, Bobby
 Bob, Robert
 Bobby, Robert</code></pre>
-
 <hr />
 <p>And we look at all the possible pairs and calculate those pairwise distances.</p>
 <hr />
@@ -492,7 +477,6 @@ Bobby, Robert</code></pre>
 Bob,     New York
 Rob,     NYC
 Robert,  "NY, NY"</code></pre>
-
 <hr />
 <p>Often, there's more than one field involved, and it might be good to treat all the fields separately.</p>
 <p>So let's calculate distances between each field entry for each pair of rows, in this case.</p>
@@ -524,7 +508,6 @@ Robert,  "NY, NY"</code></pre>
   doge   1    0      5      5
 kitten   6    5      0      1
 kitteh   6    5      1      0</code></pre>
-
 <hr />
 <p>So here's a distance matrix, and it looks the way we'd expect. But we still don't have <em>coordinates</em> for our words.</p>
 <p>Luckily, there is at least one technique for coming up with coordinates when you have a distance matrix. Let's use <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a>! There's a nice <a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html">implementation in sklearn</a>.</p>
@@ -532,7 +515,6 @@ kitteh   6    5      1      0</code></pre>
 <pre><code class="language-python">from sklearn.manifold import MDS
 mds = MDS(dissimilarity='precomputed')
 coords = mds.fit_transform(distances)</code></pre>
-
 <hr />
 <p>Here's all the code it takes.</p>
 <hr />
@@ -570,7 +552,7 @@ planspace.org</p>
       <hr />
 <p><a name="contact"></a><form class="email_updates">
   <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get email updates" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
   <input type="hidden" name="_subject" value="planspace.org updates list" />
   <input type="text" name="_honey" style="display:none" />
   <input type="hidden" name="_captcha" value="false" />
