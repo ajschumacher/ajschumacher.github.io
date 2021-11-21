@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-11-21: [The Essence of Progress and Poverty, by Henry George](/20211121-essence_of_progress_and_poverty/)
  * 2021-11-09: [Come work at Meta! (Facebook/Instagram/WhatsApp/etc.)](/20211109-come_work_at_meta/)
  * 2021-11-07: [Parallel coordinate plots for visualizing functions](/20211107-parallel_coordinate_plots_for_visualizing_functions/)
  * 2021-11-06: [Visualizing Cohen's _h_](/20211106-visualizing_cohens_h/)
