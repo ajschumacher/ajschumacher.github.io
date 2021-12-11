@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Significant Figures: Addition is too precise</title>
+  </head>
+  <body>
+    <article>
+<h1>Significant Figures: Addition is too precise</h1>
+<p class="date">Saturday December 11, 2021</p>
+<p>The usual <a href="https://en.wikipedia.org/wiki/Significance_arithmetic#Addition_and_subtraction_using_significance_arithmetic" title="Wikipedia: Addition and subtraction using significance arithmetic">rules</a> for adding and subtracting numbers with
+significant digits often propagate uncertainly approximately
+correctly, but always give results more precise than they actually are
+because they don't (and can't, generally) follow the
+<a href="/20201030-the_variance_sum_law_is_interesting/" title="The Variance Sum Law is Interesting">Variance Sum Law</a>.</p>
+<p>Say a <a href="/20211209-significant_figures_gaussian_uncertainty/" title="Significant Figures: Gaussian uncertainty, σ=2.5eN">number</a> in Significant Figures with rightmost significant
+digit \( D \times 10^N \) has uncertainty with standard deviation
+\( \sigma \times 10^N \), and assume errors are always uncorrelated.</p>
+<p>So the number 12.3, with three significant figures, has uncertainty
+\( \sigma \times 0.1 \), and 2.48 has \( \sigma \times 0.01 \).
+Adding them gives 14.8, which has the same uncertainty as 12.3. By the
+<a href="/20201030-the_variance_sum_law_is_interesting/" title="The Variance Sum Law is Interesting">Variance Sum Law</a>, the true uncertainty is \( \sigma \times 0.1005
+\), but that's pretty close to \( \sigma \times 0.1 \). In this
+way, the usual rule for adding with significant figures is often
+reasonable-seeming.</p>
+<p>With many numbers of the same precision, however, the usual rules are
+more problematic. If you add 1.2 + 3.4 + 5.6 + 7.8, the result 18.0
+implies \( \sigma \times 0.1 \), but in fact uncertainty has doubled
+to \( \sigma \times 0.2 \). Significant Figures has no way to convey
+this, because it only communicates in powers of ten.</p>
+<p>Adding and subtracting 100 numbers with the same precision, then,
+should give a result with exactly one fewer significant figures. With
+25 numbers the standard deviation could “round up” to the next power
+of ten, arguably. It may not be common to add so many numbers with
+significant figures, but even with just a few, Sig Figs is a course
+approximation of correct propagation of uncertainty.</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

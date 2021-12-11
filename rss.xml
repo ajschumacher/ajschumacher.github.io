@@ -7,6 +7,43 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Significant Figures: Addition is too precise</title>
+<description><![CDATA[
+
+<p>The usual <a href="https://en.wikipedia.org/wiki/Significance_arithmetic#Addition_and_subtraction_using_significance_arithmetic" title="Wikipedia: Addition and subtraction using significance arithmetic">rules</a> for adding and subtracting numbers with
+significant digits often propagate uncertainly approximately
+correctly, but always give results more precise than they actually are
+because they don't (and can't, generally) follow the
+<a href="/20201030-the_variance_sum_law_is_interesting/" title="The Variance Sum Law is Interesting">Variance Sum Law</a>.</p>
+<p>Say a <a href="/20211209-significant_figures_gaussian_uncertainty/" title="Significant Figures: Gaussian uncertainty, σ=2.5eN">number</a> in Significant Figures with rightmost significant
+digit \( D \times 10^N \) has uncertainty with standard deviation
+\( \sigma \times 10^N \), and assume errors are always uncorrelated.</p>
+<p>So the number 12.3, with three significant figures, has uncertainty
+\( \sigma \times 0.1 \), and 2.48 has \( \sigma \times 0.01 \).
+Adding them gives 14.8, which has the same uncertainty as 12.3. By the
+<a href="/20201030-the_variance_sum_law_is_interesting/" title="The Variance Sum Law is Interesting">Variance Sum Law</a>, the true uncertainty is \( \sigma \times 0.1005
+\), but that's pretty close to \( \sigma \times 0.1 \). In this
+way, the usual rule for adding with significant figures is often
+reasonable-seeming.</p>
+<p>With many numbers of the same precision, however, the usual rules are
+more problematic. If you add 1.2 + 3.4 + 5.6 + 7.8, the result 18.0
+implies \( \sigma \times 0.1 \), but in fact uncertainty has doubled
+to \( \sigma \times 0.2 \). Significant Figures has no way to convey
+this, because it only communicates in powers of ten.</p>
+<p>Adding and subtracting 100 numbers with the same precision, then,
+should give a result with exactly one fewer significant figures. With
+25 numbers the standard deviation could “round up” to the next power
+of ten, arguably. It may not be common to add so many numbers with
+significant figures, but even with just a few, Sig Figs is a course
+approximation of correct propagation of uncertainty.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20211211-significant_figures_addition_is_too_precise/</link>
+<guid>http://planspace.org/20211211-significant_figures_addition_is_too_precise/</guid>
+<pubDate>Sat, 11 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Significant Figures: Gaussian uncertainty, σ=2.5eN</title>
 <description><![CDATA[
 
@@ -2385,36 +2422,6 @@ Here's the code:</p>
     ]]></description>
 <link>http://planspace.org/20210908-simple_short_number_notation/</link>
 <guid>http://planspace.org/20210908-simple_short_number_notation/</guid>
-<pubDate>Wed, 08 Sep 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Spaced repetition is O(log n) sustainable</title>
-<description><![CDATA[
-
-<p>If you use <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> software like <a href="https://apps.ankiweb.net/">Anki</a> for a long
-time, will you have to spend more and more time studying every day?
-Yes, but the increase is <a href="https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time">logarithmic</a> with time, which is a very
-slow increase. If you add ten cards a day, then after a year you do 85
-reviews per day. After ten years, that goes to 118 reviews per day,
-and even after 100 years, it's 152 reviews per day—still only half an
-hour or so each day.</p>
-<p>The major simplifying assumption here is that review delays double, so
-that after <em>n</em> days, the number of days that are contributing their
-cards to today's review is <em>log<sub>2</sub>(n)</em>.</p>
-<p>Your review delays won't be exactly that, and you won't add cards
-evenly across days. For me, the estimate is close but slightly high
-after 336 days of using Anki.</p>
-<p>The average number of cards added per day is an important
-multiplicative factor; my average is currently 11.3 cards per day and
-trending lower. It might be higher for full-time students, but I'd be
-surprised if many people stayed much above ten cards per day over
-multiple years. When you stop adding so many cards, daily reviews
-decrease rapidly.</p>
-<p>I think spaced repetition study could reasonably be a lifelong
-practice, like daily exercise.</p>    
-    ]]></description>
-<link>http://planspace.org/20210908-spaced_repetition_is_o_log_n_sustainable/</link>
-<guid>http://planspace.org/20210908-spaced_repetition_is_o_log_n_sustainable/</guid>
 <pubDate>Wed, 08 Sep 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>

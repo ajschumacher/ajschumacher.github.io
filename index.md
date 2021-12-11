@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-12-11: [Significant Figures: Addition is too precise](/20211211-significant_figures_addition_is_too_precise/)
  * 2021-12-09: [Significant Figures: Gaussian uncertainty, σ=2.5eN](/20211209-significant_figures_gaussian_uncertainty/)
  * 2021-11-26: [Try HoloViz for Python plotting](/20211126-try_holoviz_for_python_plotting/)
  * 2021-11-21: [The Essence of Progress and Poverty, by Henry George](/20211121-essence_of_progress_and_poverty/)
