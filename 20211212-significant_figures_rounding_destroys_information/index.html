@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Significant Figures: Rounding destroys information</title>
+  </head>
+  <body>
+    <article>
+<h1>Significant Figures: Rounding destroys information</h1>
+<p class="date">Sunday December 12, 2021</p>
+<p>Significant Figures often requires rounding so that the correct level
+of uncertainty is conveyed. Rounding is only supposed to happen at the
+“end” of calculations, and results can vary depending on what is
+considered an intermediate vs. a final result. In all cases, rounding
+is harmful and only necessary because of the limitations of
+Significant Figures.</p>
+<p>It should be clear that 4.3 with an <a href="/20211209-significant_figures_gaussian_uncertainty/">uncertainty</a> \( \sigma \times
+0.1 \) is not the same as 4.34 with the same uncertainty. It's
+because Significant Digits can't say 4.34 without meaning the
+uncertainty is \( \sigma \times 0.01 \) that we round to 4.3, if the
+uncertainty is \( \sigma \times 0.1 \). But this has a cost: good
+information is dropped.</p>
+<p>Consider adding 1 + 1.4 + 1.4. If we do it in one go, we get 3.8 and
+then round to 4 for significance. But what if this is done in two
+steps? Maybe one team does 1 + 1.4, correctly reports their result as
+2, and then a second team builds on that, adding 1.4 to get 3. The
+rounding that Significant Figures requires degrades the quality of
+results.</p>
+<p>At some point it isn't worth tracking every digit in a result, but
+Significant Figures often encourages dropping too many. It may even
+give people the incorrect idea that if our uncertainty suggests two
+significant figures, we can't have three figures in our best guess at
+what the value is. We absolutely can, but this requires a system more
+expressive than Significant Figures to report.</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
