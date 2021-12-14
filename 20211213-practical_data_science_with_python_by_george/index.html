@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Practical Data Science with Python, by George</title>
+  </head>
+  <body>
+    <article>
+<h1>Practical Data Science with Python, by George</h1>
+<p class="date">Monday December 13, 2021</p>
+<p>Packt sent me a copy of this <a href="https://www.packtpub.com/product/practical-data-science-with-python/9781801071970">book</a> to review. It's 621 pages with
+the best and worst characteristics of a typical data science boot
+camp: very broad, necessarily shallow, frequently not quite perfect.
+Even an imperfect map can tell you a lot about the territory, and it
+could be the right book for you.</p>
+<p>George has pulled together a lot of material, some of it good. He
+includes introductory Python and command line, enough SQL to be
+confused about SQL, examples with Bitcoin prices, an idiosyncratic
+survey of visualization, web scraping, statistics, and the big machine
+learning models, including the <a href="/20211003-xgboost_lightgbm_catboost_briefly/">big three boosted tree algorithms</a>,
+which I appreciate. He includes some NLP, and even some on ethics.</p>
+<p>George's own list of omissions (page 571) illustrates what he thinks
+is almost in scope:</p>
+<ul>
+<li>Recommender systems</li>
+<li>Networks and graph analysis</li>
+<li>Machine learning explainability</li>
+<li>Test-driven development (TDD)</li>
+<li>Reinforcement learning</li>
+<li>Neural networks</li>
+</ul>
+<p>Maybe the moral is that “data science” is too big a topic for one
+book. Trying to pack so much in has a cost. Here's the complete
+section on “Paired t- and z-tests”:</p>
+<blockquote>
+<p>One last type of t- or z-test is the paired test. This is for paired
+samples, like before-and-after treatments. For example, we could
+measure the blood pressure of people before and after taking a
+medication to see if there is an effect. A function that can be used
+for this is <code>scipy.stats.ttest_rel</code>, which can be used like this:</p>
+<p><code>scipy.stats.ttest_rel(before, after)</code></p>
+<p>This will return a t-statistic and p-value like with other <code>scipy</code>
+t-test functions.</p>
+</blockquote>
+<p>If you've never heard of a paired t-test before, it's great this book
+tells you about it. You can start to ask questions like: Why is this a
+separate test? Does it have some advantage over a regular t-test?
+Hopefully you also question some parts of the book, as when Bayesian
+methods are dismissed as “much more complex to implement than a
+t-test.”</p>
+<p>This is a map that can point you in a lot of interesting directions,
+which is valuable!</p>
+<p><img alt="cover" src="cover.png" /></p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

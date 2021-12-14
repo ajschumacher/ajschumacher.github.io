@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-12-13: [Practical Data Science with Python, by George](/20211213-practical_data_science_with_python_by_george/)
  * 2021-12-12: [Significant Figures: Rounding destroys information](/20211212-significant_figures_rounding_destroys_information/)
  * 2021-12-12: [“Show your work” means “Write a proof”](/20211212-show_your_work_means_write_a_proof/)
  * 2021-12-11: [Bernoulli's Fallacy, by Clayton](/20211211-bernoullis_fallacy_by_clayton/)
