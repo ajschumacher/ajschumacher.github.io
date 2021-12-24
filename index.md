@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-12-24: [The Genetic Lottery, by Harden](/20211224-genetic_lottery_harden/)
  * 2021-12-19: [Correlation can help approximate variance of a difference](/20211219-correlation_can_help_approximate_variance_of_a_difference/)
  * 2021-12-13: [Practical Data Science with Python, by George](/20211213-practical_data_science_with_python_by_george/)
  * 2021-12-12: [Significant Figures: Rounding destroys information](/20211212-significant_figures_rounding_destroys_information/)

@@ -7,6 +7,173 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Genetic Lottery, by Harden</title>
+<description><![CDATA[
+
+<p>Harden has something for everyone to dislike, telling the left that
+environment isn't everything and telling the right that
+self-determination isn't everything. I think her recommendation to use
+genetic controls in statistical analysis is interesting but hard.</p>
+<blockquote>
+<p>"The biggest contribution of genetics to the social sciences is to
+give researchers an additional set of tools to do basic research by
+measuring and statistically controlling for a variable—DNA—that has
+previously been very difficult to measure and statistically control
+for." (page 192)</p>
+</blockquote>
+<p><a href="https://press.princeton.edu/books/hardcover/9780691190808/the-genetic-lottery" title="The Genetic Lottery: Why DNA Matters for Social Equality">The Genetic Lottery</a> has received criticism. Here's
+<a href="https://www.lareviewofbooks.org/article/why-dna-is-no-key-to-social-equality-on-kathryn-paige-hardens-the-genetic-lottery" title="Why DNA Is No Key to Social Equality: On Kathryn Paige Harden’s “The Genetic Lottery”">Henn et al.</a>:</p>
+<blockquote>
+<p>"Ultimately, [Harden's] focus on genetics as a fundamental cause of
+social inequality reduces her version of social justice to
+benevolent paternalism."</p>
+</blockquote>
+<p>I think Harden does a fair job of being clear that genetics can be a
+cause, but certainly not the only cause, and not a cause that can't be
+redressed. On “benevolent paternalism,” I think Henn et al. intend the
+phrase to have negative connotation, but couldn't any attempt at
+social justice (or social safety nets) be referred to in this way?</p>
+<p>As in the “equality vs. equity” <a href="https://interactioninstitute.org/illustrating-equality-vs-equity/">cartoon</a> on page 162, I take it as
+a given that everyone should be able to see over the fence—the hard
+question is how high the fence that we're trying to get everybody over
+is. What's the level that should be guaranteed, and what are
+exceptions for extreme cases?</p>
+<p>Bird has <a href="https://massivesci.com/articles/genetic-lottery-review-paige-harden-kevin-bird/" title="The Genetic Lottery is a bust for both genetics and policy">issues</a> with the presentation of the science, and I agree
+I would have liked more detail and precision in the presentation, but
+Harden is also trying to reach a broad audience and cover a lot of
+material. I think Bird is incorrect in his accusation that Harden
+doesn't engage with the history of eugenics.</p>
+<p>Harden's point that genetic confounds can affect optimal policy
+recommendations seems meaningful to me. If parents with lots of books
+in their home have kids who learn to read, does that imply giving
+everyone a stack of books is all we need to do?</p>
+<p>I think Harden is right that if the well-intentioned don't engage with
+genetics, their impact is muted by confounding while the
+ill-intentioned advertise “forbidden knowledge” to the benefit of
+none. But I don't expect a major shift in Harden's lifetime.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"Building a commitment to egalitarianism on our genetic uniformity
+is building a house on sand." (page 19)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"A study of what is correlated with succeeding in an education
+system doesn't tell you whether that system is good, or fair, or
+just." (page 60)</p>
+</blockquote>
+<hr>
+<p>Quoting the organizers of the <a href="https://www.fragilefamilieschallenge.org/">Fragile Families Challenge</a>:</p>
+<blockquote>
+<p>“If one measures our degree of understanding by our ability to
+predict, then results ... suggest that our understanding of child
+development and the life course is actually quite poor.” (page 70)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I think we must dismantle the false distinction between
+“inequalities that society is responsible for addressing” and
+“inequalities that are caused by differences in biology.”" (page 91)</p>
+</blockquote>
+<hr>
+<p><a href="https://www.nber.org/papers/w22595">Understanding and Misunderstanding Randomized Controlled Trials</a></p>
+<hr>
+<p>Interesting unit: <a href="https://en.wikipedia.org/wiki/Centimorgan">centimorgan</a></p>
+<hr>
+<p><a href="https://www.nature.com/articles/nrg2322">Heritability in the genomics era — concepts and misconceptions</a></p>
+<blockquote>
+<p>"half of the additive genetic variance is between families and half
+is within families"</p>
+</blockquote>
+<hr>
+<p><a href="https://www.nature.com/articles/456018a">Personal genomes: The case of the missing heritability</a></p>
+<hr>
+<p>Dang, I would like to see some worked examples for how heritabilities
+are calculated...</p>
+<hr>
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2762790/">Individual Differences in Executive Functions Are Almost Entirely Genetic in Origin</a></p>
+<hr>
+<blockquote>
+<p>"As Dostoevsky reminded us, “It takes something more than
+intelligence to act intelligently.”" (page 141, referring to <em>Crime
+and Punishment</em>)</p>
+</blockquote>
+<hr>
+<p><a href="https://www.pnas.org/content/115/31/E7275">Genetic analysis of social-class mobility in five longitudinal studies</a></p>
+<p>In its conclusion, a sentiment shared by Harding:</p>
+<blockquote>
+<p>"A long-term goal of our sociogenomic research is to use genetics to
+reveal novel environmental intervention approaches to mitigating
+socioeconomic disadvantage."</p>
+</blockquote>
+<hr>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/27337136/">Genetically-mediated associations between measures of childhood character and academic achievement</a></p>
+<p>In Figure 7.3 of the book, a list based on that ref:</p>
+<ul>
+<li>grit<ul>
+<li>passion and perseverance for long-term goals</li>
+</ul>
+</li>
+<li>growth mindset<ul>
+<li>belief that intelligence is malleable</li>
+</ul>
+</li>
+<li>intellectual curiosity<ul>
+<li>desire to think about difficult or new problems</li>
+</ul>
+</li>
+<li>mastery orientation<ul>
+<li>motivation to learn for the sake of learning</li>
+</ul>
+</li>
+<li>self-concept<ul>
+<li>belief that one is smart and capable of learning</li>
+</ul>
+</li>
+<li>test motivation<ul>
+<li>trying hard on tests</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>"The SNPs correlated with non-cognitive skills were correlated with
+<em>higher</em> risk for several mental disorders, including schizophrenia,
+bipolar disorder, anorexia nervosa, and obsessive-compulsive
+disorder. This result warns us against viewing the genetic variants
+that are associated with going further in current systems of formal
+education as being inherently “good” things. A single genetic
+variant might make it a tiny bit more likely that someone will go
+further in school, but that same variant might also elevate their
+risk of developing schizophrenia or another serious mental
+disorder." (page 144)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Unfortunately, the mistaken idea that genetic influences are an
+impermeable barrier to social change is also widely endorsed not
+just by those who are trying to naturalize inequality, but also by
+their ideological and political opponents." (page 155)</p>
+</blockquote>
+<hr>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/27359131/">Strong genetic overlap between executive functions and intelligence</a></p>
+<hr>
+<blockquote>
+<p>"I could quote the Bible verse from Thessalonians that was quoted to
+me as a child: “The one who is unwilling to work shall not eat.”"
+(page 212)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There is no measure of so-called “merit” that is somehow free of
+genetic influence or untethered from biology." (page 247)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20211224-genetic_lottery_harden/</link>
+<guid>http://planspace.org/20211224-genetic_lottery_harden/</guid>
+<pubDate>Fri, 24 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Correlation can help approximate variance of a difference</title>
 <description><![CDATA[
 
@@ -1851,89 +2018,6 @@ their Staff-plus interview loop works well." (page 312)</p>
 <link>http://planspace.org/20210919-staff_engineer_by_larson/</link>
 <guid>http://planspace.org/20210919-staff_engineer_by_larson/</guid>
 <pubDate>Sun, 19 Sep 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Weight of Evidence is logistic coefficients</title>
-<description><![CDATA[
-
-<p>“Weight of Evidence” (WoE) is a <a href="https://www.endocrinescience.org/glossary/weight-of-evidence-woe/" title="Weight of evidence refers to a systematic approach that scientists use to evaluate the totality of scientific evidence to assess if the science supports a particular conclusion.">good idea</a> for decision-making,
-but, especially in the financial risk modeling world, it's also a
-specific feature processing <a href="https://contrib.scikit-learn.org/category_encoders/woe.html">method</a> based on <a href="http://helios.mm.di.uoa.gr/~rouvas/ssi/sigkdd/sigkdd.vol3.1/barreca.pdf">target statistics</a>.
-Weight of Evidence changes a categorical variable into the log odds
-coefficients corresponding to a logistic regression with intercept at
-the overall rate.</p>
-<p>Say you have a categorical predictor, or a continuous predictor that
-you're going to bin into categories in order to make it easier to
-model nonlinear relationships, and a binary outcome like “defaulted on
-loan or not”. Then for each category, the WoE score is:</p>
-<p>\[ \text{WoE} =
-    \log \left( \frac{\text{count of positives for this category} /
-                      \text{count of all positives}}
-                     {\text{count of negatives for this category} /
-                      \text{count of all negatives}} \right) \]</p>
-<pre><code class="language-python">import numpy as np
-import pandas as pd
-import category_encoders as ce
-
-X = pd.DataFrame({'x': ['a', 'a', 'a', 'a', 'b', 'b', 'b', 'b']})
-y =                    [ 1 ,  1 ,  0 ,  0 ,  1 ,  0 ,  0 ,  0 ]
-
-woe = ce.woe.WOEEncoder(regularization=0)
-woe.fit(X, y)
-woe.transform(pd.DataFrame({'x': ['a', 'b']}))
-## (0.5108256237659906, -0.587786664902119)
-
-np.log((2/3)/(2/5)), np.log((1/3)/(3/5))
-## (0.5108256237659906, -0.587786664902119)</code></pre>
-
-<p>It's usually written <a href="https://www.listendata.com/2015/03/weight-of-evidence-woe-and-information.html">like</a> <a href="https://docs.tibco.com/data-science/GUID-44739B00-E85F-4CE7-8404-24F9B775ADE8.html">that</a>, sometimes with additive
-smoothing (add some small numbers to the counts) to avoid zeros and
-reduce variance. To make it even clearer that this is just
-<a href="https://en.wikipedia.org/wiki/Logit">log odds</a>, rearrange to:</p>
-<p>\[ \text{WoE} =
-    \log \left( \frac{\text{count of positives for this category}}
-                     {\text{count of negatives for this category}} \right) -
-    \log \left( \frac{\text{count of all positives}}
-                     {\text{count of all negatives}} \right) \]</p>
-<pre><code class="language-python">np.log(2/2) - np.log(3/5), np.log(1/3) - np.log(3/5)
-## (0.5108256237659907, -0.5877866649021191)</code></pre>
-
-<p>The WoE values are exactly the coefficients you'd get if you
-<a href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html">made indicator columns</a> for your categorical variable, added an
-intercept column, and did a logistic regression. That design matrix
-isn't full rank, so there isn't a unique solution—unless you set the
-intercept coefficient to represent the overall log odds (as in the
-subtracted term above).</p>
-<p>These WoE scores are monotonic with the category-specific percent
-positive, for example, so if you're going to use a tree-based model
-where spacing doesn't matter, the more immediately interpretable value
-might be preferable. If you're doing a simple logistic regression with
-a WoE predictor, the coefficient will be one. In combination with
-other features, it isn't obvious to me that WoE will always be an
-absolutely optimal transform, but it seems like a fine choice for
-multiple logistic regression as well. Using WoE instead of a
-categorical feature can prevent learning interactions with the
-affected categories, etc., which could be a consideration.</p>
-<p>Like other transforms based on target statistics, WoE can leak label
-information into training data. Even in large datasets, if some
-categories appear rarely, this may be a problem. Cranking up the
-additive smoothing (<a href="https://contrib.scikit-learn.org/category_encoders/woe.html">"regularization"</a>) a bit might help, or
-consider alternatives as in the <a href="https://arxiv.org/abs/1706.09516">CatBoost paper</a> etc.</p>
-<p>I think WoE is interesting in part because it's sort of on the
-threshold between a simple pre-processing step and what might be
-considered model stacking. It's a reminder that even “fancy” models
-are just statistics with more steps; the mean is a model too.</p>
-<hr>
-<p>If you're working on credit scoring, maybe you'll also do feature
-selection using “Information Value” (<a href="https://www.lexjansen.com/mwsug/2013/AA/MWSUG-2013-AA14.pdf">IV</a>). I don't know... It
-reminds me a little bit of <a href="/2013/02/05/finding-the-mic-of-a-circle/">MIC</a>, almost? That's not quite right.
-I'm not so interested in IV right now.</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20210917-weight_of_evidence_is_logistic_coefficients/</link>
-<guid>http://planspace.org/20210917-weight_of_evidence_is_logistic_coefficients/</guid>
-<pubDate>Fri, 17 Sep 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
