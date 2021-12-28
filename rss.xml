@@ -7,6 +7,36 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Habits for 2022: “ratio”</title>
+<description><![CDATA[
+
+<p>In 2021, I worked on improving my <a href="/20211030-my_daily_routine/" title="My daily routine">daily routine</a>. I need to keep
+working on it, but as 2022 approaches, I was thinking about other
+changes to make. In the CGP Grey “<a href="https://www.youtube.com/watch?v=NVGuFdX5guE&amp;ab_channel=CGPGrey" title="CGP Grey: Your Theme">theme</a>” style, I might say
+“ratio” as in “ratio of quality to junk.” Here are some practices I
+think can support this:</p>
+<ul>
+<li><strong>Only check the news on Sundays.</strong> I check the news (and my phone
+   generally) too much, and it doesn't really make my life better to
+   check the news several times a day. Sunday is the day for news.</li>
+<li><strong>Keep a book ready in Kindle app.</strong> When I <em>do</em> pick up my phone,
+   there should be something worthwhile there. Read a book, or put the
+   phone down.</li>
+<li><strong>Skim more.</strong> I overcommit to reading things the slow way, which
+   takes a lot of time and prevents me from opening books I don't want
+   to commit to. I hate the phrase “speed reading” because I don't
+   think it's real reading, but skimming in the sense of “survey” in
+   <a href="https://en.wikipedia.org/wiki/SQ3R" title="survey, question, read, recite and review">SQ3R</a> is a distinct thing that's worthwhile. I recently did a
+   quick <a href="/20211213-practical_data_science_with_python_by_george/" title="Practical Data Science with Python, by George">book review</a> based on skimming and I thought it was fair
+   and I learned a few things too. Skimming could get me connected
+   with my backlog of nonfiction.</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20211228-habits_for_2022_ratio/</link>
+<guid>http://planspace.org/20211228-habits_for_2022_ratio/</guid>
+<pubDate>Tue, 28 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>naldaramjui.com is closed</title>
 <description><![CDATA[
 
@@ -1797,61 +1827,6 @@ dialogues that follow.</p>
 <link>http://planspace.org/20211006-case_against_education_by_caplan/</link>
 <guid>http://planspace.org/20211006-case_against_education_by_caplan/</guid>
 <pubDate>Wed, 06 Oct 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>XGBoost/LightGBM/CatBoost (briefly)</title>
-<description><![CDATA[
-
-<p>There are many explainers of the popular gradient boosted tree models,
-but this is short.</p>
-<table width="100%" border="1">
-  <tr>
-    <th style="width:33%;">
-      <a href="https://xgboost.readthedocs.io/">XGBoost</a></th>
-    <th style="width:34%;">
-      <a href="https://lightgbm.readthedocs.io/">LightGBM</a></th>
-    <th style="width:33%;">
-      <a href="https://catboost.ai/">CatBoost</a></th>
-  </tr>
-  <tr>
-    <td>search missing high and low</td>
-    <td>search, then assign missing</td>
-    <td>specify missing high or low</td>
-  </tr>
-  <tr>
-    <td>"normal" balanced trees</td>
-    <td>leaf-first tree growth</td>
-    <td>oblivious trees (tables)</td>
-  </tr>
-  <tr>
-    <td>you handle categories</td>
-    <td>smart categorical ordering</td>
-    <td>permuted target coding</td>
-  </tr>
-  <tr>
-    <td>weighted quantile sketch</td>
-    <td>sample high-grad examples</td>
-    <td>permuted boosting</td>
-  </tr>
-  <tr>
-    <td>regularized objective</td>
-    <td>exclusive feature bundling</td>
-    <td>learns category interactions</td>
-  </tr>
-  <tr>
-    <td><a href="https://arxiv.org/abs/1603.02754">2016 paper</a></td>
-    <td><a href="https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html">2017 paper</a></td>
-    <td><a href="https://arxiv.org/abs/1706.09516">2017 paper</a></td>
-  </tr>
-</table>
-
-<p>This is close to correct, I think. It probably won't help you
-understand what's going on, but if you already know it might help jog
-your memory. The models all work pretty well.</p>    
-    ]]></description>
-<link>http://planspace.org/20211003-xgboost_lightgbm_catboost_briefly/</link>
-<guid>http://planspace.org/20211003-xgboost_lightgbm_catboost_briefly/</guid>
-<pubDate>Sun, 03 Oct 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

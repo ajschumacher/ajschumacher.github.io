@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-12-28: [Habits for 2022: “ratio”](/20211228-habits_for_2022_ratio/)
  * 2021-12-27: [naldaramjui.com is closed](/20211227-naldaramjui_is_closed/)
  * 2021-12-24: [The Genetic Lottery, by Harden](/20211224-genetic_lottery_harden/)
  * 2021-12-19: [Correlation can help approximate variance of a difference](/20211219-correlation_can_help_approximate_variance_of_a_difference/)
