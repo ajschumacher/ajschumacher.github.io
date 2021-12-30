@@ -7,6 +7,376 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Trustworthy Online Controlled Experiments</title>
+<description><![CDATA[
+
+<p>The <a href="https://exp-platform.com/hippo/" title="HiPPO FAQ">HiPPO</a> on the cover represents the “Highest Paid Person's
+Opinion” and the <a href="https://experimentguide.com/" title="Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing">book</a> is about making decisions in industry based
+on experiments instead. It includes <a href="https://en.wikipedia.org/wiki/Twyman%27s_law">Twyman's Law</a> and much more and
+is <em>the</em> text to read for online A/B tests. It does have some of the
+character of class notes from a busy prof, with details left in other
+papers, and the occasional misattribution (quote page 153) and error
+(“due to the increase in power that comes from the increase in power”
+page 170). Indispensable, but some assembly required.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"In statistics, this [Overall Evaluation Criterion (OEC)] is often
+called the <em>Response</em> or <em>Dependent</em> variable (Mason, Gunst and Hess
+1989, Box, Hunter and Hunter 2005); other synonyms are <em>Outcome</em>,
+<em>Evaluation</em> and <em>Fitness Function</em> (Quarto-vonTivadar 2006).
+Experiments can have multiple objectives and analysis can use a
+balanced scorecard approach (Kaplan and Norton 1996), although
+selecting a single metric, possibly as a weighted combination of
+such objectives is highly desired and recommended (Roy 2001, 50,
+405-429)." (page 7)</p>
+</blockquote>
+<p>The Roy <a href="https://www.wiley.com/en-us/Design+of+Experiments+Using+The+Taguchi+Approach%3A+16+Steps+to+Product+and+Process+Improvement-p-9780471361015">citation</a> is "Design of Experiments Using The Taguchi
+Approach: 16 Steps to Product and Process Improvement". "Step 16" is
+"Case studies", so I think Roy has confused "step" with "chapter".</p>
+<hr>
+<blockquote>
+<p>"However, Google's tweaks to the color scheme
+[<a href="https://www.nytimes.com/2009/03/01/business/01marissa.html">the 41 blues test</a>] ended up being substantially positive on
+user engagement (note that Google does not report on the results of
+individual changes) and led to a strong partnership between design
+and experimentation moving forward." (page 16)</p>
+</blockquote>
+<p>This is an interesting take... They say (while saying they can't
+support it with evidence) that <a href="https://www.nytimes.com/2009/03/01/business/01marissa.html">the 41 blues test</a> was good in
+multiple ways, while the popular lore is mostly about how at least one
+designer cited that experimentation as the <a href="http://www.zeldman.com/2009/03/20/41-shades-of-blue/">reason</a> they quit
+Google. Hmm.</p>
+<hr>
+<blockquote>
+<p>"One useful concept to keep in mind is <a href="https://tcagley.wordpress.com/2016/01/30/how-to-measure-anything-chapter-7-quantifying-the-value-of-information/">EVI</a>: Expected Value of
+Information from Douglas Hubbard (2014), which captures how
+additional information can help you in decision making." (page 24)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"If we use <em>purchase indicator</em> (i.e., did the user purchase yes/no,
+without regard to the purchase amount) instead of using
+<em>revenue-per-user</em> as our OEC, the standard error will be smaller,
+meaning that we will not need to expose the experiment to as many
+users to achieve the same sensitivity." (page 32)</p>
+</blockquote>
+<p>This strikes me as an oversimplification... The measurements aren't on
+the same scale, for one, so what does it mean to have a smaller
+standard error, exactly? The two are testing different things... You
+could imagine a world where the experimental condition convinces 100%
+of users to make a $1 purchase, but stops the 5% of users who were
+previously making $100 purchases. That's not good. I bet the authors
+meant something more precise, and I wish they would have said what.</p>
+<hr>
+<blockquote>
+<p>"In the analysis of controlled experiments, it is common to apply
+the Stable Unit Treatment Value Assumption (SUTVA) (Imbens and Rubin
+2015), which states that experiment units (e.g., users) do not
+interfere with one another." (page 43)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Sample Ratio Mismatch (SRM)"</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Zhao et al. (2016) describe how Treatment assignment was done at
+Yahoo! using the <a href="https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function">Fowler-Noll-Vo hash function</a>, which sufficed
+for single-layer randomization, but which failed to properly
+distribute users in multiple concurrent experiments when the system
+was generalized to overlapping experiments. Cryptographic hash
+functions like MD5 are good (Kohavi et al. 2009) but slow; a
+non-cryptographic function used at Microsoft is Jenkins SpookyHash
+(<a href="https://www.burtleburtle.net/bob/hash/spooky.html">www.burtleburtle.net/bob/hash/spooky.html</a>)." (page 47)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"For Bing, over 50% of US traffic is from bots, and that number is
+higher than 90% in China and Russia." (page 48)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<em>Goal metrics</em>, also called <em>success metrics</em> or <em>true north
+metrics</em>, reflect what the organization ultimately cares about."</p>
+<p>"<em>Driver metrics</em>, also called <em>sign post metrics</em>, <em>surrogate
+metrics</em>, <em>indirect</em> or <em>predictive metrics</em>, tend to be
+shorter-term, faster-moving, and more-sensitive metrics than goal
+metrics." (page 91)</p>
+<p>"<em>Guardrail metrics</em> guard against violated assumptions and come in
+two types: metrics that protect the business and metrics that assess
+the trustworthiness and internal validity of experiment results."
+(page 92)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Between 1945 and 1960, the federal Canadian government paid 70
+cents a day per orphan to orphanages, and psychiatric hospitals
+received $2.25 per day, per patient. Allegedly, up to 20,000
+orphaned children were falsely certified as mentally ill so the
+Catholic Church could get $2.25 per day, per patient (Wikipedia
+contributors, Data dredging 2019)." (page 101)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... many unconstrained metrics are gameable. A metric that measures
+ad revenue <em>constrained</em> to space on the page or to a measure of
+quality is a much better metric to ensure a high-quality user
+experience." (page 101)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Generally, we recommend using metrics that measure user value and
+actions." (page 101)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Combining Key Metrics into an OEC"</p>
+<p>"Given the common situation where you have multiple goal and driver
+metrics, what do you do? Do you need to choose just one metric, or
+do you keep more than one? Do you combine them all into single
+combination metric?"</p>
+<p>"While some books advocate focusing on just one metric (<em>Lean
+Analytics</em> (Croll and Yoskovitz 2013) suggest the One Metric that
+Matters (OMTM) and <em>The 4 Disciplines of Execution</em> (McChesney,
+Covey and Huling 2012) suggest focusing on Wildly Important Goal
+(WIG)), we find that motivating but an oversimplification. Except
+for trivial scenarios, there is usually no single metric that
+captures what a business is optimizing for. Kaplan and Norton (1996)
+give a good example: imagine entering a modern jet airplane. Is
+there a single metric that you should put on the pilot's dashboard?
+Airspeed? Altitude? Remaining fuel? You know the pilot must have
+access to these metrics and more. When you have an online business,
+you will have several key goal and driver metrics, typically
+measuring user engagement (e.g., active days, sessions-per-user,
+clicks- per-user) and monetary value (e.g., revenue-per-user). There
+is usually no simple single metric to optimize for."</p>
+<p>"In practice, many organizations examine multiple key metrics, and
+have a mental model of the tradeoffs they are willing to accept when
+they see any particular combination. For example, they may have a
+good idea about how much they are willing to lose (churn) users if
+the remaining users increase their engagement and revenue to more
+than compensate. Other organizations that prioritize growth may not
+be willing to accept a similar tradeoff."</p>
+<p>"Oftentimes, there is a mental model of the tradeoffs, and devising
+a single metric — an OEC — that is a weighted combination of the
+such objectives (Roy 2001, 50, 405-429) may be the more desired
+solution. And like metrics overall, ensuring that the metrics and
+the combination are not gameable is critical (see <em>Sidebar:
+Gameability</em> in Chapter 6). For example, basketball scoreboards
+don't keep track of shots beyond the two- and three-point lines,
+only the combined score for each team, which is the OEC. FICO credit
+scores combine multiple metrics into a single score ranging from 300
+to 850. The ability to have a single summary score is typical in
+sports and critical for business. A single metric makes the exact
+definition of success clear and has a similar value to agreeing on
+metrics in the first place: it aligns people in an organization
+about the tradeoffs. Moreover, by having the discussion and making
+the tradeoffs explicit, there is more consistency in decision making
+and people can better understand the limitations of the combination
+to determine when the OEC itself needs to evolve. This approach
+empowers teams to make decisions without having to escalate to
+management and provides an opportunity for automated searches
+(parameter sweeps)."</p>
+<p>"If you have multiple metrics, one possibility proposed by Roy
+(2001) is to normalize each metric to a predefined range, say 0-1,
+and assign each a weight. Your OEC is the weighted sum of the
+normalized metrics." (pages 104-105)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"GoodUI.org summarizes many UI patterns that win [A/B tests]
+repeatedly." (page 113)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Experiment randomization can also act as a great instrumental
+variable." (page 114)</p>
+</blockquote>
+<p>Hmm! I guess this would be the case if you found the experiment had
+some effect on <em>X</em>, and then you were interested in further effects of
+<em>X</em> on other things. See: <a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a>.</p>
+<hr>
+<p><a href="https://www.nber.org/papers/w17345">The Effect of Providing Peer Information on Retirement Savings Decisions</a> (ref page 119; abstract shown here)</p>
+<blockquote>
+<p>We conducted a field experiment in a 401(k) plan to measure the
+effect of disseminating information about peer behavior on savings.
+Low-saving employees received simplified plan enrollment or
+contribution increase forms. A randomized subset of forms stated the
+fraction of age-matched coworkers participating in the plan or
+age-matched participants contributing at least 6% of pay to the
+plan. We document an oppositional reaction: the presence of peer
+information decreased the savings of non-participants who were
+ineligible for 401(k) automatic enrollment, and higher observed peer
+savings rates also decreased savings. Discouragement from upward
+social comparisons seems to drive this reaction.</p>
+</blockquote>
+<p>Hmm! Usually peer effects are supposed to be so great...</p>
+<hr>
+<blockquote>
+<p>"For example, Bing and Google's scaled-out human evaluation programs
+are fast enough to use alongside the online controlled experiment
+results to determine whether to launch the change." (page 131)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"What customers say in a focus group setting or a survey may not
+match their true preferences. A well-known example of this
+phenomenon occurred when Philips Electronics ran a focus group to
+gain insight into teenagers' preferences for boom box features. The
+focus group attendees expressed a strong preference for yellow boom
+boxes during the focus group, characterizing black boom boxes as
+“conservative.” Yet when attendees exited the room and were given
+the chance to take home a boom box as a reward for their
+participation, most chose black (Cross and Dixit 2005)." (page 132)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Note that sophisticated modeling may be necessary to infer the
+impact, with an online example of ITS [Interrupted Time Series]
+being Bayesian Structural Time Series analysis (Charles and Melvin
+2004)." (page 140)</p>
+</blockquote>
+<hr>
+<p>"Interleaved Experiments" (page 141) are when you have two ranking
+methods and you interleave their results (removing duplicates) and see
+which ones get more clicks. Seems neat.</p>
+<hr>
+<blockquote>
+<p>"More active users are simply more likely to do a broad range of
+activities. Using activity as a factor is typically important."
+(page 148)</p>
+</blockquote>
+<hr>
+<p>In character for a book on RCTs, they point out
+<a href="https://experimentguide.com/refuted_observational_studies/">Refuted Causal Claims from Observational Studies</a>. (pages 147-149)</p>
+<hr>
+<blockquote>
+<p>"Indeed, the most difficult part of instrumentation is getting
+engineers to instrument in the first place." (page 165)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The real measure of success is the number of experiments that can
+be crowded into 24 hours." (quoting Thomas A. Edison, page 171)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The visualization tool is not just for per-experiment results but
+is also useful for pivotting to <strong>per-metric results</strong> across
+experiments. While innovation tends to be decentralized and
+evaluated through experimentation, the global health of key metrics
+is usually closely monitored by stakeholders." (page 181)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Assuming Treatment and Control are of equal size, the total number
+of samples you need to achieve 80% power can be derived from the
+power formula above, and is approximately as shown in Equation 17.8
+(van Belle 2008):</p>
+</blockquote>
+<p>\[ n \approx \frac{16 \sigma^2 }{ \delta^2 } \]</p>
+<blockquote>
+<p>where, \( \sigma^2 \) is the sample variance, and \( \delta \)
+is the difference between Treatment and Control." (page 189)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"How can we ensure that Type I and Type II errors are still
+reasonably controlled under multiple testing? There are many well
+studied approaches; however, most approaches are either simple but
+too conservative, or complex and hence less accessible. For example,
+the popular Bonferroni correction, which uses a consistent but much
+smaller p-value threshold (0.05 divided by the number of tests),
+falls into the former category. The Benjamini-Hochberg procedure
+(Hochberg and Benjamini 1995) uses varying p-value thresholds for
+different tests and it falls into the latter category." (page 191)</p>
+</blockquote>
+<p>Benjamini–Hochberg (<a href="https://en.wikipedia.org/wiki/False_discovery_rate#BH_procedure" title="Benjamini–Hochberg procedure">wiki</a>, <a href="https://www.statisticshowto.com/benjamini-hochberg-procedure/" title="How to Run the Benjamini–Hochberg procedure">how-to</a>) doesn't seem so bad, either.
+Sort of the flavor of a QQ plot, almost?</p>
+<hr>
+<p>Page 192 (section on "Fisher's Meta analysis") has a bunch on how to
+combine p-values from multiple experiments.</p>
+<hr>
+<p>Pages 194-195 discuss ratio metrics and figuring out the variance of a
+ratio using the <a href="https://en.wikipedia.org/wiki/Delta_method" title="Delta method">delta method</a>, as referenced in <a href="http://alexdeng.github.io/public/files/WSDM2017draft.pdf" title="Trustworthy analysis of online A/B tests: Pitfalls, challenges and solutions">Deng et al.</a>
+§4.2. See also <a href="https://www.stat.cmu.edu/~hseltman/files/ratio.pdf">Seltman's note</a> deriving the result. It is a little
+bit of a weird formula, but the book makes it seem rather fancier than
+it really is, I think, and their motivation doesn't seem to be
+strictly relevant.</p>
+<hr>
+<p>On page 197 they mention <a href="https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf" title="Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data (CUPED: Controlled-experiment Using Pre-Experiment Data)">CUPED</a>.</p>
+<hr>
+<blockquote>
+<p>"While you can always resort to bootstrap for conducting the
+statistical test by finding the tail probabilities, it gets
+expensive computationally as data size grows. On the other hand, if
+the statistic follows a normal distribution asymptotically, you can
+estimate variance cheaply. For example, the asymptotic variance for
+quantile metrics is a function of the density (Lehmann and Romano
+2005). By estimating density, you can estimate variance." (page 199)</p>
+</blockquote>
+<p>The citation is <a href="https://link.springer.com/book/10.1007/0-387-27605-X" title="Testing Statistical Hypotheses">Testing Statistical Hypotheses</a>.</p>
+<hr>
+<blockquote>
+<p>"When conducting t-tests to compute p-values, the distribution of
+p-values from repeated trials [of A/A tests] should be close to a
+uniform distribution." (page 200)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Bing uses continuous A/A testing to identify a carry-over effect
+(or residual effect), where previous experiments would impact
+subsequent experiments run on the same users." (page 201)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"We highly recommend running continuous A/A tests in parallel with
+other experiments to uncover problems, including distribution
+mismatches and platform anomalies." (page 201)</p>
+</blockquote>
+<hr>
+<p>This is wild:</p>
+<blockquote>
+<p>"The book <em>A/B Testing: The Most Powerful Way to Turn Clicks into
+Customers</em> (Siroker and Koomen 2013) suggests an incorrect procedure
+for ending experiments: “Once the test reaches statistical
+significance, you'll have your answer,” and “When the test has
+reached a statistically significance conclusion ...” (Kohavi 2014).
+The statistics commonly used assume that a single test will be made
+at the end of the experiment and “peeking” violates that assumption,
+leading to many more false positives than expected using classical
+hypothesis testing.</p>
+<p>Early versions of Optimizely encouraged peeking and thus early
+stopping, leading to many false successes. When some experimenters
+started to run A/A tests, they realized this, leading to articles
+such as “How Optimizely (Almost) Got Me Fired” (Borden 2014). To
+their credit, Optimizely worked with experts in the field, such as
+Ramesh Johari, Leo Pekelis, and David Walsh, and updated their
+evaluations, dubbing it “Optimizely's New Stats Engine” (Pekelis
+2015, Pekelis, Walsh and Johari 2015). They address A/A testing in
+their glossary (Optimizely 2018a)." (page 203)</p>
+</blockquote>
+<p>Their whole job!</p>
+<hr>
+<blockquote>
+<p>"Always run a series of A/A tests before utlizing an A/B testing
+system. Ideally, simulate a thousand A/A tests and plot the
+distribution of p-values. If the distribution is far from uniform,
+you have a problem. Do not trust your A/B testing system before
+resolving the issue." (page 205)</p>
+</blockquote>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/Rubin_causal_model">Rubin causal model</a>,
+page 226</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20211229-trustworthy_online_controlled_experiments/</link>
+<guid>http://planspace.org/20211229-trustworthy_online_controlled_experiments/</guid>
+<pubDate>Wed, 29 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Habits for 2022: “ratio”</title>
 <description><![CDATA[
 
@@ -1427,406 +1797,6 @@ written her story if he could have.</p>
 <link>http://planspace.org/20211017-how_the_world_could_be_made_a_good_and_happy_place/</link>
 <guid>http://planspace.org/20211017-how_the_world_could_be_made_a_good_and_happy_place/</guid>
 <pubDate>Sun, 17 Oct 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Case Against Education, by Caplan</title>
-<description><![CDATA[
-
-<p>Caplan thinks students aren't learning—“The vast majority are
-philistines”—so we should stop trying to teach them. I agree with
-Caplan on some of his premises, but I don't follow him all the way to
-his libertarian recommendations.</p>
-<p>Should everyone be pushed toward college as if it's the only
-acceptable path? Probably not. More vocational education seems like a
-fine idea. I agree there's a signaling component (possibly large) to
-the personal benefit of education, and that many people don't learn as
-much as it seems like they should.</p>
-<p>Caplan turns his back on equality of opportunity when he recommends
-letting the market decide on education. I'm not entirely comfortable
-with how casually he cites <a href="https://www.splcenter.org/fighting-hate/extremist-files/individual/arthur-jensen">Jensen</a> (page 60) or ignores that
-effects vary substantially by race even in work he cites (page 150).</p>
-<p>I think it's inconsistent to treat education as essentially daycare
-but not include the provision of that service in the accounting of
-economic benefits.</p>
-<p>I think the interesting thing is to consider Caplan's critiques and
-think about what really effective education could look like. What
-really would build human capital? What would make people wiser,
-happier, and more productive?</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"Bryan Caplan, the foremost whistle-blower in the academy, argues
-persuasively that learning about completely arbitrary subjects is
-attractive to employers because it signals students' intelligence,
-work ethic, desire to please, and conformity—even when such learning
-conveys no cognitive advantage or increase in human capital." (cover
-blurb from Stephen J. Ceci)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Learning doesn't have to be useful. Learning doesn't have to be
-inspirational. When learning is neither useful nor inspirational,
-though, how can we call it anything but wasteful." (page 2)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Few jobs require knowledge of higher mathematics, but over 80% of
-high school grads suffer through geometry. Students study history
-for years, but history teachers are almost the only people alive who
-use history on the job." (pages 6-7)</p>
-</blockquote>
-<p>Geometry is higher mathematics? But more importantly, isn't history
-important, at least in theory, to having informed voters for
-democracy? Caplan later points out that years of history don't usually
-yield informed voters in the current system anyway, but it seems
-inappropriate to completely neglect civic objectives for education.</p>
-<hr>
-<blockquote>
-<p>"...statistics and econometrics courses at elite colleges emphasize
-mathematical proofs, not hands-on statistical training." (page 11)</p>
-</blockquote>
-<p>That cites <a href="https://ftp.iza.org/dp10535.pdf">Undergraduate Econometrics Instruction: Through Our Classes, Darkly</a>, which includes the following in its abstract:</p>
-<blockquote>
-<p>"Questions of research design and causality still take a back seat
-in the classroom, in spite of having risen to the top of the modern
-empirical agenda. This essay traces the divergent development of
-econometric teaching and empirical practice, arguing for a
-pedagogical paradigm shift."</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Higher education is the only product where the consumer tries to
-get as little out of it as possible." (page 26, quoting Arnold
-Kling, sort of)</p>
-</blockquote>
-<p>The citation is <a href="https://www.econlib.org/archives/2006/08/college_custome.html">College Customers vs. Suppliers</a>, in which Kling writes:</p>
-<blockquote>
-<p>"I recall seeing a quote somewhere else to the effect that higher
-education is the only product where the consumer tries to get as
-little out of it as possible."</p>
-</blockquote>
-<p>So who knows where the quote comes from!</p>
-<p>Kling proposes separating testing from teaching, to align students and
-professors in the direction of rigor rather than easy A's. Maybe so?</p>
-<hr>
-<blockquote>
-<p>"Basic literacy and numeracy are virtually the <em>only</em> book learning
-most American adults possess." (page 40)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Though college grads spend at least seventeen years in school,
-under a third have the level of literacy and numeracy we assume of
-every college freshman." (page 43)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Note: Statisticians routinely rely on the approximate equality
-between logged variables and percentages. However, when coefficients
-are large, this approximation breaks down, so I convert results to
-percentages for clarity." (page 302, endnote 8 from page 73)</p>
-</blockquote>
-<p>I don't think this is very clear. What it's getting at is that if
-you're fitting a linear model, then a logged outcome variable makes
-the additive model multiplicative in the original outcome, so a 0.02
-change in the regression outcome is a 2% change in the original
-outcome. Gelman has a decent <a href="https://statmodeling.stat.columbia.edu/2019/08/21/you-should-usually-log-transform-your-positive-data/">intro</a>, maybe. Or <a href="https://people.duke.edu/~rnau/411log.htm">this</a>, which
-notes that "small changes in the natural log of a variable are
-directly interpretable as percentage changes, to a very close
-approximation" and even a nice table showing how the approximation
-breaks down.</p>
-<hr>
-<blockquote>
-<p>"Most strikingly, the standard measure of "fatalism," the Rotter
-Internal-External Locus of Control Scale, is a four-question
-personality test. (page 303, endnote 24 from page 75)</p>
-</blockquote>
-<p>This is misleading. The <a href="https://www.mccc.edu/~jenningh/Courses/documents/Rotter-locusofcontrolhandout.pdf" title="Rotter's Locus of Control Scale">Rotter</a> instrument has 29 questions. But
-Caplan is citing <a href="https://www.nber.org/papers/w12006" title="The Effects of Cognitive and Noncognitive Abilities on Labor Market Outcomes and Social Behavior">a 2006 paper</a> that uses <a href="https://www.bls.gov/nls/nlsy79.htm" title="National Longitudinal Survey of Youth 1979">NLSY79</a> data, which
-does indeed <a href="https://www.nlsinfo.org/content/cohorts/nlsy79/other-documentation/codebook-supplement/nlsy79-appendix-21-attitudinal-scales#rotter">include</a> a "four-item abbreviated version of the Rotter
-Internal External Locus of Control Scale"—sort of.</p>
-<p>NLSY79 included Rotter questions 28, 13, 15, and 25 (in that order)
-and in addition to asking respondents to choose one of two statements
-for each, also asked whether their choice was "much closer" or
-"slightly closer" to their view. So it's an eight-question instrument
-(or at least, it yields eight bits of information).</p>
-<p>There are multiple tests for internal-external locus of control, some
-<a href="https://www.tandfonline.com/doi/abs/10.1080/00223891.1974.10119987" title="An Abbreviated Measure of Internal-External Locus of Control">shorter</a> than 29 questions, some <a href="https://psycnet.apa.org/record/1973-21097-001" title="A locus of control scale for children">longer</a>. If you do want a
-four-question instrument, consider Kovaleva's <a href="https://www.ssoar.info/ssoar/bitstream/handle/document/37119/ssoar-2012-kovaleva-The_IE-4_Construction_and_Validation.pdf" title="The IE-4: Construction and Validation of a Short Scale for the Assessment of Locus of Control">IE-4</a> (four
-five-point Likert scale questions; see Table 26 on page 81).</p>
-<hr>
-<blockquote>
-<p>"Full-length intelligence tests have a very high reliability; the
-reliability of the <a href="https://en.wikipedia.org/wiki/Armed_Services_Vocational_Aptitude_Battery#Armed_Forces_Qualification_Test">AFQT</a>, for example, is .94 (ASVAB 2015). Short
-intelligence tests, in contrast, have markedly lower reliability—.74
-in the case of the General Social Survey's <a href="https://en.wikipedia.org/wiki/Wordsum">ten-word IQ test</a>
-(Caplan and Miller 2010, p. 645)." (page 307, endnote 98 from page
-93)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"You'll never apply most of what you study, but so what? Academic
-success opens doors. A dysfunctional game, but if you refuse to
-play, the labor market brands you a loser." (page 108)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"<em>Signals can affect pay even after employers know the truth.</em>
-Employer learning researchers speak as if the payoff for signaling
-ends as soon as employers know a worker's true worth. They should be
-more circumspect. For starters, firms often give new workers
-valuable on-the-job training. As a result, signaling can indirectly
-boost your productivity. Step 1: Signal in school. Step 2: Land a
-good job. Step 3: Learn useful job skills on the job. Step 4:
-Persistently profit. If your signal modestly overstates your skill,
-your imployer may soon wish they'd hired someone else. By the time
-they spot their mistake, however, your new marketable skills
-permanently justify higher pay." (page 112)</p>
-</blockquote>
-<p>Following the endnote:</p>
-<blockquote>
-<p>"While research on this story is sparse, Heisz and Oreopoulos 2006
-report the payoff for high-ranked M.B.A. and law degrees <em>increases</em>
-with experience, even correcting for individual ability, because
-high-ranked degrees lead to good first jobs, which lead to even
-better jobs down the line." (page 312)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The Higher Education Research Institute has questioned college
-freshmen about their goals since the 1970s. The vast majority is
-openly careerist and materialist. In 2012, almost 90% called "being
-able to get a better job" a "very important" or "essential" reason
-to go to college. Being "very well-off financially" (over 80%) and
-"making more money" (about 75%) are almost as popular. Less than
-half say the same about "developing a meaningful philosophy of
-life." These results are especially striking because humans
-exaggerate their idealism and downplay their selfishness. Students
-probably prize worldly success even more than they admit." (page
-126)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"A cynic isn't someone who puts a price on the sacred; a cynic is
-someone who puts a <em>low</em> price on the sacred." (page 126)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The High School Survey of Student Engagement, probably the single
-best study of how high school students feel about school, reports
-that 66% of high school students say they're bored in class <em>every
-day</em>. Seventeen percent say they're bored in <em>every</em> class <em>every</em>
-day. Only 2% claim they're never bored in class. Why so bored?
-Eighty-two percent say the material isn't interesting; 41% say the
-material isn't relevant. Another research team gave beepers to
-middle school students to capture their feelings in real time.
-During schoolwork, students were bored 36% of the time, versus 17%
-for all other activities. No wonder a major Gates Foundation study
-ranked boredom the <em>most</em> important reason why kids drop out of high
-school." (page 135)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"How much does your alma mater's rank matter? Research is oddly
-mixed." (page 149)</p>
-</blockquote>
-<p>The endnote points to <a href="https://www.aeaweb.org/articles?id=10.1257/jep.23.4.95">Hoxby 2009</a>, which is about college
-selectivity, not how much it matters to student outcomes. It's
-interesting though; here's the abstract:</p>
-<blockquote>
-<p>"Over the past few decades, the average college has not become more
-selective: the reverse is true, though not dramatically. People who
-believe that college selectivity is increasing may be extrapolating
-from the experience of a small number of colleges such as members of
-the Ivy League, Stanford, Duke, and so on. These colleges have
-experienced rising selectivity, but their experience turns out to be
-the exception rather than the rule. Only the top 10 percent of
-colleges are substantially more selective now than they were
-in 1962. Moreover, at least 50 percent of colleges are substantially
-less selective now than they were in 1962. To understand changing
-selectivity, we must focus on how the market for college education
-has re-sorted students among schools as the costs of distance and
-information have fallen. In the past, students' choices were very
-sensitive to the distance of a college from their home, but today,
-students, especially high-aptitude students, are far more sensitive
-to a college's resources and student body. It is the consequent
-re-sorting of students among colleges that has, at once, caused
-selectivity to rise in a small number of colleges while
-simultaneously causing it to fall in other colleges. This has had
-profound implications for colleges' resources, tuition, and
-subsidies for students. I demonstrate that the stakes associated
-with choosing a college are greater today than they were four
-decades ago because very selective colleges are offering very large
-per-student resources and per-student subsidies, enabling admitted
-students to make massive human capital investments."</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Their [Dale and Krueger's] most amazing discovery is that students
-who <em>submit</em> lots of applications to high-quality schools enjoy
-exceptional career success whether or not they attend such schools."
-(page 150)</p>
-</blockquote>
-<p>The citation is <a href="https://www.jstor.org/stable/23799087" title="Estimating the Effects of College Characteristics over the Career Using Administrative Earnings Data">Dale and Krueger 2014</a>, which has this abstract:</p>
-<blockquote>
-<p>"We estimate the labor market effect of attending a highly selective
-college, using the College and Beyond Survey linked to Social
-Security Administration data. We extend earlier work by estimating
-effects for students that entered college in 1976 over a longer time
-horizon (from 1983 through 2007) and for a more recent cohort
-(1989). For both cohorts, the effects of college characteristics on
-earnings are sizeable (and similar in magnitude) in standard
-regression models. In selection-adjusted models, these effects
-generally fall to close to zero; however, these effects remain large
-for certain subgroups, such as for black and Hispanic students."</p>
-</blockquote>
-<p>It's the last sentence that matters. Caplan only read the first half
-of that one, somehow, which I think is a substantial mistake.</p>
-<hr>
-<blockquote>
-<p>"As long as your state's best public school admits you, there's no
-solid reason to pay more." (page 153)</p>
-</blockquote>
-<p>If you're white. I mean, <a href="https://www.jstor.org/stable/23799087" title="Estimating the Effects of College Characteristics over the Career Using Administrative Earnings Data">Dale and Krueger 2014</a> is <em>his</em>
-citation—how can he ignore that?</p>
-<hr>
-<blockquote>
-<p>"American marriage is a diploma-based caste system." (page 156)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Going to Harvard may not get you a better job but almost certainly
-puts you in an exclusive dating pool for life." (page 157)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Most Ph.D. students have spent their entire lives at the top of the
-class, yet half wander off before they defend their dissertations."
-(pages 163-164)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Yet common sense insists the best way to discover useful ideas is
-to search for useful ideas—not to search for whatever fascinates you
-and pray it turns out to be useful." (page 175)</p>
-</blockquote>
-<p>He cites Niskanen 1997 in this opposition to basic research. This is
-the common sense of those who don't make the discoveries that enable
-the useful ideas of the future.</p>
-<hr>
-<blockquote>
-<p>"The United States—and probably the rest of the world—is
-overeducated." (page 199)</p>
-</blockquote>
-<p>And yet, still so apparently in need of more/better education.</p>
-<hr>
-<blockquote>
-<p>"There really is no need for K-12 to teach history, social studies,
-art, music, or foreign languages." (page 205)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Better retention efforts will not make Poor Students perform like
-Fair Students, Fair Students like Good Students, or Good Students
-like Excellent Students." (pages 211-212)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Instead of treating the human capital model as an accurate
-description of education, they could treat it as a noble
-<em>pre-_scription _for</em> education. Let's transform our schools from
-time sinks to skill factories." (page 225)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Doing <em>any</em> job teaches you how to do a job. If this seems a low
-bar, recall that almost half of dropouts and a third of high school
-graduates these days aren't even <em>looking</em> for work. Acclimating
-them to a any form of employment would be a step up." (page 232)</p>
-</blockquote>
-<hr>
-<p>On page 239, Caplan quotes at some length from Malcolm X describing
-how he copied a dictionary in prison. It's a bit Hirsch-like, this
-advocacy for content, for volume...</p>
-<hr>
-<blockquote>
-<p>"The straightforward story, though, is that high culture requires
-extra mental effort to appreciate—and most humans resent mental
-effort." (page 247)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Measuring effects issue by issue neatly explains education's
-puzzlingly small impact on ideology and party. Since education
-simultaneously increases social liberalism <em>and</em> economic
-conservatism, its effect on "liberalism" is ambiguous. And while
-their social liberalism makes the well-educated more Democratic,
-their economic conservatism makes them more Republican, leaving
-partisanship nearly untouched." (page 333, endnote 36 from page 249)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"If a world of historical ignorance is scary, you should be scared
-already, because that's where we live." (page 250)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"When you run out of ideas, assign a random Wikipedia article. ...
-Start with the Bureau of Labor Statistics' figures on "employment by
-major occupational group" and "occupations with the most job
-growth." When you run out of ideas, have students check out an
-unfamiliar job from the Bureau of Labor Statistics' <em>Occupational
-Outlook Handbook</em>." (page 256)</p>
-</blockquote>
-<p>I do kind of like some of this. In particular, I feel like I didn't
-learn in school much of anything about what jobs exist or what people
-really do in them.</p>
-<hr>
-<blockquote>
-<p>"I'm cynical about students. The vast majority are philistines. The
-best teachers in the universe couldn't inspire them with sincere and
-lasting love of ideas and culture. I'm cynical about teachers. The
-vast majority are uninspiring; they can't convince even <em>themselves</em>
-to love ideas and culture, much less their students. I'm cynical
-about "deciders"—the school officials who control what students
-study. The vast majority think they've done their job as long as
-students obey." (page 259)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I don't hate education. Rather I love education too much to accept
-our Orwellian substitute." (page 260)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"As Stanford education professor David Labaree remarks, "Motivating
-volunteers to engage in human improvement is very difficult, as any
-psychotherapist can confirm, but motivating conscripts is quite
-another thing altogether. And it is conscripts that teachers face
-every day in the classroom."" (page 260)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Many idealists object that the Internet provides enlightenment only
-for those who seek it. They're right, but petulant to ask for more."
-(page 261)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Most humans intrigued by abstract ideas and high culture are
-working adults. Instead of lamenting youthful apathy, passionate
-educators should redirect their energy to humans who are <em>ready</em> for
-enlightenment. There is little money in blogging, podcasting, or
-uploading lectures to YouTube. But if, like me, you love education
-to the depths of your soul, such efforts are their own reward."
-(page 261)</p>
-</blockquote>
-<p>And that's how the book ends, apart from the five dispensable
-dialogues that follow.</p>    
-    ]]></description>
-<link>http://planspace.org/20211006-case_against_education_by_caplan/</link>
-<guid>http://planspace.org/20211006-case_against_education_by_caplan/</guid>
-<pubDate>Wed, 06 Oct 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
