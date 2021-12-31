@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2021-12-31: [A Calendar of Wisdom, by Tolstoy](/20211231-calendar_of_wisdom_by_tolstoy/)
  * 2021-12-30: [Getting `var(X/Y)` can be hard](/20211230-getting_var_ratio_can_be_hard/)
  * 2021-12-29: [Trustworthy Online Controlled Experiments](/20211229-trustworthy_online_controlled_experiments/)
  * 2021-12-28: [Habits for 2022: “ratio”](/20211228-habits_for_2022_ratio/)

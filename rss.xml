@@ -7,6 +7,84 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A Calendar of Wisdom, by Tolstoy</title>
+<description><![CDATA[
+
+<p>In 2021, I followed <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy" title="Wikipedia: Leo Tolstoy">Tolstoy</a>'s <a href="https://en.wikipedia.org/wiki/A_Calendar_of_Wisdom" title="A Calendar of Wisdom">Calendar of Wisdom</a>. It's a
+page-a-day calendar, circa 1910, with a little more gravitas. I like
+the concept but I don't always agree with Tolstoy.</p>
+<blockquote>
+<p>"Guiding your thoughts is one of the keys to self-perfection."
+(August 9)</p>
+</blockquote>
+<p>Tolstoy is quite religious, pacifist, vegetarian, and
+back-to-the-earth. He mixes quotes and paraphrases with his own
+commentary and aphorisms. I can't quite recommend it all because I
+find some things objectionable, but I like the idea of having
+something to reflect on daily. Some of my most and least favorite
+selections are below.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<h3>Not bad, Tolstoy</h3>
+<blockquote>
+<p>"To accept the dignity of another person is an axiom." (April 16)</p>
+<p>"<em>Effort is the necessary condition of moral perfection.</em>" (July 23)</p>
+<p>"When a person tries to apply his intellect to the question “Why do
+I exist in this world?” he becomes dizzy. The human intellect cannot
+find the answers to such questions." (July 29)</p>
+<p>"Think good thoughts, and your thoughts will be turned into good
+actions. Everything begins in thought. Guiding your thoughts is one
+of the keys to self-perfection." (August 9)</p>
+<p>"<em>Real goodness is not something that can be acquired in an instant,
+but only through constant effort, because real goodness lies in
+constantly striving for perfection.</em>" (September 4)</p>
+<p>"You should abstain from arguments. They are very illogical ways to
+convince people. Opinions are like nails: the stronger you hit them,
+the deeper inside they go." (November 4, quoting Decimus Junius
+Juvenalis)</p>
+<p>"The more urgently you want to speak, the more likely it is that you
+will say something foolish." (November 4)</p>
+</blockquote>
+<hr>
+<h3>No thanks, Tolstoy</h3>
+<blockquote>
+<p>"<em>A marriage is a special obligation between two people, of opposite
+sexes, to have children only with each other. To break this pact is
+a lie, a deception, and a crime.</em>" (March 11)</p>
+<p>"We can improve this world only by distributing the true faith among
+the world's people." (March 17)</p>
+<p>"You should never feel depressed.</p>
+<p>A man should always feel happy; if he is unhappy, it means he is
+guilty." (June 29)</p>
+<p>"People know little, because they try to understand those things
+which are not open to them for understanding: God, eternity, spirit;
+or those which are not worth thinking about: how water becomes
+frozen, or a new theory of numbers, or how viruses can transmit
+illnesses." (July 27)</p>
+<p>"Only religion destroys egoism and selfishness, so that one starts
+to live life not only for himself. Only religion destroys the fear
+of death, only religion gives us the meaning of life, only religion
+creates equality among people, only religion sets a person free from
+outer pressures." (August 18)</p>
+<p>"It is dangerous to disseminate the idea that our life is purely the
+product of material forces and that it depends entirely on these
+forces." (August 22)</p>
+<p>"<em>Faith is the foundation on which all else rests; it is the root of
+all knowledge.</em>" (August 28)</p>
+<p>"Though the mission of a woman's life is the same as that of a man's
+life and the service to God is fulfilled by the same means, namely
+love, for the majority of women the method of this service is more
+specific than for men. This is the birth and upbringing of new
+workers for the Lord throughout life." (December 1)</p>
+<p>"There is nothing more natural for a woman than self-sacrifice."
+(December 1)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20211231-calendar_of_wisdom_by_tolstoy/</link>
+<guid>http://planspace.org/20211231-calendar_of_wisdom_by_tolstoy/</guid>
+<pubDate>Fri, 31 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Getting var(X/Y) can be hard</title>
 <description><![CDATA[
 
@@ -1759,88 +1837,6 @@ making our family's life better every day.</p>
 <link>http://planspace.org/20211030-my_daily_routine/</link>
 <guid>http://planspace.org/20211030-my_daily_routine/</guid>
 <pubDate>Sat, 30 Oct 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Core RAPPOR</title>
-<description><![CDATA[
-
-<p><a href="https://arxiv.org/abs/1407.6981">RAPPOR</a> (“Randomized Aggregatable Privacy-Preserving Ordinal
-Response”) is really close to the classic coin-flip
-<a href="https://en.wikipedia.org/wiki/Differential_privacy#Randomized_response">randomized response</a> method, with one more layer of randomness.
-It's “ordinal” in that it's every bit for itself: you can represent
-histogram bins, but you can't really represent numbers in the usual
-binary way. They additionally use Bloom filters to represent sets of
-hashable things, which is neat too.</p>
-<p><a href="https://en.wikipedia.org/wiki/Differential_privacy#Randomized_response">Randomized response</a> works like this. Did you wash your hands?</p>
-<ul>
-<li>25% of the time, just say “yes” regardless</li>
-<li>25% of the time, just say “no” regardless</li>
-<li>50% of the time, answer truthfully</li>
-</ul>
-<p>Those percentages correspond to \( f = 0.5 \) in the RAPPOR
-<a href="https://arxiv.org/pdf/1407.6981.pdf">paper</a>'s notation. They call this the “permanent” step, because
-it's done once per respondent.</p>
-<!--
-<pre><code class="language-python">import random</code></pre>
--->
-
-<pre><code class="language-python">def permanent_randomized(response: bool, f=0.5):
-    randomizer = random.random()  # uniform on [0, 1)
-    if 0 &lt;= randomizer &lt; f/2:  # probability f/2
-        return True
-    elif f/2 &lt;= randomizer &lt; f:  # probability f/2
-        return False
-    elif f &lt;= randomizer &lt; 1:  # probability 1 - f
-        return response</code></pre>
-
-<p>If you get 59% positive responses with this method, 25% were just automatically saying “yes” and 34% were answering “yes” because they were being honest. Half of people were being honest, so double the 34% to find the overall true positive rate is 68%.</p>
-<p>To let individuals report multiple times without losing privacy or being trackable, RAPPOR adds “instantaneous” randomness as well.</p>
-<pre><code class="language-python">def instantaneous_randomized(response: bool, q=0.75, p=0.5):
-    randomizer = random.random()  # uniform on [0, 1)
-    if response is True:
-        return randomizer &lt; q  # probability q
-    elif response is False:
-        return randomizer &lt; p  # probability p</code></pre>
-
-<p>With the complete method, recovering the true rate gets a little more complicated; see first equation in the <a href="https://arxiv.org/pdf/1407.6981.pdf">paper</a>'s §4.</p>
-<pre><code class="language-python">def extract_rate(raw_rate: float, f=0.5, q=0.75, p=0.5):
-    return (raw_rate - p - f*q/2 + f*p/2) / ((1 - f)*(q - p))</code></pre>
-
-<p>And it works!</p>
-<!--
-<pre><code class="language-python">random.seed(0)</code></pre>
--->
-
-<pre><code class="language-python">true_rate = 0.68
-n = 1_000_000
-
-raw_rate = sum(
-    instantaneous_randomized(
-        permanent_randomized(random.random() &lt; true_rate))
-    for _ in range(n)) / n
-
-extract_rate(raw_rate)
-## 0.6807759999999998</code></pre>
-
-<p>RAPPOR is just doing this for any number of bits per respondent. Each
-bit can have a direct interpretation like “this thing yes for this
-respondent.”</p>
-<p>RAPPOR also introduces a way of having respondents hash strings (say)
-into <a href="http://en.wikipedia.org/wiki/Bloom_filter">Bloom filters</a>, which is kind of neat. They show how to have
-different groups of respondents use different hash functions and then
-do some regression to try to overcome noise and false positives. As
-far as I can tell, you have to already know the set of things you're
-going to be hashing into the Bloom filter (you won't discover an
-unknown unknown) but it is more efficient and flexible than defining a
-separate bit for every candidate string.</p>
-<p>RAPPOR is used <a href="https://www.chromium.org/developers/design-documents/rappor">in Chrome</a>, for example, and if you have really a
-lot of respondents, it seems pretty good!</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20211019-core_rappor/</link>
-<guid>http://planspace.org/20211019-core_rappor/</guid>
-<pubDate>Tue, 19 Oct 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
