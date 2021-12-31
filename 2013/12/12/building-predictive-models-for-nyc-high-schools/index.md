@@ -7,7 +7,7 @@ Common warnings about correlation vs. causation in education definitely apply, b
 
 Thanks Alec!
 
-[scribd id=191207189 key=key-4ofwwo0t9qyfolpfge0 mode=scroll]
+Updated link: [Building Predictive Models for NYC High Schools (Alec Hubel)](https://docshare.tips/building-predictive-models-for-nyc-high-schools-alec-hubel_58765713b6d87f75338b471b.html)
 
 
 
