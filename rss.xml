@@ -7,6 +7,95 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Getting var(X/Y) can be hard</title>
+<description><![CDATA[
+
+<p>There generally isn't an analytic solution for the variance of the
+ratio of two random variables (or probability distributions).
+Denominators around zero are a problem, and with variance large
+relative to mean, the approximation using the delta method may be
+worse than you expect.</p>
+<p>If you're dividing by something that can be close to zero, the results
+can get big, which affects variance. Dividing two standard normal
+distributions gives you a <a href="https://en.wikipedia.org/wiki/Cauchy_distribution" title="Wikipediia: Cauchy distribution">Cauchy distribution</a>, for example, and
+the variance there is undefined. So if you're near zero, watch out!
+Variance may not make sense, and can at least be hard to estimate.</p>
+<p>The approximation of the variance of a ratio using the
+<a href="https://en.wikipedia.org/wiki/Delta_method" title="Delta method">delta method</a> is:</p>
+<p>\[ \text{var} \left( \frac{X}{Y} \right) \approx \frac{1}{\overline{Y}^2} \text{var} \left( X \right) + \frac{ \overline{X}^2 }{ \overline{Y}^4 } \text{var} \left( Y \right) - 2 \frac{ \overline{X} }{ \overline{Y}^3 } \text{cov} \left( X, Y \right) \]</p>
+<p>See <a href="https://www.stat.cmu.edu/~hseltman/files/ratio.pdf" title="Approximations for Mean and Variance of a Ratio">Seltman</a> for a derivation. Also presented in <a href="/20211229-trustworthy_online_controlled_experiments/" title="Trustworthy Online Controlled Experiments">Kohavi et al.</a>
+and <a href="http://alexdeng.github.io/public/files/WSDM2017draft.pdf" title="Trustworthy analysis of online A/B tests: Pitfalls, challenges and solutions">Deng et al.</a></p>
+<p>This is an approximation based on <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem" title="Wikipedia: Taylor's theorem">Taylor series expansion</a>, and it
+isn't always super close, even for seemingly simple examples like this
+one in <a href="https://www.r-project.org/" title="The R Project for Statistical Computing">R</a>, with uniform distributions:</p>
+<!-- set.seed(42) -->
+
+<pre><code class="language-r">approx_var_ratio &lt;- function(x, y) {
+  (1 / mean(y)^2) * var(x) +
+    (mean(x)^2 / mean(y)^4) * var(y) -
+    2 * (mean(x) / mean(y)^3) * cov(x, y)
+}
+
+x = runif(1000, min=14, max=26)
+y = runif(1000, min= 4, max=16)
+
+approx_var_ratio(x, y)
+## 0.6286227
+var(x/y)
+## 1.189362</code></pre>
+
+<p>That's no fluke of sampling. The delta-based formula is consistently
+under 60% of the empirical value, for these parameters.</p>
+<p>It isn't just a weirdness of the uniform distribution either. The
+approximation is agnostic to distribution—which is another hint that
+it can't be perfectly right, at least not always. Here's an example
+with Gaussians, truncated so there's no risk of outliers near zero:</p>
+<!--
+install.packages("truncnorm")
+library(truncnorm)
+
+set.seed(42)
+-->
+
+<pre><code class="language-r">x = rtruncnorm(1000, a=14, mean=20, b=26, sd=3)
+y = rtruncnorm(1000, a= 4, mean=10, b=16, sd=3)
+
+approx_var_ratio(x, y)
+## 0.3323209
+var(x/y)
+## 0.5294384</code></pre>
+
+<p>That's still a substantial underestimate.</p>
+<p>The approximation gets better when means are bigger relative to
+variances. For example:</p>
+<!-- set.seed(42) -->
+
+<pre><code class="language-r">x = rnorm(1000, mean=200, sd=3)
+y = rnorm(1000, mean=100, sd=3)
+
+approx_var_ratio(x, y)
+## 0.004369166
+var(x/y)
+## 0.004381438</code></pre>
+
+<p>Now it's quite close.</p>
+<p>A distribution with appreciable mass near zero has a large variance
+relative to its mean, but you don't have to be near zero for the
+relative spread of the distribution to affect the quality of the
+approximation. Especially clear of zero, I think Monte Carlo
+estimation can be better than using the formula based on the delta
+method.</p>
+<p>In conclusion, approximations are approximations. Do you really <em>need</em>
+a ratio?</p>
+<p>Stay safe out there!</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20211230-getting_var_ratio_can_be_hard/</link>
+<guid>http://planspace.org/20211230-getting_var_ratio_can_be_hard/</guid>
+<pubDate>Thu, 30 Dec 2021 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Trustworthy Online Controlled Experiments</title>
 <description><![CDATA[
 
@@ -1752,51 +1841,6 @@ lot of respondents, it seems pretty good!</p>
 <link>http://planspace.org/20211019-core_rappor/</link>
 <guid>http://planspace.org/20211019-core_rappor/</guid>
 <pubDate>Tue, 19 Oct 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>“how the world could be made a good and happy place”</title>
-<description><![CDATA[
-
-<p>The opening of <a href="https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy">The Hitchhiker's Guide to the Galaxy</a> goes like this
-(italics in original, bold added):</p>
-<blockquote>
-<p><em>Far out in the uncharted backwaters of the unfashionable end of the
-Western Spiral arm of the Galaxy lies a small unregarded yellow sun.
-Orbiting this at a distance of roughly ninety-eight million miles is
-an utterly insignificant little blue-green planet whose apedescended
-life forms are so amazingly primitive that they still think digital
-watches are a pretty neat idea.</em></p>
-<p><em>This planet has—or rather had—a problem, which was this: most of
-the people living on it were unhappy for pretty much of the time.
-Many solutions were suggested for this problem, but most of these
-were largely concerned with the movements of small green pieces of
-paper, which is odd because on the whole it wasn’t the small green
-pieces of paper that were unhappy.</em></p>
-<p><em>And so the problem remained; lots of the people were mean, and most
-of them were miserable, even the ones with digital watches.</em></p>
-<p><em>Many were increasingly of the opinion that they’d all made a big
-mistake in coming down from the trees in the first place. And some
-said that even the trees had been a bad move, and that no one should
-ever have left the oceans.</em></p>
-<p><em>And then, one Thursday, nearly two thousand years after one man had
-been nailed to a tree for saying how great it would be to be nice to
-people for a change, <strong>a girl sitting on her own in a small café in
-Rickmansworth suddenly realized what it was that had been going
-wrong all this time, and she finally knew how the world could be
-made a good and happy place. This time it was right, it would work,
-and no one would have to get nailed to anything.</strong></em></p>
-<p><em>Sadly, however, before she could get to a phone to tell anyone
-about it, a terrible, stupid catastrophe occurred, and the idea was
-lost for ever.</em></p>
-<p><em>This is not her story.</em></p>
-</blockquote>
-<p>I think the joke is that there is no such idea (so let's have nihilist
-sci-fi fun) but I still don't like it. I bet Douglas Adams would have
-written her story if he could have.</p>    
-    ]]></description>
-<link>http://planspace.org/20211017-how_the_world_could_be_made_a_good_and_happy_place/</link>
-<guid>http://planspace.org/20211017-how_the_world_could_be_made_a_good_and_happy_place/</guid>
-<pubDate>Sun, 17 Oct 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
