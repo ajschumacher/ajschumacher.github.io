@@ -1,7 +1,5 @@
 # Predicting the future from 2022
 
-[DRAFT]
-
 For the third year in a row ([2020][], [2021][]) I consider what might
 happen. I continue to mostly imagine current trends continue, and
 throw in some extra stuff for fun.
@@ -85,6 +83,25 @@ throw in some extra stuff for fun.
  * There will continue to be more real problems with not having enough
    people to work than there are with having too many people put out
    of work by technology.
+
+
+---
+
+### Wilder speculations
+
+ * “The middle class is precarious.” To what extent is _downward_
+   mobility present? acceptable? desirable? To what extent is/should
+   mobility be like a ratchet: only upward? The idle rich are not
+   generally admired as virtuous, I think, but people also really
+   dislike it when their children are worse off than they are/were (or
+   if they're those children). What will be the long-term trend? What
+   level of wealth should anyone have to “earn”? (Inspired by Emilie.)
+ * Infant (and child) mortality is dramatically [down][] and will
+   likely continue to get lower. The first-order effect is obviously
+   good. What are the second-order effects? Does the decrease in
+   infant mortality contribute to any population health effects?
+
+[down]: /20200806-life_expectancy_is_historically_misleading/ "Life expectancy is historically misleading"
 
 
 ---
