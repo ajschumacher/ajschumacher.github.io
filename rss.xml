@@ -7,6 +7,466 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Try the GSS WORDSUM questions!</title>
+<description><![CDATA[
+
+<p>The <a href="https://en.wikipedia.org/wiki/General_Social_Survey" title="Wikipedia: General Social Survey">General Social Survey</a> includes a <a href="https://en.wikipedia.org/wiki/Wordsum" title="Wikipedia: Wordsum">WORDSUM</a> vocabulary test
+component that is often used as a proxy measure for <a href="https://en.wikipedia.org/wiki/Intelligence_quotient" title="Wikipedia: Intelligence quotient">IQ</a>. Want to see
+how well you can do? Try these 20 questions!</p>
+<hr>
+<style>
+input[type="radio"], label { cursor: pointer; }
+input[type="radio"]:checked+label { font-weight: bold; }
+.marked_correct { font-style: italic }
+</style>
+
+<table width="100%"><tr><td width="60%">
+
+<p>For each initial word, find the other word which means the same or
+most nearly the same.</p>
+
+<p>In the example at right, “animal” is selected because it has the
+closest meaning to “beast.”</p>
+
+</td><td style="padding-left: 10%;">
+
+<b>beast</b>
+<br>
+<input type="radio" name="ex" id="ex_1" disabled>
+<label for="ex_1">afraid</label>
+<br>
+<input type="radio" name="ex" id="ex_2" disabled>
+<label for="ex_2">words</label>
+<br>
+<input type="radio" name="ex" id="ex_3" disabled>
+<label for="ex_3">large</label>
+<br>
+<input type="radio" name="ex" id="ex_4" checked>
+<label for="ex_4">animal</label>
+<br>
+<input type="radio" name="ex" id="ex_5" disabled>
+<label for="ex_5">separate</label>
+
+</td></tr></table>
+
+<hr>
+<p><b>space</b>
+<br>
+<input type="radio" name="01" id="01_1">
+<label for="01_1">school</label>
+<br>
+<input type="radio" name="01" id="01_2">
+<label for="01_2">noon</label>
+<br>
+<input type="radio" name="01" id="01_3">
+<label for="01_3">captain</label>
+<br>
+<input type="radio" name="01" id="01_4" class="correct">
+<label for="01_4" class="correct_label">room</label>
+<br>
+<input type="radio" name="01" id="01_5">
+<label for="01_5">board</label></p>
+<hr>
+<p><b>lift</b>
+<br>
+<input type="radio" name="02" id="02_1">
+<label for="02_1">sort out</label>
+<br>
+<input type="radio" name="02" id="02_2" class="correct">
+<label for="02_2" class="correct_label">raise</label>
+<br>
+<input type="radio" name="02" id="02_3">
+<label for="02_3">value</label>
+<br>
+<input type="radio" name="02" id="02_4">
+<label for="02_4">enjoy</label>
+<br>
+<input type="radio" name="02" id="02_5">
+<label for="02_5">fancy</label></p>
+<hr>
+<p><b>concern</b>
+<br>
+<input type="radio" name="03" id="03_1">
+<label for="03_1">see clearly</label>
+<br>
+<input type="radio" name="03" id="03_2">
+<label for="03_2">engage</label>
+<br>
+<input type="radio" name="03" id="03_3">
+<label for="03_3">furnish</label>
+<br>
+<input type="radio" name="03" id="03_4">
+<label for="03_4">disturb</label>
+<br>
+<input type="radio" name="03" id="03_5" class="correct">
+<label for="03_5" class="correct_label">have to do with</label></p>
+<hr>
+<p><b>broaden</b>
+<br>
+<input type="radio" name="04" id="04_1">
+<label for="04_1">efface</label>
+<br>
+<input type="radio" name="04" id="04_2">
+<label for="04_2">make level</label>
+<br>
+<input type="radio" name="04" id="04_3">
+<label for="04_3">elapse</label>
+<br>
+<input type="radio" name="04" id="04_4">
+<label for="04_4">embroider</label>
+<br>
+<input type="radio" name="04" id="04_5" class="correct">
+<label for="04_5" class="correct_label">widen</label></p>
+<hr>
+<p><b>blunt</b>
+<br>
+<input type="radio" name="05" id="05_1" class="correct">
+<label for="05_1" class="correct_label">dull</label>
+<br>
+<input type="radio" name="05" id="05_2">
+<label for="05_2">drowsy</label>
+<br>
+<input type="radio" name="05" id="05_3">
+<label for="05_3">deaf</label>
+<br>
+<input type="radio" name="05" id="05_4">
+<label for="05_4">doubtful</label>
+<br>
+<input type="radio" name="05" id="05_5">
+<label for="05_5">ugly</label></p>
+<hr>
+<p><b>accustom</b>
+<br>
+<input type="radio" name="06" id="06_1">
+<label for="06_1">disappoint</label>
+<br>
+<input type="radio" name="06" id="06_2">
+<label for="06_2">customary</label>
+<br>
+<input type="radio" name="06" id="06_3">
+<label for="06_3">encounter</label>
+<br>
+<input type="radio" name="06" id="06_4" class="correct">
+<label for="06_4" class="correct_label">get used</label>
+<br>
+<input type="radio" name="06" id="06_5">
+<label for="06_5">business</label></p>
+<hr>
+<p><b>chirrup</b>
+<br>
+<input type="radio" name="07" id="07_1">
+<label for="07_1">aspen</label>
+<br>
+<input type="radio" name="07" id="07_2">
+<label for="07_2">joyful</label>
+<br>
+<input type="radio" name="07" id="07_3">
+<label for="07_3">capsize</label>
+<br>
+<input type="radio" name="07" id="07_4" class="correct">
+<label for="07_4" class="correct_label">chirp</label>
+<br>
+<input type="radio" name="07" id="07_5">
+<label for="07_5">incite</label></p>
+<hr>
+<p><b>edible</b>
+<br>
+<input type="radio" name="08" id="08_1">
+<label for="08_1">auspicious</label>
+<br>
+<input type="radio" name="08" id="08_2">
+<label for="08_2">eligible</label>
+<br>
+<input type="radio" name="08" id="08_3" class="correct">
+<label for="08_3" class="correct_label">fit to eat</label>
+<br>
+<input type="radio" name="08" id="08_4">
+<label for="08_4">sagacious</label>
+<br>
+<input type="radio" name="08" id="08_5">
+<label for="08_5">able to speak</label></p>
+<hr>
+<p><b>pact</b>
+<br>
+<input type="radio" name="09" id="09_1">
+<label for="09_1">puissance</label>
+<br>
+<input type="radio" name="09" id="09_2">
+<label for="09_2">remonstrance</label>
+<br>
+<input type="radio" name="09" id="09_3" class="correct">
+<label for="09_3" class="correct_label">agreement</label>
+<br>
+<input type="radio" name="09" id="09_4">
+<label for="09_4">skillet</label>
+<br>
+<input type="radio" name="09" id="09_5">
+<label for="09_5">pressure</label></p>
+<hr>
+<p><b>solicitor</b>
+<br>
+<input type="radio" name="10" id="10_1" class="correct">
+<label for="10_1" class="correct_label">lawyer</label>
+<br>
+<input type="radio" name="10" id="10_2">
+<label for="10_2">chieftain</label>
+<br>
+<input type="radio" name="10" id="10_3">
+<label for="10_3">watchman</label>
+<br>
+<input type="radio" name="10" id="10_4">
+<label for="10_4">maggot</label>
+<br>
+<input type="radio" name="10" id="10_5">
+<label for="10_5">constable</label></p>
+<hr>
+<p><b>allusion</b>
+<br>
+<input type="radio" name="11" id="11_1">
+<label for="11_1">aria</label>
+<br>
+<input type="radio" name="11" id="11_2">
+<label for="11_2">illusion</label>
+<br>
+<input type="radio" name="11" id="11_3">
+<label for="11_3">eulogy</label>
+<br>
+<input type="radio" name="11" id="11_4">
+<label for="11_4">dream</label>
+<br>
+<input type="radio" name="11" id="11_5" class="correct">
+<label for="11_5" class="correct_label">reference</label></p>
+<hr>
+<p><b>caprice</b>
+<br>
+<input type="radio" name="12" id="12_1">
+<label for="12_1">value</label>
+<br>
+<input type="radio" name="12" id="12_2">
+<label for="12_2">a star</label>
+<br>
+<input type="radio" name="12" id="12_3">
+<label for="12_3">grimace</label>
+<br>
+<input type="radio" name="12" id="12_4" class="correct">
+<label for="12_4" class="correct_label">whim</label>
+<br>
+<input type="radio" name="12" id="12_5">
+<label for="12_5">inducement</label></p>
+<hr>
+<p><b>animosity</b>
+<br>
+<input type="radio" name="13" id="13_1" class="correct">
+<label for="13_1" class="correct_label">hatred</label>
+<br>
+<input type="radio" name="13" id="13_2">
+<label for="13_2">animation</label>
+<br>
+<input type="radio" name="13" id="13_3">
+<label for="13_3">disobedience</label>
+<br>
+<input type="radio" name="13" id="13_4">
+<label for="13_4">diversity</label>
+<br>
+<input type="radio" name="13" id="13_5">
+<label for="13_5">friendship</label></p>
+<hr>
+<p><b>emanate</b>
+<br>
+<input type="radio" name="14" id="14_1">
+<label for="14_1">populate</label>
+<br>
+<input type="radio" name="14" id="14_2">
+<label for="14_2">free</label>
+<br>
+<input type="radio" name="14" id="14_3">
+<label for="14_3">prominent</label>
+<br>
+<input type="radio" name="14" id="14_4">
+<label for="14_4">rival</label>
+<br>
+<input type="radio" name="14" id="14_5" class="correct">
+<label for="14_5" class="correct_label">come</label></p>
+<hr>
+<p><b>madrigal</b>
+<br>
+<input type="radio" name="15" id="15_1" class="correct">
+<label for="15_1" class="correct_label">song</label>
+<br>
+<input type="radio" name="15" id="15_2">
+<label for="15_2">mountebank</label>
+<br>
+<input type="radio" name="15" id="15_3">
+<label for="15_3">lunatic</label>
+<br>
+<input type="radio" name="15" id="15_4">
+<label for="15_4">ribald</label>
+<br>
+<input type="radio" name="15" id="15_5">
+<label for="15_5">sycophant</label></p>
+<hr>
+<p><b>cloistered</b>
+<br>
+<input type="radio" name="16" id="16_1">
+<label for="16_1">miniature</label>
+<br>
+<input type="radio" name="16" id="16_2">
+<label for="16_2">bunched</label>
+<br>
+<input type="radio" name="16" id="16_3">
+<label for="16_3">arched</label>
+<br>
+<input type="radio" name="16" id="16_4">
+<label for="16_4">malady</label>
+<br>
+<input type="radio" name="16" id="16_5" class="correct">
+<label for="16_5" class="correct_label">secluded</label></p>
+<hr>
+<p><b>encomium</b>
+<br>
+<input type="radio" name="17" id="17_1">
+<label for="17_1">repetition</label>
+<br>
+<input type="radio" name="17" id="17_2">
+<label for="17_2">friend</label>
+<br>
+<input type="radio" name="17" id="17_3" class="correct">
+<label for="17_3" class="correct_label">panegyric</label>
+<br>
+<input type="radio" name="17" id="17_4">
+<label for="17_4">abrasion</label>
+<br>
+<input type="radio" name="17" id="17_5">
+<label for="17_5">expulsion</label></p>
+<hr>
+<p><b>pristine</b>
+<br>
+<input type="radio" name="18" id="18_1">
+<label for="18_1">flashing</label>
+<br>
+<input type="radio" name="18" id="18_2">
+<label for="18_2">earlier</label>
+<br>
+<input type="radio" name="18" id="18_3" class="correct">
+<label for="18_3" class="correct_label">primeval</label>
+<br>
+<input type="radio" name="18" id="18_4">
+<label for="18_4">bound</label>
+<br>
+<input type="radio" name="18" id="18_5">
+<label for="18_5">green</label></p>
+<hr>
+<p><b>tactility</b>
+<br>
+<input type="radio" name="19" id="19_1" class="correct">
+<label for="19_1" class="correct_label">tangibility</label>
+<br>
+<input type="radio" name="19" id="19_2">
+<label for="19_2">grace</label>
+<br>
+<input type="radio" name="19" id="19_3">
+<label for="19_3">subtlety</label>
+<br>
+<input type="radio" name="19" id="19_4">
+<label for="19_4">extensibility</label>
+<br>
+<input type="radio" name="19" id="19_5">
+<label for="19_5">manageableness</label></p>
+<hr>
+<p><b>sedulous</b>
+<br>
+<input type="radio" name="20" id="20_1">
+<label for="20_1">muddied</label>
+<br>
+<input type="radio" name="20" id="20_2">
+<label for="20_2">sluggish</label>
+<br>
+<input type="radio" name="20" id="20_3">
+<label for="20_3">stupid</label>
+<br>
+<input type="radio" name="20" id="20_4" class="correct">
+<label for="20_4" class="correct_label">assiduous</label>
+<br>
+<input type="radio" name="20" id="20_5">
+<label for="20_5">corrupting</label></p>
+<hr>
+<div id="show_scoring">
+
+<input type="submit" value="Show scoring and italicize correct answers" onclick="
+    document.getElementById('scoring').style.visibility = 'visible';
+    document.getElementById('show_scoring').style.visibility = 'hidden';
+    document.querySelectorAll('.correct_label').forEach(
+      element =&gt; element.classList.add('marked_correct'))">
+
+</div>
+
+<div id="scoring" style="visibility: hidden;">
+
+<h3><span id="wordsum">0</span> of 10 points (<span id="count">0</span> correct of 20 questions)</h3>
+
+<input type="submit" value="Hide scoring and un-italicize correct answers" onclick="
+    document.getElementById('scoring').style.visibility = 'hidden';
+    document.getElementById('show_scoring').style.visibility = 'visible';
+    document.querySelectorAll('.correct_label').forEach(
+      element =&gt; element.classList.remove('marked_correct'))">
+
+</div>
+
+<hr>
+<p>Caveats:</p>
+<ul>
+<li>I'm pretty sure I've identified the right answers, but I haven't
+   seen an answer key (just the relevant test booklets).</li>
+<li>The actual <a href="https://en.wikipedia.org/wiki/Wordsum" title="Wikipedia: Wordsum">WORDSUM</a> has 10 questions, not 20. I know that those
+   ten questions are among these 20, but I don't know <em>which</em>. For
+   more detail, read on.</li>
+</ul>
+<p>Here's an <a href="https://gss.norc.org/Documents/reports/methodological-reports/MR111%20The%20Psychometric%20Properties%20of%20the%20GSS%20Wordsum%20Vocabulary%20Test.pdf" title="The Psychometric Properties of the GSS Wordsum Vocabulary Test">excerpt</a> on the history of <a href="https://en.wikipedia.org/wiki/Wordsum" title="Wikipedia: Wordsum">WORDSUM</a>:</p>
+<blockquote>
+<p>In the early 1920s, Edward L. Thorndike developed a lengthy
+vocabulary test as part of the I.E.R. Intelligence Scale CAVD to
+measure, in his words, “verbal intelligence.” As in the modern-day
+Wordsum test, each question asked respondents to identify the word
+or phrase in a set of five whose meaning was closest to a target
+word. Robert L. Thorndike (1942) later extracted two subsets of the
+original test, each containing twenty items of varying difficulty.
+For each subset, two target words were selected at each of ten
+difficulty levels. The ten items in Wordsum (labeled with letters
+A though J) were selected from the first of these two subsets.</p>
+</blockquote>
+<p>It's not perfectly accurate to say Thorndike developed a lengthy
+vocabulary test. The I.E.R Intelligence Scale CAVD, <a href="https://copyright.cornell.edu/publicdomain" title="Copyright at Cornell Libraries: Copyright Term and the Public Domain">copyright</a> 1925
+and 1926, is 17 levels (A through Q) and each level has ten vocabulary
+questions in multiple choice format, among other question types.</p>
+<p>Thorndike 1942 is <a href="https://psycnet.apa.org/record/1942-04205-001" title="Thorndike, R. L. (1942). Two screening tests of verbal intelligence. Journal of Applied Psychology, 26(2), 128–135.">Two screening tests of verbal intelligence</a>,
+which describes how two 20-word tests “containing two words from each
+of the levels of CAVD from H through Q” (the more difficult end of the
+spectrum; levels A through E use pictures) were constructed.</p>
+<p><img alt="two forms" src="two_forms.png"></p>
+<p>The first subset then is <em>Form A</em>, and those are the questions
+included above. I don't know <em>which</em> ten words from Form A's twenty
+are in WORDSUM, however. As <a href="https://gssdataexplorer.norc.org/documents/444/display" title="GSS Codebook Appendix D">GSS Codebook Appendix D</a> explains:</p>
+<blockquote>
+<p>To minimize the admittedly small possibility that some form of
+publicity would affect the public's knowledge of the words included
+in the test, they are not reported here.</p>
+</blockquote>
+<p>I think it's fascinating that a vocab test from the 1920s is part of
+the GSS, which continues to be administered in the 2020s. I think it's
+fascinating that WORDSUM has been used for evidence that
+<a href="https://www.semanticscholar.org/paper/Intelligence-makes-people-think-like-economists%3A-Caplan-Miller/ef579356c5c461914e3c0ff896c7949554be1774" title="Intelligence makes people think like economists: Evidence from the General Social Survey">Intelligence makes people think like economists</a>, among many other
+things.</p>
+<p>I think the benefit of knowing what the WORDSUM questions are far
+outweighs any risk “that some form of publicity would affect the
+public's knowledge of the words included in the test.” Frankly, I'm
+not sure WORDSUM deserves an encomium.</p>
+
+    ]]></description>
+<link>http://planspace.org/20220101-try_the_gss_wordsum_questions/</link>
+<guid>http://planspace.org/20220101-try_the_gss_wordsum_questions/</guid>
+<pubDate>Sat, 01 Jan 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Predicting the future from 2022</title>
 <description><![CDATA[
 
@@ -1821,60 +2281,6 @@ don't think it would have any useful connection to variance, as the
 <link>http://planspace.org/20211106-visualizing_cohens_h/</link>
 <guid>http://planspace.org/20211106-visualizing_cohens_h/</guid>
 <pubDate>Sat, 06 Nov 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Simple diff-in-diff</title>
-<description><![CDATA[
-
-<p>Things are always changing. <a href="https://en.wikipedia.org/wiki/Difference_in_differences">Difference in differences</a> tries to
-identify how much of a change is due to some treatment by comparing to
-a control that's also changing over time.</p>
-<p><img alt="diff-in-diff diagram" src="diff_in_diff.jpg"></p>
-<p>This is often presented graphically with response value against time.</p>
-<p><img alt="diff-in-diff graph" src="diff_in_diff_graph.jpg"></p>
-<p>A noiseless design matrix illustrates how this becomes a diff-in-diff
-regression.</p>
-<pre><code>| treatment base | control base | common diff | treatment diff | response |
-|----------------|--------------|-------------|----------------|----------|
-| 1              | 0            | 0           | 0              |  3       |
-| 0              | 1            | 0           | 0              |  2       |
-| 1              | 0            | 1           | 1              | 12       |
-| 0              | 1            | 1           | 0              |  7       |
-</code></pre>
-
-<p>Real data will have noise; here's a simulation in <a href="https://www.r-project.org/">R</a>.</p>
-<pre><code class="language-r">treatment_base = c(rep(1, 100), rep(0, 100), rep(1, 100), rep(0, 100))
-control_base   = c(rep(0, 100), rep(1, 100), rep(0, 100), rep(1, 100))
-common_diff    = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(1, 100))
-treatment_diff = c(rep(0, 100), rep(0, 100), rep(1, 100), rep(0, 100))
-response = c(rnorm(100, mean=3),
-             rnorm(100, mean=2),
-             rnorm(100, mean=3) + rnorm(100, mean=5) + rnorm(100, mean=4),
-             rnorm(100, mean=2) + rnorm(100, mean=5))
-summary(lm(response ~ treatment_base + control_base + common_diff + treatment_diff + 0))
-##                Estimate Std. Error t value Pr(&gt;|t|)
-## treatment_base   3.0747     0.1367   22.50   &lt;2e-16 ***
-## control_base     1.9798     0.1367   14.49   &lt;2e-16 ***
-## common_diff      5.0990     0.1933   26.38   &lt;2e-16 ***
-## treatment_diff   3.9453     0.2733   14.44   &lt;2e-16 ***</code></pre>
-
-<p>Diff-in-diff can get <a href="https://andrewcbaker.netlify.app/2019/09/25/difference-in-differences-methodology/">more complicated</a>, but the simple version
-isn't too bad.</p>
-<hr>
-<p>Thanks to Dr. Erica Blom for valuable discussion and references on
-this topic.</p>
-<hr>
-<h3>See also</h3>
-<ul>
-<li>Four “back door” regression situations:
-   <a href="/20200912-what_should_be_in_your_regression/">What should be in your regression?</a></li>
-<li><a href="/20210501-simple_front_door_regression/">Simple Front Door Regression</a></li>
-<li><a href="/20210430-a_simple_instrumental_variable/">A simple Instrumental Variable</a></li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20211031-simple_diff_in_diff/</link>
-<guid>http://planspace.org/20211031-simple_diff_in_diff/</guid>
-<pubDate>Sun, 31 Oct 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
