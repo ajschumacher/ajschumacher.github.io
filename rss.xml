@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Radium Girls, by Moore</title>
+<description><![CDATA[
+
+<p>I like that <a href="https://www.kate-moore.com/" title="Kate Moore">Moore</a> writes with purpose; all her books expose
+injustice against and give voice to women (with the possible exception
+of the Felix the Railway Cat series; I'm not sure about those).
+<a href="https://www.theradiumgirls.com/" title="The Radium Girls">The Radium Girls</a> stays readable over nearly 500 pages, conveying
+history that feels relevant to current issues of business, law,
+rights, and risks.</p>
+<p><strong>Capitalism can be stupid and mean</strong>: Several businesspeople seem
+Trump-like in their disregard for ethics in the pursuit of profit.
+It's hard to take a libertarian point of view with externalities like
+these. And radium dials at least look cool, but many radium businesses
+sold absolute snake oil. I noticed today that a company will sell you
+<a href="https://www.nytimes.com/2022/01/01/style/gummies-edibles-marijuana-diet.html" title="Counterculture to Counterintuitive: Cannabis to Help You Diet? An edibles company says one of its products will lead not to the “the munchies” but to weight loss. There’s just one problem: the science.">marijuana gummies for weight loss</a>. Maybe not much has changed.</p>
+<p><strong>Ignorance and geography</strong>: It was much harder, it seemed, to find a
+competent doctor or lawyer in small-town Illinois, compared to the New
+York metropolitan area. It seems there was more religiosity in the
+middle west as well. It also struck me as strange that terminal
+patients were generally not told that they were terminal. Is that
+still the case? Is ignorance really better in such cases?</p>
+<p><strong>Weaponizing “experts”</strong>: As with radium, so with cigarettes and
+opioids and climate change and on and on... The pursuit of knowledge
+pushed behind debate-club he-said/she-said and outright lies.</p>
+<blockquote>
+<p>"But if you looked a little closer at all those positive
+publications, there was a common denominator: the researchers, on
+the whole, worked for radium firms. As radium was such a rare and
+mysterious element, its commercial exploiters in fact controlled, to
+an almost monopolizing extent, its image and most of the knowledge
+about it. Many firms had their own radium-themed journals, which
+were distributed free to doctors, all full of optimistic research.
+The firms that profited from radium medicine were the primary
+producers and publishers of the positive literature." (page 49)</p>
+</blockquote>
+<p><strong>Dangers with delayed effects</strong>: Radium took years, usually, to have
+negative effects on the radium dial painters. What risks do we
+currently not know or underestimate?</p>
+<ul>
+<li>Climate change? Microplastics?</li>
+<li>Social media? Entertainment?</li>
+<li>Unemployment? Overemployment?</li>
+<li>Migration? Lack of migration?</li>
+<li>Trends in education?</li>
+<li>Kombucha?</li>
+</ul>
+<p><strong>Gender and class</strong>: Moore highlights inequities in societal
+attention and care. For example, "It seemed wealthy consumers were
+much more worthy of protection than working-class girls..." (page 273)
+It reminds me of the 21st-century popularization of <a href="https://en.wikipedia.org/wiki/Alice_Neel" title="Wikipedia: Alice Neel">Alice Neel</a>,
+who similarly focused on working people and "the female gaze." How far
+is there still to go?</p>
+<p><strong>The legal system</strong>: The tales of slow and capricious legal
+processes, out-of-court settlements, rhetoric over reality, the
+influence of wealth, and general nonsense... The 1920s and 30s sound
+very much like the present.</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220102-radium_girls_by_moore/</link>
+<guid>http://planspace.org/20220102-radium_girls_by_moore/</guid>
+<pubDate>Sun, 02 Jan 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Try the GSS WORDSUM questions!</title>
 <description><![CDATA[
 
@@ -2248,39 +2312,6 @@ alternative visualization though!</p>
 <link>http://planspace.org/20211107-parallel_coordinate_plots_for_visualizing_functions/</link>
 <guid>http://planspace.org/20211107-parallel_coordinate_plots_for_visualizing_functions/</guid>
 <pubDate>Sun, 07 Nov 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Visualizing Cohen's h</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Cohen%27s_h">Cohen's <em>h</em></a> is an effect size for differences between two
-proportions. It ranges from 0 to \( \pi \) (when nondirectional) and
-adjusts for whether the proportions are “extreme” (near 0 or 1) so
-that equal Cohen's <em>h</em> means equal statistical detectability (Cohen
-1988).</p>
-<p><img alt="Cohen's h" src="cohens_h.png"></p>
-<p>The heuristic values of 0.2 for “small,” 0.5 for “medium,” and 0.8 for
-“large” are analogous to the 0.05 confidence level: often taken more
-seriously than they should be.</p>
-<p>Cohen's <em>h</em> is the difference between the two proportions'
-<a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transforms</a>.</p>
-<p><img alt="arcsin transformation" src="arcsin_transform.png"></p>
-<p>The arcsin transform stretches out values near 0 and 1 more than
-values around 0.5. It is bounded though, so for example if your
-baseline proportion is 0.95, there is no proportion higher than that
-which will register as a “medium” effect size.</p>
-<p>You could replace the arcsin transform with <a href="https://en.wikipedia.org/wiki/Logit">log odds</a>; the logit
-would allow any size difference anywhere, at least in principle. But I
-don't think it would have any useful connection to variance, as the
-<a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transformation</a> does.</p>
-<hr>
-<p>Code is <a href="https://github.com/ajschumacher/cohens_h">on GitHub</a>.</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20211106-visualizing_cohens_h/</link>
-<guid>http://planspace.org/20211106-visualizing_cohens_h/</guid>
-<pubDate>Sat, 06 Nov 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
