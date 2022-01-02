@@ -17,7 +17,7 @@ I made a little [FAQ][] based on questions I get from people. I have a
 
 Sometimes people ask me for a bio:
 
-> Aaron Schumacher is a Research Data Scientist at Facebook. He was
+> Aaron Schumacher is a Research Data Scientist at Meta. He was
 > previously at Deep Learning Analytics and General Dynamics Mission
 > Systems. He has taught with Python and R for General Assembly and
 > the Metis data science bootcamp. Aaron has also worked with data at
