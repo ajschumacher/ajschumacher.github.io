@@ -29,7 +29,11 @@ send [me](/aaron/) the following:
 6. How many years of industry experience do you have (not counting
    internships)? (one number)
 7. Do you live in either of: the EU or UK? (yes/no)
-8. Optional things
+8. Are you interested in being full-time remote (not being associated
+   with a physical office)? (yes/no) If yes, what country and
+   state/province (as applicable) would you prefer to physically work
+   from (your home)?
+9. Optional things
     * LinkedIn profile link
     * GitHub profile link
     * Portfolio website link
