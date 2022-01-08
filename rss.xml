@@ -7,6 +7,94 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Resume dos and don'ts</title>
+<description><![CDATA[
+
+<p>I've thought about my resume, I've read <a href="/20220107-tech_resume_inside_out_by_orosz/" title="The Tech Resume Inside Out, by Orosz">a book about resumes</a>, and
+I've reviewed hundreds of candidate resumes. Your resume is the first
+work product you share with an employer. Make sure it's good. Here's a
+collection of resume advice, together with some appalling errors you
+wouldn't think people would make—until you see them happen.</p>
+<h3>Do this</h3>
+<ul>
+<li>Consider your audience and what you want them to think about you.</li>
+<li>Focus on what you've achieved. Provide <em>evidence</em>, not just claims.<ul>
+<li>Use this pattern:
+   <a href="https://www.inc.com/bill-murphy-jr/google-recruiters-say-these-5-resume-tips-including-x-y-z-formula-will-improve-your-odds-of-getting-hired-at-google.html" title="Google Recruiters Say Using the 'X-Y-Z Formula' on Your Resume Will Improve Your Odds of Getting Hired at Google">Accomplished X, as measured by Y, by doing Z.</a></li>
+</ul>
+</li>
+<li><a href="/20200715-communicate_immediately/" title="Communicate Immediately">Communicate immediately.</a> Be direct. Be clear.</li>
+<li>Use bullet-points, short sentences, rarely anything longer than one
+   line.</li>
+<li>Make the document look perfect. Format must be PDF.<ul>
+<li>Page layout matters. 1.5 pages is worse than 1 or 2.</li>
+<li>If at all possible, use LaTeX.</li>
+</ul>
+</li>
+</ul>
+<h3>Don't do this</h3>
+<ul>
+<li>Do not include these elements (as listed by <a href="https://www.cnbc.com/2021/07/20/remove-these-things-from-your-resume-asap-says-ceo-who-has-read-thousands-of-resumes.html" title="Remove these 7 things from your resume ‘ASAP,’ says CEO who has read more than 1,000 resumes this year">Peter Yang</a>):<ul>
+<li>Irrelevant hobbies and interests</li>
+<li>Too many soft skills</li>
+<li>Your professional headshot</li>
+<li>Personal pronouns (As in: “Managed a team,” not “I managed a
+   team”)</li>
+<li>The wrong kind of email (As in: AOL or Hotmail, etc.)</li>
+<li>Your mailing address (if you’re applying out-of-state)</li>
+<li>Job positions older than 10 to 15 years</li>
+</ul>
+</li>
+<li><a href="https://algodaily.com/lessons/the-perfect-software-engineering-resume-is-like-a-google-search-result/step-eight-8" title="from: Writing The Perfect Software Engineering Resume Is Like a Google Search Result">No Need For a Global Summary (Don't Have a Summary/Objective Section)</a></li>
+<li>Include no errors in content and formatting. (See next section for
+   examples.)</li>
+</ul>
+<h3>Resume horror</h3>
+<p>Your expertise should be clear from what you've done, not from some
+rating scale that you use on yourself. Please no star ratings or “An
+asterisk denotes *Expert level” etc.</p>
+<p>Don't say “40 Hours/Week” for every job you've worked. Full time
+employment is assumed. I'm thinking about resumes for salaried
+positions, but even if it were hourly, I don't think I'd want to see
+“40 Hours/Week” repeated over and over.</p>
+<p>Links and email addresses should not have old-school underlined blue
+styling. Control the formatting to make it simple and beautiful.</p>
+<p>If you have links in your resume, <em>make sure you know where they go</em>.
+I've seen resumes where, presumably because they used somebody else's
+resume as a starting point, the link text was updated but the link
+still took me to <em>somebody else's</em> LinkedIn and Twitter.</p>
+<p>Pay special attention with things you're claiming expertise in: It's
+hard to believe you if you say you know “CentOs”—because it's CentOS.</p>
+<p>Please get the names of your prior employers correct. There is no “Red
+American Cross”—it's “American Red Cross.”</p>
+<p>If you are “quick to learn new tools and technics” why have you not
+learned how to spell “techniques?”</p>
+<p>It's easier to not use color at all than to use it well. Particularly
+bad: “Wor” in blue, regular weight, with “k Experience” in bold black.
+Why do that?</p>
+<p>Almost nobody should include GPA(s) in their resume. Possible
+exception: It's perfect, and you've never had a job. Particularly bad:
+Including a mediocre GPA for one degree, with GPA then conspicuously
+absent for one or more other degrees.</p>
+<p>Notice how this actual section from a real resume is
+self-contradictory:</p>
+<blockquote>
+<p>Communication – Persuasive communicator, comfortable challenging the
+status quo when appropriate, whether to long-standing processes or
+to conventional thinking to drive greater efficiencies and outcomes.
+Able to adjust communications to a diverse audience to ensure
+understanding and clarity. Recognizes the importance of providing
+concise, complete visualizations of complex data.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Show,_don't_tell" title="Wikipedia: Show, don't tell">Show, don't tell.</a> Words without evidence are only demonstrating
+that you can waste time.</p>
+<p>Don't use two spaces between sentences. We're using computers.</p>    
+    ]]></description>
+<link>http://planspace.org/20220108-resume_dos_and_donts/</link>
+<guid>http://planspace.org/20220108-resume_dos_and_donts/</guid>
+<pubDate>Sat, 08 Jan 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Tech Resume Inside Out, by Orosz</title>
 <description><![CDATA[
 
@@ -2268,59 +2356,6 @@ master motive of human action." (page 57)</p>
 <link>http://planspace.org/20211121-essence_of_progress_and_poverty/</link>
 <guid>http://planspace.org/20211121-essence_of_progress_and_poverty/</guid>
 <pubDate>Sun, 21 Nov 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Come work at Meta! (Facebook/Instagram/WhatsApp/etc.)</title>
-<description><![CDATA[
-
-<p>People have started asking me to refer them for jobs at <a href="https://meta.com/">Meta</a>,
-which is great because Meta is <a href="https://www.facebookcareers.com/jobs">hiring</a>! I'd be happy to refer you;
-send <a href="/aaron/">me</a> the following:</p>
-<ol>
-<li>Your full name</li>
-<li>Your email address</li>
-<li>Exactly one of:<ul>
-<li>Your resume in PDF format</li>
-<li>A link to your LinkedIn profile</li>
-<li>Tell me to put in your email address and you'll be prompted to
-  provide information yourself. (I've never tried this.)</li>
-</ul>
-</li>
-<li>One to three job links from the <a href="https://www.facebookcareers.com/jobs">official jobs site</a><ul>
-<li>Not from LinkedIn, not from Indeed, etc. They have to be from
-  the official jobs site to work in the system.</li>
-<li>Ensure you meet the minimum requirements listed for each, and
-  that the locations listed (including remote if applicable) are
-  aligned with your preferences.</li>
-<li>If you're interested in working remotely, mention that to me.</li>
-<li>If you're interested in a position based in an EU or UK office,
-  mention that to me.</li>
-</ul>
-</li>
-<li>Are you either of: a current university student or graduated from
-   university within the last nine months? (yes/no)</li>
-<li>How many years of industry experience do you have (not counting
-   internships)? (one number)</li>
-<li>Do you live in either of: the EU or UK? (yes/no)</li>
-<li>Are you interested in being full-time remote (not being associated
-   with a physical office)? (yes/no) If yes, what country and
-   state/province (as applicable) would you prefer to physically work
-   from (your home)?</li>
-<li>Optional things<ul>
-<li>LinkedIn profile link</li>
-<li>GitHub profile link</li>
-<li>Portfolio website link</li>
-<li>Brief note (one paragraph or less) on why you should be hired</li>
-</ul>
-</li>
-</ol>
-<p>Once I have the above, I can put you into the system. After that, I
-won't hear anything before you do. I can't guarantee any particular
-next steps, but I wish you the best of luck and hope you do well!</p>    
-    ]]></description>
-<link>http://planspace.org/20211109-come_work_at_meta/</link>
-<guid>http://planspace.org/20211109-come_work_at_meta/</guid>
-<pubDate>Tue, 09 Nov 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
