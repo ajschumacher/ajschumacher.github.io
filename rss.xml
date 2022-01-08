@@ -7,6 +7,42 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Tech Resume Inside Out, by Orosz</title>
+<description><![CDATA[
+
+<p>I read <a href="https://thetechresume.com/" title="The Tech Resume Inside Out: What a Good Developer Resume Looks Like">this</a> when I was re-doing my resume last spring, and I think
+it helped. Here are some changes to my resume that I made based on its
+advice:</p>
+<ul>
+<li>With double the experience, I cut the length in half to get to one
+   page.</li>
+<li>I dropped my full address, keeping just city and state.</li>
+<li>I put job titles before and more prominently than employer names.</li>
+<li>Instead of paragraphs describing jobs, 16 bullet-points, all single
+   lines.</li>
+<li>Lots of active voice, immediate quantitative detail, and specifics.</li>
+<li>Instead of a separate section, programming languages etc. mentioned
+   in context.</li>
+<li>I dropped months, so dates of employment only include years.</li>
+</ul>
+<p>I didn't make a separate resume for <em>every</em> position I applied for,
+but I did distribute at least six different versions for different
+kinds of roles.</p>
+<p>Do resumes matter? I'm not sure. You probably still need to have one
+though. And it may be that the <em>less</em> they matter, the better the
+signal you provide by <em>still</em> having a good one. People who are great
+do the little things well.</p>
+<p>If nothing else, thinking about your resume can focus your work: How
+would what I'm doing today look on my resume? If you're doing
+something that would seem pointless on a resume, maybe you should do
+something else.</p>
+<p><img alt="cover" src="cover.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20220107-tech_resume_inside_out_by_orosz/</link>
+<guid>http://planspace.org/20220107-tech_resume_inside_out_by_orosz/</guid>
+<pubDate>Fri, 07 Jan 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Radium Girls, by Moore</title>
 <description><![CDATA[
 
@@ -2266,6 +2302,10 @@ send <a href="/aaron/">me</a> the following:</p>
 <li>How many years of industry experience do you have (not counting
    internships)? (one number)</li>
 <li>Do you live in either of: the EU or UK? (yes/no)</li>
+<li>Are you interested in being full-time remote (not being associated
+   with a physical office)? (yes/no) If yes, what country and
+   state/province (as applicable) would you prefer to physically work
+   from (your home)?</li>
 <li>Optional things<ul>
 <li>LinkedIn profile link</li>
 <li>GitHub profile link</li>
@@ -2281,37 +2321,6 @@ next steps, but I wish you the best of luck and hope you do well!</p>
 <link>http://planspace.org/20211109-come_work_at_meta/</link>
 <guid>http://planspace.org/20211109-come_work_at_meta/</guid>
 <pubDate>Tue, 09 Nov 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Parallel coordinate plots for visualizing functions</title>
-<description><![CDATA[
-
-<p>While thinking about the <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Arcsine_transformation">arcsin transform</a> for <a href="/20211106-visualizing_cohens_h/">Cohen's <em>h</em></a>, I
-described the function as “stretching” its inputs, and compared it to
-the <a href="https://en.wikipedia.org/wiki/Logit">logit function</a>. I wondered whether a
-<a href="https://en.wikipedia.org/wiki/Parallel_coordinates">parallel coordinates plot</a> could visualize the “stretching” more
-clearly than the traditional Cartesian plot. I think it kind of works!</p>
-<p><img alt="parallel coordinates plots" src="parallel.png"></p>
-<p>This left-to-right function input-to-output view is pleasing in some
-ways. I think it succeeds in showing how the function is “stretching”
-the input, as desired. It's hard to show very many input/output pairs
-though, and it would be hard to show non-monotonic functions well, or
-show multiple functions on the same axes. For the logit, I think it's
-less clear in implying the function is unbounded than with the
-Cartesian version.</p>
-<p><img alt="traditional cartesian plots" src="cartesian.png"></p>
-<p>The usual way of plotting functions feels a little drier. “Stretching”
-is greater where the plot is more vertical; I feel this less
-immediately here than with the parallel coordinates version. Overall
-this is still a great way to visualize functions, of course. I
-wouldn't mind the occasional parallel coordinates plot as an
-alternative visualization though!</p>
-<hr>
-<p>Code is <a href="https://github.com/ajschumacher/parallel_coordinate_functions">on GitHub</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20211107-parallel_coordinate_plots_for_visualizing_functions/</link>
-<guid>http://planspace.org/20211107-parallel_coordinate_plots_for_visualizing_functions/</guid>
-<pubDate>Sun, 07 Nov 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

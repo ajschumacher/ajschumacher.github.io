@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-01-07: [The Tech Resume Inside Out, by Orosz](/20220107-tech_resume_inside_out_by_orosz/)
  * 2022-01-02: [Radium Girls, by Moore](/20220102-radium_girls_by_moore/)
  * 2022-01-01: [Try the GSS WORDSUM questions!](/20220101-try_the_gss_wordsum_questions/)
  * 2022-01-01: [Predicting the future from 2022](/20220101-predicting_the_future_from_2022/)
