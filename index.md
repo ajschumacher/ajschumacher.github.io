@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-01-09: [System Design Interview, by Xu](/20220109-system_design_interview_by_xu/)
  * 2022-01-08: [Resume dos and don'ts](/20220108-resume_dos_and_donts/)
  * 2022-01-07: [The Tech Resume Inside Out, by Orosz](/20220107-tech_resume_inside_out_by_orosz/)
  * 2022-01-02: [Radium Girls, by Moore](/20220102-radium_girls_by_moore/)
