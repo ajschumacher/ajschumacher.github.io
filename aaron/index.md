@@ -37,6 +37,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+ * [Databases, data modeling, and SQL](https://docs.google.com/presentation/d/1xkbuNVuGIIPd7XtVK0I4qHFh1phH-tvcH6exuLZtugk/) for [Hack Diversity](https://www.hackdiversity.com/) on Friday 2022-02-04
  * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on
    Monday April 5, 2021
  * Statistical Rethinking:
