@@ -7,6 +7,27 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>7 Habits weekly cards</title>
+<description><![CDATA[
+
+<p><a href="https://smile.amazon.com/Habits-Highly-Effective-People-Anniversary/dp/1642500267" title="The 7 Habits of Highly Effective People: 30th Anniversary Card Deck">It</a>'s a card a week for a year, classic <a href="https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People" title="The 7 Habits of Highly Effective People">7 Habits</a> material, with
+reflections and tasks for the week. I did it mostly in 2021, and I
+enjoyed it. It inspired me to write a <a href="/20210226-vision_and_mission/" title="Vision and Mission">vision and mission</a>, for
+example. More than the content, I like the practice of having a weekly
+reflection.</p>
+<p>The calendar is somewhat arbitrary, but it can be used for multiple
+scales of reflection and planning. I have a <a href="/20211030-my_daily_routine/" title="My daily routine">daily practice</a>, and a
+weekly practice is a nice additional layer. Maybe I should think about
+a monthly equivalent as well. It's pretty common to use the
+<a href="/20211228-habits_for_2022_ratio/" title="Habits for 2022: “ratio”">new year</a> for a yearly reflection and focusing too. I haven't done
+five year plans, but could...</p>
+<p><img alt="box" src="box.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220206-7_habits_weekly_cards/</link>
+<guid>http://planspace.org/20220206-7_habits_weekly_cards/</guid>
+<pubDate>Sun, 06 Feb 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>System Design Interview, by Xu</title>
 <description><![CDATA[
 
@@ -2240,45 +2261,6 @@ feedback of any kind) are especially welcome here!</p>
 <link>http://planspace.org/20211209-significant_figures_gaussian_uncertainty/</link>
 <guid>http://planspace.org/20211209-significant_figures_gaussian_uncertainty/</guid>
 <pubDate>Thu, 09 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Try HoloViz for Python plotting</title>
-<description><![CDATA[
-
-<p>Yang <a href="https://sophiamyang.github.io/DS/visualization/holoviz/holoviz.html" title="Visualization and Interactive Dashboard in Python">inspired</a> me to check out <a href="https://holoviz.org/" title="High-level tools to simplify visualization in Python">HoloViz</a>, which makes it easy,
-among other things, to do interactive scatterplots in Jupyter
-Notebooks—and stick them in any HTML!</p>
-<p><link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/alerts.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/card.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/widgets.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/markdown.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/json.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/loading.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/@holoviz/panel@0.12.5/dist/css/dataframe.css" type="text/css"></p>
-<style>
-                    .bk.pn-loading.arcs:before {
-                      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiBub25lOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4gIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjMyIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZT0iI2MzYzNjMyIgc3Ryb2tlLWRhc2hhcnJheT0iNTAuMjY1NDgyNDU3NDM2NjkgNTAuMjY1NDgyNDU3NDM2NjkiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+ICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgZHVyPSIxcyIga2V5VGltZXM9IjA7MSIgdmFsdWVzPSIwIDUwIDUwOzM2MCA1MCA1MCI+PC9hbmltYXRlVHJhbnNmb3JtPiAgPC9jaXJjbGU+PC9zdmc+");
-                      max-height: 400px;
-                    }
-</style>
-
-<div class="bk-root" id="7b0543dc-c84e-416d-896c-1741cbecf45a" data-root-id="3831"></div>
-
-<p>I've wanted this to be standard functionality for a long time; six
-years ago I briefly started a <a href="/20150119-gog_a_separate_layer_for_visualization/" title="gog: a separate layer for visualization">project</a> that included it in its
-proof of concept, as in this screenshot:</p>
-<p><img alt="gog screenshot" src="gogi_iris.png"></p>
-<p>The interactive example above is the hvPlot <a href="https://hvplot.holoviz.org/reference/pandas/scatter.html" title="Scatter">Scatter example</a> saved
-to HTML as in <a href="https://hvplot.holoviz.org/user_guide/Viewing.html#saving-plots" title="Saving plots">Saving plots</a> (code is <a href="https://github.com/ajschumacher/try_holoviz">on GitHub</a>) and then
-copy-pasted into my blog Markdown file. The interactive plots
-unfortunately don't show up in GitHub's Jupyter Notebook preview.</p>
-<p><a href="https://hvplot.holoviz.org/">hvPlot</a> is just one corner of HoloViz and related packages, but the
-interactive scatterplot functionality alone is enough for me to be a
-big fan.</p>    
-    ]]></description>
-<link>http://planspace.org/20211126-try_holoviz_for_python_plotting/</link>
-<guid>http://planspace.org/20211126-try_holoviz_for_python_plotting/</guid>
-<pubDate>Fri, 26 Nov 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
