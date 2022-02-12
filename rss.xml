@@ -7,6 +7,84 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Still Life, by Louise Penny</title>
+<description><![CDATA[
+
+<p>Put on your Sony ‘Discman’ and grab your palm pilot, because it's
+<a href="https://en.wikipedia.org/wiki/Louise_Penny" title="Wikpedia: Louise Penny">Louise Penny</a>'s first book featuring
+<a href="https://en.wikipedia.org/wiki/Chief_Inspector_Armand_Gamache" title="Chief Inspector Armand Gamache">Chief Inspector Armand Gamache</a> (read "Galonche") from 2006!</p>
+<blockquote>
+<p>‘Life is change. If you aren’t growing and evolving you’re standing
+still, and the rest of the world is surging ahead. Most of these
+people are very immature. They lead “still” lives, waiting.’ (Myrna,
+page 140)</p>
+</blockquote>
+<p>I would be very pleased if I wrote a book as good as this. It's
+charming fun with a bit of morality play blended in.</p>
+<blockquote>
+<p>‘We choose our thoughts. We choose our perceptions. We choose our
+attitudes. We may not think so. We may not believe it, but we do. I
+absolutely know we do. I’ve seen enough evidence, time after time,
+tragedy after tragedy. Triumph after triumph. It’s about choice.’
+(Gamache, page 80)</p>
+</blockquote>
+<p>Stoic? Positive psychology? Right wing?</p>
+<p>There's little sympathy for men's-rights-style whining:</p>
+<blockquote>
+<p>"We’re not respected just by virtue of being English. It’s not the
+same thing. Do you have any idea how much our lives have changed in
+the last twenty years? All the rights we’ve lost?" (Ben Hadley, page
+50)</p>
+</blockquote>
+<p>I enjoyed the art world dalliance, which reminded me somewhat of the
+end of Vonnegut's Bluebeard. And Nichol! Who's never been Nichol? So
+awful! So fun to hate, and/or pity.</p>
+<p>I collected things of varying degrees of Canadianness that I looked
+up. (Do compound bows have built-in triggers in Montreal?)</p>
+<ul>
+<li>as hard as the <a href="https://en.wikipedia.org/wiki/Canadian_Shield">Canadian Shield</a>: a large area of exposed
+   Precambrian rock</li>
+<li><a href="https://carnegiemnh.org/b-is-for-beaver-sticks/">beaver stick</a>: just what it sounds like</li>
+<li><a href="https://en.wikipedia.org/wiki/Montreal_Canadiens">Canadiens</a>: the Montreal hockey team</li>
+<li>cured Canadian bacon: but they mean regular bacon</li>
+<li><em>dépanneur</em>: A convenience store, especially one that sells
+   alcohol (in Quebec)</li>
+<li><a href="https://en.wikipedia.org/wiki/Eaton%27s_catalogue">Eaton's catalogue</a>: one of the first mail-order catalogs
+   distributed by a Canadian retail store</li>
+<li>He’s a Golden Mile boy: refers to a rich <a href="https://en.wikipedia.org/wiki/Golden_Square_Mile" title="Golden Square Mile">area</a> of Montreal</li>
+<li>Inspector Clouseau: The Chief Inspector from The Pink Panther</li>
+<li>Inuk island: apparently Inuk is interchangeable with Inuit? Is this
+   a specific place?</li>
+<li>"Lee Valley catalogue": "Lee Valley Tools Ltd. is a Canadian
+   business specializing in tools and gifts for woodworking and
+   gardening."</li>
+<li>Lune Moon: a funny Canadian <a href="https://www.flickr.com/photos/hazboy/30114619898" title="Lune Moons">snack cake</a></li>
+<li>‘May I have his co-ordinates, please?’ (page 61) was asking for a
+   person's location. Is this a common phrasing?</li>
+<li>Méteo Media: "a Canadian French-language weather information
+   specialty channel and web site"</li>
+<li>tabarouette, tabarnouche: "Mild version of french-canadian curse
+   word tabarnak."</li>
+<li>Tabernacle: This is a curse, somehow?</li>
+<li>tête carrée: "square head" / blockhead</li>
+<li>three extra large ‘All Dressed’ from Pizza Pizza: "Montreal
+   <a href="https://good-pizza-great-pizza.fandom.com/wiki/List_of_orders#All-Dressed">slang</a> for the works"</li>
+<li>tins of soft drinks: Is this what they say in Quebec?</li>
+<li>toques: normal winter hats, but in Canada (read "tooks")</li>
+<li>to twig: To realise something; to catch on; to recognize someone or
+   something (British?)</li>
+<li>village cozy: A <a href="https://en.wikipedia.org/wiki/Cozy_mystery" title="Wikipedia: Cozy mystery">mystery genre</a> referenced by a character. Still
+   Life is pretty close to a village cozy.</li>
+<li>‘yes yes’ cookies: Apparently these are like the Girl Scouts'
+   "Somoas"</li>
+</ul>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220212-still_life_by_louise_penny/</link>
+<guid>http://planspace.org/20220212-still_life_by_louise_penny/</guid>
+<pubDate>Sat, 12 Feb 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>7 Habits weekly cards</title>
 <description><![CDATA[
 
@@ -2222,45 +2300,6 @@ approximation of correct propagation of uncertainty.</p>
 <link>http://planspace.org/20211211-significant_figures_addition_is_too_precise/</link>
 <guid>http://planspace.org/20211211-significant_figures_addition_is_too_precise/</guid>
 <pubDate>Sat, 11 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Significant Figures: Gaussian uncertainty, σ=2.5eN</title>
-<description><![CDATA[
-
-<p>Significant Figures (or Significant Digits) is a tool for an important
-task: tracking precision. Ironically, the meaning of a number with
-Significant Figures is often not defined precisely. I propose that if
-a number's rightmost significant digit is \( D \times 10^N \), this
-means uncertainty is Gaussian with standard deviation \( \sigma = 2.5
-\times 10^N \).</p>
-<p><img alt="" src="gaussian.png"></p>
-<p>The final digit is “<a href="https://chem.libretexts.org/Courses/University_of_British_Columbia/CHEM_100%3A_Foundations_of_Chemistry/02%3A_Measurement_and_Problem_Solving/2.03%3A_Significant_Figures_-_Writing_Numbers_to_Reflect_Precision">significant but not certain</a>” — which shouldn't
-mean we know <em>nothing</em> about what the digit is likely to be, and
-shouldn't mean that there's no chance the neighboring digit could be
-wrong. A purely digit-based interpretation is unnatural.</p>
-<p><img alt="" src="uniform.png"></p>
-<p>A particular instrument (or other source) may generate measurements
-with a different distribution of uncertainty. In such cases, that
-information should be captured specifically, and Significant Figures
-alone is not sufficient. For measurements where there isn't more
-specific information, a Gaussian distribution is a good choice.</p>
-<p>Even when given a precise interpretation, Significant Figures is a
-system tied to base ten numbers and manual measurement that asks a
-single number to convey both value and uncertainty. There's only so
-much one number can mean. Sig Figs is better than not tracking
-precision at all, but better yet is to be explicit about precision.</p>
-<hr>
-<p>I would love to find other sources or interpretations that agree or
-disagree with this definition. So far I haven't found anything
-explicit enough to really compare one way or another. References (and
-feedback of any kind) are especially welcome here!</p>
-<p>Visualization code is <a href="https://github.com/ajschumacher/sigfigs">on GitHub</a>.</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20211209-significant_figures_gaussian_uncertainty/</link>
-<guid>http://planspace.org/20211209-significant_figures_gaussian_uncertainty/</guid>
-<pubDate>Thu, 09 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

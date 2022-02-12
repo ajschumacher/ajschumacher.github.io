@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-02-12: [Still Life, by Louise Penny](/20220212-still_life_by_louise_penny/)
  * 2022-02-06: [7 Habits weekly cards](/20220206-7_habits_weekly_cards/)
  * 2022-01-09: [System Design Interview, by Xu](/20220109-system_design_interview_by_xu/)
  * 2022-01-08: [Resume dos and don'ts](/20220108-resume_dos_and_donts/)
