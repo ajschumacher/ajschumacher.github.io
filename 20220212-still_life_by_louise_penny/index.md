@@ -79,7 +79,7 @@ up. (Do compound bows have built-in triggers in Montreal?)
  * village cozy: A [mystery genre][] referenced by a character. Still
    Life is pretty close to a village cozy.
  * ‘yes yes’ cookies: Apparently these are like the Girl Scouts'
-   "Somoas"
+   "Samoas"
 
 [Canadian Shield]: https://en.wikipedia.org/wiki/Canadian_Shield
 [beaver stick]: https://carnegiemnh.org/b-is-for-beaver-sticks/
