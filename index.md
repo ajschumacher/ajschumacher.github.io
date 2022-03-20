@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-03-20: [A Visit from the Goon Squad, by Egan](/20220320-visit_from_the_goon_squad_by_egan/)
  * 2022-02-13: [Creativity, Inc., by Catmull](/20220213-creativity_inc_by_catmull/)
  * 2022-02-12: [Still Life, by Louise Penny](/20220212-still_life_by_louise_penny/)
  * 2022-02-06: [7 Habits weekly cards](/20220206-7_habits_weekly_cards/)
