@@ -7,6 +7,65 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Smarter, Faster, Better, by Duhigg</title>
+<description><![CDATA[
+
+<p>This is a very readable book that talks about motivation, teams
+(psychological safety), appropriate focus, goal-setting (big and
+SMART), management, decision-making, innovation, and absorbing data,
+all through interesting stories. There's some good stuff.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<p>Duhigg connects his book about productivity to the idea of
+<a href="https://en.wikipedia.org/wiki/The_Power_of_Habit" title="The Power of Habit">his first book</a> on habits.</p>
+<blockquote>
+<p>"Productive people have habits—what psychologists might call
+'contemplative routines'—that push them to <em>think more deeply</em> about
+the choices they make." (page 6)</p>
+</blockquote>
+<hr>
+<p>The book spends substantial time exploring possible biological
+<a href="https://en.wikipedia.org/wiki/Striatum" title="Striatum">determinants</a> of motivation, and then becomes less fatalistic.</p>
+<blockquote>
+<p>"Motivation is more like a skill, akin to reading or writing, that
+can be learned and honed. Scientists have found that people can get
+better at self-motivation if they practice the right way. The trick,
+researchers say, is realizing that a prerequisite to motivation is
+believing we have authority over our actions and surroundings. To
+motivate ourselves, we must feel like we are in control." (page 19)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The division [Google's People Analytics] had successfully pushed to
+increase paid maternity leave from twelve to eighteen weeks because
+computer models indicated that would reduce the frequency of new
+mothers quitting by 50 percent." (page 42)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In the age of automation, knowing how to manage your focus is more
+critical than ever." (page 76)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Most pharaohs were considered elderly if they made it to
+thirty-five." (page 194)</p>
+</blockquote>
+<p>I think this is not correct; see
+<a href="/20200806-life_expectancy_is_historically_misleading/" title="Life expectancy is historically misleading">Life expectancy is historically misleading</a>.</p>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis" title="Intermediate disturbance hypothesis">Intermediate disturbance hypothesis</a></p>
+<hr>
+<blockquote>
+<p>"Productivity is about recognizing choices that other people often
+overlook." (page 284)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20220327-smarter_faster_better_by_duhigg/</link>
+<guid>http://planspace.org/20220327-smarter_faster_better_by_duhigg/</guid>
+<pubDate>Sun, 27 Mar 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>A Visit from the Goon Squad, by Egan</title>
 <description><![CDATA[
 
@@ -2032,39 +2091,6 @@ expressive than Significant Figures to report.</p>
     ]]></description>
 <link>http://planspace.org/20211212-significant_figures_rounding_destroys_information/</link>
 <guid>http://planspace.org/20211212-significant_figures_rounding_destroys_information/</guid>
-<pubDate>Sun, 12 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>“Show your work” means “Write a proof”</title>
-<description><![CDATA[
-
-<p>At any level of mathematics, “showing your work” should not be a
-chore, but a chance to communicate an argument for correctness: to
-write a proof. “Work” as “proof” keeps mathematics relevant,
-authentic, and interesting.</p>
-<p>Many school math exercises can be answered with calculators. But how
-do we know the calculator is correct? The difference between inductive
-(“the calculator has always been right”) and deductive (“this answer
-is proven correct”) is important. The answer itself isn't important;
-it's the demonstration that the answer follows from the question.</p>
-<p>High school geometry is sometimes pointed to as the first place
-students encounter the idea of proofs. This need not be. Arithmetic is
-a process of proof, using theorems of single-digit operations and
-place-based algorithms to build new results. In this way, 2+2=4 is
-used to demonstrate that 22+22=44, and so on. These could be called
-constructive proofs.</p>
-<p>“Work” as “proof” opens up the world of math. “Checking your work” is
-finding a second proof. For the advanced student who might have been
-bored with “showing work,” there is an invitation to find further
-proofs, understand algorithms more deeply, and be creative, rather
-than being limited to mechanical processes.</p>
-<p>Computational fluency is not without value, but math is about much
-more. We waste opportunities to deliver on teaching mathematical ways
-of thinking if students don't realize that they're constructing
-logical arguments in all their math classes.</p>    
-    ]]></description>
-<link>http://planspace.org/20211212-show_your_work_means_write_a_proof/</link>
-<guid>http://planspace.org/20211212-show_your_work_means_write_a_proof/</guid>
 <pubDate>Sun, 12 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
