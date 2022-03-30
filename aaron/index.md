@@ -37,6 +37,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+ * [SQL technical interview prep](https://docs.google.com/presentation/d/1vv6vTB-l41zhb7_EID6PetXZBOJSOT07Qk_rH8E-1C4/) for [Hack Diversity](https://www.hackdiversity.com/) on Thursday 2022-03-24
  * [Databases, data modeling, and SQL](https://docs.google.com/presentation/d/1xkbuNVuGIIPd7XtVK0I4qHFh1phH-tvcH6exuLZtugk/) for [Hack Diversity](https://www.hackdiversity.com/) on Friday 2022-02-04
  * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on
    Monday April 5, 2021
