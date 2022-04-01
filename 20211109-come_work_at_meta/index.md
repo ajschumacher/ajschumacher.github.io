@@ -5,8 +5,7 @@ which is great because Meta is [hiring][]! I'd be happy to refer you;
 send [me](/aaron/) the following:
 
 [Meta]: https://meta.com/
-[hiring]: https://www.facebookcareers.com/jobs
-
+[hiring]: https://www.metacareers.com/jobs
 
 1. Your full name
 2. Your email address
@@ -39,7 +38,7 @@ send [me](/aaron/) the following:
     * Portfolio website link
     * Brief note (one paragraph or less) on why you should be hired
 
-[official jobs site]: https://www.facebookcareers.com/jobs
+[official jobs site]: https://www.metacareers.com/jobs
 
 
 Once I have the above, I can put you into the system. After that, I
