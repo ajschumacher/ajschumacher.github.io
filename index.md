@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-04-04: [Red Roulette, by Shum](/20220404-red_roulette_by_shum/)
  * 2022-04-03: [Seven Games, by Roeder](/20220403-seven_games_by_roeder/)
  * 2022-04-02: [Elder Race, by Tchaikovsky](/20220402-elder_race_by_tchaikovsky/)
  * 2022-03-27: [Smarter, Faster, Better, by Duhigg](/20220327-smarter_faster_better_by_duhigg/)

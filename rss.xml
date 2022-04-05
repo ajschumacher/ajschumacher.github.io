@@ -7,6 +7,20 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Red Roulette, by Shum</title>
+<description><![CDATA[
+
+<p>The success of this <a href="https://en.wikipedia.org/wiki/Red_Roulette">book</a> is that <a href="https://en.wikipedia.org/wiki/Desmond_Shum">Shum</a> straddles sympathetic
+and repulsive. He is deeply flawed and yet less flawed than the China
+he describes. He is an unreliable narrator but perhaps among the most
+reliable available. His viewpoint is part of the view.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220404-red_roulette_by_shum/</link>
+<guid>http://planspace.org/20220404-red_roulette_by_shum/</guid>
+<pubDate>Mon, 04 Apr 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Seven Games, by Roeder</title>
 <description><![CDATA[
 
@@ -2096,141 +2110,6 @@ genetic influence or untethered from biology." (page 247)</p>
 <link>http://planspace.org/20211224-genetic_lottery_harden/</link>
 <guid>http://planspace.org/20211224-genetic_lottery_harden/</guid>
 <pubDate>Fri, 24 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Correlation can help approximate variance of a difference</title>
-<description><![CDATA[
-
-<p>Even if random variables \( \textbf{A} \) and \( \textbf{δ} \) are
-uncorrelated, realized data \( A \) and \( \delta \) will happen
-to have some covariance. If \( B = A + \delta \), then \(
-\text{var}(B) = \text{var}(A) + \text{var}(\delta) + 2\text{cov}(A,
-\delta) \), and estimating any one variance by the others will be off
-by the \( 2\text{cov}(A, \delta) \) term. For \( \text{var}(\delta)
-\), however, the estimate \( \text{var}(B)(1 - \text{corr}(A, B)^2)
-\) will usually be closer to correct, at the cost of being slightly
-biased. (But don't forget that doing \( \text{var}( \delta ) \)
-directly is a great first choice.)</p>
-<h3>Three methods for \( \text{var}( \delta ) \), when \( B = A + \delta \)</h3>
-<p>The case of \( B = A + \delta \) (so that \( \delta = B - A \)) is
-central to the paired t-test, for example. The variance of \( A \)
-and \( B \) could each be large, but the variance of \( \delta \)
-can still be small, making it easier to reject the null for \(
-\textbf{δ} \), for example.</p>
-<p><em>Be careful: We're trying to estimate a variance, so we're interested
-in the variance of the estimate of the variance, which can be
-confusing. Hopefully the language is clear enough here.</em></p>
-<h4>1) Variance of Differences</h4>
-<p>The obvious thing to do is to subtract and calculate the variance of
-the differences: \( \text{var}( \delta ) = \text{var}( B - A ) \).
-This is a good idea and what you should do. It's unbiased and has low
-variance (for the estimate of the true variance of \( \textbf{δ}
-\)).</p>
-<p>Why not do it like this? Honestly I'm not sure. Maybe you don't have
-complete data, and you're looking for a \( \delta_1 - \delta_2 \)
-where the means of \( A_1 \) and \( A_2 \) are assumed equal so
-you're using \( B_1 - B_2 \) but you want the (smaller) variance of
-\( \delta_1 - \delta_2 \)? So you'll estimate some things with
-complete cases even though the main effect is estimated with all \( B
-\) data? Why not still use this method with the complete cases? Maybe
-you're not using simple subtraction, but some more complex regression
-with multiple variables? In that case, why not use variance of the
-residuals directly? Do you just want a more complicated method?</p>
-<h4>2) Difference of Variances</h4>
-<p>By the <a href="/20201030-the_variance_sum_law_is_interesting/">variance sum law</a>, \( \text{var}( \textbf{B} ) =
-\text{var}( \textbf{A} ) + \text{var}( \textbf{δ} ) \), if \(
-\textbf{A} \) and \( \textbf{δ} \) are uncorrelated, so \(
-\text{var}( \textbf{δ} ) = \text{var}( \textbf{B} ) - \text{var}(
-\textbf{A} ) \). Real data is not generally perfectly uncorrelated,
-however: \( \text{var}(\delta) = \text{var}(B) - \text{var}(A) -
-2\text{cov}(A, \delta) \). The covariance term is zero in
-expectation, so estimating \( \text{var}(\delta) = \text{var}(B) -
-\text{var}(A) \) is unbiased. But the \( 2\text{cov}(A, \delta) \)
-is a kind of noise term, and adds variance to the estimate of \(
-\text{var}( \textbf{δ} )\).</p>
-<h4>3) Using Correlation</h4>
-<p>It isn't obvious, but using \( \text{var}(B)(1 - \text{corr}(A, B)^2)
-\) to estimate \( \text{var}( \textbf{δ} ) \) is much like using
-the Difference of Variances, but with a generally smaller (but always
-positive) error coming from \( \text{cov}(A, \delta) \). Proceeding
-in small steps:</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) - \text{var}(A) - 2\text{cov}(A, \delta) \]</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) - \left( \text{var}(A) + 2\text{cov}(A, \delta) \right) \]</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \frac{\text{var}(A) + 2\text{cov}(A, \delta)}{ \text{var}(B) } \right) \]</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \frac{\text{var}(A)^2 + 2\text{var}(A)\text{cov}(A, \delta)}{ \text{var}(A) \text{var}(B) } \right) \]</p>
-<p>This has been algebraic. Now add \( \text{cov}(A, \delta)^2 \) to
-the fractional term's numerator. (This is an error in the estimate, to
-get to the destination.)</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \frac{\text{var}(A)^2 + 2\text{var}(A)\text{cov}(A, \delta) + \text{cov}(A, \delta)^2 }{ \text{var}(A) \text{var}(B) } \right) \]</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \frac{ ( \text{var}(A) + \text{cov}(A, \delta))^2 }{ \text{var}(A) \text{var}(B) } \right) \]</p>
-<p>The bit squared in the fraction's numerator is \( \sum{(A_i - \bar{A}
-)^2} + \sum{(A_i - \bar{A} )(\delta_i - \bar{\delta})} \), which is
-\( \sum{(A_i - \bar{A})(A_i - \bar{A} + \delta_i - \bar{\delta})}
-\). Since \( B_i = A_i + \delta_i \) and \( \bar{B} = \bar{A} +
-\bar{\delta} \), that's \( \sum{(A_i - \bar{A})(B_i - \bar{B})} \),
-which is \( \text{cov}(A, B) \).</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \frac{ \text{cov}(A, B)^2 }{ \text{var}(A) \text{var}(B) } \right) \]</p>
-<p>So at last, by definition:</p>
-<p>\[ \text{var}(\delta) = \text{var}(B) \left( 1 - \text{corr}(A, B)^2 \right) \]</p>
-<p>QED. The error introduced is \( \text{cov}(A, \delta)^2 /
-\text{var}(A) \), which will tend to be considerably smaller in
-absolute value than the \( 2\text{cov}(A, \delta) \) error in the
-Difference of Variances method because \( 0 \le |\text{cov}(A,
-\delta)| / \text{var}(A) \ll 2 \). This error is however positive in
-expectation, so the estimate is biased: it will be slightly too small.</p>
-<h3>Computational demonstration</h3>
-<p>Generating 1,000 datasets where each of \( A \) and \( \delta \)
-have 100 values drawn at random from Gaussians with variance 9 and 16,
-respectively, the three methods above generate estimates of \(
-\text{var}( \textbf{δ} ) \) as follows:</p>
-<pre><code>| Method                  | Mean var(d) estimate | var(estimate) |
-|-------------------------|----------------------|---------------|
-| Variance of Differences |                15.98 |          5.10 |
-| Difference of Variances |                15.95 |         10.69 |
-| Using Correlation       |                15.82 |          5.12 |</code></pre>
-
-<p>As expected, the method Using Correlation comes out more below the
-true value of 16 on average, but its variance is comparable to that of
-the Variance of Differences.</p>
-<p>The bias is already small with just 100 samples, and gets smaller
-still as samples get bigger and sample correlations tend to be
-smaller.</p>
-<p>Here's clumsy <a href="https://www.r-project.org/">R</a> code to do the experiment:</p>
-<pre><code class="language-r">trials = 1000
-samples = 100
-
-set.seed(0)
-est1 = c()
-est2 = c()
-est3 = c()
-
-for (i in 1:trials) {
-  A = rnorm(samples, sd=3)  # var=9
-  d = rnorm(samples, sd=4)  # var=16
-  B = A + d  # var=25, in population sense
-  est1 = c(est1, var(B - A))  # same as var(d)
-  est2 = c(est2, var(B) - var(A))
-  est3 = c(est3, var(B) * (1 - cor(A, B)^2))
-}
-
-mean(est1)
-## [1] 15.98799
-mean(est2)
-## [1] 15.9451
-mean(est3)
-## [1] 15.82234
-var(est1)
-## [1] 5.09602
-var(est2)
-## [1] 10.69393
-var(est3)
-## [1] 5.117983</code></pre>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20211219-correlation_can_help_approximate_variance_of_a_difference/</link>
-<guid>http://planspace.org/20211219-correlation_can_help_approximate_variance_of_a_difference/</guid>
-<pubDate>Sun, 19 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
