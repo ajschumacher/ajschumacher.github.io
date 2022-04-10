@@ -7,6 +7,24 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Beginning of Infinity, by Deutsch</title>
+<description><![CDATA[
+
+<p>I read <a href="https://en.wikipedia.org/wiki/The_Beginning_of_Infinity" title="The Beginning of Infinity">this book</a> years ago (2017 or earlier) and didn't write it
+up at the time, but some of the themes keep coming up.
+<a href="/20170825-characteristics_of_good_theories/" title="Characteristics of good theories">Characteristics of good theories</a>, for one thing. But more so the
+fundamental optimism that we can keep going indefinitely. Deutsch is
+focused on knowledge, understanding, and explanations—but perhaps also
+for prosperity, as in a post-scarcity "Star Trek" future (<a href="/20210401-trekonomics_by_saadia/" title="Trekonomics, by Saadia">Saadia</a>,
+<a href="/20201109-economics_of_star_trek_by_webb/" title="The Economics of Star Trek, by Webb">Webb</a>). Deutsch's thoughts on quantum theory are fun, but the
+optimistic worldview may be more valuable.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</link>
+<guid>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</guid>
+<pubDate>Sun, 10 Apr 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Myth of the Rational Voter, by Caplan</title>
 <description><![CDATA[
 
@@ -2021,33 +2039,6 @@ think can support this:</p>
 <link>http://planspace.org/20211228-habits_for_2022_ratio/</link>
 <guid>http://planspace.org/20211228-habits_for_2022_ratio/</guid>
 <pubDate>Tue, 28 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>naldaramjui.com is closed</title>
-<description><![CDATA[
-
-<p>Sorry! After over ten years, I've turned off my old site for
-practicing <a href="https://en.wikipedia.org/wiki/Test_of_Proficiency_in_Korean" title="Test of Proficiency in Korean">TOPIK</a> test questions.</p>
-<ul>
-<li>The <a href="http://www.topik.go.kr/">official TOPIK site</a> is much better than it used to be. It
-   has practice questions <a href="https://www.topik.go.kr/TWSTDY/TWSTDY0010.do">every day</a>. The interface seems to be
-   still largely in Korean even if you switch the language selector at
-   the top, but it's not bad! You can find a lot of resources there.</li>
-<li>The site ran on Google App Engine, using their oldest Python setup.
-   It had been pretty stable, but in the last year or so it stopped
-   handling cookies right, breaking the answer-evaluating
-   functionality, and it didn't seem worth re-working to restore.</li>
-<li>Some bots were abusing the simple sign-up form to sign up people
-   who didn't want to be signed up, which was not cool.</li>
-</ul>
-<p>If you want to see what other kinds of things I'm up to, check out the
-<a href="/">blog</a>! 화이팅! 😄</p>
-<hr>
-<p><img alt="His name is 무기." src="fs.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20211227-naldaramjui_is_closed/</link>
-<guid>http://planspace.org/20211227-naldaramjui_is_closed/</guid>
-<pubDate>Mon, 27 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
