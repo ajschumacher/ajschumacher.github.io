@@ -7,6 +7,20 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Before the Coffee Gets Cold, by Kawaguchi</title>
+<description><![CDATA[
+
+<p>It's a cute short <a href="https://en.wikipedia.org/wiki/Before_the_Coffee_Gets_Cold">book</a>. It reads very clearly as a novelization of
+a one-set play. It's about interpersonal relationships and making
+tough choices even when you have incorrect information. In the end,
+the real time travel was inside us all along.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220604-before_the_coffee_gets_cold_by_kawaguchi/</link>
+<guid>http://planspace.org/20220604-before_the_coffee_gets_cold_by_kawaguchi/</guid>
+<pubDate>Sat, 04 Jun 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Beginning of Infinity, by Deutsch</title>
 <description><![CDATA[
 
@@ -2009,36 +2023,6 @@ page 226</p>
 <link>http://planspace.org/20211229-trustworthy_online_controlled_experiments/</link>
 <guid>http://planspace.org/20211229-trustworthy_online_controlled_experiments/</guid>
 <pubDate>Wed, 29 Dec 2021 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Habits for 2022: “ratio”</title>
-<description><![CDATA[
-
-<p>In 2021, I worked on improving my <a href="/20211030-my_daily_routine/" title="My daily routine">daily routine</a>. I need to keep
-working on it, but as 2022 approaches, I was thinking about other
-changes to make. In the CGP Grey “<a href="https://www.youtube.com/watch?v=NVGuFdX5guE&amp;ab_channel=CGPGrey" title="CGP Grey: Your Theme">theme</a>” style, I might say
-“ratio” as in “ratio of quality to junk.” Here are some practices I
-think can support this:</p>
-<ul>
-<li><strong>Only check the news on Sundays.</strong> I check the news (and my phone
-   generally) too much, and it doesn't really make my life better to
-   check the news several times a day. Sunday is the day for news.</li>
-<li><strong>Keep a book ready in Kindle app.</strong> When I <em>do</em> pick up my phone,
-   there should be something worthwhile there. Read a book, or put the
-   phone down.</li>
-<li><strong>Skim more.</strong> I overcommit to reading things the slow way, which
-   takes a lot of time and prevents me from opening books I don't want
-   to commit to. I hate the phrase “speed reading” because I don't
-   think it's real reading, but skimming in the sense of “survey” in
-   <a href="https://en.wikipedia.org/wiki/SQ3R" title="survey, question, read, recite and review">SQ3R</a> is a distinct thing that's worthwhile. I recently did a
-   quick <a href="/20211213-practical_data_science_with_python_by_george/" title="Practical Data Science with Python, by George">book review</a> based on skimming and I thought it was fair
-   and I learned a few things too. Skimming could get me connected
-   with my backlog of nonfiction.</li>
-</ul>    
-    ]]></description>
-<link>http://planspace.org/20211228-habits_for_2022_ratio/</link>
-<guid>http://planspace.org/20211228-habits_for_2022_ratio/</guid>
-<pubDate>Tue, 28 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
