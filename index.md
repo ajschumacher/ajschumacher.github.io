@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-06-11: [Mastering Python, by van Hattem](/20220611-mastering_python_by_van_hattem/)
  * 2022-06-04: [Before the Coffee Gets Cold, by Kawaguchi](/20220604-before_the_coffee_gets_cold_by_kawaguchi/)
  * 2022-04-10: [The Beginning of Infinity, by Deutsch](/20220410-beginning_of_infinity_by_deutsch/)
  * 2022-04-05: [The Myth of the Rational Voter, by Caplan](/20220405-myth_of_the_rational_voter_by_caplan/)
