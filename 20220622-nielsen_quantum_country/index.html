@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Nielsen's Quantum Country</title>
+  </head>
+  <body>
+    <article>
+<h1>Nielsen's Quantum Country</h1>
+<p class="date">Wednesday June 22, 2022</p>
+<p>You can understand the force of gravity as proportional to one over
+distance squared without understanding why that should be, and this is
+the manner in which Nielsen explains quantum mechanics in his
+<a href="https://quantum.country/" title="Quantum Country">series of essays</a>—and with considerable clarity.</p>
+<p><img alt="summary" src="summary.jpg" /></p>
+<p>I knew <a href="https://michaelnielsen.org/" title="Michael Nielsen">Nielsen</a> first from his book
+<a href="http://neuralnetworksanddeeplearning.com/" title="Neural Networks and Deep Learning">Neural Networks and Deep Learning</a>. I hadn't realized he was a
+quantum physicist first! His popular <a href="https://www.amazon.com/Quantum-Computation-Information-10th-Anniversary/dp/1107002176" title="Quantum Computation and Quantum Information">textbook</a> with Chuang was
+published in 2001, and his YouTube series
+<a href="https://www.youtube.com/playlist?list=PL1826E60FD05B44E4" title="Quantum computing for the determined">Quantum computing for the determined</a> came out in 2010. So the 2019
+<a href="https://quantum.country/" title="Quantum Country">Quantum Country</a> was a return to the topic.</p>
+<p><a href="https://andymatuschak.org/" title="Andy Matuschak">Matuschak</a> is a co-author on the project, and my guess is he built
+the “mnemonic medium” it uses. There are flashcards. The
+implementation relies on an account mechanism that doesn't work very
+well. I love spaced repetition (<a href="/20201009-anki_is_easy/" title="Anki is easy">1</a>, <a href="/20210908-spaced_repetition_is_o_log_n_sustainable/" title="Spaced repetition is O(log n) sustainable">2</a>) but I think the strength
+of the project is Nielsen's exposition.</p>
+<p>A few takeaways in addition to the summary image above:</p>
+<ul>
+<li>Entanglement is key: Probabilities are not independent, which is
+   how you get the exponential capability of quantum computing with
+   more qubits. (See nutshell #4.)<ul>
+<li>The usual entangled pair is just one where all the probability
+   is on 00 and 11, with none on 01 or 10.</li>
+</ul>
+</li>
+<li>Quantum search gives \( O(\sqrt{n}) \) general performance.
+   (<a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" title="Shor's algorithm">Shor's factoring</a> is faster but not much covered in the text.)</li>
+<li>Quantum teleportation does <em>not</em> move information faster than the
+   speed of light, because you have to send classical information as
+   part of the procedure.</li>
+</ul>
+<p>A few explicitly unresolved issues:</p>
+<ul>
+<li>How do we feel, after <a href="https://en.wikipedia.org/wiki/Bell%27s_theorem" title="Bell's theorem">Bell inequality</a> results, about not having
+   <a href="https://en.wikipedia.org/wiki/Principle_of_locality#Quantum_mechanics">local realism</a>? (I would rather give up locality, I guess, but
+   Nielsen suggests giving up realism. Trippy.)</li>
+<li>The interpretation problem: What does a quantum state even mean?</li>
+<li>The measurement problem: What does it even mean to measure a
+   system?</li>
+</ul>
+<p>The whole thing is great. Fun with linear algebra! Check it out!</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

@@ -7,6 +7,58 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Nielsen's Quantum Country</title>
+<description><![CDATA[
+
+<p>You can understand the force of gravity as proportional to one over
+distance squared without understanding why that should be, and this is
+the manner in which Nielsen explains quantum mechanics in his
+<a href="https://quantum.country/" title="Quantum Country">series of essays</a>—and with considerable clarity.</p>
+<p><img alt="summary" src="summary.jpg"></p>
+<p>I knew <a href="https://michaelnielsen.org/" title="Michael Nielsen">Nielsen</a> first from his book
+<a href="http://neuralnetworksanddeeplearning.com/" title="Neural Networks and Deep Learning">Neural Networks and Deep Learning</a>. I hadn't realized he was a
+quantum physicist first! His popular <a href="https://www.amazon.com/Quantum-Computation-Information-10th-Anniversary/dp/1107002176" title="Quantum Computation and Quantum Information">textbook</a> with Chuang was
+published in 2001, and his YouTube series
+<a href="https://www.youtube.com/playlist?list=PL1826E60FD05B44E4" title="Quantum computing for the determined">Quantum computing for the determined</a> came out in 2010. So the 2019
+<a href="https://quantum.country/" title="Quantum Country">Quantum Country</a> was a return to the topic.</p>
+<p><a href="https://andymatuschak.org/" title="Andy Matuschak">Matuschak</a> is a co-author on the project, and my guess is he built
+the “mnemonic medium” it uses. There are flashcards. The
+implementation relies on an account mechanism that doesn't work very
+well. I love spaced repetition (<a href="/20201009-anki_is_easy/" title="Anki is easy">1</a>, <a href="/20210908-spaced_repetition_is_o_log_n_sustainable/" title="Spaced repetition is O(log n) sustainable">2</a>) but I think the strength
+of the project is Nielsen's exposition.</p>
+<p>A few takeaways in addition to the summary image above:</p>
+<ul>
+<li>Entanglement is key: Probabilities are not independent, which is
+   how you get the exponential capability of quantum computing with
+   more qubits. (See nutshell #4.)<ul>
+<li>The usual entangled pair is just one where all the probability
+   is on 00 and 11, with none on 01 or 10.</li>
+</ul>
+</li>
+<li>Quantum search gives \( O(\sqrt{n}) \) general performance.
+   (<a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" title="Shor's algorithm">Shor's factoring</a> is faster but not much covered in the text.)</li>
+<li>Quantum teleportation does <em>not</em> move information faster than the
+   speed of light, because you have to send classical information as
+   part of the procedure.</li>
+</ul>
+<p>A few explicitly unresolved issues:</p>
+<ul>
+<li>How do we feel, after <a href="https://en.wikipedia.org/wiki/Bell%27s_theorem" title="Bell's theorem">Bell inequality</a> results, about not having
+   <a href="https://en.wikipedia.org/wiki/Principle_of_locality#Quantum_mechanics">local realism</a>? (I would rather give up locality, I guess, but
+   Nielsen suggests giving up realism. Trippy.)</li>
+<li>The interpretation problem: What does a quantum state even mean?</li>
+<li>The measurement problem: What does it even mean to measure a
+   system?</li>
+</ul>
+<p>The whole thing is great. Fun with linear algebra! Check it out!</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20220622-nielsen_quantum_country/</link>
+<guid>http://planspace.org/20220622-nielsen_quantum_country/</guid>
+<pubDate>Wed, 22 Jun 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Ride of a Lifetime, by Iger</title>
 <description><![CDATA[
 
@@ -1650,84 +1702,6 @@ mainland now.</p>
 <link>http://planspace.org/20220101-predicting_the_future_from_2022/</link>
 <guid>http://planspace.org/20220101-predicting_the_future_from_2022/</guid>
 <pubDate>Sat, 01 Jan 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A Calendar of Wisdom, by Tolstoy</title>
-<description><![CDATA[
-
-<p>In 2021, I followed <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy" title="Wikipedia: Leo Tolstoy">Tolstoy</a>'s <a href="https://en.wikipedia.org/wiki/A_Calendar_of_Wisdom" title="A Calendar of Wisdom">Calendar of Wisdom</a>. It's a
-page-a-day calendar, circa 1910, with a little more gravitas. I like
-the concept but I don't always agree with Tolstoy.</p>
-<blockquote>
-<p>"Guiding your thoughts is one of the keys to self-perfection."
-(August 9)</p>
-</blockquote>
-<p>Tolstoy is quite religious, pacifist, vegetarian, and
-back-to-the-earth. He mixes quotes and paraphrases with his own
-commentary and aphorisms. I can't quite recommend it all because I
-find some things objectionable, but I like the idea of having
-something to reflect on daily. Some of my most and least favorite
-selections are below.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<h3>Not bad, Tolstoy</h3>
-<blockquote>
-<p>"To accept the dignity of another person is an axiom." (April 16)</p>
-<p>"<em>Effort is the necessary condition of moral perfection.</em>" (July 23)</p>
-<p>"When a person tries to apply his intellect to the question “Why do
-I exist in this world?” he becomes dizzy. The human intellect cannot
-find the answers to such questions." (July 29)</p>
-<p>"Think good thoughts, and your thoughts will be turned into good
-actions. Everything begins in thought. Guiding your thoughts is one
-of the keys to self-perfection." (August 9)</p>
-<p>"<em>Real goodness is not something that can be acquired in an instant,
-but only through constant effort, because real goodness lies in
-constantly striving for perfection.</em>" (September 4)</p>
-<p>"You should abstain from arguments. They are very illogical ways to
-convince people. Opinions are like nails: the stronger you hit them,
-the deeper inside they go." (November 4, quoting Decimus Junius
-Juvenalis)</p>
-<p>"The more urgently you want to speak, the more likely it is that you
-will say something foolish." (November 4)</p>
-</blockquote>
-<hr>
-<h3>No thanks, Tolstoy</h3>
-<blockquote>
-<p>"<em>A marriage is a special obligation between two people, of opposite
-sexes, to have children only with each other. To break this pact is
-a lie, a deception, and a crime.</em>" (March 11)</p>
-<p>"We can improve this world only by distributing the true faith among
-the world's people." (March 17)</p>
-<p>"You should never feel depressed.</p>
-<p>A man should always feel happy; if he is unhappy, it means he is
-guilty." (June 29)</p>
-<p>"People know little, because they try to understand those things
-which are not open to them for understanding: God, eternity, spirit;
-or those which are not worth thinking about: how water becomes
-frozen, or a new theory of numbers, or how viruses can transmit
-illnesses." (July 27)</p>
-<p>"Only religion destroys egoism and selfishness, so that one starts
-to live life not only for himself. Only religion destroys the fear
-of death, only religion gives us the meaning of life, only religion
-creates equality among people, only religion sets a person free from
-outer pressures." (August 18)</p>
-<p>"It is dangerous to disseminate the idea that our life is purely the
-product of material forces and that it depends entirely on these
-forces." (August 22)</p>
-<p>"<em>Faith is the foundation on which all else rests; it is the root of
-all knowledge.</em>" (August 28)</p>
-<p>"Though the mission of a woman's life is the same as that of a man's
-life and the service to God is fulfilled by the same means, namely
-love, for the majority of women the method of this service is more
-specific than for men. This is the birth and upbringing of new
-workers for the Lord throughout life." (December 1)</p>
-<p>"There is nothing more natural for a woman than self-sacrifice."
-(December 1)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20211231-calendar_of_wisdom_by_tolstoy/</link>
-<guid>http://planspace.org/20211231-calendar_of_wisdom_by_tolstoy/</guid>
-<pubDate>Fri, 31 Dec 2021 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
