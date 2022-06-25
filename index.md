@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-06-25: [The Ministry for the Future, by Robinson](/20220625-ministry_future_robinson/)
  * 2022-06-22: [Nielsen's Quantum Country](/20220622-nielsen_quantum_country/)
  * 2022-06-20: [The Ride of a Lifetime, by Iger](/20220620-ride_of_a_lifetime_by_iger/)
  * 2022-06-11: [Mastering Python, by van Hattem](/20220611-mastering_python_by_van_hattem/)
