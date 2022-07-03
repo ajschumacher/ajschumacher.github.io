@@ -1,6 +1,7 @@
 # What are people doing?
 
-What are the jobs Americans do? Here's a view [based on][] the 2019 US Census 1% sample.
+What are the jobs Americans do? Here's a view [based on][] the 2019 US
+Census 1% sample. (Click to expand and collapse lists.)
 
 [based on]: https://github.com/ajschumacher/income "GitHub repository: ajschumacher/income"
 

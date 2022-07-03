@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-07-03: [Common jobs by income range](/20220703-common_jobs_by_income_range/)
  * 2022-07-02: [What are people doing?](/20220702-what_are_people_doing/)
  * 2022-06-25: [The Ministry for the Future, by Robinson](/20220625-ministry_future_robinson/)
  * 2022-06-22: [Nielsen's Quantum Country](/20220622-nielsen_quantum_country/)
