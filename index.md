@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-08-06: [Sea of Tranquility, by Mandel](/20220806-sea_of_tranquility_by_mandel/)
  * 2022-07-04: [That little voice in your head, by Gawdat](/20220704-that_little_voice_in_your_head_by_gawdat/)
  * 2022-07-03: [Common jobs by income range](/20220703-common_jobs_by_income_range/)
  * 2022-07-02: [What are people doing?](/20220702-what_are_people_doing/)

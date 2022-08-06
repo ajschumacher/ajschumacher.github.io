@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Sea of Tranquility, by Mandel</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Sea_of_Tranquility_(novel)" title="Sea of Tranquility (novel)">Sea of Tranquility</a> is a lot of fun. There's a good deal of amusing
+<a href="https://en.wikipedia.org/wiki/Autofiction">autofiction</a>, and fun mystery and sci-fi aspects. I have a fondness
+for time travel. It's not very long, and it reads really quickly.</p>
+<p>I agree with the author's take on the <a href="https://en.wikipedia.org/wiki/Simulation_hypothesis">simulation hypothesis</a>, which
+is that it doesn't really matter. I think, therefore I am. I think
+consciousness is a mysterious, special, and important part of this.</p>
+<p>You can tell it's sci-fi because in the future there are airships.
+There always have to be airships. <a href="https://en.wikipedia.org/wiki/Emily_St._John_Mandel" title="Emily St. John Mandel">Mandel</a>'s airships are not just
+dirigibles though! They're fast enough for daily global commutes.
+Exciting. More is not explained.</p>
+<blockquote>
+<p>"I think, as a species, we have a desire to believe that we’re
+living at the climax of the story. It’s a kind of narcissism. We
+want to believe that we’re uniquely important, that we’re living at
+the end of history, that now, after all these millennia of false
+alarms, now is finally the worst that it’s ever been, that finally
+we have reached the end of the world.”" (page 165)</p>
+<p>"“My personal belief is that we turn to postapocalyptic fiction not
+because we’re drawn to disaster, per se, but because we’re drawn to
+what we imagine might come next. We long secretly for a world with
+less technology in it.”" (page 167)</p>
+<p>"A life lived in a simulation is still a life." (page 210)</p>
+</blockquote>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220806-sea_of_tranquility_by_mandel/</link>
+<guid>http://planspace.org/20220806-sea_of_tranquility_by_mandel/</guid>
+<pubDate>Sat, 06 Aug 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>That little voice in your head, by Gawdat</title>
 <description><![CDATA[
 
@@ -2181,94 +2214,6 @@ here, but don't stop!</p>
 <link>http://planspace.org/20220109-system_design_interview_by_xu/</link>
 <guid>http://planspace.org/20220109-system_design_interview_by_xu/</guid>
 <pubDate>Sun, 09 Jan 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Resume dos and don'ts</title>
-<description><![CDATA[
-
-<p>I've thought about my resume, I've read <a href="/20220107-tech_resume_inside_out_by_orosz/" title="The Tech Resume Inside Out, by Orosz">a book about resumes</a>, and
-I've reviewed hundreds of candidate resumes. Your resume is the first
-work product you share with an employer. Make sure it's good. Here's a
-collection of resume advice, together with some appalling errors you
-wouldn't think people would make—until you see them happen.</p>
-<h3>Do this</h3>
-<ul>
-<li>Consider your audience and what you want them to think about you.</li>
-<li>Focus on what you've achieved. Provide <em>evidence</em>, not just claims.<ul>
-<li>Use this pattern:
-   <a href="https://www.inc.com/bill-murphy-jr/google-recruiters-say-these-5-resume-tips-including-x-y-z-formula-will-improve-your-odds-of-getting-hired-at-google.html" title="Google Recruiters Say Using the 'X-Y-Z Formula' on Your Resume Will Improve Your Odds of Getting Hired at Google">Accomplished X, as measured by Y, by doing Z.</a></li>
-</ul>
-</li>
-<li><a href="/20200715-communicate_immediately/" title="Communicate Immediately">Communicate immediately.</a> Be direct. Be clear.</li>
-<li>Use bullet-points, short sentences, rarely anything longer than one
-   line.</li>
-<li>Make the document look perfect. Format must be PDF.<ul>
-<li>Page layout matters. 1.5 pages is worse than 1 or 2.</li>
-<li>If at all possible, use LaTeX.</li>
-</ul>
-</li>
-</ul>
-<h3>Don't do this</h3>
-<ul>
-<li>Do not include these elements (as listed by <a href="https://www.cnbc.com/2021/07/20/remove-these-things-from-your-resume-asap-says-ceo-who-has-read-thousands-of-resumes.html" title="Remove these 7 things from your resume ‘ASAP,’ says CEO who has read more than 1,000 resumes this year">Peter Yang</a>):<ul>
-<li>Irrelevant hobbies and interests</li>
-<li>Too many soft skills</li>
-<li>Your professional headshot</li>
-<li>Personal pronouns (As in: “Managed a team,” not “I managed a
-   team”)</li>
-<li>The wrong kind of email (As in: AOL or Hotmail, etc.)</li>
-<li>Your mailing address (if you’re applying out-of-state)</li>
-<li>Job positions older than 10 to 15 years</li>
-</ul>
-</li>
-<li><a href="https://algodaily.com/lessons/the-perfect-software-engineering-resume-is-like-a-google-search-result/step-eight-8" title="from: Writing The Perfect Software Engineering Resume Is Like a Google Search Result">No Need For a Global Summary (Don't Have a Summary/Objective Section)</a></li>
-<li>Include no errors in content and formatting. (See next section for
-   examples.)</li>
-</ul>
-<h3>Resume horror</h3>
-<p>Your expertise should be clear from what you've done, not from some
-rating scale that you use on yourself. Please no star ratings or “An
-asterisk denotes *Expert level” etc.</p>
-<p>Don't say “40 Hours/Week” for every job you've worked. Full time
-employment is assumed. I'm thinking about resumes for salaried
-positions, but even if it were hourly, I don't think I'd want to see
-“40 Hours/Week” repeated over and over.</p>
-<p>Links and email addresses should not have old-school underlined blue
-styling. Control the formatting to make it simple and beautiful.</p>
-<p>If you have links in your resume, <em>make sure you know where they go</em>.
-I've seen resumes where, presumably because they used somebody else's
-resume as a starting point, the link text was updated but the link
-still took me to <em>somebody else's</em> LinkedIn and Twitter.</p>
-<p>Pay special attention with things you're claiming expertise in: It's
-hard to believe you if you say you know “CentOs”—because it's CentOS.</p>
-<p>Please get the names of your prior employers correct. There is no “Red
-American Cross”—it's “American Red Cross.”</p>
-<p>If you are “quick to learn new tools and technics” why have you not
-learned how to spell “techniques?”</p>
-<p>It's easier to not use color at all than to use it well. Particularly
-bad: “Wor” in blue, regular weight, with “k Experience” in bold black.
-Why do that?</p>
-<p>Almost nobody should include GPA(s) in their resume. Possible
-exception: It's perfect, and you've never had a job. Particularly bad:
-Including a mediocre GPA for one degree, with GPA then conspicuously
-absent for one or more other degrees.</p>
-<p>Notice how this actual section from a real resume is
-self-contradictory:</p>
-<blockquote>
-<p>Communication – Persuasive communicator, comfortable challenging the
-status quo when appropriate, whether to long-standing processes or
-to conventional thinking to drive greater efficiencies and outcomes.
-Able to adjust communications to a diverse audience to ensure
-understanding and clarity. Recognizes the importance of providing
-concise, complete visualizations of complex data.</p>
-</blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Show,_don't_tell" title="Wikipedia: Show, don't tell">Show, don't tell.</a> Words without evidence are only demonstrating
-that you can waste time.</p>
-<p>Don't use two spaces between sentences. We're using computers.</p>    
-    ]]></description>
-<link>http://planspace.org/20220108-resume_dos_and_donts/</link>
-<guid>http://planspace.org/20220108-resume_dos_and_donts/</guid>
-<pubDate>Sat, 08 Jan 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
