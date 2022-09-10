@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-09-10: [Heads, by Greg Bear](/20220910-heads_by_greg_bear/)
  * 2022-09-10: [Tuesdays with Morrie, by Albom](/20220910-tuesdays_with_morrie_by_albom/)
  * 2022-08-06: [Sea of Tranquility, by Mandel](/20220806-sea_of_tranquility_by_mandel/)
  * 2022-07-04: [That little voice in your head, by Gawdat](/20220704-that_little_voice_in_your_head_by_gawdat/)
