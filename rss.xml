@@ -7,6 +7,21 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Tuesdays with Morrie, by Albom</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Tuesdays_with_Morrie" title="Tuesdays with Morrie">It</a>'s a nice book.</p>
+<blockquote>
+<p>“Once you get your fingers on the important questions, you can't
+turn away from them.” (page 175, quoting Morrie)</p>
+</blockquote>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20220910-tuesdays_with_morrie_by_albom/</link>
+<guid>http://planspace.org/20220910-tuesdays_with_morrie_by_albom/</guid>
+<pubDate>Sat, 10 Sep 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Sea of Tranquility, by Mandel</title>
 <description><![CDATA[
 
@@ -2187,33 +2202,6 @@ five year plans, but could...</p>
 <link>http://planspace.org/20220206-7_habits_weekly_cards/</link>
 <guid>http://planspace.org/20220206-7_habits_weekly_cards/</guid>
 <pubDate>Sun, 06 Feb 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>System Design Interview, by Xu</title>
-<description><![CDATA[
-
-<p>I hadn't done system design interviews before last summer when I
-interviewed at Google, Uber, Facebook, Robinhood, and a few others.
-Alex Xu's <a href="https://www.amazon.com/System-Design-Interview-Insiders-Guide-ebook/dp/B08B3FWYBX" title="System Design Interview – An Insider's Guide">insider's guide</a> became one of my main prep materials for
-this interview type. I think it helped.</p>
-<p>I was preparing for system design interviews for machine learning
-engineering positions, and sort of related design questions on ML for
-data science positions. Xu's book is on more general software
-engineering, but I thought it was still interesting and valuable. MLE
-interviews can have "regular" SWE system design components too. For
-system design content more specific to machine learning, I thought
-<a href="https://www.educative.io/">Educative</a> had some decent materials.</p>
-<p>I think system design interviews are often trying to evaluate not just
-abstract or academic knowledge, but experience, thinking, and
-communication skills. Reading a book like this helps jumpstart and
-review your knowledge, and is definitely valuable, but is probably not
-sufficient for a truly outstanding performance. So you could start
-here, but don't stop!</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20220109-system_design_interview_by_xu/</link>
-<guid>http://planspace.org/20220109-system_design_interview_by_xu/</guid>
-<pubDate>Sun, 09 Jan 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
