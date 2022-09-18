@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-09-18: [Consciousness Explained, by Dennett](/20220918-consciousness_explained_by_dennett/)
  * 2022-09-10: [Heads, by Greg Bear](/20220910-heads_by_greg_bear/)
  * 2022-09-10: [Tuesdays with Morrie, by Albom](/20220910-tuesdays_with_morrie_by_albom/)
  * 2022-08-06: [Sea of Tranquility, by Mandel](/20220806-sea_of_tranquility_by_mandel/)
