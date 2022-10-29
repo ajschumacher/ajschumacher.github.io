@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2022-10-29: [Draft No. 4: On the Writing Process, by McPhee](/20221029-draft_no_4_by_mcphee/)
  * 2022-10-29: [Mindf*ck, by Wylie](/20221029-mindf*ck_by_wylie/)
  * 2022-09-18: [Consciousness Explained, by Dennett](/20220918-consciousness_explained_by_dennett/)
  * 2022-09-10: [Heads, by Greg Bear](/20220910-heads_by_greg_bear/)
