@@ -7,6 +7,212 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Why greatness cannot be planned (Stanley and Lehman)</title>
+<description><![CDATA[
+
+<p>There are a lot of ways to misunderstand The Myth of the Objective. I
+take it as a useful meditation, with aspects of
+<a href="/20200425-tyranny_of_metrics_by_muller/">The Tyranny of Metrics</a> and <a href="https://en.wikipedia.org/wiki/Against_Method">Against Method</a>, encouraging
+exploration. Be flexible, be curious, don't follow a plan for the sake
+of following a plan.</p>
+<p>I don't recall these AI researchers ever talking about local maxima or
+explore/exploit trade-offs explicitly, as they seem to be trying to
+write for a broad audience. Natural evolution, human innovation,
+<a href="https://nbenko1.github.io/">Picbreeder</a>, and novelty search are their examples of unplanned
+greatness. They point out that evolution is about <a href="https://www.pnas.org/doi/10.1073/pnas.0702207104" title="The frailty of adaptive hypotheses for the origins of organismal complexity">exploration</a> as
+much as adaptation, and critique the dominance in the AI community of
+the experimentalist and theoretical heuristics.</p>
+<p>Is a goal local (we know how to get there) or is it "great" (requiring
+steps into the unknown)? The authors are saying that if it's the
+latter, we're better off exploring via other heuristics than focusing
+only on a particular distant imagined goal.</p>
+<p>They talk about "interestingness" a lot, and I think a missing note is
+that "interesting" shouldn't necessarily <em>exclude</em> a sense of what
+takes us closer to some distant goal.</p>
+<p>We should also be watching for opportunities to take things in a
+different direction: if you find a path to something great on your way
+to something good, you can follow that path! (Don't let the good be
+the enemy of the great.)</p>
+<p>I've sometimes been apologetic about the winding path of my life and
+career, as if I should have had a plan from the start and followed it
+without distraction. Would that have been better? I'm not sure. This
+book makes me think that a life or career built from a kit represents
+a failure to identify opportunities. What are the odds there was never
+a way to improve on an earlier plan? Blinders make you faster, but
+they limit where you go.</p>
+<p>The book applies most to the "research" setting—where we really don't
+know what the future is going to hold, where we don't know the
+mechanics or topology of the search space. Objectives such as
+"hovercraft like in Star Wars" or "economy like in Star Trek." There
+are a lot of other things we'll find before we find these, and that's
+not a bad thing.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"The idea that all our pursuits can be distilled into neatly-defined
+objectives and then almost mechanically pursued offers a kind of
+comfort against the harsh unpredictability of life." (page 2)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... meeting a constraint is much different from what is usually
+<em>meant</em> by objective-driven achievement." (page 34)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The best way to get computation is not to force great minds to
+waste their lives pondering a distant dream, but to let the great
+minds pursue their own interests in their present reality." (page
+36)</p>
+</blockquote>
+<p>This is in the example of developing computers, but the idea is one
+that I feel applies especially well to <a href="https://en.wikipedia.org/wiki/Effective_altruism">Effective Altruism</a>.</p>
+<hr>
+<blockquote>
+<p>"Deception applies to becoming rich just as everywhere else. For
+example, what sense would it make to decline an unpaid internship
+doing something you love simply because it doesn't make you any more
+rich? In fact, if you do become rich, it's probably because you
+<em>did</em> pursue your passion, not because you pursued money per se.
+Passion is what drives you to that point, and then one day you might
+realize that you are only one stepping stone away from being rich.
+And <em>that</em> is the moment, when you are one stepping stone away, when
+you make the move you need to make and become rich. But becoming
+rich didn't guide every life decision up to that point. On the
+contrary, a single-minded preoccupation with money is likely exactly
+the wrong road to abundant wealth." (page 37)</p>
+</blockquote>
+<p>So... This works for some people. But it certainly doesn't work for
+everyone.</p>
+<hr>
+<blockquote>
+<p>"There's much we cannot achieve by trying to achieve it." (page 38)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... being aimless isn't <em>always</em> a good idea, but when it's paired
+with a thirst for exploration, it might indeed hint at great
+potential." (page 68)</p>
+</blockquote>
+<hr>
+<p>On page 70, the authors mention that <a href="https://en.wikipedia.org/wiki/Tom_DeMarco" title="Tom DeMarco">DeMarco</a>, who I know as the
+author of <a href="/20200523-peopleware_productive_projects_and_teams/" title="Peopleware: Productive Projects and Teams">Peopleware</a>, is also responsible for "You can't control
+what you can't measure" in the earlier
+<a href="https://www.amazon.com/Controlling-Software-Projects-Management-Measurement/dp/0131717111">Controlling software projects</a>. What a different perspective,
+between these two books! The authors here focus on his much later
+<a href="https://web.archive.org/web/20100801083400/http://www2.computer.org/cms/Computer.org/ComputingNow/homepage/2009/0709/rW_SO_Viewpoints.pdf">Software Engineering: An Idea Whose Time Has Come and Gone?</a>, which
+I like a lot.</p>
+<hr>
+<p>Page 71 has a bit about evaluating higher ed with the Collegiate
+Learning Assessment (<a href="https://en.wikipedia.org/wiki/Collegiate_Learning_Assessment">CLA</a>) and the Collegiate Assessment of
+Academic Proficiency (CAAP).</p>
+<p>For the CAAP, the only info I can find is on individual schools' sites
+(<a href="https://www.wabash.edu/alumni/news.cfm?news_ID=2641">example</a>) and the <a href="http://www.act.org/caap">link</a> to ACT redirects to a page that doesn't
+mention it. Is CAAP defunct? (Are they both?)</p>
+<hr>
+<blockquote>
+<p>"Splitting experts may be more of an achievement than unifying
+them." (page 82)</p>
+</blockquote>
+<p>This is about expert review of proposals. May.</p>
+<hr>
+<blockquote>
+<p>"Some readers will detect a hint of Paul Feyerabend in this
+argument—he taught that science can't be distilled to any one
+objective methodology." (page 87)</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Paul_Feyerabend" title="Paul Feyerabend">Feyerabend</a>'s book on this is <a href="https://en.wikipedia.org/wiki/Against_Method">Against Method</a>. It's related in
+the following way, I think: Feyerabend is saying we can't limit the
+methods for getting to the next stepping stones. Stanley and Lehman
+are saying we can't know which stepping stones will help us reach
+further stepping stones. Ignoring either will limit where we can go.</p>
+<blockquote>
+<p>"The only principle that does not inhibit progress is: anything
+goes." (page 119, quoting Feyerabend in Against Method)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The successful inventor asks where we can get from <em>here</em> rather
+than how we can get <em>there</em>." (page 97)</p>
+</blockquote>
+<p>I connect this to my <a href="/20181204-worth_doing_even_if_it_fails/">Is it worth doing even if it fails?</a> In the
+language of the book, things that are worth doing are things that can
+be stepping stones: "succeed" or "fail" you learn something to build
+on.</p>
+<hr>
+<blockquote>
+<p>"When there's <em>no destination</em> there <em>can't be a right path</em>." (page
+98)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"So if you're wondering how to escape the myth of the objective,
+just do things because they're interesting. Not everything needs to
+be guided by rigid objectives. If you have a strong feeling, go with
+it. If you don't have a clear objective, then you can't be wrong,
+because wherever you end up is okay. Assessment only goes so far. A
+great achievement is one that leads to more great achievements. If
+you set out to program computers but you're now making movies,
+you're probably doing something right." (page 99)</p>
+</blockquote>
+<p>It's not just fun to have interests, it's useful. It expands the space
+of stepping stones that you can build from.</p>
+<p>It's also about motivation, isn't it? You're more likely to do more if
+you're interested in doing it. And if you do more, you're more likely
+to do more good things (hopefully).</p>
+<p>If you're hiring, would you rather hire somebody with broad and active
+interests? (Is this some part of "Googleyness"? Looks like that's
+supposed to <a href="https://www.businessinsider.com/google-googleyness-hiring-training-guide-change-2019-10">include</a> "enjoying fun" and "evidence that you've taken
+some courageous or interesting paths in your life," which could be
+related.)</p>
+<hr>
+<blockquote>
+<p>"<em>To achieve our highest goals, we must be willing to abandon
+them.</em>" (page 100)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"While a new interpretation could imply that the earlier
+interpretations were <em>wrong</em>, in reality the same set of data can
+support more than one interpretation. So just being consistent with
+the data isn't enough to decide between competing interpretations."
+(page 111)</p>
+</blockquote>
+<p>This relates to <a href="/20170825-characteristics_of_good_theories/">Characteristics of good theories</a>, which continues
+to surprise me by being one of the most popular things on my blog.</p>
+<hr>
+<blockquote>
+<p>"Seen this way, evolution is a special kind of non-objective search:
+a <em>minimal criteria search</em>." (page 114)</p>
+</blockquote>
+<hr>
+<p>Page 126 quotes from Hooker's 1995
+<a href="http://akira.ruc.dk/~keld/teaching/algoritmedesign_f03/Artikler/01/Hooker95.pdf">Testing Heuristics: We Have It All Wrong</a>: "Most experimental
+studies of heuristic algorithms resemble track meets more than
+scientific endeavors."</p>
+<p>This is a critique applicable to modern AI work, but modern AI is also
+making tons of progress, often in harmony with benchmarking. New tests
+are introduced, and new models come out that do them really well. How
+separate are research and development, really?</p>
+<p>I think <a href="https://en.wikipedia.org/wiki/Gary_Marcus" title="Gary Marcus">Marcus</a> makes related arguments that this focus on
+benchmarks may still prevent needed and very different work... Could
+be. It's hard to argue with the success of the benchmark-oriented work
+though. I guess the real message isn't "stop that" but "let's also."</p>
+<blockquote>
+<p>"Judging by performance is a good idea for practitioners but is
+shaky at best for researchers—because of deception." (page 129)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"<em>A good algorithm isn't one that performs better, but one that
+leads us to think of other algorithms.</em>" (page 132)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20221105-why_greatness_cannot_be_planned_by_stanley_and_lehman/</link>
+<guid>http://planspace.org/20221105-why_greatness_cannot_be_planned_by_stanley_and_lehman/</guid>
+<pubDate>Sat, 05 Nov 2022 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Draft No. 4: On the Writing Process, by McPhee</title>
 <description><![CDATA[
 
@@ -2381,65 +2587,6 @@ they don't understand and live happily ever after.</p>
 <link>http://planspace.org/20220402-elder_race_by_tchaikovsky/</link>
 <guid>http://planspace.org/20220402-elder_race_by_tchaikovsky/</guid>
 <pubDate>Sat, 02 Apr 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Smarter, Faster, Better, by Duhigg</title>
-<description><![CDATA[
-
-<p>This is a very readable book that talks about motivation, teams
-(psychological safety), appropriate focus, goal-setting (big and
-SMART), management, decision-making, innovation, and absorbing data,
-all through interesting stories. There's some good stuff.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<p>Duhigg connects his book about productivity to the idea of
-<a href="https://en.wikipedia.org/wiki/The_Power_of_Habit" title="The Power of Habit">his first book</a> on habits.</p>
-<blockquote>
-<p>"Productive people have habits—what psychologists might call
-'contemplative routines'—that push them to <em>think more deeply</em> about
-the choices they make." (page 6)</p>
-</blockquote>
-<hr>
-<p>The book spends substantial time exploring possible biological
-<a href="https://en.wikipedia.org/wiki/Striatum" title="Striatum">determinants</a> of motivation, and then becomes less fatalistic.</p>
-<blockquote>
-<p>"Motivation is more like a skill, akin to reading or writing, that
-can be learned and honed. Scientists have found that people can get
-better at self-motivation if they practice the right way. The trick,
-researchers say, is realizing that a prerequisite to motivation is
-believing we have authority over our actions and surroundings. To
-motivate ourselves, we must feel like we are in control." (page 19)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The division [Google's People Analytics] had successfully pushed to
-increase paid maternity leave from twelve to eighteen weeks because
-computer models indicated that would reduce the frequency of new
-mothers quitting by 50 percent." (page 42)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In the age of automation, knowing how to manage your focus is more
-critical than ever." (page 76)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Most pharaohs were considered elderly if they made it to
-thirty-five." (page 194)</p>
-</blockquote>
-<p>I think this is not correct; see
-<a href="/20200806-life_expectancy_is_historically_misleading/" title="Life expectancy is historically misleading">Life expectancy is historically misleading</a>.</p>
-<hr>
-<p><a href="https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis" title="Intermediate disturbance hypothesis">Intermediate disturbance hypothesis</a></p>
-<hr>
-<blockquote>
-<p>"Productivity is about recognizing choices that other people often
-overlook." (page 284)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20220327-smarter_faster_better_by_duhigg/</link>
-<guid>http://planspace.org/20220327-smarter_faster_better_by_duhigg/</guid>
-<pubDate>Sun, 27 Mar 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
