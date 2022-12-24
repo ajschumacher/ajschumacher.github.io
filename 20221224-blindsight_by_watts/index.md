@@ -51,3 +51,7 @@ Definitely interesting enough that I'll read [Echopraxia][] too.
 
 
 ![cover](cover.jpg)
+
+
+> "After four thousand years we can’t even prove that reality exists
+> beyond the mind of the first-person dreamer." (page 52)
