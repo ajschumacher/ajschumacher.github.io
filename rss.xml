@@ -7,6 +7,41 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Predicting the future from 2023</title>
+<description><![CDATA[
+
+<p>I've tried to predict the future the last three years: <a href="/20200112-predicting_the_future_from_2020/" title="Predicting the future from 2020">2020</a>,
+<a href="/20210102-predicting_the_future_from_2021/" title="Predicting the future from 2021">2021</a>, <a href="/20220101-predicting_the_future_from_2022/)" title="Predicting the future from 2022">2022</a>. I think that's probably enough for now. Here are
+some 2023 <a href="https://www.vox.com/future-perfect/2023/1/2/23494204/biden-trump-putin-supreme-court-2023-predictions" title="23 things we think will happen in 2023">predictions from Vox</a>, if you want.</p>
+<p>If you make new predictions every year, you end up with a lot of them.
+I managed to have at least one set of <em>conflicting</em> predictions in
+just three years.</p>
+<p>The big trends don't change that much year to year, and I've already
+thought about those some. Many of them are clear enough that even a
+large language model knows them.</p>
+<blockquote>
+<p>What are important trends for the next five to ten years?</p>
+</blockquote>
+<p><img alt="ChatGPT" src="chatgpt.jpg"></p>
+<blockquote>
+<p>"It is difficult to predict specific trends with certainty, as many
+factors can influence the course of events. However, some possible
+trends that could affect the world over the next five to ten years
+include the continued rise of artificial intelligence and
+automation, the ongoing impact of the COVID-19 pandemic, the
+increasing importance of renewable energy sources, and the potential
+for further political and social upheaval. Additionally, the ongoing
+effects of climate change could have significant consequences for
+the world in the coming years." (<a href="https://openai.com/blog/chatgpt/" title="ChatGPT: Optimizing Language Models for Dialogue">ChatGPT</a>)</p>
+</blockquote>
+<p>This year there is a swing toward economic recession... Will it end?
+Almost certainly yes, but it's a little scary.</p>    
+    ]]></description>
+<link>http://planspace.org/20230106-predicting_the_future_from_2023/</link>
+<guid>http://planspace.org/20230106-predicting_the_future_from_2023/</guid>
+<pubDate>Fri, 06 Jan 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Echopraxia, by Watts</title>
 <description><![CDATA[
 
@@ -2446,20 +2481,6 @@ fool learns from a wise man."" (page 209)</p>
 <link>http://planspace.org/20220405-myth_of_the_rational_voter_by_caplan/</link>
 <guid>http://planspace.org/20220405-myth_of_the_rational_voter_by_caplan/</guid>
 <pubDate>Tue, 05 Apr 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Red Roulette, by Shum</title>
-<description><![CDATA[
-
-<p>The success of this <a href="https://en.wikipedia.org/wiki/Red_Roulette">book</a> is that <a href="https://en.wikipedia.org/wiki/Desmond_Shum">Shum</a> straddles sympathetic
-and repulsive. He is deeply flawed and yet less flawed than the China
-he describes. He is an unreliable narrator but perhaps among the most
-reliable available. His viewpoint is part of the view.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20220404-red_roulette_by_shum/</link>
-<guid>http://planspace.org/20220404-red_roulette_by_shum/</guid>
-<pubDate>Mon, 04 Apr 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
