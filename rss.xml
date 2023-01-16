@@ -7,6 +7,171 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Ten Equations that Rule the World, by Sumpter</title>
+<description><![CDATA[
+
+<p><a href="https://www.david-sumpter.com/" title="David Sumpter">Sumpter</a> has Bill Nye applied math energy. His central gimmick—a
+secret society of people who know math—is a bit much. He's most
+interesting when connecting equations and philosophy, but he likes
+logical positivism more than his hero Ayers <a href="https://en.wikipedia.org/wiki/Language,_Truth,_and_Logic#Ayer's_later_rejection_of_logical_positivism" title="Wikipedia: Ayer's later rejection of logical positivism">did</a>, and his ultimate
+appeal to ethical intuitionism is unsatisfying. Still very interesting
+in places, and I'm generally with him.</p>
+<p>I like the core idea of trying to distill a lot of understanding into
+a few core concepts. I think Sumpter's book highlights both the
+promise and challenge of attempting this.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<p>Here are the names Sumpter uses for his equations (and more
+conventional names):</p>
+<ol>
+<li>The Judgment Equation (Bayes' theorem)</li>
+<li>The Betting Equation (Logistic regression)</li>
+<li>The Confidence Equation (Normal confidence intervals)</li>
+<li>The Skill Equation (Markov property; memorylessness)</li>
+<li>The Influencer Equation (Stationary distribution; PageRank)</li>
+<li>The Market Equation (A sort of autoregressive differential model?)</li>
+<li>The Advertising Equation (Correlation coefficient)</li>
+<li>The Reward Equation (Exponential moving average; Q-learning)</li>
+<li>The Learning Equation (Derivative of quadratic loss; gradient
+   descent)</li>
+<li>The Universal Equation (If-then; trying to get from "is" to
+    "ought")</li>
+</ol>
+<p>With the exception of #6, I was reasonably familiar with all of these.
+My failure to feel connected to the literature (or even what a common
+name might be) for #6 makes me feel that this book might not be the
+best way to encounter these ideas for the first time.</p>
+<hr>
+<blockquote>
+<p>"The first lesson to draw from Bayes's rule, the judgment equation,
+is that we should be slow to draw definitive conclusions." (page 15)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Many people think of math as being all about objectivity; it's not.
+It is a way of representing and arguing about the world, and
+sometimes the things we argue about are known only to us." (page 24)</p>
+</blockquote>
+<p>He's a professor of applied math, after all.</p>
+<hr>
+<blockquote>
+<p>"Much of mathematical modeling is about dividing the world into
+understandable component parts, ..." (page 63)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"What I hadn't understood when I started working with sports
+statistics was just how much time I would have to sit listening to
+men telling me why they believed they were the special one." (page
+85)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"When Andrey Markov first wrote down his equation, he wasn't
+interested in modeling sporting excellence. He was interested in
+great literature. In 1913, he presented, at the Russian Royal
+Academy of Sciences, an analysis of the first chapter and parts of
+the second chapter of Pushkin's novel <em>Eugene Onegin.</em> In his
+analysis of these twenty thousand Russian letters, he determined the
+probability of sequences of vowels and consonants. He constructed a
+model that predicted, based on the letter that had just occurred in
+a text, whether a vowel or a consonant was more likely to occur as
+the next character. In doing so, Markov had created a model for
+creating new Pushkin works, one character at a time." (page 92)</p>
+</blockquote>
+<p>Neat! I think I hadn't heard this story before.</p>
+<hr>
+<blockquote>
+<p>"Accurate reporting of assumptions is just as important as accurate
+reporting of results." (page 99)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The salaries offered by tech giants were enough to lure even the
+purest of mathematicians." (page 113)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The division of the world into models, data, and nonsense gave the
+members of TEN a sense of certainty." (page 122)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I had researched Cambridge Analytica's algorithm in detail during
+2017, the year before the scandal broke, and reached a conclusion
+that contradicted both Nix and Wylie's versions of events. I doubted
+that the company could have influenced the US presidential election.
+They had certainly tried, but the methods they claimed to have used
+to target voters were flawed." (page 146)</p>
+<p>"Working on the inside, he [<a href="https://en.wikipedia.org/wiki/Aleksandr_Kogan_(scientist)" title="Wikipedia: Aleksandr Kogan (scientist)">Alex Kogan</a>] had reached the same
+conclusion about Cambridge Analytica as I had. He phrased it
+politely at the Senate hearing. To me, he said, “That shit doesn't
+work.”" (page 164)</p>
+<p>"Instead of looking for the real reasons for the rise of
+nationalistic sentiment that had brought Donald Trump to power, that
+had caused Brexit, that was responsible for the Five Star movement
+in Italy, Viktor Orbán in Hungary, and Jair Bolsonaro in Brazil,
+everyone seemed to be rushing to find a James Bond-type villain, an
+evil individual who had poisoned the political waters. Their Dr. No
+came in the form of Alexander Nix and his company, Cambridge
+Analytica. Somehow this man, with only a basic understanding of
+models and data, was seen to have manipulated the whole of modern
+democracy." (page 168)</p>
+</blockquote>
+<p>I had some wonderings like this while reading <a href="https://planspace.org/20221029-mindf*ck_by_wylie/" title="Mindf*ck, by Wylie">Mindf*ck</a>...</p>
+<hr>
+<blockquote>
+<p>"The organization Tristan Harris cofounded, the
+<a href="https://www.humanetech.com/">Center for Humane Technology</a>, has advice about how to take
+control and move your own mind away from the tipping point." (page
+186)</p>
+</blockquote>
+<hr>
+<p>Page 187 mentions lazy ants, but is apparently unaware of follow-up
+research. (<a href="https://www.sciencedaily.com/releases/2017/09/170908205356.htm" title="Lazy ants make themselves useful in unexpected ways">coverage</a>)</p>
+<hr>
+<blockquote>
+<p>"Price believed, building on the philosophy of Plato, that
+mathematics provided a truth that was independent of our physical
+reality and that this truth told us the ethical thing to do. But A.
+J. Ayer seemed to overwrite this view in the mid-twentieth century,
+arguing with his principle of verifiability that we can't expect to
+find any answers to moral questions in math. A mathematics that is
+independent of physical reality, he demonstrated, is impossible to
+verify." (page 209)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The sheer number of mathematical theorems that have proved to be
+true led French mathematician Henri Poincaré to reflect in his 1902
+book, <em>Science and Hypothesis,</em> that “if all the assertions which
+mathematics puts forward can be derived from one another by formal
+logic, mathematics cannot amount to anything more than an immense
+tautology. Logical inference can teach us nothing essentially new
+... But can we really allow that these theorems which fill so many
+books serve no other purpose than to say in a roundabout fashion
+that ‘A = A’?”" (page 214)</p>
+<p>"In response to the rhetorical tone used by Poincaré, Ayer wrote,
+“The power of logic and mathematics to surprise us depends, like
+their usefulness, on the limitations of our reason.”" (page 216)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"I have come to believe that there is a very simple answer to these
+dilemmas: we should learn to trust and use our own ethical
+intuitions." (page 222)</p>
+<p>"I don't have any conclusive proof, but I believe that after logical
+positivism strips away the idea of a universal utilitarianism, we
+are left with moral intuition to guide us. It is this soft way of
+thinking that tells us which problems to solve." (page 223)</p>
+<p>"We need to be soft when we define our problems and brutally hard
+when we solve them." (page 223)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20230116-ten_equations_that_rule_the_world/</link>
+<guid>http://planspace.org/20230116-ten_equations_that_rule_the_world/</guid>
+<pubDate>Mon, 16 Jan 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Predicting the future from 2023</title>
 <description><![CDATA[
 
@@ -2376,111 +2541,6 @@ optimistic worldview may be more valuable.</p>
 <link>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</link>
 <guid>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</guid>
 <pubDate>Sun, 10 Apr 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Myth of the Rational Voter, by Caplan</title>
-<description><![CDATA[
-
-<p>Did anyone ever seriously believe voters were rational? Well,
-<a href="https://en.wikipedia.org/wiki/Bryan_Caplan">Caplan</a> has a 2007 <a href="https://en.wikipedia.org/wiki/The_Myth_of_the_Rational_Voter">book</a>, and of course the conclusion is that
-we should be more libertarian. "Rational" means in agreement with
-economists (meaning Caplan), and by page 197 he advocates "a test of
-voter competence." As usual, it's not all wrong, but I'm not sure it's
-all right.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"[T]he superstitions to be feared in the present day are much less
-religious than political; and of all the forms of idolotry I know
-none more irrational and ignoble than this blind worship of mere
-numbers." (epigraph)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"You should not blame the prescription simply because the patient
-refuses to take his medicine. <em>The Myth of the Rational Voter</em>
-contains many workable reforms, but due to voter irrationality they
-are unlikely to be tried." (ix)</p>
-</blockquote>
-<p>At some point, it is part of the task of solving problems to create
-solutions that work in practice, not only in a hypothetical world
-imagined by the solver.</p>
-<hr>
-<blockquote>
-<p>"Once economists admit to themselves that voters are just like their
-students, only worse, they will be poised to unravel the mysteries
-of politics and policy." (xi)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The paradox of democracy ... In theory, democracy is a bulwark
-against socially harmful policies, but in practice it gives them a
-safe harbor." (page 1)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Economists and cognitive psychologists usually presume that
-everyone "processes information" to the best of his ability." (page
-2)</p>
-<p>"The main difference between the two disciplines is that cognitive
-psychologists are much more likely than economists to conclude that
-people's best information processing is not very good." (page 211,
-note to preceeding)</p>
-</blockquote>
-<hr>
-<p><a href="http://www.tomstafford.staff.shef.ac.uk/docs/tetlock03.pdf">Thinking the unthinkable: sacred values and taboo cognitions, by Tetlock</a></p>
-<hr>
-<blockquote>
-<p>"This book has three conjoined themes. The first: Doubts about the
-rationality of voters are empirically justified. The second: Voter
-irrationality is precisely what economic theory implies once we
-adopt introspectively plausible assumptions about human motivation.
-The third: Voter irrationality is the key to a realistic picture of
-democracy." (page 3)</p>
-</blockquote>
-<hr>
-<p>Biases: antimarket, antiforeign, make-work, pessimistic (page 10)</p>
-<hr>
-<blockquote>
-<p>"We also note that <em>no</em> replicated study has made rationality
-violations disappear purely by raising incentives." (page 135,
-quoting Camerer and Hogarth)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"To get ahead in politics, leaders need a blend of naive populism
-and realistic cynicism. No wonder the modal politician has a law
-degree." (page 169)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Yet a standard debating tactic of creation scientists is to insist
-that "evolutionary theory, along with its bedfellow, secular
-humanism, is really a religion."" (page 186; quote is
-<a href="https://www.amazon.com/People-Believe-Weird-Things-Pseudoscience/dp/0805070893" title="Why People Believe Weird Things: Pseudoscience, Superstition, and Other Confusions of Our Time">Shermer 2002</a> page 143)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Private Choice as an Alternative to Democracy and Dictatorship"
-(page 192)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... the Laffer Curve of learning: They retain less if you try to
-teach them more." (page 200)</p>
-</blockquote>
-<p>Is this as bad an idea as the original Laffer Curve?</p>
-<hr>
-<p><a href="https://en.wikipedia.org/wiki/Bertrand_competition">Bertrand competition</a></p>
-<hr>
-<blockquote>
-<p>"A proverb tells us that "a wise man learns more from a fool than a
-fool learns from a wise man."" (page 209)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20220405-myth_of_the_rational_voter_by_caplan/</link>
-<guid>http://planspace.org/20220405-myth_of_the_rational_voter_by_caplan/</guid>
-<pubDate>Tue, 05 Apr 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
