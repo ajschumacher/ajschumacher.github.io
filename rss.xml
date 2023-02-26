@@ -7,6 +7,117 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Voltage Effect, by List</title>
+<description><![CDATA[
+
+<p>The subtitle is "How to make good ideas great and great ideas scale,"
+but a lot of it is about how to avoid bad ideas. The "Five Vital
+Signs" are really five kinds of problems:</p>
+<ol>
+<li>Reliability: Thinking a test is promising when it's not: "Dupers
+   and false positives"</li>
+<li>Validity of a test sample: "Know your audience" or "overestimating
+   how big a slice of the pie your idea can capture" or
+   "representativeness of population"</li>
+<li>Scalability of the treatment: "situational validity" or "unscalable
+   ingredients" and "program drift" and "noncompliance"</li>
+<li>Unintended consequences: "Spillovers"</li>
+<li>Just too expensive: "The cost trap"</li>
+</ol>
+<p>Problems 4 and 5 could be special cases of 3.</p>
+<p>Then there are four chapters that have some more positive
+recommendations:</p>
+<ol>
+<li>"using behavioral-economic incentives"</li>
+<li>"exploiting easily missed opportunities on the margins of your operation"</li>
+<li>"knowing when to quit in the short term in order to win in the long term"</li>
+<li>"culture that is sustainable at scale"</li>
+</ol>
+<p>It's a pop economics book. Marginal revolution, comparative advantage,
+anecdotes from academia and Uber and Lyft and government. It's not
+awful, but I didn't feel like it delivered quite what it promised.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"Through my research and time working with policymakers, my personal
+credo had become that the only ideas worth pursuing are the ones
+with the potential to make a significant impact on human lives."
+(page 6)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"... the one thing all great ideas have in common is that they are
+not guaranteed to succeed. ... the path from early promise to
+widespread impact requires one thing and one thing only:
+<em>scalability</em>—the capacity to grow and expand in a robust and
+sustainable way." (page 9)</p>
+</blockquote>
+<p>Is this a contradiction? Great ideas may or may not be scalable? But
+wouldn't a good idea be better if it was scalable?</p>
+<p>Bad scalable ideas seem clearly allowed.</p>
+<hr>
+<blockquote>
+<p>"(a charity will attract more donations in the short run <em>and</em> long
+run if they attract initial donors by promising to never bother them
+again rather than with the traditional strategy of constant
+follow-ups)" (page 10)</p>
+</blockquote>
+<p>The reference is <a href="https://spihub.org/site/resource_files/publications/spi_wp_025_list.pdf" title="Once and Done: Leveraging Behavioral Economicsto Increase Charitable Contributions">Once and Done</a> and I wonder whether it's been
+replicated. The effect they find is strong, but their experiment is
+with Smile Train, whose mailers include prominent photos of children
+with cleft palates. The authors offered mechanism includes that "a
+solicitation by a charity imposes a cost on the recipient," and in the
+case of Smile Train that cost may be particularly high and not due
+only to social pressure.</p>
+<hr>
+<blockquote>
+<p>"The book calls upon policy-makers to move their attention from
+evidence-based policy to policy-based evidence." (page 15)</p>
+</blockquote>
+<p>List seems to want to make this his catch-phrase. It's repeated on (at
+least) pages 15, 63, 87, and 233. I don't think it works as a slogan
+because, for one, it isn't terribly clear. I <em>think</em> he's advocating
+for program evaluation?</p>
+<hr>
+<blockquote>
+<p>"<a href="https://en.wikipedia.org/wiki/Conjoint_analysis">conjoint analysis</a>" (page 53)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Logan believed that the extra perks combined with the 15% discount
+on rides (rather than the 7.5 percent discount we'd initially
+calculated) would motivate more JoGoods to join." (page 53)</p>
+</blockquote>
+<p>This seems like an interesting story of data vs. executive
+decision-making, but List doesn't elaborate further.</p>
+<hr>
+<blockquote>
+<p>"<a href="https://en.wikipedia.org/wiki/Backward_induction">backward induction</a>" (page 87)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The spillover effect falls under a larger umbrella category
+popularly known as the law of unintended consequences." (page 91)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Based on my experience with the baseball fundraising, one would
+expect that making salaries transparent could drive resentful
+demoralization if people saw peers making more. But that is not the
+full story." (page 99)</p>
+</blockquote>
+<p>He found that when he randomly paid some people less (for an identical
+job) and they found out by talking to others, those paid less worked
+less hard.</p>
+<p>The more to the story he references is a study where when people
+learned their managers made more than they thought, they worked
+harder.</p>    
+    ]]></description>
+<link>http://planspace.org/20230226-voltage_effect_by_list/</link>
+<guid>http://planspace.org/20230226-voltage_effect_by_list/</guid>
+<pubDate>Sun, 26 Feb 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Ten Equations that Rule the World, by Sumpter</title>
 <description><![CDATA[
 
@@ -2523,24 +2634,6 @@ the real time travel was inside us all along.</p>
 <link>http://planspace.org/20220604-before_the_coffee_gets_cold_by_kawaguchi/</link>
 <guid>http://planspace.org/20220604-before_the_coffee_gets_cold_by_kawaguchi/</guid>
 <pubDate>Sat, 04 Jun 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Beginning of Infinity, by Deutsch</title>
-<description><![CDATA[
-
-<p>I read <a href="https://en.wikipedia.org/wiki/The_Beginning_of_Infinity" title="The Beginning of Infinity">this book</a> years ago (2017 or earlier) and didn't write it
-up at the time, but some of the themes keep coming up.
-<a href="/20170825-characteristics_of_good_theories/" title="Characteristics of good theories">Characteristics of good theories</a>, for one thing. But more so the
-fundamental optimism that we can keep going indefinitely. Deutsch is
-focused on knowledge, understanding, and explanations—but perhaps also
-for prosperity, as in a post-scarcity "Star Trek" future (<a href="/20210401-trekonomics_by_saadia/" title="Trekonomics, by Saadia">Saadia</a>,
-<a href="/20201109-economics_of_star_trek_by_webb/" title="The Economics of Star Trek, by Webb">Webb</a>). Deutsch's thoughts on quantum theory are fun, but the
-optimistic worldview may be more valuable.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</link>
-<guid>http://planspace.org/20220410-beginning_of_infinity_by_deutsch/</guid>
-<pubDate>Sun, 10 Apr 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
