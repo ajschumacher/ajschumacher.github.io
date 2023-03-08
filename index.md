@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-03-07: [Pity the Reader, by McConnell](/20230307-pity_the_reader_by_mcconnell/)
  * 2023-02-26: [The Voltage Effect, by List](/20230226-voltage_effect_by_list/)
  * 2023-01-16: [The Ten Equations that Rule the World, by Sumpter](/20230116-ten_equations_that_rule_the_world/)
  * 2023-01-06: [Predicting the future from 2023](/20230106-predicting_the_future_from_2023/)
