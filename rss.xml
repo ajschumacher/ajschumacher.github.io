@@ -7,6 +7,136 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Solving a matching problem with OR-Tools CP-SAT</title>
+<description><![CDATA[
+
+<p>Optimizing matching for preference satisfaction often focuses on
+<a href="https://en.wikipedia.org/wiki/Stable_marriage_problem" title="Wikipedia: Stable marriage problem">stability</a>, which prioritizes individual interests. When maximizing
+resource utilization is more important, <a href="https://en.wikipedia.org/wiki/Constraint_programming" title="Wikipedia: Constraint programming">Constraint Programming</a>
+(CP) can be used to find good matches. Google's <a href="https://developers.google.com/optimization" title="OR-Tools | Google Developers">OR-Tools</a> package
+includes the <a href="https://developers.google.com/optimization/cp/cp_solver" title="CP-SAT Solver | OR-Tools | Google Developers">CP-SAT</a> solver, which is one way to implement this.</p>
+<p>For example, we may be assigning a pool of interns to specific roles.
+Managers for each role have ranked some of the candidates, and a
+candidate can only be matched to a role for which they have been
+ranked. Roles often have one spot to be filled, but some have more.
+Candidates have been ranked for multiple roles, but can only be
+assigned one.</p>
+<p>This problem is similar to the <a href="https://en.wikipedia.org/wiki/National_Resident_Matching_Program" title="Wikipedia: National Resident Matching Program">medical residency matching</a> problem,
+which famously applies the Nobel-prize-winning
+<a href="https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm" title="Wikipedia: Gale–Shapley algorithm">Gale–Shapley algorithm</a>. One difference is that the present example
+only has preferences from one side. Sometimes random preferences are
+created in order to still allow the application of algorithms like
+Gale–Shapley, but this will not be necessary here because there is a
+bigger issue.</p>
+<p>The salient difference between what Gale–Shapley does and the goal of
+the example here is that we really want to fill every available role,
+even if it means the match isn't perfectly stable. Gale–Shapley will
+create a match that leaves some roles unfilled if this is necessary to
+ensure that no trade would better satisfy the preferences of the
+individuals involved. In general, Gale–Shapley will leave some roles
+unfilled.</p>
+<p>To begin a solution with the OR-Tools (OR for <a href="https://en.wikipedia.org/wiki/Operations_research" title="Wikipedia: Operations research">Operations Research</a>)
+package, we start by converting the rankings to scores, where 1 is the
+best and 0 is the worst: <a href="rankings.csv"><code>rankings.csv</code></a> (There are
+different ways of doing this, like percentiles; here we assume we have
+scores.)</p>
+<pre><code>role,person,score
+Role 23,Person 11,0.5238095238095238
+Role 23,Person 109,0.7619047619047619
+Role 23,Person 111,0.6190476190476191
+...</code></pre>
+
+<p>Each role has some maximum number of spots to fill: <a href="spots.csv"><code>spots.csv</code></a></p>
+<pre><code>Role 23,4
+Role 31,1
+Role 8,1
+...</code></pre>
+
+<p>We can start reading in data using Python.</p>
+<pre><code class="language-python">import csv
+
+spots = {role: int(n) for role, n in csv.reader(open('spots.csv'))}
+all_rankings = [ranking for ranking in csv.DictReader(open('rankings.csv'))]</code></pre>
+
+<p>It will be convenient to have quick access to all the people ranked
+for a role, and all the roles a person is ranked for.</p>
+<pre><code class="language-python">by_role, by_person = {}, {}
+
+for ranking in all_rankings:
+    by_role.setdefault(ranking['role'], []).append(ranking)
+    by_person.setdefault(ranking['person'], []).append(ranking)</code></pre>
+
+<p>Now we can start using OR-Tools.</p>
+<pre><code class="language-python">from ortools.sat.python import cp_model
+
+model = cp_model.CpModel()
+solver = cp_model.CpSolver()</code></pre>
+
+<p>The matching will be represented via a Boolean variable for each
+ranking that is true to select that match and false otherwise.</p>
+<pre><code class="language-python">for ranking in all_rankings:
+    ranking['selected'] = model.NewBoolVar('')</code></pre>
+
+<p>OR-Tools lets us use natural Python expressions to express
+constraints. First, we dictate that each role should have no more than
+the allowed number of people.</p>
+<pre><code class="language-python">for role, rankings in by_role.items():
+    total = sum(ranking['selected'] for ranking in rankings)
+    model.Add(total &lt;= spots[role])</code></pre>
+
+<p>Similarly, we require that each person is matched with at most one
+role.</p>
+<pre><code class="language-python">for person, rankings in by_person.items():
+    total = sum(ranking['selected'] for ranking in rankings)
+    model.Add(total &lt;= 1)</code></pre>
+
+<p>The objective will be to maximize the total score of selected matches.</p>
+<pre><code class="language-python">total_score = 0
+for ranking in all_rankings:
+    score = float(ranking['score']) * ranking['selected']
+    total_score += score</code></pre>
+
+<p>At this point, we need only ask for the solution.</p>
+<pre><code class="language-python">model.Maximize(total_score)
+status = solver.Solve(model)
+print(solver.Value(total_score), solver.StatusName(status))
+# 82.87644300144302 OPTIMAL</code></pre>
+
+<p>You can check that every role has its maximal number of people, and
+every person has one role (or zero; this example has more people than
+spots). The CP-SAT solver has done the heavy lifting of finding a
+solution and even guaranteeing that it is optimal.</p>
+<pre><code class="language-python">with open('results.csv', 'w') as f:
+    writer = csv.DictWriter(f, all_rankings[0].keys())
+    writer.writeheader()
+    for ranking in all_rankings:
+        ranking['selected'] = solver.Value(ranking['selected'])
+        writer.writerow(ranking)</code></pre>
+
+<p>Code is also available in a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20230316-solving_a_matching_problem_with_ortools_cpsat/matching.ipynb">notebook</a>. Writing out results
+produces: <a href="results.csv"><code>results.csv</code></a></p>
+<pre><code>role,person,score,selected
+Role 23,Person 11,0.5238095238095238,0
+...
+Role 23,Person 41,0.5714285714285714,1
+...</code></pre>
+
+<p>The approach here is general enough that with modifications it can be
+applied to a wide range of more or less related problems. There is
+always a question of whether the chosen metric is the right one to
+optimize, but making some choice can get you pretty far toward a good
+solution, with a solver that makes optimization easy. Indeed, what
+other problems might be formulated in a manner amenable to solving in
+this way? OR-Tools are handy!</p>
+<hr>
+<p>Thanks to Maxime Labonne, whose Linear Programming <a href="https://github.com/mlabonne/Linear-Programming-Course" title="Hands-on course about linear programming and mathematical optimization.">course</a> was very
+helpful as I started to use OR-Tools.</p>    
+    ]]></description>
+<link>http://planspace.org/20230316-solving_a_matching_problem_with_ortools_cpsat/</link>
+<guid>http://planspace.org/20230316-solving_a_matching_problem_with_ortools_cpsat/</guid>
+<pubDate>Thu, 16 Mar 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Pity the Reader, by McConnell</title>
 <description><![CDATA[
 
@@ -2683,22 +2813,6 @@ wrong!" (page 236)</p>
 <link>http://planspace.org/20220620-ride_of_a_lifetime_by_iger/</link>
 <guid>http://planspace.org/20220620-ride_of_a_lifetime_by_iger/</guid>
 <pubDate>Mon, 20 Jun 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Mastering Python, by van Hattem</title>
-<description><![CDATA[
-
-<p><a href="https://www.linkedin.com/in/priyadarshini-sharma-95a35215b/" title="Priyadarshini Sharma">Sharma</a> from <a href="https://www.packtpub.com/">Packt</a> sent me a review copy of the
-<a href="https://www.packtpub.com/product/mastering-python-second-edition/9781800207721" title="Mastering Python - Second Edition">second edition</a>. I skimmed it, and I like it a lot. It seems like
-<a href="https://w.wol.ph/about/" title="Rick van Hattem (Wolph)">van Hattem</a> knows his stuff. The book is hugely inclusive and
-erudite; you'll almost certainly learn new things. It includes the
-<a href="https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed-point_combinators_in_lambda_calculus" title="Fixed-point combinators in lambda calculus">Y combinator</a> as an example. It isn't perfect, but it's better than
-<a href="/20190707-expert_python_programming_by_jaworski_and_ziade/" title="Expert Python Programming by Jaworski and Ziadé">Jaworski and Ziadé's book</a>, I think, and I'll recommend it.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20220611-mastering_python_by_van_hattem/</link>
-<guid>http://planspace.org/20220611-mastering_python_by_van_hattem/</guid>
-<pubDate>Sat, 11 Jun 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

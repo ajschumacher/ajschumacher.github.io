@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Solving a matching problem with OR-Tools CP-SAT</title>
+  </head>
+  <body>
+    <article>
+<h1>Solving a matching problem with OR-Tools CP-SAT</h1>
+<p class="date">Thursday March 16, 2023</p>
+<p>Optimizing matching for preference satisfaction often focuses on
+<a href="https://en.wikipedia.org/wiki/Stable_marriage_problem" title="Wikipedia: Stable marriage problem">stability</a>, which prioritizes individual interests. When maximizing
+resource utilization is more important, <a href="https://en.wikipedia.org/wiki/Constraint_programming" title="Wikipedia: Constraint programming">Constraint Programming</a>
+(CP) can be used to find good matches. Google's <a href="https://developers.google.com/optimization" title="OR-Tools | Google Developers">OR-Tools</a> package
+includes the <a href="https://developers.google.com/optimization/cp/cp_solver" title="CP-SAT Solver | OR-Tools | Google Developers">CP-SAT</a> solver, which is one way to implement this.</p>
+<p>For example, we may be assigning a pool of interns to specific roles.
+Managers for each role have ranked some of the candidates, and a
+candidate can only be matched to a role for which they have been
+ranked. Roles often have one spot to be filled, but some have more.
+Candidates have been ranked for multiple roles, but can only be
+assigned one.</p>
+<p>This problem is similar to the <a href="https://en.wikipedia.org/wiki/National_Resident_Matching_Program" title="Wikipedia: National Resident Matching Program">medical residency matching</a> problem,
+which famously applies the Nobel-prize-winning
+<a href="https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm" title="Wikipedia: Gale–Shapley algorithm">Gale–Shapley algorithm</a>. One difference is that the present example
+only has preferences from one side. Sometimes random preferences are
+created in order to still allow the application of algorithms like
+Gale–Shapley, but this will not be necessary here because there is a
+bigger issue.</p>
+<p>The salient difference between what Gale–Shapley does and the goal of
+the example here is that we really want to fill every available role,
+even if it means the match isn't perfectly stable. Gale–Shapley will
+create a match that leaves some roles unfilled if this is necessary to
+ensure that no trade would better satisfy the preferences of the
+individuals involved. In general, Gale–Shapley will leave some roles
+unfilled.</p>
+<p>To begin a solution with the OR-Tools (OR for <a href="https://en.wikipedia.org/wiki/Operations_research" title="Wikipedia: Operations research">Operations Research</a>)
+package, we start by converting the rankings to scores, where 1 is the
+best and 0 is the worst: <a href="rankings.csv"><code>rankings.csv</code></a> (There are
+different ways of doing this, like percentiles; here we assume we have
+scores.)</p>
+<pre><code>role,person,score
+Role 23,Person 11,0.5238095238095238
+Role 23,Person 109,0.7619047619047619
+Role 23,Person 111,0.6190476190476191
+...</code></pre>
+
+<p>Each role has some maximum number of spots to fill: <a href="spots.csv"><code>spots.csv</code></a></p>
+<pre><code>Role 23,4
+Role 31,1
+Role 8,1
+...</code></pre>
+
+<p>We can start reading in data using Python.</p>
+<pre><code class="language-python">import csv
+
+spots = {role: int(n) for role, n in csv.reader(open('spots.csv'))}
+all_rankings = [ranking for ranking in csv.DictReader(open('rankings.csv'))]</code></pre>
+
+<p>It will be convenient to have quick access to all the people ranked
+for a role, and all the roles a person is ranked for.</p>
+<pre><code class="language-python">by_role, by_person = {}, {}
+
+for ranking in all_rankings:
+    by_role.setdefault(ranking['role'], []).append(ranking)
+    by_person.setdefault(ranking['person'], []).append(ranking)</code></pre>
+
+<p>Now we can start using OR-Tools.</p>
+<pre><code class="language-python">from ortools.sat.python import cp_model
+
+model = cp_model.CpModel()
+solver = cp_model.CpSolver()</code></pre>
+
+<p>The matching will be represented via a Boolean variable for each
+ranking that is true to select that match and false otherwise.</p>
+<pre><code class="language-python">for ranking in all_rankings:
+    ranking['selected'] = model.NewBoolVar('')</code></pre>
+
+<p>OR-Tools lets us use natural Python expressions to express
+constraints. First, we dictate that each role should have no more than
+the allowed number of people.</p>
+<pre><code class="language-python">for role, rankings in by_role.items():
+    total = sum(ranking['selected'] for ranking in rankings)
+    model.Add(total &lt;= spots[role])</code></pre>
+
+<p>Similarly, we require that each person is matched with at most one
+role.</p>
+<pre><code class="language-python">for person, rankings in by_person.items():
+    total = sum(ranking['selected'] for ranking in rankings)
+    model.Add(total &lt;= 1)</code></pre>
+
+<p>The objective will be to maximize the total score of selected matches.</p>
+<pre><code class="language-python">total_score = 0
+for ranking in all_rankings:
+    score = float(ranking['score']) * ranking['selected']
+    total_score += score</code></pre>
+
+<p>At this point, we need only ask for the solution.</p>
+<pre><code class="language-python">model.Maximize(total_score)
+status = solver.Solve(model)
+print(solver.Value(total_score), solver.StatusName(status))
+# 82.87644300144302 OPTIMAL</code></pre>
+
+<p>You can check that every role has its maximal number of people, and
+every person has one role (or zero; this example has more people than
+spots). The CP-SAT solver has done the heavy lifting of finding a
+solution and even guaranteeing that it is optimal.</p>
+<pre><code class="language-python">with open('results.csv', 'w') as f:
+    writer = csv.DictWriter(f, all_rankings[0].keys())
+    writer.writeheader()
+    for ranking in all_rankings:
+        ranking['selected'] = solver.Value(ranking['selected'])
+        writer.writerow(ranking)</code></pre>
+
+<p>Code is also available in a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20230316-solving_a_matching_problem_with_ortools_cpsat/matching.ipynb">notebook</a>. Writing out results
+produces: <a href="results.csv"><code>results.csv</code></a></p>
+<pre><code>role,person,score,selected
+Role 23,Person 11,0.5238095238095238,0
+...
+Role 23,Person 41,0.5714285714285714,1
+...</code></pre>
+
+<p>The approach here is general enough that with modifications it can be
+applied to a wide range of more or less related problems. There is
+always a question of whether the chosen metric is the right one to
+optimize, but making some choice can get you pretty far toward a good
+solution, with a solver that makes optimization easy. Indeed, what
+other problems might be formulated in a manner amenable to solving in
+this way? OR-Tools are handy!</p>
+<hr />
+<p>Thanks to Maxime Labonne, whose Linear Programming <a href="https://github.com/mlabonne/Linear-Programming-Course" title="Hands-on course about linear programming and mathematical optimization.">course</a> was very
+helpful as I started to use OR-Tools.</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44351009-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
