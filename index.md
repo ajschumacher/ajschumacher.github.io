@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-06-02: [How to stay productive when the world is ending](/20230602-how_to_stay_productive_when_the_world_is_ending/)
  * 2023-06-01: [Black Holes, by Cox and Forshaw](/20230601-black_holes_by_cox_and_forshaw/)
  * 2023-03-25: [Conversion of Guelph energy to mass (p=0.049)](/20230325-conversion_of_guelph_energy_to_mass/)
  * 2023-03-16: [Solving a matching problem with OR-Tools CP-SAT](/20230316-solving_a_matching_problem_with_ortools_cpsat/)
