@@ -19,7 +19,7 @@ the interval?</p>
 <pre><code class="language-python">import scipy.stats
 
 def fieller_interval(mean_x, var_x, mean_y, var_y, alpha=0.05):
-   """Confidence interval for X/Y; see https://arxiv.org/pdf/0710.2024.pdf"""
+   """Confidence interval for X/Y; see arxiv.org/pdf/0710.2024.pdf"""
    z = scipy.stats.norm().ppf(1 - alpha / 2)
    t = z  # Uses z instead of t (assumes large n)
    divisor = mean_y**2 - (t**2 * var_y)
