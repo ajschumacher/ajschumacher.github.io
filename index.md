@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-07-06: [Regression standard errors scale by all residuals](/20230706-regression_standard_errors_scale_by_all_residuals/)
  * 2023-06-08: [The useful lesson of Carneades](/20230608-useful_lesson_of_carneades/)
  * 2023-06-03: [Fieller intervals in Python](/20230603-fieller_intervals_in_python/)
  * 2023-06-02: [How to stay productive when the world is ending](/20230602-how_to_stay_productive_when_the_world_is_ending/)
