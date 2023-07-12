@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-07-12: [Progress beyond radical skepticism](/20230712-progress_beyond_radical_skepticism/)
  * 2023-07-07: [Russell's History of Western Philosophy](/20230707-russell_history_of_western_philosophy/)
  * 2023-07-06: [Regression standard errors scale by all residuals](/20230706-regression_standard_errors_scale_by_all_residuals/)
  * 2023-06-08: [The useful lesson of Carneades](/20230608-useful_lesson_of_carneades/)
