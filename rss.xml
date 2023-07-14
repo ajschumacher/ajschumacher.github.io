@@ -7,6 +7,65 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Assume the ability to discern argument validity</title>
+<description><![CDATA[
+
+<p>To make any progress in reasoning requires assuming the ability to
+correctly determine whether arguments are valid given their inference
+rules. This is both a mechanical and fundamental process.</p>
+<p>Validity is the correctness of the form of an argument, assuming its
+inference rules, regardless of the truth of its assumptions. This is a
+valid argument:</p>
+<pre><code class="language-r">Assumption: If Socrates drinks hemlock, then Socrates will die.
+Assumption: Socrates drinks hemlock.
+Inference rule: If P implies Q, and P is true, then Q. (Modus Ponens)
+Conclusion: Socrates will die.</code></pre>
+
+<p>Any other conclusion from the inference rule and assumptions here is
+invalid, a non sequitur. (No other inference rules are included in the
+example, not even the law of identity.)</p>
+<p>When assumptions and inference rules are all stated clearly, and
+especially when every step of multi-step arguments are laid out, it
+appears to be a mechanical process to verify whether an argument is
+valid. But it is possible to doubt that it can be done correctly, and
+impossible to prove that it can, so the ability must be assumed.</p>
+<p>As Descartes <a href="https://en.wikisource.org/wiki/Meditations_on_First_Philosophy/Meditation_I" title="Meditations on First Philosophy by René Descartes">asks</a> in connection with his demon, “how do I know
+that I am not also deceived each time I add together two and three?”
+This is hard to imagine, but that is by construction. Perhaps the
+demon causes Descartes to conclude from the example above that
+Socrates is in France, and completely believe that this follows from
+the inference rule and assumptions given. He believes his argument is
+valid, but he is wrong, and he is incapable of determining this,
+totally anosognostic, unaware of his condition.</p>
+<p>The ability to identify whether an argument is valid cannot be proved,
+because any proof offered would need to be assumed valid. Any attempt
+at a proof begs the question. To assume the validity of just a
+specific proof of the ability to determine validity of other proofs
+might be possible, but the validity assumption would then be
+simultaneous with others needed for that proof, which introduces
+additional restrictions but unclear benefit.</p>
+<p>Arguments are not always stated sufficiently clearly and completely as
+to make confirming validity easy, but this is fundamentally a
+challenge in understanding the argument. In principle any argument can
+be expressed clearly and completely.</p>
+<p>The assumption here is that it is possible to identify valid arguments
+that really are valid, not that there will never be an accidental,
+correctible mistake. The assumption is that when there aren't any
+mistakes, the claim that an argument is valid is meaningful.</p>
+<p>So while verifying the validity of an argument can be a mechanical
+process, the assumption here really is fundamental. The assumption is
+first that reasoning can be, in some deep sense, really truly valid,
+that this is possible, and second that it is possible to know whether
+a given argument has this property.</p>
+<p>Validity is tautological but universal truth. If the assumptions and
+the inference rules, then the conclusions. This is the first and
+deepest sense of correctness.</p>    
+    ]]></description>
+<link>http://planspace.org/20230714-assume_ability_to_discern_argument_validity/</link>
+<guid>http://planspace.org/20230714-assume_ability_to_discern_argument_validity/</guid>
+<pubDate>Fri, 14 Jul 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Progress beyond radical skepticism</title>
 <description><![CDATA[
 
@@ -2904,21 +2963,6 @@ unconscious events could explain consciousness at all."</p>
 <link>http://planspace.org/20220918-consciousness_explained_by_dennett/</link>
 <guid>http://planspace.org/20220918-consciousness_explained_by_dennett/</guid>
 <pubDate>Sun, 18 Sep 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Heads, by Greg Bear</title>
-<description><![CDATA[
-
-<p>I read this because I heard it was about consciousness. It was only a
-little bit about consciousness. Some quantum computers had some kind
-of consciousness, but they were not central to anything. At the end
-there was some possible additional consciousness stuff, but mostly
-not. In the end, not nearly enough about consciousness. Three stars.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20220910-heads_by_greg_bear/</link>
-<guid>http://planspace.org/20220910-heads_by_greg_bear/</guid>
-<pubDate>Sat, 10 Sep 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
