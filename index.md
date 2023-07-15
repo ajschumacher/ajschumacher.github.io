@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-07-15: [The Room, by Karlsson](/20230715-the_room_by_karlsson/)
  * 2023-07-14: [Assume the ability to discern argument validity](/20230714-assume_ability_to_discern_argument_validity/)
  * 2023-07-12: [Progress beyond radical skepticism](/20230712-progress_beyond_radical_skepticism/)
  * 2023-07-07: [Russell's History of Western Philosophy](/20230707-russell_history_of_western_philosophy/)
