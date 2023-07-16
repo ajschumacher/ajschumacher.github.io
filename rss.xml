@@ -7,6 +7,50 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Assume some proved things cannot be disproved</title>
+<description><![CDATA[
+
+<p>Given a valid proof in a system of assumptions and inference rules,
+there is no sure way to know that there isn't also a contradictory
+proof, except by assumption outside the system.</p>
+<p>Some systems allow a proof of every statement. For example, take a
+system where <a href="https://en.wikipedia.org/wiki/Principle_of_explosion" title="Principle of explosion, ex falso quodlibet">anything follows from a contradiction</a>, as is common,
+and also assume a contradiction.</p>
+<p>Systems that prove everything are not honest. In such systems, you can
+prove that the system is consistent. You can prove the law of
+non-contradiction, and that the system contains no contradictions.
+Seeing such a proof does not establish that an opposite proof doesn't
+exist. The situation is akin to the futile exercise of trying to
+determine whether a person is a liar by asking them.</p>
+<p>The situation is also bad even if attempting to show for just one
+proved statement that there isn't a proof of its negation. Socrates
+presents argument 1, demonstrating conclusion A. Socrates then
+presents argument 2, demonstrating conclusion B, which is that there
+is no argument for the negation of A. Socrates then presents argument
+3, demonstrating conclusion C, which is that there is no argument for
+the negation of B. And so on, forever, for every initial conclusion A.</p>
+<p>A proof of consistency cannot be convincing, whether it be for a
+system overall or even for a single statement in the system (that for
+a specific proof, there isn't a proof for the opposite conclusion).</p>
+<p>Stepping up a level, to a meta-system where the consistency of the
+original system can be proved, does not solve the problem, because the
+meta-system hasn't itself been shown to be consistent.</p>
+<p>Gödel's second incompleteness theorem is a special case of this
+phenomenon. It shows that for formal systems with certain properties,
+they can't prove that they are consistent.</p>
+<p>Introducing the law of non-contradiction as an axiom, or assuming that
+the system contains no contradictions, does not solve the problem.
+Such a claim made within the system can always coexist with its
+negation, if it is present.</p>
+<p>If a system proves both a statement and its negation, there is no
+ambiguity. If a system proves a statement but its negation is not
+proved, it is necessary to assume that there is no such proof.</p>    
+    ]]></description>
+<link>http://planspace.org/20230716-assume_some_proved_things_cannot_be_disproved/</link>
+<guid>http://planspace.org/20230716-assume_some_proved_things_cannot_be_disproved/</guid>
+<pubDate>Sun, 16 Jul 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Room, by Karlsson</title>
 <description><![CDATA[
 
@@ -2725,196 +2769,6 @@ of what you have." (page 185)</p>
     ]]></description>
 <link>http://planspace.org/20221029-draft_no_4_by_mcphee/</link>
 <guid>http://planspace.org/20221029-draft_no_4_by_mcphee/</guid>
-<pubDate>Sat, 29 Oct 2022 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Mindf*ck, by Wylie</title>
-<description><![CDATA[
-
-<p>Cambridge Analytica was a US brand for the UK's SCL (Strategic
-Communication Laboratories) Group. They <a href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal" title="Facebook–Cambridge Analytica data scandal">got</a> Americans to fill out
-personality surveys and install an app that sent them Facebook
-information on likes, friends, etc. They used all this to advance the
-agendas of <a href="https://en.wikipedia.org/wiki/Steve_Bannon">Steve Bannon</a> and <a href="https://en.wikipedia.org/wiki/Robert_Mercer" title="Robert Mercer">Bob Mercer</a>, for example.</p>
-<p>Facebook's crime in this seems to have been basically negligence. They
-let a lot of information be accessible at the time, and people did
-unsavory things with it. It's a little weird to call it a data breach,
-since the system was working as intended.</p>
-<p>I wonder how (or whether) Cambridge Analytica evaluated their
-effectiveness... Trump became president, but was it <em>because of</em>
-Cambridge Analytica? Or were they just pushing in a direction that
-already had momentum? It is both horrifying and attractive to think
-that manipulative actors are responsible for massive unpleasant
-outcomes. But what share of the blame can be assigned?</p>
-<blockquote>
-<p>"Our system is broken, our laws don't work, our regulators are weak,
-our governments don't understand what's happening, and our
-technology is usurping our democracy." (page 248)</p>
-</blockquote>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"Bannon realized the power of cultivating the misogyny of of horny
-virgins." (page 62)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It turns out that Republicans can accept a batshit insane
-candidate, <em>so long as it's consistent insanity</em>." (page 71, italics
-in original)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"This [idea to simulate behavior with computers] brought to mind
-experiments from the 1990s in a niche field of sociology called
-"<a href="https://en.wikipedia.org/wiki/Artificial_society" title="Artificial society">artificial societies</a>," which involved attempts by crude
-multi-agent systems to "grow" societies in silico. I could remember
-as a teenager reading Isaac Asimov's <a href="https://planspace.org/20200714-foundation_trilogy/" title="Asimov's Foundation trilogy"><em>Foundation</em></a> series, where
-scientists used large data sets about societies to create the field
-of "psychohistory," which allowed them to not only predict the
-future but also control it." (page 81)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In 2012, Facebook <a href="https://patents.google.com/patent/US8825764B2/en" title="Determining user personality characteristics from social networking system communications and characteristics">filed</a> for a U.S. patent for "<em>Determining
-user personality characteristics from social networking system
-communications and characteristics</em>." Facebook's patent application
-explained that its interest in psychological profiling was because
-"inferred personality characteristics are stored in connection with
-the user's profile, and may be used for targeting, ranking,
-selecting versions of products, and various other purposes."" (page
-96)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In fact, a 2015 <a href="https://www.pnas.org/doi/10.1073/pnas.1418680112" title="Computer-based personality judgments are more accurate than those made by humans">study</a> by Youyou, Kosinski, and Stillwell showed
-that, using Facebook likes, a computer model reigned supreme in
-predicting human behavior." (page 103)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"It contained complete profiles of tens of thousands of users—name,
-gender, age, location, status updates, likes, friends—<em>everything</em>.
-Kogan said his Facebook app could even pull private messages."
-(pages 104-105)</p>
-</blockquote>
-<p>The private messages bit is quite the unsupported claim.</p>
-<hr>
-<blockquote>
-<p>""Think about it," I said to Bannon. "The message at a Tea Party
-rally is the same as at a Gay Pride parade: <em>Don't tread on me! Let
-me be who I am!</em>"" (page 117)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"A select minority of people exhibit traits of narcissism (extreme
-self-centeredness), Machiavellianism (ruthless self-interest), and
-psychopathy (emotional detachment). In contrast to the Big Five
-traits found in everyone to some degree as part of normal
-psychology—openness, conscientiousness, extroversion, agreeableness,
-and neuroticism—these "<a href="https://en.wikipedia.org/wiki/Dark_triad" title="Dark triad">dark triad</a>" traits are maladaptive,
-meaning that those who exhibit them are generally more prone to
-antisocial behavior, including criminal acts. From the data CA
-collected, the team was able to identify people who exhibited
-neuroticism and dark-triad traits, and those who were more prone to
-impulsive anger or conspiratorial thinking than average citizens.
-Cambridge Analytica would target them, introducing narratives via
-Facebook groups, ads, or articles that the firm knew from internal
-testing were likely to inflame the very narrow segments of people
-with these traits. CA wanted to provoke people, to get them to
-engage." (pages 119-120)</p>
-<p>"As it happens, the most engaging content on social media is often
-horrible or enraging." (page 120)</p>
-</blockquote>
-<p>Some of the <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">Big Five personality traits</a> stuff reminded me of what
-I've heard about <a href="https://www.amazon.com/Righteous-Mind-Divided-Politics-Religion/dp/0307455777/">The Righteous Mind</a>: describing Republicans as low
-on openness and high on conscientiousness, while Democrats are the
-reverse.</p>
-<hr>
-<blockquote>
-<p>"Cambridge Analytica's research panels also identified that there
-were relationships between target attitudes and a psychological
-effect called the <em>just-world hypothesis</em> (JWH). This is a cognitive
-bias where some people rely on a presumption of a fair world: The
-world is a fair place where bad things "happen for a reason" or will
-be offset by some sort of "moral balancing" in the universe. We
-found that people who displayed the JWH bias were, for example, more
-prone to victim-blaming in hypothetical scenarios of sexual assault.
-If the world is fair, then random bad things should not happen to
-innocent people, and therefore there must have been a fault in the
-victim's behavior. Finding ways to blame victims is psychologically
-prophylactic for some people because it helps them cope with anxiety
-induced by uncontrollable environmental threats while maintaining a
-comforting view that the world will still be fair <em>to them</em>.</p>
-<p>"Cambridge Analytica found that JWH was related to many attitudes,
-but that it had a special relationship with racial bias." (page 129)</p>
-</blockquote>
-<p>This idea—the just-world hypothesis considered harmful—is very
-interesting.</p>
-<hr>
-<blockquote>
-<p>"In 1988, George H. W. Bush's campaign ran the infamous
-<a href="https://youtu.be/Io9KMSSEZ0Y" title="Willie Horton 1988 Attack Ad">Willie Horton ad</a>, terrifying white voters with visions of
-wild-haired black criminals running amok." (page 131)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"... Cambridge Analytica was merely a front-facing brand for
-American clients that was entirely staffed by SCL personnel." (page
-134)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"In our invasion of America, we were purposefully activating the
-worst in people, from paranoia to racism." (page 144)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"To Moscow, civil rights and the First Amendment are the American
-political system's most glaring vulnerabilities." (page 153)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Cambridge Analytica identified that many people in non-urban
-regions or in lower socioeconomic strata often externalized the
-notion of "the economy" to something that only the wealthy and
-metropolitan participated in. "The economy" was not their job in a
-local store; it was something that bankers did." (page 172)</p>
-</blockquote>
-<hr>
-<p>Page 192 includes a reference to <a href="https://en.wikipedia.org/wiki/Zelig" title="Zelig">Zelig</a>, which I hadn't known
-about.</p>
-<hr>
-<blockquote>
-<p>"Later, it emerged that Facebook, in a panic about its PR crisis,
-had hired the secret communications firm
-<a href="https://en.wikipedia.org/wiki/Definers_Public_Affairs">Definers Public Affairs</a>, which subsequently leaked out fake
-narratives filled with anti-Semitic tropes about its critics being
-part of a George Soros-funded conspiracy." (page 229)</p>
-</blockquote>
-<hr>
-<p>Page 229 describes the 2013 "The Value of Science is in the Foresight"
-by Valery Gerasimov (<a href="https://www.armyupress.army.mil/portals/7/military-review/archives/english/militaryreview_20160228_art008.pdf">PDF</a>).</p>
-<hr>
-<blockquote>
-<p>"Peter Thiel, the venture capitalist behind Facebook, Palantir, and
-Paypal, spoke at length about how he no longer believes "that
-freedom and democracy are compatible." And in elaborating his views
-on technology companies, he expounded on how CEOs are the new
-monarchs in a techno-feudal system of governance. We just don't call
-them monarchies in public, he said, because "anything that's not
-democracy makes people uncomfortable."" (page 237)</p>
-</blockquote>
-<p>The quote is included in Thiel's "<a href="https://www.cato-unbound.org/2009/04/13/peter-thiel/education-libertarian/">The Education of a Libertarian</a>."</p>
-<hr>
-<blockquote>
-<p>"Information Commissioner's Office ... eventually issuing Facebook
-the maximum fine allowable in law for data breaches." (page 247)</p>
-</blockquote>
-<p>This appears to have been <a href="https://www.theguardian.com/technology/2018/oct/25/facebook-fined-uk-privacy-access-user-data-cambridge-analytica" title="UK fines Facebook £500,000 for failing to protect user data">£500,000</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20221029-mindf*ck_by_wylie/</link>
-<guid>http://planspace.org/20221029-mindf*ck_by_wylie/</guid>
 <pubDate>Sat, 29 Oct 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
