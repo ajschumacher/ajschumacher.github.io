@@ -20,18 +20,13 @@ send [me](/aaron/) the following:
     * Ensure you meet the minimum requirements listed for each, and
       that the locations listed (including remote if applicable) are
       aligned with your preferences.
-    * If you're interested in working remotely, mention that to me.
-    * If you're interested in a position based in an EU or UK office,
-      mention that to me.
 5. Are you either of: a current university student or graduated from
    university within the last nine months? (yes/no)
 6. How many years of industry experience do you have (not counting
    internships)? (one number)
-7. Do you live in either of: the EU or UK? (yes/no)
-8. Are you interested in being full-time remote (not being associated
-   with a physical office)? (yes/no) If yes, what country and
-   state/province (as applicable) would you prefer to physically work
-   from (your home)?
+7. Do you live in either of the EU or UK? (yes/no)
+8. Are you interested in a position (from above) where you'd be based
+   in the EU or UK? (yes/no)
 9. Optional things
     * LinkedIn profile link
     * GitHub profile link
