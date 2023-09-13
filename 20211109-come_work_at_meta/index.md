@@ -10,8 +10,8 @@ send [me](/aaron/) the following:
 1. Your full name
 2. Your email address
 3. Exactly one of:
-    * Your resume in PDF format
-    * A link to your LinkedIn profile
+    * Your resume in PDF format, or
+    * A link to your LinkedIn profile, or
     * Tell me to put in your email address and you'll be prompted to
       provide information yourself. (I've never tried this.)
 4. One to three job links from the [official jobs site][]
