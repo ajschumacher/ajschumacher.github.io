@@ -20,6 +20,10 @@ send [me](/aaron/) the following:
     * Ensure you meet the minimum requirements listed for each, and
       that the locations listed (including remote if applicable) are
       aligned with your preferences.
+    * Unfortunately, not all roles accept referrals through the
+      system, and I don't think you can see in advance which do/don't.
+      If I can't submit a referral for any role you're interested in,
+      you can still apply through the careers site.
 5. Are you either of: a current university student or graduated from
    university within the last nine months? (yes/no)
 6. How many years of industry experience do you have (not counting
