@@ -1,9 +1,10 @@
 # Aaron Schumacher
 
 You can connect with me via
-[Twitter](https://twitter.com/planarrowspace),
 [LinkedIn](https://www.linkedin.com/in/ajschumacher),
-[GitHub](https://github.com/ajschumacher), and
+[GitHub](https://github.com/ajschumacher),
+[Threads](https://www.threads.net/@aaronjschumacher),
+[X](https://twitter.com/planarrowspace), and
 [email](mailto:aaron@planspace.org). Let's
 [share books](/20210122-lets_share_books/)!
 
@@ -17,12 +18,12 @@ I made a little [FAQ][] based on questions I get from people. I have a
 
 Sometimes people ask me for a bio:
 
-> Aaron Schumacher is a Research Data Scientist at Meta. He was
-> previously at Deep Learning Analytics and General Dynamics Mission
-> Systems. He has taught with Python and R for General Assembly and
-> the Metis data science bootcamp. Aaron has also worked with data at
-> Booz Allen Hamilton, New York University, and the New York City
-> Department of Education. He studied mathematics at the University of
+> Aaron Schumacher is a Data Scientist at Meta. He was previously at
+> Deep Learning Analytics and General Dynamics Mission Systems. He has
+> taught with Python and R for General Assembly and the Metis data
+> science bootcamp. Aaron has also worked with data at Booz Allen
+> Hamilton, New York University, and the New York City Department of
+> Education. He studied mathematics at the University of
 > Wisconsin–Madison and teaching mathematics at Bard College. Aaron's
 > career-best breakdancing result was advancing to the semi-finals of
 > the R16 Korea 2009 individual footwork battle.
@@ -37,6 +38,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+* [Fireside Chat / Pro Tips (with Codecademy)](/20230919-fireside_chat_pro_tips/) on Tuesday 2023-09-19
  * [SQL technical interview prep](https://docs.google.com/presentation/d/1vv6vTB-l41zhb7_EID6PetXZBOJSOT07Qk_rH8E-1C4/) for [Hack Diversity](https://www.hackdiversity.com/) on Thursday 2022-03-24
  * [Databases, data modeling, and SQL](https://docs.google.com/presentation/d/1xkbuNVuGIIPd7XtVK0I4qHFh1phH-tvcH6exuLZtugk/) for [Hack Diversity](https://www.hackdiversity.com/) on Friday 2022-02-04
  * [Deep Reinforcement Learning](/20171114-deep_rl/) at GDMS ML CoI on
