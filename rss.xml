@@ -7,6 +7,22 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Fireside Chat / Pro Tips (with Codecademy)</title>
+<description><![CDATA[
+
+<p>My <a href="https://www.linkedin.com/in/minhzy/" title="Jonathan (Minhzy) Truong">friend</a> at Codecademy invited me to do a sort of AMA on my
+career working with data, in an event that was variously promoted as a
+“<a href="https://www.linkedin.com/feed/update/urn:li:activity:7108029659493138432/" title="We’re hosting a fireside chat with Meta Data Scientist Aaron Schumacher next Tuesday.">fireside chat</a>” and “<a href="https://community.codecademy.com/events/details/codecademy-official-community-events-presents-pro-tips-with-aaron-schumacher-meta/" title="Pro Tips with Aaron Schumacher, Meta">pro tips</a>.”</p>
+<ul>
+<li>I made some <a href="https://docs.google.com/presentation/d/19qy_rOaPYbEgF5ykJeA39a2XjgPVE4Tp2a_YvSc9hXQ/edit" title="Fireside Chat / Pro Tips">slides</a> to introduce myself and some recommendations.</li>
+<li>It's <a href="https://www.youtube.com/watch?v=8PCL5ogz7xM&amp;ab_channel=Codecademy" title="Pro Tips with Aaron Schumacher, Meta">on YouTube</a>!</li>
+</ul>    
+    ]]></description>
+<link>http://planspace.org/20230919-fireside_chat_pro_tips/</link>
+<guid>http://planspace.org/20230919-fireside_chat_pro_tips/</guid>
+<pubDate>Tue, 19 Sep 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Strangest Man, by Farmelo</title>
 <description><![CDATA[
 
@@ -2642,46 +2658,6 @@ Botton's <a href="https://en.wikipedia.org/wiki/Religion_for_Atheists" title="Wi
 <link>http://planspace.org/20230102-echopraxia_by_watts/</link>
 <guid>http://planspace.org/20230102-echopraxia_by_watts/</guid>
 <pubDate>Mon, 02 Jan 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Blindsight, by Watts</title>
-<description><![CDATA[
-
-<p>Thanks to an <a href="https://www.meetup.com/machine-learning-paper-club/events/289756240/" title="Meetup: AIBC: Happy New Year Book Club!">invite</a>, I finally read <a href="https://en.wikipedia.org/wiki/Blindsight_(Watts_novel)" title="Wikipedia: Blindsight (Watts novel)">Blindsight</a>, by Peter
-Watts. It's good. The central what-if is about whether consciousness
-is necessary (or even helpful) for intelligent behavior.</p>
-<p>In this diagram, every quadrant exhibits intelligent behavior:</p>
-<p><img alt="diagram" src="diagram.png"></p>
-<p>I think Watts uses the term <a href="https://en.wikipedia.org/wiki/Chinese_room" title="Wikipedia: Chinese room">Chinese Room</a> to mean something
-different from what <a href="https://en.wikipedia.org/wiki/John_Searle" title="Wikipedia: John Searle">Searle</a> (and even <a href="https://en.wikipedia.org/wiki/Daniel_Dennett" title="Wikipedia: Daniel Dennett">Dennett</a>) mean. Searle's
-Chinese Room is a kind of <a href="https://en.wikipedia.org/wiki/Philosophical_zombie" title="Wikipedia: Philosophical zombie">philosophical zombie</a>, with linguistic
-behavior indistinguishable from that of a conscious human, but no
-consciousness. Dennett <a href="https://planspace.org/20220918-consciousness_explained_by_dennett/" title="Consciousness Explained, by Dennett">says</a> the Chinese Room <em>is</em> conscious, which
-is the kind of nonsense that will get you <a href="https://www.washingtonpost.com/technology/2022/07/22/google-ai-lamda-blake-lemoine-fired/" title="Washington Post: Google fired engineer who said its AI was sentient">fired from Google</a>.
-Watt's aliens ("scramblers" and related systems) are empirically
-distinguishable from humans in their use of language, and he says
-they're a Chinese Room example because of this. That's a different
-meaning for the term.</p>
-<p>We usually imagine intelligent aliens as being conscious, like humans,
-and Watts's idea is to imagine aliens that are intelligent but not
-conscious, like evolved computers, in the same category where I would
-put all AI. Could this happen?</p>
-<p>If nothing else, the book invites thought on how we view
-consciousness. We generally accept that other humans are conscious,
-not philosophical zombies. If we met an intelligent alien, would we so
-easily assume its consciousness? Would this be important to how we
-interact with it? How do we think of animal consciousness and what
-this means ethically? Is it possible for AI to be conscious?</p>
-<p>Definitely interesting enough that I'll read <a href="https://en.wikipedia.org/wiki/Echopraxia_(novel)" title="Wikipedia: Echopraxia (novel)">Echopraxia</a> too.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<blockquote>
-<p>"After four thousand years we can’t even prove that reality exists
-beyond the mind of the first-person dreamer." (page 52)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20221224-blindsight_by_watts/</link>
-<guid>http://planspace.org/20221224-blindsight_by_watts/</guid>
-<pubDate>Sat, 24 Dec 2022 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
