@@ -9,10 +9,12 @@ You can connect with me via
 
 
 I made a little [FAQ][] based on questions I get from people. I have a
-[vision and mission][].
+[vision and mission][]. Here's an [hour][] of me talking about career
+stuff.
 
 [FAQ]: /20170319-thank_you_for_reaching_out/
 [vision and mission]: /20210226-vision_and_mission/
+[hour]: /20230919-fireside_chat_pro_tips/
 
 
 Sometimes people ask me for a bio:
