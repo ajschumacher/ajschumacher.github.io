@@ -1,7 +1,11 @@
 # Thank You for Reaching Out
 
 
-I make myself pretty [easy to contact](/aaron/), and sometimes people contact me.
+I make myself pretty [easy to contact](/aaron/), and sometimes people
+contact me. For my background and career recommendations, consider my
+[2023 talk][]. On to questions:
+
+[2023 talk]: /20230919-fireside_chat_pro_tips/
 
 
 ### 1. Will I hire you?
@@ -17,7 +21,8 @@ channels. -->
 ### 2. Will I recommend you for a job?
 
 I'd be happy to [refer you][] for jobs at Meta: Facebook, Instagram,
-WhatsApp, etc.
+WhatsApp, etc. (Not all listings accept referrals, but I'll do my
+best!)
 
 [refer you]: /20211109-come_work_at_meta/
 
