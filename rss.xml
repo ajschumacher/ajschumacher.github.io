@@ -7,6 +7,168 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>It must be beautiful, edited by Farmelo</title>
+<description><![CDATA[
+
+<p>This is a nice collection of essays about some beautiful equations,
+edited by the author of <a href="/20230816-strangest_man_by_farmelo/" title="The Strangest Man, by Farmelo">a biography of Dirac</a>. Not every equation
+is fully explained, but there's great history and big-picture
+explanation. The authors are frequently major contributors to the
+fields.</p>
+<ol>
+<li>The Planck-Einstein Equation for the Energy of a Quantum: \( E = hf\)</li>
+<li>The Logistic Map: \( x_{next} = a x_{initial} (1 - x_{initial}) \)</li>
+<li>The Drake Equation: \( N = R^* \cdot f_p \cdot n_e \cdot f_l \cdot f_i \cdot f_c \cdot L \)</li>
+<li>\( E = m c^2 \)</li>
+<li>The Molina-Rowland Chemical Equations<ul>
+<li>\( CFCl_3 \rightarrow CFCl_2 + Cl \)</li>
+<li>\( Cl + O_3 \rightarrow ClO + O_2 \)</li>
+<li>\( ClO + O \rightarrow Cl + O_2\)</li>
+</ul>
+</li>
+<li>Schrödinger's Wave Equation: \( \hat{H} \psi = E \psi \)</li>
+<li>The Dirac Equation: \( \left[ \gamma^\mu \left( i \frac{\partial}{\partial x^\mu} - e A_\mu (x) \right) + m \right] \psi (x) = 0 \)</li>
+<li>Evolutionarily Stable Strategy: \( E(S, S) &gt; E(T, S) \)</li>
+<li>The Einstein Equation of General Relativity: \( R_{ab} - \frac{1}{2}Rg_{ab} = -8\pi G T_{ab} \)</li>
+<li>Shannon's Equations<ul>
+<li>\( I = -p \log_2 p \)</li>
+<li>\( C = W \log_2 (1 + S/N) \)</li>
+</ul>
+</li>
+<li>The Yang-Mills Equation: \( \partial \mathbf{f}_{μν} / \partial x_ν + 2 \varepsilon (\mathbf{b}_ν \cdot \mathbf{f}_{μν}) + \mathbf{J}_μ = 0 \)</li>
+</ol>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"It was in large part thanks to this [logistic map] equation, one so
+simple that children can study it at school, that scientists in the
+1970s came to see that some equations that appear to predict the
+future in terms of the past are completely unable to make such
+predictions, contrary to what most scientists had thought." (page
+xvii)</p>
+</blockquote>
+<p>Maybe children <em>should</em> study it at school, if they're not,
+currently...</p>
+<p>See also: <a href="/20200714-foundation_trilogy/" title="Asimov's Foundation trilogy">psychohistory</a></p>
+<hr>
+<blockquote>
+<p>"The [wave-particle] problem's resolution came in the late 1920s,
+when physicists developed quantum theory into what became known as
+quantum field theory, which made possible a unified description of
+radiation and matter." (page 24)</p>
+</blockquote>
+<hr>
+<p><a href="https://www.johndcook.com/blog/2021/04/09/period-three-implies-chaos/" title="explainer">Period three implies chaos</a> is one of the best paper names of all
+time.</p>
+<hr>
+<blockquote>
+<p>"Avoiding detailed assumptions about this or that feature of the way
+particular objects were built or interacted, Einstein's theory
+hardly resembled the work of senior physicists of the time. Instead,
+it had an outsider's style—or perhaps a return to an older form of
+clarity." (page 75)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"The sense of aesthetics that Shcrödinger alludes to here is his
+preference for a mathematics that is more familiar and also not as
+ugly as Heisenberg's 'transcendental algebra' (or matrices), but
+which also permits visualizability of atomic processes." (page 117)</p>
+</blockquote>
+<p>Transcendental algebra?</p>
+<hr>
+<blockquote>
+<p>"In the pantheon of twentieth-century physics, Heisenberg is second
+only to Einstein." (page 129)</p>
+</blockquote>
+<p>Feel like somebody told me that was <a href="/20230816-strangest_man_by_farmelo/" title="The Strangest Man, by Farmelo">Dirac</a>...</p>
+<hr>
+<blockquote>
+<p>"As the physicist who did more to delve into the foundations of
+quantum theory than anyone else since Bohr, Einstein and Heisenberg,
+John Bell, once put it, 'for all practical purposes' quantum
+mechanics works well. He forcefully reminded us, however, that we
+still do not fully understand the Schrödinger equation." (page 131)</p>
+</blockquote>
+<p>The citation here is <a href="https://www.informationphilosopher.com/solutions/scientists/bell/Against_Measurement.pdf">Against 'measurement'</a>, which is straight FIRE.</p>
+<hr>
+<blockquote>
+<p>"Is it really possible, by logical processing or calculation, to
+arrive at essentially new insights—to get out more than you put in?</p>
+<p>"This question is especially timely today, since it lies at the
+heart of debates regarding the nature of machine
+intelligence—whether it may develop into a species of mind on a par
+with human intelligence, or even its eventual superior." (pages
+155-156)</p>
+</blockquote>
+<p>This was in <em>2002.</em></p>
+<hr>
+<blockquote>
+<p>"They [Dirac, Maxwell, Einstein] proceed by <em>experimental logic.</em>
+That concept is an oxymoron only on the surface. In experimental
+logic, one formulates hypotheses in equations, and experiments with
+those equations. That is, one tries to improve the equations from
+the point of view of beauty and consistency, and then checks whether
+the 'improved' equations elucidate some feature of nature.
+Mathematicians recognize the technique of 'proof by contradiction':
+to prove <em>A,</em> you assume the opposite of <em>A,</em> and reach a
+contradiction. Experimental logic is 'validation by fruitfulness':
+to validate <em>A,</em> assume it, and show that it leads to fruitful
+consequences. Relative to routine deductive logic, experimental
+logic abides by the Jesuit credo: 'It is more blessed to ask
+forgiveness than permission.'" (page 159)</p>
+<p>"Creative mathematics and physics rely not on perfect logic, but
+rather on an experimental logic. Experimental logic involves
+noticing patterns, playing with them, making assumptions to explain
+them, and—especially—recognizing beauty."</p>
+</blockquote>
+<p>Abduction? With guess-and-check? And aesthetics?</p>
+<hr>
+<blockquote>
+<p>"As the anthropologists Robert Boyd and Peter Richerson once
+remarked, ‘To replace a world you do not understand by a model of
+the world you do not understand is no advance.’" (page 165)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"There are questions that are too hard to think about without the
+aid of mathematics." (page 179)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>In fact, in the four dimensions of space-time, there are <em>twenty</em>
+independent components to the curvature, and these can be collected
+together to describe a mathematical entity referred to as the
+'Rieman curvature tensor'. (page 191)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In 1918, the young German mathematician Emmy Noether discovered a
+deeply fundamental relationship between symmetry and the
+conservation of physical quantities, such as electric charge. She
+found that for every conserved quantity there is a related
+symmetry—and vice versa." (page 236)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"In an essay on 'Beauty and theoretical physics,' Yang quotes
+Heisenberg as saying in 1973, 'We will have to abandon the
+philosophy of Democritus and the concept of elementary particles. We
+should accept instead the concept of fundamental symmetries.'" (page
+251)</p>
+</blockquote>
+<hr>
+<p>Dirac has a paper called "Pretty mathematics."</p>
+<hr>
+<p>Something about the Einstein summation convention...</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20231119-it_must_be_beautiful/</link>
+<guid>http://planspace.org/20231119-it_must_be_beautiful/</guid>
+<pubDate>Sun, 19 Nov 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Fireside Chat / Pro Tips (with Codecademy)</title>
 <description><![CDATA[
 
@@ -2599,65 +2761,6 @@ Almost certainly yes, but it's a little scary.</p>
 <link>http://planspace.org/20230106-predicting_the_future_from_2023/</link>
 <guid>http://planspace.org/20230106-predicting_the_future_from_2023/</guid>
 <pubDate>Fri, 06 Jan 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Echopraxia, by Watts</title>
-<description><![CDATA[
-
-<p>Here's Watts' follow-up to <a href="/20221224-blindsight_by_watts/" title="Blindsight, by Watts">Blindsight</a>. Blindsight is about
-consciousness, and Echopraxia largely is too, but it may have been
-intended to also be about free will (except Watts didn't find it that
-interesting) and ends up largely more of the same cosmic horror,
-ret-conning the narrator from Blindsight into the new alien invasion
-story. It's more fun apocalipsia.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>"Consciousness is a scratchpad." (page 64)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“To himself everyone is immortal; he may know that he is going to
-die, but he can never know he is dead.” (quoting Samuel Butler, page
-69)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"<a href="https://en.wikipedia.org/wiki/Digital_physics" title="Wikipedia: Digital physics">Digital physics</a> had reigned supreme since before he’d been
-born, and its dictums were as incontrovertible as they were absurd.
-Numbers didn’t just describe reality; numbers were reality, discrete
-step functions smoothing up across the Planck length into an
-illusion of substance." (page 223)</p>
-</blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Digital_physics" title="Wikipedia: Digital physics">Digital physics</a> (though I prefer the name "Information Mechanics")
-is kind of a fun idea. The Wikipedia page is weak; it doesn't even
-mention <a href="/2012/05/18/quotes-from-frederick-w-kantor/" title="Quotes from Frederick W. Kantor">Kantor</a>.</p>
-<blockquote>
-<p>"The idea of God as a virus only really works if you buy into the
-burgeoning field of digital physics." (page 353)</p>
-</blockquote>
-<p>"Burgeoning" is a stretch, I think. (This bit is from the
-non-fictional author's statement at the end.)</p>
-<hr>
-<blockquote>
-<p>"The great thing about making yourself the villain is nobody’s
-likely to contradict you." (page 232)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"the cumbersome bottleneck of the conscious cache." (page 348)</p>
-</blockquote>
-<hr>
-<p>There's lots on "enhanced" humans, and Watts cites
-<a href="https://www.nature.com/articles/452674a" title="Nature: Poll results: look who's doping">Poll results: look who's doping</a> from Nature, which suggested in
-2008 that around 20% of scientists take Ritalin or something like it.</p>
-<hr>
-<p>There's some strange religiosity, and Watts cites an article about de
-Botton's <a href="https://en.wikipedia.org/wiki/Religion_for_Atheists" title="Wikipedia: Religion for Atheists">Religion for Atheists</a>.</p>    
-    ]]></description>
-<link>http://planspace.org/20230102-echopraxia_by_watts/</link>
-<guid>http://planspace.org/20230102-echopraxia_by_watts/</guid>
-<pubDate>Mon, 02 Jan 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
