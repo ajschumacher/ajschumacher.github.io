@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Social Security is a great deal</title>
+  </head>
+  <body>
+    <article>
+<h1>Social Security is a great deal</h1>
+<p class="date">Saturday December  2, 2023</p>
+<p>Social Security in its current form pays out, with no volatility, a
+perpetual inflation-adjusted annual yield of up to 51% on what
+individuals pay in tax. (15% is common, and 5% is the worst you can
+get.) No investment is as good as Social Security.</p>
+<p>I know it's not really an individual investment; younger Americans are
+supposed to be supporting older ones and so on. But I had no idea how
+good Social Security is for recipients, relative to how much they put
+in.</p>
+<p>Social Security pays out a percentage of your income. In monthly
+terms, it's 90% of up to $1,115/month, then 32% up to $6,721/month,
+then 15% up to $13,350/month. These are 2023 dollars and give the
+maximum full retirement age monthly payment of $3,792.</p>
+<p>Full retirement age for me is 67. If I start collecting Social
+Security early, at 62, payments are locked in at 70% of the “full”
+value. If instead I delay until 70, payments are 124%.</p>
+<p>Social Security is based on inflation-adjusted income over your 35
+highest-earning years. (If you're working your 36th year and earning
+no more than any other year, this calculation won't apply.)</p>
+<p>The last factor we need is the 6.2% tax you pay in to Social Security.
+Your employer also separately pays as much, but most people don't
+consider that part of their income.</p>
+<p>So the best “return” you can get is if you have lifetime earnings so
+far under $468,300 and you plan to start collecting Social Security as
+late as possible:</p>
+<pre><code>0.9 * 1.24 / 35 / 0.062  # 51.4%</code></pre>
+
+<p>The worst non-zero return you can get is if your lifetime Social
+Security earnings are already over $2.8M and you plan to collect
+Social Security as soon as possible.</p>
+<pre><code>0.15 * 0.7 / 35 / 0.062  # 4.8%</code></pre>
+
+<p>A conservative mid-career value is likely about 15%.</p>
+<pre><code>0.32 * 1.0 / 35 / 0.062  # 14.7%</code></pre>
+
+<p>Social Security adjusts for inflation, so these are all returns <em>over</em>
+inflation. I just can't think of anything that gets returns like this.</p>
+<p>You get the same return on your last year's contribution before
+collecting, so comparative investments can't really be allowed <em>any</em>
+time for compounding. Still, most contributions will sit for some time
+before the contributor starts collecting, so a full comparison could
+be more complicated.</p>
+<p>Social Security is less flexible than an investing account. But is
+there <em>anything</em> that comes close to delivering what Social Security
+does, for someone who lives to be 90, say?</p>
+<hr />
+<p>The calculations above may seem opaque. I simplified a little,
+dropping things that cancel out. More explicitly:</p>
+<pre><code class="language-r">($100 new income this year / 35 years considered)
+ * 90% income replacement factor
+ * 1.24 late start factor
+ = annual Social Security benefit from income
+-------------------------------------------------------
+($100 new income this year * 6.2% tax = tax paid on income)</code></pre>
+
+<p>I rearranged terms a little, and I'm still leaving out conversion
+to/from monthly basis which is just a distraction.</p>    </article>
+    <footer>
+      <hr />
+<p><a name="contact"></a><form class="email_updates">
+  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
+  <input type="submit" value="Get monthly updates" style="width: 49%" />
+  <input type="hidden" name="_subject" value="planspace.org updates list" />
+  <input type="text" name="_honey" style="display:none" />
+  <input type="hidden" name="_captcha" value="false" />
+</form></p>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

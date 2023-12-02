@@ -7,6 +7,71 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Social Security is a great deal</title>
+<description><![CDATA[
+
+<p>Social Security in its current form pays out, with no volatility, a
+perpetual inflation-adjusted annual yield of up to 51% on what
+individuals pay in tax. (15% is common, and 5% is the worst you can
+get.) No investment is as good as Social Security.</p>
+<p>I know it's not really an individual investment; younger Americans are
+supposed to be supporting older ones and so on. But I had no idea how
+good Social Security is for recipients, relative to how much they put
+in.</p>
+<p>Social Security pays out a percentage of your income. In monthly
+terms, it's 90% of up to $1,115/month, then 32% up to $6,721/month,
+then 15% up to $13,350/month. These are 2023 dollars and give the
+maximum full retirement age monthly payment of $3,792.</p>
+<p>Full retirement age for me is 67. If I start collecting Social
+Security early, at 62, payments are locked in at 70% of the “full”
+value. If instead I delay until 70, payments are 124%.</p>
+<p>Social Security is based on inflation-adjusted income over your 35
+highest-earning years. (If you're working your 36th year and earning
+no more than any other year, this calculation won't apply.)</p>
+<p>The last factor we need is the 6.2% tax you pay in to Social Security.
+Your employer also separately pays as much, but most people don't
+consider that part of their income.</p>
+<p>So the best “return” you can get is if you have lifetime earnings so
+far under $468,300 and you plan to start collecting Social Security as
+late as possible:</p>
+<pre><code>0.9 * 1.24 / 35 / 0.062  # 51.4%</code></pre>
+
+<p>The worst non-zero return you can get is if your lifetime Social
+Security earnings are already over $2.8M and you plan to collect
+Social Security as soon as possible.</p>
+<pre><code>0.15 * 0.7 / 35 / 0.062  # 4.8%</code></pre>
+
+<p>A conservative mid-career value is likely about 15%.</p>
+<pre><code>0.32 * 1.0 / 35 / 0.062  # 14.7%</code></pre>
+
+<p>Social Security adjusts for inflation, so these are all returns <em>over</em>
+inflation. I just can't think of anything that gets returns like this.</p>
+<p>You get the same return on your last year's contribution before
+collecting, so comparative investments can't really be allowed <em>any</em>
+time for compounding. Still, most contributions will sit for some time
+before the contributor starts collecting, so a full comparison could
+be more complicated.</p>
+<p>Social Security is less flexible than an investing account. But is
+there <em>anything</em> that comes close to delivering what Social Security
+does, for someone who lives to be 90, say?</p>
+<hr>
+<p>The calculations above may seem opaque. I simplified a little,
+dropping things that cancel out. More explicitly:</p>
+<pre><code class="language-r">($100 new income this year / 35 years considered)
+ * 90% income replacement factor
+ * 1.24 late start factor
+ = annual Social Security benefit from income
+-------------------------------------------------------
+($100 new income this year * 6.2% tax = tax paid on income)</code></pre>
+
+<p>I rearranged terms a little, and I'm still leaving out conversion
+to/from monthly basis which is just a distraction.</p>    
+    ]]></description>
+<link>http://planspace.org/20231202-social_security_is_a_great_deal/</link>
+<guid>http://planspace.org/20231202-social_security_is_a_great_deal/</guid>
+<pubDate>Sat, 02 Dec 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>It must be beautiful, edited by Farmelo</title>
 <description><![CDATA[
 
@@ -2726,41 +2791,6 @@ when we solve them." (page 223)</p>
 <link>http://planspace.org/20230116-ten_equations_that_rule_the_world/</link>
 <guid>http://planspace.org/20230116-ten_equations_that_rule_the_world/</guid>
 <pubDate>Mon, 16 Jan 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Predicting the future from 2023</title>
-<description><![CDATA[
-
-<p>I've tried to predict the future the last three years: <a href="/20200112-predicting_the_future_from_2020/" title="Predicting the future from 2020">2020</a>,
-<a href="/20210102-predicting_the_future_from_2021/" title="Predicting the future from 2021">2021</a>, <a href="/20220101-predicting_the_future_from_2022/)" title="Predicting the future from 2022">2022</a>. I think that's probably enough for now. Here are
-some 2023 <a href="https://www.vox.com/future-perfect/2023/1/2/23494204/biden-trump-putin-supreme-court-2023-predictions" title="23 things we think will happen in 2023">predictions from Vox</a>, if you want.</p>
-<p>If you make new predictions every year, you end up with a lot of them.
-I managed to have at least one set of <em>conflicting</em> predictions in
-just three years.</p>
-<p>The big trends don't change that much year to year, and I've already
-thought about those some. Many of them are clear enough that even a
-large language model knows them.</p>
-<blockquote>
-<p>What are important trends for the next five to ten years?</p>
-</blockquote>
-<p><img alt="ChatGPT" src="chatgpt.jpg"></p>
-<blockquote>
-<p>"It is difficult to predict specific trends with certainty, as many
-factors can influence the course of events. However, some possible
-trends that could affect the world over the next five to ten years
-include the continued rise of artificial intelligence and
-automation, the ongoing impact of the COVID-19 pandemic, the
-increasing importance of renewable energy sources, and the potential
-for further political and social upheaval. Additionally, the ongoing
-effects of climate change could have significant consequences for
-the world in the coming years." (<a href="https://openai.com/blog/chatgpt/" title="ChatGPT: Optimizing Language Models for Dialogue">ChatGPT</a>)</p>
-</blockquote>
-<p>This year there is a swing toward economic recession... Will it end?
-Almost certainly yes, but it's a little scary.</p>    
-    ]]></description>
-<link>http://planspace.org/20230106-predicting_the_future_from_2023/</link>
-<guid>http://planspace.org/20230106-predicting_the_future_from_2023/</guid>
-<pubDate>Fri, 06 Jan 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

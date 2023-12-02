@@ -26,6 +26,7 @@ If you sign up, I'll send you an email update every month or so with new stuff.
 
 Here's the big list of everything:
 
+ * 2023-12-02: [Social Security is a great deal](/20231202-social_security_is_a_great_deal/)
  * 2023-11-19: [It must be beautiful, edited by Farmelo](/20231119-it_must_be_beautiful/)
  * 2023-09-19: [Fireside Chat / Pro Tips (with Codecademy)](/20230919-fireside_chat_pro_tips/)
  * 2023-08-16: [The Strangest Man, by Farmelo](/20230816-strangest_man_by_farmelo/)
