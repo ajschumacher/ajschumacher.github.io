@@ -2,8 +2,8 @@
 
 Social Security in its current form pays out, with no volatility, a
 perpetual inflation-adjusted annual yield of up to 51% on what
-individuals pay in tax. (15% is common, and 5% is the worst you can
-get.) No investment is as good as Social Security.
+individuals pay in tax. 15% is common, and 5% is the worst you can
+get.
 
 I know it's not really an individual investment; younger Americans are
 supposed to be supporting older ones and so on. But I had no idea how
@@ -56,11 +56,11 @@ You get the same return on your last year's contribution before
 collecting, so comparative investments can't really be allowed _any_
 time for compounding. Still, most contributions will sit for some time
 before the contributor starts collecting, so a full comparison could
-be more complicated.
+be more complicated and depend on age at contribution etc.
 
 Social Security is less flexible than an investing account. But is
 there _anything_ that comes close to delivering what Social Security
-does, for someone who lives to be 90, say?
+does, for someone contributing at 60 who lives to be 90, say?
 
 
 ---
