@@ -1,6 +1,6 @@
 # Old Article for the Cardinal: "UW computer models weather patterns"
 
-Years ago, the better student newspaper of my alma mater, [The Daily Cardinal](http://www.dailycardinal.com/), decided to get science articles written by people who were in the [Nerd Nite](https://nerdnite.com/) Madison [Facebook group](https://www.facebook.com/groups/nerdnite.madison/). I eventually agreed to write an article about a new computer the university was standing up, which ran on November 29, 2011. I happened to find an old copy of that paper recently, and I thought I'd include that old article here, not because it is good for the sake of completism.
+Years ago, the better student newspaper of my alma mater, [The Daily Cardinal](http://www.dailycardinal.com/), decided to get science articles written by people who were in the [Nerd Nite](https://nerdnite.com/) Madison [Facebook group](https://www.facebook.com/groups/nerdnite.madison/). I eventually agreed to write an article about a new computer the university was standing up, which ran on November 29, 2011. I happened to find an old copy of that paper recently, and I thought I'd include that old article here, not because it is good but for the sake of completism.
 
 I managed to find [the article still on the paper's web site](http://www.dailycardinal.com/article/2011/11/uw-computer-models-weather-patterns). I also found [a PDF of the page from the paper that the article ran on](11292011.page04.pdf) thanks to Google's completist storage of all my old email. I'll put the text of the article below, because why not.
 
