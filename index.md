@@ -10,15 +10,10 @@ Hi! I'm [Aaron](/aaron/). Here are some of my favorite posts:
 
 ---
 
-If you sign up, I'll send you an email update every month or so with new stuff.
+If you sign up, I'll send you an email update at most monthly with new stuff.
 
-<p><form class="email_updates">
-  <input type="email" name="email" placeholder="your@email.address" style="width: 49%" />
-  <input type="submit" value="Get monthly updates" style="width: 49%" />
-  <input type="hidden" name="_subject" value="planspace.org updates list" />
-  <input type="text" name="_honey" style="display:none" />
-  <input type="hidden" name="_captcha" value="false" />
-</form></p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+
 <p>This site also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
 
 
