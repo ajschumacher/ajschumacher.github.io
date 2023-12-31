@@ -7,6 +7,350 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The myth of artificial intelligence, by Larson</title>
+<description><![CDATA[
+
+<p>The relevant point in <a href="https://en.wikipedia.org/wiki/Erik_J._Larson" title="Wikipedia: Erik J. Larson">Larson</a>'s <a href="https://www.hup.harvard.edu/books/9780674278660" title="The Myth of Artificial Intelligence: Why Computers Can’t Think the Way We Do">book</a> is that advances in AI
+shouldn't undermine human intellectual flourishing. We shouldn't hand
+over all our thinking to machines. He explores the example of the
+<a href="https://en.wikipedia.org/wiki/Human_Brain_Project" title="Wikipedia: Human Brain Project">Human Brain Project</a>, arguing convincingly that its "big data"
+computational focus was not effective. While I think it isn't quite so
+black and white (AI can be a useful tool) I also support human
+learning, not just machine learning.</p>
+<p>The book doesn't deliver on its subtitle, "Why computers can't think
+the way we do." It doesn't even really argue for "can't," but only for
+"don't, so far." Like <a href="https://en.wikipedia.org/wiki/Gary_Marcus" title="Wikipedia: Gary Marcus">Marcus</a>, Larson is arguing that we need
+something more than deep learning and other extant approaches.</p>
+<blockquote>
+<p>The myth of artificial intelligence is that its arrival is
+inevitable, and only a matter of time—that we have already embarked
+on the path that will lead to human-level AI, and then
+superintelligence. (page 1)</p>
+</blockquote>
+<p>Larson's main argument is that current machine learning doesn't do
+<a href="https://en.wikipedia.org/wiki/Abductive_reasoning" title="Wikipedia: Abductive reasoning">abduction</a>, and it should. This is close to Marcus arguing for
+algebraic reasoning. It is even close to me, <a href="/20170429-from_behaviorist_to_constructivist_ai/" title="From Behaviorist to Constructivist AI">arguing</a> for going
+from Behaviorist to Constructivist AI.</p>
+<p>This book came out before ChatGPT, which is relevant in at least two
+ways.</p>
+<p>First, it's more possible now to take seriously the idea that neural
+generative models might really be, eventually, enough for AGI; this is
+roughly what Sutskever seems to <a href="https://www.youtube.com/watch?v=YEUclZdj_Sc" title="Youtube: Why next-token prediction is enough for AGI - Ilya Sutskever (OpenAI Chief Scientist)">say</a>. The human brain is a big mess
+that somehow does smart-seeming things. A generative transformer is a
+big mess that somehow does smart-seeming things. Maybe they can
+achieve equivalent results? This is not a proof, but it might be a
+plausibility argument.</p>
+<p>Second, Larson spends a good deal of time on examples to show that
+models weren't solving some problems very well, when he published.
+Many of these examples haven't aged well for his argument, as models
+now do better.</p>
+<blockquote>
+<p>For instance (and ironically), Google Translate as of October 2020
+still gets Bar-Hillel's 1960s example wrong. Bar-Hillel asked how to
+program a machine to translate <em>The box is in the pen</em> correctly.
+Here, <em>pen</em> is ambiguous. (page 202)</p>
+</blockquote>
+<p>In December 2023, Google Translate still fails.</p>
+<p><img alt="Google Translate" src="google_translate.png"></p>
+<p>But ChatGPT <a href="https://chat.openai.com/share/b4dfff5f-413b-466c-af57-c0c4d64e2e7e">succeeds</a>, as far as I can tell.</p>
+<p><img alt="ChatGPT translating" src="gpt_translate.png"></p>
+<p>ChatGPT similarly has no problem with challenges like "Can a crocodile
+run a steeplechase?" (page 196) (It even titles the <a href="https://chat.openai.com/share/97595ce1-03c3-4c99-bc52-942752615dbb">chat</a>,
+"Crocodile Steeplechase: Not Feasible.") And where Larson wrote "Their
+[AI's] performance on Winograd schemas is not much better than random
+guessing," (page 197) his 2016 reference score of <a href="https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html">58%</a> has been
+improved as of 2022 to <a href="https://paperswithcode.com/dataset/wsc">90%</a> (or higher).</p>
+<p>Whether or not AGI will require explicit architectural support for
+abduction (or symbolic reasoning, etc.) the performance limits of
+current approaches are not entirely clear.</p>
+<p>Really I wish Larson was a better spokesperson for ideas I agree with.
+Supporting human learning is a good idea, I think (though Larson
+unfortunately takes even this in strange hero-oriented directions).
+Larson doesn't really address at all the point that LeCun sometimes
+foregrounds, that current AI is hugely data-inefficient (it requires
+tons of data) which could actually point to future directions for AI.
+I can't endorse this book.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>Data science (the application of AI to “big data”) is at best a
+prosthetic for human ingenuity, which if used correctly can help us
+deal with our modern “data deluge.” (page 4)</p>
+</blockquote>
+<p>Somewhat routinely, Larson defines things strangely. Data science is
+not the application of AI to “big data,” and foundational
+misalignments like this make it hard for Larson to land arguments.</p>
+<hr>
+<blockquote>
+<p>The Turing test is actually very difficult—no computer has ever
+passed it. (page 10)</p>
+</blockquote>
+<p>There are plenty of articles claiming that this or that passed the
+Turing test, but it seems that
+<a href="https://isturingtestpassed.github.io/">isturingtestpassed.github.io</a>
+is correct: the answer is still no.</p>
+<hr>
+<blockquote>
+<p>Turing's great genius, and his great error, was in thinking that
+human intelligence reduces to problem-solving. (page 23)</p>
+</blockquote>
+<p>There's a bunch of unclear language here. How is problem-solving
+defined? What is excluded from that definition? What even is
+intuition?</p>
+<hr>
+<blockquote>
+<p>Turing and colleagues called it the “weight of evidence,” borrowing
+a term coined by the American scientist and logician C. S. Peirce
+(who is prominently featured in Part Two of this book). (page 24)</p>
+</blockquote>
+<p>The "it" here has no clear referent, but as it happens I've been
+interested in <a href="/20210917-weight_of_evidence_is_logistic_coefficients/" title="Weight of Evidence is logistic coefficients">weight of evidence</a> before, and it seems that this is
+the same thing! How neat, to know it traces to Turing. One interesting
+work of interpretation is Gillies' short <a href="https://www.jstor.org/stable/688010">paper</a>, "The Turing-Good
+Weight of Evidence Function and Popper's Measure of the Severity of a
+Test."</p>
+<hr>
+<blockquote>
+<p>Japan had invested millions in its high-profile
+<a href="https://en.wikipedia.org/wiki/Fifth_Generation_Computer_Systems" title="Fifth Generation Computer Systems">Fifth Generation project</a> aimed at achieving success in robotics,
+and Japan too had failed, rather spectacularly. (page 55)</p>
+</blockquote>
+<p>At a quick search, Larson seems to be the only person saying the Fifth
+Generation project was principally interested in robotics.</p>
+<hr>
+<blockquote>
+<p>Here, it's best to be clear: equating a mind with a computer is not
+scientific, it's philosophical. (page 69)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Dan Gardner's excellent book <em>Future Babble</em> documents the success
+rate of predictions in realms from history and geopolitics to the
+sciences. He found that theorists—experts with big visions of the
+future based on a particular theory they endorse—tend to make worse
+predictions than pragmatic people, who see the world as complicated
+and lacking a clear fit with any single theory. (page 69)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Werner Heisenberg discovered his uncertainty principle by working
+out the consequences of the new physics of quanta. The principle
+states that it is impossible to isolate the position and the
+momentum of a subatomic particle simultaneously. This places
+fundamental limits on our ability to predict the individual
+movements of particles at the subatomic realm (because “seeing” the
+position of a particle requires impinging it with a photon, which
+also has the effect of knocking it off course). (page 72)</p>
+</blockquote>
+<p>But it isn't "because" of that; this is a common misconception. Even
+<a href="https://en.wikipedia.org/wiki/Uncertainty_principle" title="Uncertainty principle">wikipedia</a> does better:</p>
+<blockquote>
+<p>Historically, the uncertainty principle has been confused with a
+related effect in physics, called the observer effect, which notes
+that measurements of certain systems cannot be made without
+affecting the system, that is, without changing something in a
+system. Heisenberg used such an observer effect at the quantum level
+(see below) as a physical "explanation" of quantum uncertainty. It
+has since become clearer, however, that the uncertainty principle is
+inherent in the properties of all wave-like systems, and that it
+arises in quantum mechanics simply due to the matter wave nature of
+all quantum objects.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Statistical AI ends up with a long-tail problem, where common
+patterns (in the fat head of a distribution curve) are easy, but
+rare ones (in the long tail) are hard. (page 128)</p>
+</blockquote>
+<p>This is true, and something of a missed opportunity to better tie into
+the overall argument.</p>
+<hr>
+<blockquote>
+<p>Calling such systems <em>learners</em> is ironic, because the meaning of
+the word <em>learn</em> for humans essentially involves escaping narrow
+performances to gain more general understanding of things in the
+world. (page 141)</p>
+</blockquote>
+<p>There's a good point in here somewhere on function approximation vs.
+model-building; on interpolation vs. extrapolation.</p>
+<hr>
+<blockquote>
+<p>Big data is an inevitable consequence of Moore's law: as computers
+become more powerful, statistical techniques like machine learning
+become better, and new business models emerge—all from data and its
+analysis. (page 144)</p>
+</blockquote>
+<p>I pulled this out just as an example of the kind of muddy reasoning
+and poor use of language found throughout the book. This is the kind
+of sort-of-but-are-you-sure-you-want-to-say-it-that-way output that
+I'd expect from a language model.</p>
+<hr>
+<blockquote>
+<p>Much inference in the real world is defeasible, that is, proven
+wrong or incomplete by subsequent observation or learning (say, by
+reading a book). (page 163)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Work on so-called <a href="https://en.wikipedia.org/wiki/Non-monotonic_logic" title="Non-monotonic logic">non-monotonic</a> reasoning peaked in the 1980s
+and 1990s, but has since been largely abandoned, in large part
+because the extensions of deduction to make it more flexible for
+language understanding work only on “toy” examples that aren't
+useful in the real world. (page 167)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Many of the same researchers who worked on extending deduction in AI
+to make it defeasible also worked out deductive-based approaches to
+abduction in the 1980s and 1990s, notably with
+<a href="https://en.wikipedia.org/wiki/Abductive_logic_programming" title="Abductive logic programming">abductive logic programming</a> (ALP). (page 168)</p>
+</blockquote>
+<hr>
+<p>Page 172 has a breakdown like this:</p>
+<ul>
+<li>Deduction: A→B; A ∴ B</li>
+<li>Induction: A; B ∴ A→B</li>
+<li>Abduction: A→B; B ∴ A</li>
+</ul>
+<p>Nice to see compactly this way, I think...</p>
+<hr>
+<blockquote>
+<p>The strategy of exposing supervised learning systems to foreseeable
+exceptions, as is done with ongoing work on driverless cars, is a
+Sisyphean undertaking, because exceptions by their very nature
+cannot be completely foreseen. (pages 173-174)</p>
+</blockquote>
+<p>(See the selection above from page 128.)</p>
+<hr>
+<blockquote>
+<p>a once-prominent field in AI known as
+<a href="https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning" title="Knowledge representation and reasoning">knowledge representation and reasoning</a> (KR&amp;R) (page 175)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>technically, entailment is stronger than material implication (page
+176)</p>
+</blockquote>
+<p>Poking around online, there are lots of people making claims about the
+difference here, but it doesn't seem like everyone agrees... It seems
+roughly like entailment is more causal, while implication can be
+correlative.</p>
+<hr>
+<blockquote>
+<p>To abduce we must solve the selection problem among competing causes
+or factors, and to solve this problem, we must somehow grasp what is
+relevant in some situation or other. The problem is that no one has
+a clue how to do this. (page 183)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>noetic, or knowledge-based. (page 185)</p>
+</blockquote>
+<p>This does not seem to be the sense in which the word is typically used.</p>
+<hr>
+<blockquote>
+<p>What people mean is almost never a literal function of what they
+word-for-word say. (page 206)</p>
+</blockquote>
+<p>Yes... Though the world-knowledge bits of the book are the ones that
+most fail in the face of LLMs.</p>
+<hr>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Cooperative_principle#Grice's_maxims">Grice's Maxims</a> (page 215)</p>
+</blockquote>
+<p>Quantity, Quality, Relation, Manner</p>
+<hr>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Text_Retrieval_Conference">Text REtrieval Conferences</a> (page 221)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Writing about the experience
+[of working on early computing machines] in 1887 in an oddly
+prescient paper titled "Logical Machines," in the <em>American Journal
+of Psychology,</em> Peirce begins characteristically with cautionary
+comment. "In the 'Voyage to Laputa' there is a description of a
+machine for evolving science automatically," he writes. "The
+intention is to ridicule the Organon of Aristotle and the Organon of
+Bacon by showing the absurdity of supposing any 'instrument' can do
+the work of the mind." Peirce, the skeptic, no doubt appreciated the
+wisdom of Swift's imagination. (page 232)</p>
+</blockquote>
+<p>This is <a href="https://www.gutenberg.org/files/829/829-h/829-h.htm#part03">Gulliver's Travels</a>:</p>
+<blockquote>
+<p>Every one knew how laborious the usual method is of attaining to
+arts and sciences; whereas, by his contrivance, the most ignorant
+person, at a reasonable charge, and with a little bodily labour,
+might write books in philosophy, poetry, politics, laws,
+mathematics, and theology, without the least assistance from genius
+or study.</p>
+</blockquote>
+<p>Is there a better description of ChatGPT than as a contrivance by
+which "the most ignorant person, at a reasonable charge, and with a
+little bodily labour, might write books in philosophy, poetry,
+politics, laws, mathematics, and theology, without the least
+assistance from genius or study"?</p>
+<blockquote>
+<p>He assured me “that this invention had employed all his thoughts
+from his youth; that he had emptied the whole vocabulary into his
+frame, and made the strictest computation of the general proportion
+there is in books between the numbers of particles, nouns, and
+verbs, and other parts of speech.”</p>
+</blockquote>
+<p>A very early statistical NLP! And with a charming illustration:</p>
+<p><img alt="the frame" src="theframe.jpg"></p>
+<hr>
+<blockquote>
+<p>For scientists don't believe in vagaries like the "evolution of
+science" except as frosting, as backdrop. They really believe in
+scientific genius. They really are all possessed by Prometheus, by
+what innovators can dream and achieve. (page 239)</p>
+</blockquote>
+<p>This is quite the generalization... Maybe you're not a real scientist
+if you don't go in for a Great Man theory of science? Maybe the
+<a href="https://en.wikipedia.org/wiki/Ortega_hypothesis">Ortega hypothesis</a> is for the weak?</p>
+<hr>
+<blockquote>
+<p>principles linking neurons together into circuits and larger
+functional units (mesa circuits) (page 250)</p>
+</blockquote>
+<p>I don't find a lot of support for "mesa circuits" as a term people
+use...</p>
+<hr>
+<blockquote>
+<p>we are actively attempting to cover up a key deficiency—a lack of
+flourishing human culture—with rhetoric about the inevitable rise of
+machines. (page 277)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>The problem of inference, like the problem of consciousness, is
+entrenched at the center of ongoing grand mysteries, and is really
+presupposed in our understanding of everything else. We should not
+be surprised that the undiscovered mind resists technological
+answers. It's possible that, as Horgan worried, we're out of ideas.
+If so, the myth represents our final, unrecoverable turn away from
+human possibility—a darkly comforting fairy tale, a pretense that
+out of our ashes something else, something great and alive, must
+surely and inevitably arise.</p>
+<p>If we're <em>not</em> out of ideas, then we must do the hard and deliberate
+work of reinvesting in a culture of invention and human flourishing.
+For we will need our own general intelligence to find paths to the
+future, and a future better than the past. (pages 280-281)</p>
+</blockquote>
+<p>This is interesting material.</p>
+<p>I think a lot of "AI isn't as good as people" reduces to how we feel
+about consciousness. You can't prove consciousness by behaviors or any
+other observable. So do we extend our belief in consciousness to
+machines?</p>
+<p>On whether we're out of ideas, I like the arguments of <a href="/20220410-beginning_of_infinity_by_deutsch/" title="The Beginning of Infinity, by Deutsch">Deutsch</a> and
+<a href="https://en.wikipedia.org/wiki/Frank_Wilczek" title="Wikipedia: Frank Wilczek">Wilczek</a>, which suggest that we're not.</p>    
+    ]]></description>
+<link>http://planspace.org/20231231-myth_of_ai_by_larson/</link>
+<guid>http://planspace.org/20231231-myth_of_ai_by_larson/</guid>
+<pubDate>Sun, 31 Dec 2023 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Social Security is a great deal</title>
 <description><![CDATA[
 
@@ -2626,171 +2970,6 @@ harder.</p>
 <link>http://planspace.org/20230226-voltage_effect_by_list/</link>
 <guid>http://planspace.org/20230226-voltage_effect_by_list/</guid>
 <pubDate>Sun, 26 Feb 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Ten Equations that Rule the World, by Sumpter</title>
-<description><![CDATA[
-
-<p><a href="https://www.david-sumpter.com/" title="David Sumpter">Sumpter</a> has Bill Nye applied math energy. His central gimmick—a
-secret society of people who know math—is a bit much. He's most
-interesting when connecting equations and philosophy, but he likes
-logical positivism more than his hero Ayers <a href="https://en.wikipedia.org/wiki/Language,_Truth,_and_Logic#Ayer's_later_rejection_of_logical_positivism" title="Wikipedia: Ayer's later rejection of logical positivism">did</a>, and his ultimate
-appeal to ethical intuitionism is unsatisfying. Still very interesting
-in places, and I'm generally with him.</p>
-<p>I like the core idea of trying to distill a lot of understanding into
-a few core concepts. I think Sumpter's book highlights both the
-promise and challenge of attempting this.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<p>Here are the names Sumpter uses for his equations (and more
-conventional names):</p>
-<ol>
-<li>The Judgment Equation (Bayes' theorem)</li>
-<li>The Betting Equation (Logistic regression)</li>
-<li>The Confidence Equation (Normal confidence intervals)</li>
-<li>The Skill Equation (Markov property; memorylessness)</li>
-<li>The Influencer Equation (Stationary distribution; PageRank)</li>
-<li>The Market Equation (A sort of autoregressive differential model?)</li>
-<li>The Advertising Equation (Correlation coefficient)</li>
-<li>The Reward Equation (Exponential moving average; Q-learning)</li>
-<li>The Learning Equation (Derivative of quadratic loss; gradient
-   descent)</li>
-<li>The Universal Equation (If-then; trying to get from "is" to
-    "ought")</li>
-</ol>
-<p>With the exception of #6, I was reasonably familiar with all of these.
-My failure to feel connected to the literature (or even what a common
-name might be) for #6 makes me feel that this book might not be the
-best way to encounter these ideas for the first time.</p>
-<hr>
-<blockquote>
-<p>"The first lesson to draw from Bayes's rule, the judgment equation,
-is that we should be slow to draw definitive conclusions." (page 15)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"Many people think of math as being all about objectivity; it's not.
-It is a way of representing and arguing about the world, and
-sometimes the things we argue about are known only to us." (page 24)</p>
-</blockquote>
-<p>He's a professor of applied math, after all.</p>
-<hr>
-<blockquote>
-<p>"Much of mathematical modeling is about dividing the world into
-understandable component parts, ..." (page 63)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"What I hadn't understood when I started working with sports
-statistics was just how much time I would have to sit listening to
-men telling me why they believed they were the special one." (page
-85)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"When Andrey Markov first wrote down his equation, he wasn't
-interested in modeling sporting excellence. He was interested in
-great literature. In 1913, he presented, at the Russian Royal
-Academy of Sciences, an analysis of the first chapter and parts of
-the second chapter of Pushkin's novel <em>Eugene Onegin.</em> In his
-analysis of these twenty thousand Russian letters, he determined the
-probability of sequences of vowels and consonants. He constructed a
-model that predicted, based on the letter that had just occurred in
-a text, whether a vowel or a consonant was more likely to occur as
-the next character. In doing so, Markov had created a model for
-creating new Pushkin works, one character at a time." (page 92)</p>
-</blockquote>
-<p>Neat! I think I hadn't heard this story before.</p>
-<hr>
-<blockquote>
-<p>"Accurate reporting of assumptions is just as important as accurate
-reporting of results." (page 99)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The salaries offered by tech giants were enough to lure even the
-purest of mathematicians." (page 113)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The division of the world into models, data, and nonsense gave the
-members of TEN a sense of certainty." (page 122)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I had researched Cambridge Analytica's algorithm in detail during
-2017, the year before the scandal broke, and reached a conclusion
-that contradicted both Nix and Wylie's versions of events. I doubted
-that the company could have influenced the US presidential election.
-They had certainly tried, but the methods they claimed to have used
-to target voters were flawed." (page 146)</p>
-<p>"Working on the inside, he [<a href="https://en.wikipedia.org/wiki/Aleksandr_Kogan_(scientist)" title="Wikipedia: Aleksandr Kogan (scientist)">Alex Kogan</a>] had reached the same
-conclusion about Cambridge Analytica as I had. He phrased it
-politely at the Senate hearing. To me, he said, “That shit doesn't
-work.”" (page 164)</p>
-<p>"Instead of looking for the real reasons for the rise of
-nationalistic sentiment that had brought Donald Trump to power, that
-had caused Brexit, that was responsible for the Five Star movement
-in Italy, Viktor Orbán in Hungary, and Jair Bolsonaro in Brazil,
-everyone seemed to be rushing to find a James Bond-type villain, an
-evil individual who had poisoned the political waters. Their Dr. No
-came in the form of Alexander Nix and his company, Cambridge
-Analytica. Somehow this man, with only a basic understanding of
-models and data, was seen to have manipulated the whole of modern
-democracy." (page 168)</p>
-</blockquote>
-<p>I had some wonderings like this while reading <a href="https://planspace.org/20221029-mindf*ck_by_wylie/" title="Mindf*ck, by Wylie">Mindf*ck</a>...</p>
-<hr>
-<blockquote>
-<p>"The organization Tristan Harris cofounded, the
-<a href="https://www.humanetech.com/">Center for Humane Technology</a>, has advice about how to take
-control and move your own mind away from the tipping point." (page
-186)</p>
-</blockquote>
-<hr>
-<p>Page 187 mentions lazy ants, but is apparently unaware of follow-up
-research. (<a href="https://www.sciencedaily.com/releases/2017/09/170908205356.htm" title="Lazy ants make themselves useful in unexpected ways">coverage</a>)</p>
-<hr>
-<blockquote>
-<p>"Price believed, building on the philosophy of Plato, that
-mathematics provided a truth that was independent of our physical
-reality and that this truth told us the ethical thing to do. But A.
-J. Ayer seemed to overwrite this view in the mid-twentieth century,
-arguing with his principle of verifiability that we can't expect to
-find any answers to moral questions in math. A mathematics that is
-independent of physical reality, he demonstrated, is impossible to
-verify." (page 209)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"The sheer number of mathematical theorems that have proved to be
-true led French mathematician Henri Poincaré to reflect in his 1902
-book, <em>Science and Hypothesis,</em> that “if all the assertions which
-mathematics puts forward can be derived from one another by formal
-logic, mathematics cannot amount to anything more than an immense
-tautology. Logical inference can teach us nothing essentially new
-... But can we really allow that these theorems which fill so many
-books serve no other purpose than to say in a roundabout fashion
-that ‘A = A’?”" (page 214)</p>
-<p>"In response to the rhetorical tone used by Poincaré, Ayer wrote,
-“The power of logic and mathematics to surprise us depends, like
-their usefulness, on the limitations of our reason.”" (page 216)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>"I have come to believe that there is a very simple answer to these
-dilemmas: we should learn to trust and use our own ethical
-intuitions." (page 222)</p>
-<p>"I don't have any conclusive proof, but I believe that after logical
-positivism strips away the idea of a universal utilitarianism, we
-are left with moral intuition to guide us. It is this soft way of
-thinking that tells us which problems to solve." (page 223)</p>
-<p>"We need to be soft when we define our problems and brutally hard
-when we solve them." (page 223)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20230116-ten_equations_that_rule_the_world/</link>
-<guid>http://planspace.org/20230116-ten_equations_that_rule_the_world/</guid>
-<pubDate>Mon, 16 Jan 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
