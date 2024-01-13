@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-01-13: [(Audio) Hidden Potential, by Grant](/20240113-audio_hidden_potential_grant/)
  * 2024-01-05: [Seneca's De Brevitate Vitae](/20240105-seneca_de_brevitate_vitae/)
  * 2023-12-31: [The myth of artificial intelligence, by Larson](/20231231-myth_of_ai_by_larson/)
  * 2023-12-02: [Social Security is a great deal](/20231202-social_security_is_a_great_deal/)
