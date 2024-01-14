@@ -7,6 +7,321 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Fundamentals: Ten Keys to Reality, by Wilczek</title>
+<description><![CDATA[
+
+<p>I liked <a href="https://en.wikipedia.org/wiki/Frank_Wilczek" title="Wikipedia: Frank Wilczek">Wilczek</a> on <a href="/20230816-strangest_man_by_farmelo/" title="The Strangest Man, by Farmelo">Dirac</a> in <a href="/20231119-it_must_be_beautiful/" title="It must be beautiful, edited by Farmelo">It must be beautiful</a>, and I
+like him a lot <a href="https://en.wikipedia.org/wiki/Fundamentals:_Ten_Keys_to_Reality" title="Wikipedia: Fundamentals: Ten Keys to Reality">here</a>! This is Nobel-prize-winning <a href="https://en.wikipedia.org/wiki/Quantum_chromodynamics" title="Wikipedia: Quantum chromodynamics">QCD</a> and also
+<a href="https://en.wikipedia.org/wiki/Time_crystal" title="Wikipedia: Time crystal">time crystal</a> guy. Just a beautiful intro to modern particle
+physics, scientific perspective, an an optimism for open-ended future
+development across all scientific disciplines that reminds me of
+<a href="/20220410-beginning_of_infinity_by_deutsch/" title="The Beginning of Infinity, by Deutsch">The Beginning of Infinity</a>.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p><em>Fundamentals</em> is meant, as well, to offer an alternative to
+traditional religious fundamentalism. It takes up some of the same
+basic questions, but addresses them by consulting physical reality,
+rather than texts or traditions. (page xiii)</p>
+</blockquote>
+<p>Of course, consulting physical reality is its own tradition...</p>
+<hr>
+<blockquote>
+<p>The method of Kepler, Galileo, and Newton combines the humble
+discipline of respecting the facts and learning from Nature with the
+systematic chutzpah of using what you think you've learned
+aggressively, applying it everywhere you can, even in situations
+that go beyond your original evidence. If it works, then you've
+discovered something useful; if it doesn't, then you've learned
+something important. I've called that attitude Radical Conservatism,
+and to me it's the essential innovation of the Scientific
+Revolution. (pages 4-5)</p>
+</blockquote>
+<p>I don't know if he has priority, but I'm pretty sure Wilczek's sense
+of Radical Conservatism isn't the most common...</p>
+<p>See also <a href="/20170825-characteristics_of_good_theories/">Characteristics of good theories</a>.</p>
+<hr>
+<blockquote>
+<p>Ptolemy's [geocentric] synthesis was a magnificent achievement, but
+it had two shortcomings. One was its complexity and, related to
+this, its ugliness. In particular, the recipes it used to calculate
+planetary motions brought in many numbers that were determined
+purely by fitting the calculations to observations, without deeper
+guiding principles connecting them. Copernicus (1473-1543) noticed
+that the values of some of those numbers were related to one another
+in surprisingly simple ways. These otherwise mysterious,
+"coincidental" relationships could be explained geometrically, if
+one assumed that Earth together with Venus, Mars, Jupiter, and
+Saturn all revolve around the Sun as center (and the Moon further
+revolves around Earth). (page 6)</p>
+</blockquote>
+<p>I don't think I'd heard quite this explanation before... In light of
+"end of science" arguments that big data pushes us more toward
+"numbers ... determined purely by fitting the calculations to
+observations" this Ptolemaic narrative could almost fit into a kind of
+"we were once less wise in our theory, and now we become less wise
+again" story.</p>
+<p>Wilczek goes on to briefly cover how Kepler's work made the system
+still simpler and better-working. Have we simplified everything as
+much as it can be? Could we do better?</p>
+<blockquote>
+<p>But Galileo aspired to a different kind of understanding. He wanted
+to understand <em>something</em> precisely, rather than <em>everything</em>
+vaguely. (page 7)</p>
+</blockquote>
+<p>Finding the right questions, etc. etc.</p>
+<hr>
+<blockquote>
+<p>A more recent quotation from John R. Pierce, a pioneer of modern
+information science, beautifully captures the contrast between the
+modern concept of scientific understanding and all other approaches:
+"We require that our theories harmonize in detail with the very wide
+range of phenomena they seek to explain. And we insist that they
+provide us with useful guidance rather than with rationalizations."
+(page 9)</p>
+</blockquote>
+<p>This reminds me of <a href="/20170825-characteristics_of_good_theories/">Characteristics of good theories</a>.</p>
+<p>Also, this <a href="https://en.wikipedia.org/wiki/John_R._Pierce" title="Wikipedia: John R. Pierce">Pierce</a> character came up a bunch in <a href="/20231231-myth_of_ai_by_larson/" title="The myth of artificial intelligence, by Larson">Larson's book</a>
+as well. (But this book is much, much better.)</p>
+<hr>
+<blockquote>
+<p>Unlike the situation for stars or planets, which almost invariably
+are separated from their neighbors by distances many times their own
+size, the typical separation between galaxies is not vastly larger
+than the galaxies themselves. (page 27)</p>
+</blockquote>
+<p>Huh! Neat.</p>
+<hr>
+<blockquote>
+<p>The Roman philosopher Seneca expressed the opposite of this thought
+[that human life is short] in "On the Shortness of Life." "Why do we
+complain about nature?" he writes. "It has acted generously; life,
+if you know how to use it, is long." (pages 43-44)</p>
+</blockquote>
+<p>Oh interesting! It seems like <a href="/20201107-how_to_live_on_24_hours_a_day/" title="How to Live on 24 Hours a Day, by Bennett">Bennett</a> didn't know (or at least
+didn't reference) Seneca's <a href="https://archive.org/stream/SenecaOnTheShortnessOfLife/Seneca+on+the+Shortness+of+Life_djvu.txt" title="Full text of 'Seneca On The Shortness Of Life'">work</a> in his How to Live on 24 Hours a
+Day.</p>
+<hr>
+<blockquote>
+<ol>
+<li><em>The basic laws describe change.</em> It is useful to separate the
+   description of the world into two parts: states and laws. States
+   describe "what there is," while laws describe "how things
+   change."</li>
+<li><em>The basic laws are universal.</em> That is, the basic laws hold
+   everywhere, and for all times.</li>
+<li><em>The basic laws are local.</em> That is, the behavior of an object in
+   the immediate future depends only on current conditions in its
+   immediate vicinity. The standard scientific jargon for this
+   principle is <em>locality.</em></li>
+<li><em>The basic laws are precise.</em> The laws are precise, and they
+   admit no exceptions. Thus, they can be formulated as mathematical
+   equations. (pages 64-65)</li>
+</ol>
+</blockquote>
+<p>Locality over reality.</p>
+<hr>
+<blockquote>
+<p>Fields, rather than particles, are the fundamental building blocks
+of matter in modern physics. (page 67)</p>
+</blockquote>
+<hr>
+<p>Wilczek identifies "Mass" and "Charge" and "Spin" as the only three
+basic, primary properties of matter. (page 73)</p>
+<hr>
+<blockquote>
+<p>(There's an interesting mathematical reason why physicists call the
+basic unit of angular momentum spin 1/2, rather than spin 1, but it
+is beyond the scope of this book.) (page 75)</p>
+</blockquote>
+<p>It seems like this is related to the <a href="https://en.wikipedia.org/wiki/Spin%E2%80%93statistics_theorem">spin–statistics theorem</a> or
+something? But come on, Wilczek, you big tease...</p>
+<hr>
+<blockquote>
+<p>Contrary to Democritus, though, our modern basic ingredients don't
+have hooks. They aren't even solid bodies. Indeed, thought it's
+convenient to call them "elementary particles," they aren't really
+particles. (That is, they have little in common with what the word
+"particle" suggests.) Our modern fundamental ingredients have no
+intrinsic size or shape. If we insist on visualizing them, we should
+think of structureless points where concentrations of mass, charge,
+and spin reside. We have, in places of "atoms and the void,"
+space-time and properties. (page 77)</p>
+</blockquote>
+<p>Democritus was the early atomic theory guy.</p>
+<hr>
+<blockquote>
+<p>By being first, Franklin got to choose which kind of charge to call
+positive and which negative. He chose to call the charge that
+accumulates on glass, after it is rubbed with silk, positive. This
+was long before people knew about electrons. Unfortunately, it turns
+out that according to Franklin's choice the electron's charge is
+negative. It's much too late to undo that choice, since it has
+seeped into thousands of books, papers, and circuit diagrams.
+Therefore, we list the electron's charge as -1. (pages 81-82)</p>
+</blockquote>
+<p>Benjamin Franklin.</p>
+<hr>
+<blockquote>
+<p>Once you get to thinking about materials as homes to quasiparticles,
+a profound question is not far off: Can we consider "empty space"
+itself to be a material, whose quasiparticles are our "elementary
+particles"? We can, and we should. It is a very fruitful line of
+thought, as you'll see in later chapters. (page 90)</p>
+</blockquote>
+<p>I'm not sure that last promise was ever paid off very well...</p>
+<hr>
+<blockquote>
+<p>John Wheeler, the poet of relativity, summed it up this way:
+"Space-time tells matter how to move; matter tells space-time how to
+bend." (page 117)</p>
+</blockquote>
+<p>Is that really a good way to sum up? It reminds me of the
+stretched-sheet-of-rubber image, which I think is not so good...</p>
+<hr>
+<blockquote>
+<p>The Future of Comprehension (page 119)</p>
+</blockquote>
+<p>I just thought this was a cool section heading.</p>
+<hr>
+<blockquote>
+<p>You should not fail to notice that 500 trillion is a great deal
+larger than 25, or even 95. (page 127)</p>
+</blockquote>
+<p>Cute!</p>
+<hr>
+<blockquote>
+<p>H. G. Wells caught the spirit of thermal equilibrium memorably: "If
+anything is possible, then nothing is interesting." (page 151)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>How the Universe got Interesting (page 161)</p>
+</blockquote>
+<p>Another fun heading.</p>
+<hr>
+<blockquote>
+<p>There are several kinds of anomalous color perception, misnamed
+"color blindness," that are not terribly rare. Around 95 percent of
+humans have similar color vision, based on three types of cone cells
+that vary little between individuals. There are theoretical reasons,
+based on genetics, to believe that a significant fraction of humans,
+specifically mothers and full sisters of males with the most common
+color anomaly, have four kinds of cone cells. These "tetrachromats"
+might have super-normal color vision. But as far as I know, direct
+evidence for this is surprisingly rare. (page 170)</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Tetrachromacy">Huh!</a></p>
+<hr>
+<blockquote>
+<p>Let's recall that John Wheeler, the poet of general relativity,
+summed it up this way: "Space-time tells matter how to move; matter
+tells space-time how to bend." Wheeler's summary is catchy, but it
+is misleading, or at least incomplete, whithout this important
+addition: <em>Space-time is a form of matter, too.</em> (page 178)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Although we understand <em>a lot</em> about how the world works, there are
+still big mysteries. These three great questions came up earlier:</p>
+<ul>
+<li>
+<p>What triggered the big bang? Could it happen again?</p>
+</li>
+<li>
+<p>Are there meaningful patterns hidden in the apparent sprawl of
+  fundamental particles and forces?</p>
+</li>
+<li>
+<p>How, concretely, does mind emerge from matter? (Or does it?) (page
+  187)</p>
+</li>
+</ul>
+</blockquote>
+<hr>
+<p>On page 190, he uses "rock bottom" to refer to that final point in
+explanation beyond which there is no further "why?" I think it's a
+good thing to remember, that we can't avoid having such a rock bottom.</p>
+<hr>
+<blockquote>
+<p>"Dark energy" is another theoretically motivated modification to the
+law of gravity, also considered by Einstein. He called it by a
+different name: the cosmological constant. (page 195)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>There is immense satisfaction in describing the world in terms of
+its most elementary building blocks. It is tempting to say that this
+is the ideal description, while other, high-level descriptions are
+mere approximations—compromises, which reflect weakness in
+understanding. That attitude, which makes the perfect the enemy of
+the good, is superficially deep, but deeply superficial.</p>
+<p>In order to answer questions of interest, we often need to change
+focus. To discover—or invent—new concepts, and new ways of working
+with them, is an open-ended, creative activity. Computer scientists
+and software engineers are well aware that in designing useful
+algorithms, it is important to pay attention to how knowledge is
+represented. A good representation can make the difference between
+usable knowledge and knowledge that is there "in principle" but not
+really available, because it takes too long and too much trouble to
+locate and process. It's like the difference between owning bars of
+gold and knowing that in principle there are vast stores of gold
+atoms floating dissolved in the ocean.</p>
+<p>For that reason, complete understanding of the fundamental laws, if
+we ever achieved it, would be neither "the Theory of Everything" nor
+"the End of Science." (Those are two phrases, endemic in popular
+science journalism, that I find extremely irritating.) We would
+still need complementary descriptions of reality. There would still
+be plenty of great questions left unanswered, and plenty of great
+scientific work left to do.</p>
+<p>There always will be. (pages 215-216)</p>
+</blockquote>
+<p>This is just the conclusion of a longer section on this topic, which I
+like quite a lot. It reminds me of Deutsch's
+<a href="/20220410-beginning_of_infinity_by_deutsch/">Beginning of Infinity</a>.</p>
+<hr>
+<blockquote>
+<p>Do people have choice in what they do, or are they puppets who dance
+to the tune of mathematical physics? That is a bad question, not
+unlike asking whether music is harmony or melody. (page 218)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>...what the great biologist Francis Crick has called "the
+astonishing hypothesis": that mind, in all its aspects, is "no more
+than the behavior of a vast assembly of nerve cells and their
+associated molecules." (pages 225-226)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>... there are three different kinds [sic] color charge, and eight
+different kinds of gluons that respond to them. (page 234)</p>
+</blockquote>
+<p>What? This seems cool and fun.</p>
+<hr>
+<blockquote>
+<p>Now we come to a group of elementary particles nobody really knows
+what to make of. The bonus particles are all unstable. They were
+discovered among the debris of high-energy collisions, either in
+cosmic rays (early in the twentieth century) or at parcle
+accelerators (more recently). When the first of them, the muon, was
+discovered in 1936, the renowned physicist I. I. Rabi captured the
+community's bewilderment in a quip that's become legendary: "Who
+ordered that?" (page 236)</p>
+</blockquote>
+<p>These are the charm, top, strange, and bottom quark, together with the
+muon and tauon.</p>
+<hr>
+<blockquote>
+<p>The website of the Particle Data Group is http://pdg.lbl.gov. (page 238)</p>
+</blockquote>
+<p>Nice!</p>    
+    ]]></description>
+<link>http://planspace.org/20240114-fundamentals_by_wilczek/</link>
+<guid>http://planspace.org/20240114-fundamentals_by_wilczek/</guid>
+<pubDate>Sun, 14 Jan 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Hidden Potential, by Grant</title>
 <description><![CDATA[
 
@@ -2751,136 +3066,6 @@ know anyone like her again.</p>
 <link>http://planspace.org/20230325-conversion_of_guelph_energy_to_mass/</link>
 <guid>http://planspace.org/20230325-conversion_of_guelph_energy_to_mass/</guid>
 <pubDate>Sat, 25 Mar 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Solving a matching problem with OR-Tools CP-SAT</title>
-<description><![CDATA[
-
-<p>Optimizing matching for preference satisfaction often focuses on
-<a href="https://en.wikipedia.org/wiki/Stable_marriage_problem" title="Wikipedia: Stable marriage problem">stability</a>, which prioritizes individual interests. When maximizing
-resource utilization is more important, <a href="https://en.wikipedia.org/wiki/Constraint_programming" title="Wikipedia: Constraint programming">Constraint Programming</a>
-(CP) can be used to find good matches. Google's <a href="https://developers.google.com/optimization" title="OR-Tools | Google Developers">OR-Tools</a> package
-includes the <a href="https://developers.google.com/optimization/cp/cp_solver" title="CP-SAT Solver | OR-Tools | Google Developers">CP-SAT</a> solver, which is one way to implement this.</p>
-<p>For example, we may be assigning a pool of interns to specific roles.
-Managers for each role have ranked some of the candidates, and a
-candidate can only be matched to a role for which they have been
-ranked. Roles often have one spot to be filled, but some have more.
-Candidates have been ranked for multiple roles, but can only be
-assigned one.</p>
-<p>This problem is similar to the <a href="https://en.wikipedia.org/wiki/National_Resident_Matching_Program" title="Wikipedia: National Resident Matching Program">medical residency matching</a> problem,
-which famously applies the Nobel-prize-winning
-<a href="https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm" title="Wikipedia: Gale–Shapley algorithm">Gale–Shapley algorithm</a>. One difference is that the present example
-only has preferences from one side. Sometimes random preferences are
-created in order to still allow the application of algorithms like
-Gale–Shapley, but this will not be necessary here because there is a
-bigger issue.</p>
-<p>The salient difference between what Gale–Shapley does and the goal of
-the example here is that we really want to fill every available role,
-even if it means the match isn't perfectly stable. Gale–Shapley will
-create a match that leaves some roles unfilled if this is necessary to
-ensure that no trade would better satisfy the preferences of the
-individuals involved. In general, Gale–Shapley will leave some roles
-unfilled.</p>
-<p>To begin a solution with the OR-Tools (OR for <a href="https://en.wikipedia.org/wiki/Operations_research" title="Wikipedia: Operations research">Operations Research</a>)
-package, we start by converting the rankings to scores, where 1 is the
-best and 0 is the worst: <a href="rankings.csv"><code>rankings.csv</code></a> (There are
-different ways of doing this, like percentiles; here we assume we have
-scores.)</p>
-<pre><code>role,person,score
-Role 23,Person 11,0.5238095238095238
-Role 23,Person 109,0.7619047619047619
-Role 23,Person 111,0.6190476190476191
-...</code></pre>
-
-<p>Each role has some maximum number of spots to fill: <a href="spots.csv"><code>spots.csv</code></a></p>
-<pre><code>Role 23,4
-Role 31,1
-Role 8,1
-...</code></pre>
-
-<p>We can start reading in data using Python.</p>
-<pre><code class="language-python">import csv
-
-spots = {role: int(n) for role, n in csv.reader(open('spots.csv'))}
-all_rankings = [ranking for ranking in csv.DictReader(open('rankings.csv'))]</code></pre>
-
-<p>It will be convenient to have quick access to all the people ranked
-for a role, and all the roles a person is ranked for.</p>
-<pre><code class="language-python">by_role, by_person = {}, {}
-
-for ranking in all_rankings:
-    by_role.setdefault(ranking['role'], []).append(ranking)
-    by_person.setdefault(ranking['person'], []).append(ranking)</code></pre>
-
-<p>Now we can start using OR-Tools.</p>
-<pre><code class="language-python">from ortools.sat.python import cp_model
-
-model = cp_model.CpModel()
-solver = cp_model.CpSolver()</code></pre>
-
-<p>The matching will be represented via a Boolean variable for each
-ranking that is true to select that match and false otherwise.</p>
-<pre><code class="language-python">for ranking in all_rankings:
-    ranking['selected'] = model.NewBoolVar('')</code></pre>
-
-<p>OR-Tools lets us use natural Python expressions to express
-constraints. First, we dictate that each role should have no more than
-the allowed number of people.</p>
-<pre><code class="language-python">for role, rankings in by_role.items():
-    total = sum(ranking['selected'] for ranking in rankings)
-    model.Add(total &lt;= spots[role])</code></pre>
-
-<p>Similarly, we require that each person is matched with at most one
-role.</p>
-<pre><code class="language-python">for person, rankings in by_person.items():
-    total = sum(ranking['selected'] for ranking in rankings)
-    model.Add(total &lt;= 1)</code></pre>
-
-<p>The objective will be to maximize the total score of selected matches.</p>
-<pre><code class="language-python">total_score = 0
-for ranking in all_rankings:
-    score = float(ranking['score']) * ranking['selected']
-    total_score += score</code></pre>
-
-<p>At this point, we need only ask for the solution.</p>
-<pre><code class="language-python">model.Maximize(total_score)
-status = solver.Solve(model)
-print(solver.Value(total_score), solver.StatusName(status))
-# 82.87644300144302 OPTIMAL</code></pre>
-
-<p>You can check that every role has its maximal number of people, and
-every person has one role (or zero; this example has more people than
-spots). The CP-SAT solver has done the heavy lifting of finding a
-solution and even guaranteeing that it is optimal.</p>
-<pre><code class="language-python">with open('results.csv', 'w') as f:
-    writer = csv.DictWriter(f, all_rankings[0].keys())
-    writer.writeheader()
-    for ranking in all_rankings:
-        ranking['selected'] = solver.Value(ranking['selected'])
-        writer.writerow(ranking)</code></pre>
-
-<p>Code is also available in a <a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20230316-solving_a_matching_problem_with_ortools_cpsat/matching.ipynb">notebook</a>. Writing out results
-produces: <a href="results.csv"><code>results.csv</code></a></p>
-<pre><code>role,person,score,selected
-Role 23,Person 11,0.5238095238095238,0
-...
-Role 23,Person 41,0.5714285714285714,1
-...</code></pre>
-
-<p>The approach here is general enough that with modifications it can be
-applied to a wide range of more or less related problems. There is
-always a question of whether the chosen metric is the right one to
-optimize, but making some choice can get you pretty far toward a good
-solution, with a solver that makes optimization easy. Indeed, what
-other problems might be formulated in a manner amenable to solving in
-this way? OR-Tools are handy!</p>
-<hr>
-<p>Thanks to Maxime Labonne, whose Linear Programming <a href="https://github.com/mlabonne/Linear-Programming-Course" title="Hands-on course about linear programming and mathematical optimization.">course</a> was very
-helpful as I started to use OR-Tools.</p>    
-    ]]></description>
-<link>http://planspace.org/20230316-solving_a_matching_problem_with_ortools_cpsat/</link>
-<guid>http://planspace.org/20230316-solving_a_matching_problem_with_ortools_cpsat/</guid>
-<pubDate>Thu, 16 Mar 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
