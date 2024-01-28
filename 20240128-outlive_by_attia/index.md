@@ -23,7 +23,7 @@ still: Who doesn't want more healthspan?
          * "Zone 2" sustained cardio
          * Intense cardio for improving VO2-max
          * Strength (with weights)
-         * Stability (core, posture, flexitility...)
+         * Stability (core, [posture][], flexitility...)
      * Diet
          * A lot of protein and fiber
          * Avoid too much other stuff
@@ -53,11 +53,21 @@ still: Who doesn't want more healthspan?
      * The Centenarian Decathlon: Work toward being able to do things
        when you're really old; overprepare because you will age.
 
+[posture]: https://www.posturalrestoration.com/
 [ApoB]: https://en.wikipedia.org/wiki/Apolipoprotein_B
 [metformin]: https://en.wikipedia.org/wiki/Metformin
 [Rapamycin]: https://en.wikipedia.org/wiki/Sirolimus
 [AgeLessRx]: https://agelessrx.com/
 [HealthSpan]: https://gethealthspan.com/
+
+
+Oh also he talks a little bit about [Mendelian randomization][], which
+it turns out is just using genetics as an [instrumental variable][].
+Also [Bradford Hill criteria][] for causation. Neat!
+
+[Mendelian randomization]: https://en.wikipedia.org/wiki/Mendelian_randomization
+[instrumental variable]: /20210430-a_simple_instrumental_variable/
+[Bradford Hill criteria]: https://en.wikipedia.org/wiki/Bradford_Hill_criteria
 
 
 ![cover](cover.jpg)
