@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-02-11: [(Audio) The Comfort Crisis, by Easter](/20240211-comfort_crisis_by_easter/)
  * 2024-01-28: [(Audio) Outlive, by Attia](/20240128-outlive_by_attia/)
  * 2024-01-14: [Fundamentals: Ten Keys to Reality, by Wilczek](/20240114-fundamentals_by_wilczek/)
  * 2024-01-13: [(Audio) Hidden Potential, by Grant](/20240113-audio_hidden_potential_grant/)
