@@ -6,7 +6,7 @@ some 2023 [predictions from Vox][], if you want.
 
 [2020]: /20200112-predicting_the_future_from_2020/ "Predicting the future from 2020"
 [2021]: /20210102-predicting_the_future_from_2021/ "Predicting the future from 2021"
-[2022]: /20220101-predicting_the_future_from_2022/) "Predicting the future from 2022"
+[2022]: /20220101-predicting_the_future_from_2022/ "Predicting the future from 2022"
 [predictions from Vox]: https://www.vox.com/future-perfect/2023/1/2/23494204/biden-trump-putin-supreme-court-2023-predictions "23 things we think will happen in 2023"
 
 
