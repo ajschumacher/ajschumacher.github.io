@@ -7,6 +7,22 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) The Body, by Bryson</title>
+<description><![CDATA[
+
+<p>Bryson's intonation is a little like Werner Herzog's. His book on the
+body is charmingly, gently amusing. It's a selection of fun facts and
+good advice: exercise more, eat less, maybe get some more vitamin D
+and choline. One reference is Haldane's 1926
+<a href="https://www.phys.ufl.edu/courses/phy3221/spring10/HaldaneRightSize.pdf">On Being the Right Size</a>, which has a similar sense of humor.
+Bryson has a good time, and so does the reader (or listener).</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20240303-the_body_by_bryson/</link>
+<guid>http://planspace.org/20240303-the_body_by_bryson/</guid>
+<pubDate>Sun, 03 Mar 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) The Comfort Crisis, by Easter</title>
 <description><![CDATA[
 
@@ -2575,37 +2591,6 @@ variances of sample means in practice.)</p>
 <link>http://planspace.org/20230603-fieller_intervals_in_python/</link>
 <guid>http://planspace.org/20230603-fieller_intervals_in_python/</guid>
 <pubDate>Sat, 03 Jun 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>How to stay productive when the world is ending</title>
-<description><![CDATA[
-
-<p>In the conclusion (“Congrats, you completed a book!”) the authors
-clarify that <a href="https://shop.reductress.com/products/how-to-stay-productive-when-the-world-is-ending">this</a> is “a satirical book of essays about how the
-double-bind of our need to work in order to have safety, security, and
-predictability is making us powerless in an increasingly unsafe,
-insecure, and unpredictable world.” They thank the Nap Bishop,
-<a href="https://en.wikipedia.org/wiki/Tricia_Hersey">Tricia Hersey</a>.</p>
-<p>The cover is a pretty good indication of the contents, especially if
-you notice it's from <a href="https://reductress.com/">Reductress</a>, which is a sort of like a feminist
-<a href="https://en.wikipedia.org/wiki/The_Onion">Onion</a> satirizing women's magazines.</p>
-<p>An illustrative piece is titled “What is emotional labor?” and
-includes this example:</p>
-<blockquote>
-<p>When you have to ask for your salad dressing “light, medium, or
-heavy” even though you know these are subjective terms, and no
-answer guarantees you will receive your desired amount of salad
-dressing</p>
-</blockquote>
-<p>This kind of poking fun at privilege is easy to laugh along with. The
-whole book is in turns funny and depressing, as they spend time with
-more serious challenges as well. The satire sneaks in as a coffee
-table book, and leaves the reader to fix modern capitalism.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20230602-how_to_stay_productive_when_the_world_is_ending/</link>
-<guid>http://planspace.org/20230602-how_to_stay_productive_when_the_world_is_ending/</guid>
-<pubDate>Fri, 02 Jun 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

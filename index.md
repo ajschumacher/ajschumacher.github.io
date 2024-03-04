@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-03-03: [(Audio) The Body, by Bryson](/20240303-the_body_by_bryson/)
  * 2024-02-11: [(Audio) The Comfort Crisis, by Easter](/20240211-comfort_crisis_by_easter/)
  * 2024-01-28: [(Audio) Outlive, by Attia](/20240128-outlive_by_attia/)
  * 2024-01-14: [Fundamentals: Ten Keys to Reality, by Wilczek](/20240114-fundamentals_by_wilczek/)
