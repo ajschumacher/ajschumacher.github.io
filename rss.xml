@@ -7,6 +7,26 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) Lifespan, by Sinclair</title>
+<description><![CDATA[
+
+<p>I heard about <a href="https://en.wikipedia.org/wiki/Lifespan:_Why_We_Age_%E2%80%93_and_Why_We_Don%27t_Have_To" title="Lifespan: Why We Age – and Why We Don't Have To">this book</a> from a neighbor after I was talking about
+<a href="/20240128-outlive_by_attia/" title="(Audio) Outlive, by Attia">Outlive</a>. Compared to Attia, <a href="https://en.wikipedia.org/wiki/David_A._Sinclair" title="David A. Sinclair">Sinclair</a> is more academic, not as
+into protein (especially animal protein), and more extreme in his
+claims that aging is a curable disease explained by his "Information
+Theory" of epigenetic aging. Sinclair takes metformin, resveratrol,
+and NMN. (After the book he started taking rapamycin as well, based on
+a YouTube interview.) The book is longer than it needs to be to cover
+the topics of Sinclair's expertise. The audio book has little
+interludes between Sinclair and his writer, which is sort of a fun
+idea but I'm not sure it added much.</p>
+<p><img alt="cover" src="cover.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20240319-lifespan_by_sinclair/</link>
+<guid>http://planspace.org/20240319-lifespan_by_sinclair/</guid>
+<pubDate>Tue, 19 Mar 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) The Body, by Bryson</title>
 <description><![CDATA[
 
@@ -2542,55 +2562,6 @@ understood the lesson.</p>
 <link>http://planspace.org/20230608-useful_lesson_of_carneades/</link>
 <guid>http://planspace.org/20230608-useful_lesson_of_carneades/</guid>
 <pubDate>Thu, 08 Jun 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Fieller intervals in Python</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Fieller%27s_theorem">Fieller's theorem</a> provides a way to get a confidence interval for
-a ratio, which is hard in general. An alternative is to
-<a href="/20211230-getting_var_ratio_can_be_hard/" title="Getting var(X/Y) can be hard">use the delta method</a> to estimate the variance of the ratio and use
-that, but should your estimate of the ratio really be the middle of
-the interval?</p>
-<pre><code class="language-python">import scipy.stats
-
-def fieller_interval(mean_x, var_x, mean_y, var_y, alpha=0.05):
-   """Confidence interval for X/Y; see arxiv.org/pdf/0710.2024.pdf"""
-   z = scipy.stats.norm().ppf(1 - alpha / 2)
-   t = z  # Uses z instead of t (assumes large n)
-   divisor = mean_y**2 - (t**2 * var_y)
-   center = (mean_y * mean_x) / divisor
-   spread = (((mean_y * mean_x)**2 -
-              ((mean_y**2 - (t**2 * var_y)) *
-               (mean_x**2 - (t**2 * var_x))) )**0.5 /
-             divisor)
-   return center - spread, center + spread</code></pre>
-
-<p>Fieller's method uses its own center, which makes sense because the
-distribution of a ratio is skewed in general.</p>
-<pre><code class="language-python">x = scipy.stats.norm(loc=110, scale=25).rvs(size=1000, random_state=110)
-y = scipy.stats.norm(loc=100, scale=25).rvs(size=1000, random_state=100)</code></pre>
-
-<!--
-import matplotlib.pyplot as plt
-
-plt.figure(figsize=(10, 4))
-plt.hist(x/y, bins=40)
-plt.xlabel('x/y')
-plt.show()
--->
-
-<p><img alt="histogram" src="hist.png"></p>
-<p>The estimate <code>x.mean() / y.mean()</code> is 1.1, which is good, but the
-Fieller center is 1.5, which is a better center for the interval
-because of the skewness. You can check that about the right fraction
-of values are in the tails. (<a href="https://github.com/ajschumacher/ajschumacher.github.io/blob/master/20230603-fieller_intervals_in_python/fieller.ipynb">Jupyter notebook</a>)</p>
-<p>(Be sure to use the variances you care about—more likely to be
-variances of sample means in practice.)</p>    
-    ]]></description>
-<link>http://planspace.org/20230603-fieller_intervals_in_python/</link>
-<guid>http://planspace.org/20230603-fieller_intervals_in_python/</guid>
-<pubDate>Sat, 03 Jun 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
