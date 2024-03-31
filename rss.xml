@@ -7,6 +7,37 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) Homo Deus, by Harari</title>
+<description><![CDATA[
+
+<p>It feels like <a href="https://en.wikipedia.org/wiki/Yuval_Noah_Harari" title="Yuval Noah Harari">Harari</a> got the advance for <a href="https://en.wikipedia.org/wiki/Homo_Deus:_A_Brief_History_of_Tomorrow" title="Homo Deus: A Brief History of Tomorrow">Homo Deus</a> before
+really thinking it through. It's rambling, over-long, without cohesive
+thesis, and like a time capsule of science and tech news from 2014:
+Big Data! Watson! Quantified Self! Mild <a href="/20191108-accelerando_by_stross/" title="Accelerando, by Stross">Accelerando</a> flavor. I wish
+I'd read the <a href="https://en.wikipedia.org/wiki/Yuval_Noah_Harari#Critical_reception">Critical Reception</a> section from Harari's Wikipedia
+entry and skipped this book.</p>
+<p>My biggest gripe is probably that Harari argues (at length) that
+animals have consciousness, and that animals are algorithms, and then
+also claims without a second thought that algorithms implemented via
+computer have no consciousness.</p>
+<p>Harari also makes the fairly common error of scientific
+exceptionalism: the belief that scientific ways of knowing are
+fundamentally distinct from all others. For the number of words he
+releases on related topics, this is frustrating.</p>
+<p>Harari does say some reasonable things. I think he's correct in
+pointing out limitations in our understanding of consciousness. (I
+think this is such an interesting topic I wrote a <a href="/20230325-conversion_of_guelph_energy_to_mass/" title="Conversion of Guelph energy to mass (p=0.049)">short story</a>
+about it.)</p>
+<p>I also like Harari's phrasing around learning history in order to be
+liberated from it. But throughout the book, the moments of lucidity
+make the languid and ludicrous majority that much more unbearable.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20240331-homo_deus_by_harari/</link>
+<guid>http://planspace.org/20240331-homo_deus_by_harari/</guid>
+<pubDate>Sun, 31 Mar 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Lifespan, by Sinclair</title>
 <description><![CDATA[
 
@@ -2540,28 +2571,6 @@ for combined regressions.</p>
 <link>http://planspace.org/20230706-regression_standard_errors_scale_by_all_residuals/</link>
 <guid>http://planspace.org/20230706-regression_standard_errors_scale_by_all_residuals/</guid>
 <pubDate>Thu, 06 Jul 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The useful lesson of Carneades</title>
-<description><![CDATA[
-
-<blockquote>
-<p>“According to tradition, <a href="https://en.wikipedia.org/wiki/Carneades">Carneades</a> also delivered a pair of
-lectures while in Rome, speaking in defense of justice on one day
-and, in rebuttal of his own arguments of the previous day, against
-it on the following day.” (<a href="https://plato.stanford.edu/archives/fall2020/entries/carneades/#LifeWork">Allen</a>)</p>
-</blockquote>
-<p>Carneades is sometimes interpreted as demonstrating only “that every
-conclusion is unwarranted.” (<a href="https://en.wikipedia.org/wiki/A_History_of_Western_Philosophy" title="A History of Western Philosophy">Russell</a>, p. 236) The skeptic is
-correct as such, but has not yet offered useful advice. The useful
-lesson of Carneades is that rhetoric should be wielded responsibly to
-create the world we want. In expelling Carneades from Rome,
-<a href="https://en.wikipedia.org/wiki/Cato_the_Elder" title="Cato the Elder">Cato the Censor</a> may or may not have acted wisely, but it seems he
-understood the lesson.</p>    
-    ]]></description>
-<link>http://planspace.org/20230608-useful_lesson_of_carneades/</link>
-<guid>http://planspace.org/20230608-useful_lesson_of_carneades/</guid>
-<pubDate>Thu, 08 Jun 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
