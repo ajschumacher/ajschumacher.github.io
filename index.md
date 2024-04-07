@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-04-07: [Mortality rates have improved](/20240407-mortality_rates_have_improved/)
  * 2024-03-31: [(Audio) Homo Deus, by Harari](/20240331-homo_deus_by_harari/)
  * 2024-03-19: [(Audio) Lifespan, by Sinclair](/20240319-lifespan_by_sinclair/)
  * 2024-03-03: [(Audio) The Body, by Bryson](/20240303-the_body_by_bryson/)

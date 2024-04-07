@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Mortality rates have improved</title>
+  </head>
+  <body>
+    <article>
+<h1>Mortality rates have improved</h1>
+<p class="date">Sunday April  7, 2024</p>
+<p>A misleading graph from <a href="https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth" title="The Rise and Fall of American Growth, by Robert J. Gordon">The Rise and Fall of American Growth</a> was
+reproduced and again misinterpreted in <a href="/20240128-outlive_by_attia/" title="Outlive, by Peter Attia">Outlive</a>. The graph
+correctly shows that US deaths from infectious disease have decreased
+a lot over the last hundred years. The graph incorrectly makes it seem
+like death rates from other causes have been stable over this period.
+The age-adjusted death rate has decreased by around 50% since 1950.
+Death rates at every age band have been meaningfully decreasing, apart
+from the impact of COVID-19.</p>
+<p>Here's the graph in <a href="/20240128-outlive_by_attia/" title="Outlive, by Peter Attia">Outlive</a>:</p>
+<p><img alt="in Outlive" src="outlive.png" /></p>
+<p>What a remarkably horizontal white line! It supports Attia's position,
+in that he's arguing that we need to invest more in fighting other
+causes of death (heart disease, cancer, dementia, diabetes) so he's
+trying to make them seem like big unsolved problems. And certainly,
+they are big unsolved problems. But the claim that mortality rates
+haven't been improving is misleading.</p>
+<p>Let's first go to the graph in
+<a href="https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth" title="The Rise and Fall of American Growth, by Robert J. Gordon">The Rise and Fall of American Growth</a>:</p>
+<p><img alt="in The Rise and Fall of American Growth" src="growth.png" /></p>
+<p>Attia copied this graph fairly exactly, except for adding "top" before
+and removing the asterisk after "diseases," which is just as well
+since the asterisk doesn't seem to have an explanation in <em>Growth</em>
+anyway.</p>
+<p>Such a horizontal white line! Here, it supports Gordon's position, in
+that he's arguing that things were getting better in the US from
+1870-1970, but things aren't getting better so much any more. So
+here's a decrease that stops decreasing by 1970.</p>
+<p>The biggest problem with this presentation is that the data is not
+age-adjusted, and as such it's sensitive to the distribution of ages
+in the population. For example, with low death rates for people in
+their early years, one way to lower the raw death rate is to arrange
+for the birth of a lot of babies. The raw death rate doesn't tell us
+much about anything in particular, and certainly isn't the "real"
+death rate in any meaningful way. Let's compare with a <a href="https://www.cdc.gov/nchs/data-visualization/mortality-trends/index.htm" title="Mortality Trends in the United States, 1900–2018">CDC graph</a>
+that is age-adjusted:</p>
+<p><img alt="CDC graph" src="cdc.png" /></p>
+<p>The green line is the age-adjusted death rate. It was 1,446 in 1950,
+1,222.6 in 1970, and 723.6 in 2018. That's a 50% improvement from
+1950, and a 41% improvement from 1970.</p>
+<p>Adjusting for age is important, because for example, when people don't
+die young, you get more old people. Baby booms and so on also matter.
+The population pyramid looks different now than it did in 1900.
+Compare the 1900 and 2000 shapes as presented in a
+<a href="http://vis.stanford.edu/jheer/d3/pyramid/shift.html" title="U.S. Census Population Pyramid, 1850-2000">Stanford visualization</a>:</p>
+<p><img alt="population pyramids" src="stanford.png" /></p>
+<p>Both the raw and age-adjusted overall death rates don't tell us
+everything about what's happening at every age, so let's look at that.
+Here are death rates for the oldest nine age buckets in
+<a href="https://ourworldindata.org/grapher/annual-death-rate-by-age-group" title="Annual death rate by age group, United States, 2021">data from the Human Mortality Database</a> from 1933 to 2021, shown
+with a <a href="https://docs.google.com/spreadsheets/d/1VjBsxGqajqBThla0JDQGSAnS2fXUeUTVBG95PD6pbE4/edit" title="age-band death rates over time">quick graph</a> I made.</p>
+<p><img alt="death rates by age group" src="by_age_group.png" /></p>
+<p>Every age group is seeing decreasing death rates up until COVID-19
+impacts 2020 numbers. I left out younger age bands to avoid crowding,
+but those also show improvement, especially for the youngest.</p>
+<p>For people 85-89, the death rate per 1,000 was 179.87 in 1950, and
+154.77 in 1970. It was 103.14 in 2018. That's a 43% improvement since
+1950, and 33% improvement from 1970. Even the COVID-19 spike takes us
+back only to around the same levels as we saw in 2000.</p>
+<p>Things have been improving. Improving since 1950, improving since
+1970, improving since 2000 apart from COVID-19. It just isn't accurate
+to suggest that death rates haven't been going down over these
+periods. There's still room for improvement, but the real gains should
+be celebrated, not ignored.</p>
+<p>The question of whether life expectancies have leveled off or even
+decreased over shorter, more recent periods is quite distinct from the
+trend over these longer periods.</p>
+<p>I attempted to <a href="https://docs.google.com/spreadsheets/d/19kuO6mIAi-f3etXZtVNndLEqoGOHACjLvzokBCrYGqQ/edit" title="death rates from HSUS">replicate</a> Gordon's graph using the <a href="https://en.wikipedia.org/wiki/Historical_Statistics_of_the_United_States" title="Historical Statistics of the United States">HSUS</a> data.
+He cites Ab929-943, which includes ten columns of infectious disease
+death, by my count. He uses Ab952 for the total death rate, I believe.</p>
+<p>It adds only confusion that Gordon's figure is titled "Mortality Rate
+<em>as Percentage of GNP</em>" (emphasis added). He also cites HSUS series
+Bd46 (percentage of GNP spent on health care from 1929 to 1997) and
+2012 SAUS table 134 (health care spending). This seems to be a
+leftover of an idea from an earlier paper. Gordon's footnote 22 says
+that his figure "is an update of McKinlay and McKinlay (1977, figure
+3, p. 416)" so let's track that down.</p>
+<p>The paper is
+<a href="https://www.milbank.org/wp-content/uploads/mq/volume-55/issue-03/55-3-The-Questionable-Contribution-of-Medical-Measures-to-the-Decline-of-Mortality-in-the-United-States-in-the-Twentieth-Century.pdf">The Questionable Contribution of Medical Measures to the Decline of Mortality in the United States in the Twentieth Century</a>.
+It has this Figure 3:</p>
+<p><img alt="Figure 3" src="figure3.png" /></p>
+<p>There is no horizontal white line here. The presentation is quite
+different, arguably better for showing the decrease in death from
+infectious disease. McKinlay and McKinlay seem to have known to use
+age-adjusted statistics as well. More relevant to the discussion of
+GNP, however, their paper has this Figure 2:</p>
+<p><img alt="Figure 2" src="figure2.png" /></p>
+<p>The point it's making is that increased spending on health care
+doesn't seem to be driving a lot of increased reduction in death rate.
+There's something to this argument, but 50 years later we can also see
+(in the CDC graph above) that the period roughly 1955-1965 was a
+fairly flat spot on the death rate graph, with improvement continuing
+after it.</p>
+<p>Gordon mentions the concern that spending on health care isn't
+delivering matching results in death rate improvement, but it doesn't
+make it into his figure apart from the title and data citations.</p>
+<p>The horizontal white line is basically a coincidence as death has been
+shifting from younger to older people over time and the population
+pyramid has been changing shape. This graph is misleading.</p>
+<p><img alt="warning" src="warning.png" /></p>    </article>
+    <footer>
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

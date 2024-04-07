@@ -7,6 +7,114 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Mortality rates have improved</title>
+<description><![CDATA[
+
+<p>A misleading graph from <a href="https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth" title="The Rise and Fall of American Growth, by Robert J. Gordon">The Rise and Fall of American Growth</a> was
+reproduced and again misinterpreted in <a href="/20240128-outlive_by_attia/" title="Outlive, by Peter Attia">Outlive</a>. The graph
+correctly shows that US deaths from infectious disease have decreased
+a lot over the last hundred years. The graph incorrectly makes it seem
+like death rates from other causes have been stable over this period.
+The age-adjusted death rate has decreased by around 50% since 1950.
+Death rates at every age band have been meaningfully decreasing, apart
+from the impact of COVID-19.</p>
+<p>Here's the graph in <a href="/20240128-outlive_by_attia/" title="Outlive, by Peter Attia">Outlive</a>:</p>
+<p><img alt="in Outlive" src="outlive.png"></p>
+<p>What a remarkably horizontal white line! It supports Attia's position,
+in that he's arguing that we need to invest more in fighting other
+causes of death (heart disease, cancer, dementia, diabetes) so he's
+trying to make them seem like big unsolved problems. And certainly,
+they are big unsolved problems. But the claim that mortality rates
+haven't been improving is misleading.</p>
+<p>Let's first go to the graph in
+<a href="https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth" title="The Rise and Fall of American Growth, by Robert J. Gordon">The Rise and Fall of American Growth</a>:</p>
+<p><img alt="in The Rise and Fall of American Growth" src="growth.png"></p>
+<p>Attia copied this graph fairly exactly, except for adding "top" before
+and removing the asterisk after "diseases," which is just as well
+since the asterisk doesn't seem to have an explanation in <em>Growth</em>
+anyway.</p>
+<p>Such a horizontal white line! Here, it supports Gordon's position, in
+that he's arguing that things were getting better in the US from
+1870-1970, but things aren't getting better so much any more. So
+here's a decrease that stops decreasing by 1970.</p>
+<p>The biggest problem with this presentation is that the data is not
+age-adjusted, and as such it's sensitive to the distribution of ages
+in the population. For example, with low death rates for people in
+their early years, one way to lower the raw death rate is to arrange
+for the birth of a lot of babies. The raw death rate doesn't tell us
+much about anything in particular, and certainly isn't the "real"
+death rate in any meaningful way. Let's compare with a <a href="https://www.cdc.gov/nchs/data-visualization/mortality-trends/index.htm" title="Mortality Trends in the United States, 1900–2018">CDC graph</a>
+that is age-adjusted:</p>
+<p><img alt="CDC graph" src="cdc.png"></p>
+<p>The green line is the age-adjusted death rate. It was 1,446 in 1950,
+1,222.6 in 1970, and 723.6 in 2018. That's a 50% improvement from
+1950, and a 41% improvement from 1970.</p>
+<p>Adjusting for age is important, because for example, when people don't
+die young, you get more old people. Baby booms and so on also matter.
+The population pyramid looks different now than it did in 1900.
+Compare the 1900 and 2000 shapes as presented in a
+<a href="http://vis.stanford.edu/jheer/d3/pyramid/shift.html" title="U.S. Census Population Pyramid, 1850-2000">Stanford visualization</a>:</p>
+<p><img alt="population pyramids" src="stanford.png"></p>
+<p>Both the raw and age-adjusted overall death rates don't tell us
+everything about what's happening at every age, so let's look at that.
+Here are death rates for the oldest nine age buckets in
+<a href="https://ourworldindata.org/grapher/annual-death-rate-by-age-group" title="Annual death rate by age group, United States, 2021">data from the Human Mortality Database</a> from 1933 to 2021, shown
+with a <a href="https://docs.google.com/spreadsheets/d/1VjBsxGqajqBThla0JDQGSAnS2fXUeUTVBG95PD6pbE4/edit" title="age-band death rates over time">quick graph</a> I made.</p>
+<p><img alt="death rates by age group" src="by_age_group.png"></p>
+<p>Every age group is seeing decreasing death rates up until COVID-19
+impacts 2020 numbers. I left out younger age bands to avoid crowding,
+but those also show improvement, especially for the youngest.</p>
+<p>For people 85-89, the death rate per 1,000 was 179.87 in 1950, and
+154.77 in 1970. It was 103.14 in 2018. That's a 43% improvement since
+1950, and 33% improvement from 1970. Even the COVID-19 spike takes us
+back only to around the same levels as we saw in 2000.</p>
+<p>Things have been improving. Improving since 1950, improving since
+1970, improving since 2000 apart from COVID-19. It just isn't accurate
+to suggest that death rates haven't been going down over these
+periods. There's still room for improvement, but the real gains should
+be celebrated, not ignored.</p>
+<p>The question of whether life expectancies have leveled off or even
+decreased over shorter, more recent periods is quite distinct from the
+trend over these longer periods.</p>
+<p>I attempted to <a href="https://docs.google.com/spreadsheets/d/19kuO6mIAi-f3etXZtVNndLEqoGOHACjLvzokBCrYGqQ/edit" title="death rates from HSUS">replicate</a> Gordon's graph using the <a href="https://en.wikipedia.org/wiki/Historical_Statistics_of_the_United_States" title="Historical Statistics of the United States">HSUS</a> data.
+He cites Ab929-943, which includes ten columns of infectious disease
+death, by my count. He uses Ab952 for the total death rate, I believe.</p>
+<p>It adds only confusion that Gordon's figure is titled "Mortality Rate
+<em>as Percentage of GNP</em>" (emphasis added). He also cites HSUS series
+Bd46 (percentage of GNP spent on health care from 1929 to 1997) and
+2012 SAUS table 134 (health care spending). This seems to be a
+leftover of an idea from an earlier paper. Gordon's footnote 22 says
+that his figure "is an update of McKinlay and McKinlay (1977, figure
+3, p. 416)" so let's track that down.</p>
+<p>The paper is
+<a href="https://www.milbank.org/wp-content/uploads/mq/volume-55/issue-03/55-3-The-Questionable-Contribution-of-Medical-Measures-to-the-Decline-of-Mortality-in-the-United-States-in-the-Twentieth-Century.pdf">The Questionable Contribution of Medical Measures to the Decline of Mortality in the United States in the Twentieth Century</a>.
+It has this Figure 3:</p>
+<p><img alt="Figure 3" src="figure3.png"></p>
+<p>There is no horizontal white line here. The presentation is quite
+different, arguably better for showing the decrease in death from
+infectious disease. McKinlay and McKinlay seem to have known to use
+age-adjusted statistics as well. More relevant to the discussion of
+GNP, however, their paper has this Figure 2:</p>
+<p><img alt="Figure 2" src="figure2.png"></p>
+<p>The point it's making is that increased spending on health care
+doesn't seem to be driving a lot of increased reduction in death rate.
+There's something to this argument, but 50 years later we can also see
+(in the CDC graph above) that the period roughly 1955-1965 was a
+fairly flat spot on the death rate graph, with improvement continuing
+after it.</p>
+<p>Gordon mentions the concern that spending on health care isn't
+delivering matching results in death rate improvement, but it doesn't
+make it into his figure apart from the title and data citations.</p>
+<p>The horizontal white line is basically a coincidence as death has been
+shifting from younger to older people over time and the population
+pyramid has been changing shape. This graph is misleading.</p>
+<p><img alt="warning" src="warning.png"></p>    
+    ]]></description>
+<link>http://planspace.org/20240407-mortality_rates_have_improved/</link>
+<guid>http://planspace.org/20240407-mortality_rates_have_improved/</guid>
+<pubDate>Sun, 07 Apr 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Homo Deus, by Harari</title>
 <description><![CDATA[
 
@@ -2485,92 +2593,6 @@ Analysis</em>.</p>
 <link>http://planspace.org/20230707-russell_history_of_western_philosophy/</link>
 <guid>http://planspace.org/20230707-russell_history_of_western_philosophy/</guid>
 <pubDate>Fri, 07 Jul 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Regression standard errors scale by all residuals</title>
-<description><![CDATA[
-
-<p>Even in cases where it seems like it shouldn't matter whether you run
-individual regressions or a combined regression, it does matter to the
-standard errors, because the standard errors all scale by a factor
-that includes all the residuals for the model.</p>
-<p>Here's a simple data set in <a href="https://www.r-project.org/">R</a>:</p>
-<pre><code class="language-r">set.seed(42)
-x = rnorm(10)
-df_a = data.frame(group='a', x=x, y=2*x + 5 + rnorm(10))
-x = rnorm(10)
-df_b = data.frame(group='b', x=x, y=3*x + 7 + rnorm(10))
-df = rbind(df_a, df_b)
-df
-##     group           x          y
-##  1      a  1.37095845  9.0467865
-##  2      a -0.56469817  6.1572490
-##  3      a  0.36312841  4.3373961
-##  4      a  0.63286260  5.9869364
-##  5      a  0.40426832  5.6752153
-##  6      a -0.10612452  5.4237014
-##  7      a  1.51152200  7.7387911
-##  8      a -0.09465904  2.1542265
-##  9      a  2.01842371  6.5963805
-##  10     a -0.06271410  6.1946851
-##  11     b -0.30663859  6.5355343
-##  12     b -1.78130843  2.3609120
-##  13     b -0.17191736  7.5193515
-##  14     b  1.21467470 10.0350977
-##  15     b  1.89519346 13.1905355
-##  16     b -0.43046913  3.9915839
-##  17     b -0.25726938  5.4437328
-##  18     b -1.76316309  0.8596032
-##  19     b  0.46009735  5.9660844
-##  20     b -0.63999488  5.1161380</code></pre>
-
-<p>If we're trying to recover the slopes and intercepts, we can run
-separate regressions for group <em>a</em> and group <em>b</em>, or we can run a
-combined regression for both at the same time.</p>
-<pre><code class="language-r">summary(lm(y ~ x, data=df_a))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  (Intercept)   5.2370     0.6162   8.500 2.82e-05 ***
-##  x             1.2682     0.6397   1.983   0.0827 .
-summary(lm(y ~ x, data=df_b))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##  (Intercept)   6.6258     0.3783  17.515 1.15e-07 ***
-##  x             2.9421     0.3405   8.641 2.50e-05 ***
-summary(lm(y ~ group:x + group - 1, data=df))
-##              Estimate Std. Error t value Pr(&gt;|t|)
-##     groupa     5.2370     0.5411   9.679 4.32e-08 ***
-##     groupb     6.6258     0.4511  14.689 1.05e-10 ***
-##     groupa:x   1.2682     0.5618   2.258   0.0383 *
-##     groupb:x   2.9421     0.4060   7.247 1.95e-06 ***</code></pre>
-
-<p>The estimated coefficients are the same between the two methods
-(good!) but the standard errors are different. Why? We know that the
-data for group <em>a</em> doesn't really interact with the data for group <em>b</em>
-at all, so it shouldn't affect the standard errors, right?</p>
-<p>Indeed, adding extra independent data shouldn't affect the standard
-errors, but regression doesn't know about the independence. (Run the
-independent regressions, not the combined one, in cases like this if
-you want correct standard errors.)</p>
-<p>With \( X \) the design matrix and \( \sigma^2 \) the sum of
-squared residuals divided by degrees of freedom, the standard errors
-are \( \sqrt{ \sigma^2 ( X^TX )^{-1} } \). (Thanks to <a href="https://stats.stackexchange.com/a/44841/122282" title="How are the standard errors of coefficients calculated in a regression?">ocram</a>.)</p>
-<pre><code class="language-r">model = lm(y ~ group:x + group - 1, data=df)
-matrix = model.matrix(y ~ group:x + group - 1, data=df)
-sqrt(diag((sum(model$residuals^2) / 16) * solve(t(matrix) %*% matrix)))
-##     groupa    groupb  groupa:x  groupb:x
-##  0.5410892 0.4510810 0.5617751 0.4059782</code></pre>
-
-<p>In the example here, the group <em>a</em> coefficient on <em>x</em> isn't
-significant (at 0.05) with the individual regression, but it appears
-to be when the combined regression is done. And this is a modest
-example, with the same scale normal noise in both data sets; data
-won't be so homoscedastic in general so results could be even worse
-for combined regressions.</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20230706-regression_standard_errors_scale_by_all_residuals/</link>
-<guid>http://planspace.org/20230706-regression_standard_errors_scale_by_all_residuals/</guid>
-<pubDate>Thu, 06 Jul 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
