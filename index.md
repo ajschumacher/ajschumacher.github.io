@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-05-19: [(Audio) Survival of the Richest, by Rushkoff](/20240519-survival_of_the_richest_by_rushkoff/)
  * 2024-05-17: [(Audio) Build, by Fadell](/20240517-build_by_fadell/)
  * 2024-05-17: [Understanding bipolar disorder, by Daramus](/20240517-understanding_bipolar_disorder_by_daramus/)
  * 2024-04-13: [(Audio) Material World, by Conway](/20240413-material_world_by_conway/)
