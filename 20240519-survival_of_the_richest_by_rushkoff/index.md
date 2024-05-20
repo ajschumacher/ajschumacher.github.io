@@ -40,7 +40,7 @@ conventional jobs (of which there are many already today).
 
 
 I don't think Rushkoff has a good argument here. But he says so _many_
-things that the book is quite though-provoking regardless. He
+things that the book is quite thought-provoking regardless. He
 characterizes [QAnon][] as a kind of internet addiction. And you get
 to hear about the many parties he's been invited to. Lucky you.
 
