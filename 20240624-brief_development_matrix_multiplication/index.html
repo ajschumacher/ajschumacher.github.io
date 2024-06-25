@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>A brief development of matrix multiplication</title>
+  </head>
+  <body>
+    <article>
+<h1>A brief development of matrix multiplication</h1>
+<p class="date">Monday June 24, 2024</p>
+<p>Linear Algebra is math for multiple dimensions. Linearity is a
+constraint that makes handling multi-dimensional complexity more
+tractable. The structure of linear transformations quickly gives rise
+to the dot product and matrix multiplication.</p>
+<p>In Linear Algebra, a function is linear if \( f(u+v) = f(u) + f(v)
+\) and \( f(cu) = cf(u) \). This is a powerful constraint. The
+common equation of a line, \( y = f(x) = mx + b \), is not linear by
+this definition when \( b \neq 0 \). In the situation of one numeric
+input and output, linear functions are multiplication by a constant
+coefficient, \( y = f(x) = mx \).</p>
+<p>If there are two inputs and one output, linear functions are
+multiplications followed by addition, \( y = f(x_1, x_2) = m_1 x_1 +
+m_2 x_2 \). This is the dot product of the vector \( \vec{x} = (x_1,
+x_2) \) and the coefficient vector \( \vec{m} = (m_1, m_2) \). The
+result is a linear combination of the inputs.</p>
+<p>If there are two inputs and two outputs, each output is a linear
+combination of the inputs, \( (y_1, y_2) = f(x_1, x_2) = (m_1 x_1 +
+m_2 x_2, m_3 x_1 + m_4 x_2) \), also written \( \vec{y} = M \vec{x}
+\).</p>
+<p>Applying a second linear transform \( N \) to the output of \( M
+\), the new outputs \( y_1 \) and \( y_2 \) are:</p>
+<p>\[ n_1 (m_1 x_1 + m_2 x_2) + n_2 (m_3 x_1 + m_4 x_2), \\
+    n_3 (m_1 x_1 + m_2 x_2) + n_4 (m_3 x_1 + m_4 x_2)  \]</p>
+<p>Re-grouping shows that applying these two linear transforms one after
+the other is the same as applying just one linear transform with
+different coefficients:</p>
+<!--
+n_1 m_1 x_1 + n_1 m_2 x_2 + n_2 m_3 x_1 + n_2 m_4 x_2,
+n_3 m_1 x_1 + n_3 m_2 x_2 + n_4 m_3 x_1 + n_4 m_4 x_2
+
+n_1 m_1 x_1 + n_2 m_3 x_1 + n_1 m_2 x_2 + n_2 m_4 x_2,
+n_3 m_1 x_1 + n_4 m_3 x_1 + n_3 m_2 x_2 + n_4 m_4 x_2
+-->
+
+<p>\[ (n_1 m_1 + n_2 m_3) x_1 + (n_1 m_2 + n_2 m_4) x_2, \\
+    (n_3 m_1 + n_4 m_3) x_1 + (n_3 m_2 + n_4 m_4) x_2  \]</p>
+<p>If \( N M = T \), then \( t_1 \) is the dot product of \( (n_1,
+n_2) \) and \( (m_1, m_3) \), and so on. The coefficients can be
+arranged so that each pair that appears is adjacent horizontally or
+vertically.</p>
+<p>\[
+\begin{bmatrix}
+n_1 &amp; n_2 \\
+n_3 &amp; n_4
+\end{bmatrix}
+\begin{bmatrix}
+m_1 &amp; m_2 \\
+m_3 &amp; m_4
+\end{bmatrix} =
+\begin{bmatrix}
+n_1 m_1 + n_2 m_3 &amp; n_1 m_2 + n_2 m_4 \\
+n_3 m_1 + n_4 m_3 &amp; n_3 m_2 + n_4 m_4
+\end{bmatrix}
+\]</p>
+<p>There is a choice here: The coefficients are written in English
+reading order, left to right and top to bottom. They could just as
+well be placed top to bottom and right to left, for example. This
+choice is arbitrary, but the nature of matrix multiplication is not.</p>
+<hr />
+<p>This is a terse version of what I think could be a good way to
+introduce Linear Algebra and matrix multiplication. It is a more
+traditionally symbolic version of
+<a href="/20210915-flow_metaphor_for_matrix_multiplication/">the flow metaphor for matrix multiplication</a>, with more focus on
+linearity as a driving part of the meaning of Linear Algebra.</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer>
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

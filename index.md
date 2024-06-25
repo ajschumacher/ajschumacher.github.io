@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-06-24: [A brief development of matrix multiplication](/20240624-brief_development_matrix_multiplication/)
  * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
  * 2024-05-19: [(Audio) Survival of the Richest, by Rushkoff](/20240519-survival_of_the_richest_by_rushkoff/)
  * 2024-05-17: [(Audio) Build, by Fadell](/20240517-build_by_fadell/)

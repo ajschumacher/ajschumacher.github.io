@@ -7,6 +7,81 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>A brief development of matrix multiplication</title>
+<description><![CDATA[
+
+<p>Linear Algebra is math for multiple dimensions. Linearity is a
+constraint that makes handling multi-dimensional complexity more
+tractable. The structure of linear transformations quickly gives rise
+to the dot product and matrix multiplication.</p>
+<p>In Linear Algebra, a function is linear if \( f(u+v) = f(u) + f(v)
+\) and \( f(cu) = cf(u) \). This is a powerful constraint. The
+common equation of a line, \( y = f(x) = mx + b \), is not linear by
+this definition when \( b \neq 0 \). In the situation of one numeric
+input and output, linear functions are multiplication by a constant
+coefficient, \( y = f(x) = mx \).</p>
+<p>If there are two inputs and one output, linear functions are
+multiplications followed by addition, \( y = f(x_1, x_2) = m_1 x_1 +
+m_2 x_2 \). This is the dot product of the vector \( \vec{x} = (x_1,
+x_2) \) and the coefficient vector \( \vec{m} = (m_1, m_2) \). The
+result is a linear combination of the inputs.</p>
+<p>If there are two inputs and two outputs, each output is a linear
+combination of the inputs, \( (y_1, y_2) = f(x_1, x_2) = (m_1 x_1 +
+m_2 x_2, m_3 x_1 + m_4 x_2) \), also written \( \vec{y} = M \vec{x}
+\).</p>
+<p>Applying a second linear transform \( N \) to the output of \( M
+\), the new outputs \( y_1 \) and \( y_2 \) are:</p>
+<p>\[ n_1 (m_1 x_1 + m_2 x_2) + n_2 (m_3 x_1 + m_4 x_2), \\
+    n_3 (m_1 x_1 + m_2 x_2) + n_4 (m_3 x_1 + m_4 x_2)  \]</p>
+<p>Re-grouping shows that applying these two linear transforms one after
+the other is the same as applying just one linear transform with
+different coefficients:</p>
+<!--
+n_1 m_1 x_1 + n_1 m_2 x_2 + n_2 m_3 x_1 + n_2 m_4 x_2,
+n_3 m_1 x_1 + n_3 m_2 x_2 + n_4 m_3 x_1 + n_4 m_4 x_2
+
+n_1 m_1 x_1 + n_2 m_3 x_1 + n_1 m_2 x_2 + n_2 m_4 x_2,
+n_3 m_1 x_1 + n_4 m_3 x_1 + n_3 m_2 x_2 + n_4 m_4 x_2
+-->
+
+<p>\[ (n_1 m_1 + n_2 m_3) x_1 + (n_1 m_2 + n_2 m_4) x_2, \\
+    (n_3 m_1 + n_4 m_3) x_1 + (n_3 m_2 + n_4 m_4) x_2  \]</p>
+<p>If \( N M = T \), then \( t_1 \) is the dot product of \( (n_1,
+n_2) \) and \( (m_1, m_3) \), and so on. The coefficients can be
+arranged so that each pair that appears is adjacent horizontally or
+vertically.</p>
+<p>\[
+\begin{bmatrix}
+n_1 &amp; n_2 \\
+n_3 &amp; n_4
+\end{bmatrix}
+\begin{bmatrix}
+m_1 &amp; m_2 \\
+m_3 &amp; m_4
+\end{bmatrix} =
+\begin{bmatrix}
+n_1 m_1 + n_2 m_3 &amp; n_1 m_2 + n_2 m_4 \\
+n_3 m_1 + n_4 m_3 &amp; n_3 m_2 + n_4 m_4
+\end{bmatrix}
+\]</p>
+<p>There is a choice here: The coefficients are written in English
+reading order, left to right and top to bottom. They could just as
+well be placed top to bottom and right to left, for example. This
+choice is arbitrary, but the nature of matrix multiplication is not.</p>
+<hr>
+<p>This is a terse version of what I think could be a good way to
+introduce Linear Algebra and matrix multiplication. It is a more
+traditionally symbolic version of
+<a href="/20210915-flow_metaphor_for_matrix_multiplication/">the flow metaphor for matrix multiplication</a>, with more focus on
+linearity as a driving part of the meaning of Linear Algebra.</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20240624-brief_development_matrix_multiplication/</link>
+<guid>http://planspace.org/20240624-brief_development_matrix_multiplication/</guid>
+<pubDate>Mon, 24 Jun 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Linear Algebra Done Right, by Axler</title>
 <description><![CDATA[
 
@@ -1938,57 +2013,6 @@ Dirac's blackboard writing)</p>
 <link>http://planspace.org/20230816-strangest_man_by_farmelo/</link>
 <guid>http://planspace.org/20230816-strangest_man_by_farmelo/</guid>
 <pubDate>Wed, 16 Aug 2023 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Thought is not a monolith</title>
-<description><![CDATA[
-
-<p>Any particular argument can in principle be formalized in a particular
-system of assumptions and inference rules, but flexibility in level of
-formality and use of different systems for different arguments is both
-practical and inevitable.</p>
-<p>The plurality of systems of thought is particularly transparent in
-mathematics, where for example to know whether a statement of geometry
-is correct one must first ask which system of geometry is determining
-correctness. In one system the interior angles of a triangle always
-add to two right angles, but in another this is not the case.
-Conflicting results do not imply cognitive dissonance when each is
-correct in its respective system. The ability to choose among systems
-is a great power.</p>
-<p>Mathematical formal systems are in a sense complete articulations, but
-they are also generally quite verbose and not necessarily easily
-understood. In another sense, by their very self-completeness formal
-systems close themselves off from meaning beyond their symbols,
-requiring something beyond themselves and in that sense being
-incomplete.</p>
-<p>In practice, it is rare to completely formalize an argument. Ideally,
-the nearest acceptable assumptions and clearest steps of reasoning are
-described clearly and expediently. Often, assumptions and reasoning
-are just implied, or even elided. There may be more or less
-uncertainty in excavating the underlying argument.</p>
-<p>Natural language is an imperfect tool. Spoken, written, or purely in
-thought, a statement of natural language is a phenomon not purely tied
-to any particular semantics. As in the Shannon–Weaver model of
-communication, language is a signal, and it is the only part of the
-system that we have meaningfully direct access to. Everyone speaks
-their own constantly-evolving language. Much of philosophy can be seen
-as postcards from Sisyphus visiting the ruins of Babel.</p>
-<p>Meaning is built based on language, but the meaning cannot be directly
-inspected. Reading my own notes, I may find that now they mean nothing
-to me, or I may otherwise understand them differently from what I was
-understanding as I wrote them. It isn't clear that it is possible to
-understand a statement twice in exactly the same way. In the case of
-communication with others, the best we can hope for is roughly
-compatible understandings.</p>
-<p>In stimulating meanings, even if not always perfectly identical,
-natural language is a powerful tool. By relying on shared
-understandings, which can be built, natural language can be very
-efficient and effective. Very often, it is the best option. Care
-should be taken to avoid the extremes of its weaknesses.</p>    
-    ]]></description>
-<link>http://planspace.org/20230723-thought_is_not_a_monolith/</link>
-<guid>http://planspace.org/20230723-thought_is_not_a_monolith/</guid>
-<pubDate>Sun, 23 Jul 2023 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
