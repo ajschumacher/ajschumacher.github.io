@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-07-18: [(Audio) Brave New Words, by Khan](/20240718-brave_new_words_by_khan/)
  * 2024-06-25: [(Audio) Titan, by Chernow](/20240625-titan_by_chernow/)
  * 2024-06-24: [A brief development of matrix multiplication](/20240624-brief_development_matrix_multiplication/)
  * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
