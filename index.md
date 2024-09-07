@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-09-07: [(Audio) Bullshit Jobs, by Graeber](/20240907-bullshit_jobs_by_graeber/)
  * 2024-09-06: [(Audio) Debt: The first 5,000 years, by Graeber](/20240906-debt_by_graeber/)
  * 2024-08-25: [(Audio) Principles for dealing with the changing world order, by Dalio](/20240825-principles_changing_world_order_dalio/)
  * 2024-07-23: [Explanations enhance equity](/20240723-explanations_enhance_equity/)
