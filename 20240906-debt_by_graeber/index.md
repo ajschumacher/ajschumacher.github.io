@@ -35,6 +35,7 @@ A smattering of his ideas as I remember them:
    (unquantifiable) value. (Reminds me of [The Tyranny of Metrics][].)
  * The necessity of violence to make people pay back debts, as when
    military power stands behind the IMF.
+ * Occasional hints of primitivism or anarcho-primitivism.
  * And really, shouldn't we get rid of capitalism?
 
 [Dalio]: /20240825-principles_changing_world_order_dalio/ "(Audio) Principles for dealing with the changing world order, by Dalio"
