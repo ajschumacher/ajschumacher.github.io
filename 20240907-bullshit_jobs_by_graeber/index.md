@@ -76,4 +76,9 @@ support of UBI.
 [Fully Automated Luxury Communism]: https://en.wikipedia.org/wiki/Fully_Automated_Luxury_Communism
 
 
+(Oh right - I read [No more work][] back in 2018...)
+
+[No more work]: /20180125-no_more_work_by_james_livingston/ "No More Work by James Livingston"
+
+
 ![cover](cover.jpg)
