@@ -7,6 +7,134 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>How much money do I need to retire? by Tresidder</title>
+<description><![CDATA[
+
+<p>Tresidder is in some ways likeable and reasonable, and in other ways
+sort of a skinny-FIRE <a href="https://en.wikipedia.org/wiki/Robert_Kiyosaki">Robert Kiyosaki</a> who is "retired" but still
+shills constantly in the direction of his $1,750 <a href="https://members.financialmentor.com/product/step-3/">online course</a>
+like he read <a href="/2011/03/14/listened-to-four-hour-work-week/">The 4-hour work week</a>.</p>
+<p>Most of the book is criticism. On page one we get "Traditional
+retirement planning has failed." It all feels mostly like a sales
+tactic: His approach is the one that works!</p>
+<p>He spends a lot of time criticizing Monte Carlo methods. His
+explanation of the approach in general is so bad it must be
+deliberately so. Unsavory rhetoric.</p>
+<p>There is a reasonable argument buried in his hate for MC methods: He
+thinks they don't go far enough in considering more extreme possible
+futures, while their confidence intervals make them <em>seem</em> all-knowing
+when they're not. They generally won't model Social Security
+disappearing altogether, for example, but they'll still allocate 100%
+of probability, as if there's a 0% chance of these sorts of "extreme"
+futures.</p>
+<p>So his solution is a sort of manual Monte Carlo, putting lots of weird
+things into (his, of course) calculators.</p>
+<p>He also correctly, I think, focuses on the human reality of living
+just one life, not a probability distribution of lives, so what we
+really need is to eliminate extreme downside risk as much as possible.</p>
+<p>How much of the retirement planning literature is just confusion about
+inflation? Possibly a lot, I think.</p>
+<p>It turns out his solution is mostly from the skinny-FIRE school of
+thought: Spend less! Then there's the <a href="https://en.wikipedia.org/wiki/Robert_Kiyosaki">Robert Kiyosaki</a> part: Cash
+flow! Real estate!</p>
+<p>I object to telling people to become landlords like it's easy, good,
+and risk-free. The general idea of not dipping into your capital seems
+fine though. But now are we just back to the original methods he
+despises, only worse off because we're imagining the capital is safe
+(and even grows with inflation)? I think yes.</p>
+<p>There are some good vibes about enjoying your life, and maybe his
+recommendation to consider a longevity annuity is reasonable, but for
+the most part this book is more an advertisement than a resource.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>"Every act of creation is first an act of destruction." (page 21)</p>
+</blockquote>
+<p>I think this is supposed to be Picasso? But his usage is unattributed?
+Sort of weird, given how much he likes to include well-known quotes
+otherwise.</p>
+<hr>
+<blockquote>
+<p>(Regarding long-term increases in life expectancy) "There is some
+debate about this statistic with some people claiming the gains came
+from reductions in infant mortality." (page 46)</p>
+</blockquote>
+<p>This is not a debate! See, for example,
+<a href="/20200806-life_expectancy_is_historically_misleading/">Life expectancy is historically misleading </a>.</p>
+<hr>
+<blockquote>
+<p>investment returns over longer time periods of seven years or more
+are not random. (page 69)</p>
+</blockquote>
+<p>This is part of his idea that he can time the market based on P/E.
+Valuations aren't nothing, but his takes are a bit much.</p>
+<hr>
+<blockquote>
+<p>"let’s apply conservative estimates by cutting my pension and social
+security in half so that my combined income sources provide just
+$15,000 per year instead of $50,000." (page 129)</p>
+</blockquote>
+<p>How does this make sense?</p>
+<hr>
+<blockquote>
+<p>"Different tax rates would only be marginally meaningful if your
+income fell dramatically after retirement. Are you planning on
+poverty or financial security?)" (page 142)</p>
+</blockquote>
+<p>It's sort of amazing that he would say this. Your effective tax rate
+could easily be cut in half at retirement if you're earning a bunch
+and saving most of it before retirement.</p>
+<hr>
+<blockquote>
+<p>"“Today’s scientists have substituted mathematics for experiments,
+and they wander off through equation after equation, and eventually
+build a structure which has no relation to reality.”-Nikola Tesla,
+inventor" (page 149)</p>
+</blockquote>
+<p>I do like this quote.</p>
+<blockquote>
+<p>"Complicated math is usually more symptomatic of covering up
+ignorance than expressing wisdom." (page 192)</p>
+</blockquote>
+<p>Also not terrible.</p>
+<hr>
+<blockquote>
+<p>"Retirement planning done right is really about life planning, not
+calculating magic numbers." (page 151)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>"Every dollar bill you spend in your twenties is like spending a
+hundred dollar bill in retirement." (page 179)</p>
+</blockquote>
+<p>What? Really?</p>
+<p>This is assuming 10% annual return over 45 years? And it's nominal?
+(With inflation, more like $20 purchasing power?)</p>
+<p>I guess he's just trying to be dramatic, but I would rather he not be
+dramatic with numbers.</p>
+<hr>
+<blockquote>
+<p>"The main thing to note is how every other model relies on history
+to be your guide. This cash flow-based model is the only approach
+that requires no historical analysis because it is entirely based on
+numbers fully known in the present. This is important because the
+past is not the future." (page 199)</p>
+</blockquote>
+<p>Tresidder paints "cash flow" methods as immune from risk, and
+generally somehow automatically protected from inflation. This isn't
+the case!</p>
+<hr>
+<blockquote>
+<p>"Lifestyle planning isn’t really a separate retirement model per
+se." (page 208)</p>
+</blockquote>
+<p>(The book is structured and presented as if it is.)</p>    
+    ]]></description>
+<link>http://planspace.org/20240910-how_much_money_do_i_need_to_retire_by_tresidder/</link>
+<guid>http://planspace.org/20240910-how_much_money_do_i_need_to_retire_by_tresidder/</guid>
+<pubDate>Tue, 10 Sep 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Bullshit Jobs, by Graeber</title>
 <description><![CDATA[
 
@@ -1271,321 +1399,6 @@ Also <a href="https://en.wikipedia.org/wiki/Bradford_Hill_criteria">Bradford Hil
 <link>http://planspace.org/20240128-outlive_by_attia/</link>
 <guid>http://planspace.org/20240128-outlive_by_attia/</guid>
 <pubDate>Sun, 28 Jan 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Fundamentals: Ten Keys to Reality, by Wilczek</title>
-<description><![CDATA[
-
-<p>I liked <a href="https://en.wikipedia.org/wiki/Frank_Wilczek" title="Wikipedia: Frank Wilczek">Wilczek</a> on <a href="/20230816-strangest_man_by_farmelo/" title="The Strangest Man, by Farmelo">Dirac</a> in <a href="/20231119-it_must_be_beautiful/" title="It must be beautiful, edited by Farmelo">It must be beautiful</a>, and I
-like him a lot <a href="https://en.wikipedia.org/wiki/Fundamentals:_Ten_Keys_to_Reality" title="Wikipedia: Fundamentals: Ten Keys to Reality">here</a>! This is Nobel-prize-winning <a href="https://en.wikipedia.org/wiki/Quantum_chromodynamics" title="Wikipedia: Quantum chromodynamics">QCD</a> and also
-<a href="https://en.wikipedia.org/wiki/Time_crystal" title="Wikipedia: Time crystal">time crystal</a> guy. Just a beautiful intro to modern particle
-physics, scientific perspective, an an optimism for open-ended future
-development across all scientific disciplines that reminds me of
-<a href="/20220410-beginning_of_infinity_by_deutsch/" title="The Beginning of Infinity, by Deutsch">The Beginning of Infinity</a>.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p><em>Fundamentals</em> is meant, as well, to offer an alternative to
-traditional religious fundamentalism. It takes up some of the same
-basic questions, but addresses them by consulting physical reality,
-rather than texts or traditions. (page xiii)</p>
-</blockquote>
-<p>Of course, consulting physical reality is its own tradition...</p>
-<hr>
-<blockquote>
-<p>The method of Kepler, Galileo, and Newton combines the humble
-discipline of respecting the facts and learning from Nature with the
-systematic chutzpah of using what you think you've learned
-aggressively, applying it everywhere you can, even in situations
-that go beyond your original evidence. If it works, then you've
-discovered something useful; if it doesn't, then you've learned
-something important. I've called that attitude Radical Conservatism,
-and to me it's the essential innovation of the Scientific
-Revolution. (pages 4-5)</p>
-</blockquote>
-<p>I don't know if he has priority, but I'm pretty sure Wilczek's sense
-of Radical Conservatism isn't the most common...</p>
-<p>See also <a href="/20170825-characteristics_of_good_theories/">Characteristics of good theories</a>.</p>
-<hr>
-<blockquote>
-<p>Ptolemy's [geocentric] synthesis was a magnificent achievement, but
-it had two shortcomings. One was its complexity and, related to
-this, its ugliness. In particular, the recipes it used to calculate
-planetary motions brought in many numbers that were determined
-purely by fitting the calculations to observations, without deeper
-guiding principles connecting them. Copernicus (1473-1543) noticed
-that the values of some of those numbers were related to one another
-in surprisingly simple ways. These otherwise mysterious,
-"coincidental" relationships could be explained geometrically, if
-one assumed that Earth together with Venus, Mars, Jupiter, and
-Saturn all revolve around the Sun as center (and the Moon further
-revolves around Earth). (page 6)</p>
-</blockquote>
-<p>I don't think I'd heard quite this explanation before... In light of
-"end of science" arguments that big data pushes us more toward
-"numbers ... determined purely by fitting the calculations to
-observations" this Ptolemaic narrative could almost fit into a kind of
-"we were once less wise in our theory, and now we become less wise
-again" story.</p>
-<p>Wilczek goes on to briefly cover how Kepler's work made the system
-still simpler and better-working. Have we simplified everything as
-much as it can be? Could we do better?</p>
-<blockquote>
-<p>But Galileo aspired to a different kind of understanding. He wanted
-to understand <em>something</em> precisely, rather than <em>everything</em>
-vaguely. (page 7)</p>
-</blockquote>
-<p>Finding the right questions, etc. etc.</p>
-<hr>
-<blockquote>
-<p>A more recent quotation from John R. Pierce, a pioneer of modern
-information science, beautifully captures the contrast between the
-modern concept of scientific understanding and all other approaches:
-"We require that our theories harmonize in detail with the very wide
-range of phenomena they seek to explain. And we insist that they
-provide us with useful guidance rather than with rationalizations."
-(page 9)</p>
-</blockquote>
-<p>This reminds me of <a href="/20170825-characteristics_of_good_theories/">Characteristics of good theories</a>.</p>
-<p>Also, this <a href="https://en.wikipedia.org/wiki/John_R._Pierce" title="Wikipedia: John R. Pierce">Pierce</a> character came up a bunch in <a href="/20231231-myth_of_ai_by_larson/" title="The myth of artificial intelligence, by Larson">Larson's book</a>
-as well. (But this book is much, much better.)</p>
-<hr>
-<blockquote>
-<p>Unlike the situation for stars or planets, which almost invariably
-are separated from their neighbors by distances many times their own
-size, the typical separation between galaxies is not vastly larger
-than the galaxies themselves. (page 27)</p>
-</blockquote>
-<p>Huh! Neat.</p>
-<hr>
-<blockquote>
-<p>The Roman philosopher Seneca expressed the opposite of this thought
-[that human life is short] in "On the Shortness of Life." "Why do we
-complain about nature?" he writes. "It has acted generously; life,
-if you know how to use it, is long." (pages 43-44)</p>
-</blockquote>
-<p>Oh interesting! It seems like <a href="/20201107-how_to_live_on_24_hours_a_day/" title="How to Live on 24 Hours a Day, by Bennett">Bennett</a> didn't know (or at least
-didn't reference) Seneca's <a href="https://archive.org/stream/SenecaOnTheShortnessOfLife/Seneca+on+the+Shortness+of+Life_djvu.txt" title="Full text of 'Seneca On The Shortness Of Life'">work</a> in his How to Live on 24 Hours a
-Day.</p>
-<hr>
-<blockquote>
-<ol>
-<li><em>The basic laws describe change.</em> It is useful to separate the
-   description of the world into two parts: states and laws. States
-   describe "what there is," while laws describe "how things
-   change."</li>
-<li><em>The basic laws are universal.</em> That is, the basic laws hold
-   everywhere, and for all times.</li>
-<li><em>The basic laws are local.</em> That is, the behavior of an object in
-   the immediate future depends only on current conditions in its
-   immediate vicinity. The standard scientific jargon for this
-   principle is <em>locality.</em></li>
-<li><em>The basic laws are precise.</em> The laws are precise, and they
-   admit no exceptions. Thus, they can be formulated as mathematical
-   equations. (pages 64-65)</li>
-</ol>
-</blockquote>
-<p>Locality over reality.</p>
-<hr>
-<blockquote>
-<p>Fields, rather than particles, are the fundamental building blocks
-of matter in modern physics. (page 67)</p>
-</blockquote>
-<hr>
-<p>Wilczek identifies "Mass" and "Charge" and "Spin" as the only three
-basic, primary properties of matter. (page 73)</p>
-<hr>
-<blockquote>
-<p>(There's an interesting mathematical reason why physicists call the
-basic unit of angular momentum spin 1/2, rather than spin 1, but it
-is beyond the scope of this book.) (page 75)</p>
-</blockquote>
-<p>It seems like this is related to the <a href="https://en.wikipedia.org/wiki/Spin%E2%80%93statistics_theorem">spin–statistics theorem</a> or
-something? But come on, Wilczek, you big tease...</p>
-<hr>
-<blockquote>
-<p>Contrary to Democritus, though, our modern basic ingredients don't
-have hooks. They aren't even solid bodies. Indeed, thought it's
-convenient to call them "elementary particles," they aren't really
-particles. (That is, they have little in common with what the word
-"particle" suggests.) Our modern fundamental ingredients have no
-intrinsic size or shape. If we insist on visualizing them, we should
-think of structureless points where concentrations of mass, charge,
-and spin reside. We have, in places of "atoms and the void,"
-space-time and properties. (page 77)</p>
-</blockquote>
-<p>Democritus was the early atomic theory guy.</p>
-<hr>
-<blockquote>
-<p>By being first, Franklin got to choose which kind of charge to call
-positive and which negative. He chose to call the charge that
-accumulates on glass, after it is rubbed with silk, positive. This
-was long before people knew about electrons. Unfortunately, it turns
-out that according to Franklin's choice the electron's charge is
-negative. It's much too late to undo that choice, since it has
-seeped into thousands of books, papers, and circuit diagrams.
-Therefore, we list the electron's charge as -1. (pages 81-82)</p>
-</blockquote>
-<p>Benjamin Franklin.</p>
-<hr>
-<blockquote>
-<p>Once you get to thinking about materials as homes to quasiparticles,
-a profound question is not far off: Can we consider "empty space"
-itself to be a material, whose quasiparticles are our "elementary
-particles"? We can, and we should. It is a very fruitful line of
-thought, as you'll see in later chapters. (page 90)</p>
-</blockquote>
-<p>I'm not sure that last promise was ever paid off very well...</p>
-<hr>
-<blockquote>
-<p>John Wheeler, the poet of relativity, summed it up this way:
-"Space-time tells matter how to move; matter tells space-time how to
-bend." (page 117)</p>
-</blockquote>
-<p>Is that really a good way to sum up? It reminds me of the
-stretched-sheet-of-rubber image, which I think is not so good...</p>
-<hr>
-<blockquote>
-<p>The Future of Comprehension (page 119)</p>
-</blockquote>
-<p>I just thought this was a cool section heading.</p>
-<hr>
-<blockquote>
-<p>You should not fail to notice that 500 trillion is a great deal
-larger than 25, or even 95. (page 127)</p>
-</blockquote>
-<p>Cute!</p>
-<hr>
-<blockquote>
-<p>H. G. Wells caught the spirit of thermal equilibrium memorably: "If
-anything is possible, then nothing is interesting." (page 151)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>How the Universe got Interesting (page 161)</p>
-</blockquote>
-<p>Another fun heading.</p>
-<hr>
-<blockquote>
-<p>There are several kinds of anomalous color perception, misnamed
-"color blindness," that are not terribly rare. Around 95 percent of
-humans have similar color vision, based on three types of cone cells
-that vary little between individuals. There are theoretical reasons,
-based on genetics, to believe that a significant fraction of humans,
-specifically mothers and full sisters of males with the most common
-color anomaly, have four kinds of cone cells. These "tetrachromats"
-might have super-normal color vision. But as far as I know, direct
-evidence for this is surprisingly rare. (page 170)</p>
-</blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Tetrachromacy">Huh!</a></p>
-<hr>
-<blockquote>
-<p>Let's recall that John Wheeler, the poet of general relativity,
-summed it up this way: "Space-time tells matter how to move; matter
-tells space-time how to bend." Wheeler's summary is catchy, but it
-is misleading, or at least incomplete, whithout this important
-addition: <em>Space-time is a form of matter, too.</em> (page 178)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Although we understand <em>a lot</em> about how the world works, there are
-still big mysteries. These three great questions came up earlier:</p>
-<ul>
-<li>
-<p>What triggered the big bang? Could it happen again?</p>
-</li>
-<li>
-<p>Are there meaningful patterns hidden in the apparent sprawl of
-  fundamental particles and forces?</p>
-</li>
-<li>
-<p>How, concretely, does mind emerge from matter? (Or does it?) (page
-  187)</p>
-</li>
-</ul>
-</blockquote>
-<hr>
-<p>On page 190, he uses "rock bottom" to refer to that final point in
-explanation beyond which there is no further "why?" I think it's a
-good thing to remember, that we can't avoid having such a rock bottom.</p>
-<hr>
-<blockquote>
-<p>"Dark energy" is another theoretically motivated modification to the
-law of gravity, also considered by Einstein. He called it by a
-different name: the cosmological constant. (page 195)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>There is immense satisfaction in describing the world in terms of
-its most elementary building blocks. It is tempting to say that this
-is the ideal description, while other, high-level descriptions are
-mere approximations—compromises, which reflect weakness in
-understanding. That attitude, which makes the perfect the enemy of
-the good, is superficially deep, but deeply superficial.</p>
-<p>In order to answer questions of interest, we often need to change
-focus. To discover—or invent—new concepts, and new ways of working
-with them, is an open-ended, creative activity. Computer scientists
-and software engineers are well aware that in designing useful
-algorithms, it is important to pay attention to how knowledge is
-represented. A good representation can make the difference between
-usable knowledge and knowledge that is there "in principle" but not
-really available, because it takes too long and too much trouble to
-locate and process. It's like the difference between owning bars of
-gold and knowing that in principle there are vast stores of gold
-atoms floating dissolved in the ocean.</p>
-<p>For that reason, complete understanding of the fundamental laws, if
-we ever achieved it, would be neither "the Theory of Everything" nor
-"the End of Science." (Those are two phrases, endemic in popular
-science journalism, that I find extremely irritating.) We would
-still need complementary descriptions of reality. There would still
-be plenty of great questions left unanswered, and plenty of great
-scientific work left to do.</p>
-<p>There always will be. (pages 215-216)</p>
-</blockquote>
-<p>This is just the conclusion of a longer section on this topic, which I
-like quite a lot. It reminds me of Deutsch's
-<a href="/20220410-beginning_of_infinity_by_deutsch/">Beginning of Infinity</a>.</p>
-<hr>
-<blockquote>
-<p>Do people have choice in what they do, or are they puppets who dance
-to the tune of mathematical physics? That is a bad question, not
-unlike asking whether music is harmony or melody. (page 218)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>...what the great biologist Francis Crick has called "the
-astonishing hypothesis": that mind, in all its aspects, is "no more
-than the behavior of a vast assembly of nerve cells and their
-associated molecules." (pages 225-226)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>... there are three different kinds [sic] color charge, and eight
-different kinds of gluons that respond to them. (page 234)</p>
-</blockquote>
-<p>What? This seems cool and fun.</p>
-<hr>
-<blockquote>
-<p>Now we come to a group of elementary particles nobody really knows
-what to make of. The bonus particles are all unstable. They were
-discovered among the debris of high-energy collisions, either in
-cosmic rays (early in the twentieth century) or at parcle
-accelerators (more recently). When the first of them, the muon, was
-discovered in 1936, the renowned physicist I. I. Rabi captured the
-community's bewilderment in a quip that's become legendary: "Who
-ordered that?" (page 236)</p>
-</blockquote>
-<p>These are the charm, top, strange, and bottom quark, together with the
-muon and tauon.</p>
-<hr>
-<blockquote>
-<p>The website of the Particle Data Group is http://pdg.lbl.gov. (page 238)</p>
-</blockquote>
-<p>Nice!</p>    
-    ]]></description>
-<link>http://planspace.org/20240114-fundamentals_by_wilczek/</link>
-<guid>http://planspace.org/20240114-fundamentals_by_wilczek/</guid>
-<pubDate>Sun, 14 Jan 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
