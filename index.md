@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-09-15: [(Audio) On the Edge, by Nate Silver](/20240915-on_the_edge_by_silver/)
  * 2024-09-10: [How much money do I need to retire? by Tresidder](/20240910-how_much_money_do_i_need_to_retire_by_tresidder/)
  * 2024-09-07: [(Audio) Bullshit Jobs, by Graeber](/20240907-bullshit_jobs_by_graeber/)
  * 2024-09-06: [(Audio) Debt: The first 5,000 years, by Graeber](/20240906-debt_by_graeber/)

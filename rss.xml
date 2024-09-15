@@ -7,6 +7,87 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) On the Edge, by Nate Silver</title>
+<description><![CDATA[
+
+<p>When Trump won the 2016 election despite 538's needle showing less
+than 50% for him, it split the world. There were people who gave Nate
+Silver a hard time about it ("the village") and people who still
+thought he was cool ("the river"). Since then, Silver has been hanging
+out with his buddies, having a good time playing poker, and he can
+write a book about whatever he wants, so here it is. It reads,
+unintentionally, as a warning about the risks of seeing the world only
+in calculating, risk-taking terms.</p>
+<hr>
+<p>Silver tries to explain why there are more men than women playing
+poker. He suggests that men are more aggressive, and aggression makes
+you better at poker. I think Silver misses the big picture: It isn't
+really a good idea to play poker in the first place. It's anti-social.
+Elsewhere, Silver does explain that the poker ecosystem requires
+"fish" for people to take money from. Why are there more men playing
+poker? Because they're dumb!</p>
+<p>(There is an apparent contradiction here, in that I myself enjoy the
+occasional social poker game, and have even played to make money at
+casinos a couple times. But I still believe that if you're
+consistently playing to make money, it is a kind of legal theft, a
+kind of con, as bad as the casino itself. The divide between a
+friendly game and stealing wallets from drunk strangers is not always
+perfectly clear, but I think it exists.)</p>
+<hr>
+<p>Silver comes closest to explicitly warning against "the river" way of
+thinking in his extended coverage of Sam Bankman-Fried (SBF) and FTX.
+He thinks SBF's problem (one of them) was that he bet too big. Silver
+references the <a href="https://en.wikipedia.org/wiki/Kelly_criterion">Kelly criterion</a> for bet-sizing and suggests that
+SBF was willing to make bets that were too large.</p>
+<p>I think Silver missed another aspect, which is that even very small
+bets can be bad bets to make - even when they're positive EV. The
+thing to consider is the probability of ending up better off or worse
+off then currently. Even if the EV is very positive, if the chance of
+"hitting it" is low and the chance of getting worse off is high, it's
+very sensible to not make that bet.</p>
+<p>I wrote up my way of thinking about this a while ago as
+<a href="/2012/06/04/expected-value-is-not-useful-for-making/">Expected value is not useful for making decisions about lottery tickets</a>.
+See also notes on expected value in connection with
+<a href="/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong, by Ellenberg</a> and
+<a href="/20210502-the_scout_mindset_by_galef/">The Scout Mindset, by Galef</a>. A related question to ask is:
+<a href="/20181204-worth_doing_even_if_it_fails/">Is it worth doing even if it fails?</a></p>
+<hr>
+<p>At one point Silver quotes Oppenheimer:</p>
+<blockquote>
+<p>“It is a profound and necessary truth that the deep things in
+science are not found because they are useful; they are found
+because it was possible to find them.”</p>
+</blockquote>
+<p>I like this quote. It reminds me of
+<a href="/20221105-why_greatness_cannot_be_planned_by_stanley_and_lehman/">Why greatness cannot be planned (Stanley and Lehman)</a>. We often
+expand our knowledge along the current frontiers and only later
+identify the applications. See also
+<a href="https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences">The Unreasonable Effectiveness of Mathematics in the Natural Sciences</a>.</p>
+<hr>
+<p>Silver talks some about <a href="https://en.wikipedia.org/wiki/Secular_stagnation">secular stagnation</a>, which reminded me of
+<a href="https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth" title="The Rise and Fall of American Growth, by Robert J. Gordon">The Rise and Fall of American Growth</a> and that despite claims of
+stagnation <a href="/20240407-mortality_rates_have_improved/">Mortality rates have improved</a> without pause until the
+present (apart from the recent impact of Covid). Of course Silver is
+really just trying to talk about AI and whether it will kill us all.
+(He thinks it might.)</p>
+<hr>
+<p>Silver tries to conclude with some sort of morality or politics, but
+it feels bolted on. When he was talking about SBF and being critical
+of Effective Altruism and Rationalism, I had some thought that perhaps
+Silver was self-aware and the conclusion of the book was going to be a
+big reveal that he had realized that "the river" was itself a risk to
+humanity. But I don't think he got there. So while he does say some
+things about the risks of quantification (shades of
+<a href="/20200425-tyranny_of_metrics_by_muller/">The Tyranny of Metrics</a>) Silver is still mostly just hanging out
+with his friends and following his interests. Good for him?</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20240915-on_the_edge_by_silver/</link>
+<guid>http://planspace.org/20240915-on_the_edge_by_silver/</guid>
+<pubDate>Sun, 15 Sep 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>How much money do I need to retire? by Tresidder</title>
 <description><![CDATA[
 
@@ -1327,78 +1408,6 @@ can.</p>
 <link>http://planspace.org/20240211-comfort_crisis_by_easter/</link>
 <guid>http://planspace.org/20240211-comfort_crisis_by_easter/</guid>
 <pubDate>Sun, 11 Feb 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Outlive, by Attia</title>
-<description><![CDATA[
-
-<p>I was already thinking about improving my health, then my last
-grandparent died, and this book was recommended in Spotify and by a
-friend. It was gratifying to listen to while running because <a href="https://peterattiamd.com/">Attia</a>
-kept saying how good exercise is.</p>
-<p>He's a little bit of a tech bro. He talks about how he mellowed and
-started taking one (1) day off per week. And is he responsible for the
-popularity of <a href="https://www.goruck.com/pages/what-is-rucking">rucking</a>? He used to be very into <a href="https://en.wikipedia.org/wiki/Ketogenic_diet">keto</a> and
-fasting. He still seems to be a little quick to assume causation. But
-still: Who doesn't want more healthspan?</p>
-<ul>
-<li>Recommendations<ul>
-<li>Exercise<ul>
-<li>"Zone 2" sustained cardio</li>
-<li>Intense cardio for improving VO2-max</li>
-<li>Strength (with weights)</li>
-<li>Stability (core, <a href="https://www.posturalrestoration.com/">posture</a>, flexitility...)</li>
-</ul>
-</li>
-<li>Diet<ul>
-<li>A lot of protein and fiber</li>
-<li>Avoid too much other stuff</li>
-<li>Keep bad cholesterol (LDL, but he prefers measuring
-   <a href="https://en.wikipedia.org/wiki/Apolipoprotein_B">ApoB</a>) <em>very</em> low (usual guideline is under 100; he says
-   under 20)<ul>
-<li>Maybe use statins and/or <a href="https://en.wikipedia.org/wiki/Metformin">metformin</a> etc.</li>
-</ul>
-</li>
-<li>Minimal to no alcohol</li>
-<li><em>Don't get diabetes</em></li>
-</ul>
-</li>
-<li>Get lots of tests done, screen early for cancer, etc.</li>
-<li>Sleep (lots of good)</li>
-<li>Emotional health (good)</li>
-<li><a href="https://en.wikipedia.org/wiki/Sirolimus">Rapamycin</a> taken once a week<ul>
-<li>You can get this from <a href="https://agelessrx.com/">AgeLessRx</a> or <a href="https://gethealthspan.com/">HealthSpan</a>, for
-   example.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Anchor phrases<ul>
-<li>Medicine 3.0: Where 1.0 was witchcraft/superstition, 2.0 is
-   scientific "treat the disease" modern medicine, and 3.0 is his
-   style of life-long health improvement to avoid diseases of
-   aging etc. (Attia's practice is called "Early.")</li>
-<li>The Four Horsemen<ul>
-<li>Heart disease, stroke, etc.</li>
-<li>Cancer</li>
-<li>Dementia etc.</li>
-<li>Diabetes and friends ("metabolic disfunction") which he
-   says is related to the other three</li>
-</ul>
-</li>
-<li>The Centenarian Decathlon: Work toward being able to do things
-   when you're really old; overprepare because you will age.</li>
-</ul>
-</li>
-</ul>
-<p>Oh also he talks a little bit about <a href="https://en.wikipedia.org/wiki/Mendelian_randomization">Mendelian randomization</a>, which
-it turns out is just using genetics as an <a href="/20210430-a_simple_instrumental_variable/">instrumental variable</a>.
-Also <a href="https://en.wikipedia.org/wiki/Bradford_Hill_criteria">Bradford Hill criteria</a> for causation. Neat!</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20240128-outlive_by_attia/</link>
-<guid>http://planspace.org/20240128-outlive_by_attia/</guid>
-<pubDate>Sun, 28 Jan 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
