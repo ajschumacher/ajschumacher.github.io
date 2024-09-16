@@ -43,7 +43,7 @@ SBF was willing to make bets that were too large.
 I think Silver missed another aspect, which is that even very small
 bets can be bad bets to make - even when they're positive EV. The
 thing to consider is the probability of ending up better off or worse
-off then currently. Even if the EV is very positive, if the chance of
+off than currently. Even if the EV is very positive, if the chance of
 "hitting it" is low and the chance of getting worse off is high, it's
 very sensible to not make that bet.
 
