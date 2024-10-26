@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-10-26: [(Audio) How the World Works, by Chomsky](/20241026-how_the_world_works_by_chomsky/)
  * 2024-10-19: [(Audio) After Work, by Hester and Srnicek](/20241019-after_work_by_hester_and_srnicek/)
  * 2024-09-29: [(Audio) Inventing the Future, by Srnicek and Williams](/20240929-inventing_the_future_by_srnicek_and_williams/)
  * 2024-09-21: [(Audio) Fully Automated Luxury Communism, by Bastani](/20240921-fully_automated_luxury_communism_by_bastani/)
