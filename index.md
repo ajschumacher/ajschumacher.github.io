@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-11-09: [(Audio) Technofeudalism, by Varoufakis](/20241109-technofeudalism_by_varoufakis/)
  * 2024-11-02: [(Audio) Utopia for Realists, by Bregman](/20241102-utopia_for_realists_by_bregman/)
  * 2024-10-26: [(Audio) How the World Works, by Chomsky](/20241026-how_the_world_works_by_chomsky/)
  * 2024-10-19: [(Audio) After Work, by Hester and Srnicek](/20241019-after_work_by_hester_and_srnicek/)
