@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-11-16: [(Audio) We've got you covered, by Einav and Finkelstein](/20241116-weve_got_you_covered_by_einav_and_finkelstein/)
  * 2024-11-09: [(Audio) Technofeudalism, by Varoufakis](/20241109-technofeudalism_by_varoufakis/)
  * 2024-11-02: [(Audio) Utopia for Realists, by Bregman](/20241102-utopia_for_realists_by_bregman/)
  * 2024-10-26: [(Audio) How the World Works, by Chomsky](/20241026-how_the_world_works_by_chomsky/)
