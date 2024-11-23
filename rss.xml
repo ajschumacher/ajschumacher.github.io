@@ -7,6 +7,44 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>What are CFPs supposed to know?</title>
+<description><![CDATA[
+
+<p>To be a Certified Financial Planner, you have to have a bachelor's
+degree (in anything) and do (<a href="https://www.cfp.net/get-certified/certification-process/education-requirement/certification-coursework-requirement/accelerated-path">usually</a>) seven <a href="https://www.cfp.net/">CFP Board</a>-approved
+classes and pass a test covering many <a href="https://www.cfp.net/get-certified/certification-process/education-requirement/certification-coursework-requirement/what-youll-learn">topics</a>. The classes are
+Fundamentals, Insurance, Investments, Tax, Retirement, Estate, and a
+capstone case study class. Then you do 30 hours of continuing
+education every two years.</p>
+<p>The CFP Board <a href="https://www.cfp.net/get-certified/certification-process/education-requirement/certification-coursework-requirement/find-an-education-program/">lists</a> about 250 institutions with approved
+offerings, mostly universities. These can be outsourced offerings, for
+example from <a href="https://cerifi.com/">Cerifi</a>'s <a href="https://dalton-education.com/university-partnerships">Dalton Education</a> or
+<a href="https://www.greeneconsults.com/">Greene Consulting</a>'s <a href="https://www.financialplannerprogram.com/#school">Financial Planner Program</a> or <a href="https://www.kenzahn.com/">Zahn</a>.</p>
+<p>There seem to be two main lines of textbooks. One is <a href="https://cerifi.com/">Cerifi</a>'s
+<a href="https://www.money-education.com/">Money Education</a>, which <a href="https://cerifi.com/our-brands">claims</a> to by “chosen by 200
+universities nationwide.” The <a href="https://www.nationalunderwriter.com/series/academic.html">other</a> is from
+<a href="https://www.nationalunderwriter.com/">National Underwriter</a>, mostly in their <a href="https://www.nationalunderwriter.com/series/the-leimberg-library.html">Leimberg Library</a>. There
+used to be books from Keir, but they <a href="https://www.keirsuccess.com/products/cfp-certification-products/education-courses/university-textbooks">joined forces</a> with
+<a href="https://www.money-education.com/">Money Education</a>.</p>
+<p>From <a href="https://www.opensyllabus.org/">Open Syllabus</a>, it isn't clear which books are most popular. I
+find <a href="https://analytics.opensyllabus.org/record/works?syllabus_query=money+education">one entry each</a> for two of the Money Education books, and
+<a href="https://analytics.opensyllabus.org/record/works?syllabus_query=leimberg">no mention</a> of Leimberg books. It seems like <a href="https://www.cffp.edu/cfp-education">Kaplan</a> and
+<a href="https://www.brettdanko.com/">Danko</a> also have materials, but may only offer them to participants
+in their courses.</p>
+<p>There are also lots of exam prep and study materials. <a href="https://www.kenzahn.com/">Zahn</a> for
+example makes supplemental books and flashcards, and Money Education
+has “QuickSheets.”</p>
+<p>There's also a thing called a financial calculator, which can be a
+physical object that CFPs may learn to use.</p>
+<p>For continuing education, every two years a CFP has to do 30 hours of
+programs, selected from <a href="https://www.cfp.net/career-and-growth/continuing-education/find-a-ce-program">thousands</a> that are approved by the CFP
+Board.</p>    
+    ]]></description>
+<link>http://planspace.org/20241123-what_are_cfps_supposed_to_know/</link>
+<guid>http://planspace.org/20241123-what_are_cfps_supposed_to_know/</guid>
+<pubDate>Sat, 23 Nov 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) We've got you covered, by Einav and Finkelstein</title>
 <description><![CDATA[
 
@@ -1664,44 +1702,6 @@ everything else he says.</p>
 <link>http://planspace.org/20240519-survival_of_the_richest_by_rushkoff/</link>
 <guid>http://planspace.org/20240519-survival_of_the_richest_by_rushkoff/</guid>
 <pubDate>Sun, 19 May 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Build, by Fadell</title>
-<description><![CDATA[
-
-<p>The "advice encyclopedia" from the father of the iPod is <a href="https://www.buildc.com/the-book" title="Build, the Book">billed</a> as
-"an unorthodox guide" and maybe it is, depending on your orthodoxy.
-Here are some of its recommendations as I recall them:</p>
-<ul>
-<li>Work really hard.</li>
-<li>Be a perfectionist.</li>
-<li>Micro-manage. (<a href="https://en.wikipedia.org/wiki/Tony_Fadell" title="Tony Fadell">Tony</a> tries to clarify that what he recommends
-   isn't micro-managing; the distinction is something like managing
-   outputs as good vs. process as bad.)</li>
-<li>Push people hard.</li>
-<li>Have interviews done by a small group of people who will work with
-   the new person, not a bunch of people from all over the company.</li>
-<li>Don't have a lot of perks at the office.</li>
-<li>Blame Google for Nest not going how you wanted.</li>
-</ul>
-<p>I think the most interesting thing, to me, is the tension between
-intrinsic motivation vs. external pushing for generating results. Tony
-seems like a pusher, and he's gotten results. But do bosses have to be
-so hard-driving?</p>
-<p>Fadell comments on how much time he spent on "people problems" (HR or
-personnel issues) as a leader. This might always be the case, but I
-also wonder whether particular leadership styles (and related hiring
-choices) lead to more of this. Fadell says he followed a "no assholes
-rule" in hiring. Might anosognosia be at play?</p>
-<p>I'm not sure I'd like to work with Fadell, but I tend to like his
-goals and his <a href="https://www.buildc.com/" title="Build Collective">Build Collective</a> seems to be supporting cool things.
-(Ends vs. means?) The book is almost a promotional tie-in for this
-venture operation.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20240517-build_by_fadell/</link>
-<guid>http://planspace.org/20240517-build_by_fadell/</guid>
-<pubDate>Fri, 17 May 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
