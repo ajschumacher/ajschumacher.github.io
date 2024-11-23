@@ -7,6 +7,29 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Financial calculators exist</title>
+<description><![CDATA[
+
+<p>When you take the <a href="/20241123-what_are_cfps_supposed_to_know/" title="Certified Financial Planner">CFP</a> exam, you are allowed to use a
+<a href="https://www.cfp.net/-/media/files/cfp-board/cfp-certification/exam/calculator-policy.pdf">dedicated financial calculator</a> like the Texas Instruments
+"Business Analyst" <a href="https://www.amazon.com/Texas-Instruments-Advanced-Financial-Calculator/dp/B0029F1OKE">BA II Plus</a>. How wild is that?</p>
+<p><img alt="calculator" src="ba2plus.jpg"></p>
+<p>What does it do? You can start to guess from buttons like "IRR," but
+the <a href="https://education.ti.com/en/guidebook/details/en/ADF11FB65B284B6195B0A7E9502784BA/baiiplus">manual</a> explains much more about how the functionality is
+organized into "worksheets" and so on.</p>
+<p><img alt="functions" src="functions.png"></p>
+<p>Do people use these for real, in their work? My guess is that they're
+sort of an archaic thing that persists only for the exam? Surely
+people use one of many <a href="https://www.calculator.net/finance-calculator.html">online calculators</a>, or Excel, or some other
+more user-friendly tool? (Although I don't really know what a great
+example is; most of the ones I see at a quick look seem pretty
+crummy...)</p>    
+    ]]></description>
+<link>http://planspace.org/20241123-financial_calculators_exist/</link>
+<guid>http://planspace.org/20241123-financial_calculators_exist/</guid>
+<pubDate>Sat, 23 Nov 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>What are CFPs supposed to know?</title>
 <description><![CDATA[
 
@@ -1580,128 +1603,6 @@ Klein (page 369)</p>
 <link>http://planspace.org/20240616-linear_algebra_done_right/</link>
 <guid>http://planspace.org/20240616-linear_algebra_done_right/</guid>
 <pubDate>Sun, 16 Jun 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Survival of the Richest, by Rushkoff</title>
-<description><![CDATA[
-
-<p>Billionaire bunkers are just Rushkoff's hook. His gripe is with
-capitalist growth as both cause and effect of the rich, and (he
-argues) cause of social and environmental calamities past and future.
-Rushkoff's <a href="https://wwnorton.com/books/survival-of-the-richest" title="Survival of the Richest: Escape Fantasies of the Tech Billionaires">book</a> argues for <a href="https://en.wikipedia.org/wiki/Degrowth" title="Wikipedia: Degrowth">degrowth</a>.</p>
-<p>I really like <a href="https://en.wikipedia.org/wiki/Douglas_Rushkoff" title="Wikipedia: Douglas Rushkoff">Rushkoff</a> in some respects. I wish his <a href="https://www.teamhuman.fm/" title="Team Human">Team Human</a>
-podcast would make really nice basketball jerseys and sweatshirts. (I
-consider myself on Team Human quite independent of whatever Rushkoff
-says; I think it's a nice idea.)</p>
-<p>I don't think escapism is unique to the ultra-rich. Every time I put
-on headphones, in some ways I'm trying to find safety in isolation.
-Not only the wealthy are <a href="https://en.wikipedia.org/wiki/Survivalism" title="Wikipedia: Survivalism">preppers</a>. Everyone could do well to
-reflect on how interdependent we all really are.</p>
-<p>There's a bit of a failure of imagination in not exploring in the
-direction of <a href="https://en.wikipedia.org/wiki/Atlas_Shrugged" title="Wikipedia: Atlas Shrugged">Atlas Shrugged</a>. Perhaps a Marxist can't imagine the
-proletariat being replaced by technology. I <a href="https://planspace.org/20220101-predicting_the_future_from_2022/" title="Predicting the future from 2022">still</a> think that in
-the near term "There will continue to be more real problems with not
-having enough people to work than there are with having too many
-people put out of work by technology," but there are big questions
-about what's going to happen with all the people not working
-conventional jobs (of which there are many already today).</p>
-<p>I don't think Rushkoff has a good argument here. But he says so <em>many</em>
-things that the book is quite thought-provoking regardless. He
-characterizes <a href="https://en.wikipedia.org/wiki/QAnon" title="Wikipedia: QAnon">QAnon</a> as a kind of internet addiction. And you get
-to hear about the many parties he's been invited to. Lucky you.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>He [<a href="https://nds-nl.wikipedia.org/wiki/Richard_Dawkins" title="Wikipedia: Richard Dawkins">Richard Dawkins</a>] couldn’t acknowledge that his own
-commitment to scientism is based on something passional—something
-more like <em>faith</em> in an empiricist universe. In other words, his
-insistence on living in an evidence-only universe isn’t based on
-evidence at all. It’s an assumption. It’s part of a system of
-meaning, developed by a community of people over time. It just
-happens to be a meaning system that ignores meaning itself. Worse,
-by rejecting the validity of any other meaning system, it is prone
-to instilling in its adherents a sense of superiority over others.
-Those who strive for meaning are mere “moralists.” (page 34)</p>
-</blockquote>
-<p>I agree with parts of this critique; science should recognize its
-foundation and scope.</p>
-<hr>
-<h3>A rather long tangent on a strange claim</h3>
-<blockquote>
-<p>Initially the market economy, introduced just after the Crusades in
-the late Middle Ages, benefited the former peasants of feudalism.
-This was a lateral, peer-to-peer economy, not a hierarchical one.
-Local farmers and bakers didn’t generally aspire to be “rich” so
-much as to sustain themselves. Their currencies were optimized for
-trade; they were less a way of saving or hoarding money than
-facilitating the exchange of goods between people. It worked so well
-that Europe saw its greatest period of economic growth to this
-day—measured in the prosperity of the common folk. Towns got so
-wealthy that they invested in building cathedrals to spur future
-pilgrimages and tourism. People worked less, ate more, and grew
-taller than ever before—and in some cases, ever since. (page 40)</p>
-</blockquote>
-<p>I don't think this is the dominant historical view, but this time does
-seem to be Rushkoff's "make economics great again" period. It's a
-rather bold claim, saying that everybody used to be better off, and
-even taller than now!</p>
-<p>The citation here is the unpublished (but available online)
-<a href="https://bernard-lietaer.org/wp-content/uploads/2022/07/2004-Of-Human-Wealth-Beyond-Greed-Scarcity-Lieater-Belgin-annotated.pdf" title="Of Human Wealth">Of Human Wealth</a>. The authors (Lietar and Belgin) call the period
-1050-1290 "the first European renaissance." On page 92 they have this
-graph in classic Excel style:</p>
-<p><img alt="graph from Of Human Wealth" src="of_human_wealth.png"></p>
-<p>On page 91, the "ever since" is explained:</p>
-<blockquote>
-<p>In a study of the skeletons of bodies in the same geographical area
-(the City of London), informative findings emerged. The women of the
-10-12th century were on average taller than in any other period in
-recorded history, at least in London. During that period, the
-average female Londoner was a whopping 7 centimeters taller than her
-counterpart in Victorian times and 1 centimeter taller than the
-average woman of London today! (Of Human Wealth, page 91)</p>
-</blockquote>
-<p>The source for all this is <a href="https://www.amazon.com/London-Bodies-Changing-Londoners-Prehistoric/dp/090481890X" title="London Bodies: The Changing Shape of Londoners from Prehistoric Times to the Present Day">London Bodies</a>, the book companion to a
-1998 exhibit at the Museum of London. The graph in Of Human Wealth
-seems to be based on a table on the last page:</p>
-<p><img alt="page from London Bodies" src="london_bodies.jpg"></p>
-<p>It isn't clear that this is an authoritative source for drawing
-conclusions about trends in height over time. It also isn't clear that
-the table is even consistent with the rest of its own book, and
-further it seems that Of Human Wealth is rather abusing what there is
-in London Bodies anyway.</p>
-<p>The "Saxon" numbers seem to correspond to page 56, in the "Saxon
-Bodies" chapter:</p>
-<blockquote>
-<p>From this period, the eleventh and twelfth centuries, comes our best
-group of medieval skeletons from a parish churchyard in London.
-Excavations between 1975 and 1979 at the cemetery of St Nicholas
-Shambles on Newgate Street produced over 200 burials. The average
-heights of the people buried in the cemetery were 173cm (5ft 8in.)
-for men and 157cm (5ft 2in.) for women. (London Bodies, page 56)</p>
-</blockquote>
-<p>Here the value for men matches the table, but the number for women is
-quite different. Indeed nowhere in the "Saxon Bodies" chapter does the
-163cm number appear.</p>
-<p>Regardless of whether the number in the table is a typo or not, there
-are many reasons to be skeptical. People buried at a particular church
-are not at all guaranteed to be a random sample of the population.
-Then there's the different methods for the heights: the first six
-periods use long bone lengths, while the last two use height records.
-The Victorian period is particularly suspect because it's based
-exclusively on heights of "habitual criminals," not known to be the
-most well-nourished of a given population. The mapping that the
-authors of Of Human Wealth do from London Body's period labels to
-centuries is also not quite right but hardly even worth mentioning
-compared to everything else.</p>
-<p>I'm sure I don't know enough about history to provide a complete
-evaluation of this whole "first European renaissance" theory, but from
-what I can see it doesn't seem very convincing. I'm surprised Rushkoff
-would even mention it, and the fact he does makes me more skeptical of
-everything else he says.</p>    
-    ]]></description>
-<link>http://planspace.org/20240519-survival_of_the_richest_by_rushkoff/</link>
-<guid>http://planspace.org/20240519-survival_of_the_richest_by_rushkoff/</guid>
-<pubDate>Sun, 19 May 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
