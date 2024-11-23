@@ -58,8 +58,10 @@ example makes supplemental books and flashcards, and Money Education
 has “QuickSheets.”
 
 
-There's also a thing called a financial calculator, which can be a
+There's also a thing called a [financial calculator][], which can be a
 physical object that CFPs may learn to use.
+
+[financial calculator]: /20241123-financial_calculators_exist/
 
 
 For continuing education, every two years a CFP has to do 30 hours of
