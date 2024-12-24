@@ -7,6 +7,39 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) The Next Millionaire Next Door</title>
+<description><![CDATA[
+
+<p>It's sweet that <a href="https://en.wikipedia.org/wiki/Thomas_J._Stanley">Stanley</a>'s daughter finished this 2020 follow-up to
+his 1996 <a href="https://en.wikipedia.org/wiki/The_Millionaire_Next_Door">Millionaire Next Door</a> after he died in 2015. There are
+refreshed surveys, but not a lot that's new, as far as I can tell,
+apart from attempts to defend the family legacy from criticism.</p>
+<p>The core concept is still spending less money than you get. More pages
+are given to spending less than to getting more. Conscientiousness and
+discipline are emphasized. America is presented as uniquely suited to
+building wealth because of freedom.</p>
+<p>One criticism of the original book was that the core thesis (that
+normal people can become millionaires) was an artifact of survivorship
+bias observed toward the end of a bull market. I didn't hear a really
+good response to this criticism, but I don't think it's a particularly
+interesting criticism either.</p>
+<p>I think the deeper latent criticism is about what level of the system
+to blame. Stanley is all about the individual level. "The game is
+winnable!" he says. Critics, I think, are often talking about
+something fundamentally different. "The rules of the game are unfair!"
+they say. Both these things can be true at the same time.</p>
+<p>It's easy to wag a finger at someone with a high income who's still
+barely making their house and car payments. But far more people have
+low income, not much room to cut expenses, and little opportunity to
+increase their income. These books have more advice for the former
+than the latter.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20241224-next_millionaire_next_door/</link>
+<guid>http://planspace.org/20241224-next_millionaire_next_door/</guid>
+<pubDate>Tue, 24 Dec 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Matilda, by Dahl</title>
 <description><![CDATA[
 
@@ -1313,81 +1346,6 @@ good life remain relevant.</p>
 <link>http://planspace.org/20240625-titan_by_chernow/</link>
 <guid>http://planspace.org/20240625-titan_by_chernow/</guid>
 <pubDate>Tue, 25 Jun 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A brief development of matrix multiplication</title>
-<description><![CDATA[
-
-<p>Linear Algebra is math for multiple dimensions. Linearity is a
-constraint that makes handling multi-dimensional complexity more
-tractable. The structure of linear transformations quickly gives rise
-to the dot product and matrix multiplication.</p>
-<p>In Linear Algebra, a function is linear if \( f(u+v) = f(u) + f(v)
-\) and \( f(cu) = cf(u) \). This is a powerful constraint. The
-common equation of a line, \( y = f(x) = mx + b \), is not linear by
-this definition when \( b \neq 0 \). In the situation of one numeric
-input and output, linear functions are multiplication by a constant
-coefficient, \( y = f(x) = mx \).</p>
-<p>If there are two inputs and one output, linear functions are
-multiplications followed by addition, \( y = f(x_1, x_2) = m_1 x_1 +
-m_2 x_2 \). This is the dot product of the vector \( \vec{x} = (x_1,
-x_2) \) and the coefficient vector \( \vec{m} = (m_1, m_2) \). The
-result is a linear combination of the inputs.</p>
-<p>If there are two inputs and two outputs, each output is a linear
-combination of the inputs, \( (y_1, y_2) = f(x_1, x_2) = (m_1 x_1 +
-m_2 x_2, m_3 x_1 + m_4 x_2) \), also written \( \vec{y} = M \vec{x}
-\).</p>
-<p>Applying a second linear transform \( N \) to the output of \( M
-\), the new outputs \( y_1 \) and \( y_2 \) are:</p>
-<p>\[ n_1 (m_1 x_1 + m_2 x_2) + n_2 (m_3 x_1 + m_4 x_2), \\
-    n_3 (m_1 x_1 + m_2 x_2) + n_4 (m_3 x_1 + m_4 x_2)  \]</p>
-<p>Re-grouping shows that applying these two linear transforms one after
-the other is the same as applying just one linear transform with
-different coefficients:</p>
-<!--
-n_1 m_1 x_1 + n_1 m_2 x_2 + n_2 m_3 x_1 + n_2 m_4 x_2,
-n_3 m_1 x_1 + n_3 m_2 x_2 + n_4 m_3 x_1 + n_4 m_4 x_2
-
-n_1 m_1 x_1 + n_2 m_3 x_1 + n_1 m_2 x_2 + n_2 m_4 x_2,
-n_3 m_1 x_1 + n_4 m_3 x_1 + n_3 m_2 x_2 + n_4 m_4 x_2
--->
-
-<p>\[ (n_1 m_1 + n_2 m_3) x_1 + (n_1 m_2 + n_2 m_4) x_2, \\
-    (n_3 m_1 + n_4 m_3) x_1 + (n_3 m_2 + n_4 m_4) x_2  \]</p>
-<p>If \( N M = T \), then \( t_1 \) is the dot product of \( (n_1,
-n_2) \) and \( (m_1, m_3) \), and so on. The coefficients can be
-arranged so that each pair that appears is adjacent horizontally or
-vertically.</p>
-<p>\[
-\begin{bmatrix}
-n_1 &amp; n_2 \\
-n_3 &amp; n_4
-\end{bmatrix}
-\begin{bmatrix}
-m_1 &amp; m_2 \\
-m_3 &amp; m_4
-\end{bmatrix} =
-\begin{bmatrix}
-n_1 m_1 + n_2 m_3 &amp; n_1 m_2 + n_2 m_4 \\
-n_3 m_1 + n_4 m_3 &amp; n_3 m_2 + n_4 m_4
-\end{bmatrix}
-\]</p>
-<p>There is a choice here: The coefficients are written in English
-reading order, left to right and top to bottom. They could just as
-well be placed top to bottom and right to left, for example. This
-choice is arbitrary, but the nature of matrix multiplication is not.</p>
-<hr>
-<p>This is a terse version of what I think could be a good way to
-introduce Linear Algebra and matrix multiplication. It is a more
-traditionally symbolic version of
-<a href="/20210915-flow_metaphor_for_matrix_multiplication/">the flow metaphor for matrix multiplication</a>, with more focus on
-linearity as a driving part of the meaning of Linear Algebra.</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20240624-brief_development_matrix_multiplication/</link>
-<guid>http://planspace.org/20240624-brief_development_matrix_multiplication/</guid>
-<pubDate>Mon, 24 Jun 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
