@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2024-12-26: [(Audio) Playing with Reality, by Clancy](/20241226-playing_with_reality_by_clancy/)
  * 2024-12-24: [(Audio) The Next Millionaire Next Door](/20241224-next_millionaire_next_door/)
  * 2024-12-21: [Matilda, by Dahl](/20241221-matilda_by_dahl/)
  * 2024-11-23: [Financial calculators exist](/20241123-financial_calculators_exist/)
