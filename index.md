@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-03-22: [(Audio) I Hate the Ivy League, by Gladwell](/20250322-i_hate_the_ivy_league_by_gladwell/)
  * 2025-03-22: [(Audio) Power and Progress, by Acemoglu and Johnson](/20250322-power_and_progress_by_acemoglu_and_johnson/)
  * 2024-12-30: [(Audio) Superconvergence, by Metzl](/20241230-superconvergence_by_metzl/)
  * 2024-12-26: [(Audio) Playing with Reality, by Clancy](/20241226-playing_with_reality_by_clancy/)
