@@ -147,6 +147,428 @@ worker.</p>
 <pubDate>Sat, 22 Mar 2025 12:00:00 -0500</pubDate>
 </item>
 <item>
+<title>(Audio) Superconvergence, by Metzl</title>
+<description><![CDATA[
+
+<p><a href="https://en.wikipedia.org/wiki/Jamie_Metzl">Metzl</a> rubs me the wrong way, a little bit, the way the heros of
+LinkedIn do. He's been bio-focused, and still is, but AI is hot so AI
+is in the book. He's not wrong, exactly, but it still feels
+attention-seeking. <a href="https://www.hachettebookgroup.com/titles/jamie-metzl/superconvergence/9781643263007/">The book</a> has very low information density, and
+then weirdly his main objective in the end is to get people excited
+about regulation.</p>
+<p>Metzl advocates for the <a href="https://en.wikipedia.org/wiki/Ortega_hypothesis">Ortega hypothesis</a>, but mostly because it
+fits well with his story of exponential scientific progress: if we
+don't have to wait for geniuses, then progress can keep accelerating.
+Interesting take.</p>
+<p>He talks a lot about god-like powers, and how we need to regulate
+them. He's at pains to say this shouldn't be a global body imposing
+rules, but that every country should do things in line with their own
+culture and values. Ignoring that requiring countries to regulate
+where they wouldn't on their own is already an imposition, this
+federated approach only works if we have fairly strong assumptions
+about every government's culture and values playing well with what we
+think is reasonable. But then he goes on to say that also there should
+be international coordination, seemingly with more teeth than the WHO
+and so on, so he is arguing for global control in the end as well.</p>
+<p>Metzl also believes <a href="https://jamiemetzl.com/origins-of-sars-cov-2/">fairly strongly</a> that COVID-19 was produced by
+humans. It makes sense to talk about this in the book because it adds
+weight to the discussion of risks, making it not just hypothetical.
+This kind of talk always makes me think of the assassination germ idea
+in <a href="/20200124-three_body_problem_remembrance_of_earths_past/">The Three Body Problem</a>. Scary stuff indeed.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20241230-superconvergence_by_metzl/</link>
+<guid>http://planspace.org/20241230-superconvergence_by_metzl/</guid>
+<pubDate>Mon, 30 Dec 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>(Audio) Playing with Reality, by Clancy</title>
+<description><![CDATA[
+
+<p>I think <a href="https://www.npr.org/people/724387257/darian-woods">Darian Woods</a> mentioned <a href="https://www.kellybclancy.com/">Clancy</a>'s book in an episode of
+The Indicator. Great recommendation! <em>Playing with Reality</em> could be
+the best book of the year. Beautifully written, rich with information,
+humane in perspective. The thesis is basically that the map is not the
+territory, and games can be kinds of maps. Sort of like
+<a href="/20200425-tyranny_of_metrics_by_muller/">The Tyranny of Metrics</a>, it explores ways that simplified and
+quantified models can mislead. Fascinating throughout.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<h3>History of education</h3>
+<p>The first game in the book is <a href="https://en.wikipedia.org/wiki/Rithmomachia">Rithmomachia</a>, the math game you
+played as part of your <a href="https://en.wikipedia.org/wiki/Quadrivium">Quadrivium</a> education, which was a thing
+from Greek to Medieval times. The history of education is fascinating.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Trivium">Trivium</a><ul>
+<li>grammar</li>
+<li>logic</li>
+<li>rhetoric</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Quadrivium">Quadrivium</a><ul>
+<li>“arithmetic (pure numbers)”</li>
+<li>“geometry (numbers in space)”</li>
+<li>“music (numbers in time)”</li>
+<li>“astronomy (numbers in space and time)” (page 5)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>“Some medieval historians blame the quadrivial curriculum for
+holding European scholarship back hundreds of years. Its focus on
+harmony blinkered scientists to fundamental advances, such as the
+discovery of irrational numbers and celestial mechanics. The
+quadrivial curriculum was largely abandoned by the seventeenth
+century, as new mathematical techniques from Persia and India led to
+breakthroughs in calculus and probability theory. Rithmomachia
+similarly fell by the wayside.” (page 7)</p>
+</blockquote>
+<p>This idea, of education hampering progress, is very interesting. I
+wonder whether things like the Chinese exam system might have had a
+similar effect. What about the current education system? What is
+blocking rather than enabling progress?</p>
+<p>The book doesn't talk about it, but according to Wikipedia an
+intermediate successor curriculum was the <a href="https://en.wikipedia.org/wiki/Humanitas#Revival">studia humanitatis</a>
+around the 14th century, with Petrarch.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Humanitas#Revival">studia humanitatis</a><ul>
+<li>grammar</li>
+<li>rhetoric</li>
+<li>poetry</li>
+<li>history</li>
+<li>moral philosophy</li>
+</ul>
+</li>
+</ul>
+<p>Later, the book describes "required training for nobility in Europe
+and the Near East."</p>
+<ul>
+<li>an eighteenth century aristocrat was expected to master<ul>
+<li>calligraphy</li>
+<li>horseback riding</li>
+<li>history</li>
+<li>philosophy</li>
+<li>weaponry</li>
+<li>music</li>
+<li>astrology</li>
+<li>games, especially chess</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>“Kriegsspiel roots back to the late eighteenth century, when
+mathematician Johann Hellwig invented a variant of chess. Chess was
+then considered to be required training for nobility in Europe and
+the Near East; an aristocrat was expected to master calligraphy,
+horseback riding, history, philosophy, weaponry, music, astrology,
+and games, especially chess. Tutors used chess to teach strategic
+thinking and mathematics to their pupils. Chess, originally
+chaturanga, originated in India as an explicit abstraction of war.”
+(page 47)</p>
+</blockquote>
+<p>Lots of the book is about how we learn from games, but in explicitly
+educational contexts and elsewhere.</p>
+<hr>
+<h3>Psychohistory</h3>
+<blockquote>
+<p>“The new field’s [statistics'] success expanded to other social
+sciences. The nineteenth-century Belgian mathematician Adolphe
+Quetelet was a tireless advocate for a new science he called “social
+physics,” whereby he hoped to work out a human correlate of
+celestial mechanics and describe the trajectories of civilization.
+Quetelet used massive datasets to detect underlying patterns. He
+found regularities in births, deaths, suicides, and even crime
+rates. He argued that crimes should not be considered acts of
+individual volition. Instead, he found that they obeyed statistical
+laws at the population level. “Society itself contains the germs of
+all the crimes committed. It is the social state, in some measure,
+that prepares these crimes, and the criminal is merely the
+instrument that executes them.” Criminals were themselves victims,
+helpless to the laws of social physics acting on society, a
+necessary sacrifice to preserve civilization. He suggested that
+evidence-based legislation—aimed more at ameliorating the
+institutional causes of crime and less at punishing individual
+criminals themselves—was the best hope for reforming society.
+Quetelet’s ideas were so pervasive that physicist James Clerk
+Maxwell often illustrated his work in statistical mechanics using
+analogies drawn from social physics. To those armed with the hammer
+of probability theory, the world looked like a statistics problem.
+If we could use math to understand even chance, why not use it to
+understand humanity itself?” (page 40)</p>
+</blockquote>
+<p>“Social physics” is yet another name for <a href="/20200714-foundation_trilogy/">psychohistory</a>!</p>
+<blockquote>
+<p>“The historian Hans Delbrück recognized that military and political
+history are inextricably tangled. He was committed to establishing a
+quantitative study of history. Throughout his career, Delbrück pored
+over historical data, hoping to develop a science of war,
+relentlessly workshopping historical battles to test his theories.
+He argued that Germany’s failures in World War I were primarily
+strategic in nature. He advocated for their neutered military to
+take up historical study and simulations. By embracing these
+simulations during the interwar period, the Germans developed a new
+form of combat using theoretical forces that did not yet exist but
+soon would. It promised to solve the stagnant trench warfare that
+had characterized World War I, leveraging surprise to dominate and
+demoralize the enemy. In World War II, this tactic would rain terror
+from the skies across Europe. It would come to be known throughout
+the world as the Blitzkrieg.” (page 52)</p>
+</blockquote>
+<p>And again!</p>
+<hr>
+<blockquote>
+<p>“The real question,” he [Skinner] writes, “is not whether machines
+think but whether men do. The mystery which surrounds a thinking
+machine already surrounds a thinking man.” (page 21)</p>
+</blockquote>
+<p>I think Skinner is getting at the questions of consciousness and free
+will. Provocative phrasing.</p>
+<hr>
+<blockquote>
+<p>“Like many scientists of the era, such as Galileo, Cardano was made
+a celebrity by the horoscopes he drew up for the ruling class.
+Astrology played the role of today’s science-funding agencies.”
+(page 34)</p>
+</blockquote>
+<p>Sometimes data science work feels a little like this. People want
+predictions, and they don't always want a careful accounting of
+uncertainty. They want to hear what they want to hear. And like magic
+or divination, why not just take a stab at it? You'll be right
+sometimes!</p>
+<hr>
+<blockquote>
+<p>“It seemed so ubiquitous that many scientists used it to simplify
+the measurement of errors in a wide range of datasets, including
+many they shouldn’t have. They were, as mathematician Nassim
+Nicholas Taleb puts it, “blinded by bell curves.” (page 40)</p>
+</blockquote>
+<p>This idea is applied to Black–Scholes, and Taleb's “ludic fallacy” is
+described: the mistake of applying the rules of games to real-life
+situations.</p>
+<hr>
+<blockquote>
+<p>“Through seemingly objective arguments like these, the status quo
+keeps its finger tipping the scales in the marketplace of ideas,
+assigning invented values to justify arbitrary ideologies.” (page
+45)</p>
+</blockquote>
+<p>The example is weird MacAskill argument. These "Effective Altruism"
+people, jeez.</p>
+<hr>
+<blockquote>
+<p>“His [Hilbert's] student Hermann Weyl writes: “Mathematics is no
+longer knowledge but a game of formulae, ruled by certain
+conventions, which is very well comparable to the game of chess.”
+(page 58)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“We may still choose to make a wager with a low likelihood of
+success if the outcome is something we want enough—like putting in
+the effort to apply for a highly competitive job, even if it’s
+unlikely we’ll get it. In this framework, a rational actor will
+always make choices that they believe will maximize their expected
+utility, balancing their desire for a given option with its risks.
+Given certain assumptions, their preferences can be described by a
+utility function, which can be used to predict their strategies and
+choices. Von Neumann’s elegant formulation transmuted subjective
+individual desire into a shared frame of reference, defined entirely
+by an agent’s actions in a collective playing field. He derived all
+of this in the span of a single afternoon. Morgenstern later wrote
+in his diary that watching von Neumann solve in one day a problem
+that had plagued economists for years “gave me great satisfaction,
+and moved me so much that afterwards I could not think about
+anything else.” (page 66)</p>
+</blockquote>
+<p>This presentation of von Neumann as a 10x genius is interesting.</p>
+<hr>
+<blockquote>
+<p>“In game theory, players’ preferences are usually assumed to be
+fixed. But psychologists have found that people’s choices are
+sensitive to a game’s context. Players behave differently in a
+prisoner’s dilemma depending on how it’s presented to them. If it’s
+called the Wall Street Game, players are more likely to defect. If
+it’s called the Community Game, they’re more likely to cooperate.
+The two games have the exact same structure, payoffs, and penalties
+(e.g., jail time), yet their titles alone cause players to act
+differently.” (page 76)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“Game theory, pioneered by a traumatized man hoping to plumb the
+depths of human nature, has only ever been about math: the dynamics
+of a maximizing function, not of real people. We must be careful not
+to let its models mean anything about ourselves, and careful to
+prevent its fables from seeping into the domain of accepted wisdom.
+Let’s consider the zero-sum bias. People across the globe tend to
+believe that all resources are limited, even when this is not the
+case. An isolationist might oppose immigration because they think
+that immigrants “steal” from a fixed number of available jobs, not
+realizing that immigrants also drive economic growth and create new
+jobs.” (page 80)</p>
+<p>“Game theory’s power lies in its expressiveness: it can convey
+dynamic stories with simple mechanics. Unfortunately, game theory
+has been used to launder dubious beliefs and present racist,
+nativist policies as objective or inevitable. Some of these sinister
+fables have been taken out of context and integrated into the
+foundations of accepted common sense. If game theory continues to be
+used as a model of human behavior, it needs major revisions to
+reflect the fact that most people aren’t singularly focused on
+personal gain. Even then, we’d be better off modeling people for
+what they are: flexible learners.” (page 86)</p>
+<p>“In his book <em>Economic Fables</em>, mathematician Ariel Rubinstein
+likens game theory—mathematical abstractions of complex
+situations—to fables with oversimple morals. We should be careful
+not to mistake these for reality. Game theory should be studied for
+its mathematical beauty, but it cannot pretend to tell us about the
+real world. Rubinstein argues that even many academics don’t fully
+understand it and often fail to communicate its limitations. This
+would not be an issue if game theory remained a purely academic
+pursuit. But it’s been adopted for use in modern systems that impact
+billions of people worldwide.” (page 98)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“In 1930, Fisher collected and extended his genetic insights in his
+opus, The Genetical Theory of Natural Selection, which almost
+single-handedly revitalized Darwin’s ideas and rescued them from
+years of neglect by academics. In the book, Fisher elaborates—in his
+characteristically cryptic style—what is now one of the most
+celebrated arguments in evolutionary biology and an early seed of
+game-theoretic thinking in the life sciences.” (page 113)</p>
+</blockquote>
+<p>The part I'm interested in here is that Fisher is said to have a
+"characteristically cryptic style." This is the guy who wrote
+"Statistical Methods for Research Workers" and "The Design of
+Experiments." Is his cryptic style part of why frequentist statistics
+is such a poorly understood mess?</p>
+<hr>
+<blockquote>
+<p>“The <a href="https://en.wikipedia.org/wiki/Price_equation">Price equation</a> is the fundamental theorem of evolution and
+can be used to derive other basic theorems of evolution. The
+equation’s generality lends it its power. This same generality
+invites misuse from researchers unfamiliar with its nuances. Some
+have dismissed it as a tautology, nothing more than a statistical
+identity. Others have praised its depth.” (page 123)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“Games remain an impressive way to evaluate a program’s
+capabilities. In the early 1980s, graduate students Shafi Goldwasser
+and Silvio Micali invented a powerful new form of mathematical proof
+by imagining how they might play a secure poker game over the phone.
+The resulting technique, interactive proof systems, consists of two
+subparts, a prover and a verifier. These exchange messages until the
+verifier is “convinced” that an answer is correct. Interactive
+proofs became a foundational technique in computer science and
+cryptography. They’re also the metaphoric heart of how we hope to
+verify intelligence through games. Traditional math proofs are
+inevitable, each step an irresistible conclusion unfolding from the
+last. Interactive proofs, on the other hand, are probabilistically
+true. By testing again and again, the verifier becomes increasingly
+convinced of the prover’s claim. The Turing test, for instance, can
+be mathematically formalized in this framework. Games take the same
+form: human experts repeatedly test a game-playing computer program
+to convince themselves of its capabilities. There is no single
+measure of intelligence, or its mechanical approximation. Its
+evaluation will be, by nature, interactive: the iterated probing of
+a system.” (pages 137-138)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“To borrow social theorist Sherry Turkle’s phrase, we too easily
+abdicate authority to simulations. Simulations are ultimately
+constrained by their creators’ assumptions: games are self-contained
+universes ticking along to preprogrammed logic. They don’t
+necessarily reflect anything fundamental about the world. Models’
+conclusions are less interesting than the assumptions on which
+they’re based—assumptions that are typically hidden.” (page 159)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“Utopia is the process of making a better world, the name for one
+path history can take, a dynamic, tumultuous, agonizing process,
+with no end. Struggle forever.” (page 160, quoting Kim Stanley
+Robinson)</p>
+<p>“The game Moksha Patam (today’s Snakes and Ladders) is often
+credited to the thirteenth-century Marathi saint Dnyaneshwar, though
+it may have been invented hundreds of years earlier. It was designed
+to teach players about karma and illustrate the precarity of fate.
+In it, souls ascend to the heavenly realms, dragged down by vices
+(snakes) and buoyed by virtues (ladders). Snakes are labeled with
+the names of demons and the vices they represent, and players
+recount stories from Hindu mythology as they play.” (page 160)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“Scholars have sought to find a purely logical foundation for the
+question of morality and how society should be structured. In the
+mid-twentieth century, philosopher John Rawls began a line of
+inquiry that culminated in his celebrated 1971 treatise, <em>A Theory
+of Justice</em>. In this work, he posits fairness as the foundational
+principle, or “first virtue,” on which society should be built.”
+(page 163)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“In the 1950s, game theorists discovered that some repeated games
+support an infinite number of stable equilibrium strategies. This
+became known as the folk theorem, because it was such an obvious
+outcome that no one bothered formally publishing it.” (page 165)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>“Board game designer Reiner Knizia claims that the scoring system is
+the most important part of designing a new game. It’s the score that
+drives players’ behaviors. Similarly, in a subfield of game theory
+known as mechanism design, or reverse game theory, mathematicians
+design institutional rules that incentivize players to behave in
+particular ways.” (page 174)</p>
+</blockquote>
+<p>This is pretty neat. Start with the end in mind, and then rather than
+thinking we can influence people directly, imagine we can control "the
+rules of the game" (through policy, etc.) - how do they get set up to
+achieve the desired end? Possible connection also to "nudge" ideas,
+etc.</p>    
+    ]]></description>
+<link>http://planspace.org/20241226-playing_with_reality_by_clancy/</link>
+<guid>http://planspace.org/20241226-playing_with_reality_by_clancy/</guid>
+<pubDate>Thu, 26 Dec 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
+<title>(Audio) The Next Millionaire Next Door</title>
+<description><![CDATA[
+
+<p>It's sweet that <a href="https://en.wikipedia.org/wiki/Thomas_J._Stanley">Stanley</a>'s daughter finished this 2020 follow-up to
+his 1996 <a href="https://en.wikipedia.org/wiki/The_Millionaire_Next_Door">Millionaire Next Door</a> after he died in 2015. There are
+refreshed surveys, but not a lot that's new, as far as I can tell,
+apart from attempts to defend the family legacy from criticism.</p>
+<p>The core concept is still spending less money than you get. More pages
+are given to spending less than to getting more. Conscientiousness and
+discipline are emphasized. America is presented as uniquely suited to
+building wealth because of freedom.</p>
+<p>One criticism of the original book was that the core thesis (that
+normal people can become millionaires) was an artifact of survivorship
+bias observed toward the end of a bull market. I didn't hear a really
+good response to this criticism, but I don't think it's a particularly
+interesting criticism either.</p>
+<p>I think the deeper latent criticism is about what level of the system
+to blame. Stanley is all about the individual level. "The game is
+winnable!" he says. Critics, I think, are often talking about
+something fundamentally different. "The rules of the game are unfair!"
+they say. Both these things can be true at the same time.</p>
+<p>It's easy to wag a finger at someone with a high income who's still
+barely making their house and car payments. But far more people have
+low income, not much room to cut expenses, and little opportunity to
+increase their income. These books have more advice for the former
+than the latter.</p>
+<p><img alt="cover" src="cover.jpg"></p>    
+    ]]></description>
+<link>http://planspace.org/20241224-next_millionaire_next_door/</link>
+<guid>http://planspace.org/20241224-next_millionaire_next_door/</guid>
+<pubDate>Tue, 24 Dec 2024 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Matilda, by Dahl</title>
 <description><![CDATA[
 
@@ -1243,216 +1665,6 @@ sharing in mastery—and contribute to the next ideas.</p>
 <link>http://planspace.org/20240723-explanations_enhance_equity/</link>
 <guid>http://planspace.org/20240723-explanations_enhance_equity/</guid>
 <pubDate>Tue, 23 Jul 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Loonshots, by Bahcall</title>
-<description><![CDATA[
-
-<p>It's a fun book, especially at the beginning, where Bahcall has a lot
-of underdog success stories. I think some of the ideas are decent, but
-it's also more like an unfinished brainstorming session than a settled
-science, and it's hard to distinguish useful theory from just-so
-history. I'm fundamentally on board for more discoveries though!</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<p>A major metaphor in the book is "phase transitions," like solid to
-liquid. Bahcall offers "The Innovation Equation" (details in
-<a href="https://hbr.org/2019/03/the-innovation-equation" title="The Innovation Equation">HBR article</a>) for \( M \), "a certain size at which human groups
-shift from embracing radical ideas to quashing them."</p>
-<p>\[ M = \frac{E S^{2} F}{G} \]</p>
-<p>The only right hand term that isn't unitless is \( S \), "management
-span," which is the average number of direct reports that managers
-have. Since \( S \) is squared, the result is in units of people
-squared, which I don't think makes sense. With his training as a
-physicist, it's a little surprising that Bahcall would do this. (Am I
-missing something?)</p>
-<p>Also surprising is that there's no constant term. (For example,
-gravity isn't mass times mass divided by distance squared; there's a
-constant that we have to get from data.) Bahcall plugs in \( E = 50\%
-\), meaning compensation is 50% equity, which seems rare, then
-management span of 6, and \( F = 1 \) meaning equal returns to
-project work and politics, finishing with \( G = 12\% \) meaning 12%
-compensation increase at promotion. Ignoring the units, this gives
-150, and he claims a connection with <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number" title="Wikipedia: Dunbar's number">Dunbar's number</a>, saying
-"That's interesting."</p>
-<p>I have to think Bahcall doesn't really take this equation seriously;
-he must intend it as an illustration for his narrative. Still, it
-offends my sensibilities because it seems like math-washing:
-presenting something that looks "fancy" to make it seem more
-legitimate. In this case, the evidence isn't really anything more than
-suggestive.</p>
-<p>One issue is boundaries: Where does an organization begin and end?
-DARPA is considered an example of an innovative organization. Do we
-consider just the DARPA PMs? Also their contractors? The whole
-Department of Defense?</p>
-<p>I think a much more promising attempt might be made by switching from
-the organization to the individual view: At what point does an
-individual change their behavior, based on the local structure of
-their organization and incentives? This would also be more coherent
-with Bahcall's ideas about having different parts of an organization
-working on different goals (loonshots vs. "franchise" work). How do
-you get loonshots? Support people who work on them.</p>
-<p>A deeper critique is that Bahcall's "loonshot" forces here seem more
-about <em>doing your job</em> than about working on crazy innovative ideas
-specifically. "Project work" is not necessarily loonshot work.</p>
-<hr>
-<p>This "Goals Gone Wild" <a href="https://www.hbs.edu/ris/Publication%20Files/09-083.pdf">paper</a> is pretty fun, and reminds me of
-<a href="/20200425-tyranny_of_metrics_by_muller/" title="The Tyranny of Metrics, by Muller">The Tyranny of Metrics</a>. The paper includes this warning label:</p>
-<p><img alt="warning" src="warning.png"></p>
-<hr>
-<p>Also referenced (a lot) is Vannevar Bush's 1945
-<a href="https://www.nsf.gov/about/history/vbush1945.htm">Science: The Endless Frontier</a>, which reminds me of
-<a href="/20220410-beginning_of_infinity_by_deutsch/" title="The Beginning of Infinity, by Deutsch">The Beginning of Infinity</a>.</p>
-<hr>
-<blockquote>
-<p>“The graveyard of unexplained experiments, as Land would soon show,
-is a great place to find a False Fail.” (page 76)</p>
-<p>“Some companies are the equivalent of an innovation landfill,” wrote
-one senior Apple executive, who helped lure some of PARC’s best
-engineers to Apple. “They are garbage dumps where great ideas go to
-die. At PARC, the key development people kept leaving because they
-never saw their products get into the market.” (page 115)</p>
-</blockquote>
-<p>This is an interesting idea: What's out there that's known but
-ignored, currently, when it shouldn't be ignored? Bahcall uses the
-example of radar's foundations being known but ignored by the Navy for
-nearly 20 years. What fun things are out there, already discovered but
-not yet exposed to sunlight?</p>
-<hr>
-<blockquote>
-<p>“While the individual man is an insoluble puzzle, in the aggregate
-he becomes a mathematical certainty.” (Sherlock Holmes, in The Sign
-of the Four, quoted page 117)</p>
-</blockquote>
-<p>Seems like everybody wants to do <a href="/20200714-foundation_trilogy/" title="Asimov's Foundation trilogy">psychohistory</a>!</p>
-<!-- mathjax for formulas -->
-
-    ]]></description>
-<link>http://planspace.org/20240722-loonshots_by_bahcall/</link>
-<guid>http://planspace.org/20240722-loonshots_by_bahcall/</guid>
-<pubDate>Mon, 22 Jul 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Brave New Words, by Khan</title>
-<description><![CDATA[
-
-<blockquote>
-<p>“... a teacher has to be adjusted to fit the mind of each boy and
-girl it teaches ... each kid has to be taught differently.” (Asimov,
-<a href="https://www.bartlettschools.org/pdf/TheFunTheyHad.pdf">The Fun They Had</a>, 1951)</p>
-</blockquote>
-<p>The title of this book refers to LLM text generation and Khan's call
-for “educated bravery” in meeting new technologies, but it also refers
-to Brave New World, a distopia. In his introduction, Khan mentions
-<a href="https://planspace.org/20210422-the_diamond_age_by_stephenson/" title="The Diamond Age, by Stephenson">Diamond Age</a>, Ender's Game, and <a href="https://www.bartlettschools.org/pdf/TheFunTheyHad.pdf">The Fun They Had</a> as fiction
-that “has gone on to inspire very real innovation.” In
-<a href="https://planspace.org/20210422-the_diamond_age_by_stephenson/" title="The Diamond Age, by Stephenson">Diamond Age</a>, three “AI” books are really humans behind the scenes,
-and the actual AI books train a child army. In Ender's Game, the
-educational technology serves the goal of genocide. And in Asimov's
-<a href="https://www.bartlettschools.org/pdf/TheFunTheyHad.pdf">The Fun They Had</a>, the joke is that AI education would make
-children long for the current world of schooling. I'm fascinated by
-the same fiction as Khan. I also think of the Star Trek post-scarcity
-world (<a href="/20201109-economics_of_star_trek_by_webb/" title="The Economics of Star Trek, by Webb">1</a>, <a href="/20210401-trekonomics_by_saadia/" title="Trekonomics, by Saadia">2</a>) as an inspiration. I think Khan is right that
-LLMs present opportunities, but they also face persistent challenges
-of education.</p>
-<p>There is a kind of “AI exceptionalism” that imagines generative AI as
-immune to problems faced elsewhere. For example, Khan criticizes
-Google for having ads. But will commercial LLMs remain disinterested?
-Khan Academy doesn't offer its Khanmigo AI tutor for free to students
-because of the cost of AI inference, and it's hard to imagine that
-LLMs are permanently immune to the attentions of advertisers. And
-while Khan speaks glowingly of Khanmigo, there is already at least one
-<a href="https://www.nytimes.com/2024/07/01/us/ai-chatbot-los-angeles-schools.html" title="A.I. ‘Friend’ for Public School Students Falls Flat">example</a> of a failed AI ed-bot effort.</p>
-<p>More generally, Khan would have education and LLMs as somehow beyond
-having a point of view, absolutely impartial. Researchers have worked
-hard on “alignment” that creates this illusion, and certainly a
-Socratic approach can have value in education. But fundamentally there
-<em>is no</em> impartial view of the world, and the effect in aiming for one
-is to allow the inane while preventing progress.</p>
-<p>Khan wants to engage students by “incorporating their interests” in
-ways that are superficial and misleading. One way to fail in this is
-to imagine content as irredeemably rigid, and try to apply a false
-veneer. Another way is to imagine there is no content in particular
-worth focusing on.</p>
-<p>Khan gives one example of imagining a soccer coach modeling goals
-scored with a polynomial, and then asking for the degree of this
-polynomial and the leading coefficient. This is a weak trick at best,
-and doesn't at all get to <em>why</em> anyone would care about the question.
-Applications can be motivating, but this one is so artificial that it
-seems more likely to damage credibility.</p>
-<p>Later Khan imagines restructuring a class's study of World War 2
-through a focus on baseball, in a way that seems to suggest that
-baseball was just as important an aspect of World War 2 as anything
-else. I could see a research project on this narrow subject for an
-interested student, but I also think that the bigger features of WW2
-should not be deprioritized in order to pander to interests.</p>
-<p>One theme here is that part of education is learning what's
-interesting about things you weren't previously interested in. You
-shouldn't come out of a class with only the same interests that you
-went in with.</p>
-<p>On history specifically, there's probably a lot more to discuss. Khan
-offers that “it is impossible to engage in calculus if you don’t know
-Algebra 2 well, but one can imagine engaging in college-level history
-even without a strong foundation in history from high school.” I don't
-know whether all history teachers would agree. To me, to the extent
-that this is true, it suggests a problem with history as a discipline
-at least as it is taught. I think we should ask more of history, make
-more connections, draw more conclusions, have more of a sense of both
-the theory and application of history. I think Khan is imagining
-history as if, were it math, in high school students would learn one
-table of equations and then in college learn a second table of
-equations, never learning what they mean or how to use them. Perhaps
-because lessons learned from history can have a political
-interpretation, history is kept in schools with its hands tied? And so
-we repeat the errors of the past.</p>
-<p>In attempting to be impartial, existing curricula can become dogma.
-Khan is so focused on how to teach everyone Pre-Algebra, Algebra 1,
-and Algebra 2, that there doesn't seem to be room for re-thinking our
-choices in what we teach. The “how” of education is important, but I
-think the “what” and “why” are keystones, and at least as in need of
-attention in light of technological advancement.</p>
-<p>One pet peeve of mine is titles that are not conceptually coherent.
-This is the case for Pre-Algebra, Algebra 1, and Algebra 2. These are
-not good titles for courses. They reflect a bulk-frozen structure that
-we should be embarrassed to offer students. Imagine if a student
-submitted an outline so lousy, where the top-level bullets were "first
-stuff," "second chunk," and "last bits." We should expect more clarity
-of thought. No student should be given a grab bag of things to learn
-without better organizing concepts and rationale, and that starts at
-the level of course titles.</p>
-<p>I suspect much of what is taught in schools could be improved
-(dropped, modified, added to). This is not necessarily easy to do
-(<a href="https://en.wikipedia.org/wiki/New_Math" title="Wikipedia: New Math">New Math</a>?) but there have been improvements over time and I
-expect they can be extended. It has become rare for students to
-memorize and recite <a href="https://allpoetry.com/Against-Idleness-and-Mischief">Against Idleness and Mischief</a>, for example,
-while calculus, which used to be exclusively a university topic, is
-now encountered by many in high school. Improving <em>what</em> is taught
-should get more attention.</p>
-<p>It seems like AI may move some classroom setups in directions that
-feel old-fashioned: More in-person writing and tests, more focus on
-spoken communication. Perhaps it will seem more obvious that teachers
-are a specific type of manager, which has always been the case though
-not always widely acknowledged. The toolkit expands.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20240718-brave_new_words_by_khan/</link>
-<guid>http://planspace.org/20240718-brave_new_words_by_khan/</guid>
-<pubDate>Thu, 18 Jul 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Titan, by Chernow</title>
-<description><![CDATA[
-
-<p>I wouldn't have chosen this, but it was a book club pick. It did turn
-out to be interesting enough for me to make it through over 35 hours
-of audio. <a href="https://en.wikipedia.org/wiki/Ron_Chernow" title="Ron Chernow">Chernow</a> does well, and there's lots to say about
-<a href="https://en.wikipedia.org/wiki/John_D._Rockefeller" title="John D. Rockefeller">Rockefeller</a>. His dad was quite a character, and his son funded
-Colonial Williamsburg, turns out. Topics of business, wealth, and the
-good life remain relevant.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20240625-titan_by_chernow/</link>
-<guid>http://planspace.org/20240625-titan_by_chernow/</guid>
-<pubDate>Tue, 25 Jun 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

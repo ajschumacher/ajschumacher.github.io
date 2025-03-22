@@ -22,6 +22,9 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 Here's the big list of everything:
 
  * 2025-03-22: [(Audio) Power and Progress, by Acemoglu and Johnson](/20250322-power_and_progress_by_acemoglu_and_johnson/)
+ * 2024-12-30: [(Audio) Superconvergence, by Metzl](/20241230-superconvergence_by_metzl/)
+ * 2024-12-26: [(Audio) Playing with Reality, by Clancy](/20241226-playing_with_reality_by_clancy/)
+ * 2024-12-24: [(Audio) The Next Millionaire Next Door](/20241224-next_millionaire_next_door/)
  * 2024-12-21: [Matilda, by Dahl](/20241221-matilda_by_dahl/)
  * 2024-11-23: [Financial calculators exist](/20241123-financial_calculators_exist/)
  * 2024-11-23: [What are CFPs supposed to know?](/20241123-what_are_cfps_supposed_to_know/)
