@@ -9,7 +9,7 @@ buy. Sort of weird, but Gladwell is good enough that it works.
 
 ---
 
-I tend to agree with Gladwell. Education shouldn't be an elitest thing
+I tend to agree with Gladwell. Education shouldn't be an elitist thing
 based on keeping people out.
 
 
