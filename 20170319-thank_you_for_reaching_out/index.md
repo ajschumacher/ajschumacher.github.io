@@ -11,7 +11,9 @@ contact me. For my background and career recommendations, consider my
 ### 1. Will I hire you?
 
 I'm not in a position to hire you (or give you an internship).
-However, see #2.
+
+
+<!-- However, see #2. -->
 
 <!-- Please don't send me your résumé. If you want to work where I
 work, or anywhere I've worked before, please go through official
@@ -20,13 +22,15 @@ channels. -->
 
 ### 2. Will I recommend you for a job?
 
+If I already know your work and I know it to be good, then yes.
+
+
+<!--
 I'd be happy to [refer you][] for jobs at Meta: Facebook, Instagram,
 WhatsApp, etc. (Not all listings accept referrals, but I'll do my
 best!)
 
 [refer you]: /20211109-come_work_at_meta/
-
-<!-- If I already know your work and I know it to be good, then yes.
 -->
 
 

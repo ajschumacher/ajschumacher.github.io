@@ -1,5 +1,20 @@
 # Come work at Meta! (Facebook/Instagram/WhatsApp/etc.)
 
+[Update 2025-04-17]
+
+For about three and a half years, I did open referrals. I referred
+over 75 people. Two or three got jobs. People I referred were
+sometimes upset when they didn't get interviews, as if they thought a
+referral would entitle them to one. Meta has also changed incentives
+for referrals, and many positions don't accept referrals at all any
+more. In light of all this, my recommendation now is to apply through
+the [Meta careers site][]. Good luck!
+
+[Meta careers site]: https://www.metacareers.com/jobs
+
+
+<!-- Old content:
+
 People have started asking me to refer them for jobs at [Meta][],
 which is great because Meta is [hiring][]! I'd be happy to refer you;
 send [me](/aaron/) the following:
@@ -43,3 +58,5 @@ send [me](/aaron/) the following:
 Once I have the above, I can put you into the system. After that, I
 won't hear anything before you do. I can't guarantee any particular
 next steps, but I wish you the best of luck and hope you do well!
+
+-->
