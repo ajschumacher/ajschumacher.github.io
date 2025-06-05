@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Consider tax on investments</title>
+<description><![CDATA[
+
+<p>Taxes make everything more complicated. They vary based on your income
+level, where you live, what investments you have, and what accounts
+you have them in, and more. And they affect your real returns. Let's
+compare income-generating investments.</p>
+<form id="taxForm">
+
+<h3>A nominally <input type="number" step="any" id="nominal_rate" value="5.00">% investment yields, after tax:</h3>
+
+<ul>
+  <li><b><span class="bignum" id="interest">3.50%</span></b> if it's regular interest from a bank, a CD, non-qualified dividends, etc.
+    <ul><li><a href="https://www.irs.gov/filing/federal-income-tax-rates-and-brackets">Federal</a> and <a href="https://taxfoundation.org/data/all/state/state-income-tax-rates/">state</a> income tax apply.</li></ul>
+  </li>
+  <li><b><span class="bignum" id="dividend">3.75%</span></b> if it's <a href="https://www.investopedia.com/terms/q/qualifieddividend.asp">qualified dividends</a>, etc.
+    <ul><li>Federal long-term <a href="https://www.irs.gov/taxtopics/tc409">capital gains</a> and state tax apply.</li></ul>
+  </li>
+  <li><b><span class="bignum" id="bond">4.00%</span></b> if it's interest from a US government bond, etc.
+    <ul><li>Federal income tax applies, but not state tax.</li></ul>
+  </li>
+</ul>
+
+
+<!--
+<p>
+<input type="submit" value="Update" />
+</p>
+-->
+
+<p>
+<input type="number" step="any" id="fed_rate" value="20">
+<label for="fed_rate">% Federal income tax rate</label>
+</p>
+
+<p>
+<input type="number" step="any" id="gains_rate" value="15">
+<label for="gains_rate">% Federal capital gains tax rate</label>
+</p>
+
+<p>
+<input type="number" step="any" id="state_rate" value="10">
+<label for="state_rate">% state income tax rate</label>
+</p>
+
+</form>
+
+<p>Most states don't differentiate between regular income and capital
+gains, so there's just the one state tax box here. It probably makes
+sense to use your overall effective (“blended”) tax rates here, though
+you could use your marginal rates if you want. And of course this all
+assumes we're in the US.</p>
+<style>
+input { width: 4em; }
+.bignum {font-size: 1.17em; }
+</style>
+
+
+    ]]></description>
+<link>http://planspace.org/20250604-consider_tax_on_investments/</link>
+<guid>http://planspace.org/20250604-consider_tax_on_investments/</guid>
+<pubDate>Wed, 04 Jun 2025 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>What is real? by Becker</title>
 <description><![CDATA[
 
@@ -2495,50 +2559,6 @@ support of UBI.</p>
 <link>http://planspace.org/20240907-bullshit_jobs_by_graeber/</link>
 <guid>http://planspace.org/20240907-bullshit_jobs_by_graeber/</guid>
 <pubDate>Sat, 07 Sep 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Debt: The first 5,000 years, by Graeber</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/David_Graeber">Graeber</a> doesn't like debt, in the modern quantified, financial
-sense. Also he thinks people are wrong about the history of money, and
-that we should listen to anthropologists more. Graeber's equation is
-something like "obligation + measurement + violence = debt."</p>
-<p>A smattering of his ideas as I remember them:</p>
-<ul>
-<li>The standard economics story of money (as arising because barter is
-   too hard) is silly because people hardly ever barter in the first
-   place, except sometimes with strangers.</li>
-<li>The standard economics story of money starting with coinage, then
-   later developing debt instruments (see also <a href="/20240825-principles_changing_world_order_dalio/" title="(Audio) Principles for dealing with the changing world order, by Dalio">Dalio</a>, "money as
-   starting from metal, then notes exchangeable for metal, then fiat
-   money") is silly because ideas and methods of debt come <em>first</em>.</li>
-<li>The moralism of "always paying your debts" in culture and language.</li>
-<li>No single theory of money (<a href="https://en.wikipedia.org/wiki/Chartalism">Chartalism</a>, etc.) is right on its
-   own because "money has no essence" and money is just one piece of a
-   big evolving world. (Similarly, Graeber has no single thesis on
-   debt.)</li>
-<li>"Baseline communism" refers to the natural "from each according to
-   his ability, to each according to his needs" that we have in real
-   human relations, like feeding a child or asking for someone to hand
-   you something.</li>
-<li>Debt as two equals agreeing to no longer be equal: Now <em>you</em> owe
-   <em>me</em>. (In the extreme: debt peonage.)</li>
-<li>The difference of kind that comes from quantification: Not just
-   owing me a favor, but owing me $47.39. The relation to
-   dehumanization, as when slavery puts a price on a person, which is
-   only possible by removing or denying their complex real
-   (unquantifiable) value. (Reminds me of <a href="/20200425-tyranny_of_metrics_by_muller/" title="The Tyranny of Metrics, by Muller">The Tyranny of Metrics</a>.)</li>
-<li>The necessity of violence to make people pay back debts, as when
-   military power stands behind the IMF.</li>
-<li>Occasional hints of primitivism or anarcho-primitivism.</li>
-<li>And really, shouldn't we get rid of capitalism?</li>
-</ul>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20240906-debt_by_graeber/</link>
-<guid>http://planspace.org/20240906-debt_by_graeber/</guid>
-<pubDate>Fri, 06 Sep 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

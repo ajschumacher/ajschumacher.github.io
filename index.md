@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-06-04: [Consider tax on investments](/20250604-consider_tax_on_investments/)
  * 2025-06-01: [What is real? by Becker](/20250601-what_is_real_by_becker/)
  * 2025-03-22: [(Audio) I Hate the Ivy League, by Gladwell](/20250322-i_hate_the_ivy_league_by_gladwell/)
  * 2025-03-22: [(Audio) Power and Progress, by Acemoglu and Johnson](/20250322-power_and_progress_by_acemoglu_and_johnson/)
