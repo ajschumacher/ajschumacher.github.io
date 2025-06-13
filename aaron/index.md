@@ -40,6 +40,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+ * [Distributed Representations and Superposition](https://docs.google.com/presentation/d/1wyLk9j0X9QxaiO2af4cTlMZr8hckyUmTThjBNKTrTwY/edit) for [DC2](https://www.meetup.com/data-science-dc/events/307325043/) on Tuesday 2025-06-10
  * Industry Panel for CMU-Africa "Data Structures for Engineers" class on Thursday 2024-03-21
  * [Fireside Chat / Pro Tips (with Codecademy)](/20230919-fireside_chat_pro_tips/) on Tuesday 2023-09-19
  * [SQL technical interview prep](https://docs.google.com/presentation/d/1vv6vTB-l41zhb7_EID6PetXZBOJSOT07Qk_rH8E-1C4/) for [Hack Diversity](https://www.hackdiversity.com/) on Thursday 2022-03-24
