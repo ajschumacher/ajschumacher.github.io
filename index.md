@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-06-21: [(Audio) The Haves and Have-Yachts, by Osnos](/20250621-haves_and_have_yachts_by_osnos/)
  * 2025-06-17: [Make everything into Roth IRA](/20250617-make_everything_into_roth_ira/)
  * 2025-06-04: [Consider tax on investments](/20250604-consider_tax_on_investments/)
  * 2025-06-01: [What is real? by Becker](/20250601-what_is_real_by_becker/)
