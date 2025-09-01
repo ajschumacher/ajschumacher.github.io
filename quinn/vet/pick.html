@@ -24,11 +24,11 @@
     .pet-button:hover {
       background-color: #87ceeb;
     }
-    #care-room {
+    #care-room, #cage-room {
       display: none;
       position: relative;
     }
-    #care-room img {
+    #care-room img, #cage-room img {
       max-width: 100%;
       height: auto;
     }
@@ -38,17 +38,41 @@
       right: 200px;
       font-size: 300px;
     }
-    #back-button {
-      margin-top: 20px;
+    #tool-emoji {
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 100px;
+    }
+    #back-button, #cage-back-button, #cage-care-button, #cage-button {
+      margin: 10px;
       padding: 8px 16px;
       font-size: 16px;
       border: none;
       border-radius: 6px;
-      background-color: #f08080;
       cursor: pointer;
     }
-    #back-button:hover {
-      background-color: #e06666;
+    #back-button { background-color: #f08080; }
+    #back-button:hover { background-color: #e06666; }
+
+    #cage-button { background-color: #90ee90; }
+    #cage-button:hover { background-color: #77dd77; }
+
+    #cage-care-button { background-color: #add8e6; }
+    #cage-back-button { background-color: #f08080; }
+
+    .tool-button {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #ffe4b5;
+      cursor: pointer;
+    }
+    .tool-button:hover {
+      background-color: #ffd27f;
     }
   </style>
 </head>
@@ -67,9 +91,36 @@
     <div style="position: relative; display: inline-block;">
       <img src="care_room_no_animal.png" alt="Vet care room">
       <div id="animal-emoji"></div>
+      <div id="tool-emoji"></div>
+    </div>
+    <br>
+    <div>
+      <button class="tool-button" onclick="toggleTool('🩺')">Stethoscope</button>
+      <button class="tool-button" onclick="toggleTool('🔦')">Light</button>
+      <button class="tool-button" onclick="toggleTool('🩹')">Special bandaid</button>
+      <button class="tool-button" onclick="toggleTool('🪥')">Shaver</button>
+      <button class="tool-button" onclick="toggleTool('🛠️')">Hammer</button>
+      <button class="tool-button" onclick="toggleTool('🧴')">Cream</button>
+      <button class="tool-button" onclick="toggleTool('🧻')">Wet paper towel</button>
+      <button class="tool-button" onclick="toggleTool('🦴')">Cast</button>
+      <button class="tool-button" onclick="toggleTool('👂')">Ear cast</button>
+      <button class="tool-button" onclick="toggleTool('🦵')">Tail cast</button>
+      <button class="tool-button" onclick="toggleTool('🔍')">Otoscope</button>
+      <button class="tool-button" onclick="toggleTool('🛑')">Cone</button>
     </div>
     <br>
     <button id="back-button" onclick="goBack()">Back</button>
+    <button id="cage-button" onclick="putInCage()">Put in Cage</button>
+  </div>
+
+  <div id="cage-room">
+    <div style="position: relative; display: inline-block;">
+      <img src="cages.png" alt="Cages">
+      <div id="cage-animal-emoji"></div>
+    </div>
+    <br>
+    <button id="cage-care-button" onclick="returnToCareRoom()">Back to Care Room</button>
+    <button id="cage-back-button" onclick="goBackFromCage()">Back to Pet List</button>
   </div>
 
   <script>
@@ -82,8 +133,13 @@
       "Guinea pig": "🐷" // Closest match
     };
 
+    let currentPet = null;
+    let currentTool = null;
+
     function enterCareRoom(petName) {
+      currentPet = petName;
       document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'none';
       document.getElementById('care-room').style.display = 'block';
       document.getElementById('animal-emoji').textContent = petEmojis[petName] || '';
     }
@@ -92,6 +148,42 @@
       document.getElementById('care-room').style.display = 'none';
       document.getElementById('pet-list').style.display = 'block';
       document.getElementById('animal-emoji').textContent = '';
+      document.getElementById('tool-emoji').textContent = '';
+      currentTool = null;
+    }
+
+    function toggleTool(toolEmoji) {
+      if (currentTool === toolEmoji) {
+        currentTool = null;
+        document.getElementById('tool-emoji').textContent = '';
+      } else {
+        currentTool = toolEmoji;
+        document.getElementById('tool-emoji').textContent = toolEmoji;
+      }
+    }
+
+    function putInCage() {
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'block';
+      document.getElementById('cage-animal-emoji').textContent = petEmojis[currentPet] || '';
+      document.getElementById('cage-animal-emoji').style.position = 'absolute';
+      document.getElementById('cage-animal-emoji').style.top = '100px';
+      document.getElementById('cage-animal-emoji').style.left = '50%';
+      document.getElementById('cage-animal-emoji').style.transform = 'translateX(-50%)';
+      document.getElementById('cage-animal-emoji').style.fontSize = '200px';
+    }
+
+    function returnToCareRoom() {
+      document.getElementById('cage-room').style.display = 'none';
+      document.getElementById('care-room').style.display = 'block';
+      document.getElementById('animal-emoji').textContent = petEmojis[currentPet] || '';
+    }
+
+    function goBackFromCage() {
+      document.getElementById('cage-room').style.display = 'none';
+      document.getElementById('pet-list').style.display = 'block';
+      document.getElementById('cage-animal-emoji').textContent = '';
+      currentPet = null;
     }
   </script>
 </body>
