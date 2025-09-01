@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quinn's Vet Game</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
+      text-align: center;
+    }
+    .pet-button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #add8e6;
+      cursor: pointer;
+    }
+    .pet-button:hover {
+      background-color: #87ceeb;
+    }
+    #care-room {
+      display: none;
+      position: relative;
+    }
+    #care-room img {
+      max-width: 100%;
+      height: auto;
+    }
+    #animal-emoji {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 60px;
+    }
+    #back-button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #f08080;
+      cursor: pointer;
+    }
+    #back-button:hover {
+      background-color: #e06666;
+    }
+  </style>
+</head>
+<body>
+  <div id="pet-list">
+    <h1>Pick a pet</h1>
+    <button class="pet-button" onclick="enterCareRoom('Hamster')">Hamster 🐹</button>
+    <button class="pet-button" onclick="enterCareRoom('Dog')">Dog 🐶</button>
+    <button class="pet-button" onclick="enterCareRoom('Cat')">Cat 🐱</button>
+    <button class="pet-button" onclick="enterCareRoom('Bird')">Bird 🐦</button>
+    <button class="pet-button" onclick="enterCareRoom('Fish')">Fish 🐟</button>
+    <button class="pet-button" onclick="enterCareRoom('Guinea pig')">Guinea pig 🐷</button>
+  </div>
+
+  <div id="care-room">
+    <div style="position: relative; display: inline-block;">
+      <img src="care_room_no_animal.png" alt="Vet care room">
+      <div id="animal-emoji"></div>
+    </div>
+    <br>
+    <button id="back-button" onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    const petEmojis = {
+      "Hamster": "🐹",
+      "Dog": "🐕",
+      "Cat": "🐈",
+      "Bird": "🐦",
+      "Fish": "🐟",
+      "Guinea pig": "🐷" // Closest match
+    };
+
+    function enterCareRoom(petName) {
+      document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('care-room').style.display = 'block';
+      document.getElementById('animal-emoji').textContent = petEmojis[petName] || '';
+    }
+
+    function goBack() {
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('pet-list').style.display = 'block';
+      document.getElementById('animal-emoji').textContent = '';
+    }
+  </script>
+</body>
+</html>
