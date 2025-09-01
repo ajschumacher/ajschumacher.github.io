@@ -5,186 +5,300 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quinn's Vet Game</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0f8ff;
-      padding: 20px;
-      text-align: center;
+    :root {
+      --blue:#add8e6; --blue-hover:#87ceeb;
+      --peach:#ffe4b5; --peach-hover:#ffd27f;
+      --red:#f08080; --red-hover:#e06666;
+      --green:#90ee90; --green-hover:#77dd77;
+      --chip:#fff; --chip-border:#ddd;
     }
-    .pet-button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background-color: #add8e6;
-      cursor: pointer;
-    }
-    .pet-button:hover {
-      background-color: #87ceeb;
-    }
-    #care-room, #cage-room {
-      display: none;
-      position: relative;
-    }
-    #care-room img, #cage-room img {
-      max-width: 100%;
-      height: auto;
-    }
-    #animal-emoji {
-      position: absolute;
-      top: 100px;
-      right: 200px;
-      font-size: 300px;
-    }
-    #tool-emoji {
-      position: absolute;
-      top: 250px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 100px;
-    }
-    #back-button, #cage-back-button, #cage-care-button, #cage-button {
-      margin: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    #back-button { background-color: #f08080; }
-    #back-button:hover { background-color: #e06666; }
+    body { font-family: sans-serif; background:#f0f8ff; padding:20px; text-align:center; }
+    h1 { margin: 0 0 12px; }
+    h2 { margin: 18px 0 8px; font-size: 20px; }
 
-    #cage-button { background-color: #90ee90; }
-    #cage-button:hover { background-color: #77dd77; }
+    /* Buttons */
+    .btn { display:inline-block; margin:8px; padding:10px 18px; font-size:18px; border:none; border-radius:10px; cursor:pointer; }
+    .btn-blue { background:var(--blue); }
+    .btn-blue:hover { background:var(--blue-hover); }
+    .btn-red { background:var(--red); }
+    .btn-red:hover { background:var(--red-hover); }
+    .btn-green { background:var(--green); }
+    .btn-green:hover { background:var(--green-hover); }
+    .btn-peach { background:var(--peach); }
+    .btn-peach:hover { background:var(--peach-hover); }
+    .btn[disabled] { opacity:.6; cursor:not-allowed; }
 
-    #cage-care-button { background-color: #add8e6; }
-    #cage-back-button { background-color: #f08080; }
+    /* Layout blocks */
+    .section { background:#fff; border:2px solid #e6f2ff; border-radius:12px; padding:12px; margin:8px auto; max-width:900px; }
+    .tools-wrap { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
 
-    .tool-button {
-      margin: 5px;
-      padding: 8px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      background-color: #ffe4b5;
-      cursor: pointer;
-    }
-    .tool-button:hover {
-      background-color: #ffd27f;
-    }
+    /* Care room & cages */
+    #care-room, #cage-room { display:none; }
+    .image-wrap { position:relative; display:inline-block; }
+    .image-wrap img { max-width:100%; height:auto; }
+
+    /* Overlays */
+    #animal-emoji { position:absolute; top:100px; right:200px; font-size:300px; pointer-events:none; }
+    #tool-emoji { position:absolute; top:250px; left:50%; transform:translateX(-50%); font-size:100px; }
+
+    /* Pet chips */
+    .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; margin:6px; border:2px solid var(--chip-border); border-radius:999px; background:var(--chip); font-size:18px; }
+    .chip .take-btn { margin-left:6px; font-size:14px; padding:6px 10px; border-radius:999px; }
+
+    /* Cages overlay positions */
+    .cage-slot { position:absolute; transform:translate(-50%, -50%); font-size:140px; background:transparent; border:none; cursor:pointer; }
+
+    /* Message / toast */
+    #message { position:fixed; left:50%; bottom:20px; transform:translateX(-50%); background:#333; color:#fff; padding:10px 16px; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.25); display:none; z-index:1000; }
+    #message button { margin-left:10px; }
   </style>
 </head>
 <body>
+  <div id="message"></div>
+
   <div id="pet-list">
     <h1>Pick a pet</h1>
-    <button class="pet-button" onclick="enterCareRoom('Hamster')">Hamster 🐹</button>
-    <button class="pet-button" onclick="enterCareRoom('Dog')">Dog 🐶</button>
-    <button class="pet-button" onclick="enterCareRoom('Cat')">Cat 🐱</button>
-    <button class="pet-button" onclick="enterCareRoom('Bird')">Bird 🐦</button>
-    <button class="pet-button" onclick="enterCareRoom('Fish')">Fish 🐟</button>
-    <button class="pet-button" onclick="enterCareRoom('Guinea pig')">Guinea pig 🐷</button>
+    <div class="section">
+      <h2>New pets</h2>
+      <div id="new-pets"></div>
+    </div>
+    <div class="section">
+      <h2>Pets in cages (<span id="cage-count">0</span>/5)</h2>
+      <div id="caged-pets"></div>
+      <div id="view-cages-wrap" style="margin-top:8px;"></div>
+    </div>
   </div>
 
   <div id="care-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="care_room_no_animal.png" alt="Vet care room">
-      <div id="animal-emoji"></div>
-      <div id="tool-emoji"></div>
+    <div class="section">
+      <div class="image-wrap">
+        <img src="care_room_no_animal.png" alt="Vet care room">
+        <div id="animal-emoji"></div>
+        <div id="tool-emoji"></div>
+      </div>
+      <div style="margin-top:10px;">
+        <button id="back-button" class="btn btn-red" onclick="goBack()">Back to pet list</button>
+        <button id="cage-button" class="btn btn-green" onclick="putInCage()">Put in Cage</button>
+      </div>
     </div>
-    <br>
-    <div>
-      <button class="tool-button" onclick="toggleTool('🩺')">Stethoscope</button>
-      <button class="tool-button" onclick="toggleTool('🔦')">Light</button>
-      <button class="tool-button" onclick="toggleTool('🩹')">Special bandaid</button>
-      <button class="tool-button" onclick="toggleTool('🪥')">Shaver</button>
-      <button class="tool-button" onclick="toggleTool('🛠️')">Hammer</button>
-      <button class="tool-button" onclick="toggleTool('🧴')">Cream</button>
-      <button class="tool-button" onclick="toggleTool('🧻')">Wet paper towel</button>
-      <button class="tool-button" onclick="toggleTool('🦴')">Cast</button>
-      <button class="tool-button" onclick="toggleTool('👂')">Ear cast</button>
-      <button class="tool-button" onclick="toggleTool('🦵')">Tail cast</button>
-      <button class="tool-button" onclick="toggleTool('🔍')">Otoscope</button>
-      <button class="tool-button" onclick="toggleTool('🛑')">Cone</button>
+
+    <div class="section">
+      <h2>Tools</h2>
+      <div class="tools-wrap">
+        <button class="btn btn-peach" onclick="toggleTool('🔍')">Otoscope</button>
+        <button class="btn btn-peach" onclick="toggleTool('📿')">Cone</button>
+        <button class="btn btn-peach" onclick="toggleTool('💡')">Light</button>
+        <button class="btn btn-peach" onclick="toggleTool('🩹')">Cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🦴')">Tail cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🧻')">Wet paper towel</button>
+        <button class="btn btn-peach" onclick="toggleTool('🧴')">Cream</button>
+        <button class="btn btn-peach" onclick="toggleTool('⭐')">Special bandaid</button>
+        <button class="btn btn-peach" onclick="toggleTool('✂️')">Shaver</button>
+        <button class="btn btn-peach" onclick="toggleTool('👂')">Ear cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🩺')">Stethoscope</button>
+        <button class="btn btn-peach" onclick="toggleTool('🔨')">Hammer</button>
+      </div>
     </div>
-    <br>
-    <button id="back-button" onclick="goBack()">Back</button>
-    <button id="cage-button" onclick="putInCage()">Put in Cage</button>
   </div>
 
   <div id="cage-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="cages.png" alt="Cages">
-      <div id="cage-animal-emoji"></div>
+    <div class="section">
+      <div class="image-wrap">
+        <img src="cages.png" alt="Cages">
+        <div id="cage-emoji-layer"></div>
+      </div>
+      <div style="margin-top:10px;">
+        <p style="margin:6px 0;">Tap a pet to bring it to the care room.</p>
+        <button id="cage-back-button" class="btn btn-red" onclick="goBackFromCage()">Back to pet list</button>
+      </div>
     </div>
-    <br>
-    <button id="cage-care-button" onclick="returnToCareRoom()">Back to Care Room</button>
-    <button id="cage-back-button" onclick="goBackFromCage()">Back to Pet List</button>
   </div>
 
   <script>
-    const petEmojis = {
-      "Hamster": "🐹",
-      "Dog": "🐕",
-      "Cat": "🐈",
-      "Bird": "🐦",
-      "Fish": "🐟",
-      "Guinea pig": "🐷" // Closest match
-    };
+    // Master pet list
+    const allPets = [
+      { id:'Hamster', name:'Hamster', emoji:'🐹' },
+      { id:'Dog', name:'Dog', emoji:'🐕' },
+      { id:'Cat', name:'Cat', emoji:'🐈' },
+      { id:'Bird', name:'Bird', emoji:'🐦' },
+      { id:'Fish', name:'Fish', emoji:'🐟' },
+      { id:'Guinea pig', name:'Guinea pig', emoji:'🐷' } // closest full-body
+    ];
 
-    let currentPet = null;
-    let currentTool = null;
+    // State
+    const MAX_CAGES = 5;
+    let cagedPets = [];            // array of pet ids
+    let currentPet = null;         // id
+    let currentTool = null;        // emoji
 
-    function enterCareRoom(petName) {
-      currentPet = petName;
-      document.getElementById('pet-list').style.display = 'none';
-      document.getElementById('cage-room').style.display = 'none';
-      document.getElementById('care-room').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = petEmojis[petName] || '';
+    // Helpers
+    const petById = id => allPets.find(p => p.id === id);
+
+    function showMessage(text, actionLabel = null, actionFn = null) {
+      const msg = document.getElementById('message');
+      msg.innerHTML = '';
+      const span = document.createElement('span');
+      span.textContent = text;
+      msg.appendChild(span);
+      if (actionLabel && typeof actionFn === 'function') {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-blue';
+        btn.textContent = actionLabel;
+        btn.onclick = () => { hideMessage(); actionFn(); };
+        msg.appendChild(btn);
+      }
+      msg.style.display = 'block';
+      clearTimeout(showMessage._timeout);
+      showMessage._timeout = setTimeout(() => hideMessage(), 2500);
     }
+    function hideMessage(){ document.getElementById('message').style.display = 'none'; }
 
-    function goBack() {
-      document.getElementById('care-room').style.display = 'none';
+    // Renderers
+    function renderPetList() {
       document.getElementById('pet-list').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = '';
-      document.getElementById('tool-emoji').textContent = '';
-      currentTool = null;
-    }
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'none';
 
-    function toggleTool(toolEmoji) {
-      if (currentTool === toolEmoji) {
-        currentTool = null;
-        document.getElementById('tool-emoji').textContent = '';
+      // New pets = not in cages
+      const newWrap = document.getElementById('new-pets');
+      newWrap.innerHTML = '';
+      allPets.filter(p => !cagedPets.includes(p.id)).forEach(p => {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-blue';
+        btn.textContent = `${p.name} ${p.emoji}`;
+        btn.onclick = () => enterCareRoom(p.id);
+        newWrap.appendChild(btn);
+      });
+
+      // Caged pets chips
+      document.getElementById('cage-count').textContent = cagedPets.length;
+      const cagedWrap = document.getElementById('caged-pets');
+      cagedWrap.innerHTML = '';
+      if (cagedPets.length === 0) {
+        const p = document.createElement('p');
+        p.textContent = 'No pets in cages yet.';
+        cagedWrap.appendChild(p);
+        document.getElementById('view-cages-wrap').innerHTML = '';
       } else {
-        currentTool = toolEmoji;
-        document.getElementById('tool-emoji').textContent = toolEmoji;
+        cagedPets.forEach(id => {
+          const p = petById(id);
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.innerHTML = `${p.emoji} ${p.name}`;
+          cagedWrap.appendChild(chip);
+        });
+        const viewBtn = document.createElement('button');
+        viewBtn.className = 'btn btn-green';
+        viewBtn.textContent = 'Go to cages';
+        viewBtn.onclick = () => openCages();
+        const wrap = document.getElementById('view-cages-wrap');
+        wrap.innerHTML = '';
+        wrap.appendChild(viewBtn);
       }
     }
 
-    function putInCage() {
-      document.getElementById('care-room').style.display = 'none';
-      document.getElementById('cage-room').style.display = 'block';
-      document.getElementById('cage-animal-emoji').textContent = petEmojis[currentPet] || '';
-      document.getElementById('cage-animal-emoji').style.position = 'absolute';
-      document.getElementById('cage-animal-emoji').style.top = '100px';
-      document.getElementById('cage-animal-emoji').style.left = '50%';
-      document.getElementById('cage-animal-emoji').style.transform = 'translateX(-50%)';
-      document.getElementById('cage-animal-emoji').style.fontSize = '200px';
-    }
-
-    function returnToCareRoom() {
+    function renderCareRoom() {
+      document.getElementById('pet-list').style.display = 'none';
       document.getElementById('cage-room').style.display = 'none';
       document.getElementById('care-room').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = petEmojis[currentPet] || '';
+
+      // Pet + tool
+      document.getElementById('animal-emoji').textContent = petById(currentPet)?.emoji || '';
+      document.getElementById('tool-emoji').textContent = currentTool || '';
+
+      // Update cage button state
+      const cageBtn = document.getElementById('cage-button');
+      if (cagedPets.includes(currentPet)) {
+        cageBtn.textContent = 'Already in cage';
+        cageBtn.disabled = true;
+      } else {
+        cageBtn.textContent = 'Put in Cage';
+        cageBtn.disabled = false;
+      }
+    }
+
+    const cagePositions = [
+      { top:'20%', left:'20%' },
+      { top:'20%', left:'80%' },
+      { top:'50%', left:'50%' },
+      { top:'80%', left:'20%' },
+      { top:'80%', left:'80%' },
+    ];
+
+    function renderCages() {
+      document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'block';
+
+      const layer = document.getElementById('cage-emoji-layer');
+      layer.innerHTML = '';
+
+      if (cagedPets.length === 0) {
+        showMessage('No pets in cages.');
+      }
+
+      cagedPets.forEach((id, idx) => {
+        const p = petById(id);
+        const pos = cagePositions[idx % cagePositions.length];
+        const btn = document.createElement('button');
+        btn.className = 'cage-slot';
+        btn.style.top = pos.top; btn.style.left = pos.left;
+        btn.textContent = p.emoji;
+        btn.title = `Take out ${p.name}`;
+        btn.onclick = () => takeFromCage(id);
+        layer.appendChild(btn);
+      });
+    }
+
+    // Navigation / actions
+    function enterCareRoom(petId) {
+      currentPet = petId;
+      renderCareRoom();
+    }
+
+    function goBack() {
+      currentTool = null;
+      renderPetList();
+    }
+
+    function toggleTool(toolEmoji) {
+      currentTool = (currentTool === toolEmoji) ? null : toolEmoji;
+      document.getElementById('tool-emoji').textContent = currentTool || '';
+    }
+
+    function putInCage() {
+      if (!currentPet) return;
+      if (cagedPets.includes(currentPet)) {
+        showMessage('This pet is already in a cage.', 'Go to cages', openCages);
+        return;
+      }
+      if (cagedPets.length >= MAX_CAGES) {
+        showMessage('Cages are full (5/5). Take one out first.', 'Go to cages', openCages);
+        return;
+      }
+      cagedPets.push(currentPet);
+      currentTool = null; // tools put away
+      renderCages();
+      renderPetList(); // keep list in sync if user goes back
+    }
+
+    function openCages() { renderCages(); }
+
+    function takeFromCage(petId) {
+      // Remove from cages and go straight to care room with that pet
+      cagedPets = cagedPets.filter(id => id !== petId);
+      currentPet = petId;
+      currentTool = null;
+      renderCareRoom();
+      renderPetList(); // keep counts current if user navigates back
     }
 
     function goBackFromCage() {
-      document.getElementById('cage-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'block';
-      document.getElementById('cage-animal-emoji').textContent = '';
-      currentPet = null;
+      renderPetList();
     }
+
+    // Init
+    renderPetList();
   </script>
 </body>
 </html>
