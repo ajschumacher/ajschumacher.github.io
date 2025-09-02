@@ -1127,6 +1127,7 @@
       setTimeout(() => petDisplay.classList.remove('happy'), 1000);
       
       // Show cage button
+      document.getElementById('back-button').style.display = 'none';
       document.getElementById('cage-button').style.display = 'inline-block';
       document.getElementById('drop-zone').classList.remove('active');
       
@@ -1303,6 +1304,7 @@
       
       document.getElementById('pet-display').textContent = pet.emoji;
       document.getElementById('owner-display').textContent = randomOwner;
+      document.getElementById('back-button').style.display = 'inline-block';
       document.getElementById('cage-button').style.display = 'none';
       document.getElementById('dialog-options').innerHTML = '';
       document.getElementById('progress-fill').style.width = '0%';
