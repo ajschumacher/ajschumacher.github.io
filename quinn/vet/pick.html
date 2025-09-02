@@ -5,260 +5,500 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quinn's Vet Game</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0f8ff;
-      padding: 20px;
-      text-align: center;
+    :root {
+      --blue:#add8e6; --blue-hover:#87ceeb;
+      --peach:#ffe4b5; --peach-hover:#ffd27f;
+      --red:#f08080; --red-hover:#e06666;
+      --green:#90ee90; --green-hover:#77dd77;
+      --chip:#fff; --chip-border:#ddd;
     }
-    .pet-button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background-color: #add8e6;
-      cursor: pointer;
+    body { font-family: sans-serif; background:#f0f8ff; padding:20px; text-align:center; }
+    h1 { margin: 0 0 12px; }
+    h2 { margin: 18px 0 8px; font-size: 20px; }
+
+    /* Buttons */
+    .btn { display:inline-block; margin:8px; padding:10px 18px; font-size:18px; border:none; border-radius:10px; cursor:pointer; }
+    .btn-blue { background:var(--blue); }
+    .btn-blue:hover { background:var(--blue-hover); }
+    .btn-red { background:var(--red); }
+    .btn-red:hover { background:var(--red-hover); }
+    .btn-green { background:var(--green); }
+    .btn-green:hover { background:var(--green-hover); }
+    .btn-peach { background:var(--peach); }
+    .btn-peach:hover { background:var(--peach-hover); }
+    .btn[disabled] { opacity:.6; cursor:not-allowed; }
+
+    /* Layout blocks */
+    .section { background:#fff; border:2px solid #e6f2ff; border-radius:12px; padding:12px; margin:8px auto; max-width:900px; }
+    .tools-wrap { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+
+    /* Care room & cages */
+    #care-room, #cage-room { display:none; }
+    .image-wrap { position:relative; display:inline-block; }
+    .image-wrap img { max-width:100%; height:auto; }
+
+    /* Overlays */
+    #animal-emoji { position:absolute; top:100px; right:200px; font-size:300px; pointer-events:none; }
+    #tool-emoji { 
+      position:absolute; 
+      top:250px; 
+      left:50%; 
+      transform:translateX(-50%); 
+      font-size:100px; 
+      cursor:grab;
+      user-select:none;
+      transition: all 0.2s ease;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
-    .pet-button:hover {
-      background-color: #87ceeb;
+
+    /* Drag and drop styles */
+    #tool-emoji:hover {
+      transform: translateX(-50%) scale(1.1);
+      filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.4));
     }
-    #care-room, #cage-room {
-      display: none;
-      position: relative;
+
+    #tool-emoji.dragging {
+      cursor: grabbing;
+      transform: translateX(-50%) scale(1.2);
+      z-index: 1000;
+      filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
     }
-    #care-room img, #cage-room img {
-      max-width: 100%;
-      height: auto;
+
+    #tool-emoji.pulse {
+      animation: pulseGlow 1.5s infinite;
     }
-    #animal-emoji {
+
+    @keyframes pulseGlow {
+      0%, 100% { 
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        transform: translateX(-50%) scale(1);
+      }
+      50% { 
+        filter: drop-shadow(3px 3px 8px rgba(255,215,0,0.8));
+        transform: translateX(-50%) scale(1.05);
+      }
+    }
+
+    /* Pet chips */
+    .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; margin:6px; border:2px solid var(--chip-border); border-radius:999px; background:var(--chip); font-size:18px; }
+    .chip .take-btn { margin-left:6px; font-size:14px; padding:6px 10px; border-radius:999px; }
+
+    /* Cages overlay positions */
+    .cage-slot { position:absolute; transform:translate(-50%, -50%); font-size:140px; background:transparent; border:none; cursor:pointer; }
+
+    /* Message / toast */
+    #message { position:fixed; left:50%; bottom:20px; transform:translateX(-50%); background:#333; color:#fff; padding:10px 16px; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.25); display:none; z-index:1000; }
+    #message button { margin-left:10px; }
+
+    /* Drag hint */
+    .drag-hint {
       position: absolute;
-      top: 100px;
-      right: 200px;
-      font-size: 300px;
-    }
-    #tool-emoji {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      font-size: 100px;
-      cursor: grab;
-      display: none;
-      user-select: none;
-    }
-    #back-button, #cage-button, #care-back-button {
-      margin: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    #back-button { background-color: #f08080; }
-    #back-button:hover { background-color: #e06666; }
-    #cage-button { background-color: #90ee90; }
-    #cage-button:hover { background-color: #77dd77; }
-    #care-back-button { background-color: #f08080; }
-    #care-back-button:hover { background-color: #e06666; }
-    .tool-button {
-      margin: 5px;
-      padding: 6px 12px;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,215,0,0.9);
+      color: #333;
+      padding: 8px 12px;
+      border-radius: 20px;
       font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      background-color: #ffe4b5;
-      cursor: pointer;
-    }
-    .tool-button:hover {
-      background-color: #ffd39b;
-    }
-    #cage-pets button {
-      font-size: 40px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin: 10px;
+      font-weight: bold;
+      display: none;
+      z-index: 100;
+      border: 2px solid #ffd700;
     }
   </style>
 </head>
 <body>
+  <div id="message"></div>
+
   <div id="pet-list">
     <h1>Pick a pet</h1>
-    <div id="new-pets">
-      <h2>New Pets</h2>
-      <button class="pet-button" onclick="enterCareRoom('Hamster')">Hamster 🐹</button>
-      <button class="pet-button" onclick="enterCareRoom('Dog')">Dog 🐶</button>
-      <button class="pet-button" onclick="enterCareRoom('Cat')">Cat 🐈</button>
-      <button class="pet-button" onclick="enterCareRoom('Bird')">Bird 🐦</button>
-      <button class="pet-button" onclick="enterCareRoom('Fish')">Fish 🐟</button>
-      <button class="pet-button" onclick="enterCareRoom('Guinea pig')">Guinea pig 🐷</button>
+    <div class="section">
+      <h2>New pets</h2>
+      <div id="new-pets"></div>
     </div>
-    <div id="caged-pets" style="display:none;">
-      <h2>Pets in Cages</h2>
-      <div id="caged-pets-list"></div>
+    <div class="section">
+      <h2>Pets in cages (<span id="cage-count">0</span>/5)</h2>
+      <div id="caged-pets"></div>
+      <div id="view-cages-wrap" style="margin-top:8px;"></div>
     </div>
   </div>
 
   <div id="care-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="care_room_no_animal.png" alt="Vet care room">
-      <div id="animal-emoji"></div>
-      <div id="tool-emoji"></div>
+    <div class="section">
+      <div class="image-wrap">
+        <img src="care_room_no_animal.png" alt="Vet care room">
+        <div id="animal-emoji"></div>
+        <div id="tool-emoji"></div>
+        <div class="drag-hint" id="drag-hint">🖱️ Drag me around!</div>
+      </div>
+      <div style="margin-top:10px;">
+        <button id="back-button" class="btn btn-red" onclick="goBack()">Back to pet list</button>
+        <button id="cage-button" class="btn btn-green" onclick="putInCage()">Put in Cage</button>
+      </div>
     </div>
-    <br>
-    <div id="tool-buttons">
-      <button class="tool-button" onclick="toggleTool('🩺')">Stethoscope</button>
-      <button class="tool-button" onclick="toggleTool('🔦')">Light</button>
-      <button class="tool-button" onclick="toggleTool('🪥')">Shaver</button>
-      <button class="tool-button" onclick="toggleTool('🩹')">Special bandaid</button>
-      <button class="tool-button" onclick="toggleTool('🛠️')">Hammer</button>
-      <button class="tool-button" onclick="toggleTool('🧴')">Cream</button>
-      <button class="tool-button" onclick="toggleTool('📡')">Cone</button>
-      <button class="tool-button" onclick="toggleTool('📏')">Cast</button>
-      <button class="tool-button" onclick="toggleTool('🪢')">Tail cast</button>
-      <button class="tool-button" onclick="toggleTool('🧻')">Wet paper towel</button>
-      <button class="tool-button" onclick="toggleTool('👂')">Ear cast</button>
-      <button class="tool-button" onclick="toggleTool('🔍')">Otoscope</button>
+
+    <div class="section">
+      <h2>Tools</h2>
+      <div class="tools-wrap">
+        <button class="btn btn-peach" onclick="toggleTool('🔍')">Otoscope</button>
+        <button class="btn btn-peach" onclick="toggleTool('🔿')">Cone</button>
+        <button class="btn btn-peach" onclick="toggleTool('💡')">Light</button>
+        <button class="btn btn-peach" onclick="toggleTool('🩹')">Cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🦴')">Tail cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🧻')">Wet paper towel</button>
+        <button class="btn btn-peach" onclick="toggleTool('🧴')">Cream</button>
+        <button class="btn btn-peach" onclick="toggleTool('⭐')">Special bandaid</button>
+        <button class="btn btn-peach" onclick="toggleTool('✂️')">Shaver</button>
+        <button class="btn btn-peach" onclick="toggleTool('👂')">Ear cast</button>
+        <button class="btn btn-peach" onclick="toggleTool('🩺')">Stethoscope</button>
+        <button class="btn btn-peach" onclick="toggleTool('🔨')">Hammer</button>
+      </div>
     </div>
-    <button id="cage-button" onclick="putInCage()">Put in Cage</button>
-    <button id="back-button" onclick="goBack()">Back</button>
   </div>
 
   <div id="cage-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="cages.png" alt="Pet cages">
-      <div id="cage-pets"></div>
+    <div class="section">
+      <div class="image-wrap">
+        <img src="cages.png" alt="Cages">
+        <div id="cage-emoji-layer"></div>
+      </div>
+      <div style="margin-top:10px;">
+        <p style="margin:6px 0;">Tap a pet to bring it to the care room.</p>
+        <button id="cage-back-button" class="btn btn-red" onclick="goBackFromCage()">Back to pet list</button>
+      </div>
     </div>
-    <br>
-    <button id="care-back-button" onclick="exitCages()">Back to Pet List</button>
   </div>
 
   <script>
-    const petEmojis = {
-      "Hamster": "🐹",
-      "Dog": "🐕",
-      "Cat": "🐈",
-      "Bird": "🐦",
-      "Fish": "🐟",
-      "Guinea pig": "🐷"
-    };
+    // Master pet list
+    const allPets = [
+      { id:'Hamster', name:'Hamster', emoji:'🐹' },
+      { id:'Dog', name:'Dog', emoji:'🐕' },
+      { id:'Cat', name:'Cat', emoji:'🐈' },
+      { id:'Bird', name:'Bird', emoji:'🦆' },
+      { id:'Fish', name:'Fish', emoji:'🐟' },
+      { id:'Guinea pig', name:'Guinea pig', emoji:'🐷' } // closest full-body
+    ];
 
-    let currentPet = null;
-    let cages = [];
+    // State
+    const MAX_CAGES = 5;
+    let cagedPets = [];            // array of pet ids
+    let currentPet = null;         // id
+    let currentTool = null;        // emoji
 
-    function refreshPetList() {
-      const cagedDiv = document.getElementById('caged-pets');
-      const listDiv = document.getElementById('caged-pets-list');
-      if (cages.length > 0) {
-        cagedDiv.style.display = 'block';
-        listDiv.innerHTML = '';
-        cages.forEach((pet, i) => {
-          const btn = document.createElement('button');
-          btn.textContent = petEmojis[pet];
-          btn.onclick = () => enterCareRoom(pet);
-          listDiv.appendChild(btn);
-        });
-      } else {
-        cagedDiv.style.display = 'none';
+    // Drag and drop state
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
+
+    // Helpers
+    const petById = id => allPets.find(p => p.id === id);
+
+    function showMessage(text, actionLabel = null, actionFn = null) {
+      const msg = document.getElementById('message');
+      msg.innerHTML = '';
+      const span = document.createElement('span');
+      span.textContent = text;
+      msg.appendChild(span);
+      if (actionLabel && typeof actionFn === 'function') {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-blue';
+        btn.textContent = actionLabel;
+        btn.onclick = () => { hideMessage(); actionFn(); };
+        msg.appendChild(btn);
+      }
+      msg.style.display = 'block';
+      clearTimeout(showMessage._timeout);
+      showMessage._timeout = setTimeout(() => hideMessage(), 2500);
+    }
+    function hideMessage(){ document.getElementById('message').style.display = 'none'; }
+
+    // Drag and drop functions
+    function initDragAndDrop() {
+      const toolEmoji = document.getElementById('tool-emoji');
+      const dragHint = document.getElementById('drag-hint');
+
+      // Mouse events
+      toolEmoji.addEventListener('mousedown', startDrag);
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', endDrag);
+
+      // Touch events for mobile
+      toolEmoji.addEventListener('touchstart', startDragTouch, { passive: false });
+      document.addEventListener('touchmove', dragTouch, { passive: false });
+      document.addEventListener('touchend', endDrag);
+
+      function startDrag(e) {
+        if (!currentTool) return;
+        e.preventDefault();
+        isDragging = true;
+        
+        const rect = toolEmoji.getBoundingClientRect();
+        dragOffset.x = e.clientX - rect.left - rect.width / 2;
+        dragOffset.y = e.clientY - rect.top - rect.height / 2;
+        
+        toolEmoji.classList.add('dragging');
+        dragHint.style.display = 'none';
+      }
+
+      function startDragTouch(e) {
+        if (!currentTool) return;
+        e.preventDefault();
+        isDragging = true;
+        
+        const rect = toolEmoji.getBoundingClientRect();
+        const touch = e.touches[0];
+        dragOffset.x = touch.clientX - rect.left - rect.width / 2;
+        dragOffset.y = touch.clientY - rect.top - rect.height / 2;
+        
+        toolEmoji.classList.add('dragging');
+        dragHint.style.display = 'none';
+      }
+
+      function drag(e) {
+        if (!isDragging || !currentTool) return;
+        e.preventDefault();
+        
+        const imageWrap = document.querySelector('.image-wrap');
+        const rect = imageWrap.getBoundingClientRect();
+        
+        let x = e.clientX - rect.left - dragOffset.x;
+        let y = e.clientY - rect.top - dragOffset.y;
+        
+        // Keep tool within image bounds
+        x = Math.max(50, Math.min(x, rect.width - 50));
+        y = Math.max(50, Math.min(y, rect.height - 50));
+        
+        toolEmoji.style.left = x + 'px';
+        toolEmoji.style.top = y + 'px';
+        toolEmoji.style.transform = 'none';
+      }
+
+      function dragTouch(e) {
+        if (!isDragging || !currentTool) return;
+        e.preventDefault();
+        
+        const imageWrap = document.querySelector('.image-wrap');
+        const rect = imageWrap.getBoundingClientRect();
+        const touch = e.touches[0];
+        
+        let x = touch.clientX - rect.left - dragOffset.x;
+        let y = touch.clientY - rect.top - dragOffset.y;
+        
+        // Keep tool within image bounds
+        x = Math.max(50, Math.min(x, rect.width - 50));
+        y = Math.max(50, Math.min(y, rect.height - 50));
+        
+        toolEmoji.style.left = x + 'px';
+        toolEmoji.style.top = y + 'px';
+        toolEmoji.style.transform = 'none';
+      }
+
+      function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        toolEmoji.classList.remove('dragging');
       }
     }
 
-    function enterCareRoom(petName) {
-      currentPet = petName;
+    // Renderers
+    function renderPetList() {
+      document.getElementById('pet-list').style.display = 'block';
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'none';
+
+      // New pets = not in cages
+      const newWrap = document.getElementById('new-pets');
+      newWrap.innerHTML = '';
+      allPets.filter(p => !cagedPets.includes(p.id)).forEach(p => {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-blue';
+        btn.textContent = `${p.name} ${p.emoji}`;
+        btn.onclick = () => enterCareRoom(p.id);
+        newWrap.appendChild(btn);
+      });
+
+      // Caged pets chips
+      document.getElementById('cage-count').textContent = cagedPets.length;
+      const cagedWrap = document.getElementById('caged-pets');
+      cagedWrap.innerHTML = '';
+      if (cagedPets.length === 0) {
+        const p = document.createElement('p');
+        p.textContent = 'No pets in cages yet.';
+        cagedWrap.appendChild(p);
+        document.getElementById('view-cages-wrap').innerHTML = '';
+      } else {
+        cagedPets.forEach(id => {
+          const p = petById(id);
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.innerHTML = `${p.emoji} ${p.name}`;
+          cagedWrap.appendChild(chip);
+        });
+        const viewBtn = document.createElement('button');
+        viewBtn.className = 'btn btn-green';
+        viewBtn.textContent = 'Go to cages';
+        viewBtn.onclick = () => openCages();
+        const wrap = document.getElementById('view-cages-wrap');
+        wrap.innerHTML = '';
+        wrap.appendChild(viewBtn);
+      }
+    }
+
+    function renderCareRoom() {
       document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'none';
       document.getElementById('care-room').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = petEmojis[petName] || '';
+
+      // Pet + tool
+      document.getElementById('animal-emoji').textContent = petById(currentPet)?.emoji || '';
+      const toolEmoji = document.getElementById('tool-emoji');
+      toolEmoji.textContent = currentTool || '';
+      
+      // Reset tool position and show drag hint if tool is present
+      if (currentTool) {
+        toolEmoji.style.left = '50%';
+        toolEmoji.style.top = '250px';
+        toolEmoji.style.transform = 'translateX(-50%)';
+        toolEmoji.classList.add('pulse');
+        
+        // Show drag hint after a short delay
+        setTimeout(() => {
+          const dragHint = document.getElementById('drag-hint');
+          if (currentTool) {
+            dragHint.style.display = 'block';
+            setTimeout(() => {
+              dragHint.style.display = 'none';
+            }, 3000);
+          }
+        }, 500);
+      } else {
+        toolEmoji.classList.remove('pulse');
+        document.getElementById('drag-hint').style.display = 'none';
+      }
+
+      // Update cage button state
+      const cageBtn = document.getElementById('cage-button');
+      if (cagedPets.includes(currentPet)) {
+        cageBtn.textContent = 'Already in cage';
+        cageBtn.disabled = true;
+      } else {
+        cageBtn.textContent = 'Put in Cage';
+        cageBtn.disabled = false;
+      }
+    }
+
+    const cagePositions = [
+      { top:'20%', left:'20%' },
+      { top:'20%', left:'80%' },
+      { top:'50%', left:'50%' },
+      { top:'80%', left:'20%' },
+      { top:'80%', left:'80%' },
+    ];
+
+    function renderCages() {
+      document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'block';
+
+      const layer = document.getElementById('cage-emoji-layer');
+      layer.innerHTML = '';
+
+      if (cagedPets.length === 0) {
+        showMessage('No pets in cages.');
+      }
+
+      cagedPets.forEach((id, idx) => {
+        const p = petById(id);
+        const pos = cagePositions[idx % cagePositions.length];
+        const btn = document.createElement('button');
+        btn.className = 'cage-slot';
+        btn.style.top = pos.top; btn.style.left = pos.left;
+        btn.textContent = p.emoji;
+        btn.title = `Take out ${p.name}`;
+        btn.onclick = () => takeFromCage(id);
+        layer.appendChild(btn);
+      });
+    }
+
+    // Navigation / actions
+    function enterCareRoom(petId) {
+      currentPet = petId;
+      renderCareRoom();
     }
 
     function goBack() {
-      document.getElementById('care-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = '';
-      document.getElementById('tool-emoji').style.display = 'none';
-      refreshPetList();
+      currentTool = null;
+      renderPetList();
+    }
+
+    function toggleTool(toolEmoji) {
+      const toolEmojiEl = document.getElementById('tool-emoji');
+      
+      if (currentTool === toolEmoji) {
+        // Deselecting current tool
+        currentTool = null;
+        toolEmojiEl.classList.remove('pulse');
+        document.getElementById('drag-hint').style.display = 'none';
+      } else {
+        // Selecting new tool
+        currentTool = toolEmoji;
+        toolEmojiEl.style.left = '50%';
+        toolEmojiEl.style.top = '250px';
+        toolEmojiEl.style.transform = 'translateX(-50%)';
+        toolEmojiEl.classList.add('pulse');
+        
+        // Show drag hint for new tool
+        setTimeout(() => {
+          const dragHint = document.getElementById('drag-hint');
+          if (currentTool) {
+            dragHint.style.display = 'block';
+            setTimeout(() => {
+              dragHint.style.display = 'none';
+            }, 3000);
+          }
+        }, 500);
+      }
+      
+      document.getElementById('tool-emoji').textContent = currentTool || '';
     }
 
     function putInCage() {
       if (!currentPet) return;
-      if (cages.length >= 5) {
-        alert("All cages are full! Please treat or release a pet before adding another.");
+      if (cagedPets.includes(currentPet)) {
+        showMessage('This pet is already in a cage.', 'Go to cages', openCages);
         return;
       }
-      if (!cages.includes(currentPet)) {
-        cages.push(currentPet);
-      }
-      goToCages();
-    }
-
-    function goToCages() {
-      document.getElementById('care-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'none';
-      document.getElementById('cage-room').style.display = 'block';
-      const cageDiv = document.getElementById('cage-pets');
-      cageDiv.innerHTML = '';
-      cages.forEach((pet, i) => {
-        const btn = document.createElement('button');
-        btn.textContent = petEmojis[pet];
-        btn.onclick = () => enterCareRoom(pet);
-        cageDiv.appendChild(btn);
-      });
-    }
-
-    function exitCages() {
-      document.getElementById('cage-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'block';
-      refreshPetList();
-    }
-
-    function toggleTool(emoji) {
-      const toolDiv = document.getElementById('tool-emoji');
-      if (toolDiv.textContent === emoji && toolDiv.style.display === 'block') {
-        toolDiv.style.display = 'none';
-        toolDiv.textContent = '';
+      if (cagedPets.length >= MAX_CAGES) {
+        showMessage('Cages are full (5/5). Take one out first.', 'Go to cages', openCages);
         return;
       }
-      toolDiv.textContent = emoji;
-      toolDiv.style.display = 'block';
-      toolDiv.style.left = '50%';
-      toolDiv.style.top = '50%';
+      cagedPets.push(currentPet);
+      currentTool = null; // tools put away
+      renderCages();
+      renderPetList(); // keep list in sync if user goes back
     }
 
-    // Dragging tool
-    let isDragging = false;
-    let offsetX, offsetY;
+    function openCages() { renderCages(); }
 
-    const toolDiv = document.getElementById('tool-emoji');
-    toolDiv.addEventListener('mousedown', startDrag);
-    toolDiv.addEventListener('touchstart', startDrag);
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
-
-    function startDrag(e) {
-      isDragging = true;
-      const rect = toolDiv.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      offsetX = clientX - rect.left;
-      offsetY = clientY - rect.top;
+    function takeFromCage(petId) {
+      // Remove from cages and go straight to care room with that pet
+      cagedPets = cagedPets.filter(id => id !== petId);
+      currentPet = petId;
+      currentTool = null;
+      renderCareRoom();
+      renderPetList(); // keep counts current if user navigates back
     }
 
-    function drag(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      toolDiv.style.left = (clientX - offsetX) + 'px';
-      toolDiv.style.top = (clientY - offsetY) + 'px';
+    function goBackFromCage() {
+      renderPetList();
     }
 
-    function endDrag() {
-      isDragging = false;
-    }
-
-    refreshPetList();
+    // Init
+    renderPetList();
+    
+    // Initialize drag and drop when page loads
+    document.addEventListener('DOMContentLoaded', initDragAndDrop);
+    initDragAndDrop(); // Also call immediately in case DOM is already loaded
   </script>
 </body>
 </html>
