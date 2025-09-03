@@ -361,7 +361,7 @@
     .star {
       position: absolute;
       font-size: 40px;
-      animation: starBurst 1s ease-out forwards;
+      animation: starBurst 6s ease-out forwards;
     }
     
     @keyframes starBurst {
@@ -1055,7 +1055,7 @@
         el.style.top = '0px';
         const angle = (i * 72) * Math.PI / 180;
         const distance = 150;
-        el.style.animation = `starBurst 1s ease-out forwards`;
+        el.style.animation = `starBurst 6s ease-out forwards`;
         el.style.setProperty('--end-x', `${Math.cos(angle) * distance}px`);
         el.style.setProperty('--end-y', `${Math.sin(angle) * distance}px`);
         
@@ -1139,6 +1139,16 @@ function showSpeech(text, from = 'owner') {
 
 /* end add as per ChatGPT */
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Generate a random index from 0 to i
+    const j = Math.floor(Math.random() * (i + 1));
+
+    // Swap elements at indices i and j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
     function showDialogOptions() {
       if (!currentProblem || dialogIndex >= currentProblem.dialog.length) {
@@ -1151,6 +1161,8 @@ function showSpeech(text, from = 'owner') {
       
       const optionsDiv = document.getElementById('dialog-options');
       optionsDiv.innerHTML = '';
+
+//shuffleArray(dialog.options);
       
       dialog.options.forEach((option, index) => {
         const btn = document.createElement('button');
@@ -1162,6 +1174,8 @@ function showSpeech(text, from = 'owner') {
     }
 
     function handleDialogChoice(option, index) {
+        showSpeech(option.text, 'vet');
+
         showSpeech(option.response, 'owner');
       
       if (option.correct) {
@@ -1324,7 +1338,7 @@ function showSpeech(text, from = 'owner') {
       }
       
       if (selectedTool === correctTool) {
-        showSpeech(message, 'owner');
+        showSpeech(message, 'vet');
         showMessage("✅ Correct tool!");
         setTimeout(() => moveToNextStage(), 2000);
       } else {
@@ -1408,6 +1422,7 @@ function showSpeech(text, from = 'owner') {
       document.getElementById('chat-window').style.display = 'none';
       document.getElementById('drop-zone').classList.remove('active');
       renderPetList();
+document.getElementById('chat-messages').innerHTML = '';
     }
 
     function putInCage() {
@@ -1419,6 +1434,9 @@ function showSpeech(text, from = 'owner') {
       cagedPets.push(currentPet);
       showMessage('Pet moved to recovery! 🏥');
       setTimeout(() => goBack(), 1000);
+
+        document.getElementById('chat-messages').innerHTML = '';
+
     }
 
     function openCages() {
@@ -1465,6 +1483,9 @@ function showSpeech(text, from = 'owner') {
     }
 
     function goBackFromCage() {
+
+document.getElementById('chat-messages').innerHTML = '';
+
       renderPetList();
     }
 
