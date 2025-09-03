@@ -163,6 +163,7 @@
     }
     
     /* Speech bubble */
+/* removing as per ChatGPT
     .speech-bubble {
       position: absolute;
       top: 20%;
@@ -188,6 +189,58 @@
       border-right: 15px solid transparent;
       border-top: 15px solid white;
     }
+*/
+
+/* add as per ChatGPT */
+
+/* Chat window */
+.chat-window {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  bottom: 15%;
+  width: 320px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  animation: fadeIn 0.3s;
+}
+
+.chat-bubble.owner {
+  align-self: flex-start;
+  background: #f1f5f9;
+  color: #374151;
+  border-top-left-radius: 0;
+}
+
+.chat-bubble.vet {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-top-right-radius: 0;
+}
+
+/* end add as per ChatGPT */
     
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
@@ -411,9 +464,21 @@
         <div class="drop-zone" id="drop-zone">Drop here!</div>
         <div id="pet-display"></div>
         <div id="owner-display"></div>
+
+<!-- removing as per ChatGPT
         <div class="speech-bubble" id="speech-bubble" style="display:none;">
           <div id="speech-text"></div>
         </div>
+-->
+
+<!-- add as per ChatGPT -->
+
+<div class="chat-window" id="chat-window" style="display:none;">
+  <div class="chat-messages" id="chat-messages"></div>
+</div>
+
+<!-- end add as per ChatGPT -->
+
         <div class="success-stars" id="success-stars"></div>
       </div>
       
@@ -1036,7 +1101,7 @@
       
       currentStage = 'initial';
       dialogIndex = 0;
-      showSpeech(currentProblem.initial);
+      showSpeech(currentProblem.initial, 'owner');
       
       setTimeout(() => {
         currentStage = 'dialog';
@@ -1045,6 +1110,7 @@
       }, 2000);
     }
 
+/* removing as per ChatGPT
     function showSpeech(text) {
       const bubble = document.getElementById('speech-bubble');
       const speechText = document.getElementById('speech-text');
@@ -1053,6 +1119,26 @@
       bubble.style.animation = 'none';
       setTimeout(() => bubble.style.animation = 'fadeIn 0.5s', 10);
     }
+*/
+
+/* adding as per ChatGPT */
+
+function showSpeech(text, from = 'owner') {
+  const chatWindow = document.getElementById('chat-window');
+  const chatMessages = document.getElementById('chat-messages');
+  chatWindow.style.display = 'flex';
+
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${from}`;
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
+
+  // Scroll to latest
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/* end add as per ChatGPT */
+
 
     function showDialogOptions() {
       if (!currentProblem || dialogIndex >= currentProblem.dialog.length) {
@@ -1061,7 +1147,7 @@
       }
       
       const dialog = currentProblem.dialog[dialogIndex];
-      showSpeech(dialog.question);
+      showSpeech(dialog.question, 'vet');
       
       const optionsDiv = document.getElementById('dialog-options');
       optionsDiv.innerHTML = '';
@@ -1076,7 +1162,7 @@
     }
 
     function handleDialogChoice(option, index) {
-      showSpeech(option.response);
+        showSpeech(option.response, 'owner');
       
       if (option.correct) {
         dialogIndex++;
@@ -1102,12 +1188,12 @@
       
       if (currentStage === 'dialog') {
         currentStage = 'diagnose';
-        showSpeech("Now use the right tool to examine your patient!");
+        showSpeech("Now I'll use the right tool to examine your patient!", 'vet');
         enableToolDragging();
         document.getElementById('drop-zone').classList.add('active');
       } else if (currentStage === 'diagnose') {
         currentStage = 'treat';
-        showSpeech("Great diagnosis! Now use the right tool to treat!");
+        showSpeech("Great diagnosis! Can you use the right tool to treat?", 'owner');
         document.getElementById('drop-zone').classList.add('active');
       } else if (currentStage === 'treat') {
         completeProblem();
@@ -1118,7 +1204,7 @@
     function completeProblem() {
       currentStage = 'complete';
       problemsSolved[currentProblem.id] = true;
-      showSpeech(currentProblem.success);
+      showSpeech(currentProblem.success, 'owner');
       createStarBurst();
       
       // Make pet happy
@@ -1238,12 +1324,12 @@
       }
       
       if (selectedTool === correctTool) {
-        showSpeech(message);
+        showSpeech(message, 'owner');
         showMessage("✅ Correct tool!");
         setTimeout(() => moveToNextStage(), 2000);
       } else {
         showMessage("❌ Try a different tool!");
-        showSpeech("Hmm, that's not quite right. Try another tool!");
+        showSpeech("Hmm, that's not quite right. Try another tool!", 'owner');
       }
     }
 
@@ -1319,7 +1405,7 @@
       currentPet = null;
       currentProblem = null;
       selectedTool = null;
-      document.getElementById('speech-bubble').style.display = 'none';
+      document.getElementById('chat-window').style.display = 'none';
       document.getElementById('drop-zone').classList.remove('active');
       renderPetList();
     }
