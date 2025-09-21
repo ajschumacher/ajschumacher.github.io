@@ -3,262 +3,1494 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quinn's Vet Game</title>
+  <title>Quinn's Vet Adventure</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0f8ff;
+    :root {
+      --blue:#6db3f2; --blue-hover:#5aa3e2;
+      --peach:#ffb347; --peach-hover:#ff9f1a;
+      --red:#ff6b6b; --red-hover:#ff5252;
+      --green:#4ade80; --green-hover:#22c55e;
+      --purple:#c084fc; --purple-hover:#a855f7;
+      --yellow:#fbbf24; --yellow-hover:#f59e0b;
+      --chip:#fff; --chip-border:#e5e7eb;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       padding: 20px;
+    }
+    
+    h1 { 
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      font-size: 2.5em;
       text-align: center;
     }
-    .pet-button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
+    
+    h2 { 
+      margin: 15px 0 10px;
+      font-size: 1.3em;
+      color: #4b5563;
+    }
+
+    /* Buttons */
+    .btn { 
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 24px;
       font-size: 18px;
+      font-weight: bold;
       border: none;
-      border-radius: 8px;
-      background-color: #add8e6;
+      border-radius: 15px;
       cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transform: translateY(0);
     }
-    .pet-button:hover {
-      background-color: #87ceeb;
+    
+    .btn:hover:not([disabled]) { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
-    #care-room, #cage-room {
-      display: none;
+    
+    .btn:active:not([disabled]) { transform: translateY(0); }
+    
+    .btn-blue { background: var(--blue); color: white; }
+    .btn-blue:hover { background: var(--blue-hover); }
+    .btn-red { background: var(--red); color: white; }
+    .btn-red:hover { background: var(--red-hover); }
+    .btn-green { background: var(--green); color: white; }
+    .btn-green:hover { background: var(--green-hover); }
+    .btn-peach { background: var(--peach); color: white; }
+    .btn-peach:hover { background: var(--peach-hover); }
+    .btn-purple { background: var(--purple); color: white; }
+    .btn-purple:hover { background: var(--purple-hover); }
+    .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+    /* Layout blocks */
+    .section { 
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 1000px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .tools-wrap { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .tool-btn {
       position: relative;
+      padding: 15px 10px;
+      background: linear-gradient(135deg, var(--peach), var(--yellow));
+      transition: all 0.3s;
+      cursor: grab;
     }
-    #care-room img, #cage-room img {
+    
+    .tool-btn:active { cursor: grabbing; }
+    
+    .tool-btn.selected {
+      background: linear-gradient(135deg, var(--green), #10b981);
+      animation: pulse 1s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Care room & cages */
+    #care-room, #cage-room { display: none; }
+    
+    .care-container {
+      position: relative;
+      background: linear-gradient(to bottom, #e0f2fe, #fef3c7);
+      border-radius: 20px;
+      padding: 20px;
+      min-height: 400px;
+    }
+    
+    .image-wrap { 
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .image-wrap img { 
       max-width: 100%;
       height: auto;
+      border-radius: 15px;
     }
-    #animal-emoji {
+
+    /* Pet and owner display */
+    #pet-display {
       position: absolute;
-      top: 100px;
-      right: 200px;
-      font-size: 300px;
-    }
-    #tool-emoji {
-      position: absolute;
-      left: 50%;
       top: 50%;
-      font-size: 100px;
-      cursor: grab;
-      display: none;
-      user-select: none;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      transition: all 0.5s;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
     }
-    #back-button, #cage-button, #care-back-button {
-      margin: 10px;
-      padding: 8px 16px;
+    
+    #pet-display.happy {
+      animation: bounce 0.5s ease-out;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -60%) scale(1.1); }
+    }
+    
+    #owner-display {
+      position: absolute;
+      top: 30%;
+      right: 20%;
+      font-size: 80px;
+      transform: translate(50%, -50%);
+    }
+    
+    /* Speech bubble */
+/* removing as per ChatGPT
+    .speech-bubble {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      background: white;
+      border-radius: 20px;
+      padding: 15px 20px;
+      max-width: 300px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
       font-size: 16px;
+      line-height: 1.4;
+      animation: fadeIn 0.5s;
+    }
+    
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 30px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid white;
+    }
+*/
+
+/* add as per ChatGPT */
+
+/* Chat window */
+.chat-window {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  bottom: 15%;
+  width: 320px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  animation: fadeIn 0.3s;
+}
+
+.chat-bubble.owner {
+  align-self: flex-start;
+  background: #f1f5f9;
+  color: #374151;
+  border-top-left-radius: 0;
+}
+
+.chat-bubble.vet {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-top-right-radius: 0;
+}
+
+/* end add as per ChatGPT */
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Dialog options */
+    .dialog-options {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .dialog-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 15px;
+      border-radius: 15px;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
+      font-size: 16px;
+      text-align: left;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    #back-button { background-color: #f08080; }
-    #back-button:hover { background-color: #e06666; }
-    #cage-button { background-color: #90ee90; }
-    #cage-button:hover { background-color: #77dd77; }
-    #care-back-button { background-color: #f08080; }
-    #care-back-button:hover { background-color: #e06666; }
-    .tool-button {
-      margin: 5px;
-      padding: 6px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 6px;
-      background-color: #ffe4b5;
+    
+    .dialog-btn:hover {
+      transform: translateX(5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    
+    /* Tool overlay for dragging */
+    #tool-overlay {
+      position: absolute;
+      pointer-events: none;
+      font-size: 80px;
+      z-index: 1000;
+      transition: none;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    }
+    
+    .drop-zone {
+      position: absolute;
+      top: 40%;
+      left: 25%;
+      width: 150px;
+      height: 150px;
+      border: 3px dashed #4ade80;
+      border-radius: 20px;
+      background: rgba(74, 222, 128, 0.1);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #22c55e;
+      font-weight: bold;
+      animation: glow 2s infinite;
+    }
+    
+    .drop-zone.active {
+      display: flex;
+    }
+    
+    .drop-zone.hover {
+      background: rgba(74, 222, 128, 0.3);
+      border-color: #22c55e;
+    }
+    
+    @keyframes glow {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    /* Pet chips */
+    .chip { 
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      margin: 6px;
+      border: 2px solid var(--chip-border);
+      border-radius: 999px;
+      background: var(--chip);
+      font-size: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Cages overlay positions */
+    .cage-slot { 
+      position: absolute;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      background: rgba(255,255,255,0.9);
+      border: 3px solid #4ade80;
+      border-radius: 20px;
+      padding: 10px;
       cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    .tool-button:hover {
-      background-color: #ffd39b;
+    
+    .cage-slot:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: white;
     }
-    #cage-pets button {
+
+    /* Success animation */
+    .success-stars {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    
+    .star {
+      position: absolute;
       font-size: 40px;
-      background: none;
+      animation: starBurst 6s ease-out forwards;
+    }
+    
+    @keyframes starBurst {
+      0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    
+    /* Message toast */
+    #message { 
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 2000;
+      font-size: 18px;
+      font-weight: bold;
+      animation: slideUp 0.5s ease-out;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+    
+    #message button { 
+      margin-left: 15px;
+      background: white;
+      color: #667eea;
+      padding: 5px 15px;
+      border-radius: 20px;
       border: none;
       cursor: pointer;
-      margin: 10px;
+      font-weight: bold;
+    }
+    
+    /* Progress indicator */
+    .progress-bar {
+      background: #e5e7eb;
+      height: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+      border-radius: 10px;
+      transition: width 0.5s ease-out;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .tools-wrap {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+      
+      .speech-bubble {
+        max-width: 200px;
+        font-size: 14px;
+      }
+      
+      #pet-display { font-size: 100px; }
+      #owner-display { font-size: 60px; }
     }
   </style>
 </head>
 <body>
+  <div id="message"></div>
+  <div id="tool-overlay"></div>
+
   <div id="pet-list">
-    <h1>Pick a pet</h1>
-    <div id="new-pets">
-      <h2>New Pets</h2>
-      <button class="pet-button" onclick="enterCareRoom('Hamster')">Hamster 🐹</button>
-      <button class="pet-button" onclick="enterCareRoom('Dog')">Dog 🐶</button>
-      <button class="pet-button" onclick="enterCareRoom('Cat')">Cat 🐈</button>
-      <button class="pet-button" onclick="enterCareRoom('Bird')">Bird 🐦</button>
-      <button class="pet-button" onclick="enterCareRoom('Fish')">Fish 🐟</button>
-      <button class="pet-button" onclick="enterCareRoom('Guinea pig')">Guinea pig 🐷</button>
+    <h1>🏥 Quinn's Vet Adventure 🏥</h1>
+    <div class="section">
+      <h2>🆕 New Patients</h2>
+      <div id="new-pets"></div>
     </div>
-    <div id="caged-pets" style="display:none;">
-      <h2>Pets in Cages</h2>
-      <div id="caged-pets-list"></div>
+    <div class="section">
+      <h2>🏠 Pets in Recovery (<span id="cage-count">0</span>/5)</h2>
+      <div id="caged-pets"></div>
+      <div id="view-cages-wrap" style="margin-top:15px;"></div>
     </div>
   </div>
 
   <div id="care-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="care_room_no_animal.png" alt="Vet care room">
-      <div id="animal-emoji"></div>
-      <div id="tool-emoji"></div>
+    <h1>🩺 Examination Room 🩺</h1>
+    <div class="section">
+      <div class="care-container">
+        <div class="drop-zone" id="drop-zone">Drop here!</div>
+        <div id="pet-display"></div>
+        <div id="owner-display"></div>
+
+<!-- removing as per ChatGPT
+        <div class="speech-bubble" id="speech-bubble" style="display:none;">
+          <div id="speech-text"></div>
+        </div>
+-->
+
+<!-- add as per ChatGPT -->
+
+<div class="chat-window" id="chat-window" style="display:none;">
+  <div class="chat-messages" id="chat-messages"></div>
+</div>
+
+<!-- end add as per ChatGPT -->
+
+        <div class="success-stars" id="success-stars"></div>
+      </div>
+      
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+      
+      <div class="dialog-options" id="dialog-options"></div>
+      
+      <div style="margin-top: 20px; text-align: center;">
+        <button id="back-button" class="btn btn-red" onclick="goBack()">🏠 Back to Waiting Room</button>
+        <button id="cage-button" class="btn btn-green" onclick="putInCage()" style="display:none;">🏥 Move to Recovery</button>
+      </div>
     </div>
-    <br>
-    <div id="tool-buttons">
-      <button class="tool-button" onclick="toggleTool('🩺')">Stethoscope</button>
-      <button class="tool-button" onclick="toggleTool('🔦')">Light</button>
-      <button class="tool-button" onclick="toggleTool('🪥')">Shaver</button>
-      <button class="tool-button" onclick="toggleTool('🩹')">Special bandaid</button>
-      <button class="tool-button" onclick="toggleTool('🛠️')">Hammer</button>
-      <button class="tool-button" onclick="toggleTool('🧴')">Cream</button>
-      <button class="tool-button" onclick="toggleTool('📡')">Cone</button>
-      <button class="tool-button" onclick="toggleTool('📏')">Cast</button>
-      <button class="tool-button" onclick="toggleTool('🪢')">Tail cast</button>
-      <button class="tool-button" onclick="toggleTool('🧻')">Wet paper towel</button>
-      <button class="tool-button" onclick="toggleTool('👂')">Ear cast</button>
-      <button class="tool-button" onclick="toggleTool('🔍')">Otoscope</button>
+
+    <div class="section">
+      <h2>🧰 Veterinary Tools</h2>
+      <div class="tools-wrap" id="tools-wrap">
+        <button class="btn tool-btn" data-tool="🔍" data-name="Magnifying Glass">🔍 Examine</button>
+        <button class="btn tool-btn" data-tool="🩺" data-name="Stethoscope">🩺 Listen</button>
+        <button class="btn tool-btn" data-tool="🌡️" data-name="Thermometer">🌡️ Temperature</button>
+        <button class="btn tool-btn" data-tool="💊" data-name="Medicine">💊 Medicine</button>
+        <button class="btn tool-btn" data-tool="🩹" data-name="Bandage">🩹 Bandage</button>
+        <button class="btn tool-btn" data-tool="💉" data-name="Vaccine">💉 Vaccine</button>
+        <button class="btn tool-btn" data-tool="🧴" data-name="Cream">🧴 Cream</button>
+        <button class="btn tool-btn" data-tool="✂️" data-name="Grooming">✂️ Grooming</button>
+        <button class="btn tool-btn" data-tool="🦴" data-name="Treat">🦴 Treat</button>
+        <button class="btn tool-btn" data-tool="🧽" data-name="Clean">🧽 Clean</button>
+        <button class="btn tool-btn" data-tool="🔦" data-name="Light">🔦 Light</button>
+        <button class="btn tool-btn" data-tool="🎾" data-name="Toy">🎾 Play</button>
+      </div>
     </div>
-    <button id="cage-button" onclick="putInCage()">Put in Cage</button>
-    <button id="back-button" onclick="goBack()">Back</button>
   </div>
 
   <div id="cage-room">
-    <div style="position: relative; display: inline-block;">
-      <img src="cages.png" alt="Pet cages">
-      <div id="cage-pets"></div>
+    <h1>🏥 Recovery Room 🏥</h1>
+    <div class="section">
+      <div class="care-container" style="min-height: 500px;">
+        <div id="cage-emoji-layer"></div>
+      </div>
+      <div style="margin-top: 20px; text-align: center;">
+        <p style="margin: 10px 0; font-size: 18px;">💡 Click a pet to bring them back for a checkup!</p>
+        <button id="cage-back-button" class="btn btn-red" onclick="goBackFromCage()">🏠 Back to Waiting Room</button>
+      </div>
     </div>
-    <br>
-    <button id="care-back-button" onclick="exitCages()">Back to Pet List</button>
   </div>
 
   <script>
-    const petEmojis = {
-      "Hamster": "🐹",
-      "Dog": "🐕",
-      "Cat": "🐈",
-      "Bird": "🐦",
-      "Fish": "🐟",
-      "Guinea pig": "🐷"
+    // Pet and owner data
+    const petData = {
+      'Hamster': {
+        emoji: '🐹',
+        name: 'Hamster',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'hamster-teeth',
+            initial: "My hamster won't eat his favorite seeds!",
+            dialog: [
+              {
+                question: "How can I help your hamster today?",
+                options: [
+                  { text: "Let me look at his teeth", correct: true, response: "Yes, please check his teeth!" },
+                  { text: "Maybe he's just not hungry", correct: false, response: "No, he loves seeds! Something's wrong." },
+                  { text: "Did you change his food?", correct: false, response: "No, same seeds as always!" }
+                ]
+              },
+              {
+                question: "I should examine him more closely.",
+                options: [
+                  { text: "Let me use the magnifying glass", correct: true, response: "Good idea! His teeth might be too long." },
+                  { text: "Let me listen to his tummy", correct: false, response: "I think it's his teeth, not his tummy!" },
+                  { text: "Maybe he needs medicine", correct: false, response: "Let's examine him first!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "His teeth are too long! They need trimming." },
+            treat: { tool: '✂️', message: "Perfect! His teeth are the right size now!" },
+            success: "Wonderful! He's already nibbling on seeds! Thank you, doctor!"
+          },
+          {
+            id: 'hamster-cold',
+            initial: "My hamster is sneezing a lot!",
+            dialog: [
+              {
+                question: "Oh no! Let me help.",
+                options: [
+                  { text: "Is his cage warm enough?", correct: true, response: "I'm not sure, maybe it's too cold?" },
+                  { text: "Did he eat something bad?", correct: false, response: "No, just his regular food!" },
+                  { text: "Is he playing too much?", correct: false, response: "He's actually less active than usual." }
+                ]
+              },
+              {
+                question: "Let me check him.",
+                options: [
+                  { text: "I'll check his temperature", correct: true, response: "Yes, he does feel a bit cold!" },
+                  { text: "I'll look at his feet", correct: false, response: "His nose is the problem, not his feet!" },
+                  { text: "Let me see his tail", correct: false, response: "He's sneezing, not his tail!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🌡️', message: "He has a little cold! He needs warmth." },
+            treat: { tool: '💊', message: "This medicine will help him feel better!" },
+            success: "He stopped sneezing already! You're amazing!"
+          },
+          {
+            id: 'hamster-dirty',
+            initial: "My hamster's fur is all messy!",
+            dialog: [
+              {
+                question: "Let's make him look nice!",
+                options: [
+                  { text: "When did he last have a dust bath?", correct: true, response: "Oh, it's been a while!" },
+                  { text: "Is he eating enough?", correct: false, response: "Yes, but he needs cleaning!" },
+                  { text: "Is he sleeping well?", correct: false, response: "He sleeps fine, just needs grooming!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "His fur needs a good cleaning!" },
+            treat: { tool: '🧽', message: "All clean and fluffy now!" },
+            success: "He looks so handsome! Thank you!"
+          }
+        ]
+      },
+      'Dog': {
+        emoji: '🐕',
+        name: 'Dog',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'dog-paw',
+            initial: "My dog is limping!",
+            dialog: [
+              {
+                question: "Oh dear! Which paw hurts?",
+                options: [
+                  { text: "Let me check all his paws", correct: true, response: "Yes, it's his front left paw!" },
+                  { text: "Maybe he's just tired", correct: false, response: "No, he's definitely hurt!" },
+                  { text: "Did he eat something?", correct: false, response: "This is about his paw, not food!" }
+                ]
+              },
+              {
+                question: "I need to look closer.",
+                options: [
+                  { text: "Let me examine the paw carefully", correct: true, response: "There's something stuck in it!" },
+                  { text: "Let me check his tail", correct: false, response: "It's his paw that hurts!" },
+                  { text: "Maybe he needs a nap", correct: false, response: "He needs help, not sleep!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "There's a small thorn in his paw!" },
+            treat: { tool: '🩹', message: "Thorn removed and paw bandaged!" },
+            success: "He's wagging his tail! No more limping!"
+          },
+          {
+            id: 'dog-itchy',
+            initial: "My dog won't stop scratching!",
+            dialog: [
+              {
+                question: "Poor puppy! Where is he itchy?",
+                options: [
+                  { text: "Is it his whole body?", correct: true, response: "Yes, especially behind his ears!" },
+                  { text: "Did he eat chocolate?", correct: false, response: "No, he's just very itchy!" },
+                  { text: "Is he sad?", correct: false, response: "He's uncomfortable from itching!" }
+                ]
+              },
+              {
+                question: "Let me help him feel better.",
+                options: [
+                  { text: "He might have fleas", correct: true, response: "Oh no! Can you help?" },
+                  { text: "Maybe he's cold", correct: false, response: "He's scratching, not shivering!" },
+                  { text: "He needs more water", correct: false, response: "He drinks plenty!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔦', message: "I can see some fleas! Don't worry, we'll fix this." },
+            treat: { tool: '🧴', message: "This special cream will make the itching stop!" },
+            success: "He's so relaxed now! No more scratching!"
+          },
+          {
+            id: 'dog-vaccine',
+            initial: "My dog needs his yearly checkup!",
+            dialog: [
+              {
+                question: "Great! Let's keep him healthy.",
+                options: [
+                  { text: "Let me check his health first", correct: true, response: "Yes, make sure he's healthy!" },
+                  { text: "He looks fine to me", correct: false, response: "Please do a proper checkup!" },
+                  { text: "Does he need a bath?", correct: false, response: "He needs his vaccine!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "His heart sounds perfect! He's very healthy." },
+            treat: { tool: '💉', message: "All done! He's protected for another year." },
+            success: "He was so brave! Here's a treat for him!"
+          },
+          {
+            id: 'dog-sad',
+            initial: "My dog seems sad and won't play.",
+            dialog: [
+              {
+                question: "Let's cheer him up!",
+                options: [
+                  { text: "Is he eating normally?", correct: true, response: "Yes, but he's not playful at all." },
+                  { text: "Is his bed comfortable?", correct: false, response: "His bed is fine!" },
+                  { text: "Does he need a haircut?", correct: false, response: "He's sad, not shaggy!" }
+                ]
+              },
+              {
+                question: "Let me examine him.",
+                options: [
+                  { text: "Let me check if he's healthy", correct: true, response: "Please do! I'm worried." },
+                  { text: "Maybe he needs medicine", correct: false, response: "Check him first!" },
+                  { text: "He needs more food", correct: false, response: "He eats plenty!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "He's healthy! He just needs some fun!" },
+            treat: { tool: '🎾', message: "Playing fetch made him happy again!" },
+            success: "Look at that tail wag! He's so happy now!"
+          }
+        ]
+      },
+      'Cat': {
+        emoji: '🐈',
+        name: 'Cat',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'cat-hairball',
+            initial: "My cat keeps coughing!",
+            dialog: [
+              {
+                question: "That doesn't sound good!",
+                options: [
+                  { text: "Is she coughing up hairballs?", correct: true, response: "Yes! Is that bad?" },
+                  { text: "Did she eat a mouse?", correct: false, response: "No, she's an indoor cat!" },
+                  { text: "Is she meowing a lot?", correct: false, response: "She's coughing, not meowing!" }
+                ]
+              },
+              {
+                question: "Let me help her.",
+                options: [
+                  { text: "She needs special medicine", correct: true, response: "Will it help with hairballs?" },
+                  { text: "She needs more sleep", correct: false, response: "She sleeps all day already!" },
+                  { text: "She needs less food", correct: false, response: "That won't help the coughing!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "Just hairballs! Very common in cats." },
+            treat: { tool: '💊', message: "This medicine will help with hairballs!" },
+            success: "She's purring so loudly! No more coughing!"
+          },
+          {
+            id: 'cat-eye',
+            initial: "My cat's eye is watery!",
+            dialog: [
+              {
+                question: "Let me take a look.",
+                options: [
+                  { text: "Which eye is watery?", correct: true, response: "Her left eye, see?" },
+                  { text: "Is she eating well?", correct: false, response: "Yes, but her eye needs help!" },
+                  { text: "Does she sleep enough?", correct: false, response: "Her eye is the problem!" }
+                ]
+              },
+              {
+                question: "I need to examine it.",
+                options: [
+                  { text: "Let me look closely at her eye", correct: true, response: "Please be gentle!" },
+                  { text: "Let me check her paws", correct: false, response: "It's her eye, not her paws!" },
+                  { text: "Maybe she's hungry", correct: false, response: "She needs eye help!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔦', message: "She has a small eye infection." },
+            treat: { tool: '🧴', message: "These eye drops will clear it up!" },
+            success: "Her eyes are bright and clear! Thank you!"
+          },
+          {
+            id: 'cat-matted',
+            initial: "My cat's fur is all tangled!",
+            dialog: [
+              {
+                question: "Let's fix that!",
+                options: [
+                  { text: "Is she a long-haired cat?", correct: true, response: "Yes, very fluffy usually!" },
+                  { text: "Does she eat fish?", correct: false, response: "Yes, but her fur needs help!" },
+                  { text: "Is she friendly?", correct: false, response: "Yes, but she needs grooming!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "Her fur is very matted. Needs gentle grooming." },
+            treat: { tool: '✂️', message: "All groomed! She looks beautiful!" },
+            success: "She's so soft and fluffy now! She loves it!"
+          },
+          {
+            id: 'cat-sneeze',
+            initial: "My cat won't stop sneezing!",
+            dialog: [
+              {
+                question: "Poor kitty!",
+                options: [
+                  { text: "Is there dust in your home?", correct: true, response: "Maybe from renovation!" },
+                  { text: "Does she go outside?", correct: false, response: "She's indoor only!" },
+                  { text: "Does she like milk?", correct: false, response: "She's sneezing, not hungry!" }
+                ]
+              },
+              {
+                question: "Let me check her nose.",
+                options: [
+                  { text: "I'll examine her nose and breathing", correct: true, response: "Yes, she sounds stuffy!" },
+                  { text: "Let me check her tail", correct: false, response: "It's her nose, not her tail!" },
+                  { text: "Maybe she needs water", correct: false, response: "She drinks plenty!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "She has allergies! Common in cats." },
+            treat: { tool: '💊', message: "This allergy medicine will help!" },
+            success: "No more sneezing! She's breathing so much better!"
+          }
+        ]
+      },
+      'Bird': {
+        emoji: '🦜',
+        name: 'Bird',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'bird-wing',
+            initial: "My bird won't fly!",
+            dialog: [
+              {
+                question: "Oh no! Let's see what's wrong.",
+                options: [
+                  { text: "Can she move her wings?", correct: true, response: "She holds one wing funny." },
+                  { text: "Is she eating seeds?", correct: false, response: "Yes, but she can't fly!" },
+                  { text: "Does she sing?", correct: false, response: "She's quiet because she's hurt!" }
+                ]
+              },
+              {
+                question: "I need to check her wing.",
+                options: [
+                  { text: "Let me gently examine her wing", correct: true, response: "Please be careful!" },
+                  { text: "Maybe she forgot how", correct: false, response: "Birds don't forget to fly!" },
+                  { text: "She needs more food", correct: false, response: "She needs wing help!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "Her wing is sprained but will heal!" },
+            treat: { tool: '🩹', message: "Wing wrapped gently. She'll heal soon!" },
+            success: "She's flapping happily! She'll fly again soon!"
+          },
+          {
+            id: 'bird-quiet',
+            initial: "My bird stopped singing!",
+            dialog: [
+              {
+                question: "That's unusual for a bird!",
+                options: [
+                  { text: "Is her throat okay?", correct: true, response: "I don't know, can you check?" },
+                  { text: "Is her cage too small?", correct: false, response: "Same cage as always!" },
+                  { text: "Does she have toys?", correct: false, response: "Yes, but she won't sing!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "She has a tiny throat infection." },
+            treat: { tool: '💊', message: "This will soothe her throat!" },
+            success: "She's chirping a beautiful song! Music to my ears!"
+          },
+          {
+            id: 'bird-feathers',
+            initial: "My bird is losing feathers!",
+            dialog: [
+              {
+                question: "Let's check on her.",
+                options: [
+                  { text: "Is it molting season?", correct: true, response: "I'm not sure, maybe?" },
+                  { text: "Did she eat something bad?", correct: false, response: "Just her regular seeds!" },
+                  { text: "Is she too hot?", correct: false, response: "The temperature is fine!" }
+                ]
+              },
+              {
+                question: "Let me examine her.",
+                options: [
+                  { text: "I'll check her skin and feathers", correct: true, response: "Some look loose!" },
+                  { text: "Let me check her feet", correct: false, response: "It's her feathers!" },
+                  { text: "Maybe she's bored", correct: false, response: "She needs medical help!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔦', message: "She's molting! Totally normal!" },
+            treat: { tool: '🦴', message: "Special treats will help new feathers grow!" },
+            success: "She looks so proud! Beautiful new feathers coming in!"
+          }
+        ]
+      },
+      'Fish': {
+        emoji: '🐠',
+        name: 'Fish',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'fish-spots',
+            initial: "My fish has white spots!",
+            dialog: [
+              {
+                question: "Let me see your fish.",
+                options: [
+                  { text: "Are the spots new?", correct: true, response: "Yes, just this week!" },
+                  { text: "Is the tank big?", correct: false, response: "Yes, but she has spots!" },
+                  { text: "Does she have friends?", correct: false, response: "The spots are the problem!" }
+                ]
+              },
+              {
+                question: "I know what this is.",
+                options: [
+                  { text: "The water needs medicine", correct: true, response: "Will that cure the spots?" },
+                  { text: "She needs more food", correct: false, response: "She eats fine!" },
+                  { text: "The tank needs decorations", correct: false, response: "She needs medicine!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "She has ich, a common fish illness." },
+            treat: { tool: '💊', message: "Medicine added to water. Spots will clear!" },
+            success: "The spots are gone! She's swimming happily!"
+          },
+          {
+            id: 'fish-floating',
+            initial: "My fish is swimming sideways!",
+            dialog: [
+              {
+                question: "That's concerning!",
+                options: [
+                  { text: "Is she still eating?", correct: true, response: "Yes, but swims funny!" },
+                  { text: "Is the water warm?", correct: false, response: "Normal temperature!" },
+                  { text: "Are there plants?", correct: false, response: "Yes, but she swims wrong!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "Swim bladder problem. Very treatable!" },
+            treat: { tool: '💊', message: "Special food will fix her swimming!" },
+            success: "She's swimming perfectly! Like a little submarine!"
+          },
+          {
+            id: 'fish-hiding',
+            initial: "My fish keeps hiding!",
+            dialog: [
+              {
+                question: "Is something scaring her?",
+                options: [
+                  { text: "Is the tank in a busy area?", correct: true, response: "Yes, by the TV!" },
+                  { text: "Does she have food?", correct: false, response: "Yes, plenty!" },
+                  { text: "Is the water clear?", correct: false, response: "Crystal clear!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔦', message: "She's stressed from too much activity nearby." },
+            treat: { tool: '🎾', message: "Adding plants for hiding spots helps!" },
+            success: "She's exploring everywhere now! So brave!"
+          }
+        ]
+      },
+      'Guinea pig': {
+        emoji: '🐹',
+        name: 'Guinea Pig',
+        owners: ['👧', '👦', '👨', '👩'],
+        problems: [
+          {
+            id: 'guinea-teeth',
+            initial: "My guinea pig's teeth look too long!",
+            dialog: [
+              {
+                question: "Let me check those teeth.",
+                options: [
+                  { text: "Does he have things to chew?", correct: true, response: "Not many, actually!" },
+                  { text: "Does he eat carrots?", correct: false, response: "Yes, but his teeth are long!" },
+                  { text: "Is he sleeping well?", correct: false, response: "His teeth are the issue!" }
+                ]
+              },
+              {
+                question: "His teeth need help.",
+                options: [
+                  { text: "I can trim them safely", correct: true, response: "Please help him!" },
+                  { text: "He needs less food", correct: false, response: "That won't fix his teeth!" },
+                  { text: "He needs a nap", correct: false, response: "His teeth need trimming!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔍', message: "His teeth are overgrown. Common problem!" },
+            treat: { tool: '✂️', message: "Teeth trimmed perfectly! Much better!" },
+            success: "He's munching on hay already! Perfect teeth now!"
+          },
+          {
+            id: 'guinea-lonely',
+            initial: "My guinea pig seems lonely!",
+            dialog: [
+              {
+                question: "Guinea pigs are social!",
+                options: [
+                  { text: "Does he live alone?", correct: true, response: "Yes, just him!" },
+                  { text: "Is his cage dirty?", correct: false, response: "No, it's clean!" },
+                  { text: "Does he eat vegetables?", correct: false, response: "Yes, but he's lonely!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🩺', message: "He's healthy but needs companionship!" },
+            treat: { tool: '🎾', message: "Extra playtime and attention help!" },
+            success: "He's wheeking happily! Much less lonely!"
+          },
+          {
+            id: 'guinea-skin',
+            initial: "My guinea pig is scratching a lot!",
+            dialog: [
+              {
+                question: "Poor little guy!",
+                options: [
+                  { text: "Is his skin red or flaky?", correct: true, response: "Yes, behind his ears!" },
+                  { text: "Did he eat something new?", correct: false, response: "Same food as always!" },
+                  { text: "Is he cold?", correct: false, response: "He's itchy, not cold!" }
+                ]
+              }
+            ],
+            diagnose: { tool: '🔦', message: "He has dry skin. Needs treatment!" },
+            treat: { tool: '🧴', message: "Moisturizing cream applied!" },
+            success: "No more scratching! His skin looks great!"
+          }
+        ]
+      }
     };
 
+    // State
+    const MAX_CAGES = 5;
+    let cagedPets = [];
     let currentPet = null;
-    let cages = [];
+    let currentProblem = null;
+    let currentStage = 'initial';
+    let dialogIndex = 0;
+    let selectedTool = null;
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
+    let problemsSolved = {};
 
-    function refreshPetList() {
-      const cagedDiv = document.getElementById('caged-pets');
-      const listDiv = document.getElementById('caged-pets-list');
-      if (cages.length > 0) {
-        cagedDiv.style.display = 'block';
-        listDiv.innerHTML = '';
-        cages.forEach((pet, i) => {
-          const btn = document.createElement('button');
-          btn.textContent = petEmojis[pet];
-          btn.onclick = () => enterCareRoom(pet);
-          listDiv.appendChild(btn);
-        });
-      } else {
-        cagedDiv.style.display = 'none';
-      }
-    }
-
-    function enterCareRoom(petName) {
-      currentPet = petName;
-      document.getElementById('pet-list').style.display = 'none';
-      document.getElementById('care-room').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = petEmojis[petName] || '';
-    }
-
-    function goBack() {
-      document.getElementById('care-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'block';
-      document.getElementById('animal-emoji').textContent = '';
-      document.getElementById('tool-emoji').style.display = 'none';
-      refreshPetList();
-    }
-
-    function putInCage() {
-      if (!currentPet) return;
-      if (cages.length >= 5) {
-        alert("All cages are full! Please treat or release a pet before adding another.");
-        return;
-      }
-      if (!cages.includes(currentPet)) {
-        cages.push(currentPet);
-      }
-      goToCages();
-    }
-
-    function goToCages() {
-      document.getElementById('care-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'none';
-      document.getElementById('cage-room').style.display = 'block';
-      const cageDiv = document.getElementById('cage-pets');
-      cageDiv.innerHTML = '';
-      cages.forEach((pet, i) => {
+    // Helper functions
+    function showMessage(text, actionLabel = null, actionFn = null) {
+      const msg = document.getElementById('message');
+      msg.innerHTML = '';
+      const span = document.createElement('span');
+      span.textContent = text;
+      msg.appendChild(span);
+      if (actionLabel && typeof actionFn === 'function') {
         const btn = document.createElement('button');
-        btn.textContent = petEmojis[pet];
-        btn.onclick = () => enterCareRoom(pet);
-        cageDiv.appendChild(btn);
+        btn.textContent = actionLabel;
+        btn.onclick = () => { hideMessage(); actionFn(); };
+        msg.appendChild(btn);
+      }
+      msg.style.display = 'block';
+      clearTimeout(showMessage._timeout);
+      showMessage._timeout = setTimeout(() => hideMessage(), 3000);
+    }
+
+    function hideMessage() { 
+      document.getElementById('message').style.display = 'none'; 
+    }
+
+    function createStarBurst() {
+      const container = document.getElementById('success-stars');
+      container.innerHTML = '';
+      const stars = ['⭐', '✨', '🌟', '💫', '⭐'];
+      stars.forEach((star, i) => {
+        const el = document.createElement('div');
+        el.className = 'star';
+        el.textContent = star;
+        el.style.left = '0px';
+        el.style.top = '0px';
+        const angle = (i * 72) * Math.PI / 180;
+        const distance = 150;
+        el.style.animation = `starBurst 6s ease-out forwards`;
+        el.style.setProperty('--end-x', `${Math.cos(angle) * distance}px`);
+        el.style.setProperty('--end-y', `${Math.sin(angle) * distance}px`);
+        
+        // Update animation to use CSS variables
+        el.style.animationName = 'none';
+        setTimeout(() => {
+          el.style.animationName = 'starBurst';
+          el.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+        }, i * 100);
+        
+        container.appendChild(el);
       });
     }
 
-    function exitCages() {
-      document.getElementById('cage-room').style.display = 'none';
-      document.getElementById('pet-list').style.display = 'block';
-      refreshPetList();
+    function updateProgress() {
+      let progress = 0;
+      if (currentStage === 'dialog') {
+        progress = 20 + (dialogIndex * 20);
+      } else if (currentStage === 'diagnose') {
+        progress = 60;
+      } else if (currentStage === 'treat') {
+        progress = 80;
+      } else if (currentStage === 'complete') {
+        progress = 100;
+      }
+      document.getElementById('progress-fill').style.width = `${progress}%`;
     }
 
-    function toggleTool(emoji) {
-      const toolDiv = document.getElementById('tool-emoji');
-      if (toolDiv.textContent === emoji && toolDiv.style.display === 'block') {
-        toolDiv.style.display = 'none';
-        toolDiv.textContent = '';
+    // Dialog system
+    function startProblem() {
+      const pet = petData[currentPet];
+      if (!pet) return;
+      
+      // Pick a random problem that hasn't been solved yet
+      const availableProblems = pet.problems.filter(p => !problemsSolved[p.id]);
+      if (availableProblems.length === 0) {
+        // All problems solved, reset
+        pet.problems.forEach(p => delete problemsSolved[p.id]);
+        currentProblem = pet.problems[Math.floor(Math.random() * pet.problems.length)];
+      } else {
+        currentProblem = availableProblems[Math.floor(Math.random() * availableProblems.length)];
+      }
+      
+      currentStage = 'initial';
+      dialogIndex = 0;
+      showSpeech(currentProblem.initial, 'owner');
+      
+      setTimeout(() => {
+        currentStage = 'dialog';
+        showDialogOptions();
+        updateProgress();
+      }, 2000);
+    }
+
+/* removing as per ChatGPT
+    function showSpeech(text) {
+      const bubble = document.getElementById('speech-bubble');
+      const speechText = document.getElementById('speech-text');
+      speechText.textContent = text;
+      bubble.style.display = 'block';
+      bubble.style.animation = 'none';
+      setTimeout(() => bubble.style.animation = 'fadeIn 0.5s', 10);
+    }
+*/
+
+/* adding as per ChatGPT */
+
+function showSpeech(text, from = 'owner') {
+  const chatWindow = document.getElementById('chat-window');
+  const chatMessages = document.getElementById('chat-messages');
+  chatWindow.style.display = 'flex';
+
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${from}`;
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
+
+  // Scroll to latest
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/* end add as per ChatGPT */
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Generate a random index from 0 to i
+    const j = Math.floor(Math.random() * (i + 1));
+
+    // Swap elements at indices i and j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+    function showDialogOptions() {
+      if (!currentProblem || dialogIndex >= currentProblem.dialog.length) {
+        moveToNextStage();
         return;
       }
-      toolDiv.textContent = emoji;
-      toolDiv.style.display = 'block';
-      toolDiv.style.left = '50%';
-      toolDiv.style.top = '50%';
+      
+      const dialog = currentProblem.dialog[dialogIndex];
+      showSpeech(dialog.question, 'vet');
+      
+      const optionsDiv = document.getElementById('dialog-options');
+      optionsDiv.innerHTML = '';
+
+//shuffleArray(dialog.options);
+      
+      dialog.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'dialog-btn';
+        btn.textContent = option.text;
+        btn.onclick = () => handleDialogChoice(option, index);
+        optionsDiv.appendChild(btn);
+      });
     }
 
-    // Dragging tool
-    let isDragging = false;
-    let offsetX, offsetY;
+    function handleDialogChoice(option, index) {
+        showSpeech(option.text, 'vet');
 
-    const toolDiv = document.getElementById('tool-emoji');
-    toolDiv.addEventListener('mousedown', startDrag);
-    toolDiv.addEventListener('touchstart', startDrag);
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
+        showSpeech(option.response, 'owner');
+      
+      if (option.correct) {
+        dialogIndex++;
+        setTimeout(() => {
+          if (dialogIndex < currentProblem.dialog.length) {
+            showDialogOptions();
+            updateProgress();
+          } else {
+            moveToNextStage();
+          }
+        }, 2000);
+      } else {
+        // Wrong choice, show same options again
+        setTimeout(() => {
+          showDialogOptions();
+        }, 2000);
+      }
+    }
+
+    function moveToNextStage() {
+      const optionsDiv = document.getElementById('dialog-options');
+      optionsDiv.innerHTML = '';
+      
+      if (currentStage === 'dialog') {
+        currentStage = 'diagnose';
+        showSpeech("Now I'll use the right tool to examine your patient!", 'vet');
+        enableToolDragging();
+        document.getElementById('drop-zone').classList.add('active');
+      } else if (currentStage === 'diagnose') {
+        currentStage = 'treat';
+        showSpeech("Great diagnosis! Can you use the right tool to treat?", 'owner');
+        document.getElementById('drop-zone').classList.add('active');
+      } else if (currentStage === 'treat') {
+        completeProblem();
+      }
+      updateProgress();
+    }
+
+    function completeProblem() {
+      currentStage = 'complete';
+      problemsSolved[currentProblem.id] = true;
+      showSpeech(currentProblem.success, 'owner');
+      createStarBurst();
+      
+      // Make pet happy
+      const petDisplay = document.getElementById('pet-display');
+      petDisplay.classList.add('happy');
+      setTimeout(() => petDisplay.classList.remove('happy'), 1000);
+      
+      // Show cage button
+      document.getElementById('back-button').style.display = 'none';
+      document.getElementById('cage-button').style.display = 'inline-block';
+      document.getElementById('drop-zone').classList.remove('active');
+      
+      updateProgress();
+      showMessage("🎉 Great job, Doctor! 🎉");
+    }
+
+    // Tool dragging system
+    function enableToolDragging() {
+      const tools = document.querySelectorAll('.tool-btn');
+      tools.forEach(tool => {
+        tool.onmousedown = startDrag;
+        tool.ontouchstart = startDrag;
+      });
+    }
 
     function startDrag(e) {
+      e.preventDefault();
+      const tool = e.currentTarget;
+      selectedTool = tool.dataset.tool;
       isDragging = true;
-      const rect = toolDiv.getBoundingClientRect();
+      
+      const rect = tool.getBoundingClientRect();
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      offsetX = clientX - rect.left;
-      offsetY = clientY - rect.top;
+      
+      dragOffset.x = clientX - rect.left;
+      dragOffset.y = clientY - rect.top;
+      
+      // Create overlay
+      const overlay = document.getElementById('tool-overlay');
+      overlay.textContent = selectedTool;
+      overlay.style.left = `${clientX - dragOffset.x}px`;
+      overlay.style.top = `${clientY - dragOffset.y}px`;
+      overlay.style.display = 'block';
+      
+      // Add selected class
+      tool.classList.add('selected');
+      
+      // Add event listeners
+      document.onmousemove = drag;
+      document.ontouchmove = drag;
+      document.onmouseup = stopDrag;
+      document.ontouchend = stopDrag;
     }
 
     function drag(e) {
       if (!isDragging) return;
       e.preventDefault();
+      
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      toolDiv.style.left = (clientX - offsetX) + 'px';
-      toolDiv.style.top = (clientY - offsetY) + 'px';
+      
+      const overlay = document.getElementById('tool-overlay');
+      overlay.style.left = `${clientX - dragOffset.x}px`;
+      overlay.style.top = `${clientY - dragOffset.y}px`;
+      
+      // Check if over drop zone
+      const dropZone = document.getElementById('drop-zone');
+      const dropRect = dropZone.getBoundingClientRect();
+      
+      if (clientX >= dropRect.left && clientX <= dropRect.right &&
+          clientY >= dropRect.top && clientY <= dropRect.bottom) {
+        dropZone.classList.add('hover');
+      } else {
+        dropZone.classList.remove('hover');
+      }
     }
 
-    function endDrag() {
+    function stopDrag(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      
+      const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+      const clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+      
+      // Check if dropped on drop zone
+      const dropZone = document.getElementById('drop-zone');
+      const dropRect = dropZone.getBoundingClientRect();
+      
+      if (clientX >= dropRect.left && clientX <= dropRect.right &&
+          clientY >= dropRect.top && clientY <= dropRect.bottom) {
+        checkTool();
+      }
+      
+      // Clean up
       isDragging = false;
+      document.getElementById('tool-overlay').style.display = 'none';
+      document.querySelectorAll('.tool-btn').forEach(t => t.classList.remove('selected'));
+      dropZone.classList.remove('hover');
+      
+      document.onmousemove = null;
+      document.ontouchmove = null;
+      document.onmouseup = null;
+      document.ontouchend = null;
     }
 
-    refreshPetList();
+    function checkTool() {
+      let correctTool = null;
+      let message = null;
+      
+      if (currentStage === 'diagnose') {
+        correctTool = currentProblem.diagnose.tool;
+        message = currentProblem.diagnose.message;
+      } else if (currentStage === 'treat') {
+        correctTool = currentProblem.treat.tool;
+        message = currentProblem.treat.message;
+      }
+      
+      if (selectedTool === correctTool) {
+        showSpeech(message, 'vet');
+        showMessage("✅ Correct tool!");
+        setTimeout(() => moveToNextStage(), 2000);
+      } else {
+        showMessage("❌ Try a different tool!");
+        showSpeech("Hmm, that's not quite right. Try another tool!", 'owner');
+      }
+    }
+
+    // Navigation
+    function renderPetList() {
+      document.getElementById('pet-list').style.display = 'block';
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'none';
+
+      // New pets
+      const newWrap = document.getElementById('new-pets');
+      newWrap.innerHTML = '';
+      
+      Object.keys(petData).filter(id => !cagedPets.includes(id)).forEach(id => {
+        const pet = petData[id];
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-blue';
+        btn.innerHTML = `${pet.emoji} ${pet.name}`;
+        btn.onclick = () => enterCareRoom(id);
+        newWrap.appendChild(btn);
+      });
+
+      // Caged pets
+      document.getElementById('cage-count').textContent = cagedPets.length;
+      const cagedWrap = document.getElementById('caged-pets');
+      cagedWrap.innerHTML = '';
+      
+      if (cagedPets.length === 0) {
+        const p = document.createElement('p');
+        p.textContent = 'No pets in recovery yet.';
+        p.style.color = '#6b7280';
+        cagedWrap.appendChild(p);
+        document.getElementById('view-cages-wrap').innerHTML = '';
+      } else {
+        cagedPets.forEach(id => {
+          const pet = petData[id];
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.innerHTML = `${pet.emoji} ${pet.name}`;
+          cagedWrap.appendChild(chip);
+        });
+        
+        const viewBtn = document.createElement('button');
+        viewBtn.className = 'btn btn-green';
+        viewBtn.textContent = '🏥 Visit Recovery Room';
+        viewBtn.onclick = () => openCages();
+        const wrap = document.getElementById('view-cages-wrap');
+        wrap.innerHTML = '';
+        wrap.appendChild(viewBtn);
+      }
+    }
+
+    function enterCareRoom(petId) {
+      currentPet = petId;
+      const pet = petData[petId];
+      const owners = pet.owners;
+      const randomOwner = owners[Math.floor(Math.random() * owners.length)];
+      
+      document.getElementById('pet-display').textContent = pet.emoji;
+      document.getElementById('owner-display').textContent = randomOwner;
+      document.getElementById('back-button').style.display = 'inline-block';
+      document.getElementById('cage-button').style.display = 'none';
+      document.getElementById('dialog-options').innerHTML = '';
+      document.getElementById('progress-fill').style.width = '0%';
+      
+      document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('care-room').style.display = 'block';
+      
+      startProblem();
+    }
+
+    function goBack() {
+      currentPet = null;
+      currentProblem = null;
+      selectedTool = null;
+      document.getElementById('chat-window').style.display = 'none';
+      document.getElementById('drop-zone').classList.remove('active');
+      renderPetList();
+document.getElementById('chat-messages').innerHTML = '';
+    }
+
+    function putInCage() {
+      if (!currentPet || cagedPets.includes(currentPet)) return;
+      if (cagedPets.length >= MAX_CAGES) {
+        showMessage('Recovery room is full! (5/5)', 'Visit Recovery', openCages);
+        return;
+      }
+      cagedPets.push(currentPet);
+      showMessage('Pet moved to recovery! 🏥');
+      setTimeout(() => goBack(), 1000);
+
+        document.getElementById('chat-messages').innerHTML = '';
+
+    }
+
+    function openCages() {
+      renderCages();
+    }
+
+    const cagePositions = [
+      { top: '25%', left: '25%' },
+      { top: '25%', left: '75%' },
+      { top: '50%', left: '50%' },
+      { top: '75%', left: '25%' },
+      { top: '75%', left: '75%' }
+    ];
+
+    function renderCages() {
+      document.getElementById('pet-list').style.display = 'none';
+      document.getElementById('care-room').style.display = 'none';
+      document.getElementById('cage-room').style.display = 'block';
+
+      const layer = document.getElementById('cage-emoji-layer');
+      layer.innerHTML = '';
+
+      cagedPets.forEach((id, idx) => {
+        const pet = petData[id];
+        const pos = cagePositions[idx];
+        const btn = document.createElement('button');
+        btn.className = 'cage-slot';
+        btn.style.top = pos.top;
+        btn.style.left = pos.left;
+        btn.textContent = pet.emoji;
+        btn.title = `Checkup for ${pet.name}`;
+        btn.onclick = () => takeFromCage(id);
+        layer.appendChild(btn);
+      });
+
+      if (cagedPets.length === 0) {
+        showMessage('No pets in recovery yet!');
+      }
+    }
+
+    function takeFromCage(petId) {
+      cagedPets = cagedPets.filter(id => id !== petId);
+      enterCareRoom(petId);
+    }
+
+    function goBackFromCage() {
+
+document.getElementById('chat-messages').innerHTML = '';
+
+      renderPetList();
+    }
+
+    // Initialize
+    renderPetList();
   </script>
 </body>
 </html>
