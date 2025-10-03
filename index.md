@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-10-03: [Radically condensed instructions for being just as you are](/20251003-radically_condensed_instructions_by_matthews/)
  * 2025-09-21: [Four Thousand Weeks, by Burkeman](/20250921-four_thousand_weeks_by_burkeman/)
  * 2025-06-21: [(Audio) The Haves and Have-Yachts, by Osnos](/20250621-haves_and_have_yachts_by_osnos/)
  * 2025-06-17: [Make everything into Roth IRA](/20250617-make_everything_into_roth_ira/)
