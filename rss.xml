@@ -7,6 +7,70 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) Breakneck, by Dan Wang</title>
+<description><![CDATA[
+
+<p>It's about China as contrasted with the US, mostly via critiques as in
+<a href="/20251120-abundance_klein_thompson/">Abundance</a>. The US is "the lawyerly society" and China is "the
+engineering state," and while the one child and zero covid policies
+are criticized (for example) the eventual recommendation is to be more
+like China, more like Robert Moses.</p>
+<hr>
+<p>I learned about China's "<a href="https://en.wikipedia.org/wiki/Industrial_Party_(China)">Industrial Party</a>," which is interesting.
+Sort of techno-optimism as a nationalist prescription.</p>
+<p>Does anybody else remember Vonnegut's <a href="https://en.wikipedia.org/wiki/Slapstick_(novel)">Slapstick</a>? In which "Western
+civilization is nearing collapse as oil runs out, and the Chinese are
+making vast leaps forward by miniaturizing themselves and training
+groups of hundreds to think as one. Eventually, the miniaturization
+proceeds to the point that the Chinese become so small they cause a
+plague among those who accidentally inhale them, ultimately destroying
+Western civilization beyond repair."</p>
+<hr>
+<p>There's some interesting stuff about process knowledge and encouraging
+communities of practice. I don't know whether this is what makes
+Shenzhen successful, or whether the lack of it is what's troubled
+Boeing, but I agree that process knowledge is <em>something</em> and that
+it's too often ignored or undervalued.</p>
+<p>Is Boeing's problem really loss of process knowledge, or is the
+problem too much belief in the Friedman doctrine, too much blind focus
+on near-term profit?</p>
+<hr>
+<p>I tried to find where Heidegger said that philosophy was dying, to be
+replaced with cybernetics, and it seems to be
+<a href="https://grattoncourses.wordpress.com/wp-content/uploads/2016/12/22the-end-of-philosophy-and-the-task-of-thinking22.pdf">The End of Philosophy and the Task of Thinking</a>. How could anyone
+ever be taken seriously who wrote like this?</p>
+<hr>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<blockquote>
+<p>Only a country ruled by engineers could be so single-minded about
+pursuing a number. (page 123)</p>
+</blockquote>
+<p>This reminds me of <a href="/20200425-tyranny_of_metrics_by_muller/">The Tyranny of Metrics</a>, and the kind of cynical
+"data driven" perversions you can find in industry.</p>
+<hr>
+<blockquote>
+<p>In the United States, physics and mathematics PhDs hardly have a
+chance to consider working in their field before a tech giant or
+hedge fund picks them up at the sidelines of a conference, flashes
+them with a humongous pay package, and folds these eager minds into
+their glamorous embrace. Senior government advisers have more or
+less stated that Beijing intends to block these temptations. Yao
+Yang, a dean at Peking University, has remarked with satisfaction
+that salaries have fallen in the financial industry after regulators
+imposed a salary cap of $400,000 on the financial sector. Its idea,
+Yao said, “is to reduce the attractiveness of finance and to
+increase the development of manufacturing.” (page 162)</p>
+</blockquote>
+<p>This reminds me of Jeff Hammerbacher's quote, "The best minds of my
+generation are thinking about how to make people click ads. That
+sucks."</p>    
+    ]]></description>
+<link>http://planspace.org/20251120-breakneck_by_wang/</link>
+<guid>http://planspace.org/20251120-breakneck_by_wang/</guid>
+<pubDate>Thu, 20 Nov 2025 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Abundance, by Klein and Thompson</title>
 <description><![CDATA[
 
@@ -2668,45 +2732,6 @@ Jesuit Center in Colombia.” (page 206)</p>
 <link>http://planspace.org/20241026-how_the_world_works_by_chomsky/</link>
 <guid>http://planspace.org/20241026-how_the_world_works_by_chomsky/</guid>
 <pubDate>Sat, 26 Oct 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) After Work, by Hester and Srnicek</title>
-<description><![CDATA[
-
-<p>Here's a feminist post-scarcity <a href="https://www.versobooks.com/products/496-after-work" title="After Work: A History of the Home and the Fight for Free Time by Helen Hester and Nick Srnicek">book</a> pointing out that abolishing
-paid work won't automatically eliminate unpaid work. There's quite a
-bit of unpaid work, and people may or may not want to do it.
-Interesting history and ideas on what to do about it.</p>
-<p>Did you know there was a <a href="https://en.wikipedia.org/wiki/Wages_for_housework" title="Wikipedia: Wages for housework">Wages for Housework</a> movement in the 70s?</p>
-<p><img alt="cover" src="cover.png"></p>
-<hr>
-<blockquote>
-<p>“As we know, domestic realism was not ultimately overthrown by the
-communalism of the separatists or the hippies. While some
-communities are still operational, Drop City and the vast majority
-of initiatives like it proved to be relatively ephemeral
-experiments, failing to outlive their moment of sociosexual
-upheaval. This may well have been because, as sites of exodus, they
-were not always effective at ensuring their own scalability. They
-were often intended as prefigurative spaces, aiming to offer a taste
-of post-suburban utopia in the here and now (or at least, a utopia
-for the young, the healthy, the able bodied, and the middle class
-with minimal caring responsibilities – that specific and limited
-range of people who might be best able to thrive in a space like
-Drop City). As such, they consciously operated as enclaves within
-the society from which they sought to withdraw – bastions of
-alternative values which were yet to flourish elsewhere – and the
-interventions they staged were in certain respects hyperlocal to the
-point of being site-specific. The ‘simple positing and practising of
-a new world is insufficient to overcome’ the structural forces
-preventing its generalisation.129 Or, as Mike Davis puts it,
-‘demonstration projects in … rich countries will not save the
-world’.” (page 114)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20241019-after_work_by_hester_and_srnicek/</link>
-<guid>http://planspace.org/20241019-after_work_by_hester_and_srnicek/</guid>
-<pubDate>Sat, 19 Oct 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
