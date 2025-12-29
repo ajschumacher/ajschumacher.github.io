@@ -7,6 +7,114 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Noise, by Kahneman, Sibony, and Sunstein</title>
+<description><![CDATA[
+
+<p><a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a> was about bias, and now <a href="https://en.wikipedia.org/wiki/Noise:_A_Flaw_in_Human_Judgment">Noise</a> is about
+variance. It even opens with the classic two-by-two accuracy and
+precision bullseye <a href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff#Motivation">illustration</a>. But the book is really about how
+people are systematically different from one another. The book
+considers federated systems in which work items are assigned to
+different people, and concludes that most of the "variance" comes from
+stable differences between those people.</p>
+<p><img alt="breakdown" src="breakdown.jpg"></p>
+<p>(I am a fan of the <a href="/20201030-the_variance_sum_law_is_interesting/">variance sum law</a>.)</p>
+<p>In the book's phrasing, "system noise" is variance in outcomes,
+distinct from bias. System noise is the sum of "level noise," which is
+stable differences in average outcomes per person - "strict judge vs.
+lenient judge" - and "stable pattern noise," which is stable
+differences in how individuals are overfit, in the ML sense, - "Bob's
+generally strict but always lenient with young mothers" - and
+"occasion noise," which is true repeat-performance noise based on
+randomness from somewhere (conditions, etc.).</p>
+<blockquote>
+<p>while the existence of occasion noise is surprising and even
+disturbing, there is no indication that within-person variability is
+larger than between-person differences. The most important component
+of system noise is the one we had initially neglected: stable
+pattern noise, the variability among judges in their judgments of
+particular cases.</p>
+</blockquote>
+<p>(Note also that "level noise" can be properly thought of as just an
+average over "pattern noise" - I'm not sure it's correct to treat it
+separately.)</p>
+<p>The challenge, not sufficiently addressed, in my opinion, is that
+removing this "noise" requires not just choosing one answer to be the
+right one, but convincing the people involved. This is a societal
+challenge. Whatever level of strictness or leniency you choose, for
+the judges, some judges will disagree.</p>
+<p>I think Kahneman neglects the extent to which systems exist through
+false consensus: It isn't possible to get everyone to agree on the
+details, so the system has to be made vague enough that everyone can
+<em>think</em> it says what they want. Then they can go on having differences
+of opinion.</p>
+<p>Not that this is good, exactly. It's politics.</p>
+<p>And Kahneman does talk about <a href="https://en.wikipedia.org/wiki/Na%C3%AFve_realism_(psychology)">naïve realism</a> and the illusion of
+agreement, so this idea isn't totally absent from the book. But just
+like hand-washing took (and takes) surprisingly much effort, there's a
+big gap between <em>having</em> a Gawande-style checklist and getting it
+accepted and followed, for example.</p>
+<p>There were interesting bits about how groups can have opposite
+effects: Averaging independent outcomes can decrease noise, but
+discussion can actually amplify noise. They recommend techniques like
+"estimate-talk-estimate" to try to get positive effects.</p>
+<p>Kahneman also emphasizes "percent concordant" and always includes it
+with correlation coefficients. This is exactly the
+<a href="https://en.wikipedia.org/wiki/Probability_of_superiority">Common Language Effect Size</a> which goes by many names. I'm a fan!
+Glad to have Kahneman supporting this here. It sure would be nice if
+it went from zero to one though.</p>
+<p>Another interesting topic is what Kahneman calls “objective ignorance”
+and is very tightly related to the <a href="https://en.wikipedia.org/wiki/Bayes_error_rate">Bayes error rate</a> or
+"irreducible error." It made me wonder, when we're talking about
+variance explained, if 60% is "irreducible," then maybe explaining 20%
+is quite a strong result, actually. Unclear how to be quite confident
+about this kind of thing though. Bad news for <a href="/20200714-foundation_trilogy/">psychohistory</a> too.
+(How much is chaos?)</p>
+<p>Kahneman chastises people for feeling they're 80% confident about a
+given decision if they'll only be right 60% of the time. But there's a
+difference he ignores, I think: You could be 80% confident that you
+made the best possible decision given your information at the time,
+and still be right just 60% of the time. Those can be consistent.</p>
+<p><a href="https://www.cmu.edu/dietrich/sds/docs/dawes/the-robust-beauty-of-improper-linear-models-in-decision-making.pdf">The Robust Beauty of Improper Linear Models in Decision Making</a>
+(just give everything equal weight) is interesting. I wonder whether
+some big chunk of AI "success" will essentially come from this kind of
+effect, just the benefit of statistical instead of clinical judgement,
+but the fanciness of AI will make it more palatable.</p>
+<p>There's bits on incorporating the base rate, which feels like being
+Bayesian. Don't overfit, etc. And be actively open-minded.</p>
+<p>What is the right way to average predictions of superforecasters? Is
+it just simple arithmetic mean? Or is it some other mean that works
+best?</p>
+<p>Long ago I was in a start-up that didn't do annual performance
+reviews. I thought it was radical and great. So it was interesting to
+hear that apparently more companies are moving away from annual
+performance reviews.</p>
+<blockquote>
+<p>And if your goal is to bring out the best in people, you can
+reasonably ask whether measuring individual performance and using
+that measurement to motivate people through fear and greed is the
+best approach (or even an effective one).</p>
+</blockquote>
+<p>The book finishes out with some discussion of rules vs. standards,
+where rules are more mechanical and standards still allow some
+discussion while being more prescriptive than just principles.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<h3>Six principles of decision hygiene</h3>
+<ol>
+<li>The goal of judgment is accuracy, not individual expression.</li>
+<li>Think statistically, and take the outside view of the case.</li>
+<li>Structure judgments into several independent tasks.</li>
+<li>Resist premature intuitions.</li>
+<li>Obtain independent judgments from multiple judges, then consider
+aggregating those judgments.</li>
+<li>Favor relative judgments and relative scales.</li>
+</ol>    
+    ]]></description>
+<link>http://planspace.org/20251229-noise_by_kahneman_sibony_and_sunstein/</link>
+<guid>http://planspace.org/20251229-noise_by_kahneman_sibony_and_sunstein/</guid>
+<pubDate>Mon, 29 Dec 2025 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Psychology of Money, by Housel</title>
 <description><![CDATA[
 
@@ -2787,120 +2895,6 @@ Board.</p>
 <link>http://planspace.org/20241123-what_are_cfps_supposed_to_know/</link>
 <guid>http://planspace.org/20241123-what_are_cfps_supposed_to_know/</guid>
 <pubDate>Sat, 23 Nov 2024 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) We've got you covered, by Einav and Finkelstein</title>
-<description><![CDATA[
-
-<p>I read <a href="https://www.penguinrandomhouse.com/books/690632/weve-got-you-covered-by-liran-einav-and-amy-finkelstein/" title="We've Got You Covered: Rebooting American Health Care">this book</a> because Furman recommended it, and his
-<a href="https://www.nytimes.com/2024/10/21/books/review/economics-business-books.html" title="5 Books to Help You Understand the Economy Before Voting">description</a> is good. I admire the economist authors' ability to
-take a normative stand while staying clear-headed about measured
-realities. I'm on board.</p>
-<p>The central claim of the book is that we <em>should</em> provide free basic
-health care to everyone. They support this by arguing that the US has
-been <em>trying</em> to do this: trying to honor an implicit social contract.</p>
-<p>The issue then is that the US has been doing a very poor job of it.
-The authors propose that health insurance should instead be free and
-automatic for everyone, with no sign-up hoops or costs incurred for
-receiving care.</p>
-<p>Problems with the current US system include its complexity itself, and
-health insurance being tied to employment (therefore subject to
-termination at any time) and medical costs being a potentially
-unbounded burden for individuals, sometimes even for those <em>with</em>
-insurance.</p>
-<p>They point out that insurance doesn't actually have that much
-influence on health outcomes, because impact on health is dominated by
-behaviors that correlate with wealth, for example, and because people
-generally still <em>get</em> health care even if not insured, even if it also
-saddles them with debt. So universal health insurance won't resolve
-disparities in health outcomes. (This does appear somewhat at odds
-with the authors' frequent complaint that the US system often pays for
-treatment only after conditions become acute dangers, while earlier
-treatment might have been cheaper and prevented the worst health
-outcomes.)</p>
-<p>The book is also full of interesting current and historical detail
-about the US and international health systems.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>“We have therefore intentionally focused on what we <em>should</em> do,
-rather than what some may think we currently <em>can</em> do. In this
-sense, our book is in the spirit of the famous Chicago economist
-Milton Friedman. He argued that the role for economists in public
-policy is to develop the best ideas, and keep them alive and ripe in
-the public imagination until the day when “the politically
-impossible becomes the politically inevitable.” (page 14)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Let’s start with the precarious insurance of the privately insured.
-Almost half of the US population—over 150 million people—receive
-private health insurance through their employers or a family
-member’s employer. That’s almost all Americans who have private
-health insurance.</p>
-<p>There’s no natural reason why their boss doubles as their insurer.
-This unusual arrangement arose through an accident of history, a
-common theme of US health-care policy. During World War II, the
-federal government imposed wage and price controls to try to prevent
-inflation. Employers—desperate to attract and retain scarce
-workers—soon discovered a way to get around the wage ceilings and
-provide higher compensation. They could offer—and pay for—their
-workers’ health insurance, because these payments weren’t counted as
-“wages.”</p>
-<p>The practice of excluding employer payments for their employees’
-health insurance from the definition of employee earnings has
-remained in place to this day. As a result, any such payments are
-tax-free. An employee doesn’t have to pay income tax on any
-contributions her employer makes to her workplace-based health
-insurance premium.” (page 17)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Moral commitments are not limitless. Even FDR implicitly
-acknowledged this in his Second Bill of Rights. He spoke of rights
-such as “a decent home,” “a good education,” and “adequate medical
-care.” The economist Arthur Okun, writing a few decades later,
-likewise espoused a right to health care while simultaneously
-cautioning that these rights are not unbounded. With the customary
-bluntness of an economist rather than a politician, he described “a
-heated debate with an audience of medical administrators.” As Okun
-described it, “Taking what I viewed as an outlandish example, I
-suggested that any national health program should not grant me at
-public expense all the pairs of eyeglasses I might like. I learned
-to my surprise that they favored an unlimited right to eyeglasses.”
-(page 74)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>The technical term for this quality of life measure is <em>quality
-adjusted life year,</em> or QALY (rhymes with <em>jolly</em>). A year in
-perfect health is given a QALY score of one, a year of being dead
-scores zero. Much scientific effort and squabbling go into assigning
-scores to all the various ways a year can be spent in
-less-than-perfect health. (footnote, page 100)</p>
-</blockquote>
-<p>This is part of a section which is a great example of the challenges
-of trying to linearize multiple things into one measure. In this case
-they were using a ratio of benefits to cost, so a cheap and decent
-thing showed up as better than an expensive but essential thing.</p>
-<blockquote>
-<p>“The faithful and accurate application of cost-benefit analysis had
-produced unacceptable results. Even the commissioners agreed,
-acknowledging that their rankings often conflicted with their own
-intuition. They quickly abandoned the formulaic application of
-cost-effectiveness rankings in favor of a more “holistic” approach.
-They used their judgment—and that of members of the community who
-provided input through public forums—to create broad categories of
-health care that they ranked in order of importance. Effective care
-for acute fatal conditions (such as appendectomies) was ranked high,
-while minimally effective treatments for nonfatal conditions (such
-as tooth capping or medical therapy for diaper rash) were in a
-category near the bottom.” (page 100)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20241116-weve_got_you_covered_by_einav_and_finkelstein/</link>
-<guid>http://planspace.org/20241116-weve_got_you_covered_by_einav_and_finkelstein/</guid>
-<pubDate>Sat, 16 Nov 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

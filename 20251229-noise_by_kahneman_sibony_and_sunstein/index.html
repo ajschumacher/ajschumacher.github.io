@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Noise, by Kahneman, Sibony, and Sunstein</title>
+  </head>
+  <body>
+    <article>
+<h1>Noise, by Kahneman, Sibony, and Sunstein</h1>
+<p class="date">Monday December 29, 2025</p>
+<p><a href="/2011/12/17/selections-from-and-thoughts-on/">Thinking, Fast and Slow</a> was about bias, and now <a href="https://en.wikipedia.org/wiki/Noise:_A_Flaw_in_Human_Judgment">Noise</a> is about
+variance. It even opens with the classic two-by-two accuracy and
+precision bullseye <a href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff#Motivation">illustration</a>. But the book is really about how
+people are systematically different from one another. The book
+considers federated systems in which work items are assigned to
+different people, and concludes that most of the "variance" comes from
+stable differences between those people.</p>
+<p><img alt="breakdown" src="breakdown.jpg" /></p>
+<p>(I am a fan of the <a href="/20201030-the_variance_sum_law_is_interesting/">variance sum law</a>.)</p>
+<p>In the book's phrasing, "system noise" is variance in outcomes,
+distinct from bias. System noise is the sum of "level noise," which is
+stable differences in average outcomes per person - "strict judge vs.
+lenient judge" - and "stable pattern noise," which is stable
+differences in how individuals are overfit, in the ML sense, - "Bob's
+generally strict but always lenient with young mothers" - and
+"occasion noise," which is true repeat-performance noise based on
+randomness from somewhere (conditions, etc.).</p>
+<blockquote>
+<p>while the existence of occasion noise is surprising and even
+disturbing, there is no indication that within-person variability is
+larger than between-person differences. The most important component
+of system noise is the one we had initially neglected: stable
+pattern noise, the variability among judges in their judgments of
+particular cases.</p>
+</blockquote>
+<p>(Note also that "level noise" can be properly thought of as just an
+average over "pattern noise" - I'm not sure it's correct to treat it
+separately.)</p>
+<p>The challenge, not sufficiently addressed, in my opinion, is that
+removing this "noise" requires not just choosing one answer to be the
+right one, but convincing the people involved. This is a societal
+challenge. Whatever level of strictness or leniency you choose, for
+the judges, some judges will disagree.</p>
+<p>I think Kahneman neglects the extent to which systems exist through
+false consensus: It isn't possible to get everyone to agree on the
+details, so the system has to be made vague enough that everyone can
+<em>think</em> it says what they want. Then they can go on having differences
+of opinion.</p>
+<p>Not that this is good, exactly. It's politics.</p>
+<p>And Kahneman does talk about <a href="https://en.wikipedia.org/wiki/Na%C3%AFve_realism_(psychology)">naïve realism</a> and the illusion of
+agreement, so this idea isn't totally absent from the book. But just
+like hand-washing took (and takes) surprisingly much effort, there's a
+big gap between <em>having</em> a Gawande-style checklist and getting it
+accepted and followed, for example.</p>
+<p>There were interesting bits about how groups can have opposite
+effects: Averaging independent outcomes can decrease noise, but
+discussion can actually amplify noise. They recommend techniques like
+"estimate-talk-estimate" to try to get positive effects.</p>
+<p>Kahneman also emphasizes "percent concordant" and always includes it
+with correlation coefficients. This is exactly the
+<a href="https://en.wikipedia.org/wiki/Probability_of_superiority">Common Language Effect Size</a> which goes by many names. I'm a fan!
+Glad to have Kahneman supporting this here. It sure would be nice if
+it went from zero to one though.</p>
+<p>Another interesting topic is what Kahneman calls “objective ignorance”
+and is very tightly related to the <a href="https://en.wikipedia.org/wiki/Bayes_error_rate">Bayes error rate</a> or
+"irreducible error." It made me wonder, when we're talking about
+variance explained, if 60% is "irreducible," then maybe explaining 20%
+is quite a strong result, actually. Unclear how to be quite confident
+about this kind of thing though. Bad news for <a href="/20200714-foundation_trilogy/">psychohistory</a> too.
+(How much is chaos?)</p>
+<p>Kahneman chastises people for feeling they're 80% confident about a
+given decision if they'll only be right 60% of the time. But there's a
+difference he ignores, I think: You could be 80% confident that you
+made the best possible decision given your information at the time,
+and still be right just 60% of the time. Those can be consistent.</p>
+<p><a href="https://www.cmu.edu/dietrich/sds/docs/dawes/the-robust-beauty-of-improper-linear-models-in-decision-making.pdf">The Robust Beauty of Improper Linear Models in Decision Making</a>
+(just give everything equal weight) is interesting. I wonder whether
+some big chunk of AI "success" will essentially come from this kind of
+effect, just the benefit of statistical instead of clinical judgement,
+but the fanciness of AI will make it more palatable.</p>
+<p>There's bits on incorporating the base rate, which feels like being
+Bayesian. Don't overfit, etc. And be actively open-minded.</p>
+<p>What is the right way to average predictions of superforecasters? Is
+it just simple arithmetic mean? Or is it some other mean that works
+best?</p>
+<p>Long ago I was in a start-up that didn't do annual performance
+reviews. I thought it was radical and great. So it was interesting to
+hear that apparently more companies are moving away from annual
+performance reviews.</p>
+<blockquote>
+<p>And if your goal is to bring out the best in people, you can
+reasonably ask whether measuring individual performance and using
+that measurement to motivate people through fear and greed is the
+best approach (or even an effective one).</p>
+</blockquote>
+<p>The book finishes out with some discussion of rules vs. standards,
+where rules are more mechanical and standards still allow some
+discussion while being more prescriptive than just principles.</p>
+<p><img alt="cover" src="cover.jpg" /></p>
+<h3>Six principles of decision hygiene</h3>
+<ol>
+<li>The goal of judgment is accuracy, not individual expression.</li>
+<li>Think statistically, and take the outside view of the case.</li>
+<li>Structure judgments into several independent tasks.</li>
+<li>Resist premature intuitions.</li>
+<li>Obtain independent judgments from multiple judges, then consider
+aggregating those judgments.</li>
+<li>Favor relative judgments and relative scales.</li>
+</ol>    </article>
+    <footer>
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
