@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-12-29: [Quaker Testimonies](/20251229-quaker_testimonies/)
  * 2025-12-29: [Noise, by Kahneman, Sibony, and Sunstein](/20251229-noise_by_kahneman_sibony_and_sunstein/)
  * 2025-12-28: [The Psychology of Money, by Housel](/20251228-psychology_of_money_by_housel/)
  * 2025-12-16: [Amazon's Leadership Principles](/20251216-amazon_leadership_principles/)
