@@ -83,6 +83,12 @@ It sounds like teams at Amazon also often have around five or six
 [article]: https://www.fastcompany.com/90334069/these-are-amazons-38-rules-for-success
 
 
+Amazon often accompanies tenets with the [phrase][] "unless you know
+better ones," which is a neat way of trying to keep them evolving.
+
+[phrase]: https://aws.amazon.com/blogs/enterprise-strategy/tenets-supercharging-decision-making/
+
+
 ---
 
 That same [article][] has a list of ways that Amazon is peculiar, in
