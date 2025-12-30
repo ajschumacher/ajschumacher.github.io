@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-12-30: [U.S. Army Values](/20251230-us_army_values/)
  * 2025-12-30: [DoorDash's Values](/20251230-doordash_values/)
  * 2025-12-29: [Quaker Testimonies](/20251229-quaker_testimonies/)
  * 2025-12-29: [Noise, by Kahneman, Sibony, and Sunstein](/20251229-noise_by_kahneman_sibony_and_sunstein/)
