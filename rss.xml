@@ -7,6 +7,36 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Christian Beatitudes</title>
+<description><![CDATA[
+
+<ul>
+<li>Blessed are the poor in spirit, for theirs is the kingdom of
+   heaven.</li>
+<li>Blessed are they who mourn, for they will be comforted.</li>
+<li>Blessed are the meek, for they will inherit the land.</li>
+<li>Blessed are they who hunger and thirst for righteousness, for they
+   will be satisfied.</li>
+<li>Blessed are the merciful, for they will be shown mercy.</li>
+<li>Blessed are the clean of heart, for they will see God.</li>
+<li>Blessed are the peacemakers, for they will be called children of
+   God.</li>
+<li>Blessed are they who are persecuted for the sake of righteousness,
+   for theirs is the kingdom of heaven.</li>
+</ul>
+<p>These eight verses are Matthew 5:3-10 in the NABRE (New American Bible
+Revised Edition) translation used in Catholic churches in the US, and
+the most famous part of the Sermon on the Mount delivered by Jesus.</p>
+<p>"Beatitude" is from a word meaning "blessed" and not any breakdown
+like "be" followed by "attitude." Interpretations vary, with at least
+<a href="https://openthebible.org/article/the-beatitudes-of-jesus-explained/">one</a> being that the Beatitudes are not just reports about who is
+blessed but a step-by-step guide to becoming more blessed.</p>    
+    ]]></description>
+<link>http://planspace.org/20251231-christian_beatitudes/</link>
+<guid>http://planspace.org/20251231-christian_beatitudes/</guid>
+<pubDate>Wed, 31 Dec 2025 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Buddhist Noble Eightfold Path</title>
 <description><![CDATA[
 
@@ -2530,41 +2560,6 @@ worker.</p>
 <link>http://planspace.org/20250322-power_and_progress_by_acemoglu_and_johnson/</link>
 <guid>http://planspace.org/20250322-power_and_progress_by_acemoglu_and_johnson/</guid>
 <pubDate>Sat, 22 Mar 2025 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Superconvergence, by Metzl</title>
-<description><![CDATA[
-
-<p><a href="https://en.wikipedia.org/wiki/Jamie_Metzl">Metzl</a> rubs me the wrong way, a little bit, the way the heros of
-LinkedIn do. He's been bio-focused, and still is, but AI is hot so AI
-is in the book. He's not wrong, exactly, but it still feels
-attention-seeking. <a href="https://www.hachettebookgroup.com/titles/jamie-metzl/superconvergence/9781643263007/">The book</a> has very low information density, and
-then weirdly his main objective in the end is to get people excited
-about regulation.</p>
-<p>Metzl advocates for the <a href="https://en.wikipedia.org/wiki/Ortega_hypothesis">Ortega hypothesis</a>, but mostly because it
-fits well with his story of exponential scientific progress: if we
-don't have to wait for geniuses, then progress can keep accelerating.
-Interesting take.</p>
-<p>He talks a lot about god-like powers, and how we need to regulate
-them. He's at pains to say this shouldn't be a global body imposing
-rules, but that every country should do things in line with their own
-culture and values. Ignoring that requiring countries to regulate
-where they wouldn't on their own is already an imposition, this
-federated approach only works if we have fairly strong assumptions
-about every government's culture and values playing well with what we
-think is reasonable. But then he goes on to say that also there should
-be international coordination, seemingly with more teeth than the WHO
-and so on, so he is arguing for global control in the end as well.</p>
-<p>Metzl also believes <a href="https://jamiemetzl.com/origins-of-sars-cov-2/">fairly strongly</a> that COVID-19 was produced by
-humans. It makes sense to talk about this in the book because it adds
-weight to the discussion of risks, making it not just hypothetical.
-This kind of talk always makes me think of the assassination germ idea
-in <a href="/20200124-three_body_problem_remembrance_of_earths_past/">The Three Body Problem</a>. Scary stuff indeed.</p>
-<p><img alt="cover" src="cover.jpg"></p>    
-    ]]></description>
-<link>http://planspace.org/20241230-superconvergence_by_metzl/</link>
-<guid>http://planspace.org/20241230-superconvergence_by_metzl/</guid>
-<pubDate>Mon, 30 Dec 2024 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

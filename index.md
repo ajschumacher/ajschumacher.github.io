@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2025-12-31: [Christian Beatitudes](/20251231-christian_beatitudes/)
  * 2025-12-31: [Buddhist Noble Eightfold Path](/20251231-buddhist_noble_eightfold_path/)
  * 2025-12-30: [The UK's Seven Principles of Public Life](/20251230-uk_seven_principles_of_public_life/)
  * 2025-12-30: [U.S. Army Values](/20251230-us_army_values/)
