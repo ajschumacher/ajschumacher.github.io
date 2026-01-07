@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-01-07: [Core Socialist Values of the Chinese Communist Party](/20260107-core_socialist_values_of_the_ccp/)
  * 2026-01-06: [Moral Code of the Builder of Communism](/20260106-moral_code_of_the_builder_of_communism/)
  * 2025-12-31: [Girl Scouts of the USA Promise and Law](/20251231-girl_scouts_of_usa_promise_and_law/)
  * 2025-12-31: [Asimov's Three Laws of Robotics](/20251231-asimov_three_laws_of_robotics/)
