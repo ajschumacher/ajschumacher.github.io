@@ -20,15 +20,16 @@ stuff.
 
 Sometimes people ask me for a bio:
 
-> Aaron Schumacher is a Data Scientist at Meta. He was previously at
-> Deep Learning Analytics and General Dynamics Mission Systems. He has
-> taught with Python and R for General Assembly and the Metis data
-> science bootcamp. Aaron has also worked with data at Booz Allen
-> Hamilton, New York University, and the New York City Department of
-> Education. He studied mathematics at the University of
-> Wisconsin–Madison and teaching mathematics at Bard College. Aaron's
-> career-best breakdancing result was advancing to the semi-finals of
-> the R16 Korea 2009 individual footwork battle.
+> Before becoming a full-time human, Aaron Schumacher was a Research
+> Data Scientist at Meta. He was previously at Deep Learning Analytics
+> and General Dynamics Mission Systems. He has taught with Python and
+> R for General Assembly and the Metis data science bootcamp. Aaron
+> has also worked with data at Booz Allen Hamilton, New York
+> University, and the New York City Department of Education. He
+> studied mathematics at the University of Wisconsin–Madison and
+> teaching mathematics at Bard College. Aaron's career-best
+> breakdancing result was advancing to the semi-finals of the R16
+> Korea 2009 individual footwork battle.
 
 [An older version of the above](https://www.oreilly.com/people/aaron-schumacher)
 went up on O'Reilly with the publication of
