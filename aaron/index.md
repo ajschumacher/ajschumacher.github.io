@@ -41,6 +41,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+ * [Pavement Plots: Less biased boxes](https://docs.google.com/presentation/d/1vq-fGC8PvBenJo61VBIe7Xx2L1bLkTurVIERr8TpX1s/edit) for [Data Viz DC](https://luma.com/b4qfsjpl?tk=EHOGE1) on Thursday 2026-05-15
  * [Distributed Representations and Superposition](https://docs.google.com/presentation/d/1wyLk9j0X9QxaiO2af4cTlMZr8hckyUmTThjBNKTrTwY/edit) for [DC2](https://www.meetup.com/data-science-dc/events/307325043/) on Tuesday 2025-06-10
  * Industry Panel for CMU-Africa "Data Structures for Engineers" class on Thursday 2024-03-21
  * [Fireside Chat / Pro Tips (with Codecademy)](/20230919-fireside_chat_pro_tips/) on Tuesday 2023-09-19
