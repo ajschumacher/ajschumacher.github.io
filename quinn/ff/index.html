@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Fairy Fun</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="initial-screen" class="screen">
+  <img src="images/fairyfun.png" class="logo" alt="Fairy Fun">
+  <button id="start-btn" class="img-btn" aria-label="Start">
+    <img src="images/start.png" alt="Start">
+  </button>
+  <p class="credit">Idea by Quinn. Made by Quinn and Aaron. Version 1.</p>
+</div>
+
+<div id="welcome-screen" class="screen hidden">
+  <div class="welcome-text">
+    <p class="welcome-title">Welcome to FAIRY FUN!</p>
+    <p>This is not a fighting or competing game.</p>
+    <p>This game is supposed to be calm, peaceful, and fun.</p>
+    <p>There should be no cheating and just be yourself.</p>
+  </div>
+  <button id="next-btn" class="img-btn" aria-label="Next">
+    <img src="images/next.png" alt="Next">
+  </button>
+</div>
+
+<div id="world-screen" class="screen hidden">
+  <div id="tile-frame">
+    <img id="tile-img" alt="">
+    <div id="fairy" aria-label="fairy">🧚‍♀️</div>
+  </div>
+  <div id="joystick" aria-hidden="true">
+    <div id="joystick-knob"></div>
+  </div>
+</div>
+
+<audio id="bgm" src="Footsteps_On_The_Square.mp3" loop preload="auto"></audio>
+
+<script src="game.js"></script>
+</body>
+</html>
