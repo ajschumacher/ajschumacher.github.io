@@ -34,7 +34,7 @@ without interruption, but should stop the moment you exit the game.
 When a player first goes to the game, they see the Fairy Fun logo at
 the top of the screen, centered. This is `images/fairyfun.png`. Below
 that is the "start" button, `images/start.png`. Below that is the text
-"Idea by Quinn. Made by Quinn and Aaron."
+"Idea by Quinn. Made by Quinn and Aaron. Version 2."
 
 When the player clicks on the "start" button, it brings them to the
 welcome screen.
@@ -65,7 +65,12 @@ world at tile (7, 2).
 The fairy world is an explorable universe that the player flies/walks
 their fairy around.
 
-The fairy is represented by a female fairy emoji for the time being.
+The fairy is represented by a fairy emoji for the time being. When a
+player first loads the game, their fairy's appearance is randomly
+chosen: a gender presentation (neutral, female, or male) and one of
+six skin tones. This keeps players visually distinct in multiplayer.
+The choice is preserved in the URL (and the browser's local storage)
+so it survives a refresh.
 
 The player controls the fairy's movement with arrow keys when a
 keyboard is available, or with an on-screen "joystick" for screen-only
@@ -85,6 +90,66 @@ explore the whole map.
 
 The tile images have filenames like `images/world/7_2.png` which is
 the starting tile.
+
+
+### Sketch mode (easter egg)
+
+Quinn's original hand-drawn sketches of the tiles live in
+`images/qworld/`, with filenames that mirror `images/world/` but use
+the `.jpeg` extension (e.g. `images/qworld/7_2.jpeg`).
+
+The fancy `/world/` images are the default. The player can secretly
+toggle to the sketch versions by triple-tapping (or triple-clicking)
+the fairy. Triple-tapping again switches back. There is no visible UI
+for this — it is an easter egg.
+
+
+### Screen persistence via URL
+
+Each screen has its own URL hash so refreshing the page keeps the
+player on the same screen:
+
+ * `#/` — initial screen
+ * `#/welcome` — welcome screen
+ * `#/world?tile=X,Y&pos=PX,PY` — fairy world at tile (X, Y) with the
+   fairy at normalized position (PX, PY) within the tile. If sketch
+   mode is active, `&set=qworld` is appended. The world URL also
+   carries `&fairy=...` (the fairy's appearance). Every screen's URL
+   carries `&fairy=...`.
+
+The fairy world URL is kept in sync while the player explores, so a
+refresh lands them on the same tile in roughly the same spot.
+
+Browsers block audio from auto-playing until the player interacts with
+the page. If the page is reloaded directly into the welcome or fairy
+world screen, the music starts on the next click, tap, or key press.
+
+
+### Multiplayer
+
+Fairy Fun supports calm, peaceful multiplayer: players can wander the
+same world and see each other's fairies.
+
+There is no game server. Players are connected directly to each other
+peer-to-peer (over WebRTC) using the Trystero library, which handles
+the connection handshake over free public infrastructure. The game
+itself remains a set of static files.
+
+For now, everyone who plays Fairy Fun shares a single world room, so
+any two players who are in the fairy world at the same time can see
+each other.
+
+A player only sees another player's fairy when both fairies are
+standing on the same tile — wandering the world and bumping into a
+friend's fairy is the multiplayer moment.
+
+If two players happen to have the same randomly chosen appearance, one
+of them automatically re-rolls to a different look so they stay
+visually distinct.
+
+If the peer-to-peer connection cannot be established (no network, or a
+restrictive home network), the game quietly falls back to single
+player.
 
 
 ## Future plans (not implemented yet)

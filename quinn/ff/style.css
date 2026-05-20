@@ -136,10 +136,27 @@ html, body {
   font-size: 48px;
   line-height: 1;
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
   will-change: left, top;
   transition: none;
+  z-index: 2;
+}
+
+/* Other players' fairies (multiplayer) */
+.remote-fairy {
+  position: absolute;
+  font-size: 48px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  will-change: left, top;
+  /* Smooth out the gaps between network updates. */
+  transition: left 0.15s linear, top 0.15s linear;
+  z-index: 1;
 }
 
 /* Joystick */
