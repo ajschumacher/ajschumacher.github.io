@@ -104,6 +104,73 @@ html, body {
   font-weight: 600;
 }
 
+/* Fairy chooser screen */
+#chooser-screen {
+  overflow-y: auto;
+}
+
+.chooser-title {
+  font-size: clamp(24px, 5vh, 48px);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+#fairy-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(5px, 1.6vw, 12px);
+  width: min(92vw, 480px);
+}
+
+.fairy-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: clamp(24px, 7vw, 44px);
+  background: rgba(255, 255, 255, 0.28);
+  border: 3px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.fairy-cell:active {
+  transform: scale(0.92);
+}
+
+/* A fairy already in use by another player: blank, unpickable. */
+.fairy-cell.taken {
+  background: rgba(255, 255, 255, 0.07);
+  cursor: default;
+}
+
+.fairy-cell.taken:active {
+  transform: none;
+}
+
+.fairy-cell.selected {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.85);
+}
+
+/* Inactive "next" button on the chooser, until a fairy is picked. */
+.img-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.img-btn:disabled:active {
+  transform: none;
+}
+
 /* World screen */
 #world-screen {
   background: #000;

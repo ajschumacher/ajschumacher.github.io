@@ -24,9 +24,11 @@ Bright rainbow mostly.
 ### Background music
 
 The game has background music that plays on a loop the whole time the
-game is open. The music is in `Footsteps_On_The_Square.mp3`. The music
-should start the moment you enter the game and keep playing forever
-without interruption, but should stop the moment you exit the game.
+game is open. The music is in `Footsteps_On_The_Square.mp3`. Web
+browsers do not allow sound to play until the player interacts with
+the page, so the music starts the moment the player clicks the "start"
+button on the initial screen. From then on it keeps playing forever
+without interruption, and it stops when the player closes the game.
 
 
 ### Initial screen
@@ -56,8 +58,33 @@ There should be no cheating and just be yourself.
 
 Below this text, there is the "next" button, `images/next.png`.
 
-When the player clicks on the "next" button, they enter the fairy
-world at tile (7, 2).
+When the player clicks on the "next" button, they go to the fairy
+chooser screen.
+
+
+### Fairy chooser
+
+The fairy chooser screen comes between the welcome screen and the
+fairy world. At the top it says "Choose your fairy". Below that is a
+grid of every possible fairy emoji: rows run top to bottom as female,
+neutral, male; columns run left to right by skin tone, yellow first
+and then light to dark.
+
+The fairy is a fairy emoji for the time being: a gender presentation
+(neutral, female, or male) and one of six skin tones.
+
+So that players are not visually confused, a fairy emoji already in
+use by a player currently in the world does not appear in the grid —
+there is a blank in its place. The "next" button (the same one used on
+the welcome screen) starts inactive. When the player taps a fairy it
+becomes highlighted and the "next" button becomes active; clicking it
+enters the fairy world as the chosen fairy.
+
+To keep things simple, the grid only reflects who is in the world
+while the player has not yet picked. Once a fairy is picked there is
+no further clash check, so if players join or change while someone is
+still on the chooser screen, it is possible (though unlikely) for two
+identical fairies to end up in the world at once.
 
 
 ### Fairy world
@@ -65,12 +92,7 @@ world at tile (7, 2).
 The fairy world is an explorable universe that the player flies/walks
 their fairy around.
 
-The fairy is represented by a fairy emoji for the time being. When a
-player first loads the game, their fairy's appearance is randomly
-chosen: a gender presentation (neutral, female, or male) and one of
-six skin tones. This keeps players visually distinct in multiplayer.
-The choice is preserved in the URL (and the browser's local storage)
-so it survives a refresh.
+The fairy is the emoji the player picked on the fairy chooser screen.
 
 The player controls the fairy's movement with arrow keys when a
 keyboard is available, or with an on-screen "joystick" for screen-only
@@ -104,25 +126,13 @@ the fairy. Triple-tapping again switches back. There is no visible UI
 for this — it is an easter egg.
 
 
-### Screen persistence via URL
+### Screen flow
 
-Each screen has its own URL hash so refreshing the page keeps the
-player on the same screen:
-
- * `#/` — initial screen
- * `#/welcome` — welcome screen
- * `#/world?tile=X,Y&pos=PX,PY` — fairy world at tile (X, Y) with the
-   fairy at normalized position (PX, PY) within the tile. If sketch
-   mode is active, `&set=qworld` is appended. The world URL also
-   carries `&fairy=...` (the fairy's appearance). Every screen's URL
-   carries `&fairy=...`.
-
-The fairy world URL is kept in sync while the player explores, so a
-refresh lands them on the same tile in roughly the same spot.
-
-Browsers block audio from auto-playing until the player interacts with
-the page. If the page is reloaded directly into the welcome or fairy
-world screen, the music starts on the next click, tap, or key press.
+The game flows forward through its four screens — initial, welcome,
+fairy chooser, fairy world — and the player always enters by clicking
+through from the start. There is no URL routing: the address never
+changes, and refreshing the page returns the player to the initial
+screen.
 
 
 ### Multiplayer
@@ -130,10 +140,12 @@ world screen, the music starts on the next click, tap, or key press.
 Fairy Fun supports calm, peaceful multiplayer: players can wander the
 same world and see each other's fairies.
 
-There is no game server. Players are connected directly to each other
-peer-to-peer (over WebRTC) using the Trystero library, which handles
-the connection handshake over free public infrastructure. The game
-itself remains a set of static files.
+There is no game server. Players connect directly to each other
+peer-to-peer (over WebRTC) using the Trystero library. A Firebase
+Realtime Database carries only the brief initial connection handshake;
+once players are connected they talk straight to each other. The game
+itself remains a set of static files — Firebase is a hosted service,
+not a server we run.
 
 For now, everyone who plays Fairy Fun shares a single world room, so
 any two players who are in the fairy world at the same time can see
@@ -143,9 +155,13 @@ A player only sees another player's fairy when both fairies are
 standing on the same tile — wandering the world and bumping into a
 friend's fairy is the multiplayer moment.
 
-If two players happen to have the same randomly chosen appearance, one
-of them automatically re-rolls to a different look so they stay
-visually distinct.
+Players keep their fairies visually distinct by choosing from a grid
+that hides fairies already in use (see the fairy chooser, above).
+
+Each player quietly re-broadcasts its presence every few seconds.
+Peer-to-peer disconnections are not always cleanly signalled, so any
+fairy that has gone silent for several seconds is treated as gone and
+removed — this prevents abandoned "ghost" fairies from lingering.
 
 If the peer-to-peer connection cannot be established (no network, or a
 restrictive home network), the game quietly falls back to single

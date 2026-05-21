@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Fairy Fun</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
   <button id="start-btn" class="img-btn" aria-label="Start">
     <img src="images/start.png" alt="Start">
   </button>
-  <p class="credit">Idea by Quinn. Made by Quinn and Aaron. Version 2.</p>
+  <p class="credit">Idea by Quinn. Made by Quinn and Aaron. Version 3.</p>
 </div>
 
 <div id="welcome-screen" class="screen hidden">
@@ -25,6 +26,14 @@
     <p>There should be no cheating and just be yourself.</p>
   </div>
   <button id="next-btn" class="img-btn" aria-label="Next">
+    <img src="images/next.png" alt="Next">
+  </button>
+</div>
+
+<div id="chooser-screen" class="screen hidden">
+  <p class="chooser-title">Choose your fairy</p>
+  <div id="fairy-grid"></div>
+  <button id="chooser-next-btn" class="img-btn" aria-label="Next" disabled>
     <img src="images/next.png" alt="Next">
   </button>
 </div>
@@ -41,6 +50,6 @@
 
 <audio id="bgm" src="Footsteps_On_The_Square.mp3" loop preload="auto"></audio>
 
-<script src="game.js"></script>
+<script src="game.js?v=9"></script>
 </body>
 </html>
