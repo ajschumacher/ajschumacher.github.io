@@ -36,7 +36,7 @@ without interruption, and it stops when the player closes the game.
 When a player first goes to the game, they see the Fairy Fun logo at
 the top of the screen, centered. This is `images/fairyfun.png`. Below
 that is the "start" button, `images/start.png`. Below that is the text
-"Idea by Quinn. Made by Quinn and Aaron. Version 2."
+"Idea by Quinn. Made by Quinn and Aaron. Version 4."
 
 When the player clicks on the "start" button, it brings them to the
 welcome screen.
@@ -58,14 +58,42 @@ There should be no cheating and just be yourself.
 
 Below this text, there is the "next" button, `images/next.png`.
 
-When the player clicks on the "next" button, they go to the fairy
-chooser screen.
+When the player clicks on the "next" button, they go to the Entering
+the fairy world screen.
+
+
+### Entering the fairy world
+
+Between the welcome screen and the fairy chooser, the game reaches
+out to the shared multiplayer world and shows the player how the
+connection is going.
+
+At the top is the headline "Entering the fairy world". While the
+connection is being made, a spinner turns above the text
+"Communicating with shared fairy world...".
+
+If the shared world is reached, the text becomes "We have entered
+the shared fairy world". If it cannot be reached, the text becomes
+"Unable to reach shared fairy world. You can still fly solo." along
+with a "Try to contact shared fairy world again" button that makes a
+fresh attempt.
+
+Reaching the shared world means the realtime database library has
+loaded and the database has reported itself connected — the player is
+in the shared room. It is not a promise that other players are online
+right now; the shared world is often simply empty.
+
+The "next" button (the same one used on the welcome screen) is
+inactive while the connection is still being attempted, and becomes
+active once the outcome is known. Clicking it goes to the fairy
+chooser screen — whether or not the shared world was reached, the
+player can always continue.
 
 
 ### Fairy chooser
 
-The fairy chooser screen comes between the welcome screen and the
-fairy world. At the top it says "Choose your fairy". Below that is a
+The fairy chooser screen comes just before the fairy world. At the
+top it says "Choose your fairy". Below that is a
 grid of every possible fairy emoji: rows run top to bottom as female,
 neutral, male; columns run left to right by skin tone, yellow first
 and then light to dark.
@@ -128,9 +156,9 @@ for this — it is an easter egg.
 
 ### Screen flow
 
-The game flows forward through its four screens — initial, welcome,
-fairy chooser, fairy world — and the player always enters by clicking
-through from the start. There is no URL routing: the address never
+The game flows forward through its five screens — initial, welcome,
+entering the fairy world, fairy chooser, fairy world — and the player
+always enters by clicking through from the start. There is no URL routing: the address never
 changes, and refreshing the page returns the player to the initial
 screen.
 
@@ -140,12 +168,10 @@ screen.
 Fairy Fun supports calm, peaceful multiplayer: players can wander the
 same world and see each other's fairies.
 
-There is no game server. Players connect directly to each other
-peer-to-peer (over WebRTC) using the Trystero library. A Firebase
-Realtime Database carries only the brief initial connection handshake;
-once players are connected they talk straight to each other. The game
-itself remains a set of static files — Firebase is a hosted service,
-not a server we run.
+There is no game server. Each player publishes their presence — fairy,
+tile, position — to a shared Firebase Realtime Database, and listens
+to the same path for everyone else. The game itself remains a set of
+static files; Firebase is a hosted service, not a server we run.
 
 For now, everyone who plays Fairy Fun shares a single world room, so
 any two players who are in the fairy world at the same time can see
@@ -158,14 +184,13 @@ friend's fairy is the multiplayer moment.
 Players keep their fairies visually distinct by choosing from a grid
 that hides fairies already in use (see the fairy chooser, above).
 
-Each player quietly re-broadcasts its presence every few seconds.
-Peer-to-peer disconnections are not always cleanly signalled, so any
-fairy that has gone silent for several seconds is treated as gone and
-removed — this prevents abandoned "ghost" fairies from lingering.
+When a player leaves — closing the tab, losing the network, or simply
+walking away — the database itself removes their presence node, so
+abandoned "ghost" fairies do not linger.
 
-If the peer-to-peer connection cannot be established (no network, or a
-restrictive home network), the game quietly falls back to single
-player.
+If the database cannot be reached (no network, or a blocked
+connection), the game falls back to single player — and the Entering
+the fairy world screen tells the player when this has happened.
 
 
 ## Future plans (not implemented yet)
