@@ -1,9 +1,11 @@
 import { el } from './dom.js';
 import { loadProfile, saveProfile } from './storage.js';
 import { CHAR_ORDER, charInfo, expectedFromKeyEvent } from './chars.js';
-import { advanceThreshold, wpmFromMs } from './stats.js';
+import { advanceThreshold } from './stats.js';
 import { renderFlower } from './flower.js';
 import { MIN_SAMPLES_FOR_ADVANCE } from './leveling.js';
+import { showModal } from './modal.js';
+import { renderKeyboard } from './keyboard.js';
 
 const SEED_WPM = 41;
 const SEED_MS = Math.round(60000 / (SEED_WPM * 5));
@@ -21,33 +23,11 @@ function seedPriorChars(profile, level) {
   }
 }
 
-function shuffleInPlace(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+// Only printable characters are used in placement — no space or enter,
+// since their display glyphs (␣ ↵) confuse new users.
+const TESTABLE = CHAR_ORDER.filter(c => c !== ' ' && c !== '\n');
 
-function buildProbeSamples(lo, hi, probe, previousLastChar) {
-  const seen = new Set();
-  const window = [];
-  for (let i = Math.max(lo, probe - 2); i <= Math.min(hi, probe + 2); i++) {
-    const c = CHAR_ORDER[i];
-    if (!seen.has(c)) { seen.add(c); window.push(c); }
-  }
-  for (let i = lo; i <= hi && window.length < 5; i++) {
-    const c = CHAR_ORDER[i];
-    if (!seen.has(c)) { seen.add(c); window.push(c); }
-  }
-  const samples = window.slice(0, 5);
-  shuffleInPlace(samples);
-  let attempts = 0;
-  while (samples.length > 1 && samples[0] === previousLastChar && attempts++ < 5) {
-    shuffleInPlace(samples);
-  }
-  return samples;
-}
+const MAX_TRIALS = 15;
 
 export function renderTest(root, { profileId }, navigate) {
   const profile = loadProfile(profileId);
@@ -80,21 +60,20 @@ export function renderTest(root, { profileId }, navigate) {
     ])
   );
 
-  const TRIAL_TIMEOUT_MS = 2000;
-
+  // Binary search state.  lo/hi are indices into TESTABLE.
+  // A boundary only "hardens" after two consecutive fails or two consecutive passes
+  // with no intervening failure on that probe.
   const state = {
     lo: 0,
-    hi: CHAR_ORDER.length - 1,
-    probe: 0,
-    samples: [],
-    sampleIndex: 0,
-    trialResults: [],
-    targetStartMs: 0,
+    hi: TESTABLE.length - 1,
+    probe: Math.floor((TESTABLE.length - 1) / 2),
+    consecutivePasses: {},   // probe index → count
+    consecutiveFails: {},    // probe index → count
+    lastSoftFailProbe: null, // probe that failed once — candidate for retry after a soft pass
+    trialsLeft: MAX_TRIALS,
+    lastSuccessTestableIndex: -1, // TESTABLE index of most recent correct trial
     flowerEl: null,
     locked: false,
-    previousLastChar: null,
-    probesDone: 0,
-    currentWrong: false,
     finished: false,
     timeoutId: null,
   };
@@ -106,45 +85,28 @@ export function renderTest(root, { profileId }, navigate) {
     }
   }
 
-  function startProbe() {
-    state.probe = Math.floor((state.lo + state.hi) / 2);
-    state.samples = buildProbeSamples(
-      state.lo,
-      state.hi,
-      state.probe,
-      state.previousLastChar
-    );
-    state.sampleIndex = 0;
-    state.trialResults = [];
-    state.probesDone += 1;
-    progress.textContent = `Round ${state.probesDone}`;
-    showSample();
-  }
-
-  function showSample() {
+  function showChar() {
     const previous = state.flowerEl;
     if (previous) {
       previous.classList.add('done');
       setTimeout(() => previous.remove(), 1000);
     }
-    const ch = state.samples[state.sampleIndex];
+    const ch = TESTABLE[state.probe];
     state.flowerEl = renderFlower(ch);
     stage.append(state.flowerEl);
     state.flowerEl.querySelectorAll('.ch').forEach((node, i) => {
       node.classList.toggle('current', i === 0);
     });
-    state.targetStartMs = performance.now();
-    state.currentWrong = false;
+    // Timeout is derived from the advance threshold for this character's level,
+    // using the same WPM formula as practice mode: maxMs = 60000 / (wpm * 5).
+    // This means easy early chars (f, j) allow ~3 s; hard late chars (?, ") allow ~1 s.
+    const charOrderIndex = CHAR_ORDER.indexOf(ch);
+    const level = charOrderIndex + 1;
+    const timeoutMs = Math.round(60000 / (advanceThreshold(level) * 5));
+
     state.locked = false;
     clearTrialTimeout();
-    state.timeoutId = setTimeout(onTrialTimeout, TRIAL_TIMEOUT_MS);
-  }
-
-  function onTrialTimeout() {
-    state.timeoutId = null;
-    if (state.locked || state.finished) return;
-    state.currentWrong = true;
-    recordTrialAndNext(TRIAL_TIMEOUT_MS);
+    state.timeoutId = setTimeout(() => onResult(false), timeoutMs);
   }
 
   function shakeCurrent() {
@@ -156,65 +118,130 @@ export function renderTest(root, { profileId }, navigate) {
     ch.classList.add('shake');
   }
 
-  function recordTrialAndNext(dtMs) {
+  // Called with passed=true on correct keystroke, false on wrong key or timeout.
+  // A wrong key is an immediate fail — the user doesn't need to retype the correct key.
+  function onResult(passed) {
     clearTrialTimeout();
-    const ch = state.samples[state.sampleIndex];
-    state.trialResults.push({
-      wpm: wpmFromMs(dtMs),
-      correct: !state.currentWrong,
-      char: ch,
-    });
-    state.previousLastChar = ch;
-    state.sampleIndex += 1;
+    if (state.locked || state.finished) return;
     state.locked = true;
-    if (state.sampleIndex >= state.samples.length) {
-      setTimeout(finishProbe, 350);
+    state.trialsLeft -= 1;
+
+    const P = state.probe;
+
+    if (passed) {
+      state.lastSuccessTestableIndex = P;
+      state.consecutiveFails[P] = 0;
+      state.consecutivePasses[P] = (state.consecutivePasses[P] || 0) + 1;
+      // Passing the soft-fail probe clears it
+      if (state.lastSoftFailProbe === P) state.lastSoftFailProbe = null;
     } else {
-      setTimeout(showSample, 350);
+      shakeCurrent();
+      state.consecutivePasses[P] = 0;
+      state.consecutiveFails[P] = (state.consecutiveFails[P] || 0) + 1;
     }
-  }
 
-  function onCorrect() {
-    recordTrialAndNext(performance.now() - state.targetStartMs);
-  }
-
-  function onWrong() {
-    state.currentWrong = true;
-    shakeCurrent();
-  }
-
-  function finishProbe() {
-    const wpms = state.trialResults.map(r => r.wpm).sort((a, b) => a - b);
-    const med = wpms[wpms.length >> 1] || 0;
-    const allCorrect = state.trialResults.every(r => r.correct);
-    const threshold = advanceThreshold(state.probe + 1);
-    const pass = allCorrect && med >= threshold;
-    if (pass) state.lo = state.probe + 1;
-    else state.hi = state.probe - 1;
-
-    if (state.lo > state.hi) {
-      finishTest();
+    // End the test when trials are exhausted
+    if (state.trialsLeft <= 0) {
+      setTimeout(finishTest, 350);
       return;
     }
-    startProbe();
+
+    // Harden the boundary if we've seen two consecutive outcomes at this probe
+    if (passed && (state.consecutivePasses[P] || 0) >= 2) {
+      state.lo = P + 1;
+      state.lastSoftFailProbe = null;
+    } else if (!passed && (state.consecutiveFails[P] || 0) >= 2) {
+      state.hi = P - 1;
+      state.lastSoftFailProbe = null;
+    } else if (!passed) {
+      // First failure — record as soft fail for possible retry
+      state.lastSoftFailProbe = P;
+    }
+
+    if (state.lo > state.hi) {
+      setTimeout(finishTest, 350);
+      return;
+    }
+
+    // Choose next probe
+    if (passed) {
+      if ((state.consecutivePasses[P] || 0) >= 2) {
+        // Hard pass confirmed — standard midpoint of remaining range
+        state.probe = Math.floor((state.lo + state.hi) / 2);
+      } else if (state.lastSoftFailProbe != null) {
+        // Soft pass after a soft fail — retry the failed probe
+        state.probe = state.lastSoftFailProbe;
+      } else {
+        // Soft pass, no pending soft fail — explore to the right
+        state.probe = Math.min(Math.floor((P + 1 + state.hi) / 2), state.hi);
+      }
+    } else {
+      if ((state.consecutiveFails[P] || 0) >= 2) {
+        // Hard fail confirmed — standard midpoint of remaining range
+        state.probe = Math.floor((state.lo + state.hi) / 2);
+      } else {
+        // Soft fail — explore to the left (within lo..P-1)
+        const leftHi = P - 1;
+        if (leftHi < state.lo) {
+          // No room to go left; treat as a hard fail immediately
+          state.hi = P - 1;
+          state.lastSoftFailProbe = null;
+          if (state.lo > state.hi) {
+            setTimeout(finishTest, 350);
+            return;
+          }
+          state.probe = Math.floor((state.lo + state.hi) / 2);
+        } else {
+          state.probe = Math.floor((state.lo + leftHi) / 2);
+        }
+      }
+    }
+
+    setTimeout(showChar, 350);
   }
 
   function finishTest() {
     state.finished = true;
     state.locked = true;
-    const level = Math.max(1, state.lo);
+    clearTrialTimeout();
+
+    // Level = one more than the most recent successful char in CHAR_ORDER terms.
+    // This seeds the proven char and leaves the next one as the fresh challenge.
+    let level = 1;
+    if (state.lastSuccessTestableIndex >= 0) {
+      const successChar = TESTABLE[state.lastSuccessTestableIndex];
+      const charOrderIndex = CHAR_ORDER.indexOf(successChar);
+      level = Math.min(charOrderIndex + 2, CHAR_ORDER.length);
+    }
+
     profile.level = level;
+    seedPriorChars(profile, level);
     profile.lastPlayed = new Date().toISOString();
     saveProfile(profile);
-    banner.querySelector('.placement-title').textContent =
-      `All set! You're at Level ${level}.`;
-    const nextChar = CHAR_ORDER[level - 1];
-    const info = charInfo(nextChar);
-    banner.querySelector('.placement-hint').textContent =
-      info ? `We'll start with ${info.name}.` : '';
+
+    banner.querySelector('.placement-title').textContent = `All set! You're at Level ${level}.`;
+    banner.querySelector('.placement-hint').textContent = '';
     progress.textContent = '';
     if (state.flowerEl) state.flowerEl.classList.add('done');
-    setTimeout(() => navigate('practice', { profileId }), 1600);
+
+    const startChar = CHAR_ORDER[level - 1];
+    const info = charInfo(startChar);
+    const titleLabel =
+      startChar === ' ' ? 'New: Space!'
+      : startChar === '\n' ? 'New: Enter!'
+      : startChar >= '0' && startChar <= '9' ? `Starting number: ${info.display}`
+      : startChar >= 'A' && startChar <= 'Z' ? `Starting capital: ${info.display}`
+      : startChar >= 'a' && startChar <= 'z' ? `Starting letter: ${info.display}`
+      : `Starting symbol: ${info.display}`;
+    const bigChar = el('div', { class: 'big-char', text: info.display });
+    const instruction = el('p', { class: 'instruction', text: info.instruction });
+    const kb = renderKeyboard({ highlight: info.baseKey, shiftHand: info.shiftHand });
+    showModal({
+      title: titleLabel,
+      children: [bigChar, instruction, kb],
+      dismissLabel: "Let's go!",
+      onDismiss: () => navigate('practice', { profileId }),
+    });
   }
 
   function handleKey(e) {
@@ -223,36 +250,42 @@ export function renderTest(root, { profileId }, navigate) {
       return;
     }
     if (e.metaKey || e.ctrlKey || e.altKey) return;
-    const expected = state.samples[state.sampleIndex];
-    if (expected == null) return;
-
-    if (expected === ' ') {
-      if (e.key === ' ') { e.preventDefault(); onCorrect(); return; }
-      if (e.key.length === 1 || e.key === 'Enter') { e.preventDefault(); onWrong(); }
-      return;
-    }
-    if (expected === '\n') {
-      if (e.key === 'Enter') { e.preventDefault(); onCorrect(); return; }
-      if (e.key.length === 1) { e.preventDefault(); onWrong(); }
-      return;
-    }
+    // Ignore non-printing keys (arrows, function keys, lone Shift, etc.)
     if (e.key.length !== 1 && e.key !== 'Enter') return;
 
+    const expected = TESTABLE[state.probe];
+    if (expected == null) return;
+
+    e.preventDefault();
     const matched = expectedFromKeyEvent(e, expected);
-    if (matched != null) {
-      e.preventDefault();
-      onCorrect();
-    } else {
-      e.preventDefault();
-      onWrong();
-    }
+    onResult(matched != null);
   }
 
-  window.addEventListener('keydown', handleKey);
-  startProbe();
+  function startTest() {
+    window.addEventListener('keydown', handleKey);
+    showChar();
+  }
+
+  // Show a ready overlay so the player can read the instructions and get their
+  // hands on the keyboard before the first character appears.
+  const readyOverlay = el('div', { class: 'ready-overlay' }, [
+    el('p', { class: 'ready-message', text: 'Place your fingers on the keyboard, then press any key to begin.' }),
+  ]);
+  stage.append(readyOverlay);
+
+  function handleReadyKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key.length !== 1 && e.key !== 'Enter') return;
+    e.preventDefault();
+    window.removeEventListener('keydown', handleReadyKey);
+    readyOverlay.remove();
+    startTest();
+  }
+  window.addEventListener('keydown', handleReadyKey);
 
   return () => {
     clearTrialTimeout();
+    window.removeEventListener('keydown', handleReadyKey);
     window.removeEventListener('keydown', handleKey);
   };
 }

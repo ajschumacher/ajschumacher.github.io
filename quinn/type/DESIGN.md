@@ -28,13 +28,13 @@ Rationale: the game is small, the dependencies would outweigh the code, and a 7-
 
 ### Running locally
 
-ES modules don't load from `file://` in browsers, so serve the directory with any static HTTP server. From the project root:
+ES modules don't load from `file://` in browsers, so serve the directory with the included dev server. From the project root:
 
 ```
-python3 -m http.server 8765
+python3 serve.py
 ```
 
-then visit `http://localhost:8765`. (The `.claude/launch.json` configures the Claude Code preview to do the same.)
+then visit `http://localhost:8765`. The server sets `Cache-Control: no-store` on every response so edited JS modules are always re-fetched — no hard-reloads needed. (The `.claude/launch.json` configures the Claude Code preview to use the same script.)
 
 ## Screens & navigation
 
@@ -108,21 +108,36 @@ The level numbering of milestones (used by the WPM ramp below): end of lowercase
 
 ## Test mode (placement)
 
-Goal: estimate the highest character index the player can already type at the **mastery threshold** (proposed 40 WPM, see below) and set `level` accordingly.
+Goal: estimate the highest character the player can already type and set `level` accordingly.
 
-Algorithm — bracketed binary search over `CHAR_ORDER`, sampling distinct characters near each probe so the player never sees the same character twice in a row (which would let them "find then re-hit" artificially fast).
+**Testable characters**: `CHAR_ORDER` minus Space and Enter — their display glyphs (␣ ↵) confuse new users.
 
-1. Start with `lo = 0`, `hi = len(CHAR_ORDER) - 1`, `probe = floor((lo+hi)/2)`.
-2. Build a sample set: 5 distinct characters drawn from the window `[max(lo, probe-2), min(hi, probe+2)]`, padded with other untested characters from inside `[lo, hi]` if the window is too small. Shuffle the order; if the last character shown in the previous probe lands first, reshuffle.
-3. Present each sample as a single flower. For each, the timing window is **flower-appears → correct keystroke**. WPM for the trial = `60000 / (timeMs * 5)` — i.e. treat one character as 1/5 of a word.
-4. Compute the median WPM across the 5 trials. If median ≥ the level-appropriate advance threshold (see ramp) **and** all 5 were typed correctly on the first attempt: `lo = probe + 1`. Else `hi = probe - 1`.
-5. Repeat until `lo > hi`. Set `level = lo`. Floor of 1 (everyone gets at least the `f`/`j` unlock).
+Algorithm — binary search with soft boundaries over `TESTABLE` (92 chars), one character per trial, up to **15 trials** total.
+
+- Start with `lo = 0`, `hi = len(TESTABLE) - 1`, `probe = floor((lo+hi)/2)`.
+- Each trial: show the probe character as a single flower. **Pass** = correct keystroke; **Fail** = wrong keystroke or 2-second timeout.
+- Boundaries harden gradually — a probe must fail **twice consecutively** to move `hi` down, or pass **twice consecutively** to move `lo` up:
+  - **Soft fail** (1st fail): explore left half (`lo..probe-1`), remember this probe as a pending retry.
+  - **Soft pass** (1st pass): if there is a pending soft-fail probe, retry it; otherwise explore right.
+  - **Hard fail** (2nd consecutive fail): `hi = probe - 1`, then standard midpoint of remaining range.
+  - **Hard pass** (2nd consecutive pass): `lo = probe + 1`, then standard midpoint of remaining range.
+- Stop when `lo > hi` or 15 trials are used.
+- **Level** = CHAR_ORDER index of the most recent successful char + 2 (floor 1). This places the proven char into the seeded history and makes the next character the fresh challenge.
+
+Example with 7 chars, starting at char 4:
+
+| Trial | Char | Result | Notes |
+|-------|------|--------|-------|
+| 1 | 4 | Fail | Soft fail → try char 2 |
+| 2 | 2 | Pass | Soft pass → retry char 4 (pending soft fail) |
+| 3 | 4 | Fail | Hard fail → `hi=3`, try char 2 again |
+| 4 | 2 | Pass | Hard pass → `lo=3`, `hi=3`, try char 3 |
 
 Notes:
-- Single characters only — no words. Test stays fast and unambiguous.
-- ~7 probes × 5 trials ≈ 35 prompts ≈ ~1–2 minutes total.
-- Re-test overwrites `level` to whatever placement finds, even if lower. (Confidence in the new estimate beats avoiding a number going down.)
-- Visual: same flower aesthetic as Practice, single flower at a time, a clear "Placement" banner so it doesn't feel like a graded test.
+- Single characters only — no words or speed measurement. Test is purely correct/incorrect.
+- 15 trials ≈ 30–60 seconds.
+- Re-test overwrites `level` to whatever placement finds, even if lower.
+- Visual: same flower aesthetic as Practice, single flower at a time, trial counter shown.
 
 ## Practice mode (the main loop)
 
@@ -167,10 +182,10 @@ Counting the first character means "thinking time" between flowers is part of th
 Both the advancement and review thresholds depend on the player's current level, ramping up so beginners aren't asked for unrealistic speed.
 
 **Advance threshold** `T_advance(level)` — piecewise linear:
-- Level 1 → **10 WPM**
-- Level 32 (end of lowercase block, including space + enter) → **20 WPM**
-- Level 58 (end of capital letters) → **40 WPM**
-- Level > 58 → constant **40 WPM**
+- Level 1 → **4 WPM**
+- Level 32 (end of lowercase block, including space + enter) → **8 WPM**
+- Level 58 (end of capital letters) → **12 WPM**
+- Level > 58 → constant **12 WPM**
 
 Linear interpolation between breakpoints. Rounded to one decimal for display.
 
@@ -183,6 +198,12 @@ Player advances to `level+1` (unlocking the next character) when **all** of:
 2. Every unlocked character's median WPM ≥ `T_advance(level)`.
 
 On advancement: the queue pauses, a friendly modal appears showing the new character on a keyboard diagram with the correct finger highlighted and a sentence like *"This is `r`. Reach up with your left index finger."* (For capitals, the modal also shows the opposite-hand shift key with its finger highlighted.) Player clicks Continue, then the new character is heavily weighted in the queue.
+
+### Expert mastery (level 94)
+
+Level 94 is the final level — all 94 characters are unlocked. When a player at level 94 meets the advancement criteria across every character (the "would level up to 95" moment), a one-time congratulatory modal appears (fanfare + ★ icon, "You're an Expert!"). The flag `profile.masteryAchieved` is set so the modal only fires once. After dismissal, practice continues normally.
+
+Wherever a level number would be displayed (HUD, home screen profile card), level-94 players see **"Expert"** instead of a number.
 
 ### Reinforcement rule (no demotion)
 

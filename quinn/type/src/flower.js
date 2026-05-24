@@ -61,9 +61,17 @@ export function renderFlower(prompt) {
 
   const text = el('div', { class: 'flower-text' });
   for (const c of prompt) {
-    const info = charInfo(c);
-    const label = info ? info.display : c;
-    text.append(el('span', { class: 'ch', text: label }));
+    if (c === '\n') {
+      // Zero-height span that forces a flex line-break; keeps .ch indices aligned
+      text.append(el('span', { class: 'ch ch-newline' }));
+    } else if (c === ' ') {
+      // Real space between words — no highlight coloring
+      text.append(el('span', { class: 'ch ch-space', text: ' ' }));
+    } else {
+      const info = charInfo(c);
+      const label = info ? info.display : c;
+      text.append(el('span', { class: 'ch', text: label }));
+    }
   }
   body.append(text);
 

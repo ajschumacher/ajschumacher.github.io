@@ -91,15 +91,24 @@ function buildInfo(char) {
   };
 }
 
+function isLetter(char) {
+  return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z');
+}
+
+function quotedDisplay(char) {
+  const d = displayOf(char);
+  return isLetter(char) ? d : `"${d}"`;
+}
+
 function instructionFor(char, { hand, finger, shifted, shiftHand }) {
   if (char === ' ') return 'Press the Space bar with your right thumb.';
   if (char === '\n') return 'Press Enter with your right pinky finger.';
   const fingerStr = fingerPhrase(hand, finger);
   if (!shifted) {
-    return `Press ${displayOf(char)} with your ${fingerStr}.`;
+    return `Press ${quotedDisplay(char)} with your ${fingerStr}.`;
   }
   const shiftStr = `${handLabel(shiftHand)} Shift with your ${handLabel(shiftHand)} pinky`;
-  return `Hold ${shiftStr}, then press ${displayOf(char)} with your ${fingerStr}.`;
+  return `Hold ${shiftStr}, then press ${quotedDisplay(char)} with your ${fingerStr}.`;
 }
 
 export const CHAR_ORDER = [

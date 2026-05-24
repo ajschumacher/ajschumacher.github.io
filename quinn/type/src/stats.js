@@ -78,10 +78,10 @@ export function awphm(profile) {
 }
 
 export function advanceThreshold(level) {
-  if (level <= 1) return 10;
-  if (level <= 32) return 10 + ((level - 1) / 31) * 10;
-  if (level <= 58) return 20 + ((level - 32) / 26) * 20;
-  return 40;
+  if (level <= 1) return 4;
+  if (level <= 32) return 4 + ((level - 1) / 31) * 4;
+  if (level <= 58) return 8 + ((level - 32) / 26) * 4;
+  return 12;
 }
 
 export function reviewThreshold(level) {
