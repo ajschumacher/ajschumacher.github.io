@@ -1,10 +1,10 @@
-import { WORDS } from './words.js';
+import { WORDS } from './words.js?v=1';
 import {
   unlockedChars,
   reviewThreshold,
   charMedianWpm,
   charSampleCount,
-} from './stats.js';
+} from './stats.js?v=1';
 
 const REVIEW_WEIGHT = 6;
 const NEW_WEIGHT = 3;

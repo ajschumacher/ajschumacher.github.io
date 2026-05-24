@@ -1,20 +1,20 @@
-import { el } from './dom.js';
-import { loadProfile, saveProfile, touchLastPlayed } from './storage.js';
-import { expectedFromKeyEvent, charInfo } from './chars.js';
-import { addSample, addError, awphm } from './stats.js';
-import { renderFlower } from './flower.js';
-import { nextPrompt } from './prompts.js';
-import { canAdvance, advance, nextCharToUnlock, hasMasteredEverything, isMaxLevel } from './leveling.js';
-import { renderKeyboard } from './keyboard.js';
-import { showModal } from './modal.js';
+import { el } from './dom.js?v=1';
+import { loadProfile, saveProfile, touchLastPlayed } from './storage.js?v=1';
+import { expectedFromKeyEvent, charInfo } from './chars.js?v=1';
+import { addSample, addError, awphm } from './stats.js?v=1';
+import { renderFlower } from './flower.js?v=1';
+import { nextPrompt } from './prompts.js?v=1';
+import { canAdvance, advance, nextCharToUnlock, hasMasteredEverything, isMaxLevel } from './leveling.js?v=1';
+import { renderKeyboard } from './keyboard.js?v=1';
+import { showModal } from './modal.js?v=1';
 import {
   setAudioEnabled,
   isAudioEnabled,
   playChime,
   playTick,
   playFanfare,
-} from './audio.js';
-import { launchConfetti } from './confetti.js';
+} from './audio.js?v=1';
+import { launchConfetti } from './confetti.js?v=1';
 
 function renderHud(profile, navigate) {
   const levelEl = el('span', { class: 'hud-level', text: isMaxLevel(profile) ? 'Expert' : `Level ${profile.level}` });

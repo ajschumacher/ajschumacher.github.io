@@ -1,5 +1,5 @@
-import { el } from './dom.js';
-import { charInfo } from './chars.js';
+import { el } from './dom.js?v=1';
+import { charInfo } from './chars.js?v=1';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 

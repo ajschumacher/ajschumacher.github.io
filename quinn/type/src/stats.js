@@ -1,4 +1,4 @@
-import { CHAR_ORDER, ENGLISH_FREQ } from './chars.js';
+import { CHAR_ORDER, ENGLISH_FREQ } from './chars.js?v=1';
 
 export const MAX_SAMPLES = 50;
 

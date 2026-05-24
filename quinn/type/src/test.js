@@ -1,11 +1,11 @@
-import { el } from './dom.js';
-import { loadProfile, saveProfile } from './storage.js';
-import { CHAR_ORDER, charInfo, expectedFromKeyEvent } from './chars.js';
-import { advanceThreshold } from './stats.js';
-import { renderFlower } from './flower.js';
-import { MIN_SAMPLES_FOR_ADVANCE } from './leveling.js';
-import { showModal } from './modal.js';
-import { renderKeyboard } from './keyboard.js';
+import { el } from './dom.js?v=1';
+import { loadProfile, saveProfile } from './storage.js?v=1';
+import { CHAR_ORDER, charInfo, expectedFromKeyEvent } from './chars.js?v=1';
+import { advanceThreshold } from './stats.js?v=1';
+import { renderFlower } from './flower.js?v=1';
+import { MIN_SAMPLES_FOR_ADVANCE } from './leveling.js?v=1';
+import { showModal } from './modal.js?v=1';
+import { renderKeyboard } from './keyboard.js?v=1';
 
 const SEED_WPM = 41;
 const SEED_MS = Math.round(60000 / (SEED_WPM * 5));

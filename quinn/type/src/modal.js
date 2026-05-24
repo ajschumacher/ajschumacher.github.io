@@ -1,4 +1,4 @@
-import { el } from './dom.js';
+import { el } from './dom.js?v=1';
 
 export function showModal({ title, children, onDismiss, dismissLabel = 'Got it!' }) {
   const btn = el('button', { class: 'primary modal-dismiss', text: dismissLabel });

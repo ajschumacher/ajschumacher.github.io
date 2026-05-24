@@ -1,10 +1,10 @@
-import { CHAR_ORDER } from './chars.js';
+import { CHAR_ORDER } from './chars.js?v=1';
 import {
   advanceThreshold,
   charMedianWpm,
   charSampleCount,
   unlockedChars,
-} from './stats.js';
+} from './stats.js?v=1';
 
 export const MIN_SAMPLES_FOR_ADVANCE = 5;
 

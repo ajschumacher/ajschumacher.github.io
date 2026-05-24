@@ -1,7 +1,7 @@
-import { clear } from './dom.js';
-import { renderHome } from './home.js';
-import { renderTest } from './test.js';
-import { renderPractice } from './practice.js';
+import { clear } from './dom.js?v=1';
+import { renderHome } from './home.js?v=1';
+import { renderTest } from './test.js?v=1';
+import { renderPractice } from './practice.js?v=1';
 
 const root = document.getElementById('app');
 

@@ -1,4 +1,4 @@
-import { el } from './dom.js';
+import { el } from './dom.js?v=1';
 import {
   listProfiles,
   createProfile,
@@ -6,9 +6,9 @@ import {
   exportProfile,
   importProfile,
   touchLastPlayed,
-} from './storage.js';
-import { awphm } from './stats.js';
-import { isMaxLevel } from './leveling.js';
+} from './storage.js?v=1';
+import { awphm } from './stats.js?v=1';
+import { isMaxLevel } from './leveling.js?v=1';
 
 export function renderHome(root, _params, navigate) {
   const message = el('p', { class: 'message' });
