@@ -36,7 +36,7 @@ without interruption, and it stops when the player closes the game.
 When a player first goes to the game, they see the Fairy Fun logo at
 the top of the screen, centered. This is `images/fairyfun.png`. Below
 that is the "start" button, `images/start.png`. Below that is the text
-"Idea by Quinn. Made by Quinn and Aaron. Version 4."
+"Idea by Quinn. Made by Quinn and Aaron. Version 5."
 
 When the player clicks on the "start" button, it brings them to the
 welcome screen.
@@ -184,9 +184,16 @@ friend's fairy is the multiplayer moment.
 Players keep their fairies visually distinct by choosing from a grid
 that hides fairies already in use (see the fairy chooser, above).
 
-When a player leaves — closing the tab, losing the network, or simply
-walking away — the database itself removes their presence node, so
-abandoned "ghost" fairies do not linger.
+When a player leaves — closing the tab or losing the network — the
+database itself removes their presence node, so abandoned "ghost"
+fairies do not linger.
+
+A tab left open forever is different: its connection stays alive, so
+the database never notices it leave. To keep these idle fairies from
+piling up, the world also watches for inactivity. If a player does not
+move for an hour, the game removes their fairy from the shared world,
+drops the connection, and returns them to the welcome screen — from
+which they can enter the fairy world again whenever they like.
 
 If the database cannot be reached (no network, or a blocked
 connection), the game falls back to single player — and the Entering
