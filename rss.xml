@@ -7,6 +7,31 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>The Catholic three theological virtues</title>
+<description><![CDATA[
+
+<ul>
+<li>Faith</li>
+<li>Hope</li>
+<li>Charity</li>
+</ul>
+<p>These appear in the Christian Bible (1 Corinthians 13:13 is the most
+popular reference) and were emphasized by Augustine, but were elevated
+to "theological virtues" in the 12th and 13th centuries, most
+definitively by Aquinas.</p>
+<blockquote>
+<p>There are three theological virtues: faith, hope, and charity.
+(<a href="https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_one/article_7/ii_the_theological_virtues.html#:~:text=There%20are%20three%20theological%20virtues:%20faith%2C%20hope%2C%20and%20charity.">Catholic Catechism</a>)</p>
+</blockquote>
+<p>In Catholic Catechism, these virtues appear alongside
+"<a href="https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_one/article_7/i_the_human_virtues.html">The Human Virtues</a>," which include the
+<a href="/20260607-platonic_virtues/">four cardinal Platonic virtues</a>.</p>    
+    ]]></description>
+<link>http://planspace.org/20260607-catholic_three_theological_virtues/</link>
+<guid>http://planspace.org/20260607-catholic_three_theological_virtues/</guid>
+<pubDate>Sun, 07 Jun 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Augustine's unitary love</title>
 <description><![CDATA[
 
@@ -74,6 +99,7 @@ and they turn up all over the place.</p>
 <li><a href="/20260607-platonic_virtues/">The four cardinal Platonic virtues</a> (375 BCE)</li>
 <li><a href="/20251231-christian_beatitudes/">Christian Beatitudes</a></li>
 <li><a href="/20260607-augustine_unitary_love/">Augustine's unitary love</a> (388 CE)</li>
+<li><a href="/20260607-catholic_three_theological_virtues/">The Catholic three theological virtues</a> (13th century CE)</li>
 <li><a href="/20251229-quaker_testimonies/">Quaker Testimonies</a></li>
 <li><a href="/20251230-us_army_values/">U.S. Army Values</a></li>
 <li><a href="/20251231-scouting_america_oath_and_law/">Scouting America Oath and Law</a></li>
@@ -1102,70 +1128,6 @@ could be neat.</p>
 <link>http://planspace.org/20251123-your_money_or_your_life/</link>
 <guid>http://planspace.org/20251123-your_money_or_your_life/</guid>
 <pubDate>Sun, 23 Nov 2025 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>(Audio) Breakneck, by Dan Wang</title>
-<description><![CDATA[
-
-<p>It's about China as contrasted with the US, mostly via critiques as in
-<a href="/20251120-abundance_klein_thompson/">Abundance</a>. The US is "the lawyerly society" and China is "the
-engineering state," and while the one child and zero covid policies
-are criticized (for example) the eventual recommendation is to be more
-like China, more like Robert Moses.</p>
-<hr>
-<p>I learned about China's "<a href="https://en.wikipedia.org/wiki/Industrial_Party_(China)">Industrial Party</a>," which is interesting.
-Sort of techno-optimism as a nationalist prescription.</p>
-<p>Does anybody else remember Vonnegut's <a href="https://en.wikipedia.org/wiki/Slapstick_(novel)">Slapstick</a>? In which "Western
-civilization is nearing collapse as oil runs out, and the Chinese are
-making vast leaps forward by miniaturizing themselves and training
-groups of hundreds to think as one. Eventually, the miniaturization
-proceeds to the point that the Chinese become so small they cause a
-plague among those who accidentally inhale them, ultimately destroying
-Western civilization beyond repair."</p>
-<hr>
-<p>There's some interesting stuff about process knowledge and encouraging
-communities of practice. I don't know whether this is what makes
-Shenzhen successful, or whether the lack of it is what's troubled
-Boeing, but I agree that process knowledge is <em>something</em> and that
-it's too often ignored or undervalued.</p>
-<p>Is Boeing's problem really loss of process knowledge, or is the
-problem too much belief in the Friedman doctrine, too much blind focus
-on near-term profit?</p>
-<hr>
-<p>I tried to find where Heidegger said that philosophy was dying, to be
-replaced with cybernetics, and it seems to be
-<a href="https://grattoncourses.wordpress.com/wp-content/uploads/2016/12/22the-end-of-philosophy-and-the-task-of-thinking22.pdf">The End of Philosophy and the Task of Thinking</a>. How could anyone
-ever be taken seriously who wrote like this?</p>
-<hr>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>Only a country ruled by engineers could be so single-minded about
-pursuing a number. (page 123)</p>
-</blockquote>
-<p>This reminds me of <a href="/20200425-tyranny_of_metrics_by_muller/">The Tyranny of Metrics</a>, and the kind of cynical
-"data driven" perversions you can find in industry.</p>
-<hr>
-<blockquote>
-<p>In the United States, physics and mathematics PhDs hardly have a
-chance to consider working in their field before a tech giant or
-hedge fund picks them up at the sidelines of a conference, flashes
-them with a humongous pay package, and folds these eager minds into
-their glamorous embrace. Senior government advisers have more or
-less stated that Beijing intends to block these temptations. Yao
-Yang, a dean at Peking University, has remarked with satisfaction
-that salaries have fallen in the financial industry after regulators
-imposed a salary cap of $400,000 on the financial sector. Its idea,
-Yao said, “is to reduce the attractiveness of finance and to
-increase the development of manufacturing.” (page 162)</p>
-</blockquote>
-<p>This reminds me of Jeff Hammerbacher's quote, "The best minds of my
-generation are thinking about how to make people click ads. That
-sucks."</p>    
-    ]]></description>
-<link>http://planspace.org/20251120-breakneck_by_wang/</link>
-<guid>http://planspace.org/20251120-breakneck_by_wang/</guid>
-<pubDate>Thu, 20 Nov 2025 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

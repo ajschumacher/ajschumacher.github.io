@@ -6,6 +6,7 @@ Just collecting these here for easy reference for now...
  1. [The four cardinal Platonic virtues](/20260607-platonic_virtues/) (375 BCE)
  1. [Christian Beatitudes](/20251231-christian_beatitudes/)
  1. [Augustine's unitary love](/20260607-augustine_unitary_love/) (388 CE)
+ 1. [The Catholic three theological virtues](/20260607-catholic_three_theological_virtues/) (13th century CE)
  1. [Quaker Testimonies](/20251229-quaker_testimonies/)
  1. [U.S. Army Values](/20251230-us_army_values/)
  1. [Scouting America Oath and Law](/20251231-scouting_america_oath_and_law/)
