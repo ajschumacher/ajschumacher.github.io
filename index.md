@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-06-07: [Socrates' unitary knowledge](/20260607-socrates_unitary_knowledge/)
  * 2026-06-07: [The capital virtues](/20260607-capital_virtues/)
  * 2026-06-07: [The Catholic three theological virtues](/20260607-catholic_three_theological_virtues/)
  * 2026-06-07: [Augustine's unitary love](/20260607-augustine_unitary_love/)
