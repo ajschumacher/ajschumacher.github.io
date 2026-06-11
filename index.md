@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-06-11: [The three great pillars of Freemasonry](/20260611-three_great_pillars_freemasonry/)
  * 2026-06-08: [The Adidas 3Cs](/20260608-adidas_3c/)
  * 2026-06-07: [Socrates' unitary knowledge](/20260607-socrates_unitary_knowledge/)
  * 2026-06-07: [The capital virtues](/20260607-capital_virtues/)

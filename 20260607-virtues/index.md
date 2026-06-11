@@ -9,6 +9,7 @@ Just collecting these here for easy reference for now...
  1. [Augustine's unitary love](/20260607-augustine_unitary_love/) (388 CE)
  1. [The Catholic three theological virtues](/20260607-catholic_three_theological_virtues/) (13th century CE)
  1. [The capital virtues](/20260607-capital_virtues/) (1200-1500 CE)
+ 1. [The three great pillars of Freemasonry](/20260611-three_great_pillars_freemasonry/)
  1. [Quaker Testimonies](/20251229-quaker_testimonies/)
  1. [U.S. Army Values](/20251230-us_army_values/)
  1. [Scouting America Oath and Law](/20251231-scouting_america_oath_and_law/)
