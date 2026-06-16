@@ -225,9 +225,12 @@
 
   // ---------- World ----------
   function tileSrc(x, y) {
+    // The fancy "world" tiles are served from world_reencoded: optimized
+    // JPEGs (~7x smaller than the original PNGs in images/world, which we
+    // keep as the masters). Quinn's "qworld" sketches are already JPEGs.
     return state.tileSet === 'qworld'
       ? `images/qworld/${x}_${y}.jpeg`
-      : `images/world/${x}_${y}.png`;
+      : `images/world_reencoded/${x}_${y}.jpeg`;
   }
 
   function toggleTileSet() {
@@ -248,8 +251,38 @@
     e.stopPropagation();
   });
 
+  // Neighbor prefetch keeps the up-to-four adjacent tiles warm in the
+  // browser cache, so flying across an edge usually swaps in instantly
+  // instead of leaving the previous tile on screen while the next one
+  // downloads. We hold a reference to each Image so the cache entry is
+  // not collected before the player reaches it.
+  const prefetched = new Map(); // src -> Image
+
+  function prefetchNeighbors() {
+    const { x, y } = state.tile;
+    const neighbors = [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]];
+    for (const [nx, ny] of neighbors) {
+      if (nx < 1 || nx > WORLD_W || ny < 1 || ny > WORLD_H) continue;
+      const src = tileSrc(nx, ny);
+      if (prefetched.has(src)) continue;
+      const img = new Image();
+      img.src = src;
+      prefetched.set(src, img);
+    }
+  }
+
   function loadTile() {
     tileImg.src = tileSrc(state.tile.x, state.tile.y);
+    // Dim the old tile while the new one loads, as a quiet "waiting"
+    // hint. If the tile came straight from cache (the common case once
+    // neighbor prefetch has run) it is already complete, so skip the
+    // dim to avoid a needless flash.
+    if (tileImg.complete && tileImg.naturalWidth > 0) {
+      tileImg.classList.remove('loading');
+    } else {
+      tileImg.classList.add('loading');
+    }
+    prefetchNeighbors();
   }
 
   function enterWorld() {
@@ -737,7 +770,13 @@
   }
 
   // Re-place fairy after image loads (sizes may change) and on resize.
-  tileImg.addEventListener('load', updateFairyPosition);
+  // Clearing the dim here reveals the freshly loaded tile.
+  tileImg.addEventListener('load', () => {
+    tileImg.classList.remove('loading');
+    updateFairyPosition();
+  });
+  // If a tile fails to load, don't leave it dimmed forever.
+  tileImg.addEventListener('error', () => tileImg.classList.remove('loading'));
   window.addEventListener('resize', updateFairyPosition);
 
   // Boot: show the initial screen.

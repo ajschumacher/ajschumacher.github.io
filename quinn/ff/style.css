@@ -254,6 +254,13 @@ html, body {
   display: block;
   image-rendering: auto;
   pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* While the next tile is still downloading, dim the previous one as an
+   undistracting "waiting for the new tile" hint. */
+#tile-img.loading {
+  opacity: 0.55;
 }
 
 #fairy {
