@@ -1,8 +1,8 @@
 # Visualizing data, by Cleveland
 
 
-> We cannot learn efficiently about nature by routinely taking the
-> rich information in data and reducing it to a single number. (page
+> "We cannot learn efficiently about nature by routinely taking the
+> rich information in data and reducing it to a single number." (page
 > 85)
 
 
