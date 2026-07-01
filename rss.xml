@@ -7,6 +7,80 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) Super Agers, by Topol</title>
+<description><![CDATA[
+
+<p>Dr. Topol <a href="https://drerictopol.com/portfolio/super-agers/">offers</a> his adult-in-the-room response to such books as
+Attia's <a href="/20240128-outlive_by_attia/">Outlive</a> and Sinclair's <a href="/20240319-lifespan_by_sinclair/">Lifespan</a>. He specifically
+recommends <em>against</em> taking rapamycin, for example, and doesn't (as
+far as I could tell) use misleading graphs the <a href="/20240407-mortality_rates_have_improved/">way</a> Attia did. He
+does throw around words like "sequelae" and "senolytics" and narrate
+the audio book himself.</p>
+<p>He pronounces GLP-1 as "glip one" and really likes it, and really
+likes AI, and mentions very many times that the gut microbiome is
+connected with everything, and thinks we should use waist
+circumference more in medical contexts.</p>
+<p>One interesting connection that caught my attention was that he
+related pleiotropic genes (genes that cause multiple things, and we
+don't always know why or how) and AI explainability (a model does
+something, and we don't always know why or how). I think the broader
+point was that in medicine, we don't always know the <em>mechanism</em> by
+which something (some drug, etc.) works, and we're satisfied if it
+<em>does</em> work. Maybe AI is not so different.</p>
+<p>In the end the book mostly has the same core recommendations for
+healthspan that everyone knows: eat healthy, exercise, etc. It has a
+<em>lot</em> more detail, on a wide range of things, and is really long,
+compared to some of the other pop live-forever books. It's reserved in
+its predictions of longevity breakthroughs. It's "an evidence-based
+approach to longevity."</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<hr>
+<ul>
+<li>Five dimensions<ul>
+<li>Lifestyle+</li>
+<li>Cells</li>
+<li>Omics [Aaron: As in genomics, proteomics, etc.]</li>
+<li>AI</li>
+<li>Drugs &amp; Vaccines</li>
+</ul>
+</li>
+</ul>
+<p>(A bunch of the book is organized around these.)</p>
+<hr>
+<ul>
+<li>Hallmarks of aging<ul>
+<li>Primary<ul>
+<li>Genomic instability</li>
+<li>Telomere attrition</li>
+<li>Epigenetic alterations</li>
+<li>Loss of proteostasis</li>
+<li>Disabled macroautophagy</li>
+</ul>
+</li>
+<li>Antagonistic<ul>
+<li>Cellular senescence</li>
+<li>Mitochondrial dysfunction</li>
+<li>Deregulated nutrient-sensing</li>
+</ul>
+</li>
+<li>Integrative<ul>
+<li>Dysbiosis [Aaron: gut microbiome etc.]</li>
+<li>Chronic inflammation</li>
+<li>Altered intercellular communication</li>
+<li>Stem cell exhaustion</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>(This is the content of figure 12.1, which is itself based on the 2023
+<a href="https://pubmed.ncbi.nlm.nih.gov/36599349/">Hallmarks of aging: An expanding universe</a>.)</p>    
+    ]]></description>
+<link>http://planspace.org/20260701-super_agers_by_topol/</link>
+<guid>http://planspace.org/20260701-super_agers_by_topol/</guid>
+<pubDate>Wed, 01 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Visualizing data, by Cleveland</title>
 <description><![CDATA[
 
@@ -851,45 +925,6 @@ acting, and living" the other six values in the list.</p>
     ]]></description>
 <link>http://planspace.org/20251230-us_army_values/</link>
 <guid>http://planspace.org/20251230-us_army_values/</guid>
-<pubDate>Tue, 30 Dec 2025 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>DoorDash's Values</title>
-<description><![CDATA[
-
-<ul>
-<li>We are leaders.<ul>
-<li>Be an owner</li>
-<li>Dream big start small</li>
-<li>Choose optimism and have a plan</li>
-</ul>
-</li>
-<li>We are doers.<ul>
-<li>Bias for action</li>
-<li>Operate at the lowest level of detail</li>
-<li>And not either/or</li>
-</ul>
-</li>
-<li>We are learners.<ul>
-<li>Truth seek</li>
-<li>1% better every day</li>
-<li>Customer-obsessed, not competitor focused</li>
-</ul>
-</li>
-<li>We are one team.<ul>
-<li>Make room at the table</li>
-<li>Think outside the room</li>
-<li>One team, one fight</li>
-</ul>
-</li>
-</ul>
-<p>These are taken directly from <a href="https://careersatdoordash.com/mission-and-values/">DoorDash</a>. I don't know much about
-the history of their development. It is interesting that they arrange
-their 12 values into sections this way; I haven't seen that elsewhere
-yet.</p>    
-    ]]></description>
-<link>http://planspace.org/20251230-doordash_values/</link>
-<guid>http://planspace.org/20251230-doordash_values/</guid>
 <pubDate>Tue, 30 Dec 2025 12:00:00 -0500</pubDate>
 </item>
   </channel>

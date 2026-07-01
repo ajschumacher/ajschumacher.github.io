@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-07-01: [(Audio) Super Agers, by Topol](/20260701-super_agers_by_topol/)
  * 2026-06-29: [Visualizing data, by Cleveland](/20260629-visualizing_data_by_cleveland/)
  * 2026-06-11: [The three great pillars of Freemasonry](/20260611-three_great_pillars_freemasonry/)
  * 2026-06-08: [The Adidas 3Cs](/20260608-adidas_3c/)
