@@ -2,9 +2,10 @@
 
 Just collecting these here for easy reference for now...
 
- 1. [Buddhist Noble Eightfold Path](/20251231-buddhist_noble_eightfold_path/)
+ 1. [Buddhist Noble Eightfold Path](/20251231-buddhist_noble_eightfold_path/) (5th century BCE)
  1. [Socrates' unitary knowledge](/20260607-socrates_unitary_knowledge/) (385 BCE)
  1. [The four cardinal Platonic virtues](/20260607-platonic_virtues/) (375 BCE)
+ 1. [Aristotle's "mean" virtues](/20260708-aristotle_mean_virtues/) (350–340s BCE)
  1. [Christian Beatitudes](/20251231-christian_beatitudes/)
  1. [Augustine's unitary love](/20260607-augustine_unitary_love/) (388 CE)
  1. [The Catholic three theological virtues](/20260607-catholic_three_theological_virtues/) (13th century CE)

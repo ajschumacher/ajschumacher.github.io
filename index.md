@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-07-08: [Aristotle's "mean" virtues](/20260708-aristotle_mean_virtues/)
  * 2026-07-07: [(Audio) Die with Zero, by Perkins](/20260707-die_with_zero_by_perkins/)
  * 2026-07-01: [(Audio) Super Agers, by Topol](/20260701-super_agers_by_topol/)
  * 2026-06-29: [Visualizing data, by Cleveland](/20260629-visualizing_data_by_cleveland/)

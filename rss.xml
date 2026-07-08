@@ -7,6 +7,43 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Aristotle's "mean" virtues</title>
+<description><![CDATA[
+
+<ul>
+<li>Modesty, between Diffidence and Shamelessness</li>
+<li>Temperance, between Insensitiveness and Profligacy</li>
+<li>Righteous Indignation, between Malice and Envy</li>
+<li>The Just, between Loss and Profit</li>
+<li>Liberality, between Meanness and Prodigality</li>
+<li>Sincerity, between Self-depreciation and Boastfulness</li>
+<li>Friendliness, between Surliness and Flattery</li>
+<li>Dignity, between Stubbornness and Subservience</li>
+<li>Hardiness, between Endurance and Luxuriousness</li>
+<li>Greatness of Spirit, between Smallness of Spirit and Vanity</li>
+<li>Magnificence, between Shabbiness and Extravagance</li>
+<li>Wisdom, between Simpleness and Rascality</li>
+</ul>
+<p>Aritstotle, student of Plato, student of Socrates, wrote a lot on
+ethics. The Nicomachean Ethics is better known, but he actually
+included a table in the Eudemian Ethics, and that's what is shown
+here, using the <a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0050:book%3D2:section%3D1221a">Rackham translation</a>, filling in the suggested
+"malice" for the single blank cell, and re-ordering to have the virtue
+first. It's not clear exactly when Aristotle wrote these, but it was
+somewhere around the 350–340s BCE.</p>
+<p>Aristotle really wanted to understand character virtues as "means"
+between two extremes. The idea sort of rhymes with the Buddhist idea
+of a "middle way," but isn't quite the same.</p>
+<p>You can get different lists depending on which writing(s) of Aristotle
+you look at, which things you include, which translations you like.
+From Socrates to Plato to Aristotle, the lists just get longer and
+longer.</p>    
+    ]]></description>
+<link>http://planspace.org/20260708-aristotle_mean_virtues/</link>
+<guid>http://planspace.org/20260708-aristotle_mean_virtues/</guid>
+<pubDate>Wed, 08 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Die with Zero, by Perkins</title>
 <description><![CDATA[
 
@@ -592,9 +629,10 @@ and they turn up all over the place.</p>
 
 <p>Just collecting these here for easy reference for now...</p>
 <ol>
-<li><a href="/20251231-buddhist_noble_eightfold_path/">Buddhist Noble Eightfold Path</a></li>
+<li><a href="/20251231-buddhist_noble_eightfold_path/">Buddhist Noble Eightfold Path</a> (5th century BCE)</li>
 <li><a href="/20260607-socrates_unitary_knowledge/">Socrates' unitary knowledge</a> (385 BCE)</li>
 <li><a href="/20260607-platonic_virtues/">The four cardinal Platonic virtues</a> (375 BCE)</li>
+<li><a href="/20260708-aristotle_mean_virtues/">Aristotle's "mean" virtues</a> (350–340s BCE)</li>
 <li><a href="/20251231-christian_beatitudes/">Christian Beatitudes</a></li>
 <li><a href="/20260607-augustine_unitary_love/">Augustine's unitary love</a> (388 CE)</li>
 <li><a href="/20260607-catholic_three_theological_virtues/">The Catholic three theological virtues</a> (13th century CE)</li>
@@ -952,28 +990,6 @@ reading is as a step-by-step guide.</p>
 <link>http://planspace.org/20251231-buddhist_noble_eightfold_path/</link>
 <guid>http://planspace.org/20251231-buddhist_noble_eightfold_path/</guid>
 <pubDate>Wed, 31 Dec 2025 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The UK's Seven Principles of Public Life</title>
-<description><![CDATA[
-
-<ul>
-<li>Selflessness</li>
-<li>Integrity</li>
-<li>Objectivity</li>
-<li>Accountability</li>
-<li>Openness</li>
-<li>Honesty</li>
-<li>Leadership</li>
-</ul>
-<p>The UK's <a href="https://en.wikipedia.org/wiki/Committee_on_Standards_in_Public_Life">Committee on Standards in Public Life</a> was created in
-response to issues of corruption in the government and published its
-<a href="https://www.gov.uk/government/publications/the-7-principles-of-public-life/the-7-principles-of-public-life--2">Seven Principles</a>, also known as the Nolan principles after the
-committee's initial chair.</p>    
-    ]]></description>
-<link>http://planspace.org/20251230-uk_seven_principles_of_public_life/</link>
-<guid>http://planspace.org/20251230-uk_seven_principles_of_public_life/</guid>
-<pubDate>Tue, 30 Dec 2025 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
