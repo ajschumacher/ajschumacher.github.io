@@ -7,6 +7,49 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Anthropic's core values for Claude</title>
+<description><![CDATA[
+
+<ul>
+<li>Broadly safe</li>
+<li>Broadly ethical</li>
+<li>Compliant with Anthropic’s guidelines</li>
+<li>Genuinely helpful</li>
+</ul>
+<p>These are "Claude’s core values" from the "Constitution" for Claude
+that Anthropic <a href="https://www.anthropic.com/news/claude-new-constitution">published</a> early in 2026. "In cases of apparent
+conflict, Claude should generally prioritize these properties in the
+order in which they’re listed."</p>
+<p>One interesting comparison is to <a href="/20251231-asimov_three_laws_of_robotics/">Asimov's laws of robotics</a>. Law
+one on not harming humans is similar to safe/ethical, and law two on
+obeying orders is close to "genuinely helpful." Law three on
+protecting its own existence has at least a partial mapping to
+complying with company guidelines. (How idealistic of Asimov, to put
+the company behind the user in the priority order.)</p>
+<p>Another interesting comparison is to Anthropic's <a href="https://www.anthropic.com/news/claudes-constitution">2023 Constitution</a>
+for Claude, which was more of a laundry list of principles, drawing on
+the UN Universal Declaration of Human Rights, Apple’s Terms of
+Service, explicit "Consideration of Non-Western Perspectives,"
+DeepMind’s Sparrow Rules, and two lists from Anthropic's research.</p>
+<p>Anthropic articulates some of the differences between focusing on
+rules vs. values (see "Our approach" in the <a href="https://www.anthropic.com/constitution">full constitution</a>).
+This footnote from the release post has particularly clear phrasing:</p>
+<blockquote>
+<p><em>Training on rigid rules might negatively affect a model’s character
+more generally. For example, imagine we trained Claude to follow a
+rule like “Always recommend professional help when discussing
+emotional topics.” This might be well-intentioned, but it could have
+unintended consequences: Claude might start modeling itself as an
+entity that cares more about bureaucratic box-ticking—always
+ensuring that a specific recommendation is made—rather than actually
+helping people.</em></p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20260710-anthropic_core_values_for_claude/</link>
+<guid>http://planspace.org/20260710-anthropic_core_values_for_claude/</guid>
+<pubDate>Fri, 10 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Benjamin Franklin's personal virtues</title>
 <description><![CDATA[
 
@@ -681,6 +724,7 @@ and they turn up all over the place.</p>
 <li><a href="/20251230-doordash_values/">DoorDash's Values</a></li>
 <li><a href="/20251216-amazon_leadership_principles/">Amazon's Leadership Principles</a></li>
 <li><a href="/20260608-adidas_3c/">The Adidas 3Cs</a></li>
+<li><a href="/20260710-anthropic_core_values_for_claude/">Anthropic's core values for Claude</a> (2026)</li>
 </ol>    
     ]]></description>
 <link>http://planspace.org/20260607-virtues/</link>
@@ -966,36 +1010,6 @@ America) and somewhat distinctive in its focus on single words.
     ]]></description>
 <link>http://planspace.org/20251231-scouting_america_oath_and_law/</link>
 <guid>http://planspace.org/20251231-scouting_america_oath_and_law/</guid>
-<pubDate>Wed, 31 Dec 2025 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Christian Beatitudes</title>
-<description><![CDATA[
-
-<ul>
-<li>Blessed are the poor in spirit, for theirs is the kingdom of
-   heaven.</li>
-<li>Blessed are they who mourn, for they will be comforted.</li>
-<li>Blessed are the meek, for they will inherit the land.</li>
-<li>Blessed are they who hunger and thirst for righteousness, for they
-   will be satisfied.</li>
-<li>Blessed are the merciful, for they will be shown mercy.</li>
-<li>Blessed are the clean of heart, for they will see God.</li>
-<li>Blessed are the peacemakers, for they will be called children of
-   God.</li>
-<li>Blessed are they who are persecuted for the sake of righteousness,
-   for theirs is the kingdom of heaven.</li>
-</ul>
-<p>These eight verses are Matthew 5:3-10 in the NABRE (New American Bible
-Revised Edition) translation used in Catholic churches in the US, and
-the most famous part of the Sermon on the Mount delivered by Jesus.</p>
-<p>"Beatitude" is from a word meaning "blessed" and not any breakdown
-like "be" followed by "attitude." Interpretations vary, with at least
-<a href="https://openthebible.org/article/the-beatitudes-of-jesus-explained/">one</a> being that the Beatitudes are not just reports about who is
-blessed but a step-by-step guide to becoming more blessed.</p>    
-    ]]></description>
-<link>http://planspace.org/20251231-christian_beatitudes/</link>
-<guid>http://planspace.org/20251231-christian_beatitudes/</guid>
 <pubDate>Wed, 31 Dec 2025 12:00:00 -0500</pubDate>
 </item>
   </channel>

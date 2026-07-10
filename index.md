@@ -21,6 +21,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-07-10: [Anthropic's core values for Claude](/20260710-anthropic_core_values_for_claude/)
  * 2026-07-08: [Benjamin Franklin's personal virtues](/20260708-franklin_personal_virtues/)
  * 2026-07-08: [Aristotle's "mean" virtues](/20260708-aristotle_mean_virtues/)
  * 2026-07-07: [(Audio) Die with Zero, by Perkins](/20260707-die_with_zero_by_perkins/)
