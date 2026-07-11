@@ -4,6 +4,19 @@
   const START_TILE = { x: 7, y: 2 };
   const FAIRY_SPEED = 0.45; // tile fractions per second
 
+  // Fruits grow on the three orchard tiles around the spawn tile:
+  // strawberries above, apples to the right, bananas below.
+  const FRUIT_TYPES = ['s', 'a', 'b']; // strawberry, apple, banana
+  const ORCHARD_TILES = {
+    s: { x: START_TILE.x, y: START_TILE.y + 1 },
+    a: { x: START_TILE.x + 1, y: START_TILE.y },
+    b: { x: START_TILE.x, y: START_TILE.y - 1 },
+  };
+  const FRUIT_TARGET = 15;          // the world aims to hold 15 of each type
+  const FRUIT_SPAWN_MS = 30 * 1000; // but at most one new fruit per 30 seconds
+  const FRUIT_CHECK_MS = 5 * 1000;  // how often to consider spawning
+  const DOUBLE_TAP_MS = 300;        // window for double-tapping a carried fruit
+
   const initialScreen = document.getElementById('initial-screen');
   const welcomeScreen = document.getElementById('welcome-screen');
   const connectingScreen = document.getElementById('connecting-screen');
@@ -286,10 +299,12 @@
   }
 
   function enterWorld() {
+    invalidateTileRect(); // the world screen has just become visible
     loadTile();
     updateFairyPosition();
     showJoystickIfTouch();
     startIdleWatch();
+    startFruitSpawner();
     if (!rafRunning) {
       rafRunning = true;
       state.lastT = performance.now();
@@ -302,8 +317,23 @@
     if (isTouch) joystick.classList.add('visible');
   }
 
-  // Compute the rendered tile rectangle (image is object-fit: contain inside #tile-frame).
+  // Compute the rendered tile rectangle (image is object-fit: contain
+  // inside #tile-frame). Reading layout is comparatively expensive and
+  // fairies and fruits ask for this rectangle many times per frame, so
+  // the result is cached; the cache is dropped whenever the rectangle
+  // could actually change (resize, tile image load, entering the world).
+  let tileRectCache = null;
+
+  function invalidateTileRect() {
+    tileRectCache = null;
+  }
+
   function getTileRect() {
+    if (!tileRectCache) tileRectCache = computeTileRect();
+    return tileRectCache;
+  }
+
+  function computeTileRect() {
     const frame = tileImg.parentElement.getBoundingClientRect();
     const natW = tileImg.naturalWidth || 16;
     const natH = tileImg.naturalHeight || 9;
@@ -322,11 +352,18 @@
     return { left, top, width: w, height: h };
   }
 
-  // Place a fairy element at a normalized position within the tile.
-  function placeFairyEl(el, pos) {
+  // The fairy emoji's rendered size in px. Treating the glyph as a
+  // circle, this is its diameter (2r) — the fruit-touching threshold.
+  function fairyFontPx(rect) {
+    return Math.max(28, Math.round(rect.height * 0.08));
+  }
+
+  // Place a fairy-like element at a normalized position within the
+  // tile. Fruits use scale 0.5: a fruit is a circle of radius r/2 to
+  // the fairy's r.
+  function placeFairyEl(el, pos, scale = 1) {
     const r = getTileRect();
-    const size = Math.max(28, Math.round(r.height * 0.08));
-    el.style.fontSize = size + 'px';
+    el.style.fontSize = Math.round(fairyFontPx(r) * scale) + 'px';
     el.style.left = (r.left + pos.x * r.width) + 'px';
     el.style.top  = (r.top  + (1 - pos.y) * r.height) + 'px';
   }
@@ -334,6 +371,8 @@
   function updateFairyPosition() {
     placeFairyEl(fairy, state.pos);
     renderAllPeers();
+    renderAllFruits();
+    updateFruitGlow();
   }
 
   // ---------- Input ----------
@@ -499,6 +538,9 @@
     if (inWorld && mp) {
       try { fb.db.set(mp.selfRef, myStatePayload()); } catch (e) { /* ignore */ }
     }
+    // A carried fruit travels with us, so share its position on the
+    // same cadence as our own.
+    if (carrying) syncCarriedFruit();
     lastNetSync = performance.now();
   }
 
@@ -551,13 +593,15 @@
     // register). Guard them too, or such a throw would escape before the
     // handshake timeout below is armed and leave the spinner running
     // forever instead of falling back to solo play.
-    let db, playersRef, selfRef, selfId, connectedRef;
+    let db, playersRef, selfRef, selfId, connectedRef, fruitsRef, fruitSpawnRef;
     try {
       db = fb.db.getDatabase(fbApp);
       playersRef = fb.db.ref(db, `fairyfun/rooms/${FIXED_ROOM}/players`);
       // push() generates a server-friendly unique key for this player.
       selfRef = fb.db.push(playersRef);
       selfId = selfRef.key;
+      fruitsRef = fb.db.ref(db, `fairyfun/rooms/${FIXED_ROOM}/fruits`);
+      fruitSpawnRef = fb.db.ref(db, `fairyfun/rooms/${FIXED_ROOM}/fruitLastSpawnAt`);
       connectedRef = fb.db.ref(db, '.info/connected');
     } catch (e) {
       console.warn('Fairy Fun: database service unavailable, playing solo.', e);
@@ -594,7 +638,7 @@
     }
 
     const peers = new Map();
-    mp = { db, playersRef, selfRef, selfId, peers };
+    mp = { db, playersRef, selfRef, selfId, peers, fruitsRef, fruitSpawnRef };
 
     // Ask the server to delete our presence node the moment it notices
     // we have gone — no more ghost fairies, no heartbeat needed.
@@ -626,6 +670,42 @@
       refreshChooserIfOpen();
     });
 
+    // Watch the shared fruits. As with players, the snapshot is the
+    // source of truth — except for a fruit we are carrying, which we
+    // drive locally and only echo back to the database.
+    mp.unsubFruits = fb.db.onValue(fruitsRef, (snap) => {
+      const data = snap.val() || {};
+      for (const [id, f] of fruits) {
+        if (!(id in data)) {
+          if (carrying && carrying.id === id) carrying = null;
+          if (f.el) f.el.remove();
+          fruits.delete(id);
+        }
+      }
+      for (const [id, value] of Object.entries(data)) {
+        if (!value || typeof value !== 'object') continue;
+        let f = fruits.get(id);
+        if (!f) { f = {}; fruits.set(id, f); }
+        if (carrying && carrying.id === id) {
+          if (value.carriedBy && value.carriedBy !== mp.selfId) {
+            // Another player claimed this fruit in a pickup race; the
+            // last write wins, so let go of it.
+            carrying = null;
+            cancelCarryCleanup(id);
+          } else {
+            continue; // our own echo — we drive this fruit while carrying
+          }
+        }
+        f.t = value.t;
+        f.v = value.v || 0;
+        f.tile = value.tile;
+        f.pos = value.pos;
+        f.carriedBy = value.carriedBy || null;
+        renderFruit(id, f);
+      }
+      updateFruitGlow();
+    });
+
     mpConnecting = false;
     setConnectionState('connected');
     // If we are already in the world (e.g., reconnect after a drop),
@@ -640,12 +720,321 @@
   function leaveMultiplayer() {
     if (!mp) return;
     try { if (mp.unsubPlayers) mp.unsubPlayers(); } catch (e) { /* ignore */ }
+    try { if (mp.unsubFruits) mp.unsubFruits(); } catch (e) { /* ignore */ }
     try { fb.db.onDisconnect(mp.selfRef).cancel(); } catch (e) { /* ignore */ }
     try { fb.db.remove(mp.selfRef); } catch (e) { /* ignore */ }
     for (const [, peer] of mp.peers) {
       if (peer.el) peer.el.remove();
     }
+    // The shared fruits stay in the database for everyone else; we just
+    // stop showing them.
+    for (const [, f] of fruits) {
+      if (f.el) f.el.remove();
+    }
+    fruits.clear();
+    carrying = null;
     mp = null;
+  }
+
+  // ---------- Fruits ----------
+  // Strawberries, apples, and bananas grow on the orchard tiles and are
+  // shared state: they live in the database alongside the players, so
+  // they persist as players come and go. When the shared world cannot
+  // be reached, fruits are kept locally instead so solo play still has
+  // them (they just do not survive a page reload).
+  //
+  // A fairy close enough to a fruit (fruit center within 2r of the
+  // fairy center, where r is the fairy's radius) sees it glow. Tap a
+  // glowing fruit to pick it up; the fruit rides along at the offset it
+  // was picked up at. Tap a carried fruit to put it down, or double-tap
+  // it to eat it.
+  const fruits = new Map(); // id -> { t, v, tile, pos, carriedBy, el, placed }
+  let carrying = null;      // { id, rel: {x, y} } while we carry a fruit
+  let fruitTapTimer = null; // pending single-tap (put down) on the carried fruit
+
+  const FRUIT_GLYPHS = { s: '\u{1F353}', b: '\u{1F34C}' };
+  const APPLE_GLYPHS = ['\u{1F34E}', '\u{1F34F}']; // red and green apples
+
+  function fruitEmoji(f) {
+    if (f.t === 'a') return APPLE_GLYPHS[f.v ? 1 : 0];
+    return FRUIT_GLYPHS[f.t] || FRUIT_GLYPHS.s;
+  }
+
+  function fruitsAreShared() {
+    return !!(mp && mp.fruitsRef);
+  }
+
+  function fruitRefFor(id) {
+    return fb.db.child(mp.fruitsRef, id);
+  }
+
+  // What the database stores for a fruit (everything but our local
+  // bookkeeping like the DOM element).
+  function fruitPayload(f) {
+    const p = { t: f.t, v: f.v || 0, tile: f.tile, pos: f.pos };
+    if (f.carriedBy) p.carriedBy = f.carriedBy;
+    return p;
+  }
+
+  function fruitOnMyTile(f) {
+    return !!(f.tile && f.tile.x === state.tile.x && f.tile.y === state.tile.y);
+  }
+
+  // Is another player (who is actually still here) holding this fruit?
+  // If the carrier has vanished without cleanup, the fruit counts as
+  // free again wherever it was last seen.
+  function fruitHeldByOther(id, f) {
+    if (!f.carriedBy) return false;
+    if (carrying && carrying.id === id) return false;
+    return !!(mp && f.carriedBy !== mp.selfId && mp.peers.has(f.carriedBy));
+  }
+
+  // "Touching": the fruit's center is within 2r of the fairy's center,
+  // where the fairy emoji is a circle of radius r (and the fruit r/2).
+  function fruitIsClose(f) {
+    if (!fruitOnMyTile(f) || !f.pos) return false;
+    const r = getTileRect();
+    const dx = (f.pos.x - state.pos.x) * r.width;
+    const dy = (f.pos.y - state.pos.y) * r.height;
+    return Math.hypot(dx, dy) <= fairyFontPx(r); // font size = 2r
+  }
+
+  function updateFruitGlow() {
+    for (const [id, f] of fruits) {
+      if (!f.el) continue;
+      const free = !(carrying && carrying.id === id) && !fruitHeldByOther(id, f);
+      f.el.classList.toggle('close', free && fruitIsClose(f));
+    }
+  }
+
+  function renderFruit(id, f) {
+    if (!f.el) {
+      f.el = document.createElement('div');
+      f.el.className = 'fruit';
+      f.el.addEventListener('pointerdown', (e) => {
+        tapFruit(id);
+        e.stopPropagation();
+      });
+      tileImg.parentElement.appendChild(f.el);
+    }
+    const glyph = fruitEmoji(f);
+    if (f.el.textContent !== glyph) f.el.textContent = glyph;
+    const carriedByMe = !!(carrying && carrying.id === id);
+    f.el.classList.toggle('carried', carriedByMe);
+    if (carriedByMe) {
+      // Our carried fruit follows the fairy directly, every frame.
+      f.el.style.display = '';
+      placeFairyEl(f.el, {
+        x: state.pos.x + carrying.rel.x,
+        y: state.pos.y + carrying.rel.y,
+      }, 0.5);
+      return;
+    }
+    const visible = fruitOnMyTile(f);
+    f.el.style.display = visible ? '' : 'none';
+    if (visible && f.pos) {
+      if (!f.placed) {
+        // First placement: snap rather than sliding in (same trick as
+        // remote fairies).
+        f.el.style.transition = 'none';
+        placeFairyEl(f.el, f.pos, 0.5);
+        f.el.getBoundingClientRect();
+        f.el.style.transition = '';
+        f.placed = true;
+      } else {
+        placeFairyEl(f.el, f.pos, 0.5);
+      }
+    }
+  }
+
+  function renderAllFruits() {
+    for (const [id, f] of fruits) renderFruit(id, f);
+  }
+
+  // Where the carried fruit sits in world terms: our tile and position
+  // plus the pickup offset, carried over into the neighboring tile if
+  // the offset pushes it past an edge.
+  function carriedWorldPos() {
+    let tx = state.tile.x, ty = state.tile.y;
+    let px = state.pos.x + carrying.rel.x;
+    let py = state.pos.y + carrying.rel.y;
+    if (px > 1) { if (tx < WORLD_W) { tx += 1; px -= 1; } else px = 1; }
+    if (px < 0) { if (tx > 1)       { tx -= 1; px += 1; } else px = 0; }
+    if (py > 1) { if (ty < WORLD_H) { ty += 1; py -= 1; } else py = 1; }
+    if (py < 0) { if (ty > 1)       { ty -= 1; py += 1; } else py = 0; }
+    return {
+      tile: { x: tx, y: ty },
+      pos: { x: +px.toFixed(3), y: +py.toFixed(3) },
+    };
+  }
+
+  function syncCarriedFruit() {
+    const f = fruits.get(carrying.id);
+    if (!f) { carrying = null; return; }
+    const w = carriedWorldPos();
+    f.tile = w.tile;
+    f.pos = w.pos;
+    if (fruitsAreShared()) {
+      try { fb.db.set(fruitRefFor(carrying.id), fruitPayload(f)); } catch (e) { /* ignore */ }
+    }
+  }
+
+  // If we vanish mid-carry (tab closed, network lost), the server frees
+  // the fruit wherever we last carried it.
+  function armCarryCleanup(id) {
+    if (!fruitsAreShared()) return;
+    try {
+      fb.db.onDisconnect(fb.db.child(mp.fruitsRef, `${id}/carriedBy`)).remove();
+    } catch (e) { /* ignore */ }
+  }
+
+  function cancelCarryCleanup(id) {
+    if (!fruitsAreShared()) return;
+    try {
+      fb.db.onDisconnect(fb.db.child(mp.fruitsRef, `${id}/carriedBy`)).cancel();
+    } catch (e) { /* ignore */ }
+  }
+
+  function tapFruit(id) {
+    const f = fruits.get(id);
+    if (!f) return;
+    markActivity();
+    if (carrying && carrying.id === id) {
+      // Single tap puts the fruit down; a quick second tap eats it. The
+      // put-down waits out the double-tap window so that eating does
+      // not first drop the fruit.
+      if (fruitTapTimer) {
+        clearTimeout(fruitTapTimer);
+        fruitTapTimer = null;
+        eatFruit(id);
+      } else {
+        fruitTapTimer = setTimeout(() => {
+          fruitTapTimer = null;
+          putDownFruit(id);
+        }, DOUBLE_TAP_MS);
+      }
+      return;
+    }
+    if (carrying) return;              // already carrying — one fruit at a time
+    if (fruitHeldByOther(id, f)) return;
+    if (!fruitIsClose(f)) return;
+    pickUpFruit(id);
+  }
+
+  function pickUpFruit(id) {
+    const f = fruits.get(id);
+    carrying = {
+      id,
+      rel: { x: f.pos.x - state.pos.x, y: f.pos.y - state.pos.y },
+    };
+    f.carriedBy = fruitsAreShared() ? mp.selfId : 'self';
+    if (fruitsAreShared()) {
+      try { fb.db.set(fruitRefFor(id), fruitPayload(f)); } catch (e) { /* ignore */ }
+      armCarryCleanup(id);
+    }
+    renderFruit(id, f);
+    updateFruitGlow();
+  }
+
+  function putDownFruit(id) {
+    if (!carrying || carrying.id !== id) return;
+    const f = fruits.get(id);
+    if (!f) { carrying = null; return; }
+    const w = carriedWorldPos();
+    f.tile = w.tile;
+    f.pos = w.pos;
+    f.carriedBy = null;
+    carrying = null;
+    cancelCarryCleanup(id);
+    if (fruitsAreShared()) {
+      try { fb.db.set(fruitRefFor(id), fruitPayload(f)); } catch (e) { /* ignore */ }
+    }
+    renderFruit(id, f);
+    updateFruitGlow();
+  }
+
+  function eatFruit(id) {
+    if (!carrying || carrying.id !== id) return;
+    const f = fruits.get(id);
+    carrying = null;
+    cancelCarryCleanup(id);
+    if (f && f.el) f.el.remove();
+    fruits.delete(id);
+    if (fruitsAreShared()) {
+      try { fb.db.remove(fruitRefFor(id)); } catch (e) { /* ignore */ }
+    }
+  }
+
+  // ---------- Fruit spawning ----------
+  // There is no game server, so the players themselves keep the
+  // orchards stocked: while in the world, each client periodically
+  // checks whether any fruit type is below the target of 15. Spawning
+  // is throttled to one fruit per 30 seconds world-wide; in the shared
+  // world the throttle is a timestamp in the database, and a
+  // transaction on it decides which client gets to spawn.
+  let fruitSpawnTimer = null;
+  let soloLastSpawnT = 0;
+  let soloFruitSeq = 0;
+
+  // The fruit type most in need of spawning, or null if fully stocked.
+  function fruitDeficitType() {
+    const counts = { s: 0, a: 0, b: 0 };
+    for (const [, f] of fruits) {
+      if (counts[f.t] !== undefined) counts[f.t] += 1;
+    }
+    let best = null;
+    for (const t of FRUIT_TYPES) {
+      if (counts[t] >= FRUIT_TARGET) continue;
+      if (best === null || counts[t] < counts[best]) best = t;
+    }
+    return best;
+  }
+
+  function newFruitData(type) {
+    return {
+      t: type,
+      v: Math.random() < 0.5 ? 0 : 1, // apples: red or green
+      tile: { ...ORCHARD_TILES[type] },
+      pos: {
+        x: +(0.15 + Math.random() * 0.7).toFixed(3),
+        y: +(0.15 + Math.random() * 0.7).toFixed(3),
+      },
+    };
+  }
+
+  function maybeSpawnFruit() {
+    const type = fruitDeficitType();
+    if (!type) return;
+    if (fruitsAreShared()) {
+      try {
+        fb.db.runTransaction(mp.fruitSpawnRef, (last) => {
+          // Returning undefined aborts: someone spawned too recently.
+          if (typeof last === 'number' && Date.now() - last < FRUIT_SPAWN_MS) return;
+          return Date.now();
+        }).then((res) => {
+          if (!res.committed) return;
+          const fRef = fb.db.push(mp.fruitsRef);
+          return fb.db.set(fRef, newFruitData(type));
+        }).catch(() => { /* ignore — e.g. offline or rules deny */ });
+      } catch (e) { /* ignore */ }
+    } else {
+      if (Date.now() - soloLastSpawnT < FRUIT_SPAWN_MS) return;
+      soloLastSpawnT = Date.now();
+      const id = `solo-${++soloFruitSeq}`;
+      const f = newFruitData(type);
+      fruits.set(id, f);
+      renderFruit(id, f);
+    }
+  }
+
+  function startFruitSpawner() {
+    if (fruitSpawnTimer) return;
+    maybeSpawnFruit();
+    fruitSpawnTimer = setInterval(maybeSpawnFruit, FRUIT_CHECK_MS);
+  }
+
+  function stopFruitSpawner() {
+    if (fruitSpawnTimer) { clearInterval(fruitSpawnTimer); fruitSpawnTimer = null; }
   }
 
   // ---------- Idle timeout ----------
@@ -676,6 +1065,9 @@
 
   function goIdle() {
     stopIdleWatch();
+    stopFruitSpawner();
+    if (fruitTapTimer) { clearTimeout(fruitTapTimer); fruitTapTimer = null; }
+    if (carrying) putDownFruit(carrying.id); // don't walk off with a fruit
     rafRunning = false;     // halt the world loop
     inWorld = false;        // we no longer belong in the shared world
     leaveMultiplayer();     // remove our fairy and drop the connection
@@ -773,11 +1165,15 @@
   // Clearing the dim here reveals the freshly loaded tile.
   tileImg.addEventListener('load', () => {
     tileImg.classList.remove('loading');
+    invalidateTileRect();
     updateFairyPosition();
   });
   // If a tile fails to load, don't leave it dimmed forever.
   tileImg.addEventListener('error', () => tileImg.classList.remove('loading'));
-  window.addEventListener('resize', updateFairyPosition);
+  window.addEventListener('resize', () => {
+    invalidateTileRect();
+    updateFairyPosition();
+  });
 
   // Boot: show the initial screen.
   show(initialScreen);

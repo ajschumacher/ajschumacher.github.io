@@ -291,6 +291,46 @@ html, body {
   z-index: 1;
 }
 
+/* Fruits (shared world objects on the orchard tiles) */
+.fruit {
+  position: absolute;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  will-change: left, top;
+  /* Smooth out the gaps between network updates. */
+  transition: left 0.15s linear, top 0.15s linear;
+  /* Above the fairy, so a fruit stays tappable even when the (larger)
+     fairy overlaps it. */
+  z-index: 2;
+}
+
+/* Close enough to interact with: a soft pulsing glow. */
+.fruit.close {
+  animation: fruit-glow 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes fruit-glow {
+  from {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+            drop-shadow(0 0 7px rgba(255, 243, 107, 0.9));
+  }
+  to {
+    filter: drop-shadow(0 0 7px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 14px rgba(255, 243, 107, 1));
+  }
+}
+
+/* A fruit we are carrying follows the fairy every frame — no network
+   smoothing — and sits above the fairy so it stays tappable. */
+.fruit.carried {
+  transition: none;
+  z-index: 3;
+}
+
 /* Joystick */
 #joystick {
   position: fixed;

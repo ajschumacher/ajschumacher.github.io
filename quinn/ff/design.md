@@ -142,6 +142,46 @@ The tile images have filenames like `images/world/7_2.png` which is
 the starting tile.
 
 
+### Fruits
+
+Three kinds of fruit grow in the world: strawberries, apples, and
+bananas. They appear as emojis (apples are randomly red or green for
+variety), displayed at half the fairy's size — thinking of the fairy
+emoji as a circle of radius r, a fruit is a circle of radius r/2.
+
+Fruits spawn on the three "orchard" tiles around the spawn tile
+(7, 2): the strawberry orchard is the tile above, (7, 3); the apple
+orchard is the tile to the right, (8, 2); and the banana orchard is
+the tile below, (7, 1).
+
+The game strives to keep 15 of each fruit in the world, but spawning
+is throttled so that at most one fruit appears per 30 seconds. There
+is no game server, so the players' own games keep the orchards
+stocked: while a player is in the world, their game periodically
+checks the fruit counts and spawns when a type is below target. In the
+shared world the throttle is a shared timestamp in the database, and a
+transaction on it decides which player's game gets to spawn.
+
+A fairy is "touching" a fruit when the fruit's center is within 2r of
+the fairy's center (r being the fairy-circle radius above). A touched
+fruit glows softly to show it can be interacted with:
+
+ * Tap a glowing fruit once to pick it up. A fairy can carry one fruit
+   at a time; the carried fruit stops glowing and rides along at the
+   same offset from the fairy it was picked up at, even across tiles.
+   No other fairy can interact with a fruit that is being carried.
+ * Tap a carried fruit once to put it down where it is.
+ * Double-tap a carried fruit to eat it — it disappears (and the
+   orchards will eventually grow a replacement).
+
+Fruits are shared state, like players: they live in the same Firebase
+Realtime Database room and persist as players enter and leave the
+game. If a player disconnects mid-carry, the database frees the fruit
+wherever it was last carried. When the shared world cannot be reached,
+solo play grows its own local fruits with the same rules; they simply
+do not survive a page reload.
+
+
 ### Sketch mode (easter egg)
 
 Quinn's original hand-drawn sketches of the tiles live in
