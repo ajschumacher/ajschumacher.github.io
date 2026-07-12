@@ -19,6 +19,7 @@ Just collecting these here for easy reference for now...
  1. [Moral Code of the Builder of Communism](/20260106-moral_code_of_the_builder_of_communism/)
  1. [Core Socialist Values of the Chinese Communist Party](/20260107-core_socialist_values_of_the_ccp/)
  1. [The UK's Seven Principles of Public Life](/20251230-uk_seven_principles_of_public_life/)
+ 1. [The Eight Wiccan Virtues](/20260712-eight_wiccan_virtues/)
  1. [Asimov's Three Laws of Robotics](/20251231-asimov_three_laws_of_robotics/)
  1. [DoorDash's Values](/20251230-doordash_values/)
  1. [Amazon's Leadership Principles](/20251216-amazon_leadership_principles/)
