@@ -7,6 +7,106 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Outline for Fundamental Linear Algebra</title>
+<description><![CDATA[
+
+<p>I'm thinking about how to make linear algebra so simple that it could
+be taught much earlier than it usually is. I think it's often
+presented with some mix of excessive abstraction (proofs,
+symbols-only) and excessive concreteness (obsession with Gaussian
+elimination and manipulating matrices by hand) and often with things
+(matrix multiplication) that should be explained introduced as if they
+sprung up my magic. Consider this my thinking draft.</p>
+<p>\[
+\begin{array}{l}
+\text{Linear} \cr
+\begin{bmatrix} 1 &amp; \hspace{0.7em} 2 \end{bmatrix} \cr
+\text{Algebra}
+\end{array}
+\hspace{-0.6em}
+\begin{bmatrix} 1 \cr \rule{0pt}{1.4em} 2 \end{bmatrix}
+\]</p>
+<p>Linear Algebra is a mathematics of multiple dimensions. For example,
+you can think of the matrix \( \begin{bmatrix} 1 \cr 2 \end{bmatrix}
+\) as a point in two-dimensional space.</p>
+<p></p><center><img src="plot.png" height="200px"></center>
+<p>A matrix is also a linear transformation. For example, the row vector
+\( \begin{bmatrix} 1 &amp; 2 \end{bmatrix} \) transforms the column
+vector \( \begin{bmatrix} 1 \cr 2 \end{bmatrix} \) and produces 5.</p>
+<p>\[
+\begin{bmatrix} 1 &amp; 2 \end{bmatrix}
+\begin{bmatrix} 1 \cr 2 \end{bmatrix}
+= 1 \cdot 1 + 2 \cdot 2 = 1 + 4 = 5
+\]</p>
+<p>Going left to right and top to bottom, just as we read and write, we
+pair elements, multiply them, and add up the products. This is called
+the dot product.</p>
+<p>The same operation extends to transformations that produce
+multidimensional outputs.</p>
+<p>\[
+\begin{bmatrix} 1 &amp; 2 \cr 3 &amp; 0 \end{bmatrix}
+\begin{bmatrix} 1 \cr 2 \end{bmatrix}
+= \begin{bmatrix} 1 \cdot 1 + 2 \cdot 2 \cr 3 \cdot 1 + 0 \cdot 2 \end{bmatrix}
+= \begin{bmatrix} 1 + 4 \cr 3 + 0 \end{bmatrix}
+= \begin{bmatrix} 5 \cr 3 \end{bmatrix}
+\]</p>
+<p>You can picture this transformation as "moving" a point.</p>
+<p></p><center><img src="plot2.png" height="200px"></center>
+<p>Linear transformations can stretch, rotate, and reflect. They can also
+behave like zero for one or more of their dimensions.</p>
+<p>Matrix multiplication is the natural simplification of multiple
+subsequent transformations using dot products. We see that often,
+order matters, and \( MN \neq NM \).</p>
+<p>Doing algebra with multidimensional linear transforms lets you solve
+problems. For example, in \(MX = C\), each of <em>M,</em> <em>X,</em> and <em>C</em> is a
+matrix, and <em>X</em> is unknown. We solve for <em>X</em> by multiplying both
+sides, on their lefts, by the inverse of <em>M,</em> and find \( X = M^{-1}C
+\).</p>
+<p>Just as with square roots, it's possible to do calculations like this
+by hand, but in practice we use computers.</p>
+<p>There are more techniques, like factorizations, and many more
+applications.</p>
+<h3>Thoughts</h3>
+<p>The version here is already getting long for a one-page summary, and
+the typography and graphics are fiddly. Is there a good way to
+condense even more?</p>
+<p>I feel like the "input/output" thinking I like is a little buried
+here... How can I foreground that more effectively?</p>
+<p>Should I include my dimensionality diagrams here already?</p>
+<p>Eigenvector stuff: should it appear quite early, around the "what do
+matrices do" topic? Or come later? (Really, maybe even SVD should be
+in the "what do matrices do" topic? But how do you get it to come
+then?)</p>
+<p>When I say I'm thinking about linear algebra, people rarely fail to
+mention <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown</a>. And indeed, looking at it again now, I wonder
+how much it influenced me. Maybe I should go look at it again now. I
+think there are differences (for example I think he has <em>even less</em> on
+solving MX = C?) and I wonder what he would consider his "learning
+goals" for viewers... What would I consider mine?</p>
+<p>I guess he's focused on the visual intuition side of things... Is that
+an end in itself? Maybe it helps with understanding, generally...</p>
+<p>I think my goal is more around application: Linear algebra should be
+understood as "ordinary mathematics," as a tool for solving problems.
+I would like learners to be able to map linear algebra onto things in
+the world and use it to solve problems. To model things with it and
+have enough facility in the algebraic side, and enough understanding
+to know when/whether a solution is possible, and then to use software
+to do the actual calculations.</p>
+<h3>Other posts related to linear algebra</h3>
+<ul>
+<li>2024-06-24: <a href="/20240624-brief_development_matrix_multiplication/">A brief development of matrix multiplication</a></li>
+<li>2024-06-16: <a href="/20240616-linear_algebra_done_right/">Linear Algebra Done Right, by Axler</a></li>
+<li>2021-09-15: <a href="/20210915-you_can_devive_the_formula_for_the_determinant/">You can derive the formula for the determinant</a></li>
+<li>2021-09-15: <a href="/20210915-flow_metaphor_for_matrix_multiplication/">The flow metaphor for matrix multiplication</a></li>
+</ul>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20260720-outline_for_fundamental_linear_algebra/</link>
+<guid>http://planspace.org/20260720-outline_for_fundamental_linear_algebra/</guid>
+<pubDate>Mon, 20 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>As a Man Thinketh, by Allen</title>
 <description><![CDATA[
 
@@ -1017,46 +1117,6 @@ different text somehow.)</p>
 <link>http://planspace.org/20260106-moral_code_of_the_builder_of_communism/</link>
 <guid>http://planspace.org/20260106-moral_code_of_the_builder_of_communism/</guid>
 <pubDate>Tue, 06 Jan 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Girl Scouts of the USA Promise and Law</title>
-<description><![CDATA[
-
-<h3>Girl Scout Promise</h3>
-<p>On my honor, I will try:<br>
-To serve God* and my country,<br>
-To help people at all times,<br>
-And to live by the Girl Scout Law.</p>
-<p>*Members may substitute for the word God<br>
-in accordance with their own spiritual beliefs.</p>
-<h3>Girl Scout Law</h3>
-<p>I will do my best to be<br>
-honest and fair,<br>
-friendly and helpful,<br>
-considerate and caring,<br>
-courageous and strong,<br>
-and responsible for what I say and do,<br>
-and to respect myself and others,<br>
-respect authority,<br>
-use resources wisely,<br>
-make the world a better place,<br>
-and be a sister to every Girl Scout.</p>
-<hr>
-<p>This is the version, down to the line breaks, current <a href="https://www.girlscouts.org/en/discover/about-us/what-girl-scouts-do/promise-and-law.html">online</a> for
-the Girl Scouts of the USA. (Equivalents elsewhere are often called
-"Girl Guides.")</p>
-<p>The explicit flexibility for different spiritualities is not unique to
-Girl Scouts of the USA. For example, UK Scouts publishes eight
-versions of each of its <a href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/the-scout-promise/">promises</a> covering Atheists, Buddhists,
-Christians, Hindus, Humanists, Jews, Muslims, and Sikhs.</p>
-<p>Juliette Gordon Low’s <a href="https://thebadgearchive.com/gsusa-evolution-of-the-promise-and-law/">original</a> Promise and Law from 1912 was very
-similar to Baden-Powell’s. It included, for example, that "a Girl
-Scout keeps herself pure," instead of that "a Scout is clean in
-thought, word and deed."</p>    
-    ]]></description>
-<link>http://planspace.org/20251231-girl_scouts_of_usa_promise_and_law/</link>
-<guid>http://planspace.org/20251231-girl_scouts_of_usa_promise_and_law/</guid>
-<pubDate>Wed, 31 Dec 2025 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

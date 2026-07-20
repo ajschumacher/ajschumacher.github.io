@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Outline for Fundamental Linear Algebra</title>
+  </head>
+  <body>
+    <article>
+<h1>Outline for Fundamental Linear Algebra</h1>
+<p class="date">Monday July 20, 2026</p>
+<p>I'm thinking about how to make linear algebra so simple that it could
+be taught much earlier than it usually is. I think it's often
+presented with some mix of excessive abstraction (proofs,
+symbols-only) and excessive concreteness (obsession with Gaussian
+elimination and manipulating matrices by hand) and often with things
+(matrix multiplication) that should be explained introduced as if they
+sprung up my magic. Consider this my thinking draft.</p>
+<p>\[
+\begin{array}{l}
+\text{Linear} \cr
+\begin{bmatrix} 1 &amp; \hspace{0.7em} 2 \end{bmatrix} \cr
+\text{Algebra}
+\end{array}
+\hspace{-0.6em}
+\begin{bmatrix} 1 \cr \rule{0pt}{1.4em} 2 \end{bmatrix}
+\]</p>
+<p>Linear Algebra is a mathematics of multiple dimensions. For example,
+you can think of the matrix \( \begin{bmatrix} 1 \cr 2 \end{bmatrix}
+\) as a point in two-dimensional space.</p>
+<p><center><img src="plot.png" height="200px" /></center></p>
+<p>A matrix is also a linear transformation. For example, the row vector
+\( \begin{bmatrix} 1 &amp; 2 \end{bmatrix} \) transforms the column
+vector \( \begin{bmatrix} 1 \cr 2 \end{bmatrix} \) and produces 5.</p>
+<p>\[
+\begin{bmatrix} 1 &amp; 2 \end{bmatrix}
+\begin{bmatrix} 1 \cr 2 \end{bmatrix}
+= 1 \cdot 1 + 2 \cdot 2 = 1 + 4 = 5
+\]</p>
+<p>Going left to right and top to bottom, just as we read and write, we
+pair elements, multiply them, and add up the products. This is called
+the dot product.</p>
+<p>The same operation extends to transformations that produce
+multidimensional outputs.</p>
+<p>\[
+\begin{bmatrix} 1 &amp; 2 \cr 3 &amp; 0 \end{bmatrix}
+\begin{bmatrix} 1 \cr 2 \end{bmatrix}
+= \begin{bmatrix} 1 \cdot 1 + 2 \cdot 2 \cr 3 \cdot 1 + 0 \cdot 2 \end{bmatrix}
+= \begin{bmatrix} 1 + 4 \cr 3 + 0 \end{bmatrix}
+= \begin{bmatrix} 5 \cr 3 \end{bmatrix}
+\]</p>
+<p>You can picture this transformation as "moving" a point.</p>
+<p><center><img src="plot2.png" height="200px" /></center></p>
+<p>Linear transformations can stretch, rotate, and reflect. They can also
+behave like zero for one or more of their dimensions.</p>
+<p>Matrix multiplication is the natural simplification of multiple
+subsequent transformations using dot products. We see that often,
+order matters, and \( MN \neq NM \).</p>
+<p>Doing algebra with multidimensional linear transforms lets you solve
+problems. For example, in \(MX = C\), each of <em>M,</em> <em>X,</em> and <em>C</em> is a
+matrix, and <em>X</em> is unknown. We solve for <em>X</em> by multiplying both
+sides, on their lefts, by the inverse of <em>M,</em> and find \( X = M^{-1}C
+\).</p>
+<p>Just as with square roots, it's possible to do calculations like this
+by hand, but in practice we use computers.</p>
+<p>There are more techniques, like factorizations, and many more
+applications.</p>
+<h3>Thoughts</h3>
+<p>The version here is already getting long for a one-page summary, and
+the typography and graphics are fiddly. Is there a good way to
+condense even more?</p>
+<p>I feel like the "input/output" thinking I like is a little buried
+here... How can I foreground that more effectively?</p>
+<p>Should I include my dimensionality diagrams here already?</p>
+<p>Eigenvector stuff: should it appear quite early, around the "what do
+matrices do" topic? Or come later? (Really, maybe even SVD should be
+in the "what do matrices do" topic? But how do you get it to come
+then?)</p>
+<p>When I say I'm thinking about linear algebra, people rarely fail to
+mention <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown</a>. And indeed, looking at it again now, I wonder
+how much it influenced me. Maybe I should go look at it again now. I
+think there are differences (for example I think he has <em>even less</em> on
+solving MX = C?) and I wonder what he would consider his "learning
+goals" for viewers... What would I consider mine?</p>
+<p>I guess he's focused on the visual intuition side of things... Is that
+an end in itself? Maybe it helps with understanding, generally...</p>
+<p>I think my goal is more around application: Linear algebra should be
+understood as "ordinary mathematics," as a tool for solving problems.
+I would like learners to be able to map linear algebra onto things in
+the world and use it to solve problems. To model things with it and
+have enough facility in the algebraic side, and enough understanding
+to know when/whether a solution is possible, and then to use software
+to do the actual calculations.</p>
+<h3>Other posts related to linear algebra</h3>
+<ul>
+<li>2024-06-24: <a href="/20240624-brief_development_matrix_multiplication/">A brief development of matrix multiplication</a></li>
+<li>2024-06-16: <a href="/20240616-linear_algebra_done_right/">Linear Algebra Done Right, by Axler</a></li>
+<li>2021-09-15: <a href="/20210915-you_can_devive_the_formula_for_the_determinant/">You can derive the formula for the determinant</a></li>
+<li>2021-09-15: <a href="/20210915-flow_metaphor_for_matrix_multiplication/">The flow metaphor for matrix multiplication</a></li>
+</ul>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer id="contact">
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
