@@ -19,8 +19,10 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 ---
 
+
 Here's the big list of everything:
 
+ * 2026-07-20: [North Korea's Ten Principles for the Establishment of the One-Ideology System](/20260720-north_korea_principles/)
  * 2026-07-20: [Outline for Fundamental Linear Algebra](/20260720-outline_for_fundamental_linear_algebra/)
  * 2026-07-13: [As a Man Thinketh, by Allen](/20260713-as_a_man_thinketh_by_allen/)
  * 2026-07-12: [The Eight Wiccan Virtues](/20260712-eight_wiccan_virtues/)
