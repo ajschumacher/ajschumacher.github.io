@@ -18,6 +18,7 @@ Just collecting these here for easy reference for now...
  1. [Girl Scouts of the USA Promise and Law](/20251231-girl_scouts_of_usa_promise_and_law/)
  1. [Moral Code of the Builder of Communism](/20260106-moral_code_of_the_builder_of_communism/)
  1. [Core Socialist Values of the Chinese Communist Party](/20260107-core_socialist_values_of_the_ccp/)
+ 1. [North Korea's Ten Principles for the Establishment of the One-Ideology System](/20260720-north_korea_principles/) (1974)
  1. [The UK's Seven Principles of Public Life](/20251230-uk_seven_principles_of_public_life/)
  1. [The Eight Wiccan Virtues](/20260712-eight_wiccan_virtues/)
  1. [Asimov's Three Laws of Robotics](/20251231-asimov_three_laws_of_robotics/)
