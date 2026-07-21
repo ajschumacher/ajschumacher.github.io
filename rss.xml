@@ -7,6 +7,108 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>(Audio) More Everything Forever, by Becker</title>
+<description><![CDATA[
+
+<p>Those "rationalists" are even weirder than I thought! <a href="https://freelanceastrophysicist.com/">Becker</a> (who
+also wrote <a href="/20250601-what_is_real_by_becker/">What is Real?</a>) delivers an impassioned humanist history
+(<a href="https://gwern.net/doc/science/1962-good-thescientistspeculates.pdf" title="The Scientist Speculates">e.g.</a>), exposé, and analysis of a modern trend in the
+over-empowered misusing their power. It comes out (as Becker notes)
+very similar to the "<a href="https://firstmonday.org/ojs/index.php/fm/article/view/13636">TESCREAL bundle</a>" analysis of Gebru and
+Torres. A lot of the book is of the form "so-and-so says X is good and
+inevitable, but there are reasons to think it's <a href="https://www.centauri-dreams.org/2026/07/10/a-metallurgists-doubts-about-self-replicating-probes/">not</a> either."
+Becker's concluding recommendation ("tax billionaires out of
+existence") seems a little tacked on and not fully argued, but I'm not
+sure it's a bad idea.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<p>I mostly agree with Becker throughout. Below, I'm going to write my
+own thoughts as inspired by the book, which often overlap with its
+content but not completely.</p>
+<h3>Utilitarianism is nonsense</h3>
+<p>There are at least two important parts here:</p>
+<ol>
+<li>Quantifying utility as a single dimension isn't a good idea. There
+   are standard <a href="/20200425-tyranny_of_metrics_by_muller/">Tyranny of Metrics</a> problems. "Utils" over-simplify
+   and are unavoidably subjective. The approach attempts to give the
+   appearance of objectivity and knowledge of what might happen in the
+   future, but it has neither.</li>
+<li>Utilitarians (at least longtermists) seem to use expected value to
+   justify their decisions. Expected value is not a good decision tool
+   when there's only one future. We don't get to roll out the future a
+   billion times and collect the total utils across all of them.</li>
+</ol>
+<h3>Consciousness is irreducible</h3>
+<p>I still think <a href="/20220918-consciousness_explained_by_dennett/">Dennett</a> and friends are being obtuse, at best. The
+consciousness of other <em>humans</em> is something you have to take on
+faith, and I do, but I wouldn't extend that to even a perfect
+simulation of my own brain. I don't see any reason to think a
+<a href="https://www.anthropic.com/research/global-workspace">workspace</a> (or any particular feature) grants conscious experience.
+I don't think current AI is even a little bit conscious. I don't know
+how it ever could be. I maintain that we don't know how consciousness
+works. I wouldn't believe in consciousness at all if not for it being
+my constant experience.</p>
+<p>Some consequences:</p>
+<ul>
+<li>When will AI be conscious? Never.</li>
+<li>Do I want to die in a transporter? No.</li>
+<li>Would "uploading" my brain mean immortality? No.</li>
+</ul>
+<h3>Fast is different from FOOM</h3>
+<p>A singularity has slope going to infinity. The physical universe puts
+limits on speed, but actual speeds are likely to be much slower. I'm
+thinking <a href="https://www.normaltech.ai/p/ai-as-normal-technology">AI as Normal Technology</a>.</p>
+<ol>
+<li>The smarter you get, the harder it gets to know whether you're
+   getting smarter. It's already hard (and expensive) to get reliable
+   expert evaluations, even in math where things are relatively
+   objective and checkable. Math can support automated verification
+   with proof assistants like <a href="https://en.wikipedia.org/wiki/Lean_(proof_assistant)">Lean</a>, but even there knowing whether
+   a "discovery" is good or important is socially constructed. In most
+   domains you have to do something in the real world (build
+   something, do an experiment) to know if you're even right. We will
+   have to determine whether AI is really meaningfully "superhuman" by
+   its accomplishments in creating things in the real world, which
+   takes time.</li>
+<li>Chaos and irreducible complexity are everywhere. No amount of
+   intelligence lets you achieve arbitrary goals. You can't predict
+   the weather three weeks out. There seems to be a delusion that
+   arbitrary deduction and control like in the shark-jumping
+   <a href="https://en.wikipedia.org/wiki/The_Final_Problem_(Sherlock)">Final Problem</a> episode of <a href="https://en.wikipedia.org/wiki/Sherlock_(TV_series)">Sherlock</a> is a real threat.</li>
+<li>There's an argument that we should expect intelligence to follow a
+   logistic curve rather than an exponential. I'm not sure about the
+   exact form. When it comes to scientific knowledge, I think it could
+   be an exception to limits-to-growth arguments. (See:
+   <a href="https://planspace.org/20220410-beginning_of_infinity_by_deutsch/">The Beginning of Infinity</a>)</li>
+</ol>
+<h3>Smarter isn't bad</h3>
+<p>People seem scared of AI getting smarter than them.</p>
+<p>For one thing, given any human, some AI is already "smarter" in at
+least some way. (Go? Chess? Multiplication?)</p>
+<p>If you're hiring for some position, surely you want to hire the
+smartest candidate you can find. You <em>hope</em> they'll be smarter than
+you. You do better work when you work with smart people.</p>
+<p>When you went to college, were you afraid the professors would take
+over the world? No. You were happy to learn from them.</p>
+<p>We should be so lucky as to have "superhuman" AI. We should see it
+improving the quality of everything - quite the opposite of "slop."</p>
+<h3>Projection from unsavory characters</h3>
+<p>The people who think Artificial Intelligence is the most important
+thing seem to be the people who think their own intelligence is very
+important.</p>
+<p>The people who worry the most about AI being manipulative seem to be
+the most manipulative people.</p>
+<p>The people who worry the most about AI killing all non-AI seem to be
+the people least concerned about people not like them.</p>
+<h3>Discussing goals can be good</h3>
+<p>They may be nuts, but at least some of these nuts are directly
+addressing the "what should we do" question. As in
+<a href="http://localhost:8000/20240929-inventing_the_future_by_srnicek_and_williams/">Inventing the Future</a>, I think we need more and better proposals.</p>    
+    ]]></description>
+<link>http://planspace.org/20260721-more_everything_forever_by_becker/</link>
+<guid>http://planspace.org/20260721-more_everything_forever_by_becker/</guid>
+<pubDate>Tue, 21 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>North Korea's Ten Principles for the Establishment of the One-Ideology System</title>
 <description><![CDATA[
 
@@ -1077,41 +1179,6 @@ each for spring, summer, fall, and winter:</p>
 <link>http://planspace.org/20260409-year_of_creativity_jacob_unerman/</link>
 <guid>http://planspace.org/20260409-year_of_creativity_jacob_unerman/</guid>
 <pubDate>Thu, 09 Apr 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>Core Socialist Values of the Chinese Communist Party</title>
-<description><![CDATA[
-
-<ul>
-<li>National values<ul>
-<li>Prosperity</li>
-<li>Democracy</li>
-<li>Civility</li>
-<li>Harmony</li>
-</ul>
-</li>
-<li>Social values<ul>
-<li>Freedom</li>
-<li>Equality</li>
-<li>Justice</li>
-<li>Rule of law</li>
-</ul>
-</li>
-<li>Individual values<ul>
-<li>Patriotism</li>
-<li>Dedication</li>
-<li>Integrity</li>
-<li>Friendship</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>Sure enough, China (or the CCP, anyway) has a set of values.
-<a href="https://en.wikipedia.org/wiki/Core_Socialist_Values">Looks like</a> they were put together in 2012!</p>    
-    ]]></description>
-<link>http://planspace.org/20260107-core_socialist_values_of_the_ccp/</link>
-<guid>http://planspace.org/20260107-core_socialist_values_of_the_ccp/</guid>
-<pubDate>Wed, 07 Jan 2026 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
