@@ -7,6 +7,221 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Ultralearning, by Young</title>
+<description><![CDATA[
+
+<p>Scott Young's first book came out in 2019. It's okay, and it was
+reasonably successful. "Intense learning" is at least as good a name.
+There are some good ideas. I worry about everyone (Young) needing to
+release content constantly and be an "influencer" with goofy hooks;
+that culture permeates the book. But I do support diving in and
+learning things.</p>
+<p>Young motivates the book too much, in my opinion, as being about
+developing job skills. It's sort of a version of "escaping the
+permanent underclass:" Young references <a href="https://en.wikipedia.org/wiki/Average_Is_Over">Average is Over</a> directly.
+The argument doesn't age particularly well, and I wonder whether to
+some extent it was forced on the author by editors concerned about
+selling books.</p>
+<p>The title of the book was a gift from Cal Newport, who wrote about
+Young's effort to study the contents of a four-year degree in one
+year. The title of Newport's <a href="https://calnewport.com/mastering-linear-algebra-in-10-days-astounding-experiments-in-ultra-learning/">post</a> was "Mastering Linear Algebra in
+10 Days: Astounding Experiments in Ultra-Learning." (Unfortunately,
+there's nothing interesting about Linear Algebra in the post.)</p>
+<p>Young also borrowed a name from Feynman, and it was Feynman's name. He
+claims to be the originator of "the Feynman Technique," which is now
+broadly mis-attributed (<a href="https://fs.blog/feynman-technique/">ex1</a>, <a href="https://www.colorado.edu/artssciences-advising/resource-library/life-skills/the-feynman-technique-in-academic-coaching">ex2</a>) to Feynman himself. I don't
+see any reason to doubt him; I can't find any real source linking the
+technique to Feynman except to some degree in spirit.</p>
+<p>Young says in a footnote, "Calling this the Feynman Technique was
+possibly unwise. It's unclear if Feynman ever used this exact method,
+so I may have inadvertently given the technique an illustrious history
+it doesn't possess." Solid self-awareness.</p>
+<p>The overall organization of the book is fairly good, in my opinion. I
+appreciate that it's thoughtfully laid out; it seems like it grew from
+a good outline. The meat that covers the bones doesn't always fit
+perfectly. The main example in my mind is that Ramanujan's use of a
+book without proofs is supposed to animate the "retrieval" chapter,
+which doesn't make sense. Ramanujan wasn't "retrieving" those proofs
+from memory - he was coming up with them on his own. It would fit
+better with "directness" or "intuition," maybe.</p>
+<p><img alt="cover" src="cover.jpg"></p>
+<ul>
+<li>Metalearning: First Draw a Map<ul>
+<li>Why<ul>
+<li>Tactic: The Expert Interview Method</li>
+</ul>
+</li>
+<li>What: Concepts, Facts, Procedures</li>
+<li>How<ul>
+<li>Benchmarking (against common ways people learn)</li>
+<li>The Emphasize/Exclude Method</li>
+</ul>
+</li>
+<li>The 10 Percent Rule (spend 10% of time on planning)</li>
+</ul>
+</li>
+<li>Focus: Sharpen Your Knife<ul>
+<li>Start (avoid procrastinating)</li>
+<li>Sustain (don't get distracted)<ul>
+<li>Distraction sources: Environment, Task, Mind</li>
+</ul>
+</li>
+<li>Optimize quality</li>
+</ul>
+</li>
+<li>Directness: Go Straight Ahead (Do it for real, transfer is hard)<ul>
+<li>Tactics<ul>
+<li>Project-Based Learning</li>
+<li>Immersive Learning</li>
+<li>The Flight Simulator Method (get as close as you can)</li>
+<li>The Overkill Approach (learn beyond the level you want)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Drill: Attack Your Weakest Point (train "rate-limiting" skills,
+   focusing with less total cognitive load)<ul>
+<li>Methods<ul>
+<li>Time Slicing (just do part of the thing, like a song)</li>
+<li>Cognitive Components (just do a particular sub-skill)</li>
+<li>The Copycat</li>
+<li>The Magnifying Glass Method (spend more time on one part)</li>
+<li>Prerequisite Chaining (start harder than you can do, go
+   back and fill in gaps as you find them)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Retrieval: Test to Learn (don't re-read, recall)<ul>
+<li>Tactics<ul>
+<li>Flash Cards</li>
+<li>Free Recall (can be better than cued recall)</li>
+<li>The Question-Book Method (take notes as questions)</li>
+<li>Self-Generated Challenges (not just questions)</li>
+<li>Closed-Book Learning (concept map from memory, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Feedback: Don't Dodge the Punches<ul>
+<li>Types<ul>
+<li>Outcome Feedback ("what's my score on this")</li>
+<li>Informational Feedback ("what am I doing wrong")</li>
+<li>Corrective Feedback ("what should I do to improve")</li>
+</ul>
+</li>
+<li>Tactics to Improve Your Feedback<ul>
+<li>Noise Cancellation (focus on the right feedback)</li>
+<li>Hitting the Difficulty Sweet Spot (50/50 goals)</li>
+<li>Metafeedback (evaluate success of your learning techniques)</li>
+<li>High-Intensity, Rapid Feedback</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Retention: Don't Fill a Leaky Bucket<ul>
+<li>Memory Mechanisms<ul>
+<li>Spacing: Repeat to Remember</li>
+<li>Proceduralization: Automatic Will Endure</li>
+<li>Overlearning: Practice Beyond Perfect</li>
+<li>Mnemonics: A Picture Retains a Thousand Words</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Intuition: Dig Deep Before Building Up<ul>
+<li>Rules<ul>
+<li>Don't Give Up on Hard Problems Easily</li>
+<li>Prove Things to Understand Them</li>
+<li>Always Start with a Concrete Example</li>
+<li>Don't Fool Yourself</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Experimentation: Explore Outside Your Comfort Zone<ul>
+<li>Tactics<ul>
+<li>Copy, Then Create</li>
+<li>Compare Methods Side-by-Side</li>
+<li>Introduce New Constraints</li>
+<li>Find Your Superpower in the Hybrid of Unrelated Skills</li>
+<li>Explore the Extremes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>This rapid change in technology means that many of the best ways of
+learning old subjects have yet to be invented or rigorously applied.
+(page 31)</p>
+</blockquote>
+<p>I think this is not just about technology, but about old subjects
+being taught in old ways with old understandings of the subjects and
+old goals for studying them.</p>
+<hr>
+<blockquote>
+<p>The uniqueness of ultralearning projects is one of the elements that
+ties them together. (page 47)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Although studying Latin has fallen out of favor, many educational
+pundits are reviving new incarnations of the formal discipline
+theory by suggesting that everyone learn programming or critical
+thinking in order to improve their general intelligence. Many
+popular "brain-training" games also subscribe to this view of the
+mind, assuming that deep training on one set of congnitive tasks
+will extend to everyday reasoning. It's been more than one hundred
+years since the verdict came in, yet the allure of a general
+transfer procedure still has many searching for the Holy Grail.
+(page 96)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Astute readers will probably notice a tension between this principle
+[drill] and the last [directness]. If direct practice involves
+working on a whole skill nearest to the situation in which it will
+eventually be used, drills are a pull in the opposite direction. A
+drill takes the direct practice and cuts it apart, so that you are
+practicing only an isolated component. (page 111)</p>
+</blockquote>
+<hr>
+<p>Young's "Feynman Technique" on page 192:</p>
+<blockquote>
+<ol>
+<li>Write down the concept or problem you want to understand at the
+   top of a piece of paper.</li>
+<li>In the space below, explain the idea as if you had to teach it to
+   someone else.
+    a. If it's a concept, ask yourself how you would convey the idea
+    to someone who has never heard of it before.
+    b. If it's a problem, explain how to solve it and—crucially—why
+    that solution procedure makes sense to you.</li>
+<li>When you get stuck, meaning your understanding fails to provide a
+   clear answer, go back to your book, notes, teacher, or reference
+   material to find the answer.</li>
+</ol>
+</blockquote>
+<hr>
+<blockquote>
+<p>I applied this to understanding the concept of voltage in an early
+class on electromagnetism during the MIT challenge. Though I was
+comfortable using the concept in problems, I didn't feel that I had
+a good intuition of what it was. It's obviously not energy,
+electrons, or flows of things. Still, it was hard to get a mental
+image of an abstract concept on a wire. Going through this technique
+and comparing equations to the ones for gravity, it's clear that
+voltage is to the electrical force as height is to the gravitational
+force. Now I could form a visual image. (page 195)</p>
+</blockquote>    
+    ]]></description>
+<link>http://planspace.org/20260723-ultralearning_by_young/</link>
+<guid>http://planspace.org/20260723-ultralearning_by_young/</guid>
+<pubDate>Thu, 23 Jul 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) More Everything Forever, by Becker</title>
 <description><![CDATA[
 
@@ -1099,86 +1314,6 @@ and they turn up all over the place.</p>
 <link>http://planspace.org/20260607-virtues/</link>
 <guid>http://planspace.org/20260607-virtues/</guid>
 <pubDate>Sun, 07 Jun 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>A year of creativity, by Jacob and Unerman</title>
-<description><![CDATA[
-
-<p>This <a href="https://www.bloomsbury.com/us/year-of-creativity-9781399413244/" title="A Year of Creativity">book</a> has 52 weekly chapters, each with an approach for being
-creative. I read (very nearly) one per week in 2025. They remind me
-somewhat of my <a href="/20201206-thinking_cards/">Thinking Cards</a>, and prompted me to finally get a
-set of Brian Eno's <em>Oblique Strategies</em> as well. The biggest concept
-for all of these is just to do something different, to get out of your
-usual groove, to <em>try</em> to be creative. It's nice that creativity can
-respond to effort.</p>
-<p>What even <em>is</em> creativity? I think it's to do with taking steps that
-other people haven't taken, going somewhere others haven't gone.
-Taking more steps, taking steps that other people haven't yet or
-couldn't take, maybe using knowledge or experiences unique to you. And
-then you get to that result, that success, that product that stands on
-its own, and if you don't show the steps that led to it, it looks like
-something that just appeared out of the blue.</p>
-<p><img alt="cover" src="cover.jpg"></p>
-<p>The chapter titles are sometimes quite opaque, but here they are, 13
-each for spring, summer, fall, and winter:</p>
-<ol>
-<li>Push the idea until it breaks</li>
-<li>Start a revolution</li>
-<li>Use new</li>
-<li>Exaggerate</li>
-<li>Be brave</li>
-<li>Allow time for shoots to flourish</li>
-<li>Double the resources available</li>
-<li>Prompt the unconscious</li>
-<li>Change direction</li>
-<li>Make it iconic</li>
-<li>Give it purpose</li>
-<li>Random link</li>
-<li>Spring forward and be more dog</li>
-<li>Indulge your gut instinct</li>
-<li>Re-express with a different language</li>
-<li>Be more pirate</li>
-<li>Be bored</li>
-<li>Give into your worst impulse</li>
-<li>What won’t you do? And why?</li>
-<li>Do nothing</li>
-<li>Use an old idea</li>
-<li>Work against your better judgement</li>
-<li>Build back better</li>
-<li>What would someone else say?</li>
-<li>Take a trip</li>
-<li>Be more Wimbledon</li>
-<li>Organize for medium-term success</li>
-<li>Make it famous, fast</li>
-<li>Build communities</li>
-<li>Make the team happy</li>
-<li>Be generous</li>
-<li>Build bridges</li>
-<li>Make people’s lives better</li>
-<li>Deliver outstanding teamwork</li>
-<li>What is missing?</li>
-<li>Harvest</li>
-<li>Listen hard</li>
-<li>Do things in the wrong order</li>
-<li>What would your worst enemy do?</li>
-<li>Uproot and destroy</li>
-<li>Burn bridges</li>
-<li>Go outside</li>
-<li>Deliver long-term success</li>
-<li>How can you get people to want much more?</li>
-<li>Plan to get it up and running in six weeks</li>
-<li>Spend a million</li>
-<li>Be extravagant</li>
-<li>Strip it back</li>
-<li>Quick win</li>
-<li>Push the idea until it scares you</li>
-<li>Give the past a vote (but not a veto)</li>
-<li>Hibernate</li>
-</ol>    
-    ]]></description>
-<link>http://planspace.org/20260409-year_of_creativity_jacob_unerman/</link>
-<guid>http://planspace.org/20260409-year_of_creativity_jacob_unerman/</guid>
-<pubDate>Thu, 09 Apr 2026 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
