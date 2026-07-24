@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>One-dimensional Linear Algebra</title>
+  </head>
+  <body>
+    <article>
+<h1>One-dimensional Linear Algebra</h1>
+<p class="date">Friday July 24, 2026</p>
+<p>Linear Algebra is the mathematics of <em>linear transformations</em>. It can
+handle lots of dimensions, but let's explore the one-dimensional case
+with real numbers.</p>
+<p>A linear transformation is called <em>linear</em> because it behaves like a
+straight line that goes through the origin.</p>
+<!--
+
+Linearity amounts to two rules. First, an input times a number and
+then transformed has to be the same as the input transformed and then
+multiplied by that number. In particular, the transform of zero is
+zero: a linear transform goes through the origin. Second, the
+transform of a sum of inputs has to be the same as the sum of those
+inputs transformed: a linear transform has constant slope; it's
+straight.
+
+\\[ f(cu) = cf(u) \\]
+
+-->
+
+<p>In one dimension, linear transforms are just multiplication. For
+example, let's consider a transform \( M \) that multiplies by 4. We
+can write the <em>matrix</em> representation \( M = \begin{bmatrix} 4
+\end{bmatrix} \).</p>
+<p>To undo \( M \), we divide by 4, or equivalently multiply by the
+multiplicative inverse of 4, which is \( 4^{-1} = 0.25 \). The
+inverse of \( M \) is \( M^{-1} = \begin{bmatrix} 0.25
+\end{bmatrix} \). So we have:</p>
+<p>\[ M^{-1}M = MM^{-1} = \begin{bmatrix} 1 \end{bmatrix} = I \]</p>
+<p>The transform \( I \) doesn't change anything and is called the
+<em>identity</em>.</p>
+<p>Just as you can't divide by zero, not every transform has an inverse.
+The problem is when a transform sends multiple inputs to a single
+output. Such a transform is called <em>singular</em> and knowing its output
+is not enough to know what its input was. The <em>determinant</em> of a
+singular matrix is zero. (The determinant of \( M \) is 4.)</p>
+<p>In one dimension the only singular transform is \( \begin{bmatrix} 0
+\end{bmatrix} \). It's a one-dimensional transform, but its output is
+really zero-dimensional, and we say it has <em>rank 0</em>. In contrast, \(
+M \) has rank 1, which is <em>full rank</em> for a one-dimensional
+transform. As long as \( M \) is full rank, it has an inverse and we
+can solve for \( X \):</p>
+<p>\[
+\begin{align}
+MX &amp;= C \\
+X &amp;= M^{-1}C
+\end{align}
+\]</p>
+<p>A linear transformation can reorient inputs in a rigid way, rotating
+and flipping them without changing their distance to the origin.
+Transforms that only do this are called <em>orthogonal</em> and in our case
+there are only two: \( \begin{bmatrix} 1 \end{bmatrix} \) and \(
+\begin{bmatrix} -1 \end{bmatrix} \).</p>
+<p>A linear transformation can also scale inputs without rotating them.
+In one dimension we only have one direction, and any vector \( v \)
+along that direction is just multiplied: \( Mv = \lambda v \). So we
+have a single <em>eigenvalue</em>, \( \lambda = 4 \), and any non-zero
+vector is a corresponding <em>eigenvector</em>. Often we choose an
+eigenvector with length one, like \( v = \begin{bmatrix} 1
+\end{bmatrix} \).</p>
+<p>Any linear transform can be expressed as reorientation followed by
+non-negative scaling followed by another reorientation, which is
+called a <em>Singular Value Decomposition</em>:</p>
+<p>\[ M = U \Sigma V^T =
+\begin{bmatrix} 1 \end{bmatrix}
+\begin{bmatrix} 4 \end{bmatrix}
+\begin{bmatrix} 1 \end{bmatrix}
+\]</p>
+<p>Singular values (in \( \Sigma \)) are always non-negative, while
+eigenvalues can be negative. If either are zero, the transformation is
+singular: some whole dimension is getting projected to zero.</p>
+<!-- include polar decomposition? others? -->
+
+<p>In one dimension here, composing tranformations is just multiplying
+real numbers, which is commutative. This is lost as soon as we involve
+more dimensions: multiplying on the left is often different from
+multiplying on the right. There are some other additional complexities
+as well, but hopefully this one-dimensional tour is a helpful way to
+quickly survey some core ideas in an accessible way.</p>
+<!-- mathjax for formulas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </article>
+    <footer id="contact">
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

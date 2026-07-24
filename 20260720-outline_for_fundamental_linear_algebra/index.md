@@ -133,3 +133,4 @@ to do the actual calculations.
  * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
  * 2021-09-15: [You can derive the formula for the determinant](/20210915-you_can_devive_the_formula_for_the_determinant/)
  * 2021-09-15: [The flow metaphor for matrix multiplication](/20210915-flow_metaphor_for_matrix_multiplication/)
+ * 2026-07-24: [One-dimensional Linear Algebra](20260724-one_dimensional_linear_algebra/)
