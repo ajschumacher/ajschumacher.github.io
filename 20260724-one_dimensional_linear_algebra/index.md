@@ -103,7 +103,7 @@ singular: some whole dimension is getting projected to zero.
 <!-- include polar decomposition? others? -->
 
 
-In one dimension here, composing tranformations is just multiplying
+In one dimension here, composing transformations is just multiplying
 real numbers, which is commutative. This is lost as soon as we involve
 more dimensions: multiplying on the left is often different from
 multiplying on the right. There are some other additional complexities
