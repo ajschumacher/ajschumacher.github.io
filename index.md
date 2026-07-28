@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-07-28: [How to bake π, by Cheng](/20260728-how_to_bake_pi_by_cheng/)
  * 2026-07-24: [One-dimensional Linear Algebra](/20260724-one_dimensional_linear_algebra/)
  * 2026-07-23: [Ultralearning, by Young](/20260723-ultralearning_by_young/)
  * 2026-07-21: [(Audio) More Everything Forever, by Becker](/20260721-more_everything_forever_by_becker/)
