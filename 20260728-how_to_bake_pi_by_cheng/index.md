@@ -45,6 +45,40 @@ being references to things that came earlier except they never did
 come earlier. Distracting.
 
 
+I really like the closing paragraphs:
+
+> "Knowledge is power," or so the adage goes. But understanding is
+> more powerful power. We have moved on from the age when knowledge
+> was a secret, passed around in mysterious books that could only be
+> deciphered by a small number of people. We have moved on from the
+> age when there were so few books that even those who did know how to
+> read them were at the mercy of those who owned them, the age when
+> students seeking knowledge had to gather around somebody who would
+> read the book out loud to them, a "lecturer"; the word "lecture"
+> comes from the act of reading, not the act of pontificating to an
+> audience. Anyway we have moved on from that age.
+>
+> We are now in the age where information is everywhere. Literacy
+> rates still leave room for improvement, but most adults can read,
+> and in some countries mos of them have access to the internet. Many
+> of us essentially have the internet in our pocket at all times.
+> Knowledge is no longer a secret.
+>
+> But understanding is still kept a secret, at least in mathematics.
+> Students of all levels are shown the rules but kept in the dark
+> about the reasons. We encourage children to ask the question "Why?"
+> but only up to a point, because beyond that point we might not
+> understand it ourselves. So we stifle their quest for illumination
+> to match our own inability to provide it. Instead of being afraid of
+> that darkness, we should bring everyone to the edge of it and say:
+> _Look! Here is an area that needs illumination._ Bring fire,
+> torches, candles—anything you can think of that will cast light.
+> Then we can lay down our foundations and build our great buildings,
+> cure diseases, invent fabulous new machines, and whatever else we
+> think the human race should be doing. But first of all we need some
+> light. (pages 278-279)
+
+
 ![cover](cover.jpg)
 
 
