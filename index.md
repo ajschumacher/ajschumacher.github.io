@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-07-30: [Linear Algebra project](/20260730-linear_algebra_project/)
  * 2026-07-28: [How to bake π, by Cheng](/20260728-how_to_bake_pi_by_cheng/)
  * 2026-07-24: [One-dimensional Linear Algebra](/20260724-one_dimensional_linear_algebra/)
  * 2026-07-23: [Ultralearning, by Young](/20260723-ultralearning_by_young/)
@@ -43,7 +44,7 @@ Here's the big list of everything:
  * 2026-06-07: [The Catholic three theological virtues](/20260607-catholic_three_theological_virtues/)
  * 2026-06-07: [Augustine's unitary love](/20260607-augustine_unitary_love/)
  * 2026-06-07: [The four cardinal Platonic virtues](/20260607-platonic_virtues/)
- * 2026-06-07: [Virtues](/20260607-virtues/)
+ * 2026-06-07: [Virtues project](/20260607-virtues/)
  * 2026-04-09: [A year of creativity, by Jacob and Unerman](/20260409-year_of_creativity_jacob_unerman/)
  * 2026-01-07: [Core Socialist Values of the Chinese Communist Party](/20260107-core_socialist_values_of_the_ccp/)
  * 2026-01-06: [Moral Code of the Builder of Communism](/20260106-moral_code_of_the_builder_of_communism/)

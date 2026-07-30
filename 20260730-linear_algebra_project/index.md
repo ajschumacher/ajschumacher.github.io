@@ -1,0 +1,11 @@
+# Linear Algebra project
+
+Keeping these here for convenient reference...
+
+ * 2018-12-28: [The Equation of a Plane](/20181228-the_equation_of_a_plane/)
+ * 2021-09-15: [The flow metaphor for matrix multiplication](/20210915-flow_metaphor_for_matrix_multiplication/)
+ * 2021-09-15: [You can derive the formula for the determinant](/20210915-you_can_devive_the_formula_for_the_determinant/)
+ * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
+ * 2024-06-24: [A brief development of matrix multiplication](/20240624-brief_development_matrix_multiplication/)
+ * 2026-07-20: [Outline for Fundamental Linear Algebra](/20260720-outline_for_fundamental_linear_algebra/)
+ * 2026-07-24: [One-dimensional Linear Algebra](20260724-one_dimensional_linear_algebra/)

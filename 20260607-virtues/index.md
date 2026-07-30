@@ -1,4 +1,4 @@
-# Virtues
+# Virtues project
 
 Just collecting these here for easy reference for now...
 
