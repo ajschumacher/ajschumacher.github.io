@@ -123,7 +123,7 @@ I really like the closing paragraphs:
 > monkey was when it was a quarter as old as it is now. How long is
 > the banana?
 
-To monkeys really hold bananas that weigh more than half their body
+Do monkeys really hold bananas that weigh more than half their body
 weight?
 
 <!--
