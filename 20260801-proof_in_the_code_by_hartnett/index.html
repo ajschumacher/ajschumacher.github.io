@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>(Audio) The proof in the code, by Hartnett</title>
+  </head>
+  <body>
+    <article>
+<h1>(Audio) The proof in the code, by Hartnett</h1>
+<p class="date">Saturday August  1, 2026</p>
+<p><a href="https://kevinstenhartnett.com/index.html">Kevin Hartnett</a>, that prolific writer for <a href="https://www.quantamagazine.org/">Quanta Magazine</a>, has
+written the first <a href="https://www.quantabooks.org/books/the-proof-in-the-code/">book</a> published by <a href="https://www.quantabooks.org/">Quanta Books</a>. It's a solid
+human-oriented history of <a href="https://lean-lang.org/">Lean</a> and its increasing importance in
+formalizing mathematics and in connection with AI.</p>
+<p>I'm excited for the next two books coming out from Quanta:
+<a href="https://www.quantabooks.org/books/six-math-essentials/">Six Math Essentials</a> from Terry Tao, and <a href="https://www.quantabooks.org/books/everything-is-fields/">Everything Is Fields</a>
+from David Tong. In the latter case, it seems we have the Simons
+Foundation publisher publishing a book from a professor whose position
+is funded by the Simons Foundation. I did a Simons Foundation
+fellowship myself, but I mean... doesn't it seem like it would be
+great for things like this to not depend on hedge fund money?
+Regardless, those two books look like they should be great!</p>
+<p>I hadn't realized how much Lean and even more so <a href="https://en.wikipedia.org/wiki/Z3_Theorem_Prover">Z3</a> and other
+parts of <a href="https://en.wikipedia.org/wiki/Leonardo_de_Moura">de Moura</a>'s work are related to satisfiability. It's not
+exactly the same, but it's related even to the CP-SAT kinds of stuff I
+did <a href="http://localhost:8000/20230316-solving_a_matching_problem_with_ortools_cpsat/">a little bit</a> of work with a while ago. (CP-SAT is Constraint
+Programming - Satisfiability, like OR-Tools. SMT is Satisfiability
+Modulo Theories, like Z3. And then Lean is basically a type checker
+with a <em>lot</em> of tooling for writing types: applied Curry-Howard
+correspondence.)</p>
+<p>I tried the current version of the <a href="https://adam.math.hhu.de/#/g/leanprover-community/NNG4">Natural Number Game</a> and proved
+2+2=4 using simple tactics. I installed Lean (doing it inside VSCode
+is highly recommended) but really the <a href="https://live.lean-lang.org/#project=mathlib-stable&amp;codez=PQWhAIEFwBwJwJYFsCm4EGdwENwDsBXJAIxTnABts4BzM8AFwAts9wBGcAdwWfwHtGiAG4JsFcABMEojPzhYQwAFCSUAM3ABJDAAVEqcAAo2ALnAA5bAwCU4UwF4O4ADz5wgciJwgACJwAawAaZzc/cEAkwn9XdwiAGsjAYiJ8ZWVQCABRYTIAT3wiUnIqWnpmVmcWLFx4ZDR1bABjBnlwJWVmFHkUJHAUAA9MBgwAfSrUQdqGptNlcBmffCDONzYIwGAifyCdfWrIr1DEsydiLOn0PAY4QTYmdhOwcDTeJnoAAzxn9CwRlAA6X5OjwZ1bAYFBYJhfezaPQGNB4E4AdvANEQeEk4AA2lYGN9JMJJIM4BoKABdW4QX7fcBNXjgco4AR4EDnGRiCTSWRNHh8Sow8DjRpwBFU4gMbAINiAC/JAuBBoBL8kha2lix2kSWngS7kc4COJ1m4AwyBgg3EEnRmxhpL1/BFYslMCCgwd8q1vX6Qy+Y3qAsiRiOSJRkhsuv94rRmOsOLxg3OrAwpJSdwAKk8+V75Kygmp1OKUGjCXUCAoZCgKFkglymOACxhGl08PxRQwEPw2C0s6mJohxJCseFLNYTgAfcAABnADgAfBwh/gANScSfGNizjh2ABUHYFrKS9cbzbwpnYI+PY7YACIAIRn8dT/np7twhMQZM1NNdiSYWD8A1NzLNFRtB0XR3u+wzfpCvh4EEY5qhe9iHMcMziuclwANynJIBANPu7guKhU7IqGGIgay8apOAFI4KiUgsmoaJ+rwWB1C2Na8AQKBnJu8iKABTxAVIUYkd25iQUEvihIAJkTzKOUShBEezuHBWo6khZwXPg6GhlhTYtrh+HBoR1HhtiuL4kgBAUASCA0EwDBBFikZmRZgwUBoDCDPw6iDKZQRCSSySpMoADqaAYEw/BcIwLAMNwNREdQxC8HA1A5IUdDGKwaLMAQWDitmeC8CWxxIKwWR2BChAkGQGBBH6MAIHUfjijQVE4HAiUxnAOSVfk4CvM8yiZfq4U8HgLUlDFrxwSu7DvHSPLbCBlDUHQ5AlGw/XfMoLSAYSXRaHg+VsWoADy6hbKgWAidJawwOAU5QVCF1oHdymIacKFJDMLB/uYypsNNzhvSGRl+WBcYnNaoriuAEr2rS8NyvB3R9DW7owp6nZLuAgPsHYzCYCcGAEOo2Z1KC4AxHdUlsH6hmSCcyHqUYgyQtT+BBt92C/cEsDI+C3w3FzPN3fsOPI6ZmNbg+fOAJwE7N4IAXATGHTAac7S3NoFqDmS8TxDgPL4Bi7jyuG8bisnPTGIOdgkj4nrgKsOTlmueodn9iZUYtigxJAA">web version</a> is enough to
+play around with.</p>
+<p>It's a little strange reading a "history" that's so recent. Some of
+the more distant history was also interesting. I hadn't realized that
+<a href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz">Leibniz</a> had an effort to formalize all human reasoning, and
+thought that people could settle disputes by using his system of
+formal logic. Hartnett failed to note that <a href="https://en.wikipedia.org/wiki/De_Arte_Combinatoria">this</a> was published when
+Leibniz was 20, and Leibniz seems to have later found it embarassing.</p>
+<p>It's interesting thinking about the extreme formalization here in
+comparison to <a href="/20260728-how_to_bake_pi_by_cheng/">Cheng's book</a>... The concern here is with
+correctness, like <a href="https://en.wikipedia.org/wiki/Nicolas_Bourbaki">Bourbaki</a> on steroids. Tao is excited about it
+because it helps math "scale" beyond what one person can do, what one
+person can understand, I think. If AI can write a proof, it can be
+verified formally, whether or not anyone understands how the proof
+works. It's almost the opposite mathematical view to what Cheng and I
+think is important, which is the human understanding aspect.</p>
+<p><img alt="cover" src="cover.jpg" /></p>    </article>
+    <footer id="contact">
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>

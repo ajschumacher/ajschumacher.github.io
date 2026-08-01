@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-08-01: [(Audio) The proof in the code, by Hartnett](/20260801-proof_in_the_code_by_hartnett/)
  * 2026-07-30: [Linear Algebra project](/20260730-linear_algebra_project/)
  * 2026-07-28: [How to bake π, by Cheng](/20260728-how_to_bake_pi_by_cheng/)
  * 2026-07-24: [One-dimensional Linear Algebra](/20260724-one_dimensional_linear_algebra/)
