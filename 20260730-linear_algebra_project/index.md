@@ -8,4 +8,4 @@ Keeping these here for convenient reference...
  * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
  * 2024-06-24: [A brief development of matrix multiplication](/20240624-brief_development_matrix_multiplication/)
  * 2026-07-20: [Outline for Fundamental Linear Algebra](/20260720-outline_for_fundamental_linear_algebra/)
- * 2026-07-24: [One-dimensional Linear Algebra](20260724-one_dimensional_linear_algebra/)
+ * 2026-07-24: [One-dimensional Linear Algebra](/20260724-one_dimensional_linear_algebra/)
