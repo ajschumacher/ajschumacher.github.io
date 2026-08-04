@@ -9,3 +9,4 @@ Keeping these here for convenient reference...
  * 2024-06-24: [A brief development of matrix multiplication](/20240624-brief_development_matrix_multiplication/)
  * 2026-07-20: [Outline for Fundamental Linear Algebra](/20260720-outline_for_fundamental_linear_algebra/)
  * 2026-07-24: [One-dimensional Linear Algebra](/20260724-one_dimensional_linear_algebra/)
+ * 2026-08-04: [Some matrices behave just like complex numbers](/20260804-some_matrices_behave_just_like_complex_numbers/)
