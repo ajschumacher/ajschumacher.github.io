@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-08-04: [“Mathematics is” quotes](/20260804-mathematics_is_quotes/)
  * 2026-08-04: [Some matrices behave just like complex numbers](/20260804-some_matrices_behave_just_like_complex_numbers/)
  * 2026-08-02: [The Dispossessed, by Le Guin](/20260802-dispossessed_by_le_guin/)
  * 2026-08-01: [(Audio) The proof in the code, by Hartnett](/20260801-proof_in_the_code_by_hartnett/)
