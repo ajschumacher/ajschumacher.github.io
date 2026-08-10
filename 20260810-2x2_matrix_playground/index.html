@@ -1,0 +1,516 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>2x2 matrix playground</title>
+  </head>
+  <body>
+    <article>
+<h1>2x2 matrix playground</h1>
+<p class="date">Monday August 10, 2026</p>
+<p>Here's an interactive widget, made quickly with Claude, that let's you
+play around with different 2x2 matrices. You can see what they do to
+points (as a transform, multiplying on the left) and the Singular
+Value Decomposition, and eigenvalues and eigenvectors (and of course
+determinant).</p>
+<style>
+/*  body {
+    font-family: Georgia, serif;
+    margin: 2rem auto;
+    max-width: 1100px;
+    padding: 0 1rem;
+    color: #111;
+    background: #fff;
+  } */
+/*  h1 { font-size: 1.4rem; font-weight: normal; } */
+  h2 { font-size: 1.1rem; font-weight: normal; margin-top: 0; }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "entry  graph"
+      "tables graph";
+    grid-template-rows: auto 1fr;
+    column-gap: 2rem;
+    align-items: start;
+  }
+  .area-entry  { grid-area: entry; }
+  .area-graph  { grid-area: graph; max-width: 100%; }
+  .area-tables { grid-area: tables; }
+  @media (max-width: 920px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "entry" "graph" "tables";
+      grid-template-rows: none;
+    }
+  }
+  canvas { border: 1px solid #ddd; /* background: #fff; */ max-width: 100%; height: auto; }
+
+  /* matrix entry */
+  .matrix-entry {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    gap: 6px;
+    padding: 10px 14px;
+    position: relative;
+  }
+  .matrix-entry::before, .matrix-entry::after {
+    content: "";
+    position: absolute; top: 0; bottom: 0; width: 8px;
+    border: 2px solid #111;
+  }
+  .matrix-entry::before { left: 0; border-right: none; }
+  .matrix-entry::after  { right: 0; border-left: none; }
+  .matrix-entry input {
+    width: 5.5em;
+    font-size: 1.1rem;
+    font-family: inherit;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 4px;
+  }
+
+  /* matrix display tables */
+  table.matrix {
+    border-collapse: collapse;
+    display: inline-table;
+    margin: 0 4px;
+    position: relative;
+  }
+  table.matrix td {
+    padding: 3px 10px;
+    text-align: right;
+    font-family: "Courier New", monospace;
+    font-size: 0.95rem;
+  }
+  .mwrap {
+    display: inline-block;
+    position: relative;
+    padding: 0 8px;
+    vertical-align: middle;
+  }
+  .mwrap::before, .mwrap::after {
+    content: "";
+    position: absolute; top: 2px; bottom: 2px; width: 6px;
+    border: 1.5px solid #111;
+  }
+  .mwrap::before { left: 0; border-right: none; }
+  .mwrap::after  { right: 0; border-left: none; }
+  .svd-line { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .sym { font-style: italic; }
+  .sym[title], th[title], .info { cursor: help; }
+  .info {
+    display: inline-block;
+    color: #999;
+    font-size: 1rem;
+    font-style: normal;
+    margin-left: 4px;
+  }
+  .entry-row { display: flex; align-items: center; gap: 0.6rem; font-size: 1.2rem; margin-top: 1.4rem; }
+  .hdot { font-size: 0.8em; cursor: help; padding: 0 2px; }
+
+  table.eig {
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+  table.eig th, table.eig td {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  table.eig td { font-family: "Courier New", monospace; }
+  table.eig th { font-weight: normal; font-style: italic; /* background: #f7f7f7; */ }
+  section { margin-top: 2rem; }
+</style>
+<p></head></p>
+<body>
+
+<!-- <h1>2×2 Matrix Playground</h1> -->
+<noscript><p>This page needs JavaScript to compute and draw.</p></noscript>
+
+<div class="layout">
+  <div class="area-entry">
+    <div class="entry-row">
+      <span class="sym" title="A: the 2×2 matrix being explored; everything below updates as you change it">A</span>
+      <span>=</span>
+      <div class="matrix-entry">
+        <input type="number" id="m00" value="1"   step="0.1">
+        <input type="number" id="m01" value="0.5" step="0.1">
+        <input type="number" id="m10" value="0"   step="0.1">
+        <input type="number" id="m11" value="1"   step="0.1">
+      </div>
+    </div>
+  </div>
+
+  <div class="area-graph">
+    <h2><span class="sym" title="A: the matrix entered on this page">A</span><span
+      class="hdot" style="color:#bbb" title="the unit circle">&#9679;</span>
+      = <span class="hdot" style="color:#111" title="its image under A">&#9679;</span><span class="info"
+      title="The grey ring is the unit circle; the black ring is its image under A. The filled marker starts at (1, 0) and the open marker at (0, 1), so you can follow where each point goes. Hover the arrows to see what they are.">&#9432;</span></h2>
+    <canvas id="mainview" width="420" height="420"></canvas>
+  </div>
+
+  <div class="area-tables">
+
+<section>
+  <h2>SVD:
+    <span class="sym" title="A: the matrix entered on this page">A</span> =
+    <span class="sym" title="U: orthogonal matrix whose columns are the left singular vectors — the directions of the image ellipse&#8217;s axes (the black arrows)">U</span>
+    <span class="sym" title="&Sigma; (Sigma): diagonal matrix of the singular values — the lengths of the image ellipse&#8217;s semi-axes">&Sigma;</span>
+    <span class="sym" title="V&#7488;: transpose of the orthogonal matrix V, whose columns are the right singular vectors — the input directions (the grey arrows) that A sends to the ellipse&#8217;s axes">V<sup>T</sup></span>
+  </h2>
+  <div id="svdtables"></div>
+</section>
+
+<section>
+  <h2>Eigenvalues &amp; eigenvectors</h2>
+  <div id="eigtable"></div>
+</section>
+
+<section>
+  <h2>Determinant</h2>
+  <h2><span style="cursor: help"
+    title="det A: the determinant — the factor by which A scales areas; negative means A flips orientation">det&thinsp;<span class="sym">A</span></span>
+    = <span id="detval"></span></h2>
+</section>
+
+  </div>
+</div>
+
+<script>
+"use strict";
+
+const N_POINTS = 200;
+const inputs = ["m00","m01","m10","m11"].map(id => document.getElementById(id));
+
+function getMatrix() {
+  const vals = inputs.map(el => parseFloat(el.value));
+  if (vals.some(v => !isFinite(v))) return null;
+  return [[vals[0], vals[1]], [vals[2], vals[3]]];
+}
+
+function apply(A, p) {
+  return [A[0][0]*p[0] + A[0][1]*p[1], A[1][0]*p[0] + A[1][1]*p[1]];
+}
+
+function fmt(x) {
+  if (Math.abs(x) < 5e-4) x = 0;   // avoid "-0.000"
+  return x.toFixed(3);
+}
+
+function fmtComplex(re, im) {
+  if (Math.abs(im) < 5e-4) return fmt(re);
+  return fmt(re) + (im >= 0 ? " + " : " − ") + fmt(Math.abs(im)) + "i";
+}
+
+/* ---------- SVD of 2x2 via eigendecomposition of A^T A ---------- */
+function svd2(A) {
+  const [[a,b],[c,d]] = A;
+  // S = A^T A, symmetric
+  const p = a*a + c*c, q = a*b + c*d, r = b*b + d*d;
+  const t = (p + r) / 2;
+  const rad = Math.sqrt(((p - r) / 2)**2 + q*q);
+  const l1 = t + rad, l2 = Math.max(t - rad, 0);
+  const s1 = Math.sqrt(Math.max(l1, 0)), s2 = Math.sqrt(l2);
+
+  // right singular vectors (eigenvectors of S)
+  let v1;
+  if (Math.abs(q) > 1e-12) {
+    v1 = [q, l1 - p];
+  } else {
+    v1 = (p >= r) ? [1, 0] : [0, 1];
+  }
+  const n1 = Math.hypot(v1[0], v1[1]);
+  v1 = [v1[0]/n1, v1[1]/n1];
+  const v2 = [-v1[1], v1[0]];
+
+  // left singular vectors: u_i = A v_i / sigma_i
+  let u1, u2;
+  if (s1 > 1e-12) {
+    const w = apply(A, v1);
+    u1 = [w[0]/s1, w[1]/s1];
+  } else {
+    u1 = [1, 0];
+  }
+  if (s2 > 1e-12) {
+    const w = apply(A, v2);
+    u2 = [w[0]/s2, w[1]/s2];
+  } else {
+    u2 = [-u1[1], u1[0]];
+  }
+  return { s1, s2, u1, u2, v1, v2 };
+}
+
+/* ---------- eigenvalues / eigenvectors of 2x2 ---------- */
+function eig2(A) {
+  const [[a,b],[c,d]] = A;
+  const tr = a + d, det = a*d - b*c;
+  const disc = tr*tr - 4*det;
+  if (disc >= 0) {
+    const sq = Math.sqrt(disc);
+    const lams = [(tr + sq)/2, (tr - sq)/2];
+    const vecs = lams.map(l => {
+      let v;
+      if (Math.abs(b) > 1e-12 || Math.abs(l - a) > 1e-12) v = [b, l - a];
+      else if (Math.abs(c) > 1e-12 || Math.abs(l - d) > 1e-12) v = [l - d, c];
+      else v = null;  // matrix is lambda*I: every vector is an eigenvector
+      if (v) {
+        const n = Math.hypot(v[0], v[1]);
+        if (n > 1e-12) v = [v[0]/n, v[1]/n]; else v = null;
+      }
+      // canonical sign: first nonzero component positive
+      if (v && (v[0] < -1e-12 || (Math.abs(v[0]) <= 1e-12 && v[1] < 0)))
+        v = [-v[0], -v[1]];
+      return v;
+    });
+    // A = lambda*I gives null above; pick the standard basis then
+    if (!vecs[0]) vecs[0] = [1, 0];
+    if (!vecs[1]) vecs[1] = Math.abs(lams[0] - lams[1]) < 1e-12 ? [0, 1] : [1, 0];
+    return { complex: false, lams, vecs };
+  } else {
+    const re = tr/2, im = Math.sqrt(-disc)/2;
+    // eigenvector for lambda = re + i*im: [b, lambda - a] (b != 0 whenever disc < 0,
+    // since disc < 0 requires b*c < 0); scaled to unit norm with first component
+    // real and positive
+    let v0 = b, v1re = re - a, v1im = im;
+    if (v0 < 0) { v0 = -v0; v1re = -v1re; v1im = -v1im; }
+    const n = Math.sqrt(v0*v0 + v1re*v1re + v1im*v1im);
+    const v = [[v0/n, 0], [v1re/n, v1im/n]];   // components as [re, im]
+    return { complex: true, re, im, v };
+  }
+}
+
+/* ---------- drawing ---------- */
+function circlePoints() {
+  const pts = [];
+  for (let i = 0; i < N_POINTS; i++) {
+    const th = 2 * Math.PI * i / N_POINTS;
+    pts.push([Math.cos(th), Math.sin(th)]);
+  }
+  return pts;
+}
+const UNIT = circlePoints();
+
+function makeScale(canvas, pointSets) {
+  let m = 0;
+  for (const pts of pointSets)
+    for (const p of pts)
+      m = Math.max(m, Math.abs(p[0]), Math.abs(p[1]));
+  if (m < 1e-9) m = 1;
+  m *= 1.15;  // margin
+  const half = canvas.width / 2;
+  const k = half / m;
+  return p => [half + k * p[0], half - k * p[1]];
+}
+
+function drawAxes(ctx, canvas) {
+  ctx.strokeStyle = "#ddd";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height/2); ctx.lineTo(canvas.width, canvas.height/2);
+  ctx.moveTo(canvas.width/2, 0); ctx.lineTo(canvas.width/2, canvas.height);
+  ctx.stroke();
+}
+
+function drawRing(ctx, pts, toPx, color) {
+  ctx.fillStyle = color;
+  for (const p of pts) {
+    const [x, y] = toPx(p);
+    ctx.beginPath();
+    ctx.arc(x, y, 1.5, 0, 2*Math.PI);
+    ctx.fill();
+  }
+}
+
+// filled marker at image of (1,0); open marker at image of (0,1)
+function drawMarkers(ctx, A, toPx, color) {
+  const e1 = A ? apply(A, [1,0]) : [1,0];
+  const e2 = A ? apply(A, [0,1]) : [0,1];
+  const [x1, y1] = toPx(e1);
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x1, y1, 5.5, 0, 2*Math.PI);
+  ctx.fill();
+  const [x2, y2] = toPx(e2);
+  ctx.fillStyle = "#fff";   // blank out points underneath: no line through it
+  ctx.beginPath();
+  ctx.arc(x2, y2, 5.5, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+// arrows currently drawn on the main canvas, for hover tooltips:
+// { x0, y0, x1, y1, tip } in canvas pixel coordinates
+let hoverArrows = [];
+
+function drawArrow(ctx, toPx, vec, color, tip) {
+  const [x0, y0] = toPx([0, 0]);
+  const [x1, y1] = toPx(vec);
+  const dx = x1 - x0, dy = y1 - y0;
+  const len = Math.hypot(dx, dy);
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x0, y0); ctx.lineTo(x1, y1);
+  ctx.stroke();
+  if (len > 8) {  // arrowhead
+    const ux = dx/len, uy = dy/len;
+    const hs = 8;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - hs*ux + hs*0.5*uy, y1 - hs*uy - hs*0.5*ux);
+    ctx.lineTo(x1 - hs*ux - hs*0.5*uy, y1 - hs*uy + hs*0.5*ux);
+    ctx.closePath();
+    ctx.fill();
+  }
+  hoverArrows.push({ x0, y0, x1, y1, tip });
+}
+
+function distToSegment(px, py, a) {
+  const dx = a.x1 - a.x0, dy = a.y1 - a.y0;
+  const len2 = dx*dx + dy*dy;
+  let t = len2 > 0 ? ((px - a.x0)*dx + (py - a.y0)*dy) / len2 : 0;
+  t = Math.max(0, Math.min(1, t));
+  return Math.hypot(px - (a.x0 + t*dx), py - (a.y0 + t*dy));
+}
+
+function render() {
+  const A = getMatrix();
+  if (!A) return;  // mid-typing (e.g. "-" or empty): keep last valid view
+
+  const image = UNIT.map(p => apply(A, p));
+  const { s1, s2, u1, u2, v1, v2 } = svd2(A);
+
+  // --- main view ---
+  {
+    const cv = document.getElementById("mainview");
+    const ctx = cv.getContext("2d");
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    const toPx = makeScale(cv, [UNIT, image]);
+    drawAxes(ctx, cv);
+    drawRing(ctx, UNIT, toPx, "#bbb");
+    drawRing(ctx, image, toPx, "#111");
+    hoverArrows = [];
+    drawArrow(ctx, toPx, v1, "#999",
+      "First right singular vector: the input direction the matrix stretches the most");
+    drawArrow(ctx, toPx, v2, "#999",
+      "Second right singular vector: the input direction the matrix stretches the least");
+    drawArrow(ctx, toPx, [s1*u1[0], s1*u1[1]], "#111",
+      "First singular value (" + fmt(s1) + ") along the first left singular vector: the long semi-axis of the image ellipse");
+    drawArrow(ctx, toPx, [s2*u2[0], s2*u2[1]], "#111",
+      "Second singular value (" + fmt(s2) + ") along the second left singular vector: the short semi-axis of the image ellipse");
+    drawMarkers(ctx, null, toPx, "#bbb");
+    drawMarkers(ctx, A, toPx, "#111");
+  }
+
+  // --- SVD tables ---
+  const mtable = rows =>
+    '<span class="mwrap"><table class="matrix">' +
+    rows.map(r => "<tr>" + r.map(x => "<td>" + x + "</td>").join("") + "</tr>").join("") +
+    "</table></span>";
+  const U  = [[u1[0], u2[0]], [u1[1], u2[1]]];
+  const Vt = [[v1[0], v1[1]], [v2[0], v2[1]]];
+  const svdLine = (sym, title, rows) =>
+    '<div class="svd-line"><span class="sym" title="' + title + '">' + sym +
+    '</span><span>=</span>' + mtable(rows.map(r => r.map(fmt))) + '</div>';
+  document.getElementById("svdtables").innerHTML =
+    svdLine("U",
+      "U: orthogonal matrix whose columns are the left singular vectors — the directions of the image ellipse&#8217;s axes (the black arrows)",
+      U) +
+    svdLine("&Sigma;",
+      "&Sigma; (Sigma): diagonal matrix of the singular values — the lengths of the image ellipse&#8217;s semi-axes",
+      [[s1, 0], [0, s2]]) +
+    svdLine("V<sup>T</sup>",
+      "V&#7488;: transpose of the orthogonal matrix V, whose columns are the right singular vectors — the input directions (the grey arrows) that A sends to the ellipse&#8217;s axes",
+      Vt);
+
+  // --- eigen table ---
+  const eg = eig2(A);
+  const lamTh = i =>
+    '<th class="sym" title="&lambda; (lambda): eigenvalue — the factor by which A scales vectors along its eigenvector">&lambda;<sub>' +
+    (i + 1) + "</sub></th>";
+  let html = '<table class="eig"><tr><th></th>' +
+    '<th title="The factor by which A scales its eigenvector; complex values mean A rotates as well as scales">eigenvalue</th>' +
+    '<th title="A direction that A maps to a multiple of itself (scaled by the eigenvalue)">eigenvector</th></tr>';
+  if (!eg.complex) {
+    for (let i = 0; i < 2; i++) {
+      html += "<tr>" + lamTh(i) + "<td>" +
+        fmt(eg.lams[i]) + "</td><td>(" + fmt(eg.vecs[i][0]) + ", " + fmt(eg.vecs[i][1]) + ")</td></tr>";
+    }
+  } else {
+    html += "<tr>" + lamTh(0) + "<td>" + fmtComplex(eg.re, eg.im) + "</td><td>(" +
+      fmtComplex(eg.v[0][0], eg.v[0][1]) + ", " + fmtComplex(eg.v[1][0], eg.v[1][1]) + ")</td></tr>";
+    html += "<tr>" + lamTh(1) + "<td>" + fmtComplex(eg.re, -eg.im) + "</td><td>(" +
+      fmtComplex(eg.v[0][0], -eg.v[0][1]) + ", " + fmtComplex(eg.v[1][0], -eg.v[1][1]) + ")</td></tr>";
+  }
+  html += "</table>";
+  document.getElementById("eigtable").innerHTML = html;
+
+  // --- determinant ---
+  document.getElementById("detval").textContent = fmt(A[0][0]*A[1][1] - A[0][1]*A[1][0]);
+}
+
+inputs.forEach(el => el.addEventListener("input", render));
+
+const mainview = document.getElementById("mainview");
+mainview.addEventListener("mousemove", e => {
+  const rect = mainview.getBoundingClientRect();
+  const px = (e.clientX - rect.left) * mainview.width / rect.width;
+  const py = (e.clientY - rect.top) * mainview.height / rect.height;
+  let best = null, bestDist = 8;  // hover within 8px of an arrow
+  for (const a of hoverArrows) {
+    const d = distToSegment(px, py, a);
+    if (d < bestDist) { bestDist = d; best = a; }
+  }
+  mainview.title = best ? best.tip : "";
+  mainview.style.cursor = best ? "help" : "default";
+});
+
+render();
+</script>    </article>
+    <footer id="contact">
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
