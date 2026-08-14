@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-08-14: [Vector, by Arianrhod](/20260814-vector_by_arianrhod/)
  * 2026-08-10: [2x2 matrix playground](/20260810-2x2_matrix_playground/)
  * 2026-08-04: [“Mathematics is” quotes](/20260804-mathematics_is_quotes/)
  * 2026-08-04: [Some matrices behave just like complex numbers](/20260804-some_matrices_behave_just_like_complex_numbers/)
