@@ -3,6 +3,7 @@
 Keeping these here for convenient reference...
 
  * 2018-12-28: [The Equation of a Plane](/20181228-the_equation_of_a_plane/)
+ * 2021-09-04: [Dot product really does give you cosine](/20210904-dot_product_really_does_give_you_cosine/)
  * 2021-09-15: [The flow metaphor for matrix multiplication](/20210915-flow_metaphor_for_matrix_multiplication/)
  * 2021-09-15: [You can derive the formula for the determinant](/20210915-you_can_devive_the_formula_for_the_determinant/)
  * 2024-06-16: [Linear Algebra Done Right, by Axler](/20240616-linear_algebra_done_right/)
