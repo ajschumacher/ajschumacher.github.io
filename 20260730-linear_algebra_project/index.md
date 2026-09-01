@@ -13,3 +13,4 @@ Keeping these here for convenient reference...
  * 2026-08-04: [Some matrices behave just like complex numbers](/20260804-some_matrices_behave_just_like_complex_numbers/)
  * 2026-08-10: [2x2 matrix playground](/20260810-2x2_matrix_playground/)
  * 2026-08-14: [Vector, by Arianrhod](/20260814-vector_by_arianrhod/)
+ * 2026-09-01: [Regression, from the mean](/20260901-regression_from_the_mean/)
