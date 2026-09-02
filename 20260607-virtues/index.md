@@ -26,3 +26,4 @@ Just collecting these here for easy reference for now...
  1. [Amazon's Leadership Principles](/20251216-amazon_leadership_principles/)
  1. [The Adidas 3Cs](/20260608-adidas_3c/)
  1. [Anthropic's core values for Claude](/20260710-anthropic_core_values_for_claude/) (2026)
+ 1. [AI Collective community and team values](/20260902-ai_collective_values/) (2025-2026)

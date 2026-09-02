@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-09-02: [AI Collective community and team values](/20260902-ai_collective_values/)
  * 2026-09-01: [Regression, from the mean](/20260901-regression_from_the_mean/)
  * 2026-08-14: [Vector, by Arianrhod](/20260814-vector_by_arianrhod/)
  * 2026-08-10: [2x2 matrix playground](/20260810-2x2_matrix_playground/)
