@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-09-07: [(Audio) The Man from the Future, by Bhattacharya](/20260907-man_from_the_future_by_bhattacharya/)
  * 2026-09-02: [AI Collective community and team values](/20260902-ai_collective_values/)
  * 2026-09-01: [Regression, from the mean](/20260901-regression_from_the_mean/)
  * 2026-08-14: [Vector, by Arianrhod](/20260814-vector_by_arianrhod/)
