@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="/styles/planspace.css">
+    <title>Pavement plots</title>
+  </head>
+  <body>
+    <article>
+<h1>Pavement plots</h1>
+<p class="date">Tuesday September  8, 2026</p>
+<p>Pavement plots are univariate data visualizations that look like
+strips of pavement in rectangular slabs. They extend from minimum to
+maximum value, and the breaks are at evenly spaced quantiles, so that
+every box contains the same fraction of the data. They're like box
+plots that don't assume central tendency, or rug plots that are evenly
+thinned to avoid crowding. You can install the Python <a href="https://planspace.org/pavement/">package</a> with
+<code>pip install pavement</code>.</p>
+<p><img alt="pavement plots" src="four_sets.png" /></p>
+<h2>Why pavement plots?</h2>
+<p>I was frustrated that there didn't seem to be a one-dimensional data
+visualization satisfying all five of these criteria:</p>
+<ul>
+<li><em>Simple</em>: Explain it in one sentence</li>
+<li><em>One-dimensional</em>: Easily stackable for comparing many distributions</li>
+<li><em>No distributional preconceptions</em>: Not just central/unimodal data</li>
+<li><em>Minimal researcher degrees of freedom</em>: Shouldn't depend on choices</li>
+<li><em>Handle large data sets</em>: Elegant support for lots of data</li>
+</ul>
+<p>I believe pavement plots satisfy all these criteria.</p>
+<h3>Why not histograms?</h3>
+<blockquote>
+<p>“The histogram is a poor method for comparing groups of univariate
+measurements.” (Cleveland, <em>Visualizing Data</em>, 1993)</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Histogram">Histograms</a> are two-dimensional plots, in the first place. “Simple”
+is arguable, but certainly the researcher choices of bin position and
+bin width mean histograms can be <a href="https://aakinshin.net/posts/misleading-histograms/">misleading</a>.</p>
+<h3>Why not Kernel Density Estimates (KDEs)?</h3>
+<p><a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">KDEs</a> are two-dimensional plots, and neither <a href="https://en.wikipedia.org/wiki/Violin_plot">violin</a> nor
+<a href="https://en.wikipedia.org/wiki/Ridgeline_plot">ridgeline</a> variants fully overcome this. The concept is simple, but
+the details aren't. The researcher choice of <a href="https://aakinshin.net/posts/kde-bw/">bandwidth</a> means that
+they can be almost as misleading as histograms.</p>
+<h3>Why not box plots?</h3>
+<p><a href="https://en.wikipedia.org/wiki/Box_plot">Box plots</a> are not quite one-dimensional plots, but they're close,
+which is why they can make for better comparisons between many
+distributions. They're close to simple, apart from the rules about
+whiskers and outliers. But box plots have a strong assumption that the
+data has central tendency and is unimodal. In all the <a href="https://vita.had.co.nz/papers/boxplots.pdf" title="40 years of boxplots">years</a> since
+the box plot, this doesn't seem to have really been addressed.</p>
+<p>The core of a box plot, however, is the five-number summary: minimum,
+quartiles, and maximum. This is exactly what a pavement plot with four
+bins shows.</p>
+<h3>Why not rug plots?</h3>
+<p><a href="https://en.wikipedia.org/wiki/Rug_plot">Rug plots</a> are pretty great, especially for small data sets with
+minimal repetition of values. They fail for large data, where they get
+impossible to read, and call for use of opacity and/or jittering,
+neither of which are ideal.</p>
+<p>Rug plots can be basically identical to pavement plots for small data
+sets with particular choices of bin count, and for large data sets a
+pavement plot is equivalent to a rug plot with uniform “thinning” of
+the data.</p>
+<h2>More on pavement plots</h2>
+<p>Pavement plots still have some minimal researcher degrees of freedom,
+but they don't generally leave room for major misconceptions from a
+visualization.</p>
+<p>There's the number of equal-data boxes to show, which gives
+flexibility in resolution. It's a choice; generally when there's
+enough data showing more bins is better.</p>
+<p>There is also an underlying choice about how to calculate quantiles.
+Often it won't matter, but by all means use your preferred quantile
+<a href="https://www.amherst.edu/media/view/129116/original/Sample+Quantiles.pdf">method</a>.</p>
+<p>The material here roughly recapitulates what I presented in <a href="https://docs.google.com/presentation/d/1vq-fGC8PvBenJo61VBIe7Xx2L1bLkTurVIERr8TpX1s/edit">Pavement
+Plots: Less biased boxes</a> and <a href="https://docs.google.com/presentation/d/13D6hXuCRH1JdBsmSqASh5_Ww9KDEpaAV8GhXiNaQ5Ik/edit">Pave the Planet</a>. The Python
+implementation is on the <a href="https://pypi.org/project/pavement/">Python Package Index</a>, <a href="https://github.com/ajschumacher/pavement">on GitHub</a>, and
+has a <a href="https://planspace.org/pavement/">documenting web site</a>.</p>    </article>
+    <footer id="contact">
+      <hr />
+<p>If you sign up, I'll send you an email update at most monthly with new stuff.</p>
+<iframe src="https://planspace.substack.com/embed" width="100%" frameborder="0" scrolling="no"></iframe>
+<p><a id="back_link2" href="/">This site</a> also has <a href="/rss.xml">RSS</a>. You can connect with <a id="aaron_link2" href="/aaron/">me</a> via <a href="https://twitter.com/planarrowspace">Twitter</a>, <a href="https://www.linkedin.com/in/ajschumacher">LinkedIn</a>, <a href="https://github.com/ajschumacher">GitHub</a>, and <a href="mailto:aaron@planspace.org">email</a>.</p>
+
+      <hr />
+    </footer>
+
+<!-- my weird stuff -->
+<script src="/scripts/planspace.js"></script>
+
+<!-- syntax highlighting -->
+<script src="/scripts/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZBQMHT77F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EZBQMHT77F');
+</script>
+
+<!-- Disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'planspace';
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+  </body>
+</html>
