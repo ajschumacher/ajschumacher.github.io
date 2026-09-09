@@ -312,6 +312,28 @@ button { font: inherit; font-family: var(--font-body); }
 .task .tt { font-weight: 700; }
 .task .ts { color: var(--ink-soft); font-size: .8rem; }
 
+/* How loud a waiting item is, by what it costs to leave it. A parent with a question and a
+   nurse who needs you now used to differ by four pixels of border colour. */
+.task.pri-high {
+  border-left-width: 5px; border-color: #6b551b; border-left-color: var(--amber);
+  background: linear-gradient(100deg, #2b2411, var(--panel) 70%);
+}
+.task.pri-high .tt { color: var(--amber); }
+.task.pri-critical {
+  border-left-width: 5px; border-color: #7d2f2e; border-left-color: var(--coral);
+  background: linear-gradient(100deg, #34191b, var(--panel) 70%);
+  animation: taskPulse 1.5s ease-in-out infinite;
+}
+.task.pri-critical .tt { color: #ffb0b0; }
+.task.pri-critical .ts { color: #e6b7b7; }
+/* the same beat as the ringing phone, without the wobble a row cannot carry */
+@keyframes taskPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+  50%      { box-shadow: 0 0 0 3px rgba(255, 107, 107, .22), 0 0 18px -4px var(--coral); }
+}
+.task.pri-quiet { opacity: .62; }
+.task.pri-quiet .tt { font-weight: 400; }
+
 .log { font-size: .83rem; }
 .log .le { padding: 5px 0; border-bottom: 1px solid #1d2739; display: flex; gap: 8px; }
 .log .le:last-child { border-bottom: none; }
@@ -454,16 +476,41 @@ abbr.gl, span.gl {
 }
 
 /* ---------- pod flags: somebody wants you here ---------- */
+/* A pod glows at the pressure of what is waiting on it, and never louder than a red alarm,
+   which is the baby itself in trouble. */
 .pod.has-concern { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 0 22px -8px var(--blue); }
+.pod.concern-worry { border-color: var(--amber); box-shadow: 0 0 0 1px var(--amber), 0 0 24px -8px var(--amber); }
+.pod.concern-urgent {
+  border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 0 26px -6px var(--coral);
+  animation: podPulse 1.5s ease-in-out infinite;
+}
+@keyframes podPulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--coral), 0 0 16px -8px var(--coral); }
+  50%      { box-shadow: 0 0 0 2px var(--coral), 0 0 34px -2px var(--coral); }
+}
+.pod.alarm-red.concern-urgent { animation: none; }   /* the alarm's own pulse wins */
 .pod-flags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; position: relative; }
 .flag {
   display: inline-flex; align-items: center; gap: 6px;
   background: #1d3450; border: 1px solid #2f5480; color: #cfe6ff;
   border-radius: 999px; padding: 2px 10px 2px 2px; font-size: .74rem; font-weight: 700;
 }
-.flag.urgent { background: #3d1a1a; border-color: #77302f; color: #ffb0b0; }
+.flag.urgent {
+  background: var(--coral); border-color: var(--coral); color: #2b0808;
+  animation: flagPulse .9s ease-in-out infinite;
+}
+@keyframes flagPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.055); } }
 .flag.worry  { background: #3a2f10; border-color: #6b551b; color: var(--amber); }
 .flag.talk   { background: #14332a; border-color: #26624c; color: var(--green); }
+.flag.stood  { background: #16241f; border-color: #26624c; color: #8fb8a6; opacity: .8; }
+
+/* Anyone who has asked not to be moved at gets the colour and the weight, but no motion. */
+@media (prefers-reduced-motion: reduce) {
+  .task.pri-critical, .pod.concern-urgent, .flag.urgent, .phone-btn.ringing,
+  .pod.alarm-red::before { animation: none; }
+  .task.pri-critical { box-shadow: 0 0 0 3px rgba(255, 107, 107, .22); }
+  .pod.alarm-red::before { opacity: .3; }
+}
 .chip.parent { background: #241d38; color: #cbb8f5; border-color: #453a68; }
 
 /* ---------- the bedside callout ---------- */
@@ -495,6 +542,48 @@ abbr.gl, span.gl {
   margin-top: 9px; padding: 8px 12px; border-radius: 9px; font-size: .88rem;
   background: #21283a; border-left: 3px solid var(--violet); color: #cfd7e6;
 }
+/* the nudge asks the question; the help line says which panel the answer lives in */
+.help {
+  margin-top: 7px; padding: 8px 12px; border-radius: 9px; font-size: .86rem;
+  background: #1d2b33; border-left: 3px solid var(--teal); color: #c6d7dd; line-height: 1.5;
+}
+.help b { color: var(--teal); font-weight: 700; }
+
+/* The request stays put while the player scrolls the length of the bedside for a control.
+   The negative margin lets the sticky box swallow the stage padding, so nothing slides
+   through the gap above it. */
+#callout {
+  position: sticky; top: -16px; z-index: 6;
+  margin: -16px -16px 12px; padding: 16px 16px 0;
+  background: var(--bg);
+}
+#callout:empty { display: none; }
+#callout .callout {
+  margin-bottom: 0; box-shadow: 0 10px 26px rgba(5, 9, 16, .55);
+  max-height: 46vh; overflow-y: auto;   /* nudge + help must never eat the whole screen */
+}
+
+/* ---------- what the team says back ---------- */
+/* It all lands in the pinned callout, so a reply is on screen wherever the page is
+   scrolled to. A small entry animation marks the new one; it plays once, not on every
+   clock tick, because replyClass() spends the flag the first time it draws. */
+.co-reply.fresh, .callout.note-only.fresh { animation: replyIn .22s ease-out; }
+@keyframes replyIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* A note is a message with no colleague behind it: the unit refusing to do something. */
+.callout.note-only { border-left-color: var(--amber); border-color: #6b551b; margin-top: 8px; }
+.callout.note-only.good { border-left-color: var(--green); border-color: #26624c; }
+.callout.note-only .co-av.bed-note-icon {
+  flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%;
+  background: #3a2f10; color: var(--amber);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.1rem;
+}
+.callout.note-only.good .co-av.bed-note-icon { background: #14332a; color: var(--green); }
+.callout.note-only .co-who { color: var(--ink-soft); font-size: .82rem; }
 
 /* ---------- people at the bedside ---------- */
 .people-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -610,6 +699,17 @@ abbr.gl, span.gl {
   font-size: .72rem; background: var(--green); color: #05201d;
   border-radius: 999px; padding: 1px 9px; margin-left: 6px; font-weight: 700;
 }
+
+/* ---------- the delivery room, which is a place you go ---------- */
+.pod.del-pod { border-style: solid; }
+.pod.empty.del-pod { border-style: dashed; opacity: .5; }
+.pod.del-pod .bed-no { font-weight: 700; letter-spacing: .06em; }
+.crib.del-crib { background: linear-gradient(180deg, #2a2233, #1c1826); border-color: #4a3a55; }
+.monitor.del-monitor { padding: 12px 14px; }
+.panel.del-finish { border-color: var(--teal-dk); background: linear-gradient(180deg, #16292c, var(--panel) 75%); }
+.panel.del-finish .btn:disabled { opacity: .4; }
+p.del-warn { font-size: .84rem; color: var(--amber); margin: -4px 0 10px; }
+.act[disabled] { opacity: .4; cursor: not-allowed; }
 
 /* ---------- end-of-shift: honest, per-domain ---------- */
 .grade.grade-good { background: linear-gradient(100deg, var(--green), var(--teal)); -webkit-background-clip: text; background-clip: text; }

@@ -11,19 +11,23 @@
              back; unimportant ones give up.                                          */
 (function () {
   "use strict";
-  var S = window.Sim;
+  var S = window.Sim, NB = window.NameBank;
+
+  var SHE = NB.PRON[0], HE = NB.PRON[1];
 
   var CHARS = {
-    renata:  { name: "Renata Cruz, RN",      role: "Night nurse, beds 1-3. Twenty years here.", av: "renata" },
-    desmond: { name: "Desmond Oyelaran, RN", role: "Night nurse, beds 4-6. Two years in.",      av: "desmond" },
-    priya:   { name: "Priya Raman, RRT",     role: "Respiratory therapist",                      av: "priya" },
-    tomas:   { name: "Tomas Alvarez, PharmD", role: "NICU pharmacist",                           av: "tomas" },
-    ingrid:  { name: "Dr. Ingrid Halvorsen", role: "Attending neonatologist, on call from home", av: "ingrid" },
-    nell:    { name: "Nell Okafor",          role: "Unit clerk",                                 av: "nell" },
-    phone:   { name: "Switchboard",          role: "",                                           av: "phone" }
+    renata:  { name: "Renata Cruz, RN",      role: "Night nurse, beds 1-3. Twenty years here.", av: "renata", pr: SHE },
+    desmond: { name: "Desmond Oyelaran, RN", role: "Night nurse, beds 4-6. Two years in.",      av: "desmond", pr: HE },
+    priya:   { name: "Priya Raman, RRT",     role: "Respiratory therapist",                      av: "priya", pr: SHE },
+    tomas:   { name: "Tomas Alvarez, PharmD", role: "NICU pharmacist",                           av: "tomas", pr: HE },
+    ingrid:  { name: "Dr. Ingrid Halvorsen", role: "Attending neonatologist, on call from home", av: "ingrid", pr: SHE },
+    nell:    { name: "Nell Okafor",          role: "Unit clerk",                                 av: "nell", pr: SHE },
+    phone:   { name: "Switchboard",          role: "",                                           av: "phone", pr: SHE }
   };
 
   function nurseFor(b) { return b.bed <= 3 ? "renata" : "desmond"; }
+  // the pronoun of whichever nurse holds this bed, for lines they say about themselves
+  function nursePr(b) { return CHARS[nurseFor(b)].pr; }
   function pct(b) { return Math.round(b.support.fio2 * 100); }
   function Cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
@@ -39,9 +43,12 @@
       summary: function (G, b) { return "having repeated spells"; },
       say: function (G, b) {
         return "That is " + b.h.spellsThisHour + " spells this hour, and I have had to stimulate " +
-               b.pronoun.o + " every time. " + b.pronoun.S + " was quiet all day. Something is different tonight.";
+               b.pronoun.o + " every time. " + b.pronoun.S + " " + b.pronoun.was + " quiet all day. Something is different tonight.";
       },
       nudge: "A change from a baby's own baseline is the signal. What makes a preemie suddenly have more spells?",
+      help: "Under Assess: a blood count, a sugar, a culture. Under Treat: antibiotics if you think this is" +
+            " infection. The question is what changed tonight, so look before you reach for a dial.",
+      settled: "The spells have settled by themselves and the hour has been quiet.",
       accept: {
         culture: { fb: "Good. Culture first, then antibiotics can go in.", score: 4, resolve: false },
         abx: { fb: "Antibiotics running. Increasing spells in a baby with risk factors is sepsis until proven otherwise.", score: 7, resolve: true },
@@ -52,7 +59,9 @@
       wrong: {
         photo: { fb: "Phototherapy has nothing to do with spells.", score: -2 }
       },
-      decline: { fb: "\"Alright.\" She does not look convinced, and she is right not to be. A baby whose spell count has changed deserves an explanation.", score: -3, resolve: false },
+      decline: { fb: function (G, b) { var n = nursePr(b);
+        return "\"Alright.\" " + n.S + " " + n.does + " not look convinced, and " + n.s + " " + n.is +
+               " right not to be. A baby whose spell count has changed deserves an explanation."; }, score: -3, resolve: false },
       miss: { fb: "The spells kept coming all night and nobody looked for a cause.", score: -6 }
     },
     {
@@ -64,6 +73,10 @@
                " - pink, wriggling, breathing away. Do you want me to turn the oxygen up?";
       },
       nudge: "The monitor and the baby are telling you different things. Only one of them can be wrong.",
+      help: "Nothing here needs a drug. Under Procedures, Fix probe / leads reseats the sensor; under Assess," +
+            " Examine tells you whether to believe the monitor or the baby. You can also decline to turn the" +
+            " oxygen up.",
+      settled: "The probe has settled back onto the foot and the trace looks honest again.",
       accept: {
         reposition: { fb: "The probe had worked its way off the foot. Machines report; humans judge.", score: 7, resolve: true },
         examine: { fb: "You look at the baby first. Pink, warm, active - so the number is the thing that is wrong.", score: 5, resolve: false }
@@ -79,10 +92,13 @@
       cond: function (G, b) { return b.support.fio2 > 0.23 && b.h.highSatMinutes > 25 && !b.h.artifactProbe; },
       summary: function (G, b) { return "sitting high on extra oxygen"; },
       say: function (G, b) {
-        return b.pronoun.S + " has been at " + b.mon.spo2 + " percent on " + pct(b) +
+        return b.pronoun.S + " " + b.pronoun.has + " been at " + b.mon.spo2 + " percent on " + pct(b) +
                " percent oxygen for a while now. Shall we come down?";
       },
       nudge: "Ninety to ninety-five is the target for a preemie on oxygen. What is the harm in sitting above it?",
+      help: "In the Respiratory support panel, the Oxygen slider. Small steps, then watch the saturation come" +
+            " down into the nineties.",
+      settled: "The saturation has come back into the target range on its own.",
       accept: {
         __fio2down: { fb: "Right. Above 95 on extra oxygen is where retinopathy of prematurity comes from.", score: 6, resolve: true }
       },
@@ -97,10 +113,13 @@
       cond: function (G, b) { return b.support.fio2 >= 0.45 && b.support.mode !== "VENT" && S.workOfBreathing(b) > 0.5; },
       summary: function (G, b) { return "working hard on " + pct(b) + " percent oxygen"; },
       say: function (G, b) {
-        return "We are up to " + pct(b) + " percent on CPAP and " + b.pronoun.s + " is working hard for it - " +
+        return "We are up to " + pct(b) + " percent on CPAP and " + b.pronoun.s + " " + b.pronoun.is + " working hard for it - " +
                "grunting, deep retractions. This baby is telling us something.";
       },
       nudge: "More oxygen only helps if the air sacs are open. What opens stiff lungs?",
+      help: "Assess for a blood gas or a chest film; Treat for surfactant, which needs a tube first from" +
+            " Procedures. More oxygen on the slider is not the answer here.",
+      settled: "The work of breathing has eased off and the oxygen need has come back down.",
       accept: {
         gas: { fb: "A gas will tell you whether this is an oxygen problem or a ventilation problem.", score: 5, resolve: false },
         surfactant: { fb: "Surfactant fixes the actual problem instead of pushing more oxygen through stiff lungs.", score: 8, resolve: true },
@@ -110,7 +129,9 @@
       wrong: {
         __fio2up: { fb: "You can only push oxygen so far into lungs that will not open.", score: -4 }
       },
-      decline: { fb: "Priya raises an eyebrow. \"I will keep bagging if she tires, then.\" A baby working this hard on this much oxygen rarely improves by being left.", score: -4, resolve: false },
+      decline: { fb: function (G, b) {
+        return "Priya raises an eyebrow. \"I will keep bagging if " + b.pronoun.s + " " + b.pronoun.v("tire") +
+               ", then.\" A baby working this hard on this much oxygen rarely improves by being left."; }, score: -4, resolve: false },
       miss: { fb: "The baby wore out slowly and nobody changed the plan.", score: -7 }
     },
     {
@@ -122,6 +143,9 @@
                "Pressure can heal and pressure can tear.";
       },
       nudge: "You can lower the pressure directly, or make the lungs need less of it. Both are on the panel.",
+      help: "In the Respiratory support panel, the Peak (PIP) slider comes down directly. Treat, and" +
+            " surfactant, makes the lungs need less of it in the first place.",
+      settled: "The peak pressure has come back to somewhere reasonable.",
       accept: {
         __pipdown: { fb: "Lower pressure, and we tolerate a higher CO2 to spare the lungs. That trade is how chronic lung disease rates came down.", score: 6, resolve: true },
         surfactant: { fb: "Treating the compliance rather than the dial. Now the pressure can come down honestly.", score: 6, resolve: true }
@@ -142,6 +166,9 @@
                "Cold babies burn through their sugar and start having spells.";
       },
       nudge: "Warmth is not a comfort measure in a preemie. It is treatment.",
+      help: "In the Respiratory support panel, the Isolette slider sets the bed temperature. Under Care," +
+            " kangaroo care warms a baby better than any machine, if a parent is here.",
+      settled: "The temperature has come back up into range.",
       accept: {
         __warmer: { fb: "Isolette closed and the heat up. Warm, pink and sweet, in that order.", score: 6, resolve: true },
         kangaroo: { fb: "A parent's chest holds a baby's temperature beautifully, and steadies the heart rate too.", score: 7, resolve: true },
@@ -160,6 +187,9 @@
                " belly looks fuller than it did at the start of the shift.";
       },
       nudge: "In a preemie, green residuals plus a changing belly has one name until you prove otherwise.",
+      help: "Treat has Stop feeds and antibiotics; Imaging has the abdominal X-ray; Assess has a culture and" +
+            " Examine. Whatever else you do, the feeds are the first thing to deal with.",
+      settled: "The residuals have cleared and the belly is soft again.",
       accept: {
         npo: { fb: "Feeds stopped and the stomach decompressed. The first move every time.", score: 6, resolve: false },
         axr: { fb: "The film will show gas in the bowel wall if this is necrotising enterocolitis.", score: 5, resolve: false },
@@ -170,7 +200,9 @@
       wrong: {
         __feedup: { fb: "You have increased the feeds on a belly that is already failing.", score: -8 }
       },
-      decline: { fb: "\"Right.\" She does not move away. Green residuals and a changing belly in a preemie is the one thing nobody regrets taking seriously.", score: -5, resolve: false },
+      decline: { fb: function (G, b) { var n = nursePr(b);
+        return "\"Right.\" " + n.S + " " + n.does + " not move away. Green residuals and a changing belly in a preemie is " +
+               "the one thing nobody regrets taking seriously."; }, score: -5, resolve: false },
       miss: { fb: "The belly kept distending while the feeds kept running.", score: -9 }
     },
     {
@@ -178,10 +210,13 @@
       cond: function (G, b) { return b.h.bili > 9 && !b.h.photo && !b.labs.bili; },
       summary: function () { return "looking more jaundiced"; },
       say: function (G, b) {
-        return b.pronoun.S + " looks more yellow to me than this morning - down onto the chest now. " +
+        return b.pronoun.S + " " + b.pronoun.v("look") + " more yellow to me than this morning - down onto the chest now. " +
                "Shall I get you a level?";
       },
       nudge: "Eyes are unreliable for jaundice, especially on darker skin. What would give you a number?",
+      help: "Under Assess, Bilirubin gives you the number to judge it against. Under Treat, Phototherapy is" +
+            " the light.",
+      settled: "The jaundice looks no worse, and a level has come back within range.",
       accept: {
         bili: { fb: "A level, read against the threshold for this baby's age in hours. Never judge by eye.", score: 6, resolve: true },
         photo: { fb: "Light is very safe, so starting is defensible. Get a level too, so you know when to stop.", score: 4, resolve: false }
@@ -199,6 +234,10 @@
                b.ga + " for " + b.pronoun.o + ".";
       },
       nudge: "Experts genuinely disagree about when a low number needs treating. What tells you whether this baby is actually delivering blood?",
+      help: "Assess and Examine tells you whether this baby is actually delivering blood; a blood gas gives" +
+            " you the base deficit. Treat has a fluid bolus and dopamine. Declining is a real option if the" +
+            " baby looks well.",
+      settled: "The blood pressure has come up on its own and the baby stayed well perfused throughout.",
       accept: {
         examine: { fb: "Cap refill, warmth, how the baby looks. A warm, pink, weeing baby with a lowish number may need nothing at all.", score: 7, resolve: true },
         gas: { fb: "A base deficit tells you whether the tissues are actually short of blood.", score: 5, resolve: false },
@@ -206,7 +245,9 @@
         dopamine: { fb: "It will lift the number. Whether it helps depends on why it was low, and you have not found that out.", score: 0, resolve: true }
       },
       wrong: {},
-      decline: { fb: "\"Fair enough - she is warm and she is weeing.\" Choosing to watch a well-perfused baby with a lowish number is a real clinical decision, not a dodge.", score: 2, resolve: true },
+      decline: { fb: function (G, b) {
+        return "\"Fair enough - " + b.pronoun.s + " " + b.pronoun.is + " warm and " + b.pronoun.s + " " + b.pronoun.is +
+               " weeing.\" Choosing to watch a well-perfused baby with a lowish number is a real clinical decision, not a dodge."; }, score: 2, resolve: true },
       miss: { fb: "The pressure stayed low and nobody worked out why.", score: -5 }
     },
     {
@@ -218,6 +259,9 @@
                "The oxygen need has crept up all evening too.";
       },
       nudge: "A murmur is a finding, not a diagnosis. What would show you the duct itself?",
+      help: "Under Imaging, the Echocardiogram shows the duct itself. Examine, under Assess, gives you the" +
+            " pulses. Ibuprofen under Treat is a decision for after you have looked, not before.",
+      settled: "The murmur is quieter and the oxygen need has stopped creeping up.",
       accept: {
         echo: { fb: "The echo shows how big the duct is and whether it matters. Then you can decide.", score: 7, resolve: true },
         examine: { fb: "Bounding pulses and a wide pulse pressure. Now get a picture of that duct.", score: 3, resolve: false }
@@ -233,10 +277,12 @@
       cond: function (G, b) { return b.ga < 32 && !b.h.caffeine && b.h.spells >= 2; },
       summary: function () { return "no caffeine on the chart"; },
       say: function (G, b) {
-        return "I noticed " + b.pronoun.s + " is under 32 weeks and having spells, but there is no caffeine " +
+        return "I noticed " + b.pronoun.s + " " + b.pronoun.is + " under 32 weeks and having spells, but there is no caffeine " +
                "on the chart. Shall I send a loading dose?";
       },
       nudge: "There is one medicine with strong long-term trial evidence for apnea of prematurity.",
+      help: "Under Treat, Caffeine. It is one button and it is the best-evidenced thing on this unit.",
+      settled: "Caffeine is on the chart now and the spells have eased.",
       accept: {
         caffeine: { fb: "Loaded. Two thousand babies in one trial: off support sooner, less lung disease, better outcomes as toddlers.", score: 7, resolve: true }
       },
@@ -249,10 +295,12 @@
       cond: function (G, b) { return b.h.glucose < 42 && !b.labs.glucose; },
       summary: function () { return "jittery and hard to settle"; },
       say: function (G, b) {
-        return b.pronoun.S + " is jittery - tremulous when I unwrap " + b.pronoun.o + ", and hard to settle. " +
+        return b.pronoun.S + " " + b.pronoun.is + " jittery - tremulous when I unwrap " + b.pronoun.o + ", and hard to settle. " +
                "Could be a lot of things.";
       },
       nudge: "One of the causes takes five minutes and a heel prick to rule out.",
+      help: "Under Assess, Glucose (heel). Five minutes and a heel prick, before anything else.",
+      settled: "The jitteriness has settled and the baby is feeding and sleeping normally.",
       accept: {
         glucose: { fb: "A sugar first. Jitteriness in a newborn is hypoglycaemia until you have a number.", score: 7, resolve: true },
         examine: { fb: "A careful look. Now get a sugar.", score: 3, resolve: false }
@@ -269,12 +317,15 @@
       summary: function () { return "a wet-sounding chest"; },
       say: function (G, b) {
         return "The chest sounds coarse and wet, and the numbers on the ventilator have drifted. " +
-               "I think " + b.pronoun.s + " needs clearing.";
+               "I think " + b.pronoun.s + " " + b.pronoun.v("need") + " clearing.";
       },
       nudge: "Something simple and mechanical is in the way.",
+      help: "Under Procedures, Suction. This one is mechanical, not pharmacological.",
+      settled: "The chest sounds clear again and the ventilator numbers have settled.",
       accept: { suction: { fb: "A good clear-out, and the chest moves properly again.", score: 5, resolve: true } },
       wrong: { __fio2up: { fb: "More oxygen past a blocked tube achieves very little.", score: -3 } },
-      decline: { fb: "\"I will leave her be then.\" A partly blocked tube does not clear itself.", score: -2, resolve: false },
+      decline: { fb: function (G, b) {
+        return "\"I will leave " + b.pronoun.o + " be then.\" A partly blocked tube does not clear itself."; }, score: -2, resolve: false },
       miss: { fb: "The tube stayed partly blocked for hours.", score: -4 }
     },
     {
@@ -285,10 +336,13 @@
       },
       summary: function () { return "ready to come off the ventilator"; },
       say: function (G, b) {
-        return b.pronoun.S + " is on minimal settings and breathing over the ventilator nicely. " +
+        return b.pronoun.S + " " + b.pronoun.is + " on minimal settings and breathing over the ventilator nicely. " +
                "Shall we try coming out?";
       },
       nudge: "One medicine makes extubation succeed more often. Give it before you pull the tube.",
+      help: "Under Treat, Caffeine before you pull the tube. Then either the Extubate button under" +
+            " Procedures, or the mode buttons at the top of Respiratory support.",
+      settled: "The window has passed for now; the settings have crept back up and this is no longer the moment.",
       accept: {
         caffeine: { fb: "Caffeine first. It is one of the best-proven things in the whole unit.", score: 5, resolve: false },
         extubate: { fb: "Out and onto CPAP. Every extra tube day costs lungs.", score: 6, resolve: true }
@@ -302,10 +356,13 @@
       cond: function (G, b) { return b.h.hgb < 8.5 && !b.labs.cbc; },
       summary: function () { return "looking pale"; },
       say: function (G, b) {
-        return b.pronoun.S + " looks washed out to me, and tires quickly with handling. " +
+        return b.pronoun.S + " " + b.pronoun.v("look") + " washed out to me, and " + b.pronoun.v("tire") + " quickly with handling. " +
                "We have taken a lot of blood off " + b.pronoun.o + " this fortnight.";
       },
       nudge: "Every blood draw takes blood from a baby who cannot spare it. What does that add up to?",
+      help: "Under Assess, Blood count gives you a haemoglobin. Under Treat, Transfuse gives red cells -" +
+            " bolder without a number first.",
+      settled: "The colour looks better tonight and the handling is being tolerated well.",
       accept: {
         cbc: { fb: "A haemoglobin will tell you. Anaemia makes spells worse and babies tired.", score: 6, resolve: true },
         transfuse: { fb: "Red cells given. Bold without a number, but this baby did need them.", score: 3, resolve: true }
@@ -334,7 +391,7 @@
           hint: "Costs ten minutes of your shift", apply: function (G, b) { G.trust += 12; G.advance(10); },
           fb: "You sat down. That alone changes the conversation. Families remember for the rest of their lives whether someone told them the truth kindly.",
           fbKind: "good", score: 7 },
-        { label: "\"" + "She is doing very well, try not to worry.\"",
+        { label: function (G, b) { return "\"" + b.pronoun.S + " " + b.pronoun.is + " doing very well, try not to worry.\""; },
           hint: "Reassures them and takes a moment", apply: function (G, b) { G.trust += 2; },
           fb: "Kindly meant. But false reassurance costs you their trust the moment something changes, and in a NICU something usually changes.",
           fbKind: "ok", score: 0 },
@@ -397,15 +454,16 @@
       badge: "has news",
       say: function (G, b) {
         return "We have decided on a name. We were waiting, because... well. You do not want to name someone " +
-               "and then lose them, do you. But " + b.pronoun.s + " has got through the night so far. " +
-               b.pronoun.S + " is " + b.chosenName + ".";
+               "and then lose them, do you. But " + b.pronoun.s + " " + b.pronoun.has + " got through the night so far. " +
+               b.pronoun.S + " " + b.pronoun.is + " " + b.chosenName + ".";
       },
       nudge: "This is not a clinical decision. It is a moment.",
       opts: [
         { label: "Write the name on the cot card yourself and say it out loud",
           hint: "Costs a couple of minutes",
           apply: function (G, b) { b.name = b.chosenName; b.unnamed = false; G.trust += 14; G.advance(5); G.nameMoment = b.name; },
-          fb: "You wrote it on the card and used it. Naming a baby who has been 'Baby " + "' for a day is the moment a family starts to believe there will be a future.",
+          fb: function (G, b) { return "You wrote it on the card and used it. Naming a baby who has been 'Baby " +
+                b.surname + "' for a day is the moment a family starts to believe there will be a future."; },
           fbKind: "good", score: 6 },
         { label: "\"Lovely. I will update the chart.\"", hint: "Records it and moves on",
           apply: function (G, b) { b.name = b.chosenName; b.unnamed = false; G.trust += 4; },
@@ -466,7 +524,7 @@
       cond: function (G, b) { return G.parentPresent(b) && b.h.spells >= 1; },
       badge: "looks frightened",
       say: function (G, b) {
-        return "Every time that alarm goes off my heart stops. Is " + b.pronoun.s + " dying? Nobody ever runs, " +
+        return "Every time that alarm goes off my heart stops. " + b.pronoun.Is + " " + b.pronoun.s + " dying? Nobody ever runs, " +
                "so either it is fine or everyone has stopped caring, and I cannot tell which.";
       },
       nudge: "They are reading the room correctly. They just do not have the key to it.",
@@ -538,7 +596,7 @@
       cond: function (G, b) { return G.parentPresent(b) && G.min > 120; },
       badge: "has a question",
       say: function (G, b) {
-        return "My six-year-old wants to know whether " + b.pronoun.s + " has a favourite colour yet, and " +
+        return "My six-year-old wants to know whether " + b.pronoun.s + " " + b.pronoun.has + " a favourite colour yet, and " +
                "whether the tubes hurt. I did not know what to tell her.";
       },
       nudge: "A six-year-old asked a real question and deserves a real answer.",
@@ -716,11 +774,12 @@
     {
       id: "delivery", who: "nell", minMin: 150, urgent: true, persistent: 3, studentSkip: true,
       preview: "Delivery room",
-      say: function () {
-        return "Delivery room on the line. They have a 29-weeker coming now, not in twenty minutes. " +
-               "They need someone down there.";
-      },
-      onAnswer: function (G) { G.startDeliveryRoom(); },
+      // the scenario is chosen now, so Nell describes the baby you are actually going to
+      say: function (G) { return G.pickDelivery().call; },
+      onAnswer: function (G) { G.summonDelivery(); },
+      answerFb: "You hang up. The delivery room is two floors down and it is now sitting in the unit view, " +
+                "waiting for you. Click it when you are ready to go.",
+      answerBtn: "Hang up",
       onIgnoreAll: function (G) {
         G.log("The delivery room called three times and gave up. Another team went instead.", "warn");
         G.addScore(-8, "Missed a delivery room call");

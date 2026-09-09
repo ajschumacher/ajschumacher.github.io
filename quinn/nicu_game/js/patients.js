@@ -49,7 +49,7 @@
       handoff: function (b) {
         return "Born at " + b.ga + " weeks by emergency section. " + b.riskLine +
                " Surfactant in the delivery room, extubated to CPAP yesterday. The day team says " +
-               b.pronoun.s + " has been a bit unsettled this evening.";
+               b.pronoun.s + " " + b.pronoun.has + " been a bit unsettled this evening.";
       },
       risks: ["Mum had a fever in labour and the membranes were ruptured for over a day.",
               "Mum was on antibiotics before delivery for a suspected infection.",
@@ -135,7 +135,8 @@
                "gaining weight. " + b.riskLine;
       },
       risks: ["The day team heard a murmur this afternoon and wondered about the duct.",
-              "The nurse says he has been needing more oxygen than usual today.",
+              function (b) { return "The nurse says " + b.pronoun.s + " " + b.pronoun.has +
+                " been needing more oxygen than usual today."; },
               "Feeds have been advanced twice this week and the belly has looked a little full."],
       puzzles: [
         { id: "pda", w: 3, apply: function (h) { h.pda = R(0.6, 0.8); },
@@ -217,7 +218,8 @@
         return b.dol + " days old, born at " + b.ga + " weeks, doing well until today. Still has a long line in " +
                "for the last of " + b.pronoun.p + " nutrition. " + b.riskLine;
       },
-      risks: ["The nurse thinks he has been less active than yesterday, though the numbers all look fine.",
+      risks: [function (b) { return "The nurse thinks " + b.pronoun.s + " " + b.pronoun.has +
+                " been less active than yesterday, though the numbers all look fine."; },
               "Temperature has wobbled twice today, once up and once down.",
               "Feeds were held once this afternoon for a large residual."],
       puzzles: [
@@ -243,7 +245,7 @@
       },
       handoff: function (b) {
         return "Born at term, " + (b.weightG / 1000).toFixed(2) + " kilos, to a mother with diabetes. " + b.riskLine +
-               " The first blood sugar was low and " + b.pronoun.s + " has been jittery since.";
+               " The first blood sugar was low and " + b.pronoun.s + " " + b.pronoun.has + " been jittery since.";
       },
       risks: ["Mum's diabetes was hard to control through the third trimester.",
               "Gestational diabetes picked up late and managed with insulin.",
@@ -291,7 +293,8 @@
       score: { good: [], bad: [] }, startSnapshot: null
     };
     b.pma = b.ga + b.dol / 7;
-    b.riskLine = arch.risks[Math.floor(S.rnd() * arch.risks.length) % arch.risks.length];
+    var risk = arch.risks[Math.floor(S.rnd() * arch.risks.length) % arch.risks.length];
+    b.riskLine = typeof risk === "function" ? risk(b) : risk;
 
     arch.set(h);
     var puzzle = weightedPick(arch.puzzles);
@@ -311,7 +314,7 @@
 
     b.handoff = arch.handoff(b);
     if (b.unnamed) b.handoff += " The parents have not settled on a name yet, so " + b.pronoun.s +
-      " is charted as Baby " + b.surname + " for now.";
+      " " + b.pronoun.is + " charted as Baby " + b.surname + " for now.";
 
     // settle so the opening numbers are self-consistent and quiet
     for (var i = 0; i < 6; i++) S.step(b, 5, { min: 0, settling: true });
@@ -357,8 +360,11 @@
     return list;
   }
 
-  function makeAdmission(difficulty, used) {
-    var arch = ARCHETYPES.filter(function (a) { return a.key === "rds"; })[0];
+  // archKey lets the delivery room decide what kind of baby it is sending up.
+  function makeAdmission(difficulty, used, archKey) {
+    var want = archKey || "rds";
+    var arch = ARCHETYPES.filter(function (a) { return a.key === want; })[0] ||
+               ARCHETYPES.filter(function (a) { return a.key === "rds"; })[0];
     var b = build(arch, difficulty, used || {}, 6, true);
     b.dol = 0; b.h.coreTemp = 36.2;
     b.handoff = "Just arrived from the delivery room.";

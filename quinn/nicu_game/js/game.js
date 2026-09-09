@@ -15,6 +15,7 @@
     concerns: [], talks: [], watches: [], call: null, callHistory: {},
     fired: {}, cooldowns: {}, declined: {}, dialogOpen: false, dialogQueue: [],
     crisis: null, admissionDue: null, admissionDone: false, admissionColder: false,
+    delivery: null, admissionScenario: null, admissionPoor: false, note: null,
     nameUsed: {}, seedVal: 1,
     metrics: { safetyCatches: 0, overrides: 0, calledForHelp: 0, exams: 0, draws: 0,
                concernsAnswered: 0, concernsMissed: 0, callsAnswered: 0, callsMissed: 0, talksOffered: 0,
@@ -30,6 +31,10 @@
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
   function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
   function gl(s) { return GL.markup(esc(s)); }
+  /* Authored text may be a plain string or a function of the baby. Use a function whenever
+     the line refers to the baby or to the colleague saying it, so pronouns and their verbs
+     agree: "they are jittery", not "they is jittery". See the pronoun helper in names.js. */
+  function say(v, b) { return typeof v === "function" ? v(G, b) : v; }
 
   function log(msg, kind) {
     G.logLines.unshift({ t: clockStr(G.min), m: msg, k: kind || "" });
@@ -109,7 +114,7 @@
 
   G.doAction = function (b, id, opt) {
     opt = opt || {};
-    var a = ACTIONS[id], h = b.h, msg = null, kind = "";
+    var a = ACTIONS[id], h = b.h, msg = null, kind = "", refused = false;
     if (!a) return;
     switch (id) {
       case "examine":
@@ -118,7 +123,7 @@
         h.swaddled = true; h.pain = S.c01(h.pain - 0.35); h.comfortActs++; h.handling = Math.max(0, h.handling - 0.4);
         msg = b.name + " settled with containment and a dim light"; kind = "good"; break;
       case "kangaroo":
-        if (!G.parentPresent(b)) { msg = "No parent at the bedside right now"; kind = "warn"; break; }
+        if (!G.parentPresent(b)) { msg = "No parent at the bedside right now"; kind = "warn"; refused = true; break; }
         h.kangaroo = true; h.swaddled = false; h.pain = S.c01(h.pain - 0.5); h.comfortActs++; G.trust += 8;
         msg = b.name + " is skin to skin with " + b.parentName; kind = "good"; break;
       case "suction":
@@ -133,16 +138,16 @@
       case "cxr": G.orderImaging(b, "axr", true); break;
       case "hus": case "echo": G.orderImaging(b, id); break;
       case "caffeine":
-        if (h.caffeine) { msg = b.name + " is already on caffeine"; kind = "warn"; break; }
+        if (h.caffeine) { msg = b.name + " is already on caffeine"; kind = "warn"; refused = true; break; }
         h.caffeine = true; msg = "Caffeine loaded for " + b.name; kind = "good"; break;
       case "abx": G.startAbx(b); break;
       case "surfactant":
-        if (b.support.mode !== "VENT") { msg = "Surfactant needs a breathing tube first"; kind = "warn"; break; }
+        if (b.support.mode !== "VENT") { msg = "Surfactant needs a breathing tube first"; kind = "warn"; refused = true; break; }
         h.surfTreatPending = 1; h.rds = S.c01(h.rds - 0.9); h.handling += 0.7;
         msg = "Surfactant given to " + b.name + ". The chest starts moving more easily within minutes"; kind = "good";
         watch(b, "sat", "surfactant"); break;
       case "intubate":
-        if (b.support.mode === "VENT") { msg = b.name + " is already intubated"; kind = "warn"; break; }
+        if (b.support.mode === "VENT") { msg = b.name + " is already intubated"; kind = "warn"; refused = true; break; }
         h.handling += 1.4; h.painStim = 0.35;
         if (S.chance(G.difficulty === "attending" ? 0.24 : G.difficulty === "student" ? 0.05 : 0.13)) {
           msg = "First attempt at intubating " + b.name + " failed. Second attempt successful."; kind = "warn"; h.painStim += 0.2;
@@ -150,11 +155,11 @@
         b.support.mode = "VENT"; b.support.pip = Math.max(16, Math.round(14 + 6 * h.rds));
         b.support.peep = 5; b.support.rate = 40; h.ettDisplaced = false; break;
       case "extubate":
-        if (b.support.mode !== "VENT") { msg = b.name + " is not intubated"; kind = "warn"; break; }
+        if (b.support.mode !== "VENT") { msg = b.name + " is not intubated"; kind = "warn"; refused = true; break; }
         b.support.mode = "CPAP"; b.support.cpap = 6;
         if (h.spontDrive < 0.75 || h.co2 > 62 || S.lungFunction(b) < 0.45) {
           h.fatigue += 0.35; msg = b.name + " was extubated but is struggling. This may not hold"; kind = "warn";
-          addScore(-3, "Extubated " + b.name + " before " + b.pronoun.s + " was ready");
+          addScore(-3, "Extubated " + b.name + " before " + b.pronoun.s + " " + b.pronoun.was + " ready");
         } else { msg = b.name + " extubated to CPAP and doing well"; kind = "good"; }
         break;
       case "bolus":
@@ -164,7 +169,7 @@
       case "d10": h.d10bolus = 45; h.glucose += 30; msg = "Dextrose bolus given to " + b.name; kind = "good"; watch(b, "glucose", "dextrose"); break;
       case "dopamine": h.pressorInfusion = true; h.pressorDose = 1; msg = "Dopamine started on " + b.name; break;
       case "ibuprofen":
-        if (h.pda < 0.2) { msg = "There is no significant duct to treat"; kind = "warn"; addScore(-2, "Treated a duct that was not open"); break; }
+        if (h.pda < 0.2) { msg = "There is no significant duct to treat"; kind = "warn"; refused = true; addScore(-2, "Treated a duct that was not open"); break; }
         h.pdaTreat = 240; h.gutTol = S.c01(h.gutTol - 0.08); msg = "Ibuprofen started for " + b.name + "'s duct"; kind = "good"; break;
       case "transfuse":
         if (h.hgb < 10) { h.hgb += 4; msg = "Red cells transfused and " + b.name + " looks pinker"; kind = "good"; }
@@ -181,7 +186,13 @@
       case "npo": h.feedsMlKgD = 0; msg = b.name + " made nil by mouth, stomach decompressed"; kind = "good"; break;
     }
     if (msg) log(msg, kind);
-    judgeConcern(b, id);
+    /* A refused action never happened, so there is nothing for a colleague to judge - and
+       the refusal is the one thing the player must see, since the screen did not change. */
+    if (refused) setNote(b, "warn", msg);
+    else {
+      if (kind === "warn" || kind === "bad") setNote(b, kind, msg);
+      judgeConcern(b, id);
+    }
     if (!opt.silent) { G.advance(a.cost); render(); }
   };
 
@@ -230,8 +241,13 @@
         if (G.cooldowns[key] && G.min - G.cooldowns[key] < (c.cooldown || 90)) return;
         if (!c.cond(G, b)) return;
         var whoId = typeof c.who === "function" ? c.who(b) : c.who;
+        /* What a colleague says is frozen at the moment they say it. Re-evaluating say()
+           on every render made the line track the monitor - "Temperature is 36.6. Cold
+           babies burn through their sugar" after the baby had already warmed up - which
+           is not how a person talks and left players arguing with a sentence nobody said. */
         G.concerns.push({ key: key, id: c.id, def: c, bed: b.bed, who: whoId,
-                          at: G.min, seen: false, done: false, escalated: !!G.declined[key] });
+                          at: G.min, seen: false, done: false, escalated: !!G.declined[key],
+                          said: c.say(G, b), summaryText: c.summary(G, b) });
         G.cooldowns[key] = G.min;
         log(EV.CHARS[whoId].name.split(",")[0] + " wants you at bed " + b.bed + " - " + c.summary(G, b), "hi");
         Snd.attention(c.severity === "urgent");
@@ -239,11 +255,20 @@
     });
   }
 
+  // A live request outranks one that has already stood itself down.
   function openConcernFor(b) {
+    var stale = null;
     for (var i = 0; i < G.concerns.length; i++) {
-      if (G.concerns[i].bed === b.bed && !G.concerns[i].done) return G.concerns[i];
+      var c = G.concerns[i];
+      if (c.bed !== b.bed || c.done) continue;
+      if (!c.stale) return c;
+      if (!stale) stale = c;
     }
-    return null;
+    return stale;
+  }
+  function activeConcernFor(b) {
+    var c = openConcernFor(b);
+    return c && !c.stale ? c : null;
   }
 
   function firstName(whoId) {
@@ -251,14 +276,25 @@
     return n.split(",")[0].split(" ")[0] || n;
   }
 
+  /* The callout is pinned to the top of the page and has to stay a readable size, so it
+     carries the last two things that were said and no more. The log keeps the rest. */
   function pushReply(c, good, text) {
     c.replies = c.replies || [];
-    c.replies.push({ good: good, text: text });
-    if (c.replies.length > 3) c.replies.shift();
+    c.replies.push({ good: good, text: text, fresh: true });
+    c.replies.forEach(function (r, i) { r.fresh = i === c.replies.length - 1; });
+    if (c.replies.length > 2) c.replies.shift();
+  }
+  function replyClass(r) {
+    var cls = r.good === true ? "good" : r.good === false ? "bad" : "neutral";
+    if (r.fresh) { r.fresh = false; cls += " fresh"; }
+    return cls;
+  }
+  function anyFresh(list, note) {
+    return (list || []).some(function (r) { return r.fresh; }) || !!(note && note.fresh);
   }
 
   function judgeConcern(b, actionId) {
-    var c = openConcernFor(b);
+    var c = activeConcernFor(b);
     if (!c || !c.seen) return;
     var d = c.def, r = (d.accept && d.accept[actionId]) || null, bad = (d.wrong && d.wrong[actionId]) || null;
     // Anything else still gets an answer, so the player can always tell the game noticed.
@@ -270,31 +306,41 @@
         who + " nods along. \"Fine by me. I am still worried about " + sum + ", though.\"",
         "\"Whatever you think,\" says " + who + ". \"It does not get us any further with " + sum + ".\""
       ];
-      pushReply(c, null, lines[(c.replies ? c.replies.length : 0) % lines.length]);
+      var line = lines[(c.replies ? c.replies.length : 0) % lines.length];
+      pushReply(c, null, line);
       renderBedCallout(b);
       return;
     }
     if (r) {
       addScore(r.score, (ACTIONS[actionId] ? ACTIONS[actionId].t : "Adjusted the settings") +
                         " for " + b.name + " when " + EV.CHARS[c.who].name.split(",")[0] + " asked");
-      pushReply(c, true, r.fb);
-      if (r.resolve) { c.done = true; c.resolvedAt = G.min; G.metrics.concernsAnswered++; }
+      var okText = say(r.fb, b);
+      pushReply(c, true, okText);
+      if (r.resolve) {
+        c.done = true; c.resolvedAt = G.min; G.metrics.concernsAnswered++;
+        setNote(b, "good", okText, { who: c.who, tag: "settled" });
+      }
       Snd.ok();
     } else if (bad) {
       addScore(bad.score, (ACTIONS[actionId] ? ACTIONS[actionId].t : "That adjustment") +
                           " was the wrong answer for " + b.name);
-      pushReply(c, false, bad.fb);
+      var badText = say(bad.fb, b);
+      pushReply(c, false, badText);
       Snd.bad();
     }
     if (r || bad) renderBedCallout(b);
   }
 
   function declineConcern(b) {
-    var c = openConcernFor(b);
+    var c = activeConcernFor(b);
     if (!c || !c.seen) return;
     var d = c.def.decline || { fb: "They accept it and move on.", score: -1, resolve: false };
     addScore(d.score, "Declined " + EV.CHARS[c.who].name.split(",")[0] + "'s concern about " + b.name);
-    pushReply(c, d.score > 0 ? true : d.score < 0 ? false : null, d.fb);
+    var good = d.score > 0 ? true : d.score < 0 ? false : null;
+    var text = say(d.fb, b);
+    pushReply(c, good, text);
+    setNote(b, good === false ? "warn" : "good", text,
+            { who: c.who, tag: d.resolve ? "settled" : "will ask again" });
     c.done = true; c.declinedAt = G.min;
     if (d.resolve) { G.metrics.concernsAnswered++; }
     else {
@@ -307,21 +353,64 @@
     render();
   }
 
+  /* Situations move on. Every tick, a request that no longer describes the baby either
+     closes as a success (the player did something the colleague approved of, and it worked)
+     or is stood down (it sorted itself out). Neither one nags, and neither one is scored
+     against the player at handover - the night stopped asking. */
+  function reviewConcerns() {
+    G.concerns.forEach(function (c) {
+      if (c.done || c.stale) return;
+      var b = byBed(c.bed); if (!b || b.died || b.discharged) return;
+      if (G.min - c.at < 15) return;                     // let it stand long enough to be seen
+      var still = true;
+      try { still = c.def.cond(G, b); } catch (e) { still = true; }
+      if (still) return;
+      var helped = (c.replies || []).some(function (r) { return r.good === true; });
+      var who = firstName(c.who);
+      if (helped) {
+        c.done = true; c.resolvedAt = G.min; G.metrics.concernsAnswered++;
+        var win = who + ": \"That has done it. " + (c.def.settled || "It has settled.") + "\"";
+        pushReply(c, true, win);
+        setNote(b, "good", win, { who: c.who, tag: "settled" });
+        log(who + " is happy with bed " + c.bed + " now: " + c.summaryText + " has resolved.", "good");
+      } else {
+        c.stale = true; c.staleAt = G.min;
+        c.said = who + ": \"Never mind about " + b.name + ". " +
+                 cap(c.def.settled || "It has sorted itself out.") + "\"";
+        log(who + " stands down about bed " + c.bed + ": " + c.summaryText + " settled without you.", "");
+      }
+      if (G.view.mode === "bed" && G.babies[G.view.bed] === b) renderBedCallout(b);
+    });
+    // a stood-down note the player never went to see does not sit there all night
+    G.concerns.forEach(function (c) {
+      if (c.stale && !c.done && G.min - c.staleAt > 45) { c.done = true; c.retracted = true; }
+    });
+  }
+
+  function dismissConcern(b) {
+    var c = openConcernFor(b);
+    if (!c || !c.stale || c.done) return;
+    c.done = true; c.retracted = true;
+    Snd.click(); renderBedCallout(b); render();
+  }
+
   function escalateConcerns() {
     G.concerns.forEach(function (c) {
-      if (c.done) return;
+      if (c.done || c.stale) return;
       var b = byBed(c.bed); if (!b || b.died) { c.done = true; return; }
       var age = G.min - c.at;
       var limit = c.def.severity === "urgent" ? 45 : c.def.severity === "worry" ? 75 : 110;
       if (!c.escalated && age > limit) {
         c.escalated = true;
-        log(EV.CHARS[c.who].name.split(",")[0] + " asks again about bed " + c.bed + ". " + cap(c.def.summary(G, b)) + ".", "warn");
+        // they have looked again, so the line is re-frozen against what they see now
+        c.said = c.def.say(G, b); c.summaryText = c.def.summary(G, b);
+        log(EV.CHARS[c.who].name.split(",")[0] + " asks again about bed " + c.bed + ". " + cap(c.summaryText) + ".", "warn");
         Snd.attention(true);
       }
       if (age > limit * 2.2) {
         c.done = true; c.missed = true; G.metrics.concernsMissed++;
-        addScore(c.def.miss.score, "Never came to bed " + c.bed + ": " + c.def.summary(G, b));
-        log(c.def.miss.fb, "bad");
+        addScore(c.def.miss.score, "Never came to bed " + c.bed + ": " + c.summaryText);
+        log(say(c.def.miss.fb, b), "bad");
       }
     });
   }
@@ -395,10 +484,11 @@
       avatar: av, who: whoName, role: role, said: d.say(G, b), subject: b,
       nudge: d.nudge,
       opts: d.opts.map(function (o) {
-        return { label: o.label, hint: o.hint, run: function () {
+        var label = say(o.label, b);
+        return { label: label, hint: say(o.hint, b), run: function () {
           if (o.apply) o.apply(G, b);
-          if (o.score) addScore(o.score, o.label.replace(/"/g, "").slice(0, 54) + (b ? " (" + b.name + ")" : ""));
-          return { text: o.fb, kind: o.fbKind };
+          if (o.score) addScore(o.score, label.replace(/"/g, "").slice(0, 54) + (b ? " (" + b.name + ")" : ""));
+          return { text: say(o.fb, b), kind: o.fbKind };
         } };
       })
     });
@@ -447,9 +537,10 @@
       showDialog({
         avatar: EV.CHARS[c.who].av, who: EV.CHARS[c.who].name, role: EV.CHARS[c.who].role,
         said: c.say(G),
-        opts: [{ label: "Go now", hint: "Leaves the unit for a while", run: function () {
-          setTimeout(function () { c.onAnswer(G); }, 350);
-          return { text: "You pull on a gown as you walk.", kind: "ok" };
+        opts: [{ label: c.answerLabel || "I will come down", hint: "Accepts the call", run: function () {
+          c.onAnswer(G);
+          return { text: c.answerFb || "You pull on a gown as you walk.", kind: "ok",
+                   contLabel: c.answerBtn };
         } }]
       });
       return;
@@ -471,7 +562,7 @@
     G.admissionDue = G.min + 45; G.admissionColder = !!colder;
     log("Accepted a 29-week transfer. They are on their way.", "hi");
   };
-  G.startDeliveryRoom = function () { deliveryRoom(1); };
+  G.startDeliveryRoom = function () { G.summonDelivery(); };
 
   // ------------------------------------------------------------------ crises
   var CRISES = {
@@ -522,7 +613,7 @@
     },
     hypo: {
       title: "Severe hypoglycaemia",
-      line: function (b) { return b.name + "'s blood sugar is " + Math.round(b.h.glucose) + " and " + b.pronoun.s + " is jittery and hard to rouse."; },
+      line: function (b) { return b.name + "'s blood sugar is " + Math.round(b.h.glucose) + " and " + b.pronoun.s + " " + b.pronoun.is + " jittery and hard to rouse."; },
       nudge: "Fix the moment, then make sure it stays fixed.",
       opts: [
         { label: "Dextrose bolus now, then turn up the sugar in the drip", hint: "Treats now and prevents the rebound fall",
@@ -613,11 +704,13 @@
         fb.innerHTML = '<div class="fh">' + (res.kind === "good" ? "Good call" : res.kind === "bad" ? "Think again" : "Noted") +
           "</div><div>" + gl(res.text || "") + "</div>";
         d.appendChild(fb);
-        var cont = el("button", "btn", res.keepCrisis ? "Keep going" : "Back to the unit");
+        var cont = el("button", "btn", res.contLabel || (res.keepCrisis ? "Keep going" : "Back to the unit"));
         cont.style.marginTop = "14px";
         cont.onclick = function () {
           scrim.remove(); G.dialogOpen = false;
-          if (res.keepCrisis && G.crisis) setTimeout(function () { startCrisis(G.crisis.b, G.crisis.kind); }, 350);
+          // hold the crisis now: 350ms is long enough for something else to resolve it
+          var again = res.keepCrisis && G.crisis;
+          if (again) setTimeout(function () { if (G.crisis) startCrisis(again.b, again.kind); }, 350);
           else if (G.dialogQueue.length) { var n = G.dialogQueue.shift(); setTimeout(function () { showDialog(n); }, 250); }
           else { G.paused = false; render(); }
         };
@@ -676,7 +769,9 @@
     if (worst === "red") Snd.desat(); else if (worst === "amber") Snd.amber();
     deliverResults();
     runWatches();
+    checkDeliveryAbandoned();
     raiseConcerns();
+    reviewConcerns();
     escalateConcerns();
     raiseTalks();
     updateCalls();
@@ -745,88 +840,273 @@
 
   // ---------------------------------------------------------------- admission
   function checkAdmission() {
-    if (G.admissionDue == null || G.admissionDone || G.min < G.admissionDue) return;
+    if (G.admissionDue == null || G.min < G.admissionDue) return;
+    G.admissionDue = null;
+    // there is one empty bedspace, and a transport and a delivery can both be offered
+    if (G.babies.some(function (b) { return b.bed === 6 && !b.discharged && !b.died; })) {
+      log("Bed six is already taken, so that baby went to the unit across town.", "warn");
+      return;
+    }
     G.admissionDone = true;
     finishAdmission();
   }
 
-  var DR_STEPS = [
-    { q: "You are in the delivery room. The baby is out at 29 weeks, floppy, not crying. What is the very first thing?",
-      nudge: "Everything else works better once one basic thing is sorted.",
-      opts: [
-        { l: "Dry, wrap in plastic, hat on, under the warmer", h: "Prevents heat loss immediately", ok: true, s: 6,
-          f: "Warm first. A 29-weeker loses heat terrifyingly fast, and cold makes everything else worse. The plastic wrap goes on before drying is even finished." },
-        { l: "Suction the mouth and nose", h: "Clears the airway of fluid", ok: false, s: -2,
-          f: "Routine suctioning is not recommended and it delays the things that matter." },
-        { l: "Start chest compressions", h: "Circulates blood mechanically", ok: false, s: -4,
-          f: "Far too early. Compressions come only after effective ventilation has failed to lift the heart rate." }
-      ] },
-    { q: "Warm and dry. Heart rate is 80 and there is no real breathing effort. Next?",
-      nudge: "In a newborn, a slow heart is nearly always short of one thing.",
-      opts: [
-        { l: "Positive pressure ventilation with a mask", h: "Delivers breaths for the baby", ok: true, s: 8,
-          f: "Right. In a newborn a slow heart rate is almost always an oxygen problem, and the fix is ventilation, not adrenaline and not compressions." },
-        { l: "Give oxygen by mask and wait", h: "Offers oxygen passively", ok: false, s: -3,
-          f: "Passive oxygen does nothing for a baby who is not moving air. This baby needs breaths given to them." },
-        { l: "Intubate immediately", h: "Secures the airway with a tube", ok: false, s: -1,
-          f: "Mask ventilation works for most babies and is faster. Intubation is for when the mask is not working." }
-      ] },
-    { q: "Thirty seconds of good mask ventilation: the chest is moving and the heart rate is 130. The baby is making some effort now.",
-      nudge: "Use the least support that does the job.",
-      opts: [
-        { l: "Move to CPAP and watch the work of breathing", h: "Holds the lungs open without a tube", ok: true, s: 8,
-          f: "Exactly. CPAP first is the modern approach for a preemie who is breathing, and it spares many babies a tube altogether." },
-        { l: "Intubate and give surfactant now", h: "Commits to a tube and surfactant", ok: false, s: 0,
-          f: "Defensible in a smaller baby, but this one is breathing and responding." },
-        { l: "Wrap and take to the unit on room air", h: "No respiratory support", ok: false, s: -4,
-          f: "A 29-weeker who needed help to start will not manage on nothing. The lungs are still stiff." }
-      ] },
-    { q: "One minute of age. Heart rate over 100, some breathing, arms slightly flexed, grimace to suction, body pink with blue hands and feet. What is the Apgar score?",
-      nudge: "Five signs, each worth 0, 1 or 2. Count them one at a time.",
-      opts: [
-        { l: "7", h: "2 + 1 + 1 + 1 + 1", ok: true, s: 8,
-          f: "Heart rate over 100 scores 2, slow irregular breathing 1, some flexion 1, grimace 1, blue extremities 1. Total 7 - and the score describes this minute, not this child's future." },
-        { l: "10", h: "Full marks on every sign", ok: false, s: -2,
-          f: "Almost nobody scores 10, because hands and feet are usually still blue." },
-        { l: "3", h: "Low marks on every sign", ok: false, s: -2,
-          f: "Too low. The heart rate alone scores 2, with breathing, tone, grimace and partial colour on top." }
-      ] }
-  ];
+  /* ----------------------------------------------------------- delivery room
+     Delivery is a place. The phone tells you a baby is coming and you hang up; the
+     delivery room appears in the ward as somewhere to go, and you go there by clicking
+     it. Inside it works like a bedside - a colleague tells you what they see, you press
+     real controls, and each one answers - and you leave by deciding what happens to the
+     baby. See js/deliveries.js for the scenarios and what they need. */
+  var DEL = window.Deliveries;
 
-  function deliveryRoom(i) {
+  /* Chosen when the phone rings, not when you arrive, so the caller can tell you what is
+     actually coming rather than describing a different baby. */
+  G.pickDelivery = function () {
+    if (!G.pendingDelivery) {
+      G.pendingDelivery = DEL.SCENARIOS[Math.floor(S.rnd() * DEL.SCENARIOS.length) % DEL.SCENARIOS.length];
+    }
+    return G.pendingDelivery;
+  };
+
+  G.summonDelivery = function () {
+    if (G.delivery) return;
+    var sc = G.pickDelivery();
+    var st = sc.start;
+    G.delivery = {
+      sc: sc, state: "called", calledAt: G.min, sec: 0,
+      hr: st.hr, breathing: st.breathing, tone: st.tone, temp: st.temp, sat: st.sat,
+      fio2: st.fio2, wet: !!st.wet, obstructed: !!st.obstructed, apnoeic: !!sc.apnoeic,
+      warm: false, airway: false, ppv: false, ppvEffective: false, intubated: false,
+      cpap: false, surf: false, compress: false, adrenaline: false, skinToSkin: false,
+      apgar1: null, apgar5: null, clampedAt: null,
+      good: 0, bad: 0, said: null, tookOver: false
+    };
+    G.delivery.said = sc.brief;
+    G.pendingDelivery = null;
+    log("The delivery room is waiting for you. " + cap(sc.label) + ".", "hi");
+    Snd.attention(true);
+  };
+
+  /* The baby does not wait. Whether you never came or stepped out and did not come back,
+     after twenty-five minutes the labour ward registrar does it instead of you. Standing
+     in the room does not count as away, so nobody is punished for taking their time. */
+  function checkDeliveryAbandoned() {
+    var d = G.delivery;
+    if (!d || d.state === "done") return;
+    if (G.view.mode === "delivery") { d.awayAt = null; return; }
+    if (d.awayAt == null) d.awayAt = d.state === "called" ? d.calledAt : G.min;
+    if (G.min - d.awayAt < 25) return;
+    var started = d.state === "here";
+    d.state = "done"; d.tookOver = true;
+    addScore(started ? -6 : -8, started ? "Walked out of the delivery room part way through"
+                                        : "Never went to the delivery room");
+    log(started ? "You did not go back down, and the labour ward registrar finished the resuscitation."
+                : "Nobody went down to the delivery room. The registrar from the labour ward went instead.", "bad");
+    if (d.sc.arrival) { G.admissionDue = G.min + 10; G.admissionScenario = d.sc; G.admissionPoor = true; }
+  }
+
+  function enterDelivery() {
+    var d = G.delivery; if (!d || d.state === "done") return;
+    if (d.state === "called") { d.state = "here"; d.arrivedAt = G.min; G.advance(3); }
+    d.awayAt = null;
+    G.view = { mode: "delivery", bed: null };
+    Snd.click();
+    /* render() deliberately leaves the delivery stage alone on the clock tick, so it does
+       not redraw under the player's hands; drawing it is this function's job and
+       doDelivery's. */
+    render();
+    renderDelivery();
+  }
+  G.enterDelivery = enterDelivery;
+
+  function leaveDelivery(finished) {
+    var d = G.delivery;
+    if (d && !finished && d.state === "here") {
+      d.awayAt = G.min;                        // the clock on somebody else taking over starts now
+      log("You step out of the delivery room. Priya carries on bagging until you are back.", "warn");
+    }
+    G.view = { mode: "ward", bed: null };
+    render();
+  }
+
+  function deliveryQuality(d) {
+    var wanted = d.sc.wants || [];
+    var hit = wanted.filter(function (id) { return d.did && d.did[id]; }).length;
+    return { hit: hit, of: wanted.length, warm: d.temp >= 36.3, hr: d.hr >= 100,
+             clean: d.bad === 0, ok: hit >= Math.ceil(wanted.length * 0.75) && d.hr >= 100 };
+  }
+
+  function deliveryReady(d) {
+    return d.hr >= 100 && (d.breathing > 0.45 || d.intubated || d.cpap) && d.sec >= 120;
+  }
+
+  G.doDelivery = function (id) {
+    var d = G.delivery; if (!d || d.state !== "here") return;
+    var a = DEL.ACTIONS[id]; if (!a) return;
+    var r = a.run(d, d.sc) || {};
+    d.did = d.did || {}; d.did[id] = true;
+    DEL.advance(d, d.sc, a.cost);
+    G.advance(Math.max(1, Math.round(a.cost / 30)));   // your own babies are upstairs, alone
+    if (r.good === true) { d.good++; addScore(3, "Delivery room: " + a.t); Snd.ok(); }
+    else if (r.good === false) { d.bad++; addScore(-3, "Delivery room: " + a.t); Snd.bad(); }
+    if (r.text) pushReply(d, r.good, r.text);
     if (!G.running) return;
-    var st = DR_STEPS[i - 1];
-    if (!st) { G.admissionDue = G.min; return; }
-    showDialog({
-      avatar: "priya", who: "Delivery room", role: "29 weeks &middot; step " + i + " of " + DR_STEPS.length,
-      said: st.q, nudge: st.nudge,
-      opts: st.opts.map(function (o) {
-        return { label: o.l, hint: o.h, run: function () {
-          addScore(o.s, "Delivery room: " + o.l.slice(0, 40));
-          if (o.ok) { Snd.ok(); G.drGood = (G.drGood || 0) + 1; } else Snd.bad();
-          setTimeout(function () { deliveryRoom(i + 1); }, 400);
-          return { text: o.f, kind: o.ok ? "good" : "bad" };
-        } };
-      })
+    renderDelivery();
+  };
+
+  G.finishDelivery = function () {
+    var d = G.delivery; if (!d || d.state !== "here") return;
+    var q = deliveryQuality(d);
+    d.state = "done"; d.finishedAt = G.min;
+    if (d.sc.arrival) {
+      G.admissionDue = G.min + 8; G.admissionScenario = d.sc; G.admissionPoor = !q.ok;
+      G.admissionWarm = q.warm;
+      log("Taking Baby up from the delivery room to bed 6.", "hi");
+    } else if (d.skinToSkin) {
+      addScore(8, "Left a well baby with the parents instead of admitting them");
+      log("The delivery room baby stayed with her mother. Nothing for the unit.", "good");
+    } else {
+      addScore(-4, "Admitted a well baby who did not need admitting");
+      log("A well term baby was admitted to the unit anyway, and separated from her mother for it.", "warn");
+      G.admissionDue = G.min + 8; G.admissionScenario = d.sc; G.admissionPoor = false;
+    }
+    log("Delivery room: " + d.sc.done, q.ok ? "good" : "");
+    leaveDelivery(true);
+  };
+
+  function deliveryLook(d) {
+    return { tone: d.sc.tone || "b",
+             color: d.sat > 85 ? "pink" : d.sat > 65 ? "dusky" : "mottled",
+             jaundice: 0, eyes: d.breathing > 0.5 ? "open" : "closed",
+             effort: d.breathing > 0.4 && !d.cpap ? 0.6 : 0.2,
+             support: d.intubated ? "VENT" : d.cpap ? "CPAP" : "RA",
+             stress: 1 - d.tone, swaddled: false, hat: d.warm ? "warm" : null,
+             awake: d.breathing > 0.5 };
+  }
+
+  function renderDelivery() {
+    var d = G.delivery;
+    if (!d || d.state !== "here") { G.view = { mode: "ward", bed: null }; render(); return; }
+    var sc = d.sc;
+    var mins = Math.floor(d.sec / 60), secs = d.sec % 60;
+    var h = '<div class="bedside-head"><button class="btn ghost small" id="delLeave">&larr; Step out to the unit</button>' +
+      "<h2>Delivery room</h2>" +
+      '<span class="muted">' + esc(sc.label) + " &middot; " +
+      GL.tip(mins + ":" + ("0" + secs).slice(-2) + " since birth",
+             "How long the baby has been out. The first minute is the one that matters most, and the saturation is " +
+             "meant to climb slowly across the first ten.") + "</span></div>";
+    h += '<p class="del-warn">Priya keeps going while you are away. Come back within about twenty-five ' +
+         "minutes, or the labour ward registrar takes over from you.</p>";
+
+    h += '<div id="callout"></div>';
+    h += '<div class="bed-grid"><div>' +
+      '<div class="crib del-crib">' + A.baby(deliveryLook(d)) + "</div>" +
+      '<div class="panel"><h4>What you were told</h4><div class="muted" style="font-size:.9rem">' +
+      gl(sc.call) + "</div></div>" +
+      '<div class="panel"><h4>Where things stand</h4><div class="labs">' +
+      lrow("Warm", d.warm ? "dried, hat, warmer" : "still wet and uncovered", !d.warm) +
+      lrow("Airway", d.intubated ? "breathing tube" : d.cpap ? "CPAP" : d.ppv ? (d.ppvEffective ? "mask, chest moving" : "mask, chest NOT moving") : d.airway ? "positioned" : "not opened", d.ppv && !d.ppvEffective) +
+      lrow("Apgar", (d.apgar1 == null ? "not scored" : d.apgar1 + " at 1 min") +
+                    (d.apgar5 == null ? "" : ", " + d.apgar5 + " at 5 min"), false) +
+      "</div></div></div><div>";
+
+    var tgt = DEL.satTarget(d.sec);
+    h += '<div class="monitor del-monitor"><div class="vitals">' +
+      vT("hr", "HR", Math.round(d.hr), d.hr < 100,
+         Math.round(d.hr) + " beats per minute. Under 100 in a newborn means they are short of air until proven otherwise; " +
+         "under 60 after good breaths is when compressions start.") +
+      vT("spo2", "SpO2", Math.round(d.sat), d.sat < tgt - 5,
+         Math.round(d.sat) + " percent, against a target of about " + tgt + " for " + Math.max(1, Math.round(d.sec / 60)) +
+         " minute" + (d.sec >= 120 ? "s" : "") + " of age. Newborn saturations are supposed to climb slowly.") +
+      vT("rr", "Effort", d.breathing > 0.6 ? "good" : d.breathing > 0.25 ? "weak" : "none", d.breathing <= 0.25,
+         "How much breathing the baby is doing for themselves, from none through occasional gasps to a proper cry.") +
+      vT("temp", "T", d.temp.toFixed(1), d.temp < 36.4,
+         d.temp.toFixed(1) + " degrees. Below 36.5 a newborn burns sugar and oxygen keeping warm, and a cold baby " +
+         "resuscitates badly.") +
+      "</div><div class=\"muted mono\" style=\"font-size:.82rem;margin-top:8px\">" +
+      GL.tip("oxygen " + Math.round(d.fio2 * 100) + "%", "What the blender is set to. Start a preterm baby at 21 to 30 percent " +
+             "and follow the saturation target rather than pushing it up.") + "</div></div>";
+
+    DEL.GROUPS.forEach(function (g) {
+      var ids = Object.keys(DEL.ACTIONS).filter(function (id) { return DEL.ACTIONS[id].g === g[1]; });
+      if (!ids.length) return;
+      h += '<div class="panel"><h4>' + g[0] + '</h4><div class="act-grid">';
+      ids.forEach(function (id) {
+        var a = DEL.ACTIONS[id];
+        h += '<button class="act" data-del="' + id + '" data-tip="' + esc(a.info) + '">' +
+             '<span class="t">' + a.t + '</span><span class="c">' + a.cost + " sec</span>" +
+             '<span class="qmark">?</span></button>';
+      });
+      h += "</div></div>";
     });
+
+    var ready = deliveryReady(d), missing = [];
+    if (d.hr < 100) missing.push("the heart rate is still " + Math.round(d.hr) + ", and it needs to be over 100");
+    if (!(d.breathing > 0.45 || d.intubated || d.cpap))
+      missing.push("this baby is not breathing well enough on their own yet, and is on neither CPAP nor a tube");
+    if (d.sec < 120) missing.push("it is only " + Math.floor(d.sec / 60) + ":" + ("0" + (d.sec % 60)).slice(-2) +
+      " since birth, and nobody leaves this room in the first two minutes");
+    h += '<div class="panel del-finish"><h4>When you are done here</h4>' +
+      '<p class="muted" style="font-size:.9rem;margin-bottom:10px">' +
+      (ready ? "This baby is stable enough to move. Decide where they go."
+             : "Not yet &mdash; " + missing.join("; ") + ".") +
+      "</p><button class=\"btn\" id=\"delDone\"" + (ready ? "" : " disabled") + ">" +
+      (sc.arrival ? "Take the baby up to the unit" : "Finish here") + "</button></div>";
+
+    $("stage").innerHTML = h + "</div></div>";
+    $("delLeave").onclick = function () { leaveDelivery(false); };
+    var dn = $("delDone"); if (dn) dn.onclick = function () { G.finishDelivery(); };
+    Array.prototype.forEach.call($("stage").querySelectorAll("[data-del]"), function (n) {
+      n.onclick = function () { G.doDelivery(n.getAttribute("data-del")); };
+    });
+    renderDeliveryCallout();
+    attachTips($("stage"));
+  }
+
+  function lrow(k, v, bad) {
+    return '<div class="lrow"><span>' + esc(k) + '</span><span class="' + (bad ? "abn" : "") + '">' + gl(v) + "</span></div>";
+  }
+
+  function renderDeliveryCallout() {
+    var d = G.delivery, box = $("callout"); if (!box || !d) return;
+    var ch = EV.CHARS.priya;
+    var html = '<div class="callout urgent"><div class="co-av">' + A.avatar(ch.av) + "</div><div class='co-body'>" +
+      "<div class='co-who'>" + esc(ch.name) + "</div>" +
+      "<div class='co-say'>" + gl(d.said) + "</div>";
+    if (G.nudges && d.sc.nudge) html += '<div class="nudge">🤔 ' + gl(d.sc.nudge) + "</div>";
+    if (G.nudges && d.sc.help) html += '<div class="help">🧭 <b>Where to act.</b> ' + gl(d.sc.help) + "</div>";
+    var fresh = anyFresh(d.replies);
+    (d.replies || []).forEach(function (r) {
+      html += '<div class="co-reply ' + replyClass(r) + '">' + gl(r.text) + "</div>";
+    });
+    html += "</div></div>";
+    box.innerHTML = html;
+    if (fresh) box.scrollTop = box.scrollHeight;
+    attachTips(box);
   }
 
   function finishAdmission() {
     if (!G.running) return;
-    var b = P.makeAdmission(G.difficulty, G.nameUsed);
+    var sc = G.admissionScenario, arr = sc && sc.arrival;
+    var b = P.makeAdmission(G.difficulty, G.nameUsed, arr ? arr.archKey : null);
     b.bed = 6;
     b.visitWindow = [3, 7];
-    if (G.admissionColder) b.h.coreTemp = 35.4;
-    if ((G.drGood || 0) >= 3) { b.h.coreTemp = 36.7; b.h.rds = Math.max(0.6, b.h.rds - 0.4); }
+    if (arr) b.ga = sc.ga;
+    var poor = !!G.admissionPoor;
+    if (arr) b.h.coreTemp = poor ? arr.tempIfPoor : arr.tempIfGood;
+    else if (G.admissionColder) b.h.coreTemp = 35.4;
+    if (!poor && b.h.rds != null) b.h.rds = Math.max(0.55, b.h.rds - 0.35);
     b.h.uvc = true; b.h.dexPct = 10; b.h.ivRate = 80;
     G.babies.push(b);
     G.advance(20);
-    log("New admission: Baby " + b.surname + ", 29 weeks, to bed 6", "hi");
+    log("New admission: Baby " + b.surname + ", " + b.ga + " weeks, to bed 6", "hi");
     showDialog({
       avatar: "renata", who: "Renata Cruz, RN", role: "Night nurse",
-      said: "Bed six is set up and warm. Baby " + b.surname + " is settled on CPAP, temperature " +
-            b.h.coreTemp.toFixed(1) + ". The parents are still in theatre recovery, so " + b.pronoun.s +
-            " has no first name on the chart yet. Everything else is yours.",
+      said: "Bed six is set up and warm. Baby " + b.surname + " is settled on " + supportLabel(b) +
+            ", temperature " + b.h.coreTemp.toFixed(1) + ". " +
+            (poor ? "They had a harder time getting here than anybody wanted. " : "") +
+            "The parents are still in theatre recovery, so " + b.pronoun.s +
+            " " + b.pronoun.has + " no first name on the chart yet. Everything else is yours.",
       opts: [{ label: "Understood", hint: "", run: function () {
         return { text: "Warm, pink and sweet: temperature, oxygen and glucose. That is the whole of a good admission in three words.", kind: "good" }; } }]
     });
@@ -855,10 +1135,10 @@
     var now = (b.ga + b.dol / 7);
     return "Gestational age at birth: this baby grew for " + b.ga + " weeks inside before being born. " +
            "Full term is about 40 weeks, and anything before 37 is premature. Counting the days since, " +
-           b.pronoun.s + " is now about " + now.toFixed(0) + " weeks corrected.";
+           b.pronoun.s + " " + b.pronoun.is + " now about " + now.toFixed(0) + " weeks corrected.";
   }
   function dolTip(b) {
-    return "Day of life: how many days old " + b.pronoun.s + " is. Day 0 is the day of birth, so " +
+    return "Day of life: how many days old " + b.pronoun.s + " " + b.pronoun.is + ". Day 0 is the day of birth, so " +
            "day " + b.dol + " means " + (b.dol === 0 ? "born today" : b.dol + " day" + (b.dol === 1 ? "" : "s") + " ago") + ".";
   }
   function wtTip(b) {
@@ -868,8 +1148,8 @@
   function fio2Tip(b) {
     var f = Math.round(b.support.fio2 * 100);
     return f <= 21 ? "21 percent oxygen, which is ordinary room air. No extra oxygen is being given."
-      : f + " percent oxygen in the air " + b.pronoun.s + " is breathing. Room air is 21 percent, so " +
-        b.pronoun.s + " is getting extra. Aim for the least that keeps the saturation in the low 90s.";
+      : f + " percent oxygen in the air " + b.pronoun.s + " " + b.pronoun.is + " breathing. Room air is 21 percent, so " +
+        b.pronoun.s + " " + b.pronoun.is + " getting extra. Aim for the least that keeps the saturation in the low 90s.";
   }
 
   // gestation / age / weight / pronouns, each part hoverable
@@ -934,6 +1214,7 @@
     renderTop();
     if (G.view.mode === "handover") return;      // the handover page owns the stage
     if (G.view.mode === "ward") renderWard();
+    else if (G.view.mode === "delivery") { renderSide(); return; }
     else if (G.view.mode === "bed") updateBedLive();
     renderSide();
   }
@@ -979,14 +1260,18 @@
           '<div class="muted" style="padding:18px 4px">This bedspace is quiet now.</div></div>';
         return;
       }
-      var c = openConcernFor(b), tk = G.talks.filter(function (t) { return t.bed === b.bed; })[0];
+      var c = activeConcernFor(b), stale = !c && openConcernFor(b);
+      var tk = G.talks.filter(function (t) { return t.bed === b.bed; })[0];
       var lvl = b.alarm.level;
       h += '<div class="pod ' + (lvl === "red" ? "alarm-red" : lvl === "amber" ? "alarm-amber" : "") +
-        (c ? " has-concern" : "") + '" data-bed="' + i + '">';
-      if (c || tk) {
+        (c ? " has-concern concern-" + c.def.severity : "") + '" data-bed="' + i + '">';
+      if (c || tk || stale) {
         h += '<div class="pod-flags">' +
           (c ? '<span class="flag ' + c.def.severity + '" title="' + esc(EV.CHARS[c.who].name) + '">' +
-               A.miniAvatar(EV.CHARS[c.who].av) + "<span>needs you</span></span>" : "") +
+               A.miniAvatar(EV.CHARS[c.who].av) +
+               "<span>" + (c.def.severity === "urgent" ? "needs you now" : "needs you") + "</span></span>" : "") +
+          (stale ? '<span class="flag stood" title="' + esc(EV.CHARS[stale.who].name) + '">' +
+               A.miniAvatar(EV.CHARS[stale.who].av) + "<span>all clear</span></span>" : "") +
           (tk ? '<span class="flag talk">' + A.miniAvatar(tk.def.who === "parent" ? b.parentAvatar : EV.CHARS[tk.who].av) +
                "<span>" + esc(tk.def.badge) + "</span></span>" : "") + "</div>";
       }
@@ -1002,11 +1287,37 @@
         "</div></div>" +
         '<div class="pod-foot"><span class="support-tag ' + supportClass(b) + '">' + supportHtml(b) + "</span>" + chips(b) + "</div></div>";
     });
+    h += deliveryPod();
     $("stage").innerHTML = h + "</div>";
     Array.prototype.forEach.call($("stage").querySelectorAll(".pod[data-bed]"), function (n) {
       n.onclick = function () { openBed(+n.getAttribute("data-bed")); };
     });
+    var dp = $("podDelivery");
+    if (dp) dp.onclick = function () { G.enterDelivery(); };
     attachTips($("stage"));
+  }
+
+  /* The delivery room sits in the ward like a bedspace, so that going there is a place you
+     click rather than an overlay that happens to you. Quiet all night until it is not. */
+  function deliveryPod() {
+    var d = G.delivery, waiting = d && d.state === "called";
+    if (!waiting && (!d || d.state !== "here")) {
+      var been = d && d.state === "done";
+      return '<div class="pod empty del-pod"><div class="pod-head"><div><div class="pod-name">Delivery room</div>' +
+        '<div class="pod-meta">two floors down</div></div><div class="bed-no">DR</div></div>' +
+        '<div class="muted" style="padding:18px 4px">' +
+        (been ? "Nothing more from down there tonight." : "Nobody is asking for you. If a baby is coming, the phone rings first.") +
+        "</div></div>";
+    }
+    return '<div class="pod del-pod has-concern concern-urgent" id="podDelivery">' +
+      '<div class="pod-flags"><span class="flag urgent">' + A.miniAvatar(EV.CHARS.priya.av) +
+      "<span>needs you now</span></span></div>" +
+      '<div class="pod-head"><div><div class="pod-name">Delivery room</div>' +
+      '<div class="pod-meta">' + esc(d.sc.label) + "</div></div><div class=\"bed-no\">DR</div></div>" +
+      '<div class="muted" style="padding:14px 4px 6px">' +
+      (waiting ? "They are waiting for you. Click to go down."
+               : "You are part way through down here. Click to go back.") +
+      "</div></div>";
   }
   function vT(c, l, v, bad, tipText) {
     var val = tipText ? GL.tip(v, tipText) : v;
@@ -1141,49 +1452,63 @@
       '" value="' + val + '"><span class="rv" id="v' + id.slice(1) + '">' + txt + "</span></div>";
   }
 
-  function recentlyResolvedFor(b) {
-    var best = null;
-    G.concerns.forEach(function (c) {
-      if (c.bed !== b.bed || !c.done || c.missed) return;
-      var at = c.resolvedAt != null ? c.resolvedAt : c.declinedAt;
-      if (at == null || G.min - at > 20) return;
-      if (!best || at > (best.resolvedAt != null ? best.resolvedAt : best.declinedAt)) best = c;
-    });
-    return best;
+  /* A note is what the team said when there is no open concern holding the callout - a
+     settled answer, or the unit refusing to carry an action out. It expires on its own. */
+  function noteHtml(n) {
+    var fresh = n.fresh ? " fresh" : ""; n.fresh = false;
+    var ch = n.who ? EV.CHARS[n.who] : null;
+    return '<div class="callout note-only ' + (n.kind === "good" ? "good" : "warn") + fresh + '">' +
+      (ch ? '<div class="co-av">' + A.avatar(ch.av) + "</div>"
+          : '<div class="co-av bed-note-icon">' + (n.kind === "good" ? "✓" : "!") + "</div>") +
+      "<div class='co-body'><div class='co-who'>" + esc(ch ? ch.name : "The bedside") +
+      (n.tag ? ' <span class="co-settled">' + esc(n.tag) + "</span>" : "") + "</div>" +
+      "<div class='co-say'>" + gl(n.text) + "</div></div></div>";
   }
 
   function renderBedCallout(b) {
     var box = $("callout"); if (!box) return;
-    var c = openConcernFor(b);
+    var c = openConcernFor(b), note = noteFor(b);
+    if (c && c.stale) {
+      // it stood itself down; nothing to do but read it and close it
+      var sch = EV.CHARS[c.who];
+      box.innerHTML = '<div class="callout resolved"><div class="co-av">' + A.avatar(sch.av) +
+        "</div><div class='co-body'><div class='co-who'>" + esc(sch.name) +
+        ' <span class="co-settled">stood down</span></div>' +
+        "<div class='co-say'>" + gl(c.said) + "</div>" +
+        '<div class="co-actions"><button type="button" class="btn ghost small" id="dismissConcern">' +
+        "Dismiss</button></div></div></div>";
+      var dm = document.getElementById("dismissConcern");
+      if (dm) dm.onclick = function () { dismissConcern(b); };
+      attachTips(box);
+      return;
+    }
     if (!c) {
-      // show the outcome briefly, so doing the right thing visibly lands
-      var done = recentlyResolvedFor(b);
-      if (!done) { box.innerHTML = ""; return; }
-      var dch = EV.CHARS[done.who];
-      var last = (done.replies || [])[done.replies.length - 1];
-      box.innerHTML = '<div class="callout resolved"><div class="co-av">' + A.avatar(dch.av) +
-        "</div><div class='co-body'><div class='co-who'>" + esc(dch.name) +
-        ' <span class="co-settled">settled</span></div>' +
-        (last ? '<div class="co-reply ' + (last.good === true ? "good" : last.good === false ? "bad" : "neutral") +
-                '">' + gl(last.text) + "</div>" : "") + "</div></div>";
+      var fresh0 = anyFresh(null, note);
+      box.innerHTML = note ? noteHtml(note) : "";
+      if (fresh0) box.scrollTop = box.scrollHeight;
       attachTips(box);
       return;
     }
     var ch = EV.CHARS[c.who];
     var html = '<div class="callout ' + c.def.severity + '"><div class="co-av">' + A.avatar(ch.av) + "</div><div class='co-body'>" +
       "<div class='co-who'>" + esc(ch.name) + (c.escalated ? ' <span class="co-again">asking again</span>' : "") + "</div>" +
-      "<div class='co-say'>" + gl(c.def.say(G, b)) + "</div>";
+      "<div class='co-say'>" + gl(c.said) + "</div>";
     if (G.nudges && c.def.nudge) html += '<div class="nudge">🤔 ' + gl(c.def.nudge) + "</div>";
+    // the nudge points at the principle; this points at the panel, for a player who knows
+    // what is wrong and still cannot find the control
+    if (G.nudges && c.def.help) html += '<div class="help">🧭 <b>Where to act.</b> ' + gl(c.def.help) + "</div>";
     (c.replies || []).forEach(function (r) {
-      var cls = r.good === true ? "good" : r.good === false ? "bad" : "neutral";
-      html += '<div class="co-reply ' + cls + '">' + gl(r.text) + "</div>";
+      html += '<div class="co-reply ' + replyClass(r) + '">' + gl(r.text) + "</div>";
     });
     if (!c.replies) html += '<div class="co-hintline">Use the controls below and ' + esc(ch.name.split(",")[0]) +
       " will tell you what they think. If you disagree, you can say so.</div>";
     html += '<div class="co-actions"><button type="button" class="btn ghost small" id="declineConcern">' +
             "Not now &mdash; I am not going to do that</button></div>";
     html += "</div></div>";
+    var fresh = anyFresh(c.replies, note);
+    if (note) html += noteHtml(note);
     box.innerHTML = html;
+    if (fresh) box.scrollTop = box.scrollHeight;
     var dec = document.getElementById("declineConcern");
     if (dec) dec.onclick = function () { declineConcern(b); };
     attachTips(box);
@@ -1303,32 +1628,46 @@
   // ---------------------------------------------------------------- side bar
   function renderSide() {
     var h = "<h3>Who needs you</h3>";
+    /* A parent with a question used to look almost exactly like a nurse who needs you now.
+       Everything waiting is ranked by how much it can hurt if it waits, and the top two
+       ranks are loud: a filled panel, a heavier bar, and a pulse, like the ringing phone. */
     var rows = [];
+    function row(rank, pri, html) { rows.push({ rank: rank, html: html.replace("{pri}", pri) }); }
     G.concerns.filter(function (c) { return !c.done; }).forEach(function (c) {
       var b = byBed(c.bed); if (!b) return;
-      rows.push('<button class="task ' + (c.def.severity === "urgent" ? "red" : c.def.severity === "worry" ? "amber" : "blue") +
-        '" data-go="' + G.babies.indexOf(b) + '">' + A.miniAvatar(EV.CHARS[c.who].av) +
+      var sev = c.stale ? "stale" : c.def.severity;
+      var cls = { stale: "green", urgent: "red", worry: "amber", note: "blue" }[sev];
+      var rank = { stale: 6, urgent: 1, worry: 3, note: 4 }[sev];
+      var pri = { stale: "pri-quiet", urgent: "pri-critical", worry: "pri-high", note: "" }[sev];
+      var note = c.stale ? "settled on its own &middot; dismiss it"
+                         : esc(cap(c.summaryText)) + (c.escalated ? " &middot; asking again" : "");
+      row(rank, pri, '<button class="task ' + cls + ' {pri}" data-go="' + G.babies.indexOf(b) + '">' +
+        A.miniAvatar(EV.CHARS[c.who].av) +
         '<span><span class="tt">' + esc(EV.CHARS[c.who].name.split(",")[0]) + " at bed " + c.bed + "</span>" +
-        '<span class="ts">' + esc(cap(c.def.summary(G, b))) + (c.escalated ? " &middot; asking again" : "") + "</span></span></button>");
+        '<span class="ts">' + note + "</span></span></button>");
     });
     G.talks.forEach(function (t) {
       var b = t.bed ? byBed(t.bed) : null;
       var isP = t.def.who === "parent";
       var nm = isP ? (b ? b.parentName : "A parent") : EV.CHARS[t.who].name.split(",")[0];
       var av = isP ? (b ? b.parentAvatar : "parent1") : EV.CHARS[t.who].av;
-      rows.push('<button class="task green" data-talk="' + t.id + '" data-bed="' + (t.bed == null ? "" : t.bed) + '">' +
+      row(5, "", '<button class="task green" data-talk="' + t.id + '" data-bed="' + (t.bed == null ? "" : t.bed) + '">' +
         A.miniAvatar(av) + '<span><span class="tt">' + esc(nm) + "</span>" +
         '<span class="ts">' + esc(t.def.badge) + (b ? " &middot; bed " + b.bed : "") + "</span></span></button>");
     });
     G.babies.forEach(function (b, i) {
       if (b.died || b.discharged) return;
       if (b.alarm.level !== "none") {
-        rows.push('<button class="task ' + (b.alarm.level === "red" ? "red" : "amber") + '" data-go="' + i + '">' +
-          '<span class="task-icon">' + (b.alarm.level === "red" ? "🔴" : "🟠") + "</span>" +
+        var red = b.alarm.level === "red";
+        row(red ? 0 : 2, red ? "pri-critical" : "pri-high",
+          '<button class="task ' + (red ? "red" : "amber") + ' {pri}" data-go="' + i + '">' +
+          '<span class="task-icon">' + (red ? "🔴" : "🟠") + "</span>" +
           '<span><span class="tt">Bed ' + b.bed + " &middot; " + esc(b.name) + '</span><span class="ts">' +
           esc(b.alarm.reasons.join(", ")) + "</span></span></button>");
       }
     });
+    rows.sort(function (x, y) { return x.rank - y.rank; });
+    rows = rows.map(function (r) { return r.html; });
     h += rows.length ? rows.join("") :
       '<div class="muted" style="font-size:.88rem">Nobody is waiting on you. A good moment to examine a baby, or to sit with a family.</div>';
 
@@ -1360,6 +1699,32 @@
     attachTips($("side"));
   }
 
+  /* ------------------------------------------------------- the bedside note
+     Everything the team says back goes into the callout at the top of the page, which is
+     sticky, so it is on screen wherever the player has scrolled to. That replaced an
+     overlay card that had to be dismissed: with the callout pinned the card was saying the
+     same thing twice and charging a click for it.
+
+     A note is for the handful of messages that have no concern to attach to - an action the
+     unit refused to carry out, mostly - so they still land somewhere visible instead of
+     only in the log. It clears itself. */
+  function atBedside(b) { return G.view.mode === "bed" && G.babies[G.view.bed] === b; }
+  function setNote(b, kind, text, opts) {
+    if (!text || !atBedside(b)) return;
+    opts = opts || {};
+    G.note = { bed: b.bed, kind: kind, text: text, at: G.min, fresh: true,
+               who: opts.who || null, tag: opts.tag || null };
+    renderBedCallout(b);
+  }
+  function noteFor(b) {
+    var n = G.note;
+    if (!n || n.bed !== b.bed) return null;
+    if (G.min - n.at > 25) { G.note = null; return null; }
+    return n;
+  }
+  G.setNote = setNote;
+
+
   // ---------------------------------------------------------------- tooltips
   var tipEl = null;
   function attachTips(root) {
@@ -1383,7 +1748,13 @@
       n.addEventListener("mouseleave", hide);
       n.addEventListener("focus", show);
       n.addEventListener("blur", hide);
+      /* Tapping a term is how a touch player reads its definition, so the tap must not
+         also reach whatever is underneath. The exception is a real button: inside one, a
+         tap is a decision the player is making, and swallowing it would strand them on a
+         dialog option they cannot choose. There, hover and focus still give the tip. */
+      var inButton = !!(n.closest && n.closest("button"));
       n.addEventListener("click", function (e) {
+        if (inButton) return;
         if (n.classList.contains("gl") || n.classList.contains("qmark")) { e.stopPropagation(); show(e); }
       });
     });
@@ -1397,7 +1768,7 @@
 
     var h = '<div class="report-wrap"><div class="muted mono">07:00 &middot; handover to the day team</div>' +
       '<div class="grade grade-' + (pct >= 76 ? "good" : pct >= 46 ? "mid" : "poor") + '">' + grade + "</div>" +
-      '<p class="verdict">' + esc(verdictLine(ev)) + "</p>" +
+      '<p class="verdict">' + gl(verdictLine(ev)) + "</p>" +
       '<p class="muted" style="font-size:1.02rem">Twelve hours. ' + G.babies.filter(function (b) { return !b.died; }).length +
       " babies handed over" + (died.length ? ", and one who did not make it." : ".") + "</p>";
 
@@ -1417,8 +1788,8 @@
       h += '<div class="domain ' + bd.cls + '"><div class="dom-head"><span class="dom-name">' + esc(x.label) +
         '</span><span class="dom-rating">' + bd.word + '</span></div>' +
         '<div class="dom-bar"><i style="width:' + Math.round(x.v * 100) + '%"></i></div>' +
-        '<div class="dom-detail">' + esc(x.detail) + "</div>" +
-        (x.v < 0.62 ? '<div class="dom-short">' + esc(x.shortfall) + "</div>" : "") + "</div>";
+        '<div class="dom-detail">' + gl(x.detail) + "</div>" +
+        (x.v < 0.62 ? '<div class="dom-short">' + gl(x.shortfall) + "</div>" : "") + "</div>";
     });
     h += "</div>";
 
@@ -1444,7 +1815,7 @@
       ev.concerns.unhandled.slice(0, 8).forEach(function (u) {
         var b = byBed(u.bed);
         h += "<li><b>Bed " + u.bed + (b ? ", " + esc(b.name) : "") + "</b> &mdash; " +
-             esc(EV.CHARS[u.who].name.split(",")[0]) + " raised " + esc(u.what.summary(G, b || G.babies[0])) + "</li>";
+             esc(EV.CHARS[u.who].name.split(",")[0]) + " raised " + gl(u.summaryText) + "</li>";
       });
       h += "</ul></div>";
     }
@@ -1462,8 +1833,8 @@
     var goods = G.scoreItems.filter(function (s) { return s.n > 0; }).sort(function (a, c) { return c.n - a.n; }).slice(0, 6);
     var bads = G.scoreItems.filter(function (s) { return s.n < 0; }).sort(function (a, c) { return a.n - c.n; }).slice(0, 6);
     h += '<div class="card"><h3>Decisions that mattered</h3>';
-    if (goods.length) { h += "<p><b>Well judged</b></p><ul class='plain'>"; goods.forEach(function (s) { h += "<li>" + s.t + " &mdash; " + esc(s.why) + "</li>"; }); h += "</ul>"; }
-    if (bads.length) { h += "<p style='margin-top:10px'><b>Worth revisiting</b></p><ul class='plain'>"; bads.forEach(function (s) { h += "<li>" + s.t + " &mdash; " + esc(s.why) + "</li>"; }); h += "</ul>"; }
+    if (goods.length) { h += "<p><b>Well judged</b></p><ul class='plain'>"; goods.forEach(function (s) { h += "<li>" + s.t + " &mdash; " + gl(s.why) + "</li>"; }); h += "</ul>"; }
+    if (bads.length) { h += "<p style='margin-top:10px'><b>Worth revisiting</b></p><ul class='plain'>"; bads.forEach(function (s) { h += "<li>" + s.t + " &mdash; " + gl(s.why) + "</li>"; }); h += "</ul>"; }
     if (!goods.length && !bads.length) h += '<p class="muted">A quiet night with few decision points.</p>';
     h += "</div>";
 
@@ -1502,12 +1873,19 @@
   function concernTally() {
     var keys = {};
     G.concerns.forEach(function (c) {
-      var k = keys[c.key] || (keys[c.key] = { handled: false, who: c.who, what: c.def, bed: c.bed });
+      var k = keys[c.key] || (keys[c.key] = { handled: false, stoodDown: false, who: c.who,
+                                              what: c.def, bed: c.bed, summaryText: c.summaryText });
+      k.summaryText = c.summaryText;
       var settled = c.done && !c.missed && (c.resolvedAt != null ||
                      (c.declinedAt != null && c.def.decline && c.def.decline.resolve));
       if (settled) k.handled = true;
+      if (c.stale || c.retracted) k.stoodDown = true;
+      if (c.missed) k.missed = true;
     });
-    var ks = Object.keys(keys);
+    // handled beats everything; a purely self-resolving one is dropped from the denominator
+    var ks = Object.keys(keys).filter(function (k) {
+      return keys[k].handled || keys[k].missed || !keys[k].stoodDown;
+    });
     var handled = ks.filter(function (k) { return keys[k].handled; });
     return { total: ks.length, handled: handled.length,
              unhandled: ks.filter(function (k) { return !keys[k].handled; }).map(function (k) { return keys[k]; }) };
@@ -1698,8 +2076,10 @@
         "<div class='ho-vitals'>" + vitalsHtml(b) + "</div>" +
         "<div class='ho-fam muted'>Family: " + esc(b.parents) + "</div></div></div>";
     });
-    h += '<div class="ho-foot"><p class="muted">Anything underlined, like ' + gl("CPAP") + " or " + gl("SpO2") +
-      ", can be hovered or tapped for a plain-language explanation. That works everywhere in the game.</p>" +
+    h += '<div class="ho-foot"><p class="muted">Anything underlined can be hovered or tapped for a plain-language ' +
+      "explanation: an abbreviation like " + gl("CPAP") + ", a number like the 6 in CPAP 6, and the ward lingo too, " +
+      "so when somebody says they are " + gl("bagging") + " or that there were green " + gl("residuals") +
+      ", you can find out what they mean. That works everywhere in the game.</p>" +
       '<button class="btn" id="startShift">I have the unit. Start the shift.</button></div></div>';
     $("stage").innerHTML = h;
     $("side").innerHTML = "<h3>Shift log</h3><div class='muted' style='font-size:.88rem'>The night has not started yet.</div>";

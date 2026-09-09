@@ -31,10 +31,30 @@
 
   var TONES = ["a", "b", "c", "d"];
 
+  /* Pronouns carry their own verb agreement. A singular "they" still takes a plural verb -
+     "they are jittery", never "they is jittery" - and there is no way to get that right by
+     concatenating a fixed word after `pronoun.s`. So every pronoun knows how to conjugate:
+     `pr.is` / `pr.was` / `pr.has` / `pr.does` for the auxiliaries, `pr.Is` when the verb leads a question
+     ("Are they dying?"), and `pr.v("look")` for an ordinary verb, which adds the s only when
+     the pronoun is singular. Write `pr.S + " " + pr.v("look") + " washed out"`, never
+     `pr.S + " looks washed out"`. */
+  function pronoun(s, o, p, set, plural) {
+    function cap(w) { return w.charAt(0).toUpperCase() + w.slice(1); }
+    var is = plural ? "are" : "is", was = plural ? "were" : "was",
+        has = plural ? "have" : "has", does = plural ? "do" : "does";
+    return {
+      s: s, o: o, p: p, S: cap(s), P: cap(p), set: set, plural: !!plural,
+      is: is, was: was, has: has, does: does,
+      Is: cap(is), Was: cap(was), Has: cap(has), Does: cap(does),
+      // regular verbs only; the irregular ones above are why they are spelled out
+      v: function (verb) { return plural ? verb : verb + "s"; }
+    };
+  }
+
   var PRON = [
-    { s: "she", o: "her", p: "her", S: "She", P: "Her", set: "f" },
-    { s: "he",  o: "him", p: "his", S: "He",  P: "His", set: "m" },
-    { s: "they", o: "them", p: "their", S: "They", P: "Their", set: "n" }
+    pronoun("she", "her", "her", "f", false),
+    pronoun("he", "him", "his", "m", false),
+    pronoun("they", "them", "their", "n", true)
   ];
 
   /* Draw a whole family. `rng` is Sim.rnd so a seed reproduces a shift exactly.
