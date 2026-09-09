@@ -1,0 +1,59 @@
+{
+  "title": "Week 2 Review Sheet",
+  "intro": "The 27 big ideas of Week 2 — three from each course — plus the six flashbacks on the final. This week you found most of these yourself. Read each one; if you can explain it out loud in your own words, check the box. Anything unchecked is what to reread before the final.",
+  "sections": [
+    { "course": "seminar", "name": "Freshman Seminar", "ideas": [
+      "A few sentences carry a lecture; the rest support them. Three tests find them: “so what?”, “could I forget it?”, “is it repeated?”",
+      "Ideas hide in headings, first and last sentences, and the lesson of a story. Tables, dates, and most numbers are details.",
+      "Testing yourself beats rereading (about 60% vs 40% a week later). Close the page and say it, teach it, or write a quiz question."
+    ]},
+    { "course": "chemistry", "name": "Chemistry 101", "ideas": [
+      "Acids let go of loose hydrogen and taste sour; bases grab it and feel slippery. Mixed, they cancel (neutralize).",
+      "pH is the acid ruler: 0–14, 7 neutral, lower = more acid. Each step is ten times.",
+      "Blood must stay at pH 7.35–7.45. CO₂ makes carbonic acid; bicarbonate is the sponge; lungs (fast) and kidneys (slow) keep the balance. A blood gas reads pH, CO₂, and bicarbonate as clues."
+    ]},
+    { "course": "biology", "name": "Biology 101", "ideas": [
+      "The heart is two pumps with four rooms: right side to the lungs, left side to the body. Arteries out, veins back, valves one-way.",
+      "Blood = plasma carrying red cells (oxygen), white cells (defense), platelets (plugs). A newborn has about 80 mL per kg — a 1 kg preemie has a third of a cup.",
+      "Before birth, blood skips the lungs through the ductus arteriosus and gets oxygen from the placenta. It should close at birth; in preemies it often stays open (PDA), flooding the lungs."
+    ]},
+    { "course": "physics", "name": "Physics 101", "ideas": [
+      "White light is all the colors mixed; a prism spreads them. Each color is a wavelength, red (long) to violet (short), with infrared and ultraviolet past the ends.",
+      "A thing's color is the light it bounces back after absorbing the rest. Oxygen-loaded hemoglobin is bright red and lets red light through.",
+      "The pulse ox compares red and infrared through the foot to get the oxygen percentage, using only the pulsing signal (Aoyagi). Bili lights are blue because bilirubin absorbs blue and becomes flushable."
+    ]},
+    { "course": "calculus", "name": "Calculus 101", "ideas": [
+      "Calculus's second question: how much piles up? Total = rate × time. 3 mL/hr × 24 hr = 72 mL.",
+      "Draw rate as height, time as width: the total is the area under the line. Steps are several rectangles added up.",
+      "When the rate is a curve, slice time into thin strips and add skinny rectangles; thinner slices get closer to the exact area. ∫ is the symbol for that sum."
+    ]},
+    { "course": "statistics", "name": "Statistics 101", "ideas": [
+      "The median is the middle value after lining numbers up. One wild number drags the mean but not the median.",
+      "A percentile is your place in line out of 100. The 50th is the median. It's a position, not a grade — one baby in ten is always at the 10th.",
+      "Growth charts draw the 10th, 50th, 90th curves by age. Below the 10th = small for gestational age. What matters most is following your own curve; crossing curves downward is the alarm."
+    ]},
+    { "course": "genetics", "name": "Genetics 101", "ideas": [
+      "Gene → protein (enzyme) → job. A typo makes a broken enzyme, so what it should break down piles up. PKU: phenylalanine piles up and harms the brain — a special diet from the first weeks prevents it.",
+      "The heel prick (Guthrie, 1961): blood spots on a card at 1–2 days, tested for about 35 hidden, treatable conditions. Hearing and pulse-ox heart screens ride along.",
+      "Screen everyone when a disease hides, waiting harms, early treatment works, and the test is cheap. A screen is a wide net: a positive means “test again, properly, now.”"
+    ]},
+    { "course": "psychology", "name": "Psychology 101", "ideas": [
+      "Attachment is the built-in bond that makes a baby seek a caregiver as a safe base — a survival system, not a side effect of being fed (Bowlby).",
+      "Three experiments: Harlow's monkeys chose comfort over food; Ainsworth found secure babies (about 6 in 10) have reliably responsive caregivers; Tronick's still face shows babies fight to restart serve-and-return.",
+      "A NICU strains the rope; hospitals once kept parents out. Measured: early holding, kangaroo care (2021: about a quarter fewer deaths), and parents doing the care all help. Bonding is treatment; parents are on the team."
+    ]},
+    { "course": "sociology", "name": "Sociology 101", "ideas": [
+      "About 13 million babies a year are born preterm and about 900,000 die of it. In the poorest countries about half of very early babies die for lack of basic care.",
+      "Compare groups with rates (per 100, per 1,000), not counts. In the US, Black babies die in the first year at more than twice the rate of white babies; millions of families live far from any birth care.",
+      "The gaps come from social determinants — money, food, housing, stress, distance, being listened to — not from the babies. Change the conditions and the numbers move."
+    ]},
+    { "course": "general", "name": "Flashbacks on the final", "ideas": [
+      "Week 1 Physics: blood pressure is in mmHg because the first meters were a column of mercury; the air holds up 760 mm.",
+      "Week 1 Statistics: Apgar 7–10 doing well; 4–6 may need help; 0–3 needs help now.",
+      "Week 1 Genetics: a gene is one recipe for one protein; 46 chromosomes in 23 pairs.",
+      "NICU Tutor: the isolette's skin probe reports skin temperature so the machine chases the target (servo control).",
+      "NICU Tutor: caffeine keeps a preemie's breathing center awake and prevents apnea.",
+      "NICU Tutor: suck-swallow-breathe isn't wired until about 32–34 weeks, so early preemies are fed by tube."
+    ]}
+  ]
+}

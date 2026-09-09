@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NICUniversity — Week 1 Timetable</title>
+<title>NICUniversity — Timetable</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
@@ -43,7 +43,7 @@
     </div>
     <div class="hero-text">
       <h1>NICUniversity</h1>
-      <p class="lede">Welcome, first-year pre-med student. This is your <strong>timetable</strong> for Week 1. The schedule runs Monday 9:00 onward — lectures, recitations where you do the homework, and a final exam on Friday afternoon. Following it in order is the smart way through, but every class is open whenever you want it.</p>
+      <p class="lede">Welcome, first-year pre-med student. This is your <strong>timetable</strong>. Each week runs Monday 9:00 onward — lectures, recitations where you do the homework, and a final exam on Friday afternoon. Following it in order is the smart way through, but every class is open whenever you want it.</p>
       <p id="next-banner" class="muted"></p>
     </div>
   </div>
@@ -54,7 +54,8 @@
     <span class="shelf-label" id="shelf-count" style="margin-left:auto"></span>
   </div>
 
-  <div class="week-label">📅 Week 1 · Fall Semester</div>
+  <div class="week-tabs" id="week-tabs"></div>
+  <div class="week-label" id="week-label"></div>
   <div class="timetable" id="timetable"></div>
 
   <div class="box box-fun">
@@ -62,18 +63,19 @@
     <ul>
       <li><strong>Lectures</strong> (about 20 minutes) teach something new and end with an 8-question quiz. 6 of 8 earns that course's badge.</li>
       <li><strong>Recitations</strong> are where you do the printed homework assigned at the end of each lecture (about 20 minutes). Your professor grades it with the answer key and records the score.</li>
-      <li><strong>Friday</strong>: study hall, then the Week 1 Final Exam covering everything.</li>
+      <li><strong>Friday</strong>: study hall, then that week's Final Exam covering everything. Every fifth week the final is a bigger Unit Exam.</li>
       <li>Every class has a <strong>🔊 read-aloud</strong> button in the margin of each paragraph, and <span style="border-bottom:2px dotted var(--violet)">dotted words</span> you can tap for a definition.</li>
     </ul>
   </div>
 
   <p class="footer-note">
-    All of Week 1 is open. Week 2 is coming. Your NICU Tutor badges live over at <a href="../nicu_tutor/index.html">NICU Tutor</a>.
+    Every built week is open in any order. Your NICU Tutor badges live over at <a href="../nicu_tutor/index.html">NICU Tutor</a>.
     <br><br>
     <button id="reset-progress" style="font:inherit;background:none;border:1px solid var(--line);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--ink-soft)">Reset all progress</button>
   </p>
 </main>
 
+<script src="js/schedule.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

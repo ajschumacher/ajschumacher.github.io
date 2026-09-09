@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociology 101, Week 2: Who Gets Care?</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+</head>
+<body class="c-sociology" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A simple world map outline with three hospital markers of different sizes, and a winding road from a small house to the nearest one">
+        <path d="M 30 70 Q 60 40 100 60 Q 130 75 160 55 Q 200 40 215 80 Q 220 120 190 140 Q 160 160 130 150 Q 100 140 70 160 Q 35 170 25 130 Q 18 95 30 70 Z" fill="#f1e6dc" stroke="#8a5a33" stroke-width="3"/>
+        <rect x="150" y="76" width="30" height="26" rx="3" fill="#fff" stroke="#8a5a33" stroke-width="2"/>
+        <rect x="162" y="82" width="6" height="14" fill="#f25f5c"/><rect x="158" y="86" width="14" height="6" fill="#f25f5c"/>
+        <rect x="60" y="100" width="18" height="16" rx="2" fill="#fff" stroke="#8a5a33" stroke-width="2"/>
+        <rect x="67" y="104" width="4" height="8" fill="#f25f5c"/><rect x="65" y="106" width="8" height="4" fill="#f25f5c"/>
+        <path d="M 40 150 L 52 140 L 64 150 L 64 164 L 40 164 Z" fill="#ffb627" stroke="#c8871a" stroke-width="2"/>
+        <path d="M 52 150 Q 90 170 110 130 Q 130 100 150 92" fill="none" stroke="#565d75" stroke-width="3" stroke-dasharray="6 5"/>
+        <text x="110" y="200" font-size="12" text-anchor="middle" fill="#565d75">how far to the nearest NICU?</text>
+        <text x="16" y="34" font-size="14">✦</text><text x="212" y="180" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Sociology 101 · Week 2 · Thursday 1:00</p>
+      <h1>Who Gets Care?</h1>
+      <p class="lede">Last week: the team inside a NICU. This week, zoom all the way out. About thirteen million babies a year are born too early, and whether one of them lives depends less on the baby than on where it was born. Sociology's job is to say that precisely — with numbers — so it can be changed.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from last week's Sociology.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-sociology-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. The purple boxes ask for the big idea; write yours before you check. Some of today's numbers are hard ones. That's the point of the class.</p>
+    </div>
+  </div>
+
+  <h2>🌍 Thirteen million</h2>
+  <p>Here is the biggest number in this course so far. Every year, about <strong>13 million</strong> babies are born preterm — more than one in every ten babies on Earth. Line them up and it's a city bigger than New York, born every year, too soon. Most of them, with warmth, feeding help, and someone watching their breathing, would grow up fine. Yet roughly <strong>900,000</strong> children a year die from the complications of being born early, which makes prematurity the number-one cause of death in children under five, anywhere in the world.</p>
+  <p>A sociologist's first question is: <em>which</em> babies? Not one in ten everywhere. The rate is about 6% in some countries and about 16% in others — Bangladesh, Malawi, and Pakistan have some of the highest — and more than six in ten of all preterm births happen in just two regions, sub-Saharan Africa and South Asia. But the sharpest fact isn't about where babies are <em>born</em> early. It's about what happens next. In the world's richest countries, a baby born at 30 weeks almost always survives. In the poorest, <strong>about half</strong> of babies born at or before 32 weeks die — not of anything exotic, but for lack of the ordinary things you learned in NICU Tutor: warmth, help with feeding, treatment for infections and breathing trouble. The same baby, born in two different places, gets two different lives.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">About 13 million babies a year are born preterm and about 900,000 die of it — the top killer of young children. Where a baby is born decides whether it gets the basic care that would save it: in the poorest countries about half of very early babies die.</p></details>
+    </div>
+  </div>
+
+  <h2>📊 Why sociologists count “per thousand”</h2>
+  <p>To compare places, you can't just count. Country A has 200,000 babies die and Country B has 20,000 — but if A has ten times as many births, they're doing equally well. So sociologists (and doctors, and everyone who compares groups) use <strong>rates</strong>: how many <em>per</em> hundred, or per thousand. You met “per” in Calculus — it means divide. A preterm <em>rate</em> of 10% means 10 preterm babies for every 100 born. An infant death rate of 5.6 per 1,000 means that out of every thousand babies born, about five or six die before their first birthday. Turn counts into rates, and suddenly a village and a nation can be compared on the same line.</p>
+  <p>Now use the tool on the United States, one of the richest countries on Earth. The overall infant death rate is about 5.6 per 1,000 — better than most of the world, worse than most rich countries. But split it by group and the line breaks in two. For white babies, about <strong>4.5</strong> per thousand. For Black babies, about <strong>10.9</strong> — more than twice as many. Black babies are also born preterm far more often: about 14.6% versus about 9.4%. And a baby born in a rural county may be hours from a hospital that delivers babies at all: more than two million American women of childbearing age live in what the March of Dimes calls a <strong>maternity care desert</strong> — a county with no hospital or clinic providing birth care. Remember regionalization from last week, the plan to get the sickest babies to a Level III or IV unit? It only works if the unit is reachable. For a lot of families, it's a three-hour drive.</p>
+
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Place or group</th><th>Preterm births</th><th>Babies who die in their first year</th></tr>
+    <tr><td>The world</td><td>About 1 in 10</td><td>About 27 per 1,000</td></tr>
+    <tr><td>Countries with the highest preterm rates</td><td>About 14–16 in 100</td><td>Often 30–60 per 1,000</td></tr>
+    <tr><td>United States, all babies</td><td>About 10 in 100</td><td>About 5.6 per 1,000</td></tr>
+    <tr><td>United States, white babies</td><td>About 9 in 100</td><td>About 4.5 per 1,000</td></tr>
+    <tr><td>United States, Black babies</td><td>About 15 in 100</td><td>About 10.9 per 1,000</td></tr>
+    <tr><td>Countries with the lowest rates (Japan, Finland, Sweden…)</td><td>About 5–6 in 100</td><td>About 2 per 1,000</td></tr>
+  </table>
+  </div>
+  <p>Look at the last row. Two per thousand is possible. It has been done. Every number above it is a gap between what's possible and what's happening — and a gap is exactly what sociology is for.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Compare groups with rates (per 100, per 1,000), not counts. In the US, Black babies die in their first year at more than twice the rate of white babies and are born preterm far more often; millions of families live far from any hospital that delivers babies.</p></details>
+    </div>
+  </div>
+
+  <h2>🗺️ It isn't the babies</h2>
+  <p>So why? The tempting answer is that some babies are just born weaker. The evidence says no. When researchers look closely, the gaps track <em>conditions of life</em>, not biology: whether the mother had a doctor to see during pregnancy; whether she had enough to eat and a safe place to live; how far the hospital was; how much stress she carried, month after month, from money, from work, from being treated badly; whether anyone listened when she said something felt wrong. Sociologists call these the <strong>social determinants of health</strong> — the ordinary circumstances that decide, before a single machine is switched on, who gets sick and who gets care. Doctors have a blunter phrase: your ZIP code predicts your health better than your genetic code.</p>
+  <p>Here is the proof that it's the circumstances and not the babies: <strong>change the circumstances and the numbers move.</strong> When a poor country trains nurses in kangaroo care and hands out plastic wraps to keep newborns warm, its preterm deaths fall — the Bogotá idea from Psychology, now recommended by the World Health Organization for every small baby on Earth, saving an estimated hundred thousand lives a year at almost no cost. When a rural region opens a clinic or sends a nurse to visit pregnant mothers at home, its babies arrive later and bigger. When a hospital simply decides to <em>measure</em> its gap by race and go after it — more visits, more listening, more translators, earlier care — the gap narrows. None of that changes anyone's DNA. It changes who gets care.</p>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Fieldwork: how far is your NICU?</div>
+    <p class="lab-materials">You need: a grown-up, a map app, and ten minutes.</p>
+    <p>Sociologists do fieldwork. Yours: with a grown-up, find the nearest hospital to your home that has a NICU (search “Level III NICU near me” — a hospital's website usually says its level). How far is it, and how long is the drive? Now find the nearest hospital that delivers babies at all. Then imagine your family lived two hours from either one. What would change about a preterm birth? Write your distances on the homework — and if you have a friend or cousin in a different town, ask them the same question and compare.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">The gaps come from social determinants — food, housing, money, stress, distance to care, being listened to — not from the babies. Proof: change the conditions (kangaroo care, clinics, home visits, measuring the gap) and the death rates fall.</p></details>
+    </div>
+  </div>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: the warming machine that's always available</div>
+    <p><a href="../../../nicu_tutor/lessons/01-isolette.html">NICU Tutor Lesson 1</a> ended with this: where incubators are scarce, cold still kills newborns, so doctors teach kangaroo care everywhere, “because a parent's chest is a warming machine that's always available.” Today you learned the sociology behind that sentence: the machine isn't the problem. Getting care to the baby is.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🏠 Real talk: the doctor who turned her house into a hospital</div>
+    <p>In 1931, a young Black doctor in Philadelphia named <strong>Virginia M. Alexander</strong> looked at the numbers for her own neighborhood and did what a sociologist would do next: she acted on them. Black families in North Philadelphia were being turned away from hospitals or given the worst beds; mothers gave birth at home without help; babies died at rates that the city's white neighborhoods never saw. So she opened a clinic in her own house on North 15th Street and called it the <em>Aspiranto Health Home</em>: a few beds upstairs where mothers could deliver safely, care for their newborns, and pay whatever they could, which was often nothing. She ran it for years, then went to Yale to study public health so she could prove with statistics what she'd seen with her eyes — and wrote reports on the health gap that the city couldn't ignore. She was a Quaker, a friend of the civil-rights lawyer Pauli Murray, and she died in 1949 at only 49, of lupus, still working.</p>
+    <p>The honest part is that the gaps she measured are still there, ninety years later, in the table above. That's not a reason to shrug. It's the reason this course exists: a NICU can be the best in the world and still only save the babies who reach it. Some of you will run NICUs. Some of you will decide where to build them, who to send a nurse to, and which numbers to measure. Alexander's lesson is that the second job matters as much as the first — and that it starts with counting, honestly, who isn't getting care.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>Babies born preterm each year, worldwide</td><td>About 13 million</td><td>About 1 in 10 births</td></tr>
+    <tr><td>Children who die each year from being born early</td><td>About 900,000</td><td>The leading cause of death under age 5</td></tr>
+    <tr><td>Very early babies (≤32 weeks) who die in the poorest countries</td><td>About half</td><td>Almost all survive in the richest</td></tr>
+    <tr><td>US infant deaths per 1,000: white / Black</td><td>About 4.5 / 10.9</td><td>More than double</td></tr>
+    <tr><td>US women living in a maternity care desert</td><td>More than 2 million</td><td>Over a third of US counties have no birth care</td></tr>
+    <tr><td>Lives kangaroo care could save each year</td><td>Around 100,000+</td><td>At almost no cost — a WHO recommendation</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Rate</dt><dd>A count divided by the size of the group — per 100 or per 1,000 — so different groups can be compared.</dd>
+      <dt>Infant mortality</dt><dd>Babies who die before their first birthday, usually given per 1,000 births.</dd>
+      <dt>Disparity</dt><dd>A gap between groups that shouldn't be there — in care, in survival, in health.</dd>
+      <dt>Social determinants of health</dt><dd>The conditions of life — money, housing, food, stress, distance, respect — that shape who gets sick and who gets care.</dd>
+      <dt>Maternity care desert</dt><dd>A county with no hospital or clinic that delivers babies.</dd>
+      <dt>Public health</dt><dd>Caring for the health of whole groups and places, not one patient at a time.</dd>
+      <dt>Fieldwork</dt><dd>Going and looking: the sociologist's way of collecting data.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth" target="_blank" rel="noopener">World Health Organization: preterm birth</a> — the source of the world numbers.</li>
+      <li><a href="https://www.marchofdimes.org/peristats" target="_blank" rel="noopener">March of Dimes PeriStats</a> — look up preterm and infant-death rates for your own state.</li>
+      <li>Ask a grown-up where you were born, how far the nearest NICU was, and whether they ever thought about that.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Sociology 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's 🏥 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Who Gets Care?</div>
+    <p>Due at recitation, Friday 9:45. Print it now: <a href="../../print/week2/hw-sociology-w2.pdf" target="_blank" rel="noopener">Homework 2: Who Gets Care? (PDF)</a>. Turn counts into rates, compare three countries, read a map for the right hospital, sort the social determinants, and plan a NICU with two incubators and ten babies. Plus the find-your-NICU fieldwork. Details on the <a href="../../recitations/week2/sociology.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-thu-soc",
+  quizId: "sociology-w2",
+  course: "sociology",
+  printQuiz: "../../print/week2/quiz-sociology-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: why do doctors teach kangaroo care everywhere in the world, even where there are no incubators?", a: "Because cold still kills newborns where incubators are scarce, and a parent's chest is a warming machine that's always available — and it steadies the baby's heartbeat and breathing too." },
+    { q: "From last week's Sociology: what is regionalization, and why does it save lives?", a: "Organizing a region so the sickest babies are born in, or moved to, Level III or IV units equipped for them. Very small babies survive more often at the right level — if it's reachable. Today: what happens when it isn't." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

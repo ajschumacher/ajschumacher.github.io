@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICU Night Shift — a NICU simulation game</title>
+<link rel="stylesheet" href="css/game.css?v=9">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+</head>
+<body>
+<div class="title-wrap">
+
+  <div class="title-hero">
+    <div class="art" id="art"></div>
+    <div class="txt">
+      <h1 class="game-title">NICU Night Shift</h1>
+      <p class="game-sub">Seven in the evening. Five babies. Twelve hours. You are the one they call.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>What this is</h3>
+    <p>A shift in a neonatal intensive care unit, simulated properly. Every baby has a real
+       body underneath: lungs that stiffen, a gut that tires, an infection that grows while you
+       are looking somewhere else. You never see that hidden state directly. You see monitors,
+       which sometimes lie, and a baby, who never does.</p>
+    <p>Nurses will bring you problems. Parents will ask you questions you cannot answer easily.
+       The pharmacist will query your dose, and they will be right to. Somewhere in the small
+       hours the delivery room will call.</p>
+  </div>
+
+  <div class="card">
+    <h3>Choose your level</h3>
+    <div class="diff-grid" id="diffs">
+      <button class="diff" data-d="student">
+        <div class="dn">Student</div>
+        <div class="dd">Four babies, and nothing new arrives mid-shift. Illnesses declare
+          themselves slowly, thinking prompts are shown, procedures rarely fail, and nobody
+          dies. The right place to start.</div>
+      </button>
+      <button class="diff sel" data-d="resident">
+        <div class="dn">Resident</div>
+        <div class="dd">Five babies, the phone rings, and something will arrive from the
+          delivery room. Full physiology, thinking prompts still shown. A demanding but fair night.</div>
+      </button>
+      <button class="diff" data-d="attending">
+        <div class="dn">Attending</div>
+        <div class="dd">Five babies, illness declares itself fast, fragile brains, procedures
+          fail more often, and no thinking prompts at all. The unit is genuinely yours.</div>
+      </button>
+    </div>
+    <div class="opt-row opt-level">
+      <label data-lvlbox><input type="checkbox" id="cbHints" checked> Show thinking prompts and choice descriptions</label>
+      <label data-lvlbox><input type="checkbox" id="cbDeath" checked> Babies can die if a crisis is ignored</label>
+    </div>
+    <div class="opt-note" id="optNote"></div>
+    <div class="opt-row">
+      <label><input type="checkbox" id="cbSound" checked> Alarm sounds</label>
+      <span class="muted" style="font-size:.85rem">Your preference; the level never changes this.</span>
+    </div>
+    <div class="opt-row">
+      <label for="seed" class="muted">Shift seed (same number = same night)</label>
+      <input id="seed" class="kbd" style="width:110px;padding:6px 10px" placeholder="random">
+    </div>
+    <div class="opt-row">
+      <button class="btn" id="play">Start the shift</button>
+      <button class="btn ghost" id="btnHow">How to play</button>
+    </div>
+    <p class="muted" id="best" style="margin-top:10px;font-size:.9rem"></p>
+  </div>
+
+  <div class="card hide" id="how">
+    <h3>How to play</h3>
+    <p><b>The unit view</b> shows every bed at once: the baby, the monitor numbers, and what
+      support they are on. A bed glowing amber wants a look. A bed glowing red wants you now.
+      Click any bed to go to the bedside. <span class="kbd">Esc</span> comes back,
+      <span class="kbd">1</span>&ndash;<span class="kbd">6</span> jump between beds,
+      <span class="kbd">space</span> pauses.</p>
+    <p><b>Time is the real resource.</b> The clock runs while you work, and every action costs
+      minutes: examining a baby is five, intubating is fifteen, an echo takes the best part of an
+      hour to come back. While you are doing one thing you are not doing another. Pause whenever
+      you want to think — there is no penalty for thinking.</p>
+    <p><b>Look at the baby.</b> The picture at the bedside is not decoration. Colour, effort,
+      posture and whether the eyes are open all come from the same hidden state the monitor is
+      sampling — and the monitor has artifacts. A probe that has slipped off a foot will read 74
+      percent on a baby who is pink and wriggling. Turning up the oxygen would be the wrong answer.</p>
+    <p><b>Most alarms are handled for you.</b> The nurses are experienced and they will stimulate a
+      baby through a spell without being asked. Your job is not to chase every beep, it is to notice
+      the pattern: why is this baby having more spells tonight than yesterday?</p>
+    <p><b>Asking for help is scored as a good move</b>, because it is one.</p>
+    <p><b>At the end</b> you get the truth. Every baby's hidden diagnosis is revealed, along with
+      what actually happened, what you did well, and what you would want to do differently. That
+      debrief is the real point of the game.</p>
+  </div>
+
+  <div class="card">
+    <h3>A note for grown-ups</h3>
+    <p>The medicine here is simplified but not invented: the oxygen targets, the pressure limits,
+      the glucose infusion rate formula, the Apgar scoring, the sepsis and NEC and pneumothorax
+      stories all behave roughly the way they do in a real unit. The game takes mortality seriously
+      rather than hiding it — a baby can die, but only after a sustained crisis that was ignored,
+      and it is handled with a debrief rather than a game-over screen. If you would rather that not
+      happen at all, untick the box above.</p>
+    <p class="muted">Companion to <a href="../nicu_tutor/index.html">NICU Tutor</a> and
+      <a href="../nicuniversity/index.html">NICUniversity</a>. Everything runs offline in the browser.</p>
+  </div>
+
+</div>
+<script src="js/art.js?v=9"></script>
+<script>
+(function () {
+  var BUILD = "9";   // bump alongside the ?v= tags when files change
+  document.getElementById("art").innerHTML = Art.titleArt();
+  // Each level owns its own defaults for the level-driven boxes. Picking a level always
+  // applies all of them, so the two controls can never drift out of step. Sound is a
+  // personal preference and is deliberately never touched here.
+  var LEVEL_DEFAULTS = {
+    student:   { hints: true,  death: false },
+    resident:  { hints: true,  death: true },
+    attending: { hints: false, death: true }
+  };
+  var LEVEL_NAME = { student: "Student", resident: "Resident", attending: "Attending" };
+  var diff = "resident";
+  var cbHints = document.getElementById("cbHints"),
+      cbDeath = document.getElementById("cbDeath"),
+      note = document.getElementById("optNote");
+
+  function flash(cb) {
+    var lab = cb.closest("label");
+    if (!lab) return;
+    lab.classList.remove("just-changed");
+    void lab.offsetWidth;                 // restart the animation
+    lab.classList.add("just-changed");
+  }
+
+  function isCustomised() {
+    var d = LEVEL_DEFAULTS[diff];
+    return cbHints.checked !== d.hints || cbDeath.checked !== d.death;
+  }
+
+  function updateNote() {
+    if (isCustomised()) {
+      note.innerHTML = "Changed from the " + LEVEL_NAME[diff] + " defaults. " +
+        '<button type="button" class="linkish" id="resetOpts">Reset to ' + LEVEL_NAME[diff] + "</button>";
+      note.className = "opt-note custom";
+      document.getElementById("resetOpts").onclick = function () { applyLevel(diff, true); };
+    } else {
+      note.textContent = "Standard settings for " + LEVEL_NAME[diff] + ".";
+      note.className = "opt-note";
+    }
+  }
+
+  function applyLevel(level, announce) {
+    var d = LEVEL_DEFAULTS[level];
+    if (cbHints.checked !== d.hints) { cbHints.checked = d.hints; if (announce) flash(cbHints); }
+    if (cbDeath.checked !== d.death) { cbDeath.checked = d.death; if (announce) flash(cbDeath); }
+    updateNote();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".diff"), function (n) {
+    n.onclick = function () {
+      Array.prototype.forEach.call(document.querySelectorAll(".diff"), function (m) { m.classList.remove("sel"); });
+      n.classList.add("sel");
+      diff = n.getAttribute("data-d");
+      applyLevel(diff, true);
+    };
+  });
+  cbHints.addEventListener("change", updateNote);
+  cbDeath.addEventListener("change", updateNote);
+  applyLevel(diff, false);
+  document.getElementById("btnHow").onclick = function () { document.getElementById("how").classList.toggle("hide"); };
+  document.getElementById("play").onclick = function () {
+    var s = document.getElementById("seed").value.trim();
+    var cfg = {
+      difficulty: diff,
+      hints: document.getElementById("cbHints").checked,
+      allowDeath: document.getElementById("cbDeath").checked,
+      sound: document.getElementById("cbSound").checked,
+      seed: s ? (parseInt(s, 10) || (s.split("").reduce(function (a, c) { return a + c.charCodeAt(0) * 7; }, 11))) : null
+    };
+    try { sessionStorage.setItem("nicuGameCfg", JSON.stringify(cfg)); } catch (e) {}
+    location.href = "game.html?v=" + BUILD;
+  };
+  try {
+    var best = JSON.parse(localStorage.getItem("nicuGameBest") || "{}");
+    var parts = [];
+    ["student", "resident", "attending"].forEach(function (k) {
+      if (best[k]) parts.push(k + ": " + best[k].grade + " (" + best[k].pct + ")");
+    });
+    if (parts.length) document.getElementById("best").textContent = "Your best shifts — " + parts.join(" · ");
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

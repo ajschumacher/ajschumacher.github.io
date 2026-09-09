@@ -1,0 +1,537 @@
+{
+  "seminar-w1": {
+    "title": "Homework 1: Notes Practice",
+    "course": "seminar",
+    "courseName": "Freshman Seminar",
+    "intro": "About 20 minutes. Answer in your own words — if your answer means the same thing as the key, it counts. Part B is the heart of this homework: practice turning a paragraph into three big ideas.",
+    "items": [
+      { "type": "section", "title": "Part A — Reading your timetable" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "What time is your Biology 101 lecture on Monday? And when is the Biology recitation?",
+        "answer": "Lecture Monday 1:00; recitation Tuesday 9:45." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "Which class comes right after the Chemistry recitation on Tuesday?",
+        "answer": "The Biology recitation (Tuesday 9:45)." },
+
+      { "type": "section", "title": "Part B — Three big ideas (the main event)" },
+      { "type": "passage",
+        "text": "From NICU Tutor: The pulse oximeter is a soft band with two tiny lights — one red, one infrared — that shine right through a baby's foot. Hemoglobin that is carrying oxygen absorbs those two colors differently from hemoglobin that is empty. By comparing how much of each light gets through, the machine works out what percentage of the hemoglobin is carrying oxygen. Because every heartbeat pushes a fresh pulse of blood into the foot, the machine can also count the heart rate. For preemies getting extra oxygen, the team aims for about 90 to 95 percent, because too much oxygen can damage the eyes and lungs." },
+      { "type": "short", "points": 6, "lines": 6,
+        "q": "Write the THREE biggest ideas from that passage, in your own words. One line each. (2 points each: the idea is right and it isn't just copied.)",
+        "answer": "Any three of: (1) It measures blood oxygen by shining two colors of light through the foot. (2) Loaded and empty hemoglobin absorb light differently — that's the trick. (3) It also reads heart rate from the pulse of each heartbeat. (4) Preemies on oxygen are kept around 90–95% because too much oxygen harms eyes/lungs. Give 1 point if the idea is right but copied word-for-word." },
+      { "type": "short", "points": 2, "lines": 3,
+        "q": "Two students took notes on that passage. Student 1 wrote: “The pulse oximeter is a soft band with two tiny lights, one red, one infrared, that shine right through a baby's foot.” Student 2 wrote: “Pulse ox = shines 2 light colors through foot to measure oxygen.” Which student followed the note-taking rule, and why?",
+        "answer": "Student 2 — the note is in their own words and captures the idea (what it does and how), not a copied sentence. Student 1 copied a sentence, which doesn't prove understanding and takes longer." },
+
+      { "type": "section", "title": "Part C — New words" },
+      { "type": "table", "points": 4,
+        "q": "Pick TWO new words from any of today's classes (Seminar, Chemistry, or Biology). Write each word, then what it means in your own words.",
+        "columns": ["Word", "What it means (my words)"],
+        "rows": [["", ""], ["", ""]],
+        "answer": "Any two real terms from the day with a reasonable definition (e.g., molecule — atoms joined together; recitation — where we practice/do homework; mitochondria — cell's power plants). 1 point for the word, 1 for the meaning." },
+
+      { "type": "section", "title": "Part D — Quiz strategy" },
+      { "type": "mc", "points": 1,
+        "q": "You've read a quiz question twice and crossed out two choices you know are wrong. What's the best next step?",
+        "choices": [
+          "Compare the two remaining choices carefully against what the question actually asks.",
+          "Pick whichever of the two remaining choices is written with more words.",
+          "Pick the remaining choice that appears earlier in the list of options.",
+          "Skip the question, since two choices left means it can't be answered."
+        ],
+        "answer": 0,
+        "explain": "Two left is a fair fight — reread the question and check each against it. Length and position tell you nothing here." },
+
+      { "type": "section", "title": "Part E — Flashback to NICU Tutor" },
+      { "type": "short", "points": 1, "lines": 2,
+        "q": "What does the skin probe taped to a baby's belly in an isolette do?",
+        "answer": "Measures the baby's skin temperature so the isolette can adjust its warmth automatically (servo control)." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "Name TWO of the four ways a baby loses heat.",
+        "answer": "Any two of: evaporation, convection, radiation, conduction." },
+
+      { "type": "section", "title": "Part F — Think like a student" },
+      { "type": "think", "points": 2, "lines": 4,
+        "q": "Elizabeth Blackwell was let into medical school as a joke and graduated first in her class. Think about your own week: name ONE specific thing you can do if a class feels hard.",
+        "answer": "Any thoughtful, specific answer: ask the professor (office hours), reread the 'Write this down' boxes, use the read-aloud, retake the quiz after reviewing, look back at the NICU Tutor lesson, take a break and come back. 2 points for specific; 1 for vague ('try harder')." }
+    ]
+  },
+
+  "chemistry-w1": {
+    "title": "Homework 1: Atoms & Air",
+    "course": "chemistry",
+    "courseName": "Chemistry 101",
+    "intro": "About 20 minutes. You may look back at your Class Notes sheet. Part A is counting practice — go slowly and check each row.",
+    "items": [
+      { "type": "section", "title": "Part A — Count the atoms" },
+      { "type": "table", "points": 6,
+        "q": "For each molecule, count the atoms of each element, then the total. (Remember: the little number counts the atom right before it; no number means 1. Write 0 if an element isn't there.)",
+        "columns": ["Formula", "C", "H", "O", "N", "Total"],
+        "rows": [["H₂O (water)", "", "", "", "", ""],
+                 ["CO₂ (carbon dioxide)", "", "", "", "", ""],
+                 ["O₂ (oxygen)", "", "", "", "", ""],
+                 ["N₂ (nitrogen)", "", "", "", "", ""],
+                 ["NH₃ (ammonia)", "", "", "", "", ""],
+                 ["C₆H₁₂O₆ (glucose — sugar)", "", "", "", "", ""]],
+        "answer": "H₂O: C0 H2 O1 N0 = 3. CO₂: C1 H0 O2 N0 = 3. O₂: 0,0,2,0 = 2. N₂: 0,0,0,2 = 2. NH₃: 0,3,0,1 = 4. C₆H₁₂O₆: 6,12,6,0 = 24. One point per correct row." },
+
+      { "type": "section", "title": "Part B — Draw a molecule" },
+      { "type": "draw", "points": 2, "height": 2.0,
+        "q": "Draw CO₂ and H₂O as ball diagrams, like the ones in class. Use the legend: oxygen = red (or label “O”), carbon = black (“C”), hydrogen = light blue (“H”). Label each molecule with its formula.",
+        "answer": "CO₂: one C ball with an O ball on each side (O–C–O). H₂O: one O ball with two smaller H balls attached (a V shape is a bonus, not required). 1 point each; the correct number and kind of balls is what matters." },
+
+      { "type": "section", "title": "Part C — The air, in percent" },
+      { "type": "short", "points": 2, "lines": 1,
+        "q": "Out of every 100 particles of air, about how many are nitrogen? About how many are oxygen?",
+        "answer": "About 78 nitrogen; about 21 oxygen." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "Imagine a room with 100 balloons of air. If 21 of them are oxygen, how many balloons are NOT oxygen?",
+        "answer": "79 (100 − 21)." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "A NICU baby is “on 40%.” Is that MORE or LESS oxygen than room air? How do you know?",
+        "answer": "More. Room air is 21% oxygen; 40% means the blender has added extra oxygen on top of that." },
+
+      { "type": "section", "title": "Part D — Which way does it go?" },
+      { "type": "table", "points": 3,
+        "q": "In the lungs, mark what happens to each gas with an X: goes INTO the blood, goes OUT of the blood into the air, or is mostly ignored (in and right back out).",
+        "columns": ["Gas", "INTO the blood", "OUT of the blood", "Mostly ignored"],
+        "rows": [["Oxygen (O₂)", "", "", ""], ["Carbon dioxide (CO₂)", "", "", ""], ["Nitrogen (N₂)", "", "", ""]],
+        "answer": "O₂ → INTO the blood. CO₂ → OUT of the blood. N₂ → mostly ignored." },
+      { "type": "mc", "points": 1,
+        "q": "Why must the body get rid of carbon dioxide?",
+        "choices": [
+          "Dissolved in blood it forms an acid, and too much acid disrupts the body's chemistry.",
+          "It takes up room in the blood that is needed for carrying sugar to the cells.",
+          "It is a heavier gas than oxygen, so it would settle in the legs and feet.",
+          "It blocks the red and infrared light that the pulse oximeter needs to read."
+        ],
+        "answer": 0,
+        "explain": "CO₂ in blood makes acid. A little is normal; a pile-up (when breathing fails) makes blood too acidic." },
+
+      { "type": "section", "title": "Part E — Flashback to NICU Tutor" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "Name the NICU machine that measures oxygen saturation using light.",
+        "answer": "The pulse oximeter." },
+      { "type": "short", "points": 2, "lines": 3,
+        "q": "What is surfactant, and why do premature babies need it as a medicine?",
+        "answer": "A slippery, soap-like liquid that coats the alveoli so they don't stick shut. Babies don't make enough until about 34–36 weeks, so preemies' lungs collapse with each breath (RDS) unless surfactant is given." },
+
+      { "type": "section", "title": "Part F — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "A preemie's blood gas test shows too much carbon dioxide in the blood. (a) What is this baby probably NOT doing well enough? (b) Name one NICU machine that could help, and say in one sentence what it does.",
+        "answer": "(a) Breathing — not moving enough air in and out to blow off CO₂ (1 pt). (b) CPAP (keeps lungs partly inflated so breathing is easier) or a ventilator (delivers breaths for the baby) — 1 pt for the machine, 1 pt for what it does." }
+    ]
+  },
+
+  "biology-w1": {
+    "title": "Homework 1: Cells",
+    "course": "biology",
+    "courseName": "Biology 101",
+    "intro": "About 20 minutes. Part A uses the diagram — the numbers point to parts of the cell. Look back at your notes if you need to.",
+    "items": [
+      { "type": "section", "title": "Part A — Label the cell" },
+      { "type": "figure", "figure": "cell" },
+      { "type": "table", "points": 8,
+        "q": "For each number on the diagram, write the part's name and its job (in your own words — the 'city' comparison is fine).",
+        "columns": ["#", "Part name", "Its job"],
+        "rows": [["1", "", ""], ["2", "", ""], ["3", "", ""], ["4", "", ""]],
+        "answer": "1 Membrane — the wall/gatekeeper; decides what comes in and out. 2 Cytoplasm — the jelly that fills the cell. 3 Nucleus — the library; holds the DNA instructions. 4 Mitochondria — power plants; burn sugar with oxygen for energy. 1 point per name, 1 per job." },
+
+      { "type": "section", "title": "Part B — The ladder" },
+      { "type": "short", "points": 3, "lines": 2,
+        "q": "Put these in order from SMALLEST to BIGGEST: organ, atom, cell, molecule, tissue, organism.",
+        "answer": "atom, molecule, cell, tissue, organ, organism. 3 points all correct; 2 points for one swap; 1 point for two swaps." },
+
+      { "type": "section", "title": "Part C — Doubling" },
+      { "type": "table", "points": 3,
+        "q": "One cell divides, and every new cell keeps dividing. Fill in how many cells there are after each round.",
+        "columns": ["Rounds of division", "0", "1", "2", "3", "4", "5", "6"],
+        "rows": [["Number of cells", "1", "", "", "", "", "", ""]],
+        "answer": "1, 2, 4, 8, 16, 32, 64. 3 points all correct; 2 points for one slip; 1 for two." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "After 10 rounds there are 1,024 cells. About how many after 11 rounds?",
+        "answer": "2,048 (double 1,024)." },
+
+      { "type": "section", "title": "Part D — Match the cell to its fact" },
+      { "type": "match", "points": 4,
+        "q": "Draw a line from each cell type to the fact that describes it.",
+        "left": ["Red blood cell", "Skin cell", "Bacterium", "Nerve cell"],
+        "right": ["Stacks in layers to build a wall — only a few layers thick in a preemie",
+                  "A single-celled living thing; some kinds cause infections like sepsis",
+                  "Carries electrical signals around the body",
+                  "Throws out its nucleus to make room for hemoglobin; lives about 120 days"],
+        "answer": [3, 0, 1, 2] },
+
+      { "type": "section", "title": "Part E — Power plants" },
+      { "type": "mc", "points": 1,
+        "q": "When mitochondria burn sugar with oxygen, what is the “exhaust”?",
+        "choices": [
+          "Carbon dioxide and water",
+          "Nitrogen and oxygen",
+          "Hemoglobin and bilirubin",
+          "Salt and more sugar"
+        ],
+        "answer": 0,
+        "explain": "Sugar + oxygen → energy, with CO₂ and H₂O as exhaust — exactly the two things you breathe out more of than you breathe in." },
+
+      { "type": "section", "title": "Part F — Flashback to NICU Tutor" },
+      { "type": "short", "points": 2, "lines": 3,
+        "q": "Why do newborns turn yellow (jaundice)? Use the words “red blood cells” and “bilirubin” in your answer.",
+        "answer": "Worn-out red blood cells get recycled, leaving a yellow leftover called bilirubin. Newborns recycle lots of extra red cells while their liver is still slow at flushing bilirubin out, so it builds up and tints the skin. 1 point each for using the two ideas correctly." },
+      { "type": "short", "points": 1, "lines": 2,
+        "q": "The isolette keeps the air very humid for the tiniest babies. What does that protect against?",
+        "answer": "Water (and heat) escaping through the baby's very thin skin — evaporation." },
+
+      { "type": "section", "title": "Part G — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "A preemie in the NICU is gaining about 20 grams every day. Using what you know about cells, explain why this baby needs so much sugar and oxygen.",
+        "answer": "Growing means cells dividing (doubling) — making new cells needs energy, and the cell's mitochondria make energy by burning sugar with oxygen. More growth = more dividing = more fuel needed, gram for gram, than an adult. 3 points for connecting growth → cell division → mitochondria need sugar + oxygen; 2 for two of the three links; 1 for one." }
+    ]
+  },
+
+  "physics-w1": {
+    "title": "Homework 1: Pressure",
+    "course": "physics",
+    "courseName": "Physics 101",
+    "intro": "About 20 minutes. Think in pushes and areas. Part D is a comparison — put the pushes in order and say why.",
+    "items": [
+      { "type": "section", "title": "Part A — What pressure is" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "In your own words, what is pressure? (Use the words push and area.)",
+        "answer": "Pressure is how much push lands on each bit of area — a push spread over an area. Same push on a smaller area = more pressure. 1 pt for 'push', 1 pt for 'spread over area / per area'." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "You press down with the same push on a block that covers 1 square, and then on a block that covers 4 squares. Which block gets the higher pressure? How many times higher?",
+        "answer": "The 1-square block. 4 times higher (the push is spread over 4 times less area)." },
+
+      { "type": "section", "title": "Part B — Match the unit to what it measures" },
+      { "type": "match", "points": 4,
+        "q": "Draw a line from each unit to the NICU measurement that uses it.",
+        "left": ["mmHg", "cmH₂O", "percent (%)", "grams (g)"],
+        "right": ["A baby's weight", "Blood pressure", "How much of the air is oxygen", "CPAP pressure"],
+        "answer": [1, 3, 2, 0] },
+
+      { "type": "section", "title": "Part C — Torricelli's tube" },
+      { "type": "draw", "points": 2, "height": 2.2,
+        "q": "Draw Torricelli's experiment: a dish of mercury with an upside-down tube standing in it, the mercury column inside labeled 760 mm. Next to it, draw a much shorter column and label it with a newborn's top blood pressure number (about 60 mmHg).",
+        "answer": "Dish + tube with a column labeled ~760 mm (1 pt); a clearly shorter column labeled about 60 mmHg (1 pt). Proportions don't need to be exact — shorter is the point." },
+
+      { "type": "section", "title": "Part D — Biggest push to smallest" },
+      { "type": "short", "points": 3, "lines": 3,
+        "q": "Put these four pushes in order from BIGGEST to SMALLEST, then explain how you decided: (a) the atmosphere at sea level, 760 mmHg; (b) an adult's top blood pressure, 120 mmHg; (c) a newborn's top blood pressure, 70 mmHg; (d) CPAP at 6 cmH₂O (about 4 mmHg).",
+        "answer": "Atmosphere (760) > adult BP (120) > newborn BP (70) > CPAP (about 4 mmHg). 2 pts for the order; 1 pt for explaining that you converted CPAP to mmHg (or noticed cmH₂O is a much smaller unit) so everything could be compared in one unit." },
+      { "type": "mc", "points": 1,
+        "q": "Why do NICU teams use the gentlest ventilator pressure that still works?",
+        "choices": [
+          "Too much pressure overstretches delicate lungs and can pop an air sac.",
+          "Higher pressures make the machine use more electricity.",
+          "High pressure pushes the oxygen out through the skin.",
+          "Lower pressures make the alarms quieter for other babies."
+        ],
+        "answer": 0,
+        "explain": "Pressure can heal and pressure can hurt — 'gentle ventilation' protects lungs from scarring (BPD) and air leaks." },
+
+      { "type": "section", "title": "Part E — Flashback to NICU Tutor" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "A blood pressure is written “64/38.” What is each number called, and what does each one measure?",
+        "answer": "64 = systolic, the peak push during the heart's squeeze; 38 = diastolic, the low push between beats while the heart refills." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "What does CPAP stand for, and what does it do for a preemie's lungs?",
+        "answer": "Continuous Positive Airway Pressure. A steady air cushion through nose prongs keeps the alveoli partly inflated so each breath starts from 'partly open' instead of collapsed." },
+
+      { "type": "section", "title": "Part F — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "A preemie on CPAP at 5 cmH₂O is still working hard to breathe — you can see the skin pulling in between the ribs. The team decides to raise the pressure a little, to 6 or 7. Why don't they just turn it way up, to 20, to be safe?",
+        "answer": "More pressure does help hold the lungs open (1 pt), but too much overstretches and injures the fragile alveoli — scarring (BPD) or even popping one (air leak) — and can make it harder for blood to flow through the chest (1 pt). So the rule is the smallest pressure that works, raised in small steps while watching the baby (1 pt)." }
+    ]
+  },
+
+  "calculus-w1": {
+    "title": "Homework 1: How Fast Is the Baby Growing?",
+    "course": "calculus",
+    "courseName": "Calculus 101",
+    "intro": "About 20 minutes. Rate of change = change ÷ time. Show your subtraction and division — the steps are worth points too.",
+    "items": [
+      { "type": "section", "title": "Part A — Rates from a table" },
+      { "type": "table", "points": 6,
+        "q": "Three babies were weighed on day 1 and again on day 8. Fill in the change in grams, the number of days, and the rate in grams per day. (Change = later weight − earlier weight. Rate = change ÷ days.)",
+        "columns": ["Baby", "Day 1 (g)", "Day 8 (g)", "Change (g)", "Days", "Rate (g/day)"],
+        "rows": [["A", "800", "870", "", "", ""], ["B", "1,200", "1,340", "", "", ""], ["C", "2,000", "2,000", "", "", ""]],
+        "answer": "A: change 70, 7 days, 10 g/day. B: change 140, 7 days, 20 g/day. C: change 0, 7 days, 0 g/day. 2 pts per baby (1 for the change, 1 for the rate)." },
+
+      { "type": "section", "title": "Part B — Plot it" },
+      { "type": "figure", "figure": "grid" },
+      { "type": "short", "points": 3, "lines": 2,
+        "q": "On the grid above, plot Baby A's weights as dots and connect them: day 1 — 800 g, day 3 — 820 g, day 5 — 840 g, day 7 — 860 g. Then answer: is the line steep or gentle? What is Baby A's rate in grams per day?",
+        "answer": "Four dots rising in a straight line (2 pts for plotting; 1 pt off per misplaced dot). Gentle/steady; 10 g/day (1 pt)." },
+
+      { "type": "section", "title": "Part C — When the line goes down" },
+      { "type": "short", "points": 3, "lines": 3,
+        "q": "A full-term newborn weighed 3,400 g at birth and 3,200 g on day 4. (a) What was the change? (b) What was the rate per day? (c) Should the team worry? (Hint: newborns normally lose up to about 10% of their birth weight in the first days, then regain it.)",
+        "answer": "(a) −200 g (a loss of 200 g). (b) −50 g/day (a loss of 50 g each day). (c) No — 200 out of 3,400 is about 6%, within the normal early loss; the team expects the line to turn back uphill within a week or two. 1 pt each." },
+      { "type": "mc", "points": 1,
+        "q": "On a weight graph, a steeper line means…",
+        "choices": [
+          "the weight is changing faster.",
+          "the baby weighs more.",
+          "more days have gone by.",
+          "the baby is older."
+        ],
+        "answer": 0,
+        "explain": "Steepness is the rate: how much the weight changes each day." },
+
+      { "type": "section", "title": "Part D — Per kilogram" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "A baby weighs 2 kg and gains 40 g in one day. What is that in grams per kilogram per day (g/kg/day)? Is it in the healthy 15–20 range?",
+        "answer": "40 ÷ 2 = 20 g/kg/day. Yes — right at the top of the healthy range." },
+
+      { "type": "section", "title": "Part E — Flashback" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From NICU Tutor: what is the healthy growth target for a preemie, in g/kg/day?",
+        "answer": "About 15–20 g/kg/day." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From Biology 101: one cell goes through 3 rounds of division. How many cells now?",
+        "answer": "8 (1 → 2 → 4 → 8)." },
+
+      { "type": "section", "title": "Part F — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "Two preemies both weigh exactly 1,500 g today. Baby X's weight line has climbed steadily all week. Baby Y's line has been flat for a week. Which baby worries you more, and what might the team do about it?",
+        "answer": "Baby Y (1 pt) — same weight today, but a flat line means no growth this week, while X is on track. The team would look for a reason (is the baby sick? using energy to breathe? not absorbing feeds?) and likely add calories — more milk, or fortifier added to the milk — then watch the line (2 pts for a reasonable plan mentioning a cause-check and/or more calories)." }
+    ]
+  },
+
+  "statistics-w1": {
+    "title": "Homework 1: What's Typical?",
+    "course": "statistics",
+    "courseName": "Statistics 101",
+    "intro": "About 20 minutes. Mean = add them all, divide by how many. Range = biggest − smallest. Write your adding and dividing — the steps count.",
+    "items": [
+      { "type": "section", "title": "Part A — Mean and range" },
+      { "type": "short", "points": 3, "lines": 3,
+        "q": "Five babies in the unit have heart rates of 140, 150, 130, 160, and 145 beats per minute. (a) What is the total? (b) What is the mean? (c) What is the range?",
+        "answer": "(a) 725. (b) 725 ÷ 5 = 145. (c) 160 − 130 = 30. 1 pt each." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "Four babies weigh 900 g, 1,100 g, 1,000 g, and 1,000 g. What is the mean weight? What is the range?",
+        "answer": "Mean: 4,000 ÷ 4 = 1,000 g. Range: 1,100 − 900 = 200 g." },
+
+      { "type": "section", "title": "Part B — Score three babies with Apgar" },
+      { "type": "table", "points": 6,
+        "q": "Each baby's five Apgar signs have already been scored (0, 1, or 2 each). Add up the total, then write the category: 7–10 = doing well, 4–6 = may need some help, 0–3 = needs help right now.",
+        "columns": ["Baby", "Heart rate", "Breathing", "Muscle tone", "Reflex", "Color", "Total", "Category"],
+        "rows": [["Rosa", "2", "2", "1", "2", "2", "", ""], ["Kai", "1", "1", "1", "1", "0", "", ""], ["Amara", "2", "1", "2", "1", "2", "", ""]],
+        "answer": "Rosa: 9, doing well. Kai: 4, may need some help. Amara: 8, doing well. 1 pt per total, 1 pt per category." },
+
+      { "type": "section", "title": "Part C — Draw the data" },
+      { "type": "figure", "figure": "bars" },
+      { "type": "short", "points": 3, "lines": 2,
+        "q": "On the chart above, draw a bar for each baby's heart rate from Part A: A = 140, B = 150, C = 130, D = 160, E = 145. Then answer: which baby's bar is tallest, and which bar is closest to the mean?",
+        "answer": "Five bars at the right heights (2 pts; 1 pt off for two or more wrong heights). Tallest: D (160). Closest to the mean of 145: E (145) — 1 pt." },
+      { "type": "mc", "points": 1,
+        "q": "Two units both report an average Apgar of 7. What does the average alone NOT tell you?",
+        "choices": [
+          "Whether the scores were all close to 7 or a mix of very high and very low.",
+          "Whether the scores were added up correctly before dividing.",
+          "Whether the babies were scored by a doctor or by a nurse.",
+          "Whether the unit is in a big hospital or a small one."
+        ],
+        "answer": 0,
+        "explain": "The mean hides the spread — that's why we also look at the range." },
+
+      { "type": "section", "title": "Part D — Flashback" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From NICU Tutor: what is the normal heart rate range for a newborn, in beats per minute?",
+        "answer": "About 100–160 (sometimes higher when upset)." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From NICU Tutor: what does the word bradycardia mean?",
+        "answer": "A heart rate that is too slow ('brady' = slow, 'cardia' = heart)." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From Calculus: rate of change = ______ ÷ ______.",
+        "answer": "Change ÷ time." },
+
+      { "type": "section", "title": "Part E — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "A new nurse says, “This baby's Apgar was 5 at one minute, so he'll probably have problems growing up.” What would Dr. Virginia Apgar herself have said? (Think about what the score is FOR.)",
+        "answer": "The Apgar score tells the team how the baby is doing RIGHT NOW and whether to help — it is not a prediction of the child's future (1 pt). Many babies score low at one minute and fine at five minutes once they start breathing well (1 pt). Apgar warned against using her score to predict a child's future or judge the mother or the birth (1 pt)." }
+    ]
+  },
+
+  "genetics-w1": {
+    "title": "Homework 1: The Instruction Book",
+    "course": "genetics",
+    "courseName": "Genetics 101",
+    "intro": "About 20 minutes. Part A is a decoding puzzle — read the code table carefully, three letters at a time.",
+    "items": [
+      { "type": "section", "title": "Part A — Decode the message" },
+      { "type": "passage",
+        "text": "Cells read DNA three letters at a time. Here is a pretend code table: ATG = B, CCA = A, GGT = Y, TTA = O, GAC = L, CTG = E. Message to decode: ATG CCA ATG GGT" },
+      { "type": "short", "points": 4, "lines": 2,
+        "q": "Decode the message above, one three-letter word at a time. Write the word it spells.",
+        "answer": "B-A-B-Y → BABY. 1 pt per correctly decoded letter." },
+
+      { "type": "section", "title": "Part B — Counting the book" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "A baby receives 23 chromosomes from its mother and 23 from its father. How many chromosomes does the baby's body cell have?",
+        "answer": "46." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "Before a body cell divides, it copies every one of its chromosomes. How many chromosomes are inside it just before it splits?",
+        "answer": "92 (46 × 2) — then each new cell gets 46." },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "DNA has 4 letters, and cells read them in 3-letter words. How many different 3-letter words are possible? (Hint: 4 choices for the first letter × 4 for the second × 4 for the third.)",
+        "answer": "4 × 4 × 4 = 64. 1 pt for setting up 4 × 4 × 4, 1 pt for 64." },
+
+      { "type": "section", "title": "Part C — Identical or fraternal?" },
+      { "type": "table", "points": 4,
+        "q": "Write IDENTICAL or FRATERNAL for each pair of twins.",
+        "columns": ["Twins", "Identical or fraternal?"],
+        "rows": [["Two babies who grew from one egg that split in two", ""], ["A boy and a girl born together", ""], ["Two babies who grew from two separate eggs", ""], ["Two sisters who look exactly alike and share the same DNA", ""]],
+        "answer": "Identical; Fraternal (a boy and a girl can't be identical — different sex chromosomes); Fraternal; Identical." },
+
+      { "type": "section", "title": "Part D — Your family tree" },
+      { "type": "draw", "points": 2, "height": 2.0,
+        "q": "Draw a family tree: you at the bottom, your two parents above you, and your four grandparents above them. Draw an arrow from each parent to you and write “23” on each arrow to show the chromosomes you received.",
+        "answer": "Three generations drawn (1 pt); two arrows into the child each labeled 23 (1 pt)." },
+      { "type": "mc", "points": 1,
+        "q": "What did Rosalind Franklin's “Photo 51” show?",
+        "choices": [
+          "The X-shaped pattern that revealed DNA is a twisted ladder (a double helix).",
+          "The first photograph of a chromosome under a microscope.",
+          "The four DNA letters lined up in order along one gene.",
+          "Two identical twins' DNA compared side by side."
+        ],
+        "answer": 0,
+        "explain": "The X pattern in her 1952 X-ray photograph was the fingerprint of a helix." },
+
+      { "type": "section", "title": "Part E — Flashback" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From Biology: which part of the cell holds the DNA?",
+        "answer": "The nucleus." },
+      { "type": "short", "points": 2, "lines": 1,
+        "q": "From NICU Tutor and Chemistry: hemoglobin is a ________ that carries ________.",
+        "answer": "Protein; oxygen. 1 pt each." },
+
+      { "type": "section", "title": "Part F — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "Twins fill a lot of NICU beds. Give TWO reasons twins are more likely than single babies to need the NICU, and say which NICU Tutor machine each twin might need first.",
+        "answer": "Reasons (1 pt each, any two): twins are usually born early (about 60% preterm), so their lungs, brains, and feeding aren't ready; two babies sharing one womb are often smaller; sometimes one twin gets less blood/nutrition than the other. Machine (1 pt): any sensible link — e.g., CPAP for immature lungs, isolette for a small baby who can't stay warm, feeding tube for a baby too early to suck-swallow-breathe." }
+    ]
+  },
+
+  "psychology-w1": {
+    "title": "Homework 1: What a Baby Already Knows",
+    "course": "psychology",
+    "courseName": "Psychology 101",
+    "intro": "About 20 minutes. You'll think like a baby scientist: since babies can't talk, every question here comes down to what you could MEASURE.",
+    "items": [
+      { "type": "section", "title": "Part A — Design an experiment" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "You want to find out whether a newborn recognizes her father's voice. Describe an experiment: what would you play for the baby, and what would you measure to tell whether she recognizes it?",
+        "answer": "Play the father's voice and a stranger's voice (1 pt for comparing two voices); measure something the baby does — sucking pattern, heart rate change, head turning, or looking time (1 pt); if the baby responds differently to dad's voice (e.g., sucks to hear more of it, calms, turns), she recognizes it (1 pt)." },
+
+      { "type": "section", "title": "Part B — Match the method to what it measures" },
+      { "type": "match", "points": 4,
+        "q": "Draw a line from each baby-science method to what it tells us.",
+        "left": ["Looking time", "Sucking rate", "Heart rate change", "Head turning"],
+        "right": ["Whether a baby is startled or calmed by something", "Which direction a sound or smell is coming from", "Which of two sounds a baby prefers to hear", "Whether a baby finds something new or interesting"],
+        "answer": [3, 2, 0, 1] },
+
+      { "type": "section", "title": "Part C — True or false?" },
+      { "type": "table", "points": 4,
+        "q": "Write TRUE or FALSE for each statement about newborns.",
+        "columns": ["Statement", "True or false?"],
+        "rows": [["A baby can hear its mother's voice before it is born.", ""], ["A newborn can see clearly all the way across a room.", ""], ["Newborns look longer at face-like patterns than at scrambled ones.", ""], ["Babies don't feel pain until they are about one year old.", ""]],
+        "answer": "TRUE (hearing works from about 24–25 weeks); FALSE (newborns focus best at about 20–30 cm — a parent's face); TRUE; FALSE (newborns clearly feel pain — measured by stress responses — and NICUs treat it)." },
+
+      { "type": "section", "title": "Part D — Invent a score (Statistics flashback)" },
+      { "type": "table", "points": 2,
+        "q": "Dr. Apgar turned 'how is this baby?' into a number. Invent a tiny COMFORT score for a NICU baby using two signs you could see. Fill in what 0, 1, and 2 points would look like for each sign.",
+        "columns": ["Sign", "0 points", "1 point", "2 points"],
+        "rows": [["", "", "", ""], ["", "", "", ""]],
+        "answer": "Any two observable signs with sensible 0/1/2 levels — e.g., Face: crying/grimacing (0), frowning (1), relaxed (2); Body: stiff and squirming (0), some wiggling (1), relaxed and still (2); or breathing, color, sleep. 1 pt per sensible row." },
+
+      { "type": "section", "title": "Part E — Faces" },
+      { "type": "draw", "points": 2, "height": 1.8,
+        "q": "Draw two simple ovals. In the first, put two dots and a mouth-line where a face's eyes and mouth go. In the second, put the same dots and line in scrambled places. Circle the one a newborn would look at longer.",
+        "answer": "Two ovals, one face-like and one scrambled (1 pt); the face-like one circled (1 pt). Newborns prefer face-like patterns from the first days." },
+      { "type": "mc", "points": 1,
+        "q": "Why is kangaroo care called brain care?",
+        "choices": [
+          "Calm skin-to-skin contact steadies stress, sleep, and heart rate while the brain is wiring fast.",
+          "The parent's warmth directly makes brain cells multiply faster.",
+          "It keeps the baby awake longer, and brains only grow while awake.",
+          "It means the baby no longer needs to hear voices."
+        ],
+        "answer": 0,
+        "explain": "A preemie does its third-trimester brain wiring in the NICU; calm and sleep are what that wiring needs." },
+
+      { "type": "section", "title": "Part F — Flashback" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "From NICU Tutor: name TWO things kangaroo care does for a baby.",
+        "answer": "Any two: keeps the baby warm, steadies heart rate, steadies breathing, helps with feeding/milk supply, helps bonding, calms the baby." },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From Genetics: identical twins share exactly the same ________.",
+        "answer": "DNA (instruction book)." },
+
+      { "type": "section", "title": "Part G — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "You are designing a new NICU. Name THREE things you would change about a typical hospital room to make it gentler for preemies' developing brains, and say why each helps.",
+        "answer": "1 pt per sensible change with a reason, e.g.: dim/adjustable lights (preemies' eyes and sleep); quieter alarms and soft voices (they hear everything from 24 weeks); cluster care so babies aren't woken repeatedly (protect sleep); room and chairs for parents to do kangaroo care (calm, heartbeat, voice); covers over isolettes; private rooms." }
+    ]
+  },
+
+  "sociology-w1": {
+    "title": "Homework 1: Who Works in a NICU?",
+    "course": "sociology",
+    "courseName": "Sociology 101",
+    "intro": "About 20 minutes. Sociology is about groups — so several questions ask you to look at the groups in your own life, too.",
+    "items": [
+      { "type": "section", "title": "Part A — Match the team member to the job" },
+      { "type": "match", "points": 6,
+        "q": "Draw a line from each NICU team member to what they mostly do.",
+        "left": ["Neonatologist", "NICU nurse", "Respiratory therapist", "Pharmacist", "Lactation consultant", "Social worker"],
+        "right": ["Helps mothers pump and provide breast milk", "Leads the medical plan and makes the big decisions on rounds", "Supports the family — housing, money worries, stress, paperwork", "Runs the ventilators and CPAP and helps at deliveries", "Cares for the baby at the bedside hour after hour", "Prepares TPN recipes and checks every medicine dose"],
+        "answer": [1, 4, 3, 5, 0, 2] },
+
+      { "type": "section", "title": "Part B — Your own society" },
+      { "type": "draw", "points": 2, "height": 1.8,
+        "q": "Draw a chart of a group you belong to — your household, your classroom, or a team. Put each person (or role) in a box and write one job they have in the group. Draw lines between people who work together directly.",
+        "answer": "At least three people/roles with a job each (1 pt) and connecting lines (1 pt). Any real group counts." },
+
+      { "type": "section", "title": "Part C — Which level of care?" },
+      { "type": "table", "points": 4,
+        "q": "Write the level of newborn unit (I, II, III, or IV) that fits each baby.",
+        "columns": ["Baby", "Level"],
+        "rows": [["A healthy baby born at 40 weeks who just needs checks and feeding", ""], ["A baby born at 34 weeks who needs a little help staying warm and learning to feed", ""], ["A baby born at 26 weeks who needs a ventilator and TPN", ""], ["A baby who needs an operation to repair a complex heart defect", ""]],
+        "answer": "I; II; III (IV is also acceptable — a Level IV does everything a III does); IV." },
+
+      { "type": "section", "title": "Part D — Short answers" },
+      { "type": "short", "points": 2, "lines": 2,
+        "q": "Why is the person who cleans the NICU part of the care team? Use the word infection in your answer.",
+        "answer": "Preemies have weak immune systems and infection is one of the biggest dangers; cleaning surfaces and equipment is infection control — it is medicine. 1 pt for the infection idea, 1 pt for connecting cleaning to protecting the babies." },
+      { "type": "short", "points": 1, "lines": 2,
+        "q": "In your own words, what does regionalization of newborn care mean?",
+        "answer": "Organizing hospitals so the sickest/smallest babies are born in — or moved to — the hospitals that have the right level of care for them." },
+      { "type": "mc", "points": 1,
+        "q": "Why do morning rounds follow the same order every day?",
+        "choices": [
+          "So nothing gets skipped and everyone knows when to speak.",
+          "So the attending can leave the unit sooner.",
+          "So the babies all sleep at the same time.",
+          "So parents don't interrupt with questions."
+        ],
+        "answer": 0,
+        "explain": "Routines make groups reliable — that's a sociology idea you can see every morning in a NICU." },
+
+      { "type": "section", "title": "Part E — Flashback" },
+      { "type": "short", "points": 1, "lines": 1,
+        "q": "From NICU Tutor: what are “rounds”?",
+        "answer": "The team's morning walk from bed to bed, checking every baby and making the day's plan." },
+      { "type": "short", "points": 1, "lines": 2,
+        "q": "From NICU Tutor: a pulse oximeter alarm goes off. What does a good nurse do FIRST, and why?",
+        "answer": "Look at the baby first — the probe may have slipped, or the baby may truly need help. Machines report; humans judge." },
+
+      { "type": "section", "title": "Part F — Think like a doctor" },
+      { "type": "think", "points": 3, "lines": 5,
+        "q": "A new nurse notices a baby's color looks wrong, but the senior doctor has just said the baby is fine and moved on. What should the team's culture be so that the baby is safe — and why does that matter more than who is senior?",
+        "answer": "The culture should make it safe and expected for anyone — including the newest nurse — to speak up, and for seniors to listen and go look (1 pt). The nurse spends the most time at the bedside and often notices first (1 pt). Babies are harmed when people stay quiet out of respect for rank; safety depends on the whole team's eyes, not one person's title (1 pt)." }
+    ]
+  }
+}

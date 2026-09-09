@@ -1,0 +1,1037 @@
+{
+  "seminar-w1": {
+    "title": "Freshman Seminar — Week 1",
+    "course": "seminar",
+    "badge": "🎓",
+    "questions": [
+      {
+        "q": "What is the difference between a lecture and a recitation?",
+        "choices": [
+          "A lecture is where the professor teaches new material; a recitation is where you practice it.",
+          "A lecture is a written exam on the material; a recitation is the same exam given out loud.",
+          "A lecture is a class you take at home; a recitation is the same class taken at the university.",
+          "A lecture is for first-year students; a recitation is only for students in their final year."
+        ],
+        "answer": 0,
+        "explain": "Lectures teach; recitations practice. At NICUniversity, recitation is where you do the homework for the lecture you just had."
+      },
+      {
+        "q": "What is the Freshman Seminar rule for taking notes?",
+        "choices": [
+          "Write down the three biggest ideas, in your own words.",
+          "Write down every sentence exactly as the professor says it.",
+          "Write down only the new vocabulary words and nothing else.",
+          "Write down the names of the people and the dates mentioned."
+        ],
+        "answer": 0,
+        "explain": "Three big ideas, in your own words. Notes are for future-you, and future-you needs the ideas, not a copy of the whole lecture."
+      },
+      {
+        "q": "Why do notes work better in your own words than copied word-for-word?",
+        "choices": [
+          "Putting an idea into your own words forces your brain to understand it first.",
+          "Your own words are usually shorter, so the notes fit on less paper.",
+          "Professors give extra credit for notes that are not copied directly.",
+          "Copying exact words is against the rules at most universities."
+        ],
+        "answer": 0,
+        "explain": "You can copy words without understanding them. You can't rewrite an idea in your own words without understanding it — so the rewriting IS the learning."
+      },
+      {
+        "q": "In 1849, Elizabeth Blackwell became…",
+        "choices": [
+          "the first woman in the United States to earn a medical degree.",
+          "the first person to use an incubator for a premature baby.",
+          "the first nurse to work in an American children's hospital.",
+          "the first woman to teach chemistry at an American university."
+        ],
+        "answer": 0,
+        "explain": "Every medical school she applied to turned her down until Geneva Medical College in New York said yes — partly as a joke. She graduated first in her class."
+      },
+      {
+        "q": "Which is a smart strategy on a multiple-choice quiz?",
+        "choices": [
+          "Read every choice and rule out the ones you know are wrong before deciding.",
+          "Pick the longest answer, because it usually contains the most detail.",
+          "Pick the answer in the middle, because writers tend to put the right one there.",
+          "Choose the first answer that sounds familiar and move on to save time."
+        ],
+        "answer": 0,
+        "explain": "Read them all, cross out the wrong ones, then choose. (And at NICUniversity, the right answer is placed at random — so length and position are no help. You have to know it!)"
+      },
+      {
+        "q": "What does “pre-med” mean?",
+        "choices": [
+          "The university courses that prepare a student for medical school.",
+          "The first year of medical school, before students meet patients.",
+          "The medicines a patient is given before an operation.",
+          "A training program for nurses who want to become doctors."
+        ],
+        "answer": 0,
+        "explain": "Pre-medical: the science and math courses (chemistry, biology, physics, statistics…) you take as an undergraduate so you're ready for medical school afterward."
+      },
+      {
+        "q": "On the NICUniversity timetable, when do you do the homework for Monday's Chemistry class?",
+        "choices": [
+          "At the Chemistry recitation on Tuesday morning.",
+          "During the Chemistry lecture itself, on Monday.",
+          "At Friday's study hall, right before the final exam.",
+          "Whenever you like — homework has no set place on the schedule."
+        ],
+        "answer": 0,
+        "explain": "Every lecture assigns homework at the end, and each homework gets its own recitation slot — usually the next morning. (Freshman Seminar's is the exception: its recitation is Monday afternoon.)"
+      },
+      {
+        "q": "What is a transcript?",
+        "choices": [
+          "The record of the courses you took and how you did in each one.",
+          "The written text of everything a professor said in a lecture.",
+          "The schedule showing which class meets at which time.",
+          "A certificate you receive when you finish one week of classes."
+        ],
+        "answer": 0,
+        "explain": "Your transcript is your official record — courses, grades, credits. (Tricky one: 'transcript' can also mean a written copy of speech, but at a university it means your record.)"
+      }
+    ]
+  },
+
+  "chemistry-w1": {
+    "title": "Chemistry 101 — Week 1",
+    "course": "chemistry",
+    "badge": "⚗️",
+    "questions": [
+      {
+        "q": "Which is the best description of an atom?",
+        "choices": [
+          "The smallest building block that everything around you is made of.",
+          "A tiny living creature that can be seen only with a microscope.",
+          "A small bubble of gas that floats around in the air we breathe.",
+          "The smallest piece of a solid before it melts into a liquid."
+        ],
+        "answer": 0,
+        "explain": "Atoms are the building blocks of all ordinary matter — solids, liquids, and gases; living and non-living. (Tiny living creatures are cells or bacteria — that's Biology's job.)"
+      },
+      {
+        "q": "In the formula H₂O, what does the small 2 mean?",
+        "choices": [
+          "Each water molecule contains two hydrogen atoms.",
+          "Each water molecule contains two oxygen atoms.",
+          "Hydrogen is the second element on the list of elements.",
+          "It takes two water molecules to make one drop of water."
+        ],
+        "answer": 0,
+        "explain": "A subscript counts the atom right before it. H₂O = two hydrogens (H) and one oxygen (O). The 2 belongs to the H, not the O."
+      },
+      {
+        "q": "How many atoms in total are in one molecule of carbon dioxide, CO₂?",
+        "choices": ["3", "2", "4", "1"],
+        "answer": 0,
+        "explain": "One carbon (C) plus two oxygens (O₂) = 3 atoms. No subscript means 'one'."
+      },
+      {
+        "q": "About how much of the air you breathe is oxygen?",
+        "choices": [
+          "About one-fifth (21%)",
+          "Almost all of it (about 95%)",
+          "About half (50%)",
+          "Only a trace (less than 1%)"
+        ],
+        "answer": 0,
+        "explain": "Air is about 21% oxygen and 78% nitrogen. Room air is why NICU oxygen settings start at '21%' — that's plain air, before any extra is added."
+      },
+      {
+        "q": "Most of the air is a gas your body mostly ignores — breathes in, breathes right back out. Which gas?",
+        "choices": ["Nitrogen", "Oxygen", "Carbon dioxide", "Hydrogen"],
+        "answer": 0,
+        "explain": "Nitrogen is about 78% of air. Your lungs take it in and let it out unchanged; only the oxygen gets used."
+      },
+      {
+        "q": "In the lungs, which way do the two gases move?",
+        "choices": [
+          "Oxygen goes from air into blood; carbon dioxide goes from blood into air.",
+          "Oxygen goes from blood into air; carbon dioxide goes from air into blood.",
+          "Both gases move from air into blood, and the body stores them.",
+          "Both gases move from blood into air, and the body replaces them."
+        ],
+        "answer": 0,
+        "explain": "That two-way swap across the alveoli walls is gas exchange: fresh oxygen in, waste carbon dioxide out, with every breath."
+      },
+      {
+        "q": "Why does the body have to get rid of carbon dioxide?",
+        "choices": [
+          "Too much of it makes the blood acidic, which upsets the body's chemistry.",
+          "It is heavier than oxygen, so it would sink and collect in the feet.",
+          "It turns blood a darker color that the pulse oximeter cannot read.",
+          "It takes up space that the body needs for storing water."
+        ],
+        "answer": 0,
+        "explain": "Carbon dioxide dissolved in blood makes acid. A little is normal; too much (when breathing fails) makes the blood too acidic. That's why NICU teams measure it in a blood gas test — coming up in Week 2."
+      },
+      {
+        "q": "In 1774, Joseph Priestley found that a mouse lived much longer in a jar of his newly discovered gas than in a jar of ordinary air. What did this show?",
+        "choices": [
+          "The new gas (oxygen) was the part of air that living things actually need.",
+          "The mouse had grown stronger from being kept inside a sealed jar.",
+          "Ordinary air becomes poisonous to small animals in closed spaces.",
+          "The new gas was lighter than air, so the mouse could breathe it more easily."
+        ],
+        "answer": 0,
+        "explain": "Priestley's 'pure air' kept the mouse alive longer and made a candle burn brighter — because it was pure oxygen, the one-fifth of air that matters. (He also breathed some himself and said it felt 'light and easy.')"
+      }
+    ]
+  },
+
+  "biology-w1": {
+    "title": "Biology 101 — Week 1",
+    "course": "biology",
+    "badge": "🔬",
+    "questions": [
+      {
+        "q": "What is a cell?",
+        "choices": [
+          "The smallest living unit of a body, with its own instruction book inside.",
+          "The smallest building block of all matter, whether living or not.",
+          "A tiny air-filled room inside the lungs where oxygen is stored.",
+          "The hard outer covering that protects an organ from damage."
+        ],
+        "answer": 0,
+        "explain": "Cells are the smallest units that are alive. (The smallest building block of ALL matter is the atom — that's chemistry. Cells are made of billions of atoms.)"
+      },
+      {
+        "q": "When Robert Hooke looked at cork under his microscope in 1665, why did he call the tiny boxes “cells”?",
+        "choices": [
+          "They reminded him of the small plain rooms where monks slept.",
+          "They rang like tiny bells when he tapped the thin slice of cork.",
+          "They looked like the prison cells of London's Tower.",
+          "They matched the shape of the lenses he ground for his microscope."
+        ],
+        "answer": 0,
+        "explain": "A monk's little bedroom was called a cell, and the cork's rows of tiny boxes looked like a monastery hallway to Hooke. The name stuck for all of biology."
+      },
+      {
+        "q": "Which part of the cell works like a power plant, burning sugar with oxygen to make energy?",
+        "choices": ["Mitochondria", "Nucleus", "Membrane", "Cytoplasm"],
+        "answer": 0,
+        "explain": "Mitochondria are where the oxygen you breathe finally gets used — combining with sugar to release energy. The nucleus holds instructions; the membrane is the skin; the cytoplasm is the jelly."
+      },
+      {
+        "q": "One cell divides in two. Then each new cell divides, and then each of those divides — three rounds of division in total. How many cells are there now?",
+        "choices": ["8", "6", "3", "4"],
+        "answer": 0,
+        "explain": "Doubling: 1 → 2 → 4 → 8. Division doesn't add one cell each time — it doubles the whole crowd. That's how one cell becomes a baby with trillions."
+      },
+      {
+        "q": "What is unusual about a red blood cell compared with most other cells?",
+        "choices": [
+          "It has no nucleus, which leaves more room to carry hemoglobin.",
+          "It has two nuclei, so it can divide twice as fast as other cells.",
+          "It is the only cell in the body that never wears out or dies.",
+          "It is the biggest cell in the body, about the size of a grain of sand."
+        ],
+        "answer": 0,
+        "explain": "Red blood cells throw out their nucleus to become pure cargo ships for hemoglobin. Without a nucleus they can't repair themselves — so they wear out after about four months and get recycled (hello, bilirubin)."
+      },
+      {
+        "q": "Which list is in the right order, from smallest to biggest?",
+        "choices": [
+          "Cell, tissue, organ",
+          "Tissue, cell, organ",
+          "Organ, tissue, cell",
+          "Cell, organ, tissue"
+        ],
+        "answer": 0,
+        "explain": "Cells team up into tissues (like muscle tissue); tissues team up into organs (like the heart). Organs team up into systems, and systems make an organism — you."
+      },
+      {
+        "q": "Thinking like a biologist: why does a very premature baby's skin lose heat and water so easily?",
+        "choices": [
+          "Its skin has fewer cell layers, so there is less barrier between inside and outside.",
+          "Its skin cells are much larger than an adult's, so they hold more water to lose.",
+          "Its skin cells have no membranes yet, so nothing stays inside them.",
+          "Its skin has extra layers that trap cold air against the body."
+        ],
+        "answer": 0,
+        "explain": "Skin is a wall built of cell layers, and a preemie's wall is only a few bricks thick. That's the cell-level reason the isolette has to be so warm and humid."
+      },
+      {
+        "q": "About how many cells are in an adult human body?",
+        "choices": [
+          "About 30 trillion",
+          "About 30 million",
+          "About 30 billion",
+          "About 30 thousand"
+        ],
+        "answer": 0,
+        "explain": "Roughly 30 trillion — 30,000,000,000,000. And every one of them descends from a single cell by division after division after division."
+      }
+    ]
+  },
+
+  "physics-w1": {
+    "title": "Physics 101 — Week 1",
+    "course": "physics",
+    "badge": "🧲",
+    "questions": [
+      {
+        "q": "What is pressure?",
+        "choices": [
+          "A push spread over an area — the same push on a smaller area makes more pressure.",
+          "The total weight of something pressing down, no matter how big or small it is.",
+          "How fast air moves from one place to another when it is squeezed.",
+          "The amount of air that can be stored inside a closed container."
+        ],
+        "answer": 0,
+        "explain": "Pressure = push ÷ area. Spread a push over a big area and the pressure is low; concentrate it on a tiny area and the pressure is huge."
+      },
+      {
+        "q": "Why does a thumbtack go into a corkboard when you push it, but your thumb alone doesn't?",
+        "choices": [
+          "The tack's point puts your whole push onto a tiny area, so the pressure there is enormous.",
+          "The tack is made of metal, which is heavier than skin, so it sinks into the cork.",
+          "Metal is pulled toward cork the way iron is pulled toward a magnet.",
+          "The tack pushes back against your thumb, and that push drives it into the board."
+        ],
+        "answer": 0,
+        "explain": "Same push, far smaller area → far higher pressure. That's why the sharp end goes in and the flat end doesn't hurt your thumb."
+      },
+      {
+        "q": "Blood pressure is written in mmHg. What does that unit mean?",
+        "choices": [
+          "How many millimeters high the pressure could push up a column of liquid mercury.",
+          "How many milligrams of mercury are dissolved in the blood.",
+          "How many millimeters wide the artery is when the cuff squeezes it.",
+          "How many times per minute the heart pushes blood into the arteries."
+        ],
+        "answer": 0,
+        "explain": "A blood pressure of 60 mmHg means: enough push to lift a column of mercury 60 millimeters high. Old blood pressure meters literally had a mercury column inside."
+      },
+      {
+        "q": "In 1643, Evangelista Torricelli filled a tube with mercury and stood it upside down in a dish. The mercury sank until a column about 760 mm tall remained. What did this show?",
+        "choices": [
+          "That air has weight and presses down hard enough to hold up 760 mm of mercury.",
+          "That mercury boils at a much lower temperature than water does.",
+          "That the heart pumps blood into the arteries at a steady pressure.",
+          "That liquids always sink to the same level no matter what tube they are in."
+        ],
+        "answer": 0,
+        "explain": "The weight of the whole atmosphere pushing on the dish balanced 760 mm of mercury. That's why '760 mmHg' is normal air pressure — and why blood pressure borrowed the unit."
+      },
+      {
+        "q": "CPAP pressure is measured in cmH₂O. What does “6 cmH₂O” mean?",
+        "choices": [
+          "A push strong enough to hold up a column of water 6 centimeters high.",
+          "Six cubic centimeters of water flow into the tube with every breath.",
+          "The water in the humidifier is kept at 6 degrees.",
+          "There are 6 centimeters of tubing between the machine and the baby's nose."
+        ],
+        "answer": 0,
+        "explain": "Centimeters of water: the gentle pressures of breathing support are measured by how high they could lift water. In bubble CPAP, the tube's depth under water literally sets the pressure."
+      },
+      {
+        "q": "Which is the BIGGER pressure: 40 mmHg or 40 cmH₂O?",
+        "choices": [
+          "40 mmHg — mercury is much heavier than water, so lifting it takes more push.",
+          "40 cmH₂O — centimeters are bigger than millimeters, so it is the bigger unit.",
+          "They are equal, because the number in front is the same.",
+          "Neither — mmHg and cmH₂O measure two different things."
+        ],
+        "answer": 0,
+        "explain": "Mercury is about 13.6 times heavier than water, so 1 mmHg ≈ 1.36 cmH₂O, and 40 mmHg ≈ 54 cmH₂O. Bigger unit, bigger pressure — even though millimeters are smaller than centimeters."
+      },
+      {
+        "q": "About how big is the air pressure of the atmosphere at sea level?",
+        "choices": ["About 760 mmHg", "About 76 mmHg", "About 120 mmHg", "About 7,600 mmHg"],
+        "answer": 0,
+        "explain": "760 mmHg — Torricelli's column. Your body is pressed on by that much air all the time; you don't feel it because the pressure inside you pushes back equally."
+      },
+      {
+        "q": "Why do NICU teams use the gentlest ventilator pressure that works?",
+        "choices": [
+          "Too much pressure overstretches a preemie's delicate lungs and can even pop an air sac.",
+          "Higher pressures use more electricity and can make the machine overheat.",
+          "High pressure would push oxygen out through the baby's thin skin.",
+          "Lower pressures keep the alarms quieter for the other babies in the unit."
+        ],
+        "answer": 0,
+        "explain": "Pressure can heal and pressure can hurt. Overstretched alveoli scar (a lung disease called BPD) or burst (an air leak). 'Gentle ventilation' is one of the most important ideas in modern NICU care."
+      }
+    ]
+  },
+
+  "calculus-w1": {
+    "title": "Calculus 101 — Week 1",
+    "course": "calculus",
+    "badge": "📈",
+    "questions": [
+      {
+        "q": "Calculus is the mathematics of…",
+        "choices": [
+          "how things change — how fast, and how much piles up over time.",
+          "shapes and angles, like triangles, circles, and cubes.",
+          "counting very large numbers, like millions and trillions.",
+          "chance — how likely something is to happen."
+        ],
+        "answer": 0,
+        "explain": "Two big questions: how fast is something changing (rate), and how much has accumulated (total)? A baby's growth chart asks both."
+      },
+      {
+        "q": "A baby weighed 900 g on day 1 and 970 g on day 8. What was the rate of change?",
+        "choices": ["10 grams per day", "70 grams per day", "7 grams per day", "100 grams per day"],
+        "answer": 0,
+        "explain": "Change = 970 − 900 = 70 g. Time = 8 − 1 = 7 days. Rate = 70 ÷ 7 = 10 grams per day."
+      },
+      {
+        "q": "On a graph of weight over time, what does a STEEPER line mean?",
+        "choices": [
+          "The weight is changing faster.",
+          "The baby weighs more than the other babies.",
+          "The days are passing more quickly.",
+          "The baby is older than the other babies."
+        ],
+        "answer": 0,
+        "explain": "Steepness (slope) IS the rate. Steep = big change each day; gentle = small change each day."
+      },
+      {
+        "q": "A flat, level line on a weight graph means…",
+        "choices": [
+          "the weight isn't changing at all.",
+          "the baby is losing weight slowly.",
+          "the baby is gaining weight slowly.",
+          "the scale is not working properly."
+        ],
+        "answer": 0,
+        "explain": "Flat = zero change per day. For a preemie who is supposed to be growing, a flat week is a red flag the team acts on."
+      },
+      {
+        "q": "Most newborns LOSE a little weight in their first few days. What does that look like on the graph?",
+        "choices": [
+          "The line goes downhill — a negative rate of change.",
+          "The line goes uphill, just more slowly than usual.",
+          "The line stays flat, because losing weight doesn't count.",
+          "The line jumps straight up when the weight comes back."
+        ],
+        "answer": 0,
+        "explain": "Downhill = negative rate. Losing up to about 10% of birth weight in the first days is normal (mostly water), and the line turns uphill again within a week or two."
+      },
+      {
+        "q": "Who invented calculus?",
+        "choices": [
+          "Isaac Newton and Gottfried Leibniz, working separately at about the same time.",
+          "Virginia Apgar, as part of creating her scoring system for newborn babies.",
+          "Antonie van Leeuwenhoek, to keep count of the cells he saw in his microscope.",
+          "Joseph Priestley, to measure the gases coming off his chemistry experiments."
+        ],
+        "answer": 0,
+        "explain": "Newton in England and Leibniz in Germany each invented it in the late 1600s. Their supporters fought for decades about who was first. (Answer: both.)"
+      },
+      {
+        "q": "A doctor writes that a baby is gaining “20 g/kg/day.” What does that mean?",
+        "choices": [
+          "Each kilogram of the baby gains about 20 grams every day.",
+          "The whole baby gains a total of 20 kilograms every day.",
+          "The baby gains 20 grams once every 20 days, whatever its size.",
+          "The baby currently weighs 20 kilograms and is gaining daily."
+        ],
+        "answer": 0,
+        "explain": "'Per kilogram per day' lets doctors compare babies of different sizes. A 2 kg baby gaining 40 g/day and a 1 kg baby gaining 20 g/day are both at 20 g/kg/day — both growing well."
+      },
+      {
+        "q": "Why do NICU doctors judge growth by the trend line over several days rather than one day's weight?",
+        "choices": [
+          "One day's weight can jump from fluid or a diaper; the line over days shows real growth.",
+          "Single weights are always rounded to the nearest ten grams, so none of them is accurate.",
+          "The scale only gives a trustworthy reading after it has been used several days in a row.",
+          "A baby has to be weighed at least ten times before any of the weights is allowed to count."
+        ],
+        "answer": 0,
+        "explain": "One point can lie (extra fluid, a wet diaper, a different scale). A line through many points tells the truth. That's calculus thinking: look at the change, not the snapshot."
+      }
+    ]
+  },
+
+  "statistics-w1": {
+    "title": "Statistics 101 — Week 1",
+    "course": "statistics",
+    "badge": "📊",
+    "questions": [
+      {
+        "q": "What is statistics for?",
+        "choices": [
+          "Making sense of many measurements — finding what's typical and what's unusual.",
+          "Measuring one baby as precisely as possible with the most accurate machine.",
+          "Keeping a hospital's records of patient names, dates, and room numbers.",
+          "Predicting exactly what will happen to one particular patient tomorrow."
+        ],
+        "answer": 0,
+        "explain": "One number is a fact; a thousand numbers are a mess — until statistics. It's the toolkit for asking 'what's typical?' and 'is this one unusual?'"
+      },
+      {
+        "q": "Five babies have heart rates of 140, 150, 130, 160, and 145. What is the mean (average)?",
+        "choices": ["145", "150", "130", "725"],
+        "answer": 0,
+        "explain": "Add them up: 725. Divide by how many: 725 ÷ 5 = 145. (725 is the total, not the mean.)"
+      },
+      {
+        "q": "For those same five heart rates, what is the range?",
+        "choices": ["30", "160", "145", "5"],
+        "answer": 0,
+        "explain": "Range = highest − lowest = 160 − 130 = 30. It tells you how spread out the numbers are."
+      },
+      {
+        "q": "What did Dr. Virginia Apgar invent in 1952?",
+        "choices": [
+          "A quick 0-to-10 score for how a newborn is doing in its first minutes of life.",
+          "The first incubator that could keep a premature baby warm enough to survive.",
+          "The blue-light treatment that breaks down bilirubin in jaundiced babies.",
+          "A test that measures how much oxygen is being carried in a baby's blood."
+        ],
+        "answer": 0,
+        "explain": "Five signs, each scored 0, 1, or 2, at one minute and five minutes after birth. Before Apgar, there was no standard way to say how a newborn was doing — just opinions."
+      },
+      {
+        "q": "A baby's Apgar total at five minutes is 9. What does that mean?",
+        "choices": [
+          "The baby is doing well and needs only routine newborn care.",
+          "The baby needs help with breathing right away.",
+          "The baby has a serious problem that will last for many years.",
+          "The baby is exactly average compared with other newborns."
+        ],
+        "answer": 0,
+        "explain": "7–10 is reassuring; 4–6 means the baby may need some help; 0–3 means the baby needs help right now. Most healthy newborns score 8 or 9 (almost nobody gets a 10 — hands and feet are usually still a little blue)."
+      },
+      {
+        "q": "Why do doctors score a newborn with a number instead of just writing “looks fine”?",
+        "choices": [
+          "Numbers can be compared between babies, hospitals, and years — and studied in the thousands.",
+          "Numbers are quicker to write than a sentence on a busy night in the delivery room.",
+          "Nurses and doctors are not allowed to write their opinions in a medical chart.",
+          "Parents find it easier to understand a number than a description of their baby."
+        ],
+        "answer": 0,
+        "explain": "'Looks fine' means something different to every doctor. A score means the same thing everywhere — which is what lets you study thousands of babies and learn what works. Turning observations into numbers is where statistics begins."
+      },
+      {
+        "q": "Two NICUs both report an average Apgar score of 7 last month. Which statement is TRUE?",
+        "choices": [
+          "One unit's babies could all be near 7 while the other's are a mix of very high and very low scores.",
+          "Every baby in both units must have scored exactly 7 for the averages to come out equal.",
+          "The two units must have cared for exactly the same number of babies last month.",
+          "Both units must have treated their babies equally well, because the averages match."
+        ],
+        "answer": 0,
+        "explain": "An average hides the spread. 7, 7, 7, 7 and 10, 10, 4, 4 have the same mean. That's why statisticians always ask for the range (or more) alongside the average."
+      },
+      {
+        "q": "In NICU Tutor you learned a newborn's heart rate is normally about 100–160. Where did that range come from?",
+        "choices": [
+          "From measuring the heart rates of thousands of healthy newborns and seeing where most of them fell.",
+          "From the alarm limits that the monitor's manufacturer sets on the machine at the factory.",
+          "From dividing a typical adult's heart rate by a typical newborn's weight in kilograms.",
+          "From the heart rate of the very first baby who was ever connected to a monitor."
+        ],
+        "answer": 0,
+        "explain": "Every 'normal range' in medicine is a statistics result: measure lots of healthy people, find where the middle bunch lands. The machine's alarms are set from that — not the other way around."
+      }
+    ]
+  },
+
+  "genetics-w1": {
+    "title": "Genetics 101 — Week 1",
+    "course": "genetics",
+    "badge": "🧬",
+    "questions": [
+      {
+        "q": "Where is a cell's DNA instruction book kept?",
+        "choices": [
+          "In the nucleus of the cell.",
+          "In the membrane around the cell.",
+          "In the plasma of the blood, between the cells.",
+          "In the marrow inside the bones only."
+        ],
+        "answer": 0,
+        "explain": "The nucleus is the library. Nearly every cell in the body has a complete copy of the whole book inside its nucleus. (Red blood cells are the famous exception — they threw theirs out.)"
+      },
+      {
+        "q": "DNA's code is written using how many different letters?",
+        "choices": ["4 (A, T, C, and G)", "26 (A through Z)", "2 (0 and 1)", "20 (one per protein)"],
+        "answer": 0,
+        "explain": "Just four chemical letters — A, T, C, G — repeated about 3 billion times. Everything about how your body is built is spelled with them."
+      },
+      {
+        "q": "What is a gene?",
+        "choices": [
+          "One recipe in the instruction book — the instructions for building one protein.",
+          "One of the 46 volumes that the whole instruction book is divided into.",
+          "One single letter of the four-letter DNA code.",
+          "A special cell that carries the instruction book from parent to baby."
+        ],
+        "answer": 0,
+        "explain": "A gene is a recipe; a protein is the dish. Humans have about 20,000 genes. The 46 volumes are chromosomes; the single letters are A, T, C, G."
+      },
+      {
+        "q": "How many chromosomes does a typical human body cell have, and where do they come from?",
+        "choices": [
+          "46 — 23 from the mother and 23 from the father.",
+          "23 — all of them inherited from the mother alone.",
+          "92 — 46 from the mother and 46 from the father.",
+          "46 — all of them inherited from the father alone."
+        ],
+        "answer": 0,
+        "explain": "23 pairs = 46. Each pair has one volume from each parent — which is why you share features with both."
+      },
+      {
+        "q": "Identical twins happen when…",
+        "choices": [
+          "one fertilized egg splits into two, so both babies share the same instruction book.",
+          "two separate eggs are fertilized at the same time by two different sperm.",
+          "a baby's cells divide much faster than usual during the first weeks in the womb.",
+          "two babies are born on the same day in the same hospital to different mothers."
+        ],
+        "answer": 0,
+        "explain": "One egg, one book, split in two — identical DNA. Fraternal twins come from two eggs: they're regular siblings who happened to share a womb."
+      },
+      {
+        "q": "Why do twins so often end up in the NICU?",
+        "choices": [
+          "Twins are usually born early — about 6 in 10 arrive preterm — and often small.",
+          "Twins have to be kept together in one isolette for their first weeks.",
+          "Hospitals are required by law to observe all twins for a full week.",
+          "Twins are much more likely to catch jaundice from each other."
+        ],
+        "answer": 0,
+        "explain": "Two babies sharing one womb tend to run out of room and arrive early and small — so twins (and triplets) are a big part of any NICU's population."
+      },
+      {
+        "q": "What is hemoglobin's connection to genetics?",
+        "choices": [
+          "Hemoglobin is a protein, built by following the instructions in a gene.",
+          "Hemoglobin carries the DNA around the body inside red blood cells.",
+          "Hemoglobin is one of the four letters of the DNA code.",
+          "Hemoglobin is made by chromosomes floating in the blood."
+        ],
+        "answer": 0,
+        "explain": "Every protein — hemoglobin, surfactant, the enzymes in your mitochondria — is built from a gene's recipe. A typo in the hemoglobin gene causes sickle cell disease (Week 4)."
+      },
+      {
+        "q": "What was Rosalind Franklin's contribution to genetics?",
+        "choices": [
+          "Her X-ray photograph of DNA revealed its twisted-ladder shape.",
+          "She discovered the first gene that controls a person's eye color.",
+          "She invented the microscope powerful enough to see chromosomes.",
+          "She proved that identical twins carry identical DNA."
+        ],
+        "answer": 0,
+        "explain": "'Photo 51,' taken in 1952, showed the X pattern of a helix. Watson and Crick used it to build their famous model in 1953 — and were slow to give her credit."
+      }
+    ]
+  },
+
+  "psychology-w1": {
+    "title": "Psychology 101 — Week 1",
+    "course": "psychology",
+    "badge": "🧠",
+    "questions": [
+      {
+        "q": "Psychology is the science of…",
+        "choices": [
+          "the mind and behavior — what people (and babies) think, feel, and do.",
+          "the brain's cells and the chemicals that pass between them.",
+          "how people live together in groups, teams, and organizations.",
+          "the body's organs and how each one does its job."
+        ],
+        "answer": 0,
+        "explain": "Psychology studies minds by studying behavior. (Cells and chemicals: biology. Groups: sociology — this afternoon.)"
+      },
+      {
+        "q": "Newborns can't answer questions. How do psychologists find out what a newborn knows?",
+        "choices": [
+          "By measuring what the baby does — how long it looks, how hard it sucks, how its heart rate changes.",
+          "By waiting until the child is old enough to describe what it remembers from being a baby.",
+          "By asking the parents to make their best guess about what the baby is thinking.",
+          "By scanning the baby's brain with a machine that reads its thoughts directly."
+        ],
+        "answer": 0,
+        "explain": "Babies vote with their eyes, their mouths, and their hearts. Looking longer, sucking harder, or a heart-rate change all say 'I notice this' — no words needed."
+      },
+      {
+        "q": "In the “Cat in the Hat” study, mothers read the same story aloud every day in the last weeks of pregnancy. After birth, the babies…",
+        "choices": [
+          "sucked on a pacifier in the pattern that played the familiar story rather than a new one.",
+          "fell asleep faster whenever any story at all was read to them in a quiet voice.",
+          "could say a few words from the story by the time they were six months old.",
+          "cried whenever they heard the story, because the sound was too familiar."
+        ],
+        "answer": 0,
+        "explain": "The babies changed their sucking to 'choose' the story they'd heard in the womb. They remembered it — proof that listening (and learning) starts before birth."
+      },
+      {
+        "q": "From about what age in the womb does a baby begin to hear?",
+        "choices": [
+          "Around 24–25 weeks — about the age of the earliest preemies.",
+          "Around 12 weeks, as soon as the ears have formed.",
+          "Only at birth, when the ears first fill with air.",
+          "Around 36 weeks, in the last month before birth."
+        ],
+        "answer": 0,
+        "explain": "Hearing switches on around 24–25 weeks. That means every preemie in the NICU can hear — the alarms, the voices, and especially their parents."
+      },
+      {
+        "q": "A newborn's eyes focus best at about 20–30 centimeters (8–12 inches). Why is that distance interesting?",
+        "choices": [
+          "It's about how far a baby's face is from a parent's face during holding and feeding.",
+          "It's about the distance from a baby to the top of an isolette's clear hood.",
+          "It's exactly the length of a newborn's arm from shoulder to fingertips.",
+          "It's the distance at which the pulse oximeter's red light looks brightest."
+        ],
+        "answer": 0,
+        "explain": "Babies are built to see the face that's feeding them. Beyond that, the world is a blur — and that's fine, because the important stuff is close."
+      },
+      {
+        "q": "Psychologist Heidelise Als watched premature babies very closely and showed that…",
+        "choices": [
+          "preemies signal stress through movements and color changes, so NICUs should adjust light, noise, and handling.",
+          "preemies cannot feel any discomfort at all until they reach the date on which they were due to be born.",
+          "preemies grow faster and sleep better in bright, busy rooms with plenty of sound and activity around them.",
+          "preemies should be touched and held as little as possible, including by their own mothers and fathers."
+        ],
+        "answer": 0,
+        "explain": "Als taught NICUs to read a preemie's body language — a splayed hand, a color change, a frown — and to dim lights, cut noise, and time care around the baby's sleep. NICUs look the way they do today partly because of a psychologist."
+      },
+      {
+        "q": "Until the 1980s, many doctors believed newborns didn't really feel pain. What changed their minds?",
+        "choices": [
+          "Studies measured babies' stress hormones and heart rates during procedures and found big responses.",
+          "Babies began learning to speak at earlier ages, so they could finally describe their pain in their own words.",
+          "New anesthesia drugs were invented that worked only on newborn babies and had no effect on adults.",
+          "Parents were finally allowed to stay inside the NICU overnight, and they reported hearing the babies cry."
+        ],
+        "answer": 0,
+        "explain": "Measure, don't assume — again. Once the stress response was measured, pain control for babies changed fast: sugar drops, gentle holding during pokes, and pain scores in the chart."
+      },
+      {
+        "q": "Why is kangaroo care considered brain care, not just a way to keep a baby warm?",
+        "choices": [
+          "Calm skin-to-skin contact steadies a preemie's stress, sleep, and heart rate while the brain wires itself.",
+          "The warmth of the parent's body directly speeds up the growth of brand-new brain cells in the baby.",
+          "It keeps the baby awake for longer stretches of time, and brains do most of their growing while awake.",
+          "It replaces the need for the baby to hear any voices or other sounds during its weeks in the NICU."
+        ],
+        "answer": 0,
+        "explain": "A preemie's brain is doing its third-trimester wiring in the NICU. Calm, sleep, and a familiar heartbeat are the conditions that wiring wants — a parent's chest provides all three."
+      }
+    ]
+  },
+
+  "sociology-w1": {
+    "title": "Sociology 101 — Week 1",
+    "course": "sociology",
+    "badge": "🏥",
+    "questions": [
+      {
+        "q": "Sociology is the science of…",
+        "choices": [
+          "people in groups — how they organize, the roles they take, and the rules they follow.",
+          "the individual mind — what one person thinks, feels, remembers, and decides to do.",
+          "how the body's organs and systems work together to keep a single person alive and well.",
+          "money — how people, businesses, and countries earn it, save it, and spend it."
+        ],
+        "answer": 0,
+        "explain": "Psychology zooms in on one mind; sociology zooms out to the group. A NICU is a small society with its own roles, rules, and rituals."
+      },
+      {
+        "q": "Who spends the most hours at a NICU baby's bedside?",
+        "choices": ["The NICU nurse", "The neonatologist", "The respiratory therapist", "The social worker"],
+        "answer": 0,
+        "explain": "Nurses are there hour after hour, shift after shift. They notice most problems first — which is why great NICUs make sure nurses are heard."
+      },
+      {
+        "q": "Which team member designs each baby's daily TPN recipe and double-checks every medicine dose?",
+        "choices": ["The pharmacist", "The unit clerk", "The lactation consultant", "The chaplain"],
+        "answer": 0,
+        "explain": "NICU pharmacists calculate tiny doses for tiny bodies, where a decimal point in the wrong place could be deadly. The TPN bags from NICU Tutor Lesson 6 come from them."
+      },
+      {
+        "q": "Why is the cleaning staff part of the NICU care team?",
+        "choices": [
+          "Cleaning surfaces and equipment is infection control, and germs are a top danger to preemies.",
+          "They are the team members who weigh each baby every night and record the weights on the chart.",
+          "They are responsible for setting the alarm limits on every monitor at the start of each shift.",
+          "They keep the parents company and bring them meals during the long night shifts on the unit."
+        ],
+        "answer": 0,
+        "explain": "A preemie's immune system is weak, and infection kills. Every wiped surface and every washed hand is medicine. The person with the mop is on the team."
+      },
+      {
+        "q": "A baby needs an operation to repair a complex heart defect. Which level of newborn unit is designed for that?",
+        "choices": ["Level IV", "Level I (well-baby nursery)", "Level II (special care nursery)", "Level III (NICU)"],
+        "answer": 0,
+        "explain": "Level I: healthy newborns. Level II: mildly early or mildly sick. Level III: full intensive care for the smallest and sickest. Level IV: everything in III plus complex surgery — the regional center."
+      },
+      {
+        "q": "What does “regionalization” of newborn care mean?",
+        "choices": [
+          "Organizing hospitals so the sickest babies are born in, or moved to, the ones equipped for them.",
+          "Dividing a large NICU into separate regions, or pods, according to the babies' last names.",
+          "Making sure every region of the country has exactly the same number of incubators and nurses.",
+          "Sending every newborn back to its own local hospital as soon as possible after it is born."
+        ],
+        "answer": 0,
+        "explain": "Very small babies survive more often when they're born at a Level III or IV hospital. So systems try to get mothers there before delivery — or move the baby by transport team right after."
+      },
+      {
+        "q": "Rounds happen every morning in the same order, with the same roles and the same shared language. Why does that matter?",
+        "choices": [
+          "A shared routine means nothing gets skipped and everyone knows when it's their turn to speak.",
+          "It lets the attending physician finish faster and leave the unit for the day.",
+          "It is required so that all the babies can sleep at the same time each morning.",
+          "It keeps parents from asking questions while the doctors are talking."
+        ],
+        "answer": 0,
+        "explain": "Rituals are sociology's tools for making groups reliable. Same order, every baby, every day: the nurse reports, the resident presents, the pharmacist checks, the family asks. Nothing falls through."
+      },
+      {
+        "q": "What did Dr. Julius Hess and nurse Evelyn Lundeen build in Chicago in the 1920s?",
+        "choices": [
+          "One of America's first hospital units for premature babies, run as a doctor–nurse partnership.",
+          "The first blood pressure cuff small enough to fit around a premature baby's arm or leg.",
+          "The first machine that could deliver liquid surfactant directly into a preemie's lungs.",
+          "The first school in the United States devoted to training surgeons who operate on children."
+        ],
+        "answer": 0,
+        "explain": "Hess designed the unit and its incubators; Lundeen ran it and trained generations of nurses. Their partnership is the ancestor of every NICU team today."
+      }
+    ]
+  },
+
+  "final-w1": {
+    "title": "Week 1 Final Exam",
+    "course": "general",
+    "badge": "🩺",
+    "questions": [
+      {
+        "q": "Which note best follows the Freshman Seminar rule for note-taking?",
+        "choices": [
+          "Isolette — the warm box; its skin probe adjusts the heat automatically.",
+          "An isolette, also called an incubator, looks like a see-through spaceship bed with a clear hood.",
+          "Isolette, incubator, skin probe, servo control, humidity, kangaroo care, hypothermia, brown fat.",
+          "Lesson 1 was about the isolette; it took about 20 minutes and there was a quiz at the end."
+        ],
+        "answer": 0,
+        "explain": "A big idea in your own words. The others are a copied sentence, a list of words with no ideas, and a note about the lesson instead of the content."
+      },
+      {
+        "q": "What does Elizabeth Blackwell's story teach a student?",
+        "choices": [
+          "Do the work and let your record speak, even when you're not welcome.",
+          "Medical schools in the 1840s welcomed women as long as they had good grades.",
+          "Being a good doctor mostly requires being popular with your classmates.",
+          "The surest way into medical school is to know someone important there."
+        ],
+        "answer": 0,
+        "explain": "Admitted as a joke, rejected by dozens of schools, avoided by the town — she graduated first in her class in 1849."
+      },
+      {
+        "q": "Glucose (sugar) is C₆H₁₂O₆. How many atoms are in one molecule?",
+        "choices": ["24", "6", "12", "3"],
+        "answer": 0,
+        "explain": "6 carbons + 12 hydrogens + 6 oxygens = 24 atoms."
+      },
+      {
+        "q": "Which gas makes up most of the air you breathe?",
+        "choices": ["Nitrogen", "Oxygen", "Carbon dioxide", "Water vapor"],
+        "answer": 0,
+        "explain": "About 78% nitrogen, 21% oxygen. The body mostly ignores the nitrogen — in and right back out."
+      },
+      {
+        "q": "Which part of a cell burns sugar with oxygen to make energy?",
+        "choices": ["Mitochondria", "Nucleus", "Membrane", "Cytoplasm"],
+        "answer": 0,
+        "explain": "The power plants. Their exhaust — carbon dioxide and water — is what you breathe out."
+      },
+      {
+        "q": "One cell goes through 5 rounds of division (doubling each time). How many cells now?",
+        "choices": ["32", "10", "16", "25"],
+        "answer": 0,
+        "explain": "1 → 2 → 4 → 8 → 16 → 32. Doubling, not adding."
+      },
+      {
+        "q": "Pushing with the same force through a needle's point instead of your fingertip…",
+        "choices": [
+          "makes the pressure much higher, because the area is much smaller.",
+          "makes the pressure much lower, because the area is much smaller.",
+          "leaves the pressure the same, because the push is exactly the same.",
+          "makes the pressure higher, because metal weighs more than skin does."
+        ],
+        "answer": 0,
+        "explain": "Pressure = push ÷ area. Tiny area, huge pressure — that's why sharp things go in."
+      },
+      {
+        "q": "1 mmHg is about 1.36 cmH₂O. Why is the mercury unit the bigger push?",
+        "choices": [
+          "Mercury is about 13.6 times heavier than water, so lifting it takes more push.",
+          "Centimeters are about 1.36 times longer than millimeters on a ruler.",
+          "Water is about 13.6 times heavier than mercury, so it needs less push.",
+          "The mercury column is always read at a warmer temperature than water."
+        ],
+        "answer": 0,
+        "explain": "Heavier liquid, more push per millimeter. That's why gentle CPAP is measured in centimeters of water and blood pressure in millimeters of mercury."
+      },
+      {
+        "q": "A baby weighed 1,100 g on day 1 and 1,240 g on day 8. What is the rate of change?",
+        "choices": ["20 grams per day", "140 grams per day", "14 grams per day", "2 grams per day"],
+        "answer": 0,
+        "explain": "Change 140 g ÷ 7 days = 20 g/day."
+      },
+      {
+        "q": "A weight graph shows a flat, level line for a week. That means…",
+        "choices": [
+          "the baby's weight did not change all week.",
+          "the baby grew at a steady, healthy pace.",
+          "the baby slept through most of the week.",
+          "the scale stopped working during the week."
+        ],
+        "answer": 0,
+        "explain": "Flat = zero change per day. For a preemie who should be growing, that's an alarm."
+      },
+      {
+        "q": "What is the mean of 120, 130, 140, and 150?",
+        "choices": ["135", "140", "540", "30"],
+        "answer": 0,
+        "explain": "540 ÷ 4 = 135. (540 is the total; 30 is the range.)"
+      },
+      {
+        "q": "A baby's Apgar score is 4 at one minute. What does that mean?",
+        "choices": [
+          "The baby may need some help right now — rubbing, warming, perhaps some oxygen.",
+          "The baby will have lifelong problems, and the family should be told so.",
+          "The baby is doing well and needs only routine newborn care today.",
+          "The score must be a mistake, because healthy babies always score 9 or 10."
+        ],
+        "answer": 0,
+        "explain": "4–6 means 'may need some help.' The score is about the next few minutes, not the next few years — as Dr. Apgar insisted."
+      },
+      {
+        "q": "How many chromosomes does a baby receive from each parent?",
+        "choices": ["23", "46", "92", "2"],
+        "answer": 0,
+        "explain": "23 from each, making 46 in 23 pairs."
+      },
+      {
+        "q": "A boy and a girl born together are…",
+        "choices": [
+          "fraternal twins — they came from two separate eggs.",
+          "identical twins — they came from one egg that split in two.",
+          "identical twins — they came from two eggs that merged into one.",
+          "not twins at all, because twins are always the same sex."
+        ],
+        "answer": 0,
+        "explain": "Identical twins share the same DNA, so they're always the same sex. A boy-girl pair must be fraternal."
+      },
+      {
+        "q": "In the “Cat in the Hat” study, what did the newborns DO that showed they remembered the story?",
+        "choices": [
+          "They sucked on a pacifier in the pattern that played the familiar story.",
+          "They said the first words of the story by the time they were three months old.",
+          "They fell asleep only when the familiar story was being read to them.",
+          "They cried whenever the unfamiliar story was read to them instead."
+        ],
+        "answer": 0,
+        "explain": "If you can't ask, measure what they do. Sucking patterns were the babies' vote."
+      },
+      {
+        "q": "Why do modern NICUs dim the lights and lower the noise?",
+        "choices": [
+          "A preemie's brain is wiring itself, and calm, sleep, and gentle input help that wiring.",
+          "Bright light slowly damages the clear plastic hoods of the isolettes.",
+          "Nurses can read the glowing monitor screens more clearly in the dark.",
+          "Loud noise would wake the parents who sleep in the unit overnight."
+        ],
+        "answer": 0,
+        "explain": "Developmental care: the third trimester of brain wiring is happening in the NICU, so the NICU tries to act more like a womb."
+      },
+      {
+        "q": "Who spends the most hours at a NICU baby's bedside?",
+        "choices": ["The NICU nurse", "The neonatologist", "The pharmacist", "The social worker"],
+        "answer": 0,
+        "explain": "Which is why a healthy team culture makes sure nurses are heard."
+      },
+      {
+        "q": "“Regionalization” of newborn care means…",
+        "choices": [
+          "getting the sickest babies to the hospitals equipped to care for them.",
+          "naming each NICU after the region of the country it serves.",
+          "making all the hospitals in a region share one team of doctors.",
+          "keeping every baby at the hospital where it happened to be born."
+        ],
+        "answer": 0,
+        "explain": "Very small babies survive more often at Level III and IV hospitals, so systems move mothers or babies there."
+      },
+      {
+        "q": "Hemoglobin came up in Chemistry, Biology, and Genetics. Which statement is TRUE?",
+        "choices": [
+          "It's a protein built from a gene, packed into red blood cells, and it grabs oxygen molecules.",
+          "It's a gene made of oxygen atoms, stored inside the nucleus of every red blood cell.",
+          "It's a molecule of oxygen that turns bright red when it enters a body cell.",
+          "It's a chromosome that carries carbon dioxide from the cells back to the lungs."
+        ],
+        "answer": 0,
+        "explain": "Gene → protein (genetics); packed in red cells with no nucleus (biology); grabs O₂ molecules and changes color (chemistry — and the pulse oximeter)."
+      },
+      {
+        "q": "Which pairing correctly matches each course with its big question?",
+        "choices": [
+          "Calculus: how fast is this one baby growing? Statistics: what's typical across many babies?",
+          "Calculus: what's typical across many babies? Statistics: how fast is this one baby growing?",
+          "Calculus: how is the NICU team organized? Statistics: how does a baby's brain wire itself?",
+          "Calculus: what molecules are in a breath? Statistics: how do cells divide and double?"
+        ],
+        "answer": 0,
+        "explain": "Calculus follows one thing changing over time; statistics looks across many things at once. Doctors need both."
+      },
+      {
+        "q": "Flashback: why are preemies on extra oxygen kept around 90–95% saturation instead of 100%?",
+        "choices": [
+          "Too much oxygen harms developing eyes and lungs, while too little is dangerous too.",
+          "The pulse oximeter cannot read any number above 95 percent accurately.",
+          "Oxygen above 95 percent is too expensive for most hospitals to provide.",
+          "Babies begin breathing more slowly whenever their number reaches 100."
+        ],
+        "answer": 0,
+        "explain": "The Goldilocks lesson from NICU Tutor Lesson 2 — even oxygen has a right dose."
+      },
+      {
+        "q": "Flashback: what does surfactant do?",
+        "choices": [
+          "It coats the lungs' air sacs so they don't stick shut.",
+          "It carries oxygen molecules around in the blood.",
+          "It breaks down bilirubin in the skin under blue light.",
+          "It warms the air inside the isolette automatically."
+        ],
+        "answer": 0,
+        "explain": "The soap-like liquid preemies don't make enough of — NICU Tutor Lesson 5, and Chemistry's soap lesson in Week 3."
+      },
+      {
+        "q": "Flashback: why do so many newborns turn yellow?",
+        "choices": [
+          "Bilirubin from recycled red blood cells builds up faster than the new liver can clear it.",
+          "Their skin cells make extra yellow pigment during the first week of life.",
+          "The isolette's warming lights tint the skin during the first few days.",
+          "Milk contains a yellow dye that shows through a newborn's thin skin."
+        ],
+        "answer": 0,
+        "explain": "NICU Tutor Lesson 7 — now with Biology's explanation of why red cells wear out (no nucleus, no repairs)."
+      },
+      {
+        "q": "Flashback: what does the fontanelle (soft spot) let doctors do?",
+        "choices": [
+          "Ultrasound the brain through a bone-free window in the skull.",
+          "Measure the baby's blood pressure without needing a cuff or a line.",
+          "Feed the baby milk without needing a feeding tube or a bottle.",
+          "Listen to the heart and lungs without needing a stethoscope."
+        ],
+        "answer": 0,
+        "explain": "Sound bounces off bone; the soft spot is nature's door for brain ultrasounds — NICU Tutor Lesson 8."
+      }
+    ]
+  }
+}

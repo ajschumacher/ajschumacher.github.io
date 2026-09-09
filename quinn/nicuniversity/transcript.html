@@ -19,7 +19,7 @@
 
 <main class="wrap wrap-wide">
   <h1>📜 Official Transcript</h1>
-  <p class="lede">Your record at NICUniversity: each course's quiz, the badge you earned for it, and your homework stamp. Registrar's Office, Week 1.</p>
+  <p class="lede">Your record at NICUniversity, week by week: each course's quiz, the badge you earned for it, and your homework stamp. Registrar's Office.</p>
 
   <div class="badge-shelf">
     <span class="shelf-label">🏆 Course badges:</span>
@@ -27,18 +27,13 @@
     <span class="shelf-label" id="shelf-count" style="margin-left:auto"></span>
   </div>
 
-  <div class="table-scroll">
-    <table class="numbers transcript">
-      <thead>
-        <tr><th>Course</th><th>Lecture quiz</th><th>Badge</th><th>Homework</th><th>Stamp</th></tr>
-      </thead>
-      <tbody id="transcript-root"></tbody>
-    </table>
-  </div>
+  <p class="transcript-summary" id="transcript-summary"></p>
+  <div id="transcript-root"></div>
 
   <p class="footer-note">Quiz scores show your best attempt. Homework points are entered by your professor in Professor mode after grading with the answer key.</p>
 </main>
 
+<script src="js/schedule.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

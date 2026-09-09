@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculus 101, Week 2: How Much Piles Up?</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body class="c-calculus" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A syringe pump dripping into a measuring cup, beside a bar graph of stacked rectangles filling up under a line">
+        <rect x="20" y="40" width="110" height="34" rx="8" fill="#fff" stroke="#565d75" stroke-width="3"/>
+        <rect x="26" y="48" width="70" height="18" fill="#cfe6f8"/>
+        <rect x="130" y="50" width="22" height="14" fill="#565d75"/>
+        <line x1="75" y1="74" x2="75" y2="120" stroke="#3f88c5" stroke-width="3" stroke-dasharray="4 5"/>
+        <path d="M 55 130 L 95 130 L 90 190 L 60 190 Z" fill="#fff" stroke="#565d75" stroke-width="2"/>
+        <path d="M 59 160 L 91 160 L 90 190 L 60 190 Z" fill="#9cc4dd"/>
+        <line x1="150" y1="200" x2="230" y2="200" stroke="#2d3142" stroke-width="3"/>
+        <line x1="150" y1="200" x2="150" y2="100" stroke="#2d3142" stroke-width="3"/>
+        <rect x="152" y="160" width="18" height="40" fill="#ffb627" stroke="#c8871a"/>
+        <rect x="172" y="140" width="18" height="60" fill="#ffb627" stroke="#c8871a"/>
+        <rect x="192" y="130" width="18" height="70" fill="#ffb627" stroke="#c8871a"/>
+        <rect x="212" y="125" width="18" height="75" fill="#ffb627" stroke="#c8871a"/>
+        <path d="M 152 165 Q 200 120 232 124" fill="none" stroke="#c8871a" stroke-width="3"/>
+        <text x="18" y="24" font-size="14">✦</text><text x="212" y="104" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Calculus 101 · Week 2 · Tuesday 1:00</p>
+      <h1>How Much Piles Up?</h1>
+      <p class="lede">Last week: how fast is it changing? This week, calculus's second big question: if it keeps changing at that rate, how much do you end up with? A NICU asks it about every drop of milk, every hour, every day — and the answer is an area.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from last week's Calculus.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-calculus-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>, and grab scratch paper — there's multiplying today. The purple boxes ask for the big idea; write yours before you check.</p>
+    </div>
+  </div>
+
+  <h2>🥛 Rate times time</h2>
+  <p>A feeding pump beside an isolette is set to 3 milliliters an hour. It has been running all day. How much milk did the baby get? You already know how to do this: 3 mL every hour, 24 hours — 3 × 24 = <strong>72 mL</strong>. That's the whole idea of today, and it's the mirror image of last week. Last week you had a change and a time and divided to get a rate. This week you have a rate and a time and <em>multiply</em> to get a total. <strong>Total = rate × time.</strong></p>
+  <p>Doctors write the rate with that little word from last week: <em>per</em>. Three mL <em>per</em> hour. And they read “per” backwards when they need to: “per hour” means <em>for each hour</em>, so to get the total you count the hours and multiply. If the rate is in mL per hour, count hours. If it's in grams per day, count days. If it's in beats per minute — as Biology showed you yesterday — count minutes, and you get a heart's 200,000 beats a day.</p>
+  <p>Real NICU feeding is usually not a steady drip but a <strong>bolus</strong> — a small meal every three hours, eight times a day. Say each feed is 20 mL. Total for the day: 20 × 8 = 160 mL. And just like last week, doctors divide by the baby's size so they can compare babies: for a 1-kilogram baby, that's 160 mL <em>per kilogram</em> per day. When a preemie is getting all its nutrition by mouth or tube, around 150 to 160 mL/kg/day is “full feeds” — the phrase families wait weeks to hear.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Calculus's second question: how much piles up? Total = rate × time. 3 mL per hour for 24 hours is 72 mL; 20 mL a feed × 8 feeds is 160 mL a day.</p></details>
+    </div>
+  </div>
+
+  <h2>📐 The total is an area</h2>
+  <p>Now draw it, the way we drew weights last week — except this time the height of the graph is the <em>rate</em>, not the weight. Hours run along the bottom. The pump's 3 mL per hour is a flat line at height 3. Shade in everything under that line from hour 0 to hour 24. What shape is it? A rectangle: 3 tall, 24 wide. And the area of a rectangle is height × width — 3 × 24 = 72. <strong>The area under the rate line is the total.</strong> Rate × time isn't just arithmetic; it's the area of a shape.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two graphs of pump rate against hours: on the left, a flat rate of 3 mL per hour for 24 hours shaded as one rectangle of area 72; on the right, a staircase of rates 2, 3 and 4 mL per hour for 8 hours each, shaded as three rectangles totalling 72">
+      <g transform="translate(40,20)">
+        <line x1="0" y1="180" x2="240" y2="180" stroke="#2d3142" stroke-width="2"/><line x1="0" y1="180" x2="0" y2="20" stroke="#2d3142" stroke-width="2"/>
+        <rect x="0" y="90" width="240" height="90" fill="#fff3d6" stroke="#c8871a" stroke-width="2"/>
+        <text x="120" y="140" font-size="16" text-anchor="middle" fill="#2d3142" font-weight="bold">3 × 24 = 72 mL</text>
+        <text x="-6" y="94" font-size="11" text-anchor="end" fill="#565d75">3</text><text x="-6" y="184" font-size="11" text-anchor="end" fill="#565d75">0</text>
+        <text x="0" y="198" font-size="11" text-anchor="middle" fill="#565d75">0</text><text x="240" y="198" font-size="11" text-anchor="middle" fill="#565d75">24 h</text>
+        <text x="120" y="222" font-size="12" text-anchor="middle" fill="#565d75">One flat rate: one rectangle</text>
+        <text x="-30" y="10" font-size="11" fill="#565d75">mL/hr</text>
+      </g>
+      <g transform="translate(340,20)">
+        <line x1="0" y1="180" x2="240" y2="180" stroke="#2d3142" stroke-width="2"/><line x1="0" y1="180" x2="0" y2="20" stroke="#2d3142" stroke-width="2"/>
+        <rect x="0" y="120" width="80" height="60" fill="#fff3d6" stroke="#c8871a" stroke-width="2"/>
+        <rect x="80" y="90" width="80" height="90" fill="#ffe7a8" stroke="#c8871a" stroke-width="2"/>
+        <rect x="160" y="60" width="80" height="120" fill="#ffd977" stroke="#c8871a" stroke-width="2"/>
+        <text x="40" y="155" font-size="13" text-anchor="middle" fill="#2d3142">2×8=16</text>
+        <text x="120" y="140" font-size="13" text-anchor="middle" fill="#2d3142">3×8=24</text>
+        <text x="200" y="125" font-size="13" text-anchor="middle" fill="#2d3142">4×8=32</text>
+        <text x="-6" y="64" font-size="11" text-anchor="end" fill="#565d75">4</text><text x="-6" y="94" font-size="11" text-anchor="end" fill="#565d75">3</text><text x="-6" y="124" font-size="11" text-anchor="end" fill="#565d75">2</text><text x="-6" y="184" font-size="11" text-anchor="end" fill="#565d75">0</text>
+        <text x="0" y="198" font-size="11" text-anchor="middle" fill="#565d75">0</text><text x="80" y="198" font-size="11" text-anchor="middle" fill="#565d75">8</text><text x="160" y="198" font-size="11" text-anchor="middle" fill="#565d75">16</text><text x="240" y="198" font-size="11" text-anchor="middle" fill="#565d75">24 h</text>
+        <text x="120" y="222" font-size="12" text-anchor="middle" fill="#565d75">Rate goes up in steps: add the rectangles = 72 mL</text>
+      </g>
+    </svg>
+    <figcaption>Height is the rate, width is the time, and the shaded area is the total. Stairs are just several rectangles.</figcaption>
+  </figure>
+
+  <p>Why bother drawing? Because pumps get changed. Say the team starts the day at 2 mL per hour, bumps it to 3 after eight hours, and to 4 after sixteen — the way feeds are “advanced” a little at a time to protect a preemie's gut. Now the rate line is a staircase, and the total is three rectangles: 2 × 8 = 16, plus 3 × 8 = 24, plus 4 × 8 = 32. Add them: 72 mL. You didn't need a new rule. You needed to see that a staircase is rectangles, and rectangles are rate × time.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Draw the rate as height and time as width: the total is the area under the line. A steady rate is one rectangle; a rate that changes in steps is several rectangles added up.</p></details>
+    </div>
+  </div>
+
+  <h2>🌊 When the rate is a curve</h2>
+  <p>Staircases are easy. But most real rates don't go in neat steps — they slide. A baby's weight gain speeds up gradually. A medicine drips out of the body faster at first and slower later. The rate line is a <em>curve</em>, and there's no rectangle that fits under a curve. So what's the total?</p>
+  <p>Here is the idea that took humanity two thousand years to finish, and you can have it in one paragraph. <strong>Slice it.</strong> Cut the time into thin strips — say, one hour each. In any single hour, the rate barely changes, so treat that hour as a skinny rectangle: the rate at that moment, times one hour. Add up all the skinny rectangles. You'll be a little off, because the curve wiggles inside each strip. So cut thinner: half-hours. Closer. Minutes. Closer still. Seconds. The thinner the slices, the closer your sum of rectangles hugs the curve — until, with slices thin enough, the sum <em>is</em> the area under the curve, and the area is the total.</p>
+  <p>That's the second half of calculus. Last week's half was about zooming in on a curve until it looks like a straight line (the rate right now). This week's half is about slicing under a curve into pieces so thin they add up perfectly (the total). Newton and Leibniz's great discovery — the reason they fought so bitterly over credit — was that these two halves are secretly the same coin: the rate and the total undo each other. Leibniz even invented a symbol for “add up all the thin slices”: a long, stretched-out letter S, for <em>sum</em>. It looks like this: ∫. You'll meet it properly later this semester. When you do, you'll already know what it means: a pile of skinny rectangles.</p>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Home lab: the dripping cup</div>
+    <p class="lab-materials">You need: a paper or plastic cup, a pin or pencil point, a measuring cup with mL marks, a timer, and a sink.</p>
+    <p>Poke a small hole in the bottom of the cup, cover it with a finger, fill the cup with water, and hold it over the measuring cup. Let go and time <strong>one minute</strong>. Read the mL — that's your rate, in mL per minute. Now <em>predict</em>: at that rate, how much will you have after five minutes? (Rate × 5.) Then run it for five minutes and measure. You'll get <em>less</em> than you predicted. Why? Because the rate wasn't steady: as the cup empties there's less water pushing down on the hole — less pressure, Physics from last week — so the drip slows. Your rate was a falling curve, not a flat line, and the true total is the area under that curve. You just discovered why calculus needs slices. Record it on the homework.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">When the rate is a curve, slice time into thin strips, treat each as a skinny rectangle, and add them up; thinner slices get closer to the exact area under the curve. That sum is the total, and ∫ is the symbol for it.</p></details>
+    </div>
+  </div>
+
+  <h2>📋 The sheet on every bed: In and Out</h2>
+  <p>Walk up to any NICU bed and there's a chart called the <strong>I&amp;O</strong> — intake and output. Everything that goes in is written down and added up: each tube feed, the IV fluids, the TPN, even the flushes that push medicine through a line. And everything that comes out is measured too — which is why, as NICU Tutor told you, nurses weigh diapers. Here's the trick: they weigh the diaper dry, weigh it wet, and subtract. A gram of extra weight is a milliliter of urine, because a milliliter of water weighs exactly one gram (Chemistry will have things to say about that in a few weeks). Pee is a rate too — doctors want at least about 1 mL per kilogram per hour — and the diaper pile is the total.</p>
+  <p>Once a day, someone adds up the in column and the out column and compares them. In much bigger than out? The baby is holding water, which can be trouble for the lungs and a PDA. Out bigger than in? Drying out. The whole sheet is this week's lesson, filled in by hand: rates, multiplied by hours, added into totals, all day long.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: “diapers get weighed too”</div>
+    <p><a href="../../../nicu_tutor/lessons/06-feeding.html">NICU Tutor Lesson 6</a> said even diapers get weighed, “because what comes out is data too.” Now you know what data: the output total, built from a rate the kidneys set. And the tiny 2-mL “trophic” feeds from that lesson? They're a rate so small the total for a whole day is a few teaspoons — deliberately, so an immature gut can practice.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🛁 Real talk: the man who slept in the bath</div>
+    <p>Twenty-two centuries before Newton, a Greek mathematician named <strong>Archimedes</strong> was already slicing. He lived in Syracuse, on Sicily, around 250 BC, and he wanted the exact area of a circle. No rectangle fits inside a circle, so he drew a hexagon inside it, then a 12-sided shape, then 24, 48, 96 sides — each one made of triangles whose area he could compute, each one hugging the circle more closely. He squeezed the circle between shapes from the inside and the outside until the gap was smaller than anything that mattered. That is exactly the slicing idea from today, done with polygons instead of rectangles, and it got him the value of pi to better than three decimal places, by hand, with a stick in the sand.</p>
+    <p>He also solved a total by <em>watching something pile up</em>. The king suspected his new gold crown was partly silver, and Archimedes couldn't melt it to check. Stepping into a full bath, he watched the water slosh over the edge and realized the overflow measured his body's volume — and would measure the crown's. Legend says he ran home shouting “Eureka!” (“I've found it!”) and forgot to get dressed. The crown was a fake. Archimedes died in 212 BC when Roman soldiers captured the city; the story goes that he was working on a diagram in the sand and asked the soldier not to disturb his circles. The soldier killed him. His slicing idea outlived the Roman Empire by a couple of thousand years, and this afternoon a nurse used it to add up a diaper.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>Total = rate × time</td><td>3 mL/hr × 24 hr = 72 mL</td><td>Count the unit after “per”</td></tr>
+    <tr><td>Bolus feeds</td><td>Usually every 3 hours = 8 a day</td><td>20 mL × 8 = 160 mL</td></tr>
+    <tr><td>“Full feeds” for a preemie</td><td>About 150–160 mL/kg/day</td><td>Divide the day's total by the weight in kg</td></tr>
+    <tr><td>A wet diaper</td><td>1 extra gram = 1 mL of urine</td><td>Water weighs 1 gram per mL</td></tr>
+    <tr><td>Urine doctors want to see</td><td>At least about 1 mL/kg/hour</td><td>A rate; the diapers give the total</td></tr>
+    <tr><td>Archimedes' polygon</td><td>96 sides</td><td>Squeezed pi between 3.1408 and 3.1429</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Total (accumulation)</dt><dd>How much has piled up. Rate × time.</dd>
+      <dt>Area under the curve</dt><dd>The shaded region beneath a rate line — it equals the total.</dd>
+      <dt>Bolus</dt><dd>One measured meal given at once, rather than a continuous drip.</dd>
+      <dt>Intake and output (I&amp;O)</dt><dd>The bedside sheet of everything that went in and came out, added up daily.</dd>
+      <dt>Integral</dt><dd>The calculus word for the exact area under a curve, found by slicing. Symbol: ∫. Preview only!</dd>
+      <dt>Polygon</dt><dd>A flat shape with straight sides. Archimedes used ones with 96.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-geometry/imp-area/v/introduction-to-area-and-unit-squares" target="_blank" rel="noopener">Khan Academy: area as counting squares</a> — the rectangles under the rate line.</li>
+      <li><a href="https://www.britannica.com/biography/Archimedes" target="_blank" rel="noopener">Britannica: Archimedes</a></li>
+      <li>Next time you fill a bath, put your arm in and watch the water rise. That rise is your arm's volume — Archimedes' bath, at home.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Calculus 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's 📈 badge. Scratch paper encouraged.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: How Much Piles Up?</div>
+    <p>Due at recitation, Wednesday 9:45. Print it now: <a href="../../print/week2/hw-calculus-w2.pdf" target="_blank" rel="noopener">Homework 2: Totals (PDF)</a>. Rate-times-time for three pumps, a staircase to draw and add up, a real intake-and-output sheet, and a paused-pump puzzle. Plus the dripping-cup lab. Details on the <a href="../../recitations/week2/calculus.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-tue-calc",
+  quizId: "calculus-w2",
+  course: "calculus",
+  printQuiz: "../../print/week2/quiz-calculus-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what are “trophic feeds,” and what are they for?", a: "The tiny first feeds — one or two milliliters every few hours — that aren't really about calories. They wake up an immature gut gently and let it practice, while TPN through an IV does the real feeding." },
+    { q: "From last week's Calculus: a baby weighed 900 g on day 1 and 970 g on day 8. What was the rate of change?", a: "Change 70 g ÷ 7 days = 10 grams per day. Today we run that backwards: rate × time = total." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

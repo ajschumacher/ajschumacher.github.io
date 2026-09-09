@@ -24,42 +24,58 @@ Manage Voices, and download an "Enhanced"/"Premium" English voice.
 
 ## Status
 
-Week 1 is complete: nine lectures with quizzes, nine printed homeworks with
-answer keys, nine recitation pages, Friday study hall with a review sheet, the
-24-question Week 1 Final (17 to pass), and a printable diploma. The timetable
-suggests an order but every class is open. Week 2 is next.
+Weeks 1 and 2 are complete: each has nine lectures with quizzes, nine printed
+homeworks with answer keys, nine recitation pages, Friday study hall with a
+review sheet, a 24-question final (17 to pass), and a printable diploma. Week 2
+adds optional at-home labs to six homeworks and fades the "Write this down"
+cues to "What's the big idea here?" prompts. Week 3 is next; its slots show as
+"coming soon" on the timetable. The syllabus through Week 5 and the 20-week
+unit plan are in [PLAN.md](PLAN.md).
 
 ## Structure
 
-- `index.html` timetable · `transcript.html` record of quizzes, badges, stamps
-- `courses/<course>/week1.html` lectures · `recitations/week1/<course>.html`
-- `study/week1.html` review · `exams/week1-final.html` final exam
-- `data/quizzes.json` quiz + exam source of truth · `data/homework.json` homework
-  source · `data/review.json` the week's big ideas
-- `js/app.js` schedule (SCHEDULE manifest), progress, Professor mode, quiz engine,
-  read-aloud, vocab popovers · `js/vocab.js` tappable vocabulary · `js/quizzes.js` (generated)
-- `print/` generated PDFs: `quiz-*.pdf`, `hw-*.pdf`, `hw-*-key.pdf`, `notes-*.pdf`,
-  `quiz-keys.pdf`, `review-week1.pdf`, `certificate-week1.pdf`
+- `index.html` timetable (week tabs) · `transcript.html` record by week
+- `courses/<course>/weekN.html` lectures · `recitations/weekN/<course>.html`
+- `study/weekN.html` review · `exams/weekN-final.html` final exam
+- `data/quizzes-wN.json` quiz + exam source of truth · `data/homework-wN.json`
+  homework source · `data/review-wN.json` the week's big ideas
+- `js/schedule.js` the semester manifest (`window.WEEKS`; slot ids are stored in
+  progress, never rename one) · `js/app.js` progress, Professor mode, quiz engine,
+  read-aloud, vocab popovers · `js/vocab.js` tappable vocabulary ·
+  `js/quizzes-wN.js` (generated; each page loads only its week)
+- `print/weekN/` generated PDFs: `quiz-*.pdf`, `hw-*.pdf`, `hw-*-key.pdf`,
+  `notes-*.pdf`, `quiz-keys-wN.pdf`, `review-weekN.pdf`, `certificate-weekN.pdf`
+- `tools/check_links.py` verifies every link, quiz/homework id, recitation point
+  total, and schedule entry
 
 ## Adding a week
 
-1. Add slots to `SCHEDULE` in `js/app.js` (ids, day/time, course, href, quizId/hwId).
-2. Write `courses/<course>/week2.html` and `recitations/week2/<course>.html` from the
-   Week 1 pages as templates (body class `c-<course>`, `data-root`, `window.LESSON`).
-3. Add quizzes to `data/quizzes.json`, homework to `data/homework.json`, big ideas
-   to `data/review.json`; add new vocabulary to `js/vocab.js`.
-4. Rebuild (below). Fix any lint warnings — they are the "guessable answer" check.
+1. Add the week block to `js/schedule.js` (slot ids `wN-…`, day/time, course, href,
+   quizId/hwId, `certificate` on the exam slot). `href: null` shows "coming soon".
+2. Write `courses/<course>/weekN.html` and `recitations/weekN/<course>.html` from the
+   previous week's pages (body class `c-<course>`, `data-root`, `window.LESSON`,
+   load `js/quizzes-wN.js` and `js/schedule.js`). Cue fading: Week 2 uses
+   `.cue.cue-ask` with a `<details>` check; Weeks 3–4 use `.cue.cue-spot`; Week 5+
+   has no in-text cues. Optional home labs go in a `.box.box-lab` on the page and a
+   `"type": "lab"` item at the end of the homework (not graded; professor initials).
+3. Write `data/quizzes-wN.json` (9 quizzes + `final-wN`), `data/homework-wN.json`,
+   `data/review-wN.json`; add vocabulary to `js/vocab.js`. Homework figures available:
+   `cell`, `grid`, `bars`, `growthchart`, `ratesteps`, `heart` (add new ones in
+   `tools/build_print.py`).
+4. Rebuild and check (below). Fix any lint warnings — they are the "guessable
+   answer" check. Then follow PLAN.md's per-week checklist.
 
 ## Rebuilding after editing quizzes or homework
 
 ```bash
-/usr/bin/python3 tools/build_quizzes.py && /usr/bin/python3 tools/build_print.py
+/usr/bin/python3 tools/build_quizzes.py && /usr/bin/python3 tools/build_print.py && /usr/bin/python3 tools/check_links.py
 ```
 
 `build_quizzes.py` shuffles answer positions with a seeded RNG (web and paper
 always match), balances which letter is correct, and lints for answers that are
 guessable from length. It exits non-zero on lint warnings. `build_print.py`
-needs `reportlab` and `pypdf` (installed for the system python3).
+needs `reportlab` and `pypdf` (installed for the system python3). The preview
+server in `.claude/launch.json` serves the parent folder so `../nicu_tutor` links resolve.
 
 ## Authoring rules for quizzes
 

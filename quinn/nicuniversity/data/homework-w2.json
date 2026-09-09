@@ -1,0 +1,1353 @@
+{
+ "seminar-w2": {
+  "title": "Homework 2: Big-Idea Hunting",
+  "course": "seminar",
+  "courseName": "Freshman Seminar",
+  "intro": "About 20 minutes. Answer in your own words — if your answer means the same thing as the key, it counts. Part C is the main event: you get to be the professor and write a quiz question.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Boil it down"
+   },
+   {
+    "type": "passage",
+    "text": "From NICU Tutor: Drinking milk seems like the easiest thing a baby does. It's actually a stunt. To feed safely, a baby must suck, then swallow, then breathe — in perfect rhythm, over and over, without ever letting milk slip down the wrong pipe into the lungs. That rhythm is a brain skill, and it isn't wired up until about 32 to 34 weeks of development. A baby born at 26 weeks simply doesn't have the wiring yet. Feed that baby from a bottle and milk would end up in its lungs. So the NICU delivers milk another way: a soft tube from the nose to the stomach, with a pump pushing the milk in slowly."
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 3,
+    "q": "Write the ONE biggest idea of that passage in your own words — one line. Then, underneath, write one detail you chose to leave out.",
+    "answer": "Idea (2 pts): feeding by mouth needs a suck-swallow-breathe rhythm that early preemies' brains haven't wired yet, so they're fed by a tube instead. Detail (1 pt): any support — '32 to 34 weeks', 'the wrong pipe', 'a pump pushing slowly', etc. Give 1 pt only if the 'idea' is actually a detail (like the 32–34 weeks number)."
+   },
+   {
+    "type": "passage",
+    "text": "From this morning's Chemistry: Look back at the ruler. Blood sits at 7.35 to 7.45. That window is one-tenth of one step wide. Your stomach is happy at 2; your skin is fine at 5; but blood that drifts to 7.2 makes a NICU team move fast, and blood at 6.9 or 7.8 is usually fatal. Why so picky? Because of proteins. A protein works because of its exact folded shape, and loose hydrogens grab onto proteins and warp them. A little too much acid and the enzymes slow down, the heart muscle squeezes more weakly, and hemoglobin drops its oxygen too early."
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 3,
+    "q": "Same again: the ONE big idea, one line, your words. Then one detail you left out.",
+    "answer": "Idea (2 pts): blood must stay in a tiny pH window (about 7.4) because too much acid warps the proteins the body runs on. Detail (1 pt): 'stomach at 2', '6.9 or 7.8 is fatal', 'hemoglobin drops oxygen early', etc."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Idea or detail?"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "Six sentences from this week's Monday classes. Mark each one I (big idea) or D (detail), and say which test you used (so what? / forget it / repeat).",
+    "columns": [
+     "Sentence",
+     "I or D?",
+     "Which test?"
+    ],
+    "rows": [
+     [
+      "Sørensen invented pH in 1909 at a brewery.",
+      "",
+      ""
+     ],
+     [
+      "Each pH step is ten times more acidic.",
+      "",
+      ""
+     ],
+     [
+      "The heart is two pumps: right side to the lungs, left side to the body.",
+      "",
+      ""
+     ],
+     [
+      "A newborn's heart is about the size of a walnut.",
+      "",
+      ""
+     ],
+     [
+      "Testing yourself works better than rereading.",
+      "",
+      ""
+     ],
+     [
+      "Leonardo wrote in mirror writing.",
+      "",
+      ""
+     ]
+    ],
+    "answer": "D, I, I, D, I, D. 1 pt per row for the right letter; any sensible test named is fine (the 'forget it' test works on all six)."
+   },
+   {
+    "type": "section",
+    "title": "Part C — You're the professor"
+   },
+   {
+    "type": "short",
+    "points": 4,
+    "lines": 7,
+    "q": "Write ONE multiple-choice quiz question about something from today's Chemistry or Biology. Include the question, the right answer, and TWO wrong answers that sound reasonable (no jokes, and about the same length as the right one). Remember the rule: someone should have to actually know the material.",
+    "answer": "1 pt: the question is about a big idea, not a trivial detail. 1 pt: the right answer is actually right. 2 pts: both wrong answers are plausible and similar in length (a kid who half-understood might pick them). Take a point off for a joke answer or one that's obviously shorter/sillier."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From NICU Tutor: what does the isolette's skin probe do?",
+    "answer": "Reports the baby's skin temperature so the isolette can warm or cool its air to hit the target (servo control)."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Seminar: what are office hours?",
+    "answer": "Time a professor sets aside for students to come and ask anything."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Think like a student"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A friend says: “I reread the chapter three times and still failed the quiz.” Using today's class, tell them what to do instead — and why it works better.",
+    "answer": "Close the book and test yourself: say the big ideas out loud, write them from memory, teach them to someone, or write your own quiz questions (1 pt). Why: pulling ideas out of your head (retrieval) builds the memory path; rereading only makes words look familiar (1 pt). Bonus for mentioning the 2006 study (about 60% vs 40%) or 'find the 3 big ideas first, then test those' (1 pt)."
+   }
+  ]
+ },
+ "chemistry-w2": {
+  "title": "Homework 2: Acids & Bases",
+  "course": "chemistry",
+  "courseName": "Chemistry 101",
+  "intro": "About 20 minutes. Part C is the heart of it: read each blood gas like a detective — two clues, one story. The home lab at the end is optional and fun.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Sort the kitchen"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "For each substance, write whether it is an acid, a base, or neutral — and whether it would taste sour, feel slippery, or neither. (1 point per row.)",
+    "columns": [
+     "Substance",
+     "Acid, base, or neutral?",
+     "Sour, slippery, or neither?"
+    ],
+    "rows": [
+     [
+      "Lemon juice",
+      "",
+      ""
+     ],
+     [
+      "Baking soda in water",
+      "",
+      ""
+     ],
+     [
+      "Pure water",
+      "",
+      ""
+     ],
+     [
+      "Vinegar",
+      "",
+      ""
+     ],
+     [
+      "Hand soap",
+      "",
+      ""
+     ],
+     [
+      "Milk",
+      "",
+      ""
+     ]
+    ],
+    "answer": "Lemon juice — acid, sour. Baking soda water — base, slippery. Pure water — neutral, neither. Vinegar — acid, sour. Hand soap — base, slippery. Milk — (just barely) acid, mostly neither / a little sour when it goes off. 1 pt per row; half credit if one of the two words is right."
+   },
+   {
+    "type": "section",
+    "title": "Part B — The ten-times ruler"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 2,
+    "q": "A drink is pH 6. Another is pH 4. How many times more acidic is the pH 4 drink? Show how you got it.",
+    "answer": "100 times. Two steps down the ruler, and each step is ten times: 10 × 10 = 100. (1 pt for 100, 1 pt for the reasoning.)"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "Which is more acidic: pH 3 or pH 5?",
+    "answer": "pH 3 — lower number, more acid (100 times more, in fact)."
+   },
+   {
+    "type": "mc",
+    "points": 1,
+    "q": "Baking soda (a base) is stirred into vinegar (an acid) and it fizzes. What is happening?",
+    "choices": [
+     "The acid and base are neutralizing each other, and the fizz is CO₂ escaping.",
+     "The base is turning into a stronger acid, and the fizz is oxygen escaping.",
+     "The vinegar is boiling because the baking soda made it hot.",
+     "The two are mixing into soap, and the fizz is soap bubbles."
+    ],
+    "answer": 0,
+    "explain": "Acid + base cancel out. Bicarbonate catching the acid's loose hydrogens releases carbon dioxide — the fizz."
+   },
+   {
+    "type": "section",
+    "title": "Part C — Blood gas detective"
+   },
+   {
+    "type": "passage",
+    "text": "Normal values, about: pH 7.35–7.45; CO₂ 35–45; bicarbonate 22–26. Remember the two stories: pH low + CO₂ high = the lungs aren't clearing acid (a breathing problem). pH low + CO₂ normal + bicarbonate low = acid is coming from starving cells (find the cause). pH high + CO₂ low = breathing too much."
+   },
+   {
+    "type": "table",
+    "points": 8,
+    "q": "Four babies, four blood gases. For each, write what the problem is and what the team should do. (2 points per baby: 1 for the problem, 1 for the plan.)",
+    "columns": [
+     "Baby",
+     "pH",
+     "CO₂",
+     "Bicarb",
+     "What's the problem?",
+     "What should the team do?"
+    ],
+    "rows": [
+     [
+      "A",
+      "7.40",
+      "40",
+      "24",
+      "",
+      ""
+     ],
+     [
+      "B",
+      "7.20",
+      "70",
+      "25",
+      "",
+      ""
+     ],
+     [
+      "C",
+      "7.18",
+      "38",
+      "14",
+      "",
+      ""
+     ],
+     [
+      "D",
+      "7.52",
+      "25",
+      "24",
+      "",
+      ""
+     ]
+    ],
+    "answer": "A: normal — nothing to fix; keep watching. B: CO₂ piling up, acid from the lungs not clearing (respiratory acidosis) — more breathing help: raise CPAP, ventilator breaths, caffeine. C: lungs are fine (CO₂ normal) but the sponge is used up — acid from starving cells (metabolic acidosis) — hunt for the cause: infection, low blood pressure, sick gut; treat that. D: pH high, CO₂ low — breathing too much, probably the ventilator is set too high — turn it down (low CO₂ squeezes brain blood vessels)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Flashback to Week 1 Chemistry"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 2,
+    "q": "Carbonic acid is H₂CO₃ and baking soda (sodium bicarbonate) is NaHCO₃. How many atoms are in each molecule? (Na is sodium — one atom.)",
+    "answer": "H₂CO₃: 2 + 1 + 3 = 6 atoms. NaHCO₃: 1 + 1 + 1 + 3 = 6 atoms. 1 pt each."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashback to NICU Tutor"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 3,
+    "q": "In the NICU, caffeine is a medicine. What is it for — and using today's chemistry, explain how it helps keep a preemie's blood pH steady.",
+    "answer": "Caffeine keeps the brain's breathing center awake, preventing apnea spells (1 pt). Steady breathing keeps blowing off CO₂, so carbonic acid doesn't pile up and the pH stays near 7.4 (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A preemie has a 25-second apnea spell with a brady. The nurse rubs her back and she restarts. Twenty minutes later a blood gas shows pH 7.24 and CO₂ 65. Explain what happened in her blood during the spell, and say two things the team might do next.",
+    "answer": "During the spell no CO₂ was leaving, but every cell kept making it; it dissolved into carbonic acid and the pH slid down (1 pt). The gas shows the acid is from CO₂ (high CO₂), so it's a breathing problem, not starving cells (1 pt). Plans: check caffeine dose or start it, add or raise CPAP, watch for more spells and recheck a gas; don't over-treat one number in a baby who now looks fine (1 pt for any two sensible steps)."
+   },
+   {
+    "type": "lab",
+    "title": "The red-cabbage pH tester",
+    "materials": "a few red-cabbage leaves, hot water (grown-up helps), a jar, small cups, and things to test: lemon juice, vinegar, milk, plain water, baking-soda water, soapy water",
+    "steps": [
+     "Chop the cabbage, cover it with hot water, wait 10 minutes, and pour off the purple juice. That's your indicator.",
+     "Put a little of each test liquid in its own cup and add a spoonful of cabbage juice to each.",
+     "Watch the colors: pink or red means acid, blue or green means base, purple means neutral.",
+     "Line the cups up from reddest to greenest. That's a pH ruler. Write the order below, then try mixing the lemon cup into the baking-soda cup and watch the color (and the fizz)."
+    ],
+    "expect": "Lemon and vinegar turn pink/red (acids); baking-soda water and soapy water turn blue/green (bases); water stays purple; milk stays purple or goes very slightly pink. Mixing lemon into baking-soda water fizzes and the color heads back toward purple — neutralizing.",
+    "lines": 3
+   }
+  ]
+ },
+ "biology-w2": {
+  "title": "Homework 2: The Heart and the Blood",
+  "course": "biology",
+  "courseName": "Biology 101",
+  "intro": "About 20 minutes. Part A uses the diagram: remember the baby's right side is on YOUR left. Show your multiplication in Part B — the steps are worth points.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Label the four rooms"
+   },
+   {
+    "type": "figure",
+    "figure": "heart"
+   },
+   {
+    "type": "table",
+    "points": 8,
+    "q": "For each number on the diagram, write the room's name and what it does (receives blood from where, or pumps blood to where).",
+    "columns": [
+     "#",
+     "Room",
+     "What it does"
+    ],
+    "rows": [
+     [
+      "1",
+      "",
+      ""
+     ],
+     [
+      "2",
+      "",
+      ""
+     ],
+     [
+      "3",
+      "",
+      ""
+     ],
+     [
+      "4",
+      "",
+      ""
+     ]
+    ],
+    "answer": "1 Right atrium — receives used (low-oxygen) blood back from the body. 2 Right ventricle — pumps it to the lungs. 3 Left atrium — receives fresh (oxygen-rich) blood from the lungs. 4 Left ventricle — pumps it out to the whole body. 1 pt per name, 1 per job."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Harvey's arithmetic, on a newborn"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 3,
+    "q": "A newborn's heart beats 130 times a minute. How many beats in an hour? In a day? Show the multiplication.",
+    "answer": "130 × 60 = 7,800 per hour (1 pt). 7,800 × 24 = 187,200 per day (1 pt; accept 'about 190,000'). 1 pt for showing the steps."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "Count your own pulse for 15 seconds (two fingers on the side of your neck or the inside of your wrist). Multiply by 4. What's your heart rate?",
+    "answer": "Any reasonable number, usually 70–110 for an 8-year-old. 1 pt for doing it and multiplying by 4."
+   },
+   {
+    "type": "section",
+    "title": "Part C — What's in the blood"
+   },
+   {
+    "type": "match",
+    "points": 4,
+    "q": "Draw a line from each part of the blood to its job.",
+    "left": [
+     "Plasma",
+     "Red blood cells",
+     "White blood cells",
+     "Platelets"
+    ],
+    "right": [
+     "Plug leaks — the start of a scab",
+     "Hunt and fight germs",
+     "The water that carries salt, sugar, and bicarbonate",
+     "Carry oxygen with hemoglobin"
+    ],
+    "answer": [
+     2,
+     3,
+     1,
+     0
+    ]
+   },
+   {
+    "type": "section",
+    "title": "Part D — Counting drops"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 3,
+    "q": "A preemie weighs 1.5 kg. About how much blood does she have (80 mL per kg)? A blood test takes 3 mL. What fraction of her blood is that? (Hint: how many 3s fit into her total?)",
+    "answer": "1.5 × 80 = 120 mL (1 pt). 120 ÷ 3 = 40, so the test is 1/40 of her blood — about 2.5% (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 2,
+    "q": "From NICU Tutor: the umbilical cord has three blood vessels. What are they, and what does a doctor use them for in the first days of life?",
+    "answer": "Two arteries (carry the baby's blood out to the placenta) and one vein (brings oxygen-rich blood in) (1 pt). Doctors slide soft catheters into them for live blood pressure, blood samples, and giving fluids or TPN — no skin poke (1 pt)."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From this morning's Chemistry: the bicarbonate 'sponge' rides in which part of the blood?",
+    "answer": "The plasma — the watery part, along with salt, sugar, and proteins."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A 900-gram preemie is five days old and breathing harder today than yesterday. The nurse hears a whooshing murmur. An ultrasound of the heart shows the ductus arteriosus is still wide open. Explain what is happening to the blood — and name two things the team might decide to do.",
+    "answer": "Blood pumped toward the body is leaking back through the open ductus into the lungs (1 pt), so the lungs are flooded (harder breathing) and the body gets less than its share (1 pt). Options: watch and wait for a small one to close on its own; give a medicine that nudges it shut; rarely, close it with a tiny plug or operation; meanwhile support breathing and go easy on fluids (1 pt for any two)."
+   },
+   {
+    "type": "lab",
+    "title": "One-way doors in your own arm",
+    "materials": "your arm, a mirror or a grown-up to watch, and a minute of patience",
+    "steps": [
+     "Let one arm hang straight down for a minute until the veins on the back of that hand puff up.",
+     "Press one puffy vein with a fingertip and keep pressing. With a finger of your other hand, stroke along the vein AWAY from your heart, toward your knuckles.",
+     "Look at the stretch you just emptied. Does it stay flat, or refill? Now lift the first finger.",
+     "Raise your hand above your head and watch the veins. Then hang it down again and watch them come back.",
+     "Bonus: count your pulse for 15 seconds, do 20 jumping jacks, and count again."
+    ],
+    "expect": "The emptied stretch stays flat until you lift the pressing finger — a valve (one-way door) stops blood falling back toward the hand. Raised above the head, veins empty because blood runs downhill to the heart; hanging down, they refill. Pulse jumps after jumping jacks. This is Harvey's 1628 demonstration.",
+    "lines": 3
+   }
+  ]
+ },
+ "physics-w2": {
+  "title": "Homework 2: Light",
+  "course": "physics",
+  "courseName": "Physics 101",
+  "intro": "About 20 minutes. Part C is where the week's idea lives: explain the pulse ox in your own words. The flashlight lab at the end needs a dark room.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — The rainbow"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 2,
+    "q": "Write the colors of the rainbow in order from the LONGEST waves to the SHORTEST. Then name the invisible color just past each end.",
+    "answer": "Red, orange, yellow, green, blue, violet (2 pts; 1 pt if one swap). Past red: infrared; past violet: ultraviolet (1 pt)."
+   },
+   {
+    "type": "draw",
+    "points": 2,
+    "height": 2.0,
+    "q": "Draw Newton's experiment: a beam of white light entering a prism and fanning out into colors on the other side. Label the red end and the violet end.",
+    "answer": "A beam in, a triangle (prism), a fan of colors out (1 pt); red and violet labelled at the two edges of the fan (1 pt). Any order of colors between them is fine as long as red and violet are the outside edges."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Why things have color"
+   },
+   {
+    "type": "table",
+    "points": 4,
+    "q": "For each object, write which color(s) bounce back to your eye and what happens to the rest.",
+    "columns": [
+     "Object",
+     "Bounces back",
+     "The rest of the colors…"
+    ],
+    "rows": [
+     [
+      "A ripe tomato",
+      "",
+      ""
+     ],
+     [
+      "A green leaf",
+      "",
+      ""
+     ],
+     [
+      "White paper",
+      "",
+      ""
+     ],
+     [
+      "A black T-shirt",
+      "",
+      ""
+     ]
+    ],
+    "answer": "Tomato: red bounces back; the rest are absorbed. Leaf: green bounces; the rest absorbed. White paper: all colors bounce back; none absorbed. Black shirt: nothing bounces back; all absorbed (and it gets warm). 1 pt per row."
+   },
+   {
+    "type": "section",
+    "title": "Part C — The two-color trick"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 4,
+    "q": "In your own words, explain how the pulse oximeter turns two colors of light into an oxygen percentage. Use the words red, infrared, and hemoglobin.",
+    "answer": "Red and infrared light shine through the foot to a detector (1 pt). Hemoglobin loaded with oxygen lets red through but absorbs infrared; empty hemoglobin absorbs red and lets infrared through (1 pt). Comparing how much of each color gets through tells the machine what fraction of the hemoglobin is loaded — the SpO₂ percentage (1 pt)."
+   },
+   {
+    "type": "mc",
+    "points": 1,
+    "q": "Why does the machine use only the PULSING part of the light signal?",
+    "choices": [
+     "Only the fresh blood in the arteries pulses; skin, bone, and vein blood don't.",
+     "The pulsing part is brighter, so it's easier for the detector to see.",
+     "Pulsing light doesn't hurt a baby's eyes the way steady light does.",
+     "The pulses are the baby's breaths, which is what the machine measures."
+    ],
+    "answer": 0,
+    "explain": "Aoyagi's insight (1972): throw away the steady part and keep the heartbeat wiggle, which comes only from arterial blood."
+   },
+   {
+    "type": "section",
+    "title": "Part D — The lamp that cures"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 3,
+    "q": "Why blue? Explain what blue light does to a bilirubin molecule and why that helps a baby whose liver isn't ready.",
+    "answer": "Bilirubin is yellow, so it absorbs blue light (1 pt). The absorbed energy twists the molecule into a shape that dissolves in water and leaves in urine and bile without needing the liver's enzyme (1 pt)."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 2,
+    "q": "What did the nurse Sister Jean Ward notice in 1956 that started it all?",
+    "answer": "Jaundiced babies she'd wheeled into the sun were paler where the sunlight reached and still yellow under the diaper and sheet folds."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 2,
+    "q": "From NICU Tutor: why are preemies on extra oxygen kept around 90–95% saturation instead of 100%?",
+    "answer": "Too much oxygen damages developing eyes (ROP) and lungs; too little is dangerous too. Oxygen is a medicine with a dose."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Physics: a CPAP is set at 6 cmH₂O. About how many mmHg is that? (1 mmHg ≈ 1.36 cmH₂O.)",
+    "answer": "About 4 mmHg (6 ÷ 1.36 ≈ 4.4). A whisper compared with blood pressure."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a nurse"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A preemie's pulse ox suddenly reads 75%. The baby is pink, wiggling, and her heart rate on the monitor is a steady 145. You look at her foot: the band has slid sideways and its little red light is shining onto the mattress. Explain, using today's physics, why the number is wrong — and what you'd do first, second, and third.",
+    "answer": "The detector is now catching light that never went through blood (mattress, room light), so the red-to-infrared comparison means nothing; a wiggling foot also makes the signal 'pulse' for non-heartbeat reasons (1 pt). First: look at the baby — pink, active, normal heart rate says she's fine (1 pt). Second: reposition the band so the lights face the detector through the foot, shade it from room light, wait for a clean pulse wave; third: if the number is still low with a good signal, then believe it and act (1 pt). Machines report; humans judge."
+   },
+   {
+    "type": "lab",
+    "title": "Your finger is a pulse oximeter",
+    "materials": "a small flashlight or phone light, a dark room, and (bonus) scraps of red and blue cellophane or candy wrappers",
+    "steps": [
+     "In the dark, press the flashlight against the pad of your fingertip so it shines INTO the finger.",
+     "Look at the other side of the finger. What color is the glow? White went in — what came out?",
+     "Bonus: hold red cellophane over the light and try again; then blue. Which color gets through your finger?",
+     "Bonus 2: tilt a CD or DVD under a lamp and find the rainbow. Which color is on the outside edge?"
+    ],
+    "expect": "The fingertip glows orange-red: blood and flesh absorb blue and green and let red pass — the pulse ox's physics. Red cellophane light gets through; blue barely does. The CD splits white light into a spectrum, red on one edge and violet on the other.",
+    "lines": 3
+   }
+  ]
+ },
+ "calculus-w2": {
+  "title": "Homework 2: How Much Piles Up?",
+  "course": "calculus",
+  "courseName": "Calculus 101",
+  "intro": "About 20 minutes. Total = rate × time. Show your multiplication — the steps are worth points. Part B uses the grid: draw the staircase, then add the rectangles.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Rate times time"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "Three pumps, three babies. Fill in the total each baby received. (Rate × hours. 2 points each: 1 for setting up the multiplication, 1 for the answer.)",
+    "columns": [
+     "Baby",
+     "Pump rate",
+     "Hours running",
+     "Multiplication",
+     "Total (mL)"
+    ],
+    "rows": [
+     [
+      "A",
+      "3 mL/hr",
+      "24",
+      "",
+      ""
+     ],
+     [
+      "B",
+      "2.5 mL/hr",
+      "8",
+      "",
+      ""
+     ],
+     [
+      "C",
+      "5 mL/hr",
+      "12",
+      "",
+      ""
+     ]
+    ],
+    "answer": "A: 3 × 24 = 72 mL. B: 2.5 × 8 = 20 mL. C: 5 × 12 = 60 mL. (For B, accept 2 × 8 = 16 plus half of 8 = 4, making 20.)"
+   },
+   {
+    "type": "section",
+    "title": "Part B — Draw the staircase"
+   },
+   {
+    "type": "figure",
+    "figure": "ratesteps"
+   },
+   {
+    "type": "short",
+    "points": 4,
+    "lines": 3,
+    "q": "On the grid above, draw the pump's day: 2 mL/hr from hour 0 to 8, then 3 mL/hr from hour 8 to 16, then 4 mL/hr from hour 16 to 24. Shade under the steps. Then write the area of each rectangle and add them up for the day's total.",
+    "answer": "Three flat steps at heights 2, 3, 4 over 0–8, 8–16, 16–24 (2 pts; 1 pt off per wrong step). Areas: 2 × 8 = 16, 3 × 8 = 24, 4 × 8 = 32 (1 pt). Total 72 mL (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part C — The In-and-Out sheet"
+   },
+   {
+    "type": "table",
+    "points": 4,
+    "q": "A real-style I&O sheet. IN: the baby had 8 tube feeds of 18 mL each. OUT: four diapers weighed 32 g, 28 g, 35 g, and 30 g; a dry diaper weighs 20 g. Fill in the totals. (1 gram of wet weight = 1 mL of urine.)",
+    "columns": [
+     "",
+     "Work",
+     "Total (mL)"
+    ],
+    "rows": [
+     [
+      "IN: feeds",
+      "",
+      ""
+     ],
+     [
+      "OUT: diaper 1 (32 g)",
+      "",
+      ""
+     ],
+     [
+      "OUT: diapers 2, 3, 4",
+      "",
+      ""
+     ],
+     [
+      "OUT: all four diapers",
+      "",
+      ""
+     ]
+    ],
+    "answer": "IN: 8 × 18 = 144 mL (1 pt). Diaper 1: 32 − 20 = 12 mL (1 pt). Diapers 2–4: 8, 15, 10 mL (1 pt). All four: 12 + 8 + 15 + 10 = 45 mL (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Per kilogram"
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 2,
+    "q": "A baby weighs 1.2 kg and got 180 mL of milk today. What is that in mL/kg/day? Is she at 'full feeds' (about 150–160)?",
+    "answer": "180 ÷ 1.2 = 150 mL/kg/day (1 pt). Yes — right at full feeds (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From NICU Tutor: what are trophic feeds for?",
+    "answer": "Waking up an immature gut gently and letting it practice — not calories. Tiny amounts, a few mL a day."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Calculus: a baby went from 1,000 g to 1,140 g in 7 days. Rate of change?",
+    "answer": "140 ÷ 7 = 20 g/day."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "The pump was set to 3 mL/hr all day, and the I&O sheet says 72 mL. But you find out the pump was paused for 4 hours during a procedure and nobody wrote it down. What did the baby really get? Show it on a rate graph in words (what happened to the rectangle?), and explain why the difference matters to the team.",
+    "answer": "Real total: 3 × 20 = 60 mL, not 72 (1 pt). On the graph, the rate line dropped to zero for 4 hours — a 3 × 4 = 12 mL notch cut out of the rectangle (1 pt). It matters because the baby got 12 mL fewer calories and fluid than the team thinks; if they plan tomorrow's feeds, fluids, or growth expectations from the wrong total, the baby can fall behind or the fluid balance can be misjudged — the sheet must match what actually happened (1 pt)."
+   },
+   {
+    "type": "lab",
+    "title": "The dripping cup",
+    "materials": "a paper or plastic cup, a pin or sharp pencil, a measuring cup with mL marks, a timer, a sink or tray",
+    "steps": [
+     "Poke a small hole in the bottom of the cup. Cover it with a finger, fill the cup with water, and hold it over the measuring cup.",
+     "Let go and time exactly 1 minute. Read the mL. That's your rate in mL per minute. Write it down.",
+     "PREDICT: at that rate, how much water will be in the measuring cup after 5 minutes? (Rate × 5.) Write your prediction.",
+     "Empty the measuring cup, refill the drip cup, and run it for 5 minutes. Measure. Compare with your prediction.",
+     "Watch the drips near the end. Are they as fast as at the start?"
+    ],
+    "expect": "The 5-minute total comes out LESS than rate × 5. The drip slows as the cup empties (less water pushing on the hole — less pressure, from last week's Physics). The rate was a falling curve, not a flat line, so the true total is the area under that curve — smaller than the rectangle. This is exactly why calculus needs thin slices.",
+    "lines": 3
+   }
+  ]
+ },
+ "statistics-w2": {
+  "title": "Homework 2: Percentiles",
+  "course": "statistics",
+  "courseName": "Statistics 101",
+  "intro": "About 20 minutes. Line numbers up before you find a median — order is everything today. Part C uses the growth chart; plot carefully.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Line them up"
+   },
+   {
+    "type": "short",
+    "points": 5,
+    "lines": 4,
+    "q": "Nine preemies weigh (in grams): 1,100, 760, 940, 1,600, 880, 990, 820, 1,250, 900. (a) Write them in order, smallest to biggest. (b) What is the median? (c) The mean is about 1,027. Why is the mean higher than the median here?",
+    "answer": "(a) 760, 820, 880, 900, 940, 990, 1,100, 1,250, 1,600 (2 pts; 1 pt if one swap). (b) Median = 940, the fifth in line (1 pt). (c) The 1,600 g baby is an outlier that drags the mean up; the median just counts positions, so it stays in the middle of the line (2 pts)."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Place in line"
+   },
+   {
+    "type": "table",
+    "points": 4,
+    "q": "Twenty babies are lined up by weight. Turn each baby's position into a percentile. (Position ÷ 20 × 100.)",
+    "columns": [
+     "Baby",
+     "Position in line (from smallest)",
+     "Percentile"
+    ],
+    "rows": [
+     [
+      "A",
+      "2nd",
+      ""
+     ],
+     [
+      "B",
+      "10th",
+      ""
+     ],
+     [
+      "C",
+      "15th",
+      ""
+     ],
+     [
+      "D",
+      "19th",
+      ""
+     ]
+    ],
+    "answer": "A: 2 ÷ 20 = 0.10 → 10th percentile. B: 10 ÷ 20 = 0.50 → 50th (the median). C: 15 ÷ 20 = 0.75 → 75th. D: 19 ÷ 20 = 0.95 → 95th. 1 pt each."
+   },
+   {
+    "type": "mc",
+    "points": 1,
+    "q": "Which of these is TRUE about percentiles?",
+    "choices": [
+     "In any healthy group of babies, one in ten is at or below the 10th percentile.",
+     "A baby below the 25th percentile is sick and needs treatment.",
+     "The 90th percentile means the baby weighs 90 percent of the average.",
+     "Percentiles go from 0 to 1,000, so the 50th is near the bottom."
+    ],
+    "answer": 0,
+    "explain": "A percentile is a place in line, so somebody is always 10th from the bottom. Small isn't sick; a change is what matters."
+   },
+   {
+    "type": "section",
+    "title": "Part C — On the chart"
+   },
+   {
+    "type": "figure",
+    "figure": "growthchart"
+   },
+   {
+    "type": "short",
+    "points": 4,
+    "lines": 3,
+    "q": "Plot these three babies on the chart as dots with their letters. Baby X: born at 28 weeks, 1,150 g. Baby Y: born at 32 weeks, 1,300 g. Baby Z: born at 36 weeks, 3,200 g. Then write which baby is near the 50th line, which is below the 10th, and which is above the 90th.",
+    "answer": "Three dots in roughly the right places (2 pts; 1 pt off per misplaced dot). X ≈ 50th (typical); Y below the 10th (small for gestational age); Z above the 90th (large for gestational age) (2 pts)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Following the curve"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 4,
+    "q": "Baby M was born at 30 weeks weighing 1,450 g — right on the 50th line. Two weeks later, at 32 weeks, she weighs 1,450 g. (The 50th line at 32 weeks is about 1,800 g; the 10th is about 1,400 g.) What has happened to her place in line? Is this an alarm, even though 1,450 g is still 'a normal weight'? What would the team probably do?",
+    "answer": "She hasn't grown for two weeks, so she's dropped from the 50th to about the 10th — crossing curves downward, 'falling off the curve' (1 pt). Yes, it's an alarm: the dot looks fine but the line is flat (Calculus Week 1) (1 pt). The team looks for a reason (breathing hard, infection, not absorbing feeds) and adds calories — more milk, or fortifier (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From NICU Tutor: a baby born weighing 1,300 g is called what kind of low birth weight?",
+    "answer": "Very low birth weight (under 1,500 g). Under 2,500 is low; under 1,000 is extremely low."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Statistics: what is the mean of 110, 120, 130, and 160?",
+    "answer": "520 ÷ 4 = 130."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "Two babies in the follow-up clinic are both at the 5th percentile for weight today. Baby P has been at the 5th percentile at every visit since birth; both parents are small. Baby Q was at the 50th percentile a month ago. Which baby worries you, and why? What does this tell you about what a percentile can and can't say?",
+    "answer": "Baby Q (1 pt): she has crossed from the 50th down to the 5th — falling off her curve — while P is following hers. A percentile is a place in line, not a grade; a low number that's stable can be perfectly healthy (small parents, small baby), while a CHANGE in percentile is the real signal (1 pt). For Q the team hunts for a cause and adds calories; for P, keep watching and reassure the parents (1 pt)."
+   },
+   {
+    "type": "lab",
+    "title": "Your percentile in the family",
+    "materials": "a ruler or tape measure and everyone at home (plus friends or neighbors if you can catch them — more people makes a better line)",
+    "steps": [
+     "Measure every person's hand span: thumb tip to pinky tip, fingers spread wide. Write each one down with the person's name.",
+     "Line the numbers up from smallest to biggest. Find the median (the middle one, or halfway between the two middles).",
+     "Find YOUR position in line. Percentile = your position ÷ number of people × 100.",
+     "Now measure heights and do it again. Did your percentile change?",
+     "Bonus: add a grown-up's shoe or a stuffed animal's paw and watch what happens to the mean but not the median."
+    ],
+    "expect": "You'll get a median hand span and a percentile for yourself — probably a low one, since grown-ups have bigger hands. Your height percentile is usually different: a percentile depends on who is in the line. Adding one wild number moves the mean but not the median.",
+    "lines": 3
+   }
+  ]
+ },
+ "genetics-w2": {
+  "title": "Homework 2: Newborn Screening",
+  "course": "genetics",
+  "courseName": "Genetics 101",
+  "intro": "About 20 minutes. Part A is the chain — get that and the rest follows. Part C is a real-style batch of screening results to read like the doctor who gets the phone call.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — The chain"
+   },
+   {
+    "type": "table",
+    "points": 4,
+    "q": "Fill in the chain for PKU, one link per row.",
+    "columns": [
+     "Link",
+     "For PKU, this is…"
+    ],
+    "rows": [
+     [
+      "Gene (the recipe)",
+      ""
+     ],
+     [
+      "Protein / enzyme (the worker)",
+      ""
+     ],
+     [
+      "Job (what the worker does)",
+      ""
+     ],
+     [
+      "If the recipe has a typo…",
+      ""
+     ]
+    ],
+    "answer": "Gene: the recipe for the phenylalanine-breaking enzyme. Enzyme: the worker that breaks down phenylalanine. Job: keep phenylalanine from building up. Typo: the enzyme is misshapen and doesn't work, so phenylalanine piles up and harms the brain. 1 pt per row."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Decode the recipe"
+   },
+   {
+    "type": "passage",
+    "text": "A pretend code, three DNA letters per word: ATG = P, CCA = K, GGT = U, TTA = D, GAC = I, CTG = E, AAT = T. A word not in the table means the cell can't read it — a broken recipe."
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 3,
+    "q": "(a) Decode: ATG CCA GGT. (b) Decode: TTA GAC CTG AAT — what does that recipe spell, and why is it the cure? (c) Now one letter is changed: ATG CCA GCT. What happens when the cell tries to read it?",
+    "answer": "(a) PKU (1 pt). (b) DIET — the special low-phenylalanine diet that prevents the harm (1 pt). (c) GCT isn't in the table: one wrong letter (a mutation) breaks the word, so the recipe can't be read — a broken enzyme (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part C — Read the results"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "Four babies' newborn screens came back. For each, write what the result means and what should happen next. Remember: a positive SCREEN means 'test again, properly, now' — not a diagnosis. (1 pt per row for meaning + next step; 2 pts for the last question.)",
+    "columns": [
+     "Baby",
+     "Result",
+     "What it means",
+     "Next step"
+    ],
+    "rows": [
+     [
+      "A",
+      "All normal; hearing pass; pulse ox pass",
+      "",
+      ""
+     ],
+     [
+      "B",
+      "Phenylalanine HIGH",
+      "",
+      ""
+     ],
+     [
+      "C",
+      "Thyroid hormone LOW",
+      "",
+      ""
+     ],
+     [
+      "D",
+      "Pulse ox: right hand 97%, foot 89%",
+      "",
+      ""
+     ]
+    ],
+    "answer": "A: everything normal — nothing to do; results to the family. B: a positive screen for PKU — repeat the test right away with a proper blood test; if confirmed, start the diet immediately. C: possible congenital hypothyroidism — confirm with a blood test; if confirmed, start the daily thyroid pill. D: a mismatch between hand and foot — blood may be skipping the lungs or a pipe is missing; get an ultrasound of the heart (echo) today. 1 pt per row; 2 extra pts (below)."
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 2,
+    "q": "Which of the four babies needs action FIRST, and why?",
+    "answer": "Baby D — a possible heart problem can become dangerous within hours or days (the ductus may be the only thing keeping blood flowing), so the echo happens today (1 pt). B and C are urgent too, but the pile-up takes days to weeks to harm, so a repeat test within days is the right speed (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Sort the conditions"
+   },
+   {
+    "type": "match",
+    "points": 4,
+    "q": "Draw a line from each condition to what's wrong.",
+    "left": [
+     "PKU",
+     "Congenital hypothyroidism",
+     "Sickle cell disease",
+     "Galactosemia"
+    ],
+    "right": [
+     "One wrong letter in the hemoglobin recipe; red cells bend",
+     "An enzyme that can't break down milk sugar",
+     "The thyroid makes too little of its hormone",
+     "A broken enzyme lets phenylalanine pile up"
+    ],
+    "answer": [
+     3,
+     2,
+     0,
+     1
+    ]
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 2,
+    "q": "From NICU Tutor: the pulse ox is used as a heart screen at 24 hours. Where are the two probes placed, and what is the machine looking for?",
+    "answer": "Right hand and a foot. A low reading, or a mismatch between them, suggests blood isn't getting to the lungs properly — a heart built with a missing or blocked pipe."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Genetics: cells read DNA three letters at a time. How many different three-letter words are possible?",
+    "answer": "4 × 4 × 4 = 64."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A family gets a phone call: their baby's heel-prick screen came back positive for PKU. The father asks, “So our baby has PKU?” Answer him honestly, using what you learned about screens as nets — and say what you'd do this week.",
+    "answer": "Not yet known: a screen is a wide net set to never miss a real case, so it also catches some healthy babies; most positive screens turn out normal on the proper repeat test (1 pt). But we act as if it could be real: repeat the test within days, and if it's confirmed, start the low-phenylalanine diet right away — started early, the baby grows up healthy (1 pt). Be kind and fast: the scary call is the price of a net that doesn't miss, and the family deserves to hear that clearly (1 pt)."
+   },
+   {
+    "type": "lab",
+    "title": "A working enzyme and a broken one",
+    "materials": "a raw potato, a cooked piece of the same potato (boiled or microwaved, then cooled), hydrogen peroxide from the first-aid kit, two small cups, a spoon, a grown-up",
+    "steps": [
+     "Put a slice of RAW potato in one cup and a slice of COOKED potato in the other.",
+     "Pour a spoonful of hydrogen peroxide over each slice. Watch for a minute.",
+     "Which cup fizzes? Feel the fizzing cup — is it warm? What do you think the bubbles are?",
+     "Write down what each cup did, and which one is 'PKU'."
+    ],
+    "expect": "The raw slice foams: an enzyme called catalase snips hydrogen peroxide into water and oxygen gas (the bubbles), and the cup warms a little. The cooked slice does nothing — heat warped the enzyme's shape, so the job doesn't get done and the peroxide just sits there. The cooked potato is 'PKU': same ingredients, broken worker, pile-up.",
+    "lines": 3
+   }
+  ]
+ },
+ "psychology-w2": {
+  "title": "Homework 2: Bonding",
+  "course": "psychology",
+  "courseName": "Psychology 101",
+  "intro": "About 20 minutes. Part A is the heart of it: three experiments, what they measured, what they found. Part B is real fieldwork — tally marks count as data.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Three experiments"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "Fill in the table. (1 point for what was measured, 1 point for what it showed, per row.)",
+    "columns": [
+     "Experiment",
+     "What was measured (what the babies DID)",
+     "What it showed"
+    ],
+    "rows": [
+     [
+      "Harlow's cloth mother (1958)",
+      "",
+      ""
+     ],
+     [
+      "Ainsworth's strange situation (1969)",
+      "",
+      ""
+     ],
+     [
+      "Tronick's still face (1975)",
+      "",
+      ""
+     ]
+    ],
+    "answer": "Harlow: hours spent on each pretend mother and where the monkeys ran when scared → comfort matters more than food. Ainsworth: what the baby does when the mother returns → a reliably responsive caregiver builds a secure rope (about 6 in 10). Tronick: what the baby does when the game stops → babies expect serve-and-return and work to restart it."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Serve and return, tallied"
+   },
+   {
+    "type": "short",
+    "points": 4,
+    "lines": 5,
+    "q": "Watch a grown-up and a baby or toddler for two minutes (a real one, or a video — 'still face experiment' or any parent-and-baby clip works; a pet and its person is fine too). Make a tally mark every time the little one 'serves' (a look, sound, reach, smile) and another every time the grown-up 'returns' it. Write your two totals, then one sentence about what you noticed.",
+    "answer": "Two tally totals (2 pts — any honest numbers; typically dozens per two minutes). A sentence of observation (2 pts): e.g., returns came fast; the baby served again right after a return; when a return was missed the baby tried harder or looked away."
+   },
+   {
+    "type": "section",
+    "title": "Part C — Secure or not?"
+   },
+   {
+    "type": "mc",
+    "points": 1,
+    "q": "Baby R cries when her mother leaves the strange-situation room, runs to her when she comes back, settles in about a minute, then goes back to the blocks. Ainsworth would call this…",
+    "choices": [
+     "secure — the rope is strong and the baby knows it.",
+     "insecure — a secure baby wouldn't cry when the mother left.",
+     "insecure — a secure baby would keep clinging and not go back to play.",
+     "impossible to say without watching the stranger's behavior."
+    ],
+    "answer": 0,
+    "explain": "The tell is the reunion: comforted quickly, then back to exploring. Crying at the leaving is normal."
+   },
+   {
+    "type": "short",
+    "points": 2,
+    "lines": 3,
+    "q": "Baby S does not look up when his mother leaves, and does not go to her when she returns; he keeps playing with his back to her. Ainsworth found babies like S usually had caregivers who did what? What is the ONE word that matters most in her answer?",
+    "answer": "Their signals were often not responded to, so they learned not to expect a return (1 pt). The word: RELIABLY — a secure rope comes from a caregiver who responds reliably, not perfectly (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Keeping the rope in a NICU"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 4,
+    "q": "List three things a NICU can do to keep the rope between a preemie and her parents strong — and for each, say what a scientist could MEASURE to prove it works.",
+    "answer": "Any three of: kangaroo care / skin-to-skin (measure heart rate, temperature, breathing pauses, survival); unlimited visiting hours (measure how many hours parents are present, parent stress scores); parents doing the care — feeds, changes (measure weight gain, parent anxiety); a bed or chair to sleep in, phone by the isolette, reading to the baby (measure hearing-brain development, time to full feeds). 1 pt per item with a measurement."
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From NICU Tutor: name one thing kangaroo care does for a baby's BODY (not its feelings).",
+    "answer": "Keeps it warm; steadies heart rate and breathing; helps feeding. Any one."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Psychology: what tool did Robert Fantz invent for finding out what babies prefer?",
+    "answer": "Looking time — timing how long a baby stares at one picture versus another."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "A mother says to you on rounds: “I feel like a visitor, not a mom. She's in a box with wires, and I'm not allowed to do anything.” Her baby is on CPAP in an isolette, stable. Using today's class, what would you say, and what would you change about her day?",
+    "answer": "Say: the rope is real and it's stretched by the machines, not by her; the science says her chest is a treatment (1 pt). Change: daily kangaroo care on CPAP (stable babies can do it), let her do the hands-on care — diaper changes, temperature checks, tube feeds, reading aloud — so she's on the team, not visiting; give her a chair that reclines, unlimited hours, a phone number for the night (1 pt). Why: measured outcomes — steadier vitals, better weight gain, less parent anxiety, and in the 2021 study, fewer deaths (1 pt)."
+   },
+   {
+    "type": "lab",
+    "title": "The still face, grown-up version",
+    "materials": "a willing grown-up with a good poker face and a timer (NOT a baby — that's a scientists-only lab)",
+    "steps": [
+     "Talk with the grown-up normally for 30 seconds while they respond as usual.",
+     "On your signal, they go still-faced for 30 seconds: no expression, no nodding, no words. You keep talking.",
+     "Notice what you do. Louder? A joke? Waving? Giving up? Notice how it feels.",
+     "Swap roles: you go still-faced while they talk. Watch what THEY do.",
+     "Write three things each of you did to restart the game."
+    ],
+    "expect": "Both of you 'serve harder' — talk louder, make faces, wave, laugh, ask 'are you okay?' — then give up or look away. It feels surprisingly bad, fast. That's the still-face effect: even grown-ups expect serve-and-return, and babies are built to fight for it.",
+    "lines": 3
+   }
+  ]
+ },
+ "sociology-w2": {
+  "title": "Homework 2: Who Gets Care?",
+  "course": "sociology",
+  "courseName": "Sociology 101",
+  "intro": "About 20 minutes. Turn counts into rates before you compare anything — that's the whole skill. The fieldwork at the end needs a grown-up and a map.",
+  "items": [
+   {
+    "type": "section",
+    "title": "Part A — Counts into rates"
+   },
+   {
+    "type": "table",
+    "points": 6,
+    "q": "Three made-up countries. Work out each one's preterm RATE as a number out of 100 (a percent). Preterm ÷ births × 100. (2 points per row: 1 for the division set up, 1 for the answer.)",
+    "columns": [
+     "Country",
+     "Babies born",
+     "Born preterm",
+     "Rate (per 100)"
+    ],
+    "rows": [
+     [
+      "A",
+      "1,000",
+      "160",
+      ""
+     ],
+     [
+      "B",
+      "3,000",
+      "300",
+      ""
+     ],
+     [
+      "C",
+      "500",
+      "30",
+      ""
+     ]
+    ],
+    "answer": "A: 160 ÷ 1,000 = 0.16 → 16 per 100 (16%). B: 300 ÷ 3,000 = 0.10 → 10 per 100. C: 30 ÷ 500 = 0.06 → 6 per 100."
+   },
+   {
+    "type": "mc",
+    "points": 1,
+    "q": "Which country has the MOST preterm babies, and which has the HIGHEST preterm rate?",
+    "choices": [
+     "B has the most babies (300); A has the highest rate (16 per 100).",
+     "A has the most babies (160); B has the highest rate (10 per 100).",
+     "B has both the most babies and the highest rate.",
+     "A has both the most babies and the highest rate."
+    ],
+    "answer": 0,
+    "explain": "Counts and rates answer different questions. B has more preterm babies only because it has more babies; A's babies are far more likely to be born early."
+   },
+   {
+    "type": "section",
+    "title": "Part B — Per thousand"
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 3,
+    "q": "In one region, 5,000 babies were born last year and 28 died before their first birthday. What is the infant death rate per 1,000? (Deaths ÷ births × 1,000.) Compare it with about 4.5 for white babies and about 10.9 for Black babies in the US: which is it closer to?",
+    "answer": "28 ÷ 5,000 = 0.0056 → 5.6 per 1,000 (2 pts; 1 pt for the setup if the arithmetic slips). Closer to 4.5 — about the US overall rate (1 pt)."
+   },
+   {
+    "type": "section",
+    "title": "Part C — The map"
+   },
+   {
+    "type": "passage",
+    "text": "Three towns. Riverton has a Level I nursery (healthy newborns only), 20 minutes from the Okafor family. Hillsdale has a Level II unit (a little early, a little sick), 1 hour away. The city has a Level IV NICU (everything, including surgery), 3 hours away. Mrs. Okafor is 27 weeks pregnant and her doctor thinks the baby may come in the next few days."
+   },
+   {
+    "type": "short",
+    "points": 3,
+    "lines": 4,
+    "q": "Using regionalization from last week, where should Mrs. Okafor be — and when should she go? What is the danger of waiting until the baby is born? What could the region do so families like hers don't face a 3-hour drive?",
+    "answer": "To the city's Level IV NICU, NOW, before the birth — move the mother, not the baby (1 pt). Waiting means a 27-week baby born at a Level I nursery with no ventilator or NICU team, then a 3-hour transport in a traveling isolette — the most dangerous hours of its life (1 pt). Fixes: a Level III unit in Hillsdale, a transport team and helicopter, a nurse visiting high-risk mothers at home, clinics that catch early labor sooner (1 pt for any sensible idea)."
+   },
+   {
+    "type": "section",
+    "title": "Part D — Social determinants"
+   },
+   {
+    "type": "match",
+    "points": 4,
+    "q": "Draw a line from each family's situation to the social determinant it is.",
+    "left": [
+     "No hospital within two hours",
+     "Skipping meals to pay rent",
+     "Feeling ignored at every clinic visit",
+     "Working nights and days with no rest"
+    ],
+    "right": [
+     "Money and food",
+     "Distance to care",
+     "Stress",
+     "Being listened to (respect)"
+    ],
+    "answer": [
+     1,
+     0,
+     3,
+     2
+    ]
+   },
+   {
+    "type": "section",
+    "title": "Part E — Flashbacks"
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 2,
+    "q": "From NICU Tutor: where incubators are scarce, what do doctors teach instead, and why does it work?",
+    "answer": "Kangaroo care — skin-to-skin on a parent's chest. A parent's body is a warming machine that's always available, and it steadies heart rate and breathing."
+   },
+   {
+    "type": "short",
+    "points": 1,
+    "lines": 1,
+    "q": "From last week's Sociology: which level of newborn unit does complex surgery?",
+    "answer": "Level IV — the regional center."
+   },
+   {
+    "type": "section",
+    "title": "Part F — Think like a doctor"
+   },
+   {
+    "type": "think",
+    "points": 3,
+    "lines": 5,
+    "q": "You run a small hospital in a poor country. Tonight you have two working incubators and ten premature babies. Using Psychology (last week and today's flashback), Physics (bubble CPAP from Week 1), and today's Sociology, what would you do — tonight, and next year?",
+    "answer": "Tonight: incubators for the two sickest or smallest; kangaroo care for the others (the Bogotá idea — warmth, steady breathing, fewer deaths, no machine needed); plastic wraps and hats for warmth; a bubble CPAP made from tubing and a bottle of water for a baby working to breathe (1 pt for using KMC; 1 pt for any other basic-care idea). Next year: train every nurse and mother in kangaroo care, count your babies and your deaths (rates!) so you can show what's working, ask for what the numbers say you need — and put a clinic where mothers can reach it before birth (1 pt)."
+   },
+   {
+    "type": "lab",
+    "title": "Fieldwork: how far is your NICU?",
+    "materials": "a grown-up, a map app or website, and about ten minutes",
+    "steps": [
+     "With a grown-up, find the nearest hospital to your home that has a NICU (try searching 'Level III NICU near me'; hospital websites usually say their level).",
+     "Write its name, the distance, and the drive time.",
+     "Now find the nearest hospital that delivers babies at all. Distance and time?",
+     "Imagine your family lived 2 hours from both. Write one thing that would change about a preterm birth.",
+     "Bonus: ask a friend or cousin in another town the same question and compare."
+    ],
+    "expect": "You'll have two distances and two drive times — most city families are under 30 minutes from a Level III unit; many rural families are over an hour from any birth care at all. The point is the comparison: the same baby, different distances, different odds. That's a map of who gets care.",
+    "lines": 3
+   }
+  ]
+ }
+}

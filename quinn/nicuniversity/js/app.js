@@ -5,7 +5,8 @@
   "use strict";
 
   // =====================================================================
-  // Courses & schedule (Week 1). href is relative to the app root.
+  // Courses & schedule. Weeks live in js/schedule.js (window.WEEKS); they are
+  // flattened here into one ordered list so progress logic is week-agnostic.
   // href: null means "not built yet" — shown as coming soon.
   // =====================================================================
   var COURSES = {
@@ -21,32 +22,13 @@
     general:    { name: "NICUniversity",    badge: "🩺", hw: "📝" }
   };
 
-  var SCHEDULE = [
-    { id: "mon-seminar", day: "Monday", time: "9:00",  type: "lecture", course: "seminar",   sub: "Welcome to NICUniversity", href: "courses/seminar/week1.html",   quizId: "seminar-w1" },
-    { id: "mon-chem",    day: "Monday", time: "10:30", type: "lecture", course: "chemistry", sub: "The Chemistry of a Breath", href: "courses/chemistry/week1.html", quizId: "chemistry-w1" },
-    { id: "mon-bio",     day: "Monday", time: "1:00",  type: "lecture", course: "biology",   sub: "Cells: The Body's LEGO Bricks", href: "courses/biology/week1.html", quizId: "biology-w1" },
-    { id: "tue-rec-seminar", day: "Monday", time: "2:30", type: "recitation", course: "seminar",   sub: "Homework: Notes practice", href: "recitations/week1/seminar.html",   hwId: "seminar-w1" },
+  var WEEKS = window.WEEKS || [];
+  var SCHEDULE = [];
+  WEEKS.forEach(function (w) { w.slots.forEach(function (s) { s.week = w.week; SCHEDULE.push(s); }); });
 
-    { id: "tue-rec-chem",    day: "Tuesday", time: "9:00",  type: "recitation", course: "chemistry", sub: "Homework: Atoms & air", href: "recitations/week1/chemistry.html", hwId: "chemistry-w1" },
-    { id: "tue-rec-bio",     day: "Tuesday", time: "9:45",  type: "recitation", course: "biology",   sub: "Homework: Cells", href: "recitations/week1/biology.html",   hwId: "biology-w1" },
-    { id: "tue-physics",     day: "Tuesday", time: "10:30", type: "lecture", course: "physics",  sub: "Pressure", href: "courses/physics/week1.html", quizId: "physics-w1" },
-    { id: "tue-calc",        day: "Tuesday", time: "1:00",  type: "lecture", course: "calculus", sub: "How Fast Is the Baby Growing?", href: "courses/calculus/week1.html", quizId: "calculus-w1" },
-
-    { id: "wed-rec-physics", day: "Wednesday", time: "9:00",  type: "recitation", course: "physics",  sub: "Homework: Pressure", href: "recitations/week1/physics.html", hwId: "physics-w1" },
-    { id: "wed-rec-calc",    day: "Wednesday", time: "9:45",  type: "recitation", course: "calculus", sub: "Homework: Growth rates", href: "recitations/week1/calculus.html", hwId: "calculus-w1" },
-    { id: "wed-stats",       day: "Wednesday", time: "10:30", type: "lecture", course: "statistics", sub: "What's Typical? The Apgar Score", href: "courses/statistics/week1.html", quizId: "statistics-w1" },
-    { id: "wed-genetics",    day: "Wednesday", time: "1:00",  type: "lecture", course: "genetics",   sub: "The Instruction Book", href: "courses/genetics/week1.html", quizId: "genetics-w1" },
-
-    { id: "thu-rec-stats",    day: "Thursday", time: "9:00",  type: "recitation", course: "statistics", sub: "Homework: What's typical?", href: "recitations/week1/statistics.html", hwId: "statistics-w1" },
-    { id: "thu-rec-genetics", day: "Thursday", time: "9:45",  type: "recitation", course: "genetics",   sub: "Homework: The instruction book", href: "recitations/week1/genetics.html", hwId: "genetics-w1" },
-    { id: "thu-psych",        day: "Thursday", time: "10:30", type: "lecture", course: "psychology", sub: "What a Baby's Brain Already Knows", href: "courses/psychology/week1.html", quizId: "psychology-w1" },
-    { id: "thu-soc",          day: "Thursday", time: "1:00",  type: "lecture", course: "sociology",  sub: "Who Works in a NICU?", href: "courses/sociology/week1.html", quizId: "sociology-w1" },
-
-    { id: "fri-rec-psych", day: "Friday", time: "9:00",  type: "recitation", course: "psychology", sub: "Homework: Baby science", href: "recitations/week1/psychology.html", hwId: "psychology-w1" },
-    { id: "fri-rec-soc",   day: "Friday", time: "9:45",  type: "recitation", course: "sociology",  sub: "Homework: The NICU team", href: "recitations/week1/sociology.html", hwId: "sociology-w1" },
-    { id: "fri-study",     day: "Friday", time: "10:30", type: "study", course: "general", sub: "Review sheet for the final", href: "study/week1.html" },
-    { id: "fri-final",     day: "Friday", time: "1:00",  type: "exam",  course: "general", sub: "Week 1 Final Exam", href: "exams/week1-final.html", quizId: "final-w1" }
-  ];
+  function weekOf(n) { for (var i = 0; i < WEEKS.length; i++) if (WEEKS[i].week === n) return WEEKS[i]; return null; }
+  function weekBuilt(w) { return w.slots.some(function (s) { return !!s.href; }); }
+  function slotById(id) { for (var i = 0; i < SCHEDULE.length; i++) if (SCHEDULE[i].id === id) return SCHEDULE[i]; return null; }
 
   var DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -72,6 +54,8 @@
     if (slot.type === "study") { return !!(p.study && p.study[slot.id]); }
     return false;
   }
+
+  function weekDone(w, p) { return w.slots.every(function (s) { return !!s.href && slotDone(s, p); }); }
 
   function nextSlot(p) {
     for (var i = 0; i < SCHEDULE.length; i++) {
@@ -132,12 +116,40 @@
   }
 
   // =====================================================================
-  // Home: timetable + badge shelf
+  // Home: week tabs, one week's timetable, badge shelf
   // =====================================================================
   function initHome() {
     var p = loadProgress();
     var next = nextSlot(p);
     var root = rootPrefix();
+    if (!WEEKS.length) return;
+
+    // Which week to show: #weekN in the URL, else the week of the next undone slot, else the last week.
+    var m = /week(\d+)/.exec(location.hash || "");
+    var built = WEEKS.filter(weekBuilt);
+    var shown = m ? parseInt(m[1], 10) : (next ? next.week : (built.length ? built[built.length - 1].week : WEEKS[0].week));
+    var W = weekOf(shown) || WEEKS[0];
+    shown = W.week;
+
+    var tabs = document.getElementById("week-tabs");
+    if (tabs) {
+      tabs.innerHTML = "";
+      WEEKS.forEach(function (w) {
+        var built = weekBuilt(w), done = weekDone(w, p);
+        var a = document.createElement("a");
+        a.href = "#week" + w.week;
+        a.className = "week-tab" + (w.week === shown ? " active" : "") + (built ? "" : " soon") + (done ? " done" : "");
+        a.innerHTML = "Week " + w.week + (done ? " ✓" : built ? "" : " <small>soon</small>");
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          history.replaceState(null, "", "#week" + w.week);
+          initHome();
+        });
+        tabs.appendChild(a);
+      });
+    }
+    var label = document.getElementById("week-label");
+    if (label) label.textContent = "📅 " + W.label;
 
     var tt = document.getElementById("timetable");
     if (tt) {
@@ -146,7 +158,7 @@
         var col = document.createElement("div");
         col.className = "day";
         col.innerHTML = "<h3>" + day + "</h3>";
-        SCHEDULE.filter(function (s) { return s.day === day; }).forEach(function (s) {
+        W.slots.filter(function (s) { return s.day === day; }).forEach(function (s) {
           var course = COURSES[s.course];
           var done = slotDone(s, p);
           var isNext = next && next.id === s.id;
@@ -172,15 +184,15 @@
             }
           }
           else if (isNext) { cls += " next"; status = "👉 Next up"; }
-          else if (seenNext) { status = "Later this week"; }
+          else if (seenNext) { status = next && s.week > next.week ? "Coming up" : "Later this week"; }
           else { status = "Open"; }
           el.className = cls;
-          var label = s.type === "recitation" ? "Recitation: " + course.name
-                    : s.type === "study" ? "Study Hall"
-                    : s.type === "exam" ? "Final Exam"
-                    : course.name;
+          var lbl = s.type === "recitation" ? "Recitation: " + course.name
+                  : s.type === "study" ? "Study Hall"
+                  : s.type === "exam" ? "Final Exam"
+                  : course.name;
           el.innerHTML = '<span class="slot-time">' + s.time + " · " + (s.type === "lecture" ? "Lecture" : s.type === "recitation" ? "Recitation" : s.type === "exam" ? "Exam" : "Study") + "</span>" +
-                         '<span class="slot-title">' + label + "</span>" +
+                         '<span class="slot-title">' + lbl + "</span>" +
                          '<span class="slot-sub">' + s.sub + "</span>" +
                          '<span class="slot-status">' + status + "</span>";
           col.appendChild(el);
@@ -193,24 +205,25 @@
     if (banner) {
       if (next && next.href) {
         var c = COURSES[next.course];
-        banner.innerHTML = "<strong>Next on your schedule:</strong> " + next.day + " " + next.time + " — " +
-          '<a href="' + root + next.href + '">' + (next.type === "recitation" ? "Recitation: " : "") + c.name + "</a>";
+        banner.innerHTML = "<strong>Next on your schedule:</strong> Week " + next.week + ", " + next.day + " " + next.time + " — " +
+          '<a href="' + root + next.href + '">' + (next.type === "recitation" ? "Recitation: " : next.type === "study" ? "" : next.type === "exam" ? "" : "") + (next.type === "study" ? "Study Hall" : next.type === "exam" ? next.sub : c.name) + "</a>";
       } else if (next) {
-        banner.innerHTML = "<strong>You're all caught up!</strong> The rest of Week 1 is still being written. Check back soon.";
+        banner.innerHTML = "<strong>You're all caught up!</strong> Week " + next.week + " is still being written. Check back soon.";
       } else {
-        banner.innerHTML = "<strong>Week 1 complete!</strong> 🎉";
+        banner.innerHTML = "<strong>Every week so far is complete!</strong> 🎉";
       }
     }
 
-    renderShelf(p);
+    renderShelf(p, shown);
   }
 
-  function renderShelf(p) {
+  function renderShelf(p, weekNum) {
     var shelf = document.getElementById("badge-shelf");
     if (!shelf) return;
     shelf.innerHTML = "";
+    var W = weekOf(weekNum) || WEEKS[WEEKS.length - 1];
     var earned = 0, total = 0;
-    SCHEDULE.forEach(function (s) {
+    (W ? W.slots : []).forEach(function (s) {
       if (s.type !== "lecture" && s.type !== "exam") return;
       total++;
       var q = quizRec(p, s.quizId);
@@ -223,39 +236,56 @@
       shelf.appendChild(span);
     });
     var label = document.getElementById("shelf-count");
-    if (label) label.textContent = earned + " of " + total + " badges (9 courses + the final)";
+    if (label) label.textContent = "Week " + (W ? W.week : "") + ": " + earned + " of " + total + " badges";
   }
 
   // =====================================================================
-  // Transcript
+  // Transcript — one table per built week, newest first
   // =====================================================================
   function initTranscript() {
     var root = document.getElementById("transcript-root");
     if (!root) return;
     var p = loadProgress();
-    var rows = "";
-    SCHEDULE.filter(function (s) { return s.type === "lecture"; }).forEach(function (s) {
-      var c = COURSES[s.course];
-      var q = quizRec(p, s.quizId);
-      var rec = SCHEDULE.filter(function (r) { return r.type === "recitation" && r.course === s.course; })[0];
-      var h = rec ? hwRec(p, rec.hwId) : null;
-      rows += "<tr>" +
-        "<td>" + c.name + "</td>" +
-        "<td>" + (q ? q.best + "/" + q.total : '<span class="none">not taken</span>') + "</td>" +
-        '<td class="stamp">' + (q && q.done ? c.badge : '<span class="none">—</span>') + "</td>" +
-        "<td>" + (h ? h.score + "/" + h.total : (rec && rec.href ? '<span class="none">not graded</span>' : '<span class="none">—</span>')) + "</td>" +
-        '<td class="stamp">' + (h && h.done ? c.hw : '<span class="none">—</span>') + "</td>" +
-        "</tr>";
+    var html = "";
+    var weeksBuilt = 0, weeksDone = 0, diplomas = 0, badges = 0, badgeTotal = 0;
+    WEEKS.slice().reverse().forEach(function (w) {
+      if (!weekBuilt(w)) return;
+      weeksBuilt++;
+      if (weekDone(w, p)) weeksDone++;
+      var rows = "";
+      w.slots.filter(function (s) { return s.type === "lecture"; }).forEach(function (s) {
+        var c = COURSES[s.course];
+        var q = quizRec(p, s.quizId);
+        badgeTotal++; if (q && q.done) badges++;
+        var rec = w.slots.filter(function (r) { return r.type === "recitation" && r.course === s.course; })[0];
+        var h = rec ? hwRec(p, rec.hwId) : null;
+        rows += "<tr>" +
+          "<td>" + c.name + "</td>" +
+          "<td>" + (q ? q.best + "/" + q.total : '<span class="none">not taken</span>') + "</td>" +
+          '<td class="stamp">' + (q && q.done ? c.badge : '<span class="none">—</span>') + "</td>" +
+          "<td>" + (h ? h.score + "/" + h.total : (rec && rec.href ? '<span class="none">not graded</span>' : '<span class="none">—</span>')) + "</td>" +
+          '<td class="stamp">' + (h && h.done ? c.hw : '<span class="none">—</span>') + "</td>" +
+          "</tr>";
+      });
+      w.slots.filter(function (s) { return s.type === "exam"; }).forEach(function (s) {
+        var q = quizRec(p, s.quizId);
+        badgeTotal++; if (q && q.done) { badges++; diplomas++; }
+        rows += '<tr><td><strong>' + s.sub + "</strong></td>" +
+          "<td>" + (q ? q.best + "/" + q.total : '<span class="none">not taken</span>') + "</td>" +
+          '<td class="stamp">' + (q && q.done ? COURSES.general.badge : '<span class="none">—</span>') + "</td>" +
+          '<td colspan="2">' + (q && q.done
+            ? "🎓 Week " + w.week + " complete" + (s.certificate ? ' — <a href="' + rootPrefix() + s.certificate + '" target="_blank" rel="noopener">print the diploma</a>' : "")
+            : '<span class="none">pass the final to earn the Week ' + w.week + ' diploma</span>') + "</td></tr>";
+      });
+      html += '<h2 class="tr-week">' + w.label + "</h2>" +
+        '<div class="table-scroll"><table class="numbers transcript"><thead>' +
+        "<tr><th>Course</th><th>Lecture quiz</th><th>Badge</th><th>Homework</th><th>Stamp</th></tr></thead><tbody>" + rows + "</tbody></table></div>";
     });
-    SCHEDULE.filter(function (s) { return s.type === "exam"; }).forEach(function (s) {
-      var q = quizRec(p, s.quizId);
-      rows += '<tr><td><strong>' + s.sub + "</strong></td>" +
-        "<td>" + (q ? q.best + "/" + q.total : '<span class="none">not taken</span>') + "</td>" +
-        '<td class="stamp">' + (q && q.done ? COURSES.general.badge : '<span class="none">—</span>') + "</td>" +
-        '<td colspan="2">' + (q && q.done ? '🎓 Week 1 complete — <a href="' + rootPrefix() + 'print/certificate-week1.pdf" target="_blank" rel="noopener">print the diploma</a>' : '<span class="none">pass the final to earn the Week 1 diploma</span>') + "</td></tr>";
-    });
-    root.innerHTML = rows;
-    renderShelf(p);
+    root.innerHTML = html;
+    var sum = document.getElementById("transcript-summary");
+    if (sum) sum.textContent = weeksDone + " of " + weeksBuilt + " weeks complete · " + diplomas + (diplomas === 1 ? " diploma" : " diplomas") + " · " + badges + " of " + badgeTotal + " badges";
+    var builtWeeks = WEEKS.filter(weekBuilt);
+    renderShelf(p, builtWeeks.length ? builtWeeks[builtWeeks.length - 1].week : 1);
   }
 
   // =====================================================================
@@ -390,9 +420,10 @@
       var src = fromPaper ? " (from the paper quiz)" : "";
       var html;
       if (passed && L.certificate) {
-        html = '<div class="quiz-result"><div class="qr-emoji">' + badge + "</div><h3>You passed the Week 1 Final!</h3>" +
-          "<p>Score: <strong>" + score + " / " + total + "</strong>" + src + ". Nine courses, nine homeworks, one final — Week 1 is complete. " +
-          'Your diploma is ready to print: <a href="' + L.certificate + '" target="_blank" rel="noopener">Week 1 Certificate (PDF)</a>.</p>' +
+        var wslot = slotById(L.slotId), wn = wslot ? wslot.week : "";
+        html = '<div class="quiz-result"><div class="qr-emoji">' + badge + "</div><h3>You passed the " + esc(quiz.title) + "!</h3>" +
+          "<p>Score: <strong>" + score + " / " + total + "</strong>" + src + ". Nine courses, nine homeworks, one final — Week " + wn + " is complete. " +
+          'Your diploma is ready to print: <a href="' + L.certificate + '" target="_blank" rel="noopener">Week ' + wn + ' Certificate (PDF)</a>.</p>' +
           '<button class="quiz-next" type="button" data-act="home">Back to the timetable</button>' +
           '<button class="quiz-next quiz-retry" type="button" data-act="retry">Take it again</button></div>';
       } else if (passed) {
@@ -404,7 +435,7 @@
       } else {
         html = '<div class="quiz-result"><div class="qr-emoji">💪</div><h3>Not yet — but close!</h3>' +
           "<p>Score: <strong>" + score + " / " + total + "</strong>" + src + ". You need " + need + " for the badge. " +
-          "Look back at the 'Write this down' boxes, then try again. You've still attended the class, so the timetable moves on.</p>" +
+          "Look back at the big-idea boxes and your notes, then try again. You've still attended the class, so the timetable moves on.</p>" +
           '<button class="quiz-next quiz-retry" type="button" data-act="retry">Try again</button>' +
           '<button class="quiz-next" type="button" data-act="home">Back to the timetable</button></div>';
       }
@@ -737,5 +768,5 @@
     });
   });
 
-  window.NICU = { SCHEDULE: SCHEDULE, COURSES: COURSES, loadProgress: loadProgress };
+  window.NICU = { WEEKS: WEEKS, SCHEDULE: SCHEDULE, COURSES: COURSES, loadProgress: loadProgress };
 })();

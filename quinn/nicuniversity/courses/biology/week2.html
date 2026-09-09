@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology 101, Week 2: The Heart and the Blood</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+</head>
+<body class="c-biology" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A heart with four rooms, a red pipe leaving it and a blue pipe returning, and a drop of blood beside a measuring cup">
+        <path d="M 120 190 C 60 150 30 110 40 80 C 48 52 84 46 100 66 L 120 88 L 140 66 C 156 46 192 52 200 80 C 210 110 180 150 120 190 Z" fill="#f4a3a3" stroke="#c0392b" stroke-width="4"/>
+        <line x1="120" y1="88" x2="120" y2="176" stroke="#c0392b" stroke-width="3"/>
+        <line x1="66" y1="118" x2="174" y2="118" stroke="#c0392b" stroke-width="3"/>
+        <path d="M 96 62 Q 96 30 60 30" fill="none" stroke="#3f88c5" stroke-width="9" stroke-linecap="round"/>
+        <path d="M 144 62 Q 144 30 180 30" fill="none" stroke="#f25f5c" stroke-width="9" stroke-linecap="round"/>
+        <rect x="14" y="150" width="34" height="46" rx="4" fill="#fff" stroke="#565d75" stroke-width="2"/>
+        <rect x="16" y="176" width="30" height="18" fill="#c0392b"/>
+        <text x="31" y="146" font-size="10" text-anchor="middle" fill="#565d75">80 mL</text>
+        <text x="20" y="32" font-size="14">✦</text><text x="214" y="200" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Biology 101 · Week 2 · Monday 1:00</p>
+      <h1>The Heart and the Blood</h1>
+      <p class="lede">Last week you learned that every cell needs oxygen and sugar delivered to its door. Today: the delivery system — a pump the size of a walnut, tens of thousands of miles of pipe, and a red river that a NICU counts by the drop.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from this morning's Chemistry.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-biology-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. The purple boxes ask for the big idea — write yours before you check.</p>
+    </div>
+  </div>
+
+  <h2>❤️ A pump with four rooms</h2>
+  <p>Your heart is a muscle — a fist-sized bag of muscle that squeezes about once a second, every second, for your whole life, and never takes a break. A newborn's is about the size of a walnut. It's hollow, and the hollow is divided into <strong>four rooms</strong>: two upstairs, two downstairs. The upstairs rooms are the <strong>atria</strong> (one is an atrium) — the receiving rooms, where blood arrives. The downstairs rooms are the <strong>ventricles</strong> — the pumping rooms, with thick muscular walls that squeeze blood out with force.</p>
+  <p>Here's the part most people never learn: the heart is really <strong>two pumps side by side</strong>, and they send blood to two different places.</p>
+  <ul>
+    <li>The <strong>right side</strong> receives blood coming back from the body — dark red, low on oxygen, loaded with CO₂ — and pumps it to the <strong>lungs</strong>. In the lungs it does the gas exchange you learned last week: drops CO₂, grabs O₂, turns bright red.</li>
+    <li>The <strong>left side</strong> receives that bright-red blood back from the lungs and pumps it out to the <strong>whole body</strong>: brain, gut, kidneys, fingertips. Then it comes back to the right side, and around it goes.</li>
+  </ul>
+  <p>Blood leaves the heart through <strong>arteries</strong> (thick, stretchy pipes under pressure — the blood-pressure pipes from NICU Tutor) and returns through <strong>veins</strong> (thinner, floppier, low pressure). Between the rooms are <strong>valves</strong>: one-way doors that slam shut so blood can't slosh backward. The “lub-dub” you hear with a stethoscope is doors closing — lub is the doors between the atria and ventricles; dub is the doors out to the arteries.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the two loops of circulation: the right heart pumps blue blood to the lungs, which return red blood to the left heart, which pumps it to the body, which returns blue blood to the right heart">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#565d75"/></marker></defs>
+      <!-- lungs -->
+      <ellipse cx="310" cy="46" rx="150" ry="30" fill="#e3eff9" stroke="#3f88c5" stroke-width="2"/>
+      <text x="310" y="51" font-size="15" text-anchor="middle" font-weight="bold" fill="#2d3142">LUNGS · drop CO₂, grab O₂</text>
+      <!-- body -->
+      <ellipse cx="310" cy="260" rx="150" ry="30" fill="#e2f4e5" stroke="#2a9d3f" stroke-width="2"/>
+      <text x="310" y="265" font-size="15" text-anchor="middle" font-weight="bold" fill="#2d3142">BODY · drop O₂, pick up CO₂</text>
+      <!-- heart box -->
+      <rect x="200" y="100" width="220" height="110" rx="18" fill="#fde8e7" stroke="#c0392b" stroke-width="3"/>
+      <line x1="310" y1="100" x2="310" y2="210" stroke="#c0392b" stroke-width="2"/>
+      <line x1="200" y1="155" x2="420" y2="155" stroke="#c0392b" stroke-width="2"/>
+      <g font-size="13" fill="#2d3142" text-anchor="middle">
+        <text x="255" y="124">right</text><text x="255" y="140">atrium</text>
+        <text x="365" y="124">left</text><text x="365" y="140">atrium</text>
+        <text x="255" y="180">right</text><text x="255" y="196">ventricle</text>
+        <text x="365" y="180">left</text><text x="365" y="196">ventricle</text>
+      </g>
+      <!-- arrows: right ventricle -> lungs (blue) -->
+      <path d="M 230 100 L 230 74 L 260 74" fill="none" stroke="#3f88c5" stroke-width="6" stroke-linecap="round"/>
+      <path d="M 260 74 L 262 74" stroke="#3f88c5" stroke-width="6" marker-end="url(#ar)"/>
+      <!-- lungs -> left atrium (red) -->
+      <path d="M 360 74 L 390 74 L 390 98" fill="none" stroke="#f25f5c" stroke-width="6" stroke-linecap="round" marker-end="url(#ar)"/>
+      <!-- left ventricle -> body (red) -->
+      <path d="M 390 210 L 390 232 L 360 232" fill="none" stroke="#f25f5c" stroke-width="6" stroke-linecap="round" marker-end="url(#ar)"/>
+      <!-- body -> right atrium (blue) -->
+      <path d="M 260 232 L 230 232 L 230 212" fill="none" stroke="#3f88c5" stroke-width="6" stroke-linecap="round" marker-end="url(#ar)"/>
+      <text x="80" y="130" font-size="12" fill="#565d75">blue = low on oxygen</text>
+      <text x="80" y="150" font-size="12" fill="#565d75">red = full of oxygen</text>
+      <text x="470" y="130" font-size="12" fill="#565d75">The baby's RIGHT is</text>
+      <text x="470" y="150" font-size="12" fill="#565d75">on YOUR left, as if</text>
+      <text x="470" y="170" font-size="12" fill="#565d75">you're facing them.</text>
+    </svg>
+    <figcaption>Two pumps, two loops. Right heart → lungs → left heart → body → right heart. Every drop goes around about once a minute.</figcaption>
+  </figure>
+
+  <p>How fast does a walnut have to beat? A newborn's heart runs at about 120 to 160 beats a minute — you learned the range from the monitor lesson. Take 140. Multiply by 60 minutes: 8,400 beats an hour. Multiply by 24 hours: about <strong>200,000 beats a day</strong>. An adult heart, at 70, manages about 100,000. A preemie's heart works twice as hard as yours, every day, from a body the weight of a bag of sugar.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">The heart is two pumps with four rooms: the right side sends blood to the lungs for oxygen; the left side sends it to the body. Arteries carry it out, veins bring it back, valves keep it one-way.</p></details>
+    </div>
+  </div>
+
+  <h2>🩸 What's in the red river</h2>
+  <p>Blood looks like a plain red liquid. Spin a tube of it in a machine and it separates into layers, and you can see what it really is: a river of water carrying passengers.</p>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Part</th><th>How much</th><th>What it does</th></tr>
+    <tr><td>Plasma</td><td>About 55%</td><td>The water. It carries salt, sugar, proteins — and this morning's bicarbonate sponge.</td></tr>
+    <tr><td>Red blood cells</td><td>About 45%</td><td>The oxygen carriers, stuffed with hemoglobin. The cells with no nucleus from last week.</td></tr>
+    <tr><td>White blood cells</td><td>Less than 1%</td><td>The defenders. They hunt bacteria. (Biology will meet them properly in Week 4.)</td></tr>
+    <tr><td>Platelets</td><td>Less than 1%</td><td>Tiny cell pieces that plug leaks — the start of a scab.</td></tr>
+  </table>
+  </div>
+  <p>Now the number that changes how a NICU works. An adult has about 5 liters of blood — a big soda bottle and a half. A newborn has about <strong>80 milliliters for every kilogram</strong> of body weight. So a 3-kilogram full-term baby has about 240 mL, a cup. And a 1-kilogram preemie has about <strong>80 mL — a third of a cup.</strong> Its entire blood supply would fit in a shot glass with room to spare.</p>
+  <p>Think about what that means for a blood test. This morning you learned that a blood gas takes a few drops. But other tests take more — a milliliter or two — and a sick preemie may need many tests a day. Two milliliters from an 80-milliliter baby is 1 part in 40 of everything it has. Do that for a few weeks and you've drained a meaningful share of the baby's blood, one test at a time. Nobody bled the baby on purpose; the tests did. NICU teams have a name for the anemia this causes, count every drop they draw, and use the tiniest tubes made. And when the red cells run too low for the oxygen deliveries to keep up, they replace them: a <strong>transfusion</strong> of blood given by a stranger. (Sociology will get to those strangers in Week 4.)</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Blood is plasma (water) carrying red cells (oxygen), white cells (defense), and platelets (plugs). A newborn has only about 80 mL per kilogram, so a 1 kg preemie has a third of a cup — every test costs real blood.</p></details>
+    </div>
+  </div>
+
+  <h2>🔀 The shortcut that has to close</h2>
+  <p>Here is a puzzle. Before birth, a baby's lungs are folded up and full of fluid. They don't breathe; they can't. So where does the oxygen come from? From the mother, through the <strong>placenta</strong> and the <strong>umbilical cord</strong>. The cord has three pipes: two arteries carrying the baby's used blood out to the placenta, and one vein bringing fresh, oxygen-loaded blood back. (Those are the pipes the umbilical catheters from NICU Tutor slide into. The cord is the baby's original life support.)</p>
+  <p>But look back at the diagram. The right heart pumps blood to the lungs. If the lungs aren't doing anything, that's a wasted trip. So the fetal heart has <strong>shortcuts</strong>. One is a flap between the two atria, so blood can slip from the right side straight to the left. The other is a short pipe called the <strong>ductus arteriosus</strong> that connects the artery going to the lungs directly to the artery going to the body — a bypass around the lungs. Before birth, most of the blood takes the bypass.</p>
+  <p>Then the baby is born and takes its first breath. The lungs unfold, fill with air, and suddenly it's easy for blood to flow through them. Pressures shift, the flap between the atria snaps shut, and over the next day or three the ductus squeezes itself closed and turns into a strand of scar. The shortcut is gone; the two-loop system from the diagram takes over. It's one of the great engineering switches in nature, and it happens in every delivery room, usually without anyone noticing.</p>
+  <p>Usually. In a preemie, the ductus often doesn't get the message. It stays open — doctors say <em>patent</em>, which just means open — and the baby has a <strong>PDA</strong>: patent ductus arteriosus. Now blood pumped out to the body leaks back through the open pipe into the lungs. The lungs get flooded with extra blood, so breathing gets harder; the body — gut, kidneys, brain — gets less than its share. The team hears it as a whooshing murmur through the stethoscope, confirms it with an ultrasound of the heart (Physics will explain how sound makes pictures, in Week 3), and then decides: many small PDAs close by themselves; a big one may get a medicine that nudges it shut, or, rarely, a tiny plug threaded in through a vein.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: the belly-button door</div>
+    <p><a href="../../../nicu_tutor/lessons/04-blood-pressure.html">NICU Tutor Lesson 4</a> showed you doctors sliding a soft tube into a vessel in the umbilical cord stump. Now you know what those vessels were for: two arteries out, one vein in, the baby's whole oxygen supply before its lungs came online. And Lesson 4's list of causes for low blood pressure mentioned “a heart vessel stealing blood flow” — that's the PDA. Today you learned what it is.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Before birth the lungs aren't used, so blood takes shortcuts (the ductus arteriosus) and oxygen comes from the placenta through the cord. At birth the shortcuts should close. In preemies the ductus often stays open (PDA), flooding the lungs and starving the body.</p></details>
+    </div>
+  </div>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Home lab: one-way doors in your own arm</div>
+    <p class="lab-materials">You need: your arm, and a grown-up to watch. Nothing else.</p>
+    <p>Let one arm hang straight down for a minute until the veins on the back of your hand puff up (blood is pooling because it has to climb uphill to your heart). Now press one puffy vein with a fingertip and keep pressing. With a finger of the other hand, stroke along the vein <em>away</em> from the heart, toward your knuckles. The stretch behind your stroking finger stays flat — the blood you pushed can't fall back because a valve, a one-way door, is holding it. Lift the first finger and it refills instantly. Then raise your hand above your head and watch every vein empty: downhill to the heart, doors open. In 1628 an English doctor used exactly this trick to prove blood goes around in a loop. The homework has a place to record what you saw.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">👑 Real talk: the king's doctor and the arithmetic that proved a loop</div>
+    <p>For 1,400 years, doctors believed something that sounds ridiculous now: that blood was made fresh in the liver, flowed out to the body, and was simply used up — soaked into the flesh like water into a sponge. Nobody had ever seen it come back. Then in 1628, <strong>William Harvey</strong>, physician to King Charles I of England, published a small book with a big argument, and the argument was mostly <em>arithmetic</em>. He measured how much blood a heart holds — about two ounces — and multiplied by beats per minute, then by minutes in an hour. The answer was hundreds of pounds of blood an hour, far more than a body weighs, far more than any liver could make. The only way the sums worked was if the same blood went around and around. Then he showed the one-way valves in the veins with the finger trick you just did. He was mocked for years. He was right.</p>
+    <p>Harvey's loop is why every NICU number you've learned makes sense together. A blood gas from the umbilical artery is a sample of blood on its way out to the body. A low blood pressure means the loop isn't pushing hard enough for the deliveries. A PDA is a hole in the loop. And a transfusion is topping up the river. The honest part: about 1 baby in 100 is born with something built differently in the heart, and a few of those need surgery in the first weeks of life. Most are found by a test you already know — a pulse oximeter on the right hand and a foot, at 24 hours old, looking for blood that isn't getting to the lungs. Tomorrow, Physics will show you what that little red light is actually doing.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Compare</th></tr>
+    <tr><td>Rooms in the heart</td><td>4</td><td>2 atria (receive) + 2 ventricles (pump)</td></tr>
+    <tr><td>Newborn heartbeats per day</td><td>About 200,000</td><td>An adult: about 100,000</td></tr>
+    <tr><td>Blood in a newborn</td><td>About 80 mL per kg</td><td>1 kg preemie ≈ 80 mL — a third of a cup. Adult ≈ 5 liters</td></tr>
+    <tr><td>Time for one lap around the body</td><td>About 1 minute</td><td>Faster when the heart races</td></tr>
+    <tr><td>Umbilical cord vessels</td><td>3</td><td>2 arteries out, 1 vein in</td></tr>
+    <tr><td>Ductus arteriosus closes</td><td>Usually within 1–3 days of birth</td><td>Often stays open in preemies (PDA)</td></tr>
+    <tr><td>Babies born with a heart difference</td><td>About 1 in 100</td><td>Most mild; a few need surgery</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Atrium / ventricle</dt><dd>Upstairs receiving room / downstairs pumping room. Two of each.</dd>
+      <dt>Artery / vein</dt><dd>Pipe carrying blood away from the heart / back to it.</dd>
+      <dt>Valve</dt><dd>A one-way door in the heart or a vein. “Lub-dub” is valves closing.</dd>
+      <dt>Plasma</dt><dd>The watery part of blood — about 55% — that carries everything else.</dd>
+      <dt>Platelets</dt><dd>Tiny cell fragments that plug leaks.</dd>
+      <dt>Circulation</dt><dd>Blood going around the loop: heart → lungs → heart → body → heart.</dd>
+      <dt>Ductus arteriosus</dt><dd>The fetal bypass pipe around the lungs. “Patent” (PDA) means it stayed open.</dd>
+      <dt>Transfusion</dt><dd>Giving a patient blood donated by someone else.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://kidshealth.org/en/kids/heart.html" target="_blank" rel="noopener">KidsHealth: Your heart and circulatory system</a></li>
+      <li><a href="https://kidshealth.org/en/parents/patent-ductus-arteriosus.html" target="_blank" rel="noopener">KidsHealth: Patent ductus arteriosus (PDA)</a></li>
+      <li>Ask a grown-up to help you find a video of an echocardiogram — an ultrasound of a beating heart. You can see the valves flap.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Biology 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's 🔬 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: The Heart and the Blood</div>
+    <p>Due at recitation, Tuesday 9:45. Print it now: <a href="../../print/week2/hw-biology-w2.pdf" target="_blank" rel="noopener">Homework 2: The Heart and the Blood (PDF)</a>. Label the four rooms, do Harvey's arithmetic on a newborn, match the parts of blood to their jobs, and decide what to do about a PDA. Plus the one-way-door lab. Details on the <a href="../../recitations/week2/biology.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-mon-bio",
+  quizId: "biology-w2",
+  course: "biology",
+  printQuiz: "../../print/week2/quiz-biology-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: how does the monitor see a baby's heartbeat?", a: "The heart makes a tiny electrical spark with every squeeze, and three sticker leads on the chest pick it up. Each tall spike on the ECG line is one heartbeat." },
+    { q: "From this morning's Chemistry: what is blood's normal pH, and which organ fixes it fastest?", a: "7.35 to 7.45. The lungs — breathing faster blows off CO₂ (carbonic acid) within minutes. The kidneys adjust bicarbonate over days." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

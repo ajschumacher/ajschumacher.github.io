@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistics 101, Week 2: Where Do You Stand? Percentiles</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body class="c-statistics" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nine babies of increasing size lined up in a row, with the middle one highlighted, above a growth chart with three rising curves">
+        <g fill="#f7d1b8" stroke="#d9a983" stroke-width="2">
+          <circle cx="24" cy="70" r="7"/><circle cx="48" cy="68" r="8"/><circle cx="72" cy="66" r="9"/><circle cx="96" cy="64" r="10"/>
+          <circle cx="120" cy="60" r="12" fill="#ffb627" stroke="#c8871a"/>
+          <circle cx="146" cy="60" r="13"/><circle cx="172" cy="58" r="14"/><circle cx="200" cy="56" r="15"/><circle cx="228" cy="54" r="16"/>
+        </g>
+        <text x="120" y="36" font-size="11" text-anchor="middle" fill="#0a5958" font-weight="bold">median</text>
+        <line x1="20" y1="200" x2="230" y2="200" stroke="#2d3142" stroke-width="3"/>
+        <line x1="20" y1="200" x2="20" y2="100" stroke="#2d3142" stroke-width="3"/>
+        <path d="M 24 190 Q 120 170 226 118" fill="none" stroke="#3f88c5" stroke-width="3"/>
+        <path d="M 24 194 Q 120 180 226 138" fill="none" stroke="#0e7c7b" stroke-width="3"/>
+        <path d="M 24 197 Q 120 188 226 158" fill="none" stroke="#f25f5c" stroke-width="3"/>
+        <circle cx="140" cy="172" r="5" fill="#2d3142"/>
+        <text x="8" y="26" font-size="14">✦</text><text x="210" y="100" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Statistics 101 · Week 2 · Wednesday 10:30</p>
+      <h1>Where Do You Stand? Percentiles</h1>
+      <p class="lede">Last week you learned the mean and the range. This week: a better middle, a way to say where one baby stands among a million, and the chart on every NICU wall that turns those ideas into a picture — plus the honest question of who those million babies were.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from last week's Statistics.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-statistics-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. There's ordering and a little dividing today — scratch paper helps. The purple boxes ask for the big idea; write yours before you check.</p>
+    </div>
+  </div>
+
+  <h2>🧍 Line them up: the median</h2>
+  <p>Nine preemies are in a NICU this morning, and their weights in grams are: 900, 1,600, 720, 980, 850, 1,200, 940, 810, 1,050. What's typical? Last week you'd compute the mean: add them all (9,050) and divide by 9 — about 1,006 grams. Fine. But look again at that list. One baby, at 1,600 g, is much bigger than the rest. The mean got dragged upward by that one baby, the way a seesaw tips when a big kid sits on one end. Only two babies are actually above 1,006.</p>
+  <p>So statisticians have a second kind of middle. <strong>Line the numbers up in order</strong>, smallest to biggest, and take the one in the middle: 720, 810, 850, 900, <strong>940</strong>, 980, 1,050, 1,200, 1,600. Four babies below, four above. That middle number is the <strong>median</strong>, and it's 940. Now change the big baby to 3,000 grams — the mean jumps to about 1,160, but the median doesn't budge. It's still the fifth in line. The median doesn't care <em>how</em> big the biggest is, only that it's biggest.</p>
+  <p>(If you have an even number of values — say eight — there's no single middle. Take the two middle ones and go halfway between. Median of 2, 4, 6, 8 is 5.)</p>
+  <p>Which middle should you use? The mean is the balance point; the median is the middle of the line. When a group has a few wild numbers — one enormous baby, one billionaire in a town — the median tells you what's typical better. That's why growth charts, house prices, and salaries all use medians, and why “the median newborn” is a real statistical phrase.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">The median is the middle value after lining the numbers up in order. Unlike the mean, it isn't dragged around by one wild number — so it's a better “typical” when a group has outliers.</p></details>
+    </div>
+  </div>
+
+  <h2>📍 Your place in line: percentiles</h2>
+  <p>The median tells you the middle. But a NICU doctor wants more: <em>where does this particular baby stand?</em> Is she small? How small? For that, keep the line and count. Imagine 100 babies lined up by weight. The baby who is 10th from the smallest end has 10 babies at or below her — she is at the <strong>10th percentile</strong>. The baby 90th in line is at the 90th percentile: nine-tenths of the group is smaller. And the baby in the very middle, 50th in line, is at the 50th percentile — which is the median. Same idea, new name.</p>
+  <p>A percentile is just a place in line, turned into “out of a hundred.” If your line has fewer than 100 in it, divide and scale: 7th smallest out of 10 → 7 ÷ 10 = 0.7 → the 70th percentile. Your position, divided by the size of the group, times 100.</p>
+  <p>Here's the thing everyone gets wrong about percentiles, and you won't: <strong>a percentile is not a grade.</strong> The 10th percentile isn't a D. Somebody has to be 10th in line — one baby in ten is at or below the 10th percentile, <em>by definition</em>, in every healthy group of babies that has ever existed. Small isn't sick. A baby at the 5th percentile who has always been at the 5th percentile is a small, healthy baby with small, healthy parents. What doctors watch for isn't a low number. It's a <em>change</em>.</p>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Home lab: your percentile in the family</div>
+    <p class="lab-materials">You need: a ruler or tape measure, and everyone at home (plus a few friends or neighbors, if you can catch them).</p>
+    <p>Measure each person's hand span — thumb tip to pinky tip, fingers spread. Write them all down, line them up in order, and find the median. Then find your own place in line and turn it into a percentile: your position ÷ number of people × 100. Are you at the 50th? The 20th? Then measure heights and see if your percentile changes. It usually does — and that's the point: a percentile depends on who's in the line. The homework has a table for it.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">A percentile is your place in line out of 100: the 10th percentile means 10 out of 100 are at or below you; the 50th is the median. It's a position, not a grade — one baby in ten is always at the 10th.</p></details>
+    </div>
+  </div>
+
+  <h2>📈 The chart on the wall</h2>
+  <p>Now put it in a picture. A <strong>growth chart</strong> has the baby's age along the bottom and weight up the side — just like the weight graphs from Calculus — but instead of one baby's dots, it shows curves: one for the 10th percentile, one for the 50th, one for the 90th (and often the 3rd and 97th too). Each curve is the line of babies at that percentile, age by age. Plot your baby as a dot and you can read her place in line instantly.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A simplified preterm growth chart: weeks 24 to 40 across the bottom, birth weight from 0 to 4000 grams up the side, three rising curves labelled 90th, 50th and 10th percentile, and three plotted babies A, B and C">
+      <g transform="translate(70,20)">
+        <line x1="0" y1="230" x2="500" y2="230" stroke="#2d3142" stroke-width="2"/>
+        <line x1="0" y1="230" x2="0" y2="0" stroke="#2d3142" stroke-width="2"/>
+        <g stroke="#efe3d3" stroke-width="1">
+          <line x1="0" y1="172" x2="500" y2="172"/><line x1="0" y1="115" x2="500" y2="115"/><line x1="0" y1="57" x2="500" y2="57"/>
+          <line x1="125" y1="0" x2="125" y2="230"/><line x1="250" y1="0" x2="250" y2="230"/><line x1="375" y1="0" x2="375" y2="230"/>
+        </g>
+        <g font-size="11" fill="#565d75" text-anchor="end">
+          <text x="-6" y="234">0</text><text x="-6" y="176">1,000</text><text x="-6" y="119">2,000</text><text x="-6" y="61">3,000</text><text x="-6" y="6">4,000 g</text>
+        </g>
+        <g font-size="11" fill="#565d75" text-anchor="middle">
+          <text x="0" y="248">24</text><text x="125" y="248">28</text><text x="250" y="248">32</text><text x="375" y="248">36</text><text x="500" y="248">40 weeks</text>
+        </g>
+        <!-- 50th: 24:650 26:850 28:1150 30:1450 32:1800 34:2200 36:2650 38:3050 40:3400 ; y = 230 - g*0.0575 ; x = (wk-24)*31.25 -->
+        <polyline points="0,192.6 62.5,181.1 125,163.9 187.5,146.6 250,126.5 312.5,103.5 375,77.6 437.5,54.6 500,34.5" fill="none" stroke="#0e7c7b" stroke-width="3"/>
+        <polyline points="0,184.4 62.5,170.4 125,149.3 187.5,128.3 250,103.7 312.5,75.7 375,44.1 437.5,16.0 500,-8.5" fill="none" stroke="#3f88c5" stroke-width="3"/>
+        <polyline points="0,200.8 62.5,191.9 125,178.4 187.5,165.0 250,149.3 312.5,131.3 375,111.1 437.5,93.2 500,77.5" fill="none" stroke="#f25f5c" stroke-width="3"/>
+        <text x="455" y="50" font-size="12" fill="#3f88c5" font-weight="bold">90th</text>
+        <text x="455" y="30" font-size="12" fill="#0e7c7b" font-weight="bold" transform="translate(0,10)">50th</text>
+        <text x="455" y="95" font-size="12" fill="#f25f5c" font-weight="bold">10th</text>
+        <!-- babies: A 28wk 1150 (on 50th); B 28wk 800 (below 10th); C 36wk 3200 (above 90th) -->
+        <circle cx="125" cy="163.9" r="6" fill="#2d3142"/><text x="137" y="160" font-size="12" fill="#2d3142" font-weight="bold">A</text>
+        <circle cx="125" cy="184" r="6" fill="#2d3142"/><text x="137" y="196" font-size="12" fill="#2d3142" font-weight="bold">B</text>
+        <circle cx="375" cy="46" r="6" fill="#2d3142"/><text x="387" y="42" font-size="12" fill="#2d3142" font-weight="bold">C</text>
+        <text x="250" y="275" font-size="12" fill="#565d75" text-anchor="middle">weeks of pregnancy when born</text>
+      </g>
+    </svg>
+    <figcaption>A simplified preterm chart. Baby A (28 weeks, 1,150 g) sits on the 50th line. Baby B (28 weeks, 800 g) is below the 10th — “small for gestational age.” Baby C (36 weeks, 3,200 g) is above the 90th.</figcaption>
+  </figure>
+
+  <p>NICU charts have a twist: the age along the bottom is the baby's age <em>since conception</em>, in weeks, because a baby born at 28 weeks should be compared with other 28-week babies, not with full-term newborns. A 28-week baby weighing 1,150 grams is right on the 50th line — perfectly typical for 28 weeks. A 28-week baby at 800 grams is below the 10th line: doctors call that <strong>small for gestational age</strong>, and it's a flag to look for a reason (the placenta wasn't delivering well? an infection? twins sharing?). A baby above the 90th line is <strong>large for gestational age</strong>, which often points at the mother's blood sugar — a story Chemistry will get to.</p>
+  <p>But the chart's real power comes from watching the dot <em>move</em>. Weigh the baby every day, plot every dot, and you get a line — and now you're back in Calculus. A healthy baby's line runs <em>along</em> a percentile curve, week after week, whichever curve it started on. A baby whose line crosses downward through the curves — 50th, then 25th, then 10th — is “falling off the curve,” and that's an alarm even if today's weight is still “normal.” The 5th-percentile baby who has always been there is fine. The 5th-percentile baby who was at the 50th a month ago is not. Same dot. Different line.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: “read the line, not the dot”</div>
+    <p>Last week's Calculus ended with a rule: judge growth by the trend, not one weight. A growth chart is that rule drawn for you, with the percentile curves as a ruler behind it. And NICU Tutor's “15 to 20 grams per kilogram per day” is roughly the steepness that keeps a preemie on its curve.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">A growth chart draws the 10th, 50th, and 90th percentile curves by age; plot a baby to see her place in line. Below the 10th is “small for gestational age.” What matters most is following your own curve — crossing curves downward is the alarm.</p></details>
+    </div>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🍁 Real talk: the dietitian's chart, and the question underneath it</div>
+    <p>Where do those curves come from? Someone had to measure the babies. In the early 2000s, a dietitian in Calgary, Canada named <strong>Tanis Fenton</strong> — the person on a NICU team who calculates calories and grams — got frustrated with the growth charts on her unit's wall. They were built from a few thousand babies in one place, decades old, and they stopped at 36 weeks, right when her patients were finally heading home. So she did what a statistician does: gathered bigger, newer piles of numbers. Her 2013 chart combined the birth weights of about <strong>four million babies</strong> from six countries, from 22 weeks to 50, and she gave it away free. It hangs in NICUs on every continent.</p>
+    <p>Now the honest part, and it's the deepest idea in this course so far: <strong>a percentile depends on who was in the line.</strong> Fenton's curves were built from babies who were <em>born</em> at 28 weeks, 30 weeks, 32 weeks. But babies are usually born that early because something went wrong — and the same thing that caused the early birth often slowed the baby's growth. So the “50th percentile at 28 weeks” is the median of a group of babies who'd had a hard time, not the median of healthy 28-week fetuses still safely inside. Other researchers later built a different chart by ultrasounding healthy pregnancies instead, and its curves sit a little higher. Which chart is right? Both — for the question each was built to answer. A number is only as good as the group it came from, and the first question a good scientist asks about any statistic is: <em>who did you measure?</em></p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>Median of 720, 810, 850, 900, 940, 980, 1,050, 1,200, 1,600</td><td>940 g</td><td>The mean is about 1,006 — pulled up by the 1,600</td></tr>
+    <tr><td>50th percentile</td><td>= the median</td><td>Half the line is below</td></tr>
+    <tr><td>Small for gestational age</td><td>Below the 10th percentile</td><td>Large: above the 90th</td></tr>
+    <tr><td>Typical weight at 28 weeks (50th)</td><td>About 1,150 g</td><td>At 32 weeks about 1,800 g; at 40 weeks about 3,400 g</td></tr>
+    <tr><td>Babies in the Fenton 2013 chart</td><td>About 4 million</td><td>From six countries</td></tr>
+    <tr><td>Babies at or below the 10th percentile, in any healthy group</td><td>1 in 10</td><td>By definition — small isn't sick</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Median</dt><dd>The middle value after lining numbers up in order. Not dragged around by wild numbers.</dd>
+      <dt>Outlier</dt><dd>A value far from the rest — the 1,600-gram baby in a room of 900s.</dd>
+      <dt>Percentile</dt><dd>Your place in line, out of 100. The 10th percentile has 10 of every 100 at or below it.</dd>
+      <dt>Growth chart</dt><dd>Percentile curves by age, so one baby's dots can be read against many babies.</dd>
+      <dt>Gestational age</dt><dd>How many weeks the baby has been growing since conception. Full term is about 40.</dd>
+      <dt>Small for gestational age (SGA)</dt><dd>Below the 10th percentile for the week you were born. A flag, not a diagnosis.</dd>
+      <dt>Falling off the curve</dt><dd>Crossing percentile lines downward over time — the growth alarm doctors watch for.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.cdc.gov/growthcharts/who-growth-charts.htm" target="_blank" rel="noopener">CDC: growth charts for babies and children</a> — the ones on your pediatrician's screen.</li>
+      <li><a href="https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/mean-median-basics/v/mean-median-and-mode" target="_blank" rel="noopener">Khan Academy: mean and median</a></li>
+      <li>Ask a grown-up to look up your own percentiles from your last checkup — height and weight — and whether they've stayed on the same curve.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Statistics 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's 📊 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Percentiles</div>
+    <p>Due at recitation, Thursday 9:00. Print it now: <a href="../../print/week2/hw-statistics-w2.pdf" target="_blank" rel="noopener">Homework 2: Percentiles (PDF)</a>. Line up nine babies and find the median, turn places in line into percentiles, plot three babies on a growth chart, and decide which 5th-percentile baby worries you. Plus the hand-span lab. Details on the <a href="../../recitations/week2/statistics.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-wed-stats",
+  quizId: "statistics-w2",
+  course: "statistics",
+  printQuiz: "../../print/week2/quiz-statistics-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what are the three 'low birth weight' cutoffs doctors use, in grams?", a: "Under 2,500 g is low birth weight; under 1,500 g is very low; under 1,000 g is extremely low. (A 500-gram micro-preemie weighs about two sticks of butter.)" },
+    { q: "From last week's Statistics: five heart rates — 140, 150, 130, 160, 145. What's the mean, and what's the range?", a: "Mean: 725 ÷ 5 = 145. Range: 160 − 130 = 30. Today you'll meet a different middle that the biggest number can't drag around." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

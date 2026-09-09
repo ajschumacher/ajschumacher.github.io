@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry 101, Week 2: Acids, Bases, and the Blood Gas</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
+</head>
+<body class="c-chemistry" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A lemon and a bar of soap on either side of a pH strip, with a drop of blood landing on the strip">
+        <!-- pH strip -->
+        <rect x="30" y="150" width="180" height="26" rx="6" fill="#fff" stroke="#e3d9c8" stroke-width="2"/>
+        <rect x="32" y="152" width="45" height="22" fill="#f25f5c"/>
+        <rect x="77" y="152" width="43" height="22" fill="#ffb627"/>
+        <rect x="120" y="152" width="43" height="22" fill="#2a9d3f"/>
+        <rect x="163" y="152" width="45" height="22" fill="#3f88c5"/>
+        <text x="38" y="196" font-size="11" fill="#565d75">0</text>
+        <text x="116" y="196" font-size="11" fill="#565d75">7</text>
+        <text x="196" y="196" font-size="11" fill="#565d75">14</text>
+        <!-- lemon -->
+        <ellipse cx="52" cy="80" rx="30" ry="22" fill="#ffd93d" stroke="#e0b400" stroke-width="3"/>
+        <path d="M 22 80 L 12 78" stroke="#e0b400" stroke-width="4" stroke-linecap="round"/>
+        <path d="M 82 80 L 92 78" stroke="#e0b400" stroke-width="4" stroke-linecap="round"/>
+        <!-- soap -->
+        <rect x="150" y="60" width="66" height="40" rx="12" fill="#cfe6f8" stroke="#3f88c5" stroke-width="3"/>
+        <circle cx="160" cy="52" r="6" fill="#fff" stroke="#3f88c5" stroke-width="2"/>
+        <circle cx="176" cy="44" r="4" fill="#fff" stroke="#3f88c5" stroke-width="2"/>
+        <!-- drop -->
+        <path d="M 120 88 Q 108 108 120 118 Q 132 108 120 88 Z" fill="#c0392b"/>
+        <path d="M 120 124 L 120 146" stroke="#c0392b" stroke-width="3" stroke-dasharray="4 4"/>
+        <text x="20" y="34" font-size="15">✦</text><text x="212" y="130" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Chemistry 101 · Week 2 · Monday 10:30</p>
+      <h1>Acids, Bases, and the Blood Gas</h1>
+      <p class="lede">Last week you learned that too much carbon dioxide makes blood acidic. Today: what “acidic” actually means, the 14-step ruler chemists use to measure it, and the test a NICU team runs a dozen times a day to see it — from three drops of blood.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from last week's Chemistry. Think first, then peek.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-chemistry-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. New this week: the dashed boxes <em>ask</em> for the big idea instead of giving it. Write yours first, then click to check.</p>
+    </div>
+  </div>
+
+  <h2>🍋 What an acid is</h2>
+  <p>Lick a lemon. That sour punch is an <strong>acid</strong> — and every sour thing you've ever tasted (vinegar, oranges, sour candy, the fizz in soda) is sour for the same reason. An acid is a chemical that lets go of tiny loose pieces of hydrogen. Remember hydrogen, H, the smallest atom of all? An acid molecule drops off its hydrogens the way a bus drops off passengers, and those loose hydrogens go bumping into everything. They're what your tongue tastes as sour, and — in strong enough acids — what eats holes in metal.</p>
+  <p>A <strong>base</strong> is the opposite kind of chemical: it grabs loose hydrogens and takes them out of circulation. Bases feel slippery and taste bitter — soap, baking soda, and the stuff that unclogs drains are all bases. (Don't lick those.) And here is the neat trick: mix an acid with a base and they cancel each other out. The loose hydrogens from the acid get caught by the base, and what's left is usually just water and a salt. Chemists say the two have <strong>neutralized</strong>. You've seen it: baking soda (a base) plus vinegar (an acid) fizzes furiously. The fizz is carbon dioxide — CO₂, your old friend from last week — escaping as the two cancel.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it on your notes sheet in your own words — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Acids let go of loose hydrogen (H⁺) and taste sour. Bases grab it and feel slippery. Mixed together they cancel out (neutralize).</p></details>
+    </div>
+  </div>
+
+  <h2>📏 The pH ruler</h2>
+  <p>“Sour” and “very sour” aren't good enough for science. In 1909 a Danish chemist named <strong>Søren Sørensen</strong> invented a number for it. He worked at the Carlsberg brewery in Copenhagen — beer-making is chemistry, and the brewers needed to know exactly how acidic their vats were — and he called his number <strong>pH</strong>. It runs from 0 to 14:</p>
+  <ul>
+    <li><strong>7 is neutral</strong> — pure water. Neither acid nor base.</li>
+    <li><strong>Below 7 is acid.</strong> The lower the number, the stronger the acid.</li>
+    <li><strong>Above 7 is base.</strong> The higher, the stronger the base.</li>
+  </ul>
+  <p>Now the part that surprises everyone. The pH ruler is not an ordinary ruler. Each step down is <strong>ten times</strong> more acidic. pH 5 is ten times as acidic as pH 6. pH 4 is ten times as acidic as pH 5 — which makes it a <em>hundred</em> times as acidic as pH 6. Go from pH 7 down to pH 1, six steps, and you've multiplied by ten six times: a million. That's why a scale from just 0 to 14 can cover everything from drain cleaner to stomach acid.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The pH scale from 0 to 14 as a colored bar, with stomach acid, lemon, vinegar, coffee, milk, water, blood, baking soda, soap and bleach marked along it">
+      <defs>
+        <linearGradient id="ph" x1="0" x2="1">
+          <stop offset="0" stop-color="#d7263d"/><stop offset="0.25" stop-color="#f25f5c"/><stop offset="0.42" stop-color="#ffb627"/>
+          <stop offset="0.5" stop-color="#2a9d3f"/><stop offset="0.65" stop-color="#3f88c5"/><stop offset="1" stop-color="#4b3f8f"/>
+        </linearGradient>
+      </defs>
+      <rect x="40" y="120" width="560" height="30" rx="8" fill="url(#ph)"/>
+      <g font-size="13" fill="#2d3142" text-anchor="middle">
+        <text x="40" y="172">0</text><text x="120" y="172">2</text><text x="200" y="172">4</text><text x="280" y="172">6</text>
+        <text x="320" y="172" font-weight="bold">7</text><text x="360" y="172">8</text><text x="440" y="172">10</text><text x="520" y="172">12</text><text x="600" y="172">14</text>
+      </g>
+      <g font-size="12" fill="#2d3142">
+        <line x1="100" y1="120" x2="100" y2="96" stroke="#565d75"/><text x="100" y="90" text-anchor="middle">stomach acid · lemon</text>
+        <line x1="150" y1="120" x2="150" y2="60" stroke="#565d75"/><text x="150" y="54" text-anchor="middle">vinegar</text>
+        <line x1="240" y1="120" x2="240" y2="96" stroke="#565d75"/><text x="240" y="90" text-anchor="middle">coffee</text>
+        <line x1="300" y1="120" x2="300" y2="60" stroke="#565d75"/><text x="300" y="54" text-anchor="middle">milk</text>
+        <line x1="320" y1="150" x2="320" y2="196" stroke="#565d75"/><text x="320" y="210" text-anchor="middle">pure water</text>
+        <line x1="336" y1="120" x2="336" y2="30" stroke="#c0392b" stroke-width="2"/><text x="336" y="24" text-anchor="middle" fill="#c0392b" font-weight="bold">BLOOD 7.35–7.45</text>
+        <line x1="380" y1="120" x2="380" y2="96" stroke="#565d75"/><text x="380" y="90" text-anchor="middle">baking soda</text>
+        <line x1="420" y1="150" x2="420" y2="196" stroke="#565d75"/><text x="420" y="210" text-anchor="middle">hand soap</text>
+        <line x1="540" y1="120" x2="540" y2="60" stroke="#565d75"/><text x="540" y="54" text-anchor="middle">bleach</text>
+      </g>
+      <text x="40" y="200" font-size="12" fill="#565d75">← more acid</text>
+      <text x="600" y="200" font-size="12" fill="#565d75" text-anchor="end">more base →</text>
+    </svg>
+    <figcaption>Sørensen's ruler. Every step is ten times: lemon juice (about 2) is a hundred thousand times more acidic than blood.</figcaption>
+  </figure>
+
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Stuff</th><th>pH (about)</th><th>What it is</th></tr>
+    <tr><td>Stomach acid</td><td>1.5–2</td><td>Strong acid — dissolves dinner</td></tr>
+    <tr><td>Lemon juice / vinegar</td><td>2–3</td><td>Acid — sour</td></tr>
+    <tr><td>Black coffee</td><td>5</td><td>Mild acid</td></tr>
+    <tr><td>Milk</td><td>6.5–6.7</td><td>Just barely acid</td></tr>
+    <tr><td>Pure water</td><td>7</td><td>Neutral</td></tr>
+    <tr><td><strong>Blood</strong></td><td><strong>7.35–7.45</strong></td><td>Just barely base — and it must stay there</td></tr>
+    <tr><td>Baking soda in water</td><td>8–9</td><td>Mild base</td></tr>
+    <tr><td>Hand soap</td><td>9–10</td><td>Base — slippery</td></tr>
+    <tr><td>Bleach</td><td>12–13</td><td>Strong base — never touch</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Home lab: make your own pH tester</div>
+    <p class="lab-materials">You need: a few leaves of red cabbage, hot water, a jar, and small cups of things to test (lemon juice, vinegar, milk, water, baking-soda water, soapy water).</p>
+    <p>Chop the cabbage, soak it in hot water for ten minutes, and pour off the purple juice. That juice is an <strong>indicator</strong> — a dye that changes color with pH. Add a spoonful to each cup: acids turn it pink or red, bases turn it blue or green, neutral stays purple. Line the cups up from reddest to greenest and you've built Sørensen's ruler on your kitchen table. The homework has a place to record it. (Chemists have used plant dyes this way since the 1600s — the first one, litmus, comes from a lichen.)</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">pH is the acid ruler: 0 to 14, 7 is neutral, lower is more acid, higher is more base. Each step is ten times stronger.</p></details>
+    </div>
+  </div>
+
+  <h2>🩸 Blood: the fussiest number in the body</h2>
+  <p>Look back at the ruler. Blood sits at <strong>7.35 to 7.45</strong>. That window is one-tenth of one step wide. Your stomach is happy at 2; your skin is fine at 5; but blood that drifts to 7.2 makes a NICU team move fast, and blood at 6.9 or 7.8 is usually fatal. Why so picky?</p>
+  <p>Because of <strong>proteins</strong>. Last week in Genetics you learned that proteins are the working machines of the body, built from gene recipes — hemoglobin, surfactant, the enzymes in your mitochondria that burn sugar. A protein works because of its exact folded shape, and loose hydrogens grab onto proteins and warp them. A little too much acid and the enzymes slow down, the heart muscle squeezes more weakly, and hemoglobin drops its oxygen too early. The whole chemistry set from Week 1 depends on staying at 7.4.</p>
+  <p>Where does the acid come from? Two places, and you already know both:</p>
+  <ul>
+    <li><strong>Carbon dioxide.</strong> When CO₂ dissolves in water it becomes <strong>carbonic acid</strong> (H₂CO₃ — count the atoms: 6). It's the same acid that makes soda water taste sharp. Every cell makes CO₂ every second, so the body is always making acid, and the lungs are always breathing it away. Stop breathing well and the acid piles up within minutes.</li>
+    <li><strong>Starving cells.</strong> When cells can't get enough oxygen, they switch to an emergency way of burning sugar that makes <strong>lactic acid</strong>. You've felt it — the burn in your legs after a hard sprint. In a baby it means some part of the body isn't getting enough blood or oxygen.</li>
+  </ul>
+  <p>And the defense? A sponge. Blood carries a base called <strong>bicarbonate</strong> (HCO₃⁻) that soaks up loose hydrogens before they do damage. You have some in your kitchen: baking soda is sodium bicarbonate — which is exactly why it fizzes against vinegar. Two organs run the whole balancing act. The <strong>lungs</strong> control the CO₂ side, and they work in minutes: breathe faster, blow off more acid. The <strong>kidneys</strong> control the bicarbonate side, and they work over hours and days.</p>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">Blood must stay at pH 7.35–7.45 or its proteins stop working. CO₂ makes carbonic acid; bicarbonate is the sponge that soaks acid up; lungs (fast) and kidneys (slow) keep the balance.</p></details>
+    </div>
+  </div>
+
+  <h2>🧪 The blood gas: three drops, three clues</h2>
+  <p>Now you can read the test. A <strong>blood gas</strong> is a few drops of blood — from a warmed heel, or painlessly from an umbilical line like the ones in <a href="../../../nicu_tutor/lessons/04-blood-pressure.html">NICU Tutor Lesson 4</a> — fed into a machine that answers in about a minute. It reports several numbers; the three that matter most today are the <strong>pH</strong>, the amount of <strong>CO₂</strong>, and the amount of <strong>bicarbonate</strong>. The doctor reads them like a detective reads clues:</p>
+
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Clue</th><th>Normal (about)</th><th>Too low means…</th><th>Too high means…</th></tr>
+    <tr><td>pH</td><td>7.35–7.45</td><td>too much acid (acidosis)</td><td>too little acid (alkalosis)</td></tr>
+    <tr><td>CO₂</td><td>35–45 mmHg</td><td>breathing too much — blowing off too much</td><td>breathing too little — CO₂ piling up</td></tr>
+    <tr><td>Bicarbonate</td><td>22–26</td><td>the sponge is being used up by acid from the cells</td><td>the kidneys are holding extra sponge</td></tr>
+  </table>
+  </div>
+
+  <p>Put the clues together and the gas tells a story:</p>
+  <ul>
+    <li><strong>pH low and CO₂ high.</strong> The acid is carbonic acid, and it's piling up because the lungs aren't clearing it. This is a <em>breathing</em> problem — a baby having apnea spells, or one whose CPAP isn't enough. The fix is more breathing help: turn up the CPAP, add a ventilator breath, give caffeine.</li>
+    <li><strong>pH low but CO₂ normal, bicarbonate low.</strong> The lungs are doing their job, so the acid is coming from somewhere else — starving cells. Something is stopping oxygen from reaching part of the body: an infection, low blood pressure, a sick gut. The fix isn't the breathing machine; it's finding and treating the cause.</li>
+    <li><strong>pH high and CO₂ low.</strong> The machine is breathing <em>too much</em> for the baby, blowing off too much CO₂. That's dangerous too: low CO₂ squeezes the blood vessels in a preemie's brain. Turn the ventilator down.</li>
+  </ul>
+  <p>Notice what the last one means. A blood gas isn't just about finding too little breathing; it's how the team keeps from doing too much. Remember Physics last week — “the smallest pressure that works”? The blood gas is how they know what works. Modern NICUs will even let a baby's CO₂ run a little high, with a pH down near 7.25, rather than crank up a ventilator that could injure the lungs. The number they're protecting is 7.4; the thing they're protecting is a baby.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: “A's and B's”</div>
+    <p>In <a href="../../../nicu_tutor/lessons/03-monitor.html">NICU Tutor Lesson 3</a> you met apnea — a preemie simply forgetting to breathe. Now you can say what happens in the blood during those twenty seconds: CO₂ keeps arriving from every cell, nothing carries it out, carbonic acid climbs, pH slides. That's why a bad spell gets a blood gas afterward, and why caffeine — which keeps the breathing center awake — is really an acid-control medicine in disguise.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🍺 Real talk: the brewery, the soda water, and the drops</div>
+    <p>Sørensen's ruler came out of a beer factory because brewing is a fight over acid: too much and the beer spoils, too little and the yeast sulks. He needed a number, so he invented one, and within a few decades every hospital in the world was using it. And the fizzy water Joseph Priestley invented in 1767 — the man from last week who discovered oxygen — is carbon dioxide dissolved in water: carbonic acid, the very same acid a baby's lungs must blow away all day. Chemistry doesn't care whether it's in a bottle, a brewery, or a bloodstream. The rules are the rules.</p>
+    <p>Here's the honest part. Every blood gas costs a poke and a few drops, and a 1-kilogram preemie has only about 80 milliliters of blood in its whole body — a third of a cup. This afternoon, Biology will show you what that blood is made of, and why NICU teams count every drop they take. Good units bundle their blood tests together, use the umbilical line while it's in, and ask before every test: will this number change what we do? If the answer is no, the baby keeps the drops.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>pH scale</td><td>0 to 14</td><td>7 neutral; every step is ten times</td></tr>
+    <tr><td>Normal blood pH</td><td>7.35–7.45</td><td>Below about 7.2 the team moves fast</td></tr>
+    <tr><td>Normal CO₂ in arterial blood</td><td>35–45 mmHg</td><td>NICUs often accept up to about 55 in a preemie on a ventilator</td></tr>
+    <tr><td>Normal bicarbonate</td><td>22–26</td><td>The sponge</td></tr>
+    <tr><td>Blood gas turnaround</td><td>About 1 minute</td><td>The machine sits in or beside the NICU</td></tr>
+    <tr><td>Year pH was invented</td><td>1909</td><td>Sørensen, Carlsberg Laboratory, Copenhagen</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Acid</dt><dd>A chemical that lets go of loose hydrogen. Sour. pH below 7.</dd>
+      <dt>Base</dt><dd>A chemical that grabs loose hydrogen. Slippery. pH above 7.</dd>
+      <dt>pH</dt><dd>The 0-to-14 ruler for acid. 7 is neutral; each step is ten times.</dd>
+      <dt>Neutralize</dt><dd>What an acid and a base do to each other: cancel out.</dd>
+      <dt>Carbonic acid</dt><dd>What CO₂ becomes in water — H₂CO₃. The body's main acid.</dd>
+      <dt>Bicarbonate</dt><dd>Blood's acid sponge. Baking soda is a bicarbonate.</dd>
+      <dt>Blood gas</dt><dd>The drops-of-blood test that reports pH, CO₂, oxygen, and bicarbonate.</dd>
+      <dt>Acidosis</dt><dd>Blood with too much acid — pH below 7.35. “Respiratory” if from CO₂; “metabolic” if from the cells.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.acs.org/education/whatischemistry/landmarks/carlsberglaboratory.html" target="_blank" rel="noopener">American Chemical Society: the Carlsberg Laboratory</a> — where pH was born.</li>
+      <li><a href="https://kidshealth.org/en/parents/labtest-blood-gas.html" target="_blank" rel="noopener">KidsHealth: blood gas test</a></li>
+      <li>Ask a grown-up for a strip of pH paper (garden and pool stores sell them). Test your saliva — about 6.5 to 7 — and see how close to blood your mouth is.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Chemistry 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's ⚗️ badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Acids &amp; Bases</div>
+    <p>Due at recitation, Tuesday 9:00. Print it now: <a href="../../print/week2/hw-chemistry-w2.pdf" target="_blank" rel="noopener">Homework 2: Acids &amp; Bases (PDF)</a>. Sorting the kitchen into acids and bases, the ten-times ruler, four blood gases to read like a detective, and the red-cabbage home lab. Details on the <a href="../../recitations/week2/chemistry.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-mon-chem",
+  quizId: "chemistry-w2",
+  course: "chemistry",
+  printQuiz: "../../print/week2/quiz-chemistry-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what are “A's and B's,” and what usually fixes a spell?", a: "Apnea (a pause in breathing) and bradycardia (the heart slowing down that follows). Usually a gentle rub on the back or foot wakes the brain's breathing center; daily caffeine helps prevent them." },
+    { q: "From last week's Chemistry: which way do O₂ and CO₂ move in the alveoli — and what happens to blood if CO₂ piles up?", a: "Oxygen crosses from air into blood; carbon dioxide crosses from blood into air. If CO₂ piles up, the blood turns acidic — and today you find out exactly how acidic, and how doctors measure it." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Hall — Week 2 Review</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body class="c-general" data-root="../">
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../index.html">Timetable</a>
+    <a href="../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <p class="kicker">Study Hall · Friday 10:30</p>
+  <h1>Week 2 Review</h1>
+  <p class="lede">This week the Seminar taught you why this page works: saying an idea <em>before</em> you read it is retrieval practice, and it beats rereading. Twenty-seven big ideas this week — most of which you found yourself — plus six flashbacks. Say each one out loud first. Check the box if you could. Reread only the blanks.</p>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <div class="card">
+    <h3>How to use the review sheet</h3>
+    <ol class="hw-steps">
+      <li><strong>Print the review sheet</strong> — every big idea from the week, with a checkbox.</li>
+      <li><strong>For each idea, say it out loud</strong> in your own words <em>before</em> you read it. Could you? Check the box. Couldn't? Leave it blank.</li>
+      <li><strong>Reread only the blanks.</strong> Every idea below links back to its lecture. Ten minutes on your gaps beats an hour on what you already know.</li>
+      <li><strong>Then take the final</strong> at 1:00. Twenty-four questions — eighteen from this week's nine courses, three from Week 1, three from NICU Tutor. You need 17 to pass.</li>
+    </ol>
+    <div class="print-links">
+      <a href="../print/week2/review-week2.pdf" target="_blank" rel="noopener">🖨️ Print the review sheet (PDF)</a>
+    </div>
+  </div>
+
+  <h2>✅ The big ideas, by course</h2>
+
+  <div class="box c-seminar" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🎓 Freshman Seminar — <a href="../courses/seminar/week2.html">reread</a></div>
+    <ul>
+      <li>A few sentences carry a lecture; the rest support them. Three tests: “so what?”, “could I forget it?”, “is it repeated?”</li>
+      <li>Ideas hide in headings, first and last sentences, and the lesson of a story. Tables, dates, and most numbers are details.</li>
+      <li>Testing yourself beats rereading (about 60% vs 40%). Close the page and say it, teach it, or write a quiz question.</li>
+    </ul>
+  </div>
+
+  <div class="box c-chemistry" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">⚗️ Chemistry 101 — <a href="../courses/chemistry/week2.html">reread</a></div>
+    <ul>
+      <li>Acids let go of loose hydrogen and taste sour; bases grab it and feel slippery. Mixed, they cancel (neutralize).</li>
+      <li>pH is the acid ruler: 0–14, 7 neutral, lower = more acid. Each step is ten times.</li>
+      <li>Blood must stay at 7.35–7.45. CO₂ makes carbonic acid; bicarbonate is the sponge; lungs (fast) and kidneys (slow) keep the balance. A blood gas reads pH, CO₂, and bicarbonate as clues.</li>
+    </ul>
+  </div>
+
+  <div class="box c-biology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🔬 Biology 101 — <a href="../courses/biology/week2.html">reread</a></div>
+    <ul>
+      <li>The heart is two pumps with four rooms: right side to the lungs, left side to the body. Arteries out, veins back, valves one-way.</li>
+      <li>Blood = plasma carrying red cells (oxygen), white cells (defense), platelets (plugs). About 80 mL per kg — a 1 kg preemie has a third of a cup.</li>
+      <li>Before birth, blood skips the lungs through the ductus arteriosus; it should close at birth. In preemies it often stays open (PDA), flooding the lungs.</li>
+    </ul>
+  </div>
+
+  <div class="box c-physics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧲 Physics 101 — <a href="../courses/physics/week2.html">reread</a></div>
+    <ul>
+      <li>White light is all the colors mixed; a prism spreads them. Each color is a wavelength, red (long) to violet (short), with infrared and ultraviolet past the ends.</li>
+      <li>A thing's color is the light it bounces back after absorbing the rest. Oxygen-loaded hemoglobin is bright red and lets red light through.</li>
+      <li>The pulse ox compares red and infrared through the foot, using only the pulsing signal. Bili lights are blue because bilirubin absorbs blue and becomes flushable.</li>
+    </ul>
+  </div>
+
+  <div class="box c-calculus" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">📈 Calculus 101 — <a href="../courses/calculus/week2.html">reread</a></div>
+    <ul>
+      <li>Calculus's second question: how much piles up? Total = rate × time. 3 mL/hr × 24 hr = 72 mL.</li>
+      <li>Rate as height, time as width: the total is the area under the line. Steps are rectangles added up.</li>
+      <li>When the rate is a curve, slice time into thin strips and add skinny rectangles; thinner slices get closer. ∫ is the symbol for that sum.</li>
+    </ul>
+  </div>
+
+  <div class="box c-statistics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">📊 Statistics 101 — <a href="../courses/statistics/week2.html">reread</a></div>
+    <ul>
+      <li>The median is the middle value after lining numbers up. One wild number drags the mean but not the median.</li>
+      <li>A percentile is your place in line out of 100. The 50th is the median. It's a position, not a grade.</li>
+      <li>Growth charts draw the 10th, 50th, 90th curves by age. Below the 10th = small for gestational age. Follow your own curve; crossing curves downward is the alarm.</li>
+    </ul>
+  </div>
+
+  <div class="box c-genetics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧬 Genetics 101 — <a href="../courses/genetics/week2.html">reread</a></div>
+    <ul>
+      <li>Gene → protein (enzyme) → job. A typo makes a broken enzyme, so what it should break down piles up. PKU: phenylalanine piles up — a special diet prevents the harm.</li>
+      <li>The heel prick (Guthrie, 1961): blood spots on a card at 1–2 days, tested for about 35 hidden, treatable conditions. Hearing and pulse-ox heart screens ride along.</li>
+      <li>Screen everyone when a disease hides, waiting harms, early treatment works, and the test is cheap. A positive screen means “test again, properly, now.”</li>
+    </ul>
+  </div>
+
+  <div class="box c-psychology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧠 Psychology 101 — <a href="../courses/psychology/week2.html">reread</a></div>
+    <ul>
+      <li>Attachment is the built-in bond that makes a baby seek a caregiver as a safe base — a survival system, not a side effect of being fed.</li>
+      <li>Harlow's monkeys chose comfort over food; Ainsworth found secure babies (about 6 in 10) have reliably responsive caregivers; Tronick's still face shows babies fight to restart serve-and-return.</li>
+      <li>A NICU strains the rope. Measured: early holding, kangaroo care (about a quarter fewer deaths), and parents doing the care all help. Bonding is treatment; parents are on the team.</li>
+    </ul>
+  </div>
+
+  <div class="box c-sociology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🏥 Sociology 101 — <a href="../courses/sociology/week2.html">reread</a></div>
+    <ul>
+      <li>About 13 million babies a year are born preterm and about 900,000 die of it. In the poorest countries about half of very early babies die for lack of basic care.</li>
+      <li>Compare groups with rates (per 100, per 1,000), not counts. In the US, Black babies die in the first year at more than twice the rate of white babies.</li>
+      <li>The gaps come from social determinants — money, food, housing, stress, distance, being listened to — not from the babies. Change the conditions and the numbers move.</li>
+    </ul>
+  </div>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashbacks on the final</div>
+    <ul>
+      <li>Week 1 Physics: why blood pressure is in mmHg — <a href="../courses/physics/week1.html">reread</a>.</li>
+      <li>Week 1 Statistics: what an Apgar score of 4–6 means — <a href="../courses/statistics/week1.html">reread</a>.</li>
+      <li>Week 1 Genetics: what a gene is — <a href="../courses/genetics/week1.html">reread</a>.</li>
+      <li>The isolette's skin probe — <a href="../../nicu_tutor/lessons/01-isolette.html">NICU Tutor Lesson 1</a>.</li>
+      <li>Caffeine and apnea — <a href="../../nicu_tutor/lessons/03-monitor.html">Lesson 3</a>.</li>
+      <li>Suck-swallow-breathe and tube feeding — <a href="../../nicu_tutor/lessons/06-feeding.html">Lesson 6</a>.</li>
+    </ul>
+  </div>
+
+  <div class="box box-fun">
+    <div class="box-title">💡 Exam-day tips from the Seminar</div>
+    <p>Read each question twice. Read every choice. Cross out the ones you know are wrong. Then choose. The right answer is placed at random and the wrong ones sound reasonable — you actually have to know it. And you do: you found this week's big ideas yourself, which is the hardest way to learn them and the one that sticks.</p>
+  </div>
+
+  <p class="center" style="margin-top:28px">
+    <button id="study-done" data-slot="w2-fri-study" class="quiz-next" type="button">I've reviewed the sheet — mark study hall done</button>
+  </p>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.RECITATION = { slotId: "w2-fri-study", hwId: null, course: "general", total: 0 };
+</script>
+<script src="../js/vocab.js"></script>
+<script src="../js/schedule.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

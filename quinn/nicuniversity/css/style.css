@@ -401,3 +401,41 @@ body.prof .prof-panel.prof-only { display: block !important; }
   .hero .hero-art { flex-basis: 180px; max-width: 180px; margin: 0 auto; }
   body { font-size: 1rem; }
 }
+
+/* ---------- week tabs (home) & transcript weeks ---------- */
+.week-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 4px; }
+.week-tab {
+  font-family: var(--font-head); font-weight: 700; text-decoration: none; color: var(--teal-dark);
+  background: var(--card); border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px;
+}
+.week-tab:hover { border-color: var(--teal); }
+.week-tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+.week-tab.done:not(.active) { border-color: var(--green); color: var(--green); }
+.week-tab.soon { opacity: 0.55; }
+.week-tab small { font-weight: 600; font-size: 0.75rem; }
+.tr-week { font-size: 1.2rem; margin: 34px 0 6px; color: var(--teal-dark); }
+.transcript-summary { font-family: var(--font-head); font-weight: 700; color: var(--ink-soft); }
+
+/* ---------- note cues, fading by week ----------
+   Week 1: .cue gives the sentence.  Week 2: .cue-ask asks, with a check.
+   Weeks 3–4: .cue-spot only marks the place.  Week 5+: no in-text cues. */
+.cue.cue-ask { border-color: var(--violet); background: #f8f6fd; }
+.cue.cue-ask .cue-label { color: var(--violet); }
+.cue.cue-ask p { font-weight: 500; }
+.cue.cue-ask details { margin-top: 6px; }
+.cue.cue-ask summary {
+  cursor: pointer; font-family: var(--font-head); font-weight: 700; color: var(--violet);
+  list-style: none; display: inline-block; background: var(--violet-pale); border-radius: 999px;
+  padding: 3px 12px; font-size: 0.88rem;
+}
+.cue.cue-ask summary::-webkit-details-marker { display: none; }
+.cue.cue-ask details[open] summary { background: var(--green-pale); color: var(--green); }
+.cue.cue-ask .cue-answer { margin-top: 8px; font-weight: 600; }
+.cue.cue-spot { border-style: dotted; background: transparent; padding: 8px 14px; }
+.cue.cue-spot p { font-weight: 500; color: var(--ink-soft); }
+
+/* ---------- home lab (optional at-home experiment) ---------- */
+.box-lab { background: #eaf7f4; border-left: 6px solid var(--teal); }
+.box-lab .box-title { color: var(--teal-dark); }
+.box-lab .lab-materials { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 8px; }
+.box-lab ol { margin-bottom: 8px; }

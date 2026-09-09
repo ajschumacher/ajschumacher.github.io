@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""Build all printable PDFs for NICUniversity into print/.
+"""Build all printable PDFs for NICUniversity into print/weekN/ (one folder per week).
 
-  print/quiz-<id>.pdf      paper version of each lecture quiz (from data/quizzes.shuffled.json)
-  print/hw-<id>.pdf        homework worksheet (from data/homework.json)
-  print/hw-<id>-key.pdf    answer key for that homework
-  print/notes-<id>.pdf     Class Notes sheet for that lecture
-  print/quiz-keys.pdf      answer keys for all quizzes
+  quiz-<id>.pdf        paper version of each lecture quiz (from data/quizzes-wN.shuffled.json)
+  hw-<id>.pdf          homework worksheet (from data/homework-wN.json)
+  hw-<id>-key.pdf      answer key for that homework
+  notes-<id>.pdf       Class Notes sheet for that lecture
+  quiz-keys-wN.pdf     answer keys for all of the week's quizzes
+  review-weekN.pdf     study-hall review sheet (from data/review-wN.json)
+  certificate-weekN.pdf
 
-Run tools/build_quizzes.py first.  Requires reportlab + pypdf (system python3 has them).
+The week comes from the id suffix (-w2). Run tools/build_quizzes.py first.
+Requires reportlab + pypdf (system python3 has them).
 """
 import json
+import re
 import unicodedata
 from pathlib import Path
 
@@ -24,8 +28,21 @@ from reportlab.platypus import (BaseDocTemplate, Flowable, Frame, KeepTogether,
                                 PageTemplate, Paragraph, Spacer, Table, TableStyle)
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "print"
-OUT.mkdir(exist_ok=True)
+PRINT = ROOT / "print"
+WEEK = 1          # set per week by main(); read by out_dir() and the page footer
+OUT = PRINT / "week1"
+
+
+def set_week(n):
+    global WEEK, OUT
+    WEEK = int(n)
+    OUT = PRINT / f"week{WEEK}"
+    OUT.mkdir(parents=True, exist_ok=True)
+
+
+def week_of(some_id):
+    m = re.search(r"-w(\d+)$", some_id)
+    return int(m.group(1)) if m else WEEK
 
 FDIR = "/System/Library/Fonts/Supplemental"
 pdfmetrics.registerFont(TTFont("Treb", f"{FDIR}/Trebuchet MS.ttf"))
@@ -102,7 +119,7 @@ def page_decorations(header_left, header_right, accent):
         canvas.drawRightString(w - 0.75 * inch, h - 0.29 * inch, header_right)
         canvas.setFillColor(INK_SOFT)
         canvas.setFont("Treb", 8.5)
-        canvas.drawString(0.75 * inch, 0.45 * inch, "NICUniversity - Week 1")
+        canvas.drawString(0.75 * inch, 0.45 * inch, f"NICUniversity - Week {WEEK}")
         canvas.drawRightString(w - 0.75 * inch, 0.45 * inch, f"Page {doc.page}")
         canvas.restoreState()
     return draw
@@ -246,7 +263,118 @@ class BarFigure(Flowable):
         c.drawCentredString(0, 0, "Heart rate (beats per minute)"); c.restoreState()
 
 
-FIGURES = {"cell": CellFigure, "grid": GridFigure, "bars": BarFigure}
+class GrowthChartFigure(Flowable):
+    """Simplified preterm growth chart: weeks 24-40 across, grams 400-4000 up,
+    with 10th / 50th / 90th percentile curves (rounded from Fenton-type values)."""
+    P50 = {24: 650, 26: 850, 28: 1150, 30: 1450, 32: 1800, 34: 2200, 36: 2650, 38: 3050, 40: 3400}
+
+    def __init__(self, width):
+        super().__init__(); self.w = width; self.height = 3.7 * inch
+    def wrap(self, aw, ah): return self.w, self.height
+    def draw(self):
+        c = self.canv
+        left, bottom = 62, 36
+        gw, gh = self.w - left - 24, self.height - bottom - 18
+        x0, x1, y0, y1 = 24, 40, 0, 4000
+        def X(wk): return left + (wk - x0) / (x1 - x0) * gw
+        def Y(g): return bottom + (g - y0) / (y1 - y0) * gh
+        c.setStrokeColor(LINE); c.setLineWidth(0.8)
+        for wk in range(x0, x1 + 1, 2): c.line(X(wk), bottom, X(wk), bottom + gh)
+        for g in range(0, y1 + 1, 500): c.line(left, Y(g), left + gw, Y(g))
+        c.setStrokeColor(INK); c.setLineWidth(1.5)
+        c.line(left, bottom, left + gw, bottom); c.line(left, bottom, left, bottom + gh)
+        c.setFillColor(INK); c.setFont("Treb", 9)
+        for wk in range(x0, x1 + 1, 2): c.drawCentredString(X(wk), bottom - 12, str(wk))
+        for g in range(0, y1 + 1, 500): c.drawRightString(left - 6, Y(g) - 3, f"{g:,}")
+        for label, factor, color in (("90th", 1.22, "#3F88C5"), ("50th", 1.0, "#0E7C7B"), ("10th", 0.78, "#F25F5C")):
+            c.setStrokeColor(colors.HexColor(color)); c.setLineWidth(1.8)
+            pts = [(X(wk), Y(g * factor)) for wk, g in sorted(self.P50.items())]
+            p = c.beginPath(); p.moveTo(*pts[0])
+            for x, y in pts[1:]: p.lineTo(x, y)
+            c.drawPath(p, stroke=1, fill=0)
+            c.setFillColor(colors.HexColor(color)); c.setFont("TrebB", 9)
+            c.drawString(pts[-1][0] + 4, pts[-1][1] - 3, label)
+        c.setFillColor(INK); c.setFont("TrebB", 9.5)
+        c.drawCentredString(left + gw / 2, 4, "Weeks of pregnancy at birth (gestational age)")
+        c.saveState(); c.translate(14, bottom + gh / 2); c.rotate(90)
+        c.drawCentredString(0, 0, "Birth weight (grams)"); c.restoreState()
+
+
+class RateStepFigure(Flowable):
+    """Blank rate-vs-time grid: hours 0-24 across (2-h steps), mL per hour 0-6 up."""
+    def __init__(self, width):
+        super().__init__(); self.w = width; self.height = 2.6 * inch
+    def wrap(self, aw, ah): return self.w, self.height
+    def draw(self):
+        c = self.canv
+        left, bottom = 60, 34
+        gw, gh = self.w - left - 20, self.height - bottom - 16
+        cols, rows = 12, 6
+        cw, rh = gw / cols, gh / rows
+        c.setStrokeColor(LINE); c.setLineWidth(0.8)
+        for i in range(cols + 1): c.line(left + i * cw, bottom, left + i * cw, bottom + gh)
+        for j in range(rows + 1): c.line(left, bottom + j * rh, left + gw, bottom + j * rh)
+        c.setStrokeColor(INK); c.setLineWidth(1.5)
+        c.line(left, bottom, left + gw, bottom); c.line(left, bottom, left, bottom + gh)
+        c.setFillColor(INK); c.setFont("Treb", 9)
+        for i in range(cols + 1): c.drawCentredString(left + i * cw, bottom - 12, str(2 * i))
+        for j in range(rows + 1): c.drawRightString(left - 6, bottom + j * rh - 3, str(j))
+        c.setFont("TrebB", 9.5)
+        c.drawCentredString(left + gw / 2, 4, "Hour of the day")
+        c.saveState(); c.translate(14, bottom + gh / 2); c.rotate(90)
+        c.drawCentredString(0, 0, "Pump rate (mL per hour)"); c.restoreState()
+
+
+class HeartFigure(Flowable):
+    """Numbered four-room heart schematic for the biology Week 2 homework.
+    Drawn as if facing the patient: the baby's right side is on the viewer's left."""
+    def __init__(self, width):
+        super().__init__(); self.w = width; self.height = 3.6 * inch
+    def wrap(self, aw, ah): return self.w, self.height
+    def draw(self):
+        c = self.canv
+        cx, cy = self.w / 2, self.height / 2 + 6
+        bw, bh = 250, 140
+        # lungs above, body below
+        c.setFillColor(colors.HexColor("#E3EFF9")); c.setStrokeColor(colors.HexColor("#3F88C5")); c.setLineWidth(1.2)
+        c.ellipse(cx - 120, cy + bh / 2 + 16, cx + 120, cy + bh / 2 + 44, stroke=1, fill=1)
+        c.setFillColor(colors.HexColor("#E2F4E5")); c.setStrokeColor(colors.HexColor("#2A9D3F"))
+        c.ellipse(cx - 120, cy - bh / 2 - 44, cx + 120, cy - bh / 2 - 16, stroke=1, fill=1)
+        c.setFillColor(INK); c.setFont("TrebB", 10)
+        c.drawCentredString(cx, cy + bh / 2 + 26, "LUNGS")
+        c.drawCentredString(cx, cy - bh / 2 - 34, "BODY")
+        # arrows between heart and lungs/body (drawn under the heart box edge)
+        c.setLineWidth(4)
+        c.setStrokeColor(colors.HexColor("#3F88C5"))
+        c.line(cx - 90, cy - bh / 2 - 16, cx - 90, cy - bh / 2)
+        c.line(cx - 40, cy + bh / 2, cx - 40, cy + bh / 2 + 16)
+        c.setStrokeColor(colors.HexColor("#F25F5C"))
+        c.line(cx + 40, cy + bh / 2 + 16, cx + 40, cy + bh / 2)
+        c.line(cx + 90, cy - bh / 2, cx + 90, cy - bh / 2 - 16)
+        # the heart box
+        c.setFillColor(colors.HexColor("#FDE8E7")); c.setStrokeColor(colors.HexColor("#C0392B")); c.setLineWidth(3)
+        c.roundRect(cx - bw / 2, cy - bh / 2, bw, bh, 18, stroke=1, fill=1)
+        c.setLineWidth(1.5)
+        c.line(cx, cy - bh / 2, cx, cy + bh / 2); c.line(cx - bw / 2, cy, cx + bw / 2, cy)
+        # numbered rooms: 1 RA (top-left), 2 RV (bottom-left), 3 LA (top-right), 4 LV (bottom-right)
+        for num, (x, y) in {"1": (cx - bw / 4, cy + bh / 4), "2": (cx - bw / 4, cy - bh / 4),
+                            "3": (cx + bw / 4, cy + bh / 4), "4": (cx + bw / 4, cy - bh / 4)}.items():
+            c.setFillColor(INK); c.circle(x, y, 11, stroke=0, fill=1)
+            c.setFillColor(colors.white); c.setFont("TrebB", 12); c.drawCentredString(x, y - 4, num)
+        # side labels, clear of everything
+        c.setFillColor(INK_SOFT); c.setFont("Treb", 8.5)
+        c.drawRightString(cx - bw / 2 - 10, cy + bh / 4 - 3, "upstairs =")
+        c.drawRightString(cx - bw / 2 - 10, cy + bh / 4 - 14, "receiving rooms")
+        c.drawRightString(cx - bw / 2 - 10, cy - bh / 4 - 3, "downstairs =")
+        c.drawRightString(cx - bw / 2 - 10, cy - bh / 4 - 14, "pumping rooms")
+        c.drawString(cx + bw / 2 + 10, cy + bh / 4 - 3, "baby's RIGHT is")
+        c.drawString(cx + bw / 2 + 10, cy + bh / 4 - 14, "on YOUR left")
+        c.drawString(cx + bw / 2 + 10, cy - bh / 4 - 3, "blue = low on oxygen")
+        c.drawString(cx + bw / 2 + 10, cy - bh / 4 - 14, "red = oxygen-rich")
+
+
+FIGURES = {"cell": CellFigure, "grid": GridFigure, "bars": BarFigure,
+           "growthchart": GrowthChartFigure, "ratesteps": RateStepFigure, "heart": HeartFigure}
 
 
 def question_number_style():
@@ -260,11 +388,12 @@ def build_quiz(qid, quiz):
     accent = COURSE_COLORS.get(course, "#0E7C7B")
     total = len(quiz["questions"]); need = -(-total * 7 // 10)
     path = OUT / f"quiz-{qid}.pdf"
+    wk = week_of(qid)
     doc = make_doc(path, "NICUniversity  ·  " + ("Final Exam" if exam else "Lecture Quiz"),
-                   "Week 1" if exam else COURSE_NAMES.get(course, course), accent)
+                   f"Week {wk}" if exam else COURSE_NAMES.get(course, course), accent)
     W = doc.width
-    kicker = "WEEK 1  ·  FINAL EXAM  ·  ALL NINE COURSES" if exam else esc(COURSE_NAMES.get(course, course)).upper() + "  ·  WEEK 1 QUIZ"
-    goal = f"Get <b>{need} of {total}</b> right to pass and earn your Week 1 diploma." if exam else f"Get <b>{need} of {total}</b> right to earn the badge."
+    kicker = f"WEEK {wk}  ·  FINAL EXAM  ·  ALL NINE COURSES" if exam else esc(COURSE_NAMES.get(course, course)).upper() + f"  ·  WEEK {wk} QUIZ"
+    goal = f"Get <b>{need} of {total}</b> right to pass and earn your Week {wk} diploma." if exam else f"Get <b>{need} of {total}</b> right to earn the badge."
     story = [Paragraph(kicker, ParagraphStyle("k", parent=S_KICKER, textColor=colors.HexColor(accent))),
              Paragraph(esc(quiz["title"]), S_TITLE), Spacer(1, 8), name_date_row(W), Spacer(1, 8),
              boxed(Paragraph(f"<b>How to play:</b> Read each question twice, read every choice, cross out the wrong ones, "
@@ -292,10 +421,10 @@ def build_quiz(qid, quiz):
 
 
 def build_quiz_keys(quizzes):
-    path = OUT / "quiz-keys.pdf"
+    path = OUT / f"quiz-keys-w{WEEK}.pdf"
     doc = make_doc(path, "NICUniversity  ·  Quiz Answer Keys", "Professor copy", "#2D3142")
     story = [Paragraph("ANSWER KEYS - PROFESSOR COPY", S_KICKER),
-             Paragraph("Week 1 Lecture Quizzes", S_TITLE), Spacer(1, 6)]
+             Paragraph(f"Week {WEEK} Lecture Quizzes and Final", S_TITLE), Spacer(1, 6)]
     for qid, quiz in quizzes.items():
         total = len(quiz["questions"]); need = -(-total * 7 // 10)
         block = [Paragraph(f"{esc(quiz['title'])}  <font size=9 color='#565D75'>(pass mark {need}/{total})</font>", S_SECTION)]
@@ -320,6 +449,21 @@ def render_item(it, num, W, key=False):
         return [boxed(Paragraph(esc(it["text"]), S_PASSAGE), W, fill=colors.HexColor("#F4F1FA"), border=colors.HexColor("#7768AE")), Spacer(1, 8)]
     if t == "figure":
         return [FIGURES[it["figure"]](W), Spacer(1, 6)]
+    if t == "lab":
+        # Optional at-home experiment. Not graded; the professor initials it when done.
+        S_LABT = ParagraphStyle("labt", parent=S_Q, textColor=TEAL_DARK)
+        parts = [Paragraph("HOME LAB (optional, not graded): " + esc(it["title"]), S_LABT),
+                 Paragraph("<b>You need:</b> " + esc(it["materials"]), S_INSTR), Spacer(1, 4)]
+        for i, step in enumerate(it["steps"], 1):
+            parts.append(Paragraph(f"{i}. {esc(step)}", S_CHOICE))
+        parts.append(Spacer(1, 4))
+        if key:
+            parts.append(Paragraph("<b>What you should see:</b> " + esc(it["expect"]), S_KEY))
+        else:
+            parts.append(Paragraph("<b>What I saw:</b>", S_INSTR))
+            parts.append(Lines(W - 20, it.get("lines", 3)))
+            parts.append(Paragraph("Done!  Professor's initials: ________", S_SMALL))
+        return [boxed(parts, W, fill=colors.HexColor("#EAF7F4"), border=TEAL), Spacer(1, 10)]
 
     pts = it.get("points", 0)
     head = Paragraph(f"{num}. {esc(it['q'])}  <font size=9 color='#565D75'>({pts} pt{'s' if pts != 1 else ''})</font>", S_Q)
@@ -392,7 +536,7 @@ def build_homework(hid, hw, key=False):
     num = 0
     pending = []   # section headings wait and get glued to the next item so they never orphan
     for it in hw["items"]:
-        if it["type"] in ("section", "passage", "figure"):
+        if it["type"] in ("section", "passage", "figure", "lab"):
             if key and it["type"] == "figure":
                 continue   # the key doesn't need the blank diagram
             pending += render_item(it, num, W, key=key)
@@ -416,16 +560,24 @@ def build_homework(hid, hw, key=False):
 
 
 # ---------- Class Notes sheet ----------
+NOTES_HINT = {
+    1: "Watch for the dashed 'Write this down' boxes in class.",
+    2: "This week the boxes ask 'What's the big idea here?' - write yours first, then check.",
+    3: "This week the boxes only mark the spot. You find the idea.",
+    4: "This week the boxes only mark the spot. You find the idea.",
+    "later": "No boxes in class any more - you know how to find the big ideas.",
+}
+
 def build_notes(qid, quiz):
     course = quiz["course"]; accent = COURSE_COLORS.get(course, "#0E7C7B")
     path = OUT / f"notes-{qid}.pdf"
     doc = make_doc(path, "NICUniversity  ·  Class Notes", COURSE_NAMES.get(course, course), accent)
     W = doc.width
-    story = [Paragraph(esc(COURSE_NAMES.get(course, course)).upper() + "  ·  WEEK 1  ·  CLASS NOTES",
+    story = [Paragraph(esc(COURSE_NAMES.get(course, course)).upper() + f"  ·  WEEK {week_of(qid)}  ·  CLASS NOTES",
                        ParagraphStyle("k", parent=S_KICKER, textColor=colors.HexColor(accent))),
              Paragraph(esc(quiz["title"].split(" — ")[0]) + ": my notes", S_TITLE), Spacer(1, 6), name_date_row(W), Spacer(1, 8),
              boxed(Paragraph("<b>The rule:</b> notes are for future-me. Write the <b>3 biggest ideas, in my own words</b> - "
-                             "not every sentence. Watch for the dashed 'Write this down' boxes in class.", S_INSTR), W), Spacer(1, 12)]
+                             "not every sentence. " + NOTES_HINT.get(week_of(qid), NOTES_HINT["later"]), S_INSTR), W), Spacer(1, 12)]
     S_NSEC = ParagraphStyle("nsec", parent=S_SECTION, spaceBefore=6, spaceAfter=2)
     for i in range(1, 4):
         story += [Paragraph(f"Big idea {i}", S_NSEC), Lines(W, 2, gap=0.34 * inch)]
@@ -441,8 +593,8 @@ def build_notes(qid, quiz):
 
 
 def build_review(review):
-    path = OUT / "review-week1.pdf"
-    doc = make_doc(path, "NICUniversity  ·  Study Hall", "Week 1 review", "#2D3142")
+    path = OUT / f"review-week{WEEK}.pdf"
+    doc = make_doc(path, "NICUniversity  ·  Study Hall", f"Week {WEEK} review", "#2D3142")
     W = doc.width
     story = [Paragraph("STUDY HALL  ·  FRIDAY 10:30", S_KICKER), Paragraph(esc(review["title"]), S_TITLE), Spacer(1, 6),
              boxed(Paragraph(esc(review["intro"]), S_INSTR), W), Spacer(1, 8)]
@@ -461,10 +613,16 @@ def build_review(review):
     return path
 
 
+CERT_MOTTO = {
+    1: "Machines report; humans judge.  —  NICU Tutor, Lesson 2",
+    2: "Read the line, not the dot.  —  Calculus 101",
+}
+
+
 def build_certificate():
     from reportlab.lib.pagesizes import landscape
     from reportlab.pdfgen import canvas as pdfcanvas
-    path = OUT / "certificate-week1.pdf"
+    path = OUT / f"certificate-week{WEEK}.pdf"
     W, H = landscape(letter)
     c = pdfcanvas.Canvas(str(path), pagesize=landscape(letter))
     c.setFillColor(CREAM); c.rect(0, 0, W, H, stroke=0, fill=1)
@@ -477,34 +635,41 @@ def build_certificate():
     c.setStrokeColor(INK_SOFT); c.setLineWidth(1); c.line(W / 2 - 200, H - 290, W / 2 + 200, H - 290)
     c.setFont("Treb", 10); c.setFillColor(INK_SOFT); c.drawCentredString(W / 2, H - 304, "student's name")
     c.setFillColor(INK); c.setFont("Treb", 14)
-    c.drawCentredString(W / 2, H - 336, "has completed Week 1 of NICUniversity — nine courses, nine homeworks, and the Week 1 Final —")
-    c.drawCentredString(W / 2, H - 358, "and is hereby advanced to Week 2 with the full confidence of the faculty.")
+    c.drawCentredString(W / 2, H - 336, f"has completed Week {WEEK} of NICUniversity — nine courses, nine homeworks, and the Week {WEEK} Final —")
+    c.drawCentredString(W / 2, H - 358, f"and is hereby advanced to Week {WEEK + 1} with the full confidence of the faculty.")
     c.setFont("TrebB", 12); c.setFillColor(TEAL_DARK)
     c.drawCentredString(W / 2, H - 400, "Freshman Seminar  ·  Chemistry  ·  Biology  ·  Physics  ·  Calculus  ·  Statistics  ·  Genetics  ·  Psychology  ·  Sociology")
     c.setStrokeColor(INK_SOFT); c.line(110, 110, 330, 110); c.line(W - 330, 110, W - 110, 110)
     c.setFillColor(INK_SOFT); c.setFont("Treb", 10)
     c.drawCentredString(220, 96, "Date"); c.drawCentredString(W - 220, 96, "Professor")
-    c.setFont("Treb", 9); c.drawCentredString(W / 2, 60, "Machines report; humans judge.  —  NICU Tutor, Lesson 2")
+    c.setFont("Treb", 9); c.drawCentredString(W / 2, 60, CERT_MOTTO.get(WEEK, "Machines report; humans judge.  —  NICU Tutor, Lesson 2"))
     c.showPage(); c.save()
     return path
 
 
 def main():
-    quizzes = json.loads((ROOT / "data" / "quizzes.shuffled.json").read_text(encoding="utf-8"))
-    homework = json.loads((ROOT / "data" / "homework.json").read_text(encoding="utf-8"))
-    review = json.loads((ROOT / "data" / "review.json").read_text(encoding="utf-8"))
-    for qid, quiz in quizzes.items():
-        print("wrote", build_quiz(qid, quiz).name)
-        if quiz["course"] != "general":
-            print("wrote", build_notes(qid, quiz).name)
-    print("wrote", build_review(review).name)
-    print("wrote", build_certificate().name)
-    print("wrote", build_quiz_keys(quizzes).name)
-    for hid, hw in homework.items():
-        p, total = build_homework(hid, hw)
-        print("wrote", p.name, f"({total} points)")
-        p, _ = build_homework(hid, hw, key=True)
-        print("wrote", p.name)
+    weeks = sorted({int(m.group(1)) for f in (ROOT / "data").glob("quizzes-w*.shuffled.json")
+                    for m in [re.search(r"w(\d+)", f.name)] if m})
+    if not weeks:
+        raise SystemExit("no data/quizzes-w*.shuffled.json — run tools/build_quizzes.py first")
+    for wk in weeks:
+        set_week(wk)
+        quizzes = json.loads((ROOT / "data" / f"quizzes-w{wk}.shuffled.json").read_text(encoding="utf-8"))
+        homework = json.loads((ROOT / "data" / f"homework-w{wk}.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / "data" / f"review-w{wk}.json").read_text(encoding="utf-8"))
+        print(f"== Week {wk} -> {OUT.relative_to(ROOT)}/")
+        for qid, quiz in quizzes.items():
+            print("wrote", build_quiz(qid, quiz).name)
+            if quiz["course"] != "general":
+                print("wrote", build_notes(qid, quiz).name)
+        print("wrote", build_review(review).name)
+        print("wrote", build_certificate().name)
+        print("wrote", build_quiz_keys(quizzes).name)
+        for hid, hw in homework.items():
+            p, total = build_homework(hid, hw)
+            print("wrote", p.name, f"({total} points)")
+            p, _ = build_homework(hid, hw, key=True)
+            print("wrote", p.name)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics 101, Week 2: Light</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧲</text></svg>">
+</head>
+<body class="c-physics" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A beam of white light entering a glass prism and fanning out into a rainbow, with a baby's foot wearing a glowing red pulse-oximeter band below">
+        <polygon points="120,30 80,110 160,110" fill="#e3eff9" stroke="#3f88c5" stroke-width="3"/>
+        <line x1="20" y1="70" x2="96" y2="70" stroke="#fff" stroke-width="6"/>
+        <line x1="20" y1="70" x2="96" y2="70" stroke="#565d75" stroke-width="2" stroke-dasharray="6 4"/>
+        <g stroke-width="6" stroke-linecap="round">
+          <line x1="150" y1="88" x2="230" y2="60" stroke="#f25f5c"/>
+          <line x1="150" y1="92" x2="230" y2="76" stroke="#ffb627"/>
+          <line x1="150" y1="96" x2="230" y2="92" stroke="#2a9d3f"/>
+          <line x1="150" y1="100" x2="230" y2="108" stroke="#3f88c5"/>
+          <line x1="150" y1="104" x2="230" y2="124" stroke="#7768ae"/>
+        </g>
+        <path d="M 40 190 Q 40 150 80 150 L 130 150 Q 150 150 150 170 Q 150 200 120 200 L 60 200 Q 40 200 40 190 Z" fill="#f7d1b8" stroke="#d9a983" stroke-width="2"/>
+        <rect x="88" y="146" width="26" height="58" rx="6" fill="#f25f5c" opacity="0.85"/>
+        <circle cx="101" cy="175" r="10" fill="#ff8a80"/>
+        <text x="18" y="34" font-size="14">✦</text><text x="210" y="196" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Physics 101 · Week 2 · Tuesday 10:30</p>
+      <h1>Light</h1>
+      <p class="lede">Two NICU machines do their work with nothing but colored light: one reads how much oxygen is in a baby's blood through the skin, and one cures a disease with a lamp. Today you find out what light is made of — and why the colors matter.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from last week's Physics.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/week2/notes-physics-w2.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. The purple boxes ask for the big idea — write yours before you check. Tonight's home lab needs a flashlight and a dark room.</p>
+    </div>
+  </div>
+
+  <h2>🌈 White light is a mixture</h2>
+  <p>Sunlight looks white, or maybe faintly yellow. In 1666, a young Isaac Newton — yes, the Calculus one — darkened his room, let a thin beam of sunlight through a hole in the shutter, and put a glass prism in its path. The beam came out the other side as a fan of color: red, orange, yellow, green, blue, violet. White light wasn't one thing. It was all the colors travelling together, and the glass had bent each color by a slightly different amount and spread them apart. A rainbow is the same trick done by raindrops.</p>
+  <p>What <em>is</em> the difference between red and blue? Light travels as waves, and the colors are different <strong>wavelengths</strong> — different spacing between the ripples. Red waves are long and lazy; violet waves are short and tight. Every color in the rainbow sits in order of wavelength, red to violet. And the rainbow doesn't stop where your eyes do. Past red, with even longer waves, is <strong>infrared</strong> — invisible, but you can feel it as warmth on your skin, and your TV remote talks in it. Past violet, with even shorter waves, is <strong>ultraviolet</strong> — invisible to us, visible to bees, and the part of sunlight that burns your skin.</p>
+  <p>Light is also absurdly fast: about 300,000 kilometers every second. Sunlight takes eight minutes to reach you. Light from the monitor above a NICU bed reaches the nurse's eyes in about a billionth of a second — which is why nobody had to invent a faster way to look at things.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The spectrum of light as a horizontal band from infrared through red, orange, yellow, green, blue and violet to ultraviolet, with wavelength arrows showing long waves at the red end and short waves at the violet end">
+      <defs>
+        <linearGradient id="spec" x1="0" x2="1">
+          <stop offset="0" stop-color="#f25f5c"/><stop offset="0.2" stop-color="#e8792b"/><stop offset="0.35" stop-color="#ffb627"/>
+          <stop offset="0.5" stop-color="#2a9d3f"/><stop offset="0.7" stop-color="#3f88c5"/><stop offset="1" stop-color="#7768ae"/>
+        </linearGradient>
+      </defs>
+      <rect x="20" y="60" width="90" height="40" rx="6" fill="#f4ecdc" stroke="#e3d9c8"/>
+      <text x="65" y="85" font-size="13" text-anchor="middle" fill="#565d75">infrared</text>
+      <rect x="120" y="60" width="380" height="40" rx="6" fill="url(#spec)"/>
+      <rect x="510" y="60" width="90" height="40" rx="6" fill="#f4ecdc" stroke="#e3d9c8"/>
+      <text x="555" y="85" font-size="13" text-anchor="middle" fill="#565d75">ultraviolet</text>
+      <g font-size="12" fill="#2d3142" text-anchor="middle">
+        <text x="150" y="120">red</text><text x="215" y="120">orange</text><text x="275" y="120">yellow</text><text x="335" y="120">green</text><text x="405" y="120">blue</text><text x="470" y="120">violet</text>
+      </g>
+      <path d="M 30 36 q 20 -22 40 0 t 40 0" fill="none" stroke="#f25f5c" stroke-width="2.5"/>
+      <text x="70" y="18" font-size="11" text-anchor="middle" fill="#565d75">long waves</text>
+      <path d="M 500 36 q 5 -14 10 0 t 10 0 t 10 0 t 10 0 t 10 0 t 10 0 t 10 0 t 10 0" fill="none" stroke="#7768ae" stroke-width="2.5"/>
+      <text x="545" y="18" font-size="11" text-anchor="middle" fill="#565d75">short waves</text>
+      <text x="310" y="155" font-size="12" text-anchor="middle" fill="#565d75">Your eyes see only the colored part. The pulse ox uses red AND infrared; the bili lamp uses blue.</text>
+    </svg>
+    <figcaption>The whole rainbow, including the two ends you can't see. Every color is a wavelength.</figcaption>
+  </figure>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 1</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">White light is all the colors mixed together; a prism spreads them out. Each color is a different wavelength, red (long) to violet (short), with invisible infrared past red and ultraviolet past violet.</p></details>
+    </div>
+  </div>
+
+  <h2>🎨 Why things have color</h2>
+  <p>Here's a question that sounds silly and isn't: why is a tomato red? White light — all the colors — lands on the tomato. The tomato's skin <strong>absorbs</strong> most of the colors, soaking them up like a sponge, and <strong>bounces back</strong> the red. The red is what reaches your eye. A leaf absorbs red and blue and bounces green. White paper bounces everything; a black shirt absorbs everything (which is why it gets hot in the sun — absorbed light turns into warmth). The color of a thing is the light it <em>refuses</em>.</p>
+  <p>Now apply that to blood. Blood is red because hemoglobin absorbs blue and green and bounces red. But here's the detail that a whole machine is built on: hemoglobin changes color depending on whether it's carrying oxygen. Loaded with oxygen, it's bright cherry red — it lets red light pass through easily. Empty, it's dark, purplish red — it absorbs more red light. That's why the blood in your veins, on its way back to the heart with its oxygen delivered, looks darker than blood from a cut.</p>
+
+  <div class="box box-lab">
+    <div class="box-title">🔬 Home lab: your finger is a pulse oximeter</div>
+    <p class="lab-materials">You need: a small flashlight (a phone's works) and a dark room.</p>
+    <p>Press the flashlight against the pad of your fingertip so the light shines <em>into</em> your finger. Look at the far side: your whole fingertip glows orange-red. White light went in; only red came out. The blood and flesh absorbed the blue and green on the way through and let the red pass — exactly the trick the pulse oximeter uses. Bonus: hold a strip of red cellophane and then blue cellophane in front of the flashlight and see which color makes it through your finger. The homework has a place to record it.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 2</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">A thing's color is the light it bounces back after absorbing the rest. Oxygen-loaded hemoglobin is bright red and lets red light through; empty hemoglobin is darker and absorbs more red.</p></details>
+    </div>
+  </div>
+
+  <h2>🔴 The pulse oximeter, explained at last</h2>
+  <p>In NICU Tutor you learned that the pulse oximeter shines two colors through a baby's foot and works out the oxygen saturation. Now you can see how. The band holds two tiny lights on one side and a detector on the other. One light is <strong>red</strong>; the other is <strong>infrared</strong> — the invisible color past red. Both shine through the foot, and the detector measures how much of each gets through.</p>
+  <ul>
+    <li>Oxygen-loaded hemoglobin lets <strong>red</strong> through easily but absorbs a good deal of <strong>infrared</strong>.</li>
+    <li>Empty hemoglobin does the opposite: it absorbs more <strong>red</strong> and lets more <strong>infrared</strong> through.</li>
+  </ul>
+  <p>So the machine compares: how much red made it through, versus how much infrared? That ratio tells it the mix of loaded to empty hemoglobin — the percentage you know as SpO₂. Two colors, one division problem, and a number every three seconds.</p>
+  <p>But there was a catch that stumped engineers for decades. Light going through a foot doesn't just pass through blood. It passes through skin, bone, fat, and the blood sitting in the veins — and all of that absorbs light too, differently in every baby. How do you measure only the fresh, oxygen-rich blood in the arteries? In 1972, a Japanese engineer named <strong>Takuo Aoyagi</strong> noticed something in his data that everyone else had treated as annoying noise: the light signal <em>pulsed</em>. With every heartbeat a little extra blood surged into the foot, and the light dimmed a tiny bit, then brightened. Skin and bone don't pulse; only arterial blood does. So Aoyagi threw away the steady part of the signal and kept only the pulsing part — and the pulsing part was pure artery. He'd invented the <strong>pulse</strong> oximeter, and the reason it has “pulse” in its name is that a heartbeat is the only thing in a foot that changes fast.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: “machines report; humans judge”</div>
+    <p>Now you can explain the pulse ox's famous weakness from <a href="../../../nicu_tutor/lessons/02-pulse-ox.html">NICU Tutor Lesson 2</a>. If the band slips and the light shines past the foot onto the mattress — or if bright room light leaks into the detector — the machine is measuring a light signal that has nothing to do with blood, and it reports a number anyway. A kicking baby makes the signal pulse for reasons that aren't heartbeats. The number is physics; whether it means anything is a nurse's judgment.</p>
+  </div>
+
+  <div class="cue cue-ask">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">What's the big idea here? · idea 3</span>
+      <p>Write it first — then check.</p>
+      <details><summary>Check your idea</summary><p class="cue-answer">The pulse ox shines red and infrared through the foot; loaded and empty hemoglobin absorb the two colors differently, so comparing them gives the oxygen percentage. Aoyagi's trick: use only the pulsing part of the signal, because only artery blood pulses.</p></details>
+    </div>
+  </div>
+
+  <h2>🔵 The lamp that cures a disease</h2>
+  <p>The other light machine is the <strong>bili light</strong>. You know the disease: jaundice, the yellow color of a newborn whose blood is loaded with bilirubin, the leftover from recycling red blood cells, piling up faster than a brand-new liver can clear it. Bilirubin is a yellow molecule — which, after this morning, tells you something: it absorbs blue light and bounces yellow. That absorbed blue light is the cure.</p>
+  <p>When a bilirubin molecule absorbs blue light (the best wavelength is around 460 nanometers, a deep sky blue), the energy twists the molecule into a slightly different shape. The twisted shape dissolves in water, and the body can flush it out in urine and bile <em>without</em> the liver's help. The liver enzyme the baby is still building? Not needed. The light does its job for it, right through the skin. That's why babies under bili lights wear nothing but a diaper (more skin, more cure) and little eye shields (a precaution — a retina that's still growing doesn't need hours of bright blue light).</p>
+  <p>And here's a pattern you'll see all semester. The discovery wasn't made by a physicist. In 1956, at a hospital in Rochford, England, a nurse named <strong>Sister Jean Ward</strong> believed fresh air was good for babies and wheeled the premature ones into the sunny courtyard. One day a doctor noticed something odd about a jaundiced baby: the skin was pale where the sun had reached it and still yellow in the shape of the diaper and the sheet's fold. Ward had already noticed. Around the same time, a lab technician found that a tube of blood left in the sunlight measured <em>less</em> bilirubin than it should. Two clues, and Dr. Richard Cremer put them together, built a lamp, and by 1958 had published the first light treatment for jaundice. Today it's used on millions of babies a year, and the machine in the corner of every NICU began with a nurse who noticed a diaper-shaped shadow.</p>
+
+  <div class="box box-real">
+    <div class="box-title">👁️ Real talk: the light that didn't cause blindness</div>
+    <p>Back in NICU Tutor, you learned about retinopathy of prematurity — ROP, the eye disease of preemies, caused mostly by too much oxygen. For decades, some doctors worried about something else: the bright lights of the NICU shining into eyes that were still under construction. It was a reasonable fear. Light and a growing retina; who could say? So in the 1990s researchers ran a proper test on hundreds of tiny preemies: half wore light-blocking goggles from birth, half didn't, and everyone's eyes were checked. Result: no difference. The lights weren't the culprit. The oxygen was. The goggles came off, and the worry went where worries should go when the evidence says so — away.</p>
+    <p>Why does that matter for physics? Because light is a physical thing with a measurable dose, like oxygen and pressure. Bili-light blue at the right wavelength cures; the same lamp's brightness in a growing eye is a question you answer with a test, not a guess. Statistics will show you next week how such a test is built. Physics gives you the wavelength; only measuring gives you the answer.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>Speed of light</td><td>About 300,000 km per second</td><td>Sun to Earth in 8 minutes</td></tr>
+    <tr><td>Red light wavelength</td><td>About 700 nanometers</td><td>A nanometer is a billionth of a meter</td></tr>
+    <tr><td>Violet light wavelength</td><td>About 400 nanometers</td><td>Shorter waves, more energy</td></tr>
+    <tr><td>Pulse ox colors</td><td>Red (660 nm) and infrared (940 nm)</td><td>Compared with each other, every heartbeat</td></tr>
+    <tr><td>Bili light color</td><td>Blue, best around 460 nm</td><td>Twists bilirubin so it can leave without the liver</td></tr>
+    <tr><td>Year the pulse oximeter was invented</td><td>1972–74</td><td>Takuo Aoyagi, Japan; in NICUs everywhere by the late 1980s</td></tr>
+    <tr><td>Year light was first used for jaundice</td><td>1956–58</td><td>Sister Jean Ward's courtyard; Cremer's lamp</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Spectrum</dt><dd>The rainbow of colors that white light spreads into.</dd>
+      <dt>Wavelength</dt><dd>The spacing between a light wave's ripples. Long = red; short = violet.</dd>
+      <dt>Infrared</dt><dd>Invisible light with longer waves than red. Felt as warmth; used by the pulse ox.</dd>
+      <dt>Ultraviolet</dt><dd>Invisible light with shorter waves than violet. The sunburn part of sunlight.</dd>
+      <dt>Absorb</dt><dd>To soak up light. A thing's color is the light it doesn't absorb.</dd>
+      <dt>Prism</dt><dd>A wedge of glass that bends each color differently and spreads them apart.</dd>
+      <dt>Phototherapy</dt><dd>Treating with light. The bili light is phototherapy for jaundice.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.nasa.gov/mission/science-mission-directorate/visible-light/" target="_blank" rel="noopener">NASA: the visible light spectrum</a> — the whole rainbow, including the parts we can't see.</li>
+      <li><a href="https://kidshealth.org/en/parents/jaundice.html" target="_blank" rel="noopener">KidsHealth: newborn jaundice and phototherapy</a></li>
+      <li>Tilt a CD or DVD under a lamp: the rainbow you see is white light being split by the disc's tiny grooves — a prism you already own.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Physics 101, Week 2</h2>
+    <p>Eight questions. Six right earns this week's 🧲 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Light</div>
+    <p>Due at recitation, Wednesday 9:00. Print it now: <a href="../../print/week2/hw-physics-w2.pdf" target="_blank" rel="noopener">Homework 2: Light (PDF)</a>. Draw the spectrum, work out why things have color, explain the pulse ox's two-color trick, and solve a pulse-ox mystery like a nurse. Plus the flashlight lab. Details on the <a href="../../recitations/week2/physics.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "w2-tue-physics",
+  quizId: "physics-w2",
+  course: "physics",
+  printQuiz: "../../print/week2/quiz-physics-w2.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what does the pulse oximeter measure, and roughly what number do NICU teams aim for in a preemie on oxygen?", a: "Oxygen saturation — the percentage of hemoglobin carrying oxygen (SpO₂). For preemies on extra oxygen, about 90–95%, because too much oxygen harms eyes and lungs." },
+    { q: "From last week's Physics: which is the bigger push, 1 mmHg or 1 cmH₂O — and why?", a: "1 mmHg. Mercury is about 13.6 times heavier than water, so lifting one millimeter of it takes as much push as lifting 1.36 centimeters of water." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes-w2.js"></script>
+<script src="../../js/schedule.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

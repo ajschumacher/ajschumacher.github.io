@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICU Night Shift</title>
+<link rel="stylesheet" href="css/game.css?v=9">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <span class="brand">🌙 NICU Night Shift</span>
+    <div>
+      <div class="clock" id="clock">19:00</div>
+      <div class="clock-sub" id="clockSub">12h 0m left</div>
+    </div>
+    <div class="speed">
+      <button id="btnPause">▶ Resume</button>
+      <button id="sp1" class="on">1&times;</button>
+      <button id="sp2">2&times;</button>
+      <button id="sp4">4&times;</button>
+    </div>
+    <span class="spacer"></span>
+    <span class="pill-stat level-pill" id="statLevel"></span>
+    <span class="pill-stat" id="statAlarm">Alarms <b>0</b></span>
+    <span class="pill-stat" id="statTrust">Family trust <b>55</b></span>
+    <span class="pill-stat mono dim" id="seedLabel">seed</span>
+    <button class="phone-btn" id="btnPhone" title="No calls">☎</button>
+    <button class="btn ghost small" id="btnSound">🔊</button>
+    <button class="btn ghost small" id="btnEnd">End shift</button>
+  </header>
+  <div class="main">
+    <div class="stage" id="stage"></div>
+    <aside class="side" id="side"></aside>
+  </div>
+</div>
+<script src="js/audio.js?v=9"></script>
+<script src="js/glossary.js?v=9"></script>
+<script src="js/names.js?v=9"></script>
+<script src="js/art.js?v=9"></script>
+<script src="js/sim.js?v=9"></script>
+<script src="js/patients.js?v=9"></script>
+<script src="js/events.js?v=9"></script>
+<script src="js/game.js?v=9"></script>
+</body>
+</html>

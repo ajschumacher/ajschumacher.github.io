@@ -1,0 +1,1128 @@
+{
+ "seminar-w2": {
+  "title": "Freshman Seminar — Week 2",
+  "course": "seminar",
+  "badge": "🎓",
+  "questions": [
+   {
+    "q": "What is the “forget it” test for a sentence in a lecture?",
+    "choices": [
+     "Ask whether the sentence is one you already forgot from NICU Tutor.",
+     "Ask whether the rest of the lecture would still make sense if you forgot it.",
+     "Ask whether the professor has forgotten to explain the sentence clearly.",
+     "Ask whether you could forget the sentence and look it up again later."
+    ],
+    "answer": 1,
+    "explain": "If everything after it still makes sense, it's a detail. If the lecture falls apart without it, it's load-bearing — a big idea."
+   },
+   {
+    "q": "“Most of the air, about 78%, is nitrogen; your body breathes it in and right back out, like a passenger who never gets off the bus.” Which is the big idea in that sentence?",
+    "choices": [
+     "Nitrogen makes up exactly 78 percent of the air we breathe.",
+     "Air behaves like a bus, carrying passengers in and out.",
+     "Most of the air is nitrogen, and the body doesn't use it.",
+     "The body breathes nitrogen out slightly faster than in."
+    ],
+    "answer": 2,
+    "explain": "The 78% is a supporting number and the bus is a supporting picture. The idea is what they support: most of the air is nitrogen and the body ignores it."
+   },
+   {
+    "q": "Where do big ideas most often hide in a lecture?",
+    "choices": [
+     "In headings, in the first and last sentences of a section, and in things said more than once.",
+     "In the jokes, in the pictures, and in the links at the end of the lecture.",
+     "In the quiz questions, in the homework, and in the flashback boxes only.",
+     "In the tables of numbers, in the dates of discoveries, and in the names of scientists."
+    ],
+    "answer": 0,
+    "explain": "Professors state the idea, explain it, and state it again — so headings, section edges, and repeats are where to look. Tables and dates are usually details."
+   },
+   {
+    "q": "In a 2006 experiment, some students reread a passage and others closed it and wrote down what they remembered. When everyone was quizzed a week later…",
+    "choices": [
+     "neither group remembered much, because a week is too long to wait.",
+     "both groups remembered about the same, because they spent equal time.",
+     "the students who reread remembered much more, because they saw it more often.",
+     "the students who tested themselves remembered much more than the rereaders."
+    ],
+    "answer": 3,
+    "explain": "About 60% versus about 40%. Pulling an idea out of your own head (retrieval practice) builds the path; rereading only puts the words in front of your eyes."
+   },
+   {
+    "q": "What did Leonardo da Vinci draw around 1511 that no one had drawn accurately before?",
+    "choices": [
+     "A baby curled inside the womb, with its umbilical cord.",
+     "The four rooms of the heart with all of its valves.",
+     "A red blood cell as seen through a microscope lens.",
+     "A premature baby inside the first incubator machine."
+    ],
+    "answer": 0,
+    "explain": "His notebook page 'The Fetus in the Womb' came five hundred years before ultrasound. He drew it, asked a question about it, and wrote the idea in one line."
+   },
+   {
+    "q": "Which of these numbers from this morning's Chemistry is worth keeping in your notes?",
+    "choices": [
+     "The pH of black coffee: about 5.",
+     "Blood's normal pH: 7.35 to 7.45.",
+     "The name of Sørensen's brewery: Carlsberg.",
+     "The year pH was invented: 1909."
+    ],
+    "answer": 1,
+    "explain": "Keep the numbers a doctor would need at the bedside. Blood's pH window is one; the year and the brewery are details you can look up."
+   },
+   {
+    "q": "How do this week's dashed “big idea” boxes work?",
+    "choices": [
+     "Skip them, because the big ideas are now printed on the Class Notes sheet.",
+     "Read the professor's idea first, then copy it onto the notes sheet word for word.",
+     "Click to reveal the idea, then write down every sentence in the section.",
+     "Write your own idea on the notes sheet first, then click to check it against the professor's."
+    ],
+    "answer": 3,
+    "explain": "Write first, check second — that's retrieval practice. Next week the boxes only mark the spot; by Week 5 they're gone."
+   },
+   {
+    "q": "From the isolette lesson, which of these is a DETAIL rather than a big idea?",
+    "choices": [
+     "Getting cold makes a baby burn sugar and oxygen it needs for growing.",
+     "The machine adjusts its own heat by chasing a skin-probe reading.",
+     "Preemies can't keep themselves warm, so the isolette does it for them.",
+     "The humidity inside is often set to 70–85% for the tiniest babies."
+    ],
+    "answer": 3,
+    "explain": "Forget '70–85%' and the lesson still makes sense — it's a supporting number. Forget any of the other three and something important stops making sense."
+   }
+  ]
+ },
+ "chemistry-w2": {
+  "title": "Chemistry 101 — Week 2",
+  "course": "chemistry",
+  "badge": "⚗️",
+  "questions": [
+   {
+    "q": "In chemistry, what makes something an acid?",
+    "choices": [
+     "It contains extra oxygen atoms, which is what makes it fizz.",
+     "It lets go of loose hydrogen pieces, which is what tastes sour.",
+     "It has been heated until its molecules move around faster.",
+     "It is made mostly of carbon atoms, like everything living."
+    ],
+    "answer": 1,
+    "explain": "An acid drops off loose hydrogens (H⁺) like a bus dropping passengers. Those loose hydrogens are what your tongue tastes as sour — and what warps proteins if there are too many in the blood."
+   },
+   {
+    "q": "On the pH scale, which number is neutral — neither acid nor base?",
+    "choices": [
+     "0",
+     "14",
+     "10",
+     "7"
+    ],
+    "answer": 3,
+    "explain": "7 is neutral, like pure water. Below 7 is acid; above 7 is base. Blood sits just above neutral, at 7.35–7.45."
+   },
+   {
+    "q": "Vinegar is about pH 3 and milk is about pH 6. Roughly how many times more acidic is the vinegar?",
+    "choices": [
+     "About 3 times, one for each step down the scale.",
+     "About 100 times, because pH steps double each time.",
+     "About 1,000 times, because each pH step is ten times.",
+     "About 30 times, ten for the first step and ten more."
+    ],
+    "answer": 2,
+    "explain": "Three steps down, and each step multiplies by ten: 10 × 10 × 10 = 1,000. That's why a ruler from 0 to 14 can cover everything from bleach to stomach acid."
+   },
+   {
+    "q": "What is the normal pH range of blood?",
+    "choices": [
+     "5.50 to 7.50",
+     "7.00 to 8.00",
+     "7.35 to 7.45",
+     "6.35 to 6.45"
+    ],
+    "answer": 2,
+    "explain": "7.35 to 7.45 — a window one-tenth of a step wide. Proteins are shaped to work right there, and they warp if the blood drifts."
+   },
+   {
+    "q": "What does carbon dioxide turn into when it dissolves in blood?",
+    "choices": [
+     "Pure oxygen, which the hemoglobin carries.",
+     "Carbonic acid, which lowers the blood's pH.",
+     "Bicarbonate, which raises the blood's pH.",
+     "Lactic acid, which the muscles then burn."
+    ],
+    "answer": 1,
+    "explain": "CO₂ + water = carbonic acid (H₂CO₃), the same acid that makes soda water sharp. Every cell makes CO₂, so the lungs must keep blowing the acid away."
+   },
+   {
+    "q": "A preemie's blood gas shows a pH of 7.20 and a CO₂ that is much too high. What is the most likely problem, and the fix?",
+    "choices": [
+     "The lungs aren't clearing CO₂ — give more breathing help.",
+     "The cells are starving for oxygen — start antibiotics.",
+     "The baby is breathing too much — turn the ventilator down.",
+     "The kidneys are losing bicarbonate — give more fluids."
+    ],
+    "answer": 0,
+    "explain": "Low pH plus high CO₂ means carbonic acid is piling up because breathing isn't blowing it off. That's a breathing problem, so the fix is breathing help: more CPAP, ventilator breaths, or caffeine."
+   },
+   {
+    "q": "What is bicarbonate's job in the blood?",
+    "choices": [
+     "It turns sugar into energy inside the mitochondria.",
+     "It soaks up loose hydrogen so acid can't do damage.",
+     "It makes the blood thicker so it clots when cut.",
+     "It carries oxygen from the lungs to every cell."
+    ],
+    "answer": 1,
+    "explain": "Bicarbonate is the blood's sponge — a base that catches loose hydrogens. Baking soda is sodium bicarbonate, which is why it fizzes against vinegar."
+   },
+   {
+    "q": "Where was the pH scale invented, and by whom?",
+    "choices": [
+     "At a brewery in Denmark, by the chemist Søren Sørensen (1909).",
+     "At a hospital in France, by the doctor Louis Pasteur (1860).",
+     "At a university in England, by the chemist Joseph Priestley (1774).",
+     "At a soda factory in America, by the chemist Charles Alderton (1885)."
+    ],
+    "answer": 0,
+    "explain": "Sørensen worked at the Carlsberg brewery's laboratory in Copenhagen. Brewers needed an exact number for acid, so he invented one — and hospitals have used it ever since."
+   }
+  ]
+ },
+ "biology-w2": {
+  "title": "Biology 101 — Week 2",
+  "course": "biology",
+  "badge": "🔬",
+  "questions": [
+   {
+    "q": "How many rooms does the heart have, and what are the two kinds?",
+    "choices": [
+     "Four: two atria that receive blood and two ventricles that pump it out.",
+     "Four: two for oxygen, one for carbon dioxide, and one for plasma.",
+     "Three: one room for each pipe of the umbilical cord.",
+     "Two: one atrium for red blood and one ventricle for blue blood."
+    ],
+    "answer": 0,
+    "explain": "Upstairs atria receive; downstairs ventricles pump. Two of each, because the heart is really two pumps side by side."
+   },
+   {
+    "q": "Where does the RIGHT side of the heart send the blood it pumps?",
+    "choices": [
+     "To the left side of the heart, through the ductus.",
+     "To the whole body, to deliver oxygen to every cell.",
+     "To the lungs, to drop off CO₂ and pick up oxygen.",
+     "To the liver, where new blood is made."
+    ],
+    "answer": 2,
+    "explain": "Right heart → lungs → left heart → body → right heart. The right side runs the lung loop."
+   },
+   {
+    "q": "A newborn's heart beats about 140 times a minute. About how many beats is that in a day?",
+    "choices": [
+     "About 8,400",
+     "About 20,000",
+     "About 2,000,000",
+     "About 200,000"
+    ],
+    "answer": 3,
+    "explain": "140 × 60 = 8,400 an hour; 8,400 × 24 ≈ 200,000 a day. Twice what an adult heart does."
+   },
+   {
+    "q": "Which part of the blood carries oxygen?",
+    "choices": [
+     "Red blood cells, using the hemoglobin packed inside them.",
+     "White blood cells, which carry oxygen to fight germs.",
+     "Plasma, the watery part that dissolves the oxygen.",
+     "Platelets, which carry oxygen to wounds to heal them."
+    ],
+    "answer": 0,
+    "explain": "Red cells are bags of hemoglobin — the no-nucleus cells from Week 1. Plasma carries sugar, salt, and bicarbonate; white cells defend; platelets plug leaks."
+   },
+   {
+    "q": "About how much blood does a 1-kilogram preemie have in its whole body?",
+    "choices": [
+     "About 8 mL — roughly two teaspoons.",
+     "About 80 mL — roughly a third of a cup.",
+     "About 5 liters — the same as an adult.",
+     "About 800 mL — roughly a big soda bottle."
+    ],
+    "answer": 1,
+    "explain": "About 80 mL for every kilogram. That's why every blood test is counted: 2 mL from an 80 mL baby is 1 part in 40."
+   },
+   {
+    "q": "What is the ductus arteriosus?",
+    "choices": [
+     "The vein in the umbilical cord that brings oxygen-rich blood from the placenta.",
+     "A tube doctors place in a preemie's artery to measure blood pressure.",
+     "The one-way door between the right atrium and the right ventricle.",
+     "A fetal bypass pipe that lets blood skip the unused lungs; it should close after birth."
+    ],
+    "answer": 3,
+    "explain": "Before birth the lungs aren't breathing, so the ductus lets blood detour around them. At birth it should squeeze shut within a few days."
+   },
+   {
+    "q": "Why is an open ductus (a PDA) a problem for a preemie?",
+    "choices": [
+     "Blood leaks back into the lungs, flooding them, while the body gets less than its share.",
+     "Blood skips the lungs entirely, so the baby's oxygen level drops all the way down to zero.",
+     "The umbilical cord stays attached to the placenta, so the baby cannot be moved or held.",
+     "The heart's valves stop closing properly, so the 'lub-dub' sound disappears entirely."
+    ],
+    "answer": 0,
+    "explain": "Blood pumped toward the body sneaks back through the open pipe into the lungs. Breathing gets harder and the gut, kidneys, and brain get shortchanged."
+   },
+   {
+    "q": "What did William Harvey show in 1628 — and how?",
+    "choices": [
+     "That blood is made in the liver, using a microscope and a drop of blood.",
+     "That babies' hearts have a shortcut, using an ultrasound of a newborn.",
+     "That blood goes around in a loop, using arithmetic and the one-way valves in veins.",
+     "That the heart runs on electricity, using stickers on the chest of a patient."
+    ],
+    "answer": 2,
+    "explain": "He multiplied blood per beat by beats per hour and got far more than a body could make — so it had to circulate. Then he showed the valves with the finger trick from today's lab."
+   }
+  ]
+ },
+ "physics-w2": {
+  "title": "Physics 101 — Week 2",
+  "course": "physics",
+  "badge": "🧲",
+  "questions": [
+   {
+    "q": "What did Newton's prism show about white light?",
+    "choices": [
+     "White light is a single pure color that glass can tint into other colors.",
+     "White light is made by mixing red and blue, the only two true colors.",
+     "White light comes from the glass itself, which glows when sunlight hits it.",
+     "White light is all the colors mixed together, and glass can spread them apart."
+    ],
+    "answer": 3,
+    "explain": "The prism bent each color by a slightly different amount, fanning the beam into a rainbow. White light was never one thing — it was all the colors travelling together."
+   },
+   {
+    "q": "Why does a ripe tomato look red?",
+    "choices": [
+     "It bends white light like a prism until only red is left.",
+     "It makes its own red light, the way a light bulb glows.",
+     "It absorbs the other colors and bounces the red back to your eye.",
+     "It absorbs red light and reflects everything else."
+    ],
+    "answer": 2,
+    "explain": "A thing's color is the light it refuses. The tomato soaks up blue, green, and the rest, and only the red comes back out."
+   },
+   {
+    "q": "What lies just past red in the rainbow, where your eyes can't see?",
+    "choices": [
+     "Infrared — longer waves, felt as warmth.",
+     "Violet — the last color the eye can see.",
+     "X-rays — the waves that pass through bone.",
+     "Ultraviolet — shorter waves, the sunburn part."
+    ],
+    "answer": 0,
+    "explain": "Infrared has even longer waves than red. It's invisible, but you feel it as heat — and the pulse oximeter uses it as its second color."
+   },
+   {
+    "q": "Why does the pulse oximeter shine TWO colors through a baby's foot?",
+    "choices": [
+     "Loaded and empty hemoglobin absorb red and infrared differently; comparing them gives the percentage.",
+     "Two colors are brighter than one, so enough light can make it through a baby's thicker foot.",
+     "The red light warms the foot so that the infrared light can pass more easily through the skin.",
+     "One color measures the heart rate while the other measures the temperature of the baby's foot."
+    ],
+    "answer": 0,
+    "explain": "Oxygen-loaded hemoglobin lets red through and absorbs infrared; empty hemoglobin does the opposite. The ratio of the two is the SpO₂ number."
+   },
+   {
+    "q": "What was Takuo Aoyagi's key idea in the 1970s?",
+    "choices": [
+     "Measure the light with a camera instead of a detector, to see the color directly.",
+     "Shine the light through the ear instead of the foot, because ears have no bone.",
+     "Use a brighter red light, because babies' feet are thicker than adults' fingers.",
+     "Use only the pulsing part of the light signal, because only artery blood pulses."
+    ],
+    "answer": 3,
+    "explain": "Skin, bone, and vein blood absorb light too, but they don't pulse. Keeping just the beat-by-beat wiggle isolates the fresh arterial blood — that's the 'pulse' in pulse oximeter."
+   },
+   {
+    "q": "Why are bili lights blue?",
+    "choices": [
+     "Blue light is the coolest color, so it doesn't overheat a baby lying under it for hours.",
+     "Bilirubin absorbs blue light best, and the absorbed light changes it into a form the body can flush out.",
+     "Blue is the opposite of yellow, and opposite colors cancel each other out on the skin.",
+     "Blue light passes through the skin most easily and reaches the liver to switch it on."
+    ],
+    "answer": 1,
+    "explain": "A yellow molecule absorbs blue. That energy twists bilirubin into a water-soluble shape that leaves in urine and bile — no liver enzyme needed."
+   },
+   {
+    "q": "What did Sister Jean Ward's babies in the sunny courtyard show?",
+    "choices": [
+     "Babies in the sun gained weight faster than babies kept indoors.",
+     "Sunlight raised the babies' oxygen levels as measured by the pulse ox.",
+     "Skin the sun reached turned less yellow, while skin under the diaper stayed yellow.",
+     "Fresh air stopped the babies' breathing pauses better than caffeine did."
+    ],
+    "answer": 2,
+    "explain": "A diaper-shaped patch of yellow was the clue. Light was clearing bilirubin through the skin — and Dr. Cremer built the first lamp from that observation, published in 1958."
+   },
+   {
+    "q": "Why do babies under bili lights wear eye shields?",
+    "choices": [
+     "Because the shields reflect the light back onto the skin to speed up the cure.",
+     "Because the bright light would wake them up and keep them from growing properly.",
+     "As a precaution: a retina that's still growing doesn't need hours of bright blue light.",
+     "Because the blue light would otherwise turn the whites of their eyes a yellow color."
+    ],
+    "answer": 2,
+    "explain": "The shields protect developing eyes from the brightness. (Ordinary NICU lighting was tested and does NOT cause ROP — oxygen does. The shields are about the bili lamp's intensity.)"
+   }
+  ]
+ },
+ "calculus-w2": {
+  "title": "Calculus 101 — Week 2",
+  "course": "calculus",
+  "badge": "📈",
+  "questions": [
+   {
+    "q": "A feeding pump runs at 4 mL per hour for 24 hours. How much milk did the baby get?",
+    "choices": [
+     "28 mL",
+     "6 mL",
+     "96 mL",
+     "48 mL"
+    ],
+    "answer": 2,
+    "explain": "Total = rate × time. 4 × 24 = 96 mL. 'Per hour' tells you to count hours."
+   },
+   {
+    "q": "On a graph with the pump rate as height and hours along the bottom, the total amount given is…",
+    "choices": [
+     "the steepness of the rate line at any moment.",
+     "the area of the shape under the rate line.",
+     "the height of the rate line at the end of the day.",
+     "the length of the rate line from start to finish."
+    ],
+    "answer": 1,
+    "explain": "A flat rate of 3 for 24 hours is a rectangle 3 tall and 24 wide — area 72, the total. Steepness was last week's question (how fast); area is this week's (how much)."
+   },
+   {
+    "q": "The pump runs at 2 mL/hr for 6 hours, then 4 mL/hr for 18 hours. What's the day's total?",
+    "choices": [
+     "48 mL",
+     "24 mL",
+     "144 mL",
+     "84 mL"
+    ],
+    "answer": 3,
+    "explain": "Two rectangles: 2 × 6 = 12, plus 4 × 18 = 72. Add them: 84 mL."
+   },
+   {
+    "q": "A baby gets a 15 mL feed every 3 hours. How much in a full day?",
+    "choices": [
+     "360 mL",
+     "120 mL",
+     "15 mL",
+     "45 mL"
+    ],
+    "answer": 1,
+    "explain": "Every 3 hours is 8 feeds a day (24 ÷ 3). 15 × 8 = 120 mL."
+   },
+   {
+    "q": "A 1-kilogram preemie takes 150 mL of milk in a day. In the doctors' units, that is…",
+    "choices": [
+     "150 mL/kg/day — about 'full feeds'",
+     "15 mL/kg/day — a trophic amount",
+     "150 mL per hour — a fast drip",
+     "1,500 mL/kg/day — far too much"
+    ],
+    "answer": 0,
+    "explain": "Divide the day's total by the weight: 150 ÷ 1 = 150 mL/kg/day. Around 150–160 is 'full feeds' for a growing preemie."
+   },
+   {
+    "q": "When the rate is a smooth curve instead of flat or stepped, how do you find the total?",
+    "choices": [
+     "Use the rate at the very end of the curve and multiply it by the total time.",
+     "Slice time into thin strips, treat each as a skinny rectangle, and add them all up.",
+     "Measure how steep the curve is in the middle and multiply that by the height.",
+     "Use the highest rate anywhere on the curve and multiply it by the total time."
+    ],
+    "answer": 1,
+    "explain": "That's the slicing idea — Archimedes' polygons, Leibniz's stretched-S. Thin enough slices add up to exactly the area under the curve."
+   },
+   {
+    "q": "Why do NICU nurses weigh diapers?",
+    "choices": [
+     "The weight tells them how much milk the baby drank at the last feed.",
+     "A heavier diaper means the baby is gaining weight, which counts toward growth.",
+     "Diapers are weighed to check that the right size was put on the baby.",
+     "Each extra gram is a milliliter of urine, so the diapers add up to the day's output total."
+    ],
+    "answer": 3,
+    "explain": "Wet weight minus dry weight, in grams, equals milliliters of pee — because a milliliter of water weighs one gram. Output is a total that piles up, just like intake."
+   },
+   {
+    "q": "How did Archimedes find the area of a circle, around 250 BC?",
+    "choices": [
+     "He filled a circular bowl with water and weighed the water on a balance.",
+     "He measured around the edge of a circle with a rope and divided by three.",
+     "He squeezed it between straight-sided shapes with more and more sides until the gap vanished.",
+     "He cut a circle out of bronze and compared its weight to a square of bronze."
+    ],
+    "answer": 2,
+    "explain": "Hexagon, then 12, 24, 48, 96 sides, inside and outside the circle — the slicing idea done with polygons. It got him pi to better than three decimal places."
+   }
+  ]
+ },
+ "statistics-w2": {
+  "title": "Statistics 101 — Week 2",
+  "course": "statistics",
+  "badge": "📊",
+  "questions": [
+   {
+    "q": "Five heart rates: 120, 150, 130, 160, 140. What is the median?",
+    "choices": [
+     "140",
+     "130",
+     "150",
+     "120"
+    ],
+    "answer": 0,
+    "explain": "Line them up first: 120, 130, 140, 150, 160. The middle one is 140. (The mean happens to be 140 too — that's not always so.)"
+   },
+   {
+    "q": "One baby in a group of nine weighs far more than the others. Why doesn't the median get dragged toward that baby the way the mean does?",
+    "choices": [
+     "The median is only calculated after the biggest and the smallest babies are removed.",
+     "The median is just the middle position in line; how big the biggest is doesn't matter.",
+     "The median rounds every baby's weight to the nearest hundred grams before comparing.",
+     "The median only counts the babies who weigh less than the group's average weight."
+    ],
+    "answer": 1,
+    "explain": "Change the biggest baby from 1,600 g to 3,000 g and the mean jumps, but the fifth baby in line is still the fifth baby in line. The median only cares about order."
+   },
+   {
+    "q": "A baby is at the 10th percentile for weight. What does that mean?",
+    "choices": [
+     "About 10 out of every 100 babies her age weigh the same or less than she does.",
+     "She is 10 percent of the way to her expected full-term weight.",
+     "She weighs 10 percent less than the average baby her age.",
+     "She has gained 10 percent of her birth weight since she was born."
+    ],
+    "answer": 0,
+    "explain": "A percentile is a place in line out of 100. Tenth from the smallest end: about 10 in 100 are at or below her, about 90 are bigger."
+   },
+   {
+    "q": "The 50th percentile is the same thing as…",
+    "choices": [
+     "the mode.",
+     "the median.",
+     "the mean.",
+     "the range."
+    ],
+    "answer": 1,
+    "explain": "Fiftieth in a line of a hundred is the middle — the median. Half the group is below, half above."
+   },
+   {
+    "q": "Ten babies are lined up by weight. Your baby is the 7th smallest. What percentile is that?",
+    "choices": [
+     "The 30th",
+     "The 7th",
+     "The 70th",
+     "The 17th"
+    ],
+    "answer": 2,
+    "explain": "Position ÷ group size × 100: 7 ÷ 10 = 0.7, so the 70th percentile. Seven of ten babies are at or below her."
+   },
+   {
+    "q": "A baby born at 28 weeks weighs 800 grams — well below the 10th-percentile line for 28-week babies. Doctors would call her…",
+    "choices": [
+     "large for gestational age, and check her mother's sugar.",
+     "small for gestational age, and look for a reason.",
+     "premature, but a perfectly typical weight for 28 weeks.",
+     "a normal full-term newborn who just needs feeding."
+    ],
+    "answer": 1,
+    "explain": "Below the 10th line for the week you were born is 'SGA' — a flag, not a diagnosis. The team looks for causes like a placenta that wasn't delivering well."
+   },
+   {
+    "q": "A healthy full-term baby has been at the 5th percentile for weight at every checkup since birth. What does that tell you?",
+    "choices": [
+     "The chart must be wrong, because healthy babies are never that low.",
+     "She is falling off her curve and needs extra calories right away.",
+     "She's a small, healthy baby who is following her own curve — that's fine.",
+     "She has a hidden disease, because the 5th percentile is a failing score."
+    ],
+    "answer": 2,
+    "explain": "A percentile is a place in line, not a grade. One baby in twenty is at or below the 5th by definition. What doctors watch for is a change — crossing curves downward."
+   },
+   {
+    "q": "The Fenton preterm growth chart was built from…",
+    "choices": [
+     "the weights of about four hundred babies in one hospital in Canada.",
+     "ultrasound pictures of ten thousand babies still inside the womb.",
+     "a formula that predicts weight from a baby's length and head size.",
+     "the birth weights of about four million babies from six countries."
+    ],
+    "answer": 3,
+    "explain": "Tanis Fenton's 2013 chart pooled about four million births. The honest catch: they were babies who were BORN early — often because something was wrong — so a different chart built from healthy pregnancies sits a little higher."
+   }
+  ]
+ },
+ "genetics-w2": {
+  "title": "Genetics 101 — Week 2",
+  "course": "genetics",
+  "badge": "🧬",
+  "questions": [
+   {
+    "q": "When is the newborn heel-prick screen usually done?",
+    "choices": [
+     "In the first minute of life, right after the Apgar score.",
+     "At 24 to 48 hours of age, after the baby has started feeding.",
+     "At the first checkup, about two weeks after going home.",
+     "On the baby's first birthday, when the blood is easier to draw."
+    ],
+    "answer": 1,
+    "explain": "Long enough for feeding to start and any pile-up to begin, but early enough to treat before harm. NICU babies get it repeated if TPN or transfusions could muddle the result."
+   },
+   {
+    "q": "Why is the poke made on the SIDE of the heel?",
+    "choices": [
+     "The side of the heel has no nerves, so the baby feels nothing.",
+     "The side has plenty of blood and no bone right underneath it.",
+     "The middle of the heel is too thick for the drops to come out.",
+     "The side is where the umbilical cord blood collects after birth."
+    ],
+    "answer": 1,
+    "explain": "Rich in blood, safely away from the heel bone. The poke is still real, so it's paired with sugar water, swaddling, or a parent's chest."
+   },
+   {
+    "q": "What is PKU?",
+    "choices": [
+     "A wrong letter in the hemoglobin recipe bends red blood cells; early medicine keeps them from jamming.",
+     "A missing hormone from the thyroid gland slows growth; a daily pill from the first weeks replaces it.",
+     "A slow liver enzyme lets bilirubin pile up and turn the skin yellow; blue light clears it.",
+     "A broken enzyme lets phenylalanine pile up and harm the brain; a special diet from the first weeks prevents it."
+    ],
+    "answer": 3,
+    "explain": "Gene → enzyme → job. In PKU the enzyme that breaks down phenylalanine doesn't work, so it piles up. The baby looks perfect at birth — which is why the screen exists."
+   },
+   {
+    "q": "What is an enzyme?",
+    "choices": [
+     "One of the four chemical letters that the DNA instruction book is written in.",
+     "A protein whose job is a chemical task — snipping, gluing, or taking a molecule apart.",
+     "A hormone that travels through the blood to give the body's organs their orders.",
+     "A kind of sugar that the mitochondria burn with oxygen to make energy for the cell."
+    ],
+    "answer": 1,
+    "explain": "A tiny worker with one skill, built from a gene's recipe. Thousands of kinds: some burn sugar, some digest dinner, one clears bilirubin."
+   },
+   {
+    "q": "How did Robert Guthrie's 1961 test spot PKU from a drop of blood?",
+    "choices": [
+     "The blood spot was fed to mice, and the mice with PKU blood stopped growing.",
+     "A chemical dye turned the blood spot bright yellow when phenylalanine was present.",
+     "Bacteria that need phenylalanine grew in a fat ring around blood spots with too much of it.",
+     "A microscope showed the red blood cells bent into sickle shapes in a PKU baby."
+    ],
+    "answer": 2,
+    "explain": "Guthrie was a bacteria scientist. His strain feasted only when phenylalanine was high — so a ring of growth meant PKU, days after birth and before any harm."
+   },
+   {
+    "q": "PKU happens in only about 1 baby in 12,000. Why does every baby get tested anyway?",
+    "choices": [
+     "It hides at birth, waiting causes permanent harm, early treatment works, and the test is cheap.",
+     "Doctors can't tell which babies are at risk, so testing everyone is a legal requirement.",
+     "The test also measures the baby's blood type, which every hospital needs to know.",
+     "The heel prick also gives the baby a small dose of the medicine that prevents PKU."
+    ],
+    "answer": 0,
+    "explain": "Screen everyone when all four line up: the disease hides, waiting is a disaster, early treatment works, and the test is cheap and safe. For PKU, they do."
+   },
+   {
+    "q": "Which is the MOST common condition the heel-prick screen catches?",
+    "choices": [
+     "Galactosemia — an enzyme that can't handle milk sugar, fixed by milk-free feeding.",
+     "PKU — a broken enzyme, fixed with a special low-phenylalanine diet for life.",
+     "Cystic fibrosis — thick mucus in the lungs and gut, treated every single day.",
+     "Congenital hypothyroidism — too little thyroid hormone, fixed with a daily pill."
+    ],
+    "answer": 3,
+    "explain": "About 1 in 3,000 babies, versus 1 in 12,000 for PKU. A growth-and-brain hormone runs short; one small pill a day replaces it."
+   },
+   {
+    "q": "Which two newborn screens do NOT use blood?",
+    "choices": [
+     "The hearing test and the pulse-oximeter heart test.",
+     "The PKU test and the thyroid test.",
+     "The Apgar score and the weight on the growth chart.",
+     "The brain ultrasound and the bilirubin light."
+    ],
+    "answer": 0,
+    "explain": "Tiny earphones and a sensor check hearing; a pulse ox on the right hand and a foot at 24 hours looks for the oxygen mismatch of a heart built with a missing pipe."
+   }
+  ]
+ },
+ "psychology-w2": {
+  "title": "Psychology 101 — Week 2",
+  "course": "psychology",
+  "badge": "🧠",
+  "questions": [
+   {
+    "q": "What is attachment?",
+    "choices": [
+     "The built-in bond that makes a baby seek closeness to a caregiver and explore from that safe base.",
+     "The wiring of a baby's brain at more than a million connections every second.",
+     "The reflex that makes a newborn grip a finger placed in its palm.",
+     "The habit a baby forms of loving whoever brings the milk, learned over the first year."
+    ],
+    "answer": 0,
+    "explain": "Bowlby argued it's a survival system as basic as hunger, not a side effect of being fed. Harlow's monkeys proved him right."
+   },
+   {
+    "q": "In Harlow's experiment, baby monkeys could choose a wire mother with milk or a cloth mother with none. What did they do?",
+    "choices": [
+     "Ignored both mothers and huddled together with the other baby monkeys instead.",
+     "Clung to the wire mother most of the day, because that is where the food was.",
+     "Clung to the cloth mother most of the day and went to the wire one only to eat.",
+     "Split their time equally between the two, feeding from one and sleeping on the other."
+    ],
+    "answer": 2,
+    "explain": "About 17 hours a day on the soft one — and they ran to it when frightened. Comfort beat food. (The experiments were also cruel, and wouldn't be allowed today.)"
+   },
+   {
+    "q": "In Ainsworth's strange situation, a baby called “secure” does what when the mother comes back?",
+    "choices": [
+     "Clings to her and cries for the rest of the session without settling.",
+     "Goes to her, calms down within a minute, and returns to playing.",
+     "Ignores her and keeps playing as if she had never left the room.",
+     "Goes to the stranger instead, because the stranger stayed in the room."
+    ],
+    "answer": 1,
+    "explain": "Upset when she leaves, comforted fast when she returns, then back to the toys: the rope is strong and the baby knows it. About six in ten babies."
+   },
+   {
+    "q": "In the still-face experiment, what did babies do when their mother's face went blank?",
+    "choices": [
+     "Kept playing happily on their own, because babies that young don't really notice faces or expressions.",
+     "Tried smiles and sounds to restart the game, then fussed and looked away — and recovered when she returned.",
+     "Cried immediately and could not be comforted for the rest of the day, even after the game resumed.",
+     "Fell asleep within a minute or two, because nothing interesting was happening in front of them any more."
+    ],
+    "answer": 1,
+    "explain": "Babies expect serve-and-return and work hard to get it back. When the mother's face returns, so does the baby — within seconds."
+   },
+   {
+    "q": "According to Ainsworth, what builds a secure attachment?",
+    "choices": [
+     "A caregiver who avoids responding too much, so the baby learns independence.",
+     "Feeding the baby on an exact schedule so it learns to trust the clock.",
+     "A caregiver who responds to the baby's signals reliably — not perfectly, reliably.",
+     "A caregiver who never leaves the baby alone, even for a minute."
+    ],
+    "answer": 2,
+    "explain": "When she looked at the families, the difference wasn't in the babies; it was in how reliably someone came when the baby signaled."
+   },
+   {
+    "q": "Why were parents kept OUT of premature-baby nurseries for much of the twentieth century?",
+    "choices": [
+     "Parents were thought to be too upset by the machines to be useful at the bedside.",
+     "Hospitals charged parents for each visit, and most families could not afford it.",
+     "Doctors feared parents would carry in germs — a kind idea with a cost nobody had measured.",
+     "Doctors believed newborns could not tell one person from another until six months old."
+    ],
+    "answer": 2,
+    "explain": "From the 1940s to the 1970s, parents looked through glass a few times a week. Then Klaus and Kennell measured what early contact did, and the doors opened."
+   },
+   {
+    "q": "What did the big 2021 study of immediate kangaroo care find?",
+    "choices": [
+     "Starting skin-to-skin right after birth cut deaths of small babies by about a quarter.",
+     "Kangaroo care worked in rich countries but not in poorer hospitals.",
+     "Skin-to-skin made babies warmer but made no difference to how many survived.",
+     "Babies held skin-to-skin gained weight, but their mothers became more anxious."
+    ],
+    "answer": 0,
+    "explain": "More than 3,000 babies in five countries. Not waiting until the baby was 'stable' saved lives. Bowlby's rope is a treatment with a death rate attached."
+   },
+   {
+    "q": "Why does bonding count as medicine in a NICU, not just niceness?",
+    "choices": [
+     "It replaces the isolette for most babies, so hospitals can save money on machines and electricity.",
+     "It lets nurses leave the bedside for longer, because a parent can watch the monitor for them instead.",
+     "It makes the baby cry much less, which keeps the unit quieter and calmer for all the other babies.",
+     "It measurably steadies heart rate, breathing, and sleep, helps babies grow, and lowers parents' stress."
+    ],
+    "answer": 3,
+    "explain": "It's measurable — that's what makes it medicine. Which is why the reclining kangaroo chair is on the care plan and parents are on the team."
+   }
+  ]
+ },
+ "sociology-w2": {
+  "title": "Sociology 101 — Week 2",
+  "course": "sociology",
+  "badge": "🏥",
+  "questions": [
+   {
+    "q": "About how many babies are born preterm each year, worldwide?",
+    "choices": [
+     "About 13 million — roughly one baby in ten.",
+     "About 130,000 — roughly one baby in a thousand.",
+     "About 130 million — nearly every baby born.",
+     "About 1.3 million — roughly one baby in a hundred."
+    ],
+    "answer": 0,
+    "explain": "More than one in ten births. About 900,000 children a year die from it — the number-one cause of death in children under five."
+   },
+   {
+    "q": "Why do sociologists compare places using rates like 'per 1,000' instead of plain counts?",
+    "choices": [
+     "Rates are always smaller numbers, so they are easier to write down.",
+     "Rates hide the exact number of deaths, which is kinder to families.",
+     "Counting every baby is impossible, so rates are a guess that is close enough.",
+     "Groups are different sizes, so dividing by the group size makes them comparable."
+    ],
+    "answer": 3,
+    "explain": "A country with ten times the births will have ten times the deaths even if it's doing equally well. 'Per' means divide — the Calculus word — and dividing puts everyone on the same line."
+   },
+   {
+    "q": "Where do more than six in ten of the world's preterm births happen?",
+    "choices": [
+     "North America and Western Europe.",
+     "East Asia and Australia.",
+     "Sub-Saharan Africa and South Asia.",
+     "South America and the Caribbean."
+    ],
+    "answer": 2,
+    "explain": "Two regions, most of the babies — and most of the deaths, because basic care is hardest to reach there."
+   },
+   {
+    "q": "A baby born at 30 weeks in a rich country almost always survives. In the poorest countries about half of such babies die. What is the main reason?",
+    "choices": [
+     "The diseases in poorer countries are different and have no known treatment.",
+     "Poorer countries have too many babies for the hospitals, so preemies are sent home.",
+     "Lack of basic care — warmth, feeding help, and treatment for infections and breathing trouble.",
+     "Babies in poorer countries are born weaker, so the same care wouldn't help them."
+    ],
+    "answer": 2,
+    "explain": "Not exotic things — the ordinary NICU Tutor things. The same baby, born in two places, gets two different lives. That's why kangaroo care and plastic wraps save so many."
+   },
+   {
+    "q": "In the United States, which group of babies dies in the first year at more than twice the rate of white babies?",
+    "choices": [
+     "Babies born in cities",
+     "Black babies",
+     "Babies of first-time mothers",
+     "Babies born in winter"
+    ],
+    "answer": 1,
+    "explain": "About 10.9 per 1,000 versus about 4.5. Black babies are also born preterm far more often — about 15 in 100 versus 9 in 100."
+   },
+   {
+    "q": "What is a 'maternity care desert'?",
+    "choices": [
+     "A county with no hospital or clinic that delivers babies.",
+     "A dry, hot region where more babies are born early.",
+     "A hospital that has run out of incubators for its preemies.",
+     "A NICU that does not allow parents to visit their babies."
+    ],
+    "answer": 0,
+    "explain": "More than two million American women of childbearing age live in one. Regionalization only works if the Level III unit is reachable."
+   },
+   {
+    "q": "What does 'social determinants of health' mean?",
+    "choices": [
+     "The social workers on a NICU team who help families with money, housing, and paperwork.",
+     "The conditions of life — money, housing, food, stress, distance to care — that shape who gets sick.",
+     "The laws a country passes about which hospitals must accept which patients and at what price.",
+     "The genes a baby inherits from its two parents that decide how healthy it will grow up to be."
+    ],
+    "answer": 1,
+    "explain": "Circumstances, not biology. 'Your ZIP code predicts your health better than your genetic code' — and change the circumstances, and the numbers move."
+   },
+   {
+    "q": "What did Dr. Virginia M. Alexander do in Philadelphia in 1931?",
+    "choices": [
+     "Founded the March of Dimes to raise money for premature and sick babies all across the country.",
+     "Invented the first incubator for premature babies and displayed it at a fair to raise money for care.",
+     "Became the first Black woman in the United States to earn a medical degree from a university.",
+     "Opened a clinic in her own house so poor Black families could give birth safely, then reported the gap."
+    ],
+    "answer": 3,
+    "explain": "The Aspiranto Health Home: beds upstairs, pay what you can. Then Yale, public health, and reports the city couldn't ignore. Counting who isn't getting care is where change starts."
+   }
+  ]
+ },
+ "final-w2": {
+  "title": "Week 2 Final Exam",
+  "course": "general",
+  "badge": "🩺",
+  "questions": [
+   {
+    "q": "Which of these sentences from Monday's Biology is a BIG IDEA rather than a detail?",
+    "choices": [
+     "The umbilical cord has three vessels: two arteries carrying blood out and one vein bringing it back.",
+     "William Harvey was the personal physician to King Charles I of England in the 1620s.",
+     "A newborn's heart is about the size of a walnut, and an adult's is about the size of a fist.",
+     "The heart is two pumps: the right side sends blood to the lungs, the left side sends it to the body."
+    ],
+    "answer": 3,
+    "explain": "Use the 'forget it' test: forget the walnut, the king, or the count of cord vessels and the lecture still stands. Forget the two-pump idea and none of the rest makes sense."
+   },
+   {
+    "q": "Blood came up in Chemistry, Biology, Physics, Genetics, and Calculus this week. Which statement is TRUE?",
+    "choices": [
+     "Its pH is set by the bones, its platelets carry the oxygen, and a 1 kg preemie has about 5 liters of it.",
+     "Its pH must stay near 5.5, its plasma carries the oxygen, and a 1 kg preemie has about 800 mL of it.",
+     "Its pH must stay near 7.4, its red cells change color with oxygen, and a 1 kg preemie has only about 80 mL of it.",
+     "Its pH must stay near 7.4, its white cells carry the oxygen, and a 1 kg preemie has about 8 mL of it."
+    ],
+    "answer": 2,
+    "explain": "Chemistry: 7.35–7.45. Physics: oxygen-loaded hemoglobin is bright red and lets red light through. Biology: about 80 mL per kilogram — which is why every test's drops are counted."
+   },
+   {
+    "q": "A blood gas shows pH 7.18 and a CO₂ far above normal. What's the story?",
+    "choices": [
+     "The baby is breathing far too much and blowing off acid — turn the ventilator settings down.",
+     "Carbonic acid is piling up because the lungs aren't clearing CO₂ — give more breathing help.",
+     "The cells are starving for oxygen and making lactic acid — start antibiotics at once.",
+     "The kidneys have lost all their bicarbonate — a kidney problem; give bicarbonate right away."
+    ],
+    "answer": 1,
+    "explain": "Low pH plus high CO₂ points at the lungs. Low pH with NORMAL CO₂ would point at the cells. High pH with low CO₂ would mean over-breathing."
+   },
+   {
+    "q": "Lemon juice is about pH 2 and black coffee about pH 5. How many times more acidic is the lemon juice?",
+    "choices": [
+     "About 300 times",
+     "About 30 times",
+     "About 3 times",
+     "About 1,000 times"
+    ],
+    "answer": 3,
+    "explain": "Three steps on Sørensen's ruler, ten times each: 10 × 10 × 10 = 1,000."
+   },
+   {
+    "q": "Where does the LEFT side of the heart pump blood?",
+    "choices": [
+     "Out to the whole body — brain, gut, kidneys, fingertips.",
+     "To the placenta, through the vein in the umbilical cord.",
+     "To the lungs, to drop off carbon dioxide and pick up oxygen.",
+     "Back to the right side, through the ductus arteriosus."
+    ],
+    "answer": 0,
+    "explain": "Right heart → lungs → left heart → body → right heart. The left ventricle has the thickest wall because it pushes the farthest."
+   },
+   {
+    "q": "A preemie has a PDA. What is happening?",
+    "choices": [
+     "The umbilical vein never closed, so blood keeps flowing out through the belly button.",
+     "A valve between the atria stayed shut, so blood can't get from the right heart to the lungs at all.",
+     "A fetal bypass pipe near the heart stayed open, so blood leaks back into the lungs and the body gets less.",
+     "The heart's electrical spark is too slow, so the baby's heart rate keeps dropping."
+    ],
+    "answer": 2,
+    "explain": "Patent ductus arteriosus: 'patent' just means open. Before birth it let blood skip the unused lungs; after birth it's supposed to squeeze shut within days."
+   },
+   {
+    "q": "Why does the pulse oximeter use both red and infrared light?",
+    "choices": [
+     "Oxygen-loaded and empty hemoglobin absorb the two colors differently, so comparing them gives the percentage.",
+     "Two colors together are bright enough to shine all the way through a baby's foot.",
+     "Red light finds the arteries and infrared light finds the veins, and the machine adds them.",
+     "Red light measures the heart rate and infrared light measures how warm the foot is."
+    ],
+    "answer": 0,
+    "explain": "Loaded hemoglobin lets red through and absorbs infrared; empty hemoglobin does the reverse. The ratio is SpO₂ — measured on the pulsing part of the signal, Aoyagi's trick."
+   },
+   {
+    "q": "What does blue light do to bilirubin?",
+    "choices": [
+     "It bleaches the yellow color out of the skin so the bilirubin underneath can no longer be seen.",
+     "Bilirubin absorbs it, and the energy twists the molecule into a shape the body can flush out.",
+     "It warms the blood flowing under the skin so that the liver's slow enzyme starts working faster.",
+     "It breaks apart the red blood cells that make bilirubin, so that no more of it is produced."
+    ],
+    "answer": 1,
+    "explain": "A yellow molecule absorbs blue. That's why the lamp works right through the skin, and why more skin showing means a faster cure."
+   },
+   {
+    "q": "A pump runs at 2.5 mL per hour for 8 hours. How much did the baby get?",
+    "choices": [
+     "2.5 mL",
+     "20 mL",
+     "32 mL",
+     "10.5 mL"
+    ],
+    "answer": 1,
+    "explain": "Total = rate × time: 2.5 × 8 = 20 mL. (2 × 8 = 16, plus half of 8 is 4.)"
+   },
+   {
+    "q": "On a graph with the pump rate as height and time along the bottom, the total delivered is…",
+    "choices": [
+     "the steepness of the rate line.",
+     "the area under the rate line.",
+     "the number of hours along the bottom.",
+     "the height of the rate line at the end."
+    ],
+    "answer": 1,
+    "explain": "Height × width = rate × time = total. A staircase is several rectangles; a curve is many thin ones. Steepness was last week's question."
+   },
+   {
+    "q": "Seven babies weigh 900, 1,300, 820, 950, 2,400, 880, and 1,000 grams. What is the median?",
+    "choices": [
+     "1,179 g",
+     "900 g",
+     "950 g",
+     "1,000 g"
+    ],
+    "answer": 2,
+    "explain": "In order: 820, 880, 900, 950, 1,000, 1,300, 2,400. The fourth of seven is 950. The mean (about 1,179) got dragged up by the 2,400-gram baby; the median didn't."
+   },
+   {
+    "q": "A baby was on the 50th percentile line a month ago and is on the 10th today. A doctor would say…",
+    "choices": [
+     "she is falling off her curve — an alarm, even though today's weight is still 'normal.'",
+     "she is at a healthy weight, because the 10th percentile is still on the chart.",
+     "she has moved up in line, because 10 is a lower number than 50.",
+     "nothing, because a percentile is a grade and she hasn't failed yet."
+    ],
+    "answer": 0,
+    "explain": "A percentile is a place in line, not a grade. What matters is CHANGE: crossing curves downward means the growth line has gone flat. Read the line, not the dot."
+   },
+   {
+    "q": "In PKU, what is broken and what happens because of it?",
+    "choices": [
+     "The enzyme that breaks down phenylalanine, so phenylalanine piles up and harms the brain.",
+     "The thyroid gland, so a growth hormone runs short and the baby grows slowly.",
+     "The liver's bilirubin enzyme, so the baby turns yellow in the first week.",
+     "The hemoglobin recipe, so red blood cells bend into sickle shapes and jam."
+    ],
+    "answer": 0,
+    "explain": "Gene → enzyme → job. A broken worker means a pile-up. Caught by the heel prick at 1–2 days and prevented with a special diet."
+   },
+   {
+    "q": "Why is every baby screened for diseases as rare as 1 in 12,000?",
+    "choices": [
+     "Because they hide at birth, waiting causes harm, early treatment works, and the test is cheap and safe.",
+     "Because hospitals are required to collect a blood sample from every baby for its records.",
+     "Because the heel prick also gives the baby its first vaccination against them.",
+     "Because most babies turn out to have at least one of the conditions on the card."
+    ],
+    "answer": 0,
+    "explain": "Four things line up, and screening makes sense. A positive screen is a wide net — 'test again, properly, now' — not a diagnosis."
+   },
+   {
+    "q": "What did Harlow's baby monkeys teach psychologists?",
+    "choices": [
+     "Baby monkeys can't tell a real mother from a pretend one made of cloth, so they clung to both.",
+     "Comfort matters more than food — they clung to the cloth mother and only visited the wire one to eat.",
+     "Monkeys raised with two pretend mothers grow up healthier than monkeys raised with just one.",
+     "Food matters more than comfort — they stayed on the wire mother that held the milk bottle all day."
+    ],
+    "answer": 1,
+    "explain": "About 17 hours a day on the cloth mother, and straight to it when scared. Attachment isn't a side effect of being fed."
+   },
+   {
+    "q": "In the still-face experiment, a mother goes blank for two minutes. What does this show about babies?",
+    "choices": [
+     "They don't notice faces at all until about six months old, so nothing much happens for two minutes.",
+     "They prefer a calm, still face to a moving one, and settle down quickly once the mother stops.",
+     "They forget a face within a few seconds, so they treat their own mother as a complete stranger.",
+     "They expect serve-and-return and work hard to restart it — then recover fast when the face returns."
+    ],
+    "answer": 3,
+    "explain": "Smiles, sounds, pointing, then fussing and looking away — and back to normal in seconds when the game resumes. Every return is a brain connection."
+   },
+   {
+    "q": "Country A has 200 preterm babies out of 2,000 births. Country B has 300 preterm babies out of 6,000 births. Which is TRUE?",
+    "choices": [
+     "B has both more preterm babies and the higher rate, because 300 is bigger than 200.",
+     "They have the same rate, because both countries are counted per thousand.",
+     "B has more preterm babies, but A has the higher preterm rate (10 per 100 versus 5 per 100).",
+     "A has more preterm babies and the higher rate, because 200 is more than 5 per 100."
+    ],
+    "answer": 2,
+    "explain": "Counts and rates answer different questions. Divide by the group: A is 200 ÷ 2,000 = 10 per 100; B is 300 ÷ 6,000 = 5 per 100."
+   },
+   {
+    "q": "In the world's poorest countries, about half of babies born at 32 weeks or earlier die. Why, mostly?",
+    "choices": [
+     "Their parents choose to care for them at home instead of in hospitals, for religious reasons.",
+     "The diseases there are different from the ones that rich-country NICUs know how to treat well.",
+     "Babies there are born weaker than babies elsewhere, so the same care would not have saved them.",
+     "They don't get basic care — warmth, feeding help, and treatment for infections and breathing trouble."
+    ],
+    "answer": 3,
+    "explain": "The same baby, born in two places, gets two different lives — and change the conditions (kangaroo care, wraps, a clinic) and the numbers move. It isn't the babies."
+   },
+   {
+    "q": "Flashback to Week 1 Physics: why is blood pressure measured in millimeters of mercury?",
+    "choices": [
+     "Doctors chose mercury because it was the fastest planet, and blood is the fastest-moving fluid.",
+     "Mercury is the silvery metal that the first blood-pressure cuffs were made from in the 1890s.",
+     "The first pressure meters were literally a column of mercury: the push is how high it lifted the liquid.",
+     "Blood is about as heavy as mercury, so the two liquids balance each other inside the meter."
+    ],
+    "answer": 2,
+    "explain": "Torricelli's tube, 1643: the air holds up 760 mm of mercury. A blood pressure of 60 means the heart pushes hard enough to lift a 60 mm column."
+   },
+   {
+    "q": "Flashback to Week 1 Statistics: a baby's Apgar score is 5 at one minute. What does that mean?",
+    "choices": [
+     "The baby may need some help right now — rubbing, warming, perhaps a little oxygen.",
+     "The score was taken too early to mean anything and must be thrown out and redone.",
+     "The baby will have lifelong problems, because 5 out of 10 is a failing score.",
+     "The baby is doing well and needs only routine newborn care from the nurses."
+    ],
+    "answer": 0,
+    "explain": "7–10 doing well; 4–6 may need help; 0–3 needs help now. And Apgar herself warned: it predicts the next few minutes, not a life."
+   },
+   {
+    "q": "Flashback to Week 1 Genetics: what is a gene?",
+    "choices": [
+     "One of the four chemical letters, A, T, C, or G, that DNA is written in.",
+     "One recipe in the DNA instruction book — the instructions for building one protein.",
+     "One of the 46 volumes of the instruction book, half from each parent.",
+     "A typo in the instruction book that changes how a protein is built."
+    ],
+    "answer": 1,
+    "explain": "About 20,000 recipes. This week you added one link: many of those proteins are enzymes, and a typo in an enzyme's recipe means a pile-up."
+   },
+   {
+    "q": "Flashback: what does the isolette's skin probe do?",
+    "choices": [
+     "It measures the baby's oxygen level by shining red and infrared light through the skin.",
+     "It checks how much water is evaporating from the baby's thin skin and adjusts the humidity.",
+     "It reports the baby's skin temperature so the isolette can warm or cool its air to hit the target.",
+     "It counts the baby's heartbeats from the tiny electricity that leaks out to the skin."
+    ],
+    "answer": 2,
+    "explain": "Servo control: the machine chases a target hundreds of times a day so the baby doesn't have to. NICU Tutor Lesson 1."
+   },
+   {
+    "q": "Flashback: why is caffeine one of the most important medicines in a NICU?",
+    "choices": [
+     "It makes a preemie's blood a little more acidic so the lungs work harder.",
+     "It helps a preemie's liver clear bilirubin faster, so the skin turns less yellow.",
+     "It speeds up a preemie's heart so that more blood reaches the growing brain.",
+     "It keeps a preemie's immature breathing center awake, preventing apnea spells."
+    ],
+    "answer": 3,
+    "explain": "The espresso molecule, in a measured daily dose. Steady breathing also keeps CO₂ — and carbonic acid — from piling up, as this week's Chemistry showed."
+   },
+   {
+    "q": "Flashback: why can't a baby born at 26 weeks drink from a bottle?",
+    "choices": [
+     "Its stomach can't digest milk of any kind until about 34 weeks, so it gets only sugar water in an IV.",
+     "Its teeth haven't come in yet, so it can't hold a bottle's nipple in place long enough to drink.",
+     "Its mouth is far too small to fit around any bottle at that age, so it must be fed through a tube instead.",
+     "The suck-swallow-breathe rhythm is a brain skill wired at about 32 to 34 weeks; milk would go into the lungs."
+    ],
+    "answer": 3,
+    "explain": "The throat is a railroad junction where food and air cross. Until the rhythm clicks in, milk goes in by tube — and the pump's mL per hour was this week's Calculus."
+   }
+  ]
+ }
+}
