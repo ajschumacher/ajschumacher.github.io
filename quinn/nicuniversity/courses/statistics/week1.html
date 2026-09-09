@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistics 101, Week 1: What's Typical? The Apgar Score</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body class="c-statistics" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bar chart of five babies' heart rates with a dashed line at the average, and a scorecard reading 9">
+        <rect x="20" y="20" width="200" height="150" rx="10" fill="#fffdf5" stroke="#e3d9c8" stroke-width="3"/>
+        <line x1="44" y1="150" x2="204" y2="150" stroke="#2d3142" stroke-width="2"/>
+        <line x1="44" y1="36" x2="44" y2="150" stroke="#2d3142" stroke-width="2"/>
+        <rect x="54" y="80" width="22" height="70" fill="#0e7c7b"/>
+        <rect x="84" y="64" width="22" height="86" fill="#0e7c7b"/>
+        <rect x="114" y="98" width="22" height="52" fill="#0e7c7b"/>
+        <rect x="144" y="48" width="22" height="102" fill="#0e7c7b"/>
+        <rect x="174" y="72" width="22" height="78" fill="#0e7c7b"/>
+        <line x1="44" y1="72" x2="204" y2="72" stroke="#f25f5c" stroke-width="3" stroke-dasharray="7 5"/>
+        <text x="208" y="76" font-size="10" fill="#f25f5c" font-weight="bold">mean</text>
+        <g font-size="9" fill="#565d75" text-anchor="middle"><text x="65" y="163">A</text><text x="95" y="163">B</text><text x="125" y="163">C</text><text x="155" y="163">D</text><text x="185" y="163">E</text></g>
+        <!-- scorecard -->
+        <rect x="150" y="176" width="70" height="38" rx="8" fill="#ffb627"/>
+        <text x="185" y="192" font-size="9" fill="#2d3142" text-anchor="middle" font-weight="bold">APGAR</text>
+        <text x="185" y="209" font-size="15" fill="#2d3142" text-anchor="middle" font-weight="bold">9 / 10</text>
+        <text x="24" y="200" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Statistics 101 · Week 1 · Wednesday 10:30</p>
+      <h1>What's Typical? The Apgar Score</h1>
+      <p class="lede">A NICU produces thousands of numbers a day — heart rates, weights, oxygen levels, scores. One number is a fact. A thousand numbers are a mess. <strong>Statistics</strong> is how you turn the mess into knowledge — and it began, for newborns, with a doctor and a scorecard.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from yesterday's Calculus.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-statistics-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. Scratch paper helps today too — there's adding and dividing.</p>
+    </div>
+  </div>
+
+  <h2>🔢 What statistics is</h2>
+  <p>Yesterday in Calculus you followed <em>one</em> baby's weight over time. Today, turn sideways: look at <em>many</em> babies at once. Five babies, five heart rates: 140, 150, 130, 160, 145. What's going on in this unit? Is anyone unusual? Is the group doing fine? Those are statistics questions. <strong>Statistics is the science of making sense of many measurements</strong> — finding what's typical, spotting what's unusual, and knowing how sure you can be.</p>
+  <p>Every “normal range” you learned in NICU Tutor — heart rate 100 to 160, breathing 30 to 60, oxygen 90 to 95 percent — came from statistics: someone measured thousands of babies and found where the healthy ones landed. The monitor's alarms are set from those numbers. Without statistics, medicine would just be opinions.</p>
+
+  <h2>📏 Two tools: the mean and the range</h2>
+  <p>The most useful statistics tool is the <strong>mean</strong>, which is just the average you already know: <em>add up all the numbers, then divide by how many there are.</em></p>
+  <div class="card">
+    <p><strong>Heart rates:</strong> 140, 150, 130, 160, 145</p>
+    <p><strong>Add them:</strong> 140 + 150 + 130 + 160 + 145 = <strong>725</strong></p>
+    <p><strong>Divide by how many:</strong> 725 ÷ 5 = <strong>145</strong> — the mean heart rate is 145 beats per minute.</p>
+    <p style="margin-bottom:0">The mean is the “typical” heart rate in this group. Notice nobody has to actually be 145 for it to be the typical value — it's the balance point of the whole group.</p>
+  </div>
+  <p>But typical isn't the whole story. Are the babies all close to 145, or all over the place? For that you want the <strong>range</strong>: <em>the biggest number minus the smallest.</em> Here, 160 − 130 = <strong>30</strong>. A small range means the group is bunched together; a big range means it's spread out. In a NICU, a wide range of heart rates might just mean one baby is crying — or it might mean one baby is in trouble. The range tells you to go look.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>Mean = add them all, divide by how many (the typical value). Range = biggest − smallest (the spread).</p>
+    </div>
+  </div>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself</div>
+    <p>Find the mean age of everyone in your home (add the ages, divide by the number of people). Then the range. Is anyone close to the mean? In most families, nobody is — the mean sits in the gap between kids and grown-ups. That's a lesson: the average can be a number nobody actually has.</p>
+  </div>
+
+  <h2>🩺 Virginia Apgar and the first newborn score</h2>
+  <p>In the 1940s, when a baby was born, someone would glance at it and say “looks fine” or “looks poor.” Different doctors meant different things. Nobody wrote down a number, so nobody could compare babies, or hospitals, or years — and babies who quietly needed help sometimes didn't get it.</p>
+  <p><strong>Virginia Apgar</strong> was an <strong>anesthesiologist</strong> — a doctor who keeps patients safely asleep and watched-over during operations. She'd wanted to be a surgeon, but in the 1930s surgery was nearly closed to women, so she took the newer field and became one of the best in the world at it. She was in delivery rooms constantly, and the sloppiness bothered her. One morning in 1949, a medical student asked her how you'd evaluate a newborn. She grabbed the nearest piece of paper and wrote down five things you could check in seconds. In 1952 she presented it to other doctors, and it went everywhere.</p>
+
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Sign</th><th>0 points</th><th>1 point</th><th>2 points</th></tr>
+    <tr><td>Heart rate</td><td>none</td><td>under 100</td><td>100 or more</td></tr>
+    <tr><td>Breathing</td><td>none</td><td>slow or irregular</td><td>good, crying</td></tr>
+    <tr><td>Muscle tone</td><td>limp</td><td>some bending of arms and legs</td><td>active motion</td></tr>
+    <tr><td>Reflex response</td><td>none</td><td>grimace</td><td>cry or pull away</td></tr>
+    <tr><td>Color</td><td>blue or pale all over</td><td>body pink, hands and feet blue</td><td>pink all over</td></tr>
+  </table>
+  </div>
+  <p>Score each sign 0, 1, or 2, add them up, and you have a number from 0 to 10 — taken at one minute after birth and again at five minutes. <strong>7 to 10</strong> means the baby is doing well. <strong>4 to 6</strong> means the baby may need some help — rubbing, warming, a little oxygen. <strong>0 to 3</strong> means the baby needs help <em>right now</em>. Almost nobody scores a perfect 10, because newborns' hands and feet are usually still a little blue. An 8 or 9 is a great start in life.</p>
+  <p>Ten years later, a pediatrician noticed her name spelled the five signs — <strong>A</strong>ppearance, <strong>P</strong>ulse, <strong>G</strong>rimace, <strong>A</strong>ctivity, <strong>R</strong>espiration — and the memory trick stuck. Today the Apgar score is given to nearly every baby born in a hospital, anywhere in the world: many, many babies every minute. One anesthesiologist, one scrap of paper.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Apgar score (1952): 5 signs × 0–2 points = 0–10, at 1 and 5 minutes. 7–10 good; 4–6 may need help; 0–3 needs help now.</p>
+    </div>
+  </div>
+
+  <h2>🔍 Why a number beats “looks fine”</h2>
+  <p>Here's the deep reason the Apgar score matters, and it's the deepest idea in statistics: <strong>once you turn an observation into a number, you can compare it, collect it, and learn from thousands of it.</strong> A hospital can ask: are our five-minute scores getting better since we changed how we do deliveries? A researcher can ask: do babies born early tend to score lower — by how much? A doctor in Kenya and a doctor in Kansas can mean exactly the same thing by “a 6.” None of that is possible with “looks fine.” Measurement is what turns care into science.</p>
+  <p>But statistics also teaches humility about numbers — starting with the mean. Suppose two NICUs both report an average Apgar of 7 last month. Are they the same? Not necessarily. One unit might have scores of 7, 7, 7, 7; the other might have 10, 10, 4, 4. Same mean; completely different story. <strong>The average hides the spread.</strong> That's why statisticians never report a mean alone — they show the range too (and next week, the <em>median</em> and <em>percentiles</em>, which are how growth charts work).</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two groups of four Apgar scores with the same mean of 7: one group all 7s, the other 10, 10, 4, 4">
+      <text x="150" y="30" font-size="15" font-weight="bold" fill="#0e7c7b" text-anchor="middle">Unit A: 7, 7, 7, 7</text>
+      <text x="450" y="30" font-size="15" font-weight="bold" fill="#f25f5c" text-anchor="middle">Unit B: 10, 10, 4, 4</text>
+      <line x1="40" y1="190" x2="260" y2="190" stroke="#2d3142" stroke-width="2"/>
+      <line x1="340" y1="190" x2="560" y2="190" stroke="#2d3142" stroke-width="2"/>
+      <g fill="#0e7c7b"><rect x="60" y="92" width="34" height="98"/><rect x="108" y="92" width="34" height="98"/><rect x="156" y="92" width="34" height="98"/><rect x="204" y="92" width="34" height="98"/></g>
+      <g fill="#f25f5c"><rect x="360" y="50" width="34" height="140"/><rect x="408" y="50" width="34" height="140"/><rect x="456" y="134" width="34" height="56"/><rect x="504" y="134" width="34" height="56"/></g>
+      <line x1="40" y1="92" x2="260" y2="92" stroke="#2d3142" stroke-width="2.5" stroke-dasharray="8 5"/>
+      <line x1="340" y1="92" x2="560" y2="92" stroke="#2d3142" stroke-width="2.5" stroke-dasharray="8 5"/>
+      <text x="150" y="82" font-size="13" fill="#2d3142" text-anchor="middle">mean = 7 · range = 0</text>
+      <text x="450" y="82" font-size="13" fill="#2d3142" text-anchor="middle">mean = 7 · range = 6</text>
+      <text x="300" y="212" font-size="13" fill="#565d75" text-anchor="middle">Same average. Very different units.</text>
+    </svg>
+    <figcaption>Two units, same mean. Only the range tells you Unit B has babies who needed real help.</figcaption>
+  </figure>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>Numbers can be compared and studied in thousands; “looks fine” can't. But the mean hides the spread — always ask for the range too.</p>
+    </div>
+  </div>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: where “normal” came from</div>
+    <p>The monitor in <a href="../../../nicu_tutor/lessons/03-monitor.html">NICU Tutor Lesson 3</a> alarms when a baby's heart rate leaves the normal range. That range is a statistics result: thousands of healthy newborns measured, and the alarm set where the healthy ones almost never go. Every alarm limit in the NICU has a study behind it.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk: what a score can't tell you</div>
+    <p>The Apgar score was designed to answer one question: <em>does this baby need help in the next few minutes?</em> It's excellent at that. But people started using it for something it was never built for — predicting a child's future. Parents were told a one-minute score of 4 meant lifelong problems. It doesn't; many babies who score low at one minute are pink and yelling by five, and grow up completely well. Virginia Apgar herself spent years warning against misusing her score. A number is only as good as the question it was built to answer — and part of a doctor's job is knowing the difference.</p>
+    <p>Apgar never married, flew small planes, built her own violins, and learned to drive at fifty. She died in 1974, one of the most honored doctors in America. Every baby you will ever care for will have her number in its chart.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Statistics</dt><dd>Making sense of many numbers: what's typical, what's unusual, how sure we are.</dd>
+      <dt>The mean</dt><dd>The average. Add them all; divide by how many.</dd>
+      <dt>The range</dt><dd>Biggest minus smallest. How spread out the group is.</dd>
+      <dt>Data</dt><dd>Measurements collected to learn something. Plural of <em>datum</em>, one measurement.</dd>
+      <dt>Apgar score</dt><dd>Five newborn signs scored 0–2 each, for a total of 0–10, at one and five minutes.</dd>
+      <dt>Normal range</dt><dd>Where most healthy people's measurements fall — found by measuring thousands.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.nlm.nih.gov/changingthefaceofmedicine/physicians/biography_12.html" target="_blank" rel="noopener">NIH “Changing the Face of Medicine”: Virginia Apgar</a></li>
+      <li><a href="https://kidshealth.org/en/parents/apgar.html" target="_blank" rel="noopener">KidsHealth: What is the Apgar score?</a></li>
+      <li>Ask your grown-ups what your Apgar scores were — many parents remember!</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Statistics 101, Week 1</h2>
+    <p>Eight questions. Six right earns the 📊 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: What's Typical?</div>
+    <p>Due at recitation, Thursday 9:00. Print it now: <a href="../../print/hw-statistics-w1.pdf" target="_blank" rel="noopener">Homework 1: What's Typical? (PDF)</a>. Means and ranges, scoring three newborns with Apgar, drawing a bar chart, and defending Dr. Apgar from a common mistake. Details on the <a href="../../recitations/week1/statistics.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "wed-stats",
+  quizId: "statistics-w1",
+  course: "statistics",
+  printQuiz: "../../print/quiz-statistics-w1.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what's the normal heart-rate range for a newborn, and what's the word for a heart rate that's too slow?", a: "About 100–160 beats per minute. Too slow = bradycardia ('brady' for short)." },
+    { q: "From Calculus: a baby went from 1,000 g to 1,070 g in 7 days. What's the rate of change?", a: "Change 70 g ÷ 7 days = 10 grams per day." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

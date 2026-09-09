@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4: Blood Pressure — NICU Tutor</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐣</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🐣 NICU Tutor</a>
+  <nav>
+    <a href="../index.html">All lessons</a>
+    <a href="../glossary.html">Glossary</a>
+    <a href="../sources.html">Sources</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A tiny blood pressure cuff on a baby arm, connected to a readout, with a heart pumping">
+        <!-- heart -->
+        <path d="M 60 60 C 60 38 92 38 92 60 C 92 38 124 38 124 60 C 124 88 92 106 92 106 C 92 106 60 88 60 60 Z" fill="#f25f5c"/>
+        <path d="M 70 64 L 82 64 L 87 52 L 94 76 L 100 60 L 104 64 L 114 64" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- artery hose -->
+        <path d="M 92 106 Q 92 150 130 158 Q 160 164 168 164" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/>
+        <!-- baby arm -->
+        <rect x="140" y="140" width="86" height="46" rx="23" fill="#f6c390"/>
+        <!-- cuff -->
+        <rect x="160" y="132" width="40" height="62" rx="9" fill="#3f88c5"/>
+        <rect x="166" y="140" width="28" height="8" rx="4" fill="#e3eff9"/>
+        <!-- tube to readout -->
+        <path d="M 180 132 Q 180 96 196 84" fill="none" stroke="#2d3142" stroke-width="4" stroke-linecap="round"/>
+        <!-- readout -->
+        <rect x="160" y="24" width="72" height="58" rx="10" fill="#2d3142"/>
+        <text x="196" y="48" font-size="15" fill="#5ef2a0" text-anchor="middle" font-family="monospace">64/38</text>
+        <text x="196" y="70" font-size="12" fill="#ffb627" text-anchor="middle" font-family="monospace">MAP 47</text>
+        <text x="24" y="150" font-size="16">✦</text>
+        <text x="120" y="210" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Lesson 4 · The push that moves blood</p>
+      <h1>Blood Pressure</h1>
+      <p class="lede">Blood doesn't move on its own — it gets <strong>pushed</strong>. Blood pressure is the strength of that push, and in the NICU it can be measured from a vessel in the baby's <em>belly button</em>. Really.</p>
+    </div>
+  </div>
+
+  <h2><span class="h-emoji">🚰</span> The science: your body is plumbing</h2>
+  <p>Think of a garden hose. When the faucet is on, water pushes against the inside of the hose — that push is pressure, and it's what shoots the water out the far end. Your blood works the same way: the <strong>heart</strong> is the faucet-pump, the <strong>arteries</strong> are the hoses, and <strong>blood pressure</strong> is how hard the blood pushes against the artery walls as it travels.</p>
+  <p>Why does the push matter so much? Because blood has deliveries to make. Every organ — brain, kidneys, gut, skin — is waiting for oxygen and fuel, and blood only reaches them if there's enough pressure to drive it there, all the way to the tips of the toes and back. Not enough pressure means organs get starved even though the blood is <em>right there</em> in the pipes.</p>
+  <p>Blood pressure isn't one number — it's two, because the heart is a beating pump, not a steady one:</p>
+  <ul>
+    <li><strong>Systolic</strong> (the top number): the push during a heartbeat squeeze — the high point.</li>
+    <li><strong>Diastolic</strong> (the bottom number): the push between beats, while the heart refills — the low point.</li>
+    <li><strong>MAP</strong> (mean arterial pressure): the average push over time. In the NICU, MAP is often the number doctors watch most.</li>
+  </ul>
+  <p>So “64 over 38” means the push peaks at 64 and relaxes to 38 with every single heartbeat. (The units, mmHg, mean “millimeters of mercury” — old-time pressure meters used a column of liquid mercury metal, and we kept the ruler.)</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A pressure wave showing systolic peaks, diastolic valleys, and the mean arterial pressure line">
+      <line x1="40" y1="180" x2="530" y2="180" stroke="#b7c4cf" stroke-width="2"/>
+      <line x1="40" y1="180" x2="40" y2="20" stroke="#b7c4cf" stroke-width="2"/>
+      <path d="M 40 150 Q 60 40 85 60 Q 100 75 105 95 Q 112 120 125 140 L 140 150 Q 160 40 185 60 Q 200 75 205 95 Q 212 120 225 140 L 240 150 Q 260 40 285 60 Q 300 75 305 95 Q 312 120 325 140 L 340 150 Q 360 40 385 60 Q 400 75 405 95 Q 412 120 425 140 L 440 150 Q 460 40 485 60 Q 495 68 500 80" fill="none" stroke="#f25f5c" stroke-width="4" stroke-linecap="round"/>
+      <line x1="40" y1="100" x2="530" y2="100" stroke="#ffb627" stroke-width="3" stroke-dasharray="10 7"/>
+      <text x="70" y="34" font-size="15" font-weight="bold" fill="#f25f5c">systolic — the squeeze ⛰️</text>
+      <text x="250" y="172" font-size="15" font-weight="bold" fill="#0e7c7b">diastolic — the refill 🏞️</text>
+      <text x="440" y="94" font-size="15" font-weight="bold" fill="#c8871a">MAP — the average</text>
+    </svg>
+    <figcaption>Real pressure inside an artery, beat after beat. On the sickest NICU babies, this exact wave dances live on the monitor.</figcaption>
+  </figure>
+
+  <h2><span class="h-emoji">📏</span> How it's measured</h2>
+  <h3>The squeeze way (kids, adults, and most babies)</h3>
+  <p>You've seen this at the doctor's office: a <strong>cuff</strong> hugs your arm, inflates until it briefly squeezes the artery shut, then slowly lets go while sensing the moment blood starts pushing through again. NICU cuffs work the same way but are adorably tiny — small enough to fit around an arm or leg the width of a grown-up's finger.</p>
+  <h3>The inside way (the sickest NICU babies)</h3>
+  <p>A cuff only checks now and then. For a critically sick baby, doctors want the pressure <em>every second</em>. So they place an <strong>arterial line</strong> — a very thin, soft tube sitting inside an artery, connected to a pressure sensor. And here's the amazing NICU trick: a newborn's <strong>umbilical cord stump</strong> (the belly button-to-be!) still has open blood vessels for a few days after birth. Doctors can slide a soft tube into an umbilical artery — no needle poke through skin at all — and get a live, beat-by-beat pressure wave on the monitor, plus a painless way to take blood samples. The cord that supplied the baby before birth becomes its lifeline once more.</p>
+
+  <h2><span class="h-emoji">🔢</span> The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Who</th><th>Typical blood pressure</th><th>Notice…</th></tr>
+    <tr><td>Adult</td><td>Around 120/80</td><td>The classic “one-twenty over eighty.”</td></tr>
+    <tr><td>8-year-old</td><td>Around 100/65</td><td>Lower than an adult.</td></tr>
+    <tr><td>Full-term newborn</td><td>Around 60–80 / 40–50</td><td>Much lower — and totally healthy!</td></tr>
+    <tr><td>Preemie born at 26 weeks</td><td>Lower still — doctors often want the MAP to be at least about 26</td><td>See the rule of thumb below.</td></tr>
+  </table>
+  </div>
+  <p>Smaller body, shorter pipes, littler pump — so smaller pressures are normal. Nobody expects a 700-gram baby to run an adult's 120/80; that would be dangerously high <em>for them</em>.</p>
+  <p>For preemies, doctors use a famous rule of thumb: <strong>a preemie's MAP should usually be at least the baby's age-in-the-womb in weeks.</strong> Born at 26 weeks? Worry if MAP drops below about 26. Born at 30 weeks? Below 30. It's a handy rule — but here's the honest truth doctors admit to each other: it's rough, and experts still argue about exactly when a low number needs treating. Some babies with lowish numbers are actually delivering blood just fine. So good doctors treat <em>the baby</em>, not the number — they check: Is the baby making pee? (Kidneys only make urine when they're getting good blood flow — pee is proof of delivery!) Is the skin warm and quick to pink up? What does the blood's chemistry say?</p>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself: the cap refill test</div>
+    <p>NICU doctors do this exact test on babies. Press firmly on your fingernail until the skin under it turns white — you've squeezed the blood out. Let go and count: <em>one-mississippi, two-mississippi…</em> The pink should rush back in under about 2 seconds. That speedy refill means pressure is delivering blood all the way to your fingertips. When it's slow, doctors worry about circulation.</p>
+  </div>
+
+  <h2><span class="h-emoji">🩺</span> What the NICU team does</h2>
+  <div class="box box-team">
+    <div class="box-title">👩‍⚕️ When the pressure is too LOW (hypotension)</div>
+    <ul>
+      <li><strong>Check the whole baby first:</strong> pee output, warmth, cap refill, blood tests. A low number on a happy, well-delivering baby sometimes just gets watched — treating numbers instead of babies can do harm.</li>
+      <li><strong>Find the cause:</strong> Is the baby losing blood? Fighting an infection? Is a heart vessel stealing blood flow (the PDA — you'll meet it in Lesson 8)?</li>
+      <li><strong>Give volume:</strong> a careful dose of fluid into the vein — like adding water to the hose system.</li>
+      <li><strong>Squeeze medicines:</strong> drips like <strong>dopamine</strong> make the heart pump harder and hug the blood vessels tighter, raising the push. The dose is adjusted drop by drop while watching the arterial line.</li>
+    </ul>
+  </div>
+  <div class="box box-team">
+    <div class="box-title">👩‍⚕️ When the pressure is too HIGH (hypertension)</div>
+    <ul>
+      <li>Rarer in babies than in grown-ups — and usually a clue that something else is wrong, often with the <strong>kidneys</strong>, the organs that help set long-term pressure. The team hunts for the cause and can use gentle pressure-lowering medicines.</li>
+      <li>(For grown-ups it's the opposite story: high blood pressure is super common and slowly damages hearts, brains, and kidneys over years. That's why your grandparents get theirs checked!)</li>
+    </ul>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk</div>
+    <p>Why do NICU teams care so much about a number? Because of the <strong>brain</strong>. A very premature baby's brain contains a nursery of fragile, brand-new blood vessels that shatter easily. If pressure swings too low, parts of the brain can be starved; if flow surges back too hard, those fragile vessels can burst and bleed — a brain bleed (you'll learn how doctors look for them in Lesson 8). Bad bleeds can cause lifelong disability or death. Keeping a preemie's pressure <em>steady</em> — no crashes, no spikes — is genuinely brain-saving work, done quietly, hour after hour, by nurses watching a wavy line.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Systolic / diastolic</dt><dd>The pressure high point (during the squeeze) and low point (during the refill) of each heartbeat.</dd>
+      <dt>MAP (mean arterial pressure)</dt><dd>The average push. The NICU's favorite blood pressure number.</dd>
+      <dt>Hypotension / hypertension</dt><dd>Pressure too low / too high. “Hypo” = too little, “hyper” = too much — this pair unlocks half of medical vocabulary.</dd>
+      <dt>Arterial line (“art line”)</dt><dd>A thin tube inside an artery giving a live pressure wave and easy blood samples.</dd>
+      <dt>Umbilical catheter</dt><dd>A soft tube placed in a blood vessel of the umbilical cord stump — a painless door into a newborn's circulation, usable for a few days after birth.</dd>
+      <dt>Perfusion</dt><dd>Blood actually reaching and feeding the tissues. Pressure is the push; perfusion is the delivery.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.heart.org/en/health-topics/high-blood-pressure/the-facts-about-high-blood-pressure" target="_blank" rel="noopener">American Heart Association: Blood pressure basics</a></li>
+      <li><a href="https://www.marchofdimes.org/find-support/topics/neonatal-intensive-care-unit-nicu/common-nicu-equipment" target="_blank" rel="noopener">March of Dimes: Common NICU equipment</a></li>
+      <li>Next time anyone in your family gets their blood pressure taken, ask to watch — and see if you can name both numbers before the nurse does.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2><span class="h-emoji">🏅</span> Badge quiz: Blood Pressure</h2>
+    <p>Get 6 of 8 right to earn the 🎈 badge.</p>
+    <div id="quiz-root"></div>
+  </section>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+
+</main>
+
+<script>
+window.LESSON = {
+  id: "04",
+  title: "Blood Pressure",
+  home: "../index.html",
+  quiz: [
+    {
+      q: "What IS blood pressure?",
+      choices: [
+        "How much blood a person has",
+        "How hard the blood pushes against the walls of the arteries",
+        "How fast the heart beats",
+        "How red the blood is"
+      ],
+      answer: 1,
+      explain: "Blood pressure is the push of blood against the artery walls — like water pressure in a garden hose. That push is what drives deliveries of oxygen and fuel to every organ."
+    },
+    {
+      q: "In “64 over 38,” what is the 64?",
+      choices: [
+        "The baby's weight",
+        "The diastolic pressure, between beats",
+        "The systolic pressure — the peak push during a heartbeat squeeze",
+        "The number of heartbeats"
+      ],
+      answer: 2,
+      explain: "The top number is systolic: the pressure high point during the heart's squeeze. The bottom number (38) is diastolic: the low point while the heart refills. MAP is the average of the whole wave."
+    },
+    {
+      q: "Why is a newborn's healthy blood pressure so much LOWER than an adult's?",
+      choices: [
+        "Newborns are lazy",
+        "Smaller body, shorter pipes, smaller pump — smaller pressures do the job",
+        "Baby blood is thinner than water",
+        "It isn't — babies run 120/80 too"
+      ],
+      answer: 1,
+      explain: "A tiny body needs less push to reach everywhere. Around 60–80/40–50 is healthy for a term newborn, versus about 120/80 for an adult. Adult pressure would be dangerously HIGH for a baby."
+    },
+    {
+      q: "What's the famous rule of thumb for a preemie's minimum MAP?",
+      choices: [
+        "MAP should be at least 120",
+        "MAP should be at least about the baby's age-in-the-womb in weeks",
+        "MAP should equal the baby's weight in pounds",
+        "MAP doesn't matter for preemies"
+      ],
+      answer: 1,
+      explain: "Born at 26 weeks → doctors often worry below a MAP of about 26. But it's a rough rule, and good doctors also check pee output, warmth, and cap refill — they treat the baby, not just the number."
+    },
+    {
+      q: "How can doctors get a beat-by-beat blood pressure from a newborn without poking through the skin?",
+      choices: [
+        "By slipping a soft tube into a blood vessel of the umbilical cord stump",
+        "By squeezing the baby's foot",
+        "By weighing the baby very precisely",
+        "It's impossible"
+      ],
+      answer: 0,
+      explain: "For a few days after birth, the umbilical cord stump still has open vessels. A soft catheter placed there gives a live pressure wave and painless blood samples — the cord becomes a lifeline again."
+    },
+    {
+      q: "Why is making pee such good news for a sick baby?",
+      choices: [
+        "It means the diaper company gets paid",
+        "Kidneys only make urine when they're receiving good blood flow — pee is proof of delivery",
+        "Pee keeps the baby warm",
+        "It isn't good news"
+      ],
+      answer: 1,
+      explain: "Urine output is one of the best simple clues that blood pressure and circulation are doing their real job: delivering blood to the organs. NICU teams measure every diaper — seriously, they weigh them."
+    },
+    {
+      q: "A preemie's blood pressure is low and the baby looks poorly. Which is NOT one of the team's real tools?",
+      choices: [
+        "A careful dose of IV fluid",
+        "A medicine drip like dopamine to strengthen the pump and tighten the vessels",
+        "Hunting for a cause like infection or blood loss",
+        "A tiny cup of hot cocoa"
+      ],
+      answer: 3,
+      explain: "Fluids, squeeze-medicines like dopamine, and cause-hunting are the real toolkit. (Cocoa's day comes later in life.) And if the baby is delivering blood well despite a lowish number, sometimes the smartest move is careful watching."
+    },
+    {
+      q: "Why is steady blood pressure especially important for a very premature baby's BRAIN?",
+      choices: [
+        "The brain floats higher when pressure is low",
+        "Its brand-new fragile blood vessels can be starved by low flow or burst and bleed with surges",
+        "Low pressure makes babies forget their names",
+        "It only matters for the feet"
+      ],
+      answer: 1,
+      explain: "A preemie's brain is full of fragile, freshly built vessels. Crashes starve it; surges can rupture them and cause a brain bleed. Keeping pressure steady is quiet, hourly, brain-saving work."
+    }
+  ]
+};
+</script>
+<script src="../js/app.js"></script>
+</body>
+</html>

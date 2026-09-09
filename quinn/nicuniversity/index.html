@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICUniversity — Week 1 Timetable</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body data-page="home" data-root="" data-vocab="off" data-read="off">
+
+<header class="topbar">
+  <a class="brand" href="index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="transcript.html">Transcript</a>
+    <a href="../nicu_tutor/index.html">NICU Tutor (Year 0)</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap wrap-wide">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A university building with a NICU heart-monitor line across its banner, and a graduation cap on top">
+        <rect x="20" y="196" width="200" height="14" rx="7" fill="#0e7c7b"/>
+        <rect x="36" y="110" width="168" height="86" fill="#fffdf5" stroke="#e3d9c8" stroke-width="3"/>
+        <polygon points="30,110 120,58 210,110" fill="#f25f5c"/>
+        <rect x="48" y="126" width="14" height="70" fill="#dfe6ee"/>
+        <rect x="82" y="126" width="14" height="70" fill="#dfe6ee"/>
+        <rect x="144" y="126" width="14" height="70" fill="#dfe6ee"/>
+        <rect x="178" y="126" width="14" height="70" fill="#dfe6ee"/>
+        <rect x="106" y="150" width="28" height="46" rx="4" fill="#3f88c5"/>
+        <rect x="60" y="96" width="120" height="22" rx="6" fill="#2d3142"/>
+        <polyline points="70,107 92,107 98,98 106,116 112,102 118,107 170,107" fill="none" stroke="#5ef2a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="120,30 150,44 120,58 90,44" fill="#2d3142"/>
+        <rect x="118" y="44" width="4" height="26" fill="#2d3142"/>
+        <path d="M 150 44 L 150 62" stroke="#ffb627" stroke-width="3"/>
+        <circle cx="150" cy="66" r="4" fill="#ffb627"/>
+        <text x="20" y="40" font-size="16">✦</text>
+        <text x="212" y="60" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <h1>NICUniversity</h1>
+      <p class="lede">Welcome, first-year pre-med student. This is your <strong>timetable</strong> for Week 1. The schedule runs Monday 9:00 onward — lectures, recitations where you do the homework, and a final exam on Friday afternoon. Following it in order is the smart way through, but every class is open whenever you want it.</p>
+      <p id="next-banner" class="muted"></p>
+    </div>
+  </div>
+
+  <div class="badge-shelf">
+    <span class="shelf-label">🏆 Course badges:</span>
+    <span id="badge-shelf" style="display:contents"></span>
+    <span class="shelf-label" id="shelf-count" style="margin-left:auto"></span>
+  </div>
+
+  <div class="week-label">📅 Week 1 · Fall Semester</div>
+  <div class="timetable" id="timetable"></div>
+
+  <div class="box box-fun">
+    <div class="box-title">🗺️ How the week works</div>
+    <ul>
+      <li><strong>Lectures</strong> (about 20 minutes) teach something new and end with an 8-question quiz. 6 of 8 earns that course's badge.</li>
+      <li><strong>Recitations</strong> are where you do the printed homework assigned at the end of each lecture (about 20 minutes). Your professor grades it with the answer key and records the score.</li>
+      <li><strong>Friday</strong>: study hall, then the Week 1 Final Exam covering everything.</li>
+      <li>Every class has a <strong>🔊 read-aloud</strong> button in the margin of each paragraph, and <span style="border-bottom:2px dotted var(--violet)">dotted words</span> you can tap for a definition.</li>
+    </ul>
+  </div>
+
+  <p class="footer-note">
+    All of Week 1 is open. Week 2 is coming. Your NICU Tutor badges live over at <a href="../nicu_tutor/index.html">NICU Tutor</a>.
+    <br><br>
+    <button id="reset-progress" style="font:inherit;background:none;border:1px solid var(--line);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--ink-soft)">Reset all progress</button>
+  </p>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

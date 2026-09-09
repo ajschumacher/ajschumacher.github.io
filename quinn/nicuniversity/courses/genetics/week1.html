@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetics 101, Week 1: The Instruction Book</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+</head>
+<body class="c-genetics" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A DNA double helix twisting upward next to an open book labeled with the letters A, T, C, G">
+        <!-- helix -->
+        <path d="M 60 20 C 100 50, 100 80, 60 110 C 20 140, 20 170, 60 200" fill="none" stroke="#d64d8a" stroke-width="7" stroke-linecap="round"/>
+        <path d="M 100 20 C 60 50, 60 80, 100 110 C 140 140, 140 170, 100 200" fill="none" stroke="#7768ae" stroke-width="7" stroke-linecap="round"/>
+        <g stroke-width="4" stroke-linecap="round">
+          <line x1="68" y1="38" x2="92" y2="38" stroke="#ffb627"/>
+          <line x1="76" y1="56" x2="84" y2="56" stroke="#2a9d3f"/>
+          <line x1="66" y1="92" x2="94" y2="92" stroke="#3f88c5"/>
+          <line x1="66" y1="128" x2="94" y2="128" stroke="#f25f5c"/>
+          <line x1="76" y1="164" x2="84" y2="164" stroke="#ffb627"/>
+          <line x1="68" y1="182" x2="92" y2="182" stroke="#2a9d3f"/>
+        </g>
+        <!-- book -->
+        <path d="M 140 70 L 220 60 L 220 190 L 140 200 Z" fill="#fffdf5" stroke="#8a5a33" stroke-width="3"/>
+        <path d="M 140 70 L 140 200" stroke="#8a5a33" stroke-width="6"/>
+        <g font-family="monospace" font-size="13" font-weight="bold">
+          <text x="152" y="98" fill="#d64d8a">A T C G</text>
+          <text x="152" y="118" fill="#7768ae">G C A T</text>
+          <text x="152" y="138" fill="#3f88c5">T T A C</text>
+          <text x="152" y="158" fill="#2a9d3f">C G G A</text>
+          <text x="152" y="178" fill="#f25f5c">A A T G</text>
+        </g>
+        <text x="20" y="212" font-size="14">✦</text><text x="212" y="36" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Genetics 101 · Week 1 · Wednesday 1:00</p>
+      <h1>The Instruction Book</h1>
+      <p class="lede">On Monday you learned that every cell has a library — the nucleus. Today we open the book inside. It's three billion letters long, written in an alphabet of four, and you got half of it from each parent. It explains why twins exist, why hemoglobin is red, and why so many twins end up in the NICU.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from Monday's Biology, one from this morning's Statistics.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-genetics-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. Three big ideas coming.</p>
+    </div>
+  </div>
+
+  <h2>📖 A book written in four letters</h2>
+  <p>Inside the nucleus of almost every cell in your body is a set of very long, very thin molecules called <strong>DNA</strong>. Stretched out, the DNA in one cell would be about two meters long — taller than your dad — and it's coiled up in a space far too small to see. DNA is an instruction book, and its alphabet has only four letters, which are actually four kinds of chemical: <strong>A, T, C, and G</strong>. Your book is about <strong>three billion letters</strong> long. If you read one letter a second, day and night, it would take you about a hundred years.</p>
+  <p>The book is organized like any big reference set:</p>
+  <ul>
+    <li>The whole thing is split into <strong>46 volumes</strong>, called <strong>chromosomes</strong>. They come in <strong>23 pairs</strong> — and here's the family part: one volume of each pair came from your mother, and the other from your father. That's why you have some of each of them in you.</li>
+    <li>Each volume contains many <strong>genes</strong>. A gene is one <em>recipe</em>: the instructions for building one <strong>protein</strong>. Humans have about <strong>20,000</strong> genes.</li>
+    <li>A <strong>protein</strong> is a working molecule — a tiny machine or building material. You already know one: <strong>hemoglobin</strong>, the oxygen carrier that makes blood red, is a protein, built exactly as its gene describes. So is surfactant. So are the enzymes in your mitochondria that burn sugar. The recipes in the book are for proteins, and proteins do nearly everything.</li>
+  </ul>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>DNA = the instruction book, in 4 letters (A, T, C, G), 46 volumes (chromosomes) in 23 pairs — one of each pair from each parent. A gene = one recipe for one protein.</p>
+    </div>
+  </div>
+
+  <h2>🔤 How a cell reads the book</h2>
+  <p>Four letters doesn't sound like much of an alphabet. The trick is that the cell reads them in <strong>three-letter words</strong>. With four choices for each of three positions, that's 4 × 4 × 4 = <strong>64</strong> possible words — plenty. Each three-letter word stands for one building block of a protein (there are 20 of those), and a gene is a long sentence of them: “start — block, block, block, block… — stop.” The cell's machinery reads the sentence and snaps the blocks together in that exact order, and out pops the protein.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A strand of DNA letters grouped in threes, each three-letter word pointing to one protein building block, which snap together into a chain">
+      <g font-family="monospace" font-size="20" font-weight="bold" text-anchor="middle">
+        <rect x="40" y="30" width="80" height="36" rx="8" fill="#fbe4ef"/><text x="80" y="56" fill="#d64d8a">A T G</text>
+        <rect x="140" y="30" width="80" height="36" rx="8" fill="#ece8f6"/><text x="180" y="56" fill="#7768ae">C C A</text>
+        <rect x="240" y="30" width="80" height="36" rx="8" fill="#e3eff9"/><text x="280" y="56" fill="#3f88c5">G G T</text>
+        <rect x="340" y="30" width="80" height="36" rx="8" fill="#e2f4e5"/><text x="380" y="56" fill="#2a9d3f">T T A</text>
+        <rect x="440" y="30" width="80" height="36" rx="8" fill="#fff3d6"/><text x="480" y="56" fill="#c8871a">G A C</text>
+      </g>
+      <g stroke="#565d75" stroke-width="2"><line x1="80" y1="70" x2="80" y2="104"/><line x1="180" y1="70" x2="180" y2="104"/><line x1="280" y1="70" x2="280" y2="104"/><line x1="380" y1="70" x2="380" y2="104"/><line x1="480" y1="70" x2="480" y2="104"/></g>
+      <g><circle cx="80" cy="128" r="22" fill="#d64d8a"/><circle cx="180" cy="128" r="22" fill="#7768ae"/><circle cx="280" cy="128" r="22" fill="#3f88c5"/><circle cx="380" cy="128" r="22" fill="#2a9d3f"/><circle cx="480" cy="128" r="22" fill="#c8871a"/></g>
+      <g stroke="#2d3142" stroke-width="5"><line x1="102" y1="128" x2="158" y2="128"/><line x1="202" y1="128" x2="258" y2="128"/><line x1="302" y1="128" x2="358" y2="128"/><line x1="402" y1="128" x2="458" y2="128"/></g>
+      <text x="300" y="20" font-size="13" fill="#565d75" text-anchor="middle">a gene: DNA letters, read three at a time</text>
+      <text x="300" y="176" font-size="13" fill="#565d75" text-anchor="middle">each word = one building block; snapped together in order = a protein</text>
+    </svg>
+    <figcaption>Recipe to dish: three-letter words choose building blocks; the blocks in order make a protein like hemoglobin.</figcaption>
+  </figure>
+
+  <p>Every cell in your body has the <em>same</em> book. So why is a skin cell so different from a nerve cell or a red blood cell? Because each kind of cell reads <em>different chapters</em>. A red blood cell going to work reads the hemoglobin recipe over and over — 270 million copies — and ignores the chapters about muscle. Same library, different books checked out.</p>
+  <p>And sometimes there's a typo. A single wrong letter in three billion is called a <strong>mutation</strong>. Most typos land in unimportant places and do nothing; a few change a recipe. One famous typo in the hemoglobin gene bends the protein into a sickle shape — sickle cell disease, which newborns are screened for in the first days of life. You'll meet that screening test (a heel prick and a few drops of blood) next week.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Cells read DNA 3 letters at a time (4 × 4 × 4 = 64 words) to build proteins. Every cell has the whole book; each cell type reads different chapters.</p>
+    </div>
+  </div>
+
+  <h2>👯 Twins: one book or two?</h2>
+  <p>A baby begins when one egg cell and one sperm cell join, each carrying 23 chromosomes — half a book from each parent — making one cell with 46. Then the doubling begins (1, 2, 4, 8…). Twins can happen two ways:</p>
+  <ul>
+    <li><strong>Identical twins:</strong> in the first days, that one ball of cells splits into two separate balls. Both keep growing. Since they came from the same cell, they have the <em>same instruction book</em> — same DNA, same eye color, same everything the book controls (which is not everything — experiences write on you too). Identical twins are always the same sex.</li>
+    <li><strong>Fraternal twins:</strong> the mother releases two eggs at once, and each is fertilized separately. These are ordinary siblings who happened to share a womb — different books, like any brother and sister. They can be a boy and a girl.</li>
+  </ul>
+  <p>Now the NICU connection. Two babies sharing one womb run out of room and often out of supplies. Twins are born early far more often than single babies — roughly <strong>6 out of 10 sets of twins are preterm</strong> — and they tend to be smaller. Triplets even more so. Walk through any NICU and you'll find twins in it. Every lesson in NICU Tutor applies to them double: two isolettes, two monitors, two feeding schedules, and parents who learned to hold two babies at once.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>Identical twins = one egg split in two (same DNA). Fraternal = two eggs (siblings). Twins are usually born early and small — so they fill NICU beds.</p>
+    </div>
+  </div>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself</div>
+    <p>Make up your own three-letter code: pick five three-letter DNA “words” (using only A, T, C, G) and assign each a letter of the alphabet. Write a short message in code and hand it to a grown-up with the code table. Then ask them: how many possible three-letter words are there? (4 × 4 × 4 — you know the answer.)</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Compare</th></tr>
+    <tr><td>Letters in the DNA alphabet</td><td>4</td><td>A, T, C, G</td></tr>
+    <tr><td>Letters in one human book</td><td>About 3 billion</td><td>About a hundred years of reading, one letter per second</td></tr>
+    <tr><td>Genes (recipes)</td><td>About 20,000</td><td>Surprisingly few — a rice plant has more!</td></tr>
+    <tr><td>Chromosomes (volumes)</td><td>46, in 23 pairs</td><td>23 from each parent</td></tr>
+    <tr><td>How alike two people's books are</td><td>About 99.9%</td><td>All human differences live in that last 0.1%</td></tr>
+    <tr><td>Twins born preterm</td><td>About 6 in 10</td><td>Compared with about 1 in 10 for single babies</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk: Photo 51, and books that can't be fixed</div>
+    <p>Nobody knew what DNA looked like until 1952, when a chemist named <strong>Rosalind Franklin</strong>, working in London, aimed X-rays at a DNA fiber and captured an image now called <strong>Photo 51</strong>. Its X-shaped pattern was the fingerprint of a twisting ladder — a <em>double helix</em>. Two other scientists, James Watson and Francis Crick, saw her photograph (without her knowing) and used it to build the famous model of DNA in 1953. They won the Nobel Prize in 1962. Franklin had died of cancer in 1958, at 37, and prizes aren't given to the dead. For decades her part was barely mentioned. Today her name is on institutes and a Mars rover. Science is done by people, and people don't always share credit fairly — future scientists should know that, and do better.</p>
+    <p>And a NICU truth: some babies are born with a change in the book that no machine can fix — an extra copy of volume 21 (Down syndrome), or a typo in a gene the body badly needs. NICU teams care for these babies with everything they have, and a special kind of doctor called a <em>genetic counselor</em> sits with the families to explain what the book says and what it doesn't. Genetics can't rewrite the book yet — though scientists are beginning to learn how. It can tell the truth about it, and truth, gently told, is care too.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>DNA</dt><dd>The instruction-book molecule, written in A, T, C, G.</dd>
+      <dt>Gene</dt><dd>One recipe: instructions for one protein. About 20,000 of them.</dd>
+      <dt>Chromosome</dt><dd>One volume of the book. 46 in all, in 23 pairs.</dd>
+      <dt>Protein</dt><dd>A working molecule built from a gene — hemoglobin, surfactant, enzymes.</dd>
+      <dt>Mutation</dt><dd>A typo in the code. Usually harmless; occasionally serious.</dd>
+      <dt>Identical / fraternal twins</dt><dd>One egg split (same DNA) / two eggs (siblings).</dd>
+      <dt>Double helix</dt><dd>DNA's twisted-ladder shape, revealed by Franklin's Photo 51.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet" target="_blank" rel="noopener">National Human Genome Research Institute: DNA fact sheet</a></li>
+      <li><a href="https://www.sciencehistory.org/education/scientific-biographies/james-watson-francis-crick-maurice-wilkins-and-rosalind-franklin/" target="_blank" rel="noopener">Science History Institute: Franklin, Watson, Crick, and Wilkins</a></li>
+      <li>Ask a grown-up to help you find “Photo 51” online — see the X for yourself.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Genetics 101, Week 1</h2>
+    <p>Eight questions. Six right earns the 🧬 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: The Instruction Book</div>
+    <p>Due at recitation, Thursday 9:45. Print it now: <a href="../../print/hw-genetics-w1.pdf" target="_blank" rel="noopener">Homework 1: The Instruction Book (PDF)</a>. A decoding puzzle, chromosome counting, twin sorting, your family tree, and why twins fill NICU beds. Details on the <a href="../../recitations/week1/genetics.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "wed-genetics",
+  quizId: "genetics-w1",
+  course: "genetics",
+  printQuiz: "../../print/quiz-genetics-w1.pdf",
+  warmup: [
+    { q: "From Biology: which part of the cell is the library that holds the instruction book?", a: "The nucleus. (Red blood cells famously throw theirs out to make room for hemoglobin.)" },
+    { q: "From Statistics: heart rates 120, 140, 160 — what's the mean?", a: "(120 + 140 + 160) ÷ 3 = 420 ÷ 3 = 140." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

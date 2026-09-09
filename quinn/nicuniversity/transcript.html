@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transcript — NICUniversity</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body data-page="transcript" data-root="" data-vocab="off" data-read="off">
+
+<header class="topbar">
+  <a class="brand" href="index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="index.html">Timetable</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap wrap-wide">
+  <h1>📜 Official Transcript</h1>
+  <p class="lede">Your record at NICUniversity: each course's quiz, the badge you earned for it, and your homework stamp. Registrar's Office, Week 1.</p>
+
+  <div class="badge-shelf">
+    <span class="shelf-label">🏆 Course badges:</span>
+    <span id="badge-shelf" style="display:contents"></span>
+    <span class="shelf-label" id="shelf-count" style="margin-left:auto"></span>
+  </div>
+
+  <div class="table-scroll">
+    <table class="numbers transcript">
+      <thead>
+        <tr><th>Course</th><th>Lecture quiz</th><th>Badge</th><th>Homework</th><th>Stamp</th></tr>
+      </thead>
+      <tbody id="transcript-root"></tbody>
+    </table>
+  </div>
+
+  <p class="footer-note">Quiz scores show your best attempt. Homework points are entered by your professor in Professor mode after grading with the answer key.</p>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

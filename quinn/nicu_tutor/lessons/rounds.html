@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Challenge: Your NICU Rounds — NICU Tutor</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐣</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🐣 NICU Tutor</a>
+  <nav>
+    <a href="../index.html">All lessons</a>
+    <a href="../glossary.html">Glossary</a>
+    <a href="../sources.html">Sources</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A young doctor with a stethoscope and clipboard, ready for rounds">
+        <circle cx="120" cy="86" r="46" fill="#f6c390"/>
+        <path d="M 78 74 Q 84 30 120 30 Q 156 30 162 74 Q 140 62 120 64 Q 100 62 78 74 Z" fill="#6b4a2f"/>
+        <circle cx="104" cy="88" r="4" fill="#2d3142"/>
+        <circle cx="136" cy="88" r="4" fill="#2d3142"/>
+        <path d="M 108 106 Q 120 116 132 106" fill="none" stroke="#2d3142" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="96" cy="100" r="7" fill="#f7a8a0" opacity="0.6"/>
+        <circle cx="144" cy="100" r="7" fill="#f7a8a0" opacity="0.6"/>
+        <!-- coat -->
+        <path d="M 66 214 Q 66 148 120 144 Q 174 148 174 214 Z" fill="#fffdf5" stroke="#e3d9c8" stroke-width="3"/>
+        <path d="M 120 144 L 110 214 M 120 144 L 130 214" stroke="#e3d9c8" stroke-width="3"/>
+        <!-- stethoscope -->
+        <path d="M 100 150 Q 96 186 120 188 Q 144 186 140 150" fill="none" stroke="#0e7c7b" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="120" cy="192" r="9" fill="#0e7c7b"/>
+        <circle cx="120" cy="192" r="4" fill="#5ef2a0"/>
+        <!-- clipboard -->
+        <rect x="152" y="168" width="40" height="50" rx="6" fill="#ffb627" transform="rotate(8 172 193)"/>
+        <rect x="158" y="176" width="26" height="4" rx="2" fill="#fff" transform="rotate(8 171 178)"/>
+        <rect x="159" y="186" width="26" height="4" rx="2" fill="#fff" transform="rotate(8 172 188)"/>
+        <text x="26" y="60" font-size="16">✦</text>
+        <text x="206" y="46" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Final challenge · Everything, everywhere, all at once</p>
+      <h1>Your NICU Rounds</h1>
+      <p class="lede">Every morning, the NICU team walks bed to bed, checking every baby and making the day's plan. That walk is called <strong>rounds</strong> — and this morning, <strong>you're the doctor</strong>. Twelve situations from every lesson. Get 9 right to earn the final badge. Good luck, doctor. 🩺</p>
+    </div>
+  </div>
+
+  <div class="box box-fun">
+    <div class="box-title">📋 Before you start</div>
+    <p>These questions mix everything from all eight lessons — machines, body science, and judgment calls. If one stumps you, that's just a signpost back to the lesson to reread. Real doctors look things up constantly; knowing <em>where</em> to look is half the job.</p>
+  </div>
+
+  <section class="quiz-zone">
+    <h2><span class="h-emoji">🩺</span> Morning rounds: 12 babies, 12 decisions</h2>
+    <div id="quiz-root"></div>
+  </section>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+
+</main>
+
+<script>
+window.LESSON = {
+  id: "rounds",
+  title: "Your NICU Rounds",
+  home: "../index.html",
+  quiz: [
+    {
+      q: "Bed 1: A baby born at 26 weeks keeps drifting cold even in a normal crib. Why can't this baby hold its own temperature?",
+      choices: [
+        "The baby doesn't try hard enough",
+        "Thin skin, no insulating fat, no shivering, and almost no brown fat — plus lots of skin surface for such a tiny body",
+        "The hospital is too big",
+        "Babies are cold-blooded like lizards"
+      ],
+      answer: 1,
+      explain: "Preemies are missing every warmth tool at once, and their high skin-to-body ratio leaks heat fast. Isolette with servo control, please — and kangaroo care with mom this afternoon."
+    },
+    {
+      q: "Bed 2: The pulse oximeter on a 27-weeker getting extra oxygen reads a steady 100%. Your move?",
+      choices: [
+        "Perfect — leave everything as is",
+        "Turn the oxygen UP to be safe",
+        "Turn the extra oxygen DOWN a bit — sitting at 100% on oxygen risks the baby's eyes and lungs",
+        "Remove the probe, it must be broken"
+      ],
+      answer: 2,
+      explain: "For a preemie on oxygen, the target is roughly 90–95%. Parked at 100%, you can't tell how much extra oxygen the blood is soaking in — and too much damages developing eyes (ROP) and lungs. Wean it down."
+    },
+    {
+      q: "Bed 3: The monitor alarms — flat breathing line for 20 seconds, heart rate dipping to 80. The nurse rubs the baby's back and everything recovers. What just happened?",
+      choices: [
+        "A nightmare",
+        "A classic A-and-B spell: apnea of prematurity with bradycardia — the immature brain forgot to breathe",
+        "The monitor was unplugged",
+        "The baby was holding its breath on purpose"
+      ],
+      answer: 1,
+      explain: "Textbook A's and B's. Gentle stimulation restarts breathing; daily caffeine keeps the breathing center alert; and the spells fade as the brain matures toward the due date."
+    },
+    {
+      q: "Bed 4: A 25-weeker's MAP is reading 22 (below the born-at-25-weeks rule of thumb). Before treating, what do you check FIRST?",
+      choices: [
+        "The baby itself: pee output, warmth, cap refill, blood tests — is blood actually being delivered?",
+        "Whether the number is divisible by two",
+        "The weather",
+        "Nothing — always start dopamine immediately"
+      ],
+      answer: 0,
+      explain: "Treat babies, not numbers. Some babies with lowish pressure are delivering blood just fine, and overtreating has harms. If the baby shows poor delivery, then fluids, squeeze-medicines, and cause-hunting."
+    },
+    {
+      q: "Bed 5: A baby born at 29 weeks is grunting, flaring its nostrils, with skin sucking in between the ribs. Chest X-ray shows hazy lungs. Diagnosis and treatment?",
+      choices: [
+        "A cold — wait it out",
+        "RDS from missing surfactant — support with CPAP, and give surfactant down a tube if needed",
+        "Hiccups — apply juice",
+        "Too much exercise"
+      ],
+      answer: 1,
+      explain: "Grunting, flaring, retractions, hazy X-ray: sticky surfactant-poor lungs collapsing with every breath. CPAP keeps the balloons partly inflated; surfactant liquid fixes the stickiness itself."
+    },
+    {
+      q: "Bed 6: Why is the 26-weeker in bed 6 fed 2 mL of milk through a nose tube instead of a bottle?",
+      choices: [
+        "Bottles are sold out",
+        "The suck-swallow-breathe rhythm isn't wired until about 32–34 weeks — bottle milk could end up in the lungs",
+        "The baby prefers tubes",
+        "Nurses find bottles boring"
+      ],
+      answer: 1,
+      explain: "Feeding is a brain stunt that isn't ready yet, so gavage feeding skips the risky part. Tiny careful feeds also protect the immature gut while it wakes up."
+    },
+    {
+      q: "Bed 6, continued: The nurse notices this baby's belly is newly swollen and the last feed never emptied from the stomach. Why does everyone move fast?",
+      choices: [
+        "Swollen bellies are good luck",
+        "These can be early signs of NEC, the dangerous gut disease of preemies — stop feeds, image the belly, act quickly",
+        "The baby is just chubby",
+        "It means the baby is ready for pizza"
+      ],
+      answer: 1,
+      explain: "A distended belly and feeds not moving are classic NEC warnings. Feeds stop, the gut rests, X-rays look for gas in the gut wall, antibiotics start — because caught early, outcomes are far better."
+    },
+    {
+      q: "Bed 7: A 3-day-old term baby is noticeably yellow. The skin meter reads high, blood test confirms. What's the treatment?",
+      choices: [
+        "Blue-light phototherapy (plus plenty of milk) — light twists bilirubin into flushable shapes",
+        "A warm bath to wash the yellow off",
+        "Waiting a month",
+        "Yellow paint to match"
+      ],
+      answer: 0,
+      explain: "Bili lights: blue light bends bilirubin into water-friendly forms (like lumirubin) the body flushes out without the slow newborn liver. Feeding keeps the exit route moving. Recheck to watch the level fall."
+    },
+    {
+      q: "Bed 8: A baby was born last night at 27 weeks. Nothing seems wrong neurologically. Does this baby still need a head ultrasound this week?",
+      choices: [
+        "No — no symptoms, no scan",
+        "Yes — IVH brain bleeds in very early preemies usually happen in the first days and are often silent; screening through the fontanelle is routine",
+        "Only if the parents insist",
+        "Head ultrasounds are for adults"
+      ],
+      answer: 1,
+      explain: "Every baby born before about 30–32 weeks gets a screening head ultrasound in week one. The soft spot is the window; silent bleeds are exactly why you look without waiting for symptoms."
+    },
+    {
+      q: "Bed 9: The echo on a tiny preemie shows the ductus arteriosus still wide open (a PDA), flooding the lungs. Which is NOT one of your real options?",
+      choices: [
+        "Watch and wait — many close on their own",
+        "A medicine like ibuprofen to nudge the vessel shut",
+        "A tiny plug threaded in through a leg vein",
+        "Asking the baby to concentrate very hard on closing it"
+      ],
+      answer: 3,
+      explain: "Patience, medicine, or a catheter-delivered plug — those are the real tools. The detour vessel was supposed to seal after birth on its own; in preemies it often needs a push."
+    },
+    {
+      q: "Rounds pop-quiz from your attending: Why does the NICU target 90–95% oxygen saturation for preemies instead of 100%?",
+      choices: [
+        "The machines get tired above 95",
+        "Because huge studies showed too much oxygen damages eyes and lungs, while too little costs lives — 90–95% balances both dangers",
+        "Insurance rules",
+        "Round numbers are unlucky"
+      ],
+      answer: 1,
+      explain: "The Goldilocks lesson: thousands of babies in careful trials taught medicine that even oxygen has a right dose. That's evidence-based medicine — the NICU's core superpower."
+    },
+    {
+      q: "Last stop: A mother is doing kangaroo care, her 30-weeker asleep on her chest, monitor numbers rock-steady. A visitor asks why 'just cuddling' is allowed in intensive care. Your best answer?",
+      choices: [
+        "It's not allowed — sound the alarm",
+        "Skin-to-skin contact is real treatment: it holds the baby's temperature, steadies heart rate and breathing, and supports feeding and bonding",
+        "The nurses needed a break",
+        "It's for photos only"
+      ],
+      answer: 1,
+      explain: "Kangaroo care is evidence-backed medicine that parents provide — warmth, stability, milk supply, bonding. The NICU's most advanced technology shares the room with its oldest one: a parent."
+    }
+  ]
+};
+</script>
+<script src="../js/app.js"></script>
+</body>
+</html>

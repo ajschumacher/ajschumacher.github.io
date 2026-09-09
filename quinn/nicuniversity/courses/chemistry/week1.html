@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry 101, Week 1: The Chemistry of a Breath</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
+</head>
+<body class="c-chemistry" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Molecules of oxygen, carbon dioxide and water floating above a pair of lungs">
+        <!-- lungs -->
+        <path d="M 120 100 L 120 160" stroke="#c0392b" stroke-width="8" stroke-linecap="round"/>
+        <path d="M 116 130 Q 70 120 62 170 Q 60 205 96 204 Q 116 200 116 170 Z" fill="#f4a3a3"/>
+        <path d="M 124 130 Q 170 120 178 170 Q 180 205 144 204 Q 124 200 124 170 Z" fill="#f4a3a3"/>
+        <!-- O2 -->
+        <circle cx="52" cy="46" r="14" fill="#f25f5c"/><circle cx="76" cy="46" r="14" fill="#f25f5c"/>
+        <text x="64" y="80" font-size="12" text-anchor="middle" fill="#2d3142" font-weight="bold">O₂</text>
+        <!-- CO2 -->
+        <circle cx="150" cy="40" r="14" fill="#f25f5c"/><circle cx="176" cy="40" r="13" fill="#2d3142"/><circle cx="202" cy="40" r="14" fill="#f25f5c"/>
+        <text x="176" y="74" font-size="12" text-anchor="middle" fill="#2d3142" font-weight="bold">CO₂</text>
+        <!-- H2O -->
+        <circle cx="120" cy="96" r="0"/>
+        <circle cx="106" cy="20" r="8" fill="#9cc4dd"/><circle cx="120" cy="30" r="12" fill="#f25f5c"/><circle cx="134" cy="20" r="8" fill="#9cc4dd"/>
+        <text x="120" y="12" font-size="10" text-anchor="middle" fill="#2d3142" font-weight="bold">H₂O</text>
+        <!-- arrows -->
+        <path d="M 64 92 Q 80 110 100 122" fill="none" stroke="#3f88c5" stroke-width="3" stroke-linecap="round" marker-end="url(#a)"/>
+        <path d="M 140 122 Q 160 108 176 88" fill="none" stroke="#7768ae" stroke-width="3" stroke-linecap="round" marker-end="url(#a)"/>
+        <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#565d75"/></marker></defs>
+        <text x="22" y="150" font-size="14">✦</text><text x="212" y="130" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Chemistry 101 · Week 1 · Monday 10:30</p>
+      <h1>The Chemistry of a Breath</h1>
+      <p class="lede">Take a breath. In that one second, about a sextillion tiny particles poured into your lungs, a few of them were traded for others, and the rest went right back out. Chemistry is the science of those particles — and a NICU is, among other things, a very careful chemistry set.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">Two questions from NICU Tutor. Think first, then peek.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-chemistry-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. Three big ideas are coming — watch for the dashed boxes.</p>
+    </div>
+  </div>
+
+  <h2>⚛️ Everything is made of atoms</h2>
+  <p>Here is the biggest idea in all of chemistry, and it fits in one sentence: <strong>everything you can touch is made of atoms.</strong> Your desk, the air, a baby's fingernail, the ocean, you. Atoms are almost unimaginably small — a single drop of water contains more atoms than there are stars in our entire galaxy. You can't see one with any ordinary microscope. And yet everything is built from them, the way every LEGO castle is built from bricks.</p>
+  <p>How many kinds of brick are there? About 118 — each kind is called an <strong>element</strong>. Gold is an element (all its atoms are gold atoms). So are oxygen, carbon, hydrogen, nitrogen, iron, and calcium. Here's the astonishing part: living things are built mostly from just <em>four</em> elements — <strong>carbon, hydrogen, oxygen, and nitrogen</strong> — with a sprinkle of a dozen others. Four kinds of brick, and they build every baby ever born.</p>
+  <p>Chemists give each element a short symbol so they don't have to keep writing the whole name: <strong>H</strong> for hydrogen, <strong>O</strong> for oxygen, <strong>C</strong> for carbon, <strong>N</strong> for nitrogen. (Some symbols look odd because they come from Latin — iron is <strong>Fe</strong>, from <em>ferrum</em>. That's why doctors say a baby is “iron-deficient” and write “Fe.”)</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>Everything is made of atoms. There are about 118 kinds (elements); living things use mostly C, H, O, and N.</p>
+    </div>
+  </div>
+
+  <h2>🤝 Molecules: atoms holding hands</h2>
+  <p>Atoms almost never travel alone. They grab onto each other in specific groups called <strong>molecules</strong>, and a molecule can behave completely differently from the atoms inside it. Two hydrogens plus one oxygen makes water — a liquid you can drink, made from two gases you can't.</p>
+  <p>Chemists write a molecule's recipe as a <strong>chemical formula</strong>. The rule is simple: write each element's symbol, and if there's more than one of that atom, write how many as a little low number — a <strong>subscript</strong> — right after it. No number means one.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four molecules drawn as colored balls: oxygen O2, nitrogen N2, carbon dioxide CO2, water H2O, and glucose">
+      <!-- O2 -->
+      <circle cx="60" cy="60" r="22" fill="#f25f5c"/><circle cx="100" cy="60" r="22" fill="#f25f5c"/>
+      <text x="80" y="112" font-size="20" font-weight="bold" text-anchor="middle" fill="#2d3142">O₂</text>
+      <text x="80" y="134" font-size="13" text-anchor="middle" fill="#565d75">oxygen · 2 atoms</text>
+      <!-- N2 -->
+      <circle cx="200" cy="60" r="22" fill="#3f88c5"/><circle cx="240" cy="60" r="22" fill="#3f88c5"/>
+      <text x="220" y="112" font-size="20" font-weight="bold" text-anchor="middle" fill="#2d3142">N₂</text>
+      <text x="220" y="134" font-size="13" text-anchor="middle" fill="#565d75">nitrogen · 2 atoms</text>
+      <!-- CO2 -->
+      <circle cx="330" cy="60" r="22" fill="#f25f5c"/><circle cx="372" cy="60" r="20" fill="#2d3142"/><circle cx="414" cy="60" r="22" fill="#f25f5c"/>
+      <text x="372" y="112" font-size="20" font-weight="bold" text-anchor="middle" fill="#2d3142">CO₂</text>
+      <text x="372" y="134" font-size="13" text-anchor="middle" fill="#565d75">carbon dioxide · 3 atoms</text>
+      <!-- H2O -->
+      <circle cx="500" cy="42" r="14" fill="#9cc4dd"/><circle cx="522" cy="66" r="22" fill="#f25f5c"/><circle cx="544" cy="42" r="14" fill="#9cc4dd"/>
+      <text x="522" y="112" font-size="20" font-weight="bold" text-anchor="middle" fill="#2d3142">H₂O</text>
+      <text x="522" y="134" font-size="13" text-anchor="middle" fill="#565d75">water · 3 atoms</text>
+      <!-- legend -->
+      <circle cx="150" cy="185" r="9" fill="#f25f5c"/><text x="166" y="190" font-size="14" fill="#2d3142">oxygen (O)</text>
+      <circle cx="270" cy="185" r="9" fill="#2d3142"/><text x="286" y="190" font-size="14" fill="#2d3142">carbon (C)</text>
+      <circle cx="380" cy="185" r="9" fill="#9cc4dd"/><text x="396" y="190" font-size="14" fill="#2d3142">hydrogen (H)</text>
+      <circle cx="500" cy="185" r="9" fill="#3f88c5"/><text x="516" y="190" font-size="14" fill="#2d3142">nitrogen (N)</text>
+    </svg>
+    <figcaption>The four molecules in every breath. The subscript counts the atom right before it: in CO₂ the 2 belongs to O, so there are two oxygens and one carbon.</figcaption>
+  </figure>
+
+  <p>Now a bigger one. Sugar — the kind your cells burn for energy — is <strong>glucose</strong>: C₆H₁₂O₆. Read the recipe: 6 carbons, 12 hydrogens, 6 oxygens. Total atoms? 6 + 12 + 6 = <strong>24</strong>. One sugar molecule is a little sculpture of 24 atoms, and NICU babies get it dripped straight into their veins when they're too small to eat.</p>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself: count the atoms</div>
+    <p>Cover the answers and count: How many atoms in <strong>NH₃</strong> (ammonia)? In <strong>C₂H₆O</strong> (rubbing alcohol — the smell of every hospital)? In <strong>CaCO₃</strong> (chalk, and also seashells)? <em>Answers: 4, 9, 5.</em> Trick to check yourself: add up every plain letter as 1 and every subscript as its number.</p>
+  </div>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>A formula is a molecule's recipe. The little number (subscript) counts the atom just before it. No number = 1.</p>
+    </div>
+  </div>
+
+  <h2>🌬️ What's actually in the air</h2>
+  <p>People say “we breathe oxygen,” but that's only a fifth true. Air is a mixture of gases, and chemists describe mixtures with <strong>percent</strong> — out of every 100 particles, how many are which kind:</p>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Gas</th><th>Formula</th><th>Share of the air you breathe in</th><th>Share of the air you breathe out</th></tr>
+    <tr><td>Nitrogen</td><td>N₂</td><td>about 78%</td><td>about 78% (unchanged)</td></tr>
+    <tr><td>Oxygen</td><td>O₂</td><td>about 21%</td><td>about 16% — some was used</td></tr>
+    <tr><td>Argon &amp; others</td><td>Ar…</td><td>about 1%</td><td>about 1%</td></tr>
+    <tr><td>Carbon dioxide</td><td>CO₂</td><td>about 0.04% (a trace)</td><td>about 4% — a hundred times more!</td></tr>
+    <tr><td>Water vapor</td><td>H₂O</td><td>varies</td><td>lots — that's why you can fog a window</td></tr>
+  </table>
+  </div>
+  <p>So most of every breath is <strong>nitrogen</strong>, and your body does nothing with it — in and right back out, like a passenger who never gets off the bus. The <strong>oxygen</strong> is the cargo that matters: your body keeps about a quarter of what comes in. And look at the last two rows: you breathe out a hundred times more carbon dioxide than you breathe in, plus a cloud of water. Your body is a little factory that turns O₂ into CO₂ and H₂O — and Biology 101 will show you exactly where, this afternoon.</p>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: “21%”</div>
+    <p>Remember the pulse oximeter lesson, where NICU teams turn a baby's oxygen up and down? The machine that mixes it is called a <em>blender</em>, and its dial runs from <strong>21%</strong> to <strong>100%</strong>. Now you know why it starts at 21: that's plain room air — the blender adds extra oxygen from there. A baby “on 30%” is breathing air with a little extra; “on 100%” is breathing pure oxygen. And you remember from <a href="../../../nicu_tutor/lessons/02-pulse-ox.html">NICU Tutor Lesson 2</a> why the team never leaves it at 100% longer than it must.</p>
+  </div>
+
+  <h2>🫁 The trade inside a breath</h2>
+  <p>Air flows down into your lungs and fills the alveoli — those hundreds of millions of microscopic balloons from <a href="../../../nicu_tutor/lessons/05-breathing.html">NICU Tutor Lesson 5</a>. Their walls are so thin that gas molecules can slip straight through them. And here a trade happens, called <strong>gas exchange</strong>:</p>
+  <ul>
+    <li><strong>Oxygen goes in:</strong> O₂ molecules cross from the air into the blood, where hemoglobin grabs them and carries them off to every cell in the body.</li>
+    <li><strong>Carbon dioxide comes out:</strong> CO₂ molecules, delivered by the blood from all those cells, cross the other way into the air — and you breathe them away.</li>
+  </ul>
+  <p>Why must the CO₂ leave? Because carbon dioxide dissolved in blood makes an <strong>acid</strong>. A little is normal and even useful — your body uses it as a signal to breathe. But if breathing fails and CO₂ piles up, the blood turns too acidic, and the body's chemistry starts going wrong — heart, brain, everything. This is exactly why the NICU team watches a baby's breathing so closely, and why they run a test called a <em>blood gas</em> that measures the oxygen, the CO₂, and the acid in a few drops of blood. You'll meet acids and bases properly next Monday.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>A breath is a trade across the alveoli: oxygen (O₂) goes in to the blood; carbon dioxide (CO₂) comes out. Too much CO₂ makes blood acidic.</p>
+    </div>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🐭 Real talk: the mouse in the jar</div>
+    <p>In 1774, an English minister and amateur chemist named <strong>Joseph Priestley</strong> focused sunlight through a magnifying glass onto a reddish powder (mercury calx) and collected the gas that fizzed off. He put a candle in it: the flame blazed brilliantly. He put a mouse in a sealed jar of it: the mouse lived about twice as long as a mouse in a jar of ordinary air. He breathed some himself and reported that his chest felt “peculiarly light and easy.” He had discovered oxygen — the one-fifth of air that matters — though he never quite understood what he'd found. A French chemist, Antoine Lavoisier, worked out that this gas was a true element and named it <em>oxygène</em>.</p>
+    <p>Here's the sobering link to the NICU. Priestley's discovery is why we can give babies extra oxygen at all — and for 170 years afterward, doctors assumed more must always be better. It took until the 1950s, and thousands of babies blinded, to learn that oxygen is a <em>medicine with a dose</em>. Chemistry finds the molecule; medicine has to learn how much. (Priestley, for what it's worth, also invented fizzy water. He was having a very good decade.)</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Atom</dt><dd>The tiniest building block of ordinary matter.</dd>
+      <dt>Element</dt><dd>One kind of atom — oxygen, carbon, gold. About 118 exist.</dd>
+      <dt>Molecule</dt><dd>Two or more atoms joined together — O₂, CO₂, H₂O.</dd>
+      <dt>Chemical formula / subscript</dt><dd>The recipe for a molecule; the little number counts the atom before it.</dd>
+      <dt>Percent</dt><dd>Out of a hundred. Air is 21% oxygen: 21 particles in every 100.</dd>
+      <dt>Gas exchange</dt><dd>The oxygen-in, carbon-dioxide-out trade across the alveoli.</dd>
+      <dt>Acid</dt><dd>A sour, chemically pushy substance. Dissolved CO₂ makes one — and blood has to stay very nearly not-acidic.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.acs.org/education/whatischemistry/periodictable.html" target="_blank" rel="noopener">American Chemical Society: the periodic table</a> — the chart of all 118 elements.</li>
+      <li><a href="https://www.sciencehistory.org/education/scientific-biographies/joseph-priestley/" target="_blank" rel="noopener">Science History Institute: Joseph Priestley</a></li>
+      <li>Try it at home: breathe on a cold window or mirror. That fog is the H₂O your lungs breathed out — evidence of the factory running.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Chemistry 101, Week 1</h2>
+    <p>Eight questions. Six right earns the ⚗️ badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Atoms &amp; Air</div>
+    <p>Due at recitation, Tuesday 9:00. Print it now: <a href="../../print/hw-chemistry-w1.pdf" target="_blank" rel="noopener">Homework 1: Atoms &amp; Air (PDF)</a>. Counting atoms, drawing molecules, percent, and a blood-gas puzzle to think through like a doctor. Details on the <a href="../../recitations/week1/chemistry.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "mon-chem",
+  quizId: "chemistry-w1",
+  course: "chemistry",
+  printQuiz: "../../print/quiz-chemistry-w1.pdf",
+  warmup: [
+    { q: "The pulse oximeter shines light through a baby's foot to measure what?", a: "Oxygen saturation — the percentage of hemoglobin in the blood that's carrying oxygen (SpO₂). Loaded hemoglobin and empty hemoglobin absorb light differently." },
+    { q: "Why don't NICU teams just give every preemie as much oxygen as possible?", a: "Because too much oxygen damages a preemie's developing eyes (retinopathy of prematurity) and lungs. Big studies found roughly 90–95% saturation is the safest target. Even oxygen has a right dose." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

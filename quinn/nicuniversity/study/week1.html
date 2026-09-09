@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Hall — Week 1 Review</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body class="c-general" data-root="../">
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../index.html">Timetable</a>
+    <a href="../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <p class="kicker">Study Hall · Friday 10:30</p>
+  <h1>Week 1 Review</h1>
+  <p class="lede">Real students do this before every exam, and the good ones do it the smart way: not rereading everything, but checking which big ideas they can already explain — and going back only for the ones they can't. You have 27 big ideas this week, plus four flashbacks. Let's find your gaps.</p>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <div class="card">
+    <h3>How to use the review sheet</h3>
+    <ol class="hw-steps">
+      <li><strong>Print the review sheet</strong> — every “Write this down” idea from the week, with a checkbox.</li>
+      <li><strong>For each idea, say it out loud</strong> in your own words <em>before</em> you read it. If you could, check the box. If you couldn't, leave it blank.</li>
+      <li><strong>Reread only the blanks.</strong> Every idea below links back to its lecture. Ten minutes on your gaps beats an hour rereading things you already know.</li>
+      <li><strong>Then take the final</strong> at 1:00. It's 24 questions — 20 from the week's nine courses and 4 NICU Tutor flashbacks. You need 17 to pass.</li>
+    </ol>
+    <div class="print-links">
+      <a href="../print/review-week1.pdf" target="_blank" rel="noopener">🖨️ Print the review sheet (PDF)</a>
+    </div>
+  </div>
+
+  <h2>✅ The big ideas, by course</h2>
+
+  <div class="box c-seminar" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🎓 Freshman Seminar — <a href="../courses/seminar/week1.html">reread</a></div>
+    <ul>
+      <li>Lectures teach. Recitations practice (homework happens there). Exams prove.</li>
+      <li>Notes are for future-me: 3 big ideas, in my own words.</li>
+      <li>Quiz strategy: read twice, read all choices, cross out wrong ones, then choose.</li>
+    </ul>
+  </div>
+
+  <div class="box c-chemistry" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">⚗️ Chemistry 101 — <a href="../courses/chemistry/week1.html">reread</a></div>
+    <ul>
+      <li>Everything is made of atoms. About 118 kinds (elements); living things use mostly C, H, O, N.</li>
+      <li>A formula is a molecule's recipe. The subscript counts the atom just before it. No number = 1.</li>
+      <li>A breath is a trade across the alveoli: O₂ in to the blood, CO₂ out. Too much CO₂ makes blood acidic.</li>
+    </ul>
+  </div>
+
+  <div class="box c-biology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🔬 Biology 101 — <a href="../courses/biology/week1.html">reread</a></div>
+    <ul>
+      <li>A cell is the smallest living thing. Ladder: atoms → molecules → cells → tissues → organs → systems → organism.</li>
+      <li>Mitochondria are the cell's power plants: sugar + oxygen → energy, with CO₂ and water as exhaust.</li>
+      <li>Cells divide by doubling (1 → 2 → 4 → 8…). Growth costs fuel — that's why preemies need so much.</li>
+    </ul>
+  </div>
+
+  <div class="box c-physics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧲 Physics 101 — <a href="../courses/physics/week1.html">reread</a></div>
+    <ul>
+      <li>Pressure = push ÷ area. Same push on a smaller area = bigger pressure.</li>
+      <li>Air has weight: at sea level it holds up 760 mm of mercury — so pressure (and blood pressure) is measured in mmHg.</li>
+      <li>Breathing machines use gentle pressures in cmH₂O. 1 mmHg ≈ 1.36 cmH₂O because mercury is 13.6× heavier than water.</li>
+    </ul>
+  </div>
+
+  <div class="box c-calculus" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">📈 Calculus 101 — <a href="../courses/calculus/week1.html">reread</a></div>
+    <ul>
+      <li>Calculus is the math of change. Big question 1: how fast is it changing?</li>
+      <li>Rate of change = change ÷ time. (970 − 900) ÷ 7 days = 10 grams per day. “Per” means “divided by.”</li>
+      <li>On a graph, steepness = rate. Steep = fast, flat = none, downhill = losing (negative). Read the line, not one dot.</li>
+    </ul>
+  </div>
+
+  <div class="box c-statistics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">📊 Statistics 101 — <a href="../courses/statistics/week1.html">reread</a></div>
+    <ul>
+      <li>Mean = add them all, divide by how many. Range = biggest − smallest.</li>
+      <li>Apgar score (1952): 5 signs × 0–2 points = 0–10 at 1 and 5 minutes. 7–10 good; 4–6 may need help; 0–3 needs help now.</li>
+      <li>Numbers can be compared and studied in thousands; “looks fine” can't. But the mean hides the spread — ask for the range.</li>
+    </ul>
+  </div>
+
+  <div class="box c-genetics" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧬 Genetics 101 — <a href="../courses/genetics/week1.html">reread</a></div>
+    <ul>
+      <li>DNA = the instruction book in 4 letters (A, T, C, G), 46 chromosomes in 23 pairs — one of each pair from each parent. A gene = one recipe for one protein.</li>
+      <li>Cells read DNA 3 letters at a time (4 × 4 × 4 = 64 words) to build proteins. Every cell has the whole book; each type reads different chapters.</li>
+      <li>Identical twins = one egg split (same DNA). Fraternal = two eggs. Twins are usually born early and small — so they fill NICU beds.</li>
+    </ul>
+  </div>
+
+  <div class="box c-psychology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🧠 Psychology 101 — <a href="../courses/psychology/week1.html">reread</a></div>
+    <ul>
+      <li>Babies can't talk, so psychologists measure what they DO: looking time, sucking, heart rate.</li>
+      <li>Newborns already hear (from ~24 weeks), recognize mom's voice, prefer faces, and see best at ~20–30 cm.</li>
+      <li>A newborn brain wires at over a million connections a second, shaped by experience. Preemies wire in the NICU — so: dim, quiet, protected sleep, parents close.</li>
+    </ul>
+  </div>
+
+  <div class="box c-sociology" style="background:var(--course-pale);border-left:6px solid var(--course)">
+    <div class="box-title">🏥 Sociology 101 — <a href="../courses/sociology/week1.html">reread</a></div>
+    <ul>
+      <li>Sociology = people in groups: roles, hierarchy, rules, rituals. A NICU is a small society.</li>
+      <li>The NICU team: doctors, nurses (most bedside hours), respiratory therapists, pharmacists, therapists, social workers, cleaners, parents. Nobody does it alone.</li>
+      <li>Levels I–IV; regionalization gets the sickest babies to the right level. Rounds are a ritual that makes the team reliable. Good teams let anyone speak up.</li>
+    </ul>
+  </div>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ NICU Tutor flashbacks on the final</div>
+    <ul>
+      <li>Oxygen has a dose — <a href="../../nicu_tutor/lessons/02-pulse-ox.html">Lesson 2</a>.</li>
+      <li>Surfactant and sticky lungs — <a href="../../nicu_tutor/lessons/05-breathing.html">Lesson 5</a>.</li>
+      <li>Why babies turn yellow — <a href="../../nicu_tutor/lessons/07-bili-lights.html">Lesson 7</a>.</li>
+      <li>The soft spot and brain ultrasounds — <a href="../../nicu_tutor/lessons/08-imaging.html">Lesson 8</a>.</li>
+    </ul>
+  </div>
+
+  <div class="box box-fun">
+    <div class="box-title">💡 Exam-day tips from the Seminar</div>
+    <p>Read each question twice. Read every choice. Cross out the ones you know are wrong. Then choose. The right answer is placed at random and the wrong ones are written to sound reasonable — so length and position won't help, and you don't need them to. You've done nine classes of work this week. That's what will help.</p>
+  </div>
+
+  <p class="center" style="margin-top:28px">
+    <button id="study-done" data-slot="fri-study" class="quiz-next" type="button">I've reviewed the sheet — mark study hall done</button>
+  </p>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.RECITATION = { slotId: "fri-study", hwId: null, course: "general", total: 0 };
+</script>
+<script src="../js/vocab.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

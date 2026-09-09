@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology 101, Week 1: Cells — The Body's LEGO Bricks</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+</head>
+<body class="c-biology" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A microscope with a glowing view of cells in its eyepiece">
+        <rect x="60" y="190" width="120" height="16" rx="8" fill="#2d3142"/>
+        <path d="M 110 190 L 110 150 Q 110 110 150 100 L 158 96" stroke="#2d3142" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <rect x="140" y="52" width="22" height="60" rx="6" fill="#0e7c7b" transform="rotate(20 151 82)"/>
+        <rect x="136" y="36" width="30" height="16" rx="5" fill="#2d3142" transform="rotate(20 151 44)"/>
+        <rect x="86" y="140" width="54" height="10" rx="3" fill="#9cc4dd"/>
+        <circle cx="113" cy="166" r="12" fill="#ffb627"/>
+        <!-- view circle -->
+        <circle cx="52" cy="70" r="40" fill="#e2f4e5" stroke="#2a9d3f" stroke-width="4"/>
+        <ellipse cx="40" cy="58" rx="13" ry="10" fill="#b9e2c0" stroke="#2a9d3f" stroke-width="2"/><circle cx="40" cy="58" r="4" fill="#2a9d3f"/>
+        <ellipse cx="66" cy="66" rx="12" ry="11" fill="#b9e2c0" stroke="#2a9d3f" stroke-width="2"/><circle cx="66" cy="66" r="4" fill="#2a9d3f"/>
+        <ellipse cx="46" cy="88" rx="14" ry="9" fill="#b9e2c0" stroke="#2a9d3f" stroke-width="2"/><circle cx="46" cy="88" r="4" fill="#2a9d3f"/>
+        <path d="M 84 96 L 100 118" stroke="#2a9d3f" stroke-width="3" stroke-dasharray="4 4"/>
+        <text x="200" y="40" font-size="14">✦</text><text x="20" y="180" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Biology 101 · Week 1 · Monday 1:00</p>
+      <h1>Cells: The Body's LEGO Bricks</h1>
+      <p class="lede">Every baby in every NICU began as <strong>one single cell</strong>, smaller than the period at the end of this sentence. By the time you finish this class, you'll know what's inside that cell, how it became trillions, and why a 500-gram preemie's cells are working harder than yours ever will.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from this morning's Chemistry class.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-biology-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. Three big ideas coming.</p>
+    </div>
+  </div>
+
+  <h2>🧱 What a cell is</h2>
+  <p>This morning you learned that everything is made of atoms. True — but a rock is made of atoms and a baby is made of atoms, and only one of them is alive. What's the difference? The baby's atoms are organized into <strong>cells</strong>: tiny, self-contained bags of chemistry that eat, grow, make copies of themselves, and respond to the world. A cell is the smallest thing that is definitely <em>alive</em>.</p>
+  <p>So here's the ladder of the world, smallest to biggest: <strong>atoms</strong> join into <strong>molecules</strong>; billions of molecules organize into a <strong>cell</strong>; cells team up into <strong>tissues</strong> (muscle, skin, nerve); tissues build <strong>organs</strong> (heart, lungs, brain); organs form <strong>systems</strong>; and all the systems together make an <strong>organism</strong> — a whole living thing. Chemistry lives on the bottom two rungs. Biology starts at the cell.</p>
+  <p>How many cells are you? Roughly <strong>30 trillion</strong> — 30,000,000,000,000. A newborn has far fewer, and a 500-gram micro-preemie fewer still, but their number is climbing every second. Keep that in mind; it explains a lot about the NICU.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>A cell is the smallest living thing. The ladder: atoms → molecules → cells → tissues → organs → systems → organism.</p>
+    </div>
+  </div>
+
+  <h2>🔍 Inside a cell</h2>
+  <p>A cell is not a blob. It's more like a tiny city with walls, a library, power plants, and streets. The main parts:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Labeled diagram of a cell: membrane, cytoplasm, nucleus, and mitochondria">
+      <ellipse cx="300" cy="150" rx="200" ry="120" fill="#e2f4e5" stroke="#2a9d3f" stroke-width="6"/>
+      <circle cx="300" cy="150" r="52" fill="#7768ae" opacity="0.85"/>
+      <path d="M 275 140 q 12 -8 24 0 q 12 8 24 0" fill="none" stroke="#fff" stroke-width="3"/>
+      <path d="M 275 160 q 12 -8 24 0 q 12 8 24 0" fill="none" stroke="#fff" stroke-width="3"/>
+      <ellipse cx="190" cy="110" rx="34" ry="18" fill="#f25f5c" transform="rotate(-25 190 110)"/>
+      <path d="M 176 104 q 8 -8 14 0 q 6 8 14 0" fill="none" stroke="#fff" stroke-width="2.5" transform="rotate(-25 190 110)"/>
+      <ellipse cx="410" cy="200" rx="34" ry="18" fill="#f25f5c" transform="rotate(20 410 200)"/>
+      <path d="M 396 194 q 8 -8 14 0 q 6 8 14 0" fill="none" stroke="#fff" stroke-width="2.5" transform="rotate(20 410 200)"/>
+      <ellipse cx="200" cy="205" rx="30" ry="16" fill="#f25f5c" transform="rotate(35 200 205)"/>
+      <!-- labels -->
+      <text x="60" y="40" font-size="15" font-weight="bold" fill="#2a9d3f">Membrane</text>
+      <text x="60" y="58" font-size="12" fill="#565d75">the wall — decides what comes in and out</text>
+      <line x1="150" y1="62" x2="180" y2="76" stroke="#2a9d3f" stroke-width="2"/>
+      <text x="440" y="60" font-size="15" font-weight="bold" fill="#7768ae">Nucleus</text>
+      <text x="440" y="78" font-size="12" fill="#565d75">the library — holds the DNA instruction book</text>
+      <line x1="440" y1="84" x2="345" y2="125" stroke="#7768ae" stroke-width="2"/>
+      <text x="380" y="270" font-size="15" font-weight="bold" fill="#f25f5c">Mitochondria</text>
+      <text x="380" y="288" font-size="12" fill="#565d75">power plants — burn sugar with oxygen</text>
+      <line x1="420" y1="255" x2="412" y2="218" stroke="#f25f5c" stroke-width="2"/>
+      <text x="60" y="270" font-size="15" font-weight="bold" fill="#2a9d3f">Cytoplasm</text>
+      <text x="60" y="288" font-size="12" fill="#565d75">the jelly everything floats in</text>
+      <line x1="130" y1="255" x2="180" y2="200" stroke="#2a9d3f" stroke-width="2"/>
+    </svg>
+    <figcaption>A cell as a tiny city. Real cells have more parts than this, but these four do most of the talking in a NICU.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>Membrane</strong> — the outer skin. It's not a solid wall: it's a gatekeeper that lets oxygen and food in, and waste out.</li>
+    <li><strong>Cytoplasm</strong> — the jelly-like liquid filling the cell, where most chemistry happens.</li>
+    <li><strong>Nucleus</strong> — the library. It holds the cell's complete instruction book, written in a molecule called <strong>DNA</strong>. Every cell in your body has a copy of the whole book. (Genetics 101 opens that book on Wednesday.)</li>
+    <li><strong>Mitochondria</strong> — the power plants. And here is where this morning's chemistry pays off: mitochondria take the <strong>sugar</strong> (C₆H₁₂O₆) that blood delivers and the <strong>oxygen</strong> (O₂) that hemoglobin drops off, and they <em>burn</em> them together — a slow, controlled burn — to release energy. The exhaust from that burn is <strong>carbon dioxide</strong> and <strong>water</strong>. Which is exactly what you breathe out.</li>
+  </ul>
+  <p>Think about that chain. Oxygen enters a baby's lungs, hemoglobin carries it to a cell, the membrane lets it in, a mitochondrion burns it with sugar, the CO₂ exhaust rides the blood back to the lungs and leaves on the next breath. The whole NICU — the oxygen blender, the pulse oximeter, the sugar drip — exists to keep <em>that</em> chain running in trillions of cells at once.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Mitochondria are the cell's power plants: they burn sugar with oxygen to make energy. The exhaust is CO₂ and water — what we breathe out.</p>
+    </div>
+  </div>
+
+  <h2>✂️ One cell becomes trillions</h2>
+  <p>How does a body get from one cell to 30 trillion? Not by making cells one at a time. A cell grows, copies its instruction book, and then <strong>divides</strong> into two complete cells. Then <em>both</em> of those divide. Then all four. This is <strong>cell division</strong>, and the important thing about it is that it <em>doubles</em>:</p>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Rounds of division</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>10</th><th>20</th></tr>
+    <tr><td>Cells</td><td>1</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>1,024</td><td>about 1,000,000</td></tr>
+  </table>
+  </div>
+  <p>Ten rounds and you've passed a thousand. Twenty rounds, a million. Around forty-some rounds gets you into the trillions — enough for a whole person. Doubling is sneaky like that: it starts slow and then explodes. (Calculus 101 tomorrow is going to have a lot to say about things that grow.)</p>
+  <p>Now here's the NICU connection. A baby born at 26 weeks is supposed to be inside its mother for 14 more weeks of furious cell division. Instead it has to do that growing in an isolette — and dividing cells are hungry: they need sugar and oxygen for energy, and protein and minerals to build new parts. Gram for gram, a preemie's cells are working far harder than yours. That's why the feeding lesson in NICU Tutor was all about calories and grams: <em>growth is cells dividing, and cells dividing costs fuel.</em></p>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself: doubling with paper</div>
+    <p>Fold a sheet of paper in half. Now it's 2 layers. Fold again: 4. Again: 8. Keep going and count the layers each time (predict before you count!). Most people can't get past 7 folds — 128 layers — because doubling makes the stack thick so fast. If you <em>could</em> fold it 42 times, the stack would reach the Moon. That's what your cells did on the way to becoming you.</p>
+  </div>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>Cells divide by doubling: 1 → 2 → 4 → 8… A baby is one cell that doubled and doubled. Growth costs fuel — that's why preemies need so much.</p>
+    </div>
+  </div>
+
+  <h2>🩸 Not all cells are alike</h2>
+  <p>Every cell carries the same instruction book, but different cells read different chapters — so a nerve cell, a skin cell, and a blood cell look and act completely differently. Two kinds you already know from NICU Tutor:</p>
+  <ul>
+    <li><strong>Red blood cells</strong> are the strangest cells you own. As they mature they throw out their nucleus — no library! — to make room for cargo: each one is a bag stuffed with about 270 million hemoglobin molecules. But a cell with no instruction book can't repair itself, so red blood cells wear out after about four months and get recycled. And the yellow leftover from that recycling is… bilirubin. The reason newborns turn yellow is a cell biology story.</li>
+    <li><strong>Skin cells</strong> stack in layers to build a wall. An adult's wall is dozens of layers thick and tough. A very premature baby's skin is only a few cell layers deep — so thin you can see through it — which is the cell-level reason a preemie leaks heat and water, and why the isolette has to be so warm and humid.</li>
+  </ul>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback: two mysteries, now solved at the cell level</div>
+    <p>NICU Tutor <a href="../../../nicu_tutor/lessons/07-bili-lights.html">Lesson 7</a> told you bilirubin is leftover from recycling red blood cells — now you know <em>why</em> they need recycling (no nucleus, no repairs). And <a href="../../../nicu_tutor/lessons/01-isolette.html">Lesson 1</a> said preemie skin is thin — now you know what “thin” means: fewer layers of cells.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🔬 Real talk: the cloth merchant who saw the invisible</div>
+    <p>Nobody saw a cell until the 1660s, because nobody had a lens good enough. In 1665, an Englishman named <strong>Robert Hooke</strong> looked at a thin slice of cork through his microscope and saw rows of tiny empty boxes. They reminded him of the little bare rooms where monks slept — called <em>cells</em> — so that's what he named them. The name stuck for all of biology.</p>
+    <p>A few years later, a Dutch cloth merchant with no scientific training, <strong>Antonie van Leeuwenhoek</strong>, ground his own lenses (he'd learned to use magnifiers to check thread counts in fabric) and made them better than anyone's in the world. Looking at a drop of pond water, he saw it swarming with tiny living things — “animalcules,” he called them — and later he saw bacteria, blood cells, and muscle fibers. When he wrote to the Royal Society in London, the scientists didn't believe him. A draper, seeing invisible animals? They sent people to check. He was right about all of it.</p>
+    <p>There's a NICU lesson hiding in there, and it's a hard one. Some of the tiny living things Leeuwenhoek saw are <strong>bacteria</strong> — single cells that can invade a body. A premature baby's defenses against them are weak, and an infection that spreads through the blood (<em>sepsis</em>) is one of the leading killers in a NICU, right alongside breathing problems. Which is why the most important machine in any NICU isn't a machine at all: it's the sink by the door, and the rule that <em>everyone</em> washes their hands, every time. Cells can save a life; cells can also take one. Biology doesn't pick sides.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Fact</th><th>Number</th><th>Compare</th></tr>
+    <tr><td>Cells in an adult body</td><td>About 30 trillion</td><td>Written out: 30,000,000,000,000</td></tr>
+    <tr><td>Width of a red blood cell</td><td>About 8 micrometers (millionths of a meter)</td><td>About 10 of them side by side across one human hair</td></tr>
+    <tr><td>Lifespan of a red blood cell</td><td>About 120 days</td><td>A newborn's red cells live less — around 60–90 days — one more reason newborns make extra bilirubin</td></tr>
+    <tr><td>Hemoglobin molecules per red cell</td><td>About 270 million</td><td>Each carrying up to 4 oxygen molecules</td></tr>
+    <tr><td>Cells at the very start of life</td><td>1</td><td>Then 2, 4, 8, 16…</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Cell</dt><dd>The smallest living unit. A tiny bag of chemistry with its own instruction book.</dd>
+      <dt>Membrane / cytoplasm / nucleus / mitochondria</dt><dd>The wall / the jelly / the library / the power plants.</dd>
+      <dt>Cell division</dt><dd>One cell splitting into two. It doubles the count every round.</dd>
+      <dt>Tissue / organ / organism</dt><dd>A team of similar cells / a body part made of tissues / a whole living thing.</dd>
+      <dt>Bacteria</dt><dd>Single-celled living things. Mostly harmless; some cause infections like sepsis.</dd>
+      <dt>Microscope</dt><dd>The lens tool that made cells visible for the first time in the 1660s.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.cellsalive.com/" target="_blank" rel="noopener">Cells Alive</a> — animations of cells and cell division.</li>
+      <li><a href="https://www.sciencehistory.org/education/scientific-biographies/antoni-van-leeuwenhoek/" target="_blank" rel="noopener">Science History Institute: Antonie van Leeuwenhoek</a></li>
+      <li>Ask a grown-up to help you find a video of a real cell dividing under a microscope. It looks like nothing else on Earth.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Biology 101, Week 1</h2>
+    <p>Eight questions. Six right earns the 🔬 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Cells</div>
+    <p>Due at recitation, Tuesday 9:45. Print it now: <a href="../../print/hw-biology-w1.pdf" target="_blank" rel="noopener">Homework 1: Cells (PDF)</a>. Label a cell, climb the ladder from atom to organism, fill in a doubling table, and explain why a growing preemie is so hungry. Details on the <a href="../../recitations/week1/biology.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "mon-bio",
+  quizId: "biology-w1",
+  course: "biology",
+  printQuiz: "../../print/quiz-biology-w1.pdf",
+  warmup: [
+    { q: "From NICU Tutor: what is hemoglobin, and where in the body does it live?", a: "The oxygen-carrying protein that makes blood red. It lives packed inside red blood cells — about 270 million per cell." },
+    { q: "From this morning's Chemistry: which two gases trade places in the alveoli, and which way does each go?", a: "Oxygen (O₂) goes from air into blood; carbon dioxide (CO₂) goes from blood into air. That trade is gas exchange." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

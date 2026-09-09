@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: The Pulse Oximeter — NICU Tutor</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐣</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🐣 NICU Tutor</a>
+  <nav>
+    <a href="../index.html">All lessons</a>
+    <a href="../glossary.html">Glossary</a>
+    <a href="../sources.html">Sources</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A baby foot with a glowing red pulse oximeter band, connected to a readout showing 95 percent">
+        <!-- leg + foot -->
+        <path d="M 96 20 Q 88 90 92 120 Q 94 140 80 148 Q 56 160 44 178 Q 38 190 52 196 Q 90 208 130 196 Q 150 190 146 168 L 140 40 Q 138 18 118 18 Z" fill="#f6c390"/>
+        <!-- toes -->
+        <circle cx="50" cy="186" r="8" fill="#f6c390" stroke="#e0a370" stroke-width="2"/>
+        <circle cx="64" cy="194" r="7" fill="#f6c390" stroke="#e0a370" stroke-width="2"/>
+        <circle cx="78" cy="198" r="7" fill="#f6c390" stroke="#e0a370" stroke-width="2"/>
+        <circle cx="93" cy="200" r="7" fill="#f6c390" stroke="#e0a370" stroke-width="2"/>
+        <circle cx="110" cy="200" r="9" fill="#f6c390" stroke="#e0a370" stroke-width="2"/>
+        <!-- glow -->
+        <ellipse cx="112" cy="158" rx="46" ry="26" fill="#ff5a4e" opacity="0.25"/>
+        <!-- probe band -->
+        <rect x="76" y="142" width="72" height="26" rx="13" fill="#f25f5c"/>
+        <rect x="98" y="146" width="26" height="18" rx="6" fill="#ffd0cd"/>
+        <circle cx="111" cy="155" r="5" fill="#ff2e20"/>
+        <!-- cable -->
+        <path d="M 148 156 Q 190 150 196 110" fill="none" stroke="#2d3142" stroke-width="4" stroke-linecap="round"/>
+        <!-- readout -->
+        <rect x="162" y="52" width="70" height="56" rx="10" fill="#2d3142"/>
+        <text x="197" y="80" font-size="20" fill="#5ef2a0" text-anchor="middle" font-family="monospace">95%</text>
+        <text x="197" y="99" font-size="12" fill="#7fd4ff" text-anchor="middle" font-family="monospace">♥ 152</text>
+        <text x="20" y="40" font-size="16">✦</text>
+        <text x="210" y="206" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Lesson 2 · The light that reads blood</p>
+      <h1>The Pulse Oximeter</h1>
+      <p class="lede">Wrapped around a NICU baby's foot is a soft band with a little glowing red light. Without one poke or one drop of blood, it announces — every single second — how much <strong>oxygen</strong> is riding in that baby's blood. Here's how a flashlight can read blood.</p>
+    </div>
+  </div>
+
+  <h2><span class="h-emoji">🫁</span> The science: oxygen, the body's fuel-burner</h2>
+  <p>Every cell in your body is like a tiny engine, and engines need to burn fuel. Your cells burn sugar — but nothing burns without <strong>oxygen</strong>. No oxygen, no energy: the brain, the heart, everything stalls within minutes. So the body runs a nonstop delivery service:</p>
+  <ol>
+    <li><strong>Lungs</strong> pull oxygen out of the air.</li>
+    <li><strong>Red blood cells</strong> pick it up. Each red blood cell is stuffed with about 270 million copies of a protein called <strong>hemoglobin</strong>, and each hemoglobin can grab four oxygen molecules. It's a school bus for oxygen.</li>
+    <li>The <strong>heart</strong> pumps those loaded buses everywhere, they drop off oxygen, and come back for more.</li>
+  </ol>
+  <p>Here's the secret the pulse oximeter exploits: <strong>hemoglobin changes color depending on whether it's carrying oxygen.</strong> Loaded with oxygen, it's bright cherry red. Empty, it's a darker, bluish-red. That's why blood from a cut (from an artery, full of oxygen) is bright red, and the veins under your skin look darker.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: red and infrared light shine through a finger; oxygen-loaded hemoglobin and empty hemoglobin absorb the light differently">
+      <!-- light source -->
+      <rect x="40" y="30" width="120" height="40" rx="10" fill="#2d3142"/>
+      <text x="100" y="55" font-size="14" fill="#fff" text-anchor="middle">2 tiny lights</text>
+      <path d="M 100 70 L 100 108" stroke="#ff2e20" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 130 70 L 130 108" stroke="#a06bd4" stroke-width="5" stroke-dasharray="8 6" stroke-linecap="round"/>
+      <text x="62" y="95" font-size="12" fill="#f25f5c">red</text>
+      <text x="146" y="95" font-size="12" fill="#7768ae">infrared</text>
+      <!-- tissue band -->
+      <rect x="30" y="110" width="500" height="80" rx="24" fill="#f6c390"/>
+      <!-- blood cells -->
+      <g>
+        <circle cx="90" cy="150" r="16" fill="#ff4136"/>
+        <text x="90" y="155" font-size="12" fill="#fff" text-anchor="middle">O₂</text>
+        <circle cx="150" cy="150" r="16" fill="#ff4136"/>
+        <text x="150" y="155" font-size="12" fill="#fff" text-anchor="middle">O₂</text>
+        <circle cx="210" cy="150" r="16" fill="#ff4136"/>
+        <text x="210" y="155" font-size="12" fill="#fff" text-anchor="middle">O₂</text>
+        <circle cx="270" cy="150" r="16" fill="#8b2f43"/>
+        <circle cx="330" cy="150" r="16" fill="#ff4136"/>
+        <text x="330" y="155" font-size="12" fill="#fff" text-anchor="middle">O₂</text>
+        <circle cx="390" cy="150" r="16" fill="#ff4136"/>
+        <text x="390" y="155" font-size="12" fill="#fff" text-anchor="middle">O₂</text>
+        <circle cx="450" cy="150" r="16" fill="#8b2f43"/>
+      </g>
+      <!-- detector -->
+      <path d="M 100 190 L 100 218" stroke="#ff2e20" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 130 190 L 130 218" stroke="#a06bd4" stroke-width="3" stroke-dasharray="8 6" stroke-linecap="round" opacity="0.6"/>
+      <rect x="60" y="220" width="120" height="24" rx="8" fill="#0e7c7b"/>
+      <text x="120" y="237" font-size="13" fill="#fff" text-anchor="middle">light detector</text>
+      <text x="380" y="225" font-size="14" fill="#565d75" text-anchor="middle">bright red cells = carrying oxygen</text>
+      <text x="380" y="243" font-size="14" fill="#565d75" text-anchor="middle">dark cells = empty, back for a refill</text>
+    </svg>
+    <figcaption>The probe shines red and invisible infrared light through the foot. Loaded and empty hemoglobin soak up the two colors differently, so comparing what gets through reveals the oxygen percentage.</figcaption>
+  </figure>
+
+  <h2><span class="h-emoji">🔦</span> Meet the machine</h2>
+  <p>The pulse oximeter's band has two tiny lights on one side — one <strong>red</strong>, one <strong>infrared</strong> (a color your eyes can't see) — and a light detector on the other side. The lights shine right through the baby's foot (try a flashlight against your fingers in the dark — you'll see the glow come through!).</p>
+  <p>Oxygen-loaded hemoglobin and empty hemoglobin absorb those two colors differently. The machine compares how much of each light survives the trip and computes the <strong>oxygen saturation</strong>, called <strong>SpO₂</strong>: what percentage of the hemoglobin buses are carrying oxygen. And there's a bonus trick — every heartbeat pushes a little surge of fresh blood into the foot, making the signal pulse. The machine reads that rhythm too, which is why it also shows the <strong>pulse</strong> (heart rate). That's the “pulse” in pulse oximeter.</p>
+
+  <h2><span class="h-emoji">🔢</span> The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Who</th><th>Healthy SpO₂</th><th>Notes</th></tr>
+    <tr><td>Kids &amp; adults</td><td>About 95–100%</td><td>Nearly every hemoglobin bus is full.</td></tr>
+    <tr><td>Healthy full-term baby</td><td>Above 95% (after the first minutes of life)</td><td>Right after birth it starts lower and climbs — the lungs are just switching on.</td></tr>
+    <tr><td>Preemie getting extra oxygen</td><td>Usually targeted around 90–95%</td><td>On purpose! Read on — this is one of medicine's great Goldilocks problems.</td></tr>
+  </table>
+  </div>
+
+  <p>Wait — doctors aim <em>lower</em> for preemies on oxygen? Yes, and the reason is one of the most important ideas in all of medicine: <strong>even good things have a right dose.</strong></p>
+  <p>Oxygen can act like a slow poison for a premature baby's unfinished parts. Too much of it damages the delicate blood vessels growing in the eyes — a disease called <strong>retinopathy of prematurity (ROP)</strong> that can cause blindness — and it can injure the fragile lungs too. But too <em>little</em> oxygen starves the brain and body. Scientists ran huge studies (thousands of preemies around the world) comparing lower targets against higher ones. The answer: aiming very low (85–89%) meant fewer eye problems but <strong>more babies died</strong>. Aiming a bit higher (91–95%) saved more lives but caused more eye disease needing treatment. So today, most NICUs target roughly <strong>90–95%</strong> — and the alarm sounds if the baby drifts out either side.</p>
+
+  <div class="box box-fun">
+    <div class="box-title">🤯 Whoa, really?</div>
+    <p>A drop in oxygen saturation is called a <strong>desat</strong> (short for desaturation). NICU nurses hear desat alarms all day — and their first move is to look at the <em>baby</em>, not the number. Is the baby pink and wiggling? Maybe the probe just slipped off a kicking foot. Is the baby dusky and still? Now it's real. Machines report; humans judge. Remember that forever.</p>
+  </div>
+
+  <h2><span class="h-emoji">🩺</span> What the NICU team does</h2>
+  <div class="box box-team">
+    <div class="box-title">👩‍⚕️ On the unit</div>
+    <ul>
+      <li><strong>Desat alarm:</strong> check the baby first. Reposition, check the probe, maybe give a gentle rub — touch often reminds a preemie to take a deep breath.</li>
+      <li><strong>Real low oxygen:</strong> turn up the extra oxygen or breathing support a little — then wean it back down as soon as possible. More than needed is not better.</li>
+      <li><strong>Too high:</strong> if a baby on oxygen sits at 99–100%, the team turns the oxygen <em>down</em>, protecting the eyes and lungs.</li>
+      <li><strong>Eye checks:</strong> babies born very early get regular exams by an eye doctor to catch ROP early. If it gets serious, it can be treated with lasers or special injections.</li>
+    </ul>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk</div>
+    <p>In the 1940s and 50s, doctors thought oxygen could only help, so they filled incubators with as much as possible. The result was a heartbreaking surprise: an epidemic of blindness. Thousands of premature babies lost their sight to ROP before scientists proved that too much oxygen was the cause. One of them was a baby born six weeks early in 1950 in Michigan — he grew up to be <strong>Stevie Wonder</strong>, one of the greatest musicians who ever lived.</p>
+    <p>That disaster taught medicine a lesson it never forgot: don't assume — <em>test</em>. Every treatment, even oxygen, even warmth, has to be studied to find the dose that helps more than it harms. That's why NICU doctors run careful studies and follow the numbers, and it's why the pulse oximeter — the machine that finally made oxygen adjustable, minute by minute — matters so much.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Hemoglobin</dt><dd>The protein inside red blood cells that carries oxygen — and changes color when loaded.</dd>
+      <dt>Saturation (SpO₂)</dt><dd>The percentage of hemoglobin currently carrying oxygen. “Sat” for short.</dd>
+      <dt>Desat</dt><dd>A dip in oxygen saturation. The most common NICU alarm.</dd>
+      <dt>Retinopathy of prematurity (ROP)</dt><dd>Eye disease of preemies where blood vessels in the retina grow wrong — worsened by too much oxygen. “Retino” = retina, “-pathy” = disease.</dd>
+      <dt>Infrared</dt><dd>Light with a color just beyond red — invisible to human eyes, but not to the machine's detector.</dd>
+      <dt>Wean</dt><dd>To slowly turn down a treatment as the baby gets stronger. NICU care is full of careful weaning.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/retinopathy-prematurity" target="_blank" rel="noopener">National Eye Institute: Retinopathy of prematurity</a></li>
+      <li><a href="https://www.yalemedicine.org/conditions/pulse-oximetry" target="_blank" rel="noopener">Yale Medicine: What is pulse oximetry?</a></li>
+      <li>With a grown-up: shine a flashlight through your fingers in a dark room and see the red glow — that's the light a pulse oximeter reads.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2><span class="h-emoji">🏅</span> Badge quiz: The Pulse Oximeter</h2>
+    <p>Get 6 of 8 right to earn the ❤️‍🔥 badge.</p>
+    <div id="quiz-root"></div>
+  </section>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+
+</main>
+
+<script>
+window.LESSON = {
+  id: "02",
+  title: "The Pulse Oximeter",
+  home: "../index.html",
+  quiz: [
+    {
+      q: "What does hemoglobin do?",
+      choices: [
+        "It fights germs in the blood",
+        "It carries oxygen inside red blood cells, like a bus with four oxygen seats",
+        "It makes the heart beat",
+        "It digests food"
+      ],
+      answer: 1,
+      explain: "Hemoglobin is the oxygen-carrying protein packed inside red blood cells — each one can grab four oxygen molecules, and each red cell holds about 270 million hemoglobins."
+    },
+    {
+      q: "How can the pulse oximeter measure oxygen without taking any blood?",
+      choices: [
+        "It listens to the blood with a tiny microphone",
+        "It smells the skin",
+        "It shines red and infrared light through the foot and measures how much gets absorbed",
+        "It counts the baby's breaths"
+      ],
+      answer: 2,
+      explain: "Hemoglobin absorbs red and infrared light differently depending on whether it's carrying oxygen. Comparing how much of each light makes it through the foot reveals the oxygen percentage — no poke needed."
+    },
+    {
+      q: "Why is oxygen-rich blood bright red?",
+      choices: [
+        "Because of red food coloring in milk",
+        "Hemoglobin changes color when it's loaded with oxygen",
+        "Because the heart paints it",
+        "All blood is exactly the same color"
+      ],
+      answer: 1,
+      explain: "Loaded hemoglobin is bright cherry red; empty hemoglobin is darker and bluish-red. That color difference is the whole secret the pulse oximeter exploits."
+    },
+    {
+      q: "A healthy kid's oxygen saturation is usually about…",
+      choices: [
+        "50–60%",
+        "70–80%",
+        "95–100%",
+        "exactly 200%"
+      ],
+      answer: 2,
+      explain: "In healthy kids and adults, about 95–100% of hemoglobin is carrying oxygen. (It can never go above 100% — you can't fill a bus past full!)"
+    },
+    {
+      q: "Why do NICU teams target a LOWER saturation (about 90–95%) for preemies getting extra oxygen?",
+      choices: [
+        "To save money on oxygen",
+        "Because too much oxygen can damage a preemie's developing eyes and lungs",
+        "Because the machines can't count higher",
+        "Because preemies prefer it"
+      ],
+      answer: 1,
+      explain: "Too much oxygen harms the delicate growing blood vessels in a preemie's eyes (ROP) and can injure the lungs. But too little is dangerous too — big studies found roughly 90–95% is the safest zone. Even good things have a right dose."
+    },
+    {
+      q: "What did huge studies find about aiming for a VERY low target (85–89%)?",
+      choices: [
+        "It made babies grow faster",
+        "There were fewer eye problems, but more babies died — so it was too low",
+        "Nothing changed at all",
+        "The babies got taller"
+      ],
+      answer: 1,
+      explain: "The trade-off was real: fewer eye problems, but more deaths. That's why most NICUs settled on roughly 90–95% — enough oxygen to live and grow, not so much that it poisons the eyes and lungs."
+    },
+    {
+      q: "The desat alarm goes off. What does a great NICU nurse do FIRST?",
+      choices: [
+        "Look at the baby",
+        "Turn the alarm volume down",
+        "Call the baby's grandparents",
+        "Restart the computer"
+      ],
+      answer: 0,
+      explain: "Look at the baby first! A pink, wiggly baby with a slipped probe is fine; a dusky, still baby needs help right now. Machines report; humans judge."
+    },
+    {
+      q: "What happened when 1940s–50s doctors gave preemies as much oxygen as possible?",
+      choices: [
+        "All the babies became super strong",
+        "Nothing — oxygen is always safe",
+        "Thousands of babies were blinded by ROP before scientists proved too much oxygen was the cause",
+        "The incubators floated away"
+      ],
+      answer: 2,
+      explain: "The oxygen-blindness epidemic — which affected baby Stevie Wonder, born six weeks early in 1950 — taught medicine to test every assumption. Even oxygen has a dose."
+    }
+  ]
+};
+</script>
+<script src="../js/app.js"></script>
+</body>
+</html>

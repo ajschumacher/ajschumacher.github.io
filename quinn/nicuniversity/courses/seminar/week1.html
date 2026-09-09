@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freshman Seminar, Week 1: Welcome to NICUniversity</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body class="c-seminar" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A student with a backpack standing in front of a timetable board">
+        <rect x="26" y="30" width="188" height="110" rx="10" fill="#2d3142"/>
+        <g fill="#fffdf5" font-family="sans-serif" font-size="9">
+          <text x="40" y="50">MON</text><text x="76" y="50">TUE</text><text x="112" y="50">WED</text><text x="148" y="50">THU</text><text x="184" y="50">FRI</text>
+        </g>
+        <rect x="38" y="58" width="30" height="18" rx="4" fill="#7768ae"/>
+        <rect x="38" y="80" width="30" height="18" rx="4" fill="#f25f5c"/>
+        <rect x="38" y="102" width="30" height="18" rx="4" fill="#2a9d3f"/>
+        <rect x="74" y="58" width="30" height="18" rx="4" fill="#3f88c5"/>
+        <rect x="74" y="80" width="30" height="18" rx="4" fill="#c8871a"/>
+        <rect x="110" y="58" width="30" height="18" rx="4" fill="#0e7c7b"/>
+        <rect x="110" y="80" width="30" height="18" rx="4" fill="#d64d8a"/>
+        <rect x="146" y="58" width="30" height="18" rx="4" fill="#e8792b"/>
+        <rect x="146" y="80" width="30" height="18" rx="4" fill="#8a5a33"/>
+        <rect x="182" y="58" width="24" height="40" rx="4" fill="#ffb627"/>
+        <circle cx="120" cy="164" r="22" fill="#f6c390"/>
+        <path d="M 98 158 Q 104 134 120 136 Q 138 134 142 158 Q 130 150 120 152 Q 110 150 98 158 Z" fill="#6b4a2f"/>
+        <circle cx="113" cy="165" r="2.5" fill="#2d3142"/><circle cx="127" cy="165" r="2.5" fill="#2d3142"/>
+        <path d="M 113 174 Q 120 179 127 174" fill="none" stroke="#2d3142" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 92 220 Q 92 190 120 188 Q 148 190 148 220 Z" fill="#7768ae"/>
+        <rect x="84" y="190" width="18" height="28" rx="6" fill="#f25f5c"/>
+        <text x="18" y="200" font-size="16">✦</text><text x="210" y="170" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Freshman Seminar · Week 1 · Monday 9:00</p>
+      <h1>Welcome to NICUniversity</h1>
+      <p class="lede">You are now a <strong>pre-med undergraduate</strong>. That's a mouthful, so let's unpack it — along with how classes work here, how to take notes that actually help, and how to take a quiz like someone who knows the material (because you will).</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">Every class starts with two quick questions from things you've already learned. Think first, then peek.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Before we start</span>
+      <p>Print your <a href="../../print/notes-seminar-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a> for this lecture. We'll explain how to use it below — and you'll see boxes like this one whenever there's something worth writing down.</p>
+    </div>
+  </div>
+
+  <h2>🏛️ What a university is</h2>
+  <p>A university is a place where people go to learn hard things deeply and, just as importantly, where people <em>discover</em> new things. Your teachers are called <strong>professors</strong>, and most of them do research when they aren't teaching — finding out things nobody knew before. The first universities were started almost a thousand years ago (Bologna, in Italy, in 1088), and the first thing students there argued about was… medicine.</p>
+  <p>A student earning a first degree is an <strong>undergraduate</strong>. That usually takes four years. Someone who wants to be a doctor spends those years taking science courses — chemistry, biology, physics, statistics, and more — to get ready for <em>medical school</em>, which comes after. Those preparation courses are called <strong>pre-med</strong>. So “pre-med undergraduate” means: a university student getting ready for medical school. That's you, starting today.</p>
+  <p>Here's the honest map of the road to becoming a neonatologist — a doctor for newborns — in the United States: about four years of university, four years of medical school, three years training in children's medicine (called residency), and three more years training in newborn intensive care (a fellowship). Fourteen years after high school. It's a long road. Nobody walks it all at once; you walk it one class at a time. Today is a class.</p>
+
+  <h2>📅 How classes work here</h2>
+  <p>Look at your <a href="../../index.html">timetable</a>. Every box is a class. The smart way through is in order, like a real week — but any class is open whenever you want it. There are three kinds:</p>
+  <ul>
+    <li><strong>Lectures</strong> (like this one) — the professor teaches something new. About 20 minutes, with an 8-question quiz at the end. Score 6 or better and you earn the course's badge for the week.</li>
+    <li><strong>Recitations</strong> — smaller practice sessions. At NICUniversity, every lecture ends by assigning <strong>homework</strong> — a printed worksheet, about 20 minutes — and recitation is where you sit down and do it. Your professor grades it with an answer key.</li>
+    <li><strong>Exams</strong> — bigger tests. On Friday afternoon, the Week 1 Final covers everything from the whole week.</li>
+  </ul>
+  <p>You're taking nine courses this semester. Each one meets once a week — so next Monday, Chemistry meets again with a brand-new lecture, and you'll pick up right where you left off. Here's the lineup:</p>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Course</th><th>What it's really about</th><th>Meets</th></tr>
+    <tr><td>Freshman Seminar</td><td>How to be a student: notes, quizzes, writing, research, planning</td><td>Mon 9:00</td></tr>
+    <tr><td>Chemistry 101</td><td>What things are made of — starting with a single breath</td><td>Mon 10:30</td></tr>
+    <tr><td>Biology 101</td><td>How living things are built, from cells on up</td><td>Mon 1:00</td></tr>
+    <tr><td>Physics 101</td><td>Pressure, light, sound, heat — the forces behind NICU machines</td><td>Tue 1:00</td></tr>
+    <tr><td>Calculus 101</td><td>How fast things change — starting with how fast a baby grows</td><td>Tue 2:30</td></tr>
+    <tr><td>Statistics 101</td><td>What's typical, what's unusual, and how doctors know</td><td>Wed 10:30</td></tr>
+    <tr><td>Genetics 101</td><td>The instruction book inside every cell</td><td>Wed 1:00</td></tr>
+    <tr><td>Psychology 101</td><td>Minds — starting with what a baby's brain already knows</td><td>Thu 10:30</td></tr>
+    <tr><td>Sociology 101</td><td>People in groups — starting with the team inside a NICU</td><td>Thu 1:00</td></tr>
+  </table>
+  </div>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>Lectures teach. Recitations practice (that's where homework happens). Exams prove.</p>
+    </div>
+  </div>
+
+  <h2>✍️ The one rule of note-taking</h2>
+  <p>In NICU Tutor, you took notes — and you noticed something: writing down <em>everything</em> is exhausting, and it doesn't actually help you remember. Meanwhile writing down almost nothing leaves you with… almost nothing. Real university students struggle with exactly this. Here's the rule that fixes it:</p>
+  <p class="center" style="font-family:var(--font-head);font-size:1.4rem;font-weight:700;color:var(--violet)">Notes are for future-you. Write the 3 biggest ideas, in your own words.</p>
+  <p>Why three? Because future-you — the you taking Friday's exam — needs to remember the <em>ideas</em>, not the sentences. Why your own words? Because you can copy a sentence without understanding it, but you <em>cannot</em> rewrite an idea in your own words without understanding it first. The rewriting is the learning. That's the secret.</p>
+  <p>Here's the difference. Suppose the professor says: <em>“A premature baby cannot keep itself warm because its skin is thin, it has almost no fat for insulation, it cannot shiver, and it has very little brown fat. The isolette warms the air automatically using a skin probe.”</em></p>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>❌ Copying everything</th><th>✅ Three big ideas, my words</th></tr>
+    <tr><td style="font-weight:400">A premature baby cannot keep itself warm because its skin is thin, it has almost no fat for insulation, it cannot shiver, and it has very little brown fat. The isolette warms the air automatically using a skin probe.</td>
+        <td style="font-weight:400">• Preemies can't stay warm on their own (thin skin, no fat, no shivering)<br>• Isolette = warm box that fixes it<br>• It uses a skin probe to adjust itself</td></tr>
+  </table>
+  </div>
+  <p>The right column is shorter, and it's <em>better</em> — because whoever wrote it had to understand the paragraph to squeeze it down. And it's faster, so you can keep listening instead of scribbling.</p>
+  <p>To make this easy, every lecture comes with a one-page <strong>Class Notes sheet</strong> with three boxes for big ideas, two rows for new words (in your words), a box to draw something, and a spot for one question you still have. And in Week 1, the lecture <em>tells</em> you the big ideas — look for the dashed <strong>“Write this down”</strong> boxes. Next week, the boxes will ask you to find the big idea yourself. By Week 3 you won't need them.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Notes are for future-me: 3 big ideas, in my own words.</p>
+    </div>
+  </div>
+
+  <h2>🧠 How to take a quiz (and how not to)</h2>
+  <p>You've taken nine NICU Tutor quizzes, so you know the shape. Here's the pro version:</p>
+  <ol>
+    <li><strong>Read the question twice.</strong> Half of all wrong answers come from answering a question that wasn't asked.</li>
+    <li><strong>Read every choice</strong> before picking. Even if the first one looks right.</li>
+    <li><strong>Cross out the wrong ones.</strong> Usually you can eliminate two. Now it's a fair fight between the last two.</li>
+    <li><strong>Don't guess from looks.</strong> Some students learn to pick the longest answer, or the one in the middle. It won't work here: NICUniversity puts the right answer in a random position, and the wrong answers are written to sound just as reasonable. You actually have to know it. That's a compliment.</li>
+    <li><strong>Missing one is fine.</strong> Every wrong answer here comes with an explanation — that's where learning happens. You can retake any quiz as many times as you like.</li>
+  </ol>
+  <p>Homework is different from a quiz: it isn't multiple choice. You'll write short answers, label drawings, fill in tables, and do a little math. The answer key has sample answers, and your professor grades it — if your answer says the same thing in different words, it counts.</p>
+  <p>One more real-university thing: <strong>office hours</strong>. That's when a professor sits in their office and students drop in to ask anything. Your professor's office hours are… whenever you ask. Use them. Asking questions isn't cheating; it's the whole point of having a professor.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>Quiz: read twice, read all choices, cross out wrong ones, then choose. Missing one is how you learn.</p>
+    </div>
+  </div>
+
+  <h2>🧰 Your tools</h2>
+  <ul>
+    <li><strong>🔊 Read-aloud.</strong> Every paragraph has a little speaker button in the margin. Click it and your professor's voice (well, your computer's) reads it. The bar under the title reads the whole class and lets you change the speed or the voice.</li>
+    <li><strong>Dotted words.</strong> Words with a dotted underline are vocabulary. Tap one for a plain-English definition and a “say it” button. Try it now: <em>undergraduate</em>. (In this paragraph it should be dotted.)</li>
+    <li><strong>📜 Transcript.</strong> Your official record — every quiz score, badge, and homework stamp. Registrars love it.</li>
+    <li><strong>🎓 Professor mode.</strong> A button for grown-ups only. It unlocks answer keys and lets your professor enter scores from paper quizzes and homework. It has a secret code. Students who try to guess it get a stern look.</li>
+  </ul>
+
+  <div class="box box-flash">
+    <div class="box-title">⏪ Flashback to NICU Tutor</div>
+    <p>Everything you learned in NICU Tutor is now <em>required knowledge</em> here — professors will assume you know what an isolette is and why oxygen has a right dose. When a class points backward, you'll see a box like this with a link, such as <a href="../../../nicu_tutor/lessons/01-isolette.html">Lesson 1: The Isolette</a>. Following the link isn't required, but it's a smart move before Friday.</p>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">🎓 Real talk: the student nobody wanted</div>
+    <p>In the 1840s, no medical school in the United States would admit a woman. <strong>Elizabeth Blackwell</strong> applied anyway — and was rejected by more than two dozen schools. Then Geneva Medical College in New York put the question to its 150 male students, who voted to let her in <em>as a joke</em>. She showed up. Professors tried to keep her out of anatomy lessons; townspeople crossed the street to avoid her. In 1849 she graduated first in her class — the first woman in America to earn a medical degree — and went on to found a hospital and a medical college for women.</p>
+    <p>Why tell you this on day one? Because being a student is not the same as being welcomed. Sometimes you'll be the youngest, or the only one who cares this much, or the one people didn't expect. Blackwell's answer was to do the work and let the transcript speak. Yours can be too.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Undergraduate</dt><dd>A university student earning a first degree — usually four years.</dd>
+      <dt>Pre-med</dt><dd>The undergraduate courses that prepare you for medical school.</dd>
+      <dt>Lecture / recitation</dt><dd>Teaching session / practice session. Here, recitation = homework time.</dd>
+      <dt>Syllabus</dt><dd>The plan for a course. The timetable is the syllabus for your week.</dd>
+      <dt>Transcript</dt><dd>Your official record of courses and results.</dd>
+      <dt>Office hours</dt><dd>Time set aside for students to ask the professor anything.</dd>
+      <dt>Residency / fellowship</dt><dd>The years of hands-on training after medical school — first as a general doctor-in-training, then in a specialty like newborn care.</dd>
+    </dl>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Freshman Seminar, Week 1</h2>
+    <p>Eight questions. Six right earns the 🎓 badge. Remember the pro version: read twice, read every choice, cross out, choose.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Notes Practice</div>
+    <p>Due at recitation, Monday 2:30. Print it now: <a href="../../print/hw-seminar-w1.pdf" target="_blank" rel="noopener">Homework 1: Notes Practice (PDF)</a>. You'll turn a paragraph into three big ideas, look back at your Class Notes from today's classes, and answer a couple of flashback questions. Recitation details are on the <a href="../../recitations/week1/seminar.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "mon-seminar",
+  quizId: "seminar-w1",
+  course: "seminar",
+  printQuiz: "../../print/quiz-seminar-w1.pdf",
+  warmup: [
+    { q: "What do the letters N-I-C-U stand for?", a: "Neonatal Intensive Care Unit — the hospital unit for the newest, smallest, sickest babies. (“Neonatal” = newborn.)" },
+    { q: "In NICU Tutor, what score did you need on an 8-question quiz to earn a badge?", a: "6 out of 8. Same rule here at NICUniversity." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

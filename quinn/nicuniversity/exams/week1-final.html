@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Final Exam — NICUniversity</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body class="c-general" data-root="../">
+
+<header class="topbar">
+  <a class="brand" href="../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../index.html">Timetable</a>
+    <a href="../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A rolled diploma with a ribbon, a graduation cap, and a stethoscope">
+        <rect x="40" y="120" width="160" height="50" rx="25" fill="#fffdf5" stroke="#e3d9c8" stroke-width="3"/>
+        <circle cx="40" cy="145" r="25" fill="#f4ecdc" stroke="#e3d9c8" stroke-width="3"/>
+        <circle cx="40" cy="145" r="10" fill="#fffdf5" stroke="#e3d9c8" stroke-width="2"/>
+        <rect x="118" y="112" width="18" height="66" rx="4" fill="#f25f5c"/>
+        <path d="M 118 178 L 127 190 L 136 178" fill="#f25f5c"/>
+        <polygon points="120,30 172,54 120,78 68,54" fill="#2d3142"/>
+        <rect x="118" y="54" width="4" height="34" fill="#2d3142"/>
+        <path d="M 172 54 L 172 76" stroke="#ffb627" stroke-width="3"/><circle cx="172" cy="80" r="4" fill="#ffb627"/>
+        <path d="M 196 186 Q 220 186 220 160 Q 220 140 200 136" fill="none" stroke="#0e7c7b" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="196" cy="188" r="9" fill="#0e7c7b"/><circle cx="196" cy="188" r="4" fill="#5ef2a0"/>
+        <text x="18" y="60" font-size="15">✦</text><text x="214" y="112" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Final Exam · Friday 1:00 · Week 1</p>
+      <h1>Week 1 Final Exam</h1>
+      <p class="lede">Nine courses, nine homeworks, and now the exam that closes the unit. Twenty-four questions: twenty from this week's classes and four flashbacks from NICU Tutor. Pass mark is <strong>17</strong>. Pass, and your Week 1 diploma prints with your name on it.</p>
+    </div>
+  </div>
+
+  <div class="box box-fun">
+    <div class="box-title">📋 Before you begin</div>
+    <ul>
+      <li>Scratch paper is allowed and encouraged — there is a little arithmetic.</li>
+      <li>Prefer paper? Print the exam (link below), take it at a desk like a real final, and your professor can enter the score in Professor mode.</li>
+      <li>Read twice, read every choice, cross out, choose. You've got this, doctor.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🩺 The exam</h2>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">🎓 After the exam</div>
+    <p>Passing prints your <a href="../print/certificate-week1.pdf" target="_blank" rel="noopener">Week 1 Certificate (PDF)</a> — sign it as the professor and hang it up. Then check your <a href="../transcript.html">transcript</a>: every badge, every stamp, every score from your first week at NICUniversity. Week 2 begins with the same nine courses, one step deeper each.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "fri-final",
+  quizId: "final-w1",
+  course: "general",
+  printQuiz: "../print/quiz-final-w1.pdf",
+  certificate: "../print/certificate-week1.pdf"
+};
+</script>
+<script src="../js/vocab.js"></script>
+<script src="../js/quizzes.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

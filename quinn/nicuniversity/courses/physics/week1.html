@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics 101, Week 1: Pressure</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧲</text></svg>">
+</head>
+<body class="c-physics" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A pressure gauge next to Torricelli's mercury tube standing in a dish">
+        <!-- gauge -->
+        <circle cx="80" cy="90" r="60" fill="#fffdf5" stroke="#2d3142" stroke-width="6"/>
+        <path d="M 38 118 A 48 48 0 1 1 122 118" fill="none" stroke="#3f88c5" stroke-width="8" stroke-linecap="round"/>
+        <path d="M 96 46 A 48 48 0 0 1 122 118" fill="none" stroke="#f25f5c" stroke-width="8" stroke-linecap="round"/>
+        <line x1="80" y1="90" x2="104" y2="56" stroke="#2d3142" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="80" cy="90" r="7" fill="#2d3142"/>
+        <text x="80" y="132" font-size="11" text-anchor="middle" fill="#565d75" font-family="monospace">mmHg</text>
+        <rect x="66" y="150" width="28" height="30" rx="5" fill="#2d3142"/>
+        <!-- torricelli tube -->
+        <rect x="150" y="180" width="76" height="16" rx="6" fill="#9aa3c7"/>
+        <rect x="156" y="170" width="64" height="14" rx="3" fill="#b8bfd6"/>
+        <rect x="181" y="20" width="14" height="160" rx="4" fill="#dfe6ee" stroke="#565d75" stroke-width="2"/>
+        <rect x="183" y="64" width="10" height="114" fill="#9aa3c7"/>
+        <line x1="200" y1="64" x2="214" y2="64" stroke="#2d3142" stroke-width="2"/>
+        <line x1="200" y1="178" x2="214" y2="178" stroke="#2d3142" stroke-width="2"/>
+        <line x1="207" y1="64" x2="207" y2="178" stroke="#2d3142" stroke-width="2"/>
+        <text x="228" y="126" font-size="10" fill="#2d3142" text-anchor="middle" transform="rotate(90 228 126)">760 mm</text>
+        <text x="20" y="200" font-size="14">✦</text>
+        <text x="146" y="40" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Physics 101 · Week 1 · Tuesday 10:30</p>
+      <h1>Pressure</h1>
+      <p class="lede">Right now, the air is pushing on every square inch of you with about fifteen pounds of force — and you don't feel a thing. Physics is the science of pushes like that, and the NICU runs on them: in blood vessels, in breathing machines, in the air itself.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from yesterday's Chemistry.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-physics-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. Three big ideas coming.</p>
+    </div>
+  </div>
+
+  <h2>👍 What pressure is</h2>
+  <p>Press your thumb against a corkboard as hard as you like — nothing happens. Now put a thumbtack between your thumb and the board and press the same way: the tack sinks right in. Same push, completely different result. The difference is <strong>pressure</strong>.</p>
+  <p>Pressure is <em>a push spread over an area</em>. Your thumb spreads its push over a big pad of skin. The tack's point takes that same push and delivers it to a spot smaller than a grain of sand — so the push on each tiny bit of cork is enormous. In numbers: <strong>pressure = push ÷ area</strong>. Same push, one-fourth the area, four times the pressure. That's the whole idea, and it explains a surprising amount of the world: why snowshoes keep you from sinking (big area, low pressure), why knives are sharp (tiny area, high pressure), and why a NICU nurse presses on a baby's fingernail with a fingertip instead of a fingernail when checking circulation.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The same push on a small block and on a block four times bigger; the small block has four times the pressure">
+      <!-- left: small block -->
+      <path d="M 120 20 L 120 70" stroke="#f25f5c" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="108,64 132,64 120,84" fill="#f25f5c"/>
+      <text x="120" y="14" font-size="13" text-anchor="middle" fill="#f25f5c" font-weight="bold">push = 8</text>
+      <rect x="100" y="88" width="40" height="40" fill="#3f88c5"/>
+      <rect x="40" y="128" width="160" height="14" fill="#9aa3c7"/>
+      <text x="120" y="170" font-size="14" text-anchor="middle" fill="#2d3142">area = 1 square</text>
+      <text x="120" y="192" font-size="15" text-anchor="middle" fill="#2d3142" font-weight="bold">pressure = 8 ÷ 1 = 8</text>
+      <!-- right: big block -->
+      <path d="M 400 20 L 400 70" stroke="#f25f5c" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="388,64 412,64 400,84" fill="#f25f5c"/>
+      <text x="400" y="14" font-size="13" text-anchor="middle" fill="#f25f5c" font-weight="bold">push = 8</text>
+      <rect x="360" y="88" width="80" height="40" fill="#3f88c5"/>
+      <line x1="400" y1="88" x2="400" y2="128" stroke="#fff" stroke-width="2"/>
+      <line x1="380" y1="88" x2="380" y2="128" stroke="#fff" stroke-width="2"/>
+      <line x1="420" y1="88" x2="420" y2="128" stroke="#fff" stroke-width="2"/>
+      <rect x="300" y="128" width="200" height="14" fill="#9aa3c7"/>
+      <text x="400" y="170" font-size="14" text-anchor="middle" fill="#2d3142">area = 4 squares</text>
+      <text x="400" y="192" font-size="15" text-anchor="middle" fill="#2d3142" font-weight="bold">pressure = 8 ÷ 4 = 2</text>
+    </svg>
+    <figcaption>Same push, four times the area, one-fourth the pressure. Sharp things hurt because they are small.</figcaption>
+  </figure>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>Pressure = push ÷ area. Same push on a smaller area = bigger pressure (that's why sharp things go in).</p>
+    </div>
+  </div>
+
+  <h2>🌍 The air is pushing on you right now</h2>
+  <p>Air doesn't feel like anything, but it has weight — and there are about a hundred kilometers of it stacked above your head. All of that weight presses down on you, on the table, on everything: the pressure of the <strong>atmosphere</strong>. You don't notice it because the air and fluids inside your body push back out exactly as hard. (Inside you, it's a tie.)</p>
+  <p>In 1643 an Italian scientist named <strong>Evangelista Torricelli</strong> proved this with a beautiful trick. He filled a glass tube with liquid <strong>mercury</strong> — a silvery metal that's liquid at room temperature and very, very heavy — closed the top, and stood it upside down in a dish of mercury. Some mercury ran out of the tube, but not all of it: a column about <strong>760 millimeters</strong> tall stayed standing, held up by nothing but the weight of the air pressing down on the dish. The air was strong enough to hold up 760 mm of the heaviest liquid he had. He'd built the first <em>barometer</em>, and invented a way to measure pressure: <strong>millimeters of mercury</strong>, written <strong>mmHg</strong> (Hg is mercury's chemical symbol — from the Latin <em>hydrargyrum</em>, “liquid silver.” Chemistry sneaks in everywhere).</p>
+  <p>Five years later, Blaise Pascal asked his brother-in-law to carry a Torricelli tube up a mountain in France. Near the top, the mercury column was several centimeters shorter — less air above you, less push. Pascal was right: the air is an ocean, and we live at the bottom of it. The modern unit of pressure is named the <em>pascal</em> in his honor.</p>
+  <p>And here is why this matters in a NICU: <strong>blood pressure is measured in mmHg</strong> because the first blood pressure meters (1896) were literally a cuff connected to a mercury column. A baby's blood pressure of “60” means the heart is pushing hard enough to lift a column of mercury 60 mm high. Now you know what the number <em>is</em>.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Air has weight. At sea level it pushes hard enough to hold up 760 mm of mercury — so we measure pressure (including blood pressure) in mmHg.</p>
+    </div>
+  </div>
+
+  <h2>🏥 Pressure in the NICU</h2>
+  <p>Walk down a NICU and nearly every machine is a pressure machine:</p>
+  <ul>
+    <li><strong>The blood pressure cuff</strong> inflates until its pressure is greater than the artery's, squeezing it shut — then lets go slowly and notices the exact moment blood starts pushing through again. That moment is the top number. (Flashback: <a href="../../../nicu_tutor/lessons/04-blood-pressure.html">NICU Tutor Lesson 4</a>.)</li>
+    <li><strong>CPAP</strong> holds a preemie's lungs open with a gentle, constant pressure — so gentle that mmHg is too big a unit for it. Breathing support is measured in <strong>centimeters of water</strong>, <strong>cmH₂O</strong>: how high the push could lift a column of water instead of mercury. Typical CPAP is about 5 to 8 cmH₂O.</li>
+    <li><strong>Bubble CPAP</strong> makes the physics visible: the breathing-out tube ends under water in a bottle. Push the tube 5 cm deep and the baby breathes out against exactly 5 cmH₂O of pressure — the bubbles are the proof. Set the pressure by moving a tube up and down in water. Torricelli would have loved it.</li>
+    <li><strong>The ventilator</strong> pushes each breath in with a measured pressure — often 15 to 25 cmH₂O at the peak — then lets the chest fall.</li>
+  </ul>
+  <p>Two units, so which is bigger? Mercury is about <strong>13.6 times heavier than water</strong>, so lifting a millimeter of mercury takes as much push as lifting 13.6 millimeters — 1.36 centimeters — of water. That means <strong>1 mmHg ≈ 1.36 cmH₂O</strong>: the mercury unit is the bigger push, even though millimeters are smaller than centimeters. A CPAP of 6 cmH₂O is only about 4 mmHg — a whisper compared with a blood pressure of 60.</p>
+
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Pressure</th><th>How much</th><th>In plain words</th></tr>
+    <tr><td>The atmosphere (sea level)</td><td>760 mmHg</td><td>Holds up 76 cm of mercury — or about 10 meters of water!</td></tr>
+    <tr><td>Adult blood pressure (top number)</td><td>About 120 mmHg</td><td>About one-sixth of the atmosphere's push</td></tr>
+    <tr><td>Newborn blood pressure (top number)</td><td>About 60–80 mmHg</td><td>About half an adult's</td></tr>
+    <tr><td>CPAP</td><td>5–8 cmH₂O (about 4–6 mmHg)</td><td>A gentle cushion — about the push of a 5 cm–deep puddle</td></tr>
+    <tr><td>Ventilator peak pressure</td><td>Often 15–25 cmH₂O</td><td>A firm puff — and the team keeps it as low as it can</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself</div>
+    <p>Fill a glass with water, put a straw in, and put your finger tightly over the top of the straw. Lift the straw out: the water stays inside! Nothing is holding it up but the air pressing on the open bottom end — a tiny Torricelli tube. Lift your finger and the air can push from the top too; the tie is broken and the water falls.</p>
+  </div>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>Breathing machines use gentle pressures measured in cmH₂O. 1 mmHg ≈ 1.36 cmH₂O — mercury is 13.6× heavier than water.</p>
+    </div>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk: pressure heals and pressure hurts</div>
+    <p>In the 1960s, doctors began putting the smallest babies on ventilators, and babies who would certainly have died started surviving. But many survivors came home with scarred, stiff lungs — a new disease, named <strong>bronchopulmonary dysplasia (BPD)</strong> in 1967, caused partly by the machines themselves: too much pressure, for too long, stretching alveoli that were never built to take it. Sometimes an over-stretched air sac simply pops, and air leaks into the chest and squashes the lung — an <strong>air leak</strong>, which can turn deadly in minutes and has to be drained with a needle or tube.</p>
+    <p>Physics gave doctors the way out too. In 1971, <strong>George Gregory</strong> in San Francisco tried something gentler on preemies with collapsing lungs: not big breaths, just a steady, low pressure to keep the alveoli from closing — the first CPAP. Survival jumped. Today's rule, “the smallest pressure that works,” comes straight out of that history. The people who set those dials know that the same push that keeps a lung open can also tear it — and they measure every centimeter of water.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Pressure</dt><dd>A push spread over an area. Push ÷ area.</dd>
+      <dt>Atmosphere</dt><dd>The ocean of air we live at the bottom of. Its weight presses on everything.</dd>
+      <dt>Barometer</dt><dd>An instrument that measures air pressure — Torricelli's tube was the first.</dd>
+      <dt>mmHg</dt><dd>Millimeters of mercury: how high the push could lift mercury. Blood pressure's unit.</dd>
+      <dt>cmH₂O</dt><dd>Centimeters of water: how high the push could lift water. CPAP and ventilator unit.</dd>
+      <dt>Air leak</dt><dd>A popped air sac leaking air into the chest — a danger of too much pressure.</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.britannica.com/biography/Evangelista-Torricelli" target="_blank" rel="noopener">Britannica: Evangelista Torricelli</a></li>
+      <li><a href="https://kidshealth.org/en/parents/cpap.html" target="_blank" rel="noopener">KidsHealth: CPAP for babies</a></li>
+      <li>Ask a grown-up to help you find a video of bubble CPAP in a NICU — you can watch the pressure as bubbles.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Physics 101, Week 1</h2>
+    <p>Eight questions. Six right earns the 🧲 badge.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: Pressure</div>
+    <p>Due at recitation, Wednesday 9:00. Print it now: <a href="../../print/hw-physics-w1.pdf" target="_blank" rel="noopener">Homework 1: Pressure (PDF)</a>. Pushes and areas, matching units to machines, drawing Torricelli's tube, and a CPAP decision to think through like a doctor. Details on the <a href="../../recitations/week1/physics.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "tue-physics",
+  quizId: "physics-w1",
+  course: "physics",
+  printQuiz: "../../print/quiz-physics-w1.pdf",
+  warmup: [
+    { q: "From NICU Tutor: a blood pressure is written as two numbers, like 64/38. What are they called?", a: "Systolic (the top — the peak push during the heart's squeeze) and diastolic (the bottom — the low push while the heart refills)." },
+    { q: "From Chemistry: about what percent of the air is oxygen — and what is most of the rest?", a: "About 21% oxygen. About 78% is nitrogen, which the body breathes in and right back out." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

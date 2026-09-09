@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculus 101, Week 1: How Fast Is the Baby Growing?</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body class="c-calculus" data-root="../../">
+
+<header class="topbar">
+  <a class="brand" href="../../index.html">🎓 NICUniversity</a>
+  <nav>
+    <a href="../../index.html">Timetable</a>
+    <a href="../../transcript.html">Transcript</a>
+    <button type="button" class="prof-toggle" id="prof-toggle">🎓 Professor</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A growth chart with a rising line, a baby scale, and a pencil">
+        <rect x="20" y="20" width="200" height="150" rx="10" fill="#fffdf5" stroke="#e3d9c8" stroke-width="3"/>
+        <g stroke="#efe3d3" stroke-width="1.5">
+          <line x1="50" y1="40" x2="50" y2="150"/><line x1="90" y1="40" x2="90" y2="150"/><line x1="130" y1="40" x2="130" y2="150"/><line x1="170" y1="40" x2="170" y2="150"/>
+          <line x1="40" y1="60" x2="200" y2="60"/><line x1="40" y1="90" x2="200" y2="90"/><line x1="40" y1="120" x2="200" y2="120"/>
+        </g>
+        <line x1="40" y1="150" x2="200" y2="150" stroke="#2d3142" stroke-width="2"/>
+        <line x1="40" y1="40" x2="40" y2="150" stroke="#2d3142" stroke-width="2"/>
+        <polyline points="50,128 70,134 90,126 110,112 130,100 150,86 170,70 190,56" fill="none" stroke="#c8871a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#c8871a"><circle cx="50" cy="128" r="4"/><circle cx="70" cy="134" r="4"/><circle cx="90" cy="126" r="4"/><circle cx="110" cy="112" r="4"/><circle cx="130" cy="100" r="4"/><circle cx="150" cy="86" r="4"/><circle cx="170" cy="70" r="4"/><circle cx="190" cy="56" r="4"/></g>
+        <!-- scale with baby -->
+        <rect x="150" y="186" width="70" height="14" rx="5" fill="#3f88c5"/>
+        <rect x="176" y="176" width="18" height="12" fill="#2d3142"/>
+        <text x="185" y="185" font-size="7" fill="#5ef2a0" text-anchor="middle" font-family="monospace">1240g</text>
+        <ellipse cx="185" cy="178" rx="24" ry="8" fill="#ffd9a0"/>
+        <circle cx="204" cy="175" r="7" fill="#f6c390"/>
+        <!-- pencil -->
+        <rect x="30" y="192" width="80" height="10" rx="2" fill="#ffb627" transform="rotate(-12 70 197)"/>
+        <polygon points="110,187 122,192 110,199" fill="#f6c390" transform="rotate(-12 70 197)"/>
+        <text x="226" y="36" font-size="13">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="kicker">Calculus 101 · Week 1 · Tuesday 1:00</p>
+      <h1>How Fast Is the Baby Growing?</h1>
+      <p class="lede">Every NICU baby is weighed every single night, to the gram. But the number on the scale isn't what the doctors are really after. They want to know something the scale can't say directly: <strong>how fast is it changing?</strong> Answering that question is what calculus is.</p>
+    </div>
+  </div>
+
+  <div class="read-controls" id="read-controls"></div>
+
+  <section class="warmup">
+    <h2>🔁 Warm-up: do you remember?</h2>
+    <p class="muted">One from NICU Tutor, one from yesterday's Biology.</p>
+    <div id="warmup-root"></div>
+  </section>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Get ready</span>
+      <p>Print the <a href="../../print/notes-calculus-w1.pdf" target="_blank" rel="noopener">Class Notes sheet</a>. You'll also want scratch paper for the arithmetic today.</p>
+    </div>
+  </div>
+
+  <h2>🧮 What calculus is</h2>
+  <p>You know arithmetic: adding, subtracting, multiplying, dividing numbers that sit still. <strong>Calculus</strong> is the mathematics of numbers that <em>move</em> — things that change over time. It asks two big questions about anything that's changing:</p>
+  <ol>
+    <li><strong>How fast is it changing?</strong> (How many grams per day is this baby gaining?)</li>
+    <li><strong>How much has piled up?</strong> (If the pump runs at 3 mL an hour, how much milk did the baby get today?)</li>
+  </ol>
+  <p>Those two questions turn out to be two sides of one coin, and figuring that out was one of the great achievements of human thought. It happened in the late 1600s — <em>twice</em>. <strong>Isaac Newton</strong> in England and <strong>Gottfried Leibniz</strong> in Germany each invented calculus on their own, at nearly the same time. Then their friends spent thirty years accusing each other of stealing it. (Both were right that they'd invented it. Neither was gracious about it. Even geniuses can be silly.) Today, calculus is how we predict the weather, design bridges, fly rockets — and read a baby's growth chart.</p>
+  <p>This week: question one. How fast.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 1</span>
+      <p>Calculus is the math of change. Big question 1: how fast is it changing? (Question 2, how much piles up, is next week.)</p>
+    </div>
+  </div>
+
+  <h2>⏱️ Rate of change: change ÷ time</h2>
+  <p>Here are real-looking NICU numbers. A preemie weighs <strong>900 grams</strong> on day 1 and <strong>970 grams</strong> on day 8. How fast is she growing? Two steps:</p>
+  <div class="card">
+    <p><strong>Step 1 — How much did it change?</strong> Later weight minus earlier weight: 970 − 900 = <strong>70 grams</strong>.</p>
+    <p><strong>Step 2 — Over how much time?</strong> Day 8 minus day 1 = <strong>7 days</strong>. Spread the change over the days: 70 ÷ 7 = <strong>10 grams per day</strong>.</p>
+    <p style="margin-bottom:0"><strong>Rate of change = change ÷ time.</strong> This baby is growing at 10 grams per day.</p>
+  </div>
+  <p>The little word <strong>“per”</strong> is doing heavy lifting there. “Per day” means “for each day.” Whenever you see “per,” somebody divided: miles per hour, beats per minute, grams per day. Doctors go one step further and divide by the baby's size too, so babies of different sizes can be compared: a 1-kilogram baby gaining 20 grams a day is growing at <strong>20 grams per kilogram per day</strong> — “20 g/kg/day.” A 2-kilogram baby would have to gain 40 grams a day to match that. (Remember the target from NICU Tutor: about 15 to 20 g/kg/day.)</p>
+  <p>Try one: a baby goes from 1,200 g on day 1 to 1,340 g on day 8. Change? 140 g. Time? 7 days. Rate? 140 ÷ 7 = <strong>20 g/day</strong>. If that baby weighs about 1 kg, that's 20 g/kg/day — right on target. Rates are just careful subtraction and division. You can already do calculus's first job.</p>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 2</span>
+      <p>Rate of change = change ÷ time. (970 − 900) ÷ 7 days = 10 grams per day. “Per” means “divided by.”</p>
+    </div>
+  </div>
+
+  <h2>📈 Seeing the rate: steepness</h2>
+  <p>Numbers in a table are hard to feel. So doctors draw them: each night's weight becomes a dot, with the day along the bottom and the weight up the side. Connect the dots and you get a line — and the line's <strong>steepness</strong> shows the rate at a glance. A steep climb means fast growth. A gentle climb means slow growth. A flat line means <em>no</em> growth. And a line going downhill means the baby is losing weight — a <strong>negative</strong> rate of change.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weight graph for three babies: one climbing steeply, one climbing gently, one flat, plus a dip in the first days">
+      <line x1="70" y1="250" x2="560" y2="250" stroke="#2d3142" stroke-width="2"/>
+      <line x1="70" y1="30" x2="70" y2="250" stroke="#2d3142" stroke-width="2"/>
+      <g stroke="#efe3d3" stroke-width="1">
+        <line x1="70" y1="210" x2="560" y2="210"/><line x1="70" y1="170" x2="560" y2="170"/><line x1="70" y1="130" x2="560" y2="130"/><line x1="70" y1="90" x2="560" y2="90"/><line x1="70" y1="50" x2="560" y2="50"/>
+      </g>
+      <g font-size="12" fill="#565d75">
+        <text x="62" y="254" text-anchor="end">900</text><text x="62" y="214" text-anchor="end">950</text><text x="62" y="174" text-anchor="end">1000</text><text x="62" y="134" text-anchor="end">1050</text><text x="62" y="94" text-anchor="end">1100</text><text x="62" y="54" text-anchor="end">1150</text>
+        <text x="70" y="270" text-anchor="middle">day 1</text><text x="210" y="270" text-anchor="middle">day 3</text><text x="350" y="270" text-anchor="middle">day 5</text><text x="490" y="270" text-anchor="middle">day 7</text>
+        <text x="315" y="292" text-anchor="middle" font-weight="bold" fill="#2d3142">Day</text>
+        <text x="22" y="140" text-anchor="middle" transform="rotate(-90 22 140)" font-weight="bold" fill="#2d3142">Weight (g)</text>
+      </g>
+      <!-- steep baby -->
+      <polyline points="70,250 140,230 210,206 280,180 350,152 420,120 490,88 560,52" fill="none" stroke="#2a9d3f" stroke-width="4" stroke-linecap="round"/>
+      <text x="470" y="60" font-size="13" fill="#2a9d3f" font-weight="bold">steep: fast growth</text>
+      <!-- gentle baby -->
+      <polyline points="70,250 140,244 210,238 280,231 350,224 420,216 490,208 560,200" fill="none" stroke="#c8871a" stroke-width="4" stroke-linecap="round"/>
+      <text x="440" y="196" font-size="13" fill="#c8871a" font-weight="bold">gentle: slow growth</text>
+      <!-- flat baby -->
+      <polyline points="70,170 140,171 210,169 280,170 350,171 420,170 490,170 560,170" fill="none" stroke="#f25f5c" stroke-width="4" stroke-dasharray="10 6" stroke-linecap="round"/>
+      <text x="440" y="164" font-size="13" fill="#f25f5c" font-weight="bold">flat: no growth</text>
+      <!-- dip -->
+      <polyline points="70,130 140,150 210,158 280,150 350,138" fill="none" stroke="#3f88c5" stroke-width="4" stroke-linecap="round"/>
+      <text x="100" y="118" font-size="13" fill="#3f88c5" font-weight="bold">dip: normal newborn weight loss, then recovery</text>
+    </svg>
+    <figcaption>Steepness is the rate. Doctors look at the <em>shape</em> of the line, not just today's dot.</figcaption>
+  </figure>
+
+  <p>That downhill stretch isn't always bad news. Almost every newborn <em>loses</em> weight in the first few days — mostly water — up to about 10% of birth weight, and then climbs back within a week or two. A doctor who only saw one dot might panic; a doctor who sees the whole line knows it's normal. In medicine, the shape of the line is called the baby's <strong>growth velocity</strong> — and “velocity” is exactly the calculus word for a rate of change.</p>
+
+  <div class="box box-fun">
+    <div class="box-title">🤯 The real secret of calculus (a preview)</div>
+    <p>Our baby gained 10 g/day <em>on average</em> over the week. But maybe she gained nothing for three days and then 23 grams a day for four — the average hides that. Zoom in: what's the rate on <em>one</em> day? On one hour? Right now, this instant? Calculus's big trick is finding the rate at a single moment by zooming in closer and closer. Mathematicians call that “right-now rate” the <strong>derivative</strong>. You just learned what it means. The fancy symbols come later — and now they'll never scare you.</p>
+  </div>
+
+  <div class="cue">
+    <div class="cue-icon">📝</div>
+    <div><span class="cue-label">Write this down · big idea 3</span>
+      <p>On a graph, steepness = rate. Steep = fast, flat = none, downhill = losing (negative). Read the line, not one dot.</p>
+    </div>
+  </div>
+
+  <div class="box box-try">
+    <div class="box-title">🧪 Try it yourself: your own growth rate</div>
+    <p>Ask a grown-up for two of your heights with dates — a doctor's visit last year and one this year, say. Change = this year's height − last year's. Time = the months between. Rate = change ÷ time, in centimeters per month. (Most 8-year-olds grow about half a centimeter a month.) Now you've computed your own growth velocity — the same math a neonatologist does at 3 a.m.</p>
+  </div>
+
+  <h2>🔢 The numbers</h2>
+  <div class="table-scroll">
+  <table class="numbers">
+    <tr><th>Growth fact</th><th>Number</th><th>Notes</th></tr>
+    <tr><td>Normal newborn weight loss</td><td>Up to about 10% of birth weight in the first days</td><td>Regained by about 10–14 days. Downhill, then uphill.</td></tr>
+    <tr><td>Preemie growth target</td><td>About 15–20 g/kg/day</td><td>“Per kilogram” lets doctors compare babies of different sizes.</td></tr>
+    <tr><td>Full-term baby, first months</td><td>Roughly 20–30 g/day (about an ounce)</td><td>Babies usually double their birth weight by around 4–6 months.</td></tr>
+    <tr><td>Weighing schedule in the NICU</td><td>Every day, usually at night</td><td>Same scale, same time — so the line is honest.</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-real">
+    <div class="box-title">💔 Real talk: when the line goes flat</div>
+    <p>Growth isn't a bonus for a preemie — it's the treatment. The brain is growing fastest of all in those weeks, and babies whose weight line goes flat for too long have a higher chance of learning and development problems later. So a flat line is an alarm, even if the baby seems fine today. The team hunts for a reason (is the baby working too hard to breathe and burning the calories? fighting an infection? not absorbing feeds?) and adds fuel — more milk, or a powder called <em>fortifier</em> that packs extra calories and protein into each milliliter. Then they watch the line. Not the dot. The line.</p>
+    <p>That's why a NICU doctor can look at a weight chart the way you look at a face. Calculus is the grammar of that reading — and this week, you learned its first sentence.</p>
+  </div>
+
+  <div class="box box-words">
+    <div class="box-title">📖 Words to know</div>
+    <dl class="words">
+      <dt>Rate of change</dt><dd>How much something changes per unit of time. Change ÷ time.</dd>
+      <dt>Per</dt><dd>“For each.” It always means somebody divided.</dd>
+      <dt>Slope</dt><dd>The steepness of a line on a graph — which, on a weight graph, IS the rate.</dd>
+      <dt>Negative</dt><dd>Less than zero. A negative rate means going down.</dd>
+      <dt>Velocity</dt><dd>Speed with a direction. Doctors say “growth velocity.”</dd>
+      <dt>Derivative</dt><dd>The rate of change at a single instant — calculus's central idea. Preview only!</dd>
+    </dl>
+  </div>
+
+  <div class="box box-more">
+    <div class="box-title">🔗 Want more?</div>
+    <ul>
+      <li><a href="https://www.khanacademy.org/math/cc-fifth-grade-math/imp-algebraic-thinking/imp-graphing-patterns/v/graphing-patterns-on-coordinate-plane" target="_blank" rel="noopener">Khan Academy: plotting points on a grid</a></li>
+      <li><a href="https://www.britannica.com/story/who-invented-calculus" target="_blank" rel="noopener">Britannica: Who invented calculus?</a> — the Newton–Leibniz feud.</li>
+      <li>Ask a grown-up to show you your own growth chart from the pediatrician. Find the steepest part.</li>
+    </ul>
+  </div>
+
+  <section class="quiz-zone">
+    <h2>🏅 Quiz: Calculus 101, Week 1</h2>
+    <p>Eight questions. Six right earns the 📈 badge. Scratch paper allowed — encouraged, even.</p>
+    <div class="quiz-tools" id="quiz-tools"></div>
+    <div class="prof-panel" id="prof-panel" style="display:none"></div>
+    <div id="quiz-root"></div>
+  </section>
+
+  <div class="box box-team">
+    <div class="box-title">📚 Homework assigned: How Fast Is the Baby Growing?</div>
+    <p>Due at recitation, Wednesday 9:45. Print it now: <a href="../../print/hw-calculus-w1.pdf" target="_blank" rel="noopener">Homework 1: Growth Rates (PDF)</a>. Rates from a table of three babies, plotting a growth line on a grid, a downhill puzzle, and a two-babies-same-weight decision. Details on the <a href="../../recitations/week1/calculus.html">recitation page</a>.</p>
+  </div>
+
+  <nav class="lesson-nav" id="lesson-nav"></nav>
+</main>
+
+<script>
+window.LESSON = {
+  slotId: "tue-calc",
+  quizId: "calculus-w1",
+  course: "calculus",
+  printQuiz: "../../print/quiz-calculus-w1.pdf",
+  warmup: [
+    { q: "From NICU Tutor: about how many grams per kilogram per day should a growing preemie gain?", a: "About 15–20 g/kg/day. (And yes — diapers get weighed too, because what comes out is data.)" },
+    { q: "From Biology: fill in the doubling table — 1, 2, 4, 8, __, __.", a: "16, 32. Each round of cell division doubles the crowd." }
+  ]
+};
+</script>
+<script src="../../js/vocab.js"></script>
+<script src="../../js/quizzes.js"></script>
+<script src="../../js/app.js"></script>
+</body>
+</html>

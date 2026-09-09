@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nicu-tutor",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8471", "--directory", "/Users/aaron/space/nicu_tutor"],
+      "port": 8471
+    },
+    {
+      "name": "space",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8472", "--directory", "/Users/aaron/space"],
+      "port": 8472
+    }
+  ]
+}

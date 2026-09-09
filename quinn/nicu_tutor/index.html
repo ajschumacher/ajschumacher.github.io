@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICU Tutor — Machines of the NICU</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐣</text></svg>">
+</head>
+<body data-page="home">
+
+<header class="topbar">
+  <a class="brand" href="index.html">🐣 NICU Tutor</a>
+  <nav>
+    <a href="glossary.html">Glossary</a>
+    <a href="sources.html">Sources</a>
+  </nav>
+</header>
+
+<main class="wrap wrap-wide">
+
+  <div class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A baby sleeping inside a clear incubator with a heart monitor beside it">
+        <!-- monitor pole -->
+        <rect x="186" y="60" width="6" height="120" rx="3" fill="#b7c4cf"/>
+        <rect x="166" y="24" width="62" height="44" rx="8" fill="#2d3142"/>
+        <polyline points="172,48 182,48 186,36 192,58 197,44 202,48 222,48" fill="none" stroke="#5ef2a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- isolette stand -->
+        <rect x="30" y="170" width="140" height="14" rx="7" fill="#0e7c7b"/>
+        <rect x="44" y="184" width="10" height="26" rx="5" fill="#b7c4cf"/>
+        <rect x="146" y="184" width="10" height="26" rx="5" fill="#b7c4cf"/>
+        <circle cx="49" cy="213" r="7" fill="#2d3142"/>
+        <circle cx="151" cy="213" r="7" fill="#2d3142"/>
+        <!-- isolette base -->
+        <rect x="26" y="140" width="148" height="34" rx="10" fill="#3f88c5"/>
+        <!-- clear hood -->
+        <path d="M 34 140 L 34 106 Q 34 78 62 78 L 138 78 Q 166 78 166 106 L 166 140 Z" fill="#dff0fa" stroke="#9cc4dd" stroke-width="3" opacity="0.9"/>
+        <circle cx="70" cy="128" r="9" fill="#fff" stroke="#9cc4dd" stroke-width="3"/>
+        <circle cx="130" cy="128" r="9" fill="#fff" stroke="#9cc4dd" stroke-width="3"/>
+        <!-- baby -->
+        <ellipse cx="100" cy="132" rx="34" ry="12" fill="#ffd9a0"/>
+        <circle cx="132" cy="126" r="13" fill="#f6c390"/>
+        <path d="M 122 118 Q 132 108 142 118" fill="none" stroke="#8a5a33" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="128" cy="125" r="1.6" fill="#2d3142"/>
+        <circle cx="136" cy="125" r="1.6" fill="#2d3142"/>
+        <path d="M 129 131 Q 132 133 135 131" fill="none" stroke="#2d3142" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- stars -->
+        <text x="18" y="40" font-size="16">✦</text>
+        <text x="120" y="18" font-size="12">✦</text>
+        <text x="222" y="120" font-size="14">✦</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <h1>Machines of the NICU</h1>
+      <p class="lede">The <strong>NICU</strong> (say it: “NIK-yoo”) is the <strong>Neonatal Intensive Care Unit</strong> — the part of the hospital where the newest, smallest, sickest babies get round-the-clock care. It is full of amazing machines, and every machine has a story about how the body works.</p>
+      <p>These lessons are for future NICU doctors. Each one takes about 20 minutes. Read carefully, look at the pictures, then take the quiz at the end. Score 6 out of 8 or better and you earn that machine's badge. Earn all nine and you've completed your first NICU rotation. 🎓</p>
+    </div>
+  </div>
+
+  <div class="badge-shelf">
+    <span class="shelf-label">🏆 Your badge shelf:</span>
+    <span id="badge-shelf" style="display:contents"></span>
+    <span class="shelf-label" id="shelf-count" style="margin-left:auto"></span>
+  </div>
+
+  <div class="lesson-grid">
+
+    <a class="lesson-card" href="lessons/01-isolette.html" data-lesson-card="01">
+      <span class="lc-badge">🐣</span>
+      <span class="lc-num">Lesson 1</span>
+      <span class="lc-icon">🛏️</span>
+      <h3>The Isolette</h3>
+      <span class="lc-sub">Why can't a tiny baby keep itself warm — and how does a clear plastic box save its life?</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/02-pulse-ox.html" data-lesson-card="02">
+      <span class="lc-badge">❤️‍🔥</span>
+      <span class="lc-num">Lesson 2</span>
+      <span class="lc-icon">🔦</span>
+      <h3>The Pulse Oximeter</h3>
+      <span class="lc-sub">A little red light on the foot that measures oxygen in the blood — without a single poke.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/03-monitor.html" data-lesson-card="03">
+      <span class="lc-badge">📈</span>
+      <span class="lc-num">Lesson 3</span>
+      <span class="lc-icon">🖥️</span>
+      <h3>The Monitor</h3>
+      <span class="lc-sub">Heartbeats, breaths, and the strange truth that preemie brains sometimes forget to breathe.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/04-blood-pressure.html" data-lesson-card="04">
+      <span class="lc-badge">🎈</span>
+      <span class="lc-num">Lesson 4</span>
+      <span class="lc-icon">🫀</span>
+      <h3>Blood Pressure</h3>
+      <span class="lc-sub">The push that keeps blood moving — how it's measured, and why the number matters for the brain.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/05-breathing.html" data-lesson-card="05">
+      <span class="lc-badge">🌬️</span>
+      <span class="lc-num">Lesson 5</span>
+      <span class="lc-icon">💨</span>
+      <h3>CPAP &amp; the Ventilator</h3>
+      <span class="lc-sub">Why preemie lungs collapse like sticky balloons — and the discovery that changed everything.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/06-feeding.html" data-lesson-card="06">
+      <span class="lc-badge">🥛</span>
+      <span class="lc-num">Lesson 6</span>
+      <span class="lc-icon">🍼</span>
+      <h3>Feeding Tubes &amp; IV Lines</h3>
+      <span class="lc-sub">How do you feed a baby who can't eat yet? Tubes, lines, and milk that works like medicine.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/07-bili-lights.html" data-lesson-card="07">
+      <span class="lc-badge">💙</span>
+      <span class="lc-num">Lesson 7</span>
+      <span class="lc-icon">🕶️</span>
+      <h3>The Bili Lights</h3>
+      <span class="lc-sub">Why babies turn yellow, and how blue light bends a molecule to fix it.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card" href="lessons/08-imaging.html" data-lesson-card="08">
+      <span class="lc-badge">🔍</span>
+      <span class="lc-num">Lesson 8</span>
+      <span class="lc-icon">🩻</span>
+      <h3>Seeing Inside</h3>
+      <span class="lc-sub">Ultrasound, X-rays, and echoes: how doctors look inside a baby without opening anything.</span>
+      <span class="lc-status"></span>
+    </a>
+
+    <a class="lesson-card capstone-card" href="lessons/rounds.html" data-lesson-card="rounds">
+      <span class="lc-badge">🩺</span>
+      <span class="lc-num">Final Challenge</span>
+      <span class="lc-icon">👩‍⚕️</span>
+      <h3>Your NICU Rounds</h3>
+      <span class="lc-sub">You're the doctor now. Twelve questions mixing everything from all eight lessons.</span>
+      <span class="lc-status"></span>
+    </a>
+
+  </div>
+
+  <div class="box box-fun">
+    <div class="box-title">💬 A note before you start</div>
+    <p>The NICU is a hopeful place, but it is also a serious one. Some babies in the NICU are fighting for their lives, and not all of them make it. These lessons tell you the truth about that, because real doctors need real information — and because the story of the NICU is mostly a story of how doctors, nurses, scientists, and families keep making things better, year after year.</p>
+  </div>
+
+  <p class="footer-note">
+    Made with ❤️ for a future neonatologist. Medical facts were checked against sources from the American Academy of Pediatrics, the NIH, and published research — see the <a href="sources.html">Sources page</a>. This is for learning, not for treating actual babies (yet).
+    <br><br>
+    <button id="reset-progress" style="font:inherit;background:none;border:1px solid var(--line);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--ink-soft)">Reset all progress</button>
+  </p>
+
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
