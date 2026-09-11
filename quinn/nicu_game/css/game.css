@@ -11,7 +11,10 @@
   --line:      #2c3850;
   --ink:       #e8eef8;
   --ink-soft:  #97a6bf;
-  --ink-dim:   #64748b;
+  /* AA on every surface it is used on: 5.1 on --panel, 4.6 on --panel-2, 5.5 on --bg-2.
+     It was #64748b, which was 3.0 on --panel-2 - and it is the token used for the
+     SMALLEST text in the game, so it had the worst contrast at the smallest size. */
+  --ink-dim:   #8593a7;
 
   --teal:      #2ec4b6;
   --teal-dk:   #1d8c82;
@@ -118,7 +121,10 @@ button { font: inherit; font-family: var(--font-body); }
 .shell { display: flex; flex-direction: column; height: 100vh; }
 
 .topbar {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  /* nowrap: grouping the pills and the buttons made each group indivisible, so a wrap
+     put the controls you actually play with onto a second row. Below 760px the media
+     query replaces this with a two-row grid on purpose. */
+  display: flex; align-items: center; gap: 16px; flex-wrap: nowrap;
   background: linear-gradient(180deg, #182234, #131b28);
   border-bottom: 1px solid var(--line);
   padding: 8px 16px;
@@ -132,10 +138,20 @@ button { font: inherit; font-family: var(--font-body); }
 .speed { display: flex; gap: 4px; }
 .speed button {
   background: var(--panel-2); color: var(--ink-soft); border: 1px solid var(--line);
-  border-radius: 8px; padding: 5px 11px; cursor: pointer; font-size: .9rem;
+  border-radius: 8px; padding: 5px 11px; cursor: pointer; font-size: .9rem; white-space: nowrap;
 }
 .speed button.on { background: var(--teal); color: #05201d; border-color: var(--teal); font-weight: 700; }
 .topbar .spacer { flex: 1; }
+/* The pills and the buttons are grouped so a phone can lay them out separately. On a
+   wide screen they must still read as one row, and when the row runs out of space it
+   is the STATS that give way - the buttons are how you play, the pills are a readout. */
+.topbar-stats {
+  display: flex; align-items: center; gap: 8px; flex-wrap: nowrap;
+  flex: 0 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none;
+}
+.topbar-stats::-webkit-scrollbar { display: none; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+@media (max-width: 1040px) { #seedLabel { display: none; } }
 .pill-stat {
   background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px;
   padding: 4px 13px; font-size: .86rem; color: var(--ink-soft); white-space: nowrap;
@@ -164,10 +180,20 @@ button { font: inherit; font-family: var(--font-body); }
 .pod {
   background: linear-gradient(180deg, var(--panel), #171f2d);
   border: 2px solid var(--line); border-radius: var(--radius);
-  padding: 12px; cursor: pointer; position: relative; overflow: hidden;
+  padding: 12px; position: relative; overflow: hidden;
   transition: border-color .15s, transform .12s;
 }
-.pod:hover { transform: translateY(-3px); border-color: var(--teal); }
+.pod:has(.pod-hit):hover { transform: translateY(-3px); border-color: var(--teal); }
+
+/* The whole card is one button, stretched over it, so a keyboard reaches every bed and a
+   screen reader gets one clearly named action per cot. It sits UNDER the glossary spans so
+   tapping a term still reads its definition instead of walking into the bedside. */
+.pod-hit {
+  position: absolute; inset: 0; z-index: 1; cursor: pointer;
+  background: none; border: 0; padding: 0; color: inherit;
+  border-radius: calc(var(--radius) - 2px);
+}
+.pod .gl { position: relative; z-index: 2; }
 .pod.alarm-red   { border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 0 26px -6px var(--coral); }
 .pod.alarm-amber { border-color: var(--amber); box-shadow: 0 0 0 1px var(--amber), 0 0 22px -8px var(--amber); }
 .pod.empty { opacity: .55; cursor: default; border-style: dashed; }
@@ -181,7 +207,7 @@ button { font: inherit; font-family: var(--font-body); }
 
 .pod-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; }
 .pod-name { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; }
-.pod-meta { font-size: .78rem; color: var(--ink-dim); }
+.pod-meta { font-size: .8rem; color: var(--ink-dim); }
 .bed-no {
   background: var(--panel-2); border: 1px solid var(--line); border-radius: 7px;
   padding: 2px 8px; font-family: var(--font-mono); font-size: .78rem; color: var(--ink-soft);
@@ -193,7 +219,7 @@ button { font: inherit; font-family: var(--font-body); }
 
 .vitals { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 8px; }
 .v { display: flex; align-items: baseline; gap: 5px; font-family: var(--font-mono); }
-.v .lbl { font-size: .66rem; color: var(--ink-dim); width: 30px; }
+.v .lbl { font-size: .76rem; color: var(--ink-dim); width: 34px; }
 .v .val { font-size: 1.18rem; font-weight: 700; }
 .v.hr .val { color: var(--hr); }
 .v.spo2 .val { color: var(--spo2); }
@@ -223,8 +249,49 @@ button { font: inherit; font-family: var(--font-body); }
 
 /* ---------- bedside ---------- */
 
-.bedside-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
-.bedside-head h2 { font-size: 1.5rem; color: var(--ink); margin: 0; }
+/* The way back has to be on screen at all times. It used to scroll away with the rest of
+   the page: two hundred pixels down a bedside - which is nothing, the action panels start
+   below that - and the "The unit" button was gone, while the sticky callout stayed pinned
+   over the place it used to be. So you clicked where the exit had been, hit the callout,
+   and nothing happened. In the delivery room, which is taller, that was worse. */
+.bedside-head {
+  /* -16px matches the negative margin, so it pins flush to the top of the scroller
+     instead of leaving a strip of the page showing through above it */
+  position: sticky; top: -16px; z-index: 10;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: -16px -16px 12px; padding: 11px 16px;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.bedside-head h2 { font-size: 1.35rem; color: var(--ink); margin: 0; }
+
+/* Which cot you are standing at, said loudly enough that you cannot mistake one for
+   another. Every bed keeps its colour, in the ward and at the bedside, so switching is
+   obvious at a glance rather than a number you have to read. */
+.bed-badge {
+  font-family: var(--font-mono); font-weight: 700; font-size: .92rem;
+  border-radius: 9px; padding: 4px 11px; border: 2px solid currentColor;
+  white-space: nowrap; flex: 0 0 auto;
+}
+.bed-c1 { color: #2ec4b6; }
+.bed-c2 { color: #6cb6ff; }
+.bed-c3 { color: #b39ddb; }
+.bed-c4 { color: #ffc857; }
+.bed-c5 { color: #ff9ecd; }
+.bed-c6 { color: #5ef2a0; }
+.pod .bed-no.bed-c1, .pod .bed-no.bed-c2, .pod .bed-no.bed-c3,
+.pod .bed-no.bed-c4, .pod .bed-no.bed-c5, .pod .bed-no.bed-c6 {
+  border-color: currentColor; font-weight: 700;
+}
+
+/* arriving at a cot should feel like arriving somewhere */
+@keyframes bedArrive {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+.stage.arriving .bed-grid, .stage.arriving .bedside-head { animation: bedArrive .22s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .stage.arriving .bed-grid, .stage.arriving .bedside-head { animation: none; }
+}
 
 .bed-grid { display: grid; grid-template-columns: 300px 1fr; gap: 14px; align-items: start; }
 @media (max-width: 780px) { .bed-grid { grid-template-columns: 1fr; } }
@@ -266,6 +333,7 @@ button { font: inherit; font-family: var(--font-body); }
   background: var(--panel-2); border: 1px solid var(--line); color: var(--ink);
   border-radius: 9px; padding: 8px 10px; cursor: pointer; text-align: left; font-size: .87rem;
   display: flex; flex-direction: column; gap: 1px; transition: border-color .12s, background .12s;
+  position: relative; padding-right: 24px;   /* room for the "?" in the corner */
 }
 .act:hover:not(:disabled) { border-color: var(--teal); background: #1b2d38; }
 .act .t { font-weight: 700; }
@@ -288,8 +356,41 @@ button { font: inherit; font-family: var(--font-body); }
 .labs { font-family: var(--font-mono); font-size: .84rem; }
 .labs .lrow { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; border-bottom: 1px solid #1d2739; }
 .labs .lrow:last-child { border-bottom: none; }
+/* How old a result is, next to what it is. A film from four hours ago and one from ten
+   minutes ago used to look identical on this list. */
+.labs .lage { color: var(--ink-dim); font-size: .78rem; font-weight: 400; white-space: nowrap; }
+
+/* ---------- this baby's night ----------
+   The unit log is one stream for five cots, so what had been done for THIS baby meant reading
+   past everybody else. Newest first: at a cot the question is nearly always what just happened,
+   and the clock time on every line answers how long ago without counting backwards. */
+.hist { max-height: 260px; overflow-y: auto; }
+.hist .hrow {
+  display: grid; grid-template-columns: 3.4em 1fr auto; gap: 8px; align-items: baseline;
+  padding: 4px 0; border-bottom: 1px solid #1d2739; font-size: .86rem;
+}
+.hist .hrow:last-child { border-bottom: none; }
+.hist .htime { color: var(--ink-dim); font-variant-numeric: tabular-nums; font-size: .8rem; }
+.hist .hago { color: var(--ink-dim); font-size: .76rem; white-space: nowrap; }
+.hist .hwhat { color: var(--ink-soft); }
+.hist .hrow.did .hwhat { color: var(--ink); }
+.hist .hrow.result .hwhat { color: var(--teal); }
+.hist .hrow.asked .hwhat { color: var(--amber); }
+.hist .hrow.good .hwhat { color: var(--green); }
+.hist .hrow.event .hwhat { color: var(--coral); }
+.hist .hrow.settled .hwhat { opacity: .75; }
+
 .labs .abn { color: var(--amber); }
 .labs .crit { color: var(--coral); font-weight: 700; }
+/* One analyte of a blood count, with its reference range on hover. The dotted teal rule is
+   the only signal that a range exists at all, so it stays visible here rather than being
+   quietened the way it is in the dense meta rows. The abnormal one is marked on its own -
+   the row used to go red as a whole, which said "something here is wrong" without saying
+   which of the three numbers it was. */
+.labs .lpart { border-bottom: none; }
+.labs span.gl { border-bottom-color: rgba(46,196,182,.55); }
+.labs .lpart.abn { color: var(--amber); font-weight: 700; }
+.labs .lsep { color: var(--ink-dim); padding: 0 1px; }
 .labs .pending { color: var(--ink-dim); font-style: italic; }
 
 /* ---------- side panel ---------- */
@@ -300,11 +401,7 @@ button { font: inherit; font-family: var(--font-body); }
 }
 .side h3:first-child { margin-top: 0; }
 
-.task {
-  background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--ink-dim);
-  border-radius: 9px; padding: 8px 10px; margin-bottom: 7px; font-size: .88rem; cursor: pointer;
-}
-.task:hover { border-color: var(--teal); }
+/* .task itself is declared with the rest of the side panel, further down. */
 .task.red   { border-left-color: var(--coral); }
 .task.amber { border-left-color: var(--amber); }
 .task.blue  { border-left-color: var(--blue); }
@@ -553,14 +650,17 @@ abbr.gl, span.gl {
    The negative margin lets the sticky box swallow the stage padding, so nothing slides
    through the gap above it. */
 #callout {
-  position: sticky; top: -16px; z-index: 6;
-  margin: -16px -16px 12px; padding: 16px 16px 0;
+  /* --head-h is measured after each render, because the header wraps on a narrow screen */
+  position: sticky; top: calc(var(--head-h, 62px) - 16px); z-index: 6;
+  margin: -16px -16px 12px; padding: 8px 16px 0;
   background: var(--bg);
 }
 #callout:empty { display: none; }
 #callout .callout {
   margin-bottom: 0; box-shadow: 0 10px 26px rgba(5, 9, 16, .55);
-  max-height: 46vh; overflow-y: auto;   /* nudge + help must never eat the whole screen */
+  /* Nudge + help + two replies is a lot of prose, and it is now sharing the top of the
+     page with a pinned header. Together they must still leave room to work in. */
+  max-height: 34vh; overflow-y: auto;
 }
 
 /* ---------- what the team says back ---------- */
@@ -597,6 +697,31 @@ abbr.gl, span.gl {
 .person-btn .pb-go { color: var(--green); font-weight: 700; font-size: .84rem; }
 .person-btn.quiet { opacity: .8; }
 
+/* ---------- who is at this cot ----------
+   Colleagues waiting to speak share the row with parents, because to a player standing at a
+   cot they are the same question: who is here, and who am I talking to? The open one is
+   marked and does not look like a button that will take you somewhere else. */
+.person-btn.waiting { cursor: pointer; border-color: var(--amber); background: #2f2413; }
+.person-btn.waiting:hover { background: #3d2f18; }
+.person-btn.waiting .pb-go { color: var(--amber); font-weight: 700; font-size: .84rem; }
+.person-btn.waiting.sev-urgent { border-color: var(--coral); background: #331d1d; }
+.person-btn.waiting.sev-urgent:hover { background: #422424; }
+.person-btn.waiting.sev-urgent .pb-go { color: var(--coral); }
+.person-btn.open {
+  cursor: default; border-color: var(--teal); background: #14302f;
+  box-shadow: inset 0 0 0 1px rgba(46,196,182,.35);
+}
+.person-btn.open .pb-go { color: var(--teal); font-weight: 700; font-size: .84rem; text-transform: lowercase; }
+.person-btn.settled { cursor: pointer; opacity: .72; }
+.person-btn.settled .pb-go { color: var(--ink-dim); font-size: .84rem; }
+
+/* A stood-down callout is news, not a task: it arrives, sits long enough to read, and dims
+   rather than waiting to be clicked away. The game clock removes it. */
+.callout.resolved.fading { animation: settle-in .25s ease-out; }
+.callout.resolved.fading .co-say { opacity: .9; }
+@keyframes settle-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .callout.resolved.fading { animation: none; } }
+
 /* ---------- side panel: tasks with faces, and the team ---------- */
 .task {
   display: flex; align-items: center; gap: 9px; width: 100%; text-align: left;
@@ -621,7 +746,6 @@ abbr.gl, span.gl {
 }
 
 /* ---------- action buttons with an info marker ---------- */
-.act { position: relative; padding-right: 24px; }
 .act .qmark {
   position: absolute; top: 6px; right: 7px;
   width: 15px; height: 15px; line-height: 15px; text-align: center;
@@ -741,3 +865,216 @@ p.del-warn { font-size: .84rem; color: var(--amber); margin: -4px 0 10px; }
 .domain.bad  .dom-bar i { background: var(--coral); }
 .dom-detail { font-size: .88rem; color: var(--ink-soft); }
 .dom-short { font-size: .9rem; color: var(--ink); margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--line); }
+
+/* ==========================================================================
+   Accessibility and small screens
+
+   Everything below was missing rather than wrong: there was not one :focus rule
+   in this file, so a keyboard player could not see where they were, and the ward
+   was not reachable by keyboard at all.
+   ========================================================================== */
+
+/* ---------- focus ---------- */
+
+/* :focus-visible so a mouse click never paints a ring, but every keyboard landing does.
+   The offset keeps it clear of the element's own border on the dark ground. */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 5px;
+}
+/* the stretched bed button draws its ring INSIDE the card, so it is not clipped by
+   the pod's own overflow:hidden and does not overlap the neighbouring cot */
+.pod-hit:focus-visible { outline-offset: -4px; border-radius: calc(var(--radius) - 4px); }
+.dlg-opt:focus-visible,
+.task:focus-visible,
+.act:focus-visible { outline-offset: -3px; }
+/* a defined term is focusable, and its ring should read as part of the underline */
+.gl:focus-visible { outline-width: 2px; outline-offset: 1px; }
+/* the ring is the only affordance some people get, so it must survive a dark panel */
+input[type="range"]:focus-visible { outline-offset: 4px; }
+
+/* ---------- announcements ---------- */
+
+/* One quiet live region. The callout and the who-needs-you panel both rebuild their
+   innerHTML on every clock tick, so aria-live on either of them would re-read the whole
+   unit every few seconds. Instead the game writes one sentence here when something
+   actually happens: a colleague asking, a reply, a refusal, a crisis, the phone. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- small screens ---------- */
+
+/* The top bar used to wrap to five rows and eat about two thirds of a phone screen
+   before a single cot was visible, and the side panel then took 42vh of what was left. */
+@media (max-width: 760px) {
+  .shell { height: 100dvh; }
+
+  /* Row one is who and when and the things you press; row two is the clock speed and the
+     readout pills, which scroll sideways rather than wrapping into more rows. */
+  .topbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "brand clock actions"
+      "speed stats stats";
+    gap: 6px 10px; padding: 6px 10px; align-items: center;
+  }
+  .topbar .brand { grid-area: brand; font-size: .95rem; }
+  .topbar .brand .brand-word { display: none; }
+  .topbar > div:has(.clock) { grid-area: clock; }
+  .clock { font-size: 1.15rem; min-width: 0; white-space: nowrap; }
+  .clock-sub { font-size: .68rem; white-space: nowrap; }
+  .topbar .spacer { display: none; }
+
+  .topbar .speed { grid-area: speed; }
+  .topbar-actions { grid-area: actions; gap: 5px; justify-self: end; }
+  .topbar-actions .btn.small { white-space: nowrap; padding: 5px 9px; font-size: .82rem; }
+  .topbar-actions .phone-btn { padding: 4px 8px; }
+}
+
+/* On a narrow phone the row runs out of width, so the toggle keeps its badge and drops
+   its word. The button is still named for a screen reader - renderTop sets aria-label. */
+@media (max-width: 480px) {
+  .side-toggle .lbl { display: none; }
+  .side-toggle { padding: 5px 9px; }
+  .topbar .brand { font-size: .9rem; }
+  .speed button { padding: 4px 8px; font-size: .82rem; }
+  .btn.small { padding: 6px 10px; }
+
+  /* the stats become one horizontally scrollable strip rather than four wrapped rows */
+  .topbar-stats {
+    grid-area: stats; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .topbar-stats::-webkit-scrollbar { display: none; }
+  .pill-stat { font-size: .78rem; padding: 3px 10px; }
+  #seedLabel { display: none; }
+
+  /* the side panel becomes a sheet you open, so the ward gets the whole screen */
+  .main { flex-direction: column; }
+  .side {
+    width: auto; flex: 0 0 auto; border-left: none; border-top: 1px solid var(--line);
+    max-height: 62vh; display: none;
+  }
+  body.side-open .side { display: block; }
+  body.side-open .stage { display: none; }
+
+  .ward { grid-template-columns: 1fr; }
+  .bed-grid { grid-template-columns: 1fr; }
+}
+
+/* the toggle only exists on small screens; on desktop both panels are always visible */
+.side-toggle { display: none; }
+@media (max-width: 760px) {
+  .side-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--panel-2); color: var(--ink); border: 1px solid var(--line);
+    border-radius: 999px; padding: 5px 12px; font-size: .84rem; cursor: pointer;
+    white-space: nowrap;
+  }
+  .side-toggle .n {
+    background: var(--ink-dim); color: #0e131c; border-radius: 999px;
+    padding: 0 7px; font-weight: 700; font-size: .78rem;
+  }
+  .side-toggle.urgent { border-color: var(--coral); color: #ffd9d9; }
+  .side-toggle.urgent .n { background: var(--coral); color: #2b0808; }
+  body.side-open .side-toggle { background: var(--teal); color: #05201d; border-color: var(--teal); }
+  body.side-open .side-toggle .n { background: #05201d; color: var(--teal); }
+}
+
+/* ---------- the clock says what it is doing ----------
+   The player no longer sets the speed, so the clock has to explain itself: whether it is
+   walking beside them at a cot, running on through a quiet ward, or spending the cost of
+   something they just did. */
+.clock-state {
+  font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-dim); white-space: nowrap; min-width: 92px;
+}
+.clock-state.slow { color: var(--ink-soft); }
+.clock-state.held { color: var(--amber); }
+.clock-state.cost { color: var(--teal); font-weight: 700; }
+.clock-state.fast { color: var(--teal); }
+.clock-state.fast::before {
+  content: "»»"; margin-right: 5px; letter-spacing: -1px;
+  animation: runOn 1s linear infinite;
+}
+@keyframes runOn { 0% { opacity: .25 } 50% { opacity: 1 } 100% { opacity: .25 } }
+.clock.winding { color: var(--teal); }
+@media (prefers-reduced-motion: reduce) {
+  .clock-state.fast::before { animation: none; opacity: 1; }
+}
+@media (max-width: 760px) { .clock-state { min-width: 0; font-size: .66rem; } }
+
+/* ---------- delivery room: what is working, and what is left ---------- */
+.tr { font-size: .62em; margin-left: 4px; vertical-align: middle; }
+.tr.up { color: var(--green); }
+.tr.down { color: var(--coral); }
+.tr.flat { color: var(--ink-dim); }
+.del-monitor .tgt { color: var(--ink-dim); font-size: .62em; font-weight: 400; }
+
+.lrow.del-response span:last-child { color: var(--ink-soft); }
+.lrow.del-response.good span:last-child { color: var(--green); }
+.lrow.del-response.bad span:last-child { color: var(--amber); }
+
+.del-check {
+  display: flex; align-items: center; gap: 9px; padding: 5px 0;
+  font-size: .9rem; color: var(--ink-soft); border-bottom: 1px solid var(--line);
+}
+.del-check:last-of-type { border-bottom: none; }
+.del-check .tick { color: var(--ink-dim); width: 16px; text-align: center; font-size: 1rem; }
+.del-check .val { margin-left: auto; font-family: var(--font-mono); font-size: .82rem; color: var(--ink-dim); }
+.del-check.done { color: var(--ink); }
+.del-check.done .tick { color: var(--green); }
+.del-check.done .val { color: var(--green); }
+
+/* ---------- what you are handing over ----------
+   The most important thing in the report, so it looks like it. It sits above the scoring,
+   because the first question at seven in the morning is what the day team is inheriting. */
+.card.handover-open { border-color: #7d5a1b; }
+.card.handover-open h3 { color: var(--amber); }
+.open-baby {
+  border: 1px solid var(--line); border-left: 4px solid var(--ink-dim);
+  border-radius: 10px; padding: 11px 13px; margin: 10px 0; background: var(--panel-2);
+}
+.open-baby.serious { border-left-color: var(--coral); }
+.ob-head { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; flex-wrap: wrap; }
+.ob-head b { font-family: var(--font-head); font-size: 1.05rem; }
+.ob-tag {
+  margin-left: auto; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em;
+  border-radius: 999px; padding: 2px 9px; background: var(--panel); color: var(--ink-soft);
+  border: 1px solid var(--line);
+}
+.open-baby.serious .ob-tag { background: #3d1a1a; color: #ff9d9d; border-color: #77302f; }
+.open-baby ul.plain { margin: 0 0 7px; }
+.ob-why { font-size: .9rem; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 7px; }
+
+/* ---------- printing the report ----------
+   The grade is gradient-filled text, which means transparent glyphs over a background.
+   Browsers drop backgrounds when printing, so the headline word - the single biggest thing
+   on the page - came out invisible in a PDF. */
+@media print {
+  .grade, .grade.grade-good, .grade.grade-mid, .grade.grade-poor {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: #123c38 !important;
+  }
+  .grade.grade-mid { color: #7a4a10 !important; }
+  .grade.grade-poor { color: #7d2233 !important; }
+  .card.handover-open { border-color: #b07f2a !important; }
+  .open-baby.serious { border-left-color: #c0392b !important; }
+}
+
+/* ---------- leaving the delivery room ----------
+   Two real options, side by side, because "decide where they go" has to be a decision. */
+.del-choices { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 8px; }
+.del-choices .btn { flex: 1 1 auto; font-size: .95rem; padding: 11px 18px; }
+.del-gate { font-size: .88rem; margin: 10px 0 8px; }
+.del-why { font-size: .85rem; margin: 0; color: var(--ink-dim); min-height: 1.2em; }
+@media (max-width: 560px) { .del-choices { flex-direction: column; } }
+
+/* a team member you can act on looks like one */
+button.tm { font: inherit; text-align: left; cursor: pointer; }
+button.tm:hover { border-color: var(--teal); }

@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NICU Night Shift — a NICU simulation game</title>
-<link rel="stylesheet" href="css/game.css?v=18">
+<script>
+/* The ONE place a version number lives. Bump it when you edit any file.
+   It tags everything this page loads and is handed to game.html on the URL, which uses it
+   to tag the stylesheet and all nine scripts. There is nothing else to keep in step - the
+   old scheme had thirteen hand-written ?v= tags and they drifted more than once. */
+var BUILD = "84";
+document.write('<link rel="stylesheet" href="css/game.css?v=' + BUILD + '">');
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 </head>
 <body>
@@ -76,17 +83,32 @@
       Click any bed to go to the bedside. <span class="kbd">Esc</span> comes back,
       <span class="kbd">1</span>&ndash;<span class="kbd">6</span> jump between beds,
       <span class="kbd">space</span> pauses.</p>
-    <p><b>Time is the real resource.</b> The clock runs while you work, and every action costs
-      minutes: examining a baby is five, intubating is fifteen, an echo takes the best part of an
-      hour to come back. While you are doing one thing you are not doing another. Pause whenever
-      you want to think — there is no penalty for thinking.</p>
+    <p><b>Time is the real resource.</b> Every action costs minutes: examining a baby is five,
+      intubating is fifteen, an echo takes the best part of an hour to come back. While you are
+      doing one thing you are not doing another.</p>
+    <p><b>You do not set the clock — where you are does.</b> Beside a baby it walks: one real
+      second is half a minute of the night, so there is room to look and think. Standing in a
+      quiet unit it builds and runs on, which is how you get through the hour an echo takes;
+      the top bar tells you when it is doing that. It stops building the moment a baby goes red
+      or somebody has asked you twice, and a decision on screen stops it dead. Pause whenever
+      you want — <span class="kbd">space</span>, or the button — there is no penalty for thinking.</p>
     <p><b>Look at the baby.</b> The picture at the bedside is not decoration. Colour, effort,
       posture and whether the eyes are open all come from the same hidden state the monitor is
       sampling — and the monitor has artifacts. A probe that has slipped off a foot will read 74
       percent on a baby who is pink and wriggling. Turning up the oxygen would be the wrong answer.</p>
-    <p><b>Most alarms are handled for you.</b> The nurses are experienced and they will stimulate a
-      baby through a spell without being asked. Your job is not to chase every beep, it is to notice
-      the pattern: why is this baby having more spells tonight than yesterday?</p>
+    <p><b>Most alarms are handled for you.</b> The nurses are experienced. They will stimulate a
+      baby through a spell without being asked, and they titrate the oxygen themselves to hold each
+      baby in the target range &mdash; up quickly when a baby needs it, down slowly afterwards. Your
+      job is not to chase every beep, it is to notice the pattern: why is this baby having more
+      spells tonight than yesterday?</p>
+    <p><b>What you inherit is not always what a baby needs.</b> Somebody will usually be on a
+      ventilator when you walk in, on settings that crept up over the last two days and that nobody
+      has been back to since. Peak pressure costs lungs, and a rate wound up too far blows the
+      carbon dioxide down and clamps the vessels in the brain. Weaning is the job.</p>
+    <p><b>So watch the oxygen as a symptom, not a setting.</b> A number that has crept up over the
+      night is the earliest thing this unit will show you, and it means something has changed in the
+      lungs. Each nurse will go so far on her own and then come and find you, because past that point
+      what a baby needs is a decision, not another adjustment.</p>
     <p><b>Asking for help is scored as a good move</b>, because it is one.</p>
     <p><b>At the end</b> you get the truth. Every baby's hidden diagnosis is revealed, along with
       what actually happened, what you did well, and what you would want to do differently. That
@@ -106,10 +128,9 @@
   </div>
 
 </div>
-<script src="js/art.js?v=18"></script>
+<script>document.write('<script src="js/art.js?v=' + BUILD + '"><\/script>');</script>
 <script>
 (function () {
-  var BUILD = "18";   // bump alongside the ?v= tags when files change
   document.getElementById("art").innerHTML = Art.titleArt();
   // Each level owns its own defaults for the level-driven boxes. Picking a level always
   // applies all of them, so the two controls can never drift out of step. Sound is a

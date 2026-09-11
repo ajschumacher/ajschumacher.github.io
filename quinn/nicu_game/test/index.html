@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICU Night Shift — checks</title>
+<style>
+  :root { --bg:#0e131c; --panel:#1a2231; --line:#2c3850; --ink:#e8eef8; --soft:#8593a7;
+          --green:#5ef2a0; --red:#ff6b6b; --teal:#2ec4b6; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.55 "Avenir Next","Segoe UI",system-ui,sans-serif; padding: 26px; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  .lede { color: var(--soft); font-size: .93rem; max-width: 60em; margin-bottom: 18px; }
+  .lede code { background: var(--panel); padding: 1px 6px; border-radius: 5px; }
+  #summary { display: inline-block; font-weight: 700; border-radius: 999px;
+             padding: 6px 16px; margin-bottom: 20px; background: var(--panel); }
+  #summary.pass { background: #14332a; color: var(--green); }
+  #summary.fail { background: #3d1a1a; color: #ff9d9d; }
+  .suite { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--line);
+           border-radius: 11px; padding: 13px 16px; margin-bottom: 12px; }
+  .suite.pass { border-left-color: var(--green); }
+  .suite.fail { border-left-color: var(--red); }
+  .suite.running { opacity: .55; }
+  .suite h2 { font-size: 1rem; margin-bottom: 8px; }
+  .row { display: flex; gap: 10px; align-items: baseline; padding: 3px 0; font-size: .91rem; }
+  .row .mark { width: 14px; }
+  .row.ok .mark { color: var(--green); }
+  .row.no { color: #ff9d9d; }
+  .row.no .mark { color: var(--red); }
+  .detail { color: var(--soft); font-family: "SF Mono",ui-monospace,Menlo,monospace; font-size: .82rem; margin-left: auto; }
+</style>
+</head>
+<body>
+<h1>NICU Night Shift — checks</h1>
+<p class="lede">
+  Every shift below runs the real game in an iframe, at full speed, played badly on purpose.
+  These are the measurements that found the bugs: an archetype that killed its baby whatever
+  puzzle it drew, keyboard focus dying on every clock tick, the delivery room charging its
+  cost twice, a conversation still waiting ten hours after it was offered.
+  <br><br>
+  Serve the folder and open this page over http — <code>python3 -m http.server</code> — because
+  a <code>file://</code> iframe is an opaque origin the harness cannot reach into.
+</p>
+<div id="summary">running…</div>
+<div id="results"></div>
+<!-- The harness has no build step and no version constant of its own; a plain src meant
+     an edited suite.js was served from cache and the run silently measured the old file. -->
+<script>document.write('<script src="suite.js?t=' + Date.now() + '"><\/script>');</script>
+</body>
+</html>

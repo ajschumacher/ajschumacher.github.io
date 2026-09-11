@@ -12,6 +12,7 @@
    and in which order, and that is authored per scenario.                              */
 (function () {
   "use strict";
+  var CL = window.Clinical;
 
   /* --------------------------------------------------------------- ACTIONS
      cost: seconds of the resuscitation, which is also minutes off your shift clock.
@@ -168,7 +169,7 @@
       info: "Soft prongs and a steady pressure holding the lungs open, with the baby doing all the breathing. For a preterm baby who is breathing but working, this is the modern answer and it spares many of them a tube.",
       run: function (d, sc) {
         if (d.intubated) return { good: false, text: "There is a tube in. CPAP is what you go to after it comes out, not while it is in." };
-        if (d.breathing < 0.35 || d.hr < 100) {
+        if (d.breathing < 0.35 || d.hr < CL.delivery.hrAdequate) {
           d.cpap = true;
           return { good: false, text: "CPAP holds lungs open for a baby who is breathing. This one is not breathing well enough yet - " +
             "they need breaths given to them first." };
@@ -182,7 +183,7 @@
       t: "Chest compressions", cost: 30, g: "circ",
       info: "Three compressions to one breath, over the lower sternum. Only after thirty seconds of ventilation that is definitely working, and only if the heart rate is still under 60.",
       run: function (d, sc) {
-        if (d.hr >= 60) {
+        if (d.hr >= CL.delivery.hrCompressions) {
           d.hr = Math.max(50, d.hr - 8);
           return { good: false, text: "The heart rate is " + Math.round(d.hr) + ". Compressions on a heart that is beating well enough " +
             "interrupt the one thing that was helping, which is the breaths." };
@@ -200,7 +201,7 @@
       t: "Adrenaline", cost: 30, g: "circ",
       info: "Into a vein in the cord stump. The last step of the algorithm, for a heart rate still under 60 after good ventilation and compressions together.",
       run: function (d, sc) {
-        if (!d.compress || d.hr >= 60) {
+        if (!d.compress || d.hr >= CL.delivery.hrCompressions) {
           return { good: false, text: "Adrenaline is the end of the algorithm, not a shortcut through it. Ventilation, then compressions, " +
             "then this - and only while the heart rate is still under 60." };
         }
@@ -223,7 +224,7 @@
       t: "Baby to the mother", cost: 40, g: "decide",
       info: "Dry the baby on the mother's chest and leave them there. For a vigorous newborn this is the whole of the care, and separating them costs something real.",
       run: function (d, sc) {
-        if (d.hr < 100 || d.breathing < 0.5) {
+        if (d.hr < CL.delivery.hrAdequate || d.breathing < 0.5) {
           return { good: false, text: "Not yet. A baby who is not breathing well cannot be assessed on somebody's chest, " +
             "and you would be handing a family a baby who still needs you." };
         }
@@ -240,21 +241,23 @@
   /* ------------------------------------------------------------ PHYSIOLOGY
      Thin on purpose. Heart rate answers to ventilation, saturation climbs on the
      minute-by-minute target curve, temperature falls until somebody stops it.     */
-  function satTarget(sec) {
-    var m = sec / 60;
-    if (m < 1) return 62;
-    if (m < 2) return 68;
-    if (m < 3) return 74;
-    if (m < 4) return 80;
-    if (m < 5) return 85;
-    if (m < 10) return 90;
-    return 93;
-  }
+  /* NRP's minute-by-minute table, as band MIDPOINTS. The curve here used the TOP of every
+     band from three minutes on, which quietly made a correctly-resuscitated baby read as
+     behind target for most of the resuscitation. See js/clinical.js. */
+  function satTarget(sec) { return CL.satTarget(sec); }
 
+  /* Called with whatever slice of time has actually passed - a whole action's worth when
+     somebody presses a button, or a fraction of a second on the clock - and it banks the
+     remainder. The physiology still moves in ten-second beats, which is what it was tuned
+     for; only the arriving amount is now free. Before this it rounded, and never did less
+     than one beat, so a fifth of a second and ten seconds cost the baby the same. */
+  var STEP = 10;
   function advance(d, sc, sec) {
-    var steps = Math.max(1, Math.round(sec / 10));
-    for (var i = 0; i < steps; i++) {
-      d.sec += 10;
+    d.secAcc = (d.secAcc || 0) + sec;
+    var guard = 0;
+    while (d.secAcc >= STEP && guard++ < 200) {
+      d.secAcc -= STEP;
+      d.sec += STEP;
       var vent = d.ppvEffective || (d.breathing > 0.5 && !d.obstructed);
       // heart rate follows air getting in, and nothing else
       var gain = sc.hrGain == null ? 1 : sc.hrGain;
@@ -278,7 +281,55 @@
       else if (d.temp < 36.8) d.temp += 0.02;
 
       if (sc.tick) sc.tick(d);
+
+      /* Two minutes of history, at the ten-second beat. "Now watch the heart rate: that is
+         your read on whether it is working" is the single most important sentence in a
+         newborn resuscitation, and the room was asking the player to watch a number that
+         told them nothing about which way it was going. */
+      d.hist = d.hist || [];
+      d.hist.push({ sec: d.sec, hr: d.hr, sat: d.sat });
+      if (d.hist.length > 12) d.hist.shift();
     }
+  }
+
+  // which way a number has moved over the last half minute: -1, 0 or +1
+  function trend(d, key, minChange) {
+    var h = d.hist || [];
+    if (h.length < 2) return 0;
+    var want = d.sec - 30, old = h[0];
+    for (var i = 0; i < h.length; i++) if (h[i].sec <= want) old = h[i];
+    var delta = d[key] - old[key];
+    var m = minChange || 3;
+    return delta > m ? 1 : delta < -m ? -1 : 0;
+  }
+
+  /* What the baby is telling you right now, in the order NRP asks it. This reports the
+     state rather than the next move - it is feedback, not a hint - so it stays honest on
+     Attending where the prompts are off. */
+  function response(d) {
+    var vent = d.ppvEffective || d.intubated;
+    var supported = d.breathing > 0.45 || d.cpap || d.intubated;
+    if (d.hr >= 100 && supported && d.temp >= 36.3)
+      return { t: "warm, over 100, and breathing with support. This is what you came for.", k: "good" };
+    if (d.hr >= 100 && supported)
+      return { t: "heart rate is up and the breathing is supported; the temperature is the loose end", k: "good" };
+    if (d.hr < 60 && vent && !d.compress)
+      return { t: "under 60 with the breaths going in - this is the moment compressions start", k: "bad" };
+    if (d.hr < 60 && !vent)
+      return { t: "under 60 and no air is going in. Nothing else will work until it is", k: "bad" };
+    if (d.ppv && !d.ppvEffective)
+      return { t: "the chest is not moving, so none of those breaths are reaching the lungs", k: "bad" };
+    if (vent && trend(d, "hr") > 0)
+      return { t: "heart rate climbing - what you are doing is working, keep going", k: "good" };
+    if (vent && trend(d, "hr") < 0)
+      return { t: "still falling despite the breaths. Check the seal and the head position", k: "bad" };
+    if (!vent && d.breathing < 0.35)
+      return { t: "nobody is breathing for this baby yet", k: "bad" };
+    if (d.hr >= 100 && !supported)
+      return { t: "heart rate is fine; the breathing is what still needs deciding", k: "" };
+    if (!d.warm)
+      return { t: "still wet and losing heat, which makes everything else harder", k: "bad" };
+    return { t: "holding steady", k: "" };
   }
 
   // The five signs, each 0, 1 or 2, scored once each so the breakdown adds up to the total.
@@ -314,7 +365,8 @@
       start: { hr: 74, breathing: 0.12, tone: 0.2, temp: 36.1, sat: 52, fio2: 0.3, wet: true },
       wants: ["warm", "position", "ppv", "cpap"],
       arrival: { archKey: "rds", tempIfPoor: 35.3, tempIfGood: 36.8 },
-      done: "Pink, breathing on CPAP, wrapped and warm. Ready to go up."
+      done: "Pink, breathing on CPAP, wrapped and warm. Ready to go up.",
+      doneRough: "Going up on more support than she needed, and colder than she should be. She will make it, but this was a harder start than it had to be."
     },
     {
       id: "vigorous", ga: 39, weightG: 3380,
@@ -329,7 +381,17 @@
       start: { hr: 148, breathing: 0.85, tone: 0.8, temp: 36.9, sat: 62, fio2: 0.21, wet: true },
       wants: ["cord", "skin"],
       arrival: null,
-      done: "Skin to skin with her mother, warm, feeding within the hour. Nothing for the unit."
+      /* Nobody should come up from this one. If the player admits her anyway - the
+         wrong answer, and the whole point of the scenario - it is still THIS baby who
+         arrives in bed 6, a well term newborn, not a preterm admission. */
+      arrivalIfAdmitted: { archKey: "term", tempIfPoor: 36.2, tempIfGood: 36.7 },
+      // reads where she WENT, not whether she was ever put on her mother's chest
+      done: function (d) {
+        return d.wentTo === "mother"
+          ? "Skin to skin with her mother, warm, feeding within the hour. Nothing for the unit."
+          : "Carried up to the unit in a plastic box, away from her mother, for nothing that " +
+            "could not have been done on her chest.";
+      }
     },
     {
       id: "meconium", ga: 41, weightG: 3620, satPenalty: 4,
@@ -344,7 +406,8 @@
       start: { hr: 68, breathing: 0.08, tone: 0.15, temp: 36.6, sat: 46, fio2: 0.3, wet: true, obstructed: false },
       wants: ["warm", "position", "ppv"],
       arrival: { archKey: "term", tempIfPoor: 35.6, tempIfGood: 36.8 },
-      done: "Breathing, pink enough, but this one is going to need watching for the next few hours."
+      done: "Breathing, pink enough, but this one is going to need watching for the next few hours.",
+      doneRough: "Breathing at last. It took a great deal longer than it should have, and he is cold with it."
     },
     {
       id: "brady", ga: 38, weightG: 3100, satPenalty: 6, apnoeic: true, hrGain: 0.3,
@@ -359,7 +422,8 @@
       start: { hr: 34, breathing: 0.02, tone: 0.05, temp: 36.4, sat: 38, fio2: 0.3, wet: true },
       wants: ["warm", "position", "ppv", "compress"],
       arrival: { archKey: "term", tempIfPoor: 35.2, tempIfGood: 36.6 },
-      done: "A heart rate, a colour, and the beginnings of breathing. He needs cooling assessed upstairs, tonight."
+      done: "A heart rate, a colour, and the beginnings of breathing. He needs cooling assessed upstairs, tonight.",
+      doneRough: "You got a heart rate back in the end. He is going up flat and cold, and the next few days will tell you what that cost."
     },
     {
       id: "late34", ga: 34, weightG: 2180,
@@ -374,10 +438,12 @@
       start: { hr: 142, breathing: 0.6, tone: 0.55, temp: 36.2, sat: 58, fio2: 0.21, wet: true },
       wants: ["warm", "cpap"],
       arrival: { archKey: "rds", tempIfPoor: 35.5, tempIfGood: 36.9 },
-      done: "Settled on CPAP, grunting eased, working a lot less than she was."
+      done: "Settled on CPAP, grunting eased, working a lot less than she was.",
+      doneRough: "Still grunting, still pulling in under the ribs, and cooler than she was when she came out."
     }
   ];
 
   window.Deliveries = { SCENARIOS: SCENARIOS, ACTIONS: ACTIONS, GROUPS: GROUPS,
-                        advance: advance, satTarget: satTarget, apgarOf: apgarOf };
+                        advance: advance, satTarget: satTarget, apgarOf: apgarOf,
+                        trend: trend, response: response };
 })();

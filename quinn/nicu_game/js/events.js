@@ -11,7 +11,7 @@
              back; unimportant ones give up.                                          */
 (function () {
   "use strict";
-  var S = window.Sim, NB = window.NameBank;
+  var S = window.Sim, NB = window.NameBank, CL = window.Clinical;
 
   var SHE = NB.PRON[0], HE = NB.PRON[1];
 
@@ -29,6 +29,9 @@
   // the pronoun of whichever nurse holds this bed, for lines they say about themselves
   function nursePr(b) { return CHARS[nurseFor(b)].pr; }
   function pct(b) { return Math.round(b.support.fio2 * 100); }
+  /* game.js owns the phrasing of "CPAP 6" and the concerns should not invent a second
+     one. Resolved at call time because events.js loads before game.js does. */
+  function support(b) { return (window.NG && window.NG.supportLabel) ? window.NG.supportLabel(b) : b.support.mode; }
   function Cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
   /* ==================================================================== CONCERNS
@@ -88,7 +91,9 @@
       miss: { fb: "The probe stayed off for a long time, and nobody could trust that monitor all night.", score: -3 }
     },
     {
-      id: "highsat", who: nurseFor, severity: "note", cooldown: 90,
+      // longer than it was: the nurse weans on her own now, so she is reporting a trend
+      // she is already acting on rather than asking for a decision that has not been made
+      id: "highsat", who: nurseFor, severity: "note", cooldown: 260,
       cond: function (G, b) { return b.support.fio2 > 0.23 && b.h.highSatMinutes > 25 && !b.h.artifactProbe; },
       summary: function (G, b) { return "sitting high on extra oxygen"; },
       say: function (G, b) {
@@ -109,12 +114,22 @@
       miss: { fb: "Hours of unnecessary oxygen, and the eyes and lungs keep the bill.", score: -4 }
     },
     {
-      id: "risingwork", who: "priya", severity: "urgent", cooldown: 100,
-      cond: function (G, b) { return b.support.fio2 >= 0.45 && b.support.mode !== "VENT" && S.workOfBreathing(b) > 0.5; },
-      summary: function (G, b) { return "working hard on " + pct(b) + " percent oxygen"; },
+      /* THE DIAL WAS THE WRONG QUESTION. This gated on FiO2 >= 0.45, a number nothing in the
+         game could reach on its own, so the flagship respiratory concern was unreachable:
+         measured across 3,600 baby-ticks it never once held. A traced RDS baby spent an
+         entire night at a work of breathing of 0.76 - grunting, deep retractions - and drew
+         no comment, because the oxygen happened to read 30 percent. Priya is looking at the
+         baby. Ask her what she can see. */
+      id: "risingwork", who: "priya", severity: "urgent", cooldown: 190,
+      cond: function (G, b) { return b.support.mode !== "VENT" && S.workOfBreathing(b) > 0.55; },
+      summary: function (G, b) { return "working hard to breathe"; },
       say: function (G, b) {
-        return "We are up to " + pct(b) + " percent on CPAP and " + b.pronoun.s + " " + b.pronoun.is + " working hard for it - " +
-               "grunting, deep retractions. This baby is telling us something.";
+        var high = b.support.fio2 >= 0.35;
+        return (high ? "We are up to " + pct(b) + " percent on " + support(b) + " and " + b.pronoun.s + " " +
+                       b.pronoun.is + " still working hard for it"
+                     : "The oxygen looks fine on paper - " + pct(b) + " percent - but look at " + b.pronoun.o +
+                       " work for it") +
+               " - grunting, deep retractions, the whole chest going. This baby is telling us something.";
       },
       nudge: "More oxygen only helps if the air sacs are open. What opens stiff lungs?",
       help: "Assess for a blood gas or a chest film; Treat for surfactant, which needs a tube first from" +
@@ -135,8 +150,295 @@
       miss: { fb: "The baby wore out slowly and nobody changed the plan.", score: -7 }
     },
     {
-      id: "highpip", who: "priya", severity: "worry", cooldown: 120,
-      cond: function (G, b) { return b.support.mode === "VENT" && b.support.pip > (b.ga < 30 ? 21 : 25); },
+      /* THE OTHER END OF THE GAS. The unit had a great deal to say about a rising carbon
+         dioxide and nothing at all about a driven-down one - measured, a baby given
+         surfactant on a ventilator settled at 22 and stayed there all night for free. Priya
+         cannot read a CO2 either. What she sees is a baby who has stopped taking any breaths
+         of their own, because a machine has taken the stimulus away. */
+      id: "overventilated", who: "priya", severity: "worry", cooldown: 170,
+      cond: function (G, b) {
+        return b.support.mode === "VENT" && b.h.co2 < CL.hypocapnia.raiseAt && !b.h.apneaNow;
+      },
+      summary: function (G, b) { return "not breathing over the ventilator at all"; },
+      say: function (G, b) {
+        return b.pronoun.S + " " + b.pronoun.is + " not triggering. Not one breath of " +
+               b.pronoun.p + " own in the last hour - the ventilator is doing every single one, " +
+               "and the chest is moving further than I would like. I think we are doing too much " +
+               "of the work for " + b.pronoun.o + ".";
+      },
+      nudge: "A baby stops breathing for themselves when the machine has already blown off all the carbon dioxide they had. What does that do to the vessels in the brain?",
+      help: "A gas from Assess will show a low carbon dioxide. Then come down on the rate or the peak " +
+            "pressure in the support panel. A CO2 in the twenties constricts the arteries in a preterm brain.",
+      settled: "The carbon dioxide has come back up and " + "the baby is triggering again.",
+      accept: {
+        gas: { fb: "A gas first, and it will show you a carbon dioxide lower than anyone intended.", score: 7, resolve: false },
+        __ratedown: { fb: "Fewer breaths, and " + "the CO2 comes back where it belongs. Let the baby do some of it.", score: 7, resolve: true },
+        __pipdown: { fb: "Less pressure on every breath - kinder to the lungs and to the brain at once.", score: 7, resolve: true },
+        extubate: { fb: "If " + "the baby is doing this little work, they may not need the tube at all. Bold, and reasonable.", score: 5, resolve: true }
+      },
+      wrong: {
+        __rateup: { fb: "More breaths is the wrong direction. The carbon dioxide is already too low.", score: -6 },
+        __pipup: { fb: "Higher pressure blows off more CO2, and there was already too little.", score: -6 },
+        morphine: { fb: "Sedation will stop what little breathing there is. The ventilator is the problem here, not the baby.", score: -5 }
+      },
+      decline: { fb: "\"Right you are.\" A low carbon dioxide costs nothing on the monitor and something in the brain, which is why nobody ever catches it in time.", score: -4, resolve: false },
+      miss: { fb: "The ventilator did all the breathing all night and the carbon dioxide sat far too low.", score: -7 }
+    },
+    {
+      /* A TUBE THAT HAS MOVED. The emergency checklist has had a branch for this since the
+         beginning and nothing ever set h.ettDisplaced, so the branch could never fire. Now
+         a tube can migrate on a baby who is being handled, and this is what it looks like
+         before it becomes an emergency. */
+      id: "tubemoved", who: "priya", severity: "urgent", cooldown: 60,
+      cond: function (G, b) { return b.support.mode === "VENT" && !!b.h.ettDisplaced; },
+      summary: function (G, b) { return "the chest is not lifting evenly"; },
+      say: function (G, b) {
+        return "Look at the chest. The right side is coming up and the left is barely moving, and " +
+               "the air entry is much quieter on the left. The saturation is drifting. That tube is " +
+               "not where it was an hour ago.";
+      },
+      nudge: "One side moving and one side not, on a baby with a tube in. Where is the tube?",
+      help: "A chest film from Imaging shows exactly where the tip is sitting. \u201cRe-site the tube\u201d " +
+            "under Procedures puts it back where it belongs, and leaves your ventilator settings alone. " +
+            "Do not just turn the oxygen up, and do not pull the tube out to put a new one in.",
+      settled: "Both sides of the chest are lifting again.",
+      accept: {
+        cxr: { fb: "A film. It will show you the tip sitting down the right main bronchus.", score: 6, resolve: false },
+        intubate: { fb: "Re-sited, and both sides lift again. That is the fix, and it costs the baby a tenth of what a new tube would.", score: 8, resolve: true },
+        examine: { fb: "Hands and stethoscope first, which is how this is found at three in the morning.", score: 5, resolve: false },
+        suction: { fb: "Worth clearing the tube - though a blocked tube and a displaced one feel very different.", score: 2, resolve: false },
+        extubate: { fb: "That will certainly get the tube out of the wrong place. It also leaves a baby who needed a ventilator without one - re-siting it would have been a tenth of the disturbance.", score: 1, resolve: true }
+      },
+      wrong: {
+        __fio2up: { fb: "Oxygen cannot reach a lung the tube is no longer ventilating.", score: -5 },
+        __pipup: { fb: "More pressure down a tube in the wrong place just over-inflates one lung.", score: -6 }
+      },
+      decline: { fb: "\"I will keep bagging.\" A tube in the wrong place does not come right on its own, and the other lung is collapsing while it sits there.", score: -6, resolve: false },
+      miss: { fb: "The tube stayed down one bronchus and the other lung stayed shut.", score: -8 }
+    },
+    {
+      /* A BLEED THAT HAS HAPPENED TONIGHT. The head ultrasound is a forty-minute
+         investigation that, before this, could only ever return one answer - three of its
+         four results were dead text and nothing in the unit ever gave a player a reason to
+         send for one. This is the reason: a grade 2 or 3 bleeds into the ventricle, so the
+         count falls and the spells get worse, and the fontanelle comes up under your fingers.
+         Deliberately gated on the bleed having CHANGED tonight - a baby who arrived with a
+         known grade 1 is on the handover sheet, not a discovery. */
+      id: "fontanelle", who: nurseFor, severity: "urgent", cooldown: 150,
+      cond: function (G, b) {
+        return b.h.ivhGrade > b.h.ivhAtHandover && b.h.fontanelleFull && !b.labs.hus;
+      },
+      summary: function (G, b) { return "pale, with a full fontanelle"; },
+      say: function (G, b) {
+        return "Something has changed. " + b.pronoun.S + " " + b.pronoun.has + " gone pale and " +
+               "mottled in the last hour, the spells are coming more often, and when I put my " +
+               "fingers on the soft spot it is full - it was flat this evening. " + b.pronoun.S + " " +
+               b.pronoun.is + " very quiet with it.";
+      },
+      nudge: "Pale, more spells, and a soft spot that has come up. In a baby this premature, where has the blood gone?",
+      help: "A head ultrasound from Imaging looks straight through the soft spot, with no radiation. " +
+            "A blood count will show what has been lost. Handle " + "as little as you possibly can - " +
+            "and nothing that swings the blood pressure about.",
+      settled: "The fontanelle has softened and the colour is better.",
+      accept: {
+        hus: { fb: "The one thing that can actually see it, and it costs the baby nothing.", score: 8, resolve: true },
+        cbc: { fb: "A count will show you where the blood went. Good thinking.", score: 5, resolve: false },
+        comfort: { fb: "Minimal handling, dark and quiet. In a matrix that has just bled this IS the treatment.", score: 6, resolve: false },
+        help: { fb: "Worth a second pair of eyes, and somebody should be talking to the parents tonight.", score: 5, resolve: false },
+        examine: { fb: "Hands on. Fontanelle, colour, tone and pupils - and gently.", score: 4, resolve: false }
+      },
+      wrong: {
+        bolus: { fb: "No. A fast push of fluid into a baby whose germinal matrix has just bled is how a grade 2 becomes a grade 3.", score: -8 },
+        suction: { fb: "Suctioning spikes the blood pressure and the venous pressure at once. Not now.", score: -5 }
+      },
+      decline: { fb: function (G, b) {
+        return "\"All right.\" She dims the light over the cot and stops touching " + b.pronoun.o +
+               ". A soft spot that has come up is blood that has gone somewhere, and it is worth knowing where."; },
+        score: -5, resolve: false },
+      miss: { fb: "The bleed was never looked for, and the morning found it on the routine scan.", score: -7 }
+    },
+    {
+      /* OUT OF ROOM. The single most important sentence a nurse says about a baby's lungs,
+         and the unit could not say it, because nothing in the game ever moved the oxygen.
+         She titrates to a ceiling now; past it she wants a doctor at the cot rather than
+         another adjustment, and this is her coming to get one. It is deliberately NOT
+         gated on how hard the baby is working: a septic or pulmonary-hypertensive baby can
+         be flat out of oxygen while breathing quite comfortably. */
+      id: "o2ceiling", who: nurseFor, severity: "urgent", cooldown: 90,
+      cond: function (G, b) { return b.h.o2Ceilinged > 30; },
+      summary: function (G, b) { return "out of oxygen to give"; },
+      say: function (G, b) {
+        return "I have taken " + b.pronoun.o + " to " + pct(b) + " percent, which is as far as I go without you, " +
+               "and " + b.pronoun.s + " " + b.pronoun.is + " still sitting under ninety. I have been holding " +
+               b.pronoun.o + " here for " + Math.round(b.h.o2Ceilinged / 60) + " hours. I need you to look at " +
+               b.pronoun.o + " and tell me what the plan is.";
+      },
+      nudge: "More oxygen has stopped working. Something between the air and the blood has changed - find out what.",
+      help: "Assess and Imaging: a gas says whether this is oxygen or ventilation, a film says what the lungs " +
+            "look like, an echo says whether it is the heart. Treat the cause; the dial has nothing left.",
+      settled: "The oxygen requirement has come back down off the ceiling.",
+      accept: {
+        gas: { fb: "A gas, first. It splits an oxygen problem from a ventilation problem in ten minutes.", score: 7, resolve: false },
+        cxr: { fb: "A film. Stiff lungs, wet lungs and an air leak all look different and all need different answers.", score: 7, resolve: false },
+        echo: { fb: "Worth it - a duct or clamped lung vessels both do exactly this.", score: 5, resolve: false },
+        surfactant: { fb: "If the lungs are that stiff, this is the answer rather than more oxygen.", score: 8, resolve: true },
+        needle: { fb: "If you have found an air leak, that is the fix and it is the fastest one there is.", score: 6, resolve: true },
+        intubate: { fb: "A tube, so you can do something the dial cannot.", score: 5, resolve: false },
+        help: { fb: "Not a baby to work out alone. Good call.", score: 5, resolve: false }
+      },
+      wrong: {
+        __fio2up: { fb: "There is nothing above the ceiling but harm. Priya has already proved the dial is finished.", score: -4 }
+      },
+      decline: { fb: function (G, b) {
+        return "\"Then I will keep " + b.pronoun.o + " where " + b.pronoun.s + " " + b.pronoun.is +
+               ".\" She has run out of things to do without you. That is what she came to say."; }, score: -6, resolve: false },
+      miss: { fb: "The nurse held that baby at the limit of what she could do, all night, on her own.", score: -8 }
+    },
+    {
+      /* CARBON DIOXIDE. The sim models it beautifully - a tiring RDS baby went from 56 to 82
+         across a traced night - and not one concern in the game ever looked at it. She
+         cannot read a CO2 off the monitor either, so what she brings you is the bedside
+         picture of a baby who has stopped fighting, and a gas is the answer to it. */
+      id: "tiring", who: nurseFor, severity: "urgent", cooldown: 240,
+      cond: function (G, b) {
+        return b.h.co2 > CL.co2Concern.raiseAt && !b.h.apneaNow &&
+               (b.h.co2 > b.h.co2Base + CL.co2Concern.riseOver || b.h.co2 > CL.co2Concern.urgentAt);
+      },
+      summary: function (G, b) { return "tiring, breathing shallow"; },
+      say: function (G, b) {
+        var vent = b.support.mode === "VENT";
+        return (vent
+          ? "The chest is barely moving with the ventilator breaths and " + b.pronoun.s + " " + b.pronoun.is +
+            " gone very still. I do not think we are shifting enough air."
+          : "Something has changed in the last hour. " + b.pronoun.S + " " + b.pronoun.has + " gone quiet, the " +
+            "breathing has gone shallow and fast, and " + b.pronoun.s + " " + b.pronoun.has + " stopped fighting me " +
+            "when I handle " + b.pronoun.o + ". " + b.pronoun.S + " " + b.pronoun.is + " tiring.") +
+          " The saturation is not telling you this one.";
+      },
+      nudge: "A baby who has gone quiet and stopped fighting is not settled. What builds up when the breathing is not enough?",
+      help: "A blood gas from Assess. This is a carbon dioxide problem and the saturation will not show it - " +
+            "on a ventilator it means more rate or more pressure, off one it may mean a tube.",
+      settled: "The breathing has picked up again and the carbon dioxide is coming down.",
+      accept: {
+        gas: { fb: "Exactly right. This is the one thing a gas answers that nothing else can.", score: 8, resolve: true },
+        intubate: { fb: "If " + "the baby is too tired to breathe out the CO2, taking the work over is the answer.", score: 6, resolve: true },
+        __pipup: { fb: "More pressure moves more air, which is what a rising CO2 is asking for. Keep it as low as it will go.", score: 4, resolve: false },
+        caffeine: { fb: "Reasonable - caffeine lifts the drive. It will not be enough on its own if the lungs are the problem.", score: 3, resolve: false },
+        help: { fb: "A good time to have somebody else looking at this baby too.", score: 4, resolve: false }
+      },
+      wrong: {
+        __fio2up: { fb: "The saturation was never the problem here. Oxygen does not carry carbon dioxide out.", score: -5 },
+        morphine: { fb: "Sedating a baby who is already failing to breathe out their CO2 is the wrong direction entirely.", score: -7 }
+      },
+      decline: { fb: "\"All right.\" A baby who has gone quiet is not a baby who has settled, and the monitor will look fine for a while yet.", score: -5, resolve: false },
+      miss: { fb: "The carbon dioxide climbed all night and the first anyone knew of it was the morning gas.", score: -7 }
+    },
+    {
+      /* STARTING oxygen, as opposed to turning it up. A baby in room air has nothing for the
+         nurse to titrate, so a quietly desaturating one had no route to the player at all
+         short of a crisis. This is the other half of the nurse's oxygen job. */
+      id: "needsoxygen", who: nurseFor, severity: "worry", cooldown: 110,
+      cond: function (G, b) {
+        return b.support.mode === "RA" && b.h.lowSatMinutes > 25 && !b.h.artifactProbe;
+      },
+      summary: function (G, b) { return "sitting under the target in room air"; },
+      say: function (G, b) {
+        return b.pronoun.S + " " + b.pronoun.has + " been sitting in the high eighties for the best part of half " +
+               "an hour now, in air, and " + b.pronoun.s + " " + b.pronoun.is + " not coming up on " + b.pronoun.p +
+               " own. I have got nothing to turn up - " + b.pronoun.s + " " + b.pronoun.is + " not on anything.";
+      },
+      nudge: "There is no dial to turn on a baby in room air. What would you want to start, and what would you want to know first?",
+      help: "Support at the top of the bedside: nasal cannula or CPAP. Worth a look at the baby and the probe " +
+            "first - the number and the baby should agree before you treat the number.",
+      settled: "The saturation has come back into the target range.",
+      accept: {
+        __support: { fb: "Something to breathe against. That is what " + "this baby was asking for.", score: 6, resolve: true },
+        examine: { fb: "Hands on first. Colour, effort and air entry will tell you whether this is lungs or heart.", score: 5, resolve: false },
+        reposition: { fb: "Fair - check the number is real before you treat it. Priya waits.", score: 3, resolve: false },
+        gas: { fb: "A gas will tell you how far off this baby actually is.", score: 4, resolve: false },
+        cxr: { fb: "A film is reasonable if you think the lungs have changed.", score: 4, resolve: false }
+      },
+      wrong: {
+        __fio2up: { fb: "There is no oxygen running to turn up. " + "This baby needs something started.", score: -2 }
+      },
+      decline: { fb: "\"If you say so.\" A baby who cannot hold their own saturation in air is usually telling you something before they tell you loudly.", score: -3, resolve: false },
+      miss: { fb: "Hours in air under the target, and nobody started anything.", score: -5 }
+    },
+    {
+      /* PULMONARY HYPERTENSION had no voice in the unit at all. The debrief would tell you at
+         seven in the morning that the lung blood vessels had stayed clamped shut, and there had
+         been nothing on screen all night that pointed at it. Priya notices what a real nurse
+         notices: the saturation is not tracking the dial. That is the whole tell. */
+      id: "swinging", who: nurseFor, severity: "urgent", cooldown: 120,
+      cond: function (G, b) {
+        /* The tell is the GAP between the dial and the number, not a low number. A baby on
+           forty percent with open lung vessels sits well over 95; one below 94 on that much
+           oxygen is not getting it into the blood, and that is the finding. */
+        return b.h.pphn > 0.25 && b.support.fio2 >= CL.pphn.alertFio2 && b.mon.spo2 < CL.pphn.alertSat;
+      },
+      summary: function (G, b) { return "saturations swinging and not following the oxygen"; },
+      say: function (G, b) {
+        return "I have turned " + b.pronoun.o + " up to " + pct(b) + " percent and it has barely moved the number. " +
+               "It swings - eighty-something, then ninety-four when " + b.pronoun.s + " " + b.pronoun.is + " left alone, " +
+               "then down again the moment anyone touches " + b.pronoun.o + ". That is not how the others behave.";
+      },
+      nudge: "When the saturation will not follow the oxygen, the problem may not be the air sacs. What else stands between the oxygen and the blood?",
+      help: "An echo from Imaging shows whether the lung blood vessels are the problem. Comfort care from Care - " +
+            "handling makes this worse, every time. And this is a baby worth ringing the attending about.",
+      settled: "The saturation has steadied and stopped swinging with every touch.",
+      accept: {
+        echo: { fb: "An echo is exactly right - it is the only thing that shows you the lung pressures.", score: 8, resolve: false },
+        comfort: { fb: "Minimal handling. In this baby, being left undisturbed is a treatment, not a kindness.", score: 7, resolve: true },
+        help: { fb: "A good call to make. This is not a baby to work out alone at three in the morning.", score: 6, resolve: false },
+        gas: { fb: "Reasonable - a gas will show you the oxygen is worse than the lungs look.", score: 3, resolve: false }
+      },
+      wrong: {
+        suction: { fb: "Suctioning is exactly the handling that drops this baby further. Only when the airway needs it.", score: -5 },
+        __fio2up: { fb: "You have already proved more oxygen barely moves the number. That is the finding, not the fix.", score: -3 }
+      },
+      decline: { fb: function (G, b) {
+        return "\"All right.\" Priya dims the light over the cot without being asked. A baby whose saturation " +
+               "ignores the oxygen is telling you something about the blood vessels, not the air sacs."; }, score: -4, resolve: false },
+      miss: { fb: "The swings went on all night and the lung blood vessels were never looked at.", score: -7 }
+    },
+    {
+      /* The earlier half of risingwork. That one waits for 45 percent, by which point the answer
+         is already obvious; this one fires while there is still a diagnosis to make, and it asks
+         a question rather than naming a treatment. */
+      id: "risingoxygen", who: nurseFor, severity: "worry", cooldown: 140,
+      cond: function (G, b) {
+        return b.support.mode !== "VENT" &&
+               b.support.fio2 >= CL.o2Creep.alertFrom && b.support.fio2 < 0.45 &&
+               b.h.o2Creep > CL.o2Creep.alertRise && S.workOfBreathing(b) > 0.35;
+      },
+      summary: function (G, b) { return "creeping up on oxygen"; },
+      say: function (G, b) {
+        return "We started the shift at twenty-five percent and we are at " + pct(b) + " now. Small steps, " +
+               "but every one of them has been up. I would rather ask you now than at four in the morning.";
+      },
+      nudge: "A rising oxygen requirement is a trend, not a number. Trends have causes - find this one before it gets big.",
+      help: "A blood gas or a chest film from Assess and Imaging will tell you which way this is going. " +
+            "An echo if you think it is the duct. Catching it here is worth more than fixing it later.",
+      settled: "The oxygen need has come back down and stayed there.",
+      accept: {
+        gas: { fb: "A gas now, while there is still time to act on it. Good.", score: 6, resolve: false },
+        cxr: { fb: "A film will show you stiff lungs, wet lungs or an air leak, and they need different answers.", score: 6, resolve: false },
+        echo: { fb: "Worth a look, particularly in a preemie this age - a duct steals oxygen quietly.", score: 4, resolve: false },
+        examine: { fb: "Hands on the baby first. Priya nods.", score: 4, resolve: false },
+        surfactant: { fb: "If the lungs are that stiff, surfactant is the answer - though a gas would have proved it.", score: 5, resolve: true }
+      },
+      wrong: {
+        __fio2up: { fb: "Turning it up again is what has been happening all night. Priya is asking you why.", score: -3 }
+      },
+      decline: { fb: "\"Understood.\" She writes the number on the chart anyway. Creeping oxygen is the earliest thing you get, and the cheapest to act on.", score: -3, resolve: false },
+      miss: { fb: "The oxygen crept up all night and nobody asked why until it was a crisis.", score: -5 }
+    },
+    {
+      // longer than it was: a peak pressure stays where it is until somebody moves it, so
+      // a short cooldown had her raising the same setting four times a night
+      id: "highpip", who: "priya", severity: "worry", cooldown: 210,
+      // the same limit at which the model starts doing damage; there used to be a silent band
+      cond: function (G, b) { return b.support.mode === "VENT" && b.support.pip > CL.pipLimit(b.ga); },
       summary: function (G, b) { return "on a high ventilator pressure"; },
       say: function (G, b) {
         return "Peak pressure is " + b.support.pip + " on a baby this size. Gentle ventilation, remember. " +
@@ -157,19 +459,30 @@
       miss: { fb: "Hours at a damaging pressure.", score: -5 }
     },
     {
-      id: "cold", who: nurseFor, severity: "worry", cooldown: 80,
-      cond: function (G, b) { return b.h.coreTemp < 36.2; },
-      summary: function (G, b) { return "cold at " + b.h.coreTemp.toFixed(1) + " degrees"; },
+      /* Longer than it was. A porthole left open stays open until somebody closes it, so at
+         an 80 minute cooldown one parent visit could have her raising the same cot seven
+         times before morning - which is how a real signal turns into wallpaper. */
+      id: "cold", who: nurseFor, severity: "worry", cooldown: 150,
+      cond: function (G, b) { return b.h.coreTemp < CL.temp.hypothermia; },
+      summary: function (G, b) {
+        return b.support.isoOpen ? "cold, and the isolette is open"
+                                 : "cold at " + b.h.coreTemp.toFixed(1) + " degrees";
+      },
       say: function (G, b) {
         return "Temperature is " + b.h.coreTemp.toFixed(1) + ". " +
-               (b.support.isoOpen ? "The portholes have been open a while. " : "") +
-               "Cold babies burn through their sugar and start having spells.";
+               (b.support.isoOpen
+                 ? "The porthole is open - I think " + b.parentName + " left it after sitting with " +
+                   b.pronoun.o + ", and nobody has been past since. No harm meant by it, but "
+                 : "") +
+               "cold babies burn through their sugar and start having spells.";
       },
       nudge: "Warmth is not a comfort measure in a preemie. It is treatment.",
-      help: "In the Respiratory support panel, the Isolette slider sets the bed temperature. Under Care," +
-            " kangaroo care warms a baby better than any machine, if a parent is here.",
+      help: "If the isolette is open, Close the isolette under Care is the whole answer and it takes " +
+            "two minutes. Otherwise the Isolette slider in the support panel sets the bed temperature, " +
+            "and kangaroo care warms a baby better than any machine, if a parent is here.",
       settled: "The temperature has come back up into range.",
       accept: {
+        closeiso: { fb: "Shut, and the heat stays where it belongs. Nothing else was ever going to work while it was open.", score: 7, resolve: true },
         __warmer: { fb: "Isolette closed and the heat up. Warm, pink and sweet, in that order.", score: 6, resolve: true },
         kangaroo: { fb: "A parent's chest holds a baby's temperature beautifully, and steadies the heart rate too.", score: 7, resolve: true },
         comfort: { fb: "Nested and covered. It helps, but check the isolette settings too.", score: 2, resolve: false }
@@ -207,7 +520,9 @@
     },
     {
       id: "yellow", who: nurseFor, severity: "note", cooldown: 200,
-      cond: function (G, b) { return b.h.bili > 9 && !b.h.photo && !b.labs.bili; },
+      /* Relative to this baby's own threshold, not a flat number: 9 is nothing in a term baby
+         on day four and is worth a look in a 32-weeker on day one. */
+      cond: function (G, b) { return b.h.bili > b.h.biliThreshold - CL.bili.concernMargin && !b.h.photo && !b.labs.bili; },
       summary: function () { return "looking more jaundiced"; },
       say: function (G, b) {
         return b.pronoun.S + " " + b.pronoun.v("look") + " more yellow to me than this morning - down onto the chest now. " +
@@ -227,7 +542,7 @@
     },
     {
       id: "lowbp", who: nurseFor, severity: "worry", cooldown: 90,
-      cond: function (G, b) { return b.mon.map < b.ga - 2 && b.h.pressors === 0; },
+      cond: function (G, b) { return b.mon.map < b.ga + CL.map.concernAt && b.h.pressors === 0; },
       summary: function (G, b) { return "a mean blood pressure of " + b.mon.map; },
       say: function (G, b) {
         return "Mean pressure is " + b.mon.map + ". The old rule says at least the gestational age, which would be " +
@@ -291,8 +606,13 @@
       miss: { fb: "The spells went on without the one medicine proven to reduce them.", score: -5 }
     },
     {
-      id: "jittery", who: nurseFor, severity: "worry", cooldown: 90,
-      cond: function (G, b) { return b.h.glucose < 42 && !b.labs.glucose; },
+      /* 90 was the shortest cooldown of any persistent state, and a baby whose sugar sits
+         just under the threshold all night stays there - measured, she raised the same cot
+         fifteen times in the worst shift, which is how an urgent signal becomes wallpaper.
+         The escalation system already makes the point when you ignore her twice. */
+      id: "jittery", who: nurseFor, severity: "worry", cooldown: 200,
+      // the same number the examination uses, so a nurse and the baby cannot contradict each other
+      cond: function (G, b) { return b.h.glucose < CL.glucose.low && !b.labs.glucose; },
       summary: function () { return "jittery and hard to settle"; },
       say: function (G, b) {
         return b.pronoun.S + " " + b.pronoun.is + " jittery - tremulous when I unwrap " + b.pronoun.o + ", and hard to settle. " +
@@ -332,7 +652,7 @@
       id: "extubatable", who: "priya", severity: "note", cooldown: 300,
       cond: function (G, b) {
         return b.support.mode === "VENT" && b.support.fio2 <= 0.30 && b.support.pip <= 18 &&
-               b.h.spontDrive > 0.9 && b.h.co2 < 55 && G.min > 180;
+               b.h.spontDrive > 0.9 && b.h.co2 < CL.co2.permissiveHigh && G.min > 180;
       },
       summary: function () { return "ready to come off the ventilator"; },
       say: function (G, b) {
@@ -353,7 +673,7 @@
     },
     {
       id: "pale", who: nurseFor, severity: "note", cooldown: 240,
-      cond: function (G, b) { return b.h.hgb < 8.5 && !b.labs.cbc; },
+      cond: function (G, b) { return b.h.hgb < CL.hgb.pale && !b.labs.cbc; },
       summary: function () { return "looking pale"; },
       say: function (G, b) {
         return b.pronoun.S + " " + b.pronoun.v("look") + " washed out to me, and " + b.pronoun.v("tire") + " quickly with handling. " +
@@ -429,7 +749,7 @@
       id: "parent-hold", who: "nurse", target: "baby", pool: "parent",
       cond: function (G, b) {
         return G.parentPresent(b) && !b.h.kangaroo && b.h.criticalRun < 5 &&
-               b.mon.spo2 > 90 && b.support.mode !== "VENT" && G.min > 90;
+               b.mon.spo2 >= CL.sat.targetLow && b.support.mode !== "VENT" && G.min > 90;
       },
       badge: "has a suggestion",
       say: function (G, b) {
@@ -461,7 +781,7 @@
       opts: [
         { label: "Write the name on the cot card yourself and say it out loud",
           hint: "Costs a couple of minutes",
-          apply: function (G, b) { b.name = b.chosenName; b.unnamed = false; G.trust += 14; G.advance(5); G.nameMoment = b.name; },
+          apply: function (G, b) { b.name = b.chosenName; b.unnamed = false; G.trust += 14; G.advance(5); },
           fb: function (G, b) { return "You wrote it on the card and used it. Naming a baby who has been 'Baby " +
                 b.surname + "' for a day is the moment a family starts to believe there will be a future."; },
           fbKind: "good", score: 6 },
@@ -680,7 +1000,7 @@
           fb: "Harmless enough, though even confirming there was an emergency is more than is yours to share.",
           fbKind: "ok", score: 1 },
         { label: "Tell them briefly what happened", hint: "Answers the question directly",
-          apply: function (G, b) { G.trust -= 8; G.metrics.confidentiality = true; },
+          apply: function (G, b) { G.trust -= 8; },
           fb: "Never. The family you are speaking to will also, correctly, wonder what you say about them to the next bed.",
           fbKind: "bad", score: -8 }
       ]
@@ -730,7 +1050,7 @@
     },
     {
       id: "teach-caffeine", who: "desmond", target: "unit", once: true, minMin: 340,
-      badge: "has a question",
+      badge: "has another question",
       say: function () {
         return "One more. Caffeine. It feels like a joke medicine, giving babies coffee. Does it actually do " +
                "anything, or is it just tradition?";
@@ -747,9 +1067,18 @@
           fbKind: "ok", score: 0 }
       ]
     },
+  ];
+
+  /* ===================================================================== CALLS
+     The phone rings. You choose whether to answer. Important callers ring back.   */
+  var CALLS = [
     {
-      id: "attending", who: "ingrid", target: "unit", once: true, minMin: 230,
-      badge: "checking in",
+      /* Ingrid is at home. She was written as a conversation, and the line she opens with -
+         "It is Ingrid. I am at home but wide awake" - is a telephone line: she was appearing
+         in the who-needs-you list as a person standing on the unit wanting a word. She rings
+         instead, and rings back once, because a consultant checking in on a night shift does. */
+      id: "attending", who: "ingrid", minMin: 230, urgent: false, persistent: 2,
+      preview: "Dr. Halvorsen",
       say: function () {
         return "It is Ingrid. I am at home but wide awake. Talk me through the unit, and tell me honestly which " +
                "baby is worrying you most tonight.";
@@ -757,20 +1086,19 @@
       nudge: "Saying a worry out loud is how you find the gap in your own reasoning.",
       opts: [
         { label: "Name the baby worrying you most and say why", hint: "Thinks out loud with a senior",
-          apply: function (G) { G.knowledge++; G.trust += 4; G.metrics.calledForHelp++; },
+          apply: function (G) { G.trust += 4; G.metrics.calledForHelp++; },
           fb: "Good. Ingrid asks two sharp questions and tells you to call again any time. Asking for help is a senior skill, not a junior one.",
           fbKind: "good", score: 6 },
         { label: "\"Everything is under control, no concerns.\"", hint: "Keeps the call short",
-          apply: function (G) { G.metrics.overconfident = true; },
+          apply: function () {},
           fb: "In a unit with this many sick babies, no concerns is rarely true. Ingrid pauses a moment before she says goodnight.",
           fbKind: "bad", score: -3 }
-      ]
-    }
-  ];
-
-  /* ===================================================================== CALLS
-     The phone rings. You choose whether to answer. Important callers ring back.   */
-  var CALLS = [
+      ],
+      onIgnoreAll: function (G) {
+        G.log("Dr. Halvorsen rang twice and got no answer. She will ask about that in the morning.", "warn");
+        G.addScore(-2, "Did not pick up when the attending rang to check in");
+      }
+    },
     {
       id: "delivery", who: "nell", minMin: 150, urgent: true, persistent: 3, studentSkip: true,
       preview: "Delivery room",
@@ -802,7 +1130,7 @@
           fb: "It works, but every transport of a fragile newborn carries risk. Given the choice, move the mother.",
           fbKind: "ok", score: 1 },
         { label: "No, we are full", hint: "Declines the transfer",
-          apply: function (G) { G.metrics.refusedTransfer = true; },
+          apply: function () {},
           fb: "Sometimes the honest answer. Tonight you had the space and the staff, and that baby will now be born somewhere without a ventilator.",
           fbKind: "bad", score: -4 }
       ]
@@ -854,5 +1182,78 @@
     }
   ];
 
-  window.Events = { CONCERNS: CONCERNS, TALKS: TALKS, CALLS: CALLS, CHARS: CHARS, nurseFor: nurseFor };
+  /* ==================================================================== CRISES
+     The three set pieces. A crisis pauses the unit and forces a differential under
+     pressure, so unlike a concern there is no way to walk away from one. These lived in
+     game.js while their three siblings lived here, which meant that adding a person with
+     an opinion meant knowing which of two files they belonged in.
+
+       run(G, b) -> { ok, text, score }                                             */
+  var CRISES = {
+    dope: {
+      title: "Acute deterioration",
+      line: function (b) {
+        return b.name + "'s saturation has dropped into the 70s and is not coming back. Turning the oxygen up " +
+               "is doing nothing. The heart rate is falling. Priya is bagging.";
+      },
+      nudge: "Sudden, one-sided, and unresponsive to oxygen. Run the DOPE checklist.",
+      opts: [
+        { label: "Check the tube position and listen to both sides of the chest", hint: "Rules out displacement and obstruction",
+          run: function (G, b) {
+            if (b.h.ettDisplaced) { b.h.ettDisplaced = false; return { ok: true, text: "The tube had slipped into the right main bronchus. Pulled back two centimetres and the chest lifts evenly again.", score: 8 }; }
+            if (b.h.secretions > 0.5) { b.h.secretions = 0.1; return { ok: true, text: "A thick plug of secretions. Suctioned, and the chest moves again.", score: 8 }; }
+            return { ok: false, text: "The tube is in the right place and the airway is clear. But listen again: the breath sounds are much quieter on one side.", score: 2 };
+          } },
+        { label: "Needle the chest for a pneumothorax", hint: "Releases trapped air, if there is any",
+          run: function (G, b) {
+            if (b.h.ptx) { b.h.ptx = false; b.h.ptxHandled = true; return { ok: true, text: "Air hisses out. The saturation climbs from the 70s to the 90s within a few breaths and the heart rate recovers. That was a tension pneumothorax.", score: 12 }; }
+            b.h.painStim = 0.5; b.h.handling += 1.5;
+            return { ok: false, text: "No air comes out. There was no pneumothorax, and you have put a needle into a baby's chest for nothing.", score: -6 };
+          } },
+        { label: "Turn the oxygen to 100 percent and keep bagging", hint: "Maximises oxygen while you think",
+          run: function (G, b) { b.support.fio2 = 1; b.h.o2Exposure += 40;
+            return { ok: false, text: "Full oxygen makes no difference at all, which is itself the clue. When oxygen does not fix hypoxia, the problem is not oxygen.", score: 0 }; } },
+        { label: "Call Dr. Halvorsen to come in", hint: "Brings a senior to the bedside",
+          run: function (G, b) { G.metrics.calledForHelp++;
+            return { ok: false, text: "She is on her way and talks you through it: 'Sudden, one-sided, not responding to oxygen. Get a light on that chest and be ready to needle it.'", score: 4 }; } }
+      ]
+    },
+    shock: {
+      title: "Septic shock",
+      line: function (b) { return b.name + " has gone grey and mottled. Cap refill is over five seconds and the blood pressure is collapsing."; },
+      nudge: "In shock, treatment does not wait for laboratory confirmation.",
+      opts: [
+        { label: "Fluid bolus, antibiotics now, and call for help", hint: "Volume, antibiotics and another pair of hands",
+          run: function (G, b) { b.h.hypovolemia = S.c01(b.h.hypovolemia - 0.5); G.startAbx(b); b.h.shockHandled = true;
+            b.h.sepsis = S.c01(b.h.sepsis - 0.1); G.metrics.calledForHelp++;
+            return { ok: true, text: "Volume, antibiotics, and another pair of hands. That is the whole of septic shock management in the first hour, in the right order.", score: 12 }; } },
+        { label: "Start dopamine to bring the pressure up", hint: "Raises the blood pressure only",
+          run: function (G, b) { b.h.pressorInfusion = true; b.h.pressorDose = 1;
+            return { ok: false, text: "The number comes up a little. The baby is no better, because the infection is still running.", score: -2 }; } },
+        { label: "Send a full set of labs and wait for the results", hint: "Gathers data before treating",
+          run: function (G, b) { G.orderLab(b, "gas"); G.orderLab(b, "cbc");
+            return { ok: false, text: "The labs can be drawn on the way past. They cannot be waited for.", score: -5 }; } }
+      ]
+    },
+    hypo: {
+      title: "Severe hypoglycaemia",
+      line: function (b) { return b.name + "'s blood sugar is " + Math.round(b.h.glucose) + " and " + b.pronoun.s + " " + b.pronoun.is + " jittery and hard to rouse."; },
+      nudge: "Fix the moment, then make sure it stays fixed.",
+      opts: [
+        { label: "Dextrose bolus now, then turn up the sugar in the drip", hint: "Treats now and prevents the rebound fall",
+          run: function (G, b) { b.h.d10bolus = 60; b.h.glucose += 35; b.h.dexPct = Math.max(b.h.dexPct, 12.5);
+            b.h.ivRate = Math.max(b.h.ivRate, 80); b.h.hypoHandled = true;
+            return { ok: true, text: "Bolus in, and the infusion turned up so it does not simply fall again. The glucose infusion rate is what holds it there.", score: 10 }; } },
+        { label: "Give a bolus and recheck in an hour", hint: "Treats the moment only",
+          run: function (G, b) { b.h.d10bolus = 45; b.h.glucose += 30;
+            return { ok: false, text: "It comes up, then falls again. A bolus without increasing the infusion is a bounce, not a fix.", score: 2 }; } },
+        { label: "Start a milk feed", hint: "Sugar by the slower route",
+          run: function (G, b) { b.h.feedsMlKgD += 20;
+            return { ok: false, text: "Far too slow for a sugar this low, and this baby is too unwell to feed safely.", score: -4 }; } }
+      ]
+    }
+  };
+
+  window.Events = { CONCERNS: CONCERNS, TALKS: TALKS, CALLS: CALLS, CRISES: CRISES,
+                    CHARS: CHARS, nurseFor: nurseFor };
 })();

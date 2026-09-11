@@ -7,7 +7,7 @@
   // Acronyms and jargon. Keys are matched case-insensitively.
   var TERMS = {
     "NICU": "Neonatal Intensive Care Unit. The part of the hospital for the newest, smallest and sickest babies.",
-    "SpO2": "Oxygen saturation. The percentage of the blood's haemoglobin that is carrying oxygen. Measured by the glowing probe on the foot.",
+    "SpO2": "Oxygen saturation. The percentage of the blood's haemoglobin that is carrying oxygen, measured by the glowing probe on the foot. For a preterm baby on extra oxygen the target is 90 to 95 percent: lower costs lives and higher costs eyes and lungs.",
     "FiO2": "The fraction of oxygen in the air a baby is breathing. Ordinary room air is 21 percent. Anything above that is extra oxygen you are giving.",
     "MAP": "Mean arterial pressure. The average blood pressure across a whole heartbeat. In a preemie, a rough guide is that it should be at least the number of weeks they were born at.",
     "CPAP": "Continuous Positive Airway Pressure. A steady cushion of air through soft nose prongs that stops the lungs collapsing between breaths. The baby still does all the breathing.",
@@ -43,7 +43,7 @@
 
     "HR": "Heart rate: how many times the heart beats in a minute. Newborns are fast, usually 100 to 160. Yours is probably about 90.",
     "RR": "Respiratory rate: how many breaths the baby takes in a minute. Newborns breathe fast, usually 30 to 60. Yours is about 20.",
-    "T": "Temperature, in degrees Celsius. A baby should sit between 36.5 and 37.5. Below 36.5 is too cold, and cold is dangerous for a preemie.",
+    "T": "Temperature, in degrees Celsius. A baby should sit between 36.5 and 37.5. Between 36.0 and 36.4 is cold stress; below 36.0 is hypothermia, and cold is dangerous for a preemie.",
     "bpm": "Beats per minute: how many times the heart beats in one minute.",
     "breaths": "Breaths per minute: how many times the baby breathes in one minute.",
     "mmHg": "Millimetres of mercury, the unit for blood pressure. It means how far the push would lift a column of the heavy liquid metal mercury.",
@@ -65,6 +65,8 @@
     "phototherapy": "Blue light treatment for jaundice. The light changes bilirubin into a form the body can get rid of without the liver.",
     "antibiotics": "Medicines that kill bacteria, given when an infection is suspected.",
     "caffeine": "The same molecule as in coffee, given as a daily medicine. It keeps a premature baby\'s breathing centre alert so they have fewer spells.",
+    "morphine": "A strong painkiller, run continuously into a vein for a baby in real pain or fighting a ventilator. It also blunts the drive to breathe, so it buys comfort with spells and makes coming off a tube harder.",
+    "sedation": "Medicine given to settle a baby who is distressed or fighting the ventilator. It is not free: what quietens a baby also quietens their breathing.",
     "skin to skin": "The baby lying bare-chested on a parent\'s bare chest. It keeps them warm and steadies their heart rate and breathing.",
     "culture": "Blood put in a warm bottle to see whether any bacteria grow in it. It takes hours to days to give an answer.",
     "gestational age": "How many weeks the baby grew inside before being born. Full term is about 40 weeks. Anything before 37 weeks is premature.",
@@ -165,37 +167,8 @@
     "diabetic mother": "A baby whose mother had diabetes. Extra sugar crossed to the baby before birth, so the baby made extra insulin. The moment the cord is cut the sugar supply stops and that insulin drives the baby\'s own sugar down."
   };
 
-  // What each action is for, in plain language, shown before you commit.
-  var ACTION_INFO = {
-    examine:  "Lay hands on the baby. Colour, breathing effort, chest sounds, belly, pulses and cap refill. Costs five minutes and answers questions no monitor can.",
-    comfort:  "Nest, swaddle, dim the light and offer a little sucrose. Lowers pain and stress, which is treatment, not decoration.",
-    kangaroo: "Settle the baby skin to skin on a parent's chest. Steadies temperature, heart rate and breathing, and helps the family. Only possible when a parent is here.",
-    suction:  "Clear secretions from the airway. Useful when the chest sounds wet or a tube may be blocked, but it is uncomfortable, so not routinely.",
-    reposition: "Reseat the saturation probe and the ECG stickers. The answer when the number and the baby disagree.",
-    glucose:  "A heel-prick blood sugar, back in five minutes. Cheap, fast, and explains a surprising number of problems.",
-    gas:      "A blood gas: pH, carbon dioxide and base deficit. Tells you whether a baby is failing to breathe out CO2, or short of oxygen, or building up acid.",
-    cbc:      "White cells for infection and haemoglobin for anaemia. Takes about forty minutes.",
-    bili:     "A bilirubin level, to compare against the threshold for this baby's age in hours. Never judge jaundice by eye.",
-    culture:  "Take blood to grow any bacteria in it. Must be taken BEFORE antibiotics start, or the result is worthless.",
-    cxr:      "A chest X-ray. Shows the lungs, whether a breathing tube sits in the right place, and any air leak.",
-    axr:      "An abdominal X-ray. Looking for the gas in the bowel wall that means necrotising enterocolitis.",
-    hus:      "Ultrasound of the brain through the soft spot on the head. No radiation. This is how brain bleeds are found.",
-    echo:     "Ultrasound of the heart. Shows whether the ductus is still open and how much it matters.",
-    caffeine: "The standard medicine for apnea of prematurity. It keeps the immature breathing centre alert. A large trial showed babies given it came off support sooner and had less lung disease.",
-    abx:      "Antibiotics for suspected infection. In a newborn, waiting for proof costs more than treating early does. Draw the culture first.",
-    surfactant: "The missing slippery liquid, dripped straight into the lungs. Within minutes stiff lungs open up. Needs a breathing tube to give it through.",
-    intubate: "Place a breathing tube into the windpipe so a ventilator can take over. A real procedure with real risk; not a first move.",
-    extubate: "Take the breathing tube out and go back to CPAP. Do it as soon as it is safe, because tube days cost lungs.",
-    bolus:    "Ten millilitres per kilo of fluid into a vein. Helps a baby who is genuinely short of circulating volume, and adds water to the lungs of one who is not.",
-    d10:      "A dose of sugar straight into the vein for a low blood glucose. Fixes the moment; you also need to turn up the infusion so it does not fall again.",
-    dopamine: "A drip that makes the heart squeeze harder and tightens the blood vessels, raising the blood pressure. Treats the number; find out why it was low.",
-    ibuprofen: "The medicine that makes a stubborn ductus arteriosus tighten and close. It is hard on the gut and kidneys, so confirm the duct matters first.",
-    transfuse: "Give red cells to an anaemic baby. Anaemia makes spells worse and makes babies pale and tired.",
-    needle:   "Put a needle into the chest to release trapped air. Life-saving for a tension pneumothorax, harmful if there is no air there.",
-    photo:    "Blue light that changes bilirubin into a form the body can flush out without the liver. Very safe. Eyes are covered.",
-    npo:      "Stop milk feeds and let the stomach empty. The first move whenever you are worried about the gut.",
-    talk:     "Sit down with the family and talk. Costs ten minutes and changes how an entire admission feels to them."
-  };
+  /* What each action is for now lives on the action itself, as `info`, in the ACTIONS
+     registry in js/game.js and in js/deliveries.js. This file is about words. */
 
   function lookup(term) {
     if (!term) return null;
@@ -278,6 +251,7 @@
     "transfuse": "transfusion", "transfused": "transfusion", "transfusion": "transfusion",
     "ibuprofen": "ibuprofen",
     "caffeine": "caffeine", "antibiotics": "antibiotics",
+    "morphine": "morphine", "sedation": "sedation", "sedated": "sedation",
     "kangaroo care": "kangaroo care", "kangaroo": "kangaroo care", "skin to skin": "skin to skin",
     "nest": "nest", "nested": "nest", "nesting": "nest",
     "swaddle": "swaddled", "swaddled": "swaddled",
@@ -366,6 +340,6 @@
     return '<span class="gl" data-term="' + esc(key) + '">' + visible + "</span>";
   }
 
-  window.Glossary = { TERMS: TERMS, ACTION_INFO: ACTION_INFO, lookup: lookup, markup: markup,
+  window.Glossary = { TERMS: TERMS, lookup: lookup, markup: markup,
                       ACRONYMS: ACRONYMS, PHRASES: PHRASES, tip: tip, term: term };
 })();

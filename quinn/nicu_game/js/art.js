@@ -22,7 +22,19 @@
   }
 
   // look = { tone, color:'pink'|'pale'|'dusky'|'mottled', jaundice:0..1,
-  //          eyes:'open'|'closed'|'shielded', effort:0..1, support, photo, active:0..1 }
+  //          eyes:'open'|'closed'|'shielded', effort:0..1, support, photo, active:0..1,
+  //          apneic:bool, pain:0..1, stress:0..1 }
+  //
+  // The picture is the one thing in this game that never lies, so the face has to be
+  // readable at a glance and honest at every value. A baby who has stopped breathing
+  // has NO work of breathing - workOfBreathing() returns 0 during a spell - which used
+  // to fall through to the resting face, so the sickest baby on the unit smiled. The
+  // apneic flag exists to carry what the effort number cannot.
+  function attr(t) {
+    return String(t == null ? "" : t)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
   function skinFor(look) {
     var base = (TONES[look.tone] || TONES.a)[0];
     var shade = (TONES[look.tone] || TONES.a)[1];
@@ -42,7 +54,10 @@
     var sk = skinFor(look), base = sk[0], shade = sk[1];
     var effort = look.effort || 0;
     var s = [];
-    s.push('<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="baby">');
+    // the alt text is composed by the caller from the same look object the drawing uses,
+    // so what a screen reader hears and what a sighted player sees cannot drift apart
+    s.push('<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' +
+           attr(look.alt || "baby") + '">');
 
     // nest / blanket roll
     s.push('<ellipse cx="60" cy="62" rx="49" ry="29" fill="#3c4a60"/>');
@@ -59,8 +74,8 @@
       s.push('<path d="M 30 56 Q 56 46 82 58" fill="none" stroke="#588fb4" stroke-width="2"/>');
     } else {
       s.push('<ellipse cx="55" cy="60" rx="30" ry="18" fill="' + base + '"/>');
-      // arms up, frog-leg posture; more splayed when stressed
-      var sp = 1 + (look.stress || 0) * 0.5;
+      // arms up, frog-leg posture; more splayed when stressed, flat and floppy when apneic
+      var sp = look.apneic ? 0.2 : 1 + (look.stress || 0) * 0.5;
       s.push('<ellipse cx="' + (40 - 3 * sp) + '" cy="' + (48 - 2 * sp) + '" rx="10" ry="6" fill="' + base + '" transform="rotate(-35 40 48)"/>');
       s.push('<ellipse cx="' + (40 - 3 * sp) + '" cy="' + (73 + 2 * sp) + '" rx="10" ry="6" fill="' + base + '" transform="rotate(35 40 73)"/>');
       s.push('<ellipse cx="34" cy="60" rx="9" ry="6" fill="' + shade + '" transform="rotate(-8 34 60)"/>');
@@ -90,11 +105,17 @@
       s.push('<path d="M 80 57 q 3 2.5 6 0" fill="none" stroke="#141b28" stroke-width="1.6" stroke-linecap="round"/>');
       s.push('<path d="M 91 57 q 3 2.5 6 0" fill="none" stroke="#141b28" stroke-width="1.6" stroke-linecap="round"/>');
     }
-    // mouth: grimace when in pain, open when working hard
+    /* Mouth. The thresholds match describeLook() in game.js on purpose, so the sentence
+       under the picture and the picture itself can never disagree. A settled smile has
+       to be earned: not apneic, not dusky or mottled, comfortable and not in pain. */
     if (look.eyes !== "shielded") {
-      if ((look.pain || 0) > .4) s.push('<path d="M 84 66 q 4 -3 8 0" fill="none" stroke="#8a3a3a" stroke-width="1.8" stroke-linecap="round"/>');
-      else if (effort > .5)      s.push('<ellipse cx="88" cy="66" rx="3.4" ry="2.6" fill="#7d3d3d"/>');
-      else                        s.push('<path d="M 84 65 q 4 3 8 0" fill="none" stroke="#8a3a3a" stroke-width="1.6" stroke-linecap="round"/>');
+      var slack = 'M 83 66 q 5 0 10 0';
+      if (look.apneic)           s.push('<path d="' + slack + '" fill="none" stroke="#8a3a3a" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>');
+      else if ((look.pain || 0) > .4) s.push('<path d="M 84 66 q 4 -3 8 0" fill="none" stroke="#8a3a3a" stroke-width="1.8" stroke-linecap="round"/>');
+      else if (effort > .55)     s.push('<ellipse cx="88" cy="66" rx="3.4" ry="2.6" fill="#7d3d3d"/>');
+      else if (effort > .3 || look.color === "dusky" || look.color === "mottled")
+                                 s.push('<path d="' + slack + '" fill="none" stroke="#8a3a3a" stroke-width="1.6" stroke-linecap="round"/>');
+      else                       s.push('<path d="M 84 65 q 4 3 8 0" fill="none" stroke="#8a3a3a" stroke-width="1.6" stroke-linecap="round"/>');
     }
 
     // respiratory support gear
@@ -134,7 +155,8 @@
   function isolette(look, opts) {
     opts = opts || {};
     var s = [];
-    s.push('<svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="isolette">');
+    s.push('<svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' +
+           attr(look.alt || "isolette") + '">');
     if (opts.photo) s.push('<rect x="30" y="6" width="200" height="16" rx="7" fill="#1d2a3a"/>' +
       '<circle cx="70" cy="14" r="5" fill="#4fc3f7"/><circle cx="110" cy="14" r="5" fill="#4fc3f7"/>' +
       '<circle cx="150" cy="14" r="5" fill="#4fc3f7"/><circle cx="190" cy="14" r="5" fill="#4fc3f7"/>' +
