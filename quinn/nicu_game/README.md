@@ -153,6 +153,93 @@ Narrative results — films, echo, head ultrasound, culture — have no range an
 sentence. A lab record grows an optional `parts` array; without one, `labValueHtml()` falls
 back to the old string, so adding a test with no range needs no new code.
 
+## An action that works has to say so
+
+From a playtest: *"I'm pretty sure I've pressed Call the attending and nothing has happened."*
+Nothing had. Two bugs, one inside the other.
+
+**`doAction` swallowed all good news.** It surfaced a result at the bedside only when the kind was
+`"warn"` or `"bad"`:
+
+```js
+if (kind === "warn" || kind === "bad") setNote(b, kind, msg);
+```
+
+**Eighteen actions answer with a confirmation** — *surfactant given and the chest moving more
+easily*, *air hissing out of a chest*, *red cells in and the baby pinker*, *portholes shut* — and
+not one of them appeared where the player was standing. They all went to the unit log, at the
+bottom of a side panel that is closed at a bedside. You pressed a button, some numbers moved, and
+nobody told you it had worked. One line: `if (kind && !r.quiet)`.
+
+**And a phone call should be a phone call.** Ringing the attending was the worst case of it,
+because the message *is* the entire feature: Dr. Halvorsen's paragraph of advice, the most
+information-dense thing in the game, delivered into a log line. It is a modal now, in the same
+shape as the call she makes to you — and she asks before she tells:
+
+> *"Ingrid."* She sounds wide awake, and not at all surprised. *"Before I say anything — tell me
+> what you are seeing."*
+
+Both answers get the steer. Talking her through what you see scores more than saying you are not
+sure, but **saying you are not sure is why you rang**, and this game does not punish it: *"Good,"
+she says, and means it. "The ones who never ring are the ones I worry about."*
+
+What she said goes into that cot's history with her actual words on it, because the modal closes
+and what she told you at half past two is the thing you want to read back at six. `r.quiet`
+suppresses the bedside note for an action whose answer arrives somewhere better.
+
+## Every scenario has to be playable
+
+From a playtest: *"it said Ndidi had meconium aspiration with pulmonary hypertension. I could tell
+something was wrong but I never figured out what to do, and after reading the feedback I still
+don't know."*
+
+A hidden problem is only a puzzle if **somebody points at it** and **there is something to do about
+it that the game then acknowledges**. Auditing all sixteen non-benign puzzles — forcing each onto
+its archetype and running the night with no player action — found three that failed the first test
+outright and a systemic reason why several more were failing it intermittently.
+
+**All three infection puzzles had nothing pointing at them.** Early-onset sepsis in the 25-weeker,
+late-onset on a central line, pneumonia in the term baby: the unit raised a low blood pressure,
+which is a late consequence, and never once said the word. The debrief then told the player that
+*"temperature instability plus 'just not right' plus a central line means culture and antibiotics
+tonight"* — describing signs nobody had been shown. `notright` is the fix: the most important
+sentence in neonatology and the hardest to teach, because it is a gestalt rather than a number. She
+cannot tell you what is wrong, only that something is, and in a newborn that is enough to act on.
+Chasing the blood pressure instead — a bolus, or a pressor — is marked wrong.
+
+**And the urgent concerns were starving the quiet ones.** `QUEUE_SOFT_CAP` was a flat 8, from when
+the game had nine kinds of concern; there are twenty-four now, eight of them urgent, and urgent was
+the only severity that bypassed the cap. Measured across eight shifts, **the queue sat at or over
+the cap 49% of the time**, and while it did, twelve non-urgent concerns were being suppressed —
+including `jittery`, `murmur`, `yellow` and `cold`, which are the only things pointing at
+hypoglycaemia, the duct, jaundice and a cold baby.
+
+A player can ignore a row in a panel; they cannot act on something they were never told. The cap
+now scales with the census and is a brake on a pile-up rather than a permanent silence. The effect
+was redistribution, not noise: **the same 33 raises a shift, now spread across 21 kinds instead of
+crowding into the loud ones.**
+
+`POINTS_AT` in the suite is the permanent guard — every puzzle, the concerns that legitimately point
+at it, asserted to fire across a spread of shifts. A companion check asserts each of those concerns
+**accepts an action that the puzzle's own `found()` or `fixed()` test names**, so a signpost can
+never point at a locked door.
+
+### The pulmonary hypertension baby specifically
+
+Three things were wrong with it, and the first was the one that made the debrief useless:
+
+- **The reveal asserted the outcome.** `truth` read *"the lung blood vessels **stayed** clamped
+  shut"* — so a player who found it, called for help and kept the baby undisturbed all night was
+  told in the first line of their debrief that nothing had changed. This is the same trap the benign
+  puzzles carry a flag for, arriving from the other direction: a `truth` has to state the
+  **diagnosis**, never how the night went.
+- **Perfect play could not finish the job.** Echo, attending called, comfort care kept up all night
+  took a worst-case baby from 0.45 only to 0.35 — still flagged. The clearance rate is faster now,
+  and `openAtHandover` judges **trajectory rather than level**: a third better by morning is a baby
+  being managed, not a problem handed over mid-course.
+- **The lesson named principles, not controls.** *"Keep the baby calm and call for help early"* is
+  true and unactionable. It now names Echo, Comfort care and Call the attending.
+
 ## This baby's night
 
 The unit log is one stream for five cots, so *"what has actually been done for this baby, and

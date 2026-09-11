@@ -59,7 +59,7 @@
     // clock is behind the truth, and when the player last did or was shown anything
     acc: 0, clockLag: 0, clockCost: 0, clockRate: 0, lastInput: 0, lastNotice: 0,
     logLines: [], trust: 55, knowledge: 0, score: 0, scoreItems: [],
-    difficulty: "resident", allowDeath: true, hints: true, nudges: true,
+    difficulty: "resident", allowDeath: true, nudges: true,
     view: { mode: "ward", bed: null },
     concerns: [], talks: [], watches: [], call: null, callHistory: {},
     fired: {}, cooldowns: {}, declined: {}, dialogOpen: false, dialogQueue: [],
@@ -82,8 +82,11 @@
     var t = (SHIFT_START + m) % 1440;
     return ("0" + Math.floor(t / 60)).slice(-2) + ":" + ("0" + Math.floor(t % 60)).slice(-2);
   }
-  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+  /* One copy, in js/util.js. The escaper that used to live here did not escape the double
+     quote, and twenty-eight of its call sites below sit inside a quoted attribute. */
+  var U = window.Util;
+  function cap(s) { return U.cap(s); }
+  function esc(s) { return U.esc(s); }
   function gl(s) { return GL.markup(esc(s)); }
   /* Authored text may be a plain string or a function of the baby. Use a function whenever
      the line refers to the baby or to the colleague saying it, so pronouns and their verbs
@@ -171,6 +174,44 @@
     return hr + "h" + (rem ? " " + rem + "m" : "") + " ago";
   }
 
+  /* ------------------------------------------------- ringing the attending
+     A PHONE CALL SHOULD BE A PHONE CALL. The action returned its answer as a result message
+     with kind "good", and doAction only turns a result into a bedside note when the kind is
+     "warn" or "bad" - so the single most information-dense thing in the game delivered Dr.
+     Halvorsen's entire paragraph of advice into the unit log, at the bottom of a side panel
+     that is not even open at a bedside. A player pressing it saw ten minutes disappear and
+     nothing else happen, which is exactly what a playtest reported.
+
+     It is a modal now, in the same shape as the call she makes to you, and she asks first.
+     Both answers get the steer: committing to a view scores more, but saying you are not
+     sure is why you rang, and this game does not punish that. */
+  function attendingCall(b, steer, first) {
+    var opened = "\u201cIngrid.\u201d She sounds wide awake, and not at all surprised. " +
+                 "\u201cBefore I say anything \u2014 tell me what you are seeing.\u201d";
+    showDialog({
+      avatar: "ingrid", who: "Dr. Ingrid Halvorsen", role: "Attending neonatologist, on the phone",
+      said: opened, subject: b, keepOrder: true,
+      nudge: "Saying it out loud is how you find the gap in your own reasoning. She will steer you either way.",
+      opts: [
+        { label: "Talk her through what you are seeing", hint: "Commits to a reading, which she can then correct",
+          run: function () {
+            addScore(3, "Thought out loud with the attending about " + b.name);
+            G.trust += 2;
+            return { kind: "good", text: "She listens all the way to the end without interrupting. " +
+                     "Then: \u201c" + steer + "\u201d" };
+          } },
+        { label: "\u201cHonestly, I am not sure. That is why I rang.\u201d", hint: "Says the true thing",
+          run: function () {
+            addScore(2, "Asked the attending for help without pretending to know");
+            G.trust += 1;
+            return { kind: "good", text: "\u201cGood,\u201d she says, and means it. \u201cThe ones who never " +
+                     "ring are the ones I worry about.\u201d Then: \u201c" + steer + "\u201d" };
+          } }
+      ]
+    });
+    if (first) log("You rang Dr. Halvorsen about " + b.name + ".", "hi");
+  }
+
   function byBed(n) { for (var i = 0; i < G.babies.length; i++) if (G.babies[i].bed === n) return G.babies[i]; return null; }
 
   /* An action's name may depend on the baby it is aimed at: "Intubate" and "Re-site the tube"
@@ -220,18 +261,32 @@
      game: every concern added over the last few builds is another row that can be open at
      five in the morning, and a who-needs-you list nobody can read is the same as no list.
      Urgent always gets through, because a baby in trouble has to reach you. */
-  var QUEUE_SOFT_CAP = 8;
+  /* A flat 8 was tuned when the unit had nine kinds of concern in it. There are twenty-four
+     now, eight of them urgent, and urgent was the only severity that bypassed the cap - so
+     measured across eight shifts the queue sat at or over it 49 percent of the time, and
+     while it did, the urgent ones starved out every quieter signal in the game: `jittery`
+     forty-nine times, `murmur`, `yellow`, `cold`, `nocaffeine`. Those are the only things
+     pointing at hypoglycaemia, the duct, jaundice and a cold baby.
+
+     A player can ignore a row in a panel. They cannot act on something they were never told,
+     and the panel already ranks by severity, so a longer list is not a louder one. The cap
+     scales with the census and is a brake on a pile-up, not a permanent silence. */
+  function queueCap() {
+    var alive = G.babies.filter(function (b) { return !b.died && !b.discharged; }).length;
+    return Math.max(6, alive * 3);
+  }
 
   function raiseConcerns() {
     var openNow = G.concerns.filter(function (x) { return !x.done; }).length +
                   G.talks.filter(function (t) { return !t.done; }).length;
+    var cap = queueCap();
     EV.CONCERNS.forEach(function (c) {
       G.babies.forEach(function (b) {
         if (b.died || b.discharged) return;
         var key = c.id + ":" + b.bed;
         if (G.concerns.some(function (x) { return x.key === key && !x.done; })) return;
         if (G.cooldowns[key] && G.min - G.cooldowns[key] < (c.cooldown || 90)) return;
-        if (openNow >= QUEUE_SOFT_CAP && c.severity !== "urgent") return;
+        if (openNow >= cap && c.severity !== "urgent") return;
         if (!c.cond(G, b)) return;
         openNow++;
         var whoId = typeof c.who === "function" ? c.who(b) : c.who;
@@ -364,8 +419,16 @@
       }
       Snd.ok();
     } else if (bad) {
-      addScore(bad.score, (actionLabel(actionId, b) || "That adjustment") +
-                          " was the wrong answer for " + b.name);
+      /* Charged once too. The accept above has been paid once per action per concern since
+         a player could otherwise hold one button down and earn the judgement domain
+         outright - and the penalty had no such guard, so nudging a slider up three times
+         cost three times over for one mistake. The colleague still answers every press. */
+      c.credited = c.credited || {};
+      if (!c.credited[actionId]) {
+        c.credited[actionId] = true;
+        addScore(bad.score, (actionLabel(actionId, b) || "That adjustment") +
+                            " was the wrong answer for " + b.name);
+      }
       var badText = say(bad.fb, b);
       pushReply(c, false, badText);
       Snd.bad();
@@ -794,68 +857,84 @@
     })[0];
   }
 
-  /* Every clickable thing in the stage and the side panel has to be named here or the one
-     delegated handler never sees it, and the button is silently dead - no error, no clue.
-     It has happened twice: "Live this shift again" did nothing at all, and a face in the row
-     of people at a cot could not be clicked to switch conversation. So the list is exported,
-     and the suite walks the rendered page asserting that every button in it matches. */
-  var CLICKABLE = "[data-bed],[data-act],[data-del],[data-talk],[data-concern],[data-go]," +
-                  "[data-mode],[data-dex],[data-leave]," +
-                  "#podDelivery,#btnBack,#delLeave,#declineConcern,#dismissConcern," +
-                  "#startShift,#again,#relive";
+  /* ONE TABLE, AND THE SELECTOR COMES OUT OF IT.
+
+     Every clickable thing in the stage and the side panel has to be reachable by the one
+     delegated handler, and it used to take two edits to make that true: a name in a
+     selector string, and an arm in an if-chain below it. Doing one and not the other gives
+     a button that is silently dead - no error, no clue - and it had happened twice: "Live
+     this shift again" did nothing at all, and a face in the row of people at a cot could
+     not be clicked to switch conversation.
+
+     Now there is one list. The selector is derived from it, so a handler cannot be added
+     without also being matched, and a match cannot exist without a handler. The suite still
+     walks the rendered page checking every button is covered - but it is now checking a
+     property that is hard to break rather than one that was easy to. */
+  var CLICKS = [
+    { id: "startShift",      run: function () { startShift(); } },
+    { id: "again",           run: function () { location.href = "index.html"; } },
+    { id: "relive",          run: function () { reliveShift(); } },
+    { id: "btnBack",         run: function () { backToWard(); } },
+    { id: "delLeave",        run: function () { leaveDelivery(false); } },
+    { id: "podDelivery",     run: function () { G.enterDelivery(); } },
+    { id: "declineConcern",  run: function (n, b) { if (b) declineConcern(b); } },
+    { id: "dismissConcern",  run: function (n, b) { if (b) dismissConcern(b); } },
+
+    { attr: "data-leave",    run: function (n) { G.finishDelivery(n.getAttribute("data-leave")); } },
+    { attr: "data-del",      run: function (n) { G.doDelivery(n.getAttribute("data-del")); } },
+    { attr: "data-act",      run: function (n, b) { if (b) G.doAction(b, n.getAttribute("data-act")); } },
+
+    // conversations first: they are the only thing here that is about a person
+    { attr: "data-concern",  run: function (n, b) {
+        if (!b) return;
+        var want = n.getAttribute("data-concern");
+        var pick = G.concerns.filter(function (c) { return c.key === want && !c.done; })[0];
+        if (!pick) return;
+        G.openConcern[b.bed] = want;
+        if (!pick.seen) { pick.seen = true; pick.seenAt = G.min; }
+        Snd.click(); playerActed();
+        renderBedCallout(b); renderBedPeople(b);
+        announce(EV.CHARS[pick.who].name.split(",")[0] + ": " + cap(pick.summaryText));
+      } },
+
+    { attr: "data-talk",     run: function (n, b) {
+        var tb = n.hasAttribute("data-talk-bed") ? n.getAttribute("data-talk-bed") : (b ? b.bed : null);
+        var talk = findTalk(n.getAttribute("data-talk"), tb);
+        if (!talk) return;
+        /* Go and stand where they are first. A conversation about a baby happens at that
+           baby's cot, and arriving in the dialog from nowhere loses that. */
+        if (talk.bed != null) {
+          var at = G.babies.indexOf(byBed(talk.bed));
+          if (at >= 0 && !(G.view.mode === "bed" && G.view.bed === at)) openBed(at);
+        }
+        startTalk(talk);
+      } },
+
+    { attr: "data-bed",      run: function (n) { openBed(+n.getAttribute("data-bed")); } },
+    { attr: "data-go",       run: function (n) { openBed(+n.getAttribute("data-go")); } },
+    { attr: "data-jump",     run: function (n) { jumpToPanel(n.getAttribute("data-jump")); } },
+    { attr: "data-mode",     run: function (n, b) { if (b) setMode(b, n.getAttribute("data-mode")); } },
+    { attr: "data-dex",      run: function (n, b) {
+        if (!b) return;
+        b.h.dexPct = +n.getAttribute("data-dex");
+        renderBed();
+      } }
+  ];
+
+  var CLICKABLE = CLICKS.map(function (c) {
+    return c.id ? "#" + c.id : "[" + c.attr + "]";
+  }).join(",");
 
   document.addEventListener("click", function (e) {
     var t = e.target;
     if (!t || !t.closest) return;
-    /* Every clickable thing in the stage and the side panel has to be named here or the
-       delegated handler never sees it. Two have been added since this list was last touched
-       and both were silently dead: #relive did nothing at all, and a face in the row of
-       people at a cot could not be clicked to switch conversation. */
     var n = t.closest(CLICKABLE);
     if (!n || n.disabled) return;
     var b = currentBaby();
-
-    if (n.id === "startShift") return startShift();
-    if (n.id === "again") { location.href = "index.html"; return; }
-    if (n.id === "relive") return reliveShift();
-    if (n.id === "btnBack") return backToWard();
-    if (n.id === "delLeave") return leaveDelivery(false);
-    if (n.hasAttribute && n.hasAttribute("data-leave")) return G.finishDelivery(n.getAttribute("data-leave"));
-    if (n.id === "podDelivery") return G.enterDelivery();
-    if (n.id === "declineConcern") return b && declineConcern(b);
-    if (n.id === "dismissConcern") return b && dismissConcern(b);
-
-    if (n.hasAttribute("data-del")) return G.doDelivery(n.getAttribute("data-del"));
-    if (n.hasAttribute("data-act")) return b && G.doAction(b, n.getAttribute("data-act"));
-    // conversations first: they are the only thing here that is about a person
-    if (n.hasAttribute("data-concern")) {
-      if (!b) return;
-      var want = n.getAttribute("data-concern");
-      var pick = G.concerns.filter(function (c) { return c.key === want && !c.done; })[0];
-      if (!pick) return;
-      G.openConcern[b.bed] = want;
-      if (!pick.seen) { pick.seen = true; pick.seenAt = G.min; }
-      Snd.click(); playerActed();
-      renderBedCallout(b); renderBedPeople(b);
-      announce(EV.CHARS[pick.who].name.split(",")[0] + ": " + cap(pick.summaryText));
-      return;
+    for (var i = 0; i < CLICKS.length; i++) {
+      var c = CLICKS[i];
+      if (c.id ? n.id === c.id : (n.hasAttribute && n.hasAttribute(c.attr))) return c.run(n, b);
     }
-    if (n.hasAttribute("data-talk")) {
-      var tb = n.hasAttribute("data-talk-bed") ? n.getAttribute("data-talk-bed") : (b ? b.bed : null);
-      var talk = findTalk(n.getAttribute("data-talk"), tb);
-      if (!talk) return;
-      /* Go and stand where they are first. A conversation about a baby happens at that
-         baby's cot, and arriving in the dialog from nowhere loses that. */
-      if (talk.bed != null) {
-        var at = G.babies.indexOf(byBed(talk.bed));
-        if (at >= 0 && !(G.view.mode === "bed" && G.view.bed === at)) openBed(at);
-      }
-      return startTalk(talk);
-    }
-    if (n.hasAttribute("data-bed")) return openBed(+n.getAttribute("data-bed"));
-    if (n.hasAttribute("data-go")) return openBed(+n.getAttribute("data-go"));
-    if (n.hasAttribute("data-mode")) return b && setMode(b, n.getAttribute("data-mode"));
-    if (n.hasAttribute("data-dex")) { if (b) { b.h.dexPct = +n.getAttribute("data-dex"); renderBed(); } return; }
   });
 
   // ------------------------------------------------------------------- clock
@@ -1103,7 +1182,6 @@
         if (G.min < p.due) return true;
         notice();                    // you sent for this; you should get a beat to read it
         var h = b.h, t;
-        var before = Object.keys(b.labs).length;
         if (p.kind === "glucose") { var r = Math.round(h.glucose);
           b.labs.glucose = { v: r + " mg/dL", crit: r < 40 || r > 180, at: G.min,
             parts: [{ label: "", value: r + " mg/dL", bad: r < CL.glucose.low || r > 180,
@@ -1245,7 +1323,13 @@
 
   function enterDelivery() {
     var d = G.delivery; if (!d || d.state === "done") return;
-    if (d.state === "called") { d.state = "here"; d.arrivedAt = G.min; G.advance(3); }
+    /* Three minutes, charged as three. G.advance rounds to whole five-minute ticks, so
+       walking down to the delivery room cost the player five - the sub-tick accumulator is
+       how the delivery room already charges its own thirty-second actions. */
+    if (d.state === "called") {
+      d.state = "here"; d.arrivedAt = G.min;
+      G.acc += 3; showCost("3 min");
+    }
     d.awayAt = null;
     G.view = { mode: "delivery", bed: null };
     Snd.click(); playerActed();
@@ -1591,6 +1675,10 @@
     // a well term baby respiratory distress it had never had
     if (!poor && b.h.rds != null) b.h.rds = Math.max(0, b.h.rds - 0.35);
     b.h.uvc = true; b.h.dexPct = 10; b.h.ivRate = 80;
+    /* Everything above changes what this baby is, so the opening numbers and the snapshot
+       the report measures them against are both taken now, after the last of it. They used
+       to be taken inside build(), several adjustments ago. */
+    P.settle(b);
     G.babies.push(b);
     G.advance(20);
     log("New admission: Baby " + b.surname + ", " + b.ga + " weeks, to bed 6", "hi");
@@ -1619,7 +1707,7 @@
     return b.support.mode === "VENT" ? "vent" : b.support.mode === "CPAP" ? "cpap" : b.support.mode === "NC" ? "nc" : "";
   }
   function displayName(b) { return (b.unnamed ? "Baby " + b.surname : b.name + " " + b.surname); }
-  function bedAccent(b) { return "bed-c" + (((b.bed - 1) % 6) + 1); }
+  function bedAccent(b) { return U.bedAccent(b); }
 
   /* The callout pins itself directly under the header, and the header can wrap to two
      lines on a narrow screen, so the offset is measured rather than guessed. */
@@ -1753,6 +1841,90 @@
     if (back) { try { back.focus(); } catch (e) {} }
   }
 
+  /* ------------------------------------------------- where to act, as a place to go
+     Every one of the twenty-four concerns already names the panel its answer lives in -
+     "Under Assess: a blood count, a sugar, a culture" - and then the panel was two screens
+     away. Measured at 1024x768 on a cot with a live concern: the bedside stage is 2,757
+     pixels tall in a 697 pixel viewport and the first action button sits 1,365 pixels down.
+     So a player who knew exactly what to do still had to go hunting for it, and the loop
+     was hear, scroll, scroll, act.
+
+     The panel names are marked up the same way the glossary marks up its terms: one list,
+     matched in prose, so not one of the twenty-four help strings had to be re-authored and
+     a new panel only has to be named here. */
+  var PANELS = ["Respiratory support", "Fluids & feeds", "Assess", "Imaging", "Treat",
+                "Procedures", "Care"];
+  function panelSlug(name) { return name.toLowerCase().replace(/&amp;/g, "&").replace(/[^a-z]+/g, "-"); }
+  var PANEL_RE = new RegExp("\\b(" + PANELS.map(function (p) {
+    return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ & /, " (?:&amp;|&) ");
+  }).join("|") + ")\\b", "g");
+
+  /* Only in the prose. gl() has already run by this point, so the text is peppered with
+     <abbr data-term="kangaroo care"> and data-tip attributes that contain these very words -
+     and rewriting inside one would put a button in the middle of a tag. */
+  function outsideTags(html, fn) {
+    return String(html).replace(/(<[^>]*>)|([^<]+)/g, function (m, tag, text) {
+      return tag ? tag : fn(text);
+    });
+  }
+  function panelJumps(html) {
+    return outsideTags(html, function (text) {
+      return text.replace(PANEL_RE, function (m) {
+        return '<button type="button" class="jump" data-jump="' + panelSlug(m) + '">' + m + "</button>";
+      });
+    });
+  }
+  /* Scrolled by hand, a frame at a time. scrollTo({behavior:"smooth"}) is the obvious way
+     to do this and it is not reliable: measured in the browser this was developed in, the
+     call is accepted without complaint and the element simply never moves - scrollTop sat
+     at 0 for a full second while a plain assignment worked immediately. A jump that
+     silently does nothing is the worst possible outcome for a control whose entire job is
+     to take you somewhere, so the tween is ours. */
+  function glide(el, to, instant) {
+    var from = el.scrollTop, dist = to - from;
+    if (instant || Math.abs(dist) < 2) { el.scrollTop = to; return; }
+    var ms = Math.min(420, 140 + Math.abs(dist) * 0.3), t0 = 0, done = false;
+    /* A belt to go with the braces: requestAnimationFrame does not run at all in a hidden
+       or throttled document, so on its own the tween would leave the page exactly where it
+       was - the same silent no-op this function was written to avoid, just one layer down.
+       If the frames never come, land it anyway. */
+    var snap = setTimeout(function () { if (!done) { el.scrollTop = to; done = true; } }, ms + 90);
+    requestAnimationFrame(function step(ts) {
+      if (done) return;
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / ms);
+      el.scrollTop = from + dist * (1 - Math.pow(1 - k, 3));      // ease out
+      if (k < 1) requestAnimationFrame(step);
+      else { done = true; clearTimeout(snap); }
+    });
+  }
+
+  function jumpToPanel(slug) {
+    var stage = $("stage");
+    var p = stage && stage.querySelector('[data-panel="' + slug.replace(/["\\]/g, "") + '"]');
+    if (!p) return;
+    Snd.click(); playerActed();
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* Scrolled by hand rather than with scrollIntoView, because the thing that sent you
+       here is pinned over the top of where you are going. The callout is sticky and can be
+       270 pixels of colleague; measured at 1024x768, scrollIntoView({block:"center"}) put
+       the Assess panel's heading and its first row of buttons underneath it. Land the panel
+       just below whatever the callout is currently occupying. */
+    var sr = stage.getBoundingClientRect(), pr = p.getBoundingClientRect();
+    var co = $("callout"), overlay = 0;
+    if (co) overlay = Math.max(0, co.getBoundingClientRect().bottom - sr.top);
+    var to = stage.scrollTop + (pr.top - sr.top) - overlay - 12;
+
+    /* Focus and flash BEFORE the scroll, never after. Calling focus() while a smooth scroll
+       is in flight cancels it - the panel lit up and took the keyboard, and the page sat
+       exactly where it was, which is the one failure that looks like nothing happened. */
+    p.setAttribute("tabindex", "-1");
+    try { p.focus({ preventScroll: true }); } catch (e) {}
+    p.classList.remove("landed"); void p.offsetWidth; p.classList.add("landed");
+
+    glide(stage, to, still);
+  }
+
   function testLabel(k) {
     var t = NG.TEST_LABEL[k];
     return t ? GL.tip(t[0], t[1]) : cap(k);
@@ -1766,6 +1938,11 @@
   }
 
   function render() {
+    /* Nothing to draw into once the shift is over. stepWorld() can end the night in the
+       middle of frame()'s step loop, and that loop then called render() against a page the
+       report had already replaced - so every shift that ran to seven in the morning threw
+       an uncaught TypeError out of $("clock") as the report appeared. */
+    if (!G.running) return;
     renderTop();
     if (G.view.mode === "handover") return;      // the handover page owns the stage
     if (G.view.mode === "ward") renderWard();
@@ -1797,18 +1974,29 @@
   }
 
   function renderTop() {
+    // frame() calls this on its way out too, after the report may have taken the bar away
+    if (!$("clock")) return;
     var shown = shownMin();
     $("clock").textContent = clockStr(shown);
     var left = Math.max(0, Math.round(SHIFT_LEN - shown));
     $("clockSub").textContent = Math.floor(left / 60) + "h " + (left % 60) + "m left";
     renderClockState();
-    $("statTrust").innerHTML = "Family trust <b>" + Math.round(Math.max(0, Math.min(100, G.trust))) + "</b>";
+    /* The word is wrapped so a narrow screen can drop it and keep the number, and the
+       accessible name carries what the word said - hiding a label must not delete it. */
+    var trustN = Math.round(Math.max(0, Math.min(100, G.trust)));
+    var st = $("statTrust");
+    st.innerHTML = '<span class="ico" aria-hidden="true">\uD83D\uDC6A</span>' +
+                   '<span class="lbl">Family trust </span><b>' + trustN + "</b>";
+    st.setAttribute("aria-label", "Family trust " + trustN + " percent");
+    st.setAttribute("data-tip", "How much the families on this unit feel included and informed. " +
+      "Sitting down with a parent raises it; leaving somebody waiting, or not picking up when they " +
+      "ring, lowers it. It is one of the five things the shift is scored on.");
     var lvl = $("statLevel");
     if (lvl && !lvl.dataset.set) {
       lvl.dataset.set = "1";
       var name = { student: "Student", resident: "Resident", attending: "Attending" }[G.difficulty];
       var bits = [G.nudges ? "prompts on" : "no prompts", G.allowDeath ? "deaths on" : "deaths off"];
-      lvl.innerHTML = "<b>" + name + "</b> &middot; " + bits.join(" &middot; ");
+      lvl.innerHTML = "<b>" + name + '</b><span class="lbl"> &middot; ' + bits.join(" &middot; ") + "</span>";
       lvl.setAttribute("data-tip",
         name + " level. " +
         (G.difficulty === "student"
@@ -1820,7 +2008,11 @@
         (G.allowDeath ? " A baby can die if a crisis is ignored for a long time." : " Babies cannot die."));
     }
     var al = G.babies.filter(function (b) { return !b.died && b.alarm.level !== "none"; }).length;
-    $("statAlarm").innerHTML = "Alarms <b>" + al + "</b>";
+    var sa = $("statAlarm");
+    sa.innerHTML = '<span class="ico" aria-hidden="true">\uD83D\uDD14</span>' +
+                   '<span class="lbl">Alarms </span><b>' + al + "</b>";
+    sa.setAttribute("aria-label", al + (al === 1 ? " alarm" : " alarms") + " sounding");
+    sa.setAttribute("data-tip", "How many babies have a monitor alarming right now, amber or red.");
     /* On a phone the side panel is a sheet you open, so the button has to carry what is
        waiting behind it - otherwise closing the panel means losing the unit's only
        summary of who wants you. */
@@ -1990,7 +2182,7 @@
       '<div class="panel"><h4>Results</h4><div class="labs" id="labs"></div></div>' +
       '<div class="panel"><h4>This baby\u2019s night</h4><div class="hist" id="hist"></div></div></div><div>';
     h += '<div class="monitor" id="monitor"></div>';
-    h += '<div class="panel"><h4>Respiratory support</h4>' +
+    h += '<div class="panel" data-panel="respiratory-support"><h4>Respiratory support</h4>' +
       '<div class="ctl-row"><label>' + GL.tip("Mode", "How much breathing help this baby is getting, from none at all up to a ventilator doing the work.") + '</label><div class="seg" id="segMode">' +
       ["RA", "NC", "CPAP", "VENT"].map(function (m) {
         return '<button data-mode="' + m + '" class="' + (s.mode === m ? "on" : "") + '" data-term="' + m + '">' + m + "</button>";
@@ -2004,7 +2196,7 @@
     }
     h += ctl("Isolette", "rIso", 32, 38, 0.1, s.isoTemp, s.isoTemp.toFixed(1) + "°", "isolette") +
          ctl("Humidity", "rHum", 30, 90, 5, s.humidity, s.humidity + "%", "humidity") + "</div>";
-    h += '<div class="panel"><h4>Fluids &amp; feeds</h4>' +
+    h += '<div class="panel" data-panel="fluids-feeds"><h4>Fluids &amp; feeds</h4>' +
       '<div class="ctl-row"><label>' + GL.term("Dextrose", "dextrose") + '</label><div class="seg" id="segDex">' +
       [0, 5, 10, 12.5].map(function (d) { return '<button data-dex="' + d + '" class="' + (b.h.dexPct === d ? "on" : "") + '">' + (d ? "D" + d : "none") + "</button>"; }).join("") +
       "</div></div>" +
@@ -2014,7 +2206,7 @@
 
     var groups = [["Assess", "assess"], ["Imaging", "imaging"], ["Treat", "treat"], ["Procedures", "proc"], ["Care", "care"]];
     groups.forEach(function (g) {
-      h += '<div class="panel"><h4>' + g[0] + '</h4><div class="act-grid">';
+      h += '<div class="panel" data-panel="' + panelSlug(g[0]) + '"><h4>' + g[0] + '</h4><div class="act-grid">';
       Object.keys(NG.ACTIONS).forEach(function (id) {
         if (NG.ACTIONS[id].g !== g[1]) return;
         h += '<button class="act" data-act="' + id + '" data-tip="' + esc(NG.ACTIONS[id].info || "") + '">' +
@@ -2141,7 +2333,8 @@
     if (G.nudges && c.def.nudge) html += '<div class="nudge">🤔 ' + gl(c.def.nudge) + "</div>";
     // the nudge points at the principle; this points at the panel, for a player who knows
     // what is wrong and still cannot find the control
-    if (G.nudges && c.def.help) html += '<div class="help">🧭 <b>Where to act.</b> ' + gl(c.def.help) + "</div>";
+    if (G.nudges && c.def.help)
+      html += '<div class="help">🧭 <b>Where to act.</b> ' + panelJumps(gl(c.def.help)) + "</div>";
     (c.replies || []).forEach(function (r) {
       html += '<div class="co-reply ' + replyClass(r) + '">' + gl(r.text) + "</div>";
     });
@@ -2453,15 +2646,26 @@
   var tipEl = null, tipFor = null;
 
   function tipTarget(node) {
-    return node && node.closest ? node.closest("[data-tip],[data-term],.gl") : null;
+    return node && node.closest ? node.closest("[data-tip],[data-term],.gl,.qmark") : null;
   }
   function tipText(n) {
+    /* The "?" badge carries no text of its own - it is a handle on the button it sits in,
+       so it reads that button's blurb rather than duplicating the string. */
+    if (n.classList && n.classList.contains("qmark")) {
+      var owner = n.closest("[data-tip]");
+      return owner ? owner.getAttribute("data-tip") : "";
+    }
     return n.getAttribute("data-tip") || GL.lookup(n.getAttribute("data-term") || n.textContent) || "";
   }
   function showTip(n) {
     var txt = tipText(n);
     if (!txt) return hideTip();
-    if (!tipEl) {
+    /* ...or if the one we made has been thrown away. The report replaces the whole body,
+       which takes this node with it - and the old check was `if (!tipEl)`, so every hover
+       on the report screen filled a detached div with exactly the right definition and
+       showed it to nobody. Measured on a finished shift: 23 glossary terms and one
+       data-tip, none of them reachable, on the one screen the game exists to teach from. */
+    if (!tipEl || !document.contains(tipEl)) {
       tipEl = el("div", "tip-pop");
       tipEl.id = "tip-pop";
       tipEl.setAttribute("role", "tooltip");
@@ -2507,8 +2711,20 @@
   document.addEventListener("click", function (e) {
     var n = tipTarget(e.target);
     if (!n) { hideTip(); return; }
+    /* THE ONE THING INSIDE A BUTTON THAT IS NOT THE BUTTON. The "?" badge exists so a
+       player can read what an action does before spending ten minutes of the night on it -
+       and on a touchscreen it could not be read at all. closest() walked straight past the
+       badge to the .act it sits in, the guard below saw a button and bailed, and the tap
+       ran the action instead of explaining it. Hover and keyboard focus had always worked,
+       so this was invisible on a desktop and total on a phone: every bedside action and all
+       sixteen in the delivery room. It has to be handled BEFORE the button guard. */
+    if (n.classList.contains("qmark")) {
+      e.stopPropagation(); e.preventDefault();
+      showTip(n);
+      return;
+    }
     if (n.closest("button")) return;
-    if (n.classList.contains("gl") || n.classList.contains("qmark")) { e.stopPropagation(); showTip(n); }
+    if (n.classList.contains("gl")) { e.stopPropagation(); showTip(n); }
   }, true);
 
   // ---------------------------------------------------------------- handover
@@ -2556,7 +2772,8 @@
        G.hints, assigned here and read nowhere.) */
     G.nudges = opts.hints;
     G.allowDeath = opts.allowDeath;
-    G.seedVal = opts.seed || Math.floor(Math.random() * 100000);
+    // == null, not falsy, for the same reason the title screen uses isNaN: 0 is a seed
+    G.seedVal = opts.seed == null ? Math.floor(Math.random() * 100000) : opts.seed;
     S.seed(G.seedVal);
     G.babies = P.makeCensus(G.difficulty);
     G.nameUsed = G.babies.used || {};
@@ -2582,6 +2799,7 @@
      leaves a note at the bedside, and lets the colleague who asked judge what just happened. */
   NG.CLICKABLE = CLICKABLE;
   NG.recordHistory = recordHistory; NG.agoStr = agoStr;
+  NG.attendingCall = attendingCall;
   NG.log = log; NG.addScore = addScore; NG.setNote = setNote;
   NG.judgeConcern = judgeConcern; NG.render = render;
 

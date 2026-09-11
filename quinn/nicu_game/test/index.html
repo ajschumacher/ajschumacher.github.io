@@ -40,6 +40,17 @@
   <br><br>
   Serve the folder and open this page over http — <code>python3 -m http.server</code> — because
   a <code>file://</code> iframe is an opaque origin the harness cannot reach into.
+  <b>Keep the tab in front while it runs:</b> in a background tab the browser clamps its timers and
+  a run that takes eight minutes takes forty, looking for all the world like a hang.
+  <br><br>
+  <b>While you are fixing something, use <code>?only=</code>.</b> <code>?only=morphine</code> runs just the
+  suites whose name contains that text, in seconds rather than a quarter of an hour. It combines with
+  the offset: <code>?only=morphine&amp;offset=3</code>.
+  <br><br>
+  <b>After any change to the simulation, re-run with <code>?offset=1</code> and <code>?offset=2</code>.</b>
+  That shifts every seed in the suite, so the same checks meet a different set of babies. A suite that
+  passes at one offset and fails at another is not finding a bug — it is pinning a stochastic outcome
+  to a lucky seed, and it will go red the next time anything changes where the generator is drawn from.
 </p>
 <div id="summary">running…</div>
 <div id="results"></div>

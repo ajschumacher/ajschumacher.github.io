@@ -93,7 +93,18 @@
           h.ivhGrade >= 2 || !b.labs.hus);
     else if (h.ivhGrade > 0 && !b.labs.hus && h.fontanelleFull)
       add("the fontanelle was full all night and nobody scanned " + b.pronoun.o, false);
-    if (b.mon.trueSat < CL.sat.handoverBelow)
+    /* "AND STAYING THERE" HAS TO BE TRUE. This read the saturation at the single instant
+       the shift ended, so a baby having an ordinary spell at 07:00 - the commonest event in
+       a preterm unit, self-resolving, and the thing the nurses handle without being asked -
+       was written up for the morning as a sustained desaturation. Measured over a night
+       where every baby was well: four hits, every one of them a baby mid-apnea, and one of
+       them with no time under target all night at all.
+
+       h.lowSatMinutes is the number that means what this sentence says. It is deliberately
+       PAUSED rather than reset through a spell, so it answers "has this baby's baseline been
+       low", which is the question the day team is being asked to inherit. */
+    if (b.mon.trueSat < CL.sat.handoverBelow && !h.apneaNow &&
+        h.lowSatMinutes > CL.sat.handoverLowMinutes)
       add("the saturation was in the " + (Math.floor(b.mon.trueSat / 10) * 10) + "s and staying there", true);
     if (h.bili > h.biliThreshold + 4 && !h.photo) add("the bilirubin was past the threshold with no light on", true);
 
@@ -113,7 +124,13 @@
       add("still on " + Math.round(b.support.fio2 * 100) + " percent oxygen at handover", true);
     else if (S.workOfBreathing(b) > 0.55 && b.support.mode !== "VENT")
       add("still working hard for every breath on " + supportLabel(b), true);
-    if (h.pphn > 0.25)
+    /* TRAJECTORY, NOT LEVEL. This asked only "are the vessels still tight", so a player who
+       found it, called for help and kept the baby undisturbed all night - taking a bad one
+       from 0.45 down to 0.29 - was handed the same sentence as somebody who never looked.
+       The thing a player controls here is the direction, and a baby who is a third better by
+       morning is a baby being managed, not a problem the day team is inheriting mid-course. */
+    var pphn0 = b.startSnapshot ? b.startSnapshot.pphn : h.pphn;
+    if (h.pphn > 0.25 && h.pphn > pphn0 * 0.75)
       add("the lung blood vessels were still clamped shut, and the saturations were showing it", true);
     if (h.rds > 1.2 && h.surfactant < 0.55)
       add("the lungs were still short of surfactant and none was ever given", true);
@@ -266,7 +283,7 @@
     return "Worth going back over before the next shift.";
   }
 
-  function bedAccent(b) { return "bed-c" + (((b.bed - 1) % 6) + 1); }
+  function bedAccent(b) { return window.Util.bedAccent(b); }
 
   // ------------------------------------------------------------------ report
   function endShift() {
@@ -301,7 +318,10 @@
           '<div class="ob-head"><span class="bed-badge ' + bedAccent(p.b) + '">bed ' + p.b.bed + "</span>" +
           "<b>" + esc(displayName(p.b)) + "</b>" +
           '<span class="ob-tag">' + (p.serious ? "still wrong" : "loose end") + "</span></div><ul class='plain'>";
-        p.open.forEach(function (x) { h += "<li>" + cap(gl(x.t)) + "</li>"; });
+        /* cap() BEFORE gl(), not after. gl() wraps a leading glossary term in an <abbr>, so
+           capitalising its output uppercased the "<" and left the sentence starting lower
+           case - on exactly the clauses that open with a word the glossary knows. */
+        p.open.forEach(function (x) { h += "<li>" + gl(cap(x.t)) + "</li>"; });
         h += "</ul><div class='ob-why'>" + gl(handoverAdvice(p)) + "</div></div>";
       });
       h += "</div>";
@@ -381,6 +401,7 @@
       '">Live this shift again</button>' +
       '<a class="btn ghost" href="index.html">Back to the title</a></div></div>';
     document.body.innerHTML = h;
+    buildReportIndex();
     /* Replacing the whole body takes the live region with it, so the end of the shift - the
        entire teaching payload - arrived in silence for anyone using a screen reader, with
        focus left on nothing. Put it back, say what happened, and land on the verdict. */
@@ -396,9 +417,60 @@
       try { head.focus(); } catch (e) {}
     }
     setTimeout(function () {
-      live.textContent = "Seven in the morning, handover to the day team. " + grade + ". " + verdictLine(ev);
+      /* And what the morning is actually inheriting. The grade and the verdict were all
+         this said, so the single most important thing a night shift produces - the list of
+         what is still wrong, which the sighted player reads at the top of the page - was
+         never spoken. */
+      /* The specifics only. verdictLine has already said who is being handed over unfinished,
+         so repeating "you are handing over one baby with something unfinished" in front of
+         the list makes the one sentence a screen reader gets say it twice. */
+      var carry = !ev.problems.length ? " Nothing was left open."
+        : " " + ev.problems.map(function (p) { return p.b.name + ": " + phrase(p.open, 2) + "."; }).join(" ");
+      live.textContent = "Seven in the morning, handover to the day team. " + grade + ". " +
+                         verdictLine(ev) + carry;
     }, 60);
     saveBest(pct, grade);
+  }
+
+  /* ------------------------------------------------------------- the index
+     The report is the teaching payload and it is four screens of it: the handover, the
+     domains, the numbers, a card per cot, the decisions, the advice. Once you had scrolled
+     past a cot there was no way back to it except scrolling, which is the wrong shape for
+     something meant to be re-read rather than read once.
+
+     Built from the headings that actually rendered, not from a second list beside them -
+     half these cards are conditional, so a hand-written index would be wrong on most
+     nights. */
+  function buildReportIndex() {
+    var wrap = document.querySelector(".report-wrap");
+    if (!wrap) return;
+    var cards = [].slice.call(wrap.querySelectorAll(".card")), items = [];
+    cards.forEach(function (c, i) {
+      var head = c.querySelector("h3");
+      if (!head) return;
+      c.id = "rep" + i;
+      // "Bed by bed, and what was actually going on" is a heading, not a tab label
+      items.push({ id: c.id, text: head.textContent.trim().split(",")[0] });
+    });
+    if (items.length < 3) return;
+    var nav = document.createElement("nav");
+    nav.className = "report-index";
+    nav.setAttribute("aria-label", "Jump to a section of the report");
+    nav.innerHTML = items.map(function (it) {
+      return '<a href="#' + it.id + '">' + esc(it.text) + "</a>";
+    }).join("");
+    var first = wrap.querySelector(".card");
+    if (first) wrap.insertBefore(nav, first);
+
+    /* The index is sticky, so an anchor has to stop short of it by however tall it actually
+       is - and that changes with the width, because the pills wrap. A fixed scroll-margin
+       guessed 64 and the row was 97 at 1024px, so every jump landed its heading behind the
+       thing you had just clicked. */
+    function sizeIndex() {
+      wrap.style.setProperty("--index-h", Math.ceil(nav.getBoundingClientRect().height) + "px");
+    }
+    sizeIndex();
+    window.addEventListener("resize", sizeIndex);
   }
 
   function metric(v, l, c) { return '<div class="metric ' + (c || "") + '"><div class="mv">' + v + '</div><div class="ml">' + l + "</div></div>"; }

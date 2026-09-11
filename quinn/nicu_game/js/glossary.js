@@ -329,9 +329,8 @@
 
   /* Wrap any visible text with its own explanation. Use when the meaning depends on
      context ("6" means six centimetres of water here) rather than on a fixed word. */
-  function esc(t) {
-    return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  }
+  // the same one everything else uses now; this was the careful of the two copies
+  function esc(t) { return window.Util.esc(t); }
   function tip(visible, explanation) {
     return '<span class="gl" data-tip="' + esc(explanation) + '">' + visible + "</span>";
   }

@@ -145,11 +145,39 @@ button { font: inherit; font-family: var(--font-body); }
 /* The pills and the buttons are grouped so a phone can lay them out separately. On a
    wide screen they must still read as one row, and when the row runs out of space it
    is the STATS that give way - the buttons are how you play, the pills are a readout. */
+/* THE PILLS GIVE WAY BY SHRINKING, NOT BY SLIDING OUT OF SIGHT.
+
+   This was overflow-x:auto with the scrollbar hidden, which does not degrade - it hides.
+   Measured at 1024px, a common laptop width: 463px of pills in a 281px box, so "Family
+   trust" was entirely off-screen and "Alarms" was cut mid-word, with nothing on screen to
+   suggest either existed. Family trust is one of the five domains the shift is scored on.
+   At 375px the row pushed "End shift" past the right edge as well.
+
+   Now the labels drop first and the numbers survive: a pill is a readout, and the number
+   is the whole of it. */
 .topbar-stats {
   display: flex; align-items: center; gap: 8px; flex-wrap: nowrap;
-  flex: 0 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none;
+  flex: 0 1 auto; min-width: 0; overflow: hidden;
 }
-.topbar-stats::-webkit-scrollbar { display: none; }
+/* A readout never shrinks below its own number. Letting every pill flex meant the trust
+   pill was squeezed to a 28px box around 44px of content - the label had gone and the
+   number was cut instead, which is the same bug one layer in. */
+.topbar-stats .pill-stat { flex: 0 0 auto; }
+/* The level is the one that gives way: it is static for the whole shift, it is the widest
+   thing in the row, and everything it says is in its own tooltip. */
+.topbar-stats .level-pill {
+  flex: 0 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* A bare "1" next to a bare "55" says nothing, so when the word goes a glyph takes its
+   place rather than nothing at all. The accessible name keeps the words either way. */
+.pill-stat .ico { display: none; margin-right: 5px; font-size: .82em; }
+@media (max-width: 1240px) {
+  #statAlarm .lbl, #statTrust .lbl, #statLevel .lbl { display: none; }
+  #statAlarm .ico, #statTrust .ico { display: inline; }
+  .pill-stat { padding: 4px 10px; }
+}
+@media (max-width: 1040px) { .pill-stat { padding: 4px 9px; font-size: .82rem; } }
 .topbar-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 @media (max-width: 1040px) { #seedLabel { display: none; } }
 .pill-stat {
@@ -646,6 +674,25 @@ abbr.gl, span.gl {
 }
 .help b { color: var(--teal); font-weight: 700; }
 
+/* "Under Assess: a blood count, a sugar, a culture" - and Assess is two screens down the
+   page. The panel names in that sentence are buttons that take you to the panel, so
+   knowing what to do and being able to reach it stop being separate problems. Styled as
+   prose rather than as a control: it is a word in a sentence that happens to be a door. */
+.help .jump {
+  font: inherit; color: var(--teal); background: none; border: 0;
+  padding: 0; cursor: pointer; border-bottom: 1px dashed currentColor;
+}
+.help .jump:hover { color: #7ff0e4; border-bottom-style: solid; }
+
+/* Where you landed, so the jump does not just silently move the page under you. */
+.panel.landed { animation: panelLand 1.1s ease-out; }
+@keyframes panelLand {
+  from { box-shadow: 0 0 0 2px var(--teal), 0 0 22px -4px var(--teal); }
+  to   { box-shadow: 0 0 0 0 rgba(46,196,182,0); }
+}
+.panel[tabindex]:focus { outline: none; }
+.panel[tabindex]:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
 /* The request stays put while the player scrolls the length of the bedside for a control.
    The negative margin lets the sticky box swallow the stage padding, so nothing slides
    through the gap above it. */
@@ -753,6 +800,10 @@ abbr.gl, span.gl {
   color: var(--ink-dim); font-size: .68rem; cursor: help;
 }
 .act:hover .qmark { border-color: var(--teal); color: var(--teal); }
+/* A finger needs more than fifteen pixels. The badge stays the size it looks and an
+   invisible pad around it catches the tap, so reading what an action does does not depend
+   on hitting a target the size of a full stop. */
+.act .qmark::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; }
 
 /* ---------- handover page ---------- */
 .handover { max-width: 780px; margin: 0 auto; padding-bottom: 40px; }
@@ -944,12 +995,24 @@ input[type="range"]:focus-visible { outline-offset: 4px; }
   .speed button { padding: 4px 8px; font-size: .82rem; }
   .btn.small { padding: 6px 10px; }
 
-  /* the stats become one horizontally scrollable strip rather than four wrapped rows */
-  .topbar-stats {
-    grid-area: stats; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .topbar-stats::-webkit-scrollbar { display: none; }
+  /* On a phone the row cannot hold everything, so the things that go are the ones that
+     never change and are readable elsewhere: the level is fixed for the whole shift and
+     its own tooltip says all of it, and the clock-state caption is describing what the
+     clock beside it is visibly doing. What stays is the clock, the pause, the alarm and
+     trust numbers, the phone, the who-needs-you count and the way out. Measured at 375px
+     before this: both rows overran and "End shift" sat past the right edge. */
+  .level-pill { display: none; }
+  .clock-state { display: none; }
+  .btn.small { padding: 6px 9px; font-size: .84rem; }
+  .topbar { padding: 6px 8px; gap: 6px 8px; }
+
+  /* And a hard guarantee rather than an arithmetic one: if the controls still do not fit,
+     they wrap onto a second line inside their own cell. The bar gets a little taller,
+     which is survivable; a button hanging off the right edge of a phone is not, and that
+     is what it did - "End shift" sat eight pixels past the screen. */
+  .topbar-actions { flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
+
+  .topbar-stats { grid-area: stats; display: flex; gap: 6px; }
   .pill-stat { font-size: .78rem; padding: 3px 10px; }
   #seedLabel { display: none; }
 
@@ -1078,3 +1141,26 @@ input[type="range"]:focus-visible { outline-offset: 4px; }
 /* a team member you can act on looks like one */
 button.tm { font: inherit; text-align: left; cursor: pointer; }
 button.tm:hover { border-color: var(--teal); }
+
+/* ---------- the report's own index ----------
+   Four screens of debrief with no way back to a particular cot once you had scrolled past
+   it, on the one screen in the game that is meant to be re-read rather than read once.
+   Built from the headings that actually rendered - half the cards are conditional. */
+.report-index {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; gap: 6px; flex-wrap: wrap;
+  padding: 12px 0 14px; margin-bottom: 4px;
+  background: linear-gradient(180deg, var(--bg) 72%, rgba(14,19,28,0));
+}
+.report-index a {
+  font-size: .82rem; color: var(--ink-soft); text-decoration: none;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 999px; padding: 5px 12px; white-space: nowrap;
+}
+.report-index a:hover { border-color: var(--teal); color: var(--ink); }
+.report-index a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+/* The index is sticky, so an anchor must not land its card underneath it. The height is
+   measured and written back as --index-h, because the row wraps at narrow widths and any
+   fixed guess is wrong at some of them. */
+.report-wrap .card { scroll-margin-top: calc(var(--index-h, 64px) + 12px); }
+@media print { .report-index { display: none; } }

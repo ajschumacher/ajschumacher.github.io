@@ -121,7 +121,15 @@
         var first = !h.helpAsked;
         h.helpAsked = true;
         if (first) { G.metrics.calledForHelp++; addScore(4, "Rang the attending about " + b.name); }
-        return { msg: "Dr. Halvorsen: \u201c" + attendingSteer(b) + "\u201d", kind: "good" };
+        /* The advice goes into a modal, not into a result message: doAction only surfaces a
+           result at the bedside when its kind is "warn" or "bad", so everything she had to
+           say used to land in the unit log and nowhere else. */
+        var steer = attendingSteer(b);
+        NG.attendingCall(b, steer, first);
+        /* And into this cot's history with her actual words on it. The modal closes; what
+           she told you at half past two is the thing you want to read back at six. */
+        return { msg: "Rang Dr. Halvorsen about " + b.name, kind: "good", quiet: true,
+                 history: "Rang Dr. Halvorsen \u2014 \u201c" + steer + "\u201d" };
       } },
 
     culture: { t: "Blood culture", cost: 10, g: "assess", info: "Take blood to grow any bacteria in it. Must be taken BEFORE antibiotics start, or the result is worthless.",
@@ -219,7 +227,7 @@
       } },
     transfuse: { t: "Transfuse", cost: 20, g: "treat", info: "Give red cells to an anaemic baby. Anaemia makes spells worse and makes babies pale and tired.",
       run: function (b, h) {
-        if (h.hgb < CL.hgb.transfuseAbove) {
+        if (h.hgb < CL.hgb.transfuseBelow) {
           h.hgb += 4;
           return { msg: "Red cells transfused and " + b.name + " looks pinker", kind: "good" };
         }
@@ -326,7 +334,9 @@
            never say whether anybody had DECIDED to keep this one undisturbed - which is
            the whole treatment for clamped lung vessels. Three hours, and then it is a
            decision somebody has to make again. */
-        h.protectedMin = Math.max(h.protectedMin, 180); h.handling = S.c01(h.handling - 0.3);
+        h.protectedMin = Math.max(h.protectedMin, 180);
+        // one decrement, not two. This took 0.3 off and then another 0.4, so the comfort
+        // measure everything else is tuned against was quietly 0.7 rather than either.
         h.handling = Math.max(0, h.handling - 0.4);
         return { msg: b.name + " settled with containment and a dim light", kind: "good" };
       } },
@@ -403,13 +413,22 @@
        decline - so a bare "Chest X-ray" in the history would read as a film that had come
        back rather than one on its way. */
     if (!refused)
-      NG.recordHistory(b, "did", label(a, b) +
-        (msg ? " \u2014 " + msg : (a.g === "assess" || a.g === "imaging" ? " requested" : "")));
+      NG.recordHistory(b, "did", r.history || (label(a, b) +
+        (msg ? " \u2014 " + msg : (a.g === "assess" || a.g === "imaging" ? " requested" : ""))));
     /* A refused action never happened, so there is nothing for a colleague to judge - and
        the refusal is the one thing the player must see, since the screen did not change. */
     if (refused) setNote(b, "warn", msg);
     else {
-      if (kind === "warn" || kind === "bad") setNote(b, kind, msg);
+      /* GOOD NEWS COUNTS TOO. This was `kind === "warn" || kind === "bad"`, so of the
+         eighteen actions that answer with a confirmation - surfactant given and the chest
+         moving more easily, air hissing out of a chest, red cells in and the baby pinker,
+         portholes shut - not one of them said anything where the player was standing. They
+         all went to the unit log, at the bottom of a side panel that is closed at a bedside.
+         You pressed a button, some numbers moved, and nobody told you it had worked.
+
+         `quiet` is for an action whose answer arrives somewhere better: ringing the
+         attending opens a phone call, and a note repeating "you rang her" under it is noise. */
+      if (kind && !r.quiet) setNote(b, kind, msg);
       judgeConcern(b, id);
     }
     // nothing happened, so nothing is charged for it either

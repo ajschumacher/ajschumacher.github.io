@@ -32,7 +32,7 @@
   /* game.js owns the phrasing of "CPAP 6" and the concerns should not invent a second
      one. Resolved at call time because events.js loads before game.js does. */
   function support(b) { return (window.NG && window.NG.supportLabel) ? window.NG.supportLabel(b) : b.support.mode; }
-  function Cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function Cap(s) { return window.Util.cap(s); }
 
   /* ==================================================================== CONCERNS
      accept  : actions that address the concern  -> { fb, score, resolve }
@@ -40,6 +40,53 @@
      wrong   : actively counterproductive        -> { fb, score }
      miss    : what it costs if you never come                                    */
   var CONCERNS = [
+    {
+      /* "SHE IS JUST NOT RIGHT." Every infection puzzle in the game - early-onset in the
+         25-weeker, late-onset on a central line, pneumonia in the term baby - had nothing
+         at all pointing at it. Measured over five shifts each, the unit raised low blood
+         pressure and a wet chest and never once said the word. The debrief then told the
+         player that temperature instability and a bad feeling meant antibiotics tonight,
+         describing signs nobody had been shown.
+
+         It is deliberately vague, because that is what it is. She cannot tell you what is
+         wrong; she can tell you that something is, and in a newborn that is enough to act on. */
+      id: "notright", who: nurseFor, severity: "urgent", cooldown: 170,
+      cond: function (G, b) {
+        return b.h.sepsis > CL.sepsisSign.noticeAt && !b.h.abx && !b.labs.culture;
+      },
+      summary: function (G, b) { return "just not right"; },
+      say: function (G, b) {
+        var line = b.h.sepsis > CL.sepsisSign.urgentAt
+          ? "I am not happy with " + b.pronoun.o + " at all. " + b.pronoun.S + " " + b.pronoun.has +
+            " gone mottled at the knees, " + b.pronoun.s + " " + b.pronoun.is + " floppy when I " +
+            "handle " + b.pronoun.o + ", and the temperature will not sit still."
+          : "I cannot put my finger on it. The colour keeps changing, the temperature has been up " +
+            "and down all evening, and " + b.pronoun.s + " " + b.pronoun.has + " gone quiet on me. " +
+            "Nothing you could write down. " + b.pronoun.S + " " + b.pronoun.is + " just not right.";
+        return line + " I have been doing this a long time and I would want something started.";
+      },
+      nudge: "An experienced nurse saying a baby is not right is a finding, not an opinion. What is the one thing a newborn goes off like this from?",
+      help: "Blood culture from Assess, THEN antibiotics from Treat - in that order, because a " +
+            "culture taken after the antibiotics tells you nothing. A blood count adds a little. " +
+            "In a newborn you do not wait for proof.",
+      settled: "The colour and the temperature have steadied.",
+      accept: {
+        culture: { fb: "A culture first. That is the order that keeps the answer worth having.", score: 8, resolve: false },
+        abx: { fb: "Started. In a newborn, waiting for a number before treating is how this one gets away from you.", score: 8, resolve: true },
+        cbc: { fb: "A count will support you, though a low white cell count is the worrying one and it comes late.", score: 4, resolve: false },
+        examine: { fb: "Hands on first. Colour, tone, perfusion and a fontanelle, and you will see what she is seeing.", score: 5, resolve: false },
+        help: { fb: "Worth a call. Nobody has ever been criticised for treating a newborn who turned out to be well.", score: 4, resolve: false }
+      },
+      wrong: {
+        bolus: { fb: "You are treating the blood pressure this is going to cause, and leaving the cause alone.", score: -4 },
+        dopamine: { fb: "Pressors hold a number up while the infection goes on. Treat the infection.", score: -5 }
+      },
+      decline: { fb: function (G, b) {
+        return "\"All right.\" " + CHARS[nurseFor(b)].name.split(",")[0] + " does not argue. She has been right about this " +
+               "before, and a newborn who is not right does not usually become right on their own."; },
+        score: -6, resolve: false },
+      miss: { fb: "An experienced nurse said the baby was not right, and nothing was sent and nothing was started.", score: -9 }
+    },
     {
       id: "spells", who: nurseFor, severity: "worry", cooldown: 150,
       cond: function (G, b) { return b.h.spells >= 3 && b.h.spellsThisHour >= 2 && !b.h.abx; },
@@ -1026,7 +1073,7 @@
       ]
     },
     {
-      id: "teach-o2", who: "desmond", target: "unit", once: true, minMin: 140,
+      id: "teach-o2", who: "desmond", target: "unit", minMin: 140,
       badge: "has a question",
       say: function () {
         return "Can I ask you something, while it is quiet? Everyone says keep the preemies at 90 to 95. " +
@@ -1049,7 +1096,7 @@
       ]
     },
     {
-      id: "teach-caffeine", who: "desmond", target: "unit", once: true, minMin: 340,
+      id: "teach-caffeine", who: "desmond", target: "unit", minMin: 340,
       badge: "has another question",
       say: function () {
         return "One more. Caffeine. It feels like a joke medicine, giving babies coffee. Does it actually do " +
@@ -1077,7 +1124,7 @@
          "It is Ingrid. I am at home but wide awake" - is a telephone line: she was appearing
          in the who-needs-you list as a person standing on the unit wanting a word. She rings
          instead, and rings back once, because a consultant checking in on a night shift does. */
-      id: "attending", who: "ingrid", minMin: 230, urgent: false, persistent: 2,
+      id: "attending", who: "ingrid", minMin: 230, persistent: 2,
       preview: "Dr. Halvorsen",
       say: function () {
         return "It is Ingrid. I am at home but wide awake. Talk me through the unit, and tell me honestly which " +
@@ -1100,7 +1147,7 @@
       }
     },
     {
-      id: "delivery", who: "nell", minMin: 150, urgent: true, persistent: 3, studentSkip: true,
+      id: "delivery", who: "nell", minMin: 150, persistent: 3, studentSkip: true,
       preview: "Delivery room",
       // the scenario is chosen now, so Nell describes the baby you are actually going to
       say: function (G) { return G.pickDelivery().call; },
@@ -1114,7 +1161,7 @@
       }
     },
     {
-      id: "transport", who: "phone", minMin: 200, urgent: false, persistent: 2, studentSkip: true,
+      id: "transport", who: "phone", minMin: 200, persistent: 2, studentSkip: true,
       preview: "Referring hospital",
       say: function () {
         return "The referring hospital across the county. They have a woman in labour at 29 weeks and no " +
@@ -1136,10 +1183,9 @@
       ]
     },
     {
-      id: "parenthome", who: "phone", minMin: 280, urgent: false, persistent: 1,
+      id: "parenthome", who: "phone", minMin: 280, persistent: 1,
       preview: "A parent, from home",
       say: function (G) {
-        var b = G.babies[0];
         return "It is a mother calling from home. She cannot get in tonight - no car, and the other children " +
                "are asleep. She is asking how her baby is.";
       },
@@ -1156,7 +1202,7 @@
       onIgnoreAll: function (G) { G.trust -= 8; G.log("The mother who called from home did not get through.", "warn"); }
     },
     {
-      id: "pharmcheck", who: "tomas", minMin: 90, urgent: true, persistent: 4,
+      id: "pharmcheck", who: "tomas", minMin: 90, persistent: 4,
       preview: "Pharmacy",
       cond: function (G) { return G.babies.some(function (b) { return b.h.pressorInfusion; }); },
       say: function (G) {

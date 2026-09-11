@@ -9,7 +9,7 @@
    It tags everything this page loads and is handed to game.html on the URL, which uses it
    to tag the stylesheet and all nine scripts. There is nothing else to keep in step - the
    old scheme had thirteen hand-written ?v= tags and they drifted more than once. */
-var BUILD = "84";
+var BUILD = "102";
 document.write('<link rel="stylesheet" href="css/game.css?v=' + BUILD + '">');
 </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
@@ -197,7 +197,13 @@ document.write('<link rel="stylesheet" href="css/game.css?v=' + BUILD + '">');
       hints: document.getElementById("cbHints").checked,
       allowDeath: document.getElementById("cbDeath").checked,
       sound: document.getElementById("cbSound").checked,
-      seed: s ? (parseInt(s, 10) || (s.split("").reduce(function (a, c) { return a + c.charCodeAt(0) * 7; }, 11))) : null
+      /* isNaN, not falsy. A seed of "0" is a number somebody typed, and `|| hash` threw it
+         away and quietly played seed 347 instead - so the one seed nobody can reproduce was
+         the simplest one to type. */
+      seed: s ? (isNaN(parseInt(s, 10))
+                   ? s.split("").reduce(function (a, c) { return a + c.charCodeAt(0) * 7; }, 11)
+                   : parseInt(s, 10))
+              : null
     };
     try { sessionStorage.setItem("nicuGameCfg", JSON.stringify(cfg)); } catch (e) {}
     location.href = "game.html?v=" + BUILD;
@@ -206,7 +212,7 @@ document.write('<link rel="stylesheet" href="css/game.css?v=' + BUILD + '">');
     var best = JSON.parse(localStorage.getItem("nicuGameBest") || "{}");
     var parts = [];
     ["student", "resident", "attending"].forEach(function (k) {
-      if (best[k]) parts.push(k + ": " + best[k].grade + " (" + best[k].pct + ")");
+      if (best[k]) parts.push(k + ": " + best[k].grade + " (" + best[k].pct + "%)");
     });
     if (parts.length) document.getElementById("best").textContent = "Your best shifts — " + parts.join(" · ");
   } catch (e) {}

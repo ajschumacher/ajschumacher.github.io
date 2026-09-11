@@ -212,7 +212,11 @@
        checklist has a branch written for finding it - and nothing ever set it. The whole
        feature was reachable only by reading the source. A tube in a 900 gram baby has about
        a centimetre of margin, and handling is what uses it up. */
-    if (sup.mode === "VENT" && !h.ettDisplaced &&
+    /* Not while settling. Those ticks exist to make the OPENING numbers self-consistent,
+       not to let the night start early - the same reason settling suppresses apnea and
+       routine cares - and a baby handed over with the tube already down a bronchus is a
+       problem nobody was told about. */
+    if (sup.mode === "VENT" && !h.ettDisplaced && !(b.world && b.world.settling) &&
         chance((CL.ett.slipBaseline + CL.ett.slipPerHandling * h.handling) * dt)) {
       h.ettDisplaced = true;
       b.flags.push({ t: "ett", msg: b.name + "'s chest is not lifting evenly - the tube may have moved" });
@@ -543,7 +547,11 @@
          a well-managed baby ends the night meaningfully better while a neglected one ends it
          where they started. Nobody cures this by morning. */
       var calm = (h.protectedMin > 0 ? 1 : 0) + (h.kangaroo ? 1 : 0) + (h.morphineLevel > 0.2 ? 1 : 0);
-      var relax = 0.00016 * calm * dt;
+      /* 0.00016 could not cover the range. Measured, perfect play - echo, the attending
+         called, comfort care kept up all night - took a worst-case 0.45 baby only to 0.35,
+         so they were still flagged at handover for a problem they had actually managed. A
+         player who does everything right has to be able to finish the job. */
+      var relax = 0.00024 * calm * dt;
       if (b.support.fio2 >= 0.5) relax += 0.00010 * dt;      // oxygen is a pulmonary vasodilator
       var clamp2 = (0.00030 * h.handling + 0.00016 * Math.max(0, h.pain - 0.45)) * dt;
       h.pphn = c01(h.pphn - relax + clamp2);

@@ -495,7 +495,9 @@ teaches only that you should never touch anybody.
     improvements, or would you rather the old values and a different tooltip?
 14. **Brain bleeds (§19).** Three specific questions listed there - the arrival rate, the
     haemoglobin and apnoea effects, and whether an existing bleed should extend more readily.
-15. **The attending's advice.** "Call the attending" is now a bedside action, and Dr. Halvorsen
+15. **The unease threshold (§19).** Does raising "she is just not right" at every baby whose
+    hidden sepsis is climbing teach the right habit, or does the nurse need to be wrong sometimes?
+16. **The attending's advice.** "Call the attending" is now a bedside action, and Dr. Halvorsen
    answers from the hidden state in a fixed order of priority — clamped lung vessels, air leak,
    stiff lungs, sepsis, gut, sugar, duct, bilirubin, anaemia, ventilator pressure, temperature.
    Is that the order a senior would actually think in, and is each line the steer you would

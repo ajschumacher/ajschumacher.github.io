@@ -239,8 +239,13 @@
         { id: "pphn", w: 2, dx: { test: 'An echo would have shown it - the only test that sees the lung pressures.', found: function (b) { return !!b.labs.echo; },
                 fixed: function (b) { return b.h.pphn < 0.2 || (b.h.comfortActs > 0 && b.h.helpAsked); } },
           apply: function (h) { h.aspiration = R(0.45, 0.6); h.pphn = R(0.3, 0.45); },
-          truth: "had meconium aspiration with persistent pulmonary hypertension: the lung blood vessels stayed clamped shut as if still in the womb.",
-          key: "Saturations that swing wildly and do not follow the oxygen you give: think pulmonary hypertension, keep the baby calm, and call for help early." },
+          /* `truth` states the DIAGNOSIS, not how the night went. It used to say the vessels
+             "stayed clamped shut", which is a claim about the outcome - so a player who
+             found it, called for help and kept her undisturbed all night was still told, in
+             the first line of their debrief, that nothing had changed. That is the same trap
+             the benign puzzles carry a flag for, arriving from the other direction. */
+          truth: "had meconium aspiration with persistent pulmonary hypertension: the blood vessels in the lungs were clamped tight shut, the way they are before a baby takes their first breath.",
+          key: "Saturations that swing and will not follow the oxygen you give are pulmonary hypertension until an Echo says otherwise. Then it is Comfort care and minimal handling - being left alone is the treatment, not a kindness - and Call the attending early, because this is not one to work out on your own." },
         { id: "sepsis2", w: 2, dx: { test: 'A blood culture or a blood count would have shown it.', found: function (b) { return !!(b.labs.culture || b.labs.cbc); },
                 fixed: function (b) { return b.h.abx; } },
           apply: function (h) { h.sepsisLatent = Ri(40, 80); h.aspiration = 0.3; },
@@ -366,6 +371,55 @@
     return list[list.length - 1];
   }
 
+  /* THE HANDOVER SHEET, ASSEMBLED IN ONE PLACE.
+
+     The archetype writes the body of it and two sentences are appended afterwards: the
+     bleed the day team already found, and the name the parents have not chosen yet. That
+     assembly used to exist twice - once at the end of build(), and once inside ventilate()
+     for the baby the census guarantee pass puts on a tube - and the second copy only
+     re-appended the name sentence. So a baby who arrived with a known grade 1-2 bleed and
+     was then vented by the guarantee pass handed the player a sheet that never mentioned
+     it. Measured across 300 seeded censuses: 17 of 1,500 babies, about one shift in
+     eighteen.
+
+     That is the exact thing the comment on the bleed says must never happen - handing over
+     a bleed nobody was told about is blaming the player for missing something they could
+     not have found - so the assembly is one function and both paths call it. */
+  function writeHandoff(b, arch) {
+    b.handoff = arch.handoff(b);
+    if (b.ivhNote) b.handoff += " " + b.ivhNote;
+    if (b.unnamed) b.handoff += " The parents have not settled on a name yet, so " + b.pronoun.s +
+      " " + b.pronoun.is + " charted as Baby " + b.surname + " for now.";
+  }
+
+  /* SETTLE THE OPENING NUMBERS, AND RECORD WHAT 19:00 LOOKED LIKE.
+
+     Both of these have to happen after the very last change to a baby, and they used to sit
+     at the end of build() - which is before makeCensus runs its two guarantee passes, and
+     before finishAdmission makes its own adjustments. Measured: 98 of 1,500 babies started
+     the shift with a startSnapshot saying CPAP while they were on a ventilator, so the
+     report's cot line read "CPAP -> VENT" as though the player had intubated them, and
+     statusOf() handed out a free "improved" at 19:00 because lungFunction() was already
+     above the snapshot it was being compared with.
+
+     It is exported, because "settle last" is a rule every caller has to keep and a rule
+     nobody can keep if the step is buried inside build(). */
+  function settle(b) {
+    var h = b.h;
+    var settleFrom = h.ageH, settleO2 = b.support.fio2;
+    for (var i = 0; i < 6; i++) S.step(b, 5, { min: 0, settling: true });
+    /* The settling loop exists to make the OPENING numbers self-consistent, not to advance
+       the night. Handing back the half hour it ages the baby, and the oxygen the nurse
+       adjusted while doing it, keeps the handover sheet honest - and keeps o2Creep measured
+       from where this shift actually started. */
+    h.ageH = settleFrom; b.support.fio2 = settleO2;
+    h.fio2Floor = undefined; h.o2Creep = 0; h.o2Ceilinged = 0; h.o2HandsOff = 0;
+    h.spells = 0; h.criticalMinutes = 0; h.criticalRun = 0; h.handling = 0;
+    h.highSatMinutes = 0; h.lowSatMinutes = 0;
+    b.startSnapshot = snapshot(b);
+    return b;
+  }
+
   /* Put a baby on the ventilator they arrived on. Separate from build() so the guarantee
      pass in makeCensus can use it too, and so an archetype only has to describe settings. */
   function ventilate(b, arch) {
@@ -374,12 +428,9 @@
     b.ventedAtHandover = true;
     /* And re-read the handover. The guarantee pass in makeCensus runs after every baby has
        been built, so a baby vented there kept the sheet written for the baby they were
-       going to be - "still on CPAP", above a cot with a tube in it. */
-    if (b.handoff) {
-      b.handoff = arch.handoff(b);
-      if (b.unnamed) b.handoff += " The parents have not settled on a name yet, so " + b.pronoun.s +
-        " " + b.pronoun.is + " charted as Baby " + b.surname + " for now.";
-    }
+       going to be - "still on CPAP", above a cot with a tube in it. The guard is for the
+       call from inside build(), where there is no sheet to re-read yet. */
+    if (b.handoff) writeHandoff(b, arch);
   }
 
   function build(arch, difficulty, used, bed, newborn) {
@@ -445,31 +496,20 @@
       h.ivhAtHandover = h.ivhGrade;
       h.ivhThreshold = CL.ivh.knownThreshold;      // a matrix that has bled is more fragile
       if (h.ivhGrade === 2) { h.hgb = Math.max(7.5, h.hgb - 0.8); h.apneaTend += 0.15; }
-    }
-
-    b.handoff = arch.handoff(b);
-    /* The day team scanned this baby, so they know. Handing a player a bleed they are not
-       told about would be blaming them for missing something nobody could have found, and
-       the whole point of an existing bleed is that it is a baby you have been asked to
-       protect. */
-    if (h.ivhAtHandover)
-      b.handoff += " The routine head ultrasound showed a grade " + h.ivhAtHandover +
+      /* The day team scanned this baby, so they know. Handing a player a bleed they are not
+         told about would be blaming them for missing something nobody could have found, and
+         the whole point of an existing bleed is that it is a baby you have been asked to
+         protect. The sentence is drawn once and kept on the baby rather than composed into
+         the sheet, because the sheet gets rewritten if the census puts them on a tube - and
+         which day it was found on is a fact about the baby, not about the paragraph. */
+      b.ivhNote = "The routine head ultrasound showed a grade " + h.ivhAtHandover +
         " bleed on " + (S.rnd() < 0.5 ? "day one" : "day two") + ". Keep " + b.pronoun.o +
         " settled and " + b.pronoun.p + " blood pressure steady.";
-    if (b.unnamed) b.handoff += " The parents have not settled on a name yet, so " + b.pronoun.s +
-      " " + b.pronoun.is + " charted as Baby " + b.surname + " for now.";
+    }
 
-    // settle so the opening numbers are self-consistent and quiet
-    var settleFrom = h.ageH, settleO2 = b.support.fio2;
-    for (var i = 0; i < 6; i++) S.step(b, 5, { min: 0, settling: true });
-    /* The settling loop exists to make the OPENING numbers self-consistent, not to advance
-       the night. Handing back the half hour it ages the baby, and the oxygen the nurse
-       adjusted while doing it, keeps the handover sheet honest - and keeps o2Creep measured
-       from where this shift actually started. */
-    h.ageH = settleFrom; b.support.fio2 = settleO2;
-    h.fio2Floor = undefined; h.o2Creep = 0; h.o2Ceilinged = 0; h.o2HandsOff = 0;
-    b.h.spells = 0; b.h.criticalMinutes = 0; b.h.criticalRun = 0; b.h.handling = 0; b.h.highSatMinutes = 0; b.h.lowSatMinutes = 0;
-    b.startSnapshot = snapshot(b);
+    writeHandoff(b, arch);
+    /* NOT settled here. settle() records startSnapshot, and both of makeCensus's guarantee
+       passes still have to run - so the caller settles, once, when the baby is finished. */
     return b;
   }
 
@@ -478,7 +518,7 @@
       fio2: b.support.fio2, mode: b.support.mode, sepsis: b.h.sepsis, bili: b.h.bili,
       necGrade: b.h.necGrade, pda: b.h.pda, glucose: b.h.glucose, co2: b.h.co2,
       lung: S.lungFunction(b), spells: b.h.spells, ivhGrade: b.h.ivhGrade, hgb: b.h.hgb,
-      bpd: b.h.bpd
+      bpd: b.h.bpd, pphn: b.h.pphn
     };
   }
 
@@ -505,6 +545,11 @@
       var v = list[Math.floor(S.rnd() * list.length)];
       var arch = ARCHETYPES.filter(function (a) { return a.key === v.arch; })[0];
       var hard = arch.puzzles.filter(function (p) { return p.w >= 3; })[0] || arch.puzzles[0];
+      /* This lands a real problem on a baby who had already drawn a quiet one, so the
+         hidden state it writes is the second thing written over that baby tonight. It is
+         only safe because nothing has been settled or snapshotted yet: this used to run
+         after both, so the opening monitor numbers and the handover sheet went on
+         describing the puzzle the baby no longer had, and then jumped on the first tick. */
       hard.apply(v.h); v.puzzle = hard;
     }
     /* And at least one baby on a ventilator, where the census allows one. A unit of five
@@ -522,6 +567,9 @@
       }
     }
 
+    // last of all, once nothing more is going to change about any of them
+    list.forEach(settle);
+
     list.used = used;
     return list;
   }
@@ -534,8 +582,12 @@
     var b = build(arch, difficulty, used || {}, 6, true);
     b.dol = 0; b.h.coreTemp = 36.2;
     b.handoff = "Just arrived from the delivery room.";
-    return b;
+    /* Settled here so this function always hands back a complete baby. finishAdmission
+       makes a few more adjustments of its own and settles again - six more suppressed
+       ticks, which costs nothing and means neither caller has to know what the other did. */
+    return settle(b);
   }
 
-  window.Patients = { makeCensus: makeCensus, makeAdmission: makeAdmission, snapshot: snapshot, ARCHETYPES: ARCHETYPES };
+  window.Patients = { makeCensus: makeCensus, makeAdmission: makeAdmission,
+                      settle: settle, snapshot: snapshot, ARCHETYPES: ARCHETYPES };
 })();

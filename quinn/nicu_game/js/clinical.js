@@ -49,6 +49,14 @@
       /* Between the target and the red alarm. A baby handed over at 87 is not in an
          emergency and is not fine either, and neither of the other two numbers says so. */
       handoverBelow: 85,
+      /* ...and it has to have been there a while. The handover line says "and staying
+         there", and it was reading a single instant - so a baby having an ordinary
+         self-resolving spell at seven in the morning was handed to the day team as a
+         sustained desaturation, on a night where the baseline had been inside the target
+         the whole time. Measured: every instance was a baby mid-spell, one of them with
+         a lowSatMinutes of zero. Thirty minutes under target is a trend; forty seconds of
+         apnea is a Tuesday. */
+      handoverLowMinutes: 30,
       highForMinutes: 25,          // and above target THIS long before anyone is bothered
       alarmRed: 80,
       why: "NeOProM (SUPPORT/BOOST-II/COT): target 90-95% on oxygen; alarms set a point outside so they do not chatter."
@@ -316,7 +324,7 @@
       nadir: 9,                    // the floor of the expected physiological nadir
       pale: 8.5,                   // this baby looks pale, and a nurse says so
       flagAt: 8.5,                 // the lab result shouts, and the morning is told
-      transfuseAbove: 10,          // above this a transfusion is not the answer
+      transfuseBelow: 10,          // below this a transfusion is the answer, above it is not
       treated: 9.5,                // and this is what "the anaemia was dealt with" means
       polycythaemia: 22,
       why: "Physiological nadir is roughly 9-11 term and 7-9 preterm, so 9 is the floor of " +
@@ -338,6 +346,27 @@
       why: "Permissive hypercapnia is standard practice up to about 55. 65 is where most " +
            "guidelines stop tolerating and start changing something; 85 with an acidosis is " +
            "a baby who needs somebody now."
+    },
+
+    /* ------------------------------------------------------------- sepsis
+       THE SENTENCE THIS GAME WAS MISSING. Measured across every puzzle, all three infection
+       puzzles - early-onset in the 25-weeker, late-onset on a central line, and pneumonia in
+       the term baby - had NOTHING pointing at them. The unit raised low blood pressure, which
+       is a late consequence, and the debrief then said "temperature instability plus just not
+       right plus a central line means culture and antibiotics tonight", describing signs the
+       game never showed anybody.
+
+       "She is just not right" is the most important sentence in neonatology and the hardest
+       to teach, because it is a gestalt rather than a number. The threshold is where the
+       model's own correlates - temperature swinging, mottled perfusion, a baby who does not
+       tolerate handling - are established enough for an experienced nurse to notice. */
+    sepsisSign: {
+      noticeAt: 0.22,             // she is uneasy, and she is usually right
+      urgentAt: 0.5,
+      why: "There is no test for this and no threshold in any guideline; the whole teaching " +
+           "point is that a nurse's unease precedes every number. It is set below the level " +
+           "at which the blood pressure falls, because arriving after the blood pressure is " +
+           "arriving late."
     },
 
     /* ---------------------------------------------------------- hypocapnia
