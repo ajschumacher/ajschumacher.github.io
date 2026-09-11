@@ -826,8 +826,10 @@
        "the judgement domain counts decisions, not points", r.judgementLine.slice(0, 70));
     ok(!r.cutOff, "no decision label is cut off mid-word", r.cutOff);
 
-    // the call site itself, because behaviour cannot reach it without a conversation
-    var src = await fetch("../js/game.js").then(function (x) { return x.text(); });
+    /* The call site itself, because behaviour cannot reach it without a conversation.
+       startTalk lives in js/director.js since game.js was split - a source check like this
+       has to name the file that owns the behaviour, and will say so when it moves again. */
+    var src = await fetch("../js/director.js").then(function (x) { return x.text(); });
     ok(/addScore\(o\.score, shortLabel\(label\)[^;]*"family"\)/.test(src),
        "a conversation's score is tagged as family where it is recorded");
     var rep = await fetch("../js/report.js").then(function (x) { return x.text(); });
@@ -3058,6 +3060,54 @@
     ok(r.oneEscaper, "the double quote is escaped");
     ok(r.nullIsEmpty, "null and undefined come out empty, not as the words");
     ok(r.capNull && r.accentMatches, "cap and bedAccent are the shared ones");
+  });
+
+  suite("Nobody says the same thing four times", async function () {
+    /* Measured before this existed: 58 percent of everything a colleague said was them
+       repeating something they had already said about the same baby - and it was WORSE for
+       a player who engaged, at 62 percent and up to ten raises of one concern at one cot,
+       because answering a concern closes it and restarts its cooldown while leaving it open
+       suppresses its own re-raise. The game was quieter if you ignored your team.
+
+       What this guards is the SHAPE of the fix, not just the numbers: fewer repeats, and
+       the same spread of different voices. A change that quietened the unit by showing
+       fewer KINDS of concern would pass the first check and fail the second, which is the
+       trade this is here to prevent. */
+    var shifts = 6, repeats = [], distinct = [], worst = 0, errs = [];
+    for (var i = 0; i < shifts; i++) {
+      var r = await shift({ seed: 6100 + i * 7, allowDeath: false }, function (G, w, D) {
+        var guard = 0;
+        while (G.running && guard++ < 3000) {
+          if (clearDialog(G, D)) continue;
+          // a player who keeps up: answers everything, which is the noisy case
+          G.concerns.forEach(function (x) {
+            if (!x.done && !x.stale) { x.seen = true; x.done = true; x.resolvedAt = G.min; }
+          });
+          G.talks.length = 0;
+          G.advance(10);
+        }
+        var perKey = {}, ids = {};
+        G.concerns.forEach(function (x) {
+          perKey[x.id + "@" + x.bed] = (perKey[x.id + "@" + x.bed] || 0) + 1;
+          ids[x.id] = 1;
+        });
+        var keys = Object.keys(perKey);
+        return { repeats: keys.reduce(function (a, k) { return a + Math.max(0, perKey[k] - 1); }, 0),
+                 distinct: Object.keys(ids).length,
+                 worst: keys.reduce(function (a, k) { return Math.max(a, perKey[k]); }, 0),
+                 budget: w.NG.PACING.budget };
+      });
+      errs = errs.concat(r.errs);
+      repeats.push(r.repeats); distinct.push(r.distinct); worst = Math.max(worst, r.worst || 0);
+      var cap = r.budget;
+    }
+    function mean(a) { return a.reduce(function (x, y) { return x + y; }, 0) / a.length; }
+    ok(!errs.length, "no exceptions", errs.slice(0, 2).join(" | "));
+    ok(mean(repeats) < 16, "a shift is not mostly people repeating themselves",
+       mean(repeats).toFixed(1) + " repeat raises a shift (was 24.8)");
+    ok(worst <= 4, "and no one concern is raised more than its budget at one cot", worst + "x");
+    ok(mean(distinct) >= 9, "while the unit still speaks with as many different voices",
+       mean(distinct).toFixed(1) + " kinds of concern a shift");
   });
 
   // ---------------------------------------------------------------- runner

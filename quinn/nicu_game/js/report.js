@@ -394,12 +394,15 @@
        back the seed this shift actually used - the resolved one, not the blank the player may
        have left in the box - rebuilds the same five babies with the same five hidden problems.
        What happens after that is yours to change, which is the whole point of it. */
-    h += '<div class="opt-row"><button class="btn" id="again">Another shift</button>' +
+    /* TWO BUTTONS, TWO DIFFERENT THINGS. There were three, and two of them did the same
+       thing: "Another shift" and the "Back to the title" link both went to index.html, so
+       the only real choice on offer - a new night, or this one again - was hidden behind a
+       pair of controls that were the same door twice. */
+    h += '<div class="opt-row"><button class="btn" id="toTitle">Back to the title</button>' +
       '<button class="btn ghost" id="relive" data-tip="' +
       esc("The same five babies, the same five hidden problems, the same night in the same order - " +
           "seed " + G.seedVal + ". Everything you do differently is yours.") +
-      '">Live this shift again</button>' +
-      '<a class="btn ghost" href="index.html">Back to the title</a></div></div>';
+      '">Live this shift again</button></div></div>';
     document.body.innerHTML = h;
     buildReportIndex();
     /* Replacing the whole body takes the live region with it, so the end of the shift - the
