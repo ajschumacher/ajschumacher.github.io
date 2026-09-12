@@ -28,6 +28,12 @@
   var LAB_TIME = { glucose: 5, gas: 15, cbc: 40, bili: 25 };
   var IMG_TIME = { axr: 25, hus: 40, echo: 55 };
 
+  /* How long a deliberate decision to leave a baby alone actually lasts. Named, because it
+     is quoted in five places - the two buttons, the nurse who tells you it has lapsed, and
+     the attending, twice - and a number that lives in six copies drifts. */
+  var PROTECT_COMFORT = 180, PROTECT_KANGAROO = 240;
+  function protectHours(m) { return m / 60 + (m === 60 ? " hour" : " hours"); }
+
   /* These three return null when the order goes off, and a sentence when the unit
      declines to repeat one that is already running. Sending the same test twice used
      to be a silent no-op that still charged the player its full time cost and still
@@ -59,7 +65,12 @@
     var busy = alreadyRunning(b, kind, chest);
     if (busy) return busy;
     b.pending.push({ kind: kind, due: G.min + IMG_TIME[kind], type: "img", chest: chest });
-    b.h.handling += 0.8;
+    /* 0.4, not 0.8. Handling caps at 1.0 and an examination costs 0.25, so a single film or
+       echo used to pin a baby at the ceiling for four hours - and on a baby with clamped
+       lung vessels the handling IS the disease. The game tells you to get an echo and then
+       charged you most of a saturation crash for obeying it. A probe on the chest is real
+       handling; it is not four examinations' worth. */
+    b.h.handling += 0.4;
     log("Ordered " + ({ axr: chest ? "chest X-ray" : "abdominal X-ray", hus: "head ultrasound", echo: "echocardiogram" })[kind] + " for " + b.name, "");
     return null;
   };
@@ -114,8 +125,14 @@
        She does not hand over the diagnosis. She does what a good senior does on the phone at
        three in the morning: asks the question you have not asked yourself, and points at the
        part of the baby you have not looked at. */
-    help: { t: "Call the attending", cost: 10, g: "assess",
-      info: "Ring Dr. Halvorsen at home and talk a baby through with her. She will not do your thinking for you, but she will tell you which part of this baby she would be looking at, and she never minds being called. Asking early is a senior skill, not a junior one.",
+    help: { t: "Call the attending", g: "assess",
+      /* Ten minutes to open a case with her; five to ring back on one she is already
+         holding, because she knows the story and you are only giving her the answer she
+         asked for. That price is the whole reason the call-look-call-back loop is
+         affordable inside a twelve-hour night, and it is the loop the consult is built
+         around. */
+      cost: function (b) { return b.h.consult ? 5 : 10; },
+      info: "Ring Dr. Halvorsen at home and talk a baby through with her. She thinks out loud: what this could be, why each one would look like that, which single thing to do next to tell them apart, and the clue to watch for. She only knows what you can tell her, so examine the baby first and she can say far more. Ring her back with the answer and she picks up where you left off.",
       on: function (b) { return !!b.h.helpAsked; },
       run: function (b, h) {
         var first = !h.helpAsked;
@@ -124,12 +141,13 @@
         /* The advice goes into a modal, not into a result message: doAction only surfaces a
            result at the bedside when its kind is "warn" or "bad", so everything she had to
            say used to land in the unit log and nowhere else. */
-        var steer = attendingSteer(b);
-        NG.attendingCall(b, steer, first);
-        /* And into this cot's history with her actual words on it. The modal closes; what
-           she told you at half past two is the thing you want to read back at six. */
-        return { msg: "Rang Dr. Halvorsen about " + b.name, kind: "good", quiet: true,
-                 history: "Rang Dr. Halvorsen \u2014 \u201c" + steer + "\u201d" };
+        /* The consult itself happens behind whichever answer the player gives her, because
+           the two answers are now two different calls: "I am not sure" gets a senior asking
+           for the one thing that would settle it, "here is what I am seeing" gets her
+           reasoning over everything you have. So nothing is decided here, and the history
+           line is written in there too - `history: null` tells doAction to leave it alone. */
+        NG.attendingCall(b, first);
+        return { msg: "Rang Dr. Halvorsen about " + b.name, kind: "good", quiet: true, history: null };
       } },
 
     culture: { t: "Blood culture", cost: 10, g: "assess", info: "Take blood to grow any bacteria in it. Must be taken BEFORE antibiotics start, or the result is worthless.",
@@ -327,83 +345,71 @@
         return { msg: "Portholes shut and the seal checked. " + b.name + " will warm back up now", kind: "good" };
       } },
 
-    comfort: { t: "Comfort care", cost: 5, g: "care", info: "Nest, swaddle, dim the light and offer a little sucrose. Lowers pain and stress, which is treatment, not decoration.",
+    comfort: { t: "Comfort care", cost: 5, g: "care",
+      info: "Nest, swaddle, dim the light and offer a little sucrose. Lowers pain and stress, which is " +
+            "treatment, not decoration. The unit clusters its cares around a settled baby, so this protects " +
+            "them from routine handling for about " + protectHours(PROTECT_COMFORT) + " - then it wears off and wants renewing.",
       run: function (b, h) {
         h.swaddled = true; h.pain = S.c01(h.pain - 0.35); h.comfortActs++;
         /* Protected care runs out. Every baby is swaddled by default, so that flag could
            never say whether anybody had DECIDED to keep this one undisturbed - which is
            the whole treatment for clamped lung vessels. Three hours, and then it is a
            decision somebody has to make again. */
-        h.protectedMin = Math.max(h.protectedMin, 180);
+        /* THREE hours, and three hours that do real work: while protected care is running
+           the unit clusters its cares around the baby rather than through them (see
+           stepCares). It used to last three hours and change nothing about what the unit
+           actually did, which is why pressing this once and walking away did nothing on the
+           one diagnosis where minimal handling IS the treatment. The duration is on the
+           button, so it is a decision with a known shelf life rather than a mystery. */
+        h.protectedMin = Math.max(h.protectedMin, PROTECT_COMFORT);
+        h.protectedTold = false;
         // one decrement, not two. This took 0.3 off and then another 0.4, so the comfort
         // measure everything else is tuned against was quietly 0.7 rather than either.
         h.handling = Math.max(0, h.handling - 0.4);
         return { msg: b.name + " settled with containment and a dim light", kind: "good" };
       } },
-    kangaroo: { t: "Kangaroo care", cost: 10, g: "care", info: "Settle the baby skin to skin on a parent's chest. Steadies temperature, heart rate and breathing, and helps the family. Only possible when a parent is here.",
+    kangaroo: { t: "Kangaroo care", cost: 10, g: "care",
+      info: "Settle the baby skin to skin on a parent's chest. Steadies temperature, heart rate and breathing, " +
+            "and helps the family. Undoes the handling a baby has already had and protects them for about " +
+            protectHours(PROTECT_KANGAROO) + ", longer than comfort care. Only possible when a parent is here.",
       off: function (b) { return !G.parentPresent(b); },
       on: function (b) { return !!b.h.kangaroo; },
       run: function (b, h) {
         if (!G.parentPresent(b)) return { msg: "No parent at the bedside right now", kind: "warn", refused: true };
         h.kangaroo = true; h.swaddled = false; h.pain = S.c01(h.pain - 0.5); h.comfortActs++; G.trust += 8;
-        h.protectedMin = Math.max(h.protectedMin, 240); h.handling = 0;
+        h.protectedMin = Math.max(h.protectedMin, PROTECT_KANGAROO); h.handling = 0; h.protectedTold = false;
         return { msg: b.name + " is skin to skin with " + b.parentName, kind: "good" };
       } }
   };
 
 
-  /* What a senior would actually say, read off the hidden state in the order she would think
-     of it. Never the diagnosis - the question that leads to it, and where to look. If there
-     is genuinely nothing, she says so, which is why calling her about every baby in turn is
-     ten minutes each and not a reveal button. */
-  function attendingSteer(b) {
-    var h = b.h, sup = b.support;
-    if (h.pphn > 0.25)
-      return "Those saturations are swinging more than the oxygen you are giving explains. When the number " +
-             "will not follow the dial, stop thinking about the air sacs and start thinking about the blood " +
-             "vessels. Keep her absolutely undisturbed and get an echo - and ring me back.";
-    if (h.ptx)
-      return "Sudden, and not responding to oxygen? Get a light on that chest and listen to both sides. " +
-             "If one is quieter, do not wait for the film.";
-    if (h.rds > 1.2 && h.surfactant < 0.55)
-      return "Rising oxygen on CPAP with a baby working that hard is stiff lungs, and CPAP alone will not " +
-             "open them. A gas will tell you. If the CO2 is up too, that baby needs surfactant, and a tube " +
-             "to give it down.";
-    if (h.sepsis > 0.2 && !h.abx)
-      return "You are describing a baby who is not quite right, with risk factors. Culture, then antibiotics. " +
-             "Do not wait for a number to give you permission.";
-    if (h.necGrade > 0 || (h.residuals > 0.5 && h.feedsMlKgD > 0))
-      return "Green residuals and a belly that is changing. Stop the feeds, get a film, and start antibiotics. " +
-             "If I am wrong you have lost a few hours of feeding. If you are wrong she loses bowel.";
-    if (h.glucose < CL.glucose.treated)
-      return "Before anything clever, what is the sugar doing? And if you have already given a bolus, what is " +
-             "the infusion rate? A bolus on its own is a bounce.";
-    if (h.pda > 0.45)
-      return "Bounding pulses and a creeping oxygen need on a preemie that age is a duct until an echo says " +
-             "otherwise. Look before you treat: ibuprofen is hard on a gut.";
-    if (h.bili > h.biliThreshold - 2)
-      return "You cannot judge that by eye, particularly not on her skin. Send a level and read it against " +
-             "the threshold for her age in hours.";
-    if (h.hgb < CL.hgb.nadir)
-      return "How much blood have you taken off her this week? Tired, pale, and more spells is anaemia until " +
-             "a count says otherwise.";
-    if (sup.mode === "VENT" && sup.pip > 22)
-      return "Come down on that pressure and let the CO2 run a little high. Lungs remember the pressure they " +
-             "were given, for years.";
-    if (h.coreTemp < CL.temp.coldStress)
-      return "Warm first. Everything else you are about to do works better on a warm baby, and none of it " +
-             "works well on a cold one.";
-    return "Nothing jumps out at me from what you are describing. Examine her properly, look at the trend " +
-           "rather than the number, and ring me again the moment that changes. I would rather be woken twice.";
-  }
+  /* attendingSteer used to live here: one sentence off a fixed eleven-branch chain, every
+     branch testing b.h directly. It is gone, and what she says now is js/consult.js - built
+     from what the player could actually have told her down a telephone. The suite has a
+     check that turns on every hidden diagnosis at once and asserts her advice does not move
+     by a single word, because that is the property that was lost and worth keeping.      */
 
   // the three order functions answer with a sentence when they decline; everything else is a no-op
   function refusable(why) { return why ? { msg: why, kind: "warn", refused: true } : null; }
+
+  /* Most actions cost what the table says. A few cost what the SITUATION says: ringing
+     the attending back when she is expecting you is half the call, because she already
+     knows the story. One place answers the question, so the button and the clock can
+     never disagree about what a thing costs. */
+  function actionCost(id, b) {
+    var a = ACTIONS[id];
+    return typeof a.cost === "function" ? a.cost(b) : a.cost;
+  }
 
   G.doAction = function (b, id, opt) {
     opt = opt || {};
     var a = ACTIONS[id];
     if (!a) return;
+    /* Priced BEFORE it runs. An action whose cost depends on the baby's state can change
+       that state as it goes - ringing the attending opens a case with her, and the case is
+       exactly what makes the NEXT call cheaper - so reading the price afterwards charged
+       every first call at the call-back rate. */
+    var cost = actionCost(id, b);
     var r = (a.run ? a.run(b, b.h) : null) || {};
     var msg = r.msg || null, kind = r.kind || "", refused = !!r.refused;
     if (msg) log(msg, kind);
@@ -412,12 +418,17 @@
     /* An order that goes off says nothing - the three order functions answer only when they
        decline - so a bare "Chest X-ray" in the history would read as a film that had come
        back rather than one on its way. */
-    if (!refused)
+    /* `history: null` means the action writes its own line, later - the attending call does
+       not know what she said until the player has chosen how to talk to her. */
+    if (!refused && r.history !== null)
       NG.recordHistory(b, "did", r.history || (label(a, b) +
         (msg ? " \u2014 " + msg : (a.g === "assess" || a.g === "imaging" ? " requested" : ""))));
     /* A refused action never happened, so there is nothing for a colleague to judge - and
        the refusal is the one thing the player must see, since the screen did not change. */
-    if (refused) setNote(b, "warn", msg);
+    /* A refused action is still the player reaching for the right thing. It is not scored -
+       nothing happened - but the colleague who asked for it answers, rather than standing
+       there as though nobody came. */
+    if (refused) { setNote(b, "warn", msg); NG.noteRefused(b, id, msg); }
     else {
       /* GOOD NEWS COUNTS TOO. This was `kind === "warn" || kind === "bad"`, so of the
          eighteen actions that answer with a confirmation - surfactant given and the chest
@@ -432,7 +443,7 @@
       judgeConcern(b, id);
     }
     // nothing happened, so nothing is charged for it either
-    if (!opt.silent) { if (!refused) G.advance(a.cost); render(); }
+    if (!opt.silent) { if (!refused) G.advance(cost); render(); }
   };
 
   // Slider and mode changes report themselves as pseudo-actions, so a concern can
@@ -457,7 +468,18 @@
                                   : "saturation is holding around " + Math.round(now);
       else if (w.kind === "glucose") m = up ? "sugar has come up to " + Math.round(now) : "sugar is still " + Math.round(now) + " - it needs the infusion turned up, not just a bolus";
       else m = "carbon dioxide is now " + Math.round(now);
-      log(who + ": " + b.name + "'s " + m, up ? "good" : down ? "warn" : "");
+      /* WHERE THE PLAYER IS STANDING, not only in the log. This is the "did that help?"
+         answer - the entire point of arming a watch twenty minutes ago - and it went to the
+         bottom of a side panel that is closed at a bedside. That is the third time this
+         exact shape has been found in this game: the same fix was made for the eighteen
+         actions that answer with a confirmation, and again for the attending's advice.
+         The log keeps its copy, because the log is the record of the night. */
+      var kind = up ? "good" : down ? "warn" : "";
+      /* The log has no speaker column, so it carries her name; the bedside note and the
+         cot's history are both already headed by whoever is talking, so they do not. */
+      log(who + ": " + b.name + "'s " + m, kind);
+      setNote(b, kind || "good", cap(b.name) + "'s " + m, { who: EV.nurseFor(b), tag: "follow-up" });
+      NG.recordHistory(b, kind === "warn" ? "warn" : "good", who + ": " + m);
       return false;
     });
   }
@@ -483,6 +505,8 @@
 
   NG.ACTIONS = ACTIONS;
   NG.TEST_LABEL = TEST_LABEL;
+  NG.actionCost = actionCost;
+  NG.PROTECT = { comfort: PROTECT_COMFORT, kangaroo: PROTECT_KANGAROO };
   NG.runWatches = runWatches;
   NG.watchO2 = watchO2;
 })();

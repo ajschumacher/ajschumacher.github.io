@@ -54,7 +54,7 @@
   var RAMP_SECONDS = 2.5;              // and how long it takes to get there
 
   var G = window.G = {
-    min: 0, babies: [], paused: true, running: false,
+    min: 0, babies: [], paused: true, running: false, ended: false,
     // clock bookkeeping: minutes accumulated but not yet stepped, how far the visible
     // clock is behind the truth, and when the player last did or was shown anything
     acc: 0, clockLag: 0, clockCost: 0, clockRate: 0, lastInput: 0, lastNotice: 0,
@@ -88,6 +88,18 @@
   function cap(s) { return U.cap(s); }
   function esc(s) { return U.esc(s); }
   function gl(s) { return GL.markup(esc(s)); }
+  /* Dialog prose is authored as plain text with blank lines between paragraphs, because the
+     same words have to go three places: the modal, this cot's history, and a screen reader.
+     The blank lines become paragraphs HERE - after escaping and after the glossary has run -
+     so a name or a number can never arrive as markup. Single-line text is left exactly as it
+     was, so nothing that already fitted on one line moves. */
+  function prose(s) {
+    var t = gl(s);
+    if (t.indexOf("\n") < 0) return t;
+    return t.split(/\n{2,}/).map(function (para) {
+      return "<p>" + para.replace(/\n/g, "<br>") + "</p>";
+    }).join("");
+  }
   /* Authored text may be a plain string or a function of the baby. Use a function whenever
      the line refers to the baby or to the colleague saying it, so pronouns and their verbs
      agree: "they are jittery", not "they is jittery". See the pronoun helper in names.js. */
@@ -185,31 +197,79 @@
      It is a modal now, in the same shape as the call she makes to you, and she asks first.
      Both answers get the steer: committing to a view scores more, but saying you are not
      sure is why you rang, and this game does not punish that. */
-  function attendingCall(b, steer, first) {
-    var opened = "\u201cIngrid.\u201d She sounds wide awake, and not at all surprised. " +
-                 "\u201cBefore I say anything \u2014 tell me what you are seeing.\u201d";
+  /* A phone call, not a lecture.
+
+     THE CHOICE IS ONLY ON THE FIRST CALL. Opening a case with her, you decide how to do it:
+     "I am not sure" gets a senior asking for the one thing that would settle it, and "here
+     is what I am seeing" gets the reasoning. Once she is HOLDING the case, ringing back goes
+     straight to the answer - being asked how you would like to phrase it for the fourth time
+     is not what a telephone is like, and the player has already told her where they stand.
+
+     The encouragement for ringing at all is said once, on the first call of the shift. */
+  function attendingCall(b, first) {
+    var reopening = !!b.h.consult;
+
+    if (reopening) {
+      var c = NG.consult(b, true);
+      recordHistory(b, "did", "Dr. Halvorsen \u2014 \u201c" + c.headline + "\u201d");
+      showDialog({
+        avatar: "ingrid", who: "Dr. Ingrid Halvorsen", role: "Attending neonatologist, on the phone",
+        subject: b, keepOrder: true,
+        said: "\u201c" + cap(b.name) + ".\u201d No preamble.\n\n" + c.text,
+        opts: [{ label: "Understood", hint: "", run: function () {
+          if (c.mode === "follow") addScore(3, "Rang the attending back about " + b.name + " with what you had found");
+          G.trust += 1;
+          return { kind: "good", text: signOff(c) };
+        } }]
+      });
+      return;
+    }
+
     showDialog({
       avatar: "ingrid", who: "Dr. Ingrid Halvorsen", role: "Attending neonatologist, on the phone",
-      said: opened, subject: b, keepOrder: true,
-      nudge: "Saying it out loud is how you find the gap in your own reasoning. She will steer you either way.",
+      said: "\u201cIngrid.\u201d She sounds wide awake, and not at all surprised. " +
+            "\u201cTell me what you are seeing.\u201d",
+      subject: b, keepOrder: true,
+      nudge: "She only knows what you tell her. Say you are not sure and she will send you to find one thing out.",
       opts: [
-        { label: "Talk her through what you are seeing", hint: "Commits to a reading, which she can then correct",
+        { label: "Talk her through what you are seeing", hint: "She reasons over everything you have",
           run: function () {
             addScore(3, "Thought out loud with the attending about " + b.name);
             G.trust += 2;
-            return { kind: "good", text: "She listens all the way to the end without interrupting. " +
-                     "Then: \u201c" + steer + "\u201d" };
+            var c = NG.consult(b, true);
+            recordHistory(b, "did", "Dr. Halvorsen \u2014 \u201c" + c.headline + "\u201d");
+            return { kind: "good", text: preface(c) + c.text };
           } },
-        { label: "\u201cHonestly, I am not sure. That is why I rang.\u201d", hint: "Says the true thing",
+        { label: "\u201cHonestly, I am not sure.\u201d", hint: "She asks you to go and find one thing out",
           run: function () {
             addScore(2, "Asked the attending for help without pretending to know");
             G.trust += 1;
-            return { kind: "good", text: "\u201cGood,\u201d she says, and means it. \u201cThe ones who never " +
-                     "ring are the ones I worry about.\u201d Then: \u201c" + steer + "\u201d" };
+            var c = NG.consult(b, false);
+            recordHistory(b, "did", "Dr. Halvorsen asked \u2014 \u201c" + c.headline + "\u201d");
+            return { kind: "good", text: (first ? "\u201cGood. The ones who never ring are the ones I worry about.\u201d\n\n" : "") + c.text };
           } }
       ]
     });
     if (first) log("You rang Dr. Halvorsen about " + b.name + ".", "hi");
+  }
+
+  /* At most one clause before she starts, and only when it is information rather than
+     applause: that the story came off a screen, or that the examination is hours old. */
+  function preface(c) {
+    var p = c.picture;
+    if (!p.exam)
+      return "\u201cThat is all off a screen. Somebody needs to put their hands on " + p.her + ".\u201d\n\n";
+    if (p.exam.stale)
+      return "\u201cThat examination is " + Math.round(p.exam.ageMin / 60) + " hours old.\u201d\n\n";
+    return "";
+  }
+
+  /* How she hangs up: what she is waiting for, in one line. */
+  function signOff(c) {
+    if (c.mode === "follow") return "\u201cGood. Ring me if it turns.\u201d";
+    if (c.mode === "nothingnew") return "\u201cGo and do it, then.\u201d";
+    if (c.mode === "changed") return "\u201cRing me back when you know more.\u201d";
+    return "\u201cRing me back with it.\u201d";
   }
 
   function byBed(n) { for (var i = 0; i < G.babies.length; i++) if (G.babies[i].bed === n) return G.babies[i]; return null; }
@@ -237,6 +297,11 @@
   function expireTalks() { return NG.expireTalks(); }
   function updateCalls() { return NG.updateCalls(); }
   function checkCrisis() { return NG.checkCrisis(); }
+  /* This one is called from exactly one place - inside a setTimeout inside a dialog
+     button - which is why the split missed it and why nothing caught it for so long:
+     a ReferenceError only happens on the line that runs, and that line only runs when
+     a player gets a crisis WRONG. See the comment on the crisis hold below. */
+  function startCrisis(b, kind) { return NG.startCrisis(b, kind); }
   function startTalk(t) { return NG.startTalk(t); }
   function declineConcern(b) { return NG.declineConcern(b); }
   function dismissConcern(b) { return NG.dismissConcern(b); }
@@ -252,7 +317,22 @@
       if (cfg.crisis) G.dialogQueue.unshift(cfg); else G.dialogQueue.push(cfg);
       return;
     }
+    /* The two flags that stop the night are set here and cleared by the button at the
+       bottom of the dialog - so if BUILDING one throws, they are set with nothing on screen
+       to clear them, and the clock is at rate zero for the rest of the shift with no way
+       back. Every sentence below is assembled from game state (a name, a pronoun, a
+       scenario's opts array), so this is not hypothetical. The error still gets out; it
+       just does not get to take the night with it. */
     G.dialogOpen = true; G.paused = true;
+    try { buildDialog(cfg); }
+    catch (e) {
+      var half = $("scrim"); if (half) half.remove();
+      G.dialogOpen = false; G.paused = false;
+      throw e;
+    }
+  }
+
+  function buildDialog(cfg) {
     // Shuffle the choices. Otherwise the best option sits first almost every time and
     // can be picked without reading, which defeats the whole point.
     if (cfg.opts && cfg.opts.length > 1 && !cfg.keepOrder) {
@@ -279,7 +359,10 @@
         '</div><div class="muted" style="font-size:.85rem">Decide now. The team is waiting on you.</div></div>'));
     }
     var body = el("div", "dlg-body");
-    body.innerHTML = '<div class="said">' + gl(cfg.said) + "</div>";
+    /* prose(), not gl(): what she says on a call-back is the whole consult and arrives here
+       rather than in the feedback box, so its blank lines have to become paragraphs the same
+       way. Single-line dialogue is untouched. */
+    body.innerHTML = '<div class="said">' + prose(cfg.said) + "</div>";
     if (cfg.subject) {
       body.innerHTML += '<div class="muted" style="font-size:.86rem;margin-bottom:6px">Bed ' + cfg.subject.bed +
         " &middot; " + esc(cfg.subject.name) + " &middot; " + gl("SpO2") + " " + cfg.subject.mon.spo2 +
@@ -297,7 +380,7 @@
         opts.remove();
         var fb = el("div", "feedback " + (res.kind === "good" ? "good" : res.kind === "bad" ? "bad" : ""));
         fb.innerHTML = '<div class="fh">' + (res.kind === "good" ? "Good call" : res.kind === "bad" ? "Think again" : "Noted") +
-          "</div><div>" + gl(res.text || "") + "</div>";
+          '</div><div class="fb-body">' + prose(res.text || "") + "</div>";
         d.appendChild(fb);
         var cont = el("button", "btn", res.contLabel || (res.keepCrisis ? "Keep going" : "Back to the unit"));
         cont.style.marginTop = "14px";
@@ -305,11 +388,31 @@
         cont.onclick = function () {
           scrim.remove(); G.dialogOpen = false;
           releaseFocus();
-          // hold the crisis now: 350ms is long enough for something else to resolve it
           var again = res.keepCrisis && G.crisis;
-          if (again) setTimeout(function () { if (G.crisis) startCrisis(again.b, again.kind); }, 350);
-          else if (G.dialogQueue.length) { var n = G.dialogQueue.shift(); setTimeout(function () { showDialog(n); }, 250); }
-          else { G.paused = false; render(); }
+          var next = !again && G.dialogQueue.length ? G.dialogQueue.shift() : null;
+          /* HAND THE CLOCK BACK FIRST, always. Both branches below pass the night on to
+             another dialog through a timer, and this used to leave G.paused true for them
+             to inherit - so if that timer threw, or the dialog it opened bailed out at one
+             of showDialog's two guards, the night stopped with nothing on screen to say
+             why. That is exactly what happened: startCrisis had no delegate in this file
+             after the split, so getting a crisis WRONG threw a ReferenceError inside the
+             350ms timer and left G.crisis set and the clock at rate zero for the rest of
+             the shift. Whatever opens next pauses it again on its own; a quarter second of
+             clock is a cheap price for a game that cannot wedge.
+             Nothing is lost on the crisis path either - clockRate() holds the clock at zero
+             while G.crisis is set, which is the hold this line was really relying on. */
+          G.paused = false;
+          // hold the crisis now: 350ms is long enough for something else to resolve it
+          if (again) setTimeout(function () {
+            if (!G.crisis) return;
+            /* And if it cannot be re-opened, the crisis is let go rather than left holding
+               the clock down forever. A crisis that silently resolves is a bug; a night
+               that stops dead is a bug the player cannot even report. */
+            try { startCrisis(again.b, again.kind); }
+            catch (e) { G.crisis = null; G.paused = false; render(); throw e; }
+          }, 350);
+          else if (next) setTimeout(function () { showDialog(next); }, 250);
+          render();
         };
         d.appendChild(cont); cont.focus();
         d.scrollTop = d.scrollHeight;
@@ -431,10 +534,27 @@
     { attr: "data-go",       run: function (n) { openBed(+n.getAttribute("data-go")); } },
     { attr: "data-jump",     run: function (n) { jumpToPanel(n.getAttribute("data-jump")); } },
     { attr: "data-mode",     run: function (n, b) { if (b) setMode(b, n.getAttribute("data-mode")); } },
+    /* Picking a dextrose strength used to call renderBed(), which throws the whole bedside
+       away and builds it again - so choosing D10 jumped the page back to the top. Nothing
+       about the panel's SHAPE changes: the segment's own highlight and the glucose infusion
+       rate line underneath it are both refreshed by updateBedLive() already, and render()
+       reaches that. The "on" class is set here as well so the button answers the click in
+       the same frame rather than on the next tick. */
     { attr: "data-dex",      run: function (n, b) {
         if (!b) return;
+        var was = b.h.dexPct;
         b.h.dexPct = +n.getAttribute("data-dex");
-        renderBed();
+        var box = n.parentNode;
+        if (box) Array.prototype.forEach.call(box.querySelectorAll("[data-dex]"), function (m) {
+          m.classList.toggle("on", m === n);
+        });
+        /* And it is a change to what is running into this baby, so a colleague who asked
+           about the sugar can see that you answered them. Only on the way UP, the same way
+           the feeds report only when they are advanced: turning the sugar down is not an
+           answer to anything, and this was the one bedside control that reported nothing
+           at all. */
+        if (b.h.dexPct > was) G.noteChange(b, "__dex");
+        render();
       } }
   ];
 
@@ -585,7 +705,7 @@
     if (G.view.mode === "bed") return RATE.bedside;
     if (G.call) return RATE.bedside;              // the phone rings for a readable while
     /* A baby being born while you are somewhere else is at least as urgent as standing at
-       a cot, and you certainly cannot fast-forward through it: the twenty-five minutes
+       a cot, and you certainly cannot fast-forward through it: the forty-five minutes
        before the registrar takes over would otherwise pass in three real seconds. */
     if (G.delivery && G.delivery.state !== "done") return RATE.bedside;
     var held = clockHeld();
@@ -623,8 +743,7 @@
     return Math.max(0, Math.min(SHIFT_LEN, G.min + G.acc - G.clockLag));
   }
 
-  function frame() {
-    if (!G.running) return;
+  function tick() {
     var t = Date.now();
     var raw = (t - (G.lastFrame || t)) / 1000;
     G.lastFrame = t;
@@ -645,7 +764,7 @@
          than an exemption from the clock: left alone she holds the baby where it is, which
          is what a good RRT does and what the line at the top of the room promises. She
          cannot advance the algorithm, because that is the part that needed you. The cost
-         of being away is the twenty-five minutes before the registrar takes it off you. */
+         of being away is the forty-five minutes before the registrar takes it off you. */
       if (G.view.mode === "delivery" && G.delivery && G.delivery.state === "here") {
         DEL.advance(G.delivery, G.delivery.sc, gameMinutes * 60);
         updateDeliveryLive();
@@ -660,6 +779,19 @@
     giveUpOnCall();
     windClock(dtReal);
     renderTop();
+  }
+
+  /* The clock is not allowed to die. Re-arming the timer used to be the last statement of
+     the tick, so any exception raised anywhere in it skipped that line - and a tick reaches
+     into fourteen subsystems, the whole simulation, every panel on screen and both result
+     queues. The night simply stopped, with a pending gas that would never come back and
+     nothing on screen to say what had happened.
+     The error is still thrown where window.onerror, the console and the test harness can
+     all see it. It just does not get to take the game with it. */
+  function frame() {
+    if (!G.running) return;
+    try { tick(); }
+    catch (e) { setTimeout(function () { throw e; }, 0); }
     G.timer = setTimeout(frame, FRAME_MS);
   }
 
@@ -701,6 +833,7 @@
         var h = b.h, t;
         if (p.kind === "glucose") { var r = Math.round(h.glucose);
           b.labs.glucose = { v: r + " mg/dL", crit: r < 40 || r > 180, at: G.min,
+            n: { glucose: r },
             parts: [{ label: "", value: r + " mg/dL", bad: r < CL.glucose.low || r > 180,
               tip: "Expected over " + CL.glucose.low + " mg/dL. Under " + CL.glucose.low + " a baby goes " +
                    "jittery and starts having spells; under " + CL.glucose.severe + " the brain is at risk and it " +
@@ -710,17 +843,20 @@
           log("Glucose on " + b.name + ": " + r, r < 40 ? "warn" : ""); }
         if (p.kind === "gas") { var ph = S.pHfrom(b).toFixed(2), co = Math.round(h.co2), be = Math.round(h.baseDeficit);
           b.labs.gas = { v: "pH " + ph + " / CO2 " + co + " / base deficit " + be, crit: ph < 7.2 || co > 65, at: G.min,
+            n: { ph: +ph, co2: co, baseDeficit: be },
             parts: [part("pH", "pH", ph), part("co2", "CO2", co), part("baseDeficit", "base deficit", be)] };
           log("Gas on " + b.name + ": pH " + ph + ", CO2 " + co, ph < 7.2 ? "warn" : ""); }
         if (p.kind === "cbc") { var w = h.wbc.toFixed(1), hb = h.hgb.toFixed(1), cr = h.crp.toFixed(0);
           b.labs.cbc = { v: "WBC " + w + " / Hgb " + hb + " / CRP " + cr,
                          crit: h.wbc < CL.ref.wbc.lo || h.wbc > CL.ref.wbc.hi ||
                                h.hgb < CL.hgb.flagAt || h.crp > CL.ref.crp.hi, at: G.min,
+                         n: { wbc: +w, hgb: +hb, crp: +cr },
                          parts: [part("wbc", "WBC", w), part("hgb", "Hgb", hb), part("crp", "CRP", cr)] };
           log("Blood count on " + b.name + ": WBC " + w + ", Hgb " + hb + ", CRP " + cr,
               (h.wbc < CL.ref.wbc.lo || h.hgb < CL.hgb.flagAt || h.crp > CL.ref.crp.hi) ? "warn" : ""); }
         if (p.kind === "bili") { var bl = h.bili.toFixed(1), th = h.biliThreshold.toFixed(0);
           b.labs.bili = { v: bl + " mg/dL, threshold " + th, crit: h.bili > h.biliThreshold, at: G.min,
+            n: { bili: +bl, threshold: +th },
             parts: [{ label: "", value: bl + " mg/dL", bad: h.bili > h.biliThreshold,
                       tip: "There is no single normal bilirubin. The threshold is drawn for this baby's " +
                            "gestation and age in hours and rises through the first days of life, which is " +
@@ -735,26 +871,45 @@
               h.ettDisplaced ? "the breathing tube is too low, in the right main bronchus" :
               h.rds > 1.3 ? "diffuse ground-glass lungs with air bronchograms - RDS" :
               h.secretions > 0.5 ? "patchy areas of collapse" : "lungs reasonably expanded, tube in a good position";
-            b.labs.cxr = { v: t, crit: h.ptx || h.ettDisplaced, at: G.min }; }
+            b.labs.cxr = { v: t, crit: h.ptx || h.ettDisplaced, at: G.min,
+              /* A tag as well as the sentence. The player reads the sentence; the attending
+                 on the phone needs to know WHICH of these she is being told about, and
+                 picking it back out of prose is a bug waiting to happen. */
+              f: h.ptx ? "ptx" : h.ettDisplaced ? "ettlow" : h.rds > 1.3 ? "rds"
+                 : h.secretions > 0.5 ? "collapse" : "clear" }; }
           else { t = h.necGrade > 1.4 ? "gas in the wall of the bowel - pneumatosis. This is NEC." :
               h.necGrade > 0 ? "dilated loops of bowel, no pneumatosis yet" : "a normal bowel gas pattern";
-            b.labs.axr = { v: t, crit: h.necGrade > 1.4, at: G.min }; }
+            b.labs.axr = { v: t, crit: h.necGrade > 1.4, at: G.min,
+              f: h.necGrade > 1.4 ? "nec" : h.necGrade > 0 ? "dilated" : "clear" }; }
           log("X-ray on " + b.name + ": " + t, (h.ptx || h.necGrade > 1.4) ? "bad" : "");
         }
         if (p.kind === "hus") { var g = h.ivhGrade;
           t = g === 0 ? "no bleeding seen" : g === 1 ? "a small grade 1 bleed in the germinal matrix" :
               g === 2 ? "a grade 2 bleed with some blood in the ventricle" : "a grade 3 bleed, the ventricle filling";
-          b.labs.hus = { v: t, crit: g >= 3, at: G.min };
+          b.labs.hus = { v: t, crit: g >= 3, at: G.min, n: { grade: g },
+                         f: g === 0 ? "clear" : g >= 3 ? "big" : "bleed" };
           log("Head ultrasound on " + b.name + ": " + t, g >= 2 ? "bad" : ""); }
         if (p.kind === "echo") {
           t = h.pda > 0.5 ? "a large patent ductus arteriosus with significant shunting" :
               h.pda > 0.2 ? "a small duct, not haemodynamically significant" : "the duct is closed and the heart is structurally normal";
           if (h.pphn > 0.2) t += "; pressures in the lung arteries are high (pulmonary hypertension)";
-          b.labs.echo = { v: t, crit: h.pda > 0.5 || h.pphn > 0.2, at: G.min };
+          b.labs.echo = { v: t, crit: h.pda > 0.5 || h.pphn > 0.2, at: G.min,
+                          f: h.pda > 0.5 ? "bigduct" : h.pda > 0.2 ? "smallduct" : "closed",
+                          pphn: h.pphn > 0.2 };
           log("Echo on " + b.name + ": " + t, h.pda > 0.5 ? "warn" : ""); }
         /* Every result, into this baby's own history with the time it came back on it. */
         var got = p.chest ? "cxr" : p.kind;
-        if (b.labs[got]) recordHistory(b, "result", testName(got) + ": " + b.labs[got].v);
+        if (b.labs[got]) {
+          recordHistory(b, "result", testName(got) + ": " + b.labs[got].v);
+          /* AND SAID WHERE THE PLAYER IS STANDING. You sent for this a quarter of an hour
+             ago and waited for it; it used to arrive by quietly appearing in a panel that
+             may well be scrolled off the screen, with a line in the unit log nobody at a
+             bedside can see. setNote only lands on the cot you are actually at, so a result
+             for another baby stays as quiet as it was. The fourth of this family: the
+             confirmations, the attending's advice, the follow-up watch, and now this. */
+          setNote(b, b.labs[got].crit ? "warn" : "good",
+                  testName(got) + " back: " + b.labs[got].v, { tag: "result" });
+        }
         return false;
       });
       if (b.h.cultureDrawn && !b.labs.culture && G.min - b.h.cultureAt > 300) {
@@ -769,12 +924,39 @@
   }
 
   // ---------------------------------------------------------------- admission
+  /* THE LOWEST EMPTY COT, not always bed six.
+
+     An admission used to be put in bed 6 whatever else was true, which worked while there
+     was exactly one of them and the census filled beds 1 to 5. Now a Student walks into
+     three cots and an Attending can take two babies from the delivery room, so a fixed bed
+     would leave gaps - beds 1, 2, 3 and then 6 - and two arrivals would land on top of
+     each other.
+
+     Six is the ceiling and the game is built to it: six bed colours, six keyboard
+     shortcuts, and bedAccent counts modulo six. Past that the unit is genuinely full, and
+     a full unit sending a baby elsewhere is a real thing that happens rather than an
+     error - so it stays as the capacity valve. */
+  var MAX_BEDS = 6;
+  /* A bed number belongs to whoever was put in it, for the whole night. Dying does not
+     give it back: the cot stays on the unit view reading "this bedspace is quiet now", it
+     is still that baby's row in the report and still their line at handover. Letting an
+     admission reuse it put two pods on screen both labelled bed 3, and byBed(3) - which is
+     how concerns, conversations, the follow-up watches and the keyboard all find a baby -
+     answered with the dead one, because it searches in census order.
+     The cost is that a death narrows the unit by one cot for the rest of the shift, which
+     is the truthful reading of a bedspace nobody has cleared yet. */
+  function freeBed() {
+    for (var n = 1; n <= MAX_BEDS; n++) {
+      if (!G.babies.some(function (b) { return b.bed === n; })) return n;
+    }
+    return null;
+  }
+
   function checkAdmission() {
     if (G.admissionDue == null || G.min < G.admissionDue) return;
     G.admissionDue = null;
-    // there is one empty bedspace, and a transport and a delivery can both be offered
-    if (G.babies.some(function (b) { return b.bed === 6 && !b.discharged && !b.died; })) {
-      log("Bed six is already taken, so that baby went to the unit across town.", "warn");
+    if (freeBed() == null) {
+      log("There is no cot free, so that baby went to the unit across town.", "warn");
       return;
     }
     G.admissionDone = true;
@@ -801,7 +983,7 @@
     if (!G.running) return;
     var from = G.admissionFrom, arr = from && from.arrival;
     var b = P.makeAdmission(G.difficulty, G.nameUsed, arr ? arr.archKey : null);
-    b.bed = 6;
+    b.bed = freeBed();
     b.visitWindow = [3, 7];
     if (arr) b.ga = from.ga;
     var poor = !!G.admissionPoor;
@@ -817,10 +999,10 @@
     P.settle(b);
     G.babies.push(b);
     G.advance(20);
-    log("New admission: Baby " + b.surname + ", " + b.ga + " weeks, to bed 6", "hi");
+    log("New admission: Baby " + b.surname + ", " + b.ga + " weeks, to bed " + b.bed, "hi");
     showDialog({
       avatar: "renata", who: "Renata Cruz, RN", role: "Night nurse",
-      said: "Bed six is set up and warm. Baby " + b.surname + " is settled on " + supportLabel(b) +
+      said: "Bed " + b.bed + " is set up and warm. Baby " + b.surname + " is settled on " + supportLabel(b) +
             ", temperature " + b.h.coreTemp.toFixed(1) + ". " +
             // "had" is past tense and does not conjugate, so this is safe for they/them too
             (poor ? b.pronoun.S + " had a harder time getting here than anybody wanted. " : "") +
@@ -1003,7 +1185,10 @@
       var starts = [[19, 23], [20, 24], [19.5, 22.5], [21, 2], [19, 21.5], [22, 3]];
       b.visitWindow = starts[i % starts.length];
     });
-    if (G.difficulty !== "student") G.admissionDue = null;   // arrives only via the phone
+    /* Every level gets at least one delivery now, and the Attending night gets two. How
+       many are still to come is what tells the ward pod whether "nothing more from down
+       there tonight" is true or a lie. */
+    G.deliveriesExpected = G.difficulty === "attending" ? 2 : 1;
     G.running = true; G.paused = true;
     $("seedLabel").textContent = "seed " + G.seedVal;
     renderTop();

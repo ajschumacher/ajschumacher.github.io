@@ -360,10 +360,10 @@
       lvl.setAttribute("data-tip",
         name + " level. " +
         (G.difficulty === "student"
-          ? "Four babies, nothing new arrives mid-shift, illnesses declare themselves slowly, and procedures rarely fail."
+          ? "Three babies to start and one call from the delivery room. Illnesses declare themselves slowly, and procedures rarely fail."
           : G.difficulty === "attending"
-          ? "Five babies, illness declares itself fast, fragile brains, and procedures fail more often."
-          : "Five babies, the phone rings, and something will arrive from the delivery room.") +
+          ? "Four babies to start and two calls from the delivery room. Illness declares itself fast, fragile brains, and procedures fail more often."
+          : "Four babies to start, one call from the delivery room, and the phone rings.") +
         (G.nudges ? " Thinking prompts are shown." : " No thinking prompts.") +
         (G.allowDeath ? " A baby can die if a crisis is ignored for a long time." : " Babies cannot die."));
     }
@@ -501,8 +501,51 @@
   }
   function backToWard() { G.view = { mode: "ward", bed: null }; render(); }
 
+  /* WHAT THE BEDSIDE PANEL IS, as opposed to what it reads. renderBed() builds the controls
+     once, on arrival, and only updateBedLive() runs after that - which is right for numbers
+     and wrong for the panel's shape. Intubating from the Procedures button set
+     b.support.mode to VENT and went through doAction -> render() -> updateBedLive(), so the
+     player was left looking at a CPAP control on a ventilated baby with no PIP, no PEEP and
+     no rate. (The MODE buttons called renderBed() directly and were fine, which is why this
+     only happened one of the two ways in.)
+
+     WHAT IT IS, and nothing else. The first version folded every action LABEL into this,
+     which was redundant and expensive: updateBedLive() already rewrites a dynamic label in
+     place a few lines below, along with the disabled, "on" and "urgent" states. All the
+     signature achieved was a full rebuild of the bedside every time a tube slipped and
+     "Intubate" became "Re-site the tube" - measured, that is what fired the rebuild after
+     ordering a film, because the twenty-five minutes it costs were long enough for the tube
+     to move. The mode is the only thing that changes which controls EXIST. */
+  function stageShape(b) {
+    return b.support.mode;
+  }
+  var stageShapeNow = null, stageShapeBed = null;
+
+  /* A rebuild throws the panel's DOM away, so the thing the player had hold of has to come
+     back: the scroll position, and whatever had focus. Never while a slider is being
+     dragged - the value would jump out from under their thumb. */
+  function rebuildStage(b) {
+    var stage = $("stage");
+    var a = document.activeElement;
+    if (a && a.tagName === "INPUT" && a.type === "range" && stage && stage.contains(a)) return;
+    var key = a && stage && stage.contains(a) ? (a.id || a.getAttribute("data-act")) : null;
+    var scroll = stage ? stage.scrollTop : 0;
+    var pageScroll = window.scrollY;
+    renderBed();
+    stage = $("stage");
+    if (stage) stage.scrollTop = scroll;
+    window.scrollTo(0, pageScroll);
+    if (key && stage) {
+      var back = stage.querySelector("#" + (window.CSS && CSS.escape ? CSS.escape(key) : key)) ||
+                 stage.querySelector('[data-act="' + key.replace(/["\\]/g, "") + '"]');
+      if (back) { try { back.focus(); } catch (e) {} }
+    }
+  }
+
   function renderBed() {
     var b = G.babies[G.view.bed], s = b.support;
+    stageShapeNow = stageShape(b); stageShapeBed = b;
+    LIVE.length = 0;
     var h = '<div class="bedside-head"><button class="btn ghost small" id="btnBack">&larr; The unit</button>' +
       '<span class="bed-badge ' + bedAccent(b) + '">' +
       GL.tip("bed " + b.bed, "Which bedspace in the unit. Staff often refer to a baby by bed number as well as by name. " +
@@ -545,13 +588,13 @@
       Object.keys(NG.ACTIONS).forEach(function (id) {
         if (NG.ACTIONS[id].g !== g[1]) return;
         h += '<button class="act" data-act="' + id + '" data-tip="' + esc(NG.ACTIONS[id].info || "") + '">' +
-             '<span class="t">' + esc(actionLabel(id, b)) + '</span><span class="c">' + NG.ACTIONS[id].cost + " min</span>" +
+             '<span class="t">' + esc(actionLabel(id, b)) + '</span><span class="c">' + NG.actionCost(id, b) + " min</span>" +
              '<span class="qmark">?</span></button>';
       });
       h += "</div></div>";
     });
     $("stage").innerHTML = h + "</div></div>";
-    function slider(id, vid, fmt, set, done) {
+    function slider(id, vid, fmt, set, done, get, synced) {
       var r = $(id); if (!r) return;
       r.oninput = function () {
         var out = $(vid);
@@ -559,33 +602,53 @@
         set(+r.value); updateBedLive();
       };
       r.onchange = function () { if (done) done(+r.value); };
+      /* Registered as it is wired, with the formatter it already owns. A control can be
+         moved by something other than the hand on it - the nurse weans the oxygen, stopping
+         the feeds zeroes the feed rate, re-siting a tube rewrites PIP, PEEP and rate, and
+         the hypoglycaemia crisis turns the dextrose and the drip up - and every one of
+         those used to leave the dial showing a number that had stopped being true. */
+      LIVE.push({ id: id, vid: vid, fmt: fmt, get: get, synced: synced });
     }
     var f0 = s.fio2, p0 = s.pip;
+    /* The baseline the oxygen direction is judged against. It has to move when the NURSE
+       moves the dial, or a player's first nudge is measured against where the baby was when
+       they walked in rather than where it is now. */
+    NG.resetFio2Baseline = function (v) { f0 = v; };
     /* Moving the dial yourself buys a window in which the nurse leaves it alone. Without it
        she would quietly undo a deliberate change within a minute or two, which reads as the
        game arguing with you. */
     slider("rFio2", "vFio2", function (v) { return v + "%"; },
       function (v) { b.support.fio2 = v / 100; b.h.o2HandsOff = CL.o2Nurse.handsOffMin; },
       function (v) { var nf = v / 100; if (nf < f0 - 0.005) { G.noteChange(b, "__fio2down"); NG.watchO2(b); }
-                     else if (nf > f0 + 0.005) { G.noteChange(b, "__fio2up"); NG.watchO2(b); } f0 = nf; });
-    slider("rCpap", "vCpap", function (v) { return v + " " + GL.term("cmH2O", "cmH2O"); }, function (v) { b.support.cpap = v; });
+                     else if (nf > f0 + 0.005) { G.noteChange(b, "__fio2up"); NG.watchO2(b); } f0 = nf; },
+      function () { return Math.round(b.support.fio2 * 100); },
+      function () { f0 = b.support.fio2; });
+    slider("rCpap", "vCpap", function (v) { return v + " " + GL.term("cmH2O", "cmH2O"); },
+      function (v) { b.support.cpap = v; }, null, function () { return b.support.cpap; });
     slider("rPip", "vPip", String, function (v) { b.support.pip = v; },
-      function (v) { if (v < p0) G.noteChange(b, "__pipdown"); else if (v > p0) G.noteChange(b, "__pipup"); p0 = v; });
-    slider("rPeep", "vPeep", String, function (v) { b.support.peep = v; });
+      function (v) { if (v < p0) G.noteChange(b, "__pipdown"); else if (v > p0) G.noteChange(b, "__pipup"); p0 = v; },
+      function () { return b.support.pip; }, function () { p0 = b.support.pip; });
+    slider("rPeep", "vPeep", String, function (v) { b.support.peep = v; }, null,
+      function () { return b.support.peep; });
     /* The rate was the one ventilator control with no note attached, so nothing could tell
        whether you had answered a rising CO2 - or driven one into the floor. */
     var rt0 = b.support.rate;
     slider("rRate", "vRate", String, function (v) { b.support.rate = v; },
-      function (v) { if (v < rt0) G.noteChange(b, "__ratedown"); else if (v > rt0) G.noteChange(b, "__rateup"); rt0 = v; });
+      function (v) { if (v < rt0) G.noteChange(b, "__ratedown"); else if (v > rt0) G.noteChange(b, "__rateup"); rt0 = v; },
+      function () { return b.support.rate; }, function () { rt0 = b.support.rate; });
     slider("rIso", "vIso", function (v) { return v.toFixed(1) + "°"; },
       function (v) { b.support.isoTemp = v; b.support.servo = false; },
-      function (v) { if (v > 36.4) { b.support.isoOpen = false; G.noteChange(b, "__warmer"); } });
-    slider("rHum", "vHum", function (v) { return v + "%"; }, function (v) { b.support.humidity = v; });
-    slider("rIv", "vIv", function (v) { return v + " " + GL.term("mL/kg/d", "mL/kg/d"); }, function (v) { b.h.ivRate = v; });
+      function (v) { if (v > 36.4) { b.support.isoOpen = false; G.noteChange(b, "__warmer"); } },
+      function () { return b.support.isoTemp; });
+    slider("rHum", "vHum", function (v) { return v + "%"; }, function (v) { b.support.humidity = v; }, null,
+      function () { return b.support.humidity; });
+    slider("rIv", "vIv", function (v) { return v + " " + GL.term("mL/kg/d", "mL/kg/d"); },
+      function (v) { b.h.ivRate = v; }, null, function () { return b.h.ivRate; });
     var fd0 = b.h.feedsMlKgD;
     slider("rFeed", "vFeed", function (v) { return v + " " + GL.term("mL/kg/d", "mL/kg/d"); },
       function (v) { if (v > b.h.feedsMlKgD + 25) b.h.feedAdvanceStress += 0.35; b.h.feedsMlKgD = v; },
-      function (v) { if (v > fd0) G.noteChange(b, "__feedup"); fd0 = v; });
+      function (v) { if (v > fd0) G.noteChange(b, "__feedup"); fd0 = v; },
+      function () { return b.h.feedsMlKgD; }, function () { fd0 = b.h.feedsMlKgD; });
     updateBedLive();
     syncStickyOffsets();
   }
@@ -606,8 +669,10 @@
 
   function setMode(b, m) {
     if (m === b.support.mode) return;
-    if (m === "VENT") { G.doAction(b, "intubate"); renderBed(); return; }
-    if (b.support.mode === "VENT") { G.doAction(b, "extubate"); applyMode(b, m); renderBed(); return; }
+    /* rebuildStage, not renderBed: the panel really does change shape here, but replacing the
+       stage outright threw the page back to the top and lost whatever had focus. */
+    if (m === "VENT") { G.doAction(b, "intubate"); rebuildStage(b); return; }
+    if (b.support.mode === "VENT") { G.doAction(b, "extubate"); applyMode(b, m); rebuildStage(b); return; }
     applyMode(b, m);
     /* Changing the support was the one bedside control nothing could be judged on, so a
        nurse asking you to start some oxygen had no way to notice that you had. */
@@ -615,7 +680,7 @@
     log(b.name + " changed to " + supportLabel(b));
     recordHistory(b, "did", "Support changed to " + supportLabel(b));
     G.advance(5);
-    renderBed();
+    rebuildStage(b);
   }
 
   function ctl(label, id, min, max, step, val, txt, term) {
@@ -676,7 +741,7 @@
     if (!c.replies) html += '<div class="co-hintline">Use the controls below and ' + esc(ch.name.split(",")[0]) +
       " will tell you what they think. If you disagree, you can say so.</div>";
     html += '<div class="co-actions"><button type="button" class="btn ghost small" id="declineConcern"' +
-            ' data-focus-key="decline">Not now &mdash; I am not going to do that</button></div>';
+            ' data-focus-key="decline">Dismiss</button></div>';
     html += "</div></div>";
     var fresh = anyFresh(c.replies, note);
     if (note) html += noteHtml(note);
@@ -740,10 +805,105 @@
     });
   }
 
+  /* An action that prices itself has to say so while you are standing there. renderBed()
+     builds the buttons once, on arrival, and the clock only calls updateBedLive() after
+     that - so "Call the attending" went on advertising ten minutes for the rest of the
+     visit even though ringing her back had just become five. Only the actions that
+     actually price themselves are touched, so this is a handful of nodes a tick. */
+  /* THE DIALS WERE LYING. renderBed() builds the controls once, on arrival, and only
+     updateBedLive() runs after that - but plenty of things move a control other than the
+     hand on it. The nurse weans the oxygen all night; stopping the feeds zeroes the feed
+     rate; re-siting a tube rewrites PIP, PEEP and rate; the hypoglycaemia crisis turns the
+     dextrose and the drip up. Every one of those left a dial showing a number that had
+     stopped being true, and three things followed from it: the number on screen was false,
+     touching the dial wrote the STALE value back into the baby, and for oxygen the
+     direction of the change was judged against the stale value too - so turning it "down"
+     could raise the oxygen and still be scored as a wean.
+
+     Every slider registers itself as it is wired, with the formatter it already owns, so
+     this cannot drift out of step with the panel the way a second hand-written list would.
+     A control being dragged is left alone: the value must not jump under a thumb. */
+  var LIVE = [];
+  function refreshDrifting(b) {
+    LIVE.forEach(function (c) {
+      if (!c.get) return;
+      var r = $(c.id); if (!r || r === document.activeElement) return;
+      var want = c.get();
+      /* Compared against where the slider CAN sit. Feeds run in steps of ten and an
+         archetype can start on 118, so the control snaps to 120 and a naive comparison
+         disagrees with the baby forever - rewriting the same value on every tick for the
+         rest of the night. The readout still carries the true number. */
+      if (+r.value === snapped(r, want)) return;
+      r.value = want;
+      var v = $(c.vid);
+      if (v) v.innerHTML = c.fmt(want);
+      /* Only when the control ACTUALLY moved. The baselines that decide whether a change
+         was up or down live in the wiring closure, and the first version reset them inside
+         the getter - which runs every tick, including between a slider's input event and
+         its change event. So the player dragged the oxygen up, the baseline was reset to
+         the new value in between, and the change handler compared the number with itself:
+         no "you turned it up", no follow-up watch armed, nothing. */
+      if (c.synced) c.synced(want);
+    });
+    /* The segmented controls are not sliders and have no value to compare - just the
+       "on" class, which is cheap to put back where it belongs. */
+    syncSeg("segDex", "data-dex", b.h.dexPct);
+    syncSeg("segMode", "data-mode", b.support.mode);
+  }
+  function snapped(r, want) {
+    var step = +r.step || 1, min = +r.min || 0;
+    var v = min + Math.round((want - min) / step) * step;
+    v = Math.max(+r.min, Math.min(+r.max, v));
+    return Math.round(v * 1000) / 1000;               // 0.1 steps on the isolette
+  }
+
+  function syncSeg(id, attr, want) {
+    var box = $(id); if (!box) return;
+    Array.prototype.forEach.call(box.querySelectorAll("[" + attr + "]"), function (n) {
+      var mine = n.getAttribute(attr);
+      var on = (attr === "data-mode") ? mine === want : +mine === +want;
+      if (n.classList.contains("on") !== on) n.classList.toggle("on", on);
+    });
+  }
+
+  /* A decision with a shelf life should say how much of it is left. The tooltip is read off
+     the data-tip attribute at hover time, so rewriting the attribute is enough - and it stays
+     out of stageShape(), which means this cannot trigger a panel rebuild the way putting a
+     countdown in the button LABEL would have. */
+  function refreshProtected(b) {
+    var left = Math.round(b.h.protectedMin || 0);
+    ["comfort", "kangaroo"].forEach(function (id) {
+      var n = document.querySelector('#stage .act[data-act="' + id + '"]');
+      if (!n || !NG.ACTIONS[id]) return;
+      var base = NG.ACTIONS[id].info || "";
+      var tail = left > 0
+        ? "  \u2014  Right now " + esc(b.name) + " is protected for another " +
+          (left >= 90 ? Math.round(left / 60) + " hours" : left + " minutes") + "."
+        : (b.h.comfortActs ? "  \u2014  Not protected at the moment: the last settling has worn off." : "");
+      var want = base + tail;
+      if (n.getAttribute("data-tip") !== want) n.setAttribute("data-tip", want);
+    });
+  }
+
+  function refreshCosts(b) {
+    Array.prototype.forEach.call(document.querySelectorAll("#stage .act[data-act]"), function (n) {
+      var id = n.getAttribute("data-act");
+      if (!NG.ACTIONS[id] || typeof NG.ACTIONS[id].cost !== "function") return;
+      var c = n.querySelector(".c"), want = NG.actionCost(id, b) + " min";
+      if (c && c.textContent !== want) c.textContent = want;
+    });
+  }
+
   function updateBedLive() {
     if (G.view.mode !== "bed") return;
     var b = G.babies[G.view.bed];
     if (!b || !$("monitor")) return;
+    /* Shape first: if the controls on screen are no longer the controls this baby needs,
+       nothing below is worth updating because it is about to be thrown away. */
+    if (stageShapeBed === b && stageShape(b) !== stageShapeNow) { rebuildStage(b); return; }
+    refreshCosts(b);
+    refreshDrifting(b);
+    refreshProtected(b);
     var look = seen(b);
     $("crib").innerHTML = A.isolette(look, { photo: b.h.photo, iso: b.support.isoTemp.toFixed(1),
       humidity: b.support.humidity, open: b.support.isoOpen }) + '<div class="look">' + describeLook(b, look) + "</div>";
@@ -971,7 +1131,7 @@
   G.setNote = setNote;
 
   /* ---- And what it hands back. ---- */
-  NG.render = render; NG.renderTop = renderTop;
+  NG.render = render; NG.renderTop = renderTop; NG.rebuildStage = rebuildStage;
   NG.renderBedCallout = renderBedCallout; NG.renderBedPeople = renderBedPeople;
   NG.openBed = openBed; NG.backToWard = backToWard; NG.setMode = setMode;
   NG.renderBed = renderBed;

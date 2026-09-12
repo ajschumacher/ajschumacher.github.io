@@ -88,6 +88,10 @@
           var r;
           try { r = await play(G, w, D) || {}; }
           catch (e) { errs.push("play: " + e.message + " | " + String(e.stack || "").split("\n")[1]); r = {}; }
+          /* RESERVED KEYS. These five are written onto whatever the play function returned,
+             so a play function that returns its own `text` (or G, w, D, errs) has it silently
+             replaced - which cost an hour when a suite compared a bedside note against the
+             whole page's innerText and could not see why. Name your fields something else. */
           r.errs = (r.errs || []).concat(errs);
           r.G = G; r.w = w; r.D = D; r.text = D.body.innerText;
           res(r);
@@ -149,7 +153,7 @@
       last = r;
       if (want(r)) { r.errs = errs; r.tried = i + 1; return r; }
     }
-    last.errs = errs; last.notFound = true; last.tried = tries || 8;
+    last.errs = errs; last.notFound = true; last.tried = tries || 3;
     return last;
   }
 
@@ -292,6 +296,7 @@
        scenario's ordinary path is that nobody comes up at all. */
     function run(scId, where) {
       return shift({ seed: 99 }, function (G, w, D) {
+        var startCount = G.babies.length;          // whoever comes up will be beyond this
         G.pendingDelivery = w.Deliveries.SCENARIOS.filter(function (s) { return s.id === scId; })[0];
         G.summonDelivery(); G.enterDelivery();
         var d = G.delivery;
@@ -299,7 +304,10 @@
         w.Deliveries.advance(d, d.sc, Math.max(0, 130 - d.sec));
         G.finishDelivery(where);
         G.advance(30);
-        var b6 = G.babies.filter(function (b) { return b.bed === 6; })[0];
+        /* The one who came up, found by being new rather than by being in bed 6. An
+           admission takes the lowest free cot now, so which number that is depends on the
+           level and on what else arrived tonight. */
+        var b6 = G.babies.filter(function (b) { return b.bed > startCount; })[0];
         return { arch: b6 ? b6.arch : null, ga: b6 ? b6.ga : null, state: d.state,
                  closing: (G.logLines.filter(function (l) { return /Delivery room:/.test(l.m); })[0] || {}).m };
       });
@@ -678,8 +686,15 @@
     ok(!/Outstanding|Strong shift/.test(r.grade || ""),
        "it is not Outstanding or a Strong shift", r.grade);
     ok(!/Nothing to pick at/.test(r.txt), "the verdict does not say there is nothing to pick at");
-    ok(r.txt.indexOf("What you are handing over") >= 0,
-       "there is a handover section, above the scoring");
+    /* The handover used to be a section of its own listing every baby's open problems.
+       It is per-cot now - each bed card answers "what was still wrong at seven" - and the
+       beds come before any scoring. */
+    /* Headings are upper-cased in CSS and innerText reports the transformed text, so this
+       asks case-insensitively rather than pinning the styling. */
+    ok(/The beds/i.test(r.txt) && /what was still wrong at seven/i.test(r.txt),
+       "the beds and what was left open come before the scoring");
+    ok(r.txt.search(/The beds/i) < r.txt.search(/How the night went/i),
+       "and the teaching is above the marking, not under it");
     ok(new RegExp("handing " + r.name).test(r.txt) || r.txt.indexOf(r.name) >= 0,
        "and it names the baby", r.name);
     ok(/blood sugar was still \d+ at handover/.test(r.txt),
@@ -778,7 +793,10 @@
          sticky index whose links carry those same headings, so a split on the words landed
          between two nav links and came back with nothing - a test that scrapes prose is
          hostage to anything else on the page that happens to say the same words. */
-      var hoCard = D.querySelector(".handover-open");
+      /* The beds card, which is where what-is-still-wrong lives now - one block per cot
+         rather than one section listing every cot. Still read as an element rather than
+         scraped out of the page text, for the reason above. */
+      var hoCard = D.getElementById("theBeds");
       var stillOpen = hoCard ? hoCard.innerText : "";
       return { txt: txt, stillOpen: stillOpen.replace(/\s+/g, " ").slice(0, 120),
                unfixed: G.babies.filter(function (b) {
@@ -851,6 +869,7 @@
        detached document and passing for free. */
     function room(scId, then) {
       return shift({ seed: 99 }, async function (G, w, D) {
+        var startCount = G.babies.length;
         G.pendingDelivery = w.Deliveries.SCENARIOS.filter(function (x) { return x.id === scId; })[0];
         G.summonDelivery(); G.enterDelivery();
         var d = G.delivery;
@@ -862,6 +881,7 @@
                     unitOn: !!(unit && !unit.disabled), motherOn: !!(mother && !mother.disabled),
                     why: (D.getElementById("delWhy") || {}).textContent,
                     gate: (D.getElementById("delGate") || {}).textContent,
+                    startCount: startCount,
                     checks: D.getElementById("delChecks").innerText.replace(/\s+/g, " ") };
         if (then) await then(res, G, w, D, unit, mother);
         return res;
@@ -880,7 +900,10 @@
       ["pointerup", "mouseup", "click"].forEach(function (t) { btn.dispatchEvent(new w.MouseEvent(t, { bubbles: true })); });
       await wait(250);
       res.landed = G.delivery.state === "done" && G.view.mode === "ward";
-      res.nobodyCameUp = !G.babies.filter(function (b) { return b.bed === 6; })[0];
+      /* Counted, not looked for in bed 6. An admission takes the lowest free cot now, so
+         with four starting cots NOBODY is ever in bed 6 - this check would have reported
+         "nobody came up" even on a night where somebody did, and passed for free. */
+      res.nobodyCameUp = G.babies.length === res.startCount;
     });
     ok(!v.errs.length, "no exceptions", v.errs.join(" | "));
     ok(v.options === 2, "there are two ways out of the room, not one", v.options);
@@ -1012,10 +1035,14 @@
        "the handover says nobody worked out what was wrong");
     ok(/without a test that would have shown what was wrong/i.test(r.txt),
        "and a tip names the babies and the cost of guessing");
-    ok(/What you had to go on:/.test(r.txt),
-       "and every cot card says what there was to go on");
-    ok(/Nothing you sent would have shown this/.test(r.txt),
-       "which, on this shift, is nothing");
+    /* The cot card says whether you sent the thing that would have shown it, and names the
+       test. "Nothing you sent would have shown this" ran straight into test sentences that
+       are themselves "a blood count would have shown it", so half the reveals said it twice
+       and it is "This was never tested for" now. */
+    ok(/This was never tested for\./.test(r.txt),
+       "and the cot card says the diagnosis was never tested for");
+    ok(/would have shown it|would have shown this/i.test(r.txt),
+       "naming the test that would have found it");
     ok(!/Outstanding|Strong shift/.test(r.grade || ""),
        "a shift like that is not Outstanding", r.grade);
   });
@@ -1063,7 +1090,7 @@
   function callSpy(w) {
     var seen = [];
     var real = w.NG.attendingCall;
-    w.NG.attendingCall = function (b, steer, first) { seen.push({ b: b, steer: steer, first: first }); };
+    w.NG.attendingCall = function (b, first) { seen.push({ b: b, first: first }); };
     return { seen: seen, restore: function () { w.NG.attendingCall = real; } };
   }
 
@@ -1071,117 +1098,1111 @@
     var r = await shift({ seed: 909 }, function (G, w, D) {
       var b = G.babies[0], score0 = G.scoreItems.length;
       var spy = callSpy(w);
+      var costFirst = w.NG.actionCost("help", b);
       var first = w.NG.ACTIONS.help.run(b, b.h);
+      w.NG.consult(b, true);                       // the dialog would have done this
+      var costAfter = w.NG.actionCost("help", b);
       var second = w.NG.ACTIONS.help.run(b, b.h);
       spy.restore();
       return { calls: spy.seen.length,
-               steer: (spy.seen[0] || {}).steer || "",
                firstFlags: spy.seen.map(function (c) { return !!c.first; }),
                aimedAtThisBaby: spy.seen.every(function (c) { return c.b === b; }),
                msg: first && first.msg, quiet: !!(first && first.quiet),
-               history: (first && first.history) || "",
+               history: (first && first.history),
                second: second && second.msg,
-               helpAsked: b.h.helpAsked,
-               called: G.metrics.calledForHelp,
+               helpAsked: b.h.helpAsked, called: G.metrics.calledForHelp,
                scored: G.scoreItems.slice(score0).length,
-               cost: w.NG.ACTIONS.help.cost };
+               costFirst: costFirst, costAfter: costAfter };
     });
     ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
     ok(r.helpAsked, "it records that help was asked for");
     ok(r.called === 1, "and counts once however often you ring", r.called);
-    ok(r.scored === 1, "and scores once", r.scored);
-    ok(r.cost === 10, "and costs ten minutes", r.cost);
+    ok(r.scored === 1, "and scores the first ring once", r.scored);
+    /* Ten to open a case with her, five to ring back on one she is already holding. That
+       price is what makes the call-look-call-back loop affordable inside twelve hours. */
+    ok(r.costFirst === 10, "the first call costs ten minutes", r.costFirst);
+    ok(r.costAfter === 5, "and ringing her back costs five, because she knows the story", r.costAfter);
     ok(r.calls === 2 && r.second, "and she will take a second call", r.calls + " calls");
     ok(r.firstFlags.join() === "true,false",
        "the first ring is marked as the first, so only it goes in the unit log", r.firstFlags.join());
     ok(r.aimedAtThisBaby, "and every call is about the baby you are standing at");
-    // the bug this replaced: her paragraph went to the log and the player saw nothing
-    ok(r.steer.length > 60, "she says something worth ten minutes, into the call", r.steer.slice(0, 70));
-    ok(r.quiet && !/blood vessels|surfactant|[Cc]ulture|jumps out/.test(r.msg || ""),
-       "the advice is in the call, not duplicated as a bedside note", (r.msg || "").slice(0, 50));
-    ok(/Halvorsen/.test(r.history) && r.history.indexOf(r.steer) >= 0,
-       "and her actual words go into this cot's history", r.history.slice(0, 70));
+    /* The action writes no history line of its own: what she said is not known until the
+       player has chosen HOW to talk to her, so the dialog records it. */
+    ok(r.history === null, "the action leaves the history line to the call itself", String(r.history));
+    ok(r.quiet && !/Do —|Why —/.test(r.msg || ""),
+       "and the advice is in the call, not duplicated as a bedside note", (r.msg || "").slice(0, 50));
   });
 
-  /* ALL TWELVE BRANCHES. attendingSteer is the densest teaching text in the game and is
-     private to actions.js, so the only honest way in is the seam it speaks through. The
-     old version of this suite reached three of its twelve branches by mutating one baby
-     incrementally, which meant every case depended on the case before it having cleared
-     up after itself. Each branch now starts from the same deliberately quiet baby, so a
-     branch is reached because its own condition holds and not because an earlier one
-     happened to be left false. */
-  suite("The attending points at the problem without naming it", async function () {
-    var r = await shift({ seed: 55 }, function (G, w, D) {
-      var b = G.babies[0], CL = w.Clinical, said = {};
-      var spy = callSpy(w);
+  /* ---------------------------------------------------------------- the consult
+     Fixtures that set only what a player can SEE. */
+  function lab(G, v, n, extra) {
+    var o = { v: v, at: G.min, n: n };
+    if (extra) for (var k in extra) o[k] = extra[k];
+    return o;
+  }
+  var WELL = { Color: "pink and well perfused", "Cap refill": "1.5 seconds",
+               Breathing: "comfortable, easy effort", Chest: "air entry equal both sides",
+               Heart: "no murmur, normal pulses", Abdomen: "soft, normal bowel sounds",
+               Overall: "resting comfortably in a nest" };
+  function withFinding(over) {
+    var o = {}; for (var k in WELL) o[k] = WELL[k];
+    for (var j in over) o[j] = over[j];
+    return Object.keys(o).map(function (k) { return { k: k, v: o[k], bad: true }; });
+  }
 
-      // every branch above the one under test is false here
-      function quiet(h) {
-        h.pphn = 0; h.ptx = false; h.rds = 0; h.surfactant = 1;
-        h.sepsis = 0; h.abx = false;
-        h.necGrade = 0; h.residuals = 0; h.feedsMlKgD = 0;
-        h.glucose = 70; h.pda = 0;
-        h.bili = 2; h.biliThreshold = 14; h.hgb = 14; h.coreTemp = 37;
-      }
-      function steer(mut) {
-        var snapH = JSON.stringify(b.h), snapS = JSON.stringify(b.support);
-        b.support.mode = "CPAP"; b.support.pip = 18;
-        quiet(b.h);
-        mut(b.h, b.support);
-        spy.seen.length = 0;
-        w.NG.ACTIONS.help.run(b, b.h);
-        var got = (spy.seen[0] || {}).steer || "";
-        b.h = JSON.parse(snapH); b.support = JSON.parse(snapS);
-        return got;
-      }
+  suite("The attending only knows what you have told her", async function () {
+    /* THE RULE THE WHOLE REWRITE RESTS ON. The old attendingSteer read b.h directly, so
+       "get a light on that chest" only ever fired when there really WAS a pneumothorax -
+       seventy percent of her advice went to a player who had neither examined the baby nor
+       had a result back. Here the hidden state is changed underneath her, hard. */
+    var r = await shift({ seed: 4242 }, function (G, w, D) {
+      var b = G.babies[0];
+      b.findings = withFinding({}); b.examinedAt = G.min;
+      b.h.consult = null;
+      var before = w.NG.consult(b, true);
 
-      said.pphn    = steer(function (h) { h.pphn = 0.4; });
-      said.ptx     = steer(function (h) { h.ptx = true; });
-      said.rds     = steer(function (h) { h.rds = 1.4; h.surfactant = 0.4; });
-      said.sepsis  = steer(function (h) { h.sepsis = 0.5; });
-      said.nec     = steer(function (h) { h.residuals = 0.7; h.feedsMlKgD = 40; });
-      said.glucose = steer(function (h) { h.glucose = CL.glucose.treated - 8; });
-      said.pda     = steer(function (h) { h.pda = 0.6; });
-      said.bili    = steer(function (h) { h.bili = 13; });
-      said.hgb     = steer(function (h) { h.hgb = CL.hgb.nadir - 1; });
-      said.pip     = steer(function (h, s) { s.mode = "VENT"; s.pip = 26; });
-      said.cold    = steer(function (h) { h.coreTemp = CL.temp.coldStress - 0.6; });
-      said.nothing = steer(function () {});
+      b.h.consult = null;
+      b.h.ptx = true; b.h.sepsis = 0.9; b.h.pphn = 0.6; b.h.necGrade = 2;
+      b.h.pda = 0.8; b.h.rds = 2; b.h.surfactant = 0.2; b.h.ivhGrade = 3;
+      var after = w.NG.consult(b, true);
 
-      // she says the most urgent thing first: an air leak outranks a cold baby
-      said.order = steer(function (h) { h.ptx = true; h.coreTemp = CL.temp.coldStress - 0.6; });
+      b.h.consult = null;
+      b.findings = withFinding({ Abdomen: "distended, firm, and discoloured; no bowel sounds" });
+      var told = w.NG.consult(b, true);
 
-      spy.restore();
-      return said;
+      return { before: before.situation.id, beforeText: before.text,
+               after: after.situation.id, afterText: after.text, told: told.situation.id };
     });
     ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
-    ok(/blood vessels/.test(r.pphn) && !/pulmonary hypertension/i.test(r.pphn),
-       "for clamped lung vessels she points, she does not diagnose", r.pphn.slice(0, 60));
-    ok(/light on that chest/.test(r.ptx), "for an air leak she says look before you wait", r.ptx.slice(0, 60));
-    ok(/surfactant/.test(r.rds), "for stiff lungs she names the treatment", r.rds.slice(0, 60));
-    ok(/[Cc]ulture/.test(r.sepsis), "for infection she says culture first", r.sepsis.slice(0, 60));
-    ok(/[Ss]top the feeds/.test(r.nec), "for a changing belly she stops the feeds", r.nec.slice(0, 60));
-    ok(/sugar/.test(r.glucose) && /infusion rate/.test(r.glucose),
-       "for a low sugar she asks about the infusion, not just the bolus", r.glucose.slice(0, 60));
-    ok(/duct/.test(r.pda) && /echo/.test(r.pda), "for a duct she says look before you treat", r.pda.slice(0, 60));
-    ok(/threshold/.test(r.bili), "for jaundice she refuses to judge by eye", r.bili.slice(0, 60));
-    ok(/[Aa]naemia/.test(r.hgb), "for a low count she asks what has been taken off", r.hgb.slice(0, 60));
-    ok(/pressure/.test(r.pip), "for a high peak pressure she trades it against the CO2", r.pip.slice(0, 60));
-    ok(/[Ww]arm first/.test(r.cold), "for a cold baby she warms before anything else", r.cold.slice(0, 60));
-    ok(/[Nn]othing jumps out/.test(r.nothing),
-       "and on a baby with nothing wrong she says so, so it is not a reveal button", r.nothing.slice(0, 50));
-    ok(/light on that chest/.test(r.order),
-       "with two things wrong she names the one that will not wait", r.order.slice(0, 60));
+    ok(r.before === r.after,
+       "turning on every hidden diagnosis at once does not change what she says",
+       r.before + " -> " + r.after);
+    ok(r.beforeText === r.afterText, "not one word of it",
+       r.beforeText === r.afterText ? "identical" : "the text moved");
+    ok(r.told === "belly",
+       "but examining the baby and finding the belly does change it", r.before + " -> " + r.told);
+  });
 
-    var branches = ["pphn", "ptx", "rds", "sepsis", "nec", "glucose", "pda", "bili", "hgb", "pip", "cold", "nothing"];
-    var uniq = {}, dupes = [];
-    branches.forEach(function (k) {
-      if (uniq[r[k]]) dupes.push(k + " reads the same as " + uniq[r[k]]);
-      uniq[r[k]] = k;
+  /* THE ONE A PLAYER REPORTED. "Mild retractions, some tachypnea, and a blood gas came back
+     low pH / high CO2 - the attending call doesn't seem to know about that."
+
+     Two causes. Nothing outranked a hunch, so a result the player had spent fifteen minutes
+     waiting for lost to whatever she happened to be thinking about. And every CO2 comparison
+     in the file read CL.ref.co2.hi, which DOES NOT EXIST - the reference band defines lo and
+     nothing else - so `co2 > undefined` was false every single time and she was structurally
+     incapable of seeing a high one. */
+  suite("A result that is back is the first thing she reads", async function () {
+    var r = await shift({ seed: 4242 }, function (G, w, D) {
+      var b = G.babies[0], out = {};
+      function base() {
+        b.h.consult = null; b.labs = {};
+        b.support.mode = "CPAP"; b.support.fio2 = 0.25; b.startSnapshot = { fio2: 0.25 };
+        b.mon.spo2 = 95; b.mon.temp = 36.9; b.mon.map = b.ga + 6;
+        b.mon.sys = Math.round(b.mon.map * 1.42); b.mon.dia = Math.round(b.mon.map * 0.78);
+        b.hist.spo2 = []; for (var i = 0; i < 30; i++) b.hist.spo2.push(0.85);
+        b.findings = withFinding({ Breathing: "mild retractions, some tachypnea" });
+        b.examinedAt = G.min;
+      }
+      base(); out.noGas = w.NG.consult(b, true).situation.id;
+
+      // the reported case, exactly
+      base();
+      b.labs.gas = lab(G, "pH 7.18 / CO2 68 / base deficit 3", { ph: 7.18, co2: 68, baseDeficit: 3 });
+      var c = w.NG.consult(b, true);
+      out.gas = c.situation.id; out.gasText = c.text;
+
+      // the other half of a gas: acid, with a CO2 that is fine
+      base();
+      b.labs.gas = lab(G, "pH 7.19 / CO2 40 / base deficit 14", { ph: 7.19, co2: 40, baseDeficit: 14 });
+      var c2 = w.NG.consult(b, true);
+      out.acid = c2.situation.id; out.acidText = c2.text;
+
+      // a film that is back and is not normal
+      base();
+      b.labs.cxr = lab(G, "a large air leak on one side", null, { f: "ptx" });
+      out.film = w.NG.consult(b, true).situation.id;
+
+      // a blood count that has noticed something
+      base();
+      b.labs.cbc = lab(G, "WBC 2.1", { wbc: 2.1, hgb: 12, crp: 40 });
+      out.cbc = w.NG.consult(b, true).situation.id;
+
+      // and a gas that is NORMAL is not a thing to talk about
+      base();
+      b.labs.gas = lab(G, "pH 7.35 / CO2 44 / base deficit 2", { ph: 7.35, co2: 44, baseDeficit: 2 });
+      out.normalGas = w.NG.consult(b, true).situation.id;
+      return out;
     });
-    ok(!dupes.length && branches.every(function (k) { return r[k] && r[k].length > 40; }),
-       "all twelve branches are reachable and each says something different",
-       dupes.join("; ") || branches.length + " distinct");
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.gas === "gasback", "a gas with a high CO2 is what she talks about", r.noGas + " -> " + r.gas);
+    ok(/68/.test(r.gasText) && /7\.18/.test(r.gasText),
+       "and she reads the actual numbers back", r.gasText.slice(0, 80));
+    /* The CO2 branch used to be unreachable, so she gave the generic answer and nobody
+       noticed. This is the sentence that was missing. */
+    ok(/CO2|clear/i.test(r.gasText) && /stiff|tiring/i.test(r.gasText),
+       "naming what a high CO2 with that much work actually means", r.gasText.slice(0, 120));
+    ok(/base deficit/i.test(r.acidText) && !/stiff lungs/i.test(r.acidText),
+       "an acidosis with a normal CO2 gets the circulation half, not the lung half",
+       r.acidText.slice(0, 110));
+    ok(r.film === "imaging", "a film that is back and abnormal is not left on the desk", r.film);
+    ok(r.cbc === "bloods", "nor a blood count that has noticed something", r.cbc);
+    ok(r.normalGas !== "gasback", "but a normal gas is not a conversation", r.normalGas);
+  });
+
+  suite("The attending reasons out loud rather than answering", async function () {
+    var r = await shift({ seed: 55 }, function (G, w, D) {
+      var b = G.babies[0], CL = w.Clinical, got = {};
+      function base() {
+        b.h.consult = null;
+        b.support.mode = "CPAP"; b.support.fio2 = 0.25; b.support.pip = 18; b.support.peep = 5; b.support.rate = 40;
+        b.startSnapshot = { fio2: 0.25 };
+        b.mon.spo2 = 95; b.mon.hr = 150; b.mon.rr = 45; b.mon.temp = 36.9;
+        b.mon.map = b.ga + 6; b.mon.sys = Math.round(b.mon.map * 1.42); b.mon.dia = Math.round(b.mon.map * 0.78);
+        b.hist.spo2 = []; for (var i = 0; i < 30; i++) b.hist.spo2.push(0.85);
+        b.labs = {}; b.findings = null; b.examinedAt = 0;
+        b.h.spellsThisHour = 0; b.h.spellsPrevHour = 0;
+      }
+      function seen(setup) { base(); setup(); return w.NG.consult(b, true); }
+      function asked(setup) { base(); setup(); return w.NG.consult(b, false); }
+
+      got.quiet       = seen(function () {});
+      got.suddendrop  = seen(function () { b.mon.spo2 = 72; b.support.fio2 = 0.75; });
+      got.gasback     = seen(function () { b.labs.gas = lab(G, "", { ph: 7.18, co2: 68, baseDeficit: 3 }); });
+      got.swinging    = seen(function () {
+        b.support.fio2 = 0.45;
+        b.hist.spo2 = []; for (var i = 0; i < 30; i++) b.hist.spo2.push(i % 2 ? 0.95 : 0.45);
+      });
+      got.o2creep     = seen(function () { b.support.fio2 = 0.48; });
+      got.bloods      = seen(function () { b.labs.cbc = lab(G, "", { wbc: 2.1, hgb: 12, crp: 40 }); });
+      got.spells      = seen(function () { b.h.spellsThisHour = 3; });
+      got.notright    = seen(function () { b.findings = withFinding({ Overall: "just does not look right — lethargic, poor tone" }); b.examinedAt = G.min; });
+      got.belly       = seen(function () { b.findings = withFinding({ Abdomen: "distended, firm, and discoloured; no bowel sounds" }); b.examinedAt = G.min; });
+      got.sugar       = seen(function () { b.labs.glucose = lab(G, "22 mg/dL", { glucose: 22 }); });
+      got.duct        = seen(function () { b.findings = withFinding({ Heart: "a systolic murmur, and the pulses feel bounding" }); b.examinedAt = G.min; });
+      got.jaundice    = seen(function () { b.labs.bili = lab(G, "13", { bili: 13, threshold: 14 }); });
+      got.pale        = seen(function () { b.labs.cbc = lab(G, "low", { wbc: 8, hgb: CL.hgb.flagAt - 1, crp: 2 }); });
+      got.ventsettings = seen(function () { b.support.mode = "VENT"; b.support.pip = 26; });
+      got.pressure    = seen(function () { b.mon.map = b.ga - 6; b.mon.sys = Math.round(b.mon.map * 1.42); b.mon.dia = Math.round(b.mon.map * 0.78); });
+      got.cold        = seen(function () { b.mon.temp = CL.temp.coldStress - 0.6; });
+      got.imaging     = seen(function () { b.labs.cxr = lab(G, "air leak", null, { f: "ptx" }); });
+
+      var both  = seen(function () { b.mon.spo2 = 72; b.support.fio2 = 0.75; b.mon.temp = CL.temp.coldStress - 0.6; });
+      var aside = seen(function () {
+        b.findings = withFinding({ Abdomen: "distended, firm, and discoloured; no bowel sounds" });
+        b.examinedAt = G.min; b.mon.temp = CL.temp.coldStress - 0.6;
+      });
+      var unsure = asked(function () { b.support.fio2 = 0.48; });
+
+      var out = { lead: both.situation.id, leadText: both.text,
+                  asideLead: aside.situation.id, asideText: aside.text,
+                  unsure: unsure.text };
+      Object.keys(got).forEach(function (k) { out[k] = { id: got[k].situation.id, text: got[k].text }; });
+      return out;
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+
+    var cases = ["quiet", "suddendrop", "gasback", "swinging", "o2creep", "bloods", "spells",
+                 "notright", "belly", "sugar", "duct", "jaundice", "pale", "ventsettings",
+                 "pressure", "cold", "imaging"];
+    var wrong = cases.filter(function (k) { return r[k].id !== k; })
+                     .map(function (k) { return k + " gave " + r[k].id; });
+    ok(!wrong.length, "every situation is reachable from evidence the player can see",
+       wrong.join("; ") || cases.length + " of " + cases.length);
+
+    /* The SHAPE, not the wording: two possibilities each with the thing that separates
+       them, one next step, one clue. A senior narrows; a textbook enumerates. */
+    /* THREE THINGS, EVERY TIME: what we know, what to do next, and why. Earlier drafts
+       offered a differential list and a "watch for" appendix, which is a textbook rather
+       than a telephone. */
+    var thin = cases.filter(function (k) {
+      var t = r[k].text;
+      return !(/^“[^”]+”/.test(t) && /\nDo — /.test(t) && /\nWhy — /.test(t));
+    });
+    ok(!thin.length, "each one says what we know, what to do next, and why",
+       thin.join(", ") || "all " + cases.length);
+
+    /* And "why" has to reason, not reassure. A why that is one short clause is a platitude
+       with a label on it. */
+    var shallow = cases.filter(function (k) {
+      var why = (r[k].text.split("\nWhy — ")[1] || "").split("\n")[0];
+      return why.length < 120;
+    });
+    ok(!shallow.length, "and the why is reasoning rather than a platitude",
+       shallow.join(", ") || "all " + cases.length);
+
+    /* IT IS A PHONE CALL, NOT AN ESSAY. The first draft of this ran to 1057-1697 characters
+       and read like a textbook held up to the receiver. */
+    var long = cases.filter(function (k) { return r[k].text.length > 800; })
+                    .map(function (k) { return k + " " + r[k].text.length; });
+    ok(!long.length, "and none of it is a wall of text", long.join(", ") ||
+       "longest " + Math.max.apply(null, cases.map(function (k) { return r[k].text.length; })) + " chars");
+
+    var same = [], seenText = {};
+    cases.forEach(function (k) {
+      if (seenText[r[k].text]) same.push(k + " reads the same as " + seenText[r[k].text]);
+      seenText[r[k].text] = k;
+    });
+    ok(!same.length, "and no two of them say the same thing", same.join("; ") || "all distinct");
+
+    ok(r.lead === "suddendrop",
+       "with two things visible at once she leads with the one that will not wait", r.lead);
+    ok(r.asideLead === "belly" && /And while I have you/.test(r.asideText) && /[Ww]arm/.test(r.asideText),
+       "and names the next most pressing on the way out", r.asideText.slice(-100));
+
+    /* TWO DOORS, TWO CALLS. Saying you are not sure used to open onto the identical
+       paragraph, which made the choice a decoration. */
+    ok(r.unsure.length < 220 && !/\nDo — /.test(r.unsure),
+       "saying you are not sure gets a question, not the lecture", r.unsure);
+    ok(r.unsure !== r.o2creep.text, "and it is not the same call with a different label");
+  });
+
+  suite("Ringing the attending back moves the conversation on", async function () {
+    var r = await shift({ seed: 707 }, function (G, w, D) {
+      var b = G.babies[0];
+      b.h.consult = null;
+      b.support.mode = "VENT"; b.support.pip = 26; b.support.peep = 5; b.support.rate = 45;
+      b.startSnapshot = { fio2: b.support.fio2 };
+      var first = w.NG.consult(b, true);
+
+      G.advance(20);
+      var idle = w.NG.consult(b, true);
+
+      /* The ten minutes matter: a result stamped the same minute she last spoke is a tie
+         rather than an answer. */
+      G.advance(10);
+      b.labs.gas = lab(G, "pH 7.21 / CO2 72 / base deficit 2", { ph: 7.21, co2: 72, baseDeficit: 2 });
+      var back = w.NG.consult(b, true);
+
+      b.support.fio2 = 0.9; b.mon.spo2 = 70;
+      var moved = w.NG.consult(b, true);
+
+      return { first: first.mode, firstText: first.text,
+               idle: idle.mode, idleText: idle.text,
+               back: back.mode, backText: back.text,
+               moved: moved.mode, movedId: moved.situation.id };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.first === "first" && r.idle === "nothingnew" && r.back === "follow",
+       "she knows whether this is a new case, a repeat, or an answer",
+       [r.first, r.idle, r.back].join(" -> "));
+    ok(/Nothing new since we spoke/.test(r.idleText),
+       "ringing back having done nothing does not get the same speech again", r.idleText.slice(0, 60));
+    ok(r.backText !== r.firstText, "and ringing back with a result does not repeat the first call");
+    ok(/72/.test(r.backText), "she reads the actual number you went and got", r.backText.slice(0, 90));
+    ok(r.moved === "changed", "and she notices when the baby has changed under her",
+       r.moved + " / " + r.movedId);
+  });
+
+  /* Reported from play: being asked "talk her through it / I am not sure" every single time
+     you pick up the phone. That choice is how you OPEN a case with her. Once she is holding
+     one, ringing back goes straight to the answer. */
+  suite("Ringing her back goes straight to the answer", async function () {
+    var r = await shift({ seed: 606, allowDeath: false }, async function (G, w, D) {
+      var b = G.babies[0];
+      b.support.mode = "VENT"; b.support.pip = 26;
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 150); });
+
+      function press() {
+        var btn = D.querySelector('[data-act="help"]');
+        if (btn) btn.click();
+        return new Promise(function (res) { setTimeout(res, 250); });
+      }
+      function opts() {
+        return [].slice.call(D.querySelectorAll(".dlg-opt")).map(function (o) { return o.textContent.trim(); });
+      }
+      function clear() {
+        var o = D.querySelectorAll(".dlg-opt");
+        if (o.length) o[0].click();
+        return new Promise(function (res) {
+          setTimeout(function () {
+            var c = D.querySelector(".dialog .btn"); if (c) c.click();
+            setTimeout(res, 200);
+          }, 200);
+        });
+      }
+
+      await press();
+      var firstOpts = opts();
+      var firstSaid = (D.querySelector(".dialog .said") || {}).textContent || "";
+      await clear();
+
+      await press();
+      var secondOpts = opts();
+      var secondSaid = (D.querySelector(".dialog .said") || {}).textContent || "";
+      var secondParas = [].slice.call(D.querySelectorAll(".dialog .said p")).length;
+      await clear();
+
+      await press();
+      var thirdOpts = opts();
+      await clear();
+
+      return { firstOpts: firstOpts, secondOpts: secondOpts, thirdOpts: thirdOpts,
+               firstSaid: firstSaid, secondSaid: secondSaid, secondParas: secondParas };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.firstOpts.length === 2 && /not sure/i.test(r.firstOpts.join(" ")),
+       "the first call asks how you want to open it", r.firstOpts.join(" / ").slice(0, 80));
+    ok(r.secondOpts.length === 1 && r.thirdOpts.length === 1,
+       "every call after that goes straight through",
+       r.secondOpts.join("") + " / " + r.thirdOpts.join(""));
+    ok(!/tell me what you are seeing/i.test(r.secondSaid),
+       "and she does not ask you to introduce the case again", r.secondSaid.slice(0, 60));
+    ok(/Do —/.test(r.secondSaid) && /Why —/.test(r.secondSaid),
+       "her answer is there the moment it opens", r.secondSaid.slice(0, 70));
+    /* It arrives in the opening block rather than the answer box, so its blank lines have
+       to become paragraphs there too - it rendered as one run-on wall at first. */
+    ok(r.secondParas >= 3, "laid out as paragraphs, not one run-on block", r.secondParas + " paragraphs");
+  });
+
+  /* A singular "they" takes a plural verb. A player reported "They is in air", which is what
+     concatenating a verb after pronoun.s produces - and the pronoun object has carried the
+     conjugations all along. This sweeps every situation, both doors, all three pronouns. */
+  suite("Everything she says agrees with the baby's pronouns", async function () {
+    var PLURAL = /\b[Tt]hey\s+(is|was|has|does|looks|needs|gets|goes|makes|starts|stays|behaves|slides|loses|feels|seems|keeps|sounds|recovers|breathes)\b/g;
+    var SINGULAR = /\b(?:she|he|She|He)\s+(?:are|were|have|do)\b/g;
+    var r = await shift({ seed: 3131 }, function (G, w, D) {
+      var b = G.babies[0], CL = w.Clinical, bad = [], checked = 0;
+      var SETS = [
+        { s: "she", o: "her", p: "her", S: "She", P: "Her", plural: false },
+        { s: "he", o: "him", p: "his", S: "He", P: "His", plural: false },
+        { s: "they", o: "them", p: "their", S: "They", P: "Their", plural: true }
+      ];
+      var CASES = [
+        function () {},
+        function () { b.mon.spo2 = 72; b.support.fio2 = 0.75; },
+        function () { b.labs.gas = lab(G, "", { ph: 7.18, co2: 68, baseDeficit: 3 }); },
+        function () { b.support.fio2 = 0.48; },
+        function () { b.labs.cbc = lab(G, "", { wbc: 2.1, hgb: 12, crp: 40 }); },
+        function () { b.h.spellsThisHour = 3; },
+        function () { b.findings = withFinding({ Overall: "just does not look right — lethargic, poor tone" }); b.examinedAt = G.min; },
+        function () { b.findings = withFinding({ Abdomen: "distended, firm, and discoloured; no bowel sounds" }); b.examinedAt = G.min; },
+        function () { b.labs.glucose = lab(G, "", { glucose: 22 }); },
+        function () { b.findings = withFinding({ Heart: "a systolic murmur, and the pulses feel bounding" }); b.examinedAt = G.min; },
+        function () { b.labs.bili = lab(G, "", { bili: 13, threshold: 14 }); },
+        function () { b.labs.cbc = lab(G, "", { wbc: 8, hgb: CL.hgb.flagAt - 1, crp: 2 }); },
+        function () { b.support.mode = "VENT"; b.support.pip = 26; },
+        function () { b.mon.map = b.ga - 6; b.mon.sys = Math.round(b.mon.map * 1.42); b.mon.dia = Math.round(b.mon.map * 0.78); },
+        function () { b.mon.temp = CL.temp.coldStress - 0.6; },
+        function () { b.labs.cxr = lab(G, "air leak", null, { f: "ptx" }); }
+      ];
+      SETS.forEach(function (set) {
+        b.pronoun = { s: set.s, o: set.o, p: set.p, S: set.S, P: set.P, set: "x", plural: set.plural,
+          is: set.plural ? "are" : "is", was: set.plural ? "were" : "was",
+          has: set.plural ? "have" : "has", does: set.plural ? "do" : "does",
+          Is: set.plural ? "Are" : "Is", Was: set.plural ? "Were" : "Was",
+          Has: set.plural ? "Have" : "Has", Does: set.plural ? "Do" : "Does",
+          v: function (verb) { return set.plural ? verb : verb + "s"; } };
+        CASES.forEach(function (setup, i) {
+          [true, false].forEach(function (told) {
+            b.h.consult = null; b.labs = {}; b.findings = null; b.examinedAt = 0;
+            b.support.mode = "CPAP"; b.support.fio2 = 0.25; b.support.pip = 18;
+            b.startSnapshot = { fio2: 0.25 };
+            b.mon.spo2 = 95; b.mon.temp = 36.9; b.mon.map = b.ga + 6;
+            b.mon.sys = Math.round(b.mon.map * 1.42); b.mon.dia = Math.round(b.mon.map * 0.78);
+            b.hist.spo2 = []; for (var j = 0; j < 30; j++) b.hist.spo2.push(0.85);
+            b.h.spellsThisHour = 0; b.h.spellsPrevHour = 0;
+            setup();
+            var t = w.NG.consult(b, told).text;
+            checked++;
+            var m = (t.match(PLURAL) || []).concat(t.match(SINGULAR) || []);
+            if (m.length) bad.push(set.s + " case " + i + (told ? " told" : " unsure") + ": " + m.join(", "));
+            // and the follow-up wording, which is a whole second body of prose
+            var t2 = w.NG.consult(b, told).text;
+            checked++;
+            var m2 = (t2.match(PLURAL) || []).concat(t2.match(SINGULAR) || []);
+            if (m2.length) bad.push(set.s + " follow " + i + ": " + m2.join(", "));
+          });
+        });
+      });
+      return { bad: bad, checked: checked };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.bad.length, "no verb disagrees with the pronoun it follows",
+       r.bad.slice(0, 4).join(" | ") || r.checked + " passages checked");
+  });
+
+  /* ---------------------------------------------------- answering a colleague
+     Reported from play: "the nurse says the oxygen is too high, I lower it, the message
+     stays up, and then it says the problem settled on its own - but I thought it resolved
+     because of what I did." Three separate causes, all measured across sixteen shifts by
+     doing, for every concern raised, the action that concern itself calls right. */
+  function raiseFor(G, w, b, def) {
+    var key = def.id + ":" + b.bed;
+    var whoId = typeof def.who === "function" ? def.who(b) : def.who;
+    var c = { key: key, id: def.id, def: def, bed: b.bed, who: whoId, at: G.min - 30,
+              seen: true, seenAt: G.min - 30, done: false, escalated: false,
+              said: "(raised for the test)", summaryText: def.id };
+    G.concerns.push(c);
+    return c;
+  }
+
+  suite("Everyone who asked for a thing hears about it when you do it", async function () {
+    /* With two colleagues at one cot both wanting the same thing, this used to answer
+       exactly one of them: the open conversation got first refusal and the function
+       RETURNED. The other was left with no reply at all, so when its problem cleared,
+       reviewConcerns saw no approving reply and stood it down as "settled without you" -
+       for something the player had just done. 27 of 306 across sixteen shifts, and 20 of
+       those went on to report settling on their own. */
+    var r = await shift({ seed: 8181, allowDeath: false }, function (G, w, D) {
+      var b = G.babies[0], defs = w.Events.CONCERNS;
+      // find two different concerns that want the same action, whatever they happen to be
+      var pair = null, act = null;
+      for (var i = 0; i < defs.length && !pair; i++) {
+        for (var j = i + 1; j < defs.length && !pair; j++) {
+          var a = defs[i].accept || {}, bb = defs[j].accept || {};
+          var shared = Object.keys(a).filter(function (k) { return bb[k]; })[0];
+          if (shared) { pair = [defs[i], defs[j]]; act = shared; }
+        }
+      }
+      if (!pair) return { missing: true };
+      var c1 = raiseFor(G, w, b, pair[0]), c2 = raiseFor(G, w, b, pair[1]);
+      G.openConcern[b.bed] = c1.key;                      // c1 is the conversation on screen
+      if (act.indexOf("__") === 0) G.noteChange(b, act); else G.doAction(b, act, { silent: true });
+      return { missing: false, act: act, ids: [c1.id, c2.id],
+               got1: (c1.replies || []).some(function (x) { return x.good === true; }),
+               got2: (c2.replies || []).some(function (x) { return x.good === true; }) };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "two concerns in the game want the same action", r.ids && r.ids.join(" + "));
+    if (r.missing) return;
+    ok(r.got1, "the colleague you are talking to answers", r.ids[0] + " via " + r.act);
+    ok(r.got2, "and so does the other one who asked for the same thing", r.ids[1] + " via " + r.act);
+  });
+
+  suite("Being told it is already done is not the same as silence", async function () {
+    /* A refused action never reached judgeConcern at all, so pressing exactly the right
+       button and being told "a culture was already drawn at 21:30" was met with nothing -
+       and when the problem cleared it was stood down as having sorted itself out. Seventeen
+       of 306, all on the concerns that matter most. */
+    var r = await shift({ seed: 8282, allowDeath: false }, function (G, w, D) {
+      var b = G.babies[0];
+      var def = w.Events.CONCERNS.filter(function (c) { return c.id === "notright"; })[0];
+      if (!def || !def.accept || !def.accept.culture) return { missing: true };
+      b.h.sepsis = 0.5; b.h.abx = false;
+      var c = raiseFor(G, w, b, def);
+      G.openConcern[b.bed] = c.key;
+      G.doAction(b, "culture", { silent: true });          // draws it for real
+      var afterFirst = (c.replies || []).length;
+      var histBefore = (b.history || []).length;
+      G.doAction(b, "culture", { silent: true });          // and now it is declined
+      var declined = (b.history || []).length === histBefore;
+      var replies = (c.replies || []).map(function (x) { return x.text; });
+      return { missing: false, declined: declined, afterFirst: afterFirst,
+               replies: replies, last: replies[replies.length - 1] || "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "the concern and the action both exist");
+    if (r.missing) return;
+    ok(r.declined, "the second culture really is declined", r.declined);
+    ok(r.replies.length > r.afterFirst,
+       "and the colleague still answers rather than standing there", r.last.slice(0, 70));
+    ok(/already done/i.test(r.last), "saying it is already covered", r.last.slice(0, 70));
+    ok(/waiting on|covered there/.test(r.last),
+       "and naming what is still outstanding instead", r.last.slice(-70));
+  });
+
+  suite("The oxygen dial tells the truth while you stand there", async function () {
+    /* renderBed() builds the controls once, on arrival, and only updateBedLive() runs after
+       that - but the nurse weans the oxygen on her own all night. A player who walked in at
+       forty percent still saw forty when the baby was on thirty-two, touching the dial
+       JUMPED the baby back up to the stale value, and the direction was judged against that
+       stale value too, so turning it "down" could raise the oxygen and score as a wean. */
+    var r = await shift({ seed: 8383, allowDeath: false }, async function (G, w, D) {
+      var b = G.babies[0];
+      b.support.fio2 = 0.40;
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 150); });
+      var onArrival = D.getElementById("rFio2") ? +D.getElementById("rFio2").value : null;
+
+      // the nurse weans it underneath the player, which is what she does all night
+      b.support.fio2 = 0.28; b.h.o2HandsOff = 0;
+      /* A tick, then the redraw the clock does on one. Waiting real milliseconds instead is
+         not the same thing: at the bedside rate five game minutes is ten real seconds, so a
+         350ms wait steps nothing and renders nothing. */
+      G.advance(10);
+      w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 120); });
+
+      var slider = D.getElementById("rFio2"), readout = D.getElementById("vFio2");
+      return { onArrival: onArrival,
+               real: Math.round(b.support.fio2 * 100),
+               slider: slider ? +slider.value : null,
+               readout: readout ? readout.textContent : "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.onArrival === 40, "the dial shows the real value when you walk in", r.onArrival);
+    ok(r.slider === r.real, "and follows the nurse when she weans it underneath you",
+       "dial " + r.slider + " vs baby " + r.real);
+    /* Against the baby, not against a number written here. The nurse carries on weaning
+       during the tick, so pinning "28" was testing the dice: it passed at offset 0 and
+       failed at offset 1 with the dial and the baby in perfect agreement at 27. */
+    ok(r.readout.indexOf(String(r.real)) >= 0, "the readout beside it agrees",
+       r.readout + " vs baby " + r.real);
+  });
+
+  suite("Answering a concern is credited to the player, not to luck", async function () {
+    /* The end-to-end version: raise every concern that names an action, do that action, and
+       check the colleague credits it. Measured before the fixes: 262 of 306 credited, 44
+       silent, 20 of those later reported as settling on their own. */
+    var r = await shift({ seed: 8484, allowDeath: false }, function (G, w, D) {
+      var b = G.babies[0], silent = [], uncredited = [], n = 0;
+      w.Events.CONCERNS.forEach(function (def) {
+        if (!def.accept || def.pool === "parent") return;
+        var keys = Object.keys(def.accept);
+        if (!keys.length) return;
+        G.concerns.length = 0;
+        G.openConcern = {};
+        var c = raiseFor(G, w, b, def);
+        G.openConcern[b.bed] = c.key;
+        n++;
+        // a player who reads what the colleague says and follows it through
+        for (var i = 0; i < keys.length; i++) {
+          var k = keys[i];
+          if (k.indexOf("__") === 0) G.noteChange(b, k); else G.doAction(b, k, { silent: true });
+          if ((c.replies || []).some(function (x) { return x.good === true; })) break;
+        }
+        if (!(c.replies || []).length) silent.push(def.id);
+        else if (!(c.replies || []).some(function (x) { return x.good === true; })) uncredited.push(def.id);
+      });
+      return { n: n, silent: silent, uncredited: uncredited };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.n > 15, "every concern that names an action was tried", r.n + " concerns");
+    ok(!r.silent.length, "none of them is met with silence", r.silent.join(", ") || "all answered");
+    ok(!r.uncredited.length, "and doing what was asked is credited, every time",
+       r.uncredited.join(", ") || r.n + " of " + r.n);
+  });
+
+  suite("Did that help? is answered where you are standing", async function () {
+    /* Twenty minutes after you move the oxygen, a nurse comes back and tells you what it
+       did. That is the whole point of arming a watch - and the answer went to the unit log,
+       at the bottom of a side panel that is closed at a bedside. Found by noticing that
+       G.watches was empty in 837 invariant sweeps and asking whether the system fired at all.
+
+       THIS IS THE THIRD TIME THIS SHAPE HAS BEEN FOUND HERE: the same fix was made for the
+       eighteen actions that answer with a confirmation, and again for the attending's
+       advice. Anything a colleague says in response to something the player did belongs
+       where the player is looking. */
+    var r = await shift({ seed: 3030, allowDeath: false }, async function (G, w, D) {
+      var idx = G.babies.findIndex(function (b) { return b.support.fio2 > 0.28; });
+      if (idx < 0) { G.babies[0].support.fio2 = 0.45; idx = 0; }
+      var b = G.babies[idx];
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: String(idx + 1), bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 200); });
+
+      var slider = D.getElementById("rFio2");
+      if (!slider) return { missing: true };
+      slider.value = Math.min(100, +slider.value + 8);
+      slider.dispatchEvent(new w.Event("input", { bubbles: true }));
+      slider.dispatchEvent(new w.Event("change", { bubbles: true }));
+      var armed = G.watches.length;
+
+      var note = null, histBefore = (b.history || []).length;
+      for (var i = 0; i < 6 && !note; i++) { G.advance(5); if (!G.watches.length && G.note) note = G.note; }
+      w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 150); });
+
+      var callout = D.getElementById("callout");
+      return { missing: false, armed: armed, fired: G.watches.length === 0,
+               note: note ? note.text : "", tag: note ? note.tag : "",
+               onScreen: callout ? callout.innerText : "",
+               newHistory: (b.history || []).slice(histBefore).map(function (e) { return e.text; }).join(" | ") };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "the oxygen control is on the panel");
+    if (r.missing) return;
+    ok(r.armed === 1, "moving the oxygen arms a follow-up", r.armed);
+    ok(r.fired, "and it comes back twenty minutes later");
+    ok(/saturation/.test(r.note), "as a note at the cot, not only in the log", r.note.slice(0, 70));
+    ok(r.tag === "follow-up", "tagged as the answer to what you did", r.tag);
+    ok(r.onScreen.indexOf(r.note) >= 0, "and it is actually on screen", r.onScreen.slice(-90));
+    /* The note is headed by whoever is speaking, so the text must not name her again. */
+    ok(!/^[A-Z][a-z]+ [A-Z][a-z]+:/.test(r.note),
+       "without repeating the name the callout already shows", r.note.slice(0, 40));
+    ok(/saturation/.test(r.newHistory),
+       "and it is in the cot's history to read back at six", r.newHistory.slice(0, 80));
+  });
+
+  /* ------------------------------------------------- the bedside panel is not a photograph
+     Reported from play: "when I switch to ventilator by intubating, the respiratory support
+     controls don't update - shouldn't it have PIP when it's on vent?" It should, and it did
+     not. renderBed() builds the controls once, on arrival, and only updateBedLive() runs
+     after that - which is right for numbers and wrong for the panel's SHAPE. The MODE
+     buttons called renderBed() directly and were fine; the Procedures button went through
+     doAction -> render() -> updateBedLive() and left a CPAP control on a ventilated baby. */
+  suite("Intubating from the button gives you the ventilator controls", async function () {
+    var r = await shift({ seed: 909, allowDeath: false }, async function (G, w, D) {
+      var idx = G.babies.findIndex(function (b) { return b.support.mode !== "VENT"; });
+      if (idx < 0) return { missing: true };
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: String(idx + 1), bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 200); });
+      var b = G.babies[idx];
+      var before = { pip: !!D.getElementById("rPip"), cpap: !!D.getElementById("rCpap") };
+
+      var btn = D.querySelector('[data-act="intubate"]');
+      if (!btn) return { missing: true };
+      btn.click();
+      await new Promise(function (res) { setTimeout(res, 300); });
+
+      var onSeg = D.querySelector("#segMode .on");
+      var out = { missing: false, mode: b.support.mode, before: before,
+                  pip: !!D.getElementById("rPip"), peep: !!D.getElementById("rPeep"),
+                  rate: !!D.getElementById("rRate"), cpap: !!D.getElementById("rCpap"),
+                  seg: onSeg ? onSeg.getAttribute("data-mode") : "",
+                  label: (D.querySelector('[data-act="intubate"] .t') || {}).textContent };
+
+      // and the label follows the baby: a tube that has slipped is re-sited, not intubated
+      b.h.ettDisplaced = true;
+      G.advance(5); w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 200); });
+      out.labelAfterSlip = (D.querySelector('[data-act="intubate"] .t') || {}).textContent;
+
+      // coming back off it puts the CPAP control back
+      b.h.ettDisplaced = false;
+      var ex = D.querySelector('[data-act="extubate"]');
+      if (ex) ex.click();
+      await new Promise(function (res) { setTimeout(res, 300); });
+      out.modeAfterExtubate = b.support.mode;
+      out.pipAfterExtubate = !!D.getElementById("rPip");
+      out.cpapAfterExtubate = !!D.getElementById("rCpap");
+      return out;
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "there is a baby to intubate and a button to do it with");
+    if (r.missing) return;
+    ok(!r.before.pip, "no ventilator controls before you intubate", String(r.before.pip));
+    ok(r.mode === "VENT", "the button really does put the baby on a ventilator", r.mode);
+    ok(r.pip && r.peep && r.rate,
+       "and the panel now has a peak pressure, a PEEP and a rate",
+       "pip " + r.pip + " peep " + r.peep + " rate " + r.rate);
+    ok(!r.cpap, "with the CPAP control gone");
+    ok(r.seg === "VENT", "and the mode buttons agree", r.seg);
+    ok(r.labelAfterSlip === "Re-site the tube",
+       "a tube that slips renames the button without leaving the cot", r.label + " -> " + r.labelAfterSlip);
+    ok(r.modeAfterExtubate === "CPAP" && !r.pipAfterExtubate && r.cpapAfterExtubate,
+       "and extubating from the button puts the CPAP control back",
+       r.modeAfterExtubate + " pip:" + r.pipAfterExtubate + " cpap:" + r.cpapAfterExtubate);
+  });
+
+  suite("A dial that something else moves follows it", async function () {
+    /* The oxygen one was found first, but it is a class: stopping the feeds zeroes the feed
+       rate, the hypoglycaemia crisis turns the dextrose and the drip up, and re-siting a
+       tube rewrites PIP without changing the mode. Each of those left a control showing a
+       number that had stopped being true - and touching it wrote the stale value back. */
+    var r = await shift({ seed: 5150, allowDeath: false }, async function (G, w, D) {
+      var idx = 0;
+      var b = G.babies[idx];
+      b.support.mode = "VENT"; b.support.pip = 20; b.support.peep = 5; b.support.rate = 40;
+      b.h.feedsMlKgD = 60; b.h.ivRate = 60; b.h.dexPct = 5;
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: String(idx + 1), bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 250); });
+
+      function read() {
+        var dex = D.querySelector("#segDex .on");
+        return { pip: +((D.getElementById("rPip") || {}).value),
+                 feed: +((D.getElementById("rFeed") || {}).value),
+                 iv: +((D.getElementById("rIv") || {}).value),
+                 dex: dex ? dex.getAttribute("data-dex") : "",
+                 feedTxt: (D.getElementById("vFeed") || {}).textContent || "" };
+      }
+      var before = read();
+
+      // everything moved from somewhere other than the control itself
+      b.h.feedsMlKgD = 0; b.h.ivRate = 80; b.h.dexPct = 12.5; b.support.pip = 26;
+      G.advance(5); w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 250); });
+      var after = read();
+
+      // and a control with a hand on it is left alone, or the value jumps under a thumb
+      var slider = D.getElementById("rPip");
+      slider.focus();
+      b.support.pip = 14;
+      G.advance(5); w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 200); });
+      var whileHeld = +slider.value;
+      slider.blur();
+      G.advance(5); w.NG.render();
+      await new Promise(function (res) { setTimeout(res, 200); });
+      return { before: before, after: after, whileHeld: whileHeld,
+               afterRelease: +((D.getElementById("rPip") || {}).value), mode: b.support.mode };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.after.feed === 0 && /^0 /.test(r.after.feedTxt),
+       "stopping the feeds moves the feed dial and its readout",
+       r.before.feed + " -> " + r.after.feed + " (" + r.after.feedTxt + ")");
+    ok(r.after.iv === 80, "the drip follows the crisis that turned it up", r.before.iv + " -> " + r.after.iv);
+    ok(r.after.dex === "12.5", "and so does the dextrose", r.before.dex + " -> " + r.after.dex);
+    ok(r.after.pip === 26 && r.mode === "VENT",
+       "a ventilator number can change without the mode changing", r.before.pip + " -> " + r.after.pip);
+    ok(r.whileHeld === 26, "a dial with a hand on it is left where the hand put it", r.whileHeld);
+    ok(r.afterRelease === 14, "and catches up once it is let go", r.afterRelease);
+  });
+
+  suite("The bedside panel is not rebuilt for nothing", async function () {
+    /* The shape check runs on every tick, so it has to be stable: an unstable signature
+       would throw the panel's DOM away several times a minute and take the player's focus,
+       their scroll position and any half-made adjustment with it. */
+    var r = await shift({ seed: 4242, allowDeath: false }, async function (G, w, D) {
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 250); });
+      var panel = D.querySelector('[data-panel="respiratory-support"]');
+      var acts = D.querySelector(".act-grid");
+      for (var i = 0; i < 12; i++) { G.advance(5); w.NG.render(); }
+      await new Promise(function (res) { setTimeout(res, 250); });
+      return { samePanel: panel === D.querySelector('[data-panel="respiratory-support"]'),
+               sameActs: acts === D.querySelector(".act-grid") };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.samePanel && r.sameActs,
+       "an hour of quiet ticks leaves the panel exactly where it was",
+       "panel " + r.samePanel + ", actions " + r.sameActs);
+  });
+
+  /* --------------------------------------------- the one that killed a baby
+     Reported from play: a term meconium-aspiration baby with clamped lung vessels died at
+     00:45, the player had FOUND the diagnosis, and neither the hints nor the attending
+     helped. Measured afterwards, playing the archetype several ways:
+
+         do nothing                       survived, saturations 87-90
+         examine / suction / send tests    DIED at 155 minutes, saturations 59-73
+         change your mind at 60 or 90 min  survived
+         change your mind at 120 min       DIED at 155, saturation 74 AND CLIMBING
+
+     Doing nothing beat doing the obvious thing, and the obvious thing is what the interface
+     invites. Three causes, and the worst of them was the attending: at 79 percent on 85
+     percent oxygen with a 24-point swing she said "hands on her and a light on that chest,
+     now" - the single worst thing you can do to those vessels - and then, in the same
+     breath, "and while I have you, minimal handling". */
+  suite("The attending never sends you to handle a baby whose problem is handling", async function () {
+    var r = await shift({ seed: 4242, allowDeath: false }, function (G, w, D) {
+      var b = G.babies[0], bad = [], said = [], n = 0;
+      var HANDS = /hands on|light on that chest|listen to both|feel the|lay hands|suction|go and look|put their hands/i;
+      var MORE = /\b(film|gas|echo|count|culture|scan|x-ray)\b/i;
+
+      function flat(v, n2) { b.hist.spo2 = []; for (var i = 0; i < n2; i++) b.hist.spo2.push(v); }
+      function swingy(n2) { b.hist.spo2 = []; for (var i = 0; i < n2; i++) b.hist.spo2.push(i % 2 ? 0.9 : 0.45); }
+      var echo = function () { b.labs.echo = { v: "pressures high", at: G.min, f: "closed", pphn: true }; };
+
+      var STATES = [
+        ["swinging, echo not back", function () { b.h.pphn = 0.45; b.support.fio2 = 0.55; b.mon.spo2 = 84; swingy(30); }],
+        ["low and swinging",        function () { b.h.pphn = 0.45; b.support.fio2 = 0.85; b.mon.spo2 = 72; swingy(30); }],
+        /* The real endgame: clamped vessels swing until they stop swinging and simply sit
+           low. That is the story ending, not a different story - and it is the shape the
+           player who reported this was looking at when she told them to press on the chest. */
+        ["swung for hours, now flat low", function () {
+          b.h.pphn = 0.5; b.support.fio2 = 0.9; b.mon.spo2 = 58;
+          b.hist.spo2 = [];
+          for (var i = 0; i < 50; i++) b.hist.spo2.push(i % 2 ? 0.9 : 0.45);
+          for (var j = 0; j < 22; j++) b.hist.spo2.push(0.45);
+        }],
+        ["echo back, still low",    function () { echo(); b.support.fio2 = 0.9; b.mon.spo2 = 62; swingy(30); }],
+        ["echo back, flat and low", function () { echo(); b.support.fio2 = 0.9; b.mon.spo2 = 55; flat(0.4, 72); }],
+        ["echo back, recovering",   function () { echo(); b.support.fio2 = 0.5; b.mon.spo2 = 93; swingy(30); }],
+        ["echo back, examined",     function () { echo(); b.support.fio2 = 0.85; b.mon.spo2 = 70; swingy(30);
+                                                  b.findings = w.Sim.examine(b); b.examinedAt = G.min; }]
+      ];
+
+      STATES.forEach(function (st, si) {
+        [true, false].forEach(function (told) {
+          b.h.aspiration = 0.55; b.h.pain = 0.6; b.h.handling = 0.8;
+          b.labs = {}; b.findings = null; b.examinedAt = 0;
+          b.support.mode = "CPAP"; b.h.pphn = 0.45; b.h.consult = null;
+          st[1]();
+          var c = w.NG.consult(b, told); n++;
+          var instr = told ? (c.text.match(/\nDo — ([^\n]*)/) || ["", ""])[1] : c.text;
+          said.push(st[0] + "/" + (told ? "told" : "unsure") + " [" + c.situation.id + "]");
+          if (HANDS.test(instr)) bad.push(st[0] + " (" + c.situation.id + "): " + instr.slice(0, 70));
+          // and once the echo has answered it, she stops sending you for more tests
+          if (si >= 3 && MORE.test(instr)) bad.push("more tests after the echo: " + st[0] + ": " + instr.slice(0, 70));
+        });
+      });
+
+      // the one case where checking the chest IS the right call
+      b.labs = {}; b.h.consult = null; b.h.pphn = 0; b.support.fio2 = 0.9; b.mon.spo2 = 58;
+      flat(0.45, 72);
+      var leak = w.NG.consult(b, true);
+      return { n: n, bad: bad, said: said.join(" | "),
+               leakId: leak.situation.id, leakDo: (leak.text.match(/\nDo — ([^\n]*)/) || ["", ""])[1] };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.n === 14, "every shape this baby takes was asked, both ways in", r.n + " consults");
+    ok(!r.bad.length,
+       "she never recommends handling, and never more tests once the echo has answered it",
+       r.bad.slice(0, 3).join(" | ") || "all 14 safe");
+    /* A pneumothorax is SUDDEN. The tell is the trace: a baby who swung all night and has
+       gone quiet is the vessels; one that was never labile and is simply low is a chest to
+       look at. She has to be able to tell those apart or the fix is just a muzzle. */
+    ok(r.leakId === "suddendrop" && /chest/i.test(r.leakDo),
+       "but a baby that never swung still gets its chest looked at", r.leakId + ": " + r.leakDo.slice(0, 50));
+  });
+
+  suite("Minimal handling is a treatment you keep choosing", async function () {
+    var r = await shift({ seed: 4242, allowDeath: false }, function (G, w, D) {
+      var b = G.babies[0];
+      b.h.pphn = 0.45; b.h.handling = 0.9; b.h.protectedMin = 0; b.h.comfortActs = 0;
+      var before = b.h.handling;
+      G.doAction(b, "comfort", { silent: true });
+      var afterComfort = { handling: b.h.handling, protectedMin: b.h.protectedMin };
+
+      // an hour of protected care, and the unit really does handle the baby less
+      var handledUnderProtection = 0, h0 = b.h.handling;
+      for (var i = 0; i < 12; i++) { G.advance(5); }
+      handledUnderProtection = b.h.handling;
+      var protectedLeft = b.h.protectedMin;
+
+      // and the nurse says when it has lapsed
+      b.h.protectedMin = 0; b.mon.spo2 = 80; b.h.pphn = 0.45;
+      var def = w.Events.CONCERNS.filter(function (c) { return c.id === "unprotected"; })[0];
+      var fires = def ? def.cond(G, b) : false;
+      var quietAfter = null;
+      if (def) { G.doAction(b, "comfort", { silent: true }); quietAfter = !def.cond(G, b); }
+
+      // ordering a film is a probe, not four examinations
+      var beforeImg = b.h.handling;
+      G.orderImaging(b, "hus");
+      return { before: before, afterComfort: afterComfort, protectedLeft: protectedLeft,
+               handledUnderProtection: handledUnderProtection,
+               fires: fires, quietAfter: quietAfter,
+               imagingCost: +(b.h.handling - beforeImg).toFixed(2),
+               help: def ? def.help : "", accepts: def ? Object.keys(def.accept).join(",") : "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.afterComfort.handling < r.before, "comfort care takes handling off",
+       r.before.toFixed(2) + " -> " + r.afterComfort.handling.toFixed(2));
+    ok(r.afterComfort.protectedMin === 180,
+       "and buys three hours of protected care", r.afterComfort.protectedMin + " min");
+    ok(r.protectedLeft === 120, "which ticks down towards running out",
+       r.protectedLeft + " min left after an hour");
+    /* Protected care has to mean something to the unit, not just to the physiology: while
+       it is running the obs are clustered, so handling stops climbing back. Without this,
+       pressing Comfort care once and walking away did nothing at all. */
+    ok(r.handledUnderProtection <= r.afterComfort.handling + 0.35,
+       "and the unit clusters its cares while it lasts",
+       r.afterComfort.handling.toFixed(2) + " -> " + r.handledUnderProtection.toFixed(2) + " over an hour");
+    ok(r.fires, "when it lapses on a baby with clamped vessels, somebody says so");
+    ok(r.quietAfter, "and renewing it settles the question");
+    ok(/three hours/.test(r.help) && /renewing/.test(r.help) && /test/.test(r.help),
+       "the advice says to keep coming back to it, and warns off more tests", r.help.slice(0, 90));
+    /* An examination costs 0.25 and handling caps at 1.0, so 0.8 pinned a baby at the
+       ceiling for four hours - for obeying the instruction to get an echo. */
+    ok(r.imagingCost <= 0.45, "and a film costs a probe's worth of handling, not four exams'",
+       r.imagingCost);
+  });
+
+  /* Reported from play: "when I click to change the dextrose level it makes the screen jump."
+     It did. The handler called renderBed(), which throws the entire bedside away and builds
+     it again, to toggle one button's highlight - so choosing D10 threw the page back to the
+     top. Nothing about the panel's shape changes; the segment's own highlight and the
+     glucose infusion rate line underneath it are both refreshed on the tick already. */
+  suite("Choosing a dextrose strength does not throw the page", async function () {
+    var r = await shift({ seed: 4242, allowDeath: false }, async function (G, w, D) {
+      var b = G.babies[0];
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 250); });
+
+      var fluids = D.querySelector('[data-panel="fluids-feeds"]');
+      if (!fluids) return { missing: true };
+      fluids.scrollIntoView({ block: "center" });
+      await new Promise(function (res) { setTimeout(res, 200); });
+
+      var topBefore = Math.round(fluids.getBoundingClientRect().top);
+      var winBefore = Math.round(w.scrollY);
+      var was = b.h.dexPct;
+      var want = was === 5 ? 10 : 5;
+
+      var btn = D.querySelector('#segDex [data-dex="' + want + '"]');
+      if (!btn) return { missing: true };
+      btn.click();
+      await new Promise(function (res) { setTimeout(res, 300); });
+
+      var after = D.querySelector('[data-panel="fluids-feeds"]');
+      var on = D.querySelector("#segDex .on");
+      return { missing: false,
+               moved: Math.abs(Math.round(after.getBoundingClientRect().top) - topBefore),
+               winMoved: Math.abs(Math.round(w.scrollY) - winBefore),
+               sameNode: fluids === after,
+               dex: b.h.dexPct, want: want,
+               highlighted: on ? +on.getAttribute("data-dex") : null,
+               gir: (D.getElementById("girLine") || {}).textContent || "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "the fluids panel and its dextrose buttons are there");
+    if (r.missing) return;
+    ok(r.dex === r.want, "the click changes the dextrose", r.dex + "%");
+    ok(r.moved === 0 && r.winMoved === 0, "and the page does not move under the player",
+       "panel " + r.moved + "px, window " + r.winMoved + "px");
+    ok(r.sameNode, "because the panel is never rebuilt for it");
+    ok(r.highlighted === r.want, "the button highlights in the same frame as the click", r.highlighted);
+    ok(r.gir.indexOf(String(r.want)) >= 0,
+       "and the glucose infusion rate underneath recalculates", r.gir.slice(0, 70));
+  });
+
+  suite("Changing the support mode keeps your place", async function () {
+    /* The mode buttons DO change the panel's shape, so they really do rebuild - but they
+       used to do it by replacing the stage outright, which threw the page to the top and
+       lost whatever had focus. They go through the scroll-and-focus preserving path now. */
+    var r = await shift({ seed: 4242, allowDeath: false }, async function (G, w, D) {
+      var b = G.babies[0];
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 250); });
+      var resp = D.querySelector('[data-panel="respiratory-support"]');
+      resp.scrollIntoView({ block: "center" });
+      await new Promise(function (res) { setTimeout(res, 200); });
+      var winBefore = Math.round(w.scrollY);
+      var target = b.support.mode === "CPAP" ? "NC" : "CPAP";
+      var btn = D.querySelector('#segMode [data-mode="' + target + '"]');
+      if (!btn) return { missing: true };
+      btn.click();
+      await new Promise(function (res) { setTimeout(res, 400); });
+      var on = D.querySelector("#segMode .on");
+      return { missing: false, winMoved: Math.abs(Math.round(w.scrollY) - winBefore),
+               mode: b.support.mode, target: target,
+               seg: on ? on.getAttribute("data-mode") : "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "the mode buttons are there");
+    if (r.missing) return;
+    ok(r.mode === r.target, "the mode really changes", r.mode);
+    ok(r.seg === r.target, "and the buttons agree", r.seg);
+    ok(r.winMoved === 0, "without throwing the page back to the top", r.winMoved + "px");
+  });
+
+  suite("A result you waited for says so where you are standing", async function () {
+    /* The fourth of this family. Confirmations went only to the log; the attending's advice
+       went only to the log; the follow-up watch went only to the log. A result you sent for
+       a quarter of an hour ago used to arrive by quietly appearing in a panel that may well
+       be scrolled off the screen. */
+    var r = await shift({ seed: 4242, allowDeath: false }, async function (G, w, D) {
+      D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
+      await new Promise(function (res) { setTimeout(res, 250); });
+      var b = G.babies[0], other = G.babies[1];
+      if (!other) return { missing: true };
+
+      b.pending = []; G.note = null;
+      G.orderImaging(b, "axr", true);
+      var note = null;
+      for (var i = 0; i < 12 && !b.labs.cxr; i++) { G.advance(5); w.NG.render(); if (b.labs.cxr) note = G.note; }
+      await new Promise(function (res) { setTimeout(res, 200); });
+      var callout = (D.getElementById("callout") || {}).innerText || "";
+
+      /* And a result for a baby you are NOT standing at stays as quiet as it was - setNote
+         only lands on the cot you are actually at. */
+      G.note = null; other.pending = [];
+      G.orderLab(other, "glucose");
+      for (var j = 0; j < 8 && !other.labs.glucose; j++) { G.advance(5); w.NG.render(); }
+      return { missing: false, film: b.labs.cxr && b.labs.cxr.v,
+               tag: note ? note.tag : "", noteText: note ? note.text : "",
+               callout: callout,
+               otherBack: !!(other.labs.glucose),
+               leaked: G.note ? G.note.text : "" };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(!r.missing, "there are two babies to tell apart");
+    if (r.missing) return;
+    ok(r.film, "the film came back", (r.film || "").slice(0, 50));
+    ok(r.tag === "result", "and it is announced at the cot as a result", r.tag);
+    ok(/back:/.test(r.noteText) && r.noteText.indexOf(r.film) >= 0,
+       "carrying what it actually said", r.noteText.slice(0, 70));
+    ok(r.callout.indexOf(r.film) >= 0, "and it is on screen, not only in the log",
+       r.callout.slice(-80));
+    ok(r.otherBack && !r.leaked,
+       "while a result for the cot you are not at stays quiet", r.leaked || "quiet");
+  });
+
+  /* --------------------------------------------------------------- the debrief
+     Reported: the wrap-up was long, you had to scroll to work anything out, and the language
+     was sometimes cryptic. The same baby's facts were spread across three sections a page
+     apart - a handover list, an unanswered-concern list, and a bed-by-bed reveal - so piecing
+     one cot together meant scrolling between them and holding it in your head.
+
+     It is one card per bed now, worst first, each answering the same four questions in the
+     same order. This checks that nothing the model knows about is left for the reader to go
+     hunting for. */
+  suite("The debrief is one card per bed, worst first", async function () {
+    var r = await shift({ seed: 2024, allowDeath: true }, async function (G, w, D) {
+      var guard = 0;
+      while (G.running && guard++ < 220) {
+        var sc = D.getElementById("scrim");
+        if (sc) { var o = D.querySelectorAll(".dlg-opt"); if (o.length) o[guard % o.length].click();
+                  var c = D.querySelector(".dialog .btn"); if (c) c.click();
+                  sc = D.getElementById("scrim"); if (sc) { sc.remove(); G.dialogOpen = false; G.paused = false; } }
+        if (guard % 11 === 0) { var b = G.babies[guard % G.babies.length];
+                                try { G.doAction(b, "examine", { silent: true }); } catch (e) {} }
+        G.advance(10);
+      }
+      await new Promise(function (res) { setTimeout(res, 250); });
+
+      var reps = [].slice.call(D.querySelectorAll(".bedrep"));
+      var missing = [], thin = [];
+      G.babies.forEach(function (b) {
+        var card = D.getElementById("bed" + b.bed);
+        if (!card) { missing.push("no card for bed " + b.bed); return; }
+        var ct = card.innerText;
+        ["WHAT WAS GOING ON", "WHAT YOU DID", "WHAT WAS STILL WRONG AT SEVEN"].forEach(function (q) {
+          if (ct.indexOf(q) < 0) thin.push("bed " + b.bed + " has no '" + q + "'");
+        });
+        if (ct.indexOf("WHAT TO DO INSTEAD") < 0 && ct.indexOf("WORTH KEEPING IN MIND") < 0)
+          thin.push("bed " + b.bed + " has no advice");
+        /* EVERY open problem the model knows about has to be ON that baby's card. */
+        (w.NG.reportOpenAt(b) || []).forEach(function (x) {
+          if (ct.indexOf(String(x.t).slice(0, 28)) < 0 &&
+              ct.indexOf(String(x.t).charAt(0).toUpperCase() + String(x.t).slice(1, 28)) < 0)
+            missing.push("bed " + b.bed + ": " + String(x.t).slice(0, 40));
+        });
+      });
+
+      var TAGS = ["DIED", "STILL WRONG", "LOOSE END", "NOBODY CAME", "HANDED OVER WELL"];
+      var ranks = reps.map(function (n) { return TAGS.indexOf(n.querySelector(".br-tag").textContent.toUpperCase()); });
+      var order = true;
+      for (var i = 1; i < ranks.length; i++) if (ranks[i] < ranks[i - 1]) order = false;
+
+      var txt = D.body.innerText;
+      return { cards: reps.length, babies: G.babies.length, missing: missing, thin: thin,
+               ordered: order, ranks: ranks.join(","),
+               jumps: D.querySelectorAll(".bedjump .bj").length,
+               jargon: /A's and B's/.test(txt),
+               beforeScoring: txt.indexOf("The beds") < txt.indexOf("How the night went") };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.cards === r.babies, "one card per baby, no more and no fewer",
+       r.cards + " cards, " + r.babies + " babies");
+    ok(!r.thin.length, "each one says what was going on, what you did, what was left, what to do instead",
+       r.thin.slice(0, 3).join("; ") || "all four, every card");
+    ok(!r.missing.length, "and nothing the model knows is still wrong is left off its baby's card",
+       r.missing.slice(0, 3).join("; ") || "all accounted for");
+    ok(r.ordered, "the cots that need something doing come first", r.ranks);
+    ok(r.jumps === r.babies, "with a jump link straight to each one", r.jumps + " links");
+    ok(r.beforeScoring, "and the teaching sits above the marking");
+    /* "A's and B's" is what a unit says out loud and it is not what this game says anywhere
+       else - it calls them spells, in the handover, in the concerns and on the monitor. */
+    ok(!r.jargon, "without shorthand the rest of the game never uses");
+  });
+
+  suite("A card says what was pressed, in the words on the buttons", async function () {
+    var r = await shift({ seed: 88, allowDeath: false }, async function (G, w, D) {
+      var b = G.babies[0];
+      G.doAction(b, "examine", { silent: true });
+      G.doAction(b, "examine", { silent: true });
+      G.doAction(b, "culture", { silent: true });
+      G.doAction(b, "help", { silent: true });
+      w.NG.consult(b, true);                       // the dialog would have written the history
+      w.NG.recordHistory(b, "did", 'Dr. Halvorsen — "something she said"');
+      G.min = 12 * 60; w.NG.endShift();
+      await new Promise(function (res) { setTimeout(res, 250); });
+      var card = D.getElementById("bed" + b.bed);
+      var did = card ? (card.querySelector(".br-did") || {}).textContent || "" : "";
+      return { did: did, card: !!card };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
+    ok(r.card, "the baby got a card");
+    ok(/Examine ×2/.test(r.did), "repeats are counted rather than listed twice", r.did);
+    ok(/Blood culture/.test(r.did), "and each action is named the way its button is", r.did);
+    /* The attending writes herself into the history as a name and a quote, because that is
+       what you want to read back at six from the cot. In the debrief it has to be the
+       control the player actually pressed. */
+    ok(/Call the attending/.test(r.did) && !/Halvorsen/.test(r.did),
+       "including the one that records itself as a person", r.did);
   });
 
   /* ================================================================== the new concerns */
@@ -1564,19 +2585,29 @@
   });
 
   suite("Routine cares happen whether or not you decide anything", async function () {
+    /* BUDGET THE SHIFT. This watched for 72 ticks of ten minutes - seven hundred and twenty
+       minutes, the entire night - and then ran 40 more to watch the handling settle. Those
+       forty did nothing at all: G.advance is a no-op once the clock is past the end, so the
+       settling half of the test never ran and whether it passed came down to where handling
+       happened to be when the night ended. Measured across six seed alignments it failed
+       three of them, and had simply been landing well.
+
+       450 minutes to watch the cares come round, 250 to watch handling fall, 700 in all. */
     var r = await shift({ seed: 1217 }, function (G, w, D) {
       var b = G.babies[0], peaks = 0, last = 0, maxH = 0;
       b.h.handling = 0;
-      for (var i = 0; i < 72; i++) {
+      for (var i = 0; i < 45; i++) {
         G.advance(10);
         maxH = Math.max(maxH, b.h.handling);
         if (b.h.handling > last + 0.2) peaks++;
         last = b.h.handling;
       }
       var settled = b.h.handling;
-      for (var j = 0; j < 40; j++) { b.h.caresIn = 9999; G.advance(10); }
-      return { peaks: peaks, maxH: maxH, settled: settled, after: b.h.handling };
+      for (var j = 0; j < 25; j++) { b.h.caresIn = 9999; G.advance(10); }
+      return { peaks: peaks, maxH: maxH, settled: settled, after: b.h.handling,
+               ranOut: !G.running };
     });
+    ok(!r.ranOut, "the fixture stayed inside one shift", r.ranOut ? "clock ran out" : "ok");
     ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
     ok(r.peaks >= 2, "a baby is handled several times a night by somebody other than you", r.peaks);
     ok(r.after < 0.12, "and handling settles again afterwards - it used to only ever accumulate",
@@ -1610,7 +2641,19 @@
     tubemoved:      function (b) { b.support.mode = "VENT"; b.h.ettDisplaced = true; },
     // a bleed that got bigger tonight: real, and thankfully not a nightly occurrence
     fontanelle:     function (b) { b.h.ivhWindow = true; b.h.ivhAtHandover = 1; b.h.ivhGrade = 2;
-                                   b.h.fontanelleFull = true; b.labs.hus = null; }
+                                   b.h.fontanelleFull = true; b.labs.hus = null; },
+    /* A pressure clearly under the gestational age, and nobody on pressors yet. This one
+       used to rely on turning up by itself in six seeds, and at ?offset=2 it does not -
+       which made this suite report a missing concern when nothing was missing. A coverage
+       check that depends on the dice is not measuring coverage. */
+    lowbp:          function (b) { b.h.hypovolemia = 0.85; b.h.sepsis = 0.6; b.h.pressors = 0;
+                                   b.h.map = Math.min(b.h.map, b.ga - 6); },
+    /* Protected care that has lapsed on a baby with clamped lung vessels. It only exists
+       after the player has ALREADY settled this baby once, so it cannot turn up in six
+       played shifts where nobody has. */
+    unprotected:    function (b) { b.h.pphn = 0.5; b.h.comfortActs = 1; b.h.kangaroo = false;
+                                   b.h.protectedMin = 0; b.h.handling = 1; b.h.pain = 0.8;
+                                   b.support.mode = "CPAP"; b.support.fio2 = 0.6; }
   };
 
   suite("Every concern in the game can actually reach a player", async function () {
@@ -1754,6 +2797,10 @@
        one clean failure, it threw, because every assertion below dereferences the baby it
        did not find. The sibling suite above owns the question of how often it happens; this
        one owns what you can do about it when it does. */
+    /* Six tries rather than the default three: the census is four cots now instead of
+       five, and only the humidified isolettes - the babies small enough for half a degree
+       to matter - can have a porthole left open at all, so the event is rarer per shift
+       than it was. */
     var r = await shiftWhere({ seed: 7702, allowDeath: false }, function (x) { return !x.missing; },
         function (G, w, D) {
       var A = w.NG.ACTIONS, b = null, guard = 0;
@@ -1785,7 +2832,7 @@
                   same one paying twice, so count the action's own line. */
                scored: G.scoreItems.filter(function (x) { return /^Closed the isolette/.test(x.why); }).length,
                fromConcern: G.scoreItems.filter(function (x) { return /Close the isolette/.test(x.why); }).length };
-    });
+    }, 6);
     ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
     ok(!r.missing, "a porthole was left open on one of these nights",
        r.missing ? "none in " + r.tried + " shifts" : "found on shift " + r.tried);
@@ -2089,7 +3136,8 @@
       if (r.sheet && sheets.length < 2) sheets.push(r.sheet);
     }
     ok(!errs.length, "no exceptions", errs.slice(0, 2).join(" | "));
-    ok(inWindow > 10, "some babies are young enough for it to be possible", inWindow + " across 10 shifts");
+    // a resident census is four cots now, so ten shifts offer proportionally fewer candidates
+    ok(inWindow > 7, "some babies are young enough for it to be possible", inWindow + " across 10 shifts");
     ok(arrived > 0 && arrived < inWindow,
        "roughly a fifth of them arrive with one, and not all of them",
        arrived + " of " + inWindow);
@@ -2358,7 +3406,7 @@
     ok(r.after.difficulty === "student", "with the level it was played at", r.after.difficulty);
     ok(r.after.hints === false, "the thinking-prompts setting", "" + r.after.hints);
     ok(r.after.allowDeath === false, "and the death setting", "" + r.after.allowDeath);
-    ok(r.babies === 4, "and it really was a student shift, so those settings matter", r.babies);
+    ok(r.babies === 3, "and it really was a student shift, so those settings matter", r.babies);
   });
 
 
@@ -2796,8 +3844,10 @@
           G.advance(15);
         }
         var txt = D.body.innerText;
-        // the handover card itself, for the reason given in the suite above
-        var hoCard = D.querySelector(".handover-open");
+        /* What is still wrong with THIS baby now lives on this baby's own cot card rather
+           than in a handover section listing every cot, which is a stronger question to ask:
+           it checks the problem reached the right bed, not just the page. */
+        var hoCard = D.getElementById("bed" + b.bed);
         var ho = hoCard ? hoCard.innerText : "";
         return { end: b.h.pphn, fixed: !!pz.dx.fixed(b), found: !!pz.dx.found(b),
                  flagged: /lung blood vessels were still clamped/.test(ho),
@@ -2863,7 +3913,10 @@
        minutes vanished and the screen did not change. */
     var r = await shift({ seed: 909, allowDeath: false }, async function (G, w, D) {
       var b = G.babies[0];
-      b.h.pphn = 0.4;                                    // so she has something specific to say
+      /* Something specific to say - said in the only language she understands now, which is
+         evidence the player could have given her. Setting b.h.pphn used to do this; it does
+         nothing at all any more, which is the point of the rewrite. */
+      b.support.mode = "VENT"; b.support.pip = 26;
       D.dispatchEvent(new w.KeyboardEvent("keydown", { key: "1", bubbles: true }));
       await new Promise(function (res) { setTimeout(res, 150); });
       var before = G.min;
@@ -2887,8 +3940,14 @@
       var cont = D.querySelector(".dialog .btn");
       if (cont) cont.click();
       await new Promise(function (res) { setTimeout(res, 200); });
+      /* The button has to say what the next press will cost. renderBed() builds it once on
+         arrival and only updateBedLive() runs after that, so it went on advertising ten
+         minutes for the rest of the visit while actually charging five. */
+      G.advance(5);
+      var costLabel = D.querySelector('[data-act="help"] .c');
+      costLabel = costLabel ? costLabel.textContent : "";
 
-      return { who: who, said: said, opts: opts, askedFirst: askedFirst, advice: advice,
+      return { costLabel: costLabel, who: who, said: said, opts: opts, askedFirst: askedFirst, advice: advice,
                open: !!D.querySelector(".dialog"), cost: G.min - before,
                helpAsked: b.h.helpAsked, called: G.metrics.calledForHelp,
                hist: (b.history || []).map(function (e) { return e.text; }).join(" || ") };
@@ -2898,15 +3957,18 @@
     ok(r.who && /Halvorsen/.test(r.who), "pressing it puts you on the phone to her", r.who);
     ok(r.askedFirst, "and she asks before she tells", r.said.slice(0, 70));
     ok(r.opts.length === 2, "with two honest ways to answer", r.opts.join(" / ").slice(0, 90));
-    ok(/blood vessels/.test(r.advice),
-       "her actual advice arrives in the call, not in a log line somewhere",
+    ok(/peak pressure/i.test(r.advice) && /Do — /.test(r.advice) && /Why — /.test(r.advice),
+       "her whole consult arrives in the call, not in a log line somewhere",
        r.advice.slice(0, 90));
     ok(!r.open, "and the call ends when you hang up");
-    ok(r.cost >= 10, "it costs the ten minutes it says it does", r.cost + " min");
+    ok(r.cost >= 10, "the first call costs the ten minutes it says it does", r.cost + " min");
     ok(r.helpAsked && r.called === 1, "and it counts as having asked for help");
-    ok(/Halvorsen/.test(r.hist) && /blood vessels/.test(r.hist),
-       "what she said is in this cot's history, for reading back at six",
-       r.hist.slice(0, 80));
+    ok(r.costLabel === "5 min",
+       "and the button then says what ringing her back will cost, without leaving the bedside",
+       r.costLabel);
+    ok(/Halvorsen/.test(r.hist) && /peak pressure/i.test(r.hist),
+       "what she opened with is in this cot's history, for reading back at six",
+       (r.hist.match(/Halvorsen[^|]*/) || [""])[0].slice(0, 80));
   });
 
   suite("An action that works says so where you are standing", async function () {
@@ -2975,7 +4037,8 @@
       return { n: n, bads: bad.length, bad: bad.slice(0, 4), bleeds: bleeds, vented: vented, both: both };
     });
     ok(!r.errs.length, "no exceptions", r.errs.join(" | "));
-    ok(r.n > 500, "enough babies for a rare fault to show up", r.n + " babies");
+    // four cots a census at resident now, not five, so the same 120 censuses yield fewer
+    ok(r.n > 400, "enough babies for a rare fault to show up", r.n + " babies");
     ok(r.bleeds > 20 && r.vented > 80 && r.both > 5,
        "including the combination that used to lose a sentence: vented, and carrying a bleed",
        r.bleeds + " bleeds, " + r.vented + " vented, " + r.both + " both");
@@ -3062,6 +4125,134 @@
     ok(r.capNull && r.accentMatches, "cap and bedAccent are the shared ones");
   });
 
+  /* THE NIGHT CANNOT STOP.
+     A player reported the clock simply ceasing, with a blood gas they had sent for that
+     never came back. The cause was a ReferenceError: startCrisis lost its delegate when
+     game.js was split, and the only call to it lives inside a setTimeout inside a dialog
+     button - so it threw only when a player got a crisis WRONG, and it threw somewhere no
+     stack trace was ever going to be read. G.crisis stayed set, clockRate() returns zero
+     while it is, and the shift was over without anything on screen to say so.
+
+     Note what this suite must NOT use: clearDialog() rips the scrim out of the DOM and sets
+     G.dialogOpen = false by hand, which is exactly the state the bug leaves behind - the
+     helper that made every other suite convenient is the helper that hid this for weeks.
+     This one clicks the real buttons and waits real milliseconds for the real timers. */
+  /* Bed numbers are how everything in this game finds a baby: byBed() backs the concerns,
+     the conversations, the follow-up watches and the number keys. Reusing a dead baby's cot
+     put two of them on one number and byBed answered with the one who had died, because it
+     searches in census order. Reproduced before it was fixed: baby in bed 2 dies, the
+     admission is put in bed 2, and byBed(2) hands back the dead one. */
+  suite("A cot belongs to one baby all night", async function () {
+    var r = await shift({ seed: 5150, allowDeath: true }, function (G, w, D) {
+      G.advance(30);
+      var victim = G.babies[1];
+      victim.died = true; victim.diedAt = G.min;        // exactly what stepWorld does
+      var deadBed = victim.bed;
+      G.admissionDue = G.min + 1; G.admissionFrom = null; G.admissionPoor = false;
+      for (var i = 0; i < 4; i++) { clearDialog(G, D); G.advance(10); }
+      var counts = {};
+      G.babies.forEach(function (b) { counts[b.bed] = (counts[b.bed] || 0) + 1; });
+      var found = w.NG.byBed(deadBed);
+      return { admitted: G.babies.length > 4,
+               newBed: G.babies[G.babies.length - 1].bed,
+               deadBed: deadBed,
+               dup: Object.keys(counts).filter(function (k) { return counts[k] > 1; }).join(","),
+               stillTheirs: !!found && found === victim,
+               noBed: G.babies.some(function (b) { return b.bed == null; }) };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.slice(0, 2).join(" | "));
+    ok(r.admitted, "the admission arrived", r.admitted ? "ok" : "nobody came up");
+    ok(!r.dup, "no two babies share a bed number", r.dup ? "bed " + r.dup : "none");
+    ok(r.newBed !== r.deadBed, "the admission did not take the cot of the baby who died",
+       "died in " + r.deadBed + ", admitted to " + r.newBed);
+    ok(r.stillTheirs, "and that cot still answers with the baby it belonged to");
+    ok(!r.noBed, "nobody is left without a bed number");
+  });
+
+  suite("Getting a crisis wrong does not stop the night", async function () {
+    var r = await shift({ seed: 4242, allowDeath: false }, async function (G, w, D) {
+      function wait(ms) { return new Promise(function (res) { setTimeout(res, ms); }); }
+      // start from a clean screen, so the crisis is the only thing open
+      var guard = 0; while (clearDialog(G, D) && guard++ < 10) {}
+      await wait(50);
+
+      var b = G.babies[0];
+      b.h.hypoHandled = false;
+      w.NG.startCrisis(b, "hypo");
+      await wait(50);
+      if (!G.crisis) return { wedged: "the crisis never opened" };
+
+      /* By LABEL, not by index: showDialog shuffles the options on purpose, so
+         "the second one" is a different answer every run. This is the one that treats
+         the moment and not the cause, and it comes back ok:false - which is what sets
+         keepCrisis and takes the close path this whole suite exists for. */
+      var wrong = [].slice.call(D.querySelectorAll(".dlg-opt")).filter(function (n) {
+        return /recheck in an hour/.test(n.textContent);
+      })[0];
+      if (!wrong) return { wedged: "the wrong answer was not on offer" };
+      wrong.click();
+      await wait(50);
+      var heldOn = !!G.crisis;                 // ok:false, so the crisis must still stand
+      var cont = D.querySelector(".dialog > .btn");
+      if (!cont) return { wedged: "no way out of the crisis dialog", heldOn: heldOn };
+      cont.click();
+
+      // the crisis hold is 350ms and the queue drain 250ms; give both room to land
+      await wait(900);
+      var onScreen = !!D.getElementById("scrim");
+      var wedged = (!onScreen && (G.crisis || G.dialogOpen || G.paused))
+        ? "crisis=" + !!G.crisis + " dialogOpen=" + G.dialogOpen + " paused=" + G.paused +
+          " with nothing on screen"
+        : null;
+
+      guard = 0; while (clearDialog(G, D) && guard++ < 10) {}
+      var before = G.min;
+      G.advance(10);
+      return { wedged: wedged, heldOn: heldOn, reopened: onScreen, moved: G.min - before };
+    });
+    ok(!r.errs.length, "no exceptions", r.errs.slice(0, 2).join(" | "));
+    ok(r.heldOn, "a wrong answer leaves the crisis standing", r.heldOn ? "ok" : "it resolved anyway");
+    ok(!r.wedged, "and never leaves it holding the clock with an empty screen",
+       r.wedged || (r.reopened ? "the crisis came back on screen" : "the crisis was let go"));
+    ok(r.moved > 0, "the clock moves again afterwards", r.moved + " min");
+  });
+
+  /* The same invariant, swept rather than staged: nothing a player can click should ever
+     leave the game paused, mid-crisis or mid-dialog with an empty screen. This is the check
+     that would have caught the above without anybody knowing where to look. */
+  suite("No crisis or dialog ever holds the clock invisibly", async function () {
+    var seeds = [11, 512, 3307], bad = [], errs = [];
+    for (var i = 0; i < seeds.length; i++) {
+      var r = await shift({ seed: seeds[i] }, async function (G, w, D) {
+        function wait(ms) { return new Promise(function (res) { setTimeout(res, ms); }); }
+        var hits = [], guard = 0;
+        while (G.running && guard++ < 120) {
+          // answer whatever is up by clicking, the way a player does
+          for (var g = 0; g < 6; g++) {
+            var o = [].slice.call(D.querySelectorAll(".dlg-opt"));
+            if (o.length) { o[guard % o.length].click(); await wait(30); continue; }
+            var c = D.querySelector(".dialog > .btn");
+            if (c) { c.click(); await wait(30); continue; }
+            break;
+          }
+          G.advance(10);
+          if (!D.getElementById("scrim") && (G.crisis || G.dialogOpen || G.paused)) {
+            await wait(800);                       // the 350ms and 250ms handovers
+            if (!D.getElementById("scrim") && (G.crisis || G.dialogOpen || G.paused))
+              hits.push("min " + Math.round(G.min) + ": crisis=" + !!G.crisis +
+                        " dialogOpen=" + G.dialogOpen + " paused=" + G.paused);
+          }
+          if (hits.length) break;
+        }
+        return { hits: hits };
+      });
+      errs = errs.concat(r.errs);
+      bad = bad.concat(r.hits || []);
+    }
+    ok(!errs.length, "no exceptions anywhere in three played shifts", errs.slice(0, 3).join(" | "));
+    ok(!bad.length, "no shift ends up paused with an empty screen", bad.slice(0, 3).join(" | "));
+  });
+
   suite("Nobody says the same thing four times", async function () {
     /* Measured before this existed: 58 percent of everything a colleague said was them
        repeating something they had already said about the same baby - and it was WORSE for
@@ -3073,7 +4264,7 @@
        the same spread of different voices. A change that quietened the unit by showing
        fewer KINDS of concern would pass the first check and fail the second, which is the
        trade this is here to prevent. */
-    var shifts = 6, repeats = [], distinct = [], worst = 0, errs = [];
+    var shifts = 8, repeats = [], distinct = [], worst = 0, errs = [];
     for (var i = 0; i < shifts; i++) {
       var r = await shift({ seed: 6100 + i * 7, allowDeath: false }, function (G, w, D) {
         var guard = 0;
@@ -3106,7 +4297,11 @@
     ok(mean(repeats) < 16, "a shift is not mostly people repeating themselves",
        mean(repeats).toFixed(1) + " repeat raises a shift (was 24.8)");
     ok(worst <= 4, "and no one concern is raised more than its budget at one cot", worst + "x");
-    ok(mean(distinct) >= 9, "while the unit still speaks with as many different voices",
+    /* Measured over sixteen shifts the resident mean is 10.3 kinds, with individual
+       shifts anywhere from 4 to 16 - so a small sample swings, and a floor set at the mean
+       fails on the dice. Eight is comfortably under it and still fails if variety really
+       collapses, which is the thing this is here to catch. */
+    ok(mean(distinct) >= 8, "while the unit still speaks with as many different voices",
        mean(distinct).toFixed(1) + " kinds of concern a shift");
   });
 

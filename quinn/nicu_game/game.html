@@ -59,7 +59,7 @@
 <script>
 /* document.write keeps these parser-blocking and in order, which they must be: game.js
    depends on every file above it. */
-["util", "clinical", "audio", "glossary", "names", "art", "sim", "patients", "deliveries", "events", "game", "director", "deliveryroom", "ui", "actions", "report"]
+["util", "clinical", "audio", "glossary", "names", "art", "sim", "patients", "deliveries", "events", "game", "director", "deliveryroom", "ui", "consult", "actions", "report"]
   .forEach(function (n) { document.write('<script src="js/' + n + '.js' + window.__q + '"><\/script>'); });
 </script>
 </body>

@@ -34,18 +34,6 @@
      course the baby took.
      ===================================================================== */
 
-  /* Keyed off the same list, so a cot cannot say "improved" in its header and "it was never
-     worked out" three lines below - which is what a playtest showed, on a baby whose
-     infection the player HAD found and treated. "worse" now means something really is
-     still open, rather than a proxy for it. */
-  function courseOf(b) {
-    var h = b.h;
-    if (b.died) return "died";
-    if (h.criticalMinutes > 90) return "critical";
-    if (openAtHandover(b).length || h.necGrade > 1.4 || h.ivhGrade >= 2) return "worse";
-    return "expected";
-  }
-
   /* Named from the hidden state at handover, so it can only ever describe something
      that was genuinely still true when the day team took over. */
   /* WHAT IS STILL WRONG WITH THIS BABY AT SEVEN IN THE MORNING.
@@ -171,78 +159,6 @@
     return out;
   }
 
-  /* WHAT YOU HAD TO GO ON. The reveal used to hand over the answer without ever saying
-     whether the answer had been available, so a player who never sent a test and a player
-     who sent it and ignored the result read the same card. These are the two different
-     lessons in the game, and they are the two most useful sentences in the debrief. */
-  function dxLine(b) {
-    var pz = b.puzzle, dx = pz && pz.dx;
-    if (!dx || pz.benign) return "";
-    var found, fixed;
-    try { found = !!dx.found(b); fixed = !!dx.fixed(b); }
-    catch (e) { return ""; }
-    if (!found)
-      return "<br><br><b>What you had to go on:</b> Nothing you sent would have shown this. " +
-             esc(dx.test || "");
-    if (!fixed)
-      return "<br><br><b>What you had to go on:</b> You had it. " + esc(dx.test || "") +
-             " The finding was on the chart and the plan never changed.";
-    return "<br><br><b>What you had to go on:</b> You went looking, you found it, and you acted on it. " +
-           "That is the whole job.";
-  }
-
-  function revealFor(b) {
-    var course = courseOf(b), un = openAtHandover(b), pz = b.puzzle;
-    var truth = esc(b.name) + " " + gl(pz.truth);
-    if (course === "expected")
-      return "<b>What was really happening:</b> " + truth + dxLine(b) +
-             "<br><br><b>The lesson:</b> " + gl(pz.key);
-
-    var what = cap(phrase(un));
-
-    /* A benign puzzle's `truth` and `key` are written as a good outcome - "settled
-       quickly once fed", "resist the urge to do more". On a night that went wrong they
-       are not a lesson, they are a taunt, so they are withheld and the reveal says the
-       true and much more useful thing instead: there was nothing hidden here, and what
-       happened was done to this baby rather than found in them. */
-    if (pz.benign) {
-      var lead = "<b>What was really happening:</b> There was nothing hidden wrong with " + esc(b.name) +
-                 // "drew" is past tense, which is the same for one baby or for they
-                 ". " + b.pronoun.S + " drew the quiet night, and " +
-                 (course === "died" ? "died anyway." : "still ended the shift worse than " + b.pronoun.s + " started it.");
-      return lead + "<br><br><b>What went wrong instead:</b> " +
-             (un.length ? gl(what) : "nothing you can point at, which is its own kind of answer") + "." +
-             "<br><br><b>The lesson:</b> A baby with nothing the matter can still be harmed by the night " +
-             "around them. Cold, hunger, oxygen, pressure and handling are all things we do, not things " +
-             "they arrive with.";
-    }
-
-    if (course === "died") {
-      return "<b>What " + esc(b.name) + " had:</b> " + truth + dxLine(b) +
-             "<br><br><b>What " + b.pronoun.s + " died of:</b> " + (un.length
-               ? gl(what) + ". None of that is sudden. Every one of them was a number on the screen for hours."
-               : "a long stretch in a critical state that nobody came to. It was on the screen the whole time.") +
-             "<br><br><b>What would have changed it:</b> " + gl(pz.key);
-    }
-    if (course === "critical") {
-      return "<b>What was really happening:</b> " + truth + dxLine(b) +
-             "<br><br><b>Where the night went:</b> " + (un.length ? gl(what) + ". " : "") + esc(b.name) +
-             " spent " + Math.round(b.h.criticalMinutes) + " minutes in a critical state." +
-             "<br><br><b>The lesson:</b> " + gl(pz.key);
-    }
-    /* Only claim something was left open when something WAS. A baby whose infection you
-       found and treated, and who simply had a hard night, used to be handed a card reading
-       "it was never worked out, and nothing was ever changed about the plan". */
-    if (!un.length) {
-      return "<b>What was really happening:</b> " + truth + dxLine(b) +
-             "<br><br><b>How it went:</b> Hard work, and you got there. Nothing was left open on " +
-             esc(b.name) + " at handover." +
-             "<br><br><b>The lesson:</b> " + gl(pz.key);
-    }
-    return "<b>What was really happening:</b> " + truth + dxLine(b) +
-           "<br><br><b>What is still open at handover:</b> " + gl(what) + "." +
-           "<br><br><b>The lesson:</b> " + gl(pz.key);
-  }
 
   /* What the player should have done about it, said once, plainly. Keyed off the first
      serious clause because that is the one the morning will act on. */
@@ -285,8 +201,169 @@
 
   function bedAccent(b) { return window.Util.bedAccent(b); }
 
+  /* ------------------------------------------------------- what you actually did
+     Read off this cot's own history, which is the only honest record of it: every action
+     the player took is written there as it happens, by its REAL button name. The report
+     used to describe the night in the abstract - "a rising oxygen requirement is a
+     diagnosis waiting to be made" - and never once said what the player had actually
+     pressed, so working out whether you had done a thing meant remembering. */
+  function didFor(b) {
+    var counts = {}, order = [];
+    (b.history || []).forEach(function (r) {
+      if (r.kind !== "did") return;
+      /* The history line carries the outcome after an em dash - "Suction - a thick plug of
+         secretions" - and here we want the action, not the answer. */
+      var name = String(r.text).split(" — ")[0].split(" - ")[0].trim();
+      if (!name) return;
+      /* Say what the player PRESSED. A few history lines are written from the colleague's
+         side rather than the button's - the attending call records itself as her name and a
+         quote, because that is what you want to read back at six from the cot - so they are
+         translated here into the label on the control. */
+      if (/^(Dr\.? ?Halvorsen|Rang Dr)/i.test(name)) name = "Call the attending";
+      else if (/^Support changed to/i.test(name)) name = "Changed the support";
+      if (!counts[name]) { counts[name] = 0; order.push(name); }
+      counts[name]++;
+    });
+    return order.map(function (n) { return n + (counts[n] > 1 ? " ×" + counts[n] : ""); });
+  }
+
+  /* And what is true of this baby now, in the same words the controls use. */
+  function stateFor(b) {
+    var h = b.h, s0 = b.startSnapshot, out = [];
+    var f0 = Math.round(s0.fio2 * 100), f1 = Math.round(b.support.fio2 * 100);
+    if (s0.mode !== b.support.mode) out.push(s0.mode + " → " + b.support.mode);
+    if (f1 !== f0) out.push("oxygen " + f0 + "% → " + f1 + "%");
+    else if (f1 > 21) out.push("oxygen held at " + f1 + "%");
+    if (h.abx) out.push("antibiotics running");
+    if (h.photo) out.push("phototherapy on");
+    if (h.pressors > 0) out.push("on pressors");
+    if (h.comfortActs) out.push("comfort care given");
+    if (h.kangarooMinutes > 0) out.push(Math.round(h.kangarooMinutes) + " min skin to skin");
+    if (h.spells) out.push(h.spells + (h.spells === 1 ? " spell" : " spells"));
+    /* Three things the old bed-by-bed line carried that are not "still wrong at seven" and
+       so have no home in the open list: a bleed that was already there at handover, cold
+       minutes below the threshold that flags one, and lung injury that is accumulating but
+       has not yet passed the line. They are context for the morning, not tasks, and dropping
+       them in the rebuild would have been a quiet loss. */
+    if (h.ivhGrade) out.push("grade " + h.ivhGrade + " bleed on ultrasound");
+    if (h.coldMinutes > 60 && h.coldMinutes <= 90) out.push(Math.round(h.coldMinutes) + " min under 36 degrees");
+    if (h.bpd - s0.bpd > 0.25 && h.bpd <= 0.9) out.push("lung injury accumulating from the pressures used");
+    return out;
+  }
+
+  /* Did you send the thing that would have shown it, and did you act on what it said?
+     Named as the buttons name them, and with the time it came back. */
+  function dxStatus(b) {
+    var pz = b.puzzle, dx = pz && pz.dx;
+    if (!dx || pz.benign) return null;
+    var found, fixed;
+    try { found = !!dx.found(b); fixed = !!dx.fixed(b); } catch (e) { return null; }
+    /* "Nothing you sent would have shown this" ran straight into test sentences that are
+       themselves "a blood count would have shown it", so half the reveals said it twice. */
+    if (!found) return { cls: "miss", text: "This was never tested for. " + esc(dx.test || "") };
+    if (!fixed) return { cls: "half", text: "You found it. " + esc(dx.test || "") +
+                                            " It was on the chart, and the plan never changed after it." };
+    return { cls: "hit", text: "You went looking, you found it, and you acted on it. That is the whole job." };
+  }
+
+  /* Which concerns at this cot nobody ever came to, by the name the colleague used. */
+  function missedAt(ev, b) {
+    return (ev.concerns.unhandled || []).filter(function (u) { return u.bed === b.bed; });
+  }
+
+  /* How urgently this cot wants reading. Everything the player has to act on sorts above
+     everything they do not, which is the whole point of reordering the report. */
+  function bedRank(ev, b) {
+    if (b.died) return 0;
+    var open = openAtHandover(b);
+    if (open.some(function (x) { return x.serious; })) return 1;
+    if (open.length) return 2;
+    if (missedAt(ev, b).length) return 3;
+    if (b.h.criticalMinutes > 90) return 2;
+    return 4;
+  }
+  var RANK_TAG = ["died", "still wrong", "loose end", "nobody came", "handed over well"];
+
+  /* ONE CARD PER BED: what was going on, what you did, what was still wrong, what to do
+     instead. The same facts used to be spread across three sections a page apart - the
+     handover list, the unanswered-concern list, and the bed-by-bed reveal - so piecing one
+     baby together meant scrolling between them and holding it in your head. */
+  function bedCard(ev, b) {
+    var rank = bedRank(ev, b), open = openAtHandover(b), missed = missedAt(ev, b);
+    var pz = b.puzzle, dx = dxStatus(b), did = didFor(b), state = stateFor(b);
+    var cls = ["died", "bad", "warn", "warn", "ok"][rank];
+
+    var h = '<section class="bedrep ' + cls + '" id="bed' + b.bed + '">' +
+      '<header><span class="bed-badge ' + bedAccent(b) + '">bed ' + b.bed + "</span>" +
+      "<h3>" + esc(displayName(b)) + "</h3>" +
+      '<span class="br-tag">' + RANK_TAG[rank] + "</span></header>";
+
+    if (b.died)
+      h += '<p class="br-died">' + esc(b.name) + " died at " + clockStr(b.diedAt) + ", after " +
+           Math.round(b.h.criticalMinutes) + " minutes in a critical state. None of that was sudden \u2014 " +
+           "every one of those minutes was a number on the screen. The team will debrief later today, " +
+           "because that is what good units do.</p>";
+    else if (b.h.criticalMinutes > 90)
+      /* "spent" is the same word whoever the baby is, which is why it is written out rather
+         than run through the verb helper - v("spend") hands back the present tense. */
+      h += '<p class="br-crit">' + cap(b.pronoun.s) + " spent " + Math.round(b.h.criticalMinutes) +
+           " minutes in a critical state tonight.</p>";
+
+    h += '<div class="br-block"><h4>What was going on</h4>';
+    /* A BENIGN PUZZLE THAT WENT BADLY IS NOT A LESSON, IT IS A TAUNT. These are written as
+       good outcomes - "settled quickly once fed" - so a baby who drew the quiet night and
+       still ended the shift worse must not be handed that sentence as the explanation. The
+       true and far more useful thing is that there was nothing hidden here at all. */
+    if (pz.benign && rank < 3)
+      h += "<p>There was nothing hidden wrong with " + esc(b.name) + ". " + cap(b.pronoun.s) + " drew the " +
+           "quiet night, and " + (b.died ? "died anyway" : "still ended the shift worse than " + b.pronoun.s +
+           " started it") + ". What happened was done to " + b.pronoun.o + " rather than found in " +
+           b.pronoun.o + ".</p>";
+    else h += "<p>" + esc(b.name) + " " + gl(pz.truth) + "</p>";
+    if (dx) h += '<p class="br-dx ' + dx.cls + '">' + gl(dx.text) + "</p>";
+    h += "</div>";
+
+    h += '<div class="br-block"><h4>What you did</h4>';
+    h += did.length ? '<p class="br-did">' + did.map(esc).join(" · ") + "</p>"
+                    : '<p class="br-did none">Nothing was done at this cot all night.</p>';
+    if (state.length) h += '<p class="br-state">' + gl(state.join(" · ")) + "</p>";
+    h += "</div>";
+
+    if (open.length || missed.length) {
+      h += '<div class="br-block"><h4>What was still wrong at seven</h4><ul class="plain">';
+      open.forEach(function (x) {
+        h += '<li class="' + (x.serious ? "serious" : "") + '">' + gl(cap(x.t)) + "</li>";
+      });
+      missed.forEach(function (u) {
+        h += "<li>" + esc(EV.CHARS[u.who].name.split(",")[0]) + " raised " + gl(u.summaryText) +
+             " and nobody came</li>";
+      });
+      h += "</ul></div>";
+    } else if (!b.died) {
+      h += '<div class="br-block"><h4>What was still wrong at seven</h4>' +
+           '<p class="br-clean">Nothing. ' + cap(b.pronoun.s) + " " + b.pronoun.was +
+           " handed over with nothing outstanding.</p></div>";
+    }
+
+    h += '<div class="br-block"><h4>' + (rank >= 4 ? "Worth keeping in mind" : "What to do instead") +
+         "</h4><p>" + gl(pz.benign && rank < 3
+           ? "There was nothing hidden wrong here. A baby with nothing the matter can still be harmed by " +
+             "the night around them: cold, hunger, oxygen, pressure and handling are all things we do."
+           : pz.key) + "</p>";
+    if (open.length) h += '<p class="br-advice">' + gl(handoverAdvice({ b: b, open: open })) + "</p>";
+    h += "</div></section>";
+    return h;
+  }
+
   // ------------------------------------------------------------------ report
   function endShift() {
+    /* Once. Crossing seven o'clock is checked at the end of every stepWorld, and stepWorld
+       can re-enter itself: an admission landing near the end of the night calls G.advance(20)
+       from inside checkAdmission, the inner ticks cross the line and end the shift, and the
+       outer tick then walks on to its own end-of-night check and built the whole report a
+       second time on top of the first. */
+    if (G.ended) return;
+    G.ended = true;
     G.running = false; clearTimeout(G.timer);
     var ev = evaluateShift();
     var died = ev.died, pct = ev.pct, grade = ev.grade;
@@ -297,36 +374,44 @@
       '<p class="muted" style="font-size:1.02rem">Twelve hours. ' + G.babies.filter(function (b) { return !b.died; }).length +
       " babies handed over" + (died.length ? ", and one who did not make it." : ".") + "</p>";
 
-    died.forEach(function (b) {
-      h += '<div class="card" style="border-color:#7d2a3a"><h3 style="color:#ff9d9d">' + esc(displayName(b)) +
-        " died at " + clockStr(b.diedAt) + "</h3><p>" + esc(b.name) + " spent " + Math.round(b.h.criticalMinutes) +
-        " minutes in a critical state during your shift. The team will hold a debrief later today, because that is " +
-        "what good units do after a death.</p><div class=\"truth\" style=\"background:#241820\">" +
-        revealFor(b) + "</div></div>";
+    /* THE BEDS, WORST FIRST. This is what a night shift produces and what the morning has to
+       be told, so it comes before any scoring - and it is one card per cot rather than the
+       same baby's facts spread across a handover list, an unanswered-concern list and a
+       bed-by-bed reveal three sections apart. Sorted by how much the reader has to act on:
+       a death, then a baby still wrong, then a loose end, then a cot nobody came to, then
+       the ones handed over cleanly. */
+    var ordered = G.babies.slice().sort(function (x, y) {
+      return bedRank(ev, x) - bedRank(ev, y) || x.bed - y.bed;
     });
+    var needAction = ordered.filter(function (b) { return bedRank(ev, b) < 4; }).length;
 
-    /* THE HANDOVER ITSELF, at the top, before any scoring.
-       This is what a night shift actually produces and the player had to hunt for it: the
-       only place it appeared was one line inside each cot card, halfway down a four-page
-       report, in the same weight as everything else. */
-    if (ev.problems.length) {
-      h += '<div class="card handover-open"><h3>What you are handing over</h3>' +
-        '<p class="muted" style="font-size:.94rem">These were all findable before seven. ' +
-        "The day team starts with them.</p>";
-      ev.problems.forEach(function (p) {
-        h += '<div class="open-baby' + (p.serious ? " serious" : "") + '">' +
-          '<div class="ob-head"><span class="bed-badge ' + bedAccent(p.b) + '">bed ' + p.b.bed + "</span>" +
-          "<b>" + esc(displayName(p.b)) + "</b>" +
-          '<span class="ob-tag">' + (p.serious ? "still wrong" : "loose end") + "</span></div><ul class='plain'>";
-        /* cap() BEFORE gl(), not after. gl() wraps a leading glossary term in an <abbr>, so
-           capitalising its output uppercased the "<" and left the sentence starting lower
-           case - on exactly the clauses that open with a word the glossary knows. */
-        p.open.forEach(function (x) { h += "<li>" + gl(cap(x.t)) + "</li>"; });
-        h += "</ul><div class='ob-why'>" + gl(handoverAdvice(p)) + "</div></div>";
-      });
-      h += "</div>";
+    h += '<div class="card" id="theBeds"><h3>The beds</h3>' +
+      '<p class="muted" style="font-size:.94rem">' +
+      (needAction
+        ? needAction + " of " + G.babies.length + " need something saying about them, and they are first. " +
+          "Everything below was findable before seven o'clock."
+        : "Everybody was handed over with nothing outstanding.") + "</p>";
+    /* Jump straight to a cot. With six babies the card you want can be two screens down, and
+       "you have to scroll to work out what happened" was the complaint this rebuild is for.
+       The order is the same as the cards, so the first pill is always the one that matters
+       most. */
+    if (G.babies.length > 2) {
+      h += '<nav class="bedjump" aria-label="Jump to a bed">' + ordered.map(function (b) {
+        return '<a href="#bed' + b.bed + '" class="bj ' + ["died", "bad", "warn", "warn", "ok"][bedRank(ev, b)] +
+               '">bed ' + b.bed + ' <span>' + esc(b.name) + "</span></a>";
+      }).join("") + "</nav>";
     }
+    ordered.forEach(function (b) { h += bedCard(ev, b); });
+    h += "</div>";
 
+    /* WHAT TO TRY NEXT SHIFT comes straight after the beds, because it is the one thing a
+       player carries into the next night. It used to be the last card on a four-page report,
+       under the scoring, which meant most people never reached it. */
+    h += '<div class="card"><h3>What to try next shift</h3>' + tips(ev).map(function (t) {
+      return '<div class="tip"><span class="ti">&rsaquo;</span><span>' + gl(t) + "</span></div>";
+    }).join("") + "</div>";
+
+    /* And the scoring, which is the least of it. Below the teaching, not above it. */
     h += '<div class="card"><h3>How the night went</h3>' +
       '<p class="muted" style="font-size:.9rem">Each part is judged against what the night actually asked of you. ' +
       "Anything that never came up is left out rather than counted in your favour.</p>";
@@ -359,26 +444,6 @@
                  G.metrics.overrides ? "bad" : "good") : "") +
       "</div></div>";
 
-    if (ev.concerns.unhandled.length) {
-      h += '<div class="card" style="border-color:#6b551b"><h3 style="color:var(--amber)">What nobody came to</h3>' +
-        "<p class=\"muted\" style=\"font-size:.92rem\">These were raised during the night and never dealt with.</p><ul class=\"plain\">";
-      ev.concerns.unhandled.slice(0, 8).forEach(function (u) {
-        var b = byBed(u.bed);
-        h += "<li><b>Bed " + u.bed + (b ? ", " + esc(displayName(b)) : "") + "</b> &mdash; " +
-             esc(EV.CHARS[u.who].name.split(",")[0]) + " raised " + gl(u.summaryText) + "</li>";
-      });
-      h += "</ul></div>";
-    }
-
-    h += '<div class="card"><h3>Bed by bed, and what was actually going on</h3>';
-    G.babies.forEach(function (b) {
-      var st = statusOf(b);
-      h += '<div class="outcome ' + st.cls + '"><h4>' + esc(displayName(b)) + " &middot; bed " + b.bed +
-        ' <span class="muted" style="font-weight:400">' + st.label + '</span></h4><div class="muted" style="font-size:.92rem">' +
-        st.detail + '</div><div class="truth">' + revealFor(b) + "</div></div>";
-    });
-    h += "</div>";
-
     var goods = G.scoreItems.filter(function (s) { return s.n > 0; }).sort(function (a, c) { return c.n - a.n; }).slice(0, 6);
     var bads = G.scoreItems.filter(function (s) { return s.n < 0; }).sort(function (a, c) { return a.n - c.n; }).slice(0, 6);
     h += '<div class="card"><h3>Decisions that mattered</h3>';
@@ -387,9 +452,6 @@
     if (!goods.length && !bads.length) h += '<p class="muted">A quiet night with few decision points.</p>';
     h += "</div>";
 
-    h += '<div class="card"><h3>What to try next shift</h3>' + tips(ev).map(function (t) {
-      return '<div class="tip"><span class="ti">&rsaquo;</span><span>' + gl(t) + "</span></div>";
-    }).join("") + "</div>";
     /* The same night again. Everything in a shift comes off one seeded generator, so handing
        back the seed this shift actually used - the resolved one, not the blank the player may
        have left in the box - rebuilds the same five babies with the same five hidden problems.
@@ -677,29 +739,6 @@
     return "There were problems tonight that should not happen twice.";
   }
 
-  function statusOf(b) {
-    if (b.died) return { cls: "crit", label: "died during the shift", detail: "The team will debrief together later today." };
-    var s0 = b.startSnapshot, h = b.h, better = 0, worse = 0;
-    if (S.lungFunction(b) > s0.lung + 0.05) better++;
-    if (b.support.fio2 < s0.fio2 - 0.02) better++;
-    if (h.sepsis < s0.sepsis || (h.sepsis > 0 && h.abx)) better++;
-    if (h.bili < s0.bili || h.photo) better++;
-    if (b.support.fio2 > s0.fio2 + 0.08) worse++;
-    if (h.sepsis > s0.sepsis + 0.15 && !h.abx) worse++;
-    if (h.necGrade > s0.necGrade + 0.5) worse++;
-    if (h.ivhGrade > s0.ivhGrade) worse++;
-    if (h.criticalMinutes > 60) worse++;
-    var d = ["Oxygen " + Math.round(s0.fio2 * 100) + "% &rarr; " + Math.round(b.support.fio2 * 100) + "%",
-             s0.mode + " &rarr; " + b.support.mode, h.spells + " spells"];
-    if (h.abx) d.push("antibiotics started");
-    if (h.photo) d.push("phototherapy running");
-    if (h.bpd - s0.bpd > 0.25) d.push("lung injury accumulating from the pressures used");
-    if (h.coldMinutes > 60) d.push(Math.round(h.coldMinutes) + " minutes cold");
-    if (h.ivhGrade) d.push("grade " + h.ivhGrade + " bleed on ultrasound");
-    if (h.kangarooMinutes > 0) d.push(Math.round(h.kangarooMinutes) + " minutes of skin to skin");
-    return { cls: worse >= 2 ? "down" : better > worse ? "up" : "same",
-             label: worse >= 2 ? "harder night" : better > worse ? "improved" : "stable", detail: d.join(" &middot; ") };
-  }
 
   /* Advice comes from the domains that actually fell short, hardest first. Praise
      is only offered when nothing fell short at all. */
@@ -766,4 +805,9 @@
   }
 
   NG.endShift = endShift;
+  /* Exported so a check can ask the model what is still wrong with a baby and then assert
+     that every one of those made it onto that baby's card. The whole point of the rebuild is
+     that nothing is left for the reader to go hunting for. */
+  NG.reportOpenAt = openAtHandover;
+  NG.reportBedRank = bedRank;
 })();

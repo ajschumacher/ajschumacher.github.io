@@ -506,6 +506,17 @@ button { font: inherit; font-family: var(--font-body); }
 .feedback.good { background: #142b22; border-left-color: var(--green); }
 .feedback.bad  { background: #2e1919; border-left-color: var(--coral); }
 .feedback .fh { font-family: var(--font-head); font-weight: 700; margin-bottom: 4px; }
+/* Dr. Halvorsen on the phone reasons out loud across several paragraphs - what she is
+   hearing, what it could be and why, what to do first, what to watch for - so a feedback
+   body can now be a passage rather than a sentence. Single-sentence answers never make a
+   <p> at all and are untouched by this. */
+.feedback .fb-body p { margin: 0 0 9px; }
+.feedback .fb-body p:last-child { margin-bottom: 0; }
+.feedback .fb-body p + p { padding-top: 1px; }
+/* And the same when she does the talking on a call-back, where the whole consult arrives
+   in the opening block rather than in the answer. */
+.dialog .said p { margin: 0 0 9px; }
+.dialog .said p:last-child { margin-bottom: 0; }
 
 .crisis-banner {
   background: linear-gradient(90deg, #4a1520, #2a0f16);
@@ -531,6 +542,66 @@ button { font: inherit; font-family: var(--font-body); }
 .metric.good .mv { color: var(--green); }
 .metric.warn .mv { color: var(--amber); }
 .metric.bad .mv { color: var(--coral); }
+
+.bedjump { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; }
+.bedjump .bj {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  font-size: .82rem; padding: 5px 11px; border-radius: 999px; text-decoration: none;
+  background: var(--panel); border: 1px solid var(--line); color: var(--ink);
+}
+.bedjump .bj span { color: var(--ink-dim); }
+.bedjump .bj:hover { border-color: var(--teal); }
+.bedjump .bj.died, .bedjump .bj.bad { border-color: #7d2a3a; }
+.bedjump .bj.warn { border-color: #6b551b; }
+.bedjump .bj.ok   { border-color: #20503a; }
+/* The anchor has to clear the sticky section index above it. */
+.bedrep { scroll-margin-top: 110px; }
+
+/* ---------------------------------------------------------------- one card per bed
+   The debrief is organised by cot now, worst first, and each one answers the same four
+   questions in the same order: what was going on, what you did, what was still wrong at
+   seven, what to do instead. The old report answered those across three sections a page
+   apart, so piecing one baby together meant scrolling between them. */
+.bedrep {
+  border: 1px solid var(--line); border-left: 5px solid var(--line);
+  border-radius: 12px; padding: 14px 16px; margin: 14px 0;
+  background: var(--panel-2);
+}
+.bedrep.died { border-left-color: var(--coral); background: #241820; }
+.bedrep.bad  { border-left-color: var(--coral); }
+.bedrep.warn { border-left-color: var(--amber); }
+.bedrep.ok   { border-left-color: var(--green); }
+.bedrep > header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.bedrep > header h3 { margin: 0; font-size: 1.08rem; }
+.bedrep .br-tag {
+  margin-left: auto; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase;
+  font-weight: 700; padding: 3px 9px; border-radius: 999px;
+  background: var(--panel); color: var(--ink-dim); border: 1px solid var(--line);
+}
+.bedrep.died .br-tag, .bedrep.bad .br-tag { color: var(--coral); border-color: #7d2a3a; }
+.bedrep.warn .br-tag { color: var(--amber); border-color: #6b551b; }
+.bedrep.ok   .br-tag { color: var(--green); border-color: #20503a; }
+.bedrep .br-died { color: #ff9d9d; margin: 0 0 10px; }
+.bedrep .br-crit { color: var(--amber); margin: 0 0 10px; font-size: .95rem; }
+.br-block { margin: 0 0 12px; }
+.br-block:last-child { margin-bottom: 0; }
+.br-block h4 {
+  margin: 0 0 4px; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-dim); font-family: var(--font-head);
+}
+.br-block p { margin: 0 0 5px; font-size: .95rem; }
+.br-block ul.plain { margin: 0; }
+.br-block ul.plain li.serious { color: #ffc0c0; }
+/* What was pressed, in the words the buttons use. */
+.br-did { font-family: var(--font-mono); font-size: .86rem; color: var(--ink); }
+.br-did.none { color: var(--amber); font-family: inherit; font-size: .95rem; }
+.br-state { font-size: .88rem; color: var(--ink-dim); }
+.br-clean { color: var(--green); }
+.br-advice { color: var(--ink-soft); border-left: 2px solid var(--line); padding-left: 10px; margin-top: 6px; }
+.br-dx { font-size: .9rem; padding: 6px 10px; border-radius: 8px; background: var(--panel); }
+.br-dx.miss { color: #ffc0c0; }
+.br-dx.half { color: var(--amber); }
+.br-dx.hit  { color: var(--green); }
 
 .outcome { border-left: 4px solid var(--line); padding-left: 14px; margin: 14px 0; }
 .outcome.up   { border-left-color: var(--green); }
@@ -1096,23 +1167,6 @@ input[type="range"]:focus-visible { outline-offset: 4px; }
 /* ---------- what you are handing over ----------
    The most important thing in the report, so it looks like it. It sits above the scoring,
    because the first question at seven in the morning is what the day team is inheriting. */
-.card.handover-open { border-color: #7d5a1b; }
-.card.handover-open h3 { color: var(--amber); }
-.open-baby {
-  border: 1px solid var(--line); border-left: 4px solid var(--ink-dim);
-  border-radius: 10px; padding: 11px 13px; margin: 10px 0; background: var(--panel-2);
-}
-.open-baby.serious { border-left-color: var(--coral); }
-.ob-head { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; flex-wrap: wrap; }
-.ob-head b { font-family: var(--font-head); font-size: 1.05rem; }
-.ob-tag {
-  margin-left: auto; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em;
-  border-radius: 999px; padding: 2px 9px; background: var(--panel); color: var(--ink-soft);
-  border: 1px solid var(--line);
-}
-.open-baby.serious .ob-tag { background: #3d1a1a; color: #ff9d9d; border-color: #77302f; }
-.open-baby ul.plain { margin: 0 0 7px; }
-.ob-why { font-size: .9rem; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 7px; }
 
 /* ---------- printing the report ----------
    The grade is gradient-filled text, which means transparent glyphs over a background.
@@ -1126,8 +1180,6 @@ input[type="range"]:focus-visible { outline-offset: 4px; }
   }
   .grade.grade-mid { color: #7a4a10 !important; }
   .grade.grade-poor { color: #7d2233 !important; }
-  .card.handover-open { border-color: #b07f2a !important; }
-  .open-baby.serious { border-left-color: #c0392b !important; }
 }
 
 /* ---------- leaving the delivery room ----------

@@ -18,6 +18,12 @@
       Snd = window.Sound, GL = window.Glossary, CL = window.Clinical;
   var NG = window.NG || (window.NG = {});
 
+  /* How long the room waits before the labour ward registrar does it instead of you. It
+     was twenty-five minutes, which is not long if the phone rings while you are part way
+     through something at a cot - and missing the delivery room entirely is a poor way to
+     lose the most involving five minutes in the game. */
+  var ABANDON_AFTER = 45;
+
   /* ---- What this file borrows. Thin, and resolved at call time, so every body below is
      byte for byte the one that used to sit in game.js. ---- */
   function $(id) { return NG.$(id); }
@@ -46,16 +52,27 @@
   var DEL = window.Deliveries;
 
   /* Chosen when the phone rings, not when you arrive, so the caller can tell you what is
-     actually coming rather than describing a different baby. */
+     actually coming rather than describing a different baby.
+
+     Drawn without replacement. An Attending night is called down twice, and being called
+     to the same thirty-four weeker grunting on the warmer a second time would read as the
+     game running out of ideas rather than as a second baby. */
   G.pickDelivery = function () {
     if (!G.pendingDelivery) {
-      G.pendingDelivery = DEL.SCENARIOS[Math.floor(S.rnd() * DEL.SCENARIOS.length) % DEL.SCENARIOS.length];
+      var used = G.deliveriesSeen || (G.deliveriesSeen = []);
+      var pool = DEL.SCENARIOS.filter(function (sc) { return used.indexOf(sc.id) < 0; });
+      if (!pool.length) pool = DEL.SCENARIOS;
+      G.pendingDelivery = pool[Math.floor(S.rnd() * pool.length) % pool.length];
     }
     return G.pendingDelivery;
   };
 
   G.summonDelivery = function () {
-    if (G.delivery) return;
+    /* A FINISHED one does not block the next. G.delivery deliberately stays set after the
+       room is done, because that is how the ward pod knows to stop inviting you down -
+       so the guard has to be about a delivery still RUNNING, not about one having
+       happened at all. */
+    if (G.delivery && G.delivery.state !== "done") return;
     var sc = G.pickDelivery();
     var st = sc.start;
     G.delivery = {
@@ -70,6 +87,7 @@
     };
     G.delivery.said = sc.brief;
     G.pendingDelivery = null;
+    (G.deliveriesSeen || (G.deliveriesSeen = [])).push(sc.id);
     log("The delivery room is waiting for you. " + cap(sc.label) + ".", "hi");
     notice();
     render();          // the room has to appear in the ward now, not on the next tick
@@ -77,14 +95,14 @@
   };
 
   /* The baby does not wait. Whether you never came or stepped out and did not come back,
-     after twenty-five minutes the labour ward registrar does it instead of you. Standing
+     after forty-five minutes the labour ward registrar does it instead of you. Standing
      in the room does not count as away, so nobody is punished for taking their time. */
   function checkDeliveryAbandoned() {
     var d = G.delivery;
     if (!d || d.state === "done") return;
     if (G.view.mode === "delivery") { d.awayAt = null; return; }
     if (d.awayAt == null) d.awayAt = d.state === "called" ? d.calledAt : G.min;
-    if (G.min - d.awayAt < 25) return;
+    if (G.min - d.awayAt < ABANDON_AFTER) return;
     var started = d.state === "here";
     d.state = "done"; d.tookOver = true;
     addScore(started ? -6 : -8, started ? "Walked out of the delivery room part way through"
@@ -153,10 +171,12 @@
     renderDelivery();
   };
 
-  /* Which baby comes up to bed 6, resolved here rather than in finishAdmission, so a
+  /* Which baby comes up to the unit, resolved here rather than in finishAdmission, so a
      scenario whose right answer is that NOBODY comes up can still say who arrives on
      the path where the player admits them anyway. Without this the well 39-week baby
-     you separated from her mother arrived in bed 6 as somebody else's 30-week preemie. */
+     you separated from her mother arrived on the unit as somebody else's 30-week preemie.
+     The cot itself is not known yet - it is the lowest free one eight minutes from now,
+     and this line used to promise bed 6 whatever actually happened. */
   function arrivalOf(sc, admitted) {
     var arr = admitted && !sc.arrival ? sc.arrivalIfAdmitted : sc.arrival;
     return arr ? { arrival: arr, ga: sc.ga } : null;
@@ -185,7 +205,7 @@
       log("You left the delivery room without a baby, which was the whole point of it.", "good");
     } else if (d.sc.arrival) {
       G.admissionDue = G.min + 8; G.admissionFrom = arrivalOf(d.sc, true); G.admissionPoor = !q.ok;
-      log("Taking Baby up from the delivery room to bed 6.", "hi");
+      log("Taking Baby up from the delivery room to the unit.", "hi");
     } else {
       /* A baby the room was built to send home with her mother, admitted anyway. If the
          option to leave her was open and the player took the unit instead, that is a
@@ -377,7 +397,7 @@
       "<h2>Delivery room</h2>" +
       '<span class="muted">' + esc(sc.label) + " &middot; <span id=\"delTimer\"></span></span></div>";
     h += '<p class="del-warn">Priya holds things steady while you are away, but she cannot take the ' +
-         "next step without you. Come back within about twenty-five minutes, or the labour ward " +
+         "next step without you. Come back within about forty-five minutes, or the labour ward " +
          "registrar takes over from you.</p>";
 
     h += '<div id="callout"></div>';
@@ -439,11 +459,17 @@
   function deliveryPod() {
     var d = G.delivery, waiting = d && d.state === "called";
     if (!waiting && (!d || d.state !== "here")) {
-      var been = d && d.state === "done";
+      /* "Nothing more tonight" has to be true. An Attending night is called down twice,
+         so between the two this says the honest thing instead. */
+      var done = (G.deliveriesSeen || []).length;
+      var been = d && d.state === "done" && done >= (G.deliveriesExpected || 1);
+      var between = d && d.state === "done" && !been;
       return '<div class="pod empty del-pod"><div class="pod-head"><div><div class="pod-name">Delivery room</div>' +
         '<div class="pod-meta">two floors down</div></div><div class="bed-no">DR</div></div>' +
         '<div class="muted" style="padding:18px 4px">' +
-        (been ? "Nothing more from down there tonight." : "Nobody is asking for you. If a baby is coming, the phone rings first.") +
+        (been ? "Nothing more from down there tonight."
+              : between ? "Quiet down there for the moment. They will ring if that changes."
+              : "Nobody is asking for you. If a baby is coming, the phone rings first.") +
         "</div></div>";
     }
     return '<div class="pod del-pod has-concern concern-urgent">' +

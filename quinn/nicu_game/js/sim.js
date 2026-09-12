@@ -611,7 +611,13 @@
     if (h.caresIn > 0) return;
     h.caresIn = N.caresEveryMin * (0.75 + 0.5 * rnd());
     if (h.kangaroo) return;                       // she is not taking a baby off a chest for obs
-    var gentle = h.swaddled ? 0.55 : 1;
+    /* Protected care is not a flag, it is an instruction to the unit: cluster the cares, do
+       them together and gently, and leave the baby alone in between. So while it is running
+       the routine obs cost a fraction of what they otherwise would. Without this, "protected"
+       babies still accrued the full handling of every set of cares all night - which is why
+       pressing Comfort care once and walking away did nothing on the one diagnosis where
+       minimal handling IS the treatment. */
+    var gentle = (h.swaddled ? 0.55 : 1) * (h.protectedMin > 0 ? 0.3 : 1);
     h.handling += N.caresHandling * gentle;
     h.painStim += N.caresPain * gentle;
   }
@@ -708,7 +714,11 @@
     if (world && world.settling) { b.h.apneaTendSaved = b.h.apneaTend; b.h.apneaTend = 0; }
     b.world = world;
     b.flags = [];
-    b.h.spellsThisHour = (world.min % 60 < dt) ? 0 : b.h.spellsThisHour;
+    /* The count resets on the hour, which is right for the nurse's "that is three this hour"
+       and wrong for anybody asking how the night has been going: a player who has watched
+       four spells at 01:58 is told about none of them at 02:01. The hour that just ended is
+       kept, because the player saw it happen. */
+    if (world.min % 60 < dt) { b.h.spellsPrevHour = b.h.spellsThisHour || 0; b.h.spellsThisHour = 0; }
     b.h.ageH += dt / 60;                          // the baby is getting older during the shift
     stepThermal(b, dt);
     stepRespiratory(b, dt);

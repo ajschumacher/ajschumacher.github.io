@@ -247,23 +247,45 @@
     return (list || []).some(function (r) { return r.fresh; }) || !!(note && note.fresh);
   }
 
+  function hasOpinion(c, actionId) {
+    return !!c && !!c.seen && !c.stale && !c.done &&
+           !!((c.def.accept && c.def.accept[actionId]) || (c.def.wrong && c.def.wrong[actionId]));
+  }
+
+  /* EVERYONE WHO ASKED GETS AN ANSWER. With two colleagues waiting at one cot and both of
+     them wanting the same thing done, this used to answer exactly one of them - the open
+     conversation got first refusal and then the function returned. The other was left with
+     no reply at all, so when its problem cleared, reviewConcerns saw no approving reply and
+     stood it down as "settled without you" for something the player had just done.
+
+     Measured across sixteen shifts: of 306 concerns answered with the action the concern
+     itself calls right, 27 got no reply because somebody else at that cot took it, and 20 of
+     those went on to report settling on their own. That is the whole "it feels arbitrary"
+     complaint in one line of control flow. */
   function judgeConcern(b, actionId) {
-    /* Whoever asked, not whoever happens to be on screen. With two colleagues waiting at one
-       cot, judging only the open conversation meant doing exactly what the second one asked
-       for and being answered by the first - or by nobody. The one you are talking to gets
-       first refusal; after that, anyone else here with an opinion about this action. */
-    var c = activeConcernFor(b);
-    if (!c || !c.seen || !((c.def.accept && c.def.accept[actionId]) || (c.def.wrong && c.def.wrong[actionId]))) {
-      var alt = concernsAt(b).filter(function (x) {
-        return !x.stale && x.seen &&
-               ((x.def.accept && x.def.accept[actionId]) || (x.def.wrong && x.def.wrong[actionId]));
-      })[0];
-      if (alt) c = alt;
+    var open = activeConcernFor(b);
+    var here = concernsAt(b).filter(function (x) { return hasOpinion(x, actionId); });
+    if (open && hasOpinion(open, actionId)) {
+      // the one being talked to answers first, then everybody else who asked for this
+      here = [open].concat(here.filter(function (x) { return x !== open; }));
     }
+    if (here.length) {
+      here.forEach(function (x, i) { judgeOne(b, actionId, x, i === 0); });
+      return;
+    }
+    judgeOne(b, actionId, open, true);
+  }
+
+  /* `primary` is the conversation on screen. The others are answered in their own threads,
+     which is where the player will read them when they click that face. */
+  function judgeOne(b, actionId, c, primary) {
     if (!c || !c.seen) return;
     var d = c.def, r = (d.accept && d.accept[actionId]) || null, bad = (d.wrong && d.wrong[actionId]) || null;
-    // Anything else still gets an answer, so the player can always tell the game noticed.
+    // Anything else still gets an answer, so the player can always tell the game noticed -
+    // but only from the colleague being spoken to. Three people chorusing "that tells us
+    // nothing about the belly" after one button press is noise, not responsiveness.
     if (!r && !bad) {
+      if (!primary) return;
       var who = firstName(c.who);
       var sum = d.summary(G, b);
       var lines = [
@@ -310,6 +332,32 @@
       Snd.bad();
     }
     if (r || bad) renderBedCallout(b);
+  }
+
+  /* YOU PRESSED THE RIGHT BUTTON AND THE UNIT SAID IT WAS ALREADY DONE. A refused action
+     never reached judgeConcern at all, so the colleague who had just asked for it said
+     nothing - and when the problem cleared she stood it down as having sorted itself out.
+     Measured: seventeen of 306, all of them on the concerns that matter most (sepsis and
+     spells, where the answer is a culture that is often already drawn).
+
+     Nothing is scored, because nothing happened. But she answers, and she says what is
+     still outstanding, which is what a colleague standing next to you would do. */
+  function noteRefused(b, actionId, why) {
+    var here = concernsAt(b).filter(function (x) { return hasOpinion(x, actionId); });
+    if (!here.length) return;
+    var c = here[0], who = firstName(c.who);
+    var left = Object.keys(c.def.accept || {}).filter(function (k) {
+      return k !== actionId && k.indexOf("__") !== 0 && !(c.credited && c.credited[k]);
+    });
+    /* Led by what is OUTSTANDING rather than by the concern's summary. The summaries are
+       phrases rather than nouns - "just not right", "sitting high on extra oxygen" - and
+       reading one back inside a sentence produced "Already done - just not right is what I
+       am still asking about." */
+    pushReply(c, null, left.length
+      ? who + ": \u201cThat one is already done. " + cap(actionLabel(left[0], b) || left[0]) +
+        " is the bit I am still waiting on.\u201d"
+      : who + ": \u201cAlready done \u2014 we are covered there.\u201d");
+    renderBedCallout(b);
   }
 
   function declineConcern(b) {
@@ -618,6 +666,7 @@
   NG.startCrisis = startCrisis;
   NG.startTalk = startTalk;
   NG.judgeConcern = judgeConcern;
+  NG.noteRefused = noteRefused;
   NG.declineConcern = declineConcern;
   NG.dismissConcern = dismissConcern;
   NG.concernsAt = concernsAt;

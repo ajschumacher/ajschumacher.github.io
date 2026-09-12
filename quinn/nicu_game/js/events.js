@@ -416,6 +416,39 @@
          seven in the morning that the lung blood vessels had stayed clamped shut, and there had
          been nothing on screen all night that pointed at it. Priya notices what a real nurse
          notices: the saturation is not tracking the dial. That is the whole tell. */
+      /* PROTECTED CARE RUNS OUT, and nobody was told. Minimal handling is the treatment for
+         clamped lung vessels, and a treatment you have to keep choosing needs somebody to
+         say when it has lapsed - the same way a drip running out gets said out loud. */
+      id: "unprotected", who: nurseFor, severity: "worry", cooldown: 70,
+      cond: function (G, b) {
+        return b.h.pphn > 0.25 && b.h.comfortActs > 0 && !b.h.kangaroo &&
+               b.h.protectedMin <= 0 && b.mon.spo2 < CL.pphn.alertSat;
+      },
+      summary: function (G, b) { return "back to being handled like everyone else"; },
+      say: function (G, b) {
+        return "The nest has come apart and the light is back up over " + b.pronoun.o +
+               ", and we are back to doing obs through " + b.pronoun.o + " like everyone else. " +
+               "That settling you asked for has worn off — it lasts about three hours and then it wants doing again.";
+      },
+      nudge: "Minimal handling is not something you switch on once. What happens to a baby with clamped lung vessels every time somebody opens the porthole?",
+      help: "Comfort care from Care, again. It lasts about three hours and then it wants renewing. " +
+            "Kangaroo care lasts longer if a parent is here. Resist adding more tests: you are not " +
+            "short of information on this baby, you are short of quiet.",
+      settled: "Somebody has settled " + "the cot back down.",
+      accept: {
+        comfort: { fb: "Nested and dim again. This is the treatment, and it is one you keep coming back to.", score: 6, resolve: true },
+        kangaroo: { fb: "On a parent's chest, which is the most protected this baby can be.", score: 8, resolve: true },
+        morphine: { fb: "That helps too — a baby who is not fighting you is a baby whose vessels are not clamping.", score: 4, resolve: false }
+      },
+      wrong: {
+        examine: { fb: "Every examination is a set of hands on a baby whose problem IS hands on the baby. Look at the monitor from the end of the cot.", score: -3 },
+        suction: { fb: "That is the handling, not the treatment.", score: -5 },
+        echo: { fb: "You already know what this is. Another probe on that chest buys you nothing and costs " + "the saturation.", score: -3 }
+      },
+      decline: { fb: "“All right.” She dims the light anyway, on her way past.", score: -3, resolve: false },
+      miss: { fb: "The settling was done once and never kept up, on the one baby where being left alone was the treatment.", score: -5 }
+    },
+    {
       id: "swinging", who: nurseFor, severity: "urgent", cooldown: 120,
       cond: function (G, b) {
         /* The tell is the GAP between the dial and the number, not a low number. A baby on
@@ -430,12 +463,14 @@
                "then down again the moment anyone touches " + b.pronoun.o + ". That is not how the others behave.";
       },
       nudge: "When the saturation will not follow the oxygen, the problem may not be the air sacs. What else stands between the oxygen and the blood?",
-      help: "An echo from Imaging shows whether the lung blood vessels are the problem. Comfort care from Care - " +
-            "handling makes this worse, every time. And this is a baby worth ringing the attending about.",
+      help: "Comfort care from Care, first and often - handling makes this worse, every time, and it wears off " +
+            "in about three hours. An echo from Imaging shows whether the lung blood vessels are the problem: get " +
+            "that one and stop there. Every extra test is another pair of hands on a baby whose problem is " +
+            "hands on the baby. And this is a baby worth ringing the attending about.",
       settled: "The saturation has steadied and stopped swinging with every touch.",
       accept: {
         echo: { fb: "An echo is exactly right - it is the only thing that shows you the lung pressures.", score: 8, resolve: false },
-        comfort: { fb: "Minimal handling. In this baby, being left undisturbed is a treatment, not a kindness.", score: 7, resolve: true },
+        comfort: { fb: "Minimal handling. In this baby, being left undisturbed is a treatment, not a kindness - and it wears off after about three hours, so keep coming back to it.", score: 7, resolve: true },
         help: { fb: "A good call to make. This is not a baby to work out alone at three in the morning.", score: 6, resolve: false },
         gas: { fb: "Reasonable - a gas will show you the oxygen is worse than the lungs look.", score: 3, resolve: false }
       },
@@ -1118,6 +1153,26 @@
 
   /* ===================================================================== CALLS
      The phone rings. You choose whether to answer. Important callers ring back.   */
+
+  /* Nell, ringing down from the labour ward. Two entries share this because an Attending
+     night is called twice: same words, same consequences, different hour. */
+  function deliveryCall(id, minMin, cond) {
+    return {
+      id: id, who: "nell", minMin: minMin, persistent: 3, cond: cond,
+      preview: "Delivery room",
+      // the scenario is chosen now, so Nell describes the baby you are actually going to
+      say: function (G) { return G.pickDelivery().call; },
+      onAnswer: function (G) { G.summonDelivery(); },
+      answerFb: "You hang up. The delivery room is two floors down and it is now sitting in the unit view, " +
+                "waiting for you. Click it when you are ready to go.",
+      answerBtn: "Hang up",
+      onIgnoreAll: function (G) {
+        G.log("The delivery room called three times and gave up. Another team went instead.", "warn");
+        G.addScore(-8, "Missed a delivery room call");
+      }
+    };
+  }
+
   var CALLS = [
     {
       /* Ingrid is at home. She was written as a conversation, and the line she opens with -
@@ -1146,20 +1201,23 @@
         G.addScore(-2, "Did not pick up when the attending rang to check in");
       }
     },
-    {
-      id: "delivery", who: "nell", minMin: 150, persistent: 3, studentSkip: true,
-      preview: "Delivery room",
-      // the scenario is chosen now, so Nell describes the baby you are actually going to
-      say: function (G) { return G.pickDelivery().call; },
-      onAnswer: function (G) { G.summonDelivery(); },
-      answerFb: "You hang up. The delivery room is two floors down and it is now sitting in the unit view, " +
-                "waiting for you. Click it when you are ready to go.",
-      answerBtn: "Hang up",
-      onIgnoreAll: function (G) {
-        G.log("The delivery room called three times and gave up. Another team went instead.", "warn");
-        G.addScore(-8, "Missed a delivery room call");
-      }
-    },
+    /* THE DELIVERY ROOM RINGS ON EVERY LEVEL NOW, and twice on an Attending night.
+
+       It used to carry studentSkip, so the one level most likely to be somebody's first
+       hour with the game was the level that never got to go downstairs - and the delivery
+       room is the most involving five minutes in it. A beginner gets the same call; what
+       makes their night a beginner's night is three cots rather than four, not a missing
+       feature.
+
+       One record, called twice, because the two are the same event at different hours and
+       an author should not have to keep two copies of Nell in step. */
+    deliveryCall("delivery", 150),
+    deliveryCall("delivery2", 400, function (G) {
+      /* Only the Attending night is called down twice - and never while the first one is
+         still going, because being rung about a second baby while you are bagging the
+         first is not a decision, it is just a thing you cannot answer. */
+      return G.difficulty === "attending" && (!G.delivery || G.delivery.state === "done");
+    }),
     {
       id: "transport", who: "phone", minMin: 200, persistent: 2, studentSkip: true,
       preview: "Referring hospital",

@@ -1,5 +1,5 @@
 /* NICU Night Shift — the census.
-   Eight clinical archetypes; five are drawn each shift. Names, families, gestations,
+   Eight clinical archetypes; three or four are drawn each shift, by level. Names, families, gestations,
    weights and bed order are all randomised, so two shifts never look alike. */
 (function () {
   "use strict";
@@ -10,7 +10,8 @@
       surfactant: 0.9, rds: 0, secretions: 0.1, ptx: false, ptxPending: 0, ettDisplaced: false,
       aspiration: 0, pphn: 0, bpd: 0, volutrauma: 0, surfTreatPending: 0,
       apneaTend: 0.2, caffeine: false, apneaNow: false, apneaLen: 0, apneaDepth: 0,
-      spells: 0, spellsThisHour: 0, severeSpells: 0, stimulated: false,
+      spells: 0, spellsThisHour: 0, spellsPrevHour: 0, severeSpells: 0, stimulated: false,
+      protectedTold: false,
       spontDrive: 1.0, fatigue: 0.1, morphine: false, morphineLevel: 0,
       co2: 45, baseDeficit: 2, map: 32, mapSwing: 0,
       pda: 0, pdaTreat: 0, hypovolemia: 0, pressors: 0, pressorInfusion: false, pressorDose: 0,
@@ -81,7 +82,7 @@
                 fixed: function (b) { return b.h.abx; } },
           apply: function (h) { h.sepsisLatent = Ri(30, 70); h.apneaTend += 0.25; },
           truth: "was developing early-onset sepsis. The clue was in the handover all along, and then in the rising spell count.",
-          key: "Draw a blood culture and start antibiotics early. Increasing A's and B's in a baby with risk factors is sepsis until proven otherwise." },
+          key: "Draw a blood culture and start antibiotics early. More spells than yesterday in a baby with risk factors is sepsis until proven otherwise." },
         { id: "anemia", w: 2, dx: { test: 'A blood count would have shown it.', found: function (b) { return !!b.labs.cbc; },
                 fixed: function (b) { return b.h.hgb > CL.hgb.treated; } },
           apply: function (h) { h.hgb = R(7.0, 8.2); h.apneaTend += 0.15; },
@@ -530,8 +531,20 @@
     return a;
   }
 
+  /* HOW MANY COTS YOU WALK INTO. Every level also gets at least one delivery, and the
+     Attending night gets two, so the unit you finish with is one or two beds bigger than
+     the one you start with - and six is the ceiling the rest of the game is built to
+     (six bed colours, six keyboard shortcuts, bedAccent counts modulo six):
+
+         Student   3 + 1  = 4
+         Resident  4 + 1  = 5
+         Attending 4 + 2  = 6, exactly full
+
+     A beginner meeting three babies rather than five is the point of the level. It does
+     cost variety - fewer cots is fewer puzzles, and the ventilated-baby guarantee below
+     has fewer candidates to work with - which is the trade a Student night is for. */
   function makeCensus(difficulty) {
-    var n = difficulty === "student" ? 4 : 5;
+    var n = difficulty === "student" ? 3 : 4;
     var pool = shuffle(ARCHETYPES.slice());
     var used = {};
     var list = [];
