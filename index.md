@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-09-15: [Rows and columns](/20260915-rows_and_columns/)
  * 2026-09-09: [Quinn's games](/20260909-quinn_games/)
  * 2026-09-08: [Pavement plots](/20260908-pavement_plots/)
  * 2026-09-07: [(Audio) The Man from the Future, by Bhattacharya](/20260907-man_from_the_future_by_bhattacharya/)

@@ -7,6 +7,42 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Rows and columns</title>
+<description><![CDATA[
+
+<p>Rows go left and right, like seating in a theater.</p>
+<p>Rows are horizontal and easy to read like lines of text.</p>
+<p><img alt="rows" src="rows.png"></p>
+<p>Columns go up and down, like stone pillars holding up a building.</p>
+<p>Columns are vertical and have things one on top of the other.</p>
+<p><img alt="columns" src="columns.png"></p>
+<p>Here are three rows. How many columns?</p>
+<p>\[
+\begin{bmatrix}
+r &amp; o &amp; w \cr
+r &amp; o &amp; w \cr
+r &amp; o &amp; w \cr
+\end{bmatrix}
+\]</p>
+<p>Here are three columns. How many rows?</p>
+<p>\[
+\begin{bmatrix}
+c &amp; c &amp; c \cr
+o &amp; o &amp; o \cr
+l &amp; l &amp; l \cr
+u &amp; u &amp; u \cr
+m &amp; m &amp; m \cr
+n &amp; n &amp; n \cr
+\end{bmatrix}
+\]</p>
+<!-- mathjax for formulas -->
+
+    ]]></description>
+<link>http://planspace.org/20260915-rows_and_columns/</link>
+<guid>http://planspace.org/20260915-rows_and_columns/</guid>
+<pubDate>Tue, 15 Sep 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>Quinn’s games</title>
 <description><![CDATA[
 
@@ -1761,6 +1797,7 @@ think is important, which is the human understanding aspect.</p>
 <li>2026-08-10: <a href="/20260810-2x2_matrix_playground/">2x2 matrix playground</a></li>
 <li>2026-08-14: <a href="/20260814-vector_by_arianrhod/">Vector, by Arianrhod</a></li>
 <li>2026-09-01: <a href="/20260901-regression_from_the_mean/">Regression, from the mean</a></li>
+<li>2026-09-15: <a href="/20260915-rows_and_columns/">Rows and columns</a></li>
 </ul>    
     ]]></description>
 <link>http://planspace.org/20260730-linear_algebra_project/</link>
@@ -2609,33 +2646,6 @@ on...</p>
 <link>http://planspace.org/20260713-as_a_man_thinketh_by_allen/</link>
 <guid>http://planspace.org/20260713-as_a_man_thinketh_by_allen/</guid>
 <pubDate>Mon, 13 Jul 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>The Eight Wiccan Virtues</title>
-<description><![CDATA[
-
-<ul>
-<li>Beauty and Strength</li>
-<li>Power and Compassion</li>
-<li>Honor and Humility</li>
-<li>Mirth and Reverence</li>
-</ul>
-<p>Like the <a href="/20251229-quaker_testimonies/">Quakers</a>, Wiccans don't really have official central
-texts, but a lot of Wiccans seem to be into
-<a href="https://sacred-texts.com/bos/bos058.htm">The Charge of the Goddess</a>, which was written by Doreen Valiente
-around 1953-54. This list of eight virtues in particular seems to be
-widely recognized.</p>
-<p>The eight virtues are four pairs of opposites, which is interestingly
-different from <a href="/20260708-aristotle_mean_virtues/">Aristotle's "mean" virtues</a>. So while Aristotle puts
-the virtue of modesty between diffidence and shamelessness, Valiente
-puts humility on one end of a spectrum balanced by honor, suggesting
-there is not just one level to always stay at but a range of
-experiences to balance one's life. It's a different way of
-conceptualizing a life of virtue.</p>    
-    ]]></description>
-<link>http://planspace.org/20260712-eight_wiccan_virtues/</link>
-<guid>http://planspace.org/20260712-eight_wiccan_virtues/</guid>
-<pubDate>Sun, 12 Jul 2026 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
