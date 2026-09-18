@@ -15,3 +15,4 @@ Keeping these here for convenient reference...
  * 2026-08-14: [Vector, by Arianrhod](/20260814-vector_by_arianrhod/)
  * 2026-09-01: [Regression, from the mean](/20260901-regression_from_the_mean/)
  * 2026-09-15: [Rows and columns](/20260915-rows_and_columns/)
+ * 2026-09-18: [Linear Algebra is the math of superposition](/20260918-linear_algebra_studies_superposition/)

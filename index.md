@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-09-18: [Linear Algebra is the math of superposition](/20260918-linear_algebra_studies_superposition/)
  * 2026-09-17: [Shape, by Ellenberg](/20260917-shape_by_ellenberg/)
  * 2026-09-15: [Rows and columns](/20260915-rows_and_columns/)
  * 2026-09-09: [Quinn's games](/20260909-quinn_games/)
