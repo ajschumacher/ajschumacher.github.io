@@ -2,6 +2,7 @@
 
 Just collecting these here for easy reference for now...
 
+ 1. [The Ten Statements / Commandments](/20260919-ten_statements_commandments/) (15th or 6-5th century BCE)
  1. [Buddhist Noble Eightfold Path](/20251231-buddhist_noble_eightfold_path/) (5th century BCE)
  1. [Socrates' unitary knowledge](/20260607-socrates_unitary_knowledge/) (385 BCE)
  1. [The four cardinal Platonic virtues](/20260607-platonic_virtues/) (375 BCE)
