@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-09-20: [The Code of Hammurabi](/20260920-code_of_hammurabi/)
  * 2026-09-19: [The Ten Statements / Commandments](/20260919-ten_statements_commandments/)
  * 2026-09-18: [Linear Algebra is the math of superposition](/20260918-linear_algebra_studies_superposition/)
  * 2026-09-17: [Shape, by Ellenberg](/20260917-shape_by_ellenberg/)
