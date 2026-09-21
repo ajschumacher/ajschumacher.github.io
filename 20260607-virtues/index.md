@@ -2,6 +2,7 @@
 
 Just collecting these here for easy reference for now...
 
+ 1. [The Law Collection of Ur-Namma](/20260921-law_collection_of_ur-namma/) (2112–2094 BCE)
  1. [The Code of Hammurabi](/20260920-code_of_hammurabi/) (1753 BCE)
  1. [The Ten Statements / Commandments](/20260919-ten_statements_commandments/) (15th or 6-5th century BCE)
  1. [Buddhist Noble Eightfold Path](/20251231-buddhist_noble_eightfold_path/) (5th century BCE)
