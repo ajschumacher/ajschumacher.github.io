@@ -7,6 +7,76 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>Quasi-orthogonal representations</title>
+<description><![CDATA[
+
+<p>I am basically satisfied that we understand how neural nets represent
+things internally. First, in high dimensions there are exponentially
+many nearly orthogonal directions to use, meaning a very large number
+of things can be represented, and many of them at once (in
+superposition). Second, attention mechanisms allow for encoding
+structured representations.</p>
+<hr>
+<h3>Not enough neurons</h3>
+<p>Modern neural nets are big, but it's hard to compete with the number
+of possible concepts. If we have to use a separate neuron for
+everything, we need a huge number. An extreme version of this idea is
+the unit/value hypothesis as in Feldman and Ballard's <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1207/s15516709cog0603_1">1982 paper</a>.</p>
+<p>People have sometimes found single neurons that seem to correspond to
+a single interpretable concept, as in the 2012 <a href="https://blog.google/technology/ai/using-large-scale-brain-simulations-for/">cat neuron</a> or the
+2017 <a href="https://openai.com/index/unsupervised-sentiment-neuron/">sentiment neuron</a>.</p>
+<p>But the numbers just don't work out. GPT-3 had a vocabulary of around
+50,000 tokens, and that immediately went to a layer of 12,000 nodes.
+It isn't enough to give every concept a node.</p>
+<h3>Distributed representations</h3>
+<p>You can represent many more concepts if you use combinatorial
+approaches, for example like Hinton's “coarse coding” (<a href="https://www.cs.toronto.edu/~fritz/absps/pdp3.pdf" title="Hinton, G. E., McClelland, J., &amp; Rumelhart, D. (1986). Distributed representations. In D. Rumelhart &amp; J. McClelland (Eds.), Parallel Distributed Processing (Vol. 1, pp. 77-109). Cambridge, MA: MIT Press.">1986</a>).</p>
+<p>But because these representations are <em>not</em> orthogonal, it can be hard
+or impossible to disentangle them if you have more than one active at
+the same time.</p>
+<h3>Quasi-orthogonal dimensions</h3>
+<p>There are a lot of ways that things are strange in many dimensions,
+and one of them is that as you get into lots of dimensions there are
+exponentially many <em>nearly</em> perpendicular directions.</p>
+<p>This is usually presented as coming from the <a href="https://en.wikipedia.org/wiki/Johnson%E2%80%93Lindenstrauss_lemma">Johnson–Lindenstrauss
+lemma</a>, but the most directly applicable paper I've seen is the 1993
+<a href="https://www.sciencedirect.com/science/article/pii/089396599390023G">Quasiorthogonal dimension of Euclidean spaces</a>.</p>
+<hr>
+<p><img alt="exponential growth of nearly orthogonal directions" src="exp.png"></p>
+<p>My little experiment: The horizontal axis is the actual number of
+dimensions. The vertical axis is the number of quasi-orthogonal
+dimensions (within 10 degrees of perpendicular to all the others)
+based on drawing random (Gaussian) unit vectors. By 700 real
+dimensions, there are easily 7,000 nearly orthogonal directions.</p>
+<hr>
+<p>This gives us a truly mind-blowing number of axes, and the ability to
+compose and decompose reasonable numbers of them when activated
+simultaneously (“superposition”).</p>
+<h3>The structure of language</h3>
+<p>If quasi-orthogonal dimensions provide the capacity, a model still
+needs to be able to relate things and build complex concepts from
+simpler ones. A version of this is the “binding problem” (<a href="https://www.cs.toronto.edu/~fritz/absps/pdp3.pdf" title="Hinton, G. E., McClelland, J., &amp; Rumelhart, D. (1986). Distributed representations. In D. Rumelhart &amp; J. McClelland (Eds.), Parallel Distributed Processing (Vol. 1, pp. 77-109). Cambridge, MA: MIT Press.">1986</a>):
+what goes with what?</p>
+<p>One conceptual solution was “treelets” (<a href="https://mitpress.mit.edu/9780262632683/the-algebraic-mind/" title="The Algebraic Mind: Integrating Connectionism and Cognitive Science">2003</a>), which looks just
+like <a href="https://en.wikipedia.org/wiki/X-bar_theory">X-bar theory</a> or the sentence diagrams that elementary schools
+used to teach.</p>
+<p>What we have now is attention, which, together with positional
+encodings (<a href="https://arxiv.org/abs/1706.03762" title="Attention Is All You Need">2017</a>), provides a mechanism for the hierarchical
+processing these suggest.</p>
+<h3>And it works</h3>
+<p>Anthropic has shown that things like this happen in practice, and has
+used these ideas, for example to successfully <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html">extract</a>
+interpretable features from their models.</p>
+<hr>
+<p>This post is based largely on work from Anthropic's <a href="https://transformer-circuits.pub/">Transformer
+Circuits Thread</a>. I <a href="https://docs.google.com/presentation/d/1wyLk9j0X9QxaiO2af4cTlMZr8hckyUmTThjBNKTrTwY/edit">presented</a> a lightning talk on this topic in
+2025.</p>    
+    ]]></description>
+<link>http://planspace.org/20260929-distributed_representations_and_superposition/</link>
+<guid>http://planspace.org/20260929-distributed_representations_and_superposition/</guid>
+<pubDate>Tue, 29 Sep 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>The Four-Way Test</title>
 <description><![CDATA[
 
@@ -2448,204 +2518,6 @@ think is important, which is the human understanding aspect.</p>
 <link>http://planspace.org/20260730-linear_algebra_project/</link>
 <guid>http://planspace.org/20260730-linear_algebra_project/</guid>
 <pubDate>Thu, 30 Jul 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>How to bake π, by Cheng</title>
-<description><![CDATA[
-
-<p>It may not have won a Pulitzer, but <a href="https://en.wikipedia.org/wiki/How_to_Bake_Pi">Cheng's book</a> reminds me of
-nothing quite so much as <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">Gödel, Escher, Bach</a>. It's committed to
-its gimmick, it's fun to read, it's self-involved, its success as an
-argument is incomplete, there's some math but there could have been
-more. GEB had better editing.</p>
-<p>Just as I was most interested in the incompleteness theorem bits of
-GEB, <em>How to bake π</em> is ostensibly about category theory and that's
-what I was hoping to learn more about. I've tried to learn about
-category theory in the past (<a href="https://planspace.org/20150125-monads_by_diagram/">ex</a>) and I've never felt like I've
-"gotten" it. The book has some bits <em>about</em> category theory, but I
-still don't feel like I have a good understanding of category theory
-<em>really</em>. (Possibly there's more in there than I realize because the
-author avoids formal language... Was she talking about the Yoneda
-Lemma in there, maybe?)</p>
-<p>Luckily, what Cheng actually wants to talk about is philosophy of
-math. (The book contributes many quotes to my "<a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/205">mathematics is</a>"
-quote collection.) I largely agree with her ideas on the importance of
-"illumination" (understanding at a level different from formal proof)
-and math as easy relative to the complexity of the "real world" (which
-also appears in <a href="/20260721-more_everything_forever_by_becker/">More Everything Forever</a>). I'm less sure, but I
-also suspect we both think about non-mathematical beliefs as being
-fundamentally supportable only by "axioms" taken on faith.</p>
-<p>It's unfortunate that the copy editing isn't as tight as it could be.
-There's at least one "and and" in there. On page 199 there's a
-composition of a function from A to B with a function from B to C and
-it somehow gives a function from A to B. Toward the end, there start
-being references to things that came earlier except they never did
-come earlier. Distracting.</p>
-<p>I really like the closing paragraphs:</p>
-<blockquote>
-<p>"Knowledge is power," or so the adage goes. But understanding is
-more powerful power. We have moved on from the age when knowledge
-was a secret, passed around in mysterious books that could only be
-deciphered by a small number of people. We have moved on from the
-age when there were so few books that even those who did know how to
-read them were at the mercy of those who owned them, the age when
-students seeking knowledge had to gather around somebody who would
-read the book out loud to them, a "lecturer"; the word "lecture"
-comes from the act of reading, not the act of pontificating to an
-audience. Anyway we have moved on from that age.</p>
-<p>We are now in the age where information is everywhere. Literacy
-rates still leave room for improvement, but most adults can read,
-and in some countries mos of them have access to the internet. Many
-of us essentially have the internet in our pocket at all times.
-Knowledge is no longer a secret.</p>
-<p>But understanding is still kept a secret, at least in mathematics.
-Students of all levels are shown the rules but kept in the dark
-about the reasons. We encourage children to ask the question "Why?"
-but only up to a point, because beyond that point we might not
-understand it ourselves. So we stifle their quest for illumination
-to match our own inability to provide it. Instead of being afraid of
-that darkness, we should bring everyone to the edge of it and say:
-<em>Look! Here is an area that needs illumination.</em> Bring fire,
-torches, candles—anything you can think of that will cast light.
-Then we can lay down our foundations and build our great buildings,
-cure diseases, invent fabulous new machines, and whatever else we
-think the human race should be doing. But first of all we need some
-light. (pages 278-279)</p>
-</blockquote>
-<p><img alt="cover" src="cover.jpg"></p>
-<hr>
-<blockquote>
-<p>The story I'm going to tell is about abstract mathematics. I'm going
-to argue that its power and beauty lie not in the answers it
-provides or the problems it solves, but in the <em>light</em> that it
-sheds. That light enables us to see clearly, and that is the first
-step to understanding the world around us. (page 13)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>In the end mathematics is simply about things that are true. (page
-116)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Mathematics is easy, as long as you have the right definition of
-"easy" (page 143, section header)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>A rope over the top of a fence has the same length on each side, and
-weighs one-third of a pound per foot. On one end hangs a monkey
-holding a banana, and on the other end a weight equal to the weight
-of the monkey. The banana weighs 2 ounces per inch. The length of
-the rope in feet is the same as the age of the monkey, and the
-weight of the monkey in ounces is as much as the age of the monkey's
-mother. The combined age of the monkey and its mother is 30 years.
-Half the weight of the monkey plus the weight of the banana is a
-quarter the sum of the weights of the rope and the weight. The
-monkey's mother is half as old as the monkey will be when it's three
-times as old as its mother was when she was half as old as the
-monkey will be when it's as old as its mother will be when she's
-four times as old as the monkey was when it was twice as old as its
-mother was when she was a third as old as the monkey was when it was
-as old as its mother was when she was three times as old as the
-monkey was when it was a quarter as old as it is now. How long is
-the banana?</p>
-</blockquote>
-<p>Do monkeys really hold bananas that weigh more than half their body
-weight?</p>
-<!--
-
-monkey's mother's age = 1/2 * 3 * 1/2 * 4 * 2 * 1/3 * 3 * 1/4 * monkey's age
- = 1.5 * monkey's age
-
-rope over fence, same length either side
-rope 1/3 lb per foot
-banana 2 oz per inch
-rope length feet = monkey age
-monkey weight oz = monkey's mother's age
-monkey age + monkey's mother's age = 30 years
-(1/2 monkey weight) + banana weight = 1/4 (rope weight + weight)
-
-monkey's age = 12 years
-monkey's mother's age = 18 years
-rope = 12 feet (6 feet per side)
-     = 4 lbs (2 lbs per side)
-     monkey's weight = 18 oz
-9 oz + banana = 1/4 (4 lbs + 18 oz) = 1 lb + 4.5 oz = 20.5 oz
-banana = 11.5 oz
-5.75 inches
-
--->
-
-<hr>
-<blockquote>
-<p>Mathematics is not life (page 156, section header)</p>
-</blockquote>
-<p>The author includes a proof:</p>
-<blockquote>
-<p>So: math is easy, life is hard, therefore math isn't life. (page
-156)</p>
-<p>The pursuit of mathematics is the process of working out exactly
-what is easy, and the process of making as many things easy as
-possible. (page 156)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><em>The process of working out exactly which parts of math are easy,
-and the process of making as many parts of math easy as possible.</em>
-(page 162, defining category theory)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>The freedom of this situation is a type of universal property that
-is closely related to "forgetting structure," as we discussed in the
-chapter on structure. (page 253)</p>
-</blockquote>
-<p>I don't see where that was discussed in the chapter on structure. (On
-page 211 there's another "we saw" that I can't find the antecedent for
-either.)</p>
-<hr>
-<blockquote>
-<p>"Mathematics makes a steady advance, while philosophy continues to
-flounder in unending bafflement at the problems it confronted at the
-outset." (page 263, quoting Michael Dummett in <em>The Philosophy of
-Mathematics</em>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Proof has a sociological role; illumination has a personal role.
-Proof is what convinces society; illumination is what convinces us.
-(page 274)</p>
-<p>In a way, mathematics is like an emotion, which can't ever be
-described precisely in words—it's something that happens inside an
-individual. What we write down is merely a language for
-communicating those ideas to others, in the hope that they will be
-able to reconstruct the feeling within their own mind. (page 275)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>I think that the key characteristic of proof is not its
-infallibility, but its sturdiness in transit. Proof is the best
-medium for communicating my argument to X in a way that will not be
-in danger of ambiguity, misunderstanding, or distortion. Proof is
-the bridge for getting from one person to another, but some
-translation is needed on both sides.</p>
-<p>When I read someone else's math, I always hope that the author will
-have included a reason and not just a proof. When this does happen,
-the benefits are very great. Unfortunately, a lot of math is taught
-without any attempt at illumination. Even worse, it's sometimes
-taught without any explanation at all. But even if it is explained,
-not every explanation is illuminating. (page 277)</p>
-</blockquote>
-<p>I agree especially with the the second paragraph here.</p>
-<hr>
-<blockquote>
-<p>Category theory seeks to illuminate math. (page 278)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20260728-how_to_bake_pi_by_cheng/</link>
-<guid>http://planspace.org/20260728-how_to_bake_pi_by_cheng/</guid>
-<pubDate>Tue, 28 Jul 2026 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>
