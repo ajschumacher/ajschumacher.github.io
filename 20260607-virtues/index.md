@@ -19,6 +19,7 @@ Just collecting these here for easy reference for now...
  1. [U.S. Army Values](/20251230-us_army_values/)
  1. [Scouting America Oath and Law](/20251231-scouting_america_oath_and_law/)
  1. [Girl Scouts of the USA Promise and Law](/20251231-girl_scouts_of_usa_promise_and_law/)
+ 1. [The Four-Way Test](/20260929-four_way_test/) (1932)
  1. [Moral Code of the Builder of Communism](/20260106-moral_code_of_the_builder_of_communism/)
  1. [Core Socialist Values of the Chinese Communist Party](/20260107-core_socialist_values_of_the_ccp/)
  1. [North Korea's Ten Principles for the Establishment of the One-Ideology System](/20260720-north_korea_principles/) (1974)
