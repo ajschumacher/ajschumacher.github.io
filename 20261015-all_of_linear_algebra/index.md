@@ -224,76 +224,97 @@ Let's do two inputs and two outputs. You know the proof already.
 
 ---
 
-
-v \cdot u =
-\frac{1}{2}
-\left(
-| v |^2 + | u |^2 - | v-u |^2
-\right)
+Here's an orthogonal matrix with perpendicular unit vectors. On the
+left, it detects along the row directions and emits along the column
+directions.
 
 
-\sqrt{
-\begin{bmatrix}
-3 & 4
-\end{bmatrix}
-\begin{bmatrix}
-3 \cr 4
-\end{bmatrix}
-}
-=5
+---
 
-\begin{bmatrix}
-3 & 4
-\end{bmatrix}
-=
-5
-\begin{bmatrix}
-\frac{3}{5} & \frac{4}{5}
-\end{bmatrix}
-
-\begin{bmatrix}
-1 & 0
-\end{bmatrix}
-\begin{bmatrix}
-\frac{3}{5} \cr \frac{4}{5}
-\end{bmatrix}
-=
-\frac{3}{5}
+The transpose does the opposite, so it's the inverse.
 
 
-\begin{bmatrix}
-\frac{4}{5} & -\frac{3}{5} \cr
-\frac{3}{5} & \frac{4}{5}
-\end{bmatrix}^T
-\begin{bmatrix}
-\frac{4}{5} & -\frac{3}{5} \cr
-\frac{3}{5} & \frac{4}{5}
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & 0 \cr
-0 & 1
-\end{bmatrix}
+---
+
+And you already know how to invert diagonal matrices, right?
 
 
-\begin{bmatrix}
-\frac{1}{5} & 0 \cr
-0 & \frac{1}{2}
-\end{bmatrix}
-\begin{bmatrix}
-5 & 0 \cr
-0 & 2
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & 0 \cr
-0 & 1
-\end{bmatrix}
+---
+
+Even if there are zeros on the diagonal, you know what to do to get as
+close as possible to an inverse.
 
 
-\newcommand{\vlabel}[1]{\rule[-0.4em]{0pt}{4.4em}\hspace{.8em}\rlap{\style{display:inline-block;transform:translateX(-2.2em) rotate(90deg);white-space:nowrap}{\text{#1}}}\hspace{0.6em}}
-\begin{bmatrix} a & b \\ c & d \end{bmatrix}
-=
-\begin{bmatrix} \vlabel{left dir 1} & \vlabel{left dir 2} \end{bmatrix}
-\begin{bmatrix} s_1 & 0 \\ 0 & s_2 \end{bmatrix}
-\begin{bmatrix} \text{right dir 1} \\ \text{right dir 2} \end{bmatrix}
+---
+
+So here's the Fundamental Theorem of Linear Algebra: the Singular
+Value Decomposition.
+
+
+---
+
+That's already Principal Components Analysis, by the way.
+
+
+---
+
+And you already know how to invert SVD, or get close.
+
+
+---
+
+So now we can solve equations like this, conceptually. But use a
+computer. It won't work if the matrix is singular though.
+
+
+---
+
+You can still get some sort of solution like this. And that's linear
+regression.
+
+
+---
+
+Let's look at some data though. These kids rated foods.
+
+
+---
+
+It's nice to subtract out the means.
+
+(Can you tell there's only one singular value?)
+
+
+---
+
+Measure those columns by themselves, you get sums of squares, a
+multiple of the covariance matrix.
+
+
+---
+
+Let's make the rows unit length.
+
+
+---
+
+And measure the rows by themselves. That's Pearson's correlation
+coefficients.
+
+Notice these measure matrices, Gram matrices, are always square.
+People really like square matrices.
+
+
+---
+
+With a square matrix, you can find eigenvectors that just get
+stretched by an eigenvalue, without changing direction. Maybe you can
+diagonalize a matrix.
+
+This let's you do fun things like get the closed form for the nth
+Fibonacci number.
+
+
+---
+
+Thanks!
