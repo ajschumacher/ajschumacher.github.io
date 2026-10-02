@@ -60,7 +60,7 @@ I really like the closing paragraphs:
 >
 > We are now in the age where information is everywhere. Literacy
 > rates still leave room for improvement, but most adults can read,
-> and in some countries mos of them have access to the internet. Many
+> and in some countries most of them have access to the internet. Many
 > of us essentially have the internet in our pocket at all times.
 > Knowledge is no longer a secret.
 >
