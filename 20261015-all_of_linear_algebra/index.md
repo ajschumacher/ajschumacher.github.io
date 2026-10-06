@@ -11,34 +11,31 @@ If math is about patterns, what patterns is Linear Algebra about?
 
 ---
 
-This kind. How many flowers at 12 months?
+Linear patterns, like this one!
+
+Let's fill in the gap.
 
 
 ---
 
-Well, 5 plus 7 is 12. So we can also add up 10 and 14 to get 24.
+We can add existing entries.
 
 
 ---
 
-And 4 times 3 is 12. So we can multiply 4 times 6 to get 24.
+We can also multiply existing entries.
 
 
 ---
 
-And of course it's just doubling. So we can double 12 to get 24.
+And there's an underlying multiplicative pattern: times two.
 
-That 2 is a “singular value” here. It's the “canonical multiplier”
-(Joseph Sylvester's term) in a single direction.
-
-That 2 can also be an eigenvalue, which is an “intrinsic” or “proper
-value” (the English used before eigenvalue became standard) for
-something that doesn't change direction.
+That two is a “singular value” and also an “eigenvalue” here.
 
 
 ---
 
-In one dimension this is really all we get!
+It's always just multiplying by a number! That's all it can be!
 
 
 ---
@@ -48,27 +45,25 @@ Proof.
 
 ---
 
-So Linear Algebra is really very simple stuff.
+And this is a college course?
 
 
 ---
 
-If we write out such a pattern like this, it starts to look like a
-measuring stick with different units on either side.
+Well, what is multiplying anyway? It's a little like a measuring stick
+with different units on either side.
 
 
 ---
 
 And you can go either way, to the right or the left, and each is the
-inverse of the other. Two is invertible, one half is invertible.
+inverse of the other. Two is “invertible.”
 
 
 ---
 
-But zero sends everything to a single value. We say zero is singular.
-It's hardly a value at all! Once you're at zero, you don't know where
-you came from, so there's no inverse, which is why “you can't divide
-by zero.”
+But zero sends everything to a single value. Zero is singular. There's
+no inverse, which is why “you can't divide by zero.”
 
 
 ---
@@ -78,28 +73,27 @@ Negative numbers work fine though.
 
 ---
 
-But you might want to break things up into length and direction.
+But a negative number starts to feel like it has both a length and a
+direction. Let's separate those.
 
-This is the singular value decomposition of negative two: Two is the
-size of the stretch, negative one is the direction.
-
-
----
-
-Then we have the usual positive multiplication, and we evaluate the
-directions by how much they agree. If the signs agree, they cosign.
+This is the singular value decomposition of negative two.
 
 
 ---
 
-Another way to think about our directions with unit length is as
-measuring sticks with no change of units. They measure how long a
-thing is in their direction.
+It has the usual positive multiplication, and then for the signs
+either they cosign or they don't.
 
 
 ---
 
-Now let's have two inputs and one output. All we can do is this.
+When length is one, unit length, the measuring stick has no change of
+units and just measures how long a thing is in its direction.
+
+
+---
+
+What if we have two inputs and one output? All we can do is this.
 
 
 ---
@@ -146,8 +140,18 @@ And we'll call that a column.
 
 ---
 
-So now these two guys are lined up like a pipeline. And if we _flip_
-that pipe...
+The choice of writing it this way is arbitrary, so it deserves a
+mnemonic.
+
+
+---
+
+“Rows reach right, columns lean left.”
+
+
+---
+
+Now it's lined up like a pipeline. If we _flip_ that pipe...
 
 
 ---
