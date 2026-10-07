@@ -268,9 +268,10 @@ There might be zeros. We do what we can.
 
 ---
 
-So here's the Fundamental Theorem of Linear Algebra: the Singular
-Value Decomposition, SVD. Every matrix is like this! Notice rows on
-the right, columns on the left.
+At last we have the full Singular Value Decomposition, SVD, the
+Fundamental Theorem of Linear Algebra! Every matrix is like this!
+
+Notice rows on the right, columns on the left.
 
 
 ---
