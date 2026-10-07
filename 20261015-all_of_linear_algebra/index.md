@@ -28,14 +28,14 @@ We can also multiply existing entries.
 
 ---
 
-And there's an underlying multiplicative pattern: times two.
+And there's a pattern: times two.
 
 That two is a “singular value” and also an “eigenvalue” here.
 
 
 ---
 
-It's always just multiplying by a number! That's all it can be!
+So we're always just multiplying by a number! That's all we can do!
 
 
 ---
@@ -50,7 +50,7 @@ And this is a college course?
 
 ---
 
-What is multiplying anyway? It's a little like a measuring stick with
+Well what is multiplying? It's a little like a measuring stick with
 different units on either side.
 
 
@@ -63,7 +63,7 @@ inverse of the other. Two is “invertible.”
 ---
 
 But zero sends everything to a single value. Zero is singular. There's
-no inverse, which is why “you can't divide by zero.”
+no inverse, “you can't divide by zero.”
 
 
 ---
@@ -73,9 +73,9 @@ Negative numbers work fine though.
 
 ---
 
-We can separate the size from the sign.
+Or we can separate the size from the sign.
 
-This is the singular value decomposition of negative two.
+And this is the singular value decomposition of negative two.
 
 
 ---
@@ -86,10 +86,8 @@ they cosign or they don't.
 
 ---
 
-When length is one, unit length, the measuring stick just measures
-length in its direction.
-
-Also notice these are self-inverses.
+When length is one, the measuring stick just measures units of length
+in its direction.
 
 
 ---
@@ -104,8 +102,9 @@ Proof.
 
 ---
 
-We'll also call this kind of thing a dot product. How should we write
-it?
+We'll also call this kind of thing a dot product.
+
+Let's write it differently.
 
 
 ---
@@ -147,12 +146,13 @@ mnemonic.
 
 ---
 
-“Rows reach right, columns lean left.”
+I like “Rows reach right, columns lean left.”
 
 
 ---
 
-Now this is lined up like a pipeline. If we _flip_ that pipeline...
+Now this is all lined up like a pipeline. If we _flip_ that
+pipeline...
 
 
 ---
@@ -163,7 +163,7 @@ transposed.
 
 ---
 
-Call this guy a vector. What about length? Maybe you know the
+Okay, call this guy a vector. What about length? Maybe you know the
 Pythagorean theorem?
 
 
@@ -174,7 +174,7 @@ Proof.
 
 ---
 
-Sure. Square root the dot product, the length is five, and now we have
+Sure. Square root the dot product, length is five, and now we have
 essentially the singular value decomposition of that vector: a length
 times a unit direction. This is basically polar coordinates.
 
@@ -186,8 +186,8 @@ All the 2D unit directions make this circle.
 
 ---
 
-We compare directions with the dot product again, and get cosine.
-Which works everywhere because it's invariant to rotation.
+We compare directions with the dot product again, and get no-kidding
+cosine. Which works everywhere because it's invariant to rotation.
 
 
 ---
@@ -231,7 +231,7 @@ It measures a vector coming from the left.
 
 ---
 
-It produces a multiple when it has something on the right.
+Or it produces a multiple of itself.
 
 
 ---
@@ -241,7 +241,7 @@ We still have this mnemonic.
 
 ---
 
-Let's do two inputs and two outputs. You know the proof already.
+Let's do many inputs and many outputs.
 
 
 ---
@@ -253,7 +253,7 @@ directions.
 
 ---
 
-The transpose does the opposite, so it's the inverse.
+The transpose does the opposite, so we can invert it.
 
 
 ---
@@ -269,12 +269,13 @@ There might be zeros. We do what we can.
 ---
 
 So here's the Fundamental Theorem of Linear Algebra: the Singular
-Value Decomposition, SVD.
+Value Decomposition, SVD. Every matrix is like this! Notice rows on
+the right, columns on the left.
 
 
 ---
 
-That's already Principal Components Analysis, by the way.
+That's also PCA, by the way.
 
 
 ---
@@ -284,8 +285,9 @@ And you already know how to invert SVD, or get close.
 
 ---
 
-So now we can solve equations like this, conceptually. But use a
-computer. It won't work if the matrix is singular though.
+So now we can solve equations like this. But use a computer.
+
+It won't work if the matrix is singular though.
 
 
 ---
@@ -296,14 +298,15 @@ regression.
 
 ---
 
-Let's look at some data though. These kids rated foods.
+Let's see some data. Kids rated foods.
 
 
 ---
 
 It's nice to subtract out the means.
 
-(Can you tell there's only one singular value?)
+Maybe you can tell there's only one singular value, and we could
+reduce the dimensionality.
 
 
 ---
@@ -314,16 +317,16 @@ multiple of the covariance matrix.
 
 ---
 
-Let's make the rows unit length directions.
+Make the rows unit length directions.
 
 
 ---
 
-Measure the rows by themselves. That's Pearson's correlation
+And measure the rows by themselves. That's Pearson's correlation
 coefficients.
 
-Notice these measure matrices, Gram matrices, are always square.
-People really like square matrices.
+These measure matrices, Gram matrices, are always square. People
+really like square matrices.
 
 
 ---
@@ -332,8 +335,8 @@ With a square matrix, you can find eigenvectors that just get
 stretched by an eigenvalue, without changing direction. Maybe you can
 diagonalize a matrix.
 
-This let's you do fun things like get the closed form for the nth
-Fibonacci number.
+This sort of thing let's you do fun stuff like getting the closed form
+for the nth Fibonacci number.
 
 
 ---
