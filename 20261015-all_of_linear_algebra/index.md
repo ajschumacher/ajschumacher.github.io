@@ -50,8 +50,8 @@ And this is a college course?
 
 ---
 
-Well, what is multiplying anyway? It's a little like a measuring stick
-with different units on either side.
+What is multiplying anyway? It's a little like a measuring stick with
+different units on either side.
 
 
 ---
@@ -73,22 +73,23 @@ Negative numbers work fine though.
 
 ---
 
-But a negative number starts to feel like it has both a length and a
-direction. Let's separate those.
+We can separate the size from the sign.
 
 This is the singular value decomposition of negative two.
 
 
 ---
 
-It has the usual positive multiplication, and then for the signs
-either they cosign or they don't.
+Then it's the usual positive multiplication, and for the signs either
+they cosign or they don't.
 
 
 ---
 
-When length is one, unit length, the measuring stick has no change of
-units and just measures how long a thing is in its direction.
+When length is one, unit length, the measuring stick just measures
+length in its direction.
+
+Also notice these are self-inverses.
 
 
 ---
@@ -109,7 +110,7 @@ it?
 
 ---
 
-Let's choose to write _a_ and _b_ like this.
+Let's put the _a_ and _b_ like this.
 
 
 ---
@@ -151,7 +152,7 @@ mnemonic.
 
 ---
 
-Now it's lined up like a pipeline. If we _flip_ that pipe...
+Now this is lined up like a pipeline. If we _flip_ that pipeline...
 
 
 ---
@@ -162,8 +163,8 @@ transposed.
 
 ---
 
-Call this guy a vector. What about length? Can I use the Pythagorean
-theorem?
+Call this guy a vector. What about length? Maybe you know the
+Pythagorean theorem?
 
 
 ---
@@ -175,13 +176,12 @@ Proof.
 
 Sure. Square root the dot product, the length is five, and now we have
 essentially the singular value decomposition of that vector: a length
-times a unit direction. Basically polar coordinates.
+times a unit direction. This is basically polar coordinates.
 
 
 ---
 
-All the 2D unit directions make this circle. We're throwing in
-trigonometry as a bonus here.
+All the 2D unit directions make this circle.
 
 
 ---
@@ -202,23 +202,41 @@ And when things are perpendicular, the cosine is zero.
 
 ---
 
-Vectors are emitters and detectors.
+Let's see vectors as detectors and emitters.
 
-Multiply a row from the left, you get a multiple of that row. Multiply
-a row from the right, you detect how much the multiplier is in that
-row's direction.
+---
+
+With our row we have one spot on the left and two on the right.
 
 
 ---
 
-Multiply a column from the right, you get a multiple of that row.
-Multiply a column from the left, you detect how much the multiplier is
-in that column's direction.
+A vector can come here and get measured in our direction.
 
 
 ---
 
-Rows reach right, columns lean left.
+Or we can produce a multiple of our vector.
+
+
+---
+
+A column is just the transpose.
+
+
+---
+
+It measures a vector coming from the left.
+
+
+---
+
+It produces a multiple when it has something on the right.
+
+
+---
+
+We still have this mnemonic.
 
 
 ---
@@ -228,7 +246,7 @@ Let's do two inputs and two outputs. You know the proof already.
 
 ---
 
-Here's an orthogonal matrix with perpendicular unit vectors. On the
+Here's an orthogonal matrix U with perpendicular unit vectors. On the
 left, it detects along the row directions and emits along the column
 directions.
 
@@ -240,19 +258,18 @@ The transpose does the opposite, so it's the inverse.
 
 ---
 
-And you already know how to invert diagonal matrices, right?
+And we already did inverses for diagonal matrices.
 
 
 ---
 
-Even if there are zeros on the diagonal, you know what to do to get as
-close as possible to an inverse.
+There might be zeros. We do what we can.
 
 
 ---
 
 So here's the Fundamental Theorem of Linear Algebra: the Singular
-Value Decomposition.
+Value Decomposition, SVD.
 
 
 ---
@@ -297,12 +314,12 @@ multiple of the covariance matrix.
 
 ---
 
-Let's make the rows unit length.
+Let's make the rows unit length directions.
 
 
 ---
 
-And measure the rows by themselves. That's Pearson's correlation
+Measure the rows by themselves. That's Pearson's correlation
 coefficients.
 
 Notice these measure matrices, Gram matrices, are always square.
@@ -321,4 +338,4 @@ Fibonacci number.
 
 ---
 
-Thanks!
+And that's about it! Thanks!
