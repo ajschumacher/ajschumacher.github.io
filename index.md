@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-10-08: [3rd-grade math club](/20261008-3rd_grade_math_club/)
  * 2026-10-03: [The Joy of Abstraction, by Cheng](/20261003-joy_of_abstraction_by_cheng/)
  * 2026-09-29: [Quasi-orthogonal representations](/20260929-distributed_representations_and_superposition/)
  * 2026-09-29: [The Four-Way Test](/20260929-four_way_test/)
