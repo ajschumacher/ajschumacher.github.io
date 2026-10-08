@@ -16,3 +16,4 @@ Keeping these here for convenient reference...
  * 2026-09-01: [Regression, from the mean](/20260901-regression_from_the_mean/)
  * 2026-09-15: [Rows and columns](/20260915-rows_and_columns/)
  * 2026-09-18: [Linear Algebra is the math of superposition](/20260918-linear_algebra_studies_superposition/)
+ * 2026-09-29: [Quasi-orthogonal representations](/20260929-distributed_representations_and_superposition/) (little bit tangential maybe)
