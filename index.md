@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-10-08: [(Audio) Thinking in Systems, by Meadows](/20261008-thinking_in_systems_by_meadows/)
  * 2026-10-08: [Arithmetic, by Lockhart](/20261008-arithmetic_by_lockhart/)
  * 2026-10-08: [3rd-grade math club](/20261008-3rd_grade_math_club/)
  * 2026-10-03: [The Joy of Abstraction, by Cheng](/20261003-joy_of_abstraction_by_cheng/)
