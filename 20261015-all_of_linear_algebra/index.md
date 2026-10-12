@@ -35,7 +35,7 @@ That two is a “singular value” and also an “eigenvalue” here.
 
 ---
 
-So we're always just multiplying by a number! That's all we can do!
+We're always just multiplying by a number! That's all we can do!
 
 
 ---
@@ -45,19 +45,25 @@ Proof.
 
 ---
 
-And this is a college course?
+So what is this?
 
 
 ---
 
-Well what is multiplying? It's a little like a measuring stick with
-different units on either side.
+It's a little like a measuring stick with different units on either
+side.
 
 
 ---
 
 And you can go either way, to the right or the left, and each is the
 inverse of the other. Two is “invertible.”
+
+
+---
+
+The unit, one, is sort of special, just sort of cosigning whatever you
+already had.
 
 
 ---
@@ -86,8 +92,7 @@ they cosign or they don't.
 
 ---
 
-When length is one, the measuring stick just measures units of length
-in its direction.
+So now we have two unit measuring sticks.
 
 
 ---
@@ -146,7 +151,7 @@ mnemonic.
 
 ---
 
-I like “Rows reach right, columns lean left.”
+“Rows reach right, columns lean left.”
 
 
 ---
@@ -158,7 +163,7 @@ pipeline...
 ---
 
 Of course it has to come out like this, with rows and columns
-transposed.
+_transposed_.
 
 
 ---
@@ -181,7 +186,8 @@ times a unit direction. This is basically polar coordinates.
 
 ---
 
-All the 2D unit directions make this circle.
+All the 2D unit directions make this circle: these are all unit
+vectors measuring sticks. How far is another vector in this direction?
 
 
 ---
@@ -236,7 +242,7 @@ Or it produces a multiple of itself.
 
 ---
 
-We still have this mnemonic.
+This is the mnemonic.
 
 
 ---
@@ -276,7 +282,7 @@ Notice rows on the right, columns on the left.
 
 ---
 
-That's also PCA, by the way.
+That's also PCA, by the way. [Principal Components Analysis]
 
 
 ---
@@ -323,11 +329,11 @@ Make the rows unit length directions.
 
 ---
 
-And measure the rows by themselves. That's Pearson's correlation
-coefficients.
+And measure the rows by themselves. These are cosines, aka Pearson's
+correlation coefficients.
 
-These measure matrices, Gram matrices, are always square. People
-really like square matrices.
+These Gram matrices, are always square. People really like square
+matrices.
 
 
 ---
