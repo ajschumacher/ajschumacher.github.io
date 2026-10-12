@@ -6,7 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Fairy Fun</title>
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
   <button id="start-btn" class="img-btn" aria-label="Start">
     <img src="images/start.png" alt="Start">
   </button>
-  <p class="credit">Idea by Quinn. Made by Quinn and Aaron. Version 7.</p>
+  <p class="credit">Idea by Quinn. Made by Quinn and Aaron. Version 8.</p>
 </div>
 
 <div id="welcome-screen" class="screen hidden">
@@ -53,6 +53,7 @@
 <div id="world-screen" class="screen hidden">
   <div id="tile-frame">
     <img id="tile-img" alt="">
+    <svg id="door-layer" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"></svg>
     <div id="fairy" aria-label="fairy"></div>
   </div>
   <div id="joystick" aria-hidden="true">
@@ -62,6 +63,7 @@
 
 <audio id="bgm" src="Footsteps_On_The_Square.mp3" loop preload="auto"></audio>
 
-<script src="game.js?v=17"></script>
+<script src="buildings.js?v=1"></script>
+<script src="game.js?v=19"></script>
 </body>
 </html>

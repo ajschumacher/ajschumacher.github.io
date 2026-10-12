@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Fun Doors</title>
+<!--
+  Review page for the building doors. Not part of the game: it draws the
+  door shapes and building pairings straight from buildings.js, the same
+  data the game uses, so what you see here is what the game does.
+-->
+<style>
+  :root {
+    --bg: #fbf7ff;
+    --ink: #2a2233;
+    --muted: #6d6478;
+    --card: #fff;
+    --line: #e4dcef;
+    --door: #ffe94d;
+    --exit: #4dffd2;
+    --spawn: #ff4da6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 48px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.4;
+  }
+  main { max-width: 1400px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 28px; }
+  h2 { margin: 40px 0 8px; font-size: 22px; }
+  p { margin: 0 0 12px; color: var(--muted); max-width: 70ch; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 8px 0 16px; font-size: 14px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; border: 2px solid; display: inline-block; }
+  .swatch.door { border-color: var(--door); background: rgba(255, 233, 77, 0.35); }
+  .swatch.exit { border-color: var(--exit); background: rgba(77, 255, 210, 0.35); }
+  .swatch.spawn { border-color: var(--spawn); background: var(--spawn); border-radius: 50%; }
+
+  /* An image with its door shapes drawn over it. */
+  .shot { position: relative; line-height: 0; overflow: hidden; background: #000; border-radius: 6px; }
+  .shot img { width: 100%; height: auto; display: block; }
+  .shot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .shot polygon { stroke-width: 2.5px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  .shot polygon.door { stroke: var(--door); fill: rgba(255, 233, 77, 0.3); }
+  .shot polygon.exit { stroke: var(--exit); fill: rgba(77, 255, 210, 0.3); }
+  .shot .label {
+    position: absolute; transform: translate(-50%, -100%); margin-top: -6px;
+    background: rgba(0, 0, 0, 0.75); color: #fff; font-size: 11px; line-height: 1.2;
+    padding: 2px 5px; border-radius: 4px; white-space: nowrap; pointer-events: none;
+  }
+  .shot .spawn {
+    position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px;
+    border-radius: 50%; background: var(--spawn); border: 2px solid #fff;
+  }
+  /* A zoomed-in view: the inner .zoom box is scaled and shifted by JS. */
+  .shot.crop .zoom { position: absolute; }
+
+  /* World map: 10 x 3 tiles, top row first. */
+  .map-wrap { overflow-x: auto; }
+  .map { display: grid; grid-template-columns: repeat(10, minmax(110px, 1fr)); gap: 3px; min-width: 1100px; }
+  .map .cell { position: relative; }
+  .map .coord {
+    position: absolute; left: 4px; top: 4px; z-index: 1; line-height: 1.2;
+    background: rgba(255, 255, 255, 0.85); font-size: 11px; padding: 1px 4px; border-radius: 3px;
+  }
+
+  /* Building pairings. */
+  .pairs { display: grid; gap: 16px; }
+  .pair {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px;
+    display: grid; grid-template-columns: 1.2fr 0.8fr 1.2fr; gap: 12px; align-items: start;
+  }
+  .pair h3 { grid-column: 1 / -1; margin: 0; font-size: 18px; }
+  .pair h3 small { font-weight: 400; color: var(--muted); font-size: 13px; margin-left: 8px; }
+  .pair figure { margin: 0; }
+  .pair figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.3; }
+  .pair .crop { aspect-ratio: 1 / 1; }
+  @media (max-width: 760px) {
+    .pair { grid-template-columns: 1fr; }
+  }
+  .tally { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
+  .tally.bad { color: #c0143c; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Fairy Fun doors</h1>
+  <p>This page shows every building door in the fairy world and the inside it leads to. It draws
+    the shapes from <code>buildings.js</code>, the same file the game uses.</p>
+  <div class="legend">
+    <span><i class="swatch door"></i> door on the outside (long-press to go in)</span>
+    <span><i class="swatch exit"></i> door on the inside (long-press to go out)</span>
+    <span><i class="swatch spawn"></i> where the fairy appears</span>
+  </div>
+
+  <h2>All doors on the world map</h2>
+  <p>The whole world, with the top row of tiles first, as in the game. Each tile is labelled with
+    its position.</p>
+  <div class="map-wrap"><div class="map" id="map"></div></div>
+
+  <h2>Buildings and their insides</h2>
+  <p id="tally" class="tally"></p>
+  <div class="pairs" id="pairs"></div>
+</main>
+
+<script src="buildings.js"></script>
+<script>
+(() => {
+  const B = window.FAIRY_BUILDINGS;
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const tileSrc = (x, y) => `images/world_reencoded/${x}_${y}.jpeg`;
+  const insideSrc = (img) => `images/insides_reencoded/${img}.jpeg`;
+
+  // Draw an image with polygons, labels, and spawn dots. Points are in
+  // the game's coordinates: (0, 0) bottom-left, (1, 1) top-right.
+  function shot(src, { polys = [], labels = [], spawns = [] } = {}) {
+    const el = document.createElement('div');
+    el.className = 'shot';
+    const img = document.createElement('img');
+    img.src = src;
+    img.loading = 'lazy';
+    img.alt = '';
+    el.appendChild(img);
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 1 1');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    for (const { pts, cls } of polys) {
+      const p = document.createElementNS(SVG_NS, 'polygon');
+      p.setAttribute('points', pts.map(([x, y]) => `${x},${1 - y}`).join(' '));
+      p.setAttribute('class', cls);
+      svg.appendChild(p);
+    }
+    el.appendChild(svg);
+    for (const [x, y] of spawns) {
+      const d = document.createElement('div');
+      d.className = 'spawn';
+      d.style.left = `${x * 100}%`;
+      d.style.top = `${(1 - y) * 100}%`;
+      el.appendChild(d);
+    }
+    for (const { text, at } of labels) {
+      const l = document.createElement('div');
+      l.className = 'label';
+      l.textContent = text;
+      l.style.left = `${at[0] * 100}%`;
+      l.style.top = `${(1 - at[1]) * 100}%`;
+      el.appendChild(l);
+    }
+    return el;
+  }
+
+  // A square, zoomed-in view centered on some polygons.
+  function cropShot(src, polys, spawns) {
+    const all = polys.flatMap(p => p.pts).concat(spawns);
+    const xs = all.map(p => p[0]), ys = all.map(p => p[1]);
+    const cx = (Math.min(...xs) + Math.max(...xs)) / 2;
+    const cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+    const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+
+    const outer = document.createElement('div');
+    outer.className = 'shot crop';
+    const inner = shot(src, { polys, spawns });
+    inner.classList.add('zoom');
+    outer.appendChild(inner);
+    const img = inner.querySelector('img');
+    const fit = () => {
+      if (!img.naturalWidth) return;
+      const aspect = img.naturalWidth / img.naturalHeight;   // width / height
+      // Size the crop window (in image fractions) to a square, padded.
+      const sidePx = Math.max(span * 1.6, 0.12) * Math.max(img.naturalWidth, img.naturalHeight);
+      const fw = Math.min(1, sidePx / img.naturalWidth);
+      const fh = Math.min(1, sidePx / img.naturalHeight);
+      let left = Math.min(Math.max(cx - fw / 2, 0), 1 - fw);
+      let top = Math.min(Math.max((1 - cy) - fh / 2, 0), 1 - fh);
+      const box = outer.getBoundingClientRect();
+      const scale = box.width / (fw * img.naturalWidth);
+      const w = img.naturalWidth * scale;
+      inner.style.width = `${w}px`;
+      inner.style.left = `${-left * w}px`;
+      inner.style.top = `${-top * (w / aspect)}px`;
+      outer.style.aspectRatio = `${fw * img.naturalWidth} / ${fh * img.naturalHeight}`;
+    };
+    img.loading = 'eager';
+    img.addEventListener('load', fit);
+    window.addEventListener('resize', fit);
+    return outer;
+  }
+
+  // ----- World map -----
+  const map = document.getElementById('map');
+  for (let y = 3; y >= 1; y--) {
+    for (let x = 1; x <= 10; x++) {
+      const here = B.filter(b => b.tile[0] === x && b.tile[1] === y);
+      const polys = here.flatMap(b => b.doors.map(pts => ({ pts, cls: 'door' })));
+      const labels = here.map(b => {
+        const top = b.doors.flat().reduce((m, p) => (p[1] > m[1] ? p : m));
+        return { text: b.name, at: top };
+      });
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      const s = shot(tileSrc(x, y), { polys, labels, spawns: here.map(b => b.outside) });
+      const c = document.createElement('span');
+      c.className = 'coord';
+      c.textContent = `${x}, ${y}`;
+      cell.append(c, s);
+      map.appendChild(cell);
+    }
+  }
+
+  // ----- Pairings -----
+  const pairs = document.getElementById('pairs');
+  const imgs = new Set(B.map(b => b.inside.img));
+  const tally = document.getElementById('tally');
+  tally.textContent = `${B.length} buildings, ${imgs.size} different insides` +
+    (imgs.size === B.length ? ' (every building has its own inside).' : ' (SOME INSIDES ARE SHARED!)');
+  if (imgs.size !== B.length) tally.classList.add('bad');
+
+  for (const b of B) {
+    const card = document.createElement('section');
+    card.className = 'pair';
+    const h = document.createElement('h3');
+    h.textContent = b.name;
+    const sm = document.createElement('small');
+    sm.textContent = `tile ${b.tile[0]}, ${b.tile[1]} → ${b.inside.img}`;
+    h.appendChild(sm);
+    card.appendChild(h);
+
+    const doorPolys = b.doors.map(pts => ({ pts, cls: 'door' }));
+    const fig = (el, caption) => {
+      const f = document.createElement('figure');
+      const c = document.createElement('figcaption');
+      c.textContent = caption;
+      f.append(el, c);
+      return f;
+    };
+    card.appendChild(fig(
+      shot(tileSrc(...b.tile), { polys: doorPolys, spawns: [b.outside] }),
+      `Outside: world tile ${b.tile[0]}, ${b.tile[1]}`));
+    card.appendChild(fig(
+      cropShot(tileSrc(...b.tile), doorPolys, [b.outside]),
+      b.doors.length > 1 ? `Close-up of the ${b.doors.length} doors` : 'Close-up of the door'));
+    card.appendChild(fig(
+      shot(insideSrc(b.inside.img), {
+        polys: [{ pts: b.inside.door, cls: 'exit' }],
+        spawns: [b.inside.spawn],
+      }),
+      `Inside: ${b.inside.img}.jpeg`));
+    pairs.appendChild(card);
+  }
+})();
+</script>
+</body>
+</html>

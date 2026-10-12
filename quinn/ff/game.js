@@ -16,6 +16,11 @@
   const FRUIT_SPAWN_MS = 30 * 1000; // but at most one new fruit per 30 seconds
   const FRUIT_CHECK_MS = 5 * 1000;  // how often to consider spawning
   const DOUBLE_TAP_MS = 300;        // window for double-tapping a carried fruit
+  const LONG_PRESS_MS = 600;        // hold this long on a glowing door to go through it
+
+  // Buildings (and their doors and insides) are described in buildings.js.
+  const BUILDINGS = window.FAIRY_BUILDINGS || [];
+  const BUILDINGS_BY_ID = new Map(BUILDINGS.map(b => [b.id, b]));
 
   const initialScreen = document.getElementById('initial-screen');
   const welcomeScreen = document.getElementById('welcome-screen');
@@ -31,6 +36,8 @@
   const fairyGrid = document.getElementById('fairy-grid');
   const chooserNextBtn = document.getElementById('chooser-next-btn');
   const tileImg = document.getElementById('tile-img');
+  const tileFrame = document.getElementById('tile-frame');
+  const doorLayer = document.getElementById('door-layer');
   const fairy = document.getElementById('fairy');
   const joystick = document.getElementById('joystick');
   const knob = document.getElementById('joystick-knob');
@@ -40,6 +47,7 @@
     tile: { ...START_TILE },
     pos: { x: 0.5, y: 0.5 }, // normalized within tile, (0,0) bottom-left, (1,1) top-right
     tileSet: 'world',         // 'world' (fancy) or 'qworld' (Quinn's sketches)
+    inside: null,             // id of the building we are inside, or null when outdoors
     fairy: { g: 'f', t: 0 },  // appearance: gender n/f/m, skin tone 0-5 (set by the chooser)
     keys: { up: false, down: false, left: false, right: false },
     joy: { active: false, dx: 0, dy: 0 },
@@ -230,6 +238,7 @@
     applyFairyAppearance();
     state.tile = { ...START_TILE };
     state.pos = { x: 0.5, y: 0.5 };
+    state.inside = null;
     inWorld = true;
     show(worldScreen);
     enterWorld();
@@ -244,6 +253,17 @@
     return state.tileSet === 'qworld'
       ? `images/qworld/${x}_${y}.jpeg`
       : `images/world_reencoded/${x}_${y}.jpeg`;
+  }
+
+  function insideSrc(b) {
+    return `images/insides_reencoded/${b.inside.img}.jpeg`;
+  }
+
+  // What the big picture shows right now: the inside of the building
+  // we are in, or else the world tile we are on.
+  function sceneSrc() {
+    const b = state.inside && BUILDINGS_BY_ID.get(state.inside);
+    return b ? insideSrc(b) : tileSrc(state.tile.x, state.tile.y);
   }
 
   function toggleTileSet() {
@@ -271,21 +291,32 @@
   // not collected before the player reaches it.
   const prefetched = new Map(); // src -> Image
 
+  function prefetch(src) {
+    if (prefetched.has(src)) return;
+    const img = new Image();
+    img.src = src;
+    prefetched.set(src, img);
+  }
+
   function prefetchNeighbors() {
+    if (state.inside) {
+      // The only way out is back to the building's own tile.
+      const b = BUILDINGS_BY_ID.get(state.inside);
+      if (b) prefetch(tileSrc(b.tile[0], b.tile[1]));
+      return;
+    }
+    // The insides of buildings on this tile, so going in is quick too.
+    for (const b of buildingsOnMyTile()) prefetch(insideSrc(b));
     const { x, y } = state.tile;
     const neighbors = [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]];
     for (const [nx, ny] of neighbors) {
       if (nx < 1 || nx > WORLD_W || ny < 1 || ny > WORLD_H) continue;
-      const src = tileSrc(nx, ny);
-      if (prefetched.has(src)) continue;
-      const img = new Image();
-      img.src = src;
-      prefetched.set(src, img);
+      prefetch(tileSrc(nx, ny));
     }
   }
 
   function loadTile() {
-    tileImg.src = tileSrc(state.tile.x, state.tile.y);
+    tileImg.src = sceneSrc();
     // Dim the old tile while the new one loads, as a quiet "waiting"
     // hint. If the tile came straight from cache (the common case once
     // neighbor prefetch has run) it is already complete, so skip the
@@ -373,6 +404,7 @@
     renderAllPeers();
     renderAllFruits();
     updateFruitGlow();
+    updateDoors();
   }
 
   // ---------- Input ----------
@@ -503,8 +535,11 @@
       peer.el.className = 'remote-fairy';
       tileImg.parentElement.appendChild(peer.el);
     }
+    // Fairies see each other when they are in the same place: the same
+    // world tile outdoors, or inside the same building.
     const sameTile = peer.tile
-      && peer.tile.x === state.tile.x && peer.tile.y === state.tile.y;
+      && peer.tile.x === state.tile.x && peer.tile.y === state.tile.y
+      && (peer.inside || null) === state.inside;
     peer.el.textContent = fairyEmoji(parseFairyCode(peer.fairy));
     peer.el.style.display = sameTile ? '' : 'none';
     if (sameTile && peer.pos) {
@@ -524,11 +559,13 @@
   }
 
   function myStatePayload() {
-    return {
+    const p = {
       tile: { x: state.tile.x, y: state.tile.y },
       pos: { x: +state.pos.x.toFixed(3), y: +state.pos.y.toFixed(3) },
       fairy: fairyCode(),
     };
+    if (state.inside) p.inside = state.inside;
+    return p;
   }
 
   function broadcastState() {
@@ -665,6 +702,7 @@
         peer.tile = value.tile;
         peer.pos = value.pos;
         peer.fairy = value.fairy;
+        peer.inside = typeof value.inside === 'string' ? value.inside : null;
         renderPeer(id, peer);
       }
       refreshChooserIfOpen();
@@ -700,6 +738,7 @@
         f.v = value.v || 0;
         f.tile = value.tile;
         f.pos = value.pos;
+        f.inside = typeof value.inside === 'string' ? value.inside : null;
         f.carriedBy = value.carriedBy || null;
         renderFruit(id, f);
       }
@@ -748,7 +787,11 @@
   // glowing fruit to pick it up; the fruit rides along at the offset it
   // was picked up at. Tap a carried fruit to put it down, or double-tap
   // it to eat it.
-  const fruits = new Map(); // id -> { t, v, tile, pos, carriedBy, el, placed }
+  //
+  // Fruits can be carried into buildings and left there: a fruit's
+  // place is its tile and position, plus the building it is inside (if
+  // any), just like a fairy's.
+  const fruits = new Map(); // id -> { t, v, tile, pos, inside, carriedBy, el, placed }
   let carrying = null;      // { id, rel: {x, y} } while we carry a fruit
   let fruitTapTimer = null; // pending single-tap (put down) on the carried fruit
 
@@ -772,12 +815,16 @@
   // bookkeeping like the DOM element).
   function fruitPayload(f) {
     const p = { t: f.t, v: f.v || 0, tile: f.tile, pos: f.pos };
+    if (f.inside) p.inside = f.inside;
     if (f.carriedBy) p.carriedBy = f.carriedBy;
     return p;
   }
 
+  // Is the fruit where I am: on my tile, and inside the same building
+  // (or outdoors, if I am)?
   function fruitOnMyTile(f) {
-    return !!(f.tile && f.tile.x === state.tile.x && f.tile.y === state.tile.y);
+    return !!(f.tile && f.tile.x === state.tile.x && f.tile.y === state.tile.y)
+      && (f.inside || null) === state.inside;
   }
 
   // Is another player (who is actually still here) holding this fruit?
@@ -853,11 +900,22 @@
 
   // Where the carried fruit sits in world terms: our tile and position
   // plus the pickup offset, carried over into the neighboring tile if
-  // the offset pushes it past an edge.
+  // the offset pushes it past an edge. Inside a building there is no
+  // neighboring tile, so the fruit stays within the room.
   function carriedWorldPos() {
     let tx = state.tile.x, ty = state.tile.y;
     let px = state.pos.x + carrying.rel.x;
     let py = state.pos.y + carrying.rel.y;
+    if (state.inside) {
+      return {
+        tile: { x: tx, y: ty },
+        pos: {
+          x: +Math.min(1, Math.max(0, px)).toFixed(3),
+          y: +Math.min(1, Math.max(0, py)).toFixed(3),
+        },
+        inside: state.inside,
+      };
+    }
     if (px > 1) { if (tx < WORLD_W) { tx += 1; px -= 1; } else px = 1; }
     if (px < 0) { if (tx > 1)       { tx -= 1; px += 1; } else px = 0; }
     if (py > 1) { if (ty < WORLD_H) { ty += 1; py -= 1; } else py = 1; }
@@ -865,6 +923,7 @@
     return {
       tile: { x: tx, y: ty },
       pos: { x: +px.toFixed(3), y: +py.toFixed(3) },
+      inside: null,
     };
   }
 
@@ -874,6 +933,7 @@
     const w = carriedWorldPos();
     f.tile = w.tile;
     f.pos = w.pos;
+    f.inside = w.inside;
     if (fruitsAreShared()) {
       try { fb.db.set(fruitRefFor(carrying.id), fruitPayload(f)); } catch (e) { /* ignore */ }
     }
@@ -943,6 +1003,7 @@
     const w = carriedWorldPos();
     f.tile = w.tile;
     f.pos = w.pos;
+    f.inside = w.inside;
     f.carriedBy = null;
     carrying = null;
     cancelCarryCleanup(id);
@@ -1037,6 +1098,163 @@
     if (fruitSpawnTimer) { clearInterval(fruitSpawnTimer); fruitSpawnTimer = null; }
   }
 
+  // ---------- Buildings and doors ----------
+  // Many world tiles have buildings with doors. When the fairy is close
+  // to a door (within 2r of the door shape, like touching a fruit), the
+  // door glows; a long press on a glowing door takes the fairy inside.
+  // Inside, the door out works the same way and leads back to the spot
+  // outside the building's door.
+  //
+  // The door shapes live in buildings.js as polygons in the same
+  // normalized coordinates as the fairy's position.
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  let doorEls = [];         // [{ el, pts, go }] for the scene on screen
+  let doorScene = null;     // which scene doorEls were built for
+  let doorPress = null;     // { door, pointerId, x, y, timer } during a long press
+
+  function buildingsOnMyTile() {
+    return BUILDINGS.filter(b =>
+      b.tile[0] === state.tile.x && b.tile[1] === state.tile.y);
+  }
+
+  // The doors in the current scene, with what each one does.
+  function sceneDoors() {
+    if (state.inside) {
+      const b = BUILDINGS_BY_ID.get(state.inside);
+      return b ? [{ pts: b.inside.door, go: () => goOutside(b) }] : [];
+    }
+    // The door shapes are traced on the fancy tiles, so Quinn's sketch
+    // tiles (the easter egg) have no doors.
+    if (state.tileSet === 'qworld') return [];
+    return buildingsOnMyTile().flatMap(b =>
+      b.doors.map(pts => ({ pts, go: () => goInside(b) })));
+  }
+
+  function rebuildDoorEls() {
+    doorLayer.textContent = '';
+    doorEls = sceneDoors().map(d => {
+      const el = document.createElementNS(SVG_NS, 'polygon');
+      el.setAttribute('points',
+        d.pts.map(([x, y]) => `${x},${1 - y}`).join(' '));
+      el.setAttribute('class', 'door');
+      doorLayer.appendChild(el);
+      return { ...d, el, near: false };
+    });
+    doorScene = sceneSrc();
+  }
+
+  // Distance in px from a screen point to a door polygon (0 if inside).
+  function distToDoorPx(door, px, py, r) {
+    const pts = door.pts.map(([x, y]) =>
+      [r.left + x * r.width, r.top + (1 - y) * r.height]);
+    let inside = false;
+    let best = Infinity;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const [ax, ay] = pts[j], [bx, by] = pts[i];
+      if ((by > py) !== (ay > py) && px < ax + (bx - ax) * (py - ay) / (by - ay)) {
+        inside = !inside;
+      }
+      const dx = bx - ax, dy = by - ay;
+      const t = Math.max(0, Math.min(1,
+        ((px - ax) * dx + (py - ay) * dy) / ((dx * dx + dy * dy) || 1)));
+      best = Math.min(best, Math.hypot(px - (ax + t * dx), py - (ay + t * dy)));
+    }
+    return inside ? 0 : best;
+  }
+
+  // Place the door layer over the picture and light up the doors the
+  // fairy is close to.
+  function updateDoors() {
+    if (doorScene !== sceneSrc()) rebuildDoorEls();
+    const r = getTileRect();
+    doorLayer.style.left = r.left + 'px';
+    doorLayer.style.top = r.top + 'px';
+    doorLayer.style.width = r.width + 'px';
+    doorLayer.style.height = r.height + 'px';
+    const fx = r.left + state.pos.x * r.width;
+    const fy = r.top + (1 - state.pos.y) * r.height;
+    const reach = fairyFontPx(r); // 2r, as for fruits
+    for (const d of doorEls) {
+      d.near = distToDoorPx(d, fx, fy, r) <= reach;
+      d.el.classList.toggle('near', d.near);
+      if (!d.near && doorPress && doorPress.door === d) cancelDoorPress();
+    }
+  }
+
+  // Long press: listen on the whole frame (capture phase) and test the
+  // door shapes ourselves, so a door still works when the fairy, or a
+  // fruit, is drawn on top of it. Short taps pass through untouched to
+  // whatever was tapped.
+  const DOOR_HIT_SLOP_PX = 10;
+
+  function doorAt(clientX, clientY) {
+    const frame = tileFrame.getBoundingClientRect();
+    const px = clientX - frame.left, py = clientY - frame.top;
+    const r = getTileRect();
+    return doorEls.find(d => d.near && distToDoorPx(d, px, py, r) <= DOOR_HIT_SLOP_PX);
+  }
+
+  function cancelDoorPress() {
+    if (!doorPress) return;
+    clearTimeout(doorPress.timer);
+    doorPress.door.el.classList.remove('pressing');
+    doorPress = null;
+  }
+
+  tileFrame.addEventListener('pointerdown', (e) => {
+    if (doorPress || !e.isPrimary) return;
+    const door = doorAt(e.clientX, e.clientY);
+    if (!door) return;
+    markActivity();
+    door.el.classList.add('pressing');
+    doorPress = {
+      door, pointerId: e.pointerId, x: e.clientX, y: e.clientY,
+      timer: setTimeout(() => {
+        const go = door.go;
+        cancelDoorPress();
+        go();
+      }, LONG_PRESS_MS),
+    };
+  }, true);
+
+  tileFrame.addEventListener('pointermove', (e) => {
+    if (!doorPress || e.pointerId !== doorPress.pointerId) return;
+    if (Math.hypot(e.clientX - doorPress.x, e.clientY - doorPress.y) > 15) cancelDoorPress();
+  }, true);
+
+  for (const type of ['pointerup', 'pointercancel']) {
+    window.addEventListener(type, (e) => {
+      if (doorPress && e.pointerId === doorPress.pointerId) cancelDoorPress();
+    }, true);
+  }
+
+  // Long-pressing would otherwise pop up the browser's own menu.
+  tileFrame.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  function goInside(b) {
+    state.inside = b.id;
+    state.pos = { x: b.inside.spawn[0], y: b.inside.spawn[1] };
+    changeScene();
+  }
+
+  function goOutside(b) {
+    state.inside = null;
+    state.tile = { x: b.tile[0], y: b.tile[1] };
+    state.pos = { x: b.outside[0], y: b.outside[1] };
+    changeScene();
+  }
+
+  function changeScene() {
+    cancelDoorPress();
+    markActivity();
+    loadTile();
+    // The new picture may have a different shape; if it was cached it
+    // will not fire 'load', so re-measure now as well.
+    invalidateTileRect();
+    updateFairyPosition();
+    broadcastState();
+  }
+
   // ---------- Idle timeout ----------
   // The world watches for inactivity: any movement marks the player
   // active, and if an hour passes with no movement we tear down the
@@ -1068,6 +1286,8 @@
     stopFruitSpawner();
     if (fruitTapTimer) { clearTimeout(fruitTapTimer); fruitTapTimer = null; }
     if (carrying) putDownFruit(carrying.id); // don't walk off with a fruit
+    cancelDoorPress();
+    state.inside = null;
     rafRunning = false;     // halt the world loop
     inWorld = false;        // we no longer belong in the shared world
     leaveMultiplayer();     // remove our fairy and drop the connection
@@ -1100,7 +1320,7 @@
       markActivity();
       state.pos.x += vx * FAIRY_SPEED * dt;
       state.pos.y += vy * FAIRY_SPEED * dt;
-      const tileChanged = resolveTileTransitions();
+      const tileChanged = state.inside ? clampInside() : resolveTileTransitions();
       updateFairyPosition();
       if (tileChanged || now - lastNetSync > 120) broadcastState();
     } else if (wasMoving) {
@@ -1110,6 +1330,14 @@
     wasMoving = moving;
 
     requestAnimationFrame(tick);
+  }
+
+  // Inside a building there are no neighboring tiles: the walls are the
+  // edges of the picture, and the only way out is the door.
+  function clampInside() {
+    state.pos.x = Math.min(1, Math.max(0, state.pos.x));
+    state.pos.y = Math.min(1, Math.max(0, state.pos.y));
+    return false;
   }
 
   function resolveTileTransitions() {

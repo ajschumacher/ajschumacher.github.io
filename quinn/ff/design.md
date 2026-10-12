@@ -182,6 +182,39 @@ solo play grows its own local fruits with the same rules; they simply
 do not survive a page reload.
 
 
+### Buildings
+
+Many world tiles have buildings on them — houses, shops, little huts
+and sheds, and port-o-potties — and the fairy can go inside them.
+
+Each building has a door (or whatever its natural entrance is: the
+stairs down the well at House McDark, the open front of the Babsha
+shop). Fixyos has two: the front door and the garage. When the fairy
+is close to a door — the door shape is within 2r of the fairy's center,
+like touching a fruit — the door glows. Long-pressing (or long-clicking)
+a glowing door takes the fairy inside, where the picture becomes the
+inside of that building. The insides are in
+`images/insides_reencoded/` (optimized from the originals in
+`images/insides/`).
+
+Inside, the fairy can fly around the room but not off its edges. The
+way out works the same way: fly close to the door, it glows, and a
+long press takes the fairy back outside, just in front of the
+building's door.
+
+The buildings, their door shapes, where the fairy appears on each
+side, and which inside belongs to which building are all in
+`buildings.js`. The review page `doors.html` draws all of it over the
+pictures so it can be checked by eye.
+
+Players see each other inside a building only when they are inside
+the same one. A fairy carrying a fruit can take it inside, and put it
+down or eat it there; a fruit left inside a building stays there (for
+everyone) until someone picks it up again. In sketch
+mode the buildings have no doors, since the door shapes are traced on
+the fancy tiles.
+
+
 ### Sketch mode (easter egg)
 
 Quinn's original hand-drawn sketches of the tiles live in
@@ -242,16 +275,9 @@ the fairy world screen tells the player when this has happened.
 
 ## Future plans (not implemented yet)
 
- * Fairy creation between welcome screen and pick your pet.
- * "Pick your pet" screen between fairy creation and fairy world.
- * Upgrade fairy emoji to customizable fairy images.
- * Make fairy world 3D.
-     * Edit some of the images so that we can make it 3D so that we
-       can see some signs that may be blocked by other things.
  * Side doors that lead to fun activities including obstacle courses
    and much more.
  * Pick a car or other vehicle.
- * Add up/down buttons to switch between walking and flying. When you
-   press up, up turns grey and down turns rainbow. When you press
-   down, down turns grey and up turns rainbow.
  * "Exit" button from all screens except initial.
+ * Make it possible to plant and pick vegetables.
+ * Make it possible for fairies to cook.
