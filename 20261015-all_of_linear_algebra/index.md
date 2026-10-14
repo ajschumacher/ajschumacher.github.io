@@ -11,7 +11,7 @@ If math is about patterns, what patterns is Linear Algebra about?
 
 ---
 
-Linear patterns, like this one!
+Well, patterns like this: linear ones.
 
 Let's fill in the gap.
 
@@ -35,7 +35,7 @@ That two is a “singular value” and also an “eigenvalue” here.
 
 ---
 
-We're always just multiplying by a number! That's all we can do!
+This is really all we can do.
 
 
 ---
@@ -50,14 +50,15 @@ So what is this?
 
 ---
 
-It's a little like a measuring stick with different units on either
-side.
+You might think of multiplication as emitting multiples, but we can
+also think of it as detection, like a measuring stick with different
+units.
 
 
 ---
 
-And you can go either way, to the right or the left, and each is the
-inverse of the other. Two is “invertible.”
+And you can go either way on the measuring stick, to the right or the
+left, and each is the inverse of the other. Two is “invertible.”
 
 
 ---
@@ -86,13 +87,13 @@ And this is the singular value decomposition of negative two.
 
 ---
 
-Then it's the usual positive multiplication, and for the signs either
-they cosign or they don't.
+Then it's the usual positive multiplication of lengths, and for the
+signs, either they cosign or they don't.
 
 
 ---
 
-So now we have two unit measuring sticks.
+Also now we have _two_ unit measuring sticks.
 
 
 ---
@@ -162,13 +163,12 @@ pipeline...
 
 ---
 
-Of course it has to come out like this, with rows and columns
-_transposed_.
+It has to come out like this, with rows and columns _transposed_.
 
 
 ---
 
-Okay, call this guy a vector. What about length? Maybe you know the
+Okay, call this guy a vector. How long is it? Maybe you know the
 Pythagorean theorem?
 
 
@@ -186,14 +186,14 @@ times a unit direction. This is basically polar coordinates.
 
 ---
 
-All the 2D unit directions make this circle: these are all unit
-vectors measuring sticks. How far is another vector in this direction?
+All the 2D unit vectors make this circle. And all of them are great
+measuring sticks.
 
 
 ---
 
-We compare directions with the dot product again, and get no-kidding
-cosine. Which works everywhere because it's invariant to rotation.
+They measure how long a vector is, _in their direction._ For two unit
+vectors, that's no-kidding cosine, and it's invariant to rotation.
 
 
 ---
@@ -203,26 +203,26 @@ Proof.
 
 ---
 
-And when things are perpendicular, the cosine is zero.
+When things are perpendicular, the cosine is zero.
 
 
 ---
 
-Let's see vectors as detectors and emitters.
+So vectors are detectors and emitters.
 
 ---
 
-With our row we have one spot on the left and two on the right.
-
-
----
-
-A vector can come here and get measured in our direction.
+Here's a unit vector.
 
 
 ---
 
-Or we can produce a multiple of our vector.
+It measures a vector coming on the right.
+
+
+---
+
+Or it emits a multiple of itself.
 
 
 ---
@@ -232,12 +232,12 @@ A column is just the transpose.
 
 ---
 
-It measures a vector coming from the left.
+It measures a vector coming on the left.
 
 
 ---
 
-Or it produces a multiple of itself.
+It emits a multiple of itself.
 
 
 ---
@@ -247,19 +247,19 @@ This is the mnemonic.
 
 ---
 
-Let's do many inputs and many outputs.
+Let's do multiple inputs and multiple outputs.
 
 
 ---
 
-Here's an orthogonal matrix U with perpendicular unit vectors. On the
-left, it detects along the row directions and emits along the column
+Here's an orthogonal matrix, perpendicular unit vectors. On the left,
+it detects along the row directions and emits along the column
 directions.
 
 
 ---
 
-The transpose does the opposite, so we can invert it.
+The transpose does the opposite, so it's the inverse.
 
 
 ---
@@ -269,7 +269,7 @@ And we already did inverses for diagonal matrices.
 
 ---
 
-There might be zeros. We do what we can.
+There might be zeros.
 
 
 ---
@@ -287,52 +287,52 @@ That's also PCA, by the way. [Principal Components Analysis]
 
 ---
 
-And you already know how to invert SVD, or get close.
+And you already know how to invert an SVD, or get close.
 
 
 ---
 
-So now we can solve equations like this. But use a computer.
+So you can solve equations like this. But use a computer.
 
-It won't work if the matrix is singular though.
-
-
----
-
-You can still get some sort of solution like this. And that's linear
-regression.
+And it won't work if the matrix is singular.
 
 
 ---
 
-Let's see some data. Kids rated foods.
+But you can still get some sort of solution like this. And that's
+linear regression.
+
+
+---
+
+Data though. Kids rated foods.
 
 
 ---
 
 It's nice to subtract out the means.
 
-Maybe you can tell there's only one singular value, and we could
-reduce the dimensionality.
+Maybe you can see there's only one singular value, and we could reduce
+dimensionality.
 
 
 ---
 
-Measure those columns by themselves, you get sums of squares, a
-multiple of the covariance matrix.
+But measure columns by themselves, you get sums of squares, a multiple
+of the covariance matrix.
 
 
 ---
 
-Make the rows unit length directions.
+We can make the rows unit length.
 
 
 ---
 
-And measure the rows by themselves. These are cosines, aka Pearson's
+And measure rows by themselves. These are cosines, aka Pearson's
 correlation coefficients.
 
-These Gram matrices, are always square. People really like square
+These Gram matrices are always square. People really like square
 matrices.
 
 
