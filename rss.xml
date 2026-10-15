@@ -7,6 +7,187 @@
     <language>en-us</language>
     <atom:link href="http://planspace.org/rss.xml" rel="self" type="application/rss+xml" />
 <item>
+<title>All of Linear Algebra in Five Minutes</title>
+<description><![CDATA[
+
+<p>I volunteered to give a talk on Linear Algebra at the <a href="https://www.dc2.org/data-science-dc">Data Science
+DC</a> lightning talks <a href="https://luma.com/4f5wo210?tk=5w7yVa">event</a> today. I may be able to get it
+recorded; for now the full <a href="https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit">deck</a> is available. It is challenging to
+present all of Linear Algebra in five minutes. I hope it's fun!</p>
+<hr>
+<h3>Script</h3>
+<p>This won't make a lot of sense without the slides; check out the
+<a href="https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit">deck</a>, where the script is all in the speaker notes. (I wrote and
+edited it in here originally though, so I might as well keep it, I
+figure.)</p>
+<p>It arguably <em>still</em> doesn't make enough sense <em>with</em> the slides,
+because of (among other possible reasons) the constraints of fitting
+into a five minute presentation. I am working on more complete
+explanations; see <a href="/20260730-linear_algebra_project/">Linear Algebra project</a>.</p>
+<hr>
+<p>If math is about patterns, what patterns is Linear Algebra about?</p>
+<hr>
+<p>Well, patterns like this: linear ones.</p>
+<p>Let's fill in the gap.</p>
+<hr>
+<p>We can add existing entries.</p>
+<hr>
+<p>We can also multiply existing entries.</p>
+<hr>
+<p>And there's a pattern: times two.</p>
+<p>We'll call that two a “singular value” and also an “eigenvalue” here.</p>
+<hr>
+<p>In one dimension, this is really all we can do.</p>
+<hr>
+<p>Proof.</p>
+<hr>
+<p>So what is this?</p>
+<hr>
+<p>Multiplication <em>emits</em> multiples, but it also <em>detects</em>, like a
+measuring stick with different units.</p>
+<hr>
+<p>And you can go either way, to the right or the left, and each is the
+inverse of the other. Two is “invertible.”</p>
+<hr>
+<p>The unit, one, is sort of special, just sort of cosigning whatever you
+already had.</p>
+<hr>
+<p>But zero sends everything to a single value. Zero is singular. There's
+no inverse, “you can't divide by zero.”</p>
+<hr>
+<p>Negative numbers work fine though.</p>
+<hr>
+<p>Or we can separate the size from the sign, and get the singular value
+decomposition of negative two.</p>
+<hr>
+<p>Then it's the usual positive multiplication of lengths, and for the
+signs, either they cosign or they don't.</p>
+<hr>
+<p>Also now we have <em>two</em> unit measuring sticks.</p>
+<hr>
+<p>What if we have two inputs and one output? All we can do is this.</p>
+<hr>
+<p>Proof.</p>
+<hr>
+<p>We'll also call this kind of thing a dot product.</p>
+<p>Let's write it differently.</p>
+<hr>
+<p>Let's put the <em>a</em> and <em>b</em> like this.</p>
+<hr>
+<p>Which we'll call a row.</p>
+<hr>
+<p>And to be consistent with function notation, we'll say the two inputs
+come on the right.</p>
+<hr>
+<p>So the inputs have to come like this.</p>
+<hr>
+<p>So we better write them like this.</p>
+<hr>
+<p>And we'll call that a column.</p>
+<hr>
+<p>The choice of writing it this way is arbitrary, so it deserves a
+mnemonic.</p>
+<hr>
+<p>“Rows reach right, columns lean left.”</p>
+<hr>
+<p>Now this is all lined up like a pipeline. If we <em>flip</em> that
+pipeline...</p>
+<hr>
+<p>It has to come out like this, with rows and columns <em>transposed</em>.</p>
+<hr>
+<p>Okay, call this guy a vector. How long is it? Maybe you know the
+Pythagorean theorem?</p>
+<hr>
+<p>Proof.</p>
+<hr>
+<p>The square root isn't linear, but we can use it to rewrite things. We
+get essentially the singular value decomposition of a vector: a length
+times a unit direction. This is basically polar coordinates.</p>
+<hr>
+<p>All the 2D unit vectors make this circle. And all of them are great
+measuring sticks.</p>
+<hr>
+<p>They measure how long a vector is, <em>in their direction.</em> For two unit
+vectors, that's no-kidding cosine, and it's invariant to rotation.</p>
+<hr>
+<p>Proof.</p>
+<hr>
+<p>When things are perpendicular, the dot product and the cosine are
+zero.</p>
+<hr>
+<p>So vectors are detectors and emitters.</p>
+<hr>
+<p>Here's a unit vector.</p>
+<hr>
+<p>It measures a vector coming on the right.</p>
+<hr>
+<p>Or it emits a multiple of itself.</p>
+<hr>
+<p>A column is just the transpose.</p>
+<hr>
+<p>It measures a vector coming on the left.</p>
+<hr>
+<p>Or it emits a multiple of itself. (This is the one 3Blue1Brown focuses
+on.)</p>
+<hr>
+<p>This is the mnemonic.</p>
+<hr>
+<p>Let's do multiple inputs and multiple outputs.</p>
+<hr>
+<p>Here's an orthogonal matrix, perpendicular unit vectors. On the left,
+it detects along the row directions and emits along the column
+directions.</p>
+<hr>
+<p>The transpose does the opposite, so it's the inverse.</p>
+<hr>
+<p>And we already did inverses for diagonal matrices.</p>
+<hr>
+<p>There might be some zeros.</p>
+<hr>
+<p>At last we have the full Singular Value Decomposition, SVD, the
+Fundamental Theorem of Linear Algebra! Every matrix can be written
+like this!</p>
+<p>Notice rows on the right, columns on the left.</p>
+<hr>
+<p>That's also PCA, by the way. [Principal Components Analysis]</p>
+<hr>
+<p>And you already know how to invert an SVD, or get close.</p>
+<hr>
+<p>So you can solve equations like this. But use a computer.</p>
+<p>And it won't work if the matrix is singular.</p>
+<hr>
+<p>But you can still get some sort of solution like this. And that's
+linear regression.</p>
+<hr>
+<p>Data though. Kids rated foods.</p>
+<hr>
+<p>It's nice to subtract out the means.</p>
+<p>Maybe you can see there's only one singular value, and we could do
+dimensionality reduction.</p>
+<hr>
+<p>Measure columns by themselves, you get sums of squares, a multiple of
+the covariance matrix.</p>
+<hr>
+<p>We can make the rows unit length.</p>
+<hr>
+<p>And measure rows by themselves. These are cosines, aka Pearson's
+correlation coefficients.</p>
+<p>These Gram matrices are always square. People really like square
+matrices.</p>
+<hr>
+<p>With a square matrix, you can find eigenvectors that just get
+stretched by an eigenvalue, without changing direction. Maybe you can
+diagonalize a matrix.</p>
+<p>This lets you do fun stuff like getting the closed form for the nth
+Fibonacci number.</p>
+<hr>
+<p>And that's about it! Thanks!</p>    
+    ]]></description>
+<link>http://planspace.org/20261015-all_of_linear_algebra/</link>
+<guid>http://planspace.org/20261015-all_of_linear_algebra/</guid>
+<pubDate>Thu, 15 Oct 2026 12:00:00 -0500</pubDate>
+</item>
+<item>
 <title>(Audio) Thinking in Systems, by Meadows</title>
 <description><![CDATA[
 
@@ -3142,134 +3323,6 @@ determinant).</p>
 <link>http://planspace.org/20260810-2x2_matrix_playground/</link>
 <guid>http://planspace.org/20260810-2x2_matrix_playground/</guid>
 <pubDate>Mon, 10 Aug 2026 12:00:00 -0500</pubDate>
-</item>
-<item>
-<title>“Mathematics is” quotes</title>
-<description><![CDATA[
-
-<p>For at least six years, I've been <a href="https://github.com/ajschumacher/ajschumacher.github.io/issues/205">collecting</a> quotes about what
-mathematics is. Here are some of them.</p>
-<hr>
-<blockquote>
-<p>“... mathematics is not an empirical science, ...” (Von Neumann,
-<a href="https://mathshistory.st-andrews.ac.uk/Extras/Von_Neumann_Part_1/">The Mathematician</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is not a deductive science—that's a cliché.” (Halmos,
-<a href="/20210821-i_want_to_be_a_mathematician_by_halmos/">I want to be a mathematician</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Pure mathematics is, in its way, the poetry of logical ideas.”
-(Einstein, epitaph for Noether)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“... mathematics is the science of skillful operations with concepts
-and rules invented just for this purpose.” (Wigner,
-<a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/wigner.pdf">The Unreasonable Effectiveness of Mathematics in the Natural Sciences</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is a tool for reasoning.” (Feynman,
-<a href="https://www.youtube.com/watch?v=IaSN-3JAVTg">The Relation of Mathematics to Physics</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is no longer knowledge but a game of formulae, ruled by
-certain conventions, which is very well comparable to the game of
-chess.” (Weyl, Current Epistemological Situation in Mathematics)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the art of giving the same name to different
-things.” (Poincaré, <a href="https://www.nieuwarchief.nl/serie5/pdf/naw5-2012-13-3-154.pdf">Science et Methode</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“... mathematics cannot amount to anything more than an immense
-tautology.” (Poincaré, <a href="/20230116-ten_equations_that_rule_the_world/">Science and Hypothesis</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the extension of common sense by other means.”
-(Ellenberg, <a href="https://planspace.org/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the art of explanation.” (Lockhart,
-<a href="/20200909-mathematicians_lament_by_lockhart/">A Mathematician's Lament</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the study of things that come out a certain way
-because there is no other way they could possibly be.” (Ellenberg,
-<a href="https://planspace.org/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“[Mathematics is] about how things fit together.” (Kra,
-<a href="https://www.youtube.com/watch?v=mZaEVoH9Z4k">Inside Dynamical Systems and the Mathematics of Change</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“[Mathematics] is security. Certainty. Truth. Beauty. Insight.
-Structure. Architecture.” (Halmos, quoted in his MAA obituary)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is prestidigitation.” (Linderholm, Mathematics Made
-Difficult)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the science of the infinite.” (Weyl)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is the study of anything that obeys the rules of logic,
-using the rules of logic.” (Cheng, <a href="/20260728-how_to_bake_pi_by_cheng/">How to bake π</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is easy, as long as you have the right definition of
-‘easy’” (Cheng, <a href="/20260728-how_to_bake_pi_by_cheng/">How to bake π</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“The pursuit of mathematics is the process of working out exactly
-what is easy, and the process of making as many things easy as
-possible.” (Cheng, <a href="/20260728-how_to_bake_pi_by_cheng/">How to bake π</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is interesting in so far as it occupies our reasoning
-and inventive powers.” (Pólya, <a href="/2013/09/28/polyas-how-to-solve-it-quotes-and-comments/">How to Solve It</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is about problems, and problems must be made the focus
-of a student’s mathematical life.” (Lockhart,
-<a href="/20200909-mathematicians_lament_by_lockhart/">A Mathematician's Lament</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is not life” (Cheng, <a href="/20260728-how_to_bake_pi_by_cheng/">How to bake π</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“In the end mathematics is simply about things that are true.”
-(Cheng, <a href="/20260728-how_to_bake_pi_by_cheng/">How to bake π</a>)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>“Mathematics is not settled.” (Ellenberg, <a href="https://planspace.org/20200925-how_not_to_be_wrong_by_ellenberg/">How Not to Be Wrong</a>)</p>
-</blockquote>    
-    ]]></description>
-<link>http://planspace.org/20260804-mathematics_is_quotes/</link>
-<guid>http://planspace.org/20260804-mathematics_is_quotes/</guid>
-<pubDate>Tue, 04 Aug 2026 12:00:00 -0500</pubDate>
 </item>
   </channel>
 </rss>

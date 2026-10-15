@@ -1,7 +1,31 @@
-# All of Linear Algebra
+# All of Linear Algebra in Five Minutes
 
 
-[Deck](https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit)
+I volunteered to give a talk on Linear Algebra at the [Data Science
+DC][] lightning talks [event][] today. I may be able to get it
+recorded; for now the full [deck][] is available. It is challenging to
+present all of Linear Algebra in five minutes. I hope it's fun!
+
+[Data Science DC]: https://www.dc2.org/data-science-dc
+[event]: https://luma.com/4f5wo210?tk=5w7yVa
+[deck]: https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit
+
+
+---
+
+### Script
+
+This won't make a lot of sense without the slides; check out the
+[deck][], where the script is all in the speaker notes. (I wrote and
+edited it in here originally though, so I might as well keep it, I
+figure.)
+
+It arguably _still_ doesn't make enough sense _with_ the slides,
+because of (among other possible reasons) the constraints of fitting
+into a five minute presentation. I am working on more complete
+explanations; see [Linear Algebra project][].
+
+[Linear Algebra project]: /20260730-linear_algebra_project/
 
 
 ---
@@ -30,12 +54,12 @@ We can also multiply existing entries.
 
 And there's a pattern: times two.
 
-That two is a “singular value” and also an “eigenvalue” here.
+We'll call that two a “singular value” and also an “eigenvalue” here.
 
 
 ---
 
-This is really all we can do.
+In one dimension, this is really all we can do.
 
 
 ---
@@ -50,15 +74,14 @@ So what is this?
 
 ---
 
-You might think of multiplication as emitting multiples, but we can
-also think of it as detection, like a measuring stick with different
-units.
+Multiplication _emits_ multiples, but it also _detects_, like a
+measuring stick with different units.
 
 
 ---
 
-And you can go either way on the measuring stick, to the right or the
-left, and each is the inverse of the other. Two is “invertible.”
+And you can go either way, to the right or the left, and each is the
+inverse of the other. Two is “invertible.”
 
 
 ---
@@ -80,9 +103,8 @@ Negative numbers work fine though.
 
 ---
 
-Or we can separate the size from the sign.
-
-And this is the singular value decomposition of negative two.
+Or we can separate the size from the sign, and get the singular value
+decomposition of negative two.
 
 
 ---
@@ -179,8 +201,8 @@ Proof.
 
 ---
 
-Sure. Square root the dot product, length is five, and now we have
-essentially the singular value decomposition of that vector: a length
+The square root isn't linear, but we can use it to rewrite things. We
+get essentially the singular value decomposition of a vector: a length
 times a unit direction. This is basically polar coordinates.
 
 
@@ -203,7 +225,8 @@ Proof.
 
 ---
 
-When things are perpendicular, the cosine is zero.
+When things are perpendicular, the dot product and the cosine are
+zero.
 
 
 ---
@@ -237,7 +260,8 @@ It measures a vector coming on the left.
 
 ---
 
-It emits a multiple of itself.
+Or it emits a multiple of itself. (This is the one 3Blue1Brown focuses
+on.)
 
 
 ---
@@ -269,13 +293,14 @@ And we already did inverses for diagonal matrices.
 
 ---
 
-There might be zeros.
+There might be some zeros.
 
 
 ---
 
 At last we have the full Singular Value Decomposition, SVD, the
-Fundamental Theorem of Linear Algebra! Every matrix is like this!
+Fundamental Theorem of Linear Algebra! Every matrix can be written
+like this!
 
 Notice rows on the right, columns on the left.
 
@@ -312,14 +337,14 @@ Data though. Kids rated foods.
 
 It's nice to subtract out the means.
 
-Maybe you can see there's only one singular value, and we could reduce
-dimensionality.
+Maybe you can see there's only one singular value, and we could do
+dimensionality reduction.
 
 
 ---
 
-But measure columns by themselves, you get sums of squares, a multiple
-of the covariance matrix.
+Measure columns by themselves, you get sums of squares, a multiple of
+the covariance matrix.
 
 
 ---
@@ -342,8 +367,8 @@ With a square matrix, you can find eigenvectors that just get
 stretched by an eigenvalue, without changing direction. Maybe you can
 diagonalize a matrix.
 
-This sort of thing let's you do fun stuff like getting the closed form
-for the nth Fibonacci number.
+This lets you do fun stuff like getting the closed form for the nth
+Fibonacci number.
 
 
 ---

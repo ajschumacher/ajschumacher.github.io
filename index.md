@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-10-15: [All of Linear Algebra in Five Minutes](/20261015-all_of_linear_algebra/)
  * 2026-10-08: [(Audio) Thinking in Systems, by Meadows](/20261008-thinking_in_systems_by_meadows/)
  * 2026-10-08: [Arithmetic, by Lockhart](/20261008-arithmetic_by_lockhart/)
  * 2026-10-08: [3rd-grade math club](/20261008-3rd_grade_math_club/)
