@@ -11,10 +11,10 @@
     <article>
 <h1>All of Linear Algebra in Five Minutes</h1>
 <p class="date">Thursday October 15, 2026</p>
-<p>I volunteered to give a talk on Linear Algebra at the <a href="https://www.dc2.org/data-science-dc">Data Science
-DC</a> lightning talks <a href="https://luma.com/4f5wo210?tk=5w7yVa">event</a> today. I may be able to get it
-recorded; for now the full <a href="https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit">deck</a> is available. It is challenging to
-present all of Linear Algebra in five minutes. I hope it's fun!</p>
+<p>I volunteered to give a talk on Linear Algebra at a <a href="https://www.dc2.org/data-science-dc">Data Science
+DC</a> lightning talks <a href="https://luma.com/4f5wo210?tk=5w7yVa">event</a>. The <a href="https://youtu.be/NWuTKS8ikB0">video</a> is on YouTube now. The
+full <a href="https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit">deck</a> is also available. It's challenging to present all of
+Linear Algebra in five minutes. I hope it's fun!</p>
 <hr />
 <h3>Script</h3>
 <p>This won't make a lot of sense without the slides; check out the
@@ -29,13 +29,13 @@ explanations; see <a href="/20260730-linear_algebra_project/">Linear Algebra pro
 <p>If math is about patterns, what patterns is Linear Algebra about?</p>
 <hr />
 <p>Well, patterns like this: linear ones.</p>
-<p>Let's fill in the gap.</p>
+<p>What does that mean?</p>
 <hr />
-<p>We can add existing entries.</p>
+<p>It means we can add existing entries.</p>
 <hr />
-<p>We can also multiply existing entries.</p>
+<p>And we can also multiply existing entries.</p>
 <hr />
-<p>And there's a pattern: times two.</p>
+<p>Notice the pattern: times two.</p>
 <p>We'll call that two a “singular value” and also an “eigenvalue” here.</p>
 <hr />
 <p>In one dimension, this is really all we can do.</p>
@@ -73,9 +73,9 @@ signs, either they cosign or they don't.</p>
 <p>We'll also call this kind of thing a dot product.</p>
 <p>Let's write it differently.</p>
 <hr />
-<p>Let's put the <em>a</em> and <em>b</em> like this.</p>
+<p>We'll put the <em>a</em> and <em>b</em> next to each other.</p>
 <hr />
-<p>Which we'll call a row.</p>
+<p>And we'll call that a row.</p>
 <hr />
 <p>And to be consistent with function notation, we'll say the two inputs
 come on the right.</p>
@@ -109,7 +109,7 @@ times a unit direction. This is basically polar coordinates.</p>
 measuring sticks.</p>
 <hr />
 <p>They measure how long a vector is, <em>in their direction.</em> For two unit
-vectors, that's no-kidding cosine, and it's invariant to rotation.</p>
+vectors, that's no-kidding cosine. It's always invariant to rotation.</p>
 <hr />
 <p>Proof.</p>
 <hr />
@@ -128,16 +128,14 @@ zero.</p>
 <hr />
 <p>It measures a vector coming on the left.</p>
 <hr />
-<p>Or it emits a multiple of itself. (This is the one 3Blue1Brown focuses
-on.)</p>
-<hr />
-<p>This is the mnemonic.</p>
+<p>Or it emits a multiple of itself. (This is the one that 3Blue1Brown
+focuses on.)</p>
 <hr />
 <p>Let's do multiple inputs and multiple outputs.</p>
 <hr />
-<p>Here's an orthogonal matrix, perpendicular unit vectors. On the left,
-it detects along the row directions and emits along the column
-directions.</p>
+<p>Here's an orthogonal matrix, perpendicular unit vectors, a rotation
+matrix. On the left, it detects along the row directions and emits
+along the column directions.</p>
 <hr />
 <p>The transpose does the opposite, so it's the inverse.</p>
 <hr />
@@ -157,8 +155,8 @@ like this!</p>
 <p>So you can solve equations like this. But use a computer.</p>
 <p>And it won't work if the matrix is singular.</p>
 <hr />
-<p>But you can still get some sort of solution like this. And that's
-linear regression.</p>
+<p>You can always get some sort of solution like this. And that's linear
+regression.</p>
 <hr />
 <p>Data though. Kids rated foods.</p>
 <hr />
@@ -166,13 +164,13 @@ linear regression.</p>
 <p>Maybe you can see there's only one singular value, and we could do
 dimensionality reduction.</p>
 <hr />
-<p>Measure columns by themselves, you get sums of squares, a multiple of
-the covariance matrix.</p>
+<p>Measure columns by columns, you get sums of squares, a multiple of a
+covariance matrix.</p>
 <hr />
-<p>We can make the rows unit length.</p>
+<p>Or, let's make the rows unit length.</p>
 <hr />
-<p>And measure rows by themselves. These are cosines, aka Pearson's
-correlation coefficients.</p>
+<p>And measure rows by rows. These are cosines, aka Pearson's correlation
+coefficients.</p>
 <p>These Gram matrices are always square. People really like square
 matrices.</p>
 <hr />

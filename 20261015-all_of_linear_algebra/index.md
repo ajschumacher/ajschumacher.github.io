@@ -1,13 +1,14 @@
 # All of Linear Algebra in Five Minutes
 
 
-I volunteered to give a talk on Linear Algebra at the [Data Science
-DC][] lightning talks [event][] today. I may be able to get it
-recorded; for now the full [deck][] is available. It is challenging to
-present all of Linear Algebra in five minutes. I hope it's fun!
+I volunteered to give a talk on Linear Algebra at a [Data Science
+DC][] lightning talks [event][]. The [video][] is on YouTube now. The
+full [deck][] is also available. It's challenging to present all of
+Linear Algebra in five minutes. I hope it's fun!
 
 [Data Science DC]: https://www.dc2.org/data-science-dc
 [event]: https://luma.com/4f5wo210?tk=5w7yVa
+[video]: https://youtu.be/NWuTKS8ikB0
 [deck]: https://docs.google.com/presentation/d/1Ocew-wu96B0Rv-Rb3Vtio1Wmv9ezHMdaC_sP38muk1I/edit
 
 
@@ -37,22 +38,22 @@ If math is about patterns, what patterns is Linear Algebra about?
 
 Well, patterns like this: linear ones.
 
-Let's fill in the gap.
+What does that mean?
 
 
 ---
 
-We can add existing entries.
+It means we can add existing entries.
 
 
 ---
 
-We can also multiply existing entries.
+And we can also multiply existing entries.
 
 
 ---
 
-And there's a pattern: times two.
+Notice the pattern: times two.
 
 We'll call that two a “singular value” and also an “eigenvalue” here.
 
@@ -137,12 +138,12 @@ Let's write it differently.
 
 ---
 
-Let's put the _a_ and _b_ like this.
+We'll put the _a_ and _b_ next to each other.
 
 
 ---
 
-Which we'll call a row.
+And we'll call that a row.
 
 
 ---
@@ -215,7 +216,7 @@ measuring sticks.
 ---
 
 They measure how long a vector is, _in their direction._ For two unit
-vectors, that's no-kidding cosine, and it's invariant to rotation.
+vectors, that's no-kidding cosine. It's always invariant to rotation.
 
 
 ---
@@ -260,13 +261,8 @@ It measures a vector coming on the left.
 
 ---
 
-Or it emits a multiple of itself. (This is the one 3Blue1Brown focuses
-on.)
-
-
----
-
-This is the mnemonic.
+Or it emits a multiple of itself. (This is the one that 3Blue1Brown
+focuses on.)
 
 
 ---
@@ -276,9 +272,9 @@ Let's do multiple inputs and multiple outputs.
 
 ---
 
-Here's an orthogonal matrix, perpendicular unit vectors. On the left,
-it detects along the row directions and emits along the column
-directions.
+Here's an orthogonal matrix, perpendicular unit vectors, a rotation
+matrix. On the left, it detects along the row directions and emits
+along the column directions.
 
 
 ---
@@ -324,8 +320,8 @@ And it won't work if the matrix is singular.
 
 ---
 
-But you can still get some sort of solution like this. And that's
-linear regression.
+You can always get some sort of solution like this. And that's linear
+regression.
 
 
 ---
@@ -343,19 +339,19 @@ dimensionality reduction.
 
 ---
 
-Measure columns by themselves, you get sums of squares, a multiple of
-the covariance matrix.
+Measure columns by columns, you get sums of squares, a multiple of a
+covariance matrix.
 
 
 ---
 
-We can make the rows unit length.
+Or, let's make the rows unit length.
 
 
 ---
 
-And measure rows by themselves. These are cosines, aka Pearson's
-correlation coefficients.
+And measure rows by rows. These are cosines, aka Pearson's correlation
+coefficients.
 
 These Gram matrices are always square. People really like square
 matrices.
