@@ -7,9 +7,10 @@ maximum value, and the breaks are at evenly spaced quantiles, so that
 every box contains the same fraction of the data. They're like box
 plots that don't assume central tendency, or rug plots that are evenly
 thinned to avoid crowding. You can install the Python [package][] with
-`pip install pavement`.
+`pip install pavement`. There's also an [R package][] now!
 
 [package]: https://planspace.org/pavement/
+[R package]: https://github.com/git-dwilliams/ggpaver
 
 
 ![pavement plots](four_sets.png)
@@ -107,7 +108,8 @@ Often it won't matter, but by all means use your preferred quantile
 The material here roughly recapitulates what I presented in [Pavement
 Plots: Less biased boxes][] and [Pave the Planet][]. The Python
 implementation is on the [Python Package Index][], [on GitHub][], and
-has a [documenting web site][].
+has a [documenting web site][]. The [R package][] is installable with
+`pak::pak("git-dwilliams/ggpaver")`.
 
 [Pavement Plots: Less biased boxes]: https://docs.google.com/presentation/d/1vq-fGC8PvBenJo61VBIe7Xx2L1bLkTurVIERr8TpX1s/edit
 [Pave the Planet]: https://docs.google.com/presentation/d/13D6hXuCRH1JdBsmSqASh5_Ww9KDEpaAV8GhXiNaQ5Ik/edit
