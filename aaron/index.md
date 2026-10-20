@@ -41,6 +41,7 @@ The following accompanies the
 
 Here are some things I've talked about:
 
+ * [All of Linear Algebra in Five Minutes](/20261015-all_of_linear_algebra/) for [Data Science DC](https://luma.com/4f5wo210?tk=5w7yVa) on Thursday 2026-10-15
  * [Pave the Planet](https://docs.google.com/presentation/d/13D6hXuCRH1JdBsmSqASh5_Ww9KDEpaAV8GhXiNaQ5Ik/edit) for [Data Science DC](https://luma.com/thq3hut1?tk=oKGjll) on Wednesday 2026-06-10
  * [Pavement Plots: Less biased boxes](https://docs.google.com/presentation/d/1vq-fGC8PvBenJo61VBIe7Xx2L1bLkTurVIERr8TpX1s/edit) for [Data Viz DC](https://luma.com/b4qfsjpl?tk=EHOGE1) on Thursday 2026-05-15
  * [Distributed Representations and Superposition](https://docs.google.com/presentation/d/1wyLk9j0X9QxaiO2af4cTlMZr8hckyUmTThjBNKTrTwY/edit) for [DC2](https://www.meetup.com/data-science-dc/events/307325043/) on Tuesday 2025-06-10
