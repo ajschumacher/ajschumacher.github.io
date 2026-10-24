@@ -22,6 +22,7 @@ If you sign up, I'll send you an email update at most monthly with new stuff.
 
 Here's the big list of everything:
 
+ * 2026-10-24: [(Audio) Something Deeply Hidden, by Carroll](/20261024-something_deeply_hidden_by_carroll/)
  * 2026-10-23: [Bayesian Workflow, chapter one](/20261023-bayesian_workflow_chapter_one/)
  * 2026-10-15: [All of Linear Algebra in Five Minutes](/20261015-all_of_linear_algebra/)
  * 2026-10-08: [(Audio) Thinking in Systems, by Meadows](/20261008-thinking_in_systems_by_meadows/)
